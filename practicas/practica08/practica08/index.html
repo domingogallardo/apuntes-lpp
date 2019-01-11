@@ -1,0 +1,600 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copiar al portapapeles">
+      
+        <meta name="lang:clipboard.copied" content="Copiado al portapapeles">
+      
+        <meta name="lang:search.language" content="es">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No se encontraron documentos">
+      
+        <meta name="lang:search.result.one" content="1 documento encontrado">
+      
+        <meta name="lang:search.result.other" content="# documentos encontrados">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Practica08 - LPP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.451f80e5.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#fb8c00">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="orange" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../../#practica-8-programacion-funcional-en-swift-1" tabindex="1" class="md-skip">
+        Saltar a contenido
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../.." title="LPP" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                LPP
+              </span>
+              <span class="md-header-nav__topic">
+                Practica08
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Teclee para comenzar búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../.." title="LPP" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    LPP
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Teoría
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        Teoría
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../teoria/tema00-descripcion-asignatura/tema00-descripcion-asignatura/" title="Descripción de la asignatura" class="md-nav__link">
+      Descripción de la asignatura
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#practica-8-programacion-funcional-en-swift-1" title="Práctica 8: Programación funcional en Swift (1)" class="md-nav__link">
+    Práctica 8: Programación funcional en Swift (1)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bibliografia-recomendada-para-la-practica" title="Bibliografía recomendada para la práctica" class="md-nav__link">
+    Bibliografía recomendada para la práctica
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" title="Ejercicio 1" class="md-nav__link">
+    Ejercicio 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" title="Ejercicio 2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" title="Ejercicio 3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" title="Ejercicio 4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" title="Ejercicio 5" class="md-nav__link">
+    Ejercicio 5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" title="Ejercicio 6" class="md-nav__link">
+    Ejercicio 6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Practica08</h1>
+                
+                <h2 id="practica-8-programacion-funcional-en-swift-1">Práctica 8: Programación funcional en Swift (1)<a class="headerlink" href="#practica-8-programacion-funcional-en-swift-1" title="Permanent link">&para;</a></h2>
+<p>Para entregar la práctica debes subir a Moodle el fichero
+<code>practica08.swift</code> con una cabecera inicial con tu nombre y apellidos,
+y las soluciones de cada ejercicio separadas por comentarios. Cada
+solución debe incluir:</p>
+<ul>
+<li>La <strong>definición de las funciones</strong> que resuelven el ejercicio.</li>
+<li>Una visualización por pantalla de todos los ejemplos incluidos en el
+  enunciado que <strong>demuestren qué hace la función</strong>.</li>
+</ul>
+<h3 id="bibliografia-recomendada-para-la-practica">Bibliografía recomendada para la práctica<a class="headerlink" href="#bibliografia-recomendada-para-la-practica" title="Permanent link">&para;</a></h3>
+<p>Antes de proceder a realizar los ejercicios de la práctica, debes
+completar el
+<a href="https://github.com/domingogallardo/apuntes-lpp/blob/master/seminarios/seminario2-swift/seminario2-swift.md">seminario de Swift</a>
+hasta el apartado de <strong>Enumeraciones</strong>. Y, evidentemente, los <a href="https://github.com/domingogallardo/apuntes-lpp/blob/master/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.md">apuntes
+de teoría</a> de la semana pasada.</p>
+<p>En la práctica hay más de un ejercicio en el que tienes que trabajar
+con Arrays. Es conveniente que consultes el apartado sobre Arrays en
+la página <a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/CollectionTypes.html#//apple_ref/doc/uid/TP40014097-CH8-ID105">Collection
+Types</a>
+de la guía de Swift.</p>
+<h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
+<p>Escribe una función en Swift <code>obtenerFrencuencias</code> que permita calcular las
+frecuencias de un conjunto de respuestas, números entre 0 y 9, que se
+guardan en un array de <code>Int</code>. Y otra <code>imprimir</code> que permita representar las
+frecuencias calculadas en forma de histograma.</p>
+<p>Como ejemplo de uso de las funciones puedes ver el siguiente
+código. El parámetro <code>maxAsteriscos</code> define el número de asteriscos
+con el que representaremos la frecuencia máxima en la gráfica de
+histogramas. Todos los demás asteriscos están escalados
+proporcionalmente a este número máximo.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">respuestas</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Valores: </span><span class="si">\(</span><span class="n">respuestas</span><span class="si">)</span><span class="s">&quot;</span> <span class="p">)</span>
+<span class="kd">let</span> <span class="nv">frec</span> <span class="p">=</span> <span class="n">obtenerFrecuencias</span><span class="p">(</span><span class="n">respuestas</span><span class="p">:</span> <span class="n">respuestas</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Frecuencias: </span><span class="si">\(</span><span class="n">frec</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Histograma&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;----------&quot;</span><span class="p">)</span>
+<span class="n">imprimir</span><span class="p">(</span><span class="n">frecuencias</span><span class="p">:</span> <span class="n">frec</span><span class="p">,</span> <span class="n">maxAsteriscos</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Sacaría por pantalla lo siguiente:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Valores: [0, 0, 1, 1, 2, 1, 2, 3, 5, 1, 2, 2, 2, 6]
+Frecuencias: [2, 4, 5, 1, 0, 1, 1, 0, 0, 0]
+
+Histograma
+----------
+0: ****
+1: ********
+2: **********
+3: **
+4:
+5: **
+6: **
+7:
+8:
+9:
+</pre></div>
+</td></tr></table>
+
+<h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
+<p>Implementa en Swift la <strong>función recursiva</strong>
+<code>compruebaParejas(_:funcion:)</code> con el siguiente perfil:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>([Int], (Int) -&gt; Int) -&gt; [(Int, Int)]
+</pre></div>
+</td></tr></table>
+
+<p>La función recibe dos parámetros: un <code>Array</code> de enteros y una función
+que recibe un entero y devuelve un entero. La función devolverá un
+array de tuplas que contiene las tuplas formadas por aquellos números
+contiguos del primer array que cumplan que el número es el resultado
+de aplicar la función al número situado en la posición anterior.</p>
+<p>Ejemplo:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">cuadrado</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+<span class="p">}</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">compruebaParejas</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">105</span><span class="p">],</span> <span class="n">funcion</span><span class="p">:</span> <span class="n">cuadrado</span><span class="p">))</span>
+<span class="c1">// Imprime [(2,4), (4,16), (10,100)]</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
+<p>Implementa en Swift un tipo enumerado recursivo que permita construir
+árboles binarios de enteros. El enumerado debe tener </p>
+<ul>
+<li>un caso en el que guardar tres valores: un <code>Int</code> y dos árboles
+binarios (el hijo izquierdo y el hijo derecho)</li>
+<li>otro caso constante: un árbol binario vacío </li>
+</ul>
+<p>Llamaremos al tipo <code>ArbolBinario</code> y a los casos <code>nodo</code> y <code>vacio</code>.</p>
+<p>Impleméntalo de forma que el siguiente ejemplo funcione correctamente:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">arbol</span><span class="p">:</span> <span class="n">ArbolBinario</span> <span class="p">=</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">.</span><span class="n">vacio</span><span class="p">,</span> <span class="p">.</span><span class="n">vacio</span><span class="p">),</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="p">.</span><span class="n">vacio</span><span class="p">,</span> <span class="p">.</span><span class="n">vacio</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>Implementa también la función <code>suma(arbolb:)</code> que reciba una instancia de
+árbol binario y devuelva la suma de todos sus nodos:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">print</span><span class="p">(</span><span class="n">suma</span><span class="p">(</span><span class="n">arbolb</span><span class="p">:</span> <span class="n">arbol</span><span class="p">))</span>
+<span class="c1">// Imprime: 22</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
+<p>Implementa en Swift la <strong>función recursiva</strong>
+<code>coinciden(parejas: [(Int,Int)], funcion: (Int)-&gt;Int)</code> que devuelve
+un array de booleanos que indica si el resultado de aplicar la función
+al primer número de cada pareja coincide con el segundo.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">array</span> <span class="p">=</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">16</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">25</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)]</span>
+<span class="kd">func</span> <span class="nf">cuadrado</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+<span class="p">}</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Resultado coinciden:  </span><span class="si">\(</span><span class="n">coinciden</span><span class="si">(</span><span class="n">parejas</span><span class="p">:</span> <span class="n">array</span><span class="p">,</span> <span class="n">funcion</span><span class="p">:</span> <span class="n">cuadrado</span><span class="si">))</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime: Resultado coinciden:  [true, false, true, true, true]</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
+<p>Supongamos que estamos escribiendo un programa que debe tratar
+movimientos de cuentas bancarias. Define un enumerado <code>Movimiento</code>
+con valores asociados con el que podamos representar:</p>
+<ul>
+<li>Depósito (valor asociado: <code>(Double)</code>)</li>
+<li>Cargo de un recibo (valor asociado: <code>(String, Double)</code>)</li>
+<li>Cajero (valor asociado: <code>(Double)</code>)</li>
+</ul>
+<p>Y define la función <code>aplica(movimientos:[Movimiento])</code> que reciba un
+array de movimientos y devuelva una pareja con el dinero resultante de acumular todos
+los movimientos y un array de Strings con todos los cargos realizados.</p>
+<p>Ejemplo:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">movimientos</span><span class="p">:</span> <span class="p">[</span><span class="n">Movimiento</span><span class="p">]</span> <span class="p">=</span> <span class="p">[.</span><span class="n">deposito</span><span class="p">(</span><span class="mf">830.0</span><span class="p">),</span> <span class="p">.</span><span class="n">cargoRecibo</span><span class="p">(</span><span class="s">&quot;Gimnasio&quot;</span><span class="p">,</span> <span class="mf">45.0</span><span class="p">),</span> <span class="p">.</span><span class="n">deposito</span><span class="p">(</span><span class="mf">400.0</span><span class="p">),</span> <span class="p">.</span><span class="n">cajero</span><span class="p">(</span><span class="mf">100.0</span><span class="p">),</span> <span class="p">.</span><span class="n">cargoRecibo</span><span class="p">(</span><span class="s">&quot;Fnac&quot;</span><span class="p">,</span> <span class="mf">38.70</span><span class="p">)]</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">aplica</span><span class="p">(</span><span class="n">movimientos</span><span class="p">:</span> <span class="n">movimientos</span><span class="p">))</span>
+<span class="c1">//Imprime (1046.3, [&quot;Gimnasio&quot;, &quot;Fnac&quot;])</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
+<p>Implementa en Swift un tipo enumerado recursivo que permita construir
+árboles genéricos de enteros usando el mismo enfoque que en Scheme: un
+nodo está formado por un dato (un <code>Int</code>) y una colección de árboles
+hijos. Llamaremos al tipo <code>Arbol</code>.</p>
+<p>Impleméntalo de forma que el siguiente ejemplo funcione correctamente:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="cm">/*</span>
+<span class="cm">Definimos el árbol</span>
+
+<span class="cm">    10</span>
+<span class="cm">   / | \</span>
+<span class="cm">  3  5  8</span>
+<span class="cm">  |</span>
+<span class="cm">  1</span>
+
+<span class="cm">*/</span>
+
+<span class="kd">let</span> <span class="nv">arbol1</span> <span class="p">=</span> <span class="n">Arbol</span><span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[])</span>
+<span class="kd">let</span> <span class="nv">arbol3</span> <span class="p">=</span> <span class="n">Arbol</span><span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="n">arbol1</span><span class="p">])</span>
+<span class="kd">let</span> <span class="nv">arbol5</span> <span class="p">=</span> <span class="n">Arbol</span><span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">[])</span>
+<span class="kd">let</span> <span class="nv">arbol8</span> <span class="p">=</span> <span class="n">Arbol</span><span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="p">[])</span>
+<span class="kd">let</span> <span class="nv">arbol10</span> <span class="p">=</span> <span class="n">Arbol</span><span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="n">arbol3</span><span class="p">,</span> <span class="n">arbol5</span><span class="p">,</span> <span class="n">arbol8</span><span class="p">])</span>
+</pre></div>
+</td></tr></table>
+
+<p>Implementa también la función <code>suma(arbol:cumplen:)</code> que reciba una instancia de
+árbol genérico y una función <code>(Int) -&gt; Bool</code> que comprueba una
+condición sobre el nodo. La función debe devolver la suma de todos los
+nodos del árbol que cumplan la condición. </p>
+<p>Implementa la función usando la misma estrategia que ya utilizamos en
+Scheme de definir una función auxiliar <code>suma(bosque:cumplen:)</code> y una recursión
+mutua.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">esPar</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="p">==</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La suma del árbol genérico es: </span><span class="si">\(</span><span class="n">suma</span><span class="si">(</span><span class="n">arbol</span><span class="p">:</span> <span class="n">arbol10</span><span class="p">,</span> <span class="n">cumplen</span><span class="p">:</span> <span class="n">esPar</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime: La suma del árbol genérico es: 28</span>
+</pre></div>
+</td></tr></table>
+
+<hr />
+<p>Lenguajes y Paradigmas de Programación, curso 2017-18<br />
+© Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
+Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.583bbe55.js"></script>
+      
+        
+        
+          
+          <script src="../../../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+                <script src="../../../assets/javascripts/lunr/lunr.es.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
