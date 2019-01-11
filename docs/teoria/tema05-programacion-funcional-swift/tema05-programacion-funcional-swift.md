@@ -1,34 +1,7 @@
 
-## Tema 5: Programación Funcional con Swift
+# Tema 5: Programación Funcional con Swift
 
-### Contenidos
-
-- [1. Introducción](#1)
-- [2. Funciones](#2)
-- [3. Tipos función](#3)
-- [4. Recursión](#4)
-- [5. Tipos](#5)
-- [6. Opcionales](#6)
-- [7. Inmutabilidad](#7)
-- [8. Clausuras](#8)
-- [9. Funciones de orden superior](#9)
-- [10. Genéricos](#10)
-----
-
-### Bibliografía
-
-- Swift Language Guide
-    - [The Basics](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309)
-    - [Collection Types](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/CollectionTypes.html#//apple_ref/doc/uid/TP40014097-CH8-ID105)
-    - [Functions](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-ID158)
-    - [Closures](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html#//apple_ref/doc/uid/TP40014097-CH11-ID94)
-    -
-      [Enumerations](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Enumerations.html#//apple_ref/doc/uid/TP40014097-CH12-ID145)
-    - [Generics](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-ID179)
-- [Biblioteca estándar de Swift](https://developer.apple.com/library/ios/documentation/General/Reference/SwiftStandardLibraryReference/)
-
-
-### <a name="1"></a> 1. Introducción
+## Introducción
 
 Te recomendamos que leas el
 [seminario de Swift](https://github.com/domingogallardo/apuntes-lpp/blob/master/seminarios/seminario2-swift/seminario2-swift.md),
@@ -57,7 +30,6 @@ principalmente funcionales como:
 - Funciones como objetos de primera clase y clasuras
 - Funciones de orden superior
 
-
 Repasamos rápidamente algunos conceptos básicos de programación
 funcional, vistos en los primeros temas de la asignatura.
 
@@ -81,9 +53,9 @@ Funciones como objetos de primera clase:
 > superior_ o devolver funciones creadas en tiempo de ejecución
 > (clausuras).
 
-### <a name="2"></a> 2. Funciones
+## Funciones
 
-#### Definición de una función en Swift
+### Definición de una función en Swift
 
 Para definir una función en Swift se debe usar la palabra `func`,
 definir el nombre de la función, sus parámetros y el tipo de
@@ -108,7 +80,7 @@ print(saluda(nombre:"Pedro"))
 // Imprime "Hola, Pedro!"
 ```
 
-#### Etiquetas de argumentos y nombres de parámetros
+### Etiquetas de argumentos y nombres de parámetros
 
 Cada parámetro de una función tiene una etiqueta del argumento y un
 nombre de parámetro. La etiqueta del argumento se usa cuando se llama a
@@ -174,7 +146,7 @@ documentación de las funciones usaremos las etiquetas separadas por
 dos puntos. Por ejemplo, las funciones anteriores son `max(_:_:)` y
 `divide(_:entre:)`.
 
-#### Parámetros y valores devueltos
+### Parámetros y valores devueltos
 
 Es posible definir funciones sin parámetros:
 
@@ -227,7 +199,7 @@ print("min es \(limites.min) y max es \(limites.max)")
 ```
 
 
-### <a name="3"></a> 3. Tipos función 
+## Tipos función 
 
 En Swift las funciones son objetos de primera clase y podemos
 asignarlas a variables, pasarlas como parámetro o devolverlas como
@@ -261,7 +233,7 @@ funcionMatematica = multiplicaDosInts
 print("Resultado: \(funcionMatematica(2, 3))")
 ```
 
-#### Funciones que reciben otras funciones
+### Funciones que reciben otras funciones
 
 Podemos usar un tipo función en parámetros de otras funciones:
 
@@ -321,7 +293,7 @@ print(sumatorio(desde: 0, hasta: 10, func: cuadrado)) // Imprime 385
 ```
 
 
-#### Funciones en estructuras
+### Funciones en estructuras
 
 Como cualquier otro tipo Las funciones pueden también incluirse en
   estructuras de datos compuestas, como arrays:
@@ -350,7 +322,7 @@ var misFunciones = [doble, cuadrado, suma]
 
 ```
 
-#### Funciones que devuelven otras funciones
+### Funciones que devuelven otras funciones
 
 Por último, veamos un ejemplo de funciones que devuelven otras
 funciones.
@@ -399,7 +371,7 @@ print("cero!")
 // cero!
 ```
 
-### <a name="4"></a> 4. Recursión
+## Recursión
 
 Ejemplos de funciones recursivas en Swift.
 
@@ -463,7 +435,7 @@ superior como `map`, `filter`, etc.
 Veremos también más adelante otras funciones recursivas cuando
 definamos árboles en Swift.
 
-### <a name="5"></a> 5. Tipos
+## Tipos
 
 Swift es un lenguaje fuertemente tipeado, a diferencia de
 Scheme. Muchos otros lenguajes de programación funcional, como Haskell
@@ -497,7 +469,7 @@ func calculaEstadisticas(valores: Array<Int>) -> (min: Int, max: Int, media: Int
 
 En Swift existen dos clases de tipos: tipos con nombre y tipos compuestos. 
 
-#### Tipos con nombre
+### Tipos con nombre
 
 Un tipo con nombre es un tipo al que se le puede dar un nombre
 determinado cuando se define.
@@ -518,7 +490,7 @@ estructuras implementadas en esta biblioteca estándar. Por ejemplo,
 arrays, diccionarios o incluso los tipos más básicos como `String` o
 `Int` están construidos en esa biblioteca.
 
-#### Tipos compuestos
+### Tipos compuestos
 
 Los tipos compuestos son tipos sin nombre. En Swift se definen dos:
 tuplas y tipos función. Un tipo compuesto puede tener tipos con nombre
@@ -542,7 +514,7 @@ print(sumaTupla(tupla: (tupla.0, tupla.1),
 // Imprime (7, 11)
 ```
 
-#### Enumeraciones
+### Enumeraciones
 
 Las enumeraciones definen un tipo con un valor restringido de posibles
 valores:
@@ -594,7 +566,7 @@ enum Planeta {
 }
 ```
 
-#### Valores brutos de enumeraciones
+### Valores brutos de enumeraciones
 
 Es posible asignar a las constantes del enumerado un valor concreto de
 un tipo subyacente:
@@ -646,7 +618,7 @@ let posiblePlaneta = Planeta(rawValue: 7)
 // posiblePlaneta es de tipo Planeta? y es igual a Planeta.urano
 ```
 
-#### Valores asociados a instancias de enumeraciones
+### Valores asociados a instancias de enumeraciones
 
 En otros lenguajes de programación se llaman _uniones etiquetadas_ o
 _variantes_. Permiten asociar valores de otro tipo a las opciones del
@@ -694,7 +666,7 @@ case let .qrCode(codigoProducto):
 // Imprime  "Código QR : ABCDEFGHIJKLMNOP."
 ```
 
-#### Enumeraciones recursivas
+### Enumeraciones recursivas
 
 Es posible combinar las características de las enumeraciones con valor
 con la recursión para crear enumeraciones recursivas. Hay que preceder
@@ -775,7 +747,7 @@ print(suma(lista: lista))
 ```
 
 
-#### Typealias
+### Typealias
 
 En Swift se define la palabra clave `typealias` para darle un nombre
 asignado a cualquier otro tipo. Ambos tipos son iguales a todos los
@@ -805,7 +777,7 @@ print(quiniela(resultado: (2,2)))
 // Imprime Equis
 ```
 
-### <a name="6"></a> 6. Opcionales
+## Opcionales
 
 En Swift el valor nulo se representa con `nil` (equivalente a `null`
 en Java). No podemos asignar `nil` a una variable de un tipo dado:
@@ -867,7 +839,7 @@ var respuestaEncuesta: String?
 // respuestaEncuesta es inicializado automáticamente a nil
 ```
 
-#### Sentencias `if` y _desenvoltura forzosa_
+### Sentencias `if` y _desenvoltura forzosa_
 
 Se puede usar un `if` para comprobar si un valor opcional es distinto
 de `nil`:
@@ -902,7 +874,7 @@ let y = x! + 100
 // La sentencia anterior provoca un error en tiempo de ejecución
 ```
 
-#### Ligado opcional
+### Ligado opcional
 
 Es posible comprobar si un opcional tiene valor y asignar su valor a
 otra variable al mismo tiempo con una construcción llamada _ligado
@@ -937,7 +909,7 @@ if let dato1 = x1, let dato2 = x2, let dato3 = x3 {
 ```
 
 
-#### Ejemplos de uso de opcionales
+### Ejemplos de uso de opcionales
 
 Como ejemplo de uso de opcionales adaptamos el ejemplo anterior de la
 función `minMax` para que pueda recibir un array vacío, en cuyo caso
@@ -1012,13 +984,13 @@ print(suma(lista: z))
 /// Devuelve 30
 ```
 
-### <a name="7"></a> 7. Inmutabilidad
+## Inmutabilidad
 
 Una de las características funcionales importantes de Swift es el
 énfasis en la inmutabilidad para reforzar la seguridad del
 lenguaje. Veamos algunas características relacionadas con esto.
 
-#### Palabra clave let
+### Palabra clave let
 
 La palabra clave `let` permite definir constantes. El valor asignado
 puede no conocerse en tiempo de compilación:
@@ -1028,7 +1000,7 @@ let maximoNumeroDeIntentosDeLogin = 10
 let respuesta: String = respuestaUsuario.respuesta()
 ```
 
-#### Semántica de copia en estructuras
+### Semántica de copia en estructuras
 
 Una forma de evitar los efectos laterales es definir una semántica de
 copia en la asignación. En Swift la semántica de una asignación
@@ -1078,7 +1050,7 @@ función no realiza una copia de todo el array. El compilador de Swift
 optimiza estas sentencias y sólo realiza la copia en el momento en que
 hay una modificación de una de las variables que comparten el array.
 
-#### Estructuras mutables y `let`
+### Estructuras mutables y `let`
 
 Si definimos un valor de una estructura con un `let` ese valor será
 inmutable y no podrá modificarse, a pesar de que el `Struct` tenga
@@ -1097,7 +1069,7 @@ cadenaMutable.append(cadenaInmutable) // cadenaMutable es "HolaAdios"
 // "cannot use mutating member on immutable value: 'cadenaInmutable' is a 'let' constant"
 ```
 
-#### Tipos valor y tipos referencia
+### Tipos valor y tipos referencia
 
 Un _tipo valor_ es un tipo que tiene semántica de copia en las
 asignaciones y cuando se pasan como parámetro en llamadas a funciones.
@@ -1122,7 +1094,7 @@ referencia. Comentaremos más diferencias en el tema de programación
 orientada a objetos.
 
 
-### <a name="8"></a> 8. Clausuras
+## Clausuras
 
 Ya hemos visto previamente que en Swift las funciones son objetos de
 primera clase del lenguaje y que es posible definir funciones y
@@ -1137,7 +1109,7 @@ después veremos cómo las clausuras definidas en el interior de otras
 funciones capturan las variables definidas en el ámbito de la función principal.
 
 
-#### Expresiones de clausuras ####
+### Expresiones de clausuras
 
 Swift permite definir expresiones compactas con las que construir
 estas funciones que se pasan como parámetro de otras funciones. Se
@@ -1146,7 +1118,7 @@ expresiones proporcionan optimizaciones de sintaxis para escribir
 clausuras de forma concisa y clara. Vamos a ver las distintas
 optimizaciones utilizando como ejemplo el método `sorted(by:)`.
 
-#### El método `sorted(by:)`
+### El método `sorted(by:)`
 
 La biblioteca stándar de Swift define un método `sorted()` que
 devuelve los elementos ordenados de un
@@ -1209,7 +1181,7 @@ lo que básicamente es una función de una única expresión (`a > b`). En
 este ejemplo, sería preferible escribir la clausura de ordenación
 _inline_, utilizando la sintaxis de expresiones de clausuras.
 
-#### Sintaxis de las expresiones de clausura
+### Sintaxis de las expresiones de clausura
 
 La sintaxis de las expresiones de clausura tiene la siguiente forma
 general:
@@ -1247,7 +1219,7 @@ una única línea:
 let alreves = estudiantes.sorted(by: { (s1: String, s2: String) -> Bool in return s1 > s2 } )
 ```
 
-#### Inferencia del tipo por el contexto
+### Inferencia del tipo por el contexto
 
 Como la clausura de ordenación se pasa como argumento de un método,
 Swift puede inferir los tipos de sus parámetros y el tipo del valor
@@ -1263,7 +1235,7 @@ los nombres de los parámetros también pueden omitirse:
 let alreves = estudiantes.sorted(by: { s1, s2 in return s1 > s2 } )
 ```
 
-#### Devoluciones implícitas en clausuras con una única expresión
+### Devoluciones implícitas en clausuras con una única expresión
 
 En clausuras con una única expresión podemos omitir también la palabra
 clave `return`:
@@ -1272,7 +1244,7 @@ clave `return`:
 let alreves = estudiantes.sorted(by: { s1, s2 in s1 > s2 } )
 ```
 
-#### Abreviaturas en los nombres de los argumentos
+### Abreviaturas en los nombres de los argumentos
 
 Swift proporciona automáticamente abreviaturas para los nombres de
 argumentos de las clausuras _inline_ que pueden usarse para referirse
@@ -1285,7 +1257,7 @@ Si se usa estos argumentos abreviados, se puede omitir la definición de la list
 let alreves = estudiantes.sorted(by: { $0 > $1 } )
 ```
 
-#### Funciones operadoras
+### Funciones operadoras
 
 Incluso hay una forma aun más corta de escribir la expresión de
 clausura anterior.  Swift define una implementación específica de
@@ -1299,7 +1271,7 @@ usar el específico de cadenas:
 let alreves = estudiantes.sorted(by: >)
 ```
 
-#### Clausuras al final
+### Clausuras al final
 
 Si necesitamos pasar una expresión de clausura a una función como el
 argumento final de la clausura y la expresión es larga, puede ser útil
@@ -1379,7 +1351,7 @@ clausuras son siempre constanes). El bucle `while` usa el diccionario
 de dígitos para construir la cadena correspondiente al valor `Int`.
 
 
-#### Valores capturados
+### Valores capturados
 
 Una clausura puede capturar constantes y variables del contexto en el
 que se define. La clausura puede referirse y modificar esos valores
@@ -1482,7 +1454,7 @@ incrementaDiez()
 // devuelve 40
 ```
 
-#### Mutación de variables capturadas ####
+### Mutación de variables capturadas 
 
 Las clausuras también pueden modificar el valor de las variables
 capturadas. Veamos un ejemplo:
@@ -1527,7 +1499,7 @@ variable es el que captura la nueva clausura que se devuelve. Por eso
 al invocarla (en la llamada `g(10)`) se devuelve 20.
 
 
-#### Las clausuras son tipos de referencia
+### Las clausuras son tipos de referencia
 
 En el ejemplo anterior, `incrementaSiete` e `incrementaDiez` son
 constantes, pero las clausuras a las que estas constantes se refieren
@@ -1551,7 +1523,7 @@ tambienIncrementaDiez()
 ```
 
 
-### <a name="9"></a> 9. Funciones de orden superior
+## Funciones de orden superior
 
 Una de las características funcionales que más hemos usado para
 trabajar con listas en Scheme son las funciones de orden superior como
@@ -1560,7 +1532,7 @@ equivalentes para trabajar con colecciones. Se denominan `map`,
 `filter` y `reduce`. Todas ellas aceptan expresiones de clausura como
 argumento.
 
-#### Map
+### Map
 
 El método `map` se define en el protocolo
 [`CollectionType`](https://developer.apple.com/library/ios/documentation/Swift/Reference/Swift_CollectionType_Protocol/index.html#//apple_ref/swift/intfm/CollectionType/s:FEsPs14CollectionType3mapurFzFzWx9Generator7Element_qd__GSaqd___)
@@ -1619,7 +1591,7 @@ incrementa(valores: [10, 20, 30], con: 5)
 ```
 
 
-#### Filter
+### Filter
 
 
 La función `filter` recibe una clausura de un argumento que devuelve
@@ -1635,7 +1607,7 @@ numeros.filter {$0 % 2 == 0}
 ```
 
 
-#### Reduce 
+### Reduce 
 
 Similar al _fold_ de Scheme:
 
@@ -1678,7 +1650,7 @@ cadenas.reduce("", +)
 // devuelve "PatatasArrozHuevos"
 ```
 
-#### Combinación de funciones de orden superior ####
+### Combinación de funciones de orden superior
 
 Cuando el resultado de aplicar una función de orden superior a una
 colección es otra colección es posible aplicar otra función de
@@ -1703,7 +1675,7 @@ numeros.filter{$0 >= 100}.reduce(0,+)
 ```
 
 
-### <a name="10"></a> 10. Genéricos
+## Genéricos
 
 
 Empecemos con un ejemplo sencillo. Supongamos la siguiente función
@@ -1823,9 +1795,20 @@ print(car(cdr(cdr(lista)!)!)!) // Imprime 40
 print(vacia(cdr(cdr(cdr(lista)!)!)!)) // Imprime true
 ```
 
+## Bibliografía
+
+- Swift Language Guide
+    - [The Basics](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309)
+    - [Collection Types](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/CollectionTypes.html#//apple_ref/doc/uid/TP40014097-CH8-ID105)
+    - [Functions](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-ID158)
+    - [Closures](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html#//apple_ref/doc/uid/TP40014097-CH11-ID94)
+    -
+      [Enumerations](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Enumerations.html#//apple_ref/doc/uid/TP40014097-CH12-ID145)
+    - [Generics](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-ID179)
+- [Biblioteca estándar de Swift](https://developer.apple.com/library/ios/documentation/General/Reference/SwiftStandardLibraryReference/)
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2017–18  
+Lenguajes y Paradigmas de Programación, curso 2018–19  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
