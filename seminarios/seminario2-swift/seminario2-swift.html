@@ -350,27 +350,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#instalacion-de-docker" title="Instalación de Docker" class="md-nav__link">
-    Instalación de Docker
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#instalacion-y-ejecucion-de-la-imagen-swift" title="Instalación y ejecución de la imagen Swift" class="md-nav__link">
-    Instalación y ejecución de la imagen Swift
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#directorio-compartido-entre-el-ordenador-host-y-el-contenedor" title="Directorio compartido entre el ordenador host y el contenedor" class="md-nav__link">
-    Directorio compartido entre el ordenador host y el contenedor
-  </a>
-  
-</li>
-      
       
       
       
@@ -570,27 +549,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#instalacion-de-docker" title="Instalación de Docker" class="md-nav__link">
-    Instalación de Docker
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#instalacion-y-ejecucion-de-la-imagen-swift" title="Instalación y ejecución de la imagen Swift" class="md-nav__link">
-    Instalación y ejecución de la imagen Swift
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#directorio-compartido-entre-el-ordenador-host-y-el-contenedor" title="Directorio compartido entre el ordenador host y el contenedor" class="md-nav__link">
-    Directorio compartido entre el ordenador host y el contenedor
-  </a>
-  
-</li>
-      
       
       
       
@@ -695,12 +653,12 @@ started with Docker</a>.</p>
 <p>Usaremos la <a href="https://hub.docker.com/_/swift/">imagen Docker
 swift:4.0.3</a>, que contiene el
 comando <code>swift</code> necesario para compilar y ejecutar aplicaciones Swift.</p>
-<h4 id="instalacion-de-docker">Instalación de Docker<a class="headerlink" href="#instalacion-de-docker" title="Permanent link">&para;</a></h4>
+<h4>Instalación de Docker</h4>
 <p>Debes instalar la versión de Docker CE (<em>Community Edition</em>)
 correspondiente a tu sistema operativo. Descárgalo <a href="https://www.docker.com/community-edition">desde esta
 página</a> y sigue las
 instrucciones correspondientes a tu sistema operativo.</p>
-<h4 id="instalacion-y-ejecucion-de-la-imagen-swift">Instalación y ejecución de la imagen Swift<a class="headerlink" href="#instalacion-y-ejecucion-de-la-imagen-swift" title="Permanent link">&para;</a></h4>
+<h4>Instalación y ejecución de la imagen Swift</h4>
 <p>Una vez instalado Docker, abre un terminal y lanza el siguiente
 comando:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ docker pull swift:4.0.3
@@ -745,7 +703,7 @@ root@97265a262a58:/# exit
 </pre></div>
 </td></tr></table>
 
-<h4 id="directorio-compartido-entre-el-ordenador-host-y-el-contenedor">Directorio compartido entre el ordenador <em>host</em> y el contenedor<a class="headerlink" href="#directorio-compartido-entre-el-ordenador-host-y-el-contenedor" title="Permanent link">&para;</a></h4>
+<h4>Directorio compartido entre el ordenador <em>host</em> y el contenedor</h4>
 <p>El argumento <code>-v "${PWD}:/home"</code> del comando <code>docker run</code> hace que el
 contenedor monte el directorio actual en su directorio <code>/home</code>. De
 esta forma podemos editar los programas Swift en el ordenador
@@ -861,7 +819,7 @@ Xcode. Una vez instalado puedes ejecutar Swift desde el terminal.</p>
 3
 4
 5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ sudo apt-get install clang libicu-dev
-// Descargar la versión y plataforma deseada (fichero swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz)
+// Descargar la versión y plataforma deseada <span class="o">(</span>fichero swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz<span class="o">)</span>
 $ tar xzf swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz
 // Esto crea el directorio usr/ en la localización del archivo
 // Actualizar el PATH o mover usr/bin/swift al directorio /usr/bin
@@ -872,7 +830,7 @@ $ tar xzf swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz
 <p>Para editar código Swift puedes usar cualquier editor orientado a
 programación. Aconsejamos <a href="https://atom.io">Atom</a> o <a href="https://code.visualstudio.com">Visual Studio
 Code</a>. Ambos son multi-plataforma.</p>
-<h4 id="atom">Atom<a class="headerlink" href="#atom" title="Permanent link">&para;</a></h4>
+<h4>Atom</h4>
 <p>Atom es un editor modular en el que se pueden instalar múltiples
 extensiones desarrolladas por terceros. Para programar con swift es
 conveniente instalar los siguientes paquetes (en <strong>Preferencias &gt;
@@ -885,7 +843,7 @@ Settings &gt; Install Packages</strong>):</p>
 </ul>
 <p><img src="imagenes/atom.png" width="700px"/></p>
 <p>Puedes consultar los conceptos básicos de Atom y el manual completo en <a href="http://flight-manual.atom.io/getting-started/sections/atom-basics/">este enlace</a>.</p>
-<h4 id="visual-studio-code">Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permanent link">&para;</a></h4>
+<h4>Visual Studio Code</h4>
 <p>Es recomendable instalar la extensión <code>Swift Language</code> que realiza un
 coloreado de sintaxis de Swift.</p>
 <p>Para trabajar de forma más cómoda podemos abrir el terminal integrado
@@ -925,7 +883,7 @@ in Swift enseñándote cómo conseguir una variedad de tareas de
 programación. No te preocupes si no entiendes algo, todo lo que se
 introduce en este tour se explica en detalle en el
 <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309">resto del libro</a>.</p>
-<h4 id="valores-simples">Valores simples<a class="headerlink" href="#valores-simples" title="Permanent link">&para;</a></h4>
+<h4>Valores simples</h4>
 <p>Usa <code>let</code> para crear una constante y <code>var</code> para crear una variable. No
 es necesario que se conozca en tiempo de compilación el valor de una
 constante, pero debes asignarle un valor exactamente una vez. Esto
@@ -1031,7 +989,7 @@ función.</p>
 </pre></div>
 </td></tr></table>
 
-<h4 id="tuplas">Tuplas<a class="headerlink" href="#tuplas" title="Permanent link">&para;</a></h4>
+<h4>Tuplas</h4>
 <p>Una tupla agrupa varios valores en un único valor compuesto.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">http404Error</span> <span class="p">=</span> <span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s">&quot;Not Found&quot;</span><span class="p">)</span>
 </pre></div>
@@ -1051,7 +1009,7 @@ queremos ignorar una parte podemos utilizar un subrrayado (<code>_</code>).</p>
 </pre></div>
 </td></tr></table>
 
-<h4 id="control-de-flujo">Control de flujo<a class="headerlink" href="#control-de-flujo" title="Permanent link">&para;</a></h4>
+<h4>Control de flujo</h4>
 <p>Usa <code>if</code> y <code>switch</code> para hacer condicionales y usa <code>for-in</code>, <code>for</code>,
 <code>while</code> y <code>repeat-while</code> para hacer bucles. Los paréntesis alrededor
 de las condiciones o de la variable del bucle son opcionales. Se
@@ -1237,7 +1195,7 @@ rango de índices.</p>
 
 <p>Usa <code>..&lt;</code> para construir un rango que omita su valor superior, y usa
 <code>...</code> para construir un rango que incluya ambos valores.</p>
-<h4 id="funciones-y-clausuras">Funciones y clausuras<a class="headerlink" href="#funciones-y-clausuras" title="Permanent link">&para;</a></h4>
+<h4>Funciones y clausuras</h4>
 <p>Usa <code>func</code> para declarar una función. Usa <code>-&gt;</code> para separar los
 nombres de los parámetros y sus tipos del tipo devuelto de la
 función.</p>
@@ -1487,7 +1445,7 @@ de una función, puedes omitir los paréntesis por completo.</p>
 </pre></div>
 </td></tr></table>
 
-<h4 id="objetos-y-clases">Objetos y clases<a class="headerlink" href="#objetos-y-clases" title="Permanent link">&para;</a></h4>
+<h4>Objetos y clases</h4>
 <p>Usa <code>class</code> seguido por el nombre de la clase para crear una
 clase. Una declaración de una propiedad en una clase se escribe de la
 misma forma que la declaración de una constante o una variable,
@@ -1750,7 +1708,7 @@ es un valor opcional.</p>
 </pre></div>
 </td></tr></table>
 
-<h4 id="enumeraciones-y-estructuras">Enumeraciones y estructuras<a class="headerlink" href="#enumeraciones-y-estructuras" title="Permanent link">&para;</a></h4>
+<h4>Enumeraciones y estructuras</h4>
 <p>Usa <code>enum</code> para crear una enumeración. Como las clases y otros tipos
 con nombre, las enumeraciones pueden tener métodos asociados.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -1954,7 +1912,7 @@ referencia.</p>
 Añade un método a <code>Carta</code> que cree un mazo completo de cartas, con
 una carta de cada combinación de valor y palo.</p>
 </blockquote>
-<h4 id="protocolos-y-extensiones">Protocolos y extensiones<a class="headerlink" href="#protocolos-y-extensiones" title="Permanent link">&para;</a></h4>
+<h4>Protocolos y extensiones</h4>
 <p>Usa <code>protocol</code> para declarar un protocolo.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -2087,7 +2045,7 @@ ejecución de <code>ClaseSencilla</code>, el compilador lo trata como uno del ti
 <code>ProtocoloEjemplo</code>. De esta forma no es posible acceder
 accidentalmente a métodos o propiedades que implemente la clase de
 forma adicional al cumplimiento del protocolo.</p>
-<h4 id="genericos">Genéricos<a class="headerlink" href="#genericos" title="Permanent link">&para;</a></h4>
+<h4>Genéricos</h4>
 <p>Escribe un nombre dentro de paréntesis angulares para construir una
 función o un tipo genérico.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
