@@ -1,7 +1,7 @@
 # Práctica 1: Introducción a Scheme
 
-**Importante**: Antes de empezar esta práctica debes haber terminado
-  *todos* los ejercicios del seminario de Scheme.
+!!! warning "Importante"
+    Antes de empezar esta práctica debes haber terminado *todos* los ejercicios del seminario de Scheme.
 
 ## Entrega de la práctica
 
