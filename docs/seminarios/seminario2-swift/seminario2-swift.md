@@ -1,29 +1,7 @@
 # Seminario 2: Seminario de Swift
 
-Lenguajes y Paradigmas de Programación, curso 2017-18  
-Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 
-## Contenidos
-
-- [1. El lenguaje de programación Swift](#1)
-- [2. Ejecución de programas Swift](#2)
-    - [2.1. Ejecución en una máquina Docker](#2-1)
-    - [2.2. Instalación en MacOs](#2-2)
-    - [2.3. Instalación en Linux Ubuntu](#2-3)
-    - [2.5. Editor de código Atom](#2-5)
-- [3. Un tour de Swift](#3)
-
-## <a name="0"></a> Bibliografía y referencias
-
-- Documentación sobre Swift
-    - [The Swift Programming Language (html)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/index.html)
-    - [Recursos Swift en Apple](https://developer.apple.com/swift/resources/)
-    - [swift.org](https://swift.org)
-- Swift Open Source
-    - [Repositorio `swift` en GitHub](https://github.com/apple/swift): repositorio principal de Swift, que contiene el código fuente del compilador Swift, la biblioteca estándar y SourceKit.
-    - [Repositorio `swift-evolution` en GitHub](https://github.com/apple/swift-evolution): documentos relacionados con la evolución continua de Swift, incluyendo objetivos de las próximas versiones y propuestas de cambios y extensiones de Swift.
-
-## <a name="1"></a> 1. El lenguaje de programación Swift
+## El lenguaje de programación Swift
 
 [Swift](https://en.wikipedia.org/wiki/Swift_(programming_language)) es
 un lenguaje de programación compilado, de propósito general y
@@ -57,7 +35,7 @@ Swift:
 > éstas inducen.
 
 
-## <a name="2"></a> 2. Ejecución de programas Swift
+## Ejecución de programas Swift
 
 Es posible descargar el compilador de Swift en los sistemas operativos
 Mac (utilizando el entorno de desarrollo Xcode) o Linux.
@@ -70,7 +48,7 @@ un entorno unificado en el que hacer las prácticas.
 A continuación explicamos las distintas formas de ejecutar programas
 Swift.
 
-### <a name="2-1"></a> 2.1. Ejecución en una máquina Docker
+### Ejecución en una máquina Docker
 
 [Docker](https://docs.docker.com) es una tecnología que ha tenido una gran expansión en los
 últimos años. Permite construir máquinas virtuales ligeras que
@@ -226,13 +204,13 @@ exit
 ```
 
 
-### <a name="2-2"></a> 2.2. Instalación en MacOS
+### Instalación en MacOS
 
 Para instalar la última versión de Swift en MacOs debes instalar
 Xcode. Una vez instalado puedes ejecutar Swift desde el terminal.
 
 
-### <a name="2-3"></a> 2.3. Instalación en Linux Ubuntu
+### Instalación en Linux Ubuntu
 
 Existe una distribución oficial de Swift para Ubuntu de 64 bits
 (distribuciones 14.04, 16.04 y 16.10).
@@ -250,7 +228,7 @@ $ tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
 // Actualizar el PATH o mover usr/bin/swift al directorio /usr/bin
 ```
 
-### <a name="2-5"></a> 2.5. Editor de código
+### Editor de código
 
 Para editar código Swift puedes usar cualquier editor orientado a
 programación. Aconsejamos [Atom](https://atom.io) o [Visual Studio
@@ -1263,3 +1241,19 @@ print(elementosComunes([1, 2, 3], [3]))
 ```
 
 Si se escribe `<T: Equatable>` es equivalente a escribir `<T> ... where T: Equatable`.
+
+## Bibliografía y referencias
+
+- Documentación sobre Swift
+    - [The Swift Programming Language (html)](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/index.html)
+    - [Recursos Swift en Apple](https://developer.apple.com/swift/resources/)
+    - [swift.org](https://swift.org)
+- Swift Open Source
+    - [Repositorio `swift` en GitHub](https://github.com/apple/swift): repositorio principal de Swift, que contiene el código fuente del compilador Swift, la biblioteca estándar y SourceKit.
+    - [Repositorio `swift-evolution` en GitHub](https://github.com/apple/swift-evolution): documentos relacionados con la evolución continua de Swift, incluyendo objetivos de las próximas versiones y propuestas de cambios y extensiones de Swift.
+
+---
+
+Lenguajes y Paradigmas de Programación, curso 2018-19  
+Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
+
