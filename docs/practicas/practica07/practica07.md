@@ -1,6 +1,6 @@
-## Práctica 7: Árboles
+# Práctica 7: Árboles
 
-### Entrega de la práctica
+## Entrega de la práctica
 
 Para entregar la práctica debes subir a Moodle el fichero
 `practica07.rkt` con una cabecera inicial con tu nombre y apellidos, y
@@ -250,6 +250,6 @@ lista con los datos recogidos por el camino.
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2017-18  
+Lenguajes y Paradigmas de Programación, curso 2018-19  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

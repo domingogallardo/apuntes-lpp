@@ -1,4 +1,6 @@
-## Práctica 8: Programación funcional en Swift (1)
+# Práctica 8: Programación funcional en Swift (1)
+
+## Entrega de la práctica
 
 Para entregar la práctica debes subir a Moodle el fichero
 `practica08.swift` con una cabecera inicial con tu nombre y apellidos,
@@ -9,20 +11,23 @@ solución debe incluir:
 - Una visualización por pantalla de todos los ejemplos incluidos en el
   enunciado que **demuestren qué hace la función**.
 
-### Bibliografía recomendada para la práctica ###
+!!! Warning "Importante" 
+    Antes de proceder a realizar los ejercicios de la
+    práctica, debes completar el [seminario de
+    Swift](https://github.com/domingogallardo/apuntes-lpp/blob/master/seminarios/seminario2-swift/seminario2-swift.md)
+    hasta el apartado de **Enumeraciones**. Y, evidentemente, los
+    [apuntes de
+    teoría](https://github.com/domingogallardo/apuntes-lpp/blob/master/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.md)
+    de la semana pasada.
 
-Antes de proceder a realizar los ejercicios de la práctica, debes
-completar el
-[seminario de Swift](https://github.com/domingogallardo/apuntes-lpp/blob/master/seminarios/seminario2-swift/seminario2-swift.md)
-hasta el apartado de **Enumeraciones**. Y, evidentemente, los [apuntes
-de teoría](https://github.com/domingogallardo/apuntes-lpp/blob/master/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.md) de la semana pasada.
+    En la práctica hay más de un ejercicio en el que tienes que
+    trabajar con Arrays. Es conveniente que consultes el apartado sobre Arrays en
+    la página [Collection
+    Types](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/CollectionTypes.html#//apple_ref/doc/uid/TP40014097-CH8-ID105)
+    de la guía de Swift.
 
-En la práctica hay más de un ejercicio en el que tienes que trabajar
-con Arrays. Es conveniente que consultes el apartado sobre Arrays en
-la página [Collection
-Types](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/CollectionTypes.html#//apple_ref/doc/uid/TP40014097-CH8-ID105)
-de la guía de Swift.
 
+## Ejercicios
 
 ### Ejercicio 1 ###
 
@@ -216,11 +221,6 @@ print("La suma del árbol genérico es: \(suma(arbol: arbol10, cumplen: esPar))"
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2017-18  
+Lenguajes y Paradigmas de Programación, curso 2018-19  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
-
-
-
-
-

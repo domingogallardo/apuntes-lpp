@@ -1,4 +1,6 @@
-## Práctica 10: Programación Orientada a Objetos en Swift 1
+# Práctica 10: Programación Orientada a Objetos en Swift 1
+
+## Entrega de la práctica
 
 Para entregar la práctica debes subir a Moodle el fichero
 `practica10.swift` con una cabecera inicial con tu nombre y apellidos,
@@ -375,7 +377,7 @@ Mercedes Manual viajando a 100.0 kilómetros por hora con la marcha 4
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2017-18  
+Lenguajes y Paradigmas de Programación, curso 2018-19  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
 

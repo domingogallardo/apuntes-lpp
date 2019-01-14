@@ -1,4 +1,6 @@
-## Práctica 9: Programación funcional en Swift: clausuras y funciones de orden superior
+# Práctica 9: Programación funcional en Swift: clausuras y funciones de orden superior
+
+## Entrega de la práctica
 
 Para entregar la práctica debes subir a Moodle el fichero
 `practica09.swift` con una cabecera inicial con tu nombre y apellidos,
@@ -384,6 +386,6 @@ func calcular(exp str: String, sobre tuplas: Array<(Double, Double)>) -> [Double
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2017-18  
+Lenguajes y Paradigmas de Programación, curso 2018-19  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

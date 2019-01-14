@@ -84,7 +84,7 @@ Scheme (usando llamadas a `list` y `cons`) que definen `p4`.
 
 <img src="imagenes/box-and-pointer2.png" width="500px"/>
 
-## Ejercicio 4 ##
+### Ejercicio 4
 
 Implementa la función `(binario-a-decimal lista-bits)` que reciba una lista de bits que representan
 un número en binario (el primer elemento será el bit más significativo) y devuelva el número decimal
@@ -164,6 +164,6 @@ cadena vacía y un 0 (la longitud de la lista vacía).
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2017-18  
+Lenguajes y Paradigmas de Programación, curso 2018-19  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

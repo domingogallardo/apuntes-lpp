@@ -1,7 +1,6 @@
-## Seminario 1: Seminario de Scheme
+# Seminario 1: Seminario de Scheme
 
-
-### Bibliografía
+## Bibliografía
 
 Este **seminario** está basado en los siguientes materiales. Os
 recomendamos que los leáis y, si os interesa y os queda tiempo, que
@@ -15,7 +14,7 @@ ampliar información.
 [(html)](http://www.r6rs.org/final/html/r6rs-lib/r6rs-lib.html)
 * [Simply Scheme](http://www.eecs.berkeley.edu/~bh/ss-toc2.html)
 
-### El lenguaje de programación Scheme
+## El lenguaje de programación Scheme
 
 Scheme es un lenguaje de programación que surgió en los laboratorios
 del MIT en 1975, cuando Guy L. Steele y Gerarld J. Sussman buscaban un
@@ -33,7 +32,7 @@ mejor diseñados de propósito general. Aprender Scheme hará que seáis
 mejores programadores cuando utilicéis otros lenguajes de
 programación.
 
-#### El entorno de programación DrRacket
+### El entorno de programación DrRacket
 
 Cuando lanzamos DrRacket, vemos que tiene tres partes: una fila de
 botones arriba, dos paneles de edición en el medio y una barra de
@@ -51,7 +50,7 @@ la definición de `square`, después de pulsar _Run_, podemos teclear la
 expresión `(square 2)` en la _ventana de interacción_, se evaluará y
 mostrará el resultado, en este caso 4.
 
-#### Cambiar el idioma del entorno
+### Cambiar el idioma del entorno
 
 Podemos interactuar con el entorno en el idioma que queramos. Si
 queremos tenerlo por ejemplo en español, vamos al menú _Help ->
@@ -60,7 +59,7 @@ obligará a reiniciar el intérprete para aceptar los cambios.
 
 <img src="imagenes/racket2.png" width="400px"/>
 
-#### Eligiendo un lenguaje
+### Eligiendo un lenguaje
 
 DrRacket soporta muchos dialectos de Scheme, entre los cuales se
 encuentra su primera versión estándar IEEE, llamada _R5RS_ (_Revised 5
@@ -102,9 +101,9 @@ asignatura usaremos otras librerías que se indicarán en los
 correspondientes enunciados de las prácticas cuando sean necesarias.
 
 
-### El lenguaje Scheme
+## El lenguaje Scheme
 
-#### Vamos a empezar probando algunos ejemplos
+### Vamos a empezar probando algunos ejemplos
 
 Scheme es un lenguaje interpretado. Vamos a lanzar DrRacket y teclear
 en la ventana de interacción algunas expresiones. El intérprete
@@ -154,7 +153,7 @@ detiene la evaluación:
 (* (+ 3 4) (/ 3 0))
 ```
 
-#### Definiendo variables y funciones
+### Definiendo variables y funciones
 
 Podemos utilizar en el intérprete la forma especial `define` para
 definir variables y funciones. En clase de teoría veremos cómo es el
@@ -217,7 +216,7 @@ o fracciones:
 (suma-cuadrados (/ 2 3) (/ 3 5))  ; ⇒ 181/225
 ```
 
-#### Algunas primitivas
+### Algunas primitivas
 
 Las primitivas de Scheme consisten en un conjunto de tipos de datos,
 formas especiales y funciones incluidas en el lenguaje. A lo largo del
@@ -238,7 +237,7 @@ algunas funciones primitivas para trabajar con valores de esos tipos.
 Estos dos últimos los veremos en detalle en futuras clases, cuando
 hablemos de tipos de datos compuestos.
 
-##### Booleanos
+#### Booleanos
 
 Un booleano es un valor de verdad, que puede ser verdadero o falso. En
 Scheme, tenemos los símbolos #t y #f para expresar verdadero y falso
@@ -257,13 +256,13 @@ valor distinto de #f es verdadero. Ejemplos:
 (not 3)
 ```
 
-##### Números
+#### Números
 
 La cantidad de tipos numéricos que soporta Scheme es grande,
 incluyendo enteros de diferente precisión, números racionales,
 complejos e inexactos.
 
-###### Algunas primitivas sobre números
+##### Algunas primitivas sobre números
 
 ```scheme
 (<= 2 3 3 4 5)
@@ -277,7 +276,7 @@ complejos e inexactos.
 (sin 2.2) ; relacionados: cos, tan, asin, acos, ata
 ```
 
-###### Primitivas que devuelven números inexactos
+##### Primitivas que devuelven números inexactos
 
 ```scheme
 (floor x) devuelve el entero más grande no mayor que x
@@ -294,7 +293,7 @@ complejos e inexactos.
 (round 3.5)     ; ⇒ 4.0
 ```
 
-###### Operaciones sobre números
+##### Operaciones sobre números
 
 ```scheme
 (number? 1)
@@ -308,7 +307,7 @@ complejos e inexactos.
 (odd? 3)
 ```
 
-##### Caracteres
+#### Caracteres
 
 Se soportan caracteres internacionales y se codifican en UTF-8.
 
@@ -320,7 +319,7 @@ Se soportan caracteres internacionales y se codifican en UTF-8.
 #\á
 ```
 
-##### Operaciones sobre caracteres
+#### Operaciones sobre caracteres
 
 ```scheme
 (char<? #\a #\b)
@@ -335,7 +334,7 @@ Se soportan caracteres internacionales y se codifican en UTF-8.
 (char->integer (integer->char 5000))
 ```
 
-##### Cadenas
+#### Cadenas
 
 Las cadenas son secuencias finitas de caracteres.
 
@@ -344,14 +343,14 @@ Las cadenas son secuencias finitas de caracteres.
 "La palabra \"hola\" tiene 4 letras"
 ```
 
-###### Constructores de cadenas
+##### Constructores de cadenas
 
 ```scheme
 (make-string 5 #\o) ⇒ "ooooo"
 (string #\h #\o #\l #\a) ⇒ "hola"
 ```
 
-###### Operaciones con cadenas
+##### Operaciones con cadenas
 
 ```scheme
 (substring "Hola que tal" 2 4)
@@ -362,7 +361,7 @@ Las cadenas son secuencias finitas de caracteres.
 (string-append "hola" "adios")
 ```
 
-###### Comparadores de cadenas
+##### Comparadores de cadenas
 
 ```scheme
 (string=? "Hola" "hola")
@@ -371,7 +370,7 @@ Las cadenas son secuencias finitas de caracteres.
 (string>=? "www" "qqq")
 ```
 
-#### Parejas
+### Parejas
 
 Elemento fundamental de Scheme. Es un tipo compuesto formado por dos
 elementos (no necesariamente del mismo tipo).
@@ -419,7 +418,7 @@ esperamos:
 Más adelante explicaremos por qué.
 
 
-#### Listas
+### Listas
 
 Uno de los elementos fundamentales de Scheme, y de Lisp, son las
 listas. Es un tipo compuesto formado por un conjunto finito de
@@ -522,7 +521,7 @@ estructuras de datos más complejas como árboles. Para este seminario
 de introducción es suficiente con estas funciones básicas que nos
 permiten crear, combinar y obtener elementos de listas.
 
-### Estructuras de control
+## Estructuras de control
 
 Como en cualquier lenguaje de programación, las estructuras de control
 en Scheme nos permiten seleccionar qué parte de una expresión
@@ -533,7 +532,7 @@ ejemplos de funcionamiento.
 
 En Scheme tenemos dos tipos de estructuras de control: `if` y `cond`.
 
-#### if
+### if
 
 Realiza una evaluación condicional de las expresiones que la siguen,
 según el resultado de una condición. Una expresión `if` tiene siempre
@@ -581,7 +580,7 @@ si el primero es positivo o la resta en caso contrario:
 (suma-si-x-positivo -3 3 5) ; ⇒ -2
 ```
 
-#### cond
+### cond
 
 Cuando tenemos un conjunto de alternativas o para evitar usar ifs
 anidados.  `cond` evalúa una serie de condiciones y devuelve el valor
@@ -595,7 +594,7 @@ de la expresión asociada a la primera condición verdadera.
 	(else "ninguna condicion es cierta"))
 ```
 
-### Comentarios
+## Comentarios
 
 Para comentar una línea de código en la ventana de definiciones, se
 escribe el símbolo punto y coma `;` al comienzo de la línea.  Si
@@ -603,9 +602,9 @@ queremos comentar más de una línea, podemos utilizar el menú de
 DrRacket: seleccionamos las líneas a comentar y pinchamos en la opción
 Racket -> comentar con punto y coma.
 
-### Ejemplos completos
+## Ejemplos completos
 
-#### Raíz de segundo grado
+### Raíz de segundo grado
 
 Vamos a resolver la ecuación de segundo grado en Scheme. Vamos a
 implementar el procedimiento `(ecuacion a b c)` que devuelva una
@@ -656,7 +655,7 @@ Lo probamos:
 ; ⇒ {2 . 5}
 ```
 
-#### Conversión de grados Celsius a Farenheit
+### Conversión de grados Celsius a Farenheit
 
 Vamos a definir una función llamada `convertir-temperatura` que
 permite realizar una conversión de grados Fahrenheit a Centígrados o
@@ -700,7 +699,7 @@ Por ejemplo:
 (convertir-temperatura 50 #\C) ; => {122 "grados fahrenheit"}
 ```
 
-### Función `display`
+## Función `display`
 
 Para imprimir por pantalla en Scheme se pude usar la función
 `display`, similar a la sentencia `print` de muchos otros
@@ -716,7 +715,7 @@ lenguajes.
 (display "\n")
 ```
 
-### Pruebas unitarias en Scheme
+## Pruebas unitarias en Scheme
 
 Para verificar que las funciones que definimos tienen un
 funcionamiento correcto, es decir, _"hacen lo que tienen que hacer"_,
@@ -794,7 +793,7 @@ representado por el argumento _resultado-real_, es igual al resultado
 que esperamos, dado por el argumento _resultado-esperado_.
 
 
-#### Ejemplo de pruebas de la función **ecuacion** definida anteriormente
+### Ejemplo de pruebas de la función **ecuacion** definida anteriormente
 
 Las siguientes pruebas no mostrarán ningún mensaje de error, lo que
 significa que nuestra función _ecuacion_ es 'CORRECTA' para estas
@@ -959,6 +958,6 @@ e) Dada la siguiente expresión, ¿qué devuelve Scheme?
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2017-18  
+Lenguajes y Paradigmas de Programación, curso 2018-19  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

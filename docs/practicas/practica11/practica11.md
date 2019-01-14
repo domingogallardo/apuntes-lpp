@@ -1,9 +1,12 @@
-## Práctica 11: Programación Orientada a Objetos en Swift (2)
+# Práctica 11: Programación Orientada a Objetos en Swift (2)
+
+## Entrega de la práctica
 
 Para entregar la práctica debes subir a Moodle el fichero
 `practica11.swift` con una cabecera inicial con tu nombre y apellidos,
 y las soluciones de cada ejercicio separadas por comentarios.
 
+## Ejercicios
 
 ### Ejercicio 1 ###
 
@@ -60,7 +63,7 @@ correctamente creando varios equipos, insertándolos en un array y
 llamando al método `sorted`.
 
 
-## Ejercicio 2 ##
+### Ejercicio 2 ##
 
 
 a) Completa el bucle con el código que comprueba el tipo de la variable
@@ -213,7 +216,7 @@ definidas en el ejercicio cumplan el protocolo `Equatable`.
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2017-18  
+Lenguajes y Paradigmas de Programación, curso 2018-19  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
 
