@@ -264,7 +264,7 @@ terminal.
 Puedes consultar los conceptos básicos de Visual Studio Code y el
 manual completo en [este enlace](https://code.visualstudio.com/docs).
 
-## <a name="3"></a> 3. Un tour de Swift
+## Un tour de Swift
 
 Aquí empieza el seminario de Swift. El texto que hay a continuación es
 una traducción del documento de Apple
