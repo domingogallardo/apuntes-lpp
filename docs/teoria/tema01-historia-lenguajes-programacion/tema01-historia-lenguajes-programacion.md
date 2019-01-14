@@ -767,7 +767,7 @@ funcionales, no pueden ser considerados multi-paradigma porque no
 fueron creados con la idea de integrar paradigmas variados en una
 forma coherente de expresión.
 
-### Paradigmas más importantes
+Los paradigmas más importantes son:
 
 * Paradigma funcional
 * Paradigma lógico
@@ -775,7 +775,7 @@ forma coherente de expresión.
 * Paradigma orientado a objetos
 
 
-### 4.3. Paradigma funcional
+### Paradigma funcional
 
 Resumen de las características principales:
 
