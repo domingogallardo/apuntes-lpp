@@ -148,9 +148,9 @@ porque de esta forma las contestaciones y aclaraciones serán
 compartidas con el resto de compañeros.
 
 En la sesión de prácticas se terminará la hoja de ejercicios,
-completando y corrigiendo el trabajo realizado en casa. Durante la
-sesión de prácticas el profesor estará disponible para resolver dudas
-y dar pistas sobre cómo atacar los problemas.
+completando el trabajo realizado en casa. Durante la sesión de
+prácticas el profesor estará disponible para resolver dudas y dar
+pistas sobre cómo atacar los problemas.
 
 Al final de la clase de prácticas se realizará un **cuestionario de
 prácticas** individual sobre los ejercicios propuestos y sobre los
@@ -160,7 +160,9 @@ La nota media de todos los cuestionarios formará parte de la
 calificación final de la asignatura, ponderada en un 20%.
 
 Una vez realizado el cuestionario y terminada la hoja de ejercicios se
-entregará su solución en Moodle para su archivo.
+entregará su solución en Moodle para su archivo. Cuando todos los
+grupos hayan hecho los cuestionarios y archivado las prácticas se
+publicará su solución.
 
 ## Horarios
 
@@ -185,6 +187,28 @@ ponderará un 26,67% (80% en total) en la nota final.
  
 El 20% restante para la nota final se obtendrá con la nota media de
 los cuestionarios realizados en las sesiones de prácticas.
+
+!!! Warning "Normas importantes sobre la realización de los cuestionarios de prácticas "
+    - Por cuestiones de logística de la asignatura, cada alumno debe
+    realizar el cuestionario en el turno de prácticas en el que está
+    matriculado (o el acordado con el profesor si ha sido posible el
+    cambio).
+
+    - Excepcionalmente, si por algún motivo JUSTIFICADO, hay alguna
+    vez que no podáis asistir a vuestro turno de prácticas, se debe
+    asistir a otro turno de ESA MISMA SEMANA y antes de empezar la
+    clase entregarle el justificante al profesor. 
+    
+!!! Warning "Sobre los dispositivos móviles"
+    - Como norma básica de todas las pruebas de evaluación de esta
+    asignatura (cuestionarios y exámenes escritos), durante la
+    realización de los mismos no está permitido que llevéis encima
+    ningún dispositivo con conexión a internet (smart phones, smart
+    watches, tablets, etc). Antes de empezar la prueba, se deberán
+    dejar dentro de las mochilas, y éstas en el suelo. En caso de no
+    cumplir alguna de estas normas, la prueba queda invalidada con
+    calificación de 0. 
+    
 
 ### Convocatoria extraordinaria C4
 
@@ -233,56 +257,44 @@ ejercicios y no desanimarse ni descolgarse.
 Son muy interesantes algunos comentarios de antiguos estudiantes que
 han aprobado la asignatura.
 
-Cómo dominar los conceptos:
+!!! quote "Cómo dominar los conceptos" 
+    Para superar la asignatura lo que hice fue estudiar mucho. Hay que practicar y sobre todo
+    entender los ejercicios y no sabérselos de memoria. Una vez
+    dominados los ejercicios yo mismo me propuse variantes de los
+    mismos. Así es como se domina.
 
-> "Para superar la asignatura lo que hice fue estudiar mucho. Hay que
-> practicar y sobre todo entender los ejercicios y no sabérselos de
-> memoria. Una vez dominados los ejercicios yo mismo me propuse
-> variantes de los mismos. Así es como se domina."
+!!! quote "El problema del cambio de paradigma"
+    El problema principal de la asignatura es enfrentarse a un cambio 
+    del paradigma de programación."
 
-El problema del cambio de paradigma:
+!!! quote "Trabajar día a día"
+    Lo que hice fue tratar de llevar al día toda la asignatura, además
+    de trabajar con material adicional para poder ampliar y
+    profundizar conocimientos. LPP es una asignatura de fondo en la
+    que tienes que mantener el ritmo de trabajo de principio a fin de cuatrimestre."
 
-> "El problema principal de la asignatura es enfrentarse a un cambio
-> del paradigma de programación."
+!!! quote "No copiar las prácticas"
+    El mayor problema que creo que existe es que muchas personas se
+    relajan y se copian las prácticas en cuanto les resultan un poco
+    difíciles o les lleva algo mas del tiempo que les gustaría. Esta
+    asignatura si no haces tu los ejercicios y te peleas con ellos es
+    prácticamente imposible de sacar.
 
-Trabajar día a día:
-
-> "Lo que hice fue tratar de llevar al día toda la asignatura, además
-> de trabajar con material adicional para poder ampliar y profundizar
-> conocimientos. LPP es una asignatura de fondo en la que tienes que
-> mantener el ritmo de trabajo de principio a fin de cuatrimestre."
-
-No copiar las prácticas:
-
-> "El mayor problema que creo que existe es que muchas personas se
-> relajan y se copian las prácticas en cuanto les resultan un poco
-> difíciles o les lleva algo mas del tiempo que les gustaría. Esta
-> asignatura si no haces tu los ejercicios y te peleas con ellos es
-> prácticamente imposible de sacar."
-
-No memorizar:
-
-> "Otra de las cosas es que tienes que cambiar la forma de estudiar,
-> no vale memorizar, ni hacer muchos ejercicios sin más. Tienes que
-> entender bien el funcionamiento de la recursión para luego poder
-> practicar con ejercicios, sino no sirve. [...] En mi opinión el
-> problema de LPP para mucha gente es que para los exámenes se
-> memorizan los ejercicios de prácticas de las soluciones que se dan
-> en clase. [...] Por último, otro problema es la carga de trabajo que
-> se tiene en grado, no con esta asignatura que de verdad realiza
-> evaluación continua, pero te encuentras con otras cuatro asignaturas
-> que te piden un mínimo en exámenes parciales, otro en prácticas con
-> más carga lectiva que esta asignatura y además un examen final que
-> incluye toda la asignatura y al final la asignatura que menos bien
-> llevas ( o peor) es la que terminas abandonando.
-
-Plantearse uno mismo problemas:
-
-> "Los problemas que me encontré a la hora de cursar LPP fue que eran
-> dos lenguajes completamente nuevos, otro tipo de programación que
-> nunca había visto, otra forma de estudiar distinta. Para poder
-> superarla simplemente tienes que hacer ejercicios y también
-> plantearte tú mismo nuevos ejercicios."
+!!! quote "No memorizar"
+    Otra de las cosas es que tienes que cambiar la forma de estudiar,
+    no vale memorizar, ni hacer muchos ejercicios sin más. Tienes que
+    entender bien el funcionamiento de la recursión para luego poder
+    practicar con ejercicios, sino no sirve. [...] En mi opinión el
+    problema de LPP para mucha gente es que para los exámenes se
+    memorizan los ejercicios de prácticas de las soluciones que se dan
+    en clase.
+    
+!!! quote "Plantearse uno mismo problemas"
+    Los problemas que me encontré a la hora de cursar LPP fue que eran
+    dos lenguajes completamente nuevos, otro tipo de programación que
+    nunca había visto, otra forma de estudiar distinta. Para poder
+    superarla simplemente tienes que hacer ejercicios y también
+    plantearte tú mismo nuevos ejercicios.
 
 ## Bibliografía
 
@@ -301,7 +313,7 @@ Para ampliar algunos conceptos se recomiendan los dos siguientes manuales:
 
 <img src="imagenes/swift-cover.png" width="170px"/>
 
-* Apple, *The Swift Programming Language (Swift 4.0.3)*, 2018
+* Apple, *The Swift Programming Language (Swift 4.2)*, 2019
 * [Web](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/)
 
 ----
