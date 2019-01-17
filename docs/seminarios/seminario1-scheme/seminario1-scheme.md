@@ -3,9 +3,9 @@
 ## Bibliografía
 
 Este **seminario** está basado en los siguientes materiales. Os
-recomendamos que los leáis y, si os interesa y os queda tiempo, que
-exploréis también en los enlaces que hemos dejado en los apuntes para
-ampliar información.
+recomendamos que les echéis un vistazo y, si os interesa y os queda
+tiempo, que exploréis también en los enlaces que hemos dejado en los
+apuntes para ampliar información.
 
 * [DrRacket](http://racket-lang.org/), [Entorno de programación DrRacket](http://docs.racket-lang.org/drracket/index.html)
 * _R6RS_ base [(pdf)](http://www.r6rs.org/final/r6rs.pdf)
@@ -18,18 +18,16 @@ ampliar información.
 
 Scheme es un lenguaje de programación que surgió en los laboratorios
 del MIT en 1975, cuando Guy L. Steele y Gerarld J. Sussman buscaban un
-lenguaje con una semántica muy clara y sencilla. Pensaban que los
-lenguajes no se deberían desarrollar añadiendo muchas características,
-sino quitando las debilidades y las limitaciones que hacen que las
-características adicionales parezcan necesarias. Scheme es un dialecto
-de Lisp, es un lenguaje interpretado, muy expresivo y soporta varios
-paradigmas. Estuvo influenciado por el cálculo lambda. El desarrollo
-de Scheme ha sido lento, ya que la gente que estandarizó Scheme es muy
-conservadora en cuanto a añadirle nuevas características,porque la
-calidad ha sido siempre más importante que la utilidad
-empresarial. Por eso Scheme es considerado como uno de los lenguajes
-mejor diseñados de propósito general. Aprender Scheme hará que seáis
-mejores programadores cuando utilicéis otros lenguajes de
+lenguaje con una semántica muy clara y sencilla. 
+
+Scheme es un dialecto de Lisp, es un lenguaje interpretado, muy
+expresivo y soporta varios paradigmas. Estuvo influenciado por el
+cálculo lambda. El desarrollo de Scheme ha sido lento, ya que la gente
+que estandarizó Scheme es muy conservadora en cuanto a añadirle nuevas
+características,porque la calidad ha sido siempre más importante que
+la utilidad empresarial. Por eso Scheme es considerado como uno de los
+lenguajes mejor diseñados de propósito general. Aprender Scheme hará
+que seáis mejores programadores cuando utilicéis otros lenguajes de
 programación.
 
 ### El entorno de programación DrRacket
@@ -70,35 +68,40 @@ siguiente:
 
 1. Asegurarnos que en la parte inferior de la ventana aparece
    "_Determine language from source_"
+
 2. En el panel de edición debemos escribir las siguientes líneas:
 
-```scheme
-#lang r6rs
-(import (rnrs))
-```
+        ```scheme
+        #lang r6rs
+        (import (rnrs))
+        ```
 
 3. Finalmente pulsar el botón _Run_ (Ejecutar) para que se cargue ese
    lenguaje en el intérprete.
 
 <img src="imagenes/racket3.png" width="800px"/>
 
-**Aclaraciones:**
+!!! Note "Aclaraciones"
+    La línea de código
+    
+    ```scheme
+    #lang r6rs
+    ```
 
-```scheme
-#lang r6rs
-```  
+    es una directiva de DrRacket que determina qué lenguaje será
+    interpretado.
+    
+    La línea
 
-es una directiva de DrRacket que determina qué lenguaje será
-interpretado
+    ```scheme
+    (import (rnrs))
+    ```
 
-```scheme
-(import (rnrs))
-```
-
-Permite importar la librería `rnrs`, que son es la librería que
-contiene todas las funciones del lenguaje r6rs. Además de ésta, en la
-asignatura usaremos otras librerías que se indicarán en los
-correspondientes enunciados de las prácticas cuando sean necesarias.
+    Permite importar la librería `rnrs`, que es la librería que
+    contiene todas las funciones del lenguaje r6rs. Además de ésta, en
+    la asignatura usaremos otras librerías que se indicarán en los
+    correspondientes enunciados de las prácticas cuando sean
+    necesarias. 
 
 
 ## El lenguaje Scheme
@@ -187,11 +190,24 @@ parámetros y devuelve la suma de sus cuadrados:
 ```scheme
 (define (suma-cuadrados x y)
 	(+ (* x x) (* y y)))
+```
+
+Si llamamos a la función pasando el 2 y el 3 como parámetros, la
+función devuelve el número 13:
+
+```scheme
 (suma-cuadrados 2 3)  ; ⇒ 13
 ```
 
+!!! Note "Nota"
+    A diferencia de la mayoría de lenguajes de programación, en Scheme
+    no se utiliza la palabra `return` para indicar que una función
+    devuelve un valor. Las funciones se definen con una única
+    expresión y el resultado calculado en esa expresión es el que
+    siempre se devuelve.
+
 Podemos comprobar una característica muy importante de Scheme. Se
-trata de un lenguaje débilmente tipado, en el que los argumentos `x`
+trata de un lenguaje **débilmente tipado**, en el que los argumentos `x`
 e `y` no tienen tipo. Si se invoca a la función pasando algún dato que
 no sea un número, el intérprete no detectará ningún error hasta que el
 momento en que se intente evaluar la multiplicación. Lo podemos
@@ -240,9 +256,9 @@ hablemos de tipos de datos compuestos.
 #### Booleanos
 
 Un booleano es un valor de verdad, que puede ser verdadero o falso. En
-Scheme, tenemos los símbolos #t y #f para expresar verdadero y falso
+Scheme, tenemos los símbolos `#t` y `#f` para expresar verdadero y falso
 respectivamente, pero en muchas operaciones se considera que cualquier
-valor distinto de #f es verdadero. Ejemplos:
+valor distinto de `#f` es verdadero. Ejemplos:
 
 ```scheme
 #t
@@ -276,7 +292,7 @@ complejos e inexactos.
 (sin 2.2) ; relacionados: cos, tan, asin, acos, ata
 ```
 
-##### Primitivas que devuelven números inexactos
+##### Funciones de redondedo
 
 ```scheme
 (floor x) devuelve el entero más grande no mayor que x
@@ -293,7 +309,9 @@ complejos e inexactos.
 (round 3.5)     ; ⇒ 4.0
 ```
 
-##### Operaciones sobre números
+##### Predicados sobre números
+
+Se denominan _predicados_ a funciones que devuelven un booleano.
 
 ```scheme
 (number? 1)
@@ -319,7 +337,7 @@ Se soportan caracteres internacionales y se codifican en UTF-8.
 #\á
 ```
 
-#### Operaciones sobre caracteres
+##### Operaciones sobre caracteres
 
 ```scheme
 (char<? #\a #\b)
@@ -482,12 +500,27 @@ un elemento y una lista:
 Por ejemplo:
 
 ```scheme
-(cons 1 (list 2 3 4 5))  ⇒ {1 2 3 4 5}
+(cons 1 (list 2 3 4 5))  ; ⇒ {1 2 3 4 5}
 (cons 1 (list))  ⇒ {1} 
-(cons 1 (cons 2 (list))) ⇒ {1 2} 
+(cons 1 (cons 2 (list))) ; ⇒ {1 2} 
 ```
 
-También podemos usar la función `append` para concatenar varias listas
+!!! Warning "Importante"
+    Cuando queramos añadir un dato a la cabeza de una lista la
+    lista siempre debe ser el **segundo parámetro** de la llamada a la
+    función. Si nos equivocamos y pasamos la lista como primer
+    parámetro y el dato a añadir como segundo, Scheme no da un
+    error sino que construye **una pareja** cuyo primer elemento es
+    una lista y su segundo elemento es el dato.
+    
+    Por ejemplo:
+    
+    ```scheme
+    (cons (list 1 2 3) 4) ; ⇒ {{1 2 3} . 4}
+    ```
+
+
+También podemos usar la función `append` para concatenar dos o más listas
 
 ```scheme
 (define l3 (list 1))
@@ -495,6 +528,20 @@ También podemos usar la función `append` para concatenar varias listas
 (define l5 (list 5 6))
 (append l3 l4 l5) ; ⇒ {1 2 3 4 5 6}
 ```
+
+!!! Note "Nota"
+    Si queremos añadir un dato **al final** de una lista podemos
+    hacerlo convirtiéndolo en una lista y usando `append` para
+    concatenar la lista resultante al final de la primera:
+    
+    ```scheme
+    ;;; Definimos la función cons-al-final
+    (define (cons-al-final x lista)
+       (append lista (list x)))
+    
+    ;;; La probamos
+    (cons-al-final 10 (list 1 2 3)) ; ⇒ {1 2 3 10}
+    ```
 
 Igual que las parejas, las listas pueden contener distintos tipos de
 datos:
@@ -617,8 +664,12 @@ Recordamos la fórmula:
 
 <!-- $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$ -->
 
-Implementamos la solución de forma modular. Primer definimos la
-función que define el discriminante:
+!!! Note "Nota"
+    En lugar de definir una función con una expresión muy larga
+    compuesta de muchas expresiones anidadas, vamos a implementar la solución de
+    forma modular, definiendo **funciones auxiliares**.
+
+Primer definimos la función que define el discriminante:
 
 ```scheme
 (define (discriminante a b c)
@@ -954,7 +1005,7 @@ e) Dada la siguiente expresión, ¿qué devuelve Scheme?
 
 ```scheme
 (cdr (cdr (list 1 (list 2 3) 4 5)))
-````
+```
 
 ----
 
