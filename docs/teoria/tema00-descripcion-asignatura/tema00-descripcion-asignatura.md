@@ -1,11 +1,7 @@
 
-## Lenguajes y Paradigmas de Programación
+# Lenguajes y Paradigmas de Programación
 
-Toda la información está disponible en el [sitio Moodle de LPP](https://moodle2017-18.ua.es/moodle/course/view.php?id=828) y en la
-[ficha del campus virtual](http://cv1.cpd.ua.es/ConsPlanesEstudio/cvFichaAsiEEES.asp?wCodEst=C203&wcodasi=34017&wLengua=C&scaca=2017-18).
-
-
-### Datos académicos de la asignatura
+## Datos académicos de la asignatura
 
 **Departamento de Ciencia de la Computación e Inteligencia Artificial**  
 **6 créditos ECTS**: 1 clase de teoría de 2 h. y 1 clase de 
@@ -13,24 +9,26 @@ prácticas de 2 h. a la semana
 **Profesores**:  
 
 * Antonio Botía ([e-mail](mailto:abotia@dccia.ua.es)): Grupos de
-  prácticas: 2, 9 y 40
+  prácticas: 2, 9 y 401
 * Domingo Gallardo ([e-mail](mailto:domingo.gallardo@ua.es)): Profesor
   coordinador de la asignatura. Grupos de teoría: 3, 4 y 40. Grupos de
-  prácticas: 4 y 8. 
+  prácticas: 4 y 402
 * Francisco Martínez ([e-mail](mailto:fmartine@ua.es)): Grupos de
-  prácticas: 5, 6, 8 y 10 
+  prácticas: 5, 6 y 8
 * Cristina Pomares ([e-mail](mailto:cpomares@ua.es)): Grupos de
   teoría: 1 y 2. Grupos de prácticas: 1, 3 y 7.
 
-### Recursos de la asignatura
+## Recursos de la asignatura
 
-* [Sitio Moodle](https://moodle2017-18.ua.es/moodle/course/view.php?id=828)
+* [Ficha de la asignatura](https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wCodEst=C203&wcodasi=34017&wlengua=es&scaca=2018-19)
+* [Apuntes de la asignatura (teoría, seminarios y prácticas)](https://domingogallardo.github.io/apuntes-lpp/)
+* [Sitio Moodle](https://moodle2018-19.ua.es/moodle/course/view.php?id=3922)
   abierto y accesible a toda la comunidad educativa, contiene los
   apuntes, transparencias, prácticas y otros materiales docentes
-* [Foro de consultas y anuncios](https://moodle2017-18.ua.es/moodle/mod/forum/view.php?id=8429)
+* [Foro de consultas y anuncios](https://moodle2018-19.ua.es/moodle/mod/forum/view.php?id=37963)
   en el sitio Moodle (sólo accesible a estudiantes)
 
-### Objetivos y competencias
+## Objetivos y competencias
 
 **Objetivos**:
 
@@ -70,7 +68,7 @@ dominios concretos.
   procedural clásico, reconociendo las ventajas que aporta en cuanto a
   abstracción, reutilización y modificación de código.
 
-### Temario
+## Temario
 
 * Tema 1. **Lenguajes de programación**: Historia de los lenguajes de
   programación. Elementos de los lenguajes de
@@ -118,9 +116,9 @@ siguiente figura.
 <img src="imagenes/planificacion.png" width="800px"/>
 
 
-### Prácticas
+## Prácticas
 
-Durante las horas prácticas se realizarán de forma individual
+En casa y durante las horas prácticas se realizarán de forma individual
 ejercicios de programación relacionados con los conceptos que se están
 estudiando en ese momento que servirán para reforzar y profundizar en
 las competencias de la asignatura. Para el desarrollo de las prácticas
@@ -133,37 +131,46 @@ desarrollo:
   Apple, con conceptos modernos de programación funcional y
   programación orientada a objetos)
 
-Se realizarán 10 sesiones de ejercicios de prácticas de una semana de
-duración y 2 seminarios de lenguajes. En las sesiones de ejercicios de
-prácticas se propondrá una hoja de ejercicios con 5 o 6 problemas de
-programación relacionados con el tema de la sesión de teoría. Durante
-la sesión de prácticas se deberán realizar como mínimo los ejercicios
-indicados. Al final de la clase de prácticas se realizará un
-**cuestionario de seguimiento** individual que será necesario superar
-para conseguir la calificación de seguimiento de las clases prácticas
-(un 10% de la nota total de la asignatura).
+Se realizarán 11 sesiones de ejercicios de prácticas de una semana de
+duración y 2 seminarios sobre los anteriores lenguajes de programación.
 
-La hoja de ejercicios se deberá terminar durante el resto de la semana
-y entregar en Moodle en la fecha indicada. Cuando todos los grupos
-hayan entregado las prácticas, se publicará una hoja de soluciones con
-distintas soluciones posibles para los ejercicios planteados.
+Para las sesiones de prácticas se propondrá una hoja de ejercicios con
+5 o 6 problemas de programación relacionados con los conceptos vistos
+en la sesión de teoría. La hoja de ejercicios estará disponible
+inmediatamente después de terminar la teoría y se dispondrá de una
+semana para su realización, hasta la sesión de prácticas de la semana
+siguiente.
 
-Al comienzo de cada sesión de prácticas el profesor resolverá dudas
-sobre la última hoja de soluciones publicada. Después se trabajará en
-la hoja de ejercicios de la semana actual y el profesor estará
-disponible para resolver dudas y dar pistas sobre cómo atacar los
-problemas.
+Durante la semana, mientras se resuelven los ejercicios de la hoja, se
+podrán consultar las dudas que puedan surgir en el foro de la
+asignatura (en Moodle) y con tutorías a los profesores. Es preferible el foro,
+porque de esta forma las contestaciones y aclaraciones serán
+compartidas con el resto de compañeros.
 
-### Horarios
+En la sesión de prácticas se terminará la hoja de ejercicios,
+completando y corrigiendo el trabajo realizado en casa. Durante la
+sesión de prácticas el profesor estará disponible para resolver dudas
+y dar pistas sobre cómo atacar los problemas.
 
-La distribución de grupos del curso 2017-18 es la siguiente:
+Al final de la clase de prácticas se realizará un **cuestionario de
+prácticas** individual sobre los ejercicios propuestos y sobre los
+conceptos de teoría asociados.
+
+La nota media de todos los cuestionarios formará parte de la
+calificación final de la asignatura, ponderada en un 20%.
+
+Una vez realizado el cuestionario y terminada la hoja de ejercicios se
+entregará su solución en Moodle para su archivo.
+
+## Horarios
+
+La distribución de grupos del curso 2018-19 es la siguiente:
 
 <img src="imagenes/horario.png" width="800px"/>
 
-### Evaluación
+## Evaluación
 
-#### Convocatoria normal (evaluación continua)
-
+### Convocatoria normal C3 (evaluación continua)
 
 La asignatura se divide en 3 bloques temáticos, todos ellos de igual
 duración, en los que se utilizará el lenguaje de programación que
@@ -174,47 +181,18 @@ aparece entre paréntesis:
 3. Programación funcional en Swift y programación orientada a objetos (Swift)
 
 Para cada bloque temático se realizará un examen parcial escrito que
-ponderará un 30% (90% en total) en la nota final.
+ponderará un 26,67% (80% en total) en la nota final.
  
-El 10% restante para la nota final se obtendrá por el seguimiento
-de las clases de prácticas, según se explica a continuación.
+El 20% restante para la nota final se obtendrá con la nota media de
+los cuestionarios realizados en las sesiones de prácticas.
 
-Las sesiones prácticas consistirán en ejercicios individuales de
-programación sobre los conceptos explicados en la clase de teoría de
-la semana anterior. Evidentemente, para poder realizar correctamente
-estos ejercicios se deberá haber estudiado los conceptos previamente
-explicados.
-
-Al final de cada sesión de prácticas se realizará un **cuestionario de
-seguimiento**, una pequeña prueba tipo test sobre los ejercicios
-realizados y los conceptos asociados. La nota final de seguimiento
-de las sesiones prácticas será la media de estas calificaciones.
-
-La calificación total será la media ponderada de las calificaciones de
-cada parcial y la media de los 11 cuestionarios de seguimiento,
-condicionado esto último a que se haya superado el mínimo de
-cuestionarios aprobados.
-
-Ejemplo 1: un estudiante que ha obtenido un 4’5, 5 y 4’5 en los
-exámenes parciales y un 8 en los cuestionarios de prácticas obtendría
-de nota final:
-
-8 * 0'1 + 4’5 * 0’3 + 5 * 0’3 + 4’5 * 0’3 = 5
-
-Ejemplo 2: un estudiante con las mismas calificaciones en los
-parciales pero con un 0 en los cuestionarios de prácticas:
-
- 
-0 + 4’5 * 0’3 + 5 * 0’3 + 4’5 * 0’3 = 4’2
-
-
-#### Convocatoria extraordinaria
+### Convocatoria extraordinaria C4
 
 En la convocatoria extraordinaria se realizará un examen final sobre
 todos los bloques temáticos cuya calificación representará el 100% de
 la nota de la asignatura.
 
-#### Consejos para aprender con éxito los contenidos de la asignatura
+## Consejos para aprender con éxito los contenidos de la asignatura
 
 El consejo fundamental para aprobar la asignatura es **trabajar todas
 las semanas e intentar seguir el ritmo de la asignatura**. Los
@@ -306,7 +284,7 @@ Plantearse uno mismo problemas:
 > superarla simplemente tienes que hacer ejercicios y también
 > plantearte tú mismo nuevos ejercicios."
 
-### Bibliografía
+## Bibliografía
 
 En Moodle se publican los apuntes de la asignatura, con ejercicios,
 explicaciones y ejemplos de todos los conceptos estudiados, tanto en
@@ -328,6 +306,6 @@ Para ampliar algunos conceptos se recomiendan los dos siguientes manuales:
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2017-18  
+Lenguajes y Paradigmas de Programación, curso 2018-19  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
