@@ -564,7 +564,7 @@ base es también un ejemplo de invocación de la función.</p>
 prácticas realizadas hasta ahora.</p>
 <p>Veamos ejemplo más. ¿cómo definimos una lista palíndroma de forma
 recursiva?. Por ejemplo, las siguientes listas son palíndromas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>{1 2 3 3 2 1}
@@ -595,7 +595,7 @@ palindroma(lista) &lt;=&gt; un-elemento(lista) o vacía(lista) </p>
 </blockquote>
 <p>Podemos escribir la definición en Scheme, usando la función <code>or</code> para
 indicar que la lista es palíndroma si sucede una de las tres condiciones:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -608,7 +608,7 @@ indicar que la lista es palíndroma si sucede una de las tres condiciones:</p>
 </td></tr></table>
 
 <p>La función auxiliar <code>quitar-primero-ultimo</code> la podemos definir así:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -635,7 +635,7 @@ también que existen soluciones para esos casos.</p>
 <p>Vamos a estudiar el comportamiento de la evaluación de una llamada a
 una función recursiva. Supongamos la función
 <code>mi-length</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">mi-length</span> <span class="nv">items</span><span class="p">)</span>
@@ -646,7 +646,7 @@ una función recursiva. Supongamos la función
 </td></tr></table>
 
 <p>Examinamos cómo se evalúan las llamadas recursivas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -690,7 +690,7 @@ por la longitud de la lista. El coste espacial de <code>mi-lenght</code> es
 dispararse. Supongamos la famosa <a href="http://en.wikipedia.org/wiki/Fibonacci_number">secuencia de Fibonacci</a>:
 0,1,1,2,3,5,8,13,...</p>
 <p>Formulación matemática de la secuencia de Fibonacci:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)  
 Fibonacci(0) = 0  
@@ -699,7 +699,7 @@ Fibonacci(1) = 1
 </td></tr></table>
 
 <p>Formulación recursiva en Scheme:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -737,7 +737,7 @@ proceso, eliminando la pila de la recursión.</p>
 <p>Empezamos a explicar la recursión por la cola con un ejemplo muy
 sencillo: la versión iterativa de la típica función <code>factorial</code>. Le
 pondremos de nombre a la función <code>factorial-iter</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -761,7 +761,7 @@ se van guardando los resultados intermedios.</p>
 en <code>result</code> se va acumulando el cálculo del factorial. Al final de la
 recursión el factorial debe estar calculado en <code>result</code> y se devuelve.</p>
 <p>Veamos la secuencia de llamadas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -791,7 +791,7 @@ se encarga de inicializar este parámetro. En este caso es el mismo
 valor del número <code>n</code> a calcular el factorial. </p>
 <p>La secuencia de llamadas recursivas acumula en la variable <code>result</code> el
 valor del factorial:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>4 * 3 * 2 * 1 = 24
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>4 * 3 * 2 * 1 = 24
 </pre></div>
 </td></tr></table>
 
@@ -804,7 +804,7 @@ recursión eliminado un elemento de la lista, incrementaremos en 1 el
 valor del resultado. Para que funcione bien este enfoque, debemos
 inicializar este resultado a 0.</p>
 <p>La solución es la siguiente:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -830,7 +830,7 @@ por la cola la suma de los números de una lista.</p>
 <p>Deberíamos añadir un parámetro adicional en el que vamos acumulando
 esa suma. Inicializaremos a 0 ese parámetro e iremos en cada llamada
 recursiva acumulando el primer elemento de la lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -863,7 +863,7 @@ un proceso iterativo.</p>
 <p>En general, las versiones iterativas son menos intuitivas y más
 difíciles de entender y depurar.</p>
 <p>Veamos, por ejemplo, la formulación iterativa de Fibonacci:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -880,7 +880,7 @@ difíciles de entender y depurar.</p>
 </td></tr></table>
 
 <p>La secuencia de llamadas recursivas sería la siguiente:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -906,7 +906,7 @@ que es el que se devuelve. Conseguimos <code>n</code> llamadas inicializando
 <code>count</code> a n y decrementando el parámetro en 1 cada vez.</p>
 <h3 id="triangulo-de-pascal">Triángulo de Pascal<a class="headerlink" href="#triangulo-de-pascal" title="Permanent link">&para;</a></h3>
 <p>El <a href="https://en.wikipedia.org/wiki/Pascal's_triangle">triángulo de Pascal</a> es el siguiente triángulo de números.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -929,7 +929,7 @@ que es el que se devuelve. Conseguimos <code>n</code> llamadas inicializando
 <p>Si numeramos las filas y columnas empezando a contar por 0, la
 expresión general del valor en una fila y columna determinada se puede
 obtener con la siguiente definición recursiva:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Pascal (n, 0) = 1  
 Pascal (n, n) = 1  
@@ -941,7 +941,7 @@ Pascal (fila, columna) = Pascal (fila-1,columna-1) + Pascal (fila-1, columna)
 iguales que <code>fila</code>.</p>
 <p>En Scheme es fácil escribir una función recursiva que implemente la
 definición anterior:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -978,7 +978,7 @@ de números de Pascal un poco más grandes, como <code>(pascal 40 20)</code>.</p
 <p>La idea es definir una función iterativa <code>pascal-fila</code> a la que le
 pasamos el número de fila <code>n</code> y nos devuelve la lista de <code>n+1</code> números que
 constituyen la fila <code>n</code> del triángulo de Pascal:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1001,7 +1001,7 @@ vamos decrementando el parámetro <code>n</code> hasta que se llega a 0.</p>
 lista-fila)</code> que recibe una fila del triángulo y devuelve la
 siguiente. </p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">pascal-sig-fila</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">))</span>
 <span class="c1">; ⇒ {1 4 6 4 1}</span>
 </pre></div>
@@ -1011,7 +1011,7 @@ siguiente. </p>
 es recursiva pura) llamada <code>(pascal-suma-dos-a-dos lista-fila)</code> que es
 la que se encarga de realizar el cálculo de la nueva fila.</p>
 <p>El código completo es el siguiente:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1051,7 +1051,7 @@ la que se encarga de realizar el cálculo de la nueva fila.</p>
 
 <p>Con esta implementación ya no se tiene un coste exponencial y se puede
 calcular el valor de números como Pascal(40, 20):</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">pascal</span> <span class="mi">40</span> <span class="mi">20</span><span class="p">)</span>
 <span class="c1">; ⇒ 137846528820</span>
 </pre></div>
@@ -1082,7 +1082,7 @@ lista vacía.</li>
 </ul>
 <p>Inicialmente la lista debe tener un símbolo cualquiera al comienzo. </p>
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define mi-lista (list &#39;lista-asoc))
@@ -1098,7 +1098,7 @@ tenemos que salirnos del paradigma funcional, importando una librería
 de Scheme que permite mutar las parejas.</p>
 <p>No es importante la implementación, la dejamos aquí como referencia y
 para poder probar la <em>memoization</em>. </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1150,7 +1150,7 @@ el número de fibonacci <code>n</code> se comprueba si ya está guardado en la
 lista. Sólo en el caso en que no esté guardado se llama a la recursión
 para calcularlo y guardarlo. La función <code>put</code> que guarda el nuevo
 valor calculado también lo devuelve.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1170,7 +1170,7 @@ valor calculado también lo devuelve.</p>
 versión y la anterior. El coste de la función <em>memoizada</em> es
 O(n). Frente al coste O(2^n) de la versión inicial que la hacía
 imposible de utilizar.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">fib-memo</span> <span class="mi">200</span> <span class="nv">lista</span><span class="p">)</span>
 <span class="err">⇒</span> <span class="mi">280571172992510140037611932413038677189525</span>
 </pre></div>
@@ -1192,7 +1192,7 @@ cuando estemos usando el paradigma funcional.</p>
 <p>Se pueden utilizar los
 <a href="http://en.wikipedia.org/wiki/Turtle_graphics">gráficos de tortuga</a> en
 Racket cargando la librería <code>(graphics turtles)</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">#lang r6rs</span>
 <span class="p">(</span><span class="kn">import</span> <span class="p">(</span><span class="n">rnrs</span><span class="p">)</span>
@@ -1214,7 +1214,7 @@ Racket cargando la librería <code>(graphics turtles)</code>:</p>
 de escribir el algoritmo en Scheme del triángulo de Sierpinski.</p>
 <p>Por ejemplo, podemos definir una función que dibuja un triángulo
 rectángulo con catetos de longitud <code>x</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1253,7 +1253,7 @@ trazos de la figura.</p>
 <p>El siguiente código es una variante del anterior que dibuja un
 triángulo rectángulo de base <code>w</code> y lados <code>w/2</code>. Va a ser la figura
 base del triángulo de Sierpinski.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1310,7 +1310,7 @@ altura <em>h/2</em> debemos:</p>
   constante, se dibuja un triángulo de base <em>h</em> y altura <em>h/2</em>.</li>
 </ul>
 <p>Una versión del algoritmo en <em>pseudocódigo</em>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1329,7 +1329,7 @@ altura <em>h/2</em> debemos:</p>
 triángulo de Sierpinski. No es funcional porque se realizan <em>pasos de
 ejecución</em>, usando la forma especial <code>begin</code> o múltiples instrucciones
 en una misma función (por ejemplo la función <code>triangle</code>).</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1388,14 +1388,14 @@ en una misma función (por ejemplo la función <code>triangle</code>).</p>
 </td></tr></table>
 
 <p>La llamada a</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">sierpinski</span> <span class="mi">40</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">sierpinski</span> <span class="mi">40</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p>produce la siguiente figura:</p>
 <p><img src="imagenes/sierpinski-40.png"/></p>
 <p>La llamada a</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">sierpinski</span> <span class="mi">700</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">sierpinski</span> <span class="mi">700</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -1403,7 +1403,7 @@ en una misma función (por ejemplo la función <code>triangle</code>).</p>
 <p><img src="imagenes/sierpinski.png" width="400px"/></p>
 <p>Para ocupar la venta completa debemos desplazar la tortuga hacia atrás
 antes de invocar a <code>sierpinski</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">clear</span><span class="p">)</span>
 <span class="p">(</span><span class="nf">move</span> <span class="mi">-350</span><span class="p">)</span>
@@ -1422,7 +1422,7 @@ a su vez se define en base a la primera.</p>
 <li>0 es par</li>
 </ul>
 <p>Programas en Scheme:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1484,7 +1484,7 @@ la función <code>(h-der i long)</code> que dibuja una curva de Hilbert de orden
 función <code>(h-izq i w)</code> que dibuja una curva de Hilbert de orden <code>i</code> con
 una longitud de trazo <code>long</code> a la <em>izquierda</em> de la tortuga.</p>
 <p>El algoritmo en Scheme:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1555,7 +1555,7 @@ una longitud de trazo <code>long</code> a la <em>izquierda</em> de la tortuga.</
 <p>Podemos probarlo con distintos parámetros de grado de curva y longitud
 de trazo.</p>
 <p>Curva de Hilbert de nivel 3 con trazo de longitud 20:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1570,7 +1570,7 @@ de trazo.</p>
 </td></tr></table>
 
 <p>Curva de Hilbert de nivel 6 con trazo de longitud 10:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1585,7 +1585,7 @@ de trazo.</p>
 </td></tr></table>
 
 <p>Curva de Hilbert de nivel 7 con trazo de longitud 5:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4

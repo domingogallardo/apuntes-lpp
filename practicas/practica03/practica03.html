@@ -412,7 +412,7 @@ recibe un número <code>n</code> y un lista de números y devuelve una lista con
 los booleanos resultantes de comprobar si cada número de la lista es
 múltiplo de <code>n</code>.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">multiplo-de</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">100</span> <span class="mi">23</span> <span class="mi">10</span> <span class="mi">300</span>  <span class="mi">48</span> <span class="mi">7</span><span class="p">))</span> <span class="c1">; ⇒ (#t #f #t #t #f #f)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">multiplo-de</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">100</span> <span class="mi">23</span> <span class="mi">10</span> <span class="mi">300</span>  <span class="mi">48</span> <span class="mi">7</span><span class="p">))</span> <span class="c1">; ⇒ (#t #f #t #t #f #f)</span>
 </pre></div>
 </td></tr></table>
 
@@ -424,7 +424,7 @@ la lista siempre está bien formada, con sus elementos en este orden:
 <code>(símbolo pareja símbolo pareja...)</code>. Tiene que devolver una lista con
 los resultados de las operaciones.</p>
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">calcular-lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">+</span> <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="nv">*</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)))</span> <span class="c1">; ⇒ {5 20}</span>
 <span class="p">(</span><span class="nf">calcular-lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">/</span> <span class="p">(</span><span class="mi">-6</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="nv">-</span> <span class="p">(</span><span class="mf">4.5</span> <span class="o">.</span> <span class="mf">0.5</span><span class="p">)</span> <span class="nv">+</span> <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)))</span> <span class="c1">; ⇒ {-3 4.0 5}</span>
 </pre></div>
@@ -439,7 +439,7 @@ elementos como el número que indique cada pareja.</p>
 recibe una pareja y devuelve la lista expandida resultante de expandir
 sólo esa pareja.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">expande</span> <span class="o">&#39;</span><span class="p">((</span><span class="no">#t</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="s">&quot;LPP&quot;</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nf">b</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)))</span>
 <span class="err">⇒</span> <span class="err">{</span><span class="no">#t</span> <span class="no">#t</span> <span class="no">#t</span> <span class="s">&quot;LPP&quot;</span> <span class="s">&quot;LPP&quot;</span> <span class="nv">b</span> <span class="nv">b</span> <span class="nv">b</span> <span class="nv">b</span><span class="err">}</span>
 </pre></div>
@@ -453,7 +453,7 @@ el número izquierdo de la pareja es mayor que el derecho, un 2 cuando
 es al revés, y una X cuando los dos números son iguales.</p>
 <p><strong>Pista</strong>: Puedes definir una función <code>(resultado-partido partido)</code>
   que reciba una pareja y devuelva 1, X o 2.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">resultados-quiniela</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="mi">6</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">9</span> <span class="o">.</span> <span class="mi">9</span><span class="p">)))</span>  <span class="c1">; ⇒ {2 X 2 1 X}</span>
 <span class="p">(</span><span class="nf">resultados-quiniela</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)))</span> <span class="c1">; ⇒ {X}</span>
@@ -465,7 +465,7 @@ es al revés, y una X cuando los dos números son iguales.</p>
 donde <code>resultado</code> puede ser un uno, una equis o un dos y cuenta el
 número de ese resultado en la lista de partidos.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuenta-resultados</span> <span class="ss">&#39;X</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="mi">6</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">9</span> <span class="o">.</span> <span class="mi">9</span><span class="p">)))</span> <span class="c1">; ⇒ 2</span>
 <span class="p">(</span><span class="nf">cuenta-resultados</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="mi">6</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">9</span> <span class="o">.</span> <span class="mi">9</span><span class="p">)))</span> <span class="c1">; ⇒ 1</span>
@@ -479,7 +479,7 @@ representan el número de 1s, de Xs y de 2s existentes en la lista de
 resultados original.</p>
 <p><strong>Pista</strong>: Puedes definir una función auxiliar <code>(inc-pos n lista)</code> que
 incremente el número de la lista situado en la posición <code>n</code>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuenta-resultados-lista</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="mi">6</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">9</span> <span class="o">.</span> <span class="mi">9</span><span class="p">)))</span> <span class="c1">; ⇒ {1 2 2}</span>
 <span class="p">(</span><span class="nf">cuenta-resultados-lista</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)))</span> <span class="c1">; ⇒ {0 1 0}</span>
@@ -498,7 +498,7 @@ con la longitud de la cadena correspondiente al símbolo. Puedes
 utilizar las funciones predefinidas <code>string-length</code> y
 <code>symbol-&gt;string</code>.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">filtra-simbolos</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">este</span> <span class="nv">es</span> <span class="nv">un</span> <span class="nv">ejercicio</span> <span class="nv">de</span> <span class="nv">examen</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">6</span><span class="p">))</span>
 <span class="c1">; ⇒ {{un . 2} {ejercicio . 9} {examen . 6}}</span>
 </pre></div>

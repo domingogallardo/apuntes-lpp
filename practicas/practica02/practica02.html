@@ -433,7 +433,7 @@ siguiente forma:</p>
 el primer elemento de la lista y el máximo del resto de la lista.</p>
 </blockquote>
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">maximo</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">9</span> <span class="mi">8</span> <span class="mi">6</span> <span class="mi">4</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ 9</span>
 <span class="p">(</span><span class="nf">maximo</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">-1</span> <span class="mi">3</span> <span class="mi">6</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ 6</span>
 </pre></div>
@@ -443,7 +443,7 @@ el primer elemento de la lista y el máximo del resto de la lista.</p>
 <p>a) Implementa el predicado recursivo <code>(pertenece? elem lista)</code> que
 reciba un dato y una lista y comprueba si el elemento pertenece a
 la lista.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">pertenece?</span> <span class="ss">&#39;a</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">b</span> <span class="nv">c</span> <span class="nv">d</span> <span class="nv">e</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
 <span class="p">(</span><span class="nf">pertenece?</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">20</span> <span class="mi">10</span> <span class="mi">40</span> <span class="mi">10</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
@@ -456,7 +456,7 @@ devuelve <code>#t</code> si algún elemento está repetido en la lista, y <code>
 caso contrario.</p>
 <p><strong>Pista</strong>: puedes utilizar la función anterior
 (pertenece? elem lista), que comprueba si un elemento está en la lista.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">repetidos?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="nf">repetidos?</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">adios</span> <span class="nv">hola</span> <span class="nv">que</span> <span class="nv">tal</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
@@ -483,7 +483,7 @@ Scheme (usando llamadas a <code>list</code> y <code>cons</code>) que definen <co
 un número en binario (el primer elemento será el bit más significativo) y devuelva el número decimal
 equivalente. </p>
 <p><strong>Pista</strong>: puedes utilizar la función <code>length</code>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">binario-a-decimal</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span> <span class="c1">; ⇒ 15</span>
 <span class="p">(</span><span class="nf">binario-a-decimal</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">))</span> <span class="c1">; ⇒ 6</span>
@@ -496,7 +496,7 @@ equivalente. </p>
 que recibe como argumento una lista de números y devuelve <code>#t</code> si los
 números de la lista están ordenados de forma creciente o <code>#f</code> en
 caso contrario. Suponemos listas de 1 o más elementos.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">ordenada-creciente?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">-1</span> <span class="mi">23</span> <span class="mi">45</span> <span class="mi">59</span> <span class="mi">99</span><span class="p">))</span>  <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="nf">ordenada-creciente?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span> <span class="mi">50</span> <span class="mi">-1</span> <span class="mi">293</span> <span class="mi">1000</span><span class="p">))</span>  <span class="c1">; ⇒ #f</span>
@@ -513,13 +513,12 @@ definidas de la siguiente forma:</p>
 <li><code>(inc-der pareja)</code>: devuelve una nueva pareja con la parte derecha
   incrementada en 1.</li>
 </ul>
-<p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p>Ejemplos:
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(inc-izq (cons 10 20))  ; ⇒ {11 . 20}
 (inc-der (cons 10 20))  ; ⇒ {10 . 21}
 </pre></div>
-</td></tr></table>
-
+</td></tr></table></p>
 <p>b) Implementa la función recursiva <code>(cuenta-impares-pares lista-num)</code>
 que devuelva una pareja cuya parte izquierda sea la cantidad de
 números impares de la lista y la parte derecha la cantidad de números
@@ -527,7 +526,7 @@ pares. Debes utilizar las funciones auxiliares definidas en el
 apartado anterior. También puedes utilizar las funciones predefinidas
 <code>even?</code> y <code>odd?</code>.</p>
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuenta-impares-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">8</span> <span class="mi">7</span> <span class="mi">6</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ {4 . 4}</span>
 <span class="p">(</span><span class="nf">cuenta-impares-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="mi">1</span> <span class="mi">5</span><span class="p">))</span>           <span class="c1">; ⇒ {3 . 0}</span>
 </pre></div>
@@ -542,7 +541,7 @@ lista.</p>
 <p>En el caso en que la lista sea vacía se devolverá la pareja con la
 cadena vacía y un 0 (la longitud de la lista vacía).</p>
 <p><strong>Pista</strong>: puedes utilizar la función <code>string-length</code></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cadena-mayor</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;vamos&quot;</span> <span class="s">&quot;a&quot;</span> <span class="s">&quot;obtener&quot;</span> <span class="s">&quot;la&quot;</span> <span class="s">&quot;cadena&quot;</span> <span class="s">&quot;mayor&quot;</span><span class="p">))</span> <span class="c1">; ⇒  {&quot;obtener&quot; . 7}</span>
 <span class="p">(</span><span class="nf">cadena-mayor</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;prueba&quot;</span> <span class="s">&quot;con&quot;</span> <span class="s">&quot;maximo&quot;</span> <span class="s">&quot;igual&quot;</span><span class="p">))</span> <span class="c1">; ⇒ {&quot;maximo&quot; . 6} </span>

@@ -428,7 +428,7 @@ lista de símbolos y devuelven:</p>
 <p><strong>Pista</strong>: Puedes usar las funciones <code>symbol-&gt;string</code>,
 <code>string-&gt;symbol</code> y <code>string-upcase</code>.</p>
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -452,27 +452,27 @@ la práctica 3.</p>
 para obtener el resultado esperado. Después usa el intérprete para
 comprobar si has acertado.</p>
 <p>a)</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">______</span> <span class="nv">list</span> <span class="mi">0</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
 <span class="c1">; ⇒ {1 {2 {3 0}}}</span>
 </pre></div>
 </td></tr></table>
 
 <p>b)</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">______</span> <span class="nv">list</span> <span class="s">&quot;hola&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;como&quot;</span> <span class="s">&quot;estas&quot;</span> <span class="s">&quot;adios&quot;</span><span class="p">))</span>
 <span class="c1">; ⇒ {{{&quot;hola&quot; &quot;como&quot;} &quot;estas&quot;} &quot;adios&quot;}</span>
 </pre></div>
 </td></tr></table>
 
 <p>Los siguientes apartados se realizan a partir de la siguiente lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">7</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="mi">10</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">7</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="mi">10</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
 <p>c) Queremos obtener una lista donde cada número es la suma de las
 parejas que son pares</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -486,7 +486,7 @@ parejas que son pares</p>
 
 <p>d) Queremos obtener una lista de parejas invertidas donde la "nueva"
 parte izquierda es mayor que la derecha.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">filter</span> <span class="nv">___________</span>
         <span class="p">(</span><span class="nb">map </span><span class="nv">____________</span> <span class="nv">lista</span><span class="p">))</span>
@@ -496,7 +496,7 @@ parte izquierda es mayor que la derecha.</p>
 
 <p>e) Queremos obtener una lista cuyos elementos son las partes izquierda
 de aquellas parejas cuya suma sea par.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(fold-right __________ &#39;()
         (_________ (lambda (x) (even? (+ (car x) (cdr x)))) lista))
@@ -512,7 +512,7 @@ de aquellas parejas cuya suma sea par.</p>
 por <code>k</code>. Y la función <code>construye-exponenciador</code> construye una función de un
 argumento <code>x</code> que eleva <code>k</code> a <code>x</code>.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -540,7 +540,7 @@ valor <code>i</code> que indica si queremos fijar el primer parámetro (cuando
 i = 1) o el segundo parámetro (i = 2) y el valor <code>k</code> al que fijamos el
 parámetro correspondiente.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -563,7 +563,7 @@ parámetro correspondiente.</p>
 lista-parejas)</code> que recibe una lista de parejas y devuelve otra lista
 a la que hemos sumado <code>n</code> a todas las partes izquierdas.</p>
 <p>Ejemplo</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">suma-n-izq</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">9</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">8</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">1</span><span class="p">)))</span>
 <span class="c1">; ⇒ {{11 . 3} {10 . 9} {15 . 8} {14 . 1}}</span>
 </pre></div>
@@ -574,7 +574,7 @@ lista-parejas)</code> que recibe una función de dos argumentos y una lista
 de parejas y devuelve una lista con el resultado de aplicar esa
 función a los elementos izquierdo y derecho de cada pareja.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -597,7 +597,7 @@ recibe un lista de cadenas y devuelve una pareja con la cadena de
 mayor longitud y dicha longitud.  En el caso de que haya más de una
 cadena con la máxima longitud, se devolverá la última de ellas que
 aparezca en la lista.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cadena-mayor</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;vamos&quot;</span> <span class="s">&quot;a&quot;</span> <span class="s">&quot;obtener&quot;</span> <span class="s">&quot;la&quot;</span> <span class="s">&quot;cadena&quot;</span> <span class="s">&quot;mayor&quot;</span><span class="p">))</span> <span class="c1">; ⇒  {&quot;obtener&quot; . 7}  </span>
 <span class="p">(</span><span class="nf">cadena-mayor</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;prueba&quot;</span> <span class="s">&quot;con&quot;</span> <span class="s">&quot;maximo&quot;</span> <span class="s">&quot;igual&quot;</span><span class="p">))</span> <span class="c1">; ⇒ {&quot;maximo&quot; . 6} </span>
@@ -607,7 +607,7 @@ aparezca en la lista.</p>
 
 <p>b) La función <code>map</code> de Scheme también puede mapear una función de dos
 argumentos sobre dos listas. Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span> <span class="nv">y</span><span class="p">)</span>
          <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="nv">y</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="mi">4</span> <span class="mi">4</span> <span class="mi">4</span><span class="p">))</span>

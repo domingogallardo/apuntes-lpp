@@ -464,7 +464,7 @@ una lista formada por elementos que no son listas. Llamaremos
 el contexto de la programación funcional <em>expresiones-S</em>
 (<a href="http://en.wikipedia.org/wiki/S-expression">S-expression</a>).</p>
 <p>Por ejemplo, la lista estructurada:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&#39;(a b (c d e) (f (g h)))
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&#39;(a b (c d e) (f (g h)))
 </pre></div>
 </td></tr></table>
 
@@ -476,7 +476,7 @@ el contexto de la programación funcional <em>expresiones-S</em>
 <li>La lista estructurada <code>'(f (g h))</code></li>
 </ul>
 <p>Se puede construir con cualquiera de las siguientes expresiones:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define lista (list &#39;a &#39;b (list &#39;c &#39;d &#39;e) (list &#39;f (list &#39;g &#39;h))))
 (define lista &#39;(a b (c d e) (f (g h))))
 </pre></div>
@@ -484,7 +484,7 @@ el contexto de la programación funcional <em>expresiones-S</em>
 
 <p>Una lista formada por parejas la consideraremos una lista plana, ya
 que no contiene ninguna sublista. Por ejemplo, la lista</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&#39;((a . 3) (b . 5) (c . 12))
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&#39;((a . 3) (b . 5) (c . 12))
 </pre></div>
 </td></tr></table>
 
@@ -494,7 +494,7 @@ que no contiene ninguna sublista. Por ejemplo, la lista</p>
 <code>estructurada</code> usando código de Scheme.</p>
 <h5>Función <code>(hoja? dato)</code></h5>
 <p>Un dato es una hoja si no es una lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define (hoja? dato)
    (not (list? dato)))
 </pre></div>
@@ -503,14 +503,14 @@ que no contiene ninguna sublista. Por ejemplo, la lista</p>
 <p>Utilizaremos esta función para comprobar si un determinado elemento de
 una lista es o no una hoja. Por ejemplo, supongamos la siguiente
 lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&#39;((1 2) 3 4 (5 6))
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&#39;((1 2) 3 4 (5 6))
 </pre></div>
 </td></tr></table>
 
 <p>Es una lista de 4 elementos, siendo el primero y el último otras
 sublistas y el segundo y el tercero hojas. Podemos comprobar si son o
 no hojas sus elementos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -523,7 +523,7 @@ no hojas sus elementos:</p>
 </td></tr></table>
 
 <p>La lista vacía no es una hoja</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(hoja? &#39;()) ; ⇒ #f
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(hoja? &#39;()) ; ⇒ #f
 </pre></div>
 </td></tr></table>
 
@@ -539,7 +539,7 @@ resto es plana.</p>
 </blockquote>
 <p>Usando esta definición recursiva, podemos implementar en Scheme la
 función <code>(plana? lista)</code> que comprueba si una lista es plana:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define (plana? lista)
@@ -550,7 +550,7 @@ función <code>(plana? lista)</code> que comprueba si una lista es plana:</p>
 </td></tr></table>
 
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">plana?</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span> <span class="nv">d</span> <span class="nv">e</span> <span class="nv">f</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
@@ -562,7 +562,7 @@ función <code>(plana? lista)</code> que comprueba si una lista es plana:</p>
 
 <h5>Función <code>(estructurada? lista)</code></h5>
 <p>Una lista es estructurada cuando alguno de sus elementos es otra lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -575,7 +575,7 @@ función <code>(plana? lista)</code> que comprueba si una lista es plana:</p>
 </td></tr></table>
 
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">estructurada?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
@@ -587,7 +587,7 @@ función <code>(plana? lista)</code> que comprueba si una lista es plana:</p>
 
 <p>Realmente bastaría con haber hecho una de las dos definiciones y
 escribir la otra como la negación de la primera:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define (estructurada? lista)
    (not (plana? lista)))
 </pre></div>
@@ -598,7 +598,7 @@ escribir la otra como la negación de la primera:</p>
 jerárquica en donde queremos representar elementos que contienen otros
 elementos.</p>
 <p>Por ejemplo, las expresiones de Scheme son listas estructuradas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">= </span><span class="mi">4</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">2</span><span class="p">))</span>
 <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="nv">x</span> <span class="nv">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">/ </span><span class="nv">x</span> <span class="nv">y</span><span class="p">)</span> <span class="mi">45</span><span class="p">))</span>
@@ -609,13 +609,13 @@ elementos.</p>
 <p>El análisis sintáctico de una oración puede generar una lista
 estructurada de símbolos, en donde se agrupan los distintos elementos
 de la oración:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">((</span><span class="nf">Juan</span><span class="p">)</span> <span class="p">(</span><span class="nf">compr</span><span class="err">ó</span><span class="p">)</span> <span class="p">(</span><span class="nf">la</span> <span class="nv">entrada</span> <span class="p">(</span><span class="nf">de</span> <span class="nv">los</span> <span class="nv">Miserables</span><span class="p">))</span> <span class="p">(</span><span class="nf">el</span> <span class="nv">viernes</span> <span class="nv">por</span> <span class="nv">la</span> <span class="nv">tarde</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">((</span><span class="nf">Juan</span><span class="p">)</span> <span class="p">(</span><span class="nf">compr</span><span class="err">ó</span><span class="p">)</span> <span class="p">(</span><span class="nf">la</span> <span class="nv">entrada</span> <span class="p">(</span><span class="nf">de</span> <span class="nv">los</span> <span class="nv">Miserables</span><span class="p">))</span> <span class="p">(</span><span class="nf">el</span> <span class="nv">viernes</span> <span class="nv">por</span> <span class="nv">la</span> <span class="nv">tarde</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
 <p>Una página HTML, con sus distintos elementos, unos dentro de otros,
 también se puede representar con una lista estructurada:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">((</span><span class="nf">&lt;h1&gt;</span> <span class="nv">Mi</span> <span class="nv">lista</span> <span class="nv">de</span> <span class="nv">la</span> <span class="nv">compra</span> <span class="nv">&lt;/h1&gt;</span><span class="p">)</span>
@@ -642,7 +642,7 @@ todos los datos están en las hojas.</p>
 </blockquote>
 <p>Otro ejemplo. ¿Cuál sería la representación en niveles de la siguiente
 lista estructurada?:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">x</span> <span class="mi">12</span><span class="p">)</span>
        <span class="p">(</span><span class="nf">y</span> <span class="mi">5</span><span class="p">))</span>
@@ -656,7 +656,7 @@ lista estructurada?:</p>
 <p>Veamos como primer ejemplo la función <code>(num-hojas lista)</code> que cuenta
 el número de hojas de una lista estructurada.</p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(num-hojas &#39;((1 2) (3 4 (5) 6) (7))) ⇒ 7
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(num-hojas &#39;((1 2) (3 4 (5) 6) (7))) ⇒ 7
 </pre></div>
 </td></tr></table>
 
@@ -681,7 +681,7 @@ número de hojas es 0) y cuando la lista no es tal, sino que es un dato
 <p>En la implementación siguiente llamamos siempre a la recursión por el
 <code>car</code> y por el <code>cdr</code>. Si el <code>car</code> es una lista o una hoja se
 determinará dentro de esa llamada recursiva.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -713,7 +713,7 @@ sublista.</p>
 <p>El resultado del map será una lista de números (el número de hojas de
 cada componente), que podemos sumar haciendo un <code>fold-right</code> con la
 función <code>+</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -738,7 +738,7 @@ devolver el máximo de los dos números.</p>
 <p><img src="imagenes/altura-estructurada.png" width="300px"/></p>
 <p>Como casos base, la altura de una lista vacía o de una hoja (dato) es 0.</p>
 <p>En Scheme:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -751,9 +751,8 @@ devolver el máximo de los dos números.</p>
                  <span class="p">(</span><span class="nf">altura</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">x</span><span class="p">))))))</span>
 </pre></div>
 </td></tr></table>
-
-<p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+Por ejemplo:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">altura</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span><span class="p">))</span> <span class="err">⇒</span> <span class="mi">2</span>
 <span class="p">(</span><span class="nf">altura</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="mi">3</span><span class="p">))</span> <span class="err">⇒</span> <span class="mi">3</span>
 </pre></div>
@@ -764,7 +763,7 @@ devolver el máximo de los dos números.</p>
 para obtener la altura de sus elementos del primer nivel (puedes ser
 hojas o sublistas) y <code>fold-right</code> para quedarse con el máximo de la
 lista de valores que devuelve el map.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -793,7 +792,7 @@ estructura jerárquica de las listas estructuradas.</p>
 </ul>
 <h5><code>(aplana lista)</code></h5>
 <p>Devuelve una lista plana con todas las hojas de la lista.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -808,16 +807,15 @@ estructura jerárquica de las listas estructuradas.</p>
              <span class="p">(</span><span class="nf">aplana</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">x</span><span class="p">))))))</span>
 </pre></div>
 </td></tr></table>
-
-<p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+Por ejemplo:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">aplana</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">5</span><span class="p">)))</span> <span class="p">(((</span><span class="mi">6</span><span class="p">)))))</span>
 <span class="c1">; ⇒ {1 2 3 4 5 6}</span>
 </pre></div>
 </td></tr></table>
 
 <p>Con funciones de orden superior:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -835,7 +833,7 @@ estructura jerárquica de las listas estructuradas.</p>
 
 <h5><code>(pertenece-lista? dato lista)</code></h5>
 <p>Comprueba si el <code>dato</code> aparece en la lista estructurada. </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -850,14 +848,13 @@ estructura jerárquica de las listas estructuradas.</p>
 </td></tr></table>
 
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">pertenece?</span> <span class="ss">&#39;a</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">b</span> <span class="nv">c</span> <span class="p">(</span><span class="nf">d</span> <span class="p">(</span><span class="nf">a</span><span class="p">))))</span> <span class="err">⇒</span> <span class="no">#t</span>
 <span class="p">(</span><span class="nf">pertenece?</span> <span class="ss">&#39;a</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">b</span> <span class="nv">c</span> <span class="p">(</span><span class="nf">d</span> <span class="nv">e</span> <span class="p">(</span><span class="nf">f</span><span class="p">))</span> <span class="nv">g</span><span class="p">))</span> <span class="err">⇒</span> <span class="no">#f</span>
 </pre></div>
 </td></tr></table>
-
-<p>Con funciones de orden superior:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+Con funciones de orden superior:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -876,7 +873,7 @@ dato y devuelve el nivel en que se encuentra. Si el dato no se
 encuentra en la lista, se devolverá -1. Si el dato se encuentra en más
 de un lugar de la lista se devolverá el nivel mayor.</p>
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">nivel-hoja</span> <span class="ss">&#39;b</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="p">(</span><span class="nf">c</span><span class="p">)))</span> <span class="c1">; ⇒ 1</span>
@@ -886,7 +883,7 @@ de un lugar de la lista se devolverá el nivel mayor.</p>
 </pre></div>
 </td></tr></table>
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -901,7 +898,7 @@ de un lugar de la lista se devolverá el nivel mayor.</p>
 </td></tr></table>
 
 <p>La función auxiliar se define de la siguiente forma:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma-1-si-mayor-igual-que-0</span> <span class="nv">x</span><span class="p">)</span>
@@ -912,7 +909,7 @@ de un lugar de la lista se devolverá el nivel mayor.</p>
 </td></tr></table>
 
 <p>Con funciones de orden superior:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -931,7 +928,7 @@ de un lugar de la lista se devolverá el nivel mayor.</p>
 <h5><code>(cuadrado-lista lista)</code></h5>
 <p>Devuelve una lista estructurada con la misma estructura y sus números
 elevados al cuadrado.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -944,13 +941,13 @@ elevados al cuadrado.</p>
 </td></tr></table>
 
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrado-lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span> <span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span> <span class="err">⇒</span> <span class="p">(</span><span class="mi">4</span> <span class="mi">9</span> <span class="p">(</span><span class="mi">16</span> <span class="p">(</span><span class="mi">25</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrado-lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span> <span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span> <span class="err">⇒</span> <span class="p">(</span><span class="mi">4</span> <span class="mi">9</span> <span class="p">(</span><span class="mi">16</span> <span class="p">(</span><span class="mi">25</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
 <p>Es muy interesante la versión de esta función con funciones de orden
 superior:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -969,7 +966,7 @@ parámetro.</p>
 <h5><code>(map-lista f lista)</code></h5>
 <p>Devuelve una lista estructurada igual que la original con el resultado
 de aplicar a cada uno de sus hojas la función f</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -982,7 +979,7 @@ de aplicar a cada uno de sus hojas la función f</p>
 </td></tr></table>
 
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">map-lista</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span> <span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span> <span class="err">⇒</span> <span class="p">(</span><span class="mi">4</span> <span class="mi">9</span> <span class="p">(</span><span class="mi">16</span> <span class="p">(</span><span class="mi">25</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">map-lista</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span> <span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span> <span class="err">⇒</span> <span class="p">(</span><span class="mi">4</span> <span class="mi">9</span> <span class="p">(</span><span class="mi">16</span> <span class="p">(</span><span class="mi">25</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
@@ -1030,7 +1027,7 @@ representar un árbol con n hijos:</p>
 </blockquote>
 <p>Por ejemplo, el árbol anterior lo representaremos en Scheme con la
 siguiente lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="nv">+</span> <span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="nv">+</span> <span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
@@ -1046,14 +1043,14 @@ siguiente lista:</p>
   formado por un 10</li>
 </ul>
 <p>Podríamos definir el árbol con la siguiente sentencia:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">arbol1</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">+</span> <span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">arbol1</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">+</span> <span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
 <p>Otro ejemplo más. ¿Cómo se implementa en Scheme el árbol de la siguiente figura?</p>
 <p><img src="imagenes/binario-2.png" width="300px"/></p>
 <p>Se haría con la lista de la siguiente sentencia:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">arbol2</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">40</span> <span class="p">(</span><span class="mi">18</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">23</span> <span class="p">(</span><span class="mi">29</span><span class="p">)))</span> <span class="p">(</span><span class="mi">52</span> <span class="p">(</span><span class="mi">47</span><span class="p">))))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">arbol2</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">40</span> <span class="p">(</span><span class="mi">18</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">23</span> <span class="p">(</span><span class="mi">29</span><span class="p">)))</span> <span class="p">(</span><span class="mi">52</span> <span class="p">(</span><span class="mi">47</span><span class="p">))))</span>
 </pre></div>
 </td></tr></table>
 
@@ -1072,7 +1069,7 @@ empezar por los selectores.</p>
 dato compuesto reciben el nombre de <strong>selectores</strong>.</p>
 <p><strong>Selectores</strong></p>
 <p>Funciones que obtienen los elementos de un árbol:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1099,7 +1096,7 @@ funciones:</p>
 </ul>
 <p>Por ejemplo, en el árbol <code>arbol1</code> las funciones anteriores devuelven
 los siguientes valores:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">dato-arbol</span> <span class="nv">arbol1</span><span class="p">)</span> <span class="c1">; ⇒ +</span>
 <span class="p">(</span><span class="nf">hijos-arbol</span> <span class="nv">arbol1</span><span class="p">)</span> <span class="c1">; ⇒ {{5} {* {2} {3}} {10}}</span>
@@ -1140,7 +1137,7 @@ hijos, después al primer hijo de éste y por último acceder a su
 dato. Recordemos que <code>hijos-arbol</code> devuelve la lista de árboles hijos,
 por lo que utilizaremos las funciones <code>car</code> y <code>cdr</code> para recorrerlas y
 obtener los elementos que nos interesen:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">dato-arbol</span> <span class="p">(</span><span class="nb">car </span><span class="p">(</span><span class="nf">hijos-arbol</span> <span class="p">(</span><span class="nb">cadr </span><span class="p">(</span><span class="nf">hijos-arbol</span> <span class="nv">arbol1</span><span class="p">)))))</span> <span class="c1">; ⇒ 2</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">dato-arbol</span> <span class="p">(</span><span class="nb">car </span><span class="p">(</span><span class="nf">hijos-arbol</span> <span class="p">(</span><span class="nb">cadr </span><span class="p">(</span><span class="nf">hijos-arbol</span> <span class="nv">arbol1</span><span class="p">)))))</span> <span class="c1">; ⇒ 2</span>
 </pre></div>
 </td></tr></table>
 
@@ -1149,7 +1146,7 @@ obtener los elementos que nos interesen:</p>
 árbol y encapsula su implementación concreta. Para construir un árbol
 necesitamos un dato y una lista de árboles hijos. Si la lista de
 árboles hijos es vacía, tendremos un nodo hoja.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">construye-arbol</span> <span class="nv">dato</span> <span class="nv">lista-arboles</span><span class="p">)</span>  
    <span class="p">(</span><span class="nb">cons </span><span class="nv">dato</span> <span class="nv">lista-arboles</span><span class="p">))</span>
 </pre></div>
@@ -1159,21 +1156,20 @@ necesitamos un dato y una lista de árboles hijos. Si la lista de
 (obligatorio) y la lista de arboles hijos. Si se pasa una lista vacía
 como parámetro se estará definiendo un nodo hoja.</p>
 <p>Por ejemplo, para definir un nodo hoja con el dato 2:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">arbol3</span> <span class="p">(</span><span class="nf">construye-arbol</span> <span class="mi">2</span> <span class="o">&#39;</span><span class="p">()))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">arbol3</span> <span class="p">(</span><span class="nf">construye-arbol</span> <span class="mi">2</span> <span class="o">&#39;</span><span class="p">()))</span>
 </pre></div>
 </td></tr></table>
 
 <p>Y para definir un árbol con 3 hijos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">arbol4</span> <span class="p">(</span><span class="nf">construye-arbol</span> <span class="mi">10</span> <span class="p">(</span><span class="nb">list </span><span class="p">(</span><span class="nf">construye-arbol</span> <span class="mi">2</span> <span class="o">&#39;</span><span class="p">())</span>
                                          <span class="p">(</span><span class="nf">construye-arbol</span> <span class="mi">5</span> <span class="o">&#39;</span><span class="p">())</span> 
                                          <span class="p">(</span><span class="nf">construye-arbol</span> <span class="mi">9</span> <span class="o">&#39;</span><span class="p">())))</span>
 </pre></div>
 </td></tr></table>
-
-<p>El árbol 1 anterior se puede construir con las siguientes llamadas al constructor:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+El árbol 1 anterior se puede construir con las siguientes llamadas al constructor:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">construye-arbol</span> <span class="ss">&#39;+</span> <span class="p">(</span><span class="nb">list </span><span class="p">(</span><span class="nf">construye-arbol</span> <span class="mi">5</span> <span class="o">&#39;</span><span class="p">())</span>
@@ -1212,7 +1208,7 @@ ser vacía) que obtenemos con las funciones <code>dato-arbol</code> e
 de un árbol como la suma del dato de su raíz y lo que devuelva la
 llamada a una función auxiliar que sume los datos de su lista de hijos
 (un bosque):</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma-datos-arbol</span> <span class="nv">arbol</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">dato-arbol</span> <span class="nv">arbol</span><span class="p">)</span>
@@ -1223,7 +1219,7 @@ llamada a una función auxiliar que sume los datos de su lista de hijos
 <p>Esta función suma los datos de <strong>UN</strong> árbol. La podemos utilizar
 entonces para construir la siguiente función que suma una lista de
 árboles:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma-datos-bosque</span> <span class="nv">bosque</span><span class="p">)</span>
@@ -1238,7 +1234,7 @@ entonces para construir la siguiente función que suma una lista de
 la suma de sus hijos, etc. La recursión termina cuando calculamos la
 suma de un árbol hoja. Entonces se pasa a <code>suma-datos-bosque</code> una
 lista vacía y ésta devolverá 0.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">suma-datos-arbol</span> <span class="nv">arbol2</span><span class="p">)</span> <span class="c1">; ⇒ 212</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">suma-datos-arbol</span> <span class="nv">arbol2</span><span class="p">)</span> <span class="c1">; ⇒ 212</span>
 </pre></div>
 </td></tr></table>
 
@@ -1246,7 +1242,7 @@ lista vacía y ésta devolverá 0.</p>
 <p>Al igual que hacíamos con las listas estructuradas, es posible
 conseguir una versión más concisa y elegante utilizando funciones de
 orden superior:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma-datos-arbol-fos</span> <span class="nv">arbol</span><span class="p">)</span>
    <span class="p">(</span><span class="nf">fold-right</span> <span class="nv">+</span> <span class="p">(</span><span class="nf">dato-arbol</span> <span class="nv">arbol</span><span class="p">)</span> 
@@ -1258,7 +1254,7 @@ orden superior:</p>
 cada uno de los árboles de <code>(hijos-arbol arbol)</code>, devolviendo una lista
 de números. Esta lista de número la sumamos haciendo un <code>fold-right +
 0</code>. Una traza de su funcionamiento sería la siguiente:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1275,7 +1271,7 @@ de números. Esta lista de número la sumamos haciendo un <code>fold-right +
 <h4><code>(to-list-arbol arbol)</code></h4>
 <p>Queremos diseñar una función <code>(to-list-arbol arbol)</code> que devuelva una
 lista con los datos del árbol en un recorrido <em>preorden</em>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1302,14 +1298,14 @@ y devuelve la lista <em>preorden</em> de sus nodos. Para ello, concatena la
 lista de los nodos de su primer elemento (el primer árbol) a la lista
 de nodos del resto de árboles (que devuelve la llamada recursiva).</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">to-list-arbol</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">*</span> <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="p">(</span><span class="nb">- </span><span class="p">(</span><span class="mi">12</span><span class="p">))))</span> 
 <span class="c1">; ⇒ (* + 5 * 2 3 10 - 12)</span>
 </pre></div>
 </td></tr></table>
 
 <p>Una definición alternativa usando funciones de orden superior:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">to-list-arbol-fos</span> <span class="nv">arbol</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">cons </span><span class="p">(</span><span class="nf">dato-arbol</span> <span class="nv">arbol</span><span class="p">)</span>
@@ -1327,7 +1323,7 @@ definiendo (¡confía en la recursión!).</p>
 <p>Veamos ahora la función <code>(cuadrado-arbol arbol)</code> que toma un árbol de
 números y devuelve un árbol con la misma estructura y sus datos
 elevados al cuadrado:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1348,14 +1344,14 @@ elevados al cuadrado:</p>
 </td></tr></table>
 
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrado-arbol</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="p">(</span><span class="mi">6</span><span class="p">)))</span> 
 <span class="c1">; ⇒ (4 (9 (16) (25)) (36))</span>
 </pre></div>
 </td></tr></table>
 
 <p>Versión 2, con la función de orden superior <code>map</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">cuadrado-arbol-fos</span> <span class="nv">arbol</span><span class="p">)</span>
    <span class="p">(</span><span class="nf">construye-arbol</span> <span class="p">(</span><span class="nf">cuadrado</span> <span class="p">(</span><span class="nf">dato-arbol</span> <span class="nv">arbol</span><span class="p">))</span>
@@ -1367,7 +1363,7 @@ elevados al cuadrado:</p>
 <p>La función <code>map-arbol</code> es una función de orden superior que generaliza
 la función anterior. Definimos un parámetro adicional en el que se
 pasa la función a aplicar a los elementos del árbol.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1388,7 +1384,7 @@ pasa la función a aplicar a los elementos del árbol.</p>
 </td></tr></table>
 
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">map-arbol</span> <span class="nv">cuadrado</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="p">(</span><span class="mi">6</span><span class="p">)))</span>
@@ -1399,7 +1395,7 @@ pasa la función a aplicar a los elementos del árbol.</p>
 </td></tr></table>
 
 <p>Con <code>map</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">map-arbol-fos</span> <span class="nv">f</span> <span class="nv">arbol</span><span class="p">)</span>
@@ -1414,7 +1410,7 @@ pasa la función a aplicar a los elementos del árbol.</p>
 árbol (el nivel del nodo de mayor nivel). Un nodo hoja tiene de altura
 0.</p>
 <p>Solución 1:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1437,14 +1433,14 @@ pasa la función a aplicar a los elementos del árbol.</p>
 </td></tr></table>
 
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">altura-arbol</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1">;  ⇒ 0</span>
 <span class="p">(</span><span class="nf">altura-arbol</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">9</span> <span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="p">(</span><span class="mi">25</span><span class="p">))</span> <span class="p">(</span><span class="mi">36</span><span class="p">)))</span> <span class="c1">; ⇒ 2</span>
 </pre></div>
 </td></tr></table>
 
 <p>Solución con funciones de orden superior:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1480,13 +1476,13 @@ binario no puede tener más de dos hijos.</p>
 <p>En el caso en que no exista el hijo izquierdo o el derecho (o ambos)
 utilizaremos una lista vacía para indicar un nodo vacío.</p>
 <p>De esta manera, un nodo hoja con el dato 10 se representará en Scheme con la lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span> <span class="p">()</span> <span class="p">())</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span> <span class="p">()</span> <span class="p">())</span>
 </pre></div>
 </td></tr></table>
 
 <p>Por ejemplo, representamos el árbol de la figura anterior con la
 siguiente lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1503,7 +1499,7 @@ siguiente lista:</p>
 binarios. Terminamos todos los nombres de las funciones con el sufijo
 <code>-arbolb</code> (árbol binario).</p>
 <p><strong>Selectores</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1540,7 +1536,7 @@ binarios. Terminamos todos los nombres de las funciones con el sufijo
 </td></tr></table>
 
 <p><strong>Constructor</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">construye-arbolb</span> <span class="nv">dato</span> <span class="nv">hijo-izq</span> <span class="nv">hijo-der</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">list </span><span class="nv">dato</span> <span class="nv">hijo-izq</span> <span class="nv">hijo-der</span><span class="p">))</span>
 </pre></div>
@@ -1549,7 +1545,7 @@ binarios. Terminamos todos los nombres de las funciones con el sufijo
 <p>Por ejemplo, para construir un árbol con 10 en la raíz y 8 en su hijo
 izquierdo y 15 en su derecho utilizando el constructor de la barrera
 de abstracción:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">arbolb1</span>
    <span class="p">(</span><span class="nf">construye-arbolb</span> <span class="mi">10</span> <span class="p">(</span><span class="nf">construye-arbolb</span> <span class="mi">8</span> <span class="nv">arbolb-vacio</span> <span class="nv">arbolb-vacio</span><span class="p">)</span>
@@ -1559,7 +1555,7 @@ de abstracción:</p>
 
 <p>Otro ejemplo, el árbol binario de la figura anterior utilizando el
 constructor de la barrera de abstracción:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1594,7 +1590,7 @@ constructor de la barrera de abstracción:</p>
   árbol manteniendo la estructura del árbol original</li>
 </ul>
 <p><strong>suma-datos-arbolb</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1613,7 +1609,7 @@ constructor de la barrera de abstracción:</p>
 </td></tr></table>
 
 <p><strong>to-list-arbolb</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1632,7 +1628,7 @@ constructor de la barrera de abstracción:</p>
 </td></tr></table>
 
 <p><strong>cuadrado-arbolb</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4

@@ -414,7 +414,7 @@ y devuelve una lista con sus cuadrados.</p>
 <code>cuadrado-lista-iter</code> que es la que implementa propiamente la versión
 iterativa usando recursión por la cola.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrado-lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ (4 9 16 25)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrado-lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ (4 9 16 25)</span>
 </pre></div>
 </td></tr></table>
 
@@ -422,14 +422,14 @@ iterativa usando recursión por la cola.</p>
 lista)</code> que recibe una lista numérica y devuelve el máximo de sus
 elementos.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">max-lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">5</span> <span class="mi">9</span> <span class="mi">12</span> <span class="mi">5</span> <span class="mi">0</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ 12</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">max-lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">5</span> <span class="mi">9</span> <span class="mi">12</span> <span class="mi">5</span> <span class="mi">0</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ 12</span>
 </pre></div>
 </td></tr></table>
 
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
 <p>Implementa <strong>utilizando recursión por la cola</strong> las funciones
 <code>expande-pareja</code> y <code>expande</code> de la práctica 3.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">expande-pareja</span> <span class="p">(</span><span class="nb">cons </span><span class="ss">&#39;a</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ {a a a a}</span>
 <span class="p">(</span><span class="nf">expande</span> <span class="o">&#39;</span><span class="p">((</span><span class="no">#t</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="s">&quot;LPP&quot;</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nf">b</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)))</span>
@@ -443,7 +443,7 @@ lista-parejas)</code> que recibe una lista de parejas <code>{{función
 . argumento} ...}</code> y devuelve la lista con los resultados de aplicar
 cada función al argumento situado en la parte derecha de la pareja.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">aplica-funciones</span> <span class="p">(</span><span class="nb">list </span><span class="p">(</span><span class="nb">cons </span><span class="nv">sqrt</span> <span class="mi">16</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="nv">list</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="nv">even?</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="nv">not</span> <span class="no">#f</span><span class="p">)))</span> 
 <span class="c1">; ⇒ {4 {2} #f #t}</span>
 </pre></div>
@@ -455,7 +455,7 @@ cada función al argumento situado en la parte derecha de la pareja.</p>
 0s y 1s y devuelva el número decimal correspondiente a ese número
 binario.</p>
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">binario-a-decimal</span> <span class="s">&quot;101&quot;</span><span class="p">)</span> <span class="c1">; ⇒ 5</span>
 <span class="p">(</span><span class="nf">binario-a-decimal</span> <span class="s">&quot;101101&quot;</span><span class="p">)</span> <span class="c1">; ⇒ 45</span>
 </pre></div>
@@ -465,7 +465,7 @@ binario.</p>
 <p>b) Implementa, utilizando recursión por la cola, la función
 <code>decimal-a-hexadecimal</code> que recibe un número decimal y devuelve una
 lista con el número hexadecimal correspondiente en forma de cadena:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">decimal-a-hexadecimal</span> <span class="mi">200</span><span class="p">)</span> <span class="c1">; ⇒ &quot;C8&quot;</span>
 <span class="p">(</span><span class="nf">decimal-a-hexadecimal</span> <span class="mi">999</span><span class="p">)</span> <span class="c1">; ⇒ &quot;3E7&quot;</span>
 </pre></div>

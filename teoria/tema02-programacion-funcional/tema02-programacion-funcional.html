@@ -1119,7 +1119,7 @@ estado del programa ni utilizar pasos de ejecución definidos como
 tales.</p>
 <p>El siguiente ejemplo es una <strong>declaración</strong> en Scheme de una función
 que toma como entrada un número y devuelve su cuadrado:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">cuadrado</span> <span class="nv">x</span><span class="p">)</span>
    <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span>
 </pre></div>
@@ -1129,7 +1129,7 @@ que toma como entrada un número y devuelve su cuadrado:</p>
 resultado de evaluar su definición. Debemos pensar que esta evaluación
 se hace de forma instantánea, sin realizar pasos de ejecución ni
 mutación de valores en variables auxiliares.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrado</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; devuelve 16</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrado</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; devuelve 16</span>
 </pre></div>
 </td></tr></table>
 
@@ -1158,7 +1158,7 @@ programación funcional como Haskell, Clojure o el propio Scheme.</p>
 <h5>Pasos de ejecución y mutación</h5>
 <p>El estilo de programación imperativa se basa en pasos de ejecución que
 modifican el estado de variables:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
 <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
 </pre></div>
@@ -1191,7 +1191,7 @@ en los otros identificadores.</p>
 <p>Por ejemplo, lo siguiente es un ejemplo de una <strong>mutación</strong> en
 programación imperativa, en la que se modifican los atributos de un
 objeto en Java:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Point2D</span> <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point2D</span><span class="o">(</span><span class="mf">3.0</span><span class="o">,</span> <span class="mf">2.0</span><span class="o">);</span> <span class="c1">// creamos un punto 2D con coordX=3.0 y coordY=2.0</span>
@@ -1206,7 +1206,7 @@ lateral</strong>
 (<em><a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)">side effect</a></em>)
 en el que el dato guardado en una variable cambia después de una
 sentencia en la que no se ha usado esa variable:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1227,7 +1227,7 @@ existen efectos laterales.</p>
 <p>Por ejemplo, la forma especial <code>define</code> en Scheme crea un nuevo
 identificador y le da el valor definido de forma permanente. Si
 escribimos el siguiente código en un programa en Scheme R6RS:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1240,7 +1240,7 @@ escribimos el siguiente código en un programa en Scheme R6RS:</p>
 </td></tr></table>
 
 <p>tendremos el siguiente error:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">module</span><span class="o">:</span> <span class="n">duplicate</span> <span class="n">definition</span> <span class="k">for</span> <span class="n">identifier</span> <span class="k">in</span><span class="o">:</span> <span class="n">a</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">module</span><span class="o">:</span> <span class="n">duplicate</span> <span class="n">definition</span> <span class="k">for</span> <span class="n">identifier</span> <span class="k">in</span><span class="o">:</span> <span class="n">a</span>
 </pre></div>
 </td></tr></table>
 
@@ -1252,7 +1252,7 @@ escribimos el siguiente código en un programa en Scheme R6RS:</p>
 imperativas y sentencias declarativas. Por ejemplo, en el siguiente
 código Java las líneas 1 y 3 las podríamos considerar declarativas y
 las 2 y 4 imperativas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>1. int x = 1;
@@ -1272,7 +1272,7 @@ la programación orientada a objetos, donde los objetos guardan valores
 que se modifican con la invocaciones a sus métodos.</p>
 <p>Por ejemplo, en Java, podemos definir un contador que incrementa su
 valor: </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1299,7 +1299,7 @@ valor: </p>
 </td></tr></table>
 
 <p>Cada llamada al método <code>valor()</code> devolverá un valor distinto:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Contador</span> <span class="n">cont</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Contador</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
@@ -1310,7 +1310,7 @@ valor: </p>
 </td></tr></table>
 
 <p>También se pueden definir funciones con estado local mutable en C:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1325,7 +1325,7 @@ valor: </p>
 </td></tr></table>
 
 <p>Cada llamada a la función <code>contador()</code> devolverá un valor distinto:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">contador</span><span class="p">()</span> <span class="p">;;</span> <span class="mi">1</span>
 <span class="nf">contador</span><span class="p">()</span> <span class="p">;;</span> <span class="mi">2</span>
@@ -1374,7 +1374,7 @@ principales es que las expresiones se construyen utilizando
 paréntesis.</p>
 <p>Ejemplos de expresiones en Scheme, junto con el resultado de su
 ejecución:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1409,7 +1409,7 @@ sus operandos.</p>
 de dentro a fuera. Por ejemplo, la expresión </p>
 <p><code>(+ (* 2 3) (- 3 (/ 12 3)))</code></p>
 <p>que devuelve 5, se evalúa así:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1437,7 +1437,7 @@ matemáticas: reciben parámetros y devuelven siempre un único resultado
 de operar con esos parámetros.</p>
 <p>Por ejemplo, podemos definir la función <code>(cuadrado x)</code> que devuelve el
 cuadrado de un número que pasamos como parámetro:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">cuadrado</span> <span class="nv">x</span><span class="p">)</span>
    <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span>
 </pre></div>
@@ -1451,14 +1451,14 @@ sino que las funciones siempre se definen con una única expresión cuya
 evaluación es el resultado que se devuelve.</p>
 <p>Una vez definida la función <code>cuadrado</code> podemos usarla de la misma
 forma que las funciones primitivas de Scheme:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrado</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 100</span>
 <span class="p">(</span><span class="nf">cuadrado</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">10</span> <span class="p">(</span><span class="nf">cuadrado</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">4</span><span class="p">))))</span> <span class="c1">; ⇒ 2116</span>
 </pre></div>
 </td></tr></table>
 
 <p>La evaluación de la última expresión se hace de la siguiente forma:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1490,7 +1490,7 @@ forma de expresiones anidadas, unas dentro de otras. Eso crearía una
 función que calcularía bien el resultado, pero que sería muy difícil
 de leer y entender para un compañero (o para nosotros mismos, cuando
 pasen unos meses):</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1523,7 +1523,7 @@ funciones auxiliares. Fíjate que es muy importante también poner los
 nombres correctos a cada función, para entender qué hace. Scheme es un
 lenguaje débilmente tipado y no tenemos la ayuda de los tipos que nos
 dan más contexto de qué es cada parámetro y qué devuelve la función.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1629,7 +1629,7 @@ otros. Aunque se trata de un modelo abstracto, sería posible escribir
 un intérprete que, basándose en este modelo, evalúe expresiones
 funcionales.</p>
 <p>Supongamos un conjunto de definiciones en Scheme:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1653,7 +1653,7 @@ funcionales.</p>
 
 <p>Supongamos que, una vez realizadas esas definiciones, se evalúa la
 siguiente expresión:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">f</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">a</span> <span class="mi">1</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">f</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">a</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
@@ -1710,7 +1710,7 @@ evalúa entonces.</p>
 <p>Veamos cómo se evalúa el mismo ejemplo de ambas formas. Supongamos el
 ejemplo anterior.</p>
 <p>Definiciones:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1733,14 +1733,14 @@ ejemplo anterior.</p>
 </td></tr></table>
 
 <p>Expresión a evaluar:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">f</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">a</span> <span class="mi">1</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">f</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">a</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
 <p>Veamos el resultado de la evaluación usando el <strong>modelo de sustitución
 aplicativo</strong>, aplicando paso a paso las reglas anteriores (en cada
 línea pondremos entre paréntesis la regla que aplicamos):</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1763,7 +1763,7 @@ línea pondremos entre paréntesis la regla que aplicamos):</p>
 </td></tr></table>
 
 <p>Y veamos el resultado de usar el <strong>modelo de sustitución normal</strong>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1803,7 +1803,7 @@ funcional, porque devuelve un valor distinto con el mismo parámetro de
 entrada.</p>
 <p>Evaluamos las siguientes expresiones con orden aplicativo y normal,
 para comprobar que el resultado es distinto</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">zero</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">- </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span>
 <span class="p">(</span><span class="nf">zero</span> <span class="p">(</span><span class="nf">random</span> <span class="mi">10</span><span class="p">))</span>
 </pre></div>
@@ -1841,7 +1841,7 @@ sustitución, al no ser invocaciones de funciones, sino que cada una se
 evalúa de una forma diferente.</p>
 <h4>Forma especial <code>define</code></h4>
 <p><strong>Sintaxis</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">&lt;identificador&gt;</span> <span class="nv">&lt;expresi</span><span class="err">ó</span><span class="nv">n&gt;</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">&lt;identificador&gt;</span> <span class="nv">&lt;expresi</span><span class="err">ó</span><span class="nv">n&gt;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -1851,7 +1851,7 @@ evalúa de una forma diferente.</p>
 <li>Asociar el valor resultante con el <em>identificador</em></li>
 </ol>
 <p><strong>Ejemplo</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">base</span> <span class="mi">10</span><span class="p">)</span>   <span class="c1">; Asociamos a &#39;base&#39; el valor 10</span>
 <span class="p">(</span><span class="k">define </span><span class="nv">altura</span> <span class="mi">12</span><span class="p">)</span> <span class="c1">; Asociamos a &#39;altura&#39; el valor 12</span>
@@ -1861,7 +1861,7 @@ evalúa de una forma diferente.</p>
 
 <h5>Forma especial <code>define</code> para definir funciones</h5>
 <p><strong>Sintaxis</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define (&lt;nombre-funcion&gt; &lt;argumentos&gt;)
     &lt;cuerpo&gt;)
 </pre></div>
@@ -1877,7 +1877,7 @@ de la semántica:</p>
 <li>Dar a la función el nombre <em>nombre-función</em></li>
 </ol>
 <p><strong>Ejemplo</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">factorial</span> <span class="nv">x</span><span class="p">)</span>
@@ -1889,7 +1889,7 @@ de la semántica:</p>
 
 <h4>Forma especial <code>if</code></h4>
 <p><strong>Sintaxis</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">if </span><span class="nv">&lt;condici</span><span class="err">ó</span><span class="nv">n&gt;</span> <span class="nv">&lt;expresi</span><span class="err">ó</span><span class="nv">n-true&gt;</span> <span class="nv">&lt;expresi</span><span class="err">ó</span><span class="nv">n-false&gt;</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">if </span><span class="nv">&lt;condici</span><span class="err">ó</span><span class="nv">n&gt;</span> <span class="nv">&lt;expresi</span><span class="err">ó</span><span class="nv">n-true&gt;</span> <span class="nv">&lt;expresi</span><span class="err">ó</span><span class="nv">n-false&gt;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -1900,7 +1900,7 @@ de la semántica:</p>
    caso, evaluar la <em>expresión-false</em></li>
 </ol>
 <p><strong>Ejemplo</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="mi">10</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="nb">substring </span><span class="s">&quot;Hola qué tal&quot;</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="nb">/ </span><span class="mi">12</span> <span class="mi">0</span><span class="p">))</span>
@@ -1912,7 +1912,7 @@ de la semántica:</p>
 
 <h4>Forma especial <code>cond</code></h4>
 <p><strong>Sintaxis</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1934,7 +1934,7 @@ de la semántica:</p>
    evaluar el consecuente del <code>else</code></li>
 </ol>
 <p><strong>Ejemplo</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1958,7 +1958,7 @@ de la semántica:</p>
 
 <h3 id="forma-especial-quote-y-simbolos">Forma especial <code>quote</code> y símbolos<a class="headerlink" href="#forma-especial-quote-y-simbolos" title="Permanent link">&para;</a></h3>
 <p><strong>Sintaxis</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">quote </span><span class="nv">&lt;identificador&gt;</span><span class="p">)</span>
 <span class="p">(</span><span class="k">quote </span><span class="nv">&lt;expresion&gt;</span><span class="p">)</span>
 </pre></div>
@@ -1972,7 +1972,7 @@ de la semántica:</p>
 <li>Se abrevia en con el carácter <code>'</code>.</li>
 </ul>
 <p><strong>Ejemplo</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">quote </span><span class="nv">x</span><span class="p">)</span> <span class="c1">; el símbolo x</span>
 <span class="ss">&#39;hola</span> <span class="c1">; el símbolo hola</span>
 </pre></div>
@@ -1988,7 +1988,7 @@ caracteres que la forman. Sin embargo, los símbolos son tipos
 atómicos, que se representan en memoria con un único valor determinado
 por el <em>código hash</em> del identificador.</p>
 <p>Ejemplos de funciones Scheme con símbolos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2020,7 +2020,7 @@ por el <em>código hash</em> del identificador.</p>
 dato <em>de primera clase</em>) con la forma especial <code>define</code>.</p>
 <p>Cuando escribimos un símbolo en el prompt de Scheme el intérprete lo
 evalúa y devuelve su valor:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">pi</span> <span class="mf">3.14159</span><span class="p">)</span>
 <span class="nv">pi</span>
@@ -2031,7 +2031,7 @@ evalúa y devuelve su valor:</p>
 <p>Los nombres de las funciones (<code>equal?</code>, <code>sin</code>, <code>+</code>, ...) son también
 símbolos y Scheme también los evalúa (en un par de semanas hablaremos
 de las funciones como objetos primitivos en Scheme):</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nv">sin</span> <span class="c1">; ⇒ #&lt;procedure:sin&gt;</span>
@@ -2043,7 +2043,7 @@ de las funciones como objetos primitivos en Scheme):</p>
 
 <p>Los símbolos son tipos primitivos del lenguaje: pueden pasarse como
 parámetros o ligarse a variables.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">x</span> <span class="ss">&#39;hola</span><span class="p">)</span>
 <span class="nv">x</span> <span class="c1">; ⇒ hola</span>
 </pre></div>
@@ -2063,7 +2063,7 @@ Scheme puede contener cualquier valor, incluyendo otras listas.</p>
 <p>En el seminario de Scheme explicamos que podemos crear listas de forma
 dinámica, llamando a la función <code>list</code> y pasándole un número variable
 de parámetros que son los elementos que se incluirán en la lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ {1 2 3 4}</span>
@@ -2072,11 +2072,10 @@ de parámetros que son los elementos que se incluirán en la lista:</p>
 <span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="mi">2</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="mi">2</span><span class="p">)))</span> <span class="c1">; ⇒ {1 2 6}</span>
 </pre></div>
 </td></tr></table>
-
-<p>Las expresiones interiores se evalúan y se llama a la función <code>list</code>
+Las expresiones interiores se evalúan y se llama a la función <code>list</code>
 con los valores resultantes.</p>
 <p>Otro ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">a</span> <span class="mi">1</span><span class="p">)</span>
@@ -2092,7 +2091,7 @@ la evaluación natural de Scheme y devuelve la expresión que hay a
 continuación sin evaluar. Si esa expresión es compuesta (entre
 paréntesis) se devuelve como una lista, sin evaluar sus elementos</p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2114,7 +2113,7 @@ paréntesis) se devuelve como una lista, sin evaluar sus elementos</p>
 </ul>
 <p>Es posible definir una lista vacía (sin elementos) realizando una
 llamada sin argumentos a la función <code>list</code> o utilizando el símbolo `():</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">list</span><span class="p">)</span> <span class="c1">; ⇒ {}</span>
 <span class="o">`</span><span class="p">()</span> <span class="c1">; ⇒ {}</span>
 </pre></div>
@@ -2128,13 +2127,13 @@ función con los argumentos evaluados. Por ejemplo, en la
 siguiente invocación se obtiene una lista con cuatro elementos
 resultantes de las invocaciones de las funciones dentro del
 paréntesis:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="p">(</span><span class="nb">/ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ {1 2/3 5 {3 . 4}}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="p">(</span><span class="nb">/ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ {1 2/3 5 {3 . 4}}</span>
 </pre></div>
 </td></tr></table>
 
 <p>Sin embargo, usamos <code>quote</code> obtenemos una lista con sublistas
 con símbolos en sus primeras posiciones:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="nb">/ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ {1 {/ 2 3} {+ 2 3} {cons 3 4}}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="nb">/ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ {1 {/ 2 3} {+ 2 3} {cons 3 4}}</span>
 </pre></div>
 </td></tr></table>
 
@@ -2145,7 +2144,7 @@ con símbolos en sus primeras posiciones:</p>
 <li>Resto de elementos: función <code>cdr</code> (los devuelve en forma de lista)</li>
 </ul>
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2166,7 +2165,7 @@ partir de ya existentes con las funciones <code>cons</code> y <code>append</code
 al comienzo de la lista. Esta función es la forma habitual de
 construir nuevas listas a partir de una lista ya existente y un
 nuevo elemento.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ {1 1 2 3 4}</span>
 <span class="p">(</span><span class="nb">cons </span><span class="ss">&#39;hola</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">como</span> <span class="nv">est</span><span class="err">á</span><span class="nv">s</span><span class="p">))</span> <span class="c1">; ⇒ {hola como estás}</span>
@@ -2176,7 +2175,7 @@ nuevo elemento.</p>
 
 <p>La función <code>append</code> se usa para crear una lista nueva resultado de
 concatenar dos o más listas</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">list1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
 <span class="p">(</span><span class="k">define </span><span class="nv">list2</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">hola</span> <span class="nv">como</span> <span class="nv">est</span><span class="err">á</span><span class="nv">s</span><span class="p">))</span>
@@ -2202,7 +2201,7 @@ invocación de la función.</p>
 <p>Por ejemplo, <code>(suma-hasta 5)</code> devolverá <code>0+1+2+3+4+5 = 15</code>.</p>
 <p>La definición de la función es la siguiente (después explicaremos cómo
 la hemos diseñado)</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma-hasta</span> <span class="nv">x</span><span class="p">)</span>
@@ -2231,7 +2230,7 @@ x.</p>
 <p>Siempre es aconsejable usar un ejemplo concreto para probar el caso
 general. Por ejemplo, el caso general de la suma hasta 5 se calcularía
 con la expresión:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">suma-hasta</span> <span class="p">(</span><span class="nb">- </span><span class="mi">5</span> <span class="mi">1</span><span class="p">))</span> <span class="mi">5</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">suma-hasta</span> <span class="p">(</span><span class="nb">- </span><span class="mi">5</span> <span class="mi">1</span><span class="p">))</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -2243,8 +2242,8 @@ terminar el cálculo sumándole el propio número 5.</p>
 <p>```(+ (suma-hasta (- 5 1)) 5) =
 (+ (suma-hasta 4) 5) = (confiamos en la recursión: (suma-hasta 4) = 10)
 (+ 10 5) =
-15</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+15
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2324,14 +2323,13 @@ forma:
 ```scheme
 (suma-hasta x) = (+ (suma-hasta (- x 1)) x)
 </pre></div>
-</td></tr></table>
-
+</td></tr></table></p>
 <p>Nos falta el caso base de la recursión. Debemos preguntarnos <strong>¿cuál
 es el caso más sencillo del problema, que podemos calcular sin hacer
 ninguna llamada recursiva?</strong>. En este caso podría ser el caso en el
 que <code>x</code> es 0, en el que devolveríamos 0.</p>
 <p>Podemos ya escribirlo todo en Scheme:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma-hasta</span> <span class="nv">x</span><span class="p">)</span>
@@ -2344,13 +2342,13 @@ que <code>x</code> es 0, en el que devolveríamos 0.</p>
 <p>Una aclaración sobre el caso general. En la implementación anterior la
 llamada recursiva a <code>suma-hasta</code> se realiza en el primer argumento de
 la suma:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">suma-hasta</span> <span class="p">(</span><span class="nb">- </span><span class="nv">x</span> <span class="mi">1</span><span class="p">))</span> <span class="nv">x</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">suma-hasta</span> <span class="p">(</span><span class="nb">- </span><span class="nv">x</span> <span class="mi">1</span><span class="p">))</span> <span class="nv">x</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p>La expresión anterior es totalmente equivalente a la siguiente
 en la que la llamada recursiva aparece como segundo argumento</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="p">(</span><span class="nf">suma-hasta</span> <span class="p">(</span><span class="nb">- </span><span class="nv">x</span> <span class="mi">1</span><span class="p">)))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="p">(</span><span class="nf">suma-hasta</span> <span class="p">(</span><span class="nb">- </span><span class="nv">x</span> <span class="mi">1</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
@@ -2363,7 +2361,7 @@ transparencia referencial garantiza que el resultado es el mismo.</p>
 char)</code> que devuelva una cadena que empieza en la letra <code>a</code> y termina
 en el carácter que le pasamos como parámetro.</p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">alfabeto-hasta</span> <span class="sc">#\h</span><span class="p">)</span> <span class="c1">; ⇒ &quot;abcdefgh&quot;</span>
 <span class="p">(</span><span class="nf">alfabeto-hasta</span> <span class="sc">#\z</span><span class="p">)</span> <span class="c1">; ⇒ &quot;abcdefghijklmnopqrstuvwxyz&quot;</span>
 </pre></div>
@@ -2377,7 +2375,7 @@ alfabeto)?</p>
 el carácter previo al que nos pasan como parámetro y después nosotros
 añadir ese carácter a la cadena que devuelve la recursión.</p>
 <p>Veamos un ejemplo concreto:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(alfabeto-hasta #\h) = (alfabeto-hasta #\g) + \#h
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(alfabeto-hasta #\h) = (alfabeto-hasta #\g) + \#h
 </pre></div>
 </td></tr></table>
 
@@ -2388,14 +2386,14 @@ añadir ese carácter a la cadena que devuelve la recursión.</p>
 la función <code>string-append</code> para concatenar cadenas y una función
 auxiliar <code>(anterior char)</code> que devuelve el carácter anterior a uno
 dado.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">anterior</span> <span class="nv">char</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">integer-&gt;char </span><span class="p">(</span><span class="nb">- </span><span class="p">(</span><span class="nb">char-&gt;integer </span><span class="nv">char</span><span class="p">)</span> <span class="mi">1</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
 <p>El caso general quedaría como sigue:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">alfabeto-hasta</span> <span class="nv">char</span><span class="p">)</span> <span class="nv">=</span>
     <span class="p">(</span><span class="nb">string-append </span><span class="p">(</span><span class="nf">alfabeto-hasta</span> <span class="p">(</span><span class="nf">anterior</span> <span class="nv">char</span><span class="p">))</span> <span class="p">(</span><span class="nb">string </span><span class="nv">char</span><span class="p">))</span>
 </pre></div>
@@ -2405,7 +2403,7 @@ dado.</p>
 pueden pedir? El caso del alfabeto hasta la <code>#\a</code>. En ese caso basta
 con devolver la cadena <code>"a"</code>.</p>
 <p>La función completa quedaría así:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">alfabeto-hasta</span> <span class="nv">char</span><span class="p">)</span>
@@ -2424,7 +2422,7 @@ sencillos ejemplos y más adelante veremos algunos más complicadas.</p>
 lista-nums)</code> que recibe como parámetro una lista de números y devuelve
 la suma de todos ellos.</p>
 <p>Siempre tenemos que empezar escribiendo un ejemplo de la función:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(suma-lista &#39;(12 3 5 1 8)) = 29
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(suma-lista &#39;(12 3 5 1 8)) = 29
 </pre></div>
 </td></tr></table>
 
@@ -2441,7 +2439,7 @@ con sumarle el primer número de la lista. Lo podemos representar en el
 siguiente dibujo:</p>
 <p><img src="imagenes/suma-lista.png" width="600px"/></p>
 <p>Podemos generalizar este ejemplo y expresarlo en Scheme de la siguiente forma:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(suma-lista lista) = (+ (car lista) (suma-lista (cdr lista)))
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(suma-lista lista) = (+ (car lista) (suma-lista (cdr lista)))
 </pre></div>
 </td></tr></table>
 
@@ -2450,7 +2448,7 @@ devolver un valor sin llamar a la recursión. En este caso, podría ser
 cuando le pesamos a la función una lista sin elementos, en donde hay
 que devolver 0.</p>
 <p>Con todo junto, quedaría la recursión como sigue</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma-lista</span> <span class="nv">lista</span><span class="p">)</span>
@@ -2469,7 +2467,7 @@ aparece el identificador en este resto de la lista. Y después sumamos
 al valor devuelto 1 si el primer elemento de la lista coincide con el
 identificador.</p>
 <p>En Scheme:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(veces lista identificador) = (if (equal? (car lista) identificador)
                                    (+ 1 (veces (cdr lista) identificador))
@@ -2479,7 +2477,7 @@ identificador.</p>
 
 <p>Como caso base, si la lista es vacía devolvemos 0.</p>
 <p>La versión completa:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2501,7 +2499,7 @@ identificador.</p>
 <p>Ya hemos visto en el seminario de Scheme que el tipo de dato compuesto
 más simple es la pareja: una entidad formada por dos elementos. Se
 utiliza la función <code>cons</code> para construirla:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ {1 . 2}</span>
 <span class="p">(</span><span class="k">define </span><span class="nv">c</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
@@ -2518,7 +2516,7 @@ es la forma que el intérprete tiene de imprimir las parejas.</p>
 <p>Una vez construida una pareja, podemos obtener el elemento
 correspondiente a su parte izquierda con la función <code>car</code> y su parte
 derecha con la función <code>cdr</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">c</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>
 <span class="p">(</span><span class="nb">car </span><span class="nv">c</span><span class="p">)</span> <span class="c1">; ⇒ 1</span>
@@ -2529,7 +2527,7 @@ derecha con la función <code>cdr</code>:</p>
 <h5>Definición declarativa</h5>
 <p>Las funciones <code>cons</code>, <code>car</code> y <code>cdr</code> quedan perfectamente definidas con
 las siguientes ecuaciones algebraicas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">car </span><span class="p">(</span><span class="nb">cons </span><span class="nv">x</span> <span class="nv">y</span><span class="p">))</span> <span class="nv">=</span> <span class="nv">x</span>
 <span class="p">(</span><span class="nb">cdr </span><span class="p">(</span><span class="nb">cons </span><span class="nv">x</span> <span class="nv">y</span><span class="p">))</span> <span class="nv">=</span> <span class="nv">y</span>
 </pre></div>
@@ -2544,7 +2542,7 @@ el nombre que se les daba a ciertos registros de la memoria del IBM
 <a href="http://www.iwriteiam.nl/HaCAR_CDR.html">The origin of CAR and CDR in LISP</a>.</p>
 <h4>Función pair?</h4>
 <p>La función <code>pair?</code> nos dice si un objeto es atómico o es una pareja:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">pair? </span><span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
 <span class="p">(</span><span class="nb">pair? </span><span class="p">(</span><span class="nb">cons </span><span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 </pre></div>
@@ -2556,7 +2554,7 @@ tipado</em>. Las funciones pueden devolver y recibir distintos tipos de
 datos.</p>
 <p>Por ejemplo, podríamos definir la siguiente función <code>suma</code> que sume
 tanto números como cadenas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2574,7 +2572,7 @@ función será un número, una cadena o el símbolo <code>'error</code>.</p>
 <p>Sucede lo mismo con el contenido de las parejas. Es posible guardar en
 las parejas cualquier tipo de dato y combinar distintos tipos. Por
 ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">c</span> <span class="p">(</span><span class="nb">cons </span><span class="ss">&#39;hola</span> <span class="no">#f</span><span class="p">))</span>
 <span class="p">(</span><span class="nb">car </span><span class="nv">c</span><span class="p">)</span> <span class="c1">; ⇒ &#39;hola</span>
@@ -2603,14 +2601,14 @@ vez creadas. Lo veremos también más adelante.</p>
 </ul>
 <p>Las parejas son objetos de primera clase.</p>
 <p>Una pareja puede asignarse a una variable:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">p1</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>
 <span class="p">(</span><span class="k">define </span><span class="nv">p2</span> <span class="p">(</span><span class="nb">cons </span><span class="no">#f</span> <span class="s">&quot;hola&quot;</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
 <p>Una pareja puede pasarse como argumento y devolverse en una función:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2624,7 +2622,7 @@ vez creadas. Lo veremos también más adelante.</p>
 
 <p>Una vez definida esta función <code>suma-parejas</code> podríamos ampliar la
 función <code>suma</code> que vimos previamente con este nuevo tipo de datos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2644,7 +2642,7 @@ lo que se denomina la propiedad de clausura de la función <code>cons</code>:</p
 <p>El resultado de un <code>cons</code> puede usarse como parámetro de nuevas llamadas a <code>cons</code>.</p>
 </blockquote>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">p1</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>
 <span class="p">(</span><span class="k">define </span><span class="nv">p2</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
@@ -2653,7 +2651,7 @@ lo que se denomina la propiedad de clausura de la función <code>cons</code>:</p
 </td></tr></table>
 
 <p>Expresión equivalente:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">p</span> <span class="p">(</span><span class="nb">cons </span><span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span>
                 <span class="p">(</span><span class="nb">cons </span><span class="mi">3</span> <span class="mi">4</span><span class="p">)))</span>
 </pre></div>
@@ -2670,7 +2668,7 @@ anidamiento. Por eso utilizamos la siguiente representación:</p>
 <h3 id="diagramas-caja-y-puntero">Diagramas <em>caja-y-puntero</em><a class="headerlink" href="#diagramas-caja-y-puntero" title="Permanent link">&para;</a></h3>
 <p>Al escribir expresiones complicadas con <code>cons</code> anidados es conveniente
 para mejorar su legibilidad utilizar el siguiente formato:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">p</span> <span class="p">(</span><span class="nb">cons </span><span class="p">(</span><span class="nb">cons </span><span class="mi">1</span>
                       <span class="p">(</span><span class="nb">cons </span><span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
@@ -2691,7 +2689,7 @@ el intérprete evalúa <code>p</code> después de haber hecho la sentencia anter
 devuelve la pareja contenida en <code>p</code>, no se crea una pareja nueva.</p>
 <p>Por ejemplo, si después de haber evaluado la sentencia anterior
 evaluamos la siguiente:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">p2</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">5</span> <span class="p">(</span><span class="nb">cons </span><span class="nv">p</span> <span class="mi">6</span><span class="p">)))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">p2</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">5</span> <span class="p">(</span><span class="nb">cons </span><span class="nv">p</span> <span class="mi">6</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
@@ -2714,7 +2712,7 @@ recuperar un determinado dato (pareja o dato atómico) una vez creada
 la estructura.</p>
 <p>La siguiente función <code>print-pareja</code> puede ser útil a la hora de
 mostrar por pantalla los elementos de una pareja</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2749,12 +2747,12 @@ mostrar por pantalla los elementos de una pareja</p>
 <h4>Funciones c????r</h4>
 <p>Al trabajar con estructuras de parejas anidades es muy habitual
 realizar llamadas del tipo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cdr </span><span class="p">(</span><span class="nb">cdr </span><span class="p">(</span><span class="nb">car </span><span class="nv">p</span><span class="p">)))</span> <span class="c1">; ⇒ 4</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cdr </span><span class="p">(</span><span class="nb">cdr </span><span class="p">(</span><span class="nb">car </span><span class="nv">p</span><span class="p">)))</span> <span class="c1">; ⇒ 4</span>
 </pre></div>
 </td></tr></table>
 
 <p>Es equivalente a la función <code>cadar</code> de Scheme:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cddar </span><span class="nv">p</span><span class="p">)</span> <span class="c1">; ⇒ 4</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cddar </span><span class="nv">p</span><span class="p">)</span> <span class="c1">; ⇒ 4</span>
 </pre></div>
 </td></tr></table>
 
@@ -2775,7 +2773,7 @@ que las vistas anteriormente.</p>
 parejas usando las funciones <code>list?</code> y <code>pair?</code>.</p>
 <p>Por ejemplo, una pareja formada por dos números es una pareja, pero no
 es una lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">p1</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>
 <span class="p">(</span><span class="nb">pair? </span><span class="nv">p1</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
@@ -2784,14 +2782,14 @@ es una lista:</p>
 </td></tr></table>
 
 <p>Y una lista vacía es una lista, pero no es una pareja:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list? </span><span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="nb">pair? </span><span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ #f</span>
 </pre></div>
 </td></tr></table>
 
 <p>¿Una lista es una pareja? Pues sí:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
 <span class="p">(</span><span class="nb">list? </span><span class="nv">lista</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
@@ -2801,7 +2799,7 @@ es una lista:</p>
 
 <p>Por último, una pareja con una lista vacía como segundo elemento es
 una pareja y una lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">p1</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="o">&#39;</span><span class="p">()))</span>
 <span class="p">(</span><span class="nb">pair? </span><span class="nv">p1</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
@@ -2820,7 +2818,7 @@ listas y parejas en Scheme (y Lisp). Vamos a explicarlo.</p>
 </ul>
 <p>Por ejemplo, una lista muy sencilla con un solo elemento, <code>{1}</code>, se
 define con la siguiente pareja:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="o">&#39;</span><span class="p">())</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="o">&#39;</span><span class="p">())</span>
 </pre></div>
 </td></tr></table>
 
@@ -2834,7 +2832,7 @@ define con la siguiente pareja:</p>
 <p><em>La lista {1}</em></p>
 <p>El objeto es al mismo tiempo una pareja y una lista. La función
 <code>list?</code> permite comprobar si un objeto es una lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">l</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="o">&#39;</span><span class="p">()))</span>
 <span class="p">(</span><span class="nb">pair? </span><span class="nv">l</span><span class="p">)</span>
@@ -2844,7 +2842,7 @@ define con la siguiente pareja:</p>
 
 <p>Por ejemplo, la lista '(1 2 3 4) se construye con la siguiente
 secuencia de parejas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2868,12 +2866,12 @@ qué las funciones <code>car</code> y <code>cdr</code> nos devuelven el primer e
 resto de la lista.</p>
 <h4>Lista vacía</h4>
 <p>La lista vacía es una lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list? </span><span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ #t</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list? </span><span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ #t</span>
 </pre></div>
 </td></tr></table>
 
 <p>Y no es un símbolo ni una pareja:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">symbol? </span><span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ #f</span>
 <span class="p">(</span><span class="nb">pair? </span><span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ #f</span>
 </pre></div>
@@ -2881,7 +2879,7 @@ resto de la lista.</p>
 
 <p>Para saber si un objeto es la lista vacía, podemos utilizar la función
 <code>null?</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">null? </span><span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ #t</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">null? </span><span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ #t</span>
 </pre></div>
 </td></tr></table>
 
@@ -2890,7 +2888,7 @@ resto de la lista.</p>
 otras parejas.</p>
 <p>La siguiente estructura se denomina <em>lista de asociación</em>. Son listas
 cuyos elementos son parejas (<em>clave</em>, <em>valor</em>):</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list </span><span class="p">(</span><span class="nb">cons </span><span class="ss">&#39;a</span> <span class="mi">1</span><span class="p">)</span>
       <span class="p">(</span><span class="nb">cons </span><span class="ss">&#39;b</span> <span class="mi">2</span><span class="p">)</span>
@@ -2901,7 +2899,7 @@ cuyos elementos son parejas (<em>clave</em>, <em>valor</em>):</p>
 <p>¿Cuál sería el diagrama <em>box and pointer</em> de la estructura anterior?</p>
 <p><img src="imagenes/lista-parejas.png" width="400px"/></p>
 <p>La expresión equivalente utilizando conses es:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons </span><span class="p">(</span><span class="nb">cons </span><span class="ss">&#39;a</span> <span class="mi">1</span><span class="p">)</span>
@@ -2913,12 +2911,12 @@ cuyos elementos son parejas (<em>clave</em>, <em>valor</em>):</p>
 
 <h4>Listas de listas</h4>
 <p>Hemos visto que podemos construir listas que contienen otras listas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">3</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
 <p>La lista anterior también se puede definir con quote:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">3</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
@@ -2926,12 +2924,12 @@ cuyos elementos son parejas (<em>clave</em>, <em>valor</em>):</p>
 son elementos atómicos (números) y el segundo es otra lista.</p>
 <p>Si preguntamos por la longitud de la lista Scheme nos dirá que es una
 lista de 3 elementos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">length </span><span class="nv">lista</span><span class="p">)</span> <span class="c1">; ⇒ 3</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">length </span><span class="nv">lista</span><span class="p">)</span> <span class="c1">; ⇒ 3</span>
 </pre></div>
 </td></tr></table>
 
 <p>Y el segundo elemento de la lista es otra lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">car </span><span class="p">(</span><span class="nb">cdr </span><span class="nv">lista</span><span class="p">))</span> <span class="c1">; ⇒ {1 2 3}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">car </span><span class="p">(</span><span class="nb">cdr </span><span class="nv">lista</span><span class="p">))</span> <span class="c1">; ⇒ {1 2 3}</span>
 </pre></div>
 </td></tr></table>
 
@@ -2959,7 +2957,7 @@ determinado (que puede ser atómico o compuesto).</p>
 <p>Por ejemplo, la lista anterior <code>{1 {1 2 3} 3}</code> es una lista de 3
 elementos. Si queremos obtener su segundo elemento (la lista <code>{1 2
 3}</code>) bastaría con:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">3</span><span class="p">))</span>
 <span class="p">(</span><span class="nb">car </span><span class="p">(</span><span class="nb">cdr </span><span class="nv">lista</span><span class="p">))</span> <span class="p">(</span><span class="nb">list-ref </span><span class="nv">lista</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -2978,7 +2976,7 @@ prefijo <code>mi-</code> en todas ellas:</p>
 <h5>Función <code>mi-list-ref</code></h5>
 <p>La función <code>(mi-list-ref n lista)</code> devuelve el elemento <code>n</code> de una
 lista (empezando a contar por 0):</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span> <span class="nv">d</span> <span class="nv">e</span> <span class="nv">f</span> <span class="nv">g</span><span class="p">))</span>
 <span class="p">(</span><span class="nf">mi-list-ref</span> <span class="nv">lista</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ c</span>
 </pre></div>
@@ -3013,7 +3011,7 @@ recursiva:</p>
 devuelvo el <code>car</code> de la lista</p>
 </blockquote>
 <p>La implementación de todo esto en Scheme sería la siguiente:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">mi-list-ref</span> <span class="nv">lista</span> <span class="nv">n</span><span class="p">)</span>
@@ -3026,14 +3024,14 @@ devuelvo el <code>car</code> de la lista</p>
 <h5>Función <code>list-tail</code></h5>
 <p>La función <code>(mi-list-tail lista n)</code> devuelve la lista resultante de
 quitar n elementos de la lista original:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">mi-list-tail</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ {3 4 5 6 7}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">mi-list-tail</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ {3 4 5 6 7}</span>
 </pre></div>
 </td></tr></table>
 
 <p>Piensa en cómo se implementaría de forma recursiva. Esta vez vamos a
 mostrar directamente la implementación, sin dar explicaciones de cómo
 se ha llegado a ella:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">mi-list-tail</span> <span class="nv">lista</span> <span class="nv">n</span><span class="p">)</span>
@@ -3048,40 +3046,40 @@ se ha llegado a ella:</p>
 <code>append</code> que une dos listas. La llamaremos <code>(mi-append lista1
 lista2)</code>.</p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">mi-append</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">d</span> <span class="nv">e</span> <span class="nv">f</span><span class="p">))</span> <span class="c1">; ⇒ {a b c d e f}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">mi-append</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">d</span> <span class="nv">e</span> <span class="nv">f</span><span class="p">))</span> <span class="c1">; ⇒ {a b c d e f}</span>
 </pre></div>
 </td></tr></table>
 
 <p>Para resolver el problema de forma recursiva, haremos el <code>cdr</code> de la
 primera lista, llamaremos a la recursión para que una el resultado con
 la segunda lista`:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(mi-append (cdr &#39;(a b c)) &#39;(d e f)) =
 (mi-append &#39;(b c) &#39;(d e f) = {b c d e f}
 </pre></div>
 </td></tr></table>
 
 <p>Y añadiremos el primer elemento a la lista resultante usando un <code>cons</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(cons (car &#39;(a b c)) (mi-append (cdr &#39;(a b c)) &#39;(d e f))) =
 (cons &#39;a &#39;(b c d e f)) = {a b c d e f}
 </pre></div>
 </td></tr></table>
 
 <p>En general:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(mi-append lista1 lista2) = (cons (car lista1) (mi-append (cdr lista1) lista2))
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(mi-append lista1 lista2) = (cons (car lista1) (mi-append (cdr lista1) lista2))
 </pre></div>
 </td></tr></table>
 
 <p>El caso base, el caso en el que la función puede devolver un valor
 directamente sin llamar a la recursión, es aquel en el que <code>lista1</code> es
 <code>null?</code>. En ese caso devolvemos <code>lista2</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">mi-append</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">))</span> <span class="nv">=</span> <span class="o">&#39;</span><span class="err">{</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="err">}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">mi-append</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">))</span> <span class="nv">=</span> <span class="o">&#39;</span><span class="err">{</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="err">}</span>
 </pre></div>
 </td></tr></table>
 
 <p>La formulación recursiva completa queda como sigue:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3096,7 +3094,7 @@ directamente sin llamar a la recursión, es aquel en el que <code>lista1</code> 
 <h5>Función <code>mi-reverse</code></h5>
 <p>Veamos cómo implementar de forma recursiva la función <code>mi-reverse</code> que
 invierte una lista</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">mi-reverse</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ {6 5 4 3 2 1}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">mi-reverse</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ {6 5 4 3 2 1}</span>
 </pre></div>
 </td></tr></table>
 
@@ -3107,14 +3105,14 @@ que devuelve ya invertida la llamada recursiva.</p>
 añade un dato al final de una lista usando <code>append</code>:</p>
 <p>Veamos directamente su implementación, usando <code>mi-append</code> para añadir
 un elemento al final de la lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">a</span><span class="err">ñ</span><span class="nv">ade-al-final</span> <span class="nv">dato</span> <span class="nv">lista</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">append </span><span class="nv">lista</span> <span class="p">(</span><span class="nb">list </span><span class="nv">dato</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
 <p>La función <code>mi-reverse</code> quedaría entonces como sigue:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">mi-reverse</span> <span class="nv">lista</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">null? </span><span class="nv">lista</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">()</span>
@@ -3133,7 +3131,7 @@ de x a la lista de los cuadrados hasta x-1</p>
 <p>El caso base de la recursión es el caso en el que x es 1, entonces
 devolvemos una lista formada por el 1.</p>
 <p>En Scheme:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3146,7 +3144,7 @@ devolvemos una lista formada por el 1.</p>
 </td></tr></table>
 
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrados-hasta</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ {100 81 64 49 36 25 16 9 4 1}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrados-hasta</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ {100 81 64 49 36 25 16 9 4 1}</span>
 </pre></div>
 </td></tr></table>
 
@@ -3156,7 +3154,7 @@ elementos, construyendo una lista con los que cumplan una determinada
 condición.</p>
 <p>Por ejemplo, la siguiente función <code>filtra-pares</code> construye una lista
 con los números pares de la lista que le pasamos como parámetro:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3171,7 +3169,7 @@ con los números pares de la lista que le pasamos como parámetro:</p>
 </td></tr></table>
 
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">filtra-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ {2 4 6}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">filtra-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ {2 4 6}</span>
 </pre></div>
 </td></tr></table>
 
@@ -3183,7 +3181,7 @@ función que calcula si un número es primo. La forma de hacerlo será
 calcular la lista de divisores del número y comprobar si su longitud
 es dos. En ese caso será primo.</p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">divisores</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">; ⇒ {1 2 4 8} longitud = 4, no primo</span>
 <span class="p">(</span><span class="nf">divisores</span> <span class="mi">9</span><span class="p">)</span> <span class="c1">; ⇒ {1 3 9} longitud = 3, no primo</span>
@@ -3192,7 +3190,7 @@ es dos. En ese caso será primo.</p>
 </td></tr></table>
 
 <p>Podemos definir entonces la función <code>(primo? x)</code> de la siguiente forma:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">primo?</span> <span class="nv">x</span><span class="p">)</span>
    <span class="p">(</span><span class="nb">= </span> <span class="mi">2</span> 
@@ -3208,7 +3206,7 @@ siguiente forma:</p>
 <li>Filtramos la lista para dejar los divisores de x</li>
 </ol>
 <p>La función <code>(lista-hasta x)</code> devuelve una lista de números 1..x:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">lista-hasta</span> <span class="nv">x</span><span class="p">)</span>
@@ -3219,7 +3217,7 @@ siguiente forma:</p>
 </td></tr></table>
 
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">lista-hasta</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ {1 2}</span>
 <span class="p">(</span><span class="nf">lista-hasta</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ {1 2 3 4 5 6 7 8 9 10}</span>
 </pre></div>
@@ -3227,14 +3225,14 @@ siguiente forma:</p>
 
 <p>Definimos la función <code>(divisor? x y)</code> que nos diga si x es divisor de
 y:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">divisor?</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">)</span>
       <span class="p">(</span><span class="nb">= </span><span class="mi">0</span> <span class="p">(</span><span class="nf">mod</span> <span class="nv">y</span> <span class="nv">x</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">divisor</span> <span class="mi">2</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="nf">divisor</span> <span class="mi">3</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
 </pre></div>
@@ -3244,7 +3242,7 @@ y:</p>
 para definir la función recursiva <code>(filtra-divisores lista x)</code> que
 devuelve una lista con los números de <code>lista</code> que son divisores de
 <code>x</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3261,12 +3259,12 @@ devuelve una lista con los números de <code>lista</code> que son divisores de
 <p>Ya podemos implementar la función que devuelve los divisores de un
 número <code>x</code> generando los números hasta <code>x</code> y filtrando los divisores
 de ese número. Por ejemplo, para calcular los divisores de 10:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">filtra-divisores</span> <span class="err">{</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span> <span class="mi">9</span> <span class="mi">10</span><span class="err">}</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ {1 2 5 10}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">filtra-divisores</span> <span class="err">{</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span> <span class="mi">9</span> <span class="mi">10</span><span class="err">}</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ {1 2 5 10}</span>
 </pre></div>
 </td></tr></table>
 
 <p>Se puede implementar de una forma muy sencilla:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">divisores</span> <span class="nv">x</span><span class="p">)</span>
    <span class="p">(</span><span class="nf">filtra-divisores</span> <span class="p">(</span><span class="nf">lista-hasta</span> <span class="nv">x</span><span class="p">)</span> <span class="nv">x</span><span class="p">))</span>
 </pre></div>
@@ -3285,14 +3283,14 @@ parámetro. Los parámetros antes del punto (si existen) tendrán como
 valores los argumentos usados en la llamada y el resto de argumentos
 se pasarán en forma de lista en el último parámetro.</p>
 <p>Por ejemplo, si tenemos la definición</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">funcion-dos-o-mas-args</span> <span class="nv">x</span> <span class="nv">y</span> <span class="o">.</span> <span class="nv">lista-args</span><span class="p">)</span> 
     <span class="nv">&lt;cuerpo&gt;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p>podemos llamar a la función anterior con dos o más argumentos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">funcion-dos-o-mas-args</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">funcion-dos-o-mas-args</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -3301,14 +3299,14 @@ parámetro <code>lista-args</code> tomará como valor una lista con los argument
 restantes <code>(3 4 5 6)</code>.</p>
 <p>También es posible permitir que todos los argumentos sean opcionales
 no poniendo ningún argumento antes del punto::</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">funcion-cualquier-numero-args</span> <span class="o">.</span> <span class="nv">lista-args</span><span class="p">)</span> 
     <span class="nv">&lt;cuerpo&gt;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p>Si hacemos la llamada</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">funcion-cualquier-numero-args</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">funcion-cualquier-numero-args</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -3319,7 +3317,7 @@ argumentos y después un número variable de argumentos y devuelva la
 suma de todos ellos. Es muy sencillo: recogemos todos los argumentos
 en la lista de argumentos variables y llamamos a la función
 <code>suma-lista</code> que suma una lista de números:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">mi-suma</span> <span class="nv">x</span> <span class="nv">y</span> <span class="o">.</span> <span class="nv">lista-nums</span><span class="p">)</span>
@@ -3376,7 +3374,7 @@ nombre, en Scheme es posible usar una función sin darle un
 nombre mediante esta forma especial.</p>
 <h4>Sintaxis de la forma especial <code>lambda</code></h4>
 <p>La sintaxis de la forma especial <code>lambda</code> es:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(lambda (&lt;arg1&gt; ... &lt;argn&gt;) 
     &lt;cuerpo&gt;)
 </pre></div>
@@ -3387,7 +3385,7 @@ los parámetros necesarios para ejecutar ese bloque de código. Llamamos
 a la función resultante una <em>función anónima</em>.</p>
 <p>Algunos ejemplos:</p>
 <p>Una función anónima que suma dos parejas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">p1</span> <span class="nv">p2</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">cons </span><span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">car </span><span class="nv">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">car </span><span class="nv">p2</span><span class="p">))</span>
@@ -3396,7 +3394,7 @@ a la función resultante una <em>función anónima</em>.</p>
 </td></tr></table>
 
 <p>Una función anónima que devuelve el mayor de dos números:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">a</span> <span class="nv">b</span><span class="p">)</span>
@@ -3411,7 +3409,7 @@ a la función resultante una <em>función anónima</em>.</p>
 anónima en tiempo de ejecución.</p>
 <p>Por ejemplo, si ejecutamos una expresión lambda en el intérprete
 veremos que devuelve un procedimiento:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span> <span class="c1">; ⇒ #&lt;procedure&gt;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span> <span class="c1">; ⇒ #&lt;procedure&gt;</span>
 </pre></div>
 </td></tr></table>
 
@@ -3421,12 +3419,12 @@ cuadrado de un número.</p>
 <p>Podemos asignarlo a un identificador. Por ejemplo, en la siguiente
 expresión, primero se evalúa la <em>expresión lambda</em> y el procedimiento
 resultante se asocia al identificador <code>f</code>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">f</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">)))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">f</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
 <p>El ejemplo anterior funciona de una forma idéntica al siguiente:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">x</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">x</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
@@ -3436,7 +3434,7 @@ devuelve un procedimiento, que se guarda en la variable <code>f</code> y en el
 segundo un número, que se guarda en la variable <code>x</code>.</p>
 <p>Si escribimos los identificadores <code>f</code> y <code>x</code> en el intérprete Scheme los
 evalúa y muestra los valores guardados:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nv">f</span> <span class="c1">; ⇒ #&lt;procedure:f&gt;</span>
 <span class="nv">x</span> <span class="c1">; ⇒ 5</span>
 </pre></div>
@@ -3448,20 +3446,20 @@ de la misma forma; son lo que se denominan datos de primera clase.</p>
 <p>Una vez asignado un procedimiento a un identificador, lo podemos
 utilizar como de la misma forma que invocamos habitualmente a una
 función:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">f</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 9</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">f</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 9</span>
 </pre></div>
 </td></tr></table>
 
 <p>No es necesario un identificador para invocar a una función; podemos
 crear la función con una expresión lambda e invocar a la función
 anónima recién creada:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 9</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 9</span>
 </pre></div>
 </td></tr></table>
 
 <p>La llamada a <code>lambda</code> crea un procedimiento y el paréntesis a su
 izquierda lo invoca con el parámetro 3:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span> <span class="mi">3</span><span class="p">)</span> <span class="nv">=</span> <span class="p">(</span><span class="o">#</span><span class="nv">&lt;procedure&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="err">⇒</span> <span class="mi">9</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span> <span class="mi">3</span><span class="p">)</span> <span class="nv">=</span> <span class="p">(</span><span class="o">#</span><span class="nv">&lt;procedure&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="err">⇒</span> <span class="mi">9</span>
 </pre></div>
 </td></tr></table>
 
@@ -3472,17 +3470,17 @@ invocación.</p>
 lambda. Por ejemplo, las siguientes expresiones crean una función que
 devuelve el cuadrado de un número:</p>
 <p><strong>Java 8</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Integer</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Integer</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">}</span>
 </pre></div>
 </td></tr></table>
 
 <p><strong>Scala</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">(</span><span class="n">x</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">{</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">(</span><span class="n">x</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">{</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">}</span>
 </pre></div>
 </td></tr></table>
 
 <p><strong>Objective C</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">^</span><span class="kt">int</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
@@ -3493,7 +3491,7 @@ devuelve el cuadrado de un número:</p>
 </td></tr></table>
 
 <p><strong>Swift</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span> <span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span> <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="p">}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span> <span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span> <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -3501,7 +3499,7 @@ devuelve el cuadrado de un número:</p>
 <p>Tras conocer <code>lambda</code> ya podemos explicarnos por qué cuando escribimos
 en el intérprete de Scheme el nombre de una función, se evalúa a un
 <em>procedure</em>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nv">+</span> <span class="c1">; ⇒ &lt;procedure:+&gt;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nv">+</span> <span class="c1">; ⇒ &lt;procedure:+&gt;</span>
 </pre></div>
 </td></tr></table>
 
@@ -3510,7 +3508,7 @@ ligado. En Scheme los nombres de las funciones son realmente símbolos
 a los que están ligados <em>objetos de tipo función</em>.</p>
 <p>Podemos asignar funciones ya existentes a nuevos identificadores
 usando <code>define</code>, como en el ejemplo siguiente:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nv">+</span> <span class="c1">; ⇒ &lt;procedure:+&gt;</span>
 <span class="p">(</span><span class="k">define </span><span class="nv">suma</span> <span class="nv">+</span><span class="p">)</span>
@@ -3526,14 +3524,14 @@ asigna a la variable <code>suma</code>. El resultado final es que tanto <code>+<
 <p><img src="imagenes/suma.png" width="100px"/></p>
 <p>La forma especial <code>define</code> para definir una función no es más que
 <em>azucar sintáctico</em>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define (&lt;nombre&gt; &lt;args&gt;)
     &lt;cuerpo&gt;)
 </pre></div>
 </td></tr></table>
 
 <p>siempre se convierte internamente en:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define &lt;nombre&gt; 
     (lambda (&lt;args&gt;)
@@ -3542,14 +3540,14 @@ asigna a la variable <code>suma</code>. El resultado final es que tanto <code>+<
 </td></tr></table>
 
 <p>Por ejemplo</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">cuadrado</span> <span class="nv">x</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
 <p>es equivalente a:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">cuadrado</span> 
     <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">)))</span>
 </pre></div>
@@ -3559,7 +3557,7 @@ asigna a la variable <code>suma</code>. El resultado final es que tanto <code>+<
 <p>Podemos comprobar si algo es una función utilizando el predicado de
 Scheme <code>procedure?</code>.</p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">procedure? </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">)))</span> <span class="c1">; ⇒ #t</span>
@@ -3584,7 +3582,7 @@ tener dos argumentos</p>
 basta con usar <code>func</code> como su nombre. La función se ha ligado al
 nombre <code>func</code> en el momento de la invocación a <code>aplica</code>, de la misma
 forma que los argumentos se ligan a los parámetros <code>x</code> e <code>y</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">aplica</span> <span class="nv">f</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">)</span>
    <span class="p">(</span><span class="nf">f</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">))</span>
 </pre></div>
@@ -3592,7 +3590,7 @@ forma que los argumentos se ligan a los parámetros <code>x</code> e <code>y</co
 
 <p>Algunos ejemplos de invocación, usando funciones primitivas, funciones
 definidas y expresiones lambda:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3617,7 +3615,7 @@ definidas y expresiones lambda:</p>
 <p>Otro ejemplo, la función <code>aplica-2</code> que toma dos funciones <code>f</code> y <code>g</code> y
 un argumento <code>x</code> y devuelve el resultado de aplicar <code>f</code> a lo que
 devuelve la invocación de <code>g</code> con <code>x</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3639,7 +3637,7 @@ devuelve la invocación de <code>g</code> con <code>x</code>:</p>
 <p>La posibilidad de pasar funciones como parámetros de otras es una
 poderosa herramienta de abstracción. Por ejemplo, supongamos que
 queremos calcular el sumatorio de <code>a</code> hasta <code>b</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3655,7 +3653,7 @@ queremos calcular el sumatorio de <code>a</code> hasta <code>b</code>:</p>
 
 <p>Supongamos ahora que queremos calcular el sumatorio de <code>a</code> hasta <code>b</code>
 sumando los números al cuadrado:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3670,7 +3668,7 @@ sumando los números al cuadrado:</p>
 </td></tr></table>
 
 <p>Y el sumatorio de <code>a</code> hasta <code>b</code> sumando los cubos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3700,7 +3698,7 @@ números de la serie. Podemos tomar esa función como un parámetro
 adicional y definir una función genérica <code>sum-f-x</code> que generaliza las
 tres funciones anteriores. Tendríamos el sumatorio desde <code>a</code> hasta <code>b</code>
 de <code>f(x)</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">sum-f-x</span> <span class="nv">f</span> <span class="nv">a</span> <span class="nv">b</span><span class="p">)</span>
@@ -3713,7 +3711,7 @@ de <code>f(x)</code>:</p>
 <p>Las funciones anteriores son casos particulares de esta función que
 las generaliza. Por ejemplo, para calcular el sumatorio desde 1 hasta
 10 de <code>x</code> al cubo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">cubo</span> <span class="nv">x</span><span class="p">)</span>
@@ -3727,7 +3725,7 @@ las generaliza. Por ejemplo, para calcular el sumatorio desde 1 hasta
 <code>sum-f</code> que construya la función que queremos aplicar a cada
 número. Por ejemplo, podemos sumar la expresión (n/(n-1)) para todos
 los números del 2 al 100:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">sum-f-x</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">n</span><span class="p">)</span> <span class="p">(</span><span class="nb">/ </span><span class="nv">n</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span><span class="p">)))</span> <span class="mi">2</span> <span class="mi">100</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">sum-f-x</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">n</span><span class="p">)</span> <span class="p">(</span><span class="nb">/ </span><span class="nv">n</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span><span class="p">)))</span> <span class="mi">2</span> <span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -3755,7 +3753,7 @@ constructora</strong>.</p>
 <p>Vamos a empezar con un ejemplo muy sencillo. Definimos una función
 constructora que crea en su ejecución una función que suma
 <code>k</code> a un número:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">construye-sumador</span> <span class="nv">k</span><span class="p">)</span>
    <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span>
@@ -3769,14 +3767,14 @@ esta expresión lambda y se devuelve el procedimiento creado. </p>
 <p>En este caso se construye otra función de 1 argumento que suma <code>k</code> al
 argumento. </p>
 <p>Por ejemplo, podemos invocar a <code>construye-sumador</code> pasando 10 como parámetro:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">construye-sumador</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; =&gt; #&lt;procedure&gt;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">construye-sumador</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; =&gt; #&lt;procedure&gt;</span>
 </pre></div>
 </td></tr></table>
 
 <p>Como hemos dicho, se devuelve un procedimiento, una función. Esta
 función devuelta debe invocarse con un argumento y devolverá el
 resultado de sumar 10 a ese argumento:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">f</span> <span class="p">(</span><span class="nf">construye-sumador</span> <span class="mi">10</span><span class="p">))</span>
 <span class="p">(</span><span class="nf">f</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; =&gt; 13</span>
 </pre></div>
@@ -3784,14 +3782,14 @@ resultado de sumar 10 a ese argumento:</p>
 
 <p>También podemos invocar directamente a la función que devuelve la
 función constructora, sin guardarla en una variable:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="nf">construye-sumador</span> <span class="mi">10</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; =&gt; 13</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="nf">construye-sumador</span> <span class="mi">10</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; =&gt; 13</span>
 </pre></div>
 </td></tr></table>
 
 <p>Dependiendo del parámetro que le pasemos a la función constructora
 obtendremos una función sumadora que sume un número u otro. Por
 ejemplo para obtener una función sumadora que suma 100:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">g</span> <span class="p">(</span><span class="nf">construye-sumador</span> <span class="mi">100</span><span class="p">))</span>
 <span class="p">(</span><span class="nf">g</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; =&gt; 103</span>
 </pre></div>
@@ -3805,7 +3803,7 @@ tiene en cuenta los ámbitos de las variables.</p>
 <p>No vamos a explicar en detalle este modelo, pero sí dar unas breves
 pinceladas.</p>
 <p>Recordemos la definición de <code>construye-sumador</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">construye-sumador</span> <span class="nv">k</span><span class="p">)</span>
    <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span>
@@ -3814,7 +3812,7 @@ pinceladas.</p>
 </td></tr></table>
 
 <p>Y supongamos que realizamos las siguientes invocaciones:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">g</span> <span class="p">(</span><span class="nf">construye-sumador</span> <span class="mi">100</span><span class="p">))</span>
 <span class="p">(</span><span class="nf">g</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; =&gt; 103</span>
 </pre></div>
@@ -3843,7 +3841,7 @@ utilizar sus variables.</p>
 <p>Otro ejemplo de una función que devuelve otra función es la función
 siguiente <code>(componedor f g)</code> que recibe dos funciones de un argumento
 y devuelve otra función que realiza la composición de ambas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">componedor</span> <span class="nv">f</span> <span class="nv">g</span><span class="p">)</span>
     <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span>
@@ -3857,14 +3855,14 @@ y devuelve otra función que realiza la composición de ambas:</p>
 respectivamente. Podremos entonces llamar a <code>componedor</code> con esas dos
 funciones para construir otra función que primero calcule el cuadrado y
 después el doble de una número:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">h</span> <span class="p">(</span><span class="nf">componendor</span> <span class="nv">doble</span> <span class="nv">cuadrado</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">h</span> <span class="p">(</span><span class="nf">componendor</span> <span class="nv">doble</span> <span class="nv">cuadrado</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
 <p>La variable <code>h</code> contiene la función devuelta por <code>componedor</code>. Una
 función de un argumento que devuelve el doble del cuadrado de un
 número:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">h</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; =&gt; 32</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">h</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; =&gt; 32</span>
 </pre></div>
 </td></tr></table>
 
@@ -3886,7 +3884,7 @@ sólo tengamos que definirlo una vez, al crear la función
 <code>logger</code>. Después llamaremos a la función <code>logger</code> pasándole
 únicamente el mensaje de log.</p>
 <p>Lo podemos hacer con la siguiente función constructora:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">construye-logger</span> <span class="nv">str-prefijo</span><span class="p">)</span>
   <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span>
@@ -3895,7 +3893,7 @@ sólo tengamos que definirlo una vez, al crear la función
 </td></tr></table>
 
 <p>Por ejemplo, definimos distintos loggers y los probamos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3939,7 +3937,7 @@ sólo tengamos que definirlo una vez, al crear la función
 
 <h5>Ejemplo de funciones constructoras para modificar funciones ya construidas</h5>
 <p>Recordemos la función <code>divisores</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3980,7 +3978,7 @@ número negativo entra en un bucle infinito.</p>
 <p>Podemos definir la siguiente función general a la que le pasamos una
 función de un argumento <code>f</code> y devuelve la función f "segura" a la que
 sólo se va a invocar si el parámetro es mayor o igual que 0:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3993,7 +3991,7 @@ sólo se va a invocar si el parámetro es mayor o igual que 0:</p>
 </td></tr></table>
 
 <p>Podemos entonces "segurizar" la función <code>divisores</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">divisores-segura</span> <span class="p">(</span><span class="nf">construye-segura-menor-cero</span> <span class="nv">divisores</span><span class="p">))</span>
 <span class="p">(</span><span class="nf">divisores-segura</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; =&gt; {10 5 2 1}</span>
@@ -4003,7 +4001,7 @@ sólo se va a invocar si el parámetro es mayor o igual que 0:</p>
 
 <p>La función <code>(construye-segura-menor-cero f)</code> se puede aplicar para
 "segurizar" cualquier función, no sólo <code>divisores</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">sqrt-segura</span> <span class="p">(</span><span class="nf">construye-segura-menor-cero</span> <span class="nv">sqrt</span><span class="p">))</span>
 <span class="p">(</span><span class="nf">sqrt-segura</span> <span class="mi">100</span><span class="p">)</span> <span class="c1">; =&gt; 10</span>
@@ -4013,7 +4011,7 @@ sólo se va a invocar si el parámetro es mayor o igual que 0:</p>
 
 <p>Se podría generalizar aún más la función "segurizadora" haciendo que
 la condición a cumplir por el número sea otra función que también pasamos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4027,7 +4025,7 @@ la condición a cumplir por el número sea otra función que también pasamos:</
 
 <p>La forma de definir una función <code>divisores</code> segura con esta nueva
 función sería:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">divisores-segura2</span> <span class="p">(</span><span class="nf">construye-segura</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">&gt;= </span><span class="nv">x</span> <span class="mi">0</span><span class="p">))</span> <span class="nv">divisores</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">divisores-segura2</span> <span class="p">(</span><span class="nf">construye-segura</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">&gt;= </span><span class="nv">x</span> <span class="mi">0</span><span class="p">))</span> <span class="nv">divisores</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
@@ -4036,7 +4034,7 @@ función sería:</p>
 formar parte de tipos de datos compuestos, como listas.</p>
 <p>Para construir una lista de funciones debemos llamar a <code>list</code> con las
 funciones:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="p">(</span><span class="nb">list </span><span class="nv">cuadrado</span> <span class="nv">suma-1</span> <span class="nv">doble</span><span class="p">))</span>
 <span class="nv">lista</span> <span class="c1">; ⇒ {#&lt;procedure:cuadrado&gt;  #&lt;procedure:suma-1&gt;  #&lt;procedure:doble&gt;}</span>
 </pre></div>
@@ -4045,7 +4043,7 @@ funciones:</p>
 <p>También podemos evaluar una expresión lambda y añadir el procedimiento
 resultante. Por ejemplo, para añadir otra función a la lista anterior
 podemos llamar a <code>cons</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista2</span> <span class="p">(</span><span class="nb">cons </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="mi">5</span><span class="p">))</span> <span class="nv">lista</span><span class="p">))</span>
 <span class="nv">lista2</span> <span class="c1">; ⇒ {#&lt;procedure&gt; #&lt;procedure:cuadrado&gt; #&lt;procedure:suma-1&gt; #&lt;procedure:doble&gt;}</span>
 </pre></div>
@@ -4056,7 +4054,7 @@ de ellas?. Debemos tratarlas de la misma forma que tratamos cualquier
 otro dato guardado en la lista, las recuperamos con las funciones
 <code>car</code> o <code>list-ref</code> y las invocamos. Por ejemplo, para invocar a la
 primera función de <code>lista2</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="nb">car </span><span class="nv">lista2</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 15</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="nb">car </span><span class="nv">lista2</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 15</span>
 </pre></div>
 </td></tr></table>
 
@@ -4066,21 +4064,21 @@ recibe una lista de funciones en el parámetro <code>lista-funcs</code> y las
 aplica todas al número que pasamos en el parámetro <code>x</code>.</p>
 <p>Por ejemplo, si construimos una lista con las funciones <code>cuadrado</code>,
 <code>cubo</code> y <code>suma-1</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="p">(</span><span class="nb">list </span><span class="nv">cuadrado</span> <span class="nv">cubo</span> <span class="nv">suma-1</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="p">(</span><span class="nb">list </span><span class="nv">cuadrado</span> <span class="nv">cubo</span> <span class="nv">suma-1</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
 <p>la llamada a <code>(aplica-funcs lista 5)</code> debería devolver el resultado de
 aplicar primero <code>suma-1</code> a 5, después <code>cubo</code> al resultado y después
 <code>cuadrado</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrado</span> <span class="p">(</span><span class="nf">cubo</span> <span class="p">(</span><span class="nf">suma-1</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ 46656</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrado</span> <span class="p">(</span><span class="nf">cubo</span> <span class="p">(</span><span class="nf">suma-1</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ 46656</span>
 </pre></div>
 </td></tr></table>
 
 <p>Para implementar <code>aplica-funcs</code> tenemos que usar una recursión. Si
 vemos el ejemplo, podemos comprobar que es sencillo definir el caso
 general:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(aplica-funcs (cuadrado cubo suma-1) 5) = (cuadrado (aplica-funcs (cubo suma-1) 5))
 = (cuadrado 216) = 46656
 </pre></div>
@@ -4088,13 +4086,13 @@ general:</p>
 
 <p>El caso general de la recursión de la función <code>aplica-funcs</code> se define
 entonces como:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(aplica-funcs lista-funcs x) = ((car lista-funcs) (aplica-funcs (cdr lista-funcs) x))
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(aplica-funcs lista-funcs x) = ((car lista-funcs) (aplica-funcs (cdr lista-funcs) x))
 </pre></div>
 </td></tr></table>
 
 <p>El caso base sería en el que la lista de funciones tiene sólo una
 función:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">null? </span><span class="p">(</span><span class="nb">cdr </span><span class="nv">lista-funcs</span><span class="p">))</span> <span class="c1">; la lista de funciones solo tiene una función</span>
     <span class="p">((</span><span class="nb">car </span><span class="nv">lista-funcs</span><span class="p">)</span> <span class="nv">x</span><span class="p">)</span> <span class="c1">; invocamos a la función con el parámetro x</span>
@@ -4103,7 +4101,7 @@ función:</p>
 </td></tr></table>
 
 <p>La implementación completa es:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4116,7 +4114,7 @@ función:</p>
 </td></tr></table>
 
 <p>Un ejemplo de uso:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista-funcs</span> <span class="p">(</span><span class="nb">list </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span>
@@ -4157,14 +4155,14 @@ características más potentes de la programación funcional.</p>
 una lista aplicando a todos sus elementos una función de
 transformación que se pasa como parámetro.</p>
 <p>En concreto, la función recibe otra función y una lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map </span><span class="nv">funcion</span> <span class="nv">lista</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map </span><span class="nv">funcion</span> <span class="nv">lista</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p>Y devuelve la lista resultante de aplicar la función a todos los
 elementos de la lista.</p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map </span><span class="nv">cuadrado</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ {1 4 9 16 25}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map </span><span class="nv">cuadrado</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ {1 4 9 16 25}</span>
 </pre></div>
 </td></tr></table>
 
@@ -4176,7 +4174,7 @@ la lista original. Por ejemplo, si la lista es una lista de parejas,
 la función de transformación debe recibir una pareja. Veamos un
 ejemplo de este caso, en el que a partir de una lista de parejas
 obtenemos una lista con las sumas de cada pareja:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma-pareja</span> <span class="nv">pareja</span><span class="p">)</span>
@@ -4187,7 +4185,7 @@ obtenemos una lista con las sumas de cada pareja:</p>
 </td></tr></table>
 
 <p>También podríamos hacerlo con una expresión lambda:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">pareja</span><span class="p">)</span>
          <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">car </span><span class="nv">pareja</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">pareja</span><span class="p">)))</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)))</span> 
@@ -4197,7 +4195,7 @@ obtenemos una lista con las sumas de cada pareja:</p>
 
 <p>Un último ejemplo, en el que usamos <code>map</code> para transformar una lista
 de símbolos en una lista con sus longitudes:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">s</span><span class="p">)</span> 
         <span class="p">(</span><span class="nb">string-length </span><span class="p">(</span><span class="nb">symbol-&gt;string </span><span class="nv">s</span><span class="p">)))</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">Esta</span> <span class="nv">es</span> <span class="nv">una</span> <span class="nv">lista</span> <span class="nv">de</span> <span class="nv">s</span><span class="err">í</span><span class="nv">mbolos</span><span class="p">))</span>
@@ -4213,7 +4211,7 @@ de <em>n</em> elementos transformados.</p>
 <h5>Implementación de <code>map</code></h5>
 <p>¿Cómo se podría implementar <code>map</code> de forma recursiva? Definimos la
 función <code>mi-map</code>. La implementación es la siguiente:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4228,7 +4226,7 @@ función <code>mi-map</code>. La implementación es la siguiente:</p>
 <h5>Función <code>map</code> con más de una lista</h5>
 <p>Es posible pasar más de una lista como parámetro de la función
 <code>map</code>. Todas las listas deben tener la misma longitud:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map </span><span class="nv">f</span> <span class="nv">lista-1</span> <span class="o">...</span> <span class="nv">lista-n</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map </span><span class="nv">f</span> <span class="nv">lista-1</span> <span class="o">...</span> <span class="nv">lista-n</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -4237,7 +4235,7 @@ como listas. El resultado es el mismo que antes: la función <code>f</code> coge
 sus argumentos de los elementos de las listas y se devuelve la lista
 con los resultados.</p>
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4255,7 +4253,7 @@ con los resultados.</p>
 y una lista y devuelve como resultado los elementos de la lista que
 cumplen el predicado.</p>
 <p>Un ejemplo de uso:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">filter</span> <span class="nv">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ {2 4 6 8}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">filter</span> <span class="nv">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ {2 4 6 8}</span>
 </pre></div>
 </td></tr></table>
 
@@ -4263,7 +4261,7 @@ cumplen el predicado.</p>
 números, devolviendo aquellas que parejas que cumplen que su parte
 izquierda es mayor o igual que la derecha. Lo podríamos hacer con la
 siguiente expresión:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">filter</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">pareja</span><span class="p">)</span>
             <span class="p">(</span><span class="nb">&gt;= </span><span class="p">(</span><span class="nb">car </span><span class="nv">pareja</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">pareja</span><span class="p">)))</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">10</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">8</span> <span class="o">.</span> <span class="mi">8</span><span class="p">)</span> <span class="p">(</span><span class="mi">10</span> <span class="o">.</span> <span class="mi">20</span><span class="p">)))</span>
@@ -4273,7 +4271,7 @@ siguiente expresión:</p>
 
 <p>Y un último ejemplo: filtramos todos los símbolos con longitud menor
 de 4.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">filter</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">s</span><span class="p">)</span> 
@@ -4291,7 +4289,7 @@ condición.</p>
 </blockquote>
 <h5>Implementación de <code>filter</code></h5>
 <p>Podemos implementar la función <code>filter</code> de forma recursiva:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4309,7 +4307,7 @@ condición.</p>
 <p>La función de orden superior <code>exists</code> recibe un predicado y una lista
 y comprueba si algún elemento de la lista cumple ese predicado.</p>
 <p>Ejemplo de uso:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">exists</span> <span class="nv">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="nf">exists</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span>
@@ -4322,7 +4320,7 @@ y comprueba si algún elemento de la lista cumple ese predicado.</p>
 <p>La función de orden superior <code>for-all</code> recibe un predicado y una lista
 y comprueba que todos los elementos de la lista cumplen ese predicado.</p>
 <p>Ejemplo de uso:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">for-all</span> <span class="nv">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="nf">for-all</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span>
@@ -4340,7 +4338,7 @@ de una lista.</p>
 <p>La explicación de su funcionamiento es la siguiente:</p>
 <p>Por ejemplo, supongamos que la función de plegado es una función que
 suma dos valores.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma</span> <span class="nv">dato</span> <span class="nv">resultado</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">+ </span><span class="nv">dato</span> <span class="nv">resultado</span><span class="p">))</span>
 </pre></div>
@@ -4351,7 +4349,7 @@ primer parámetro se va a coger de la lista y el segundo del resultado
 calculado.</p>
 <p>Veamos qué pasa cuando hacemos un <code>fold-right</code> con esta función suma y
 la lista '(1 2 3) y con el número 0 como base:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">fold-right</span> <span class="nv">suma</span> <span class="mi">0</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; =&gt; 6</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">fold-right</span> <span class="nv">suma</span> <span class="mi">0</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; =&gt; 6</span>
 </pre></div>
 </td></tr></table>
 
@@ -4361,7 +4359,7 @@ lista de derecha a izquierda, empezando por el valor base (0) y el
 utilizándolo como nuevo parámetro <code>resultado</code> en la siguiente llamada.</p>
 <p>En concreto, la secuencia de llamadas a la función <code>suma</code> serán las
 siguientes:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">suma</span> <span class="mi">3</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">; =&gt; 3</span>
 <span class="p">(</span><span class="nf">suma</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; =&gt; 5</span>
@@ -4370,13 +4368,13 @@ siguientes:</p>
 </td></tr></table>
 
 <p>Otro ejemplo de uso:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">fold-right</span> <span class="nv">string-append</span> <span class="s">&quot;****&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;hola&quot;</span> <span class="s">&quot;que&quot;</span> <span class="s">&quot;tal&quot;</span><span class="p">))</span> <span class="c1">; ⇒ &quot;holaquetal****&quot;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">fold-right</span> <span class="nv">string-append</span> <span class="s">&quot;****&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;hola&quot;</span> <span class="s">&quot;que&quot;</span> <span class="s">&quot;tal&quot;</span><span class="p">))</span> <span class="c1">; ⇒ &quot;holaquetal****&quot;</span>
 </pre></div>
 </td></tr></table>
 
 <p>En este caso la secuencia de llamadas a <code>string-append</code> que se van a
 producir son:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">string-append </span><span class="s">&quot;tal&quot;</span> <span class="s">&quot;****&quot;</span><span class="p">)</span> <span class="c1">; =&gt; &quot;tal****&quot;</span>
 <span class="p">(</span><span class="nb">string-append </span><span class="s">&quot;que&quot;</span> <span class="s">&quot;tal****&quot;</span><span class="p">)</span> <span class="c1">; =&gt; &quot;quetal****&quot;</span>
@@ -4385,14 +4383,14 @@ producir son:</p>
 </td></tr></table>
 
 <p>Otros ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">fold-right</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span> <span class="nv">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">y</span><span class="p">))</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ 40320</span>
 <span class="p">(</span><span class="nf">fold-right</span> <span class="nv">cons</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ {1 2 3 4}</span>
 </pre></div>
 </td></tr></table>
 
 <p>Un último ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4410,17 +4408,17 @@ que la secuencia de aplicaciones de la función de plegado se hace de
 izquierda a derecha en lugar de derecha a izquierda.</p>
 <p>La función de plegado también cambia, porque tiene invertidos sus
 argumentos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">f</span> <span class="nv">resultado</span> <span class="nv">dato</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">f</span> <span class="nv">resultado</span> <span class="nv">dato</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">fold-left</span> <span class="nv">-</span> <span class="mi">0</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; =&gt; -6</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">fold-left</span> <span class="nv">-</span> <span class="mi">0</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; =&gt; -6</span>
 </pre></div>
 </td></tr></table>
 
 <p>La secuencia de llamadas a <code>-</code> son:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">- </span><span class="mi">0</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">; =&gt; -1</span>
 <span class="p">(</span><span class="nb">- </span><span class="mi">-1</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; =&gt; -3</span>
@@ -4434,7 +4432,7 @@ Las funciones <code>fold-right</code> o <code>fold-left</code> reciben una lista
 </blockquote>
 <h5>Implementación de <code>fold-right</code> y <code>fold-left</code></h5>
 <p>Podríamos implementar de forma recursiva la función <code>fold-right</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">mi-fold-right</span> <span class="nv">func</span> <span class="nv">base</span> <span class="nv">lista</span><span class="p">)</span>
@@ -4445,7 +4443,7 @@ Las funciones <code>fold-right</code> o <code>fold-left</code> reciben una lista
 </td></tr></table>
 
 <p>Y la función <code>fold-left</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">mi-fold-left</span> <span class="nv">func</span> <span class="nv">base</span> <span class="nv">lista</span><span class="p">)</span>
@@ -4468,7 +4466,7 @@ que se usa esta expresión. Veamos un ejemplo.</p>
 devuelve la lista resultante el resultado de sumar un número <code>n</code> a
 todos los elementos de una lista.</p>
 <p>Podemos hacerlo de forma recursiva:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4481,7 +4479,7 @@ todos los elementos de una lista.</p>
 </td></tr></table>
 
 <p>Funciona de la siguiente manera:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">suma-n</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ (11 12 13 14)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">suma-n</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ (11 12 13 14)</span>
 </pre></div>
 </td></tr></table>
 
@@ -4490,7 +4488,7 @@ todos los elementos de una lista.</p>
 misma función de una forma mucho más concisa y expresiva. </p>
 <p>Lo podemos hacer utilizando la función de orden superior <code>map</code> y una
 expresión lambda que sume el número <code>n</code> a los elementos de la lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma-n</span> <span class="nv">n</span> <span class="nv">lista</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="nv">n</span><span class="p">))</span> <span class="nv">lista</span><span class="p">))</span>
 </pre></div>
@@ -4501,7 +4499,7 @@ lambda. De esta forma la función que se aplica a los elementos de la
 lista es una función que suma este número a cada elemento. La variable
 <code>x</code> en el parámetro de la expresión lambda es la que va tomando el
 valor de los elementos de la lista.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">suma-n</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="k">=&gt; </span><span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="nv">&lt;prodedure-que-suma-10-a-x&gt;</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="nv">=</span>  <span class="p">(</span><span class="mi">11</span> <span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">suma-n</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="k">=&gt; </span><span class="p">(</span><span class="nb">map </span><span class="o">#</span><span class="nv">&lt;prodedure-que-suma-10-a-x&gt;</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="nv">=</span>  <span class="p">(</span><span class="mi">11</span> <span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -4514,7 +4512,7 @@ salida de una haga de entrada de otra.</p>
 después que sume todos los elementos resultantes.</p>
 <p>Lo podríamos hacer reutilizando el código del ejemplo anterior, y
 añadiendo una llamada a <code>fold-right</code> para que haga la suma:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma-n-total</span> <span class="nv">n</span> <span class="nv">lista</span><span class="p">)</span>
    <span class="p">(</span><span class="nf">fold-right</span> <span class="nv">+</span> <span class="mi">0</span>
@@ -4523,14 +4521,14 @@ añadiendo una llamada a <code>fold-right</code> para que haga la suma:</p>
 </td></tr></table>
 
 <p>Funcionaría de la siguiente forma:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">suma-n-total</span> <span class="mi">100</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>  <span class="k">=&gt; </span><span class="mi">410</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">suma-n-total</span> <span class="mi">100</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>  <span class="k">=&gt; </span><span class="mi">410</span>
 </pre></div>
 </td></tr></table>
 
 <p>Otro ejemplo. Supongamos que tenemos una lista de parejas de números y
 queremos contar aquellas parejas cuya suma de ambos números es mayor
 que un umbral (por ejemplo, 10).</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4546,7 +4544,7 @@ que un umbral (por ejemplo, 10).</p>
 a <code>map</code> para realizar la suma de cada pareja junto con una llamada a
 <code>filter</code> que compruebe que el resultado sea mayor de <code>n</code>. Y al final
 llamamos a <code>length</code> para contar la longitud de la lista resultante:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4563,7 +4561,7 @@ llamamos a <code>length</code> para contar la longitud de la lista resultante:</
 <code>(contienen-letra caracter lista-pal)</code> que devuelve las palabras de
 una lista que contienen un determinado carácter.</p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">contienen-letra</span> <span class="sc">#\a</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;En&quot;</span> <span class="s">&quot;un&quot;</span> <span class="s">&quot;lugar&quot;</span> <span class="s">&quot;de&quot;</span> <span class="s">&quot;la&quot;</span> <span class="s">&quot;Mancha&quot;</span><span class="p">))</span> <span class="err">⇒</span> <span class="p">(</span><span class="s">&quot;lugar&quot;</span> <span class="s">&quot;la&quot;</span> <span class="s">&quot;Mancha&quot;</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">contienen-letra</span> <span class="sc">#\a</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;En&quot;</span> <span class="s">&quot;un&quot;</span> <span class="s">&quot;lugar&quot;</span> <span class="s">&quot;de&quot;</span> <span class="s">&quot;la&quot;</span> <span class="s">&quot;Mancha&quot;</span><span class="p">))</span> <span class="err">⇒</span> <span class="p">(</span><span class="s">&quot;lugar&quot;</span> <span class="s">&quot;la&quot;</span> <span class="s">&quot;Mancha&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -4571,7 +4569,7 @@ una lista que contienen un determinado carácter.</p>
 superior <code>filter</code>, con una expresión lambda que se aplicará a cada una
 de las palabras de la lista para comprobar si la palabra contiene el
 carácter:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">contienen-letra</span> <span class="nv">caracter</span> <span class="nv">lista-pal</span><span class="p">)</span>
    <span class="p">(</span><span class="nf">filter</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">pal</span><span class="p">)</span>
@@ -4585,7 +4583,7 @@ caracter pal)</code> comprobará si la cadena contiene el carácter.</p>
 <p>La función <code>(letra-en-pal? caracter pal)</code> es una función auxiliar que
 tenemos que implementar.</p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">letra-en-pal?</span> <span class="sc">#\a</span> <span class="s">&quot;Hola&quot;</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="nf">letra-en-pal?</span> <span class="sc">#\a</span> <span class="s">&quot;Pepe&quot;</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
 </pre></div>
@@ -4594,7 +4592,7 @@ tenemos que implementar.</p>
 <p>La podemos implementar de una forma muy elegante obteniendo una lista
 de caracteres a partir de la cadena y usando la función de orden
 superior <code>exists</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">letra-en-pal?</span> <span class="nv">caracter</span> <span class="nv">palabra</span><span class="p">)</span>
   <span class="p">(</span><span class="nf">exists</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">c</span><span class="p">)</span>
@@ -4607,7 +4605,7 @@ superior <code>exists</code>:</p>
 utilizando una función de orden superior.</p>
 <p>Suponemos que tenemos definidas las funciones <code>(numeros-hasta n)</code> y
 <code>(divisor? x n)</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4624,7 +4622,7 @@ utilizando una función de orden superior.</p>
 </td></tr></table>
 
 <p>Entonces la función <code>(divisores n)</code> se implementaría de la siguiente forma:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">divisores</span> <span class="nv">n</span><span class="p">)</span>
   <span class="p">(</span><span class="nf">filter</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span>

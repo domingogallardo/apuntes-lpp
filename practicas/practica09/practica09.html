@@ -408,48 +408,43 @@ solución debe incluir:</p>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
 <p>a) Indica qué devuelven las siguientes expresiones:</p>
-<p>a.1)</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p>a.1)
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">nums</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
 <span class="n">nums</span><span class="p">.</span><span class="bp">filter</span><span class="p">{</span><span class="nv">$0</span> <span class="o">%</span> <span class="mi">3</span> <span class="p">==</span> <span class="mi">0</span><span class="p">}.</span><span class="bp">count</span>
 </pre></div>
-</td></tr></table>
-
-<p>a.2)</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+</td></tr></table></p>
+<p>a.2)
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">nums2</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
 <span class="n">nums2</span><span class="p">.</span><span class="bp">map</span><span class="p">{</span><span class="nv">$0</span><span class="o">+</span><span class="mi">100</span><span class="p">}.</span><span class="bp">filter</span><span class="p">{</span><span class="nv">$0</span> <span class="o">%</span> <span class="mi">5</span> <span class="p">==</span> <span class="mi">0</span><span class="p">}.</span><span class="bp">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">+</span><span class="p">)</span>
 </pre></div>
-</td></tr></table>
-
-<p>a.3)</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+</td></tr></table></p>
+<p>a.3)
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">cadenas</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;En&quot;</span><span class="p">,</span> <span class="s">&quot;un&quot;</span><span class="p">,</span> <span class="s">&quot;lugar&quot;</span><span class="p">,</span> <span class="s">&quot;de&quot;</span><span class="p">,</span> <span class="s">&quot;La&quot;</span><span class="p">,</span> <span class="s">&quot;Mancha&quot;</span><span class="p">]</span>
 <span class="n">cadenas</span><span class="p">.</span><span class="bp">sorted</span><span class="p">{</span><span class="nv">$0</span><span class="p">.</span><span class="bp">count</span> <span class="o">&lt;</span> <span class="nv">$1</span><span class="p">.</span><span class="bp">count</span><span class="p">}.</span><span class="bp">map</span><span class="p">{</span><span class="nv">$0</span><span class="p">.</span><span class="bp">count</span><span class="p">}</span>
 </pre></div>
-</td></tr></table>
-
-<p>a.4)</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+</td></tr></table></p>
+<p>a.4)
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">cadenas2</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;En&quot;</span><span class="p">,</span> <span class="s">&quot;un&quot;</span><span class="p">,</span> <span class="s">&quot;lugar&quot;</span><span class="p">,</span> <span class="s">&quot;de&quot;</span><span class="p">,</span> <span class="s">&quot;La&quot;</span><span class="p">,</span> <span class="s">&quot;Mancha&quot;</span><span class="p">]</span>
 <span class="n">cadenas2</span><span class="p">.</span><span class="bp">reduce</span><span class="p">([])</span> <span class="p">{(</span><span class="n">res</span><span class="p">:</span> <span class="p">[(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)],</span> <span class="n">c</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)]</span> <span class="k">in</span>
                        <span class="n">res</span> <span class="o">+</span> <span class="p">[(</span><span class="n">c</span><span class="p">,</span> <span class="n">c</span><span class="p">.</span><span class="bp">count</span><span class="p">)]}.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span><span class="nv">$0</span><span class="p">.</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="nv">$1</span><span class="p">.</span><span class="mi">1</span><span class="p">})</span>
 </pre></div>
-</td></tr></table>
-
+</td></tr></table></p>
 <p>b) Explica qué hacen las siguientes funciones y pon un ejemplo de su funcionamiento:</p>
-<p>b.1)</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<p>b.1)
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">f</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">nums</span><span class="p">.</span><span class="bp">filter</span><span class="p">{</span><span class="nv">$0</span> <span class="p">==</span> <span class="n">n</span><span class="p">}.</span><span class="bp">count</span>
 <span class="p">}</span>
 </pre></div>
-</td></tr></table>
-
-<p>b.2)</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+</td></tr></table></p>
+<p>b.2)
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -467,10 +462,9 @@ solución debe incluir:</p>
                     <span class="p">})</span>
 <span class="p">}</span>
 </pre></div>
-</td></tr></table>
-
-<p>b.3)</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+</td></tr></table></p>
+<p>b.3)
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -488,18 +482,17 @@ solución debe incluir:</p>
                         <span class="p">})</span>
 <span class="p">}</span>
 </pre></div>
-</td></tr></table>
-
+</td></tr></table></p>
 <p>c) Implementa las siguientes funciones con funciones de orden superior.</p>
 <p>c.1) Función <code>suma(palabras:contienen:)</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">suma</span><span class="p">(</span><span class="n">palabras</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">],</span> <span class="n">contienen</span><span class="p">:</span> <span class="nb">Character</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">suma</span><span class="p">(</span><span class="n">palabras</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">],</span> <span class="n">contienen</span><span class="p">:</span> <span class="nb">Character</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span>
 </pre></div>
 </td></tr></table>
 
 <p>que recibe una array de cadenas y devuelve la suma de las longitudes
 de las cadenas que contiene el carácter que se pasa como parámetro.</p>
 <p>c.2) Función <code>sumaMenoresMayores(nums:pivote:)</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">sumaMenoresMayores</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">],</span> <span class="n">pivote</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">sumaMenoresMayores</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">],</span> <span class="n">pivote</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -512,7 +505,7 @@ el último ejercicio de la práctica anterior, que tenga como genérico
 el tipo de dato que contiene.</p>
 <p>En el siguiente ejemplo vemos cómo debería poderse definir con el
 mismo tipo genérico un árbol de enteros y un árbol de cadenas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">arbolInt</span><span class="p">:</span> <span class="n">Arbol</span> <span class="p">=</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">53</span><span class="p">,</span> <span class="p">[.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">[]),</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">[]),</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">41</span><span class="p">,</span> <span class="p">[.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span> <span class="p">[]),</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">39</span><span class="p">,</span> <span class="p">[])])])</span>
 <span class="kd">let</span> <span class="nv">arbolString</span><span class="p">:</span> <span class="n">Arbol</span> <span class="p">=</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Zamora&quot;</span><span class="p">,</span> <span class="p">[.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Buendía&quot;</span><span class="p">,</span> <span class="p">[.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Albeza&quot;</span><span class="p">,</span> <span class="p">[]),</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Berenguer&quot;</span><span class="p">,</span> <span class="p">[]),</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Bolardo&quot;</span><span class="p">,</span> <span class="p">[])]),</span> 
@@ -525,7 +518,7 @@ los componentes del árbol usando un recorrido <em>preorden</em> (primero la
 raíz y después los hijos). La primera la debes implementar con
 recursión mutua y la segunda usando funciones de orden superior.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">print</span><span class="p">(</span><span class="n">toArray</span><span class="p">(</span><span class="n">arbol</span><span class="p">:</span> <span class="n">arbolInt</span><span class="p">))</span>
@@ -557,7 +550,7 @@ parcial 3 para aprobar la asignatura en la convocatoria de Junio
 <p><strong>AYUDA:</strong></p>
 <p>Para que los listados se muestren formateados con espacios, puedes usar la siguiente
 función (para ello también debes incluir el import que se indica)</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -580,7 +573,7 @@ función (para ello también debes incluir el import que se indica)</p>
 </td></tr></table>
 
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -601,7 +594,7 @@ función (para ello también debes incluir el import que se indica)</p>
 </td></tr></table>
 
 <p>Algunos de los listados que se deben mostrar serían los siguientes:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -671,14 +664,14 @@ Loli        3.00       1.25     2.19    3
 <p>Dado el array <code>listaAlumnos</code> del ejercicio anterior, utiliza funciones
 de orden superior para obtener los datos requeridos en cada caso</p>
 <p>A) Número de alumnos que han aprobado primer parcial y suspendido el segundo</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">print</span><span class="p">(</span><span class="n">listaAlumnos</span><span class="p">.</span> <span class="n">________________________________</span> <span class="p">)</span>
 <span class="c1">// Resultado: 5</span>
 </pre></div>
 </td></tr></table>
 
 <p>B) Nota que deben tener en el parcial 3 para sacar un 5 en la nota final</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">print</span><span class="p">(</span><span class="n">listaAlumnos</span><span class="p">.</span><span class="n">_______________________________</span> <span class="p">)</span>
@@ -689,7 +682,7 @@ de orden superior para obtener los datos requeridos en cada caso</p>
 </td></tr></table>
 
 <p>C) Nota media de todos los alumnos en forma de tupla <code>(media_p1, media_p2, media_cuest)</code></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nv">tupla</span> <span class="p">=</span> <span class="n">listaAlumnos</span><span class="p">.</span><span class="n">_____________________________________</span> <span class="p">)</span>
@@ -705,7 +698,7 @@ de orden superior para obtener los datos requeridos en cada caso</p>
 sobre una tupla y una lista de tuplas y devuelve el resultado de aplicar
 esa expresión matemática sobre cada una de las tuplas de la lista.</p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -745,7 +738,7 @@ cada una de las partes.</p>
 <p>a) En primer lugar debes implementar la función <code>parse(exp:)</code> que analice la cadena y
 la transforme en una tupla de dos operandos y una operación, siendo
 éstos los siguientes tipos enumerados:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -772,7 +765,7 @@ la transforme en una tupla de dos operandos y una operación, siendo
 </td></tr></table>
 
 <p>La función <code>parse(exp:)</code> tiene el siguiente perfil:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">parse</span><span class="p">(</span><span class="n">exp</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="n">op1</span><span class="p">:</span> <span class="n">Operando</span><span class="p">,</span> <span class="n">op2</span><span class="p">:</span> <span class="n">Operando</span><span class="p">,</span> <span class="n">op</span><span class="p">:</span> <span class="n">Operacion</span><span class="p">)?</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">parse</span><span class="p">(</span><span class="n">exp</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="n">op1</span><span class="p">:</span> <span class="n">Operando</span><span class="p">,</span> <span class="n">op2</span><span class="p">:</span> <span class="n">Operando</span><span class="p">,</span> <span class="n">op</span><span class="p">:</span> <span class="n">Operacion</span><span class="p">)?</span>
 </pre></div>
 </td></tr></table>
 
@@ -780,12 +773,12 @@ la transforme en una tupla de dos operandos y una operación, siendo
 función. </p>
 <p><strong>AYUDA</strong>: </p>
 <p>Para construir un array con las palabras que aparecen en la frase, puedes usar la siguiente sentencia:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">arrayPalabras</span> <span class="p">=</span> <span class="n">frase</span><span class="p">.</span><span class="bp">split</span><span class="p">(</span><span class="n">separator</span><span class="p">:</span> <span class="s">&quot; &quot;</span><span class="p">).</span><span class="bp">map</span><span class="p">(</span><span class="nb">String</span><span class="p">.</span><span class="kd">init</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">arrayPalabras</span> <span class="p">=</span> <span class="n">frase</span><span class="p">.</span><span class="bp">split</span><span class="p">(</span><span class="n">separator</span><span class="p">:</span> <span class="s">&quot; &quot;</span><span class="p">).</span><span class="bp">map</span><span class="p">(</span><span class="nb">String</span><span class="p">.</span><span class="kd">init</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -804,7 +797,7 @@ función. </p>
 la expresión matemática y devuelve una clausura que aplica la
 expresión matemática a una tupla.</p>
 <p>La función tiene el siguiente perfil:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">construyeFunc</span><span class="p">(</span><span class="n">op1</span><span class="p">:</span> <span class="n">Operando</span><span class="p">,</span> <span class="n">op2</span><span class="p">:</span> <span class="n">Operando</span><span class="p">,</span> <span class="n">op</span><span class="p">:</span> <span class="n">Operacion</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">((</span><span class="nb">Double</span><span class="p">,</span> <span class="nb">Double</span><span class="p">))</span> <span class="p">-&gt;</span> <span class="nb">Double</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">construyeFunc</span><span class="p">(</span><span class="n">op1</span><span class="p">:</span> <span class="n">Operando</span><span class="p">,</span> <span class="n">op2</span><span class="p">:</span> <span class="n">Operando</span><span class="p">,</span> <span class="n">op</span><span class="p">:</span> <span class="n">Operacion</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">((</span><span class="nb">Double</span><span class="p">,</span> <span class="nb">Double</span><span class="p">))</span> <span class="p">-&gt;</span> <span class="nb">Double</span>
 </pre></div>
 </td></tr></table>
 
@@ -830,7 +823,7 @@ concretas con todas las posibles combinaciones de tuplas y operadores.
 
 <p>c) Por último debes implementar la función <code>calcular(exp:sobre:)</code> con
 el siguiente perfil:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">calcular</span><span class="p">(</span><span class="n">exp</span> <span class="n">str</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">sobre</span> <span class="n">tuplas</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="p">(</span><span class="nb">Double</span><span class="p">,</span> <span class="nb">Double</span><span class="p">)</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="nb">Double</span><span class="p">]?</span> 
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">calcular</span><span class="p">(</span><span class="n">exp</span> <span class="n">str</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">sobre</span> <span class="n">tuplas</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="p">(</span><span class="nb">Double</span><span class="p">,</span> <span class="nb">Double</span><span class="p">)</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="nb">Double</span><span class="p">]?</span> 
 </pre></div>
 </td></tr></table>
 

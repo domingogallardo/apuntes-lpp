@@ -415,7 +415,7 @@ sobre árboles.</p>
 genérico y escribe <strong>utilizando las funciones de la barrera de
 abstracción de árboles</strong> una expresión que devuelva el número 10.</p>
 <p><img src="imagenes/arbol.png" width="400px"/></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define arbol &#39;(_________))
 (check-equal? __________ 10)
 </pre></div>
@@ -423,7 +423,7 @@ abstracción de árboles</strong> una expresión que devuelva el número 10.</p>
 
 <p>a.2) Las funciones que suman los datos de un árbol utilizando
 recursión mutua y que hemos visto en teoría son las siguientes:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -445,7 +445,7 @@ recursión mutua y que hemos visto en teoría son las siguientes:</p>
 
 <p>Si realizamos la siguiente llamada a la función <code>suma-datos-bosque</code>,
 siendo <code>arbol</code> el definido en el apartado anterior:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">suma-datos-bosque</span> <span class="p">(</span><span class="nf">hijos-arbol</span> <span class="nv">arbol</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">suma-datos-bosque</span> <span class="p">(</span><span class="nf">hijos-arbol</span> <span class="nv">arbol</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
@@ -458,7 +458,7 @@ siendo <code>arbol</code> el definido en el apartado anterior:</p>
 fichero de la práctica.</p>
 <p>a.3) La función de orden superior que hemos visto en teoría y que
 realiza también la suma de los datos de un árbol es:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma-datos-arbol-fos</span> <span class="nv">arbol</span><span class="p">)</span>
    <span class="p">(</span><span class="nf">fold-right</span> <span class="nv">+</span> <span class="p">(</span><span class="nf">dato-arbol</span> <span class="nv">arbol</span><span class="p">)</span> 
@@ -468,7 +468,7 @@ realiza también la suma de los datos de un árbol es:</p>
 
 <p>Si realizamos la siguiente llamada a la función, siendo <code>arbol</code> el
 definido en el apartado anterior:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">suma-datos-arbol-fos</span> <span class="nv">arbol</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">suma-datos-arbol-fos</span> <span class="nv">arbol</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -483,7 +483,7 @@ definido en el apartado anterior:</p>
 binario y escribe <strong>utilizando las funciones de la barrera de
 abstracción de árboles binarios</strong> una expresión que devuelva el número 29.</p>
 <p><img src="imagenes/arbol-binario.png" width="230px"/></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define arbolb &#39;(_________))
 (check-equal? __________ 29)
 </pre></div>
@@ -496,7 +496,7 @@ concatenar todos los símbolos en recorrido preorden. Debes implementar
 una versión con recursión mutua y otra (llamada <code>to-string-arbol-fos</code>)
 con una única función en la que se use funciones de orden superior.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">arbol2</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="p">(</span><span class="nf">b</span> <span class="p">(</span><span class="nf">c</span> <span class="p">(</span><span class="nf">d</span><span class="p">))</span> <span class="p">(</span><span class="nf">e</span><span class="p">))</span> <span class="p">(</span><span class="nf">f</span><span class="p">)))</span>
 <span class="p">(</span><span class="nf">to-string-arbol</span> <span class="nv">arbol2</span><span class="p">)</span> <span class="err">⇒</span> <span class="s">&quot;abcdef&quot;</span>
 </pre></div>
@@ -519,7 +519,7 @@ un hijo (el único) es mayor que la propia raíz. </p>
 árbol cumple las condiciones anteriores. Puedes usar FOS, recursión
 mutua y/o funciones auxiliares.</p>
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -537,7 +537,7 @@ los valores a y b y devuelve una pareja con el número de veces que
 aparece a y el número de veces que aparece b. Debe recorrerse el árbol
 una única vez. Los valores a y b siempre serán distintos. Puedes usar
 recursión o funciones de orden superior.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">arbol</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span><span class="p">))))</span>
@@ -556,7 +556,7 @@ pero la lista <code>'(a b)</code> no.</p>
 <p><img src="imagenes/es-camino.png" width="300px"/></p>
 <p>Ejemplos: suponiendo que <code>arbol</code> es el árbol definido por la figura
 anterior:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">es-camino?</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">a</span><span class="p">)</span> <span class="nv">arbol</span><span class="p">)</span> <span class="err">⇒</span> <span class="no">#t</span>
 <span class="p">(</span><span class="nf">es-camino?</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span><span class="p">)</span> <span class="nv">arbol</span><span class="p">)</span> <span class="err">⇒</span> <span class="no">#f</span>
@@ -569,7 +569,7 @@ y un árbol genérico y devuelva una lista con todos los nodos que se
 encuentran en ese nivel.</p>
 <p><img src="imagenes/nodos-nivel.png" width="250px"/></p>
 <p>Ejemplos, suponiendo que <code>arbol</code> es el árbol definido por la figura anterior:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">nodos-nivel</span> <span class="mi">0</span> <span class="nv">arbol</span><span class="p">)</span> <span class="err">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -583,7 +583,7 @@ encuentran en ese nivel.</p>
 <p>a) Define la función <code>(pertenece? dato arbolb)</code> que recibe un dato y
 un árbol binario ordenado y que busque <strong>eficientemente</strong> el dato (realizando
 el menor recorrido posible) en el árbol binario ordenado.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -620,7 +620,7 @@ menor y mayor número respectivamente de un árbol binario.</p>
 <p>Implementa la función <code>(camino-b-tree b-tree camino)</code> que devuelva una
 lista con los datos recogidos por el camino.</p>
 <p><img src="imagenes/arbol-binario2.png" width="250px"/></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">camino-b-tree</span> <span class="nv">b-tree</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">=</span> <span class="nv">&lt;</span> <span class="nv">&lt;</span> <span class="nv">=</span> <span class="nv">&gt;</span> <span class="nv">=</span><span class="p">))</span> <span class="err">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">9</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span>
 <span class="p">(</span><span class="nf">camino-b-tree</span> <span class="nv">b-tree</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">&gt;</span> <span class="nv">=</span> <span class="nv">&lt;</span> <span class="nv">&lt;</span> <span class="nv">=</span><span class="p">))</span> <span class="err">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">15</span> <span class="mi">10</span><span class="p">)</span>
 </pre></div>

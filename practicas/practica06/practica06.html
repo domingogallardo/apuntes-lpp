@@ -417,7 +417,7 @@ solución debe incluir:</p>
 <p>a) Escribe la lista estructurada correspondiente a la siguiente
 representación gráfica por niveles, y escribe una única expresión que
 devuelva el elemento 'h</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -435,7 +435,7 @@ devuelva el elemento 'h</p>
 </pre></div>
 </td></tr></table>
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista-a</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">________</span><span class="p">))</span>
 <span class="p">(</span><span class="nf">check-equal?</span> <span class="nv">_________</span> <span class="ss">&#39;h</span><span class="p">)</span>
 </pre></div>
@@ -444,7 +444,7 @@ devuelva el elemento 'h</p>
 <p>b) Escribe la lista estructurada correspondiente a la siguiente
 representación gráfica por niveles, y escribe una única expresión que
 devuelva el elemento 10</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -460,7 +460,7 @@ devuelva el elemento 10</p>
 </pre></div>
 </td></tr></table>
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista-b</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">________</span><span class="p">))</span>
 <span class="p">(</span><span class="nf">check-equal?</span> <span class="nv">_______</span> <span class="mi">10</span><span class="p">)</span>
 </pre></div>
@@ -470,7 +470,7 @@ devuelva el elemento 10</p>
 <p>a) Define la función recursiva <code>(cuenta-pares lista)</code> que recibe una
 lista estructurada y cuenta la cantidad de números pares que contiene</p>
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuenta-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span> <span class="p">(</span><span class="mi">5</span> <span class="mi">6</span><span class="p">)))</span> <span class="c1">; ⇒ 3</span>
 <span class="p">(</span><span class="nf">cuenta-pares</span> <span class="o">&#39;</span><span class="p">(((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="mi">5</span><span class="p">)</span> <span class="p">((((</span><span class="mi">6</span><span class="p">))))))</span> <span class="c1">; ⇒ 3</span>
 </pre></div>
@@ -483,7 +483,7 @@ orden superior.</p>
 una lista con todos los elementos de lista estructurada que cumplen un
 predicado.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cumplen-predicado</span> <span class="nv">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)))</span> <span class="p">(</span><span class="mi">5</span> <span class="mi">6</span><span class="p">)))</span> <span class="c1">; ⇒ {2 4 6}</span>
 <span class="p">(</span><span class="nf">cumplen-predicado</span> <span class="nv">pair?</span> <span class="o">&#39;</span><span class="p">(((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">5</span><span class="p">)</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ {{1 . 2} {4 . 3}</span>
 </pre></div>
@@ -497,7 +497,7 @@ elem-new)</code> que recibe como argumentos una lista estructurada y dos
 elementos, y devuelve otra lista con la misma estructura, pero en la
 que se ha sustituido las ocurrencias de <code>elem-old</code> por <code>elem-new</code>.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">sustituye-elem</span>  <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="p">(</span><span class="nf">c</span> <span class="nv">d</span> <span class="p">(</span><span class="nf">e</span> <span class="nv">c</span><span class="p">))</span> <span class="nv">c</span> <span class="p">(</span><span class="nf">f</span> <span class="p">(</span><span class="nf">c</span><span class="p">)</span> <span class="nv">g</span><span class="p">))</span>  <span class="ss">&#39;c</span>  <span class="ss">&#39;h</span><span class="p">)</span>
 <span class="err">⇒</span> <span class="err">{</span><span class="nv">a</span> <span class="nv">b</span> <span class="err">{</span><span class="nv">h</span> <span class="nv">d</span> <span class="err">{</span><span class="nv">e</span> <span class="nv">h</span><span class="err">}}</span> <span class="nv">h</span> <span class="err">{</span><span class="nv">f</span> <span class="err">{</span><span class="nv">h</span><span class="err">}</span> <span class="nv">g</span><span class="err">}}</span>
 </pre></div>
@@ -509,7 +509,7 @@ argumentos dos listas estructuradas con la misma estructura, pero con
 diferentes elementos, y devuelva una lista de parejas que contenga los
 elementos que son diferentes.</p>
 <p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -527,7 +527,7 @@ elementos que son diferentes.</p>
 una lista estructurada y un número que indica un nivel, y devuelve el
 número de hojas que hay por debajo de ese nivel. Puedes hacerlo con
 recursión o con funciones de orden superior.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuenta-hojas-debajo-nivel</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span> <span class="mi">2</span> <span class="p">(</span><span class="mi">4</span> <span class="mi">6</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">8</span> <span class="mi">7</span><span class="p">)</span> <span class="mi">12</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ 4</span>
 <span class="p">(</span><span class="nf">cuenta-hojas-debajo-nivel</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span> <span class="mi">2</span> <span class="p">(</span><span class="mi">4</span> <span class="mi">6</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">8</span> <span class="mi">7</span><span class="p">)</span> <span class="mi">12</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 0</span>
 </pre></div>
@@ -539,7 +539,7 @@ izquierda es el elemento que se encuentra a mayor nivel y la parte
 derecha el nivel en el que se encuentra. Puedes definir alguna
 función auxiliar si lo necesitas. Puedes hacerlo con
 recursión o con funciones de orden superior.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">nivel-elemento</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span><span class="p">)))</span> <span class="c1">;⇒ (3 . 2)</span>
 <span class="p">(</span><span class="nf">nivel-elemento</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)((((((</span><span class="mi">5</span><span class="p">)))</span> <span class="mi">6</span><span class="p">))</span> <span class="mi">7</span><span class="p">))</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ (5 . 8)</span>
 </pre></div>

@@ -336,7 +336,7 @@ una parte de su ejecución se denomina <strong>contexto</strong> o <strong>entor
 <h4>Variables de ámbito global</h4>
 <p>Una variable definida en el programa con la instrucción <code>define</code> tiene
 un ámbito global.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define a &quot;hola&quot;)
 (define b (string-append &quot;adios&quot; a))
@@ -356,7 +356,7 @@ estos parámetros como variables de ámbito local de la función.</p>
 en el entorno global. Cuando se ejecute el código de la función se
 evaluará la variable de ámbito local.</p>
 <p>Por ejemplo, supongamos las expresiones:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -378,7 +378,7 @@ global. Por ejemplo, en la siguiente expresión, una vez realizada la
 invocación a <code>(suma-3 12)</code> se devuelve el número 15 y se evalúa en el
 entorno global la expresión <code>(+ 15 x)</code>. En este contexto la variable
 <code>x</code> vale 5 por lo que la expresión devuelve 20.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -394,7 +394,7 @@ entorno global la expresión <code>(+ 15 x)</code>. En este contexto la variable
 
 <p>En el entorno local también se pueden utilizar variables definidas en
 el entorno global. Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -416,7 +416,7 @@ usa su definición de ámbito global.</p>
 <p>En Scheme se define la forma especial let que permite crear un entorno
 local en el que se da valor a variables y se evalúa una expresión.</p>
 <p>Sintaxis:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">&lt;var1&gt;</span> <span class="nv">&lt;exp-1&gt;</span><span class="p">)</span>
@@ -429,7 +429,7 @@ local en el que se da valor a variables y se evalúa una expresión.</p>
 <p>Las variables <code>var1</code>, … <code>varn</code> toman los valores devueltos por las
 expresiones <code>exp1</code>, … <code>expn</code> y el cuerpo se evalúa con esos valores.</p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -448,7 +448,7 @@ expresiones <code>exp1</code>, … <code>expn</code> y el cuerpo se evalúa con 
 <h4>El ámbito de las variables definidas en el let es local</h4>
 <p>Las variables definidas en el <code>let</code> sólo tienen valores en el entorno
 creado por la forma especial.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -466,7 +466,7 @@ creado por la forma especial.</p>
 
 <p>Cuando ha terminado la evaluación del <code>let</code> el ámbito local desaparece
 y quedan los valores definidos en el ámbito global.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nv">x</span> <span class="err">⇒</span> <span class="mi">5</span>
 <span class="nv">y</span> <span class="err">⇒</span> <span class="nv">error,</span> <span class="nv">no</span> <span class="nv">definida</span>
 </pre></div>
@@ -477,7 +477,7 @@ y quedan los valores definidos en el ámbito global.</p>
 por el <code>let</code> se puede usar las variables del entorno en el que se está
 ejecutando el <code>let</code>. Por ejemplo, en el siguiente código se usa la
 variable z definida en el ámbito global.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -493,7 +493,7 @@ variable z definida en el ámbito global.</p>
 <p>Las expresiones que dan valor a las variables del <code>let</code> se evalúan
 todas en el entorno en el que se ejecuta el <code>let</code>, antes de crear las
 variables locales.  No se realiza una asignación secuencial:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">x</span> <span class="mi">1</span><span class="p">)</span>
@@ -515,12 +515,12 @@ variables locales.  No se realiza una asignación secuencial:</p>
 <h5>Let se define utilizando lambda</h5>
 <p>La semántica anterior queda clara cuando comprobamos que let se puede
 definir en función de lambda. En general, la expresión:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">&lt;var1&gt;</span> <span class="nv">&lt;exp1&gt;</span><span class="p">)</span> <span class="o">...</span> <span class="p">(</span><span class="nf">&lt;varn&gt;</span> <span class="nv">&lt;expn&gt;</span><span class="p">))</span> <span class="nv">&lt;cuerpo&gt;</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">let </span><span class="p">((</span><span class="nf">&lt;var1&gt;</span> <span class="nv">&lt;exp1&gt;</span><span class="p">)</span> <span class="o">...</span> <span class="p">(</span><span class="nf">&lt;varn&gt;</span> <span class="nv">&lt;expn&gt;</span><span class="p">))</span> <span class="nv">&lt;cuerpo&gt;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p>se puede implementar con la siguiente llamada a lambda:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="k">lambda </span><span class="p">(</span><span class="nf">&lt;var1&gt;</span> <span class="o">...</span> <span class="nv">&lt;varn&gt;</span><span class="p">)</span> <span class="nv">&lt;cuerpo&gt;</span><span class="p">)</span> <span class="nv">&lt;exp1&gt;</span> <span class="o">...</span> <span class="nv">&lt;expn&gt;</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="k">lambda </span><span class="p">(</span><span class="nf">&lt;var1&gt;</span> <span class="o">...</span> <span class="nv">&lt;varn&gt;</span><span class="p">)</span> <span class="nv">&lt;cuerpo&gt;</span><span class="p">)</span> <span class="nv">&lt;exp1&gt;</span> <span class="o">...</span> <span class="nv">&lt;expn&gt;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -534,7 +534,7 @@ entorno local con los parámetros del procedimiento (las variables del
 <code>let</code>) asociados a los valores, y en este ámbito local se ejecuta el
 cuerpo del procedimiento (el cuerpo del <code>let</code>).</p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(let ((x (+ 2 3))
       (y (+ x 3)))
@@ -543,14 +543,14 @@ cuerpo del procedimiento (el cuerpo del <code>let</code>).</p>
 </td></tr></table>
 
 <p>Equivale a:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span> <span class="nv">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="nv">y</span><span class="p">))</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="mi">3</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span> <span class="nv">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="nv">y</span><span class="p">))</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
 <h4>Let dentro de funciones</h4>
 <p>Podemos usar <code>let</code> en el cuerpo de funciones para crear nuevas
 variables locales, además de los parámetros de la función</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -574,7 +574,7 @@ se evalúa la expresión <code>(+ cuadrado-x cuadrado-y)</code>.</p>
 <p>El uso de <code>let</code> permite aumentar la legibilidad de los programas,
 dando nombre a expresiones:</p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -587,7 +587,7 @@ dando nombre a expresiones:</p>
 </td></tr></table>
 
 <p>Otro ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -610,7 +610,7 @@ crear funciones en tiempo de ejecución con la forma especial <code>lambda</code
 usarlas en su propio código cuando este se invoque posteriormente.</p>
 <p>Veamos un ejemplo. Supongamos que definimos la siguiente función
 <code>(make-sumador k)</code> que devuelve otra función.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -633,7 +633,7 @@ clausura y se crea un nuevo entorno local en el que <code>x</code> (el parámetr
 de la clausura) vale <code>2</code> y en el que se usa la variable <code>k</code> capturada.</p>
 <p>En la invocación anterior <code>(f 2)</code>, cuando se ejecuta la expresión <code>(+
 x k)</code> las variables tienen los siguientes valores:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">x</span><span class="o">:</span> <span class="mi">2</span> <span class="o">(</span><span class="n">variable</span> <span class="n">local</span> <span class="n">de</span> <span class="n">la</span> <span class="n">clausura</span><span class="o">)</span>
 <span class="n">k</span><span class="o">:</span> <span class="mi">10</span> <span class="o">(</span><span class="n">valor</span> <span class="n">capturado</span> <span class="n">del</span> <span class="n">entorno</span> <span class="n">local</span> <span class="n">en</span> <span class="n">el</span> <span class="n">que</span> <span class="n">se</span> <span class="n">cre</span><span class="err">ó</span> <span class="n">la</span> <span class="n">clausura</span>
 </pre></div>
@@ -642,7 +642,7 @@ x k)</code> las variables tienen los siguientes valores:</p>
 <h4>Las variables locales creadas en un <code>let</code> también se capturan en las clausuras</h4>
 <p>Veamos el siguiente ejemplo, en el que creamos una función en un
 entorno local creado por un <code>let</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -677,9 +677,14 @@ entorno local creado por un <code>let</code>:</p>
 <li>
 <p>Con la invocación <code>(h 2)</code> se invoca a la clausura, lo que crea un
    entorno local en el que se encuentran las siguientes variables:</p>
-<p><code>z: 2 (parámetro de la clausura)
-x: 5 (variable local de la función prueba capturada en el momento de creación de la clausura))
-y: 3 (variable local del let capturada en el momento de creación de la clausura)</code></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">z</span><span class="o">:</span> <span class="mi">2</span> <span class="o">(</span><span class="n">par</span><span class="err">á</span><span class="n">metro</span> <span class="n">de</span> <span class="n">la</span> <span class="n">clausura</span><span class="o">)</span>
+<span class="n">x</span><span class="o">:</span> <span class="mi">5</span> <span class="o">(</span><span class="n">variable</span> <span class="n">local</span> <span class="n">de</span> <span class="n">la</span> <span class="n">funci</span><span class="err">ó</span><span class="n">n</span> <span class="n">prueba</span> <span class="n">capturada</span> <span class="n">en</span> <span class="n">el</span> <span class="n">momento</span> <span class="n">de</span> <span class="n">creaci</span><span class="err">ó</span><span class="n">n</span> <span class="n">de</span> <span class="n">la</span> <span class="n">clausura</span><span class="o">))</span>
+<span class="n">y</span><span class="o">:</span> <span class="mi">3</span> <span class="o">(</span><span class="n">variable</span> <span class="n">local</span> <span class="n">del</span> <span class="n">let</span> <span class="n">capturada</span> <span class="n">en</span> <span class="n">el</span> <span class="n">momento</span> <span class="n">de</span> <span class="n">creaci</span><span class="err">ó</span><span class="n">n</span> <span class="n">de</span> <span class="n">la</span> <span class="n">clausura</span><span class="o">)</span>
+</pre></div>
+</td></tr></table>
+
 </li>
 <li>
 <p>En este contexto se ejecuta la expresión <code>(+ x y z)</code>, que devuelve 10.</p>

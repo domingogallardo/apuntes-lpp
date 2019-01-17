@@ -468,20 +468,20 @@ instrucciones correspondientes a tu sistema operativo.</p>
 <h4>Instalación y ejecución de la imagen Swift</h4>
 <p>Una vez instalado Docker, abre un terminal y lanza el siguiente
 comando:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ docker pull swift:4.0.3
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ docker pull swift:4.0.3
 </pre></div>
 </td></tr></table>
 
 <p>El comando descarga la imagen <code>swift:4.0.3</code> a nuestro ordenador. Una
 vez descargada lanzamos el contenedor con el siguiente comando:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ docker run --privileged -it --rm -v &quot;${PWD}:/home&quot; swift:4.0.3 /bin/bash
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ docker run --privileged -it --rm -v &quot;${PWD}:/home&quot; swift:4.0.3 /bin/bash
 </pre></div>
 </td></tr></table>
 
 <p>El contenedor arranca en muy pocos segundos y aparece su prompt,
 indicando que ya estás dentro de él y puedes ejecutar cualquier
 comando linux:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>root@97265a262a58:/# ls
 bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
@@ -490,7 +490,7 @@ root@97265a262a58:/#
 </td></tr></table>
 
 <p>Lanzamos el intérprete de Swift con el comando <code>swift</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -504,7 +504,7 @@ $R0: String = &quot;HOLA&quot;
 
 <p>Una vez hayamos terminado de trabajar podemos salir del intérprete
 de Swift y del contenedor de la siguiente forma:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>3&gt; :quit
 root@97265a262a58:/# exit
 </pre></div>
@@ -525,7 +525,7 @@ cualquier otro editor orientado a programación te puede valer
 <li>Nos movemos en el ordenador anfitrión a un directorio en el que
    trabajaremos con los programas en Swift:</li>
 </ol>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>~ $ cd swift
 ~/swift $ 
 </pre></div>
@@ -536,7 +536,7 @@ cualquier otro editor orientado a programación te puede valer
    <code>holaMundo.swift</code>.</li>
 </ol>
 <p><strong>Fichero <code>holaMundo.swift</code></strong>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -571,7 +571,7 @@ cualquier otro editor orientado a programación te puede valer
 <ol>
 <li>Arrancamos el contenedor swift:</li>
 </ol>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ docker run --privileged -it --rm -v &quot;${PWD}:/home&quot; swift:4.0.3 /bin/bash
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ docker run --privileged -it --rm -v &quot;${PWD}:/home&quot; swift:4.0.3 /bin/bash
 </pre></div>
 </td></tr></table>
 
@@ -580,7 +580,7 @@ cualquier otro editor orientado a programación te puede valer
    al directorio <code>/home</code> (el directorio compartido) y ejecutando el
    comando swift:</li>
 </ol>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>root@3131534ce480:/# cd /home
@@ -604,7 +604,7 @@ El resultado de la suma es = 7
    contenedor se elimine al terminar su ejecución.</p>
 </li>
 </ol>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>root@3131534ce480:~# exit
 exit
@@ -621,7 +621,7 @@ Xcode. Una vez instalado puedes ejecutar Swift desde el terminal.</p>
 <p>Puedes encontrar la información completa en la
 <a href="https://swift.org/download/">web oficial de Apple</a>.</p>
 <p>Brevemente, los pasos son los siguientes:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -674,7 +674,7 @@ continuación. </p>
 <p>La tradición sugiere que el primer programa en un nuevo lenguaje
 debería imprimir las palabras "Hello, world!" en la pantalla. En
 Swift, esto puede hacerse con una única línea:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -696,7 +696,7 @@ es necesario que se conozca en tiempo de compilación el valor de una
 constante, pero debes asignarle un valor exactamente una vez. Esto
 significa que puedes usar constantes para nombrar un valor que
 determinas una vez pero que usas en muchos lugares.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nv">miVariable</span> <span class="p">=</span> <span class="mi">42</span>
 <span class="n">miVariable</span> <span class="p">=</span> <span class="mi">50</span>
@@ -713,7 +713,7 @@ inicial es un entero.</p>
 <p>Si el valor inicial no proporciona información suficiente (o si no hay
 valor inicial), especifica el tipo escribiéndolo después de la
 variable, separándolo por dos puntos.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">implicitoInteger</span> <span class="p">=</span> <span class="mi">70</span>
 <span class="kd">let</span> <span class="nv">implicitoDouble</span> <span class="p">=</span> <span class="mf">70.0</span>
@@ -728,7 +728,7 @@ Crea una constante con el tipo explícito de <code>Float</code> y un valor de 4.
 <p>Los valores nunca se convierten implícitamente a otro tipo. Si
 necesitas convertir un valor a un tipo diferente, construye
 explícitamente una instancia del tipo deseado.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">etiqueta</span> <span class="p">=</span> <span class="s">&quot;El ancho es &quot;</span>
 <span class="kd">let</span> <span class="nv">ancho</span> <span class="p">=</span> <span class="mi">94</span>
@@ -743,7 +743,7 @@ Intenta eliminar la conversión a <code>String</code> en la última línea. ¿Qu
 <p>Hay una forma aún más sencilla de incluir valores en cadenas: escribe
 el valor entre paréntesis, y escribe una barra invertida (<code>\</code>) antes
 de los paréntesis. Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">manzanas</span> <span class="p">=</span> <span class="mi">3</span>
@@ -761,7 +761,7 @@ para incluir el nombre de alguien en un saludo.</p>
 <p>Crea arrays y diccionarios utilizando corchetes (<code>[]</code>), y accede a sus
 elementos escribiendo el índice o la clave en los corchetes. Se
 permite una coma después del último elemento.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -780,7 +780,7 @@ permite una coma después del último elemento.</p>
 </td></tr></table>
 
 <p>Para crear un array o diccionario vacío, usa la sintaxis de inicialización.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">arrayVacio</span> <span class="p">=</span> <span class="p">[</span><span class="nb">String</span><span class="p">]()</span>
 <span class="kd">let</span> <span class="nv">diccionarioVacio</span> <span class="p">=</span> <span class="p">[</span><span class="nb">String</span><span class="p">:</span> <span class="nb">Float</span><span class="p">]()</span>
 </pre></div>
@@ -790,7 +790,7 @@ permite una coma después del último elemento.</p>
 vacío como <code>[]</code> y un diccionario vacío como <code>[:]</code>; por ejemplo, cuando
 estableces un nuevo valor para una variable o pasas un argumento a una
 función.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">listaCompra</span> <span class="p">=</span> <span class="p">[]</span>
 <span class="n">trabajos</span> <span class="p">=</span> <span class="p">[:]</span>
 </pre></div>
@@ -798,21 +798,21 @@ función.</p>
 
 <h4>Tuplas</h4>
 <p>Una tupla agrupa varios valores en un único valor compuesto.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">http404Error</span> <span class="p">=</span> <span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s">&quot;Not Found&quot;</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">http404Error</span> <span class="p">=</span> <span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s">&quot;Not Found&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p>El tipo de la tupla es <code>(Int, String)</code>.</p>
 <p>Para obtener los valores de la tupla podemos <em>descomponerla</em>. Si
 queremos ignorar una parte podemos utilizar un subrrayado (<code>_</code>).</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="p">(</span><span class="n">statusCode</span><span class="p">,</span> <span class="n">statusMensaje</span><span class="p">)</span> <span class="p">=</span> <span class="n">http404Error</span>
 <span class="kd">let</span> <span class="p">(</span><span class="n">soloStatusCode</span><span class="p">,</span> <span class="kc">_</span><span class="p">)</span> <span class="p">=</span> <span class="n">http404Error</span>
 </pre></div>
 </td></tr></table>
 
 <p>También podemos acceder por posición:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">print</span><span class="p">(</span><span class="s">&quot;El código de estado es </span><span class="si">\(</span><span class="n">http404Error</span><span class="p">.</span><span class="mi">0</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">print</span><span class="p">(</span><span class="s">&quot;El código de estado es </span><span class="si">\(</span><span class="n">http404Error</span><span class="p">.</span><span class="mi">0</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -821,7 +821,7 @@ queremos ignorar una parte podemos utilizar un subrrayado (<code>_</code>).</p>
 <code>while</code> y <code>repeat-while</code> para hacer bucles. Los paréntesis alrededor
 de las condiciones o de la variable del bucle son opcionales. Se
 requieren llaves alrededor del cuerpo.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -851,7 +851,7 @@ faltar. Estos valores se representan como opcionales. Un valor
 opcional o bien contiene un valor o contiene <code>nil</code> para indicar que el
 valor falta. Escribe una interrogación (<code>?</code>) después del tipo de un
 valor para marcar el valor como opcional.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -882,7 +882,7 @@ desenvuelto esté disponible dentro del bloque de código.</p>
 <p>Otra forma de manejar valores opcionales es proporcionar un valor por
 defecto usando el operador <code>??</code>. Si falta el valor valor opcional, se
 usa el valor por defecto en su lugar.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">nombrePila</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span>
 <span class="kd">let</span> <span class="nv">nombreCompleto</span><span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;John Appleseed&quot;</span>
@@ -893,7 +893,7 @@ usa el valor por defecto en su lugar.</p>
 <p>Las sentencias <code>switch</code> permiten cualquier tipo de datos y una amplia
 variedad de operaciones de comparación; no están limitados a enteros y
 pruebas de igualdad.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -925,7 +925,7 @@ al final del código de cada caso.</p>
 proporcionando una pareja de nombres para usar en cada pareja
 clave-valor. Los diccionarios son colecciones desordenadas, por lo que
 sus claves y valores se iteran en un orden arbitrario.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -962,7 +962,7 @@ Añade otra variable para seguir qué clase de número es el mayor.</p>
 <p>Usa <code>while</code> para repetir un bloque de código hasta que una condición
 cambie. La condición de un bucle puede estar también al final,
 asegurando que el bucle se ejecuta al menos una vez.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -988,7 +988,7 @@ asegurando que el bucle se ejecuta al menos una vez.</p>
 
 <p>Puedes definir un índice en un bucle usando <code>..&lt;</code> para construir un
 rango de índices.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1006,7 +1006,7 @@ rango de índices.</p>
 <p>Usa <code>func</code> para declarar una función. Usa <code>-&gt;</code> para separar los
 nombres de los parámetros y sus tipos del tipo devuelto de la
 función.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">dia</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
@@ -1025,7 +1025,7 @@ de hoy en el saludo.</p>
 etiquetas de los argumentos. Es posible definir una etiqueta
 escribiéndola antes del nombre del parámetro, o no usar etiqueta
 escribiendo <code>_</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">saluda</span><span class="p">(</span><span class="kc">_</span> <span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">el</span> <span class="n">dia</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
@@ -1036,7 +1036,7 @@ escribiendo <code>_</code>:</p>
 </td></tr></table>
 
 <p>Las funciones pueden devolver cualquier tipo de dato, como tuplas.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1080,7 +1080,7 @@ escribiendo <code>_</code>:</p>
 
 <p>Las funciones también pueden tener un número variable de argumentos,
 agrupándose todos ellos en un array.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1107,7 +1107,7 @@ Escribe una función que calcule la media de sus argumentos.</p>
 <p>Las funciones pueden anidarse. Las funciones pueden acceder variables
 declaradas en la función exterior. Puedes usar funciones anidadas para
 organizar el código en una función que es larga o complicada.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1129,7 +1129,7 @@ organizar el código en una función que es larga o complicada.</p>
 
 <p>Las funciones son un tipo de primera clase. Esto significa que una
 función puede devolver otra función como resultado.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1150,7 +1150,7 @@ función puede devolver otra función como resultado.</p>
 <p>Podemos modificar el ejemplo <code>devuelveQuince</code> para que se devuelva una
 versión modificada de la función <code>suma</code>. Llamamos a la función
 <code>devuelveSuma</code>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1177,7 +1177,7 @@ versión modificada de la función <code>suma</code>. Llamamos a la función
 </td></tr></table>
 
 <p>Una función puede tomar otra función como uno de sus argumentos.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1213,7 +1213,7 @@ incluso si la clausura está en un ámbito distinto cuando se
 ejecuta; ya viste un ejemplo de esto con las funciones
 anidadas. Puedes escribir una clausura rodeando el código con llaves
 (<code>{}</code>). Usa <code>in</code> para separar los argumentos del cuerpo.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1235,7 +1235,7 @@ concisa. Cuando ya se conoce el tipo de una clausura puedes omitir el
 tipo de sus parámetros, el tipo devuelto o ambos. Las clausuras
 escritas en una línea devuelven implícitamente el valor de su única
 sentencia.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">numerosMapeados</span> <span class="p">=</span> <span class="n">numeros</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span> <span class="n">numero</span> <span class="k">in</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">numero</span> <span class="p">})</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">numerosMapeados</span><span class="p">)</span>
 </pre></div>
@@ -1246,7 +1246,7 @@ este enfoque es especialmente útil en clausuras muy cortas. Una
 clausura pasada como último argumento puede aparecer inmediatamente
 después de los paréntesis. Cuando una clausura es el único argumento
 de una función, puedes omitir los paréntesis por completo.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">numerosOrdenados</span> <span class="p">=</span> <span class="n">numeros</span><span class="p">.</span><span class="bp">sorted</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">}</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">numerosOrdenados</span><span class="p">)</span>
 </pre></div>
@@ -1259,7 +1259,7 @@ misma forma que la declaración de una constante o una variable,
 excepto que está en el contexto de una clase. De la misma forma, las
 declaraciones de los métodos se escriben de la misma forma que las
 funciones.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1281,7 +1281,7 @@ tome un argumento.</p>
 <p>Crea una instancia de una clase poniendo paréntesis después del nombre
 de la clase. Usa la sintaxis de punto para acceder a las propiedades y
 los métodos de la instancia.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nv">figura</span> <span class="p">=</span> <span class="n">Figura</span><span class="p">()</span>
 <span class="n">figura</span><span class="p">.</span><span class="n">numeroDeLados</span> <span class="p">=</span> <span class="mi">7</span>
@@ -1292,7 +1292,7 @@ los métodos de la instancia.</p>
 <p>A esta versión de la clase <code>Figura</code> le falta algo importante: un
 inicializador para preparar la clase cuando se crea una instancia. Usa
 <code>init</code> para crear uno.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1335,7 +1335,7 @@ superclase se marcan con <code>override</code>; la sobreescritura de un método
 por accidente, sin <code>override</code>, se detecta por el compilador como un
 error. El compilador también detecta métodos con <code>override</code> que
 realmente no sobreescriben ningún método de la superclase.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1386,7 +1386,7 @@ inicializador. Implementa un método <code>area()</code> y
 </blockquote>
 <p>Además de propiedades simples que se almacenan, las propiedades pueden
 tener un <em>getter</em> y un <em>setter</em>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1458,7 +1458,7 @@ usa <code>willSet</code> y <code>didSet</code>. El código que proporcionas se e
 vez que el valor cambia fuera de un inicializador. Por ejemplo, la
 siguiente clase se asegura de que la longitud del lado de su triángulo
 siempre es la misma que la longitud del lado de su cuadrado.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1509,7 +1509,7 @@ expresión completa es <code>nil</code>. En otro caso, el valor opcional se
 desenvuelve, y todo lo que hay después del <code>?</code> se realiza sobre el
 valor desenvuelto. En ambos casos, el valor de la expresión completa
 es un valor opcional.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">cuadradoOpcional</span><span class="p">:</span> <span class="n">Cuadrado</span><span class="p">?</span> <span class="p">=</span> <span class="n">Cuadrado</span><span class="p">(</span><span class="n">longitudLado</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Cuadrado opcional&quot;</span><span class="p">)</span>
 <span class="kd">let</span> <span class="nv">longitudLado</span> <span class="p">=</span> <span class="n">cuadradoOpcional</span><span class="p">?.</span><span class="n">longitudLado</span>
 </pre></div>
@@ -1518,7 +1518,7 @@ es un valor opcional.</p>
 <h4>Enumeraciones y estructuras</h4>
 <p>Usa <code>enum</code> para crear una enumeración. Como las clases y otros tipos
 con nombre, las enumeraciones pueden tener métodos asociados.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1577,7 +1577,7 @@ flotante como valores brutos de una enumeración. Utiliza la propiedad
 <p>Usa el inicializador para construir un valor de una enumeración a
 través de un valor bruto. Si el valor bruto no existe, el
 inicializador devolverá <code>nil</code>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">if</span> <span class="kd">let</span> <span class="nv">valorConvertido</span> <span class="p">=</span> <span class="n">Valor</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
@@ -1591,7 +1591,7 @@ inicializador devolverá <code>nil</code>.</p>
 nueva de escribir sus valores brutos. De hecho, en los casos en los
 que no hay un valor bruto que tenga sentido, no tienes que
 proporcionar uno.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1651,7 +1651,7 @@ cuando defines la enumeración.</p>
 de la hora de salir el sol y de la hora de ponerse el sol. El servidor
 responde con la información o responde con alguna información de
 error.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1694,7 +1694,7 @@ inicializadores. Una de las diferencias más importantes entre
 estructuras y clases es que las estructuras siempre se copian cuando
 las pasas en tu código, mientras que las clases se pasan por
 referencia.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1721,7 +1721,7 @@ una carta de cada combinación de valor y palo.</p>
 </blockquote>
 <h4>Protocolos y extensiones</h4>
 <p>Usa <code>protocol</code> para declarar un protocolo.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">protocol</span> <span class="nc">ProtocoloEjemplo</span> <span class="p">{</span>
@@ -1732,7 +1732,7 @@ una carta de cada combinación de valor y palo.</p>
 </td></tr></table>
 
 <p>Clases, enumeraciones y estructuras pueden todas adoptar protocolos.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1788,7 +1788,7 @@ métodos nuevos y propiedades calculadas. Puedes utilizar una extensión
 para añadir un cumplimiento de un protocolo a un tipo que se declara
 en otro lugar, o incluso a un tipo que hayas importado de una
 biblioteca o un <em>framework</em>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1809,7 +1809,7 @@ biblioteca o un <em>framework</em>.</p>
 </td></tr></table>
 
 <p>Otro ejemplo usando una función:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1839,7 +1839,7 @@ otro tipo con nombre; por ejemplo, para crear una colección de objetos
 que tienen tipos diferentes pero que cumplen un único
 protocolo. Cuando trabajas con valores cuyo tipo es un tipo de
 protocolo, no están disponibles los métodos fuera del protocolo.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">valorProtocolo</span><span class="p">:</span> <span class="n">ProtocoloEjemplo</span> <span class="p">=</span> <span class="n">a</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">valorProtocolo</span><span class="p">.</span><span class="n">descripcionSencilla</span><span class="p">)</span>
@@ -1855,7 +1855,7 @@ forma adicional al cumplimiento del protocolo.</p>
 <h4>Genéricos</h4>
 <p>Escribe un nombre dentro de paréntesis angulares para construir una
 función o un tipo genérico.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1875,7 +1875,7 @@ función o un tipo genérico.</p>
 
 <p>Puedes hacer formas genéricas de funciones y métodos, así como de
 clases, enumeraciones y estructuras.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1895,7 +1895,7 @@ clases, enumeraciones y estructuras.</p>
 lista de requisitos. Por ejemplo, para requerir el tipo que debe
 implementar un protocolo, para requerir que dos tipos sean los mismos
 o para requerir que una clase tenga una superclase determinada.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4

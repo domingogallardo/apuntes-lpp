@@ -1056,7 +1056,7 @@ estructuras:</p>
   referencia a una instancia de una clase</li>
 </ul>
 <h3 id="definicion">Definición<a class="headerlink" href="#definicion" title="Permanent link">&para;</a></h3>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1070,7 +1070,7 @@ estructuras:</p>
 </pre></div>
 </td></tr></table>
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1121,7 +1121,7 @@ aspectos generales. Para describir una configuración específica (una
 resolución o un modo de vídeo concreto) es necesario crear una
 instancia de una estructura o una clase. La sintaxis para crear ambas
 es similar:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">unasCoordsPantalla</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">()</span>
 <span class="kd">let</span> <span class="nv">unaVentana</span> <span class="p">=</span> <span class="n">Ventana</span><span class="p">()</span>
 </pre></div>
@@ -1137,7 +1137,7 @@ de haberse inicializado, a no ser que la propiedad se un opcional.</p>
 <h3 id="acceso-a-propiedades">Acceso a propiedades<a class="headerlink" href="#acceso-a-propiedades" title="Permanent link">&para;</a></h3>
 <p>Se puede acceder y modificar las propiedades usando la <em>sintaxis de
 punto</em>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1157,7 +1157,7 @@ punto</em>:</p>
 <p>Podemos inicializar las estructuras el <strong>inicializador por defecto</strong>,
 en el que damos valor a todas sus propiedades. En las clases no se
 puede usar esta inicialización por defecto.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">coords</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">(</span><span class="n">posX</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="n">posY</span><span class="p">:</span> <span class="mi">400</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">coords</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">(</span><span class="n">posX</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="n">posY</span><span class="p">:</span> <span class="mi">400</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -1168,7 +1168,7 @@ variable o constante, o cuando se pasa a una función.</p>
 cadenas, arrays y diccionarios- son tipos valor y se implementan como
 estructuras. Las estructuras y las enumeraciones son tipos valor en
 Swift.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1199,7 +1199,7 @@ distintas. Después, la propiedad <code>posX</code> de <code>coords2</code> se a
 cuando se asignan o se pasan a funciones. En su lugar se usa una
 referencia a la misma instancia existente.</p>
 <p>Veamos un ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1238,7 +1238,7 @@ referencias constantes a la instancia de <code>Ventana</code>.</p>
 <p>A diferencia de las clases, una instancia de un <code>struct</code> definida con
 un <code>let</code> define como constantes todas sus propiedades. Por ejemplo, el
 siguiente código generaría un error:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">coords3</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">(</span><span class="n">posX</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span> <span class="n">posY</span><span class="p">:</span> <span class="mi">400</span><span class="p">)</span>
 <span class="n">coords3</span><span class="p">.</span><span class="n">posX</span> <span class="p">=</span> <span class="mi">800</span>
@@ -1254,7 +1254,7 @@ esto, Swift proporciona dos operadores de identidad:</p>
 <li>Idéntico a (<code>===</code>)</li>
 <li>No idéntico a (<code>!==</code>)</li>
 </ul>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">if</span> <span class="n">ventana1</span> <span class="p">===</span> <span class="n">ventana2</span> <span class="p">{</span>
@@ -1348,7 +1348,7 @@ las propiedades almacenadas, tanto variables como constantes.</p>
 <p>El siguiente ejemplo define una estructura llamada <code>RangoLongitudFija</code>
 que describe un rango de valores enteros cuya longitud no puede ser
 modificada una vez que se crea:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1374,7 +1374,7 @@ propiedad constante.</p>
 <p>Si creamos una instancia de una estructura y la asignamos a una
 constante, no podremos modificar las propiedades de la instancia,
 incluso si han sido declaradas como propiedades variables:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">rangoDeCuatroItems</span> <span class="p">=</span> <span class="n">RangoLongitudFija</span><span class="p">(</span><span class="n">primerValor</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">longitud</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
@@ -1399,7 +1399,7 @@ enumeraciones pueden definir <em>propiedades calculadas</em>, que no
 almacenan realmente un valor. En su lugar, proporcionan un <em>getter</em> y
 un opcional <em>setter</em> que devuelven y modifican otras propiedades y
 valores de forma indirecta.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1491,7 +1491,7 @@ originales, y mueve el cuadrado a su nueva posición.</p>
 <p>Se puede definir una versión acortada del <em>setter</em> usando la variable
 por defecto <code>newValue</code> que contiene el nuevo valor asignado en el
 <em>setter</em>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1531,7 +1531,7 @@ usando la sintaxis de punto, pero no puede modificarse a un valor
 distinto.</p>
 <p>Es posible simplificar la declaración de una propiedad calculada de
 solo-lectura eliminando la palabra clave <code>get</code> y sus llaves:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1595,7 +1595,7 @@ hace un seguimiento del número total de pasos que una persona hace al
 caminar. Esta clase puede usarse con datos de entrada de un
 <em>podómetro</em> o cualquier otro sistema de seguir el ejercicio de la
 persona durante sus rutina diaria.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1661,7 +1661,7 @@ para el valor antiguo, sino que usa el nombre por defecto <code>oldValue</code>.
 también están disponibles para variables globales y locales.</p>
 <p>El siguiente ejemplo muestra un ejemplo con una variable calculada a
 partir de otras dos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1737,7 +1737,7 @@ implementación de la superclase.</p>
 <p>Las propiedades del tipo pueden ser también constantes (<code>let</code>) o
 variables (<code>var</code>).</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1783,7 +1783,7 @@ variables (<code>var</code>).</p>
 
 <p>Las propiedades del tipo se consultan y actualizan usando también la
 sintaxis de punto, pero sobre <em>el tipo</em>, no sobre una instancia:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1804,7 +1804,7 @@ sintaxis de punto, pero sobre <em>el tipo</em>, no sobre una instancia:</p>
 </td></tr></table>
 
 <p>Un ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1866,7 +1866,7 @@ instancia existente.</p>
 <p>A continuación podemos ver un ejemplo que define una sencilla clase
 <code>Contador</code>, que puede usarse para contar el número de veces que sucede
 una acción:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -1893,7 +1893,7 @@ una acción:</p>
 </td></tr></table>
 
 <p>Y un ejemplo de uso:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1929,7 +1929,7 @@ expresivo, sin necesidad de nombres largos de métodos o funciones.</p>
 <p>Consideremos por ejemplo esta versión alternativa de la clase
 <code>Contador</code>, que define una forma más compleja del método
 <code>incrementa(en:)</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -1949,7 +1949,7 @@ externo y otro interno. En el cuerpo del método se utiliza el nombre
 interno (<code>cantidad</code>). El segundo parámetro <code>numeroDeVeces</code> es tanto
 nombre externo como interno. Podemos llamar al método de la siguiente
 forma:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">contador</span> <span class="p">=</span> <span class="n">Contador</span><span class="p">()</span>
 <span class="n">contador</span><span class="p">.</span><span class="n">incrementa</span><span class="p">(</span><span class="n">en</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">numeroDeVeces</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
@@ -1967,7 +1967,7 @@ usar la propiedad <code>self</code> para referirnos a la instancia actual dentro
 de sus propios métodos de instancia.</p>
 <p>El método <code>increment()</code> en el ejemplo anterior podría haberse escrito
 de esta forma:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">incrementa</span><span class="p">()</span> <span class="p">{</span>
     <span class="kc">self</span><span class="p">.</span><span class="n">veces</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -1983,7 +1983,7 @@ parámetro. En esta situación el nombre del parámetro toma precedencia
 y es necesario usar <code>self</code> para poder referirse a la propiedad de la
 instancia.</p>
 <p>Un ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2020,7 +2020,7 @@ implícita <code>self</code>, con lo que esta nueva instancia reemplazará la
 existente cuando el método termine.</p>
 <p>Podemos conseguir esta conducta colocando la palabra clave <code>mutating</code>
 antes de la palabra <code>func</code> del método:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2052,7 +2052,7 @@ se añade a su definición para permitirle modificar sus propiedades.</p>
 <p>Hay que hacer notar que no es posible llamar a un método mutador sobre
 una constante de un tiempo estructura, porque sus propiedades no se
 pueden cambiar, incluso aunque sean propiedades variables:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">puntoFijo</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
 <span class="n">puntoFijo</span><span class="p">.</span><span class="n">incrementa</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
@@ -2064,7 +2064,7 @@ pueden cambiar, incluso aunque sean propiedades variables:</p>
 <p>Los métodos mutadores pueden asignar una nueva instancia completamente
 nueva a la propiedad <code>self</code>. El anterior ejemplo <code>Punto</code> podría habers
 escrito de la siguiente forma:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2087,7 +2087,7 @@ que el anterior en la versión 2.2 del compilador de Swift).</p>
 <p>Los métodos mutadores de enumeraciones pueden establecer el parámetro
 <code>self</code> implícito para que tenga un subtipo distinto de la misma
 enumeración:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2135,7 +2135,7 @@ método. Las clases también pueden usar la palabra clave <code>class</code> par
 permitir a las subclases sobreescribir la implementación del método.</p>
 <p>Los métodos del tipo se invocan también con la sintaxis de punto,
 escribiendo el nombre del tipo. Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2161,7 +2161,7 @@ prefijo del nombre del tipo.</p>
 <p>Por ejemplo, podemos añadir a la clase <code>Ventana</code> una propiedad
 y método de clase con la que almacenar instancias de ventanas. Inicialmente
 guardamos un array vacío.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2185,7 +2185,7 @@ guardamos un array vacío.</p>
 
 <p>Cada vez que creamos una ventana podemos llamar al método <code>registrar</code>
 de la clase para añadirlo a la colección de ventanas de la clase:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">v1</span> <span class="p">=</span> <span class="n">Ventana</span><span class="p">()</span>
@@ -2227,7 +2227,7 @@ descripción del vehículo.</p>
 <code>hazRuido</code>. Este método no hace nada realmente para una instancia de
 un vehículo base, pero será modificado más adelante por las subclases
 de <code>Vehiculo</code>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2250,13 +2250,13 @@ de <code>Vehiculo</code>.</p>
 <p>Creamos una instancia nueva de <code>Vehiculo</code> con la sintaxis de
 inicialización que hemos visto, en la que se escribe el nombre del
 tipo de la clase seguido por paréntesis vacíos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">unVehiculo</span> <span class="p">=</span> <span class="n">Vehiculo</span><span class="p">()</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">unVehiculo</span> <span class="p">=</span> <span class="n">Vehiculo</span><span class="p">()</span>
 </pre></div>
 </td></tr></table>
 
 <p>Habiendo creado una instancia nueva de <code>Vehiculo</code>, podemos acceder a
 su descripción:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">print</span><span class="p">(</span><span class="s">&quot;Vehículo: </span><span class="si">\(</span><span class="n">unVehiculo</span><span class="p">.</span><span class="n">descripcion</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="c1">// Vehículo: viajando a 0.0 kilómetros por hora</span>
 </pre></div>
@@ -2274,7 +2274,7 @@ refinar. También podemos añadir nuevas características a la subclase.</p>
 <p>Para indicar que una subclase tiene una superclase hay que escribir el
 nombre de la subclase antes de el de la superclase, separadas por dos
 puntos (<code>:</code>):</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">UnaSubclase</span><span class="p">:</span> <span class="n">UnaSuperClase</span> <span class="p">{</span>
     <span class="c1">// definición de la subclase</span>
@@ -2284,7 +2284,7 @@ puntos (<code>:</code>):</p>
 
 <p>En el ejemplo anterior del <code>Vehiculo</code> podemos definir una subclase
 <code>Bicicleta</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Bicicleta</span><span class="p">:</span> <span class="n">Vehiculo</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">tieneCesta</span> <span class="p">=</span> <span class="kc">false</span>
@@ -2301,7 +2301,7 @@ de <code>false</code>.</p>
 <p>Por defecto, cualquier instancia nueva de <code>Bicicleta</code> no tendrá una
 cesta. Puedes establecer la propiedad <code>tieneCesta</code> a <code>true</code> para una
 instancia particular de <code>Bicicleta</code> después de crearla:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">bicicleta</span> <span class="p">=</span> <span class="n">Bicicleta</span><span class="p">()</span>
 <span class="n">bicicleta</span><span class="p">.</span><span class="n">tieneCesta</span> <span class="p">=</span> <span class="kc">true</span>
 </pre></div>
@@ -2309,7 +2309,7 @@ instancia particular de <code>Bicicleta</code> después de crearla:</p>
 
 <p>Podemos también modificar la propiedad heredada <code>velocidadActual</code> y
 preguntar por la propiedad <code>descripcion</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">bicicleta</span><span class="p">.</span><span class="n">velocidadActual</span> <span class="p">=</span> <span class="mf">10.0</span>
 <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Bicicleta: </span><span class="si">\(</span><span class="n">bicicleta</span><span class="p">.</span><span class="n">descripcion</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
@@ -2320,7 +2320,7 @@ preguntar por la propiedad <code>descripcion</code>:</p>
 <p>Podemos construir subclases a partir de otras subclases. El siguiente
 ejemplo crea una subclase de <code>Bicicleta</code> que representa una bicicleta
 de dos sillines (un "tandem"):</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Tandem</span><span class="p">:</span> <span class="n">Bicicleta</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">numeroActualDePasajeros</span> <span class="p">=</span> <span class="mi">0</span>
@@ -2335,7 +2335,7 @@ subclase <code>Tandem</code> también añade una nueva propiedad almacenada llam
 <p>Si creamos una instancia de <code>Tandem</code> podremos trabajar con cualquiera
 de sus propiedades nuevas y heredadas, y preguntar a la descripción de
 solo lectura que hereda de <code>Vehiculo</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2365,7 +2365,7 @@ valores proporcionados por la clase padre. Para acceder a ellos
 podemos usar el prefijo <code>super</code>.</p>
 <p>El siguiente ejemplo define una nueva subclase de <code>Vehiculo</code> llamada
 <code>Tren</code>, que sobreescribe el método <code>hazRuido()</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2380,7 +2380,7 @@ podemos usar el prefijo <code>super</code>.</p>
 <p>Si creamos una nueva instancia de <code>Tren</code> y llamamos al método
 <code>hazRuido</code> podemos comprobar que se llama a la versión del método de
 la subclase:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">tren</span> <span class="p">=</span> <span class="n">Tren</span><span class="p">()</span>
 <span class="n">tren</span><span class="p">.</span><span class="n">hazRuido</span><span class="p">()</span>
@@ -2405,7 +2405,7 @@ una subclase de <code>Vehiculo</code>. La clase <code>Coche</code> introduce una
 propiedad almacenada llamada <code>marcha</code>, con un valor por defecto
 de 1. También sobreescribe la propiedad heredada <code>descripcion</code>,
 incluyendo la marcha actual en la descripción:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2420,7 +2420,7 @@ incluyendo la marcha actual en la descripción:</p>
 </td></tr></table>
 
 <p>Podemos ver el funcionamiento en el siguiente ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2440,7 +2440,7 @@ la subclase o en la superclase.</p>
 que es una subclase de <code>Coche</code>. La clase <code>CocheAutomatico</code> representa
 un coche con una caja de cambios automática, que selecciona
 automáticamente la marcha basándose en la velocidad actual:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2460,7 +2460,7 @@ automáticamente la marcha basándose en la velocidad actual:</p>
 una instancia de <code>CocheAutomatico</code>, el observador <code>didSet</code> establece
 la propiedad <code>marcha</code> a un valor apropiado para la nueva velocidad. Un
 ejemplo de ejecución:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">automatico</span> <span class="p">=</span> <span class="n">CocheAutomatico</span><span class="p">()</span>
@@ -2506,7 +2506,7 @@ un inicializador o asignándole un valor por defecto como parte de la
 definición de la propiedad.</p>
 <p>Un <em>inicializador</em>, en su forma más simple, es como un método de la
 instancia sin parámetros, escrito con la palabra clave <code>init</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">init</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// realizar alguna inicialización aquí</span>
@@ -2518,7 +2518,7 @@ instancia sin parámetros, escrito con la palabra clave <code>init</code>:</p>
 una temperatura en grados Farenheit. Tiene una propiedad almacenada de
 tipo <code>Double</code>. Definimos un inicializador que inicializa las
 instancias a 32.0 (equivalente a 0.0 grados Celsius).</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2540,7 +2540,7 @@ instancias a 32.0 (equivalente a 0.0 grados Celsius).</p>
 
 <p>La implementación anterior es equivalente a la siguiente (que es
 preferible, por ser más clara):</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">struct</span> <span class="nc">Fahrenheit</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">temperatura</span> <span class="p">=</span> <span class="mf">32.0</span>
@@ -2557,7 +2557,7 @@ definición de un inicializador, para definir los tipos y los nombres
 de los valores que <em>customizan</em> el proceso de inicialización. Los
 parámetros de inicialización tienen las mismas capacidades y sintaxis
 que los parámetros de funciones y métodos.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2590,7 +2590,7 @@ que los parámetros de funciones y métodos.</p>
 <p>Vemos que dependiendo del nombre de parámetro proporcionado se escoge
 un inicializador u otro. En los inicializadores es obligatorio
 proporcionar los nombres de todos los parámetros:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2626,7 +2626,7 @@ proporcionar los nombres de todos los parámetros:</p>
 ejemplo, podemos añadir al struct anterior <code>Celsius</code> un inicializador
 sin nombre externo para el caso en que pasemos la temperatura inicial
 precisamente en Celsius:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2660,7 +2660,7 @@ precisamente en Celsius:</p>
 
 <p>Por último, es posible dejar sin inicializar propiedades opcionales,
 ya que el valor que tomarían sería <code>nil</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2697,7 +2697,7 @@ constantes. Por ejemplo, la propiedad <code>text</code> está definida con un
 invocar a inicializadores más básicos desde otros. Si definimos un
 inicializador en una estructura los inicializadores por defecto dejan
 de funcionar, es necesario escribirlos también.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2758,7 +2758,7 @@ implementación de algunos de los métodos requeridos por el protocolo.</p>
 <h3 id="sintaxis">Sintaxis<a class="headerlink" href="#sintaxis" title="Permanent link">&para;</a></h3>
 <p>Los protocolos se definen de forma similar a las clases, estructuras y
 enumeraciones:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">protocol</span> <span class="nc">UnProtocolo</span> <span class="p">{</span>
     <span class="c1">// definición del protocolo</span>
@@ -2770,7 +2770,7 @@ enumeraciones:</p>
 poner el nombre del protocolo tras el nombre del tipo, separado por
 dos puntos. Podemos listar más de un protocolo, y se separan por
 comas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">struct</span> <span class="nc">UnStruct</span><span class="p">:</span> <span class="n">PrimerProtocolo</span><span class="p">,</span> <span class="n">OtroProtocolo</span> <span class="p">{</span>
     <span class="c1">// definición del struct</span>
@@ -2780,7 +2780,7 @@ comas:</p>
 
 <p>Si una clase tiene una superclase, se escribe el nombre de la
 superclase antes los protocolos, seguido por una coma:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">UnaClase</span><span class="p">:</span> <span class="n">UnaSuperClase</span><span class="p">,</span> <span class="n">PrimerProtocolo</span><span class="p">,</span> <span class="n">OtroProto</span> <span class="p">{</span>
     <span class="c1">// definición de la clase</span>
@@ -2807,7 +2807,7 @@ variables, precedido por la palabra clave <code>var</code>. Las propiedades de
 lectura y escritura se indican escribiendo <code>{ get set }</code> después de la
 declaración de su tipo, y las propiedades de sólo lectura se indican
 escribiendo <code>{ get }</code>.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">protocol</span> <span class="nc">UnProtocolo</span> <span class="p">{</span>
@@ -2819,7 +2819,7 @@ escribiendo <code>{ get }</code>.</p>
 
 <p>Para definir una propiedad de tipo hay que precederla en el protocolo
 con la palabra clave <code>static</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">protocol</span> <span class="nc">OtroProtocolo</span> <span class="p">{</span>
     <span class="kd">static</span> <span class="kd">var</span> <span class="nv">unaPropiedadDeTipo</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="kr">set</span> <span class="p">}</span>
@@ -2831,7 +2831,7 @@ con la palabra clave <code>static</code>:</p>
 requiere que cualquier clase que se ajuste a él debe tener una
 propiedad de instancia de lectura de tipo <code>String</code> que se llame
 <code>nombreCompleto</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">protocol</span> <span class="nc">TieneNombre</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">nombreCompleto</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
@@ -2840,7 +2840,7 @@ propiedad de instancia de lectura de tipo <code>String</code> que se llame
 </td></tr></table>
 
 <p>Un ejemplo de una sencilla estructura que adopta el protocolo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -2865,7 +2865,7 @@ es de tipo <code>String</code>. Esto cumple el único requisito del protocolo
 protocolo (Swift informa de un error en tiempo de compilación si un
 requisito de un protocolo no se cumple).</p>
 <p>Otro ejemplo de una clase más compleja, que también adopta el protocolo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2905,7 +2905,7 @@ implementen métodos de instancia y de tipos específicos. Estos métodos
 se escriben como parte de la definición del protocolo de la misma
 forma que los métodos normales, pero sin sus cuerpos. Los métodos del
 tipo en el protocolo deben indicarse con la palabra clave <code>static</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">protocol</span> <span class="nc">UnProtocolo</span> <span class="p">{</span>
     <span class="kd">static</span> <span class="kd">func</span> <span class="nf">unMetodoDelTipo</span><span class="p">()</span>
@@ -2914,7 +2914,7 @@ tipo en el protocolo deben indicarse con la palabra clave <code>static</code>:</
 </td></tr></table>
 
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">protocol</span> <span class="nc">GeneradorNumerosAleatorios</span> <span class="p">{</span>
     <span class="kd">func</span> <span class="nf">random</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Double</span>
@@ -2931,7 +2931,7 @@ entre 0.0 y 1.0 (sin incluirlo). El protocolo
 será generado cada número aleatorio, simplemente requiere al generador
 que proporcione una forma estándar de generarlo.</p>
 <p>Una implementación de una clase que adopta el protocolo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -2974,7 +2974,7 @@ método como <code>mutating</code>. No es necesario hacerlo con las clases, porq
 la palabra <code>mutating</code> solo es necesaria en estructuras y
 enumeraciones.</p>
 <p>Un ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3027,7 +3027,7 @@ otros tipos, incluyendo:</p>
 <li>El tipo de una constante, variable o propiedad</li>
 <li>El tipo de los ítems de un array, diccionario u otro contenedor</li>
 </ul>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3073,7 +3073,7 @@ sabemos que el generador se ajusta al protocolo
 <code>GeneradorNumerosAleatorios</code> tenemos la garantía de que va a existir
 un método <code>random()</code> al que llamar.</p>
 <p>Un ejemplo de uso del código:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3097,7 +3097,7 @@ un método <code>random()</code> al que llamar.</p>
 <p>Como hemos comentado anteriormente, un protocolo puede usarse como el
 tipo que se almacena un una colección (array, diccionario,
 etc.). Veamos un ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3139,7 +3139,7 @@ igualdad (<code>==</code>) y diferencia (<code>!=</code>). Debemos implementar l
 de igualdad en cualquier clase que se ajuste al protocolo, pero la
 operación de diferencia ya tiene una implementación por defecto.</p>
 <p>Un ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3214,7 +3214,7 @@ cualquier tipo de ítem que aparece en una biblioteca de medios
 digitales. Específicamente, declara una propiedad <code>nombre</code> de tipo
 <code>String</code> y un inicializador <code>init nombre</code> (suponemos que todos los
 ítems, incluyendo películas y canciones, tendrán un nombre).</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3233,7 +3233,7 @@ subclase, <code>Pelicula</code>, encapsula información adicional sobre una
 película. Añade una propiedad <code>director</code> a la clase base <code>MediaItem</code>,
 con su correspondiente inicializador. La segunda subclase, <code>Cancion</code>,
 añade una propiedad <code>artista</code> y un inicializador a la clase base:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3268,7 +3268,7 @@ añade una propiedad <code>artista</code> y un inicializador a la clase base:</p
 <p>Por último, creamos un array constante llamado <code>biblioteca</code>, que
 contienen dos instancias de <code>Pelicula</code> y tres instancias de
 <code>Cancion</code>. </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3288,7 +3288,7 @@ contienen dos instancias de <code>Pelicula</code> y tres instancias de
 array. Es capaz de deducir que <code>Pelicula</code> y <code>Cancion</code> tienen una
 superclase común <code>MediaItem</code>, por lo que <strong>infiere que el tipo del
 array es <code>[MediaItem]</code></strong>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3319,7 +3319,7 @@ operador de comprobación devuelve <code>true</code> si la instancia es del tipo
 de la subclase y <code>false</code> si no.</p>
 <p>Lo podemos comprobar en el siguiente ejemplo, en el que contamos las
 instancias de películas y canciones en el array <code>biblioteca</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3383,7 +3383,7 @@ propiedad <code>director</code> o <code>artista</code> de una instancia de <code
 podría ser una <code>Cancion</code>. No sabemos por anticipado la clase verdadera
 de cada ítem, por lo que es apropiado usar la versión condicional
 (<code>as?</code>) para comprobar el <em>downcast</em> cada vez a lo largo del bucle:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3424,7 +3424,7 @@ correspondientes métodos de la clase <code>Pelicula</code>. Igual con <code>Can
 <h3 id="casting-para-any"><em>Casting</em> para <code>Any</code><a class="headerlink" href="#casting-para-any" title="Permanent link">&para;</a></h3>
 <p>El tipo <code>Any</code> puede representar una instancia de cualquier tipo,
 incluyendo tipos función:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3453,7 +3453,7 @@ incluyendo tipos función:</p>
 <p>Puedes usar los operadores <code>is</code> y <code>as</code> en una sentencia <code>switch</code> para
 descubrir en tiempo de ejecución el tipo específico de una constante o
 variable de la que sólo se sabe que es de tipo <code>Any</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3527,7 +3527,7 @@ variable de la que sólo se sabe que es de tipo <code>Any</code>:</p>
 hacer un <em>cast</em> a un protocolo específico.</p>
 <p>Veamos un ejemplo. Definimos el protocolo <code>TieneArea</code> con el único
 requisito de una propiedad de lectura llamada <code>area</code> de tipo <code>Double</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">protocol</span> <span class="nc">TieneArea</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">area</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
@@ -3536,7 +3536,7 @@ requisito de una propiedad de lectura llamada <code>area</code> de tipo <code>Do
 </td></tr></table>
 
 <p>Definimos dos clases <code>Circulo</code> y <code>Pais</code> que se ajustan ambos al protocolo: </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3566,7 +3566,7 @@ implementa el requisito directamente como una propiedad
 almacenada. Ambas clases se ajustan correctamente al protocolo
 <code>TieneArea</code>.</p>
 <p>Definimos una clase <code>Animal</code> que no se ajusta al protocolo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Animal</span> <span class="p">{</span>
@@ -3580,7 +3580,7 @@ almacenada. Ambas clases se ajustan correctamente al protocolo
 compartida. Sin embargo, todas son clases, por lo que las instancias
 de los tres tipos pueden usarse para inicializar un array que almacena
 valores de tipo <code>Any</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3594,7 +3594,7 @@ valores de tipo <code>Any</code>:</p>
 
 <p>Y ahora podemos iterar sobre el array de objetos, comprobando para
 cada ítem si la instancia se ajusta al protocolo <code>TieneArea</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3642,7 +3642,7 @@ conoce como <em>modelado retroactivo</em>).</p>
 </ul>
 <h3 id="sintaxis_1">Sintaxis<a class="headerlink" href="#sintaxis_1" title="Permanent link">&para;</a></h3>
 <p>Para declarar una extensión hay que usar la palabra clave <code>extension</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">extension</span> <span class="nc">UnTipo</span> <span class="p">{</span>
     <span class="c1">// nueva funcionalidad para añadir a UnTipo</span>
@@ -3655,7 +3655,7 @@ conoce como <em>modelado retroactivo</em>).</p>
 de tipos. Como primer ejemplo, vamos a añadir a la clase persona la
 propiedad calcula <code>mayorEdad</code>, un <code>Bool</code> que indica si la edad de la
 persona es mayor o igual de 18:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3670,7 +3670,7 @@ persona es mayor o igual de 18:</p>
 <p>Una vez definida esta extensión, hemos ampliado la clase con esta
 nueva propiedad, sin tocar el código de la clase. Podemos preguntar si
 una persona es mayor de edad:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nv">p</span> <span class="p">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">edad</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="n">nombreCompleto</span><span class="p">:</span> <span class="s">&quot;Lucía&quot;</span><span class="p">)</span>
 <span class="n">p</span><span class="p">.</span><span class="n">mayorEdad</span> <span class="c1">// false</span>
 </pre></div>
@@ -3682,7 +3682,7 @@ Swift, como <code>Int</code>, <code>Double</code>, <code>Array</code>, etc.</p>
 para trabajar con unidades de distancia. Las siguientes propiedades
 convierten una cantidad en las unidades correspondientes a su
 equivalente en metros:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3731,7 +3731,7 @@ propiedad calculada <code>ft</code> divide el valor <code>Double</code> subyacen
 que se expresan sin la palabra clave <code>get</code>, por brevedad. Sus valores
 devueltos son de tipo <code>Double</code>, y pueden usarse en cálculos
 matemáticos en cualquier sitio que se acepte un <code>Double</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">unMaraton</span> <span class="p">=</span> <span class="mf">42.</span><span class="n">km</span> <span class="o">+</span> <span class="mf">195.</span><span class="n">m</span>
 <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Un maratón tiene una longitud de </span><span class="si">\(</span><span class="n">unMaraton</span><span class="si">)</span><span class="s"> metros&quot;</span><span class="p">)</span>
@@ -3749,7 +3749,7 @@ implementación original del tipo.</p>
 un rectángulo geométrico. Este ejemplo también define dos estructuras
 auxiliares llamadas <code>Tamaño</code> y <code>Punto</code>, que proporcionan valores por
 defecto de 0.0 a todas sus propiedades:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3775,7 +3775,7 @@ defecto de 0.0 a todas sus propiedades:</p>
 defecto para todas sus propiedades, tiene un inicializador por defecto
 que puede utilizarse para crear nuevas instancias. También podemos
 inicializarlo asignando todas sus propieades:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">rectanguloPorDefecto</span> <span class="p">=</span> <span class="n">Rectangulo</span><span class="p">()</span>
 <span class="kd">let</span> <span class="nv">rectanguloInicializado</span> <span class="p">=</span> <span class="n">Rectangulo</span><span class="p">(</span><span class="n">origen</span><span class="p">:</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">),</span>
@@ -3786,7 +3786,7 @@ inicializarlo asignando todas sus propieades:</p>
 <p>Podemos extender la estructura <code>Rectangulo</code> para proporcionar un
 inicializador adicional que toma un punto específico del centro y un
 tamaño:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3807,7 +3807,7 @@ basado en el centro propuesto y en el tamaño. El inicializador llama
 después al inicializador automático de la estructura
 <code>init(origen:tamaño:)</code>, que almacena los nuevos valores de las
 propiedades:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span> <span class="kd">let</span> <span class="nv">rectanguloCentro</span> <span class="p">=</span> <span class="n">Rectangulo</span><span class="p">(</span><span class="n">centro</span><span class="p">:</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">),</span>
                            <span class="n">tama</span><span class="err">ñ</span><span class="n">o</span><span class="p">:</span> <span class="n">Tama</span><span class="err">ñ</span><span class="n">o</span><span class="p">(</span><span class="n">ancho</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">alto</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">))</span>
@@ -3819,7 +3819,7 @@ propiedades:</p>
 <p>Las extensiones pueden añadir nuevos métodos de instancia y nuevos
 métodos del tipo. </p>
 <p>Por ejemplo, podemos añadir el método <code>descripcion()</code> a la estructura <code>Persona</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3840,7 +3840,7 @@ métodos del tipo. </p>
 <p>También podemos añadir métodos a clases y estructuras importadas. Por
 ejemplo podemos añadir un nuevo método de
 instancia llamado <code>repeticiones</code> al tipo <code>Int</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3861,7 +3861,7 @@ Void</code>, que indica una función que no tiene parámetros y no devuelve
 ningún valor. Después de definir esta extensión, podemos llamar al
 método <code>repeticiones(_:)</code> en cualquier número entero para ejecutar una
 tarea un cierto número de veces:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3876,7 +3876,7 @@ tarea un cierto número de veces:</p>
 </td></tr></table>
 
 <p>Usando clausuras por la cola podemos hacer la llamada más concisa:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3896,7 +3896,7 @@ modificar (o mutar) la propia instancia. Los métodos de las
 estructuras y los enumerados que modifican <code>self</code> o sus propiedades
 deben marcarse como <code>mutating</code>.</p>
 <p>Por ejemplo: </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3919,7 +3919,7 @@ deben marcarse como <code>mutating</code>.</p>
 ajuste a uno o más protocolos. En este caso, los nombres de los
 protocolos se escriben exactamente de la misma forma que en una clase
 o estructura:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">extension</span> <span class="nc">UnTipo</span><span class="p">:</span> <span class="n">UnProtocolo</span><span class="p">,</span> <span class="n">OtroProtocolo</span> <span class="p">{</span>
     <span class="c1">// implementación de los requisitos del protocolo</span>
@@ -3934,7 +3934,7 @@ extensión.</p>
 ser implementado por cualquier tipo que tenga una forma de
 representarse como texto. Esto puede ser una descripción de si mismo o
 una versión de texto de su estado actual:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">protocol</span> <span class="nc">RepresentableComoTexto</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">descripcionTextual</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
@@ -3943,7 +3943,7 @@ una versión de texto de su estado actual:</p>
 </td></tr></table>
 
 <p>La clase <code>Dado</code> que vimos anteriormente puede extenderse para ajustarse al protocolo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -3960,7 +3960,7 @@ lo hubiera proporcionado en su implementación original. El nombre del
 protocolo se indica tras el nombre del tipo, separado por dos puntos,
 y se proporciona una implementación entre llaves.</p>
 <p>Cualquier instancia de un dado se puede tratar ahora como <code>RepresentableComoTexto</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">d12</span> <span class="p">=</span> <span class="n">Dado</span><span class="p">(</span><span class="n">caras</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="n">generador</span><span class="p">:</span> <span class="n">GeneradorLinealCongruente</span><span class="p">())</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">d12</span><span class="p">.</span><span class="n">descripcionTextual</span><span class="p">)</span>
@@ -3970,7 +3970,7 @@ y se proporciona una implementación entre llaves.</p>
 
 <p>De forma similar, un <code>Rectangulo</code> también puede extenderse para
 adoptar y ajustarse al protocolo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -3996,7 +3996,7 @@ adoptar y ajustarse al protocolo:</p>
 <p>Si un tipo ya se ajusta a todos los requisitos de un protocolo, pero
 todavía no se ha declarado que se ajusta al protocolo, podemos hacer
 que lo adopte con una extensión vacía:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4014,7 +4014,7 @@ que lo adopte con una extensión vacía:</p>
 
 <p>Las instancias de <code>Hamster</code> pueden ahora usarse en cualquier sitio que
 se requiera un tipo <code>RepresentableComoTexto</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">simonElHamster</span> <span class="p">=</span> <span class="n">Hamster</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Simon&quot;</span><span class="p">)</span>
@@ -4032,7 +4032,7 @@ protocolos, más que en cada tipo individual o en una función global.</p>
 <p>Por ejemplo, el protocolo <code>GeneradorNumerosAleatorios</code> puede ser extendido
 para proporcionar un método <code>boolAleatorio()</code>, que usa el resultado del
 <code>random()</code> requerido para devolver un valor <code>Bool</code> aleatorio:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4047,7 +4047,7 @@ para proporcionar un método <code>boolAleatorio()</code>, que usa el resultado 
 <p>Al crear una extensión en el protocolo, todos los tipos que se ajustan
 a él adquieren automáticamente esta implementación sin ninguna
 modificación adicional.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4071,7 +4071,7 @@ tipos que cumplan estos requisitos.</p>
 que se aplique a cualquier colección cuyos elementos cumplen el
 protocolo <code>Equatable</code>. De esta forma nos aseguramos de que los
 operadores <code>==</code> y <code>!=</code> están definidos y podemos usarlos en la extensión:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -4096,7 +4096,7 @@ operadores <code>==</code> y <code>!=</code> están definidos y podemos usarlos 
 <p>El método <code>allEqual()</code> devuelve <code>true</code> si y sólo si todos los
 elementos en la colección son iguales.</p>
 <p>Un ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">numerosIguales</span> <span class="p">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
 <span class="kd">let</span> <span class="nv">numerosDiferentes</span> <span class="p">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>
 </pre></div>
@@ -4104,7 +4104,7 @@ elementos en la colección son iguales.</p>
 
 <p>Dado que ambos arrays cumplen el protocolo <code>Collection</code> y los enteros
 cumplen el protocolo <code>Equatable</code> podemos usar el método <code>allEqual()</code>: </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>print(numerosIguales.allEqual())
@@ -4116,7 +4116,7 @@ print(numerosDiferentes.allEqual())
 
 <p>En una colección de una clase que no cumple el protocolo
 <code>Equatable</code> no se puede utilizar el método de la extensión:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">tormenta</span> <span class="p">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">edad</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span> <span class="n">nombreCompleto</span><span class="p">:</span> <span class="s">&quot;Ororo Munroe&quot;</span><span class="p">)</span>
@@ -4135,7 +4135,7 @@ suma (<code>+</code>) para una estructura. El operador suma es un operador
 binario (tiene dos operandos) e infijo (aparece junto entre los dos
 operandos). Definimos una estructura <code>Vector2D</code> para un vector de
 posición de dos dimensiones:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4164,7 +4164,7 @@ instancias de <code>Vector2D</code> que se están sumando.</p>
 <p>La función se define globalmente, más que como un método en la
 estructura <code>Vector2D</code>, para que pueda usarse como un operador infijo
 entre instancias existentes de <code>Vector2D</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">vector</span> <span class="p">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
@@ -4184,7 +4184,7 @@ preceden el objetivo (como <code>-a</code>) y postfijos si siguen su objetivo
 <p>Para implementar un operador unario prefijo o postfijo se debe
 escribir el modificador <code>prefix</code> o <code>postfix</code> antes de la palabra clave
 <code>func</code> en la declaración de la función operador:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4201,7 +4201,7 @@ escribir el modificador <code>prefix</code> o <code>postfix</code> antes de la p
 <p>El ejemplo anterior implementa el operador unario negación (<code>-a</code>) para
 instancias de <code>Vector2D</code>.</p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4225,7 +4225,7 @@ otros operadores infijos.</p>
 <p>Lo hacemos definiendo una extensión que cumple el protocolo
 <code>Equatable</code>. De esta forma, como ya hemos visto anteriormente,
 conseguimos la implementación por defecto del operador <code>!=</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4246,7 +4246,7 @@ lo que esta es la lógica usada por la implementación. </p>
 simplemente devuelve el inversa del resultado del operador "igual a".</p>
 <p>Ahora podemos usar estos operadores para chequear si dos instancias de
 <code>Vector2D</code> son equivalentes:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4273,7 +4273,7 @@ simplemente devuelve el inversa del resultado del operador "igual a".</p>
 elementos.</p>
 <p>La versión no genérica del tipo de dato es la siguiente, en la que se
 implementa una pila de enteros.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4298,7 +4298,7 @@ y <code>pop</code> añaden y retiran los elementos. </p>
 <p>El problema de esta estructura es su falta de genericidad; sólo puede
 almacenar enteros.</p>
 <p>Aquí está una versión genérica del mismo código:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4325,7 +4325,7 @@ distintos elementos de la estructura. Por ejemplo, el array de ítems
 es un array de <code>Element</code>s. Y los ítems añadidos y retirados de la pila
 son también objetos de tipo <code>Element</code>.</p>
 <p>Por ejemplo, podemos crear una pila de cadenas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4340,7 +4340,7 @@ son también objetos de tipo <code>Element</code>.</p>
 </td></tr></table>
 
 <p>Y podemos retirar la última cadena de la pila:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">fromTheTop</span> <span class="p">=</span> <span class="n">stackOfStrings</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">fromTheTop</span> <span class="p">=</span> <span class="n">stackOfStrings</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
 </pre></div>
 </td></tr></table>
 
@@ -4351,7 +4351,7 @@ definición original y se puede usar tal cual en el cuerpo de la
 extensión.</p>
 <p>Por ejemplo, podemos extender el tipo genérico <code>Stack</code> para añadir una
 propiedad computable de sólo lectura que devuelva el tope de la pila:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
@@ -4367,7 +4367,7 @@ propiedad computable de sólo lectura que devuelva el tope de la pila:</p>
 declararlo después de <code>Stack</code>, porque está definido en la estructura
 original.</p>
 <p>Ahora ya se puede acceder al tope de la pila sin retirar el elemento:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">if</span> <span class="kd">let</span> <span class="nv">topItem</span> <span class="p">=</span> <span class="n">stackOfStrings</span><span class="p">.</span><span class="n">topItem</span> <span class="p">{</span>
