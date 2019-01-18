@@ -24,26 +24,54 @@ inventado multitud de máquinas y computadores mecánicos, analógicos o
 electrónicos que han intentado acelerar y mejorar la precisión de los
 cálculos.
 
-Todas estas máquinas fueron más o menos sofisticadas y más o menos
-configurables, pero ninguna llegó a tener la capacidad fundamental de
-un computador: ser un dispositivo de propósito general capaz de
-cambiar de comportamiento mediante un programa insertado en su memoria
-(con la excepción del famoso Motor analítico de Charles Babbage, que
-nunca llegó a construirse).
+El punto culminante de todos los enfoques mecánicos para realizar
+cálculos fue el famoso **Motor Analítico** diseñado por **Charles
+Babbage** en 1840. La diferencia fundamental con todos los artefactos
+anteriores es que se trataba de una máquina de calcular
+**programable** mediante tarjetas perforadas (Babbage se inspiró en el
+telar de Jackquard en el que el diseño de los dibujos de las telas se
+podían configurar usando tarjetas perforadas). La máquina estaba
+diseñada para trabajar en base 10 y se podía conseguir que sus
+cálculos realizaran saltos condicionales y bucles.
 
-<img src="imagenes/Alan_Turing.jpg" width="200px" align="right"/>
+Babbage trabajó durante más de 30 años para intentar construir la
+máquina. Tenían una enorme complejidad para la época y necesitaba
+muchísima financiación. En 1871 murió habiendo podido construir sólo
+una parte. 
 
-En 1936 el matemático inglés [Alan
-Turing](https://en.wikipedia.org/wiki/Alan_Turing) formalizó la idea
-de computador, utilizando un modelo muy sencillo de procesamiento: una
-máquina abstracta con un scanner que lee y escribe 0s y 1s de una
-cinta infinita (memoria) y se mueve y los escribe en función de una
-tabla definida en la máquina (programa). Con esta máquina abstracta
-([Máquina de Turing](https://en.wikipedia.org/wiki/Turing_machine))
-Turing explora la idea de lo computable y lo no computable. ¿Existen
-problemas no computables para los que no es posible inventar un
-algoritmo que los resuelva? Turing demuestra que sí y establece con su
-trabajo los límites de la computación.
+<img src="imagenes/ada-lovelace.jpg" width="200px" align="right" style="margin:20px"/>
+
+La matemática [Ada Lovelace](https://en.wikipedia.org/wiki/Ada_Lovelace) tuvo un papel fundamental en la divulgación
+de la máquina, de sus sistema de programación y fue la primera que
+entendió sus posibilidades más allá del cálculo de fórmulas.
+
+De forma poco habitual para la época, Ada fue educada en el campo de
+las ciencias y de las matemáticas. A principios de 1840, con
+veinticico años, conoció el trabajo de Babbage y colaboró con él,
+dedicándose durante varios años a conocer y estudiar el diseño y el
+funcionamiento del motor analítico.
+
+En 1843 publicó el trabajo _"Sketch of the analytical engine invented
+by Charles Babbage"_ en el que describe el Motor Analítico, añade
+reflexiones propias sobre el alcance del invento y construye un
+ejemplo completo, con tablas y diagramas, de cómo hacer que la máquina
+produzca la secuencia de los números de Bernoulli. Se puede considerar
+estas tablas y diagramas como el **primer programa de un computador**.
+
+<img src="imagenes/Alan_Turing.jpg" width="200px" align="right" style="margin:20px"/>
+
+Antes de que existiera ningún computador real, en 1936, el matemático
+inglés [Alan Turing](https://en.wikipedia.org/wiki/Alan_Turing)
+formalizó la idea abstracta de computador, utilizando un modelo muy
+sencillo de procesamiento: una máquina abstracta con un scanner que
+lee y escribe 0s y 1s de una cinta infinita (memoria) y se mueve y los
+escribe en función de una tabla definida en la máquina (programa). Con
+esta máquina abstracta ([Máquina de
+Turing](https://en.wikipedia.org/wiki/Turing_machine)) Turing explora
+la idea de lo computable y lo no computable. ¿Existen problemas no
+computables para los que no es posible inventar un algoritmo que los
+resuelva? Turing demuestra que sí y establece con su trabajo los
+límites de la computación.
 
 En el mismo trabajo Turing define el concepto de *máquina universal*
 que es capaz de leer de la cinta un programa cualquiera y simular su
@@ -60,7 +88,7 @@ electromecánicas. Fue una década prodigiosa en la que se desarrollaron
 tecnologías cada vez más rápidas y resistentes, y se consiguieron
 enormes avances en la velocidad y precisión de los cálculos.
 
-<img src="imagenes/John_von_Neumann.gif" width="200px" align="right"/>
+<img src="imagenes/John_von_Neumann.gif" width="200px" align="right" style="margin:20px"/>
 
 Pero no fue hasta 1945 cuando [John Von Neumann](https://en.wikipedia.org/wiki/John_von_Neumann), que trabajaba en la
 construcción del [ENIAC](https://en.wikipedia.org/wiki/ENIAC), propuso su famosa arquitectura en la que por
@@ -79,7 +107,7 @@ dispositivo de memoria electrónico (la *válvula de Williams*) capaz de
 sustituir las lentas líneas de retardo de mercurio utilizadas hasta
 ese momento.
 
-<img src="imagenes/baby-mark1.jpg" width="300px" align="right"/>
+<img src="imagenes/baby-mark1.jpg" width="300px" align="right" style="margin:20px"/>
 
 La máquina de Manchester fue el primer computador con un conjunto de
 instrucciones completo, capaz de realizar saltos, condicionales y
