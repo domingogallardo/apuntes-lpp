@@ -1318,7 +1318,7 @@ concatenar dos o más listas
 (append list1 list2) ; ⇒ {1 2 3 4 hola como estás}
 ```
 
-
+<!--
 
 ### Recursión
 
@@ -3860,6 +3860,8 @@ libro *Structure and Intepretation of Computer Programs*:
 - [2.2.1 - Representing Sequences](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.1)
 - [2.3.1 - Quotation](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-16.html#%_sec_2.3.1)
 
+
+-->
 ----
 
 Lenguajes y Paradigmas de Programación, curso 2018-19  
