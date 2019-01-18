@@ -118,12 +118,13 @@ siguiente figura.
 
 ## Prácticas
 
-En casa y durante las horas prácticas se realizarán de forma individual
-ejercicios de programación relacionados con los conceptos que se están
-estudiando en ese momento que servirán para reforzar y profundizar en
-las competencias de la asignatura. Para el desarrollo de las prácticas
-utilizaremos los siguientes lenguajes de programación y entornos de
-desarrollo:
+Las prácticas consistirán en la resolución de hojas de ejercicios con
+5 o 6 problemas de programación relacionados con los conceptos vistos
+en las sesiones de teoría. Estos ejercicios servirán para reforzar y
+profundizar en las competencias de la asignatura.
+
+Para el desarrollo de las prácticas utilizaremos los siguientes
+lenguajes de programación y entornos de desarrollo:
 
 * [Racket](http://racket-lang.org/) (versión de Scheme, lenguaje de
   programación funcional)
@@ -134,12 +135,9 @@ desarrollo:
 Se realizarán 11 sesiones de ejercicios de prácticas de una semana de
 duración y 2 seminarios sobre los anteriores lenguajes de programación.
 
-Para las sesiones de prácticas se propondrá una hoja de ejercicios con
-5 o 6 problemas de programación relacionados con los conceptos vistos
-en la sesión de teoría. La hoja de ejercicios estará disponible
-inmediatamente después de terminar la teoría y se dispondrá de una
-semana para su realización, hasta la sesión de prácticas de la semana
-siguiente.
+La hoja de ejercicios estará disponible inmediatamente después de
+terminar la teoría y se dispondrá de una semana para su realización,
+hasta la sesión de prácticas de la semana siguiente.
 
 Durante la semana, mientras se resuelven los ejercicios de la hoja, se
 podrán consultar las dudas que puedan surgir en el foro de la
@@ -208,14 +206,14 @@ los cuestionarios realizados en las sesiones de prácticas.
     asistir a otro turno de ESA MISMA SEMANA y antes de empezar la
     clase entregarle el justificante al profesor. 
     
-!!! Warning "Sobre los dispositivos móviles"
+!!! Danger "Sobre los dispositivos móviles"
     - Como norma básica de todas las pruebas de evaluación de esta
     asignatura (cuestionarios y exámenes escritos), durante la
     realización de los mismos no está permitido que llevéis encima
     ningún dispositivo con conexión a internet (smart phones, smart
     watches, tablets, etc). Antes de empezar la prueba, se deberán
     dejar dentro de las mochilas, y éstas en el suelo. En caso de no
-    cumplir alguna de estas normas, la prueba queda invalidada con
+    cumplir alguna esta norma, la prueba queda invalidada con
     calificación de 0. 
     
 
