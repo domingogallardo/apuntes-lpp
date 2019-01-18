@@ -35,7 +35,7 @@ diseñada para trabajar en base 10 y se podía conseguir que sus
 cálculos realizaran saltos condicionales y bucles.
 
 Babbage trabajó durante más de 30 años para intentar construir la
-máquina. Tenían una enorme complejidad para la época y necesitaba
+máquina. Tenía una enorme complejidad para la época y necesitaba
 muchísima financiación. En 1871 murió habiendo podido construir sólo
 una parte. 
 
