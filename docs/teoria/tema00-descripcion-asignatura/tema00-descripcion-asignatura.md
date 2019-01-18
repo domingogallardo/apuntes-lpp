@@ -160,13 +160,13 @@ se evaluará con una calificación de 0 a 10.
 La nota media de todos los cuestionarios formará parte de la
 calificación final de la asignatura, ponderada en un 20%.
 
-!!! Warning "Uso del software iTalk"
+!!! Warning "Uso del software iTALC"
     Durante el desarrollo de las sesiones prácticas es obligatorio 
     usar el ordenador del aula y no el portátil personal. El
-    profesor de prácticas abrirá el programa iTalk, con el que podrá
+    profesor de prácticas abrirá el programa iTALC, con el que podrá
     comprobar cómo estáis desarrollando los ejercicios y podrá haceros
     recomendaciones cuando lo considere oportuno. Además se utilizará
-    iTalk para vigilar la contestación de los cuestionarios.
+    iTALC para vigilar la contestación de los cuestionarios.
 
 Una vez realizado el cuestionario y terminada la hoja de ejercicios se
 entregará su solución en Moodle para su archivo. Cuando todos los
