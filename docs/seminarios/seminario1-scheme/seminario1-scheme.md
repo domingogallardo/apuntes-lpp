@@ -71,17 +71,17 @@ siguiente:
 
 2. En el panel de edición debemos escribir las siguientes líneas:
 
-        ```scheme
-        #lang r6rs
-        (import (rnrs))
-        ```
+    ```scheme
+    #lang r6rs
+    (import (rnrs))
+    ```
 
 3. Finalmente pulsar el botón _Run_ (Ejecutar) para que se cargue ese
    lenguaje en el intérprete.
 
 <img src="imagenes/racket3.png" width="800px"/>
 
-!!! Note "Aclaraciones"
+!!! Note "Nota"
     La línea de código
     
     ```scheme

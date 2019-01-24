@@ -16,10 +16,12 @@ un **programa** como:
 > efecto lateral.
 
 Hablaremos más adelante de la no existencia de estado interno
-(variables en las que se guardan y se modifican valores) y de la ausencia
-de efectos laterales. Avancemos que estas son también características
-de la **programación declarativa**. En este sentido, la programación
-funcional es un tipo concreto de programación declarativa.
+(variables en las que se guardan y se modifican valores) y de la
+ausencia de efectos laterales. Avancemos que estas son también
+características de la **programación declarativa** (frente a la
+programación tradicional imperativa que es la que se utiliza en
+lenguajes como C o Java). En este sentido, la programación funcional
+es un tipo concreto de programación declarativa.
 
 Las características principales del paradigma funcional son:
 
@@ -36,26 +38,17 @@ Explicaremos estas propiedades a continuación.
 #### Orígenes históricos
 
 En los años 30, junto con la máquina de Turing, se propusieron
-distintos modelos computacionales que formalizaban el concepto de
-*algoritmo*. Uno de estos modelos fue el denominado
+distintos modelos computacionales equivalentes que formalizaban el
+concepto de *algoritmo*. Uno de estos modelos fue el denominado
 [*Cálculo lambda*](https://en.wikipedia.org/wiki/Lambda_calculus)
 propuesto por Alonzo Church en los años 30 y basado en la evaluación
-de expresiones matemáticas. En este formalismo se expresan los
-algoritmos mediante funciones matemáticas en las que puede ser usada
-la recursión. Una función matemática recibe parámetros de entrada y
+de expresiones matemáticas. En este formalismo los algoritmos se
+expresan mediante funciones matemáticas en las que puede ser usada la
+recursión. Una función matemática recibe parámetros de entrada y
 devuelve un valor. La evaluación de la función se realiza evaluando
 sus expresiones matemáticas mediante la sustitución de los parámetros
-formales por los valores reales que se utilizan en la invocación.
-
-Turing demostró que este modelo matemático era equivalente al su
-máquina, demostrando que es posible construir una maquina equivalente
-a cualquier función lambda existente, una máquina que devuelva
-exactamente los mismos resultados que la función lambda. El hecho de
-que ambos modelos computacionales sean equivalentes significa que
-cualquier cualquier algoritmo que podamos definir con una máquina de
-Turing, puede ser definido también con una función del cálculo
-lambda. Y viceversa: cualquier función definida con el cálculo lambda
-puede ser implementada por alguna máquina de Turing.
+formales por los valores reales que se utilizan en la invocación (el
+denominado **modelo de sustitución** que veremos más adelante).
 
 El cálculo lambda es un formalismo matemático, basado en operaciones
 abstractas. Dos décadas después, cuando los primeros computadores
@@ -63,7 +56,8 @@ electrónicos estaban empezando a utilizarse en grandes empresas y en
 universidades, este formalismo dio origen a algo mucho más tangible y
 práctico: un lenguaje de alto nivel, mucho más expresivo que el
 ensamblador, con el que expresar operaciones y funciones **que pueden
-ser definidas y evaluadas en el computador**.
+ser definidas y evaluadas en el computador**, el lenguaje de
+programación Lisp.
 
 #### Historia y características del Lisp
 
@@ -152,8 +146,8 @@ expresiones sean puramente funcionales.
 En la actualidad el paradigma funcional es un **paradigma de moda**,
 como se puede comprobar observando la cantidad de artículos, charlas y
 blogs en los que se habla de él, así como la cantidad de lenguajes que
-están aplicando sus conceptos. Por ejemplo, solo como muestra,
-mostramos a continuación algunos enlaces a charlas y artículos
+están aplicando sus conceptos. Por ejemplo, solo como muestra, a
+continuación puedes encontrar algunos enlaces a charlas y artículos
 interesantes publicados recientemente sobre programación funcional:
 
 - Lupo Montero - [Introducción a la programación funcional en
@@ -242,7 +236,8 @@ definiendo y probando elementos computacionales cada vez más
 complicados. Los lenguajes de programación funcional encajan
 perfectamente en esta forma de construir programas.
 
-Como Abelson y Sussman comentan en el SICP:
+Como Abelson y Sussman comentan en el libro _Structure and
+Implementation of Computer Programs_ (SICP):
 
 > En general, los objetos computacionales pueden tener estructuras muy
 > complejas, y sería extremadamente inconveniente tener que recordar y
@@ -324,13 +319,15 @@ que toma como entrada un número y devuelve su cuadrado:
 ```
 
 La llamada a la función con un parámetro concreto devuelve el
-resultado de evaluar su definición. Debemos pensar que esta evaluación
-se hace de forma instantánea, sin realizar pasos de ejecución ni
-mutación de valores en variables auxiliares.
+resultado de evaluar su definición. 
 
 ```scheme
-(cuadrado 4) ; devuelve 16
+(cuadrado 4) ; ⇒ 16
 ```
+
+Debemos pensar que esta evaluación se hace de forma instantánea, sin
+realizar pasos de ejecución ni mutación de valores en variables
+auxiliares.
 
 La programación declarativa no es exclusiva de los lenguajes
 funcionales. Existen muchos lenguajes no funcionales con
@@ -349,7 +346,8 @@ características a las que estamos muy habituados porque son propias de
 los lenguajes más populares y con los que hemos aprendido a
 programar (C, C++, Java, python, etc.)
 
-- Pasos de ejecución y mutación
+- Pasos de ejecución
+- Mutación
 - Efectos laterales
 - Estado local mutable en las funciones
 
@@ -357,10 +355,35 @@ Veremos que, aunque parece imposible, es posible programar sin
 utilizar estas características. Lo demuestran lenguajes lenguajes de
 programación funcional como Haskell, Clojure o el propio Scheme.
 
-##### Pasos de ejecución y mutación 
+##### Pasos de ejecución
 
-El estilo de programación imperativa se basa en pasos de ejecución que
-modifican el estado de variables:
+Una de las características básicas de la programación imperativa es
+la utilización de pasos de ejecución. Por ejemplo, en C podemos
+realizar los siguientes pasos de ejecución:
+
+```C
+int a = cuadrado(8);
+int b = doble(a);
+int c = cuadrado(b);
+return c
+```
+
+Sin embargo, en programación funcional (por ejemplo, Scheme) no
+existen pasos de ejecución. La forma típica de expresar las
+instrucciones anteriores es componer todas las operaciones en una
+única instrucción:
+
+```scheme
+(cuadrado (doble (cuadrado 8)))
+```
+
+Veremos más adelante que las expresiones en Scheme tienen notación
+prefija y se evalúan de dentro a fuera.
+
+##### Mutación 
+
+En los lenguajes imperativos es común modificar el valor de las
+variables en los pasos de ejecución:
 
 ```java
 int x = 10;
@@ -374,17 +397,59 @@ que modifica el valor anterior de una variable por un nuevo valor. El
 pasos del programa.
 
 A esta asignación que modifica un valor ya existente se le denomina
-_asignación destructiva_ o _mutación_.
+_asignación destructiva_ o **mutación**.
 
 En programación imperativa también se puede modificar (mutar) el valor
 de componentes de estructuras de datos, como posiciones de un array,
 de una lista o de un diccionario.
 
+En programación funcional, por contra, **las definiciones son
+inmutables**, una vez asignado un valor a un identificador no se puede
+modificar éste. En programación funcional se entienden las variables
+como variables matemáticas, no como referencias a una posiciones de
+memoria que puede ser modificada. 
+
+Por ejemplo, la forma especial `define` en Scheme crea un nuevo
+identificador y le da el valor definido de forma permanente. Si
+escribimos el siguiente código en un programa en Scheme R6RS:
+
+```scheme
+#lang r6rs
+(import (rnrs base))
+
+(define a 12)
+(define a 200)
+```
+
+tendremos el siguiente error:
+
+```
+module: duplicate definition for identifier in: a
+```
+
+!!! Note "Nota" 
+    En el intérprete REPL del DrRacket sí que podemos definir más
+    de una vez la misma función o identificador. Se ha diseñado así para
+    facilitar el uso del intérprete para la prueba de expresiones en
+    Scheme.
+
+En los lenguajes de programación imperativos es habitual introducir
+también sentencias declarativas. Por ejemplo, en el siguiente
+código Java las líneas 1 y 3 las podríamos considerar declarativas y
+las 2 y 4 imperativas:
+
+```
+1. int x = 1;
+2. x = x+1;
+3. int y = x+1;
+4. y = x;
+```
+
 ##### Mutación y efectos laterales
 
-En programación imperativa es habitual también trabajar con referencias
-y hacer que más de un identificador referencie el mismo valor. Esto
-produce la posibilidad de que la modificación (mutación) del valor a
+En programación imperativa es habitual también trabajar con
+referencias y hacer que más de un identificador referencie el mismo
+valor. Esto produce la posibilidad de que la mutación del valor a
 través de uno de los identificadores produzca un **efecto lateral**
 (_side effect_ en inglés) en el que el valor de un identificador
 cambia sin ejecutar ninguna expresión en la que se utilice
@@ -397,7 +462,7 @@ identificadores están accediendo al mismo objeto. Si mutamos algún valor
 del objeto a través de un identificador provocamos un efecto lateral
 en los otros identificadores.
 
-Por ejemplo, lo siguiente es un ejemplo de una **mutación** en
+Por ejemplo, lo siguiente es un ejemplo de una mutación en
 programación imperativa, en la que se modifican los atributos de un
 objeto en Java:
 
@@ -422,54 +487,40 @@ p2.setCoordX(10.0);
 p1.getCoordX(); // la coord x de p1 es 10.0, sin que ninguna sentencia haya modificado directamente p1
 ```
 
-En programación funcional, por contra, **las definiciones son
-inmutables**, una vez asignado un valor a un identificador no se puede
-modificar éste. En programación funcional se entienden las variables
-como variables matemáticas, no como referencias a una posiciones de
-memoria que puede ser modificada. Los valores son inmutables y no
-existen efectos laterales.
+Los efectos laterales son los responsables de muchos _bugs_ y hay que
+ser muy consciente de su uso. Son especialmente complicados de depurar
+los _bugs_ debidos a efectos laterales en programas concurrentes con
+múltiples hilos de ejecución, en los que varios hilos pueden acceder a
+las mismas referencias y [provocar condiciones de carrera](https://en.wikipedia.org/wiki/Race_condition).
 
-Por ejemplo, la forma especial `define` en Scheme crea un nuevo
-identificador y le da el valor definido de forma permanente. Si
-escribimos el siguiente código en un programa en Scheme R6RS:
+Por otro lado, también existen situaciones en las que su utilización
+permite ganar mucha eficiencia porque podemos definir estructuras de
+datos en el que los valores son compartidos por varias referencias y
+modificando un único valor se actualizan de forma instantánea esas
+referencias.
 
-```scheme
-#lang r6rs
-(import (rnrs base))
+En los lenguajes en los que no existe la mutación no se producen
+efectos laterales, ya que no es posible modificar el valor de una
+variable una vez establecido. Los programas que escribamos en estos
+lenguajes van a estar libres de este tipo de _bugs_ y van a poder ser
+ejecutado sin problemas en hilos de ejecución concurrente.
 
-(define a 12)
-(define a 200)
-```
+Por otro lado, la ausencia de mutación hace que sean algo más costosas
+ciertas operaciones, como la construcción de estructuras de datos
+nuevas a partir de estructuras ya existentes. Veremos, por ejemplo,
+que la única forma de añadir un elemento al final de una lista será
+construir una lista nueva con todos los elementos de la lista original
+y el nuevo elemento. Esta operación tiene un coste lineal con el
+número de elementos de la lista. Sin embargo, en una lista en la que
+pudiéramos utilizar la mutación podríamos implementar esta operación
+con coste constante.
 
-tendremos el siguiente error:
-
-```
-module: duplicate definition for identifier in: a
-```
-
-*Nota*: en el intérprete REPL del DrRacket sí que podemos definir más
- de una vez la misma función o identificador. Se ha diseñado así para
- facilitar el uso del intérprete para la prueba de expresiones en
- Scheme.
-
-En los lenguajes de programación es habitual mezclar sentencias
-imperativas y sentencias declarativas. Por ejemplo, en el siguiente
-código Java las líneas 1 y 3 las podríamos considerar declarativas y
-las 2 y 4 imperativas:
-
-```
-1. int x = 1;
-2. x = x+1;
-3. int y = x+1;
-4. y = x;
-```
-
-##### Estado local
+##### Estado local mutable
 
 Otra característica de la programación imperativa es lo que se
 denomina **estado local mutable** en funciones, procedimientos o
 métodos. Se trata la posibilidad de que una invocación a un método o
-una función modifique un cierto estado y de forma que la siguiente
+una función modifique un cierto estado, de forma que la siguiente
 invocación devuelva un valor distinto. Es una característica básica de
 la programación orientada a objetos, donde los objetos guardan valores
 que se modifican con la invocaciones a sus métodos.
@@ -663,8 +714,11 @@ La evaluación de la última expresión se hace de la siguiente forma:
 2116
 ```
 
+
+#### Definición de funciones auxiliares
+
 Las funciones definidas se pueden utilizar a su vez para construir
-otras funciones
+otras funciones.
 
 Lo habitual en programación funcional es definir funciones muy
 pequeñas e ir construyendo funciones cada vez de mayor nivel usando
@@ -694,7 +748,7 @@ pasen unos meses):
 ;
 ; Definición incorrecta: muy poco legible
 ;
-; La función tiempo-impacto1 devuelve el tiempo que tarda
+; La función tiempo-impacto devuelve el tiempo que tarda
 ; en llegar un torpedo a la velocidad v desde la posición
 ; (x1, y1) a la posición (x2, y2)
 ;
@@ -715,24 +769,14 @@ lenguaje débilmente tipado y no tenemos la ayuda de los tipos que nos
 dan más contexto de qué es cada parámetro y qué devuelve la función.
 
 ```scheme
+; Definición correcta, modular y legible de la función tiempo-impacto
+
 ;
-; Definición correcta, modular y legible
-;
-; La función 'tiempo-impacto' devuelve el tiempo que tarda
-; en llegar un torpedo a la velocidad v desde la posición
-; (x1, y1) a la posición (x2, y2)
+; La función 'cuadrado' devuelve el cuadrado de un número
 ;
 
-(define (tiempo-impacto x1 y1 x2 y2 velocidad)
-    (tiempo (distancia x1 y1 x2 y2) velocidad))
-;
-;
-; La función 'tiempo' devuelve el tiempo que 
-; tarde en recorrer un móvil una distancia d a un velocidad v
-;
-
-(define (tiempo distancia velocidad)
-    (/ distancia velocidad))
+(define (cuadrado x)
+    (* x x))
 
 ;
 ; La función 'distancia' devuelve la distancia entre dos
@@ -744,11 +788,21 @@ dan más contexto de qué es cada parámetro y qué devuelve la función.
              (cuadrado (- y2 y1)))))
 
 ;
-; La función 'cuadrado' devuelve el cuadrado de un número
+; La función 'tiempo' devuelve el tiempo que 
+; tarde en recorrer un móvil una distancia d a un velocidad v
 ;
 
-(define (cuadrado x)
-    (* x x))
+(define (tiempo distancia velocidad)
+    (/ distancia velocidad))
+
+;
+; La función 'tiempo-impacto' devuelve el tiempo que tarda
+; en llegar un torpedo a la velocidad v desde la posición
+; (x1, y1) a la posición (x2, y2)
+;
+
+(define (tiempo-impacto x1 y1 x2 y2 velocidad)
+    (tiempo (distancia x1 y1 x2 y2) velocidad))
 ```
 
 En esta segunda versión definimos más funciones, pero cada una es
@@ -848,7 +902,7 @@ evaluación que utilizamos.
    el nombre de una función definida con un `define`, tenemos que
    evaluar primero los argumentos _arg1_ ... _argn_ y después
    **sustituir _f_ por su cuerpo**, reemplazando cada parámetro formal
-   de la función por el correspondiente argumento evaluado. Después
+   de la función por el correspondiente **argumento evaluado**. Después
    evaluaremos la expresión resultante usando estas mismas reglas.
 
 **Orden normal**
@@ -856,16 +910,8 @@ evaluación que utilizamos.
 4. Si *e* es una expresión del tipo *(f arg1 ... argn)*, donde *f* es
    el nombre de una función definida con un `define`, tenemos que
    **sustituir _f_ por su cuerpo**, reemplazando cada parámetro formal
-   de la función por el correspondiente argumento sin evaluar. Después
+   de la función por el correspondiente **argumento sin evaluar**. Después
    evaluar la expresión resultante usando estas mismas reglas.
-
-Ambas formas de evaluación darán el mismo resultado en programación
-funcional. Scheme utiliza el orden aplicativo.
-
-En el siguiente apartado veremos un ejemplo de ambos tipos de
-evaluaciones. 
-
-#### Ejemplo
 
 En el orden aplicativo se realizan las evaluaciones antes de realizar
 las sustituciones, lo que define una evaluación de *dentro a fuera* de
@@ -876,10 +922,14 @@ En el orden normal se realizan todas las sustituciones hasta que se
 tiene una larga expresión formada por expresiones primitivas; se
 evalúa entonces.
 
-Veamos cómo se evalúa el mismo ejemplo de ambas formas. Supongamos el
-ejemplo anterior.
+Ambas formas de evaluación darán el mismo resultado en programación
+funcional. Scheme utiliza el orden aplicativo.
 
-Definiciones:
+#### Ejemplo 1
+
+Vamos a empezar con un ejemplo sencillo para comprobar cómo se evalúa
+una misma expresión utilizando ambos modelos de
+sustitución. Supongamos las siguientes definiciones:
 
 ```scheme
 (define (doble x) 
@@ -887,7 +937,63 @@ Definiciones:
     
 (define (cuadrado y) 
     (* y y))
+
+(define a 2)
+```
+
+Queremos evaluar la siguiente expresión:
+
+```scheme
+(doble (cuadrado a))
+```
+
+La evaluación utilizando el **modelo de sustitución aplicativo**,
+usando paso a paso las reglas anteriores, es la siguiente (en cada
+línea se indica entre paréntesis la regla usada):
+
+
+```
+(doble (cuadrado a)) ⇒       ; Sustituimos a por su valor (R2)
+(doble (cuadrado 2)) ⇒       ; Sustitumos cuadrado por su cuerpo (R4)
+(doble (* 2 2)) ⇒            ; Evaluamos (* 2 2) (R3)
+(doble 4) ⇒                  ; Sustituimos doble por su cuerpo (R4)
+(+ 4 4) ⇒                    ; Evaluamos (+ 4 4) (R3)
+8
+```
+
+Podemos comprobar que en el modelo aplicativo se intercalan las
+sustituciones de una función por su cuerpo (regla 4) y las evaluaciones de
+expresiones (regla 3). 
+
+Por el contrario, la evaluación usando el **modelo de sustitución
+normal** es:
+
+```
+(doble (cuadrado a)) ⇒            ; Sustituimos doble por su cuerpo (R4)
+(+ (cuadrado a) (cuadrado a) ⇒    ; Sustituimos cuadrado por su cuerpo (R4)
+(+ (* a a) (* a a)  ⇒             ; Sustitumos a por su valor (R2)
+(+ (* 2 2) (* 2 2)  ⇒             ; Evaluamos (* 2 2) (R3)
+(+ 4 (* 2 2))  ⇒                  ; Evaluamos (* 2 2) (R3)
+(+ 4 4)  ⇒                        ; Evaluamos (+ 4 4) (R3)
+8
+```
+
+Al usar este modelo de evaluación primero se realizan todas las
+sustituciones (regla 4) y después todas las evaluaciones (regla 3). 
+
+#### Ejemplo 2
+
+Veamos la evaluación del ejemplo algo más complicado que hemos
+planteado al comienzo:
+
     
+```scheme
+(define (doble x) 
+    (+ x x))
+    
+(define (cuadrado y) 
+    (* y y))
+
 (define (f z) 
     (+ (cuadrado (doble z)) 1))
     
@@ -901,20 +1007,19 @@ Expresión a evaluar:
 ```
 
 
-Veamos el resultado de la evaluación usando el **modelo de sustitución
-aplicativo**, aplicando paso a paso las reglas anteriores (en cada
-línea pondremos entre paréntesis la regla que aplicamos):
+Resultado de la evaluación usando el **modelo de sustitución
+aplicativo**:
 
 ```
-(f (+ a 1)) ⇒                ; Para evaluar f, evaluamos primero su argumento (+ a 1) (Regla 4)
-                             ; y sustituimos a por 2 (Regla 2) 
-(f (+ 2 1)) ⇒                ; Evaluamos (+ 2 1) (Reglas 2 y 3)
-(f 3) ⇒                      ; (Regla 4)
-(+ (cuadrado (doble 3)) 1) ⇒ ; Sustituimos (doble 3) (Regla 4)
-(+ (cuadrado (+ 3 3)) 1) ⇒   ; Evaluamos (+ 3 3) (Reglas 2 y 3)
-(+ (cuadrado 6) 1) ⇒         ; Sustitumos (cuadrado 6) (Regla 4)
-(+ (* 6 6) 1) ⇒              ; Evaluamos (* 6 6) (Reglas 2 y 3)
-(+ 36 1) ⇒                   ; Evaluamos (+ 36 1) (Reglas 2 y 3)
+(f (+ a 1)) ⇒                ; Para evaluar f, evaluamos primero su argumento (+ a 1) (R4)
+                             ; y sustituimos a por 2 (R2) 
+(f (+ 2 1)) ⇒                ; Evaluamos (+ 2 1) (R3)
+(f 3) ⇒                      ; (R4)
+(+ (cuadrado (doble 3)) 1) ⇒ ; Sustituimos (doble 3) (R4)
+(+ (cuadrado (+ 3 3)) 1) ⇒   ; Evaluamos (+ 3 3) (R3)
+(+ (cuadrado 6) 1) ⇒         ; Sustitumos (cuadrado 6) (R4)
+(+ (* 6 6) 1) ⇒              ; Evaluamos (* 6 6) (R3)
+(+ 36 1) ⇒                   ; Evaluamos (+ 36 1) (R3)
 37
 ```
 
@@ -922,18 +1027,18 @@ Y veamos el resultado de usar el **modelo de sustitución normal**:
 
 ```
 (f (+ a 1)) ⇒                      ; Sustituimos (f (+ a 1)) 
-                                   ; por su definición, con z = (+ a 1) (Regla 4)
-(+ (cuadrado (doble (+ a 1))) 1) ⇒ ; Sustituimos (cuadrado ...) (Regla 4)
+                                   ; por su definición, con z = (+ a 1) (R4)
+(+ (cuadrado (doble (+ a 1))) 1) ⇒ ; Sustituimos (cuadrado ...) (R4)
 (+ (* (doble (+ a 1))
-      (doble (+ a 1))) 1)          ; Sustituimos (doble  ...) (Regla 4)
+      (doble (+ a 1))) 1)          ; Sustituimos (doble  ...) (R4)
 (+ (* (+ (+ a 1) (+ a 1))
-      (+ (+ a 1) (+ a 1))) 1) ⇒    ; Evaluamos a (Regla 2)
+      (+ (+ a 1) (+ a 1))) 1) ⇒    ; Evaluamos a (R2)
 (+ (* (+ (+ 2 1) (+ 2 1))
-      (+ (+ 2 1) (+ 2 1))) 1) ⇒    ; Evaluamos (+ 2 1) (Regla 3)
+      (+ (+ 2 1) (+ 2 1))) 1) ⇒    ; Evaluamos (+ 2 1) (R3)
 (+ (* (+ 3 3)
-      (+ 3 3)) 1) ⇒                ; Evaluamos (+ 3 3) (Regla 3)
-(+ (* 6 6) 1) ⇒                    ; Evaluamos (* 6 6) (Regla 3)
-(+ 36 1) ⇒                         ; Evaluamos (+ 36 1) (Regla 3)
+      (+ 3 3)) 1) ⇒                ; Evaluamos (+ 3 3) (R3)
+(+ (* 6 6) 1) ⇒                    ; Evaluamos (* 6 6) (R3)
+(+ 36 1) ⇒                         ; Evaluamos (+ 36 1) (R3)
 37
 ```
 
@@ -985,7 +1090,7 @@ aplicativo ya visto:
 Las *formas especiales* son expresiones primitivas de Scheme que
 tienen una forma de evaluarse propia, distinta de las funciones. 
 
-### Formas especiales en Scheme: define, if, cond
+### Formas especiales en Scheme: define, if, cond, quote
 
 Veamos la forma de evaluar las distintas formas especiales en
 Scheme. En estas formas especiales no se aplica el modelo de
@@ -1014,7 +1119,7 @@ evalúa de una forma diferente.
 ```
 
 
-##### Forma especial `define` para definir funciones
+#### Forma especial `define` para definir funciones
 
 **Sintaxis**
 
@@ -1103,7 +1208,7 @@ de la semántica:
 ;; es cierta se devuelve la cadena "ninguna condición es cierta".
 ```
 
-### Forma especial `quote` y símbolos
+#### Forma especial `quote` y símbolos
 
 **Sintaxis**
 
@@ -1155,36 +1260,41 @@ Ejemplos de funciones Scheme con símbolos:
 (equal? 'hola "hola")
 ```
 
-Un símbolo puede asociarse o ligarse (*bind*) a un valor (cualquier
-dato *de primera clase*) con la forma especial `define`.
+Como hemos visto anteriormente, un símbolo puede asociarse o ligarse
+(*bind*) a un valor (cualquier dato *de primera clase*) con la forma
+especial `define`.
+
+```scheme
+(define pi 3.14159)
+```
+
+!!! Note "Nota"
+    No es correcto escribir `(define 'pi 3.14156)` porque la forma
+    especial `define` debe recibir un identificador _sin quote_.
+
 
 Cuando escribimos un símbolo en el prompt de Scheme el intérprete lo
 evalúa y devuelve su valor:
 
-```scheme
-(define pi 3.14159)
-pi
-⇒3.14159
+```
+> pi 
+3.14159
 ```
 
 Los nombres de las funciones (`equal?`, `sin`, `+`, ...) son también
 símbolos y Scheme también los evalúa (en un par de semanas hablaremos
 de las funciones como objetos primitivos en Scheme):
 
-```scheme
-sin ; ⇒ #<procedure:sin>
-+ ; ⇒ #<procedure:+>
-(define (cuadrado x) (* x x)) 
-cuadrado ; ⇒ #<procedure:cuadrado>
+```
+> sin
+#<procedure:sin>
+> +
+#<procedure:+>
+> (define (cuadrado x) (* x x)) 
+> cuadrado
+#<procedure:cuadrado>
 ```
 
-Los símbolos son tipos primitivos del lenguaje: pueden pasarse como
-parámetros o ligarse a variables.
-
-```scheme
-(define x 'hola)
-x ; ⇒ hola
-```
 
 ### Listas
 
