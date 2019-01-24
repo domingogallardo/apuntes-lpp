@@ -1383,14 +1383,14 @@ resultantes de las invocaciones de las funciones dentro del
 paréntesis:
 
 ```scheme
-(list 1 (/ 2 3) (+ 2 3) (cons 3 4)) ; ⇒ {1 2/3 5 {3 . 4}}
+(list 1 (/ 2 3) (+ 2 3)) ; ⇒ {1 2/3 5}
 ```
 
 Sin embargo, usamos `quote` obtenemos una lista con sublistas
 con símbolos en sus primeras posiciones:
 
 ```scheme
-'(1 (/ 2 3) (+ 2 3) (cons 3 4)) ; ⇒ {1 {/ 2 3} {+ 2 3} {cons 3 4}}
+'(1 (/ 2 3) (+ 2 3)) ; ⇒ {1 {/ 2 3} {+ 2 3}}
 ```
 
 #### Selección de elementos de una lista: `car` y `cdr`
