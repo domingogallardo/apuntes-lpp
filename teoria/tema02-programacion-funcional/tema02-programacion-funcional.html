@@ -512,10 +512,12 @@ unas entradas en unas salidas, sin ningún estado interno y ningún
 efecto lateral.</p>
 </blockquote>
 <p>Hablaremos más adelante de la no existencia de estado interno
-(variables en las que se guardan y se modifican valores) y de la ausencia
-de efectos laterales. Avancemos que estas son también características
-de la <strong>programación declarativa</strong>. En este sentido, la programación
-funcional es un tipo concreto de programación declarativa.</p>
+(variables en las que se guardan y se modifican valores) y de la
+ausencia de efectos laterales. Avancemos que estas son también
+características de la <strong>programación declarativa</strong> (frente a la
+programación tradicional imperativa que es la que se utiliza en
+lenguajes como C o Java). En este sentido, la programación funcional
+es un tipo concreto de programación declarativa.</p>
 <p>Las características principales del paradigma funcional son:</p>
 <ul>
 <li>Definiciones de funciones matemáticas puras, sin estado interno ni
@@ -529,32 +531,25 @@ funcional es un tipo concreto de programación declarativa.</p>
 <p>Explicaremos estas propiedades a continuación.</p>
 <h4>Orígenes históricos</h4>
 <p>En los años 30, junto con la máquina de Turing, se propusieron
-distintos modelos computacionales que formalizaban el concepto de
-<em>algoritmo</em>. Uno de estos modelos fue el denominado
+distintos modelos computacionales equivalentes que formalizaban el
+concepto de <em>algoritmo</em>. Uno de estos modelos fue el denominado
 <a href="https://en.wikipedia.org/wiki/Lambda_calculus"><em>Cálculo lambda</em></a>
 propuesto por Alonzo Church en los años 30 y basado en la evaluación
-de expresiones matemáticas. En este formalismo se expresan los
-algoritmos mediante funciones matemáticas en las que puede ser usada
-la recursión. Una función matemática recibe parámetros de entrada y
+de expresiones matemáticas. En este formalismo los algoritmos se
+expresan mediante funciones matemáticas en las que puede ser usada la
+recursión. Una función matemática recibe parámetros de entrada y
 devuelve un valor. La evaluación de la función se realiza evaluando
 sus expresiones matemáticas mediante la sustitución de los parámetros
-formales por los valores reales que se utilizan en la invocación.</p>
-<p>Turing demostró que este modelo matemático era equivalente al su
-máquina, demostrando que es posible construir una maquina equivalente
-a cualquier función lambda existente, una máquina que devuelva
-exactamente los mismos resultados que la función lambda. El hecho de
-que ambos modelos computacionales sean equivalentes significa que
-cualquier cualquier algoritmo que podamos definir con una máquina de
-Turing, puede ser definido también con una función del cálculo
-lambda. Y viceversa: cualquier función definida con el cálculo lambda
-puede ser implementada por alguna máquina de Turing.</p>
+formales por los valores reales que se utilizan en la invocación (el
+denominado <strong>modelo de sustitución</strong> que veremos más adelante).</p>
 <p>El cálculo lambda es un formalismo matemático, basado en operaciones
 abstractas. Dos décadas después, cuando los primeros computadores
 electrónicos estaban empezando a utilizarse en grandes empresas y en
 universidades, este formalismo dio origen a algo mucho más tangible y
 práctico: un lenguaje de alto nivel, mucho más expresivo que el
 ensamblador, con el que expresar operaciones y funciones <strong>que pueden
-ser definidas y evaluadas en el computador</strong>.</p>
+ser definidas y evaluadas en el computador</strong>, el lenguaje de
+programación Lisp.</p>
 <h4>Historia y características del Lisp</h4>
 <ul>
 <li><a href="http://en.wikipedia.org/wiki/Lisp_(programming_language)">Lisp</a> es
@@ -634,8 +629,8 @@ expresiones sean puramente funcionales.</p>
 <p>En la actualidad el paradigma funcional es un <strong>paradigma de moda</strong>,
 como se puede comprobar observando la cantidad de artículos, charlas y
 blogs en los que se habla de él, así como la cantidad de lenguajes que
-están aplicando sus conceptos. Por ejemplo, solo como muestra,
-mostramos a continuación algunos enlaces a charlas y artículos
+están aplicando sus conceptos. Por ejemplo, solo como muestra, a
+continuación puedes encontrar algunos enlaces a charlas y artículos
 interesantes publicados recientemente sobre programación funcional:</p>
 <ul>
 <li>Lupo Montero - <a href="https://medium.com/laboratoria-how-to/introducción-a-la-programación-funcional-en-javascript-parte-1-e0b1d0b2142e">Introducción a la programación funcional en
@@ -717,7 +712,8 @@ o <em>iterativa</em> los programas complejos se construyen a base de ir
 definiendo y probando elementos computacionales cada vez más
 complicados. Los lenguajes de programación funcional encajan
 perfectamente en esta forma de construir programas.</p>
-<p>Como Abelson y Sussman comentan en el SICP:</p>
+<p>Como Abelson y Sussman comentan en el libro <em>Structure and
+Implementation of Computer Programs</em> (SICP):</p>
 <blockquote>
 <p>En general, los objetos computacionales pueden tener estructuras muy
 complejas, y sería extremadamente inconveniente tener que recordar y
@@ -788,13 +784,14 @@ que toma como entrada un número y devuelve su cuadrado:</p>
 </td></tr></table>
 
 <p>La llamada a la función con un parámetro concreto devuelve el
-resultado de evaluar su definición. Debemos pensar que esta evaluación
-se hace de forma instantánea, sin realizar pasos de ejecución ni
-mutación de valores en variables auxiliares.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrado</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; devuelve 16</span>
+resultado de evaluar su definición. </p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrado</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ 16</span>
 </pre></div>
 </td></tr></table>
 
+<p>Debemos pensar que esta evaluación se hace de forma instantánea, sin
+realizar pasos de ejecución ni mutación de valores en variables
+auxiliares.</p>
 <p>La programación declarativa no es exclusiva de los lenguajes
 funcionales. Existen muchos lenguajes no funcionales con
 características declarativas. Por ejemplo Prolog, en el que un
@@ -810,16 +807,41 @@ características a las que estamos muy habituados porque son propias de
 los lenguajes más populares y con los que hemos aprendido a
 programar (C, C++, Java, python, etc.)</p>
 <ul>
-<li>Pasos de ejecución y mutación</li>
+<li>Pasos de ejecución</li>
+<li>Mutación</li>
 <li>Efectos laterales</li>
 <li>Estado local mutable en las funciones</li>
 </ul>
 <p>Veremos que, aunque parece imposible, es posible programar sin
 utilizar estas características. Lo demuestran lenguajes lenguajes de
 programación funcional como Haskell, Clojure o el propio Scheme.</p>
-<h5>Pasos de ejecución y mutación</h5>
-<p>El estilo de programación imperativa se basa en pasos de ejecución que
-modifican el estado de variables:</p>
+<h5>Pasos de ejecución</h5>
+<p>Una de las características básicas de la programación imperativa es
+la utilización de pasos de ejecución. Por ejemplo, en C podemos
+realizar los siguientes pasos de ejecución:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">cuadrado</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">doble</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">cuadrado</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="k">return</span> <span class="n">c</span>
+</pre></div>
+</td></tr></table>
+
+<p>Sin embargo, en programación funcional (por ejemplo, Scheme) no
+existen pasos de ejecución. La forma típica de expresar las
+instrucciones anteriores es componer todas las operaciones en una
+única instrucción:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrado</span> <span class="p">(</span><span class="nf">doble</span> <span class="p">(</span><span class="nf">cuadrado</span> <span class="mi">8</span><span class="p">)))</span>
+</pre></div>
+</td></tr></table>
+
+<p>Veremos más adelante que las expresiones en Scheme tienen notación
+prefija y se evalúan de dentro a fuera.</p>
+<h5>Mutación</h5>
+<p>En los lenguajes imperativos es común modificar el valor de las
+variables en los pasos de ejecución:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
 <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
@@ -832,14 +854,60 @@ que modifica el valor anterior de una variable por un nuevo valor. El
 <em>estado</em> de las variables (su valor) cambia con la ejecución de los
 pasos del programa.</p>
 <p>A esta asignación que modifica un valor ya existente se le denomina
-<em>asignación destructiva</em> o <em>mutación</em>.</p>
+<em>asignación destructiva</em> o <strong>mutación</strong>.</p>
 <p>En programación imperativa también se puede modificar (mutar) el valor
 de componentes de estructuras de datos, como posiciones de un array,
 de una lista o de un diccionario.</p>
+<p>En programación funcional, por contra, <strong>las definiciones son
+inmutables</strong>, una vez asignado un valor a un identificador no se puede
+modificar éste. En programación funcional se entienden las variables
+como variables matemáticas, no como referencias a una posiciones de
+memoria que puede ser modificada. </p>
+<p>Por ejemplo, la forma especial <code>define</code> en Scheme crea un nuevo
+identificador y le da el valor definido de forma permanente. Si
+escribimos el siguiente código en un programa en Scheme R6RS:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span><span class="nv">lang</span> <span class="nv">r6rs</span>
+<span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">rnrs</span> <span class="nv">base</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define </span><span class="nv">a</span> <span class="mi">12</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define </span><span class="nv">a</span> <span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>tendremos el siguiente error:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">module</span><span class="o">:</span> <span class="n">duplicate</span> <span class="n">definition</span> <span class="k">for</span> <span class="n">identifier</span> <span class="k">in</span><span class="o">:</span> <span class="n">a</span>
+</pre></div>
+</td></tr></table>
+
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>En el intérprete REPL del DrRacket sí que podemos definir más
+de una vez la misma función o identificador. Se ha diseñado así para
+facilitar el uso del intérprete para la prueba de expresiones en
+Scheme.</p>
+</div>
+<p>En los lenguajes de programación imperativos es habitual introducir
+también sentencias declarativas. Por ejemplo, en el siguiente
+código Java las líneas 1 y 3 las podríamos considerar declarativas y
+las 2 y 4 imperativas:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>1. int x = 1;
+2. x = x+1;
+3. int y = x+1;
+4. y = x;
+</pre></div>
+</td></tr></table>
+
 <h5>Mutación y efectos laterales</h5>
-<p>En programación imperativa es habitual también trabajar con referencias
-y hacer que más de un identificador referencie el mismo valor. Esto
-produce la posibilidad de que la modificación (mutación) del valor a
+<p>En programación imperativa es habitual también trabajar con
+referencias y hacer que más de un identificador referencie el mismo
+valor. Esto produce la posibilidad de que la mutación del valor a
 través de uno de los identificadores produzca un <strong>efecto lateral</strong>
 (<em>side effect</em> en inglés) en el que el valor de un identificador
 cambia sin ejecutar ninguna expresión en la que se utilice
@@ -850,7 +918,7 @@ asignamos un objeto a más de un identificador, todos los
 identificadores están accediendo al mismo objeto. Si mutamos algún valor
 del objeto a través de un identificador provocamos un efecto lateral
 en los otros identificadores.</p>
-<p>Por ejemplo, lo siguiente es un ejemplo de una <strong>mutación</strong> en
+<p>Por ejemplo, lo siguiente es un ejemplo de una mutación en
 programación imperativa, en la que se modifican los atributos de un
 objeto en Java:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -880,55 +948,35 @@ sentencia en la que no se ha usado esa variable:</p>
 </pre></div>
 </td></tr></table>
 
-<p>En programación funcional, por contra, <strong>las definiciones son
-inmutables</strong>, una vez asignado un valor a un identificador no se puede
-modificar éste. En programación funcional se entienden las variables
-como variables matemáticas, no como referencias a una posiciones de
-memoria que puede ser modificada. Los valores son inmutables y no
-existen efectos laterales.</p>
-<p>Por ejemplo, la forma especial <code>define</code> en Scheme crea un nuevo
-identificador y le da el valor definido de forma permanente. Si
-escribimos el siguiente código en un programa en Scheme R6RS:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span><span class="nv">lang</span> <span class="nv">r6rs</span>
-<span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">rnrs</span> <span class="nv">base</span><span class="p">))</span>
-
-<span class="p">(</span><span class="k">define </span><span class="nv">a</span> <span class="mi">12</span><span class="p">)</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">a</span> <span class="mi">200</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
-
-<p>tendremos el siguiente error:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">module</span><span class="o">:</span> <span class="n">duplicate</span> <span class="n">definition</span> <span class="k">for</span> <span class="n">identifier</span> <span class="k">in</span><span class="o">:</span> <span class="n">a</span>
-</pre></div>
-</td></tr></table>
-
-<p><em>Nota</em>: en el intérprete REPL del DrRacket sí que podemos definir más
- de una vez la misma función o identificador. Se ha diseñado así para
- facilitar el uso del intérprete para la prueba de expresiones en
- Scheme.</p>
-<p>En los lenguajes de programación es habitual mezclar sentencias
-imperativas y sentencias declarativas. Por ejemplo, en el siguiente
-código Java las líneas 1 y 3 las podríamos considerar declarativas y
-las 2 y 4 imperativas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>1. int x = 1;
-2. x = x+1;
-3. int y = x+1;
-4. y = x;
-</pre></div>
-</td></tr></table>
-
-<h5>Estado local</h5>
+<p>Los efectos laterales son los responsables de muchos <em>bugs</em> y hay que
+ser muy consciente de su uso. Son especialmente complicados de depurar
+los <em>bugs</em> debidos a efectos laterales en programas concurrentes con
+múltiples hilos de ejecución, en los que varios hilos pueden acceder a
+las mismas referencias y <a href="https://en.wikipedia.org/wiki/Race_condition">provocar condiciones de carrera</a>.</p>
+<p>Por otro lado, también existen situaciones en las que su utilización
+permite ganar mucha eficiencia porque podemos definir estructuras de
+datos en el que los valores son compartidos por varias referencias y
+modificando un único valor se actualizan de forma instantánea esas
+referencias.</p>
+<p>En los lenguajes en los que no existe la mutación no se producen
+efectos laterales, ya que no es posible modificar el valor de una
+variable una vez establecido. Los programas que escribamos en estos
+lenguajes van a estar libres de este tipo de <em>bugs</em> y van a poder ser
+ejecutado sin problemas en hilos de ejecución concurrente.</p>
+<p>Por otro lado, la ausencia de mutación hace que sean algo más costosas
+ciertas operaciones, como la construcción de estructuras de datos
+nuevas a partir de estructuras ya existentes. Veremos, por ejemplo,
+que la única forma de añadir un elemento al final de una lista será
+construir una lista nueva con todos los elementos de la lista original
+y el nuevo elemento. Esta operación tiene un coste lineal con el
+número de elementos de la lista. Sin embargo, en una lista en la que
+pudiéramos utilizar la mutación podríamos implementar esta operación
+con coste constante.</p>
+<h5>Estado local mutable</h5>
 <p>Otra característica de la programación imperativa es lo que se
 denomina <strong>estado local mutable</strong> en funciones, procedimientos o
 métodos. Se trata la posibilidad de que una invocación a un método o
-una función modifique un cierto estado y de forma que la siguiente
+una función modifique un cierto estado, de forma que la siguiente
 invocación devuelva un valor distinto. Es una característica básica de
 la programación orientada a objetos, donde los objetos guardan valores
 que se modifican con la invocaciones a sus métodos.</p>
@@ -1132,8 +1180,9 @@ forma que las funciones primitivas de Scheme:</p>
 </pre></div>
 </td></tr></table>
 
+<h4>Definición de funciones auxiliares</h4>
 <p>Las funciones definidas se pueden utilizar a su vez para construir
-otras funciones</p>
+otras funciones.</p>
 <p>Lo habitual en programación funcional es definir funciones muy
 pequeñas e ir construyendo funciones cada vez de mayor nivel usando
 las anteriores.</p>
@@ -1166,7 +1215,7 @@ pasen unos meses):</p>
 12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">;</span>
 <span class="c1">; Definición incorrecta: muy poco legible</span>
 <span class="c1">;</span>
-<span class="c1">; La función tiempo-impacto1 devuelve el tiempo que tarda</span>
+<span class="c1">; La función tiempo-impacto devuelve el tiempo que tarda</span>
 <span class="c1">; en llegar un torpedo a la velocidad v desde la posición</span>
 <span class="c1">; (x1, y1) a la posición (x2, y2)</span>
 <span class="c1">;</span>
@@ -1218,24 +1267,14 @@ dan más contexto de qué es cada parámetro y qué devuelve la función.</p>
 31
 32
 33
-34</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">;</span>
-<span class="c1">; Definición correcta, modular y legible</span>
+34</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">; Definición correcta, modular y legible de la función tiempo-impacto</span>
+
 <span class="c1">;</span>
-<span class="c1">; La función &#39;tiempo-impacto&#39; devuelve el tiempo que tarda</span>
-<span class="c1">; en llegar un torpedo a la velocidad v desde la posición</span>
-<span class="c1">; (x1, y1) a la posición (x2, y2)</span>
+<span class="c1">; La función &#39;cuadrado&#39; devuelve el cuadrado de un número</span>
 <span class="c1">;</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">tiempo-impacto</span> <span class="nv">x1</span> <span class="nv">y1</span> <span class="nv">x2</span> <span class="nv">y2</span> <span class="nv">velocidad</span><span class="p">)</span>
-    <span class="p">(</span><span class="nf">tiempo</span> <span class="p">(</span><span class="nf">distancia</span> <span class="nv">x1</span> <span class="nv">y1</span> <span class="nv">x2</span> <span class="nv">y2</span><span class="p">)</span> <span class="nv">velocidad</span><span class="p">))</span>
-<span class="c1">;</span>
-<span class="c1">;</span>
-<span class="c1">; La función &#39;tiempo&#39; devuelve el tiempo que </span>
-<span class="c1">; tarde en recorrer un móvil una distancia d a un velocidad v</span>
-<span class="c1">;</span>
-
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">tiempo</span> <span class="nv">distancia</span> <span class="nv">velocidad</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">/ </span><span class="nv">distancia</span> <span class="nv">velocidad</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">cuadrado</span> <span class="nv">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span>
 
 <span class="c1">;</span>
 <span class="c1">; La función &#39;distancia&#39; devuelve la distancia entre dos</span>
@@ -1247,11 +1286,21 @@ dan más contexto de qué es cada parámetro y qué devuelve la función.</p>
              <span class="p">(</span><span class="nf">cuadrado</span> <span class="p">(</span><span class="nb">- </span><span class="nv">y2</span> <span class="nv">y1</span><span class="p">)))))</span>
 
 <span class="c1">;</span>
-<span class="c1">; La función &#39;cuadrado&#39; devuelve el cuadrado de un número</span>
+<span class="c1">; La función &#39;tiempo&#39; devuelve el tiempo que </span>
+<span class="c1">; tarde en recorrer un móvil una distancia d a un velocidad v</span>
 <span class="c1">;</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">cuadrado</span> <span class="nv">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">tiempo</span> <span class="nv">distancia</span> <span class="nv">velocidad</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">/ </span><span class="nv">distancia</span> <span class="nv">velocidad</span><span class="p">))</span>
+
+<span class="c1">;</span>
+<span class="c1">; La función &#39;tiempo-impacto&#39; devuelve el tiempo que tarda</span>
+<span class="c1">; en llegar un torpedo a la velocidad v desde la posición</span>
+<span class="c1">; (x1, y1) a la posición (x2, y2)</span>
+<span class="c1">;</span>
+
+<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">tiempo-impacto</span> <span class="nv">x1</span> <span class="nv">y1</span> <span class="nv">x2</span> <span class="nv">y2</span> <span class="nv">velocidad</span><span class="p">)</span>
+    <span class="p">(</span><span class="nf">tiempo</span> <span class="p">(</span><span class="nf">distancia</span> <span class="nv">x1</span> <span class="nv">y1</span> <span class="nv">x2</span> <span class="nv">y2</span><span class="p">)</span> <span class="nv">velocidad</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
@@ -1341,27 +1390,22 @@ siguientes:</p>
 <p>La regla 4 tiene dos variantes, dependiendo del orden de
 evaluación que utilizamos.</p>
 <p><strong>Orden aplicativo</strong></p>
-<ol>
+<ol start="4">
 <li>Si <em>e</em> es una expresión del tipo <em>(f arg1 ... argn)</em>, donde <em>f</em> es
    el nombre de una función definida con un <code>define</code>, tenemos que
    evaluar primero los argumentos <em>arg1</em> ... <em>argn</em> y después
    <strong>sustituir <em>f</em> por su cuerpo</strong>, reemplazando cada parámetro formal
-   de la función por el correspondiente argumento evaluado. Después
+   de la función por el correspondiente <strong>argumento evaluado</strong>. Después
    evaluaremos la expresión resultante usando estas mismas reglas.</li>
 </ol>
 <p><strong>Orden normal</strong></p>
-<ol>
+<ol start="4">
 <li>Si <em>e</em> es una expresión del tipo <em>(f arg1 ... argn)</em>, donde <em>f</em> es
    el nombre de una función definida con un <code>define</code>, tenemos que
    <strong>sustituir <em>f</em> por su cuerpo</strong>, reemplazando cada parámetro formal
-   de la función por el correspondiente argumento sin evaluar. Después
+   de la función por el correspondiente <strong>argumento sin evaluar</strong>. Después
    evaluar la expresión resultante usando estas mismas reglas.</li>
 </ol>
-<p>Ambas formas de evaluación darán el mismo resultado en programación
-funcional. Scheme utiliza el orden aplicativo.</p>
-<p>En el siguiente apartado veremos un ejemplo de ambos tipos de
-evaluaciones. </p>
-<h4>Ejemplo</h4>
 <p>En el orden aplicativo se realizan las evaluaciones antes de realizar
 las sustituciones, lo que define una evaluación de <em>dentro a fuera</em> de
 los paréntesis. Cuando se llega a una expresión primitiva se
@@ -1369,9 +1413,76 @@ evalúa.</p>
 <p>En el orden normal se realizan todas las sustituciones hasta que se
 tiene una larga expresión formada por expresiones primitivas; se
 evalúa entonces.</p>
-<p>Veamos cómo se evalúa el mismo ejemplo de ambas formas. Supongamos el
-ejemplo anterior.</p>
-<p>Definiciones:</p>
+<p>Ambas formas de evaluación darán el mismo resultado en programación
+funcional. Scheme utiliza el orden aplicativo.</p>
+<h4>Ejemplo 1</h4>
+<p>Vamos a empezar con un ejemplo sencillo para comprobar cómo se evalúa
+una misma expresión utilizando ambos modelos de
+sustitución. Supongamos las siguientes definiciones:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">doble</span> <span class="nv">x</span><span class="p">)</span> 
+    <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">cuadrado</span> <span class="nv">y</span><span class="p">)</span> 
+    <span class="p">(</span><span class="nb">* </span><span class="nv">y</span> <span class="nv">y</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define </span><span class="nv">a</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Queremos evaluar la siguiente expresión:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">doble</span> <span class="p">(</span><span class="nf">cuadrado</span> <span class="nv">a</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>La evaluación utilizando el <strong>modelo de sustitución aplicativo</strong>,
+usando paso a paso las reglas anteriores, es la siguiente (en cada
+línea se indica entre paréntesis la regla usada):</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(doble (cuadrado a)) ⇒       ; Sustituimos a por su valor (R2)
+(doble (cuadrado 2)) ⇒       ; Sustitumos cuadrado por su cuerpo (R4)
+(doble (* 2 2)) ⇒            ; Evaluamos (* 2 2) (R3)
+(doble 4) ⇒                  ; Sustituimos doble por su cuerpo (R4)
+(+ 4 4) ⇒                    ; Evaluamos (+ 4 4) (R3)
+8
+</pre></div>
+</td></tr></table>
+
+<p>Podemos comprobar que en el modelo aplicativo se intercalan las
+sustituciones de una función por su cuerpo (regla 4) y las evaluaciones de
+expresiones (regla 3). </p>
+<p>Por el contrario, la evaluación usando el <strong>modelo de sustitución
+normal</strong> es:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(doble (cuadrado a)) ⇒            ; Sustituimos doble por su cuerpo (R4)
+(+ (cuadrado a) (cuadrado a) ⇒    ; Sustituimos cuadrado por su cuerpo (R4)
+(+ (* a a) (* a a)  ⇒             ; Sustitumos a por su valor (R2)
+(+ (* 2 2) (* 2 2)  ⇒             ; Evaluamos (* 2 2) (R3)
+(+ 4 (* 2 2))  ⇒                  ; Evaluamos (* 2 2) (R3)
+(+ 4 4)  ⇒                        ; Evaluamos (+ 4 4) (R3)
+8
+</pre></div>
+</td></tr></table>
+
+<p>Al usar este modelo de evaluación primero se realizan todas las
+sustituciones (regla 4) y después todas las evaluaciones (regla 3). </p>
+<h4>Ejemplo 2</h4>
+<p>Veamos la evaluación del ejemplo algo más complicado que hemos
+planteado al comienzo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1399,9 +1510,8 @@ ejemplo anterior.</p>
 </pre></div>
 </td></tr></table>
 
-<p>Veamos el resultado de la evaluación usando el <strong>modelo de sustitución
-aplicativo</strong>, aplicando paso a paso las reglas anteriores (en cada
-línea pondremos entre paréntesis la regla que aplicamos):</p>
+<p>Resultado de la evaluación usando el <strong>modelo de sustitución
+aplicativo</strong>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1411,15 +1521,15 @@ línea pondremos entre paréntesis la regla que aplicamos):</p>
  7
  8
  9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(f (+ a 1)) ⇒                ; Para evaluar f, evaluamos primero su argumento (+ a 1) (Regla 4)
-                             ; y sustituimos a por 2 (Regla 2) 
-(f (+ 2 1)) ⇒                ; Evaluamos (+ 2 1) (Reglas 2 y 3)
-(f 3) ⇒                      ; (Regla 4)
-(+ (cuadrado (doble 3)) 1) ⇒ ; Sustituimos (doble 3) (Regla 4)
-(+ (cuadrado (+ 3 3)) 1) ⇒   ; Evaluamos (+ 3 3) (Reglas 2 y 3)
-(+ (cuadrado 6) 1) ⇒         ; Sustitumos (cuadrado 6) (Regla 4)
-(+ (* 6 6) 1) ⇒              ; Evaluamos (* 6 6) (Reglas 2 y 3)
-(+ 36 1) ⇒                   ; Evaluamos (+ 36 1) (Reglas 2 y 3)
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(f (+ a 1)) ⇒                ; Para evaluar f, evaluamos primero su argumento (+ a 1) (R4)
+                             ; y sustituimos a por 2 (R2) 
+(f (+ 2 1)) ⇒                ; Evaluamos (+ 2 1) (R3)
+(f 3) ⇒                      ; (R4)
+(+ (cuadrado (doble 3)) 1) ⇒ ; Sustituimos (doble 3) (R4)
+(+ (cuadrado (+ 3 3)) 1) ⇒   ; Evaluamos (+ 3 3) (R3)
+(+ (cuadrado 6) 1) ⇒         ; Sustitumos (cuadrado 6) (R4)
+(+ (* 6 6) 1) ⇒              ; Evaluamos (* 6 6) (R3)
+(+ 36 1) ⇒                   ; Evaluamos (+ 36 1) (R3)
 37
 </pre></div>
 </td></tr></table>
@@ -1439,18 +1549,18 @@ línea pondremos entre paréntesis la regla que aplicamos):</p>
 12
 13
 14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(f (+ a 1)) ⇒                      ; Sustituimos (f (+ a 1)) 
-                                   ; por su definición, con z = (+ a 1) (Regla 4)
-(+ (cuadrado (doble (+ a 1))) 1) ⇒ ; Sustituimos (cuadrado ...) (Regla 4)
+                                   ; por su definición, con z = (+ a 1) (R4)
+(+ (cuadrado (doble (+ a 1))) 1) ⇒ ; Sustituimos (cuadrado ...) (R4)
 (+ (* (doble (+ a 1))
-      (doble (+ a 1))) 1)          ; Sustituimos (doble  ...) (Regla 4)
+      (doble (+ a 1))) 1)          ; Sustituimos (doble  ...) (R4)
 (+ (* (+ (+ a 1) (+ a 1))
-      (+ (+ a 1) (+ a 1))) 1) ⇒    ; Evaluamos a (Regla 2)
+      (+ (+ a 1) (+ a 1))) 1) ⇒    ; Evaluamos a (R2)
 (+ (* (+ (+ 2 1) (+ 2 1))
-      (+ (+ 2 1) (+ 2 1))) 1) ⇒    ; Evaluamos (+ 2 1) (Regla 3)
+      (+ (+ 2 1) (+ 2 1))) 1) ⇒    ; Evaluamos (+ 2 1) (R3)
 (+ (* (+ 3 3)
-      (+ 3 3)) 1) ⇒                ; Evaluamos (+ 3 3) (Regla 3)
-(+ (* 6 6) 1) ⇒                    ; Evaluamos (* 6 6) (Regla 3)
-(+ 36 1) ⇒                         ; Evaluamos (+ 36 1) (Regla 3)
+      (+ 3 3)) 1) ⇒                ; Evaluamos (+ 3 3) (R3)
+(+ (* 6 6) 1) ⇒                    ; Evaluamos (* 6 6) (R3)
+(+ 36 1) ⇒                         ; Evaluamos (+ 36 1) (R3)
 37
 </pre></div>
 </td></tr></table>
@@ -1521,7 +1631,7 @@ evalúa de una forma diferente.</p>
 </pre></div>
 </td></tr></table>
 
-<h5>Forma especial <code>define</code> para definir funciones</h5>
+<h4>Forma especial <code>define</code> para definir funciones</h4>
 <p><strong>Sintaxis</strong></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define (&lt;nombre-funcion&gt; &lt;argumentos&gt;)
@@ -1678,15 +1788,23 @@ por el <em>código hash</em> del identificador.</p>
 </pre></div>
 </td></tr></table>
 
-<p>Un símbolo puede asociarse o ligarse (<em>bind</em>) a un valor (cualquier
-dato <em>de primera clase</em>) con la forma especial <code>define</code>.</p>
+<p>Como hemos visto anteriormente, un símbolo puede asociarse o ligarse
+(<em>bind</em>) a un valor (cualquier dato <em>de primera clase</em>) con la forma
+especial <code>define</code>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">pi</span> <span class="mf">3.14159</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>No es correcto escribir <code>(define 'pi 3.14156)</code> porque la forma
+especial <code>define</code> debe recibir un identificador <em>sin quote</em>.</p>
+</div>
 <p>Cuando escribimos un símbolo en el prompt de Scheme el intérprete lo
 evalúa y devuelve su valor:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">pi</span> <span class="mf">3.14159</span><span class="p">)</span>
-<span class="nv">pi</span>
-<span class="err">⇒</span><span class="mf">3.14159</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&gt; pi 
+3.14159
 </pre></div>
 </td></tr></table>
 
@@ -1696,18 +1814,26 @@ de las funciones como objetos primitivos en Scheme):</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nv">sin</span> <span class="c1">; ⇒ #&lt;procedure:sin&gt;</span>
-<span class="nv">+</span> <span class="c1">; ⇒ #&lt;procedure:+&gt;</span>
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">cuadrado</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span> 
-<span class="nv">cuadrado</span> <span class="c1">; ⇒ #&lt;procedure:cuadrado&gt;</span>
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&gt; sin
+#&lt;procedure:sin&gt;
+&gt; +
+#&lt;procedure:+&gt;
+&gt; (define (cuadrado x) (* x x)) 
+&gt; cuadrado
+#&lt;procedure:cuadrado&gt;
 </pre></div>
 </td></tr></table>
 
 <p>Los símbolos son tipos primitivos del lenguaje: pueden pasarse como
 parámetros o ligarse a variables.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">x</span> <span class="ss">&#39;hola</span><span class="p">)</span>
-<span class="nv">x</span> <span class="c1">; ⇒ hola</span>
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&gt; (define x &#39;hola)
+&gt; x
+hola
 </pre></div>
 </td></tr></table>
 
@@ -1872,7 +1998,7 @@ Por ejemplo, `(suma-hasta 5)` devolverá `0+1+2+3+4+5 = 15`.
 La definición de la función es la siguiente (después explicaremos cómo
 la hemos diseñado)
 
-wzxhzdk:49
+wzxhzdk:56
 
 El **caso base** es el caso en el que `x` vale 0. En este caso devolvemos
 el propio 0, no hay que realizar ningún cálculo.
@@ -1896,7 +2022,7 @@ Siempre es aconsejable usar un ejemplo concreto para probar el caso
 general. Por ejemplo, el caso general de la suma hasta 5 se calcularía
 con la expresión:
 
-wzxhzdk:50
+wzxhzdk:57
 
 La evaluación de esta función calculará la llamada recursiva
 `(suma-hasta 4)`. Ahí es donde debemos **confiar en que la recursión
@@ -1908,7 +2034,7 @@ terminar el cálculo sumándole el propio número 5.
 (+ (suma-hasta 4) 5) = (confiamos en la recursión: (suma-hasta 4) = 10)
 (+ 10 5) =
 15
-wzxhzdk:51
+wzxhzdk:58
 
 Nos falta el caso base de la recursión. Debemos preguntarnos **¿cuál
 es el caso más sencillo del problema, que podemos calcular sin hacer
@@ -1917,18 +2043,18 @@ que `x` es 0, en el que devolveríamos 0.
 
 Podemos ya escribirlo todo en Scheme:
 
-wzxhzdk:52
+wzxhzdk:59
 
 Una aclaración sobre el caso general. En la implementación anterior la
 llamada recursiva a `suma-hasta` se realiza en el primer argumento de
 la suma:
 
-wzxhzdk:53
+wzxhzdk:60
 
 La expresión anterior es totalmente equivalente a la siguiente
 en la que la llamada recursiva aparece como segundo argumento
 
-wzxhzdk:54
+wzxhzdk:61
 
 Ambas expresiones son equivalentes porque en programación funcional no
 importa el orden en el que se evalúan los argumentos. Da lo mismo
@@ -1944,7 +2070,7 @@ en el carácter que le pasamos como parámetro.
 
 Por ejemplo:
 
-wzxhzdk:55
+wzxhzdk:62
 
 Pensamos en el caso general: ¿cómo podríamos invocar a la propia
 función `alfabeto-hasta` para que (confiando en la recursión) nos haga
@@ -1957,7 +2083,7 @@ añadir ese carácter a la cadena que devuelve la recursión.
 
 Veamos un ejemplo concreto:
 
-wzxhzdk:56
+wzxhzdk:63
 
 La llamada recursiva `(alfabeto-hasta #\g)` devolvería la cadena
 `"abcdefg"` (confiando en la recursión) y sólo faltaría añadir la
@@ -1969,11 +2095,11 @@ auxiliar `(anterior char)` que devuelve el carácter anterior a uno
 dado.
 
 
-wzxhzdk:57
+wzxhzdk:64
 
 El caso general quedaría como sigue:
 
-wzxhzdk:58
+wzxhzdk:65
 
 Faltaría el caso base. ¿Cuál es el caso más sencillo posible que nos
 pueden pedir? El caso del alfabeto hasta la `#\a`. En ese caso basta
@@ -1981,7 +2107,7 @@ con devolver la cadena `"a"`.
 
 La función completa quedaría así:
 
-wzxhzdk:59
+wzxhzdk:66
 
 
 ### Recursión y listas
@@ -1998,7 +2124,7 @@ la suma de todos ellos.
 
 Siempre tenemos que empezar escribiendo un ejemplo de la función:
 
-wzxhzdk:60
+wzxhzdk:67
 
 Para diseñar una implementación recursiva de la función tenemos que
 pensar en cómo descomponer el ejemplo en una llamada recursiva a un
@@ -2017,7 +2143,7 @@ siguiente dibujo:
 
 Podemos generalizar este ejemplo y expresarlo en Scheme de la siguiente forma:
 
-wzxhzdk:61
+wzxhzdk:68
 
 Falta el caso base, que es el caso más sencillo en que podemos
 devolver un valor sin llamar a la recursión. En este caso, podría ser
@@ -2026,7 +2152,7 @@ que devolver 0.
 
 Con todo junto, quedaría la recursión como sigue
 
-wzxhzdk:62
+wzxhzdk:69
 
 #### Función recursiva `veces`
 
@@ -2041,13 +2167,13 @@ identificador.
 
 En Scheme:
 
-wzxhzdk:63
+wzxhzdk:70
 
 Como caso base, si la lista es vacía devolvemos 0.
 
 La versión completa:
 
-wzxhzdk:64
+wzxhzdk:71
 
 
 ## Tipos de datos compuestos en Scheme
@@ -2060,7 +2186,7 @@ Ya hemos visto en el seminario de Scheme que el tipo de dato compuesto
 más simple es la pareja: una entidad formada por dos elementos. Se
 utiliza la función `cons` para construirla:
 
-wzxhzdk:65
+wzxhzdk:72
 
 Dibujamos la pareja anterior y la variable `c` que la referencia de la
 siguiente forma:
@@ -2079,14 +2205,14 @@ Una vez construida una pareja, podemos obtener el elemento
 correspondiente a su parte izquierda con la función `car` y su parte
 derecha con la función `cdr`:
 
-wzxhzdk:66
+wzxhzdk:73
 
 ##### Definición declarativa
 
 Las funciones `cons`, `car` y `cdr` quedan perfectamente definidas con
 las siguientes ecuaciones algebraicas:
 
-wzxhzdk:67
+wzxhzdk:74
 
 ##### ¿De dónde vienen los nombres `car` y `cdr`?
 
@@ -2102,7 +2228,7 @@ Podemos leer la explicación completa en
 
 La función `pair?` nos dice si un objeto es atómico o es una pareja:
 
-wzxhzdk:68
+wzxhzdk:75
 
 #### Las parejas pueden contener cualquier tipo de dato
 
@@ -2113,7 +2239,7 @@ datos.
 Por ejemplo, podríamos definir la siguiente función `suma` que sume
 tanto números como cadenas:
 
-wzxhzdk:69
+wzxhzdk:76
 
 En la función anterior los parámetros `x` e `y` pueden ser números o
 cadenas (o incluso de cualquier otro tipo). Y el valor devuelto por la
@@ -2123,7 +2249,7 @@ Sucede lo mismo con el contenido de las parejas. Es posible guardar en
 las parejas cualquier tipo de dato y combinar distintos tipos. Por
 ejemplo:
 
-wzxhzdk:70
+wzxhzdk:77
 
 
 #### Las parejas son objetos inmutables
@@ -2154,16 +2280,16 @@ Las parejas son objetos de primera clase.
 
 Una pareja puede asignarse a una variable:
 
-wzxhzdk:71
+wzxhzdk:78
 
 Una pareja puede pasarse como argumento y devolverse en una función:
 
-wzxhzdk:72
+wzxhzdk:79
 
 Una vez definida esta función `suma-parejas` podríamos ampliar la
 función `suma` que vimos previamente con este nuevo tipo de datos:
 
-wzxhzdk:73
+wzxhzdk:80
 
 
 Y, por último, las parejas *pueden formar parte de otras parejas*. Es
@@ -2173,11 +2299,11 @@ lo que se denomina la propiedad de clausura de la función `cons`:
 
 Ejemplo:
 
-wzxhzdk:74
+wzxhzdk:81
 
 Expresión equivalente:
 
-wzxhzdk:75
+wzxhzdk:82
 
  Podríamos representar esta estructura así:
 
@@ -2198,7 +2324,7 @@ Llamamos a estos diagramas *diagramas caja-y-puntero*
 Al escribir expresiones complicadas con `cons` anidados es conveniente
 para mejorar su legibilidad utilizar el siguiente formato:
 
-wzxhzdk:76
+wzxhzdk:83
 
 Para entender la construcción de estas estructuras es importante
 recordar que las expresiones se evalúan *de dentro a afuera*.
@@ -2219,7 +2345,7 @@ devuelve la pareja contenida en `p`, no se crea una pareja nueva.
 Por ejemplo, si después de haber evaluado la sentencia anterior
 evaluamos la siguiente:
 
-wzxhzdk:77
+wzxhzdk:84
 
 El diagrama caja y puntero resultante sería el siguiente:
 
@@ -2246,7 +2372,7 @@ la estructura.
 La siguiente función `print-pareja` puede ser útil a la hora de
 mostrar por pantalla los elementos de una pareja
 
-wzxhzdk:78
+wzxhzdk:85
 
 **!Cuidado¡**: la función anterior contiene sentencias como `begin` o
    llamadas a `display` dentro del código de la función, que son
@@ -2258,11 +2384,11 @@ mostrar por pantalla los elementos de una pareja
 Al trabajar con estructuras de parejas anidades es muy habitual
 realizar llamadas del tipo:
 
-wzxhzdk:79
+wzxhzdk:86
 
 Es equivalente a la función `cadar` de Scheme:
 
-wzxhzdk:80
+wzxhzdk:87
 
 El nombre de la función se obtiene concatenando a la letra "c", las
 letras "a" o "d" según hagamos un car o un cdr y terminando con la
@@ -2291,20 +2417,20 @@ parejas usando las funciones `list?` y `pair?`.
 Por ejemplo, una pareja formada por dos números es una pareja, pero no
 es una lista:
 
-wzxhzdk:81
+wzxhzdk:88
 
 Y una lista vacía es una lista, pero no es una pareja:
 
-wzxhzdk:82
+wzxhzdk:89
 
 ¿Una lista es una pareja? Pues sí:
 
-wzxhzdk:83
+wzxhzdk:90
 
 Por último, una pareja con una lista vacía como segundo elemento es
 una pareja y una lista:
 
-wzxhzdk:84
+wzxhzdk:91
 
 Con estos ejemplos ya tenemos pistas para deducir la relación entre
 listas y parejas en Scheme (y Lisp). Vamos a explicarlo.
@@ -2320,7 +2446,7 @@ Una lista es (definición recursiva):
 Por ejemplo, una lista muy sencilla con un solo elemento, `{1}`, se
 define con la siguiente pareja:
 
-wzxhzdk:85
+wzxhzdk:92
 
 La pareja cumple las condiciones anteriores: 
 
@@ -2335,12 +2461,12 @@ La pareja cumple las condiciones anteriores:
 El objeto es al mismo tiempo una pareja y una lista. La función
 `list?` permite comprobar si un objeto es una lista:
 
-wzxhzdk:86
+wzxhzdk:93
 
 Por ejemplo, la lista '(1 2 3 4) se construye con la siguiente
 secuencia de parejas:
 
-wzxhzdk:87
+wzxhzdk:94
 
 La primera pareja cumple las condiciones de ser una lista:
 
@@ -2359,16 +2485,16 @@ resto de la lista.
 
 La lista vacía es una lista:
 
-wzxhzdk:88
+wzxhzdk:95
 
 Y no es un símbolo ni una pareja:
 
-wzxhzdk:89
+wzxhzdk:96
 
 Para saber si un objeto es la lista vacía, podemos utilizar la función
 `null?`:
 
-wzxhzdk:90
+wzxhzdk:97
 
 ### Listas con elementos compuestos
 
@@ -2378,7 +2504,7 @@ otras parejas.
 La siguiente estructura se denomina *lista de asociación*. Son listas
 cuyos elementos son parejas (*clave*, *valor*):
 
-wzxhzdk:91
+wzxhzdk:98
 
 
 ¿Cuál sería el diagrama *box and pointer* de la estructura anterior?
@@ -2387,17 +2513,17 @@ cuyos elementos son parejas (*clave*, *valor*):
 
 La expresión equivalente utilizando conses es:
 
-wzxhzdk:92
+wzxhzdk:99
 
 #### Listas de listas
 
 Hemos visto que podemos construir listas que contienen otras listas:
 
-wzxhzdk:93
+wzxhzdk:100
 
 La lista anterior también se puede definir con quote:
 
-wzxhzdk:94
+wzxhzdk:101
 
 La lista resultante contiene tres elementos: el primero y el último
 son elementos atómicos (números) y el segundo es otra lista.
@@ -2405,11 +2531,11 @@ son elementos atómicos (números) y el segundo es otra lista.
 Si preguntamos por la longitud de la lista Scheme nos dirá que es una
 lista de 3 elementos:
 
-wzxhzdk:95
+wzxhzdk:102
 
 Y el segundo elemento de la lista es otra lista:
 
-wzxhzdk:96
+wzxhzdk:103
 
 ¿Cómo implementa Scheme esta lista usando parejas?
 
@@ -2445,7 +2571,7 @@ Por ejemplo, la lista anterior `{1 {1 2 3} 3}` es una lista de 3
 elementos. Si queremos obtener su segundo elemento (la lista `{1 2
 3}`) bastaría con:
 
-wzxhzdk:97
+wzxhzdk:104
 
 
 ### Funciones recursivas y listas
@@ -2466,7 +2592,7 @@ prefijo `mi-` en todas ellas:
 La función `(mi-list-ref n lista)` devuelve el elemento `n` de una
 lista (empezando a contar por 0):
 
-wzxhzdk:98
+wzxhzdk:105
 
 Veamos con el ejemplo anterior cómo hacer la formulación recursiva.
 
@@ -2500,20 +2626,20 @@ recursiva:
 
 La implementación de todo esto en Scheme sería la siguiente:
 
-wzxhzdk:99
+wzxhzdk:106
 
 ##### Función `list-tail`
 
 La función `(mi-list-tail lista n)` devuelve la lista resultante de
 quitar n elementos de la lista original:
 
-wzxhzdk:100
+wzxhzdk:107
 
 Piensa en cómo se implementaría de forma recursiva. Esta vez vamos a
 mostrar directamente la implementación, sin dar explicaciones de cómo
 se ha llegado a ella:
 
-wzxhzdk:101
+wzxhzdk:108
 
 ##### Función `mi-append` 
 
@@ -2523,38 +2649,38 @@ lista2)`.
 
 Por ejemplo:
 
-wzxhzdk:102
+wzxhzdk:109
 
 Para resolver el problema de forma recursiva, haremos el `cdr` de la
 primera lista, llamaremos a la recursión para que una el resultado con
 la segunda lista`:
 
-wzxhzdk:103
+wzxhzdk:110
 
 Y añadiremos el primer elemento a la lista resultante usando un `cons`:
 
-wzxhzdk:104
+wzxhzdk:111
 
 En general:
 
-wzxhzdk:105
+wzxhzdk:112
 
 El caso base, el caso en el que la función puede devolver un valor
 directamente sin llamar a la recursión, es aquel en el que `lista1` es
 `null?`. En ese caso devolvemos `lista2`:
 
-wzxhzdk:106
+wzxhzdk:113
 
 La formulación recursiva completa queda como sigue:
 
-wzxhzdk:107
+wzxhzdk:114
 
 ##### Función `mi-reverse`
 
 Veamos cómo implementar de forma recursiva la función `mi-reverse` que
 invierte una lista
 
-wzxhzdk:108
+wzxhzdk:115
 
 La idea es sencilla: llamamos a la recursión para hacer la inversa del
 `cdr` de la lista y añadimos el primer elemento a la lista resultante
@@ -2566,11 +2692,11 @@ añade un dato al final de una lista usando `append`:
 Veamos directamente su implementación, usando `mi-append` para añadir
 un elemento al final de la lista:
 
-wzxhzdk:109
+wzxhzdk:116
 
 La función `mi-reverse` quedaría entonces como sigue:
 
-wzxhzdk:110
+wzxhzdk:117
 
 #### Ejemplos de funciones recursivas que usan listas
 
@@ -2587,11 +2713,11 @@ devolvemos una lista formada por el 1.
 
 En Scheme:
 
-wzxhzdk:111
+wzxhzdk:118
 
 Ejemplo:
 
-wzxhzdk:112
+wzxhzdk:119
 
 ##### Función `filtra-pares`
 
@@ -2602,11 +2728,11 @@ condición.
 Por ejemplo, la siguiente función `filtra-pares` construye una lista
 con los números pares de la lista que le pasamos como parámetro:
 
-wzxhzdk:113
+wzxhzdk:120
 
 Ejemplo:
 
-wzxhzdk:114
+wzxhzdk:121
 
 ##### Función `primo?`
 
@@ -2620,11 +2746,11 @@ es dos. En ese caso será primo.
 
 Por ejemplo:
 
-wzxhzdk:115
+wzxhzdk:122
 
 Podemos definir entonces la función `(primo? x)` de la siguiente forma:
 
-wzxhzdk:116
+wzxhzdk:123
 
 ¿Cómo implementamos la función `(divisores x)` que nos devuelve la
 lista de los divisores de un número `x`. Vamos a construirla de la
@@ -2635,37 +2761,37 @@ siguiente forma:
 
 La función `(lista-hasta x)` devuelve una lista de números 1..x:
 
-wzxhzdk:117
+wzxhzdk:124
 
 Ejemplos:
 
-wzxhzdk:118
+wzxhzdk:125
 
 Definimos la función `(divisor? x y)` que nos diga si x es divisor de
 y:
 
-wzxhzdk:119
+wzxhzdk:126
 
 Ejemplos:
 
-wzxhzdk:120
+wzxhzdk:127
 
 Una vez que hemos definido La función `divisor?` podemos utilizarla
 para definir la función recursiva `(filtra-divisores lista x)` que
 devuelve una lista con los números de `lista` que son divisores de
 `x`:
 
-wzxhzdk:121
+wzxhzdk:128
 
 Ya podemos implementar la función que devuelve los divisores de un
 número `x` generando los números hasta `x` y filtrando los divisores
 de ese número. Por ejemplo, para calcular los divisores de 10:
 
-wzxhzdk:122
+wzxhzdk:129
 
 Se puede implementar de una forma muy sencilla:
 
-wzxhzdk:123
+wzxhzdk:130
 
 Y una vez definida esta función, ya puede funcionar correctamente la
 función `primo?`.
@@ -2686,11 +2812,11 @@ se pasarán en forma de lista en el último parámetro.
 
 Por ejemplo, si tenemos la definición
 
-wzxhzdk:124
+wzxhzdk:131
 
 podemos llamar a la función anterior con dos o más argumentos:
 
-wzxhzdk:125
+wzxhzdk:132
 
 En la llamada, los parámetros `x` e `y` tomarán los valores 1 y 2. El
 parámetro `lista-args` tomará como valor una lista con los argumentos
@@ -2699,11 +2825,11 @@ restantes `(3 4 5 6)`.
 También es posible permitir que todos los argumentos sean opcionales
 no poniendo ningún argumento antes del punto::
 
-wzxhzdk:126
+wzxhzdk:133
 
 Si hacemos la llamada
 
-wzxhzdk:127
+wzxhzdk:134
 
 el parámetro `lista-args` tomará como valor la lista `(1 2 3 4 5 6)`.
 
@@ -2715,7 +2841,7 @@ suma de todos ellos. Es muy sencillo: recogemos todos los argumentos
 en la lista de argumentos variables y llamamos a la función
 `suma-lista` que suma una lista de números:
 
-wzxhzdk:128
+wzxhzdk:135
 
 ## Funciones como tipos de datos de primera clase
 
@@ -2777,7 +2903,7 @@ nombre mediante esta forma especial.
 
 La sintaxis de la forma especial `lambda` es:
 
-wzxhzdk:129
+wzxhzdk:136
 
 El cuerpo del lambda define un *bloque de código* y sus argumentos son
 los parámetros necesarios para ejecutar ese bloque de código. Llamamos
@@ -2787,11 +2913,11 @@ Algunos ejemplos:
 
 Una función anónima que suma dos parejas:
 
-wzxhzdk:130
+wzxhzdk:137
 
 Una función anónima que devuelve el mayor de dos números:
 
-wzxhzdk:131
+wzxhzdk:138
 
 #### Semántica de la forma especial `lambda`
 
@@ -2801,7 +2927,7 @@ anónima en tiempo de ejecución.
 Por ejemplo, si ejecutamos una expresión lambda en el intérprete
 veremos que devuelve un procedimiento:
 
-wzxhzdk:132
+wzxhzdk:139
 
 El procedimiento construido es un bloque de código que devuelve el
 cuadrado de un número.
@@ -2812,11 +2938,11 @@ Podemos asignarlo a un identificador. Por ejemplo, en la siguiente
 expresión, primero se evalúa la *expresión lambda* y el procedimiento
 resultante se asocia al identificador `f`.
 
-wzxhzdk:133
+wzxhzdk:140
 
 El ejemplo anterior funciona de una forma idéntica al siguiente:
 
-wzxhzdk:134
+wzxhzdk:141
 
 En ambos casos se evalúa la expresión derecha y el resultado se guarda
 en un identificador. En el primer caso la expresión que se evalúa
@@ -2826,7 +2952,7 @@ segundo un número, que se guarda en la variable `x`.
 Si escribimos los identificadores `f` y `x` en el intérprete Scheme los
 evalúa y muestra los valores guardados:
 
-wzxhzdk:135
+wzxhzdk:142
 
 En el primer caso se devuelve un procedimiento y en el segundo un
 número. Fíjate que Scheme trata a los procedimientos y a los números
@@ -2836,18 +2962,18 @@ Una vez asignado un procedimiento a un identificador, lo podemos
 utilizar como de la misma forma que invocamos habitualmente a una
 función:
 
-wzxhzdk:136
+wzxhzdk:143
 
 No es necesario un identificador para invocar a una función; podemos
 crear la función con una expresión lambda e invocar a la función
 anónima recién creada:
 
-wzxhzdk:137
+wzxhzdk:144
 
 La llamada a `lambda` crea un procedimiento y el paréntesis a su
 izquierda lo invoca con el parámetro 3:
 
-wzxhzdk:138
+wzxhzdk:145
 
 Es importante remarcar que con `lambda` estamos creando una función en
 *tiempo de ejecución*. Es código que creamos para su posterior
@@ -2859,19 +2985,19 @@ devuelve el cuadrado de un número:
 
 **Java 8**
 
-wzxhzdk:139
+wzxhzdk:146
 
 **Scala**
 
-wzxhzdk:140
+wzxhzdk:147
 
 **Objective C**
 
-wzxhzdk:141
+wzxhzdk:148
 
 **Swift**
 
-wzxhzdk:142
+wzxhzdk:149
 
 #### Identificadores y funciones
 
@@ -2879,7 +3005,7 @@ Tras conocer `lambda` ya podemos explicarnos por qué cuando escribimos
 en el intérprete de Scheme el nombre de una función, se evalúa a un
 *procedure*:
 
-wzxhzdk:143
+wzxhzdk:150
 
 El identificador se evalúa y devuelve el *objeto función* al que está
 ligado. En Scheme los nombres de las funciones son realmente símbolos
@@ -2888,7 +3014,7 @@ a los que están ligados *objetos de tipo función*.
 Podemos asignar funciones ya existentes a nuevos identificadores
 usando `define`, como en el ejemplo siguiente:
 
-wzxhzdk:144
+wzxhzdk:151
 
 Es muy importante darse cuenta que la expresión `(define suma +)` se
 evalúa de forma idéntica a `(define y x)`. Primero se evalúa el
@@ -2901,19 +3027,19 @@ asigna a la variable `suma`. El resultado final es que tanto `+` como
 La forma especial `define` para definir una función no es más que
 *azucar sintáctico*.
 
-wzxhzdk:145
+wzxhzdk:152
 
 siempre se convierte internamente en:
 
-wzxhzdk:146
+wzxhzdk:153
 
 Por ejemplo
 
-wzxhzdk:147
+wzxhzdk:154
 
 es equivalente a:
 
-wzxhzdk:148
+wzxhzdk:155
 
 #### Predicado `procedure?`
 
@@ -2922,7 +3048,7 @@ Scheme `procedure?`.
 
 Por ejemplo:
 
-wzxhzdk:149
+wzxhzdk:156
 
 Hemos visto que las funciones pueden asignarse a variables. También
 cumplen las otras condiciones necesarias para ser consideradas objetos
@@ -2944,18 +3070,18 @@ basta con usar `func` como su nombre. La función se ha ligado al
 nombre `func` en el momento de la invocación a `aplica`, de la misma
 forma que los argumentos se ligan a los parámetros `x` e `y`:
 
-wzxhzdk:150
+wzxhzdk:157
 
 Algunos ejemplos de invocación, usando funciones primitivas, funciones
 definidas y expresiones lambda:
 
-wzxhzdk:151
+wzxhzdk:158
 
 Otro ejemplo, la función `aplica-2` que toma dos funciones `f` y `g` y
 un argumento `x` y devuelve el resultado de aplicar `f` a lo que
 devuelve la invocación de `g` con `x`:
 
-wzxhzdk:152
+wzxhzdk:159
 
 
 ### Generalización ###
@@ -2964,16 +3090,16 @@ La posibilidad de pasar funciones como parámetros de otras es una
 poderosa herramienta de abstracción. Por ejemplo, supongamos que
 queremos calcular el sumatorio de `a` hasta `b`:
 
-wzxhzdk:153
+wzxhzdk:160
 
 Supongamos ahora que queremos calcular el sumatorio de `a` hasta `b`
 sumando los números al cuadrado:
 
-wzxhzdk:154
+wzxhzdk:161
 
 Y el sumatorio de `a` hasta `b` sumando los cubos:
 
-wzxhzdk:155
+wzxhzdk:162
 
 Vemos que el código de las tres funciones anteriores es muy similar,
 cada función la podemos obtener haciendo un *copy-paste* de otra
@@ -2994,13 +3120,13 @@ adicional y definir una función genérica `sum-f-x` que generaliza las
 tres funciones anteriores. Tendríamos el sumatorio desde `a` hasta `b`
 de `f(x)`:
 
-wzxhzdk:156
+wzxhzdk:163
 
 Las funciones anteriores son casos particulares de esta función que
 las generaliza. Por ejemplo, para calcular el sumatorio desde 1 hasta
 10 de `x` al cubo:
 
-wzxhzdk:157
+wzxhzdk:164
 
 
 También podemos utilizar una expresión lambda en la invocación a
@@ -3008,7 +3134,7 @@ También podemos utilizar una expresión lambda en la invocación a
 número. Por ejemplo, podemos sumar la expresión (n/(n-1)) para todos
 los números del 2 al 100:
 
-wzxhzdk:158
+wzxhzdk:165
 
 
 
@@ -3045,7 +3171,7 @@ Vamos a empezar con un ejemplo muy sencillo. Definimos una función
 constructora que crea en su ejecución una función que suma
 `k` a un número:
 
-wzxhzdk:159
+wzxhzdk:166
 
 El cuerpo de la función `(construye-sumador k)` está formado por una
 expresión lambda. Cuando se invoca a `construye-sumador` se evalúa
@@ -3056,24 +3182,24 @@ argumento.
 
 Por ejemplo, podemos invocar a `construye-sumador` pasando 10 como parámetro:
 
-wzxhzdk:160
+wzxhzdk:167
 
 Como hemos dicho, se devuelve un procedimiento, una función. Esta
 función devuelta debe invocarse con un argumento y devolverá el
 resultado de sumar 10 a ese argumento:
 
-wzxhzdk:161
+wzxhzdk:168
 
 También podemos invocar directamente a la función que devuelve la
 función constructora, sin guardarla en una variable:
 
-wzxhzdk:162
+wzxhzdk:169
 
 Dependiendo del parámetro que le pasemos a la función constructora
 obtendremos una función sumadora que sume un número u otro. Por
 ejemplo para obtener una función sumadora que suma 100:
 
-wzxhzdk:163
+wzxhzdk:170
 
 ¿Cómo funciona la clausura? ¿Por qué la invocación a `(g 3)`
 devuelve 103?.
@@ -3087,11 +3213,11 @@ pinceladas.
 
 Recordemos la definición de `construye-sumador`:
 
-wzxhzdk:164
+wzxhzdk:171
 
 Y supongamos que realizamos las siguientes invocaciones:
 
-wzxhzdk:165
+wzxhzdk:172
 
 Podemos explicar lo que sucede en la evaluación de estas funciones de
 la siguiente forma:
@@ -3120,7 +3246,7 @@ Otro ejemplo de una función que devuelve otra función es la función
 siguiente `(componedor f g)` que recibe dos funciones de un argumento
 y devuelve otra función que realiza la composición de ambas:
 
-wzxhzdk:166
+wzxhzdk:173
 
 La función devuelta invoca primero a `g` y el resultado se lo pasa a
 `f`. Veamos un ejemplo. Supongamos que tenemos definidas la función
@@ -3129,13 +3255,13 @@ respectivamente. Podremos entonces llamar a `componedor` con esas dos
 funciones para construir otra función que primero calcule el cuadrado y
 después el doble de una número:
 
-wzxhzdk:167
+wzxhzdk:174
 
 La variable `h` contiene la función devuelta por `componedor`. Una
 función de un argumento que devuelve el doble del cuadrado de un
 número:
 
-wzxhzdk:168
+wzxhzdk:175
 
 #### Usos reales de las funciones constructoras ####
 
@@ -3162,18 +3288,18 @@ sólo tengamos que definirlo una vez, al crear la función
 
 Lo podemos hacer con la siguiente función constructora:
 
-wzxhzdk:169
+wzxhzdk:176
 
 Por ejemplo, definimos distintos loggers y los probamos:
 
-wzxhzdk:170
+wzxhzdk:177
 
 
 ##### Ejemplo de funciones constructoras para modificar funciones ya construidas #####
 
 Recordemos la función `divisores`:
 
-wzxhzdk:171
+wzxhzdk:178
 
 Un problema de la función anterior `divisores` es que si le pasamos un
 número negativo entra en un bucle infinito.
@@ -3182,26 +3308,26 @@ Podemos definir la siguiente función general a la que le pasamos una
 función de un argumento `f` y devuelve la función f "segura" a la que
 sólo se va a invocar si el parámetro es mayor o igual que 0:
 
-wzxhzdk:172
+wzxhzdk:179
 
 Podemos entonces "segurizar" la función `divisores`:
 
-wzxhzdk:173
+wzxhzdk:180
 
 La función `(construye-segura-menor-cero f)` se puede aplicar para
 "segurizar" cualquier función, no sólo `divisores`:
 
-wzxhzdk:174
+wzxhzdk:181
 
 Se podría generalizar aún más la función "segurizadora" haciendo que
 la condición a cumplir por el número sea otra función que también pasamos:
 
-wzxhzdk:175
+wzxhzdk:182
 
 La forma de definir una función `divisores` segura con esta nueva
 función sería:
 
-wzxhzdk:176
+wzxhzdk:183
 
 
 ### Funciones en estructuras de datos
@@ -3212,13 +3338,13 @@ formar parte de tipos de datos compuestos, como listas.
 Para construir una lista de funciones debemos llamar a `list` con las
 funciones:
 
-wzxhzdk:177
+wzxhzdk:184
 
 También podemos evaluar una expresión lambda y añadir el procedimiento
 resultante. Por ejemplo, para añadir otra función a la lista anterior
 podemos llamar a `cons`:
 
-wzxhzdk:178
+wzxhzdk:185
 
 Una vez creada una lista con funciones, ¿cómo podemos invocar a alguna
 de ellas?. Debemos tratarlas de la misma forma que tratamos cualquier
@@ -3226,7 +3352,7 @@ otro dato guardado en la lista, las recuperamos con las funciones
 `car` o `list-ref` y las invocamos. Por ejemplo, para invocar a la
 primera función de `lista2`:
 
-wzxhzdk:179
+wzxhzdk:186
 
 #### Funciones que trabajan con listas de funciones
 
@@ -3237,37 +3363,37 @@ aplica todas al número que pasamos en el parámetro `x`.
 Por ejemplo, si construimos una lista con las funciones `cuadrado`,
 `cubo` y `suma-1`:
 
-wzxhzdk:180
+wzxhzdk:187
 
 la llamada a `(aplica-funcs lista 5)` debería devolver el resultado de
 aplicar primero `suma-1` a 5, después `cubo` al resultado y después
 `cuadrado`:
 
-wzxhzdk:181
+wzxhzdk:188
 
 Para implementar `aplica-funcs` tenemos que usar una recursión. Si
 vemos el ejemplo, podemos comprobar que es sencillo definir el caso
 general:
 
-wzxhzdk:182
+wzxhzdk:189
 
 El caso general de la recursión de la función `aplica-funcs` se define
 entonces como:
 
-wzxhzdk:183
+wzxhzdk:190
 
 El caso base sería en el que la lista de funciones tiene sólo una
 función:
 
-wzxhzdk:184
+wzxhzdk:191
 
 La implementación completa es:
 
-wzxhzdk:185
+wzxhzdk:192
 
 Un ejemplo de uso:
 
-wzxhzdk:186
+wzxhzdk:193
 
 
 
@@ -3311,14 +3437,14 @@ transformación que se pasa como parámetro.
 
 En concreto, la función recibe otra función y una lista:
 
-wzxhzdk:187
+wzxhzdk:194
 
 Y devuelve la lista resultante de aplicar la función a todos los
 elementos de la lista.
 
 Por ejemplo:
 
-wzxhzdk:188
+wzxhzdk:195
 
 La lista resultante es el resultado de construir una lista nueva
 aplicando la función `cuadrado` a todos los elementos de la lista
@@ -3330,17 +3456,17 @@ la función de transformación debe recibir una pareja. Veamos un
 ejemplo de este caso, en el que a partir de una lista de parejas
 obtenemos una lista con las sumas de cada pareja:
 
-wzxhzdk:189
+wzxhzdk:196
 
 También podríamos hacerlo con una expresión lambda:
 
-wzxhzdk:190
+wzxhzdk:197
 
 
 Un último ejemplo, en el que usamos `map` para transformar una lista
 de símbolos en una lista con sus longitudes:
 
-wzxhzdk:191
+wzxhzdk:198
 
 
 > CONSEJO DE USO  
@@ -3352,14 +3478,14 @@ de símbolos en una lista con sus longitudes:
 ¿Cómo se podría implementar `map` de forma recursiva? Definimos la
 función `mi-map`. La implementación es la siguiente:
 
-wzxhzdk:192
+wzxhzdk:199
 
 ##### Función `map` con más de una lista
 
 Es posible pasar más de una lista como parámetro de la función
 `map`. Todas las listas deben tener la misma longitud:
 
-wzxhzdk:193
+wzxhzdk:200
 
 En ese caso, la función de mapeado `f` debe tener tantos parámetros
 como listas. El resultado es el mismo que antes: la función `f` coge
@@ -3368,7 +3494,7 @@ con los resultados.
 
 Ejemplos:
 
-wzxhzdk:194
+wzxhzdk:201
 
 
 #### Función `filter`
@@ -3381,19 +3507,19 @@ cumplen el predicado.
 
 Un ejemplo de uso:
 
-wzxhzdk:195
+wzxhzdk:202
 
 Otro ejemplo: supongamos que queremos filtrar una lista de parejas de
 números, devolviendo aquellas que parejas que cumplen que su parte
 izquierda es mayor o igual que la derecha. Lo podríamos hacer con la
 siguiente expresión:
 
-wzxhzdk:196
+wzxhzdk:203
 
 Y un último ejemplo: filtramos todos los símbolos con longitud menor
 de 4.
 
-wzxhzdk:197
+wzxhzdk:204
 
 
 > CONSEJO DE USO  
@@ -3406,7 +3532,7 @@ de 4.
 
 Podemos implementar la función `filter` de forma recursiva:
 
-wzxhzdk:198
+wzxhzdk:205
 
 #### Función `exists`
 
@@ -3415,7 +3541,7 @@ y comprueba si algún elemento de la lista cumple ese predicado.
 
 Ejemplo de uso:
 
-wzxhzdk:199
+wzxhzdk:206
 
 ¿Cuál sería la implementación recursiva de la función `exists`? 
 
@@ -3426,7 +3552,7 @@ y comprueba que todos los elementos de la lista cumplen ese predicado.
 
 Ejemplo de uso:
 
-wzxhzdk:200
+wzxhzdk:207
 
 ¿Cuál sería la implementación recursiva de la función `for-all`?
 
@@ -3444,7 +3570,7 @@ La explicación de su funcionamiento es la siguiente:
 Por ejemplo, supongamos que la función de plegado es una función que
 suma dos valores.
 
-wzxhzdk:201
+wzxhzdk:208
 
 Llamamos a los parámetros `dato` y `resultado` para remarcar que el
 primer parámetro se va a coger de la lista y el segundo del resultado
@@ -3453,7 +3579,7 @@ calculado.
 Veamos qué pasa cuando hacemos un `fold-right` con esta función suma y
 la lista '(1 2 3) y con el número 0 como base:
 
-wzxhzdk:202
+wzxhzdk:209
 
 La función `suma` se va a ir aplicando a todos los elementos de la
 lista de derecha a izquierda, empezando por el valor base (0) y el
@@ -3463,24 +3589,24 @@ utilizándolo como nuevo parámetro `resultado` en la siguiente llamada.
 En concreto, la secuencia de llamadas a la función `suma` serán las
 siguientes:
 
-wzxhzdk:203
+wzxhzdk:210
 
 Otro ejemplo de uso:
 
-wzxhzdk:204
+wzxhzdk:211
 
 En este caso la secuencia de llamadas a `string-append` que se van a
 producir son:
 
-wzxhzdk:205
+wzxhzdk:212
 
 Otros ejemplos:
 
-wzxhzdk:206
+wzxhzdk:213
 
 Un último ejemplo:
 
-wzxhzdk:207
+wzxhzdk:214
 
 ##### Función `fold-left` #####
 
@@ -3491,15 +3617,15 @@ izquierda a derecha en lugar de derecha a izquierda.
 La función de plegado también cambia, porque tiene invertidos sus
 argumentos:
 
-wzxhzdk:208
+wzxhzdk:215
 
 Por ejemplo:
 
-wzxhzdk:209
+wzxhzdk:216
 
 La secuencia de llamadas a `-` son:
 
-wzxhzdk:210
+wzxhzdk:217
 
 
 > CONSEJO DE USO  
@@ -3510,11 +3636,11 @@ La secuencia de llamadas a `-` son:
 
 Podríamos implementar de forma recursiva la función `fold-right`:
 
-wzxhzdk:211
+wzxhzdk:218
 
 Y la función `fold-left`:
 
-wzxhzdk:212
+wzxhzdk:219
 
 
 #### Uso de funciones de orden superior
@@ -3537,11 +3663,11 @@ todos los elementos de una lista.
 
 Podemos hacerlo de forma recursiva:
 
-wzxhzdk:213
+wzxhzdk:220
 
 Funciona de la siguiente manera:
 
-wzxhzdk:214
+wzxhzdk:221
 
 **Implementacion con `map`**
 
@@ -3551,7 +3677,7 @@ misma función de una forma mucho más concisa y expresiva.
 Lo podemos hacer utilizando la función de orden superior `map` y una
 expresión lambda que sume el número `n` a los elementos de la lista:
 
-wzxhzdk:215
+wzxhzdk:222
 
 Vemos que utilizamos el parámetro `n` en el cuerpo de la expresión
 lambda. De esta forma la función que se aplica a los elementos de la
@@ -3559,7 +3685,7 @@ lista es una función que suma este número a cada elemento. La variable
 `x` en el parámetro de la expresión lambda es la que va tomando el
 valor de los elementos de la lista.
 
-wzxhzdk:216
+wzxhzdk:223
 
 ##### Composición de funciones de orden superior
 
@@ -3574,24 +3700,24 @@ después que sume todos los elementos resultantes.
 Lo podríamos hacer reutilizando el código del ejemplo anterior, y
 añadiendo una llamada a `fold-right` para que haga la suma:
 
-wzxhzdk:217
+wzxhzdk:224
 
 Funcionaría de la siguiente forma:
 
-wzxhzdk:218
+wzxhzdk:225
 
 Otro ejemplo. Supongamos que tenemos una lista de parejas de números y
 queremos contar aquellas parejas cuya suma de ambos números es mayor
 que un umbral (por ejemplo, 10).
 
-wzxhzdk:219
+wzxhzdk:226
 
 Se podría implementar de una forma muy concisa componiendo una llamada
 a `map` para realizar la suma de cada pareja junto con una llamada a
 `filter` que compruebe que el resultado sea mayor de `n`. Y al final
 llamamos a `length` para contar la longitud de la lista resultante:
 
-wzxhzdk:220
+wzxhzdk:227
 
 
 ##### Función `(contienen-letra caracter lista-pal)`
@@ -3602,14 +3728,14 @@ una lista que contienen un determinado carácter.
 
 Por ejemplo:
 
-wzxhzdk:221
+wzxhzdk:228
 
 Podemos implementar `contienen-letra` usando la función de orden
 superior `filter`, con una expresión lambda que se aplicará a cada una
 de las palabras de la lista para comprobar si la palabra contiene el
 carácter:
 
-wzxhzdk:222
+wzxhzdk:229
 
 El parámetro `pal` de la expresión lambda irá cogiendo el valor de
 todas las palabras de `lista-pal` y la función `(letra-en-pal?
@@ -3620,13 +3746,13 @@ tenemos que implementar.
 
 Por ejemplo:
 
-wzxhzdk:223
+wzxhzdk:230
 
 La podemos implementar de una forma muy elegante obteniendo una lista
 de caracteres a partir de la cadena y usando la función de orden
 superior `exists`:
 
-wzxhzdk:224
+wzxhzdk:231
 
 
 ##### Función divisores #####
@@ -3637,12 +3763,12 @@ utilizando una función de orden superior.
 Suponemos que tenemos definidas las funciones `(numeros-hasta n)` y
 `(divisor? x n)`:
 
-wzxhzdk:225
+wzxhzdk:232
 
 Entonces la función `(divisores n)` se implementaría de la siguiente forma:
 
 
-wzxhzdk:226
+wzxhzdk:233
 
 
 ## Bibliografía - SICP
