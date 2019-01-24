@@ -292,7 +292,7 @@ complejos e inexactos.
 (sin 2.2) ; relacionados: cos, tan, asin, acos, ata
 ```
 
-##### Funciones de redondedo
+##### Funciones de redondeo
 
 ```scheme
 (floor x) devuelve el entero más grande no mayor que x
