@@ -1915,13 +1915,13 @@ función con los argumentos evaluados. Por ejemplo, en la
 siguiente invocación se obtiene una lista con cuatro elementos
 resultantes de las invocaciones de las funciones dentro del
 paréntesis:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="p">(</span><span class="nb">/ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ {1 2/3 5 {3 . 4}}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="p">(</span><span class="nb">/ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ {1 2/3 5}</span>
 </pre></div>
 </td></tr></table>
 
 <p>Sin embargo, usamos <code>quote</code> obtenemos una lista con sublistas
 con símbolos en sus primeras posiciones:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="nb">/ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ {1 {/ 2 3} {+ 2 3} {cons 3 4}}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="nb">/ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ {1 {/ 2 3} {+ 2 3}}</span>
 </pre></div>
 </td></tr></table>
 
