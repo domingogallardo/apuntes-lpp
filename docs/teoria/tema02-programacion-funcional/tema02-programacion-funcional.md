@@ -1090,7 +1090,7 @@ aplicativo ya visto:
 Las *formas especiales* son expresiones primitivas de Scheme que
 tienen una forma de evaluarse propia, distinta de las funciones. 
 
-### Formas especiales en Scheme: define, if, cond, quote
+### Formas especiales en Scheme: define, if, cond
 
 Veamos la forma de evaluar las distintas formas especiales en
 Scheme. En estas formas especiales no se aplica el modelo de
@@ -1208,7 +1208,7 @@ de la semántica:
 ;; es cierta se devuelve la cadena "ninguna condición es cierta".
 ```
 
-#### Forma especial `quote` y símbolos
+### Forma especial `quote` y símbolos
 
 **Sintaxis**
 
@@ -1295,6 +1295,14 @@ de las funciones como objetos primitivos en Scheme):
 #<procedure:cuadrado>
 ```
 
+Los símbolos son tipos primitivos del lenguaje: pueden pasarse como
+parámetros o ligarse a variables.
+
+```
+> (define x 'hola)
+> x
+hola
+```
 
 ### Listas
 
