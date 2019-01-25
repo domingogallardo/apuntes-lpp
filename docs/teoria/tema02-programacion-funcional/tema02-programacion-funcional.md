@@ -420,10 +420,11 @@ de componentes de estructuras de datos, como posiciones de un array,
 de una lista o de un diccionario.
 
 En programación funcional, por contra, **las definiciones son
-inmutables**, una vez asignado un valor a un identificador no se puede
-modificar éste. En programación funcional se entienden las variables
-como variables matemáticas, no como referencias a una posiciones de
-memoria que puede ser modificada. 
+inmutables**, y una vez asignado un valor a un identificador no se
+puede modificar éste. En programación funcional **no existe sentencia
+de asignación** que pueda modificar un valor ya definido. Se entienden
+las variables como variables matemáticas, no como referencias a una
+posiciones de memoria que puede ser modificada.
 
 Por ejemplo, la forma especial `define` en Scheme crea un nuevo
 identificador y le da el valor definido de forma permanente. Si
