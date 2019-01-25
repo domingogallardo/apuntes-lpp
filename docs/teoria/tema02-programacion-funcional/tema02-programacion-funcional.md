@@ -368,17 +368,33 @@ int c = cuadrado(b);
 return c
 ```
 
+O, por ejemplo, si queremos filtrar y procesar una lista de pedidos
+podemos hacerlo en dos sentencias:
+
+```Swift
+filtrados = filtra(pedidos);
+procesados = procesa(filtrados);
+return procesados;
+```
+
 Sin embargo, en programación funcional (por ejemplo, Scheme) no
-existen pasos de ejecución. La forma típica de expresar las
-instrucciones anteriores es componer todas las operaciones en una
-única instrucción:
+existen pasos de ejecución separados por sentencias. La forma típica
+de expresar las instrucciones anteriores es componer todas las
+operaciones en una única instrucción:
 
 ```scheme
 (cuadrado (doble (cuadrado 8)))
 ```
 
+El segundo ejemplo lo podemos componer de la misma forma:
+
+```scheme
+(procesa (filtra pedidos))
+```
+
 Veremos más adelante que las expresiones en Scheme tienen notación
 prefija y se evalúan de dentro a fuera.
+
 
 ##### Mutación 
 
