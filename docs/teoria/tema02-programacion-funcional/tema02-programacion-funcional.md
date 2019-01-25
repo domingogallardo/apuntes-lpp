@@ -9,11 +9,12 @@
 #### Definición y características
 
 En una definición muy breve y concisa la programación funcional define
-un **programa** como:
+un **programa** de la siguiente forma:
 
-> Un conjunto de funciones matemáticas que convierten
-> unas entradas en unas salidas, sin ningún estado interno y ningún
-> efecto lateral.
+!!! Quote "Definición de programa funcional"
+    En programación funcional un programa es un conjunto de
+    funciones matemáticas que convierten unas entradas en unas
+    salidas, sin ningún estado interno y ningún efecto lateral.
 
 Hablaremos más adelante de la no existencia de estado interno
 (variables en las que se guardan y se modifican valores) y de la
@@ -189,14 +190,15 @@ investigador y teórico de ciencia de computación, en su
 a la pregunta *¿por qué a los ingenieros de software les gusta la
 programación funcional?*:
 
-> Porque es la única forma práctica de escribir programas
-> concurrentes. Intentar escribir programas concurrentes en lenguajes
-> imperativos, no sólo es difícil, sino que lleva a *bugs* que son muy
-> difíciles de descubrir, reproducir y arreglar. En los lenguajes
-> imperativos y, en particular, en los lenguajes orientados a objetos
-> se ocultan las mutaciones y se comparten datos sin darse cuenta, por
-> lo que son extremadamente propensos a los errores de concurrencia
-> producidos por las condiciones de carrera.
+!!! Quote "Bartosz Milewski: ¿Por qué es popular la programación funcional?"
+    Porque es la única forma práctica de escribir programas
+    concurrentes. Intentar escribir programas concurrentes en
+    lenguajes imperativos, no sólo es difícil, sino que lleva a *bugs* que son
+    muy difíciles de descubrir, reproducir y arreglar. En los
+    lenguajes imperativos y, en particular, en los lenguajes orientados a
+    objetos se ocultan las mutaciones y se comparten datos sin darse cuenta,
+    por lo que son extremadamente propensos a los errores de concurrencia
+    producidos por las condiciones de carrera.
 
 ##### Definición y composición de operaciones sobre streams
 
@@ -221,12 +223,13 @@ con el que se consigue crear código que no tiene estado compartido y
 que es fácilmente paralelizable entre los más de 800 servidores
 necesarios para atender picos de más de 40.000 peticiones por segundo:
 
-> "Scala promueve que no haya estado compartido. El estado mutable se
-> evita usando sentencias en Scala. No se usan máquinas de estado de
-> larga duración. El estado se saca de la base de datos, se usa, y se
-> escribe de nuevo en la base de datos. La ventaja principal es que
-> los desarrolladores no tienen que preocuparse sobre hilos o
-> bloqueos.
+!!! Quote "Uso de Scala en Tumblr"
+    Scala promueve que no haya estado compartido. El estado mutable se
+    evita usando sentencias en Scala. No se usan máquinas de estado de
+    larga duración. El estado se saca de la base de datos, se usa, y se
+    escribe de nuevo en la base de datos. La ventaja principal es que
+    los desarrolladores no tienen que preocuparse sobre hilos o
+    bloqueos.
 
 ##### Programación evolutiva
 
@@ -239,19 +242,21 @@ perfectamente en esta forma de construir programas.
 Como Abelson y Sussman comentan en el libro _Structure and
 Implementation of Computer Programs_ (SICP):
 
-> En general, los objetos computacionales pueden tener estructuras muy
-> complejas, y sería extremadamente inconveniente tener que recordar y
-> repetir sus detalles cada vez que queremos usarlas. En lugar de
-> ello, se construyen programas complejos componiendo, paso a paso,
-> objetos computacionales de creciente complejidad.
 
-> El intérprete hace esta construcción paso-a-paso de los programas
-> particularmente conveniente porque las asociaciones nombre-objeto se
-> pueden crear de forma incremental en interacciones sucesivas. Esta
-> característica favorece el desarrollo y prueba incremental de
-> programas, y es en gran medida responsable del hecho de que un
-> programa Lisp consiste normalmente de un gran número de
-> procedimientos relativamente simples.
+!!! Quote "Abelson y Sussman sobre la programación incremental"
+    En general, los objetos computacionales pueden tener estructuras muy
+    complejas, y sería extremadamente inconveniente tener que recordar y
+    repetir sus detalles cada vez que queremos usarlas. En lugar de
+    ello, se construyen programas complejos componiendo, paso a paso,
+    objetos computacionales de creciente complejidad.
+
+    El intérprete hace esta construcción paso-a-paso de los programas
+    particularmente conveniente porque las asociaciones nombre-objeto se
+    pueden crear de forma incremental en interacciones sucesivas. Esta
+    característica favorece el desarrollo y prueba incremental de
+    programas, y es en gran medida responsable del hecho de que un
+    programa Lisp consiste normalmente de un gran número de
+    procedimientos relativamente simples.
 
 No hay que confundir una metodología de programación con un paradigma
 de programación. Una metodología de programación proporciona
