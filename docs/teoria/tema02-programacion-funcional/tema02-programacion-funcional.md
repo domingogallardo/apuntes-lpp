@@ -361,17 +361,17 @@ Una de las características básicas de la programación imperativa es
 la utilización de pasos de ejecución. Por ejemplo, en C podemos
 realizar los siguientes pasos de ejecución:
 
-```C
+```c
 int a = cuadrado(8);
 int b = doble(a);
 int c = cuadrado(b);
 return c
 ```
 
-O, por ejemplo, si queremos filtrar y procesar una lista de pedidos
+O, por ejemplo, si queremos filtrar y procesar una lista de pedidos en Swift
 podemos hacerlo en dos sentencias:
 
-```Swift
+```swift
 filtrados = filtra(pedidos);
 procesados = procesa(filtrados);
 return procesados;
