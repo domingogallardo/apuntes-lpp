@@ -505,12 +505,13 @@
 <h3 id="pasado-y-presente-del-paradigma-funcional">Pasado y presente del paradigma funcional<a class="headerlink" href="#pasado-y-presente-del-paradigma-funcional" title="Permanent link">&para;</a></h3>
 <h4>Definición y características</h4>
 <p>En una definición muy breve y concisa la programación funcional define
-un <strong>programa</strong> como:</p>
-<blockquote>
-<p>Un conjunto de funciones matemáticas que convierten
-unas entradas en unas salidas, sin ningún estado interno y ningún
-efecto lateral.</p>
-</blockquote>
+un <strong>programa</strong> de la siguiente forma:</p>
+<div class="admonition quote">
+<p class="admonition-title">Definición de programa funcional</p>
+<p>En programación funcional un programa es un conjunto de
+funciones matemáticas que convierten unas entradas en unas
+salidas, sin ningún estado interno y ningún efecto lateral.</p>
+</div>
 <p>Hablaremos más adelante de la no existencia de estado interno
 (variables en las que se guardan y se modifican valores) y de la
 ausencia de efectos laterales. Avancemos que estas son también
@@ -669,16 +670,17 @@ investigador y teórico de ciencia de computación, en su
 <a href="https://www.quora.com/Why-do-software-engineers-like-functional-programming/answer/Bartosz-Milewski">respuesta en Quora</a>
 a la pregunta <em>¿por qué a los ingenieros de software les gusta la
 programación funcional?</em>:</p>
-<blockquote>
+<div class="admonition quote">
+<p class="admonition-title">Bartosz Milewski: ¿Por qué es popular la programación funcional?</p>
 <p>Porque es la única forma práctica de escribir programas
-concurrentes. Intentar escribir programas concurrentes en lenguajes
-imperativos, no sólo es difícil, sino que lleva a <em>bugs</em> que son muy
-difíciles de descubrir, reproducir y arreglar. En los lenguajes
-imperativos y, en particular, en los lenguajes orientados a objetos
-se ocultan las mutaciones y se comparten datos sin darse cuenta, por
-lo que son extremadamente propensos a los errores de concurrencia
+concurrentes. Intentar escribir programas concurrentes en
+lenguajes imperativos, no sólo es difícil, sino que lleva a <em>bugs</em> que son
+muy difíciles de descubrir, reproducir y arreglar. En los
+lenguajes imperativos y, en particular, en los lenguajes orientados a
+objetos se ocultan las mutaciones y se comparten datos sin darse cuenta,
+por lo que son extremadamente propensos a los errores de concurrencia
 producidos por las condiciones de carrera.</p>
-</blockquote>
+</div>
 <h5>Definición y composición de operaciones sobre streams</h5>
 <p>El paradigma funcional ha originado un estilo de programación sobre
 <em>streams</em> de datos, en el que se concatenan operaciones como <code>filter</code>
@@ -698,14 +700,15 @@ como Tumblr o Netflix.</p>
 con el que se consigue crear código que no tiene estado compartido y
 que es fácilmente paralelizable entre los más de 800 servidores
 necesarios para atender picos de más de 40.000 peticiones por segundo:</p>
-<blockquote>
-<p>"Scala promueve que no haya estado compartido. El estado mutable se
+<div class="admonition quote">
+<p class="admonition-title">Uso de Scala en Tumblr</p>
+<p>Scala promueve que no haya estado compartido. El estado mutable se
 evita usando sentencias en Scala. No se usan máquinas de estado de
 larga duración. El estado se saca de la base de datos, se usa, y se
 escribe de nuevo en la base de datos. La ventaja principal es que
 los desarrolladores no tienen que preocuparse sobre hilos o
 bloqueos.</p>
-</blockquote>
+</div>
 <h5>Programación evolutiva</h5>
 <p>En la metodología de programación denominada <em>programación evolutiva</em>
 o <em>iterativa</em> los programas complejos se construyen a base de ir
@@ -714,7 +717,8 @@ complicados. Los lenguajes de programación funcional encajan
 perfectamente en esta forma de construir programas.</p>
 <p>Como Abelson y Sussman comentan en el libro <em>Structure and
 Implementation of Computer Programs</em> (SICP):</p>
-<blockquote>
+<div class="admonition quote">
+<p class="admonition-title">Abelson y Sussman sobre la programación incremental</p>
 <p>En general, los objetos computacionales pueden tener estructuras muy
 complejas, y sería extremadamente inconveniente tener que recordar y
 repetir sus detalles cada vez que queremos usarlas. En lugar de
@@ -727,7 +731,7 @@ característica favorece el desarrollo y prueba incremental de
 programas, y es en gran medida responsable del hecho de que un
 programa Lisp consiste normalmente de un gran número de
 procedimientos relativamente simples.</p>
-</blockquote>
+</div>
 <p>No hay que confundir una metodología de programación con un paradigma
 de programación. Una metodología de programación proporciona
 sugerencias sobre cómo debemos diseñar, desarrollar y mantener una
