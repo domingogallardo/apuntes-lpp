@@ -156,7 +156,7 @@ ejercicios realizados y sobre los conceptos de teoría asociados. El
 cuestionario se evaluará con una calificación de 0 a 10.
 
 Una vez realizados todos los cuestionarios, se publicará la solución
-de la práctica.
+de la práctica y la calificación de los cuestionarios.
 
 La nota media de todos los cuestionarios formará parte de la
 calificación final de la asignatura, ponderada en un 20%.
