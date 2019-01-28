@@ -171,17 +171,16 @@ calificación final de la asignatura, ponderada en un 20%.
 
 ### Planificación de la semana
 
-Podemos resumir la planificación de una semana de la siguiente forma:
+Podemos resumir la planificación de una semana en la que se trabaja
+sobre la práctica _n_ de la siguiente forma:
 
 - El viernes de la semana anterior se habrá publicado la práctica _n_.
-- El domingo de la semana anterior se habrá tenido que entregar en
-  Moodle la práctica _n-1_.
 - En la clase de prácticas se realiza el cuestionario sobre la
   práctica _n-1_ y se trabaja en la práctica _n_.
 - En casa se termina la práctica _n_ y se estudia la teoría para
   poder empezar a hacer la práctica _n+1_.
-- El viernes se publica la práctica _n+1_ y la solución de la práctica
-  _n_.
+- El viernes se publica la práctica _n+1_, la solución de la práctica
+  _n_ y la calificación de los cuestionarios realizados durante la semana.
 - El domingo es el plazo límite para entregar la práctica _n_.
 
 En la siguiente figura se puede ver un ejemplo de cómo sería esta
