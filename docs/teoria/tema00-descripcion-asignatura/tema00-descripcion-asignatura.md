@@ -135,25 +135,28 @@ lenguajes de programación y entornos de desarrollo:
 Se realizarán 11 sesiones de ejercicios de prácticas de una semana de
 duración y 2 seminarios sobre los anteriores lenguajes de programación.
 
-La hoja de ejercicios estará disponible inmediatamente después de
-terminar la teoría y se dispondrá de una semana para su realización,
-hasta la sesión de prácticas de la semana siguiente.
+La hoja de ejercicios estará disponible el viernes y se dispondrá de
+toda la semana siguiente para su realización. 
 
-Durante la semana, mientras se resuelven los ejercicios de la hoja, se
-podrán consultar las dudas que puedan surgir en el foro de la
-asignatura (en Moodle) y con tutorías a los profesores. Es preferible el foro,
-porque de esta forma las contestaciones y aclaraciones serán
-compartidas con el resto de compañeros.
+En la clase de prácticas se trabajará en esa hoja de
+ejercicios. Durante la sesión de prácticas el profesor estará
+disponible para resolver dudas y dar pistas sobre cómo atacar los
+problemas. También durante la semana se podrán consultar las dudas que
+puedan surgir en el foro de la asignatura (en Moodle) y con tutorías a
+los profesores. Es preferible el foro, porque de esta forma las
+contestaciones y aclaraciones serán compartidas con el resto de
+compañeros.
 
-En la sesión de prácticas se terminará la hoja de ejercicios,
-completando el trabajo realizado en casa. Durante la sesión de
-prácticas el profesor estará disponible para resolver dudas y dar
-pistas sobre cómo atacar los problemas.
+El domingo por la noche se entregará la práctica terminada en Moodle
+para su archivo.
 
-Al final de la clase de prácticas se realizará en Moodle un
-**cuestionario de prácticas** individual sobre los ejercicios
-propuestos y sobre los conceptos de teoría asociados. El cuestionario
-se evaluará con una calificación de 0 a 10.
+Durante la semana siguiente se realizará al comienzo de la clase de
+prácticas un **cuestionario de prácticas** individual sobre los
+ejercicios realizados y sobre los conceptos de teoría asociados. El
+cuestionario se evaluará con una calificación de 0 a 10.
+
+Una vez realizados todos los cuestionarios, se publicará la solución
+de la práctica.
 
 La nota media de todos los cuestionarios formará parte de la
 calificación final de la asignatura, ponderada en un 20%.
@@ -166,10 +169,23 @@ calificación final de la asignatura, ponderada en un 20%.
     recomendaciones cuando lo considere oportuno. Además se utilizará
     iTALC para vigilar la contestación de los cuestionarios.
 
-Una vez realizado el cuestionario y terminada la hoja de ejercicios se
-entregará su solución en Moodle para su archivo. Cuando todos los
-grupos hayan hecho los cuestionarios y archivado las prácticas se
-publicará su solución.
+### Planificación de la semana
+
+Podemos resumir la planificación de una semana de la siguiente forma:
+
+- El viernes de la semana anterior se habrá publicado la práctica _n_.
+- El domingo de la semana anterior se habrá tenido que entregar en
+  Moodle la práctica _n-1_.
+- En la clase de prácticas se realiza el cuestionario sobre la
+  práctica _n-1_ y se trabaja en la práctica _n_.
+- En casa se termina la práctica _n_ y se estudia la teoría para
+  poder empezar a hacer la práctica _n+1_.
+- El viernes se publica la práctica _n+1_ y la solución de la práctica
+  _n_.
+- El domingo es el plazo límite para entregar la práctica _n_.
+
+Esta planificación podría cambiarse de forma puntual, en cuyo caso se
+avisará a través del foro de  Moodle.
 
 ## Horarios
 
