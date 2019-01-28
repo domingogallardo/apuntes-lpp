@@ -184,6 +184,11 @@ Podemos resumir la planificación de una semana de la siguiente forma:
   _n_.
 - El domingo es el plazo límite para entregar la práctica _n_.
 
+En la siguiente figura se puede ver cómo sería esta planificación para
+dos semanas de prácticas en las que se realizan las prácticas 3 y 4.
+
+<img src="imagenes/semana-practicas.png" width="800px"/>
+
 Esta planificación podría cambiarse de forma puntual, en cuyo caso se
 avisará a través del foro de  Moodle.
 
