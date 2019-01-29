@@ -509,6 +509,21 @@ p2.setCoordX(10.0);
 p1.getCoordX(); // la coord x de p1 es 10.0, sin que ninguna sentencia haya modificado directamente p1
 ```
 
+El mismo ejemplo anterior, en C:
+
+```c
+typedef struct {
+  float x;
+  float y;
+}TPunto; 
+
+TPunto p1 = {3.0, 2.0};
+printf(“Coordenada x: %f”, p1.x);  // 3.0
+TPunto *p2 = &p1;
+p2->x = 10.0;
+printf(“Coordenada x: %f”, p1.x);  // 10.0 Efecto lateral
+```
+
 Los efectos laterales son los responsables de muchos _bugs_ y hay que
 ser muy consciente de su uso. Son especialmente complicados de depurar
 los _bugs_ debidos a efectos laterales en programas concurrentes con
