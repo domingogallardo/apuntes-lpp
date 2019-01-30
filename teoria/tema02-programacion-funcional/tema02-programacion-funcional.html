@@ -1725,6 +1725,21 @@ de la semántica:</p>
 </pre></div>
 </td></tr></table>
 
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Al ser <code>if</code> una forma especial, no se evalúa utilizando el modelo de
+sustitución, sino usando las reglas propias de la forma especial. </p>
+<p>Por ejemplo, veamos la siguiente expresión:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="mi">3</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">/ </span><span class="mi">1</span> <span class="mi">0</span><span class="p">))</span> <span class="c1">; ⇒ 5</span>
+</pre></div>
+</td></tr></table>
+
+<p>Si se evaluara con el modelo
+de sustitución se lanzaría un error de división por 
+cero al intentar evaluar <code>(/ 1 0)</code>. Sin embargo, esa expresión no
+llega a evaluarse, porque la condición <code>(&gt; 3 0)</code> es cierta y sólo se evalúa
+la suma <code>(+ 2 3)</code>.</p>
+</div>
 <h4>Forma especial <code>cond</code></h4>
 <p><strong>Sintaxis</strong></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -2041,7 +2056,7 @@ Por ejemplo, `(suma-hasta 5)` devolverá `0+1+2+3+4+5 = 15`.
 La definición de la función es la siguiente (después explicaremos cómo
 la hemos diseñado)
 
-wzxhzdk:59
+wzxhzdk:60
 
 El **caso base** es el caso en el que `x` vale 0. En este caso devolvemos
 el propio 0, no hay que realizar ningún cálculo.
@@ -2065,7 +2080,7 @@ Siempre es aconsejable usar un ejemplo concreto para probar el caso
 general. Por ejemplo, el caso general de la suma hasta 5 se calcularía
 con la expresión:
 
-wzxhzdk:60
+wzxhzdk:61
 
 La evaluación de esta función calculará la llamada recursiva
 `(suma-hasta 4)`. Ahí es donde debemos **confiar en que la recursión
@@ -2077,7 +2092,7 @@ terminar el cálculo sumándole el propio número 5.
 (+ (suma-hasta 4) 5) = (confiamos en la recursión: (suma-hasta 4) = 10)
 (+ 10 5) =
 15
-wzxhzdk:61
+wzxhzdk:62
 
 Nos falta el caso base de la recursión. Debemos preguntarnos **¿cuál
 es el caso más sencillo del problema, que podemos calcular sin hacer
@@ -2086,18 +2101,18 @@ que `x` es 0, en el que devolveríamos 0.
 
 Podemos ya escribirlo todo en Scheme:
 
-wzxhzdk:62
+wzxhzdk:63
 
 Una aclaración sobre el caso general. En la implementación anterior la
 llamada recursiva a `suma-hasta` se realiza en el primer argumento de
 la suma:
 
-wzxhzdk:63
+wzxhzdk:64
 
 La expresión anterior es totalmente equivalente a la siguiente
 en la que la llamada recursiva aparece como segundo argumento
 
-wzxhzdk:64
+wzxhzdk:65
 
 Ambas expresiones son equivalentes porque en programación funcional no
 importa el orden en el que se evalúan los argumentos. Da lo mismo
@@ -2113,7 +2128,7 @@ en el carácter que le pasamos como parámetro.
 
 Por ejemplo:
 
-wzxhzdk:65
+wzxhzdk:66
 
 Pensamos en el caso general: ¿cómo podríamos invocar a la propia
 función `alfabeto-hasta` para que (confiando en la recursión) nos haga
@@ -2126,7 +2141,7 @@ añadir ese carácter a la cadena que devuelve la recursión.
 
 Veamos un ejemplo concreto:
 
-wzxhzdk:66
+wzxhzdk:67
 
 La llamada recursiva `(alfabeto-hasta #\g)` devolvería la cadena
 `"abcdefg"` (confiando en la recursión) y sólo faltaría añadir la
@@ -2138,11 +2153,11 @@ auxiliar `(anterior char)` que devuelve el carácter anterior a uno
 dado.
 
 
-wzxhzdk:67
+wzxhzdk:68
 
 El caso general quedaría como sigue:
 
-wzxhzdk:68
+wzxhzdk:69
 
 Faltaría el caso base. ¿Cuál es el caso más sencillo posible que nos
 pueden pedir? El caso del alfabeto hasta la `#\a`. En ese caso basta
@@ -2150,7 +2165,7 @@ con devolver la cadena `"a"`.
 
 La función completa quedaría así:
 
-wzxhzdk:69
+wzxhzdk:70
 
 
 ### Recursión y listas
@@ -2167,7 +2182,7 @@ la suma de todos ellos.
 
 Siempre tenemos que empezar escribiendo un ejemplo de la función:
 
-wzxhzdk:70
+wzxhzdk:71
 
 Para diseñar una implementación recursiva de la función tenemos que
 pensar en cómo descomponer el ejemplo en una llamada recursiva a un
@@ -2186,7 +2201,7 @@ siguiente dibujo:
 
 Podemos generalizar este ejemplo y expresarlo en Scheme de la siguiente forma:
 
-wzxhzdk:71
+wzxhzdk:72
 
 Falta el caso base, que es el caso más sencillo en que podemos
 devolver un valor sin llamar a la recursión. En este caso, podría ser
@@ -2195,7 +2210,7 @@ que devolver 0.
 
 Con todo junto, quedaría la recursión como sigue
 
-wzxhzdk:72
+wzxhzdk:73
 
 #### Función recursiva `veces`
 
@@ -2210,13 +2225,13 @@ identificador.
 
 En Scheme:
 
-wzxhzdk:73
+wzxhzdk:74
 
 Como caso base, si la lista es vacía devolvemos 0.
 
 La versión completa:
 
-wzxhzdk:74
+wzxhzdk:75
 
 
 ## Tipos de datos compuestos en Scheme
@@ -2229,7 +2244,7 @@ Ya hemos visto en el seminario de Scheme que el tipo de dato compuesto
 más simple es la pareja: una entidad formada por dos elementos. Se
 utiliza la función `cons` para construirla:
 
-wzxhzdk:75
+wzxhzdk:76
 
 Dibujamos la pareja anterior y la variable `c` que la referencia de la
 siguiente forma:
@@ -2248,14 +2263,14 @@ Una vez construida una pareja, podemos obtener el elemento
 correspondiente a su parte izquierda con la función `car` y su parte
 derecha con la función `cdr`:
 
-wzxhzdk:76
+wzxhzdk:77
 
 ##### Definición declarativa
 
 Las funciones `cons`, `car` y `cdr` quedan perfectamente definidas con
 las siguientes ecuaciones algebraicas:
 
-wzxhzdk:77
+wzxhzdk:78
 
 ##### ¿De dónde vienen los nombres `car` y `cdr`?
 
@@ -2271,7 +2286,7 @@ Podemos leer la explicación completa en
 
 La función `pair?` nos dice si un objeto es atómico o es una pareja:
 
-wzxhzdk:78
+wzxhzdk:79
 
 #### Las parejas pueden contener cualquier tipo de dato
 
@@ -2282,7 +2297,7 @@ datos.
 Por ejemplo, podríamos definir la siguiente función `suma` que sume
 tanto números como cadenas:
 
-wzxhzdk:79
+wzxhzdk:80
 
 En la función anterior los parámetros `x` e `y` pueden ser números o
 cadenas (o incluso de cualquier otro tipo). Y el valor devuelto por la
@@ -2292,7 +2307,7 @@ Sucede lo mismo con el contenido de las parejas. Es posible guardar en
 las parejas cualquier tipo de dato y combinar distintos tipos. Por
 ejemplo:
 
-wzxhzdk:80
+wzxhzdk:81
 
 
 #### Las parejas son objetos inmutables
@@ -2323,16 +2338,16 @@ Las parejas son objetos de primera clase.
 
 Una pareja puede asignarse a una variable:
 
-wzxhzdk:81
+wzxhzdk:82
 
 Una pareja puede pasarse como argumento y devolverse en una función:
 
-wzxhzdk:82
+wzxhzdk:83
 
 Una vez definida esta función `suma-parejas` podríamos ampliar la
 función `suma` que vimos previamente con este nuevo tipo de datos:
 
-wzxhzdk:83
+wzxhzdk:84
 
 
 Y, por último, las parejas *pueden formar parte de otras parejas*. Es
@@ -2342,11 +2357,11 @@ lo que se denomina la propiedad de clausura de la función `cons`:
 
 Ejemplo:
 
-wzxhzdk:84
+wzxhzdk:85
 
 Expresión equivalente:
 
-wzxhzdk:85
+wzxhzdk:86
 
  Podríamos representar esta estructura así:
 
@@ -2367,7 +2382,7 @@ Llamamos a estos diagramas *diagramas caja-y-puntero*
 Al escribir expresiones complicadas con `cons` anidados es conveniente
 para mejorar su legibilidad utilizar el siguiente formato:
 
-wzxhzdk:86
+wzxhzdk:87
 
 Para entender la construcción de estas estructuras es importante
 recordar que las expresiones se evalúan *de dentro a afuera*.
@@ -2388,7 +2403,7 @@ devuelve la pareja contenida en `p`, no se crea una pareja nueva.
 Por ejemplo, si después de haber evaluado la sentencia anterior
 evaluamos la siguiente:
 
-wzxhzdk:87
+wzxhzdk:88
 
 El diagrama caja y puntero resultante sería el siguiente:
 
@@ -2415,7 +2430,7 @@ la estructura.
 La siguiente función `print-pareja` puede ser útil a la hora de
 mostrar por pantalla los elementos de una pareja
 
-wzxhzdk:88
+wzxhzdk:89
 
 **!Cuidado¡**: la función anterior contiene sentencias como `begin` o
    llamadas a `display` dentro del código de la función, que son
@@ -2427,11 +2442,11 @@ mostrar por pantalla los elementos de una pareja
 Al trabajar con estructuras de parejas anidades es muy habitual
 realizar llamadas del tipo:
 
-wzxhzdk:89
+wzxhzdk:90
 
 Es equivalente a la función `cadar` de Scheme:
 
-wzxhzdk:90
+wzxhzdk:91
 
 El nombre de la función se obtiene concatenando a la letra "c", las
 letras "a" o "d" según hagamos un car o un cdr y terminando con la
@@ -2460,20 +2475,20 @@ parejas usando las funciones `list?` y `pair?`.
 Por ejemplo, una pareja formada por dos números es una pareja, pero no
 es una lista:
 
-wzxhzdk:91
+wzxhzdk:92
 
 Y una lista vacía es una lista, pero no es una pareja:
 
-wzxhzdk:92
+wzxhzdk:93
 
 ¿Una lista es una pareja? Pues sí:
 
-wzxhzdk:93
+wzxhzdk:94
 
 Por último, una pareja con una lista vacía como segundo elemento es
 una pareja y una lista:
 
-wzxhzdk:94
+wzxhzdk:95
 
 Con estos ejemplos ya tenemos pistas para deducir la relación entre
 listas y parejas en Scheme (y Lisp). Vamos a explicarlo.
@@ -2489,7 +2504,7 @@ Una lista es (definición recursiva):
 Por ejemplo, una lista muy sencilla con un solo elemento, `{1}`, se
 define con la siguiente pareja:
 
-wzxhzdk:95
+wzxhzdk:96
 
 La pareja cumple las condiciones anteriores: 
 
@@ -2504,12 +2519,12 @@ La pareja cumple las condiciones anteriores:
 El objeto es al mismo tiempo una pareja y una lista. La función
 `list?` permite comprobar si un objeto es una lista:
 
-wzxhzdk:96
+wzxhzdk:97
 
 Por ejemplo, la lista '(1 2 3 4) se construye con la siguiente
 secuencia de parejas:
 
-wzxhzdk:97
+wzxhzdk:98
 
 La primera pareja cumple las condiciones de ser una lista:
 
@@ -2528,16 +2543,16 @@ resto de la lista.
 
 La lista vacía es una lista:
 
-wzxhzdk:98
+wzxhzdk:99
 
 Y no es un símbolo ni una pareja:
 
-wzxhzdk:99
+wzxhzdk:100
 
 Para saber si un objeto es la lista vacía, podemos utilizar la función
 `null?`:
 
-wzxhzdk:100
+wzxhzdk:101
 
 ### Listas con elementos compuestos
 
@@ -2547,7 +2562,7 @@ otras parejas.
 La siguiente estructura se denomina *lista de asociación*. Son listas
 cuyos elementos son parejas (*clave*, *valor*):
 
-wzxhzdk:101
+wzxhzdk:102
 
 
 ¿Cuál sería el diagrama *box and pointer* de la estructura anterior?
@@ -2556,17 +2571,17 @@ cuyos elementos son parejas (*clave*, *valor*):
 
 La expresión equivalente utilizando conses es:
 
-wzxhzdk:102
+wzxhzdk:103
 
 #### Listas de listas
 
 Hemos visto que podemos construir listas que contienen otras listas:
 
-wzxhzdk:103
+wzxhzdk:104
 
 La lista anterior también se puede definir con quote:
 
-wzxhzdk:104
+wzxhzdk:105
 
 La lista resultante contiene tres elementos: el primero y el último
 son elementos atómicos (números) y el segundo es otra lista.
@@ -2574,11 +2589,11 @@ son elementos atómicos (números) y el segundo es otra lista.
 Si preguntamos por la longitud de la lista Scheme nos dirá que es una
 lista de 3 elementos:
 
-wzxhzdk:105
+wzxhzdk:106
 
 Y el segundo elemento de la lista es otra lista:
 
-wzxhzdk:106
+wzxhzdk:107
 
 ¿Cómo implementa Scheme esta lista usando parejas?
 
@@ -2614,7 +2629,7 @@ Por ejemplo, la lista anterior `{1 {1 2 3} 3}` es una lista de 3
 elementos. Si queremos obtener su segundo elemento (la lista `{1 2
 3}`) bastaría con:
 
-wzxhzdk:107
+wzxhzdk:108
 
 
 ### Funciones recursivas y listas
@@ -2635,7 +2650,7 @@ prefijo `mi-` en todas ellas:
 La función `(mi-list-ref n lista)` devuelve el elemento `n` de una
 lista (empezando a contar por 0):
 
-wzxhzdk:108
+wzxhzdk:109
 
 Veamos con el ejemplo anterior cómo hacer la formulación recursiva.
 
@@ -2669,20 +2684,20 @@ recursiva:
 
 La implementación de todo esto en Scheme sería la siguiente:
 
-wzxhzdk:109
+wzxhzdk:110
 
 ##### Función `list-tail`
 
 La función `(mi-list-tail lista n)` devuelve la lista resultante de
 quitar n elementos de la lista original:
 
-wzxhzdk:110
+wzxhzdk:111
 
 Piensa en cómo se implementaría de forma recursiva. Esta vez vamos a
 mostrar directamente la implementación, sin dar explicaciones de cómo
 se ha llegado a ella:
 
-wzxhzdk:111
+wzxhzdk:112
 
 ##### Función `mi-append` 
 
@@ -2692,38 +2707,38 @@ lista2)`.
 
 Por ejemplo:
 
-wzxhzdk:112
+wzxhzdk:113
 
 Para resolver el problema de forma recursiva, haremos el `cdr` de la
 primera lista, llamaremos a la recursión para que una el resultado con
 la segunda lista`:
 
-wzxhzdk:113
+wzxhzdk:114
 
 Y añadiremos el primer elemento a la lista resultante usando un `cons`:
 
-wzxhzdk:114
+wzxhzdk:115
 
 En general:
 
-wzxhzdk:115
+wzxhzdk:116
 
 El caso base, el caso en el que la función puede devolver un valor
 directamente sin llamar a la recursión, es aquel en el que `lista1` es
 `null?`. En ese caso devolvemos `lista2`:
 
-wzxhzdk:116
+wzxhzdk:117
 
 La formulación recursiva completa queda como sigue:
 
-wzxhzdk:117
+wzxhzdk:118
 
 ##### Función `mi-reverse`
 
 Veamos cómo implementar de forma recursiva la función `mi-reverse` que
 invierte una lista
 
-wzxhzdk:118
+wzxhzdk:119
 
 La idea es sencilla: llamamos a la recursión para hacer la inversa del
 `cdr` de la lista y añadimos el primer elemento a la lista resultante
@@ -2735,11 +2750,11 @@ añade un dato al final de una lista usando `append`:
 Veamos directamente su implementación, usando `mi-append` para añadir
 un elemento al final de la lista:
 
-wzxhzdk:119
+wzxhzdk:120
 
 La función `mi-reverse` quedaría entonces como sigue:
 
-wzxhzdk:120
+wzxhzdk:121
 
 #### Ejemplos de funciones recursivas que usan listas
 
@@ -2756,11 +2771,11 @@ devolvemos una lista formada por el 1.
 
 En Scheme:
 
-wzxhzdk:121
+wzxhzdk:122
 
 Ejemplo:
 
-wzxhzdk:122
+wzxhzdk:123
 
 ##### Función `filtra-pares`
 
@@ -2771,11 +2786,11 @@ condición.
 Por ejemplo, la siguiente función `filtra-pares` construye una lista
 con los números pares de la lista que le pasamos como parámetro:
 
-wzxhzdk:123
+wzxhzdk:124
 
 Ejemplo:
 
-wzxhzdk:124
+wzxhzdk:125
 
 ##### Función `primo?`
 
@@ -2789,11 +2804,11 @@ es dos. En ese caso será primo.
 
 Por ejemplo:
 
-wzxhzdk:125
+wzxhzdk:126
 
 Podemos definir entonces la función `(primo? x)` de la siguiente forma:
 
-wzxhzdk:126
+wzxhzdk:127
 
 ¿Cómo implementamos la función `(divisores x)` que nos devuelve la
 lista de los divisores de un número `x`. Vamos a construirla de la
@@ -2804,37 +2819,37 @@ siguiente forma:
 
 La función `(lista-hasta x)` devuelve una lista de números 1..x:
 
-wzxhzdk:127
+wzxhzdk:128
 
 Ejemplos:
 
-wzxhzdk:128
+wzxhzdk:129
 
 Definimos la función `(divisor? x y)` que nos diga si x es divisor de
 y:
 
-wzxhzdk:129
+wzxhzdk:130
 
 Ejemplos:
 
-wzxhzdk:130
+wzxhzdk:131
 
 Una vez que hemos definido La función `divisor?` podemos utilizarla
 para definir la función recursiva `(filtra-divisores lista x)` que
 devuelve una lista con los números de `lista` que son divisores de
 `x`:
 
-wzxhzdk:131
+wzxhzdk:132
 
 Ya podemos implementar la función que devuelve los divisores de un
 número `x` generando los números hasta `x` y filtrando los divisores
 de ese número. Por ejemplo, para calcular los divisores de 10:
 
-wzxhzdk:132
+wzxhzdk:133
 
 Se puede implementar de una forma muy sencilla:
 
-wzxhzdk:133
+wzxhzdk:134
 
 Y una vez definida esta función, ya puede funcionar correctamente la
 función `primo?`.
@@ -2855,11 +2870,11 @@ se pasarán en forma de lista en el último parámetro.
 
 Por ejemplo, si tenemos la definición
 
-wzxhzdk:134
+wzxhzdk:135
 
 podemos llamar a la función anterior con dos o más argumentos:
 
-wzxhzdk:135
+wzxhzdk:136
 
 En la llamada, los parámetros `x` e `y` tomarán los valores 1 y 2. El
 parámetro `lista-args` tomará como valor una lista con los argumentos
@@ -2868,11 +2883,11 @@ restantes `(3 4 5 6)`.
 También es posible permitir que todos los argumentos sean opcionales
 no poniendo ningún argumento antes del punto::
 
-wzxhzdk:136
+wzxhzdk:137
 
 Si hacemos la llamada
 
-wzxhzdk:137
+wzxhzdk:138
 
 el parámetro `lista-args` tomará como valor la lista `(1 2 3 4 5 6)`.
 
@@ -2884,7 +2899,7 @@ suma de todos ellos. Es muy sencillo: recogemos todos los argumentos
 en la lista de argumentos variables y llamamos a la función
 `suma-lista` que suma una lista de números:
 
-wzxhzdk:138
+wzxhzdk:139
 
 ## Funciones como tipos de datos de primera clase
 
@@ -2946,7 +2961,7 @@ nombre mediante esta forma especial.
 
 La sintaxis de la forma especial `lambda` es:
 
-wzxhzdk:139
+wzxhzdk:140
 
 El cuerpo del lambda define un *bloque de código* y sus argumentos son
 los parámetros necesarios para ejecutar ese bloque de código. Llamamos
@@ -2956,11 +2971,11 @@ Algunos ejemplos:
 
 Una función anónima que suma dos parejas:
 
-wzxhzdk:140
+wzxhzdk:141
 
 Una función anónima que devuelve el mayor de dos números:
 
-wzxhzdk:141
+wzxhzdk:142
 
 #### Semántica de la forma especial `lambda`
 
@@ -2970,7 +2985,7 @@ anónima en tiempo de ejecución.
 Por ejemplo, si ejecutamos una expresión lambda en el intérprete
 veremos que devuelve un procedimiento:
 
-wzxhzdk:142
+wzxhzdk:143
 
 El procedimiento construido es un bloque de código que devuelve el
 cuadrado de un número.
@@ -2981,11 +2996,11 @@ Podemos asignarlo a un identificador. Por ejemplo, en la siguiente
 expresión, primero se evalúa la *expresión lambda* y el procedimiento
 resultante se asocia al identificador `f`.
 
-wzxhzdk:143
+wzxhzdk:144
 
 El ejemplo anterior funciona de una forma idéntica al siguiente:
 
-wzxhzdk:144
+wzxhzdk:145
 
 En ambos casos se evalúa la expresión derecha y el resultado se guarda
 en un identificador. En el primer caso la expresión que se evalúa
@@ -2995,7 +3010,7 @@ segundo un número, que se guarda en la variable `x`.
 Si escribimos los identificadores `f` y `x` en el intérprete Scheme los
 evalúa y muestra los valores guardados:
 
-wzxhzdk:145
+wzxhzdk:146
 
 En el primer caso se devuelve un procedimiento y en el segundo un
 número. Fíjate que Scheme trata a los procedimientos y a los números
@@ -3005,18 +3020,18 @@ Una vez asignado un procedimiento a un identificador, lo podemos
 utilizar como de la misma forma que invocamos habitualmente a una
 función:
 
-wzxhzdk:146
+wzxhzdk:147
 
 No es necesario un identificador para invocar a una función; podemos
 crear la función con una expresión lambda e invocar a la función
 anónima recién creada:
 
-wzxhzdk:147
+wzxhzdk:148
 
 La llamada a `lambda` crea un procedimiento y el paréntesis a su
 izquierda lo invoca con el parámetro 3:
 
-wzxhzdk:148
+wzxhzdk:149
 
 Es importante remarcar que con `lambda` estamos creando una función en
 *tiempo de ejecución*. Es código que creamos para su posterior
@@ -3028,19 +3043,19 @@ devuelve el cuadrado de un número:
 
 **Java 8**
 
-wzxhzdk:149
+wzxhzdk:150
 
 **Scala**
 
-wzxhzdk:150
+wzxhzdk:151
 
 **Objective C**
 
-wzxhzdk:151
+wzxhzdk:152
 
 **Swift**
 
-wzxhzdk:152
+wzxhzdk:153
 
 #### Identificadores y funciones
 
@@ -3048,7 +3063,7 @@ Tras conocer `lambda` ya podemos explicarnos por qué cuando escribimos
 en el intérprete de Scheme el nombre de una función, se evalúa a un
 *procedure*:
 
-wzxhzdk:153
+wzxhzdk:154
 
 El identificador se evalúa y devuelve el *objeto función* al que está
 ligado. En Scheme los nombres de las funciones son realmente símbolos
@@ -3057,7 +3072,7 @@ a los que están ligados *objetos de tipo función*.
 Podemos asignar funciones ya existentes a nuevos identificadores
 usando `define`, como en el ejemplo siguiente:
 
-wzxhzdk:154
+wzxhzdk:155
 
 Es muy importante darse cuenta que la expresión `(define suma +)` se
 evalúa de forma idéntica a `(define y x)`. Primero se evalúa el
@@ -3070,19 +3085,19 @@ asigna a la variable `suma`. El resultado final es que tanto `+` como
 La forma especial `define` para definir una función no es más que
 *azucar sintáctico*.
 
-wzxhzdk:155
+wzxhzdk:156
 
 siempre se convierte internamente en:
 
-wzxhzdk:156
+wzxhzdk:157
 
 Por ejemplo
 
-wzxhzdk:157
+wzxhzdk:158
 
 es equivalente a:
 
-wzxhzdk:158
+wzxhzdk:159
 
 #### Predicado `procedure?`
 
@@ -3091,7 +3106,7 @@ Scheme `procedure?`.
 
 Por ejemplo:
 
-wzxhzdk:159
+wzxhzdk:160
 
 Hemos visto que las funciones pueden asignarse a variables. También
 cumplen las otras condiciones necesarias para ser consideradas objetos
@@ -3113,18 +3128,18 @@ basta con usar `func` como su nombre. La función se ha ligado al
 nombre `func` en el momento de la invocación a `aplica`, de la misma
 forma que los argumentos se ligan a los parámetros `x` e `y`:
 
-wzxhzdk:160
+wzxhzdk:161
 
 Algunos ejemplos de invocación, usando funciones primitivas, funciones
 definidas y expresiones lambda:
 
-wzxhzdk:161
+wzxhzdk:162
 
 Otro ejemplo, la función `aplica-2` que toma dos funciones `f` y `g` y
 un argumento `x` y devuelve el resultado de aplicar `f` a lo que
 devuelve la invocación de `g` con `x`:
 
-wzxhzdk:162
+wzxhzdk:163
 
 
 ### Generalización ###
@@ -3133,16 +3148,16 @@ La posibilidad de pasar funciones como parámetros de otras es una
 poderosa herramienta de abstracción. Por ejemplo, supongamos que
 queremos calcular el sumatorio de `a` hasta `b`:
 
-wzxhzdk:163
+wzxhzdk:164
 
 Supongamos ahora que queremos calcular el sumatorio de `a` hasta `b`
 sumando los números al cuadrado:
 
-wzxhzdk:164
+wzxhzdk:165
 
 Y el sumatorio de `a` hasta `b` sumando los cubos:
 
-wzxhzdk:165
+wzxhzdk:166
 
 Vemos que el código de las tres funciones anteriores es muy similar,
 cada función la podemos obtener haciendo un *copy-paste* de otra
@@ -3163,13 +3178,13 @@ adicional y definir una función genérica `sum-f-x` que generaliza las
 tres funciones anteriores. Tendríamos el sumatorio desde `a` hasta `b`
 de `f(x)`:
 
-wzxhzdk:166
+wzxhzdk:167
 
 Las funciones anteriores son casos particulares de esta función que
 las generaliza. Por ejemplo, para calcular el sumatorio desde 1 hasta
 10 de `x` al cubo:
 
-wzxhzdk:167
+wzxhzdk:168
 
 
 También podemos utilizar una expresión lambda en la invocación a
@@ -3177,7 +3192,7 @@ También podemos utilizar una expresión lambda en la invocación a
 número. Por ejemplo, podemos sumar la expresión (n/(n-1)) para todos
 los números del 2 al 100:
 
-wzxhzdk:168
+wzxhzdk:169
 
 
 
@@ -3214,7 +3229,7 @@ Vamos a empezar con un ejemplo muy sencillo. Definimos una función
 constructora que crea en su ejecución una función que suma
 `k` a un número:
 
-wzxhzdk:169
+wzxhzdk:170
 
 El cuerpo de la función `(construye-sumador k)` está formado por una
 expresión lambda. Cuando se invoca a `construye-sumador` se evalúa
@@ -3225,24 +3240,24 @@ argumento.
 
 Por ejemplo, podemos invocar a `construye-sumador` pasando 10 como parámetro:
 
-wzxhzdk:170
+wzxhzdk:171
 
 Como hemos dicho, se devuelve un procedimiento, una función. Esta
 función devuelta debe invocarse con un argumento y devolverá el
 resultado de sumar 10 a ese argumento:
 
-wzxhzdk:171
+wzxhzdk:172
 
 También podemos invocar directamente a la función que devuelve la
 función constructora, sin guardarla en una variable:
 
-wzxhzdk:172
+wzxhzdk:173
 
 Dependiendo del parámetro que le pasemos a la función constructora
 obtendremos una función sumadora que sume un número u otro. Por
 ejemplo para obtener una función sumadora que suma 100:
 
-wzxhzdk:173
+wzxhzdk:174
 
 ¿Cómo funciona la clausura? ¿Por qué la invocación a `(g 3)`
 devuelve 103?.
@@ -3256,11 +3271,11 @@ pinceladas.
 
 Recordemos la definición de `construye-sumador`:
 
-wzxhzdk:174
+wzxhzdk:175
 
 Y supongamos que realizamos las siguientes invocaciones:
 
-wzxhzdk:175
+wzxhzdk:176
 
 Podemos explicar lo que sucede en la evaluación de estas funciones de
 la siguiente forma:
@@ -3289,7 +3304,7 @@ Otro ejemplo de una función que devuelve otra función es la función
 siguiente `(componedor f g)` que recibe dos funciones de un argumento
 y devuelve otra función que realiza la composición de ambas:
 
-wzxhzdk:176
+wzxhzdk:177
 
 La función devuelta invoca primero a `g` y el resultado se lo pasa a
 `f`. Veamos un ejemplo. Supongamos que tenemos definidas la función
@@ -3298,13 +3313,13 @@ respectivamente. Podremos entonces llamar a `componedor` con esas dos
 funciones para construir otra función que primero calcule el cuadrado y
 después el doble de una número:
 
-wzxhzdk:177
+wzxhzdk:178
 
 La variable `h` contiene la función devuelta por `componedor`. Una
 función de un argumento que devuelve el doble del cuadrado de un
 número:
 
-wzxhzdk:178
+wzxhzdk:179
 
 #### Usos reales de las funciones constructoras ####
 
@@ -3331,18 +3346,18 @@ sólo tengamos que definirlo una vez, al crear la función
 
 Lo podemos hacer con la siguiente función constructora:
 
-wzxhzdk:179
+wzxhzdk:180
 
 Por ejemplo, definimos distintos loggers y los probamos:
 
-wzxhzdk:180
+wzxhzdk:181
 
 
 ##### Ejemplo de funciones constructoras para modificar funciones ya construidas #####
 
 Recordemos la función `divisores`:
 
-wzxhzdk:181
+wzxhzdk:182
 
 Un problema de la función anterior `divisores` es que si le pasamos un
 número negativo entra en un bucle infinito.
@@ -3351,26 +3366,26 @@ Podemos definir la siguiente función general a la que le pasamos una
 función de un argumento `f` y devuelve la función f "segura" a la que
 sólo se va a invocar si el parámetro es mayor o igual que 0:
 
-wzxhzdk:182
+wzxhzdk:183
 
 Podemos entonces "segurizar" la función `divisores`:
 
-wzxhzdk:183
+wzxhzdk:184
 
 La función `(construye-segura-menor-cero f)` se puede aplicar para
 "segurizar" cualquier función, no sólo `divisores`:
 
-wzxhzdk:184
+wzxhzdk:185
 
 Se podría generalizar aún más la función "segurizadora" haciendo que
 la condición a cumplir por el número sea otra función que también pasamos:
 
-wzxhzdk:185
+wzxhzdk:186
 
 La forma de definir una función `divisores` segura con esta nueva
 función sería:
 
-wzxhzdk:186
+wzxhzdk:187
 
 
 ### Funciones en estructuras de datos
@@ -3381,13 +3396,13 @@ formar parte de tipos de datos compuestos, como listas.
 Para construir una lista de funciones debemos llamar a `list` con las
 funciones:
 
-wzxhzdk:187
+wzxhzdk:188
 
 También podemos evaluar una expresión lambda y añadir el procedimiento
 resultante. Por ejemplo, para añadir otra función a la lista anterior
 podemos llamar a `cons`:
 
-wzxhzdk:188
+wzxhzdk:189
 
 Una vez creada una lista con funciones, ¿cómo podemos invocar a alguna
 de ellas?. Debemos tratarlas de la misma forma que tratamos cualquier
@@ -3395,7 +3410,7 @@ otro dato guardado en la lista, las recuperamos con las funciones
 `car` o `list-ref` y las invocamos. Por ejemplo, para invocar a la
 primera función de `lista2`:
 
-wzxhzdk:189
+wzxhzdk:190
 
 #### Funciones que trabajan con listas de funciones
 
@@ -3406,37 +3421,37 @@ aplica todas al número que pasamos en el parámetro `x`.
 Por ejemplo, si construimos una lista con las funciones `cuadrado`,
 `cubo` y `suma-1`:
 
-wzxhzdk:190
+wzxhzdk:191
 
 la llamada a `(aplica-funcs lista 5)` debería devolver el resultado de
 aplicar primero `suma-1` a 5, después `cubo` al resultado y después
 `cuadrado`:
 
-wzxhzdk:191
+wzxhzdk:192
 
 Para implementar `aplica-funcs` tenemos que usar una recursión. Si
 vemos el ejemplo, podemos comprobar que es sencillo definir el caso
 general:
 
-wzxhzdk:192
+wzxhzdk:193
 
 El caso general de la recursión de la función `aplica-funcs` se define
 entonces como:
 
-wzxhzdk:193
+wzxhzdk:194
 
 El caso base sería en el que la lista de funciones tiene sólo una
 función:
 
-wzxhzdk:194
+wzxhzdk:195
 
 La implementación completa es:
 
-wzxhzdk:195
+wzxhzdk:196
 
 Un ejemplo de uso:
 
-wzxhzdk:196
+wzxhzdk:197
 
 
 
@@ -3480,14 +3495,14 @@ transformación que se pasa como parámetro.
 
 En concreto, la función recibe otra función y una lista:
 
-wzxhzdk:197
+wzxhzdk:198
 
 Y devuelve la lista resultante de aplicar la función a todos los
 elementos de la lista.
 
 Por ejemplo:
 
-wzxhzdk:198
+wzxhzdk:199
 
 La lista resultante es el resultado de construir una lista nueva
 aplicando la función `cuadrado` a todos los elementos de la lista
@@ -3499,17 +3514,17 @@ la función de transformación debe recibir una pareja. Veamos un
 ejemplo de este caso, en el que a partir de una lista de parejas
 obtenemos una lista con las sumas de cada pareja:
 
-wzxhzdk:199
+wzxhzdk:200
 
 También podríamos hacerlo con una expresión lambda:
 
-wzxhzdk:200
+wzxhzdk:201
 
 
 Un último ejemplo, en el que usamos `map` para transformar una lista
 de símbolos en una lista con sus longitudes:
 
-wzxhzdk:201
+wzxhzdk:202
 
 
 > CONSEJO DE USO  
@@ -3521,14 +3536,14 @@ de símbolos en una lista con sus longitudes:
 ¿Cómo se podría implementar `map` de forma recursiva? Definimos la
 función `mi-map`. La implementación es la siguiente:
 
-wzxhzdk:202
+wzxhzdk:203
 
 ##### Función `map` con más de una lista
 
 Es posible pasar más de una lista como parámetro de la función
 `map`. Todas las listas deben tener la misma longitud:
 
-wzxhzdk:203
+wzxhzdk:204
 
 En ese caso, la función de mapeado `f` debe tener tantos parámetros
 como listas. El resultado es el mismo que antes: la función `f` coge
@@ -3537,7 +3552,7 @@ con los resultados.
 
 Ejemplos:
 
-wzxhzdk:204
+wzxhzdk:205
 
 
 #### Función `filter`
@@ -3550,19 +3565,19 @@ cumplen el predicado.
 
 Un ejemplo de uso:
 
-wzxhzdk:205
+wzxhzdk:206
 
 Otro ejemplo: supongamos que queremos filtrar una lista de parejas de
 números, devolviendo aquellas que parejas que cumplen que su parte
 izquierda es mayor o igual que la derecha. Lo podríamos hacer con la
 siguiente expresión:
 
-wzxhzdk:206
+wzxhzdk:207
 
 Y un último ejemplo: filtramos todos los símbolos con longitud menor
 de 4.
 
-wzxhzdk:207
+wzxhzdk:208
 
 
 > CONSEJO DE USO  
@@ -3575,7 +3590,7 @@ de 4.
 
 Podemos implementar la función `filter` de forma recursiva:
 
-wzxhzdk:208
+wzxhzdk:209
 
 #### Función `exists`
 
@@ -3584,7 +3599,7 @@ y comprueba si algún elemento de la lista cumple ese predicado.
 
 Ejemplo de uso:
 
-wzxhzdk:209
+wzxhzdk:210
 
 ¿Cuál sería la implementación recursiva de la función `exists`? 
 
@@ -3595,7 +3610,7 @@ y comprueba que todos los elementos de la lista cumplen ese predicado.
 
 Ejemplo de uso:
 
-wzxhzdk:210
+wzxhzdk:211
 
 ¿Cuál sería la implementación recursiva de la función `for-all`?
 
@@ -3613,7 +3628,7 @@ La explicación de su funcionamiento es la siguiente:
 Por ejemplo, supongamos que la función de plegado es una función que
 suma dos valores.
 
-wzxhzdk:211
+wzxhzdk:212
 
 Llamamos a los parámetros `dato` y `resultado` para remarcar que el
 primer parámetro se va a coger de la lista y el segundo del resultado
@@ -3622,7 +3637,7 @@ calculado.
 Veamos qué pasa cuando hacemos un `fold-right` con esta función suma y
 la lista '(1 2 3) y con el número 0 como base:
 
-wzxhzdk:212
+wzxhzdk:213
 
 La función `suma` se va a ir aplicando a todos los elementos de la
 lista de derecha a izquierda, empezando por el valor base (0) y el
@@ -3632,24 +3647,24 @@ utilizándolo como nuevo parámetro `resultado` en la siguiente llamada.
 En concreto, la secuencia de llamadas a la función `suma` serán las
 siguientes:
 
-wzxhzdk:213
+wzxhzdk:214
 
 Otro ejemplo de uso:
 
-wzxhzdk:214
+wzxhzdk:215
 
 En este caso la secuencia de llamadas a `string-append` que se van a
 producir son:
 
-wzxhzdk:215
+wzxhzdk:216
 
 Otros ejemplos:
 
-wzxhzdk:216
+wzxhzdk:217
 
 Un último ejemplo:
 
-wzxhzdk:217
+wzxhzdk:218
 
 ##### Función `fold-left` #####
 
@@ -3660,15 +3675,15 @@ izquierda a derecha en lugar de derecha a izquierda.
 La función de plegado también cambia, porque tiene invertidos sus
 argumentos:
 
-wzxhzdk:218
+wzxhzdk:219
 
 Por ejemplo:
 
-wzxhzdk:219
+wzxhzdk:220
 
 La secuencia de llamadas a `-` son:
 
-wzxhzdk:220
+wzxhzdk:221
 
 
 > CONSEJO DE USO  
@@ -3679,11 +3694,11 @@ La secuencia de llamadas a `-` son:
 
 Podríamos implementar de forma recursiva la función `fold-right`:
 
-wzxhzdk:221
+wzxhzdk:222
 
 Y la función `fold-left`:
 
-wzxhzdk:222
+wzxhzdk:223
 
 
 #### Uso de funciones de orden superior
@@ -3706,11 +3721,11 @@ todos los elementos de una lista.
 
 Podemos hacerlo de forma recursiva:
 
-wzxhzdk:223
+wzxhzdk:224
 
 Funciona de la siguiente manera:
 
-wzxhzdk:224
+wzxhzdk:225
 
 **Implementacion con `map`**
 
@@ -3720,7 +3735,7 @@ misma función de una forma mucho más concisa y expresiva.
 Lo podemos hacer utilizando la función de orden superior `map` y una
 expresión lambda que sume el número `n` a los elementos de la lista:
 
-wzxhzdk:225
+wzxhzdk:226
 
 Vemos que utilizamos el parámetro `n` en el cuerpo de la expresión
 lambda. De esta forma la función que se aplica a los elementos de la
@@ -3728,7 +3743,7 @@ lista es una función que suma este número a cada elemento. La variable
 `x` en el parámetro de la expresión lambda es la que va tomando el
 valor de los elementos de la lista.
 
-wzxhzdk:226
+wzxhzdk:227
 
 ##### Composición de funciones de orden superior
 
@@ -3743,24 +3758,24 @@ después que sume todos los elementos resultantes.
 Lo podríamos hacer reutilizando el código del ejemplo anterior, y
 añadiendo una llamada a `fold-right` para que haga la suma:
 
-wzxhzdk:227
+wzxhzdk:228
 
 Funcionaría de la siguiente forma:
 
-wzxhzdk:228
+wzxhzdk:229
 
 Otro ejemplo. Supongamos que tenemos una lista de parejas de números y
 queremos contar aquellas parejas cuya suma de ambos números es mayor
 que un umbral (por ejemplo, 10).
 
-wzxhzdk:229
+wzxhzdk:230
 
 Se podría implementar de una forma muy concisa componiendo una llamada
 a `map` para realizar la suma de cada pareja junto con una llamada a
 `filter` que compruebe que el resultado sea mayor de `n`. Y al final
 llamamos a `length` para contar la longitud de la lista resultante:
 
-wzxhzdk:230
+wzxhzdk:231
 
 
 ##### Función `(contienen-letra caracter lista-pal)`
@@ -3771,14 +3786,14 @@ una lista que contienen un determinado carácter.
 
 Por ejemplo:
 
-wzxhzdk:231
+wzxhzdk:232
 
 Podemos implementar `contienen-letra` usando la función de orden
 superior `filter`, con una expresión lambda que se aplicará a cada una
 de las palabras de la lista para comprobar si la palabra contiene el
 carácter:
 
-wzxhzdk:232
+wzxhzdk:233
 
 El parámetro `pal` de la expresión lambda irá cogiendo el valor de
 todas las palabras de `lista-pal` y la función `(letra-en-pal?
@@ -3789,13 +3804,13 @@ tenemos que implementar.
 
 Por ejemplo:
 
-wzxhzdk:233
+wzxhzdk:234
 
 La podemos implementar de una forma muy elegante obteniendo una lista
 de caracteres a partir de la cadena y usando la función de orden
 superior `exists`:
 
-wzxhzdk:234
+wzxhzdk:235
 
 
 ##### Función divisores #####
@@ -3806,12 +3821,12 @@ utilizando una función de orden superior.
 Suponemos que tenemos definidas las funciones `(numeros-hasta n)` y
 `(divisor? x n)`:
 
-wzxhzdk:235
+wzxhzdk:236
 
 Entonces la función `(divisores n)` se implementaría de la siguiente forma:
 
 
-wzxhzdk:236
+wzxhzdk:237
 
 
 ## Bibliografía - SICP
