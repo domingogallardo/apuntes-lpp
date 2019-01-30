@@ -1208,6 +1208,22 @@ de la semántica:
 
 ```
 
+!!! Note "Nota" 
+    Al ser `if` una forma especial, no se evalúa utilizando el modelo de
+    sustitución, sino usando las reglas propias de la forma especial. 
+    
+    Por ejemplo, veamos la siguiente expresión:
+    
+    ```scheme
+    (if (> 3 0) (+ 2 3) (/ 1 0)) ; ⇒ 5
+    ```
+
+    Si se evaluara con el modelo
+    de sustitución se lanzaría un error de división por 
+    cero al intentar evaluar `(/ 1 0)`. Sin embargo, esa expresión no
+    llega a evaluarse, porque la condición `(> 3 0)` es cierta y sólo se evalúa
+    la suma `(+ 2 3)`.
+    
 #### Forma especial `cond`
 
 **Sintaxis**
