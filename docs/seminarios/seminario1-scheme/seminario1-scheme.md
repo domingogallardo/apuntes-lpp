@@ -295,10 +295,10 @@ complejos e inexactos.
 ##### Funciones de redondeo
 
 ```scheme
-(floor x) devuelve el entero más grande no mayor que x
-(ceiling x) devuelve el entero más pequeño no menor que x
-(truncate x) devuelve el entero más cercano a x cuyo valor absoluto no es mayor que el valor absoluto de x
-(round x) devuelve el entero más cercano a x, redondeado
+; (floor x) devuelve el entero más grande no mayor que x
+; (ceiling x) devuelve el entero más pequeño no menor que x
+; (truncate x) devuelve el entero más cercano a x cuyo valor absoluto no es mayor que el valor absoluto de x
+; (round x) devuelve el entero más cercano a x, redondeado
 (floor -4.3)    ; ⇒ -5.0
 (floor 3.5)     ; ⇒ 3.0
 (ceiling -4.3)  ; ⇒ -4.0
@@ -364,8 +364,8 @@ Las cadenas son secuencias finitas de caracteres.
 ##### Constructores de cadenas
 
 ```scheme
-(make-string 5 #\o) ⇒ "ooooo"
-(string #\h #\o #\l #\a) ⇒ "hola"
+(make-string 5 #\o) ; ⇒ "ooooo"
+(string #\h #\o #\l #\a) ; ⇒ "hola"
 ```
 
 ##### Operaciones con cadenas
@@ -485,13 +485,13 @@ de funciones recursivas que recorren listas.
 ```scheme
 (list) ; ⇒ () 
 (null? (list)) ; ⇒ #t
-(null? (list 1 2 3) ; ⇒ #f
+(null? (list 1 2 3)) ; ⇒ #f
 ```
 
 Podemos construir una nueva lista añadiendo un elemento a la cabeza de
-una lista existente usando la función `cons` (también la misma función
-sobre pareja, ya explicaremos también por qué) usando como parámetro
-un elemento y una lista:
+una lista existente usando la función `cons` (la misma función sobre
+pareja, ya explicaremos también por qué) usando como parámetro un
+elemento y una lista:
 
 ```scheme
 (cons elemento lista) 
@@ -501,7 +501,7 @@ Por ejemplo:
 
 ```scheme
 (cons 1 (list 2 3 4 5))  ; ⇒ {1 2 3 4 5}
-(cons 1 (list))  ⇒ {1} 
+(cons 1 (list))  ; ⇒ {1} 
 (cons 1 (cons 2 (list))) ; ⇒ {1 2} 
 ```
 
@@ -853,8 +853,8 @@ resultado se corresponde con el esperado.
 
 ```scheme
 (check-equal? (ecuacion 1 -5 6) (cons 3 2))
-(check-equal? (ecuacion 2 -7 3) (cons 3 (/ 1 2)) )
-(check-equal? (ecuacion -1 7 -10) (cons 2 5))  
+(check-equal? (ecuacion 2 -7 3) (cons 3 (/ 1 2)))
+(check-equal? (ecuacion -1 7 -10) (cons 2 5))
 ```
 
 Ahora vamos a suponer que nos hemos equivocado en la definición de la
@@ -902,18 +902,18 @@ derecha. ¡¡Piensa en los resultados!!. Intenta entender cómo
 interpreta Scheme lo que escribes.
 
 
-Instrucción    | Instrucción                                  |
--------------- | ---------------------------------------------|
-3              | (+ (- 4 (* 3 (/ 4 2) 4)) 3)                  |
-(+ 1 2 )       | (* (+ (+ 2 3) 4) (* (* 3 3) 2))              |
-(+ 1 2 3 4)    | (* (+ 2 3 4 5) 3 (- 5 2 1))                  |
-(+)            | (+ (- (+ (- (+ 2 3) 5) 1) 2) 3)              |
-(sqrt 25)      | (- (sqrt (* 5 ( + 3 2))) (+ 1 1 1 1))        |
-(* (+ 2 3) 5)  | (> (* 3 (+ 2 (+ 3 1)) (+ 1 1)) (+ (* 2 2) 3))|
-`+`            | (= (* 3 2) (+ 1 (+ 2 2) 1))                  |
-`#\+`          | (not (> (+ 3 2) 5))                          |
-"+"            | (and (even? 2) (odd? (+ 3 2)))               |
-"hola"         | (mod (+ 6 2) (+ 1 1))                        |
+|Instrucción      | Instrucción                                    |
+|---------------- | -----------------------------------------------|
+|`3`              | `(+ (- 4 (* 3 (/ 4 2) 4)) 3)`                  |
+|`(+ 1 2 )`       | `(* (+ (+ 2 3) 4) (* (* 3 3) 2))`              |
+|`(+ 1 2 3 4)`    | `(* (+ 2 3 4 5) 3 (- 5 2 1))`                  |
+|`(+)`            | `(+ (- (+ (- (+ 2 3) 5) 1) 2) 3)`              |
+|`(sqrt 25)`      | `(- (sqrt (* 5 ( + 3 2))) (+ 1 1 1 1))`        |
+|`(* (+ 2 3) 5)`  | `(> (* 3 (+ 2 (+ 3 1)) (+ 1 1)) (+ (* 2 2) 3))`|
+|`+`              | `(= (* 3 2) (+ 1 (+ 2 2) 1))`                  |
+|`#\+`            | `(not (> (+ 3 2) 5))`                          |
+|`"+"`            | `(and (even? 2) (odd? (+ 3 2)))`               |
+|`"hola"`         | `(mod (+ 6 2) (+ 1 1))`                        |
 
 
 ### Ejercicio 2
@@ -923,18 +923,18 @@ expresiones. Están ordenadas por dificultad de arriba abajo y de
 izquierda a derecha. Después, pruébalas y comprueba si tu predicción
 era correcta. Si no lo era, intenta comprender por qué.
 
-Instrucción                                  |Instrucción                                                    |
--------------------------------------------- |---------------------------------------------------------------|
-(equal? "hola" "hola")                       | (+ (char->integer(integer->char 1200))(char->integer #\A))    |
-(string-ref "pepe" 1)                        | (string-length (make-string 7 #\E))                           |
-(substring "buenos dias" 1 4)                | (define a 3) <br/> (define b (+ a 1))                         |
-(= "hola" "hola")                            | (+ a b (* a b))                                               |
-(string-ref (substring "buenos dias 2 5) 1)  | (= a b)                                                       |
-(define pi 3.14159)                          | (if (and (> a b) (< b (* a b))) b a)                          |
-pi                                           | (cond ((= a 4) 6) <br/> ((= b 4) (+ 6 7 a)) <br/> (else 25))  |
-"pi"                                         | (+ 2 (if (> b a) b a))                                        |
-(+ pi (+ pi pi))                             | (* (cond ((> a b) a) <br/> ((< a b) b) <br/>(else -1)) <br/> (+ a 1))|
-(+ (* pi pi) (- 2 pi pi pi pi))              | ((if (< a b) + -) a b)                                        |
+|Instrucción                                    |Instrucción                                                               |
+|-----------------------------------------------|--------------------------------------------------------------------------|
+|`(equal? "hola" "hola")`                       | `(+ (char->integer(integer->char 1200)) (char->integer #\A))`            |
+|`(string-ref "pepe" 1)`                        | `(string-length (make-string 7 #\E))`                                    |
+|`(substring "buenos dias" 1 4)`                | `(define a 3)` <br/> `(define b (+ a 1))`                                |
+|`(= "hola" "hola")`                            | `(+ a b (* a b))`                                                        |
+|`(string-ref (substring "buenos dias 2 5) 1)`  | `(= a b)`                                                                |
+|`(define pi 3.14159)`                          | `(if (and (> a b) (< b (* a b))) b a)`                                   |
+|`pi`                                           | `(cond ((= a 4) 6)`<br/>`((= b 4) (+ 6 7 a))`<br/>`(else 25))`           |
+|`"pi"`                                         | `(+ 2 (if (> b a) b a))`                                                 |
+|`(+ pi (+ pi pi))`                             | `(* (cond ((> a b) a)` <br/>`((< a b) b)`<br/>`(else -1))`<br/>`(+ a 1))`|
+|`(+ (* pi pi) (- 2 pi pi pi pi))`              | `((if (< a b) + -) a b)`                                                 |
 
 
 ### Ejercicio 3
@@ -944,12 +944,12 @@ siguientes expresiones. Están ordenadas por dificultad de arriba abajo
 y de izquierda a derecha. Después, pruébalas y comprueba si tu
 predicción era correcta. Si no lo era, intenta comprender por qué.
 
-Instrucción                     | Instrucción                    |
---------------------------------|--------------------------------|
-(cons 1 2)                      | (car (cons (cons 3 4) 2))      |
-(car (cons 1 2))                | (cdr (cons (cons 3 4) 2))      |
-(cdr (cons 1 2))                | (cdr (cons 1 (cons 2 3)))      |
-(car (car (cons (cons 1 2) 3))) | (cdr (car (cons (cons 1 2) 3)))|
+|Instrucción                       | Instrucción                      |
+|----------------------------------|----------------------------------|
+|`(cons 1 2)`                      | `(car (cons (cons 3 4) 2))`      |
+|`(car (cons 1 2))`                | `(cdr (cons (cons 3 4) 2))`      |
+|`(cdr (cons 1 2))`                | `(cdr (cons 1 (cons 2 3)))`      |
+|`(car (car (cons (cons 1 2) 3)))` | `(cdr (car (cons (cons 1 2) 3)))`|
 
 
 ### Ejercicio 4
@@ -958,15 +958,15 @@ Ejercicios con listas. Predice lo que hace Scheme cuando escribas las
 siguientes expresiones. Después, pruébalas y comprueba si tu
 predicción era correcta. Si no lo era, intenta comprender por qué.
 
-Instrucción             | Instrucción                           |
-------------------------|---------------------------------------|
-(list 1 2 3 4)             | (cons 3 (list 1 2 3))                    |
-(cdr  (list 1 2 3 4))      | (cdr (cons 8 (list 1 2 3 4)))         |
-(car (list 1 2 3 4))       | (car (list (list 1 2) 1 2 3 4))       |
-(list 1 (list 2 3) (list 4 (list 5)))     | (list 1 (list 2 3) (list 4 (list 5))) |
-(car (cdr (list 1 2 3 4))) | (cons (list 1 2 3) (list 4 5 6))            |
-(cdr (cdr (list 1 2 3 4))) | (car (cdr (list 1 2 3 4)))            |
-(list 1 2 3 4)          | (cdr (cdr (list 1 2 3 4)))            |
+|Instrucción                              | Instrucción                             |
+|-----------------------------------------|-----------------------------------------|
+|`(list 1 2 3 4)`                         | `(cons 3 (list 1 2 3))`                 |
+|`(cdr  (list 1 2 3 4))`                  | `(cdr (cons 8 (list 1 2 3 4)))`         |
+|`(car (list 1 2 3 4))`                   | `(car (list (list 1 2) 1 2 3 4))`       |
+|`(list 1 (list 2 3) (list 4 (list 5)))`  | `(list 1 (list 2 3) (list 4 (list 5))`) |
+|`(car (cdr (list 1 2 3 4)))`             | `(cons (list 1 2 3) (list 4 5 6))`      |
+|`(cdr (cdr (list 1 2 3 4)))`             | `(car (cdr (list 1 2 3 4)))`            |
+|`(list 1 2 3 4)`                         | `(cdr (cdr (list 1 2 3 4)))`            |
 
 ### Ejercicio 5
 
