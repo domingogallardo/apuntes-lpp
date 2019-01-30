@@ -1090,10 +1090,10 @@ complejos e inexactos.</p>
  9
 10
 11
-12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">floor </span><span class="nv">x</span><span class="p">)</span> <span class="nv">devuelve</span> <span class="nv">el</span> <span class="nv">entero</span> <span class="nv">m</span><span class="err">á</span><span class="nv">s</span> <span class="nv">grande</span> <span class="nv">no</span> <span class="nv">mayor</span> <span class="nv">que</span> <span class="nv">x</span>
-<span class="p">(</span><span class="nb">ceiling </span><span class="nv">x</span><span class="p">)</span> <span class="nv">devuelve</span> <span class="nv">el</span> <span class="nv">entero</span> <span class="nv">m</span><span class="err">á</span><span class="nv">s</span> <span class="nv">peque</span><span class="err">ñ</span><span class="nv">o</span> <span class="nv">no</span> <span class="nv">menor</span> <span class="nv">que</span> <span class="nv">x</span>
-<span class="p">(</span><span class="nb">truncate </span><span class="nv">x</span><span class="p">)</span> <span class="nv">devuelve</span> <span class="nv">el</span> <span class="nv">entero</span> <span class="nv">m</span><span class="err">á</span><span class="nv">s</span> <span class="nv">cercano</span> <span class="nv">a</span> <span class="nv">x</span> <span class="nv">cuyo</span> <span class="nv">valor</span> <span class="nv">absoluto</span> <span class="nv">no</span> <span class="nv">es</span> <span class="nv">mayor</span> <span class="nv">que</span> <span class="nv">el</span> <span class="nv">valor</span> <span class="nv">absoluto</span> <span class="nv">de</span> <span class="nv">x</span>
-<span class="p">(</span><span class="nb">round </span><span class="nv">x</span><span class="p">)</span> <span class="nv">devuelve</span> <span class="nv">el</span> <span class="nv">entero</span> <span class="nv">m</span><span class="err">á</span><span class="nv">s</span> <span class="nv">cercano</span> <span class="nv">a</span> <span class="nv">x,</span> <span class="nv">redondeado</span>
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">; (floor x) devuelve el entero más grande no mayor que x</span>
+<span class="c1">; (ceiling x) devuelve el entero más pequeño no menor que x</span>
+<span class="c1">; (truncate x) devuelve el entero más cercano a x cuyo valor absoluto no es mayor que el valor absoluto de x</span>
+<span class="c1">; (round x) devuelve el entero más cercano a x, redondeado</span>
 <span class="p">(</span><span class="nb">floor </span><span class="mf">-4.3</span><span class="p">)</span>    <span class="c1">; ⇒ -5.0</span>
 <span class="p">(</span><span class="nb">floor </span><span class="mf">3.5</span><span class="p">)</span>     <span class="c1">; ⇒ 3.0</span>
 <span class="p">(</span><span class="nb">ceiling </span><span class="mf">-4.3</span><span class="p">)</span>  <span class="c1">; ⇒ -4.0</span>
@@ -1174,8 +1174,8 @@ complejos e inexactos.</p>
 
 <h5>Constructores de cadenas</h5>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">make-string </span><span class="mi">5</span> <span class="sc">#\o</span><span class="p">)</span> <span class="err">⇒</span> <span class="s">&quot;ooooo&quot;</span>
-<span class="p">(</span><span class="nb">string </span><span class="sc">#\h</span> <span class="sc">#\o</span> <span class="sc">#\l</span> <span class="sc">#\a</span><span class="p">)</span> <span class="err">⇒</span> <span class="s">&quot;hola&quot;</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">make-string </span><span class="mi">5</span> <span class="sc">#\o</span><span class="p">)</span> <span class="c1">; ⇒ &quot;ooooo&quot;</span>
+<span class="p">(</span><span class="nb">string </span><span class="sc">#\h</span> <span class="sc">#\o</span> <span class="sc">#\l</span> <span class="sc">#\a</span><span class="p">)</span> <span class="c1">; ⇒ &quot;hola&quot;</span>
 </pre></div>
 </td></tr></table>
 
@@ -1300,14 +1300,14 @@ de funciones recursivas que recorren listas.</p>
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">list</span><span class="p">)</span> <span class="c1">; ⇒ () </span>
 <span class="p">(</span><span class="nb">null? </span><span class="p">(</span><span class="nf">list</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="nb">null? </span><span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="nb">null? </span><span class="p">(</span><span class="nb">list </span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
 </pre></div>
 </td></tr></table>
 
 <p>Podemos construir una nueva lista añadiendo un elemento a la cabeza de
-una lista existente usando la función <code>cons</code> (también la misma función
-sobre pareja, ya explicaremos también por qué) usando como parámetro
-un elemento y una lista:</p>
+una lista existente usando la función <code>cons</code> (la misma función sobre
+pareja, ya explicaremos también por qué) usando como parámetro un
+elemento y una lista:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons </span><span class="nv">elemento</span> <span class="nv">lista</span><span class="p">)</span> 
 </pre></div>
 </td></tr></table>
@@ -1316,7 +1316,7 @@ un elemento y una lista:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="p">(</span><span class="nb">list </span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1">; ⇒ {1 2 3 4 5}</span>
-<span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="p">(</span><span class="nf">list</span><span class="p">))</span>  <span class="err">⇒</span> <span class="err">{</span><span class="mi">1</span><span class="err">}</span> 
+<span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="p">(</span><span class="nf">list</span><span class="p">))</span>  <span class="c1">; ⇒ {1} </span>
 <span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">2</span> <span class="p">(</span><span class="nf">list</span><span class="p">)))</span> <span class="c1">; ⇒ {1 2} </span>
 </pre></div>
 </td></tr></table>
@@ -1702,8 +1702,8 @@ resultado se corresponde con el esperado.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">check-equal?</span> <span class="p">(</span><span class="nf">ecuacion</span> <span class="mi">1</span> <span class="mi">-5</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">3</span> <span class="mi">2</span><span class="p">))</span>
-<span class="p">(</span><span class="nf">check-equal?</span> <span class="p">(</span><span class="nf">ecuacion</span> <span class="mi">2</span> <span class="mi">-7</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">3</span> <span class="p">(</span><span class="nb">/ </span><span class="mi">1</span> <span class="mi">2</span><span class="p">))</span> <span class="p">)</span>
-<span class="p">(</span><span class="nf">check-equal?</span> <span class="p">(</span><span class="nf">ecuacion</span> <span class="mi">-1</span> <span class="mi">7</span> <span class="mi">-10</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">2</span> <span class="mi">5</span><span class="p">))</span>  
+<span class="p">(</span><span class="nf">check-equal?</span> <span class="p">(</span><span class="nf">ecuacion</span> <span class="mi">2</span> <span class="mi">-7</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">3</span> <span class="p">(</span><span class="nb">/ </span><span class="mi">1</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="p">(</span><span class="nf">check-equal?</span> <span class="p">(</span><span class="nf">ecuacion</span> <span class="mi">-1</span> <span class="mi">7</span> <span class="mi">-10</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">2</span> <span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
@@ -1760,44 +1760,44 @@ interpreta Scheme lo que escribes.</p>
 </thead>
 <tbody>
 <tr>
-<td>3</td>
-<td>(+ (- 4 (* 3 (/ 4 2) 4)) 3)</td>
+<td><code>3</code></td>
+<td><code>(+ (- 4 (* 3 (/ 4 2) 4)) 3)</code></td>
 </tr>
 <tr>
-<td>(+ 1 2 )</td>
-<td>(<em> (+ (+ 2 3) 4) (</em> (* 3 3) 2))</td>
+<td><code>(+ 1 2 )</code></td>
+<td><code>(* (+ (+ 2 3) 4) (* (* 3 3) 2))</code></td>
 </tr>
 <tr>
-<td>(+ 1 2 3 4)</td>
-<td>(* (+ 2 3 4 5) 3 (- 5 2 1))</td>
+<td><code>(+ 1 2 3 4)</code></td>
+<td><code>(* (+ 2 3 4 5) 3 (- 5 2 1))</code></td>
 </tr>
 <tr>
-<td>(+)</td>
-<td>(+ (- (+ (- (+ 2 3) 5) 1) 2) 3)</td>
+<td><code>(+)</code></td>
+<td><code>(+ (- (+ (- (+ 2 3) 5) 1) 2) 3)</code></td>
 </tr>
 <tr>
-<td>(sqrt 25)</td>
-<td>(- (sqrt (* 5 ( + 3 2))) (+ 1 1 1 1))</td>
+<td><code>(sqrt 25)</code></td>
+<td><code>(- (sqrt (* 5 ( + 3 2))) (+ 1 1 1 1))</code></td>
 </tr>
 <tr>
-<td>(* (+ 2 3) 5)</td>
-<td>(&gt; (<em> 3 (+ 2 (+ 3 1)) (+ 1 1)) (+ (</em> 2 2) 3))</td>
+<td><code>(* (+ 2 3) 5)</code></td>
+<td><code>(&gt; (* 3 (+ 2 (+ 3 1)) (+ 1 1)) (+ (* 2 2) 3))</code></td>
 </tr>
 <tr>
 <td><code>+</code></td>
-<td>(= (* 3 2) (+ 1 (+ 2 2) 1))</td>
+<td><code>(= (* 3 2) (+ 1 (+ 2 2) 1))</code></td>
 </tr>
 <tr>
 <td><code>#\+</code></td>
-<td>(not (&gt; (+ 3 2) 5))</td>
+<td><code>(not (&gt; (+ 3 2) 5))</code></td>
 </tr>
 <tr>
-<td>"+"</td>
-<td>(and (even? 2) (odd? (+ 3 2)))</td>
+<td><code>"+"</code></td>
+<td><code>(and (even? 2) (odd? (+ 3 2)))</code></td>
 </tr>
 <tr>
-<td>"hola"</td>
-<td>(mod (+ 6 2) (+ 1 1))</td>
+<td><code>"hola"</code></td>
+<td><code>(mod (+ 6 2) (+ 1 1))</code></td>
 </tr>
 </tbody>
 </table>
@@ -1815,44 +1815,44 @@ era correcta. Si no lo era, intenta comprender por qué.</p>
 </thead>
 <tbody>
 <tr>
-<td>(equal? "hola" "hola")</td>
-<td>(+ (char-&gt;integer(integer-&gt;char 1200))(char-&gt;integer #\A))</td>
+<td><code>(equal? "hola" "hola")</code></td>
+<td><code>(+ (char-&gt;integer(integer-&gt;char 1200)) (char-&gt;integer #\A))</code></td>
 </tr>
 <tr>
-<td>(string-ref "pepe" 1)</td>
-<td>(string-length (make-string 7 #\E))</td>
+<td><code>(string-ref "pepe" 1)</code></td>
+<td><code>(string-length (make-string 7 #\E))</code></td>
 </tr>
 <tr>
-<td>(substring "buenos dias" 1 4)</td>
-<td>(define a 3) <br/> (define b (+ a 1))</td>
+<td><code>(substring "buenos dias" 1 4)</code></td>
+<td><code>(define a 3)</code> <br/> <code>(define b (+ a 1))</code></td>
 </tr>
 <tr>
-<td>(= "hola" "hola")</td>
-<td>(+ a b (* a b))</td>
+<td><code>(= "hola" "hola")</code></td>
+<td><code>(+ a b (* a b))</code></td>
 </tr>
 <tr>
-<td>(string-ref (substring "buenos dias 2 5) 1)</td>
-<td>(= a b)</td>
+<td><code>(string-ref (substring "buenos dias 2 5) 1)</code></td>
+<td><code>(= a b)</code></td>
 </tr>
 <tr>
-<td>(define pi 3.14159)</td>
-<td>(if (and (&gt; a b) (&lt; b (* a b))) b a)</td>
+<td><code>(define pi 3.14159)</code></td>
+<td><code>(if (and (&gt; a b) (&lt; b (* a b))) b a)</code></td>
 </tr>
 <tr>
-<td>pi</td>
-<td>(cond ((= a 4) 6) <br/> ((= b 4) (+ 6 7 a)) <br/> (else 25))</td>
+<td><code>pi</code></td>
+<td><code>(cond ((= a 4) 6)</code><br/><code>((= b 4) (+ 6 7 a))</code><br/><code>(else 25))</code></td>
 </tr>
 <tr>
-<td>"pi"</td>
-<td>(+ 2 (if (&gt; b a) b a))</td>
+<td><code>"pi"</code></td>
+<td><code>(+ 2 (if (&gt; b a) b a))</code></td>
 </tr>
 <tr>
-<td>(+ pi (+ pi pi))</td>
-<td>(* (cond ((&gt; a b) a) <br/> ((&lt; a b) b) <br/>(else -1)) <br/> (+ a 1))</td>
+<td><code>(+ pi (+ pi pi))</code></td>
+<td><code>(* (cond ((&gt; a b) a)</code> <br/><code>((&lt; a b) b)</code><br/><code>(else -1))</code><br/><code>(+ a 1))</code></td>
 </tr>
 <tr>
-<td>(+ (* pi pi) (- 2 pi pi pi pi))</td>
-<td>((if (&lt; a b) + -) a b)</td>
+<td><code>(+ (* pi pi) (- 2 pi pi pi pi))</code></td>
+<td><code>((if (&lt; a b) + -) a b)</code></td>
 </tr>
 </tbody>
 </table>
@@ -1870,20 +1870,20 @@ predicción era correcta. Si no lo era, intenta comprender por qué.</p>
 </thead>
 <tbody>
 <tr>
-<td>(cons 1 2)</td>
-<td>(car (cons (cons 3 4) 2))</td>
+<td><code>(cons 1 2)</code></td>
+<td><code>(car (cons (cons 3 4) 2))</code></td>
 </tr>
 <tr>
-<td>(car (cons 1 2))</td>
-<td>(cdr (cons (cons 3 4) 2))</td>
+<td><code>(car (cons 1 2))</code></td>
+<td><code>(cdr (cons (cons 3 4) 2))</code></td>
 </tr>
 <tr>
-<td>(cdr (cons 1 2))</td>
-<td>(cdr (cons 1 (cons 2 3)))</td>
+<td><code>(cdr (cons 1 2))</code></td>
+<td><code>(cdr (cons 1 (cons 2 3)))</code></td>
 </tr>
 <tr>
-<td>(car (car (cons (cons 1 2) 3)))</td>
-<td>(cdr (car (cons (cons 1 2) 3)))</td>
+<td><code>(car (car (cons (cons 1 2) 3)))</code></td>
+<td><code>(cdr (car (cons (cons 1 2) 3)))</code></td>
 </tr>
 </tbody>
 </table>
@@ -1900,32 +1900,32 @@ predicción era correcta. Si no lo era, intenta comprender por qué.</p>
 </thead>
 <tbody>
 <tr>
-<td>(list 1 2 3 4)</td>
-<td>(cons 3 (list 1 2 3))</td>
+<td><code>(list 1 2 3 4)</code></td>
+<td><code>(cons 3 (list 1 2 3))</code></td>
 </tr>
 <tr>
-<td>(cdr  (list 1 2 3 4))</td>
-<td>(cdr (cons 8 (list 1 2 3 4)))</td>
+<td><code>(cdr  (list 1 2 3 4))</code></td>
+<td><code>(cdr (cons 8 (list 1 2 3 4)))</code></td>
 </tr>
 <tr>
-<td>(car (list 1 2 3 4))</td>
-<td>(car (list (list 1 2) 1 2 3 4))</td>
+<td><code>(car (list 1 2 3 4))</code></td>
+<td><code>(car (list (list 1 2) 1 2 3 4))</code></td>
 </tr>
 <tr>
-<td>(list 1 (list 2 3) (list 4 (list 5)))</td>
-<td>(list 1 (list 2 3) (list 4 (list 5)))</td>
+<td><code>(list 1 (list 2 3) (list 4 (list 5)))</code></td>
+<td><code>(list 1 (list 2 3) (list 4 (list 5))</code>)</td>
 </tr>
 <tr>
-<td>(car (cdr (list 1 2 3 4)))</td>
-<td>(cons (list 1 2 3) (list 4 5 6))</td>
+<td><code>(car (cdr (list 1 2 3 4)))</code></td>
+<td><code>(cons (list 1 2 3) (list 4 5 6))</code></td>
 </tr>
 <tr>
-<td>(cdr (cdr (list 1 2 3 4)))</td>
-<td>(car (cdr (list 1 2 3 4)))</td>
+<td><code>(cdr (cdr (list 1 2 3 4)))</code></td>
+<td><code>(car (cdr (list 1 2 3 4)))</code></td>
 </tr>
 <tr>
-<td>(list 1 2 3 4)</td>
-<td>(cdr (cdr (list 1 2 3 4)))</td>
+<td><code>(list 1 2 3 4)</code></td>
+<td><code>(cdr (cdr (list 1 2 3 4)))</code></td>
 </tr>
 </tbody>
 </table>
