@@ -158,25 +158,28 @@ detiene la evaluación:
 
 ### Definiendo variables y funciones
 
+Scheme es un lenguaje multiparadigma pero principalmente funcional, y
+una de sus características principales es que los programas se
+construyen mediante la definición de funciones.
+
 Podemos utilizar en el intérprete la forma especial `define` para
 definir variables y funciones. En clase de teoría veremos cómo es el
 funcionamiento del `define`, pero por el momento lo utilizaremos para
-definir variables asociadas a valores, e implementar funciones o
-procedimientos. Scheme es un lenguaje multiparadigma pero
-principalmente funcional, y una de sus características principales es
-que los programas se construyen mediante la definición de funciones.
+definir variables asociadas a valores, y para implementar funciones.
 
-Definimos variables en la ventana de interacción:
+Podemos definir variables en la ventana de interacción para facilitar
+la escritura de expresiones:
 
 ```scheme
 (define pi 3.14159)
-pi
-(sin (/ pi 2))
+pi ; ⇒ 3.14159
+(sin (/ pi 2)) ; ⇒ 0.9999999999991198
 (define a (+ 2 (* 3 4)))
-a
+a ; ⇒ 14
 ```
 
-Para implementar una función también se utiliza define, con la siguiente sintaxis:
+Para implementar una función también se utiliza define, con la
+siguiente sintaxis:
 
 ```scheme
 (define (<nombre-funcion> <args>)
@@ -232,7 +235,14 @@ o fracciones:
 (suma-cuadrados (/ 2 3) (/ 3 5))  ; ⇒ 181/225
 ```
 
-### Algunas primitivas
+En la expresión anterior también pueden pasarse directamente los
+números fracionales:
+
+```scheme
+(suma-cuadrados 2/3 3/5) ; ⇒ 181/225
+```
+
+### Tipos de datos simples
 
 Las primitivas de Scheme consisten en un conjunto de tipos de datos,
 formas especiales y funciones incluidas en el lenguaje. A lo largo del
@@ -240,18 +250,12 @@ curso iremos introduciendo estas primitivas. Las primitivas básicas
 del lenguaje están descritas en las 30 páginas del apartado 11 (_Base
 library_) del manual de referencia del R6RS.
 
-Vamos a revisar los tipos de datos primitivos de Scheme, así como
+Vamos a revisar algunos tipos de datos simples de Scheme, así como
 algunas funciones primitivas para trabajar con valores de esos tipos.
 
 * Booleanos
 * Números
 * Caracteres
-* Cadenas
-* Parejas
-* Listas
-
-Estos dos últimos los veremos en detalle en futuras clases, cuando
-hablemos de tipos de datos compuestos.
 
 #### Booleanos
 
@@ -276,7 +280,16 @@ valor distinto de `#f` es verdadero. Ejemplos:
 
 La cantidad de tipos numéricos que soporta Scheme es grande,
 incluyendo enteros de diferente precisión, números racionales,
-complejos e inexactos.
+complejos e inexactos. Por ejemplo:
+
+```scheme
+(/ 1 3) ; ⇒ Devuelve la fracción 1/3
+(+ 1/3 1/3) ; ⇒ 2/3
+(+ 1/3 0.0) ; ⇒ 0.3333333333333333
+(sqrt -1) ; ⇒ 0+1i
+(+ 3+2i 2-i) ; ⇒ 5+1i
+```
+
 
 ##### Algunas primitivas sobre números
 
@@ -352,6 +365,17 @@ Se soportan caracteres internacionales y se codifican en UTF-8.
 (char->integer (integer->char 5000))
 ```
 
+### Tipos de datos compuestos
+
+Scheme tiene también un conjunto de tipos de datos compuestos,
+que permiten aglutinar elementos simples de los tipos de datos vistos anteriormente.
+
+* Cadenas
+* Parejas
+* Listas
+
+Estos dos últimos los veremos en detalle en futuras clases de teoría.
+
 #### Cadenas
 
 Las cadenas son secuencias finitas de caracteres.
@@ -388,7 +412,7 @@ Las cadenas son secuencias finitas de caracteres.
 (string>=? "www" "qqq")
 ```
 
-### Parejas
+#### Parejas
 
 Elemento fundamental de Scheme. Es un tipo compuesto formado por dos
 elementos (no necesariamente del mismo tipo).
@@ -436,7 +460,7 @@ esperamos:
 Más adelante explicaremos por qué.
 
 
-### Listas
+#### Listas
 
 Uno de los elementos fundamentales de Scheme, y de Lisp, son las
 listas. Es un tipo compuesto formado por un conjunto finito de
