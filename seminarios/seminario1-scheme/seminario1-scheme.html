@@ -347,22 +347,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#algunas-primitivas" title="Algunas primitivas" class="md-nav__link">
-    Algunas primitivas
+  <a href="#tipos-de-datos-simples" title="Tipos de datos simples" class="md-nav__link">
+    Tipos de datos simples
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#parejas" title="Parejas" class="md-nav__link">
-    Parejas
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#listas" title="Listas" class="md-nav__link">
-    Listas
+  <a href="#tipos-de-datos-compuestos" title="Tipos de datos compuestos" class="md-nav__link">
+    Tipos de datos compuestos
   </a>
   
 </li>
@@ -608,22 +601,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#algunas-primitivas" title="Algunas primitivas" class="md-nav__link">
-    Algunas primitivas
+  <a href="#tipos-de-datos-simples" title="Tipos de datos simples" class="md-nav__link">
+    Tipos de datos simples
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#parejas" title="Parejas" class="md-nav__link">
-    Parejas
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#listas" title="Listas" class="md-nav__link">
-    Listas
+  <a href="#tipos-de-datos-compuestos" title="Tipos de datos compuestos" class="md-nav__link">
+    Tipos de datos compuestos
   </a>
   
 </li>
@@ -936,27 +922,29 @@ detiene la evaluación:</p>
 </td></tr></table>
 
 <h3 id="definiendo-variables-y-funciones">Definiendo variables y funciones<a class="headerlink" href="#definiendo-variables-y-funciones" title="Permanent link">&para;</a></h3>
+<p>Scheme es un lenguaje multiparadigma pero principalmente funcional, y
+una de sus características principales es que los programas se
+construyen mediante la definición de funciones.</p>
 <p>Podemos utilizar en el intérprete la forma especial <code>define</code> para
 definir variables y funciones. En clase de teoría veremos cómo es el
 funcionamiento del <code>define</code>, pero por el momento lo utilizaremos para
-definir variables asociadas a valores, e implementar funciones o
-procedimientos. Scheme es un lenguaje multiparadigma pero
-principalmente funcional, y una de sus características principales es
-que los programas se construyen mediante la definición de funciones.</p>
-<p>Definimos variables en la ventana de interacción:</p>
+definir variables asociadas a valores, y para implementar funciones.</p>
+<p>Podemos definir variables en la ventana de interacción para facilitar
+la escritura de expresiones:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
 5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">pi</span> <span class="mf">3.14159</span><span class="p">)</span>
-<span class="nv">pi</span>
-<span class="p">(</span><span class="nb">sin </span><span class="p">(</span><span class="nb">/ </span><span class="nv">pi</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nv">pi</span> <span class="c1">; ⇒ 3.14159</span>
+<span class="p">(</span><span class="nb">sin </span><span class="p">(</span><span class="nb">/ </span><span class="nv">pi</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">; ⇒ 0.9999999999991198</span>
 <span class="p">(</span><span class="k">define </span><span class="nv">a</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="p">(</span><span class="nb">* </span><span class="mi">3</span> <span class="mi">4</span><span class="p">)))</span>
-<span class="nv">a</span>
+<span class="nv">a</span> <span class="c1">; ⇒ 14</span>
 </pre></div>
 </td></tr></table>
 
-<p>Para implementar una función también se utiliza define, con la siguiente sintaxis:</p>
+<p>Para implementar una función también se utiliza define, con la
+siguiente sintaxis:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">&lt;nombre-funcion&gt;</span> <span class="nv">&lt;args&gt;</span><span class="p">)</span>
@@ -1010,24 +998,25 @@ reales:</p>
 </pre></div>
 </td></tr></table>
 
-<h3 id="algunas-primitivas">Algunas primitivas<a class="headerlink" href="#algunas-primitivas" title="Permanent link">&para;</a></h3>
+<p>En la expresión anterior también pueden pasarse directamente los
+números fracionales:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">suma-cuadrados</span> <span class="mi">2</span><span class="nv">/3</span> <span class="mi">3</span><span class="nv">/5</span><span class="p">)</span> <span class="c1">; ⇒ 181/225</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="tipos-de-datos-simples">Tipos de datos simples<a class="headerlink" href="#tipos-de-datos-simples" title="Permanent link">&para;</a></h3>
 <p>Las primitivas de Scheme consisten en un conjunto de tipos de datos,
 formas especiales y funciones incluidas en el lenguaje. A lo largo del
 curso iremos introduciendo estas primitivas. Las primitivas básicas
 del lenguaje están descritas en las 30 páginas del apartado 11 (<em>Base
 library</em>) del manual de referencia del R6RS.</p>
-<p>Vamos a revisar los tipos de datos primitivos de Scheme, así como
+<p>Vamos a revisar algunos tipos de datos simples de Scheme, así como
 algunas funciones primitivas para trabajar con valores de esos tipos.</p>
 <ul>
 <li>Booleanos</li>
 <li>Números</li>
 <li>Caracteres</li>
-<li>Cadenas</li>
-<li>Parejas</li>
-<li>Listas</li>
 </ul>
-<p>Estos dos últimos los veremos en detalle en futuras clases, cuando
-hablemos de tipos de datos compuestos.</p>
 <h4>Booleanos</h4>
 <p>Un booleano es un valor de verdad, que puede ser verdadero o falso. En
 Scheme, tenemos los símbolos <code>#t</code> y <code>#f</code> para expresar verdadero y falso
@@ -1056,7 +1045,19 @@ valor distinto de <code>#f</code> es verdadero. Ejemplos:</p>
 <h4>Números</h4>
 <p>La cantidad de tipos numéricos que soporta Scheme es grande,
 incluyendo enteros de diferente precisión, números racionales,
-complejos e inexactos.</p>
+complejos e inexactos. Por ejemplo:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">/ </span><span class="mi">1</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ Devuelve la fracción 1/3</span>
+<span class="p">(</span><span class="nb">+ </span><span class="mi">1</span><span class="nv">/3</span> <span class="mi">1</span><span class="nv">/3</span><span class="p">)</span> <span class="c1">; ⇒ 2/3</span>
+<span class="p">(</span><span class="nb">+ </span><span class="mi">1</span><span class="nv">/3</span> <span class="mf">0.0</span><span class="p">)</span> <span class="c1">; ⇒ 0.3333333333333333</span>
+<span class="p">(</span><span class="nb">sqrt </span><span class="mi">-1</span><span class="p">)</span> <span class="c1">; ⇒ 0+1i</span>
+<span class="p">(</span><span class="nb">+ </span><span class="mi">3</span><span class="nv">+2i</span> <span class="mi">2</span><span class="nv">-i</span><span class="p">)</span> <span class="c1">; ⇒ 5+1i</span>
+</pre></div>
+</td></tr></table>
+
 <h5>Algunas primitivas sobre números</h5>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -1164,6 +1165,15 @@ complejos e inexactos.</p>
 </pre></div>
 </td></tr></table>
 
+<h3 id="tipos-de-datos-compuestos">Tipos de datos compuestos<a class="headerlink" href="#tipos-de-datos-compuestos" title="Permanent link">&para;</a></h3>
+<p>Scheme tiene también un conjunto de tipos de datos compuestos,
+que permiten aglutinar elementos simples de los tipos de datos vistos anteriormente.</p>
+<ul>
+<li>Cadenas</li>
+<li>Parejas</li>
+<li>Listas</li>
+</ul>
+<p>Estos dos últimos los veremos en detalle en futuras clases de teoría.</p>
 <h4>Cadenas</h4>
 <p>Las cadenas son secuencias finitas de caracteres.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1205,7 +1215,7 @@ complejos e inexactos.</p>
 </pre></div>
 </td></tr></table>
 
-<h3 id="parejas">Parejas<a class="headerlink" href="#parejas" title="Permanent link">&para;</a></h3>
+<h4>Parejas</h4>
 <p>Elemento fundamental de Scheme. Es un tipo compuesto formado por dos
 elementos (no necesariamente del mismo tipo).</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1252,7 +1262,7 @@ esperamos:</p>
 </td></tr></table>
 
 <p>Más adelante explicaremos por qué.</p>
-<h3 id="listas">Listas<a class="headerlink" href="#listas" title="Permanent link">&para;</a></h3>
+<h4>Listas</h4>
 <p>Uno de los elementos fundamentales de Scheme, y de Lisp, son las
 listas. Es un tipo compuesto formado por un conjunto finito de
 elementos (no necesariamente del mismo tipo). Vamos a ver cómo
