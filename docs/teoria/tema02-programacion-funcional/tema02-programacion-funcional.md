@@ -1489,23 +1489,18 @@ concatenar dos o más listas
 (append list1 list2) ; ⇒ {1 2 3 4 hola como estás}
 ```
 
-<!--
 
 ### Recursión
 
 Otra característica fundamental de la programación funcional es la no
 existencia de bucles. Un bucle implica la utilización de pasos de
 ejecución en el programa y esto es característico de la programación
-imperativa. En programación funcional las iteraciones se realizan con
-recursión.
+imperativa. 
 
-En una definición recursiva siempre tenemos un caso general y un caso
-base. El caso base define el valor que devuelve la función en el caso
-elemental en el que no hay que hacer ningún cálculo. El caso general
-define una expresión que contiene una llamada a la propia función que
-estamos definiendo.
+En programación funcional las iteraciones se realizan con recursión.
 
-#### La función `(suma-hasta x)`
+
+#### Función `(suma-hasta x)`
 
 Por ejemplo, podemos definir la función `(suma-hasta x)` que devuelve
 la suma de los números hasta el parámetro `x` cuyo valor pasamos en la
@@ -1513,8 +1508,7 @@ invocación de la función.
 
 Por ejemplo, `(suma-hasta 5)` devolverá `0+1+2+3+4+5 = 15`.
 
-La definición de la función es la siguiente (después explicaremos cómo
-la hemos diseñado)
+La definición de la función es la siguiente:
 
 ```scheme
 (define (suma-hasta x)
@@ -1523,30 +1517,48 @@ la hemos diseñado)
       (+ (suma-hasta (- x 1)) x)))
 ```
 
+En una definición recursiva siempre tenemos un **caso general** y un **caso
+base**. El caso base define el valor que devuelve la función en el caso
+elemental en el que no hay que hacer ningún cálculo. El caso general
+define una expresión que contiene una llamada a la propia función que
+estamos definiendo.
+
 El **caso base** es el caso en el que `x` vale 0. En este caso devolvemos
 el propio 0, no hay que realizar ningún cálculo.
 
-El **caso general** es en el que se realiza la llamada recursiva. Para
-entender la expresión no es conveniente utilizar el depurador, ni
-hacer trazas, ni *entrar en la recursión*, sino que hay que suponer
-que **la llamada recursiva se ejecuta y devuelve el valor que
-debería. ¡Debemos confiar en la recursión!**. Una vez devuelto el
-valor, éste se utiliza para completar el resto del cálculo evaluando
-la expresión resultante.
+El **caso general** es en el que se realiza la llamada recursiva. Esta
+llamada devuelve un valor que se utiliza para cálculo final evaluando
+la expresión del caso general con valores concretos. 
 
-En nuestro el caso general indica lo siguiente:
+En programación funcional, al no existir efectos laterales, lo único
+que importa cuando realizamos una recursión es el valor devuelto por
+la llamada recursiva. Ese valor devuelto se combina con el resto de la
+expresión del caso general para construir el valor resultante.
 
-> Para calcular la suma hasta x, llamamos a la recursión para que
-> calcule la suma hasta x-1, obtenemos el resultado (confiamos en que la
-> función funciona bien) y a ese resultado le sumamos el propio número
-> x.
+!!! Important "Importante"
+    Para entender la recursión no es conveniente utilizar el depurador, ni
+    hacer trazas, ni *entrar en la recursión*, sino que hay que
+    suponer que **la llamada recursiva se ejecuta y devuelve el valor
+    que debería. ¡Debemos confiar en la recursión!**.
+
+El caso general del ejemplo anterior indica lo siguiente:
+
+!!! Example "Caso general suma hasta x"
+    Para calcular la suma hasta _x_, llamamos a la recursión para que
+    calcule la suma hasta _x-1_. Esa llamada recursiva nos devolverá
+    el resultado (confiamos en que la implementación funciona bien) y
+    a ese resultado le sumamos el propio número _x_.
 
 Siempre es aconsejable usar un ejemplo concreto para probar el caso
-general. Por ejemplo, el caso general de la suma hasta 5 se calcularía
-con la expresión:
+general. Por ejemplo, el caso general de la suma hasta 5 se calculará
+de la siguiente forma:
 
 ```scheme
-(+ (suma-hasta (- 5 1)) 5)
+(+ (suma-hasta (- 5 1)) 5) ; ⇒
+(+ (suma-hasta 4) 5) ;  ⇒ confiamos en la recursión: 
+                     ;    (suma-hasta 4) = 4+3+2+1 = 10  ⇒
+(+ 10 5) ; ⇒
+15
 ```
 
 La evaluación de esta función calculará la llamada recursiva
@@ -1554,12 +1566,6 @@ La evaluación de esta función calculará la llamada recursiva
 hace bien su trabajo** y que esa llamada devuelve el valor
 resultante de 4+3+2+1, o sea, 10. Una vez obtenido ese valor hay que
 terminar el cálculo sumándole el propio número 5.
-
-```(+ (suma-hasta (- 5 1)) 5) =
-(+ (suma-hasta 4) 5) = (confiamos en la recursión: (suma-hasta 4) = 10)
-(+ 10 5) =
-15
-```
 
 Otra característica necesaria del caso general en una definición
 recursiva, que también vemos en este ejemplo, es que **la llamada
@@ -1582,11 +1588,11 @@ Por ejemplo, `(suma-hasta 5)` devolverá `0+1+2+3+4+5 = 15`.
 Una vez que tenemos esta expresión de un ejemplo concreto debemos
 diseñar el caso general de la recursión. Para ello tenemos que
 encontrar una expresión para el cálculo de `(suma-hasta 5)` que
-contenga una llamada recursiva a un problema más pequeño.
+**use una llamada recursiva** a un problema más pequeño.
 
 O, lo que es lo mismo, ¿podemos obtener el resultado 15 con lo que nos
-devuelve una llamada recursiva a un número más pequeño y haciendo algo
-más?
+devuelve una llamada recursiva que obtenga la suma hasta un número más
+pequeño y haciendo algo más?
 
 Pues sí: para calcular la suma hasta 5, esto es, para obtener 15,
 podemos llamar a la recursión para calcular la suma hasta 4 (devuelve
@@ -1714,9 +1720,10 @@ Veamos un primer ejemplo, la función `(suma-lista
 lista-nums)` que recibe como parámetro una lista de números y devuelve
 la suma de todos ellos.
 
-Siempre tenemos que empezar escribiendo un ejemplo de la función:
+Siempre debemos empezar escribiendo un ejemplo de la función, para
+entenderla bien:
 
-```
+```scheme
 (suma-lista '(12 3 5 1 8)) = 29
 ```
 
@@ -1737,16 +1744,17 @@ siguiente dibujo:
 
 Podemos generalizar este ejemplo y expresarlo en Scheme de la siguiente forma:
 
-```
+```scheme
 (suma-lista lista) = (+ (car lista) (suma-lista (cdr lista)))
 ```
 
-Falta el caso base, que es el caso más sencillo en que podemos
-devolver un valor sin llamar a la recursión. En este caso, podría ser
-cuando le pesamos a la función una lista sin elementos, en donde hay
-que devolver 0.
+Falta el caso base. ¿Cuál es la lista más sencilla con la que podemos
+calcular la suma de sus elementos sin llamar a la recursión?. Podría
+ser una lista sin elementos, y devolvemos 0. O una lista con un único
+elemento, y devolvemos el propio elemento. Escogemos como caso base el
+primero de ellos.
 
-Con todo junto, quedaría la recursión como sigue
+Con todo junto, la recursión quedaría como sigue:
 
 ```scheme
 (define (suma-lista lista)
@@ -1757,21 +1765,33 @@ Con todo junto, quedaría la recursión como sigue
 
 #### Función recursiva `veces`
 
-Como último ejemplo vamos a definir la función `(veces lista id)` que
-cuenta el número de veces que aparece un identificador en una lista.
+Como último ejemplo vamos a definir la función 
+
+```scheme
+(veces lista id)
+```
+
+que cuenta el número de veces que aparece un identificador en una
+lista.
+
+Por ejemplo,
+
+```scheme
+(veces '(a b c a d a) 'a ) ; ⇒ 3
+```
 
 ¿Cómo planteamos el caso general? Llamaremos a la recursión con el
 resto de la lista. Esta llamada nos devolverá el número de veces que
-aparece el identificador en este resto de la lista. Y después sumamos
+aparece el identificador en este resto de la lista. Y sumaremos
 al valor devuelto 1 si el primer elemento de la lista coincide con el
 identificador.
 
-En Scheme:
+En Scheme hay que definir este caso general en una única expresión:
 
-```
-(veces lista identificador) = (if (equal? (car lista) identificador)
-                                   (+ 1 (veces (cdr lista) identificador))
-                                   (veces (cdr lista) identificador))
+```scheme
+(if (equal? (car lista) id)
+    (+ 1 (veces (cdr lista) id))
+    (veces (cdr lista) id))
 ```
 
 Como caso base, si la lista es vacía devolvemos 0.
@@ -1837,15 +1857,14 @@ las siguientes ecuaciones algebraicas:
 (cdr (cons x y)) = y
 ```
 
-##### ¿De dónde vienen los nombres `car` y `cdr`?
-
-Inicialmente los nombres eran CAR y CDR (en mayúsculas). La historia
-se remonta al año 1959, en los orígenes del Lisp y tiene que ver con
-el nombre que se les daba a ciertos registros de la memoria del IBM
-709.
-
-Podemos leer la explicación completa en
-[The origin of CAR and CDR in LISP](http://www.iwriteiam.nl/HaCAR_CDR.html).
+!!! Note "¿De dónde vienen los nombres `car` y `cdr`?"
+    Inicialmente los nombres eran CAR y CDR (en mayúsculas). La
+    historia se remonta al año 1959, en los orígenes del Lisp y tiene
+    que ver con el nombre que se les daba a ciertos registros de la
+    memoria del IBM 709.
+    
+    Podemos leer la explicación completa en
+    [The origin of CAR and CDR in LISP](http://www.iwriteiam.nl/HaCAR_CDR.html).
 
 #### Función pair?
 
@@ -2053,10 +2072,11 @@ mostrar por pantalla los elementos de una pareja
         (display dato)))
 ```
 
-**!Cuidado¡**: la función anterior contiene sentencias como `begin` o
-   llamadas a `display` dentro del código de la función, que son
-   propias de la programación imperativa. **No hacerlo en programación
-   funcional**.
+!!! Warning "¡Cuidado!"
+    La función anterior contiene pasos de ejecución con sentencias como `begin` y
+    llamadas a `display` dentro del código de la función. Estas sentencias son
+    propias de la programación imperativa. **No hacerlo en programación
+    funcional**.
 
 #### Funciones c????r
 
@@ -2285,31 +2305,25 @@ El diagrama *box and pointer*:
 
 *Lista que contiene otra lista como segundo elemento*
 
-#### Distintos niveles de abstracción
+#### Funciones de alto nivel sobre listas
 
-Es muy importante utilizar el nivel de abstracción correcto a la hora
-de trabajar con listas que contienen otros elementos compuestos, como
-otras parejas u otras listas.
+Es importante conocer cómo se implementan las listas usando parejas y
+su representación con diagramas caja y puntero para definir funciones
+de alto nivel. Algunas de estas funciones ya las conocemos, otras las
+vemos por primera vez en los siguientes ejemplos:
 
-Sólo hace falta *bajar* al nivel de caja y puntero cuando estemos
-definiendo funciones de bajo nivel que tratan la estructura de datos
-para obtener elementos concretos de las parejas.
-
-Si, por el contrario, estamos recorriendo la lista principal y
-queremos tratar sus elementos, debemos *verla* como una lista normal y
-recorrerla con las funciones `car` para obtener su primer elemento y
-`cdr` para obtener el resto. O `list-ref` para obtener un elemento
-determinado (que puede ser atómico o compuesto).
-
-Por ejemplo, la lista anterior `{1 {1 2 3} 3}` es una lista de 3
-elementos. Si queremos obtener su segundo elemento (la lista `{1 2
-3}`) bastaría con:
-
-```scheme 
-(define lista '(1 (1 2 3) 3))
-(car (cdr lista)) (list-ref lista 1)
+```scheme
+(append '(a (b) c) '((d) e f)) ; ⇒ {a {b} c {d} e f}
+(list-ref '(a (b) c d) 2) ; ⇒ c
+(length '(a (b (c))) ; ⇒ 2
+(reverse '(a b c))  ; ‌⇒ {c b a}
+(list-tail '(a b c d) 2) ; ‌⇒ {c d}
 ```
 
+En las siguientes clases veremos cómo están implementadas.
+
+
+<!--
 
 ### Funciones recursivas y listas
 
