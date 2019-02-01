@@ -1,8 +1,5 @@
 # Práctica 1: Introducción a Scheme
 
-!!! warning "Importante"
-    Antes de empezar esta práctica debes haber terminado *todos* los ejercicios del seminario de Scheme.
-
 ## Entrega de la práctica
 
 Para entregar la práctica debes subir a Moodle el fichero
@@ -59,7 +56,6 @@ La solución se debería entregar de la siguiente forma:
 
 (check-equal?  (suma-cuadrados 10 10)  200)
 (check-equal?  (suma-cuadrados -2 9)  85)
-(check-equal?  (suma-cuadrados 0.5 9)  81.25)
 
 ;;
 ;; Ejercicio 2:
@@ -70,8 +66,7 @@ La solución se debería entregar de la siguiente forma:
 ```
 
 En los casos de prueba se deben incluir los ejemplos del enunciado
-del ejercicio **y alguno más** que compruebe que la implementación
-funciona correctamente.
+del ejercicio.
 
 ## Ejercicios
 
@@ -124,29 +119,27 @@ entero correspondiente al carácter `#\A` es uno menos que el
 correspondiente al carácter `#\B`. Los caracteres de números y los de
 letras no son consecutivos.
 
-
 ### Ejercicio 2
 
-Implementa la función `(mayor-de-tres n1 n2 n3)` que reciba tres
+Implementa la función `(menor-de-tres n1 n2 n3)` que reciba tres
 números como argumento y devuelva el mayor de los tres, intentando que
 el número de condiciones sea mínima.
 
-No debes utilizar la función `max`. 
+No debes utilizar la función `min`. 
 
 Implementa dos versiones de la función: 
 
 - versión 1: usando la forma especial `if` 
-- versión 2 (llámala `mayor-de-tres-v2`): definiendo una función auxiliar `(mayor x y)` que
+- versión 2 (llámala `menor-de-tres-v2`): definiendo una función auxiliar `(menor x y)` que
   devuelva el mayor de dos números (deberás usar también la forma
   especial `if` para implementarla) y construyendo la función
-  `mayor-de-tres-v2` como una composición de llamadas a esta función
+  `menor-de-tres-v2` como una composición de llamadas a esta función
   auxiliar.
 
 ```scheme
-(mayor-de-tres 2 8 1) ;; ⇒ 8
-(mayor-de-tres-v2 3 0 3) ;; ⇒ 3
+(mayor-de-tres 2 8 1) ;; ⇒ 1
+(mayor-de-tres-v2 3 0 3) ;; ⇒ 0
 ```
-
 
 
 ### Ejercicio 3
@@ -155,16 +148,16 @@ Supongamos las definiciones
 
 ```scheme
 (define (f x y)
-    (+ (* 2 x) y))
+    (+ x y))
 
-(define (cuadrado x)
-    (* x x))
+(define (g x)
+    (* 2 x))
 ```
 
 Realiza la evaluación paso a paso de la siguiente expresión 
 
 ```scheme
-(f (cuadrado (+ 2 1)) (+ 1 1))
+(f (g (+ 2 1)) (+ 1 1))
 ```
 
 mediante el **modelo de sustitución**, utilizando tanto el **orden
@@ -172,7 +165,6 @@ aplicativo** y como el **orden normal**.
 
 Escribe la solución entre comentarios en el propio fichero `.rkt` de
 la práctica.
-
 
 ### Ejercicio 4
 
@@ -191,7 +183,6 @@ es la misma.
 (tirada-ganadora (cons 6 2) (cons 3 3)) ; ⇒ 0
 ```
 
-
 ### Ejercicio 5
 
 Supongamos que estamos implementando un **juego de guerra de barcos** en
@@ -207,25 +198,24 @@ denominamos el **alcance** del torpedo (ver la siguiente figura):
 
 Cuanto más alta es la velocidad del torpedo, antes termina su
 combustible. En concreto, el tiempo de terminación del combustible
-(_t_, en **segundos**) depende de la velocidad (en **km/h**) según la
+(_t_, en **segundos**) depende de la velocidad (en **m/s**) según la
 siguiente expresión:
 
 ```
-t= 50000 / v^2
+t = 10000 / v^2
 ```
 
-Recuerda que conociendo la velocidad y el tiempo que está
-moviéndose un objeto podemos calcular el espacio recorrido con la siguiente
+Recuerda que conociendo la velocidad y el tiempo que está moviéndose
+un objeto podemos calcular el espacio recorrido con la siguiente
 expresión:
 
 ```
 e = v * t
 ```
 
-Esto es, multiplicando la velocidad por el tiempo resulta el espacio
-en recorrido. Las **unidades de la velocidad y el tiempo deben ser
-compatibles**. Esto es, si _v_ está en m/s, _t_ deberá estar en
-segundos y el espacio reorrido resultará en metros.
+En la expresión anterior las **unidades de la velocidad y el tiempo
+deben ser compatibles**. Esto es, si _v_ está en m/s, _t_ deberá estar
+en segundos y el espacio recorrido resultará en metros.
 
 Dadas todas estas condiciones, debes programar en Scheme la función 
 
@@ -248,16 +238,17 @@ descriptivos posibles).
 
 Ejemplos:
 
+```scheme
+(dentro-alcance? 0 0 1000 1000 30) ; ⇒ #f
+(dentro-alcance? 0 0 800 800 30) ; ⇒ #t
 ```
-(dentro-alcance? 0 0 500 500 30) ; ⇒ #f
-(dentro-alcance? 100 200 500 500 20) ; ⇒ #t
-```
+
 
 ### Ejercicio 6
 
 Define la función `tipo-triangulo` que recibe como parámetro las
 coordenadas en el plano de los vértices de un triángulo representados
-con parejas. La función devuelve un string con el tipo de triángulo
+con parejas. La función devuelve un símbolo con el tipo de triángulo
 correspondiente: equilátero, isósceles o escaleno.
 
 Recuerda que un triángulo equilátero es aquel cuyos tres lados tienen
@@ -267,9 +258,9 @@ escaleno el que todos sus lados son diferentes.
 Ejemplos:
 
 ```scheme
-(tipo-triangulo (cons 1 1) (cons  1 6) (cons 6 1)) ; ⇒ "isosceles"
-(tipo-triangulo (cons -2 3) (cons  2 6) (cons 5 3)) ; ⇒ "escaleno"
-(tipo-triangulo (cons -3 0) (cons  3 0) (cons 0 5.1961) ;  ⇒ "equilatero"
+(tipo-triangulo (cons 1 1) (cons  1 6) (cons 6 1)) ; ⇒ 'isosceles
+(tipo-triangulo (cons -2 3) (cons  2 6) (cons 5 3)) ; ⇒ 'escaleno
+(tipo-triangulo2 (cons -3 0) (cons  3 0) (cons 0 5.1961) ;  ⇒ 'equilatero
 ```
 
 **Nota**: Para comparar dos números reales debemos comprobar si la
@@ -287,25 +278,22 @@ Puedes usar la siguiente función auxiliar:
 
 ### Ejercicio 7
 
-
-Define la función `calculadora` que recibe una lista como
-parámetro. La lista contiene tres elementos: el primero es un carácter
-(`+`, `-`, `*` o `/`) que indica un operador y los dos siguientes
-elementos corresponden a los operandos. La función realiza la
-operación y devuelve el resultado.
+Define la función `calculadora` que recibe una pareja como
+parámetro. La pareja contiene un carácter (`+`, `-`, `*` o `/`) que
+indica un operador y otra pareja con los operandos. La función realiza
+la operación y devuelve el resultado.
 
 
 Ejemplos:
 
 ```scheme
-(calculadora (list #\+ 2 3)) ; ⇒ 5
-(calculadora (list #\* 3 4)) ; ⇒ 12
-(calculadora (list #\- 7 4)) ; ⇒ 3
-(calculadora (list #\/ 6 3)) ; ⇒ 2
+(calculadora (cons #\+ (cons 2 3))) ; ⇒5
+(calculadora (cons #\* (cons 3 4))) ; ⇒ 12
+(calculadora (cons #\- (cons 7 4))) ; ⇒ 3
+(calculadora (cons #\/ (cons 6 3))) ; ⇒ 2
 ```
 
 ----
-
 Lenguajes y Paradigmas de Programación, curso 2018-19  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
