@@ -357,7 +357,7 @@ programar (C, C++, Java, python, etc.)
 - Estado local mutable en las funciones
 
 Veremos que, aunque parece imposible, es posible programar sin
-utilizar estas características. Lo demuestran lenguajes lenguajes de
+utilizar estas características. Lo demuestran lenguajes de
 programación funcional como Haskell, Clojure o el propio Scheme.
 
 ##### Pasos de ejecución
@@ -826,7 +826,7 @@ dan más contexto de qué es cada parámetro y qué devuelve la función.
 
 ;
 ; La función 'tiempo' devuelve el tiempo que 
-; tarde en recorrer un móvil una distancia d a un velocidad v
+; tarda en recorrer un móvil una distancia d a un velocidad v
 ;
 
 (define (tiempo distancia velocidad)
@@ -1238,12 +1238,12 @@ de la semántica:
 
 **Evaluación**
 
-1. Se evalúan de forma ordenada todas las expresiones hasta que una de
+1. Se evalúan de forma ordenada todas las _exp-cond-i_ hasta que una de
    ellas devuelva `#t`
-2. Si alguna expresión devuelve `#t`, se devuelve el valor del
-   consecuente de esa expresión
-3. Si ninguna expresión es cierta, se devuelve el valor resultante de
-   evaluar el consecuente del `else`
+2. Si alguna _exp-cond-i_ devuelve `#t`, se devuelve el valor de la
+   _exp-consec-i_.
+3. Si ninguna _exp-cond-i_ es cierta, se devuelve el valor resultante de
+   evaluar _exp-consec-else_.
 
 
 **Ejemplo**
