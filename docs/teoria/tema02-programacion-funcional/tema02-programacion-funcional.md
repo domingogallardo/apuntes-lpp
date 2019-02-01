@@ -1835,6 +1835,32 @@ La instrucción `cons` construye un dato compuesto a partir de otros
 dos datos (que llamaremos izquierdo y derecho). La expresión `{1 . 2}`
 es la forma que el intérprete tiene de imprimir las parejas.
 
+#### Construcción de parejas con `quote`
+
+Al igual que las listas, es posible construir parejas con la forma
+especial `quote`, definiendo la pareja entre paréntesis y separando su
+parte izquierda y derecha con un punto:
+
+```scheme
+'(1 . 2) ; ⇒ {1 . 2}
+```
+
+Utilizaremos a veces `cons` y otras veces `quote` para definir
+parejas. Pero hay que tener en cuenta que, al igual que con las
+listas, `quote` no evalúa sus parámetros, por lo que no lo deberemos
+utilizar por ejemplo dentro de una función en la que queremos
+construir una pareja con los resultados de evaluar expresiones.
+
+Por ejemplo:
+
+```scheme
+(define a 1)
+(define b 2)
+(cons a b) ; ⇒ {1 . 2}
+'(a . b) ; ⇒ {a . b}
+```
+
+
 #### Funciones de acceso `car` y `cdr`
 
 Una vez construida una pareja, podemos obtener el elemento
