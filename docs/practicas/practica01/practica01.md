@@ -122,7 +122,7 @@ letras no son consecutivos.
 ### Ejercicio 2
 
 Implementa la función `(menor-de-tres n1 n2 n3)` que reciba tres
-números como argumento y devuelva el mayor de los tres, intentando que
+números como argumento y devuelva el menor de los tres, intentando que
 el número de condiciones sea mínima.
 
 No debes utilizar la función `min`. 
@@ -131,14 +131,14 @@ Implementa dos versiones de la función:
 
 - versión 1: usando la forma especial `if` 
 - versión 2 (llámala `menor-de-tres-v2`): definiendo una función auxiliar `(menor x y)` que
-  devuelva el mayor de dos números (deberás usar también la forma
+  devuelva el menor de dos números (deberás usar también la forma
   especial `if` para implementarla) y construyendo la función
   `menor-de-tres-v2` como una composición de llamadas a esta función
   auxiliar.
 
 ```scheme
-(mayor-de-tres 2 8 1) ;; ⇒ 1
-(mayor-de-tres-v2 3 0 3) ;; ⇒ 0
+(menor-de-tres 2 8 1) ;; ⇒ 1
+(menor-de-tres-v2 3 0 3) ;; ⇒ 0
 ```
 
 
@@ -260,7 +260,7 @@ Ejemplos:
 ```scheme
 (tipo-triangulo (cons 1 1) (cons  1 6) (cons 6 1)) ; ⇒ 'isosceles
 (tipo-triangulo (cons -2 3) (cons  2 6) (cons 5 3)) ; ⇒ 'escaleno
-(tipo-triangulo2 (cons -3 0) (cons  3 0) (cons 0 5.1961) ;  ⇒ 'equilatero
+(tipo-triangulo2 (cons -3 0) (cons  3 0) (cons 0 5.1961)) ;  ⇒ 'equilatero
 ```
 
 **Nota**: Para comparar dos números reales debemos comprobar si la
