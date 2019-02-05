@@ -2065,14 +2065,16 @@ Vemos que en la pareja que se crea con `(cons p 6)` se guarda en la
 parte izquierda **la misma pareja que hay en `p`**. Lo representamos
 con una flecha que apunta a la misma pareja que `p`.
 
-**IMPORTANTE**: El funcionamiento de la evaluación de las parejas es
-  similar al de los objetos en lenguajes orientados a objetos como
-  Java. Cuando se evalúa una variable que contiene una pareja se
-  devuelve la propia pareja, no una copia. En programación funcional,
-  como el contenido de las parejas es inmutable, no hay problemas de
-  *efectos laterales* por el hecho de que una pareja esté
-  compartida. Veremos que cuando introduzcamos la mutación en Scheme
-  aparecerán estos efectos laterales.
+!!! Note "Nota"
+
+    El funcionamiento de la evaluación de variables que contienen parejas es
+    similar al de las variables que contienen objetos en lenguajes
+    orientados a objetos como Java. Cuando se evalúa una variable que
+    contiene una pareja se devuelve la propia pareja, no una copia. 
+    
+    En programación funcional, como el contenido de las parejas es
+    inmutable, no hay problemas de *efectos laterales* por el hecho de
+    que una pareja esté compartida. 
 
 Es conveniente que pruebes a crear distintas estructuras de parejas
 con parejas y a dibujar su diagrama caja y puntero. Y también a
