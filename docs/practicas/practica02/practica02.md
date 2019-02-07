@@ -17,26 +17,43 @@ solución debe incluir:
 
 ### Ejercicio 1 ###
 
-Implementa la función recursiva `(máximo lista)` que recibe una lista
+Implementa la función recursiva `(mínimo lista)` que recibe una lista
 con números como argumento y devuelve el mayor número de la
 lista. Suponemos listas de 1 o más elementos.
 
-Para la implementación debes usar la función `mayor` definida en la
+Para la implementación debes usar la función `menor` definida en la
 práctica anterior.
 
-**Pista**: Podemos expresar el caso general de la recursión de la
-siguiente forma:
+!!! Tip "Pista"
 
-> El máximo de los elementos de una lista es el mayor entre
-> el primer elemento de la lista y el máximo del resto de la lista.
+    Podemos expresar el caso general de la recursión de la
+    siguiente forma:
+
+    > El mínimo de los elementos de una lista es el mayor entre el
+    > primer elemento de la lista y el mínimo del resto de la lista.
+
+    Y el caso base:
+    
+    > El mínimo de una lista con un único número es ese número.
+    
+    
+Ejemplos:
+
+```scheme
+(minimo '(1 8 6 4 3)) ; ⇒ 1
+(minimo '(1 -1 3 -6 4)) ; ⇒ -6
+```
+
+b) Implementa la función recursiva `(concatena lista-chars)` que recibe
+una lista de caracteres y devuelve la cadena resultante de
+concatenarlos.
 
 Ejemplos:
 
 ```scheme
-(maximo '(9 8 6 4 3)) ; ⇒ 9
-(maximo '(1 -1 3 6 4)) ; ⇒ 6
+(concatena '(#\H #\o #\l #\a)) ; ⇒ "Hola"
+(concatena '(#\S #\c #\h #\e #\m #\e #\space #\m #\o #\l #\a))  ⇒ "Scheme mola"
 ```
-
 
 ### Ejercicio 2 ###
 
@@ -54,8 +71,9 @@ b) Implementa el predicado recursivo `(repetidos? lista)` que recibe una lista y
 devuelve `#t` si algún elemento está repetido en la lista, y `#f` en
 caso contrario.
 
-**Pista**: puedes utilizar la función anterior
-(pertenece? elem lista), que comprueba si un elemento está en la lista.
+!!! Hint "Pista" 
+    Puedes utilizar la función anterior `(pertenece? elem lista)`, que
+    comprueba si un elemento está en la lista. 
 
 ```scheme
 (repetidos? '(1 2 3 5 4 5 6)) ; ⇒ #t
@@ -79,18 +97,19 @@ c) Escribe las expresiones que:
    1. devuelve 3 utilizando `p3`
    2. devuelve 5 utilizando `p3` 
 
-d) Dado el siguiente diagrama caja y puntero, escribe las sentencias en
-Scheme (usando llamadas a `list` y `cons`) que definen `p4`.
+d) Dado el siguiente diagrama caja y punter, escribe las sentencias en
+Scheme (usando llamadas a `list` y `cons`) que definen `p1`.
 
 <img src="imagenes/box-and-pointer2.png" width="500px"/>
 
-### Ejercicio 4
+### Ejercicio 4 
 
 Implementa la función `(binario-a-decimal lista-bits)` que reciba una lista de bits que representan
 un número en binario (el primer elemento será el bit más significativo) y devuelva el número decimal
 equivalente. 
 
-**Pista**: puedes utilizar la función `length`.
+!!! Hint "Pista"
+    Puedes utilizar la función `length`.
 
 ```scheme
 (binario-a-decimal '(1 1 1 1)) ; ⇒ 15
@@ -100,15 +119,15 @@ equivalente.
 
 ### Ejercicio 5 ###
 
-Implementa la función recursiva `(ordenada-creciente? lista-nums)`
+Implementa la función recursiva `(ordenada-decreciente? lista-nums)`
 que recibe como argumento una lista de números y devuelve `#t` si los
 números de la lista están ordenados de forma creciente o `#f` en
 caso contrario. Suponemos listas de 1 o más elementos.
 
 ```scheme
-(ordenada-creciente? '(-1 23 45 59 99))  ; ⇒ #t
-(ordenada-creciente? '(12 50 -1 293 1000))  ; ⇒ #f
-(ordenada-creciente? '(3))  ; ⇒ #t
+(ordenada-decreciente? '(99 59 45 23 -1))  ; ⇒ #t
+(ordenada-decreciente? '(12 50 -1 293 1000))  ; ⇒ #f
+(ordenada-decreciente? '(3))  ; ⇒ #t
 ```
 
 
