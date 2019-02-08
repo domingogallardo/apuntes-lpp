@@ -260,7 +260,7 @@ Ejemplos:
 ```scheme
 (tipo-triangulo (cons 1 1) (cons  1 6) (cons 6 1)) ; ⇒ 'isosceles
 (tipo-triangulo (cons -2 3) (cons  2 6) (cons 5 3)) ; ⇒ 'escaleno
-(tipo-triangulo2 (cons -3 0) (cons  3 0) (cons 0 5.1961)) ;  ⇒ 'equilatero
+(tipo-triangulo (cons -3 0) (cons  3 0) (cons 0 5.1961)) ;  ⇒ 'equilatero
 ```
 
 **Nota**: Para comparar dos números reales debemos comprobar si la
