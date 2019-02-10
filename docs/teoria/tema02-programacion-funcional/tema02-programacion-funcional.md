@@ -2348,25 +2348,33 @@ vemos por primera vez en los siguientes ejemplos:
 (list-tail '(a b c d) 2) ; ‌⇒ {c d}
 ```
 
-En las siguientes clases veremos cómo están implementadas.
+En los siguientes apartados veremos cómo están implementadas.
 
 
-<!--
+### Funciones recursivas que construyen listas
 
-### Funciones recursivas y listas
+Para terminar el apartado sobre las listas en Scheme vamos a ver
+ejemplos adicionales de funciones recursivas que trabajan con
+listas. Veremos alguna función que recibe una lista y, como antes, usa
+la recursión para recorrerla. Pero veremos también funciones que usan
+la recursión para **construir nuevas listas**.
 
-#### Implementación recursiva de funciones sobre listas
+Algunas de las funciones que presentamos son implementaciones de las
+ya existentes en Scheme. Para no solapar con las definiciones de
+Scheme pondremos el prefijo `mi-` en todas ellas.
 
-Vamos a ver cómo se implementan de forma recursiva alguna de funciones
-que trabajan con listas, incluyendo algunas de las funciones de
-Scheme. Para no solapar con las definiciones de Scheme pondremos el
-prefijo `mi-` en todas ellas:
+Vamos a ver las siguientes funciones:
 
 - `mi-list-ref`: implementación de la función `list-ref`
+- `mi-list-tail`: implementación de la función `list-tail`
 - `mi-append`: implementación de la funión `append` 
+- `mi-reverse`: implementación de la función `reverse`
+- `cuadrados-hasta`: devuelve la lista de cuadrados hasta uno dado
+- `filtra-pares`: devuelve la lista de los números pares de la lista que se recibe
+- `primo?`: comprueba si un número es o no primo
 
 
-##### Función `mi-list-ref`
+#### Función `mi-list-ref`
 
 La función `(mi-list-ref n lista)` devuelve el elemento `n` de una
 lista (empezando a contar por 0):
@@ -2415,10 +2423,10 @@ La implementación de todo esto en Scheme sería la siguiente:
       (mi-list-ref (cdr lista) (- n 1))))
 ```
 
-##### Función `list-tail`
+#### Función `mi-list-tail`
 
 La función `(mi-list-tail lista n)` devuelve la lista resultante de
-quitar n elementos de la lista original:
+quitar n elementos de la cabeza de la lista original:
 
 ```scheme
 (mi-list-tail '(1 2 3 4 5 6 7) 2) ; ⇒ {3 4 5 6 7}
@@ -2435,7 +2443,7 @@ se ha llegado a ella:
        (mi-list-tail (cdr lista) (- n 1))))
 ```
 
-##### Función `mi-append` 
+#### Función `mi-append` 
 
 Veamos ahora cómo podríamos implementar de forma recursiva la función
 `append` que une dos listas. La llamaremos `(mi-append lista1
@@ -2487,7 +2495,7 @@ La formulación recursiva completa queda como sigue:
               (mi-append (cdr l1) l2))))
 ```
 
-##### Función `mi-reverse`
+#### Función `mi-reverse`
 
 Veamos cómo implementar de forma recursiva la función `mi-reverse` que
 invierte una lista
@@ -2519,9 +2527,7 @@ La función `mi-reverse` quedaría entonces como sigue:
     (añade-al-final (car lista) (mi-reverse (cdr lista)))))
 ```
 
-#### Ejemplos de funciones recursivas que usan listas
-
-##### Función `cuadrados-hasta`
+#### Función `cuadrados-hasta`
 
 La función `(cuadrados-hasta x)` devuelve una lista con los cuadrados
 de los números hasta x:
@@ -2548,7 +2554,7 @@ Ejemplo:
 (cuadrados-hasta 10) ; ⇒ {100 81 64 49 36 25 16 9 4 1}
 ```
 
-##### Función `filtra-pares`
+#### Función `filtra-pares`
 
 Es muy habitual recorrer una lista y comprobar condiciones de sus
 elementos, construyendo una lista con los que cumplan una determinada
@@ -2572,7 +2578,7 @@ Ejemplo:
 (filtra-pares '(1 2 3 4 5 6)) ; ⇒ {2 4 6}
 ```
 
-##### Función `primo?`
+#### Función `primo?`
 
 El uso de listas es uno de los elementos fundamentales de la
 programación funcional.
@@ -2773,7 +2779,7 @@ funcionales como
 [JavaScript](http://helephant.com/2008/08/19/functions-are-first-class-objects-in-javascript/),
 [Python](https://thenewcircle.com/static/bookshelf/python_fundamentals_tutorial/functional_programming.html),
 [Swift](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html)
-o incluso en la última versión de Java,
+o a partir de la versión 8 de Java,
 [Java 8](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html),
 (donde se denominan *expresiones lambda*).
 
@@ -3055,6 +3061,7 @@ devuelve la invocación de `g` con `x`:
 (aplica-2 suma-5 doble 3) ; ⇒ 11
 ```
 
+<!--
 
 ### Generalización ###
 
@@ -4073,8 +4080,8 @@ libro *Structure and Intepretation of Computer Programs*:
 - [2.2.1 - Representing Sequences](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.1)
 - [2.3.1 - Quotation](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-16.html#%_sec_2.3.1)
 
-
 -->
+
 ----
 
 Lenguajes y Paradigmas de Programación, curso 2018-19  
