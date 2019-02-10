@@ -1,5 +1,5 @@
 
-# Práctica 2: Programación funcional en Scheme
+# Práctica 2: Recursión, parejas y diagramas box-and-pointer
 
 ## Entrega de la práctica
 
