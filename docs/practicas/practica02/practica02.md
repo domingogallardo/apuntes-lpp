@@ -18,7 +18,7 @@ solución debe incluir:
 ### Ejercicio 1 ###
 
 a) Implementa la función recursiva `(mínimo lista)` que recibe una lista
-con números como argumento y devuelve el mayor número de la
+con números como argumento y devuelve el menor número de la
 lista. Suponemos listas de 1 o más elementos.
 
 Para la implementación debes usar la función `menor` definida en la
