@@ -29,7 +29,7 @@ práctica anterior.
     Podemos expresar el caso general de la recursión de la
     siguiente forma:
 
-    > El mínimo de los elementos de una lista es el mayor entre el
+    > El mínimo de los elementos de una lista es el menor entre el
     > primer elemento de la lista y el mínimo del resto de la lista.
 
     Y el caso base:
@@ -72,7 +72,7 @@ c) Escribe las expresiones que:
    2. devuelve 5 utilizando `p3` 
 
 d) Dado el siguiente diagrama caja y punter, escribe las sentencias en
-Scheme (usando llamadas a `list` y `cons`) que definen `p1`.
+Scheme (usando llamadas a `list` y `cons`) que definen `p4`.
 
 <img src="imagenes/box-and-pointer2.png" width="500px"/>
 
@@ -93,7 +93,7 @@ equivalente.
 
 b) Implementa la función recursiva `(ordenada-decreciente? lista-nums)`
 que recibe como argumento una lista de números y devuelve `#t` si los
-números de la lista están ordenados de forma creciente o `#f` en
+números de la lista están ordenados de forma decreciente o `#f` en
 caso contrario. Suponemos listas de 1 o más elementos.
 
 ```scheme
