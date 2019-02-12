@@ -172,9 +172,15 @@ Deberán satisfacer, por ejemplo, las siguientes pruebas:
 (check-equal? (valora #\S orden) 6)
 ```
 
+!!! Hint "Pista"
+    Puedes utilizar las funciones `symbol->string simbolo` que convierte un
+    símbolo en una cadena y `string-ref cadena pos` que devuelve el
+    carácter de una cadena situado en una determinada posición.
+
 Y una vez definidas las funciones anteriores, debes definir la función
 `carta` que devuelve una pareja con el palo y el valor de una carta,
 tal y como se muestra en los ejemplos del comienzo del ejercicio.
+
 
 ### Ejercicio 5 ###
 
