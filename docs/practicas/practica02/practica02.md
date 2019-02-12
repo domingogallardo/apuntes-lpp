@@ -71,7 +71,7 @@ c) Escribe las expresiones que:
    1. devuelve 3 utilizando `p3`
    2. devuelve 5 utilizando `p3` 
 
-d) Dado el siguiente diagrama caja y punter, escribe las sentencias en
+d) Dado el siguiente diagrama caja y puntero, escribe las sentencias en
 Scheme (usando llamadas a `list` y `cons`) que definen `p4`.
 
 <img src="imagenes/box-and-pointer2.png" width="500px"/>
@@ -106,7 +106,7 @@ caso contrario. Suponemos listas de 1 o más elementos.
 ### Ejercicio 4 ###
 
 Supongamos que queremos programar un juego de cartas. Lo primero que
-debemos hacer es definir una forma de representar de las cartas y
+debemos hacer es definir una forma de representar las cartas y
 funciones que trabajen con esa representación. En este ejercicio vamos
 a implementar esas funciones.
 
