@@ -52,7 +52,7 @@ Ejemplos:
 
 ```scheme
 (concatena '(#\H #\o #\l #\a)) ; ⇒ "Hola"
-(concatena '(#\S #\c #\h #\e #\m #\e #\space #\m #\o #\l #\a))  ⇒ "Scheme mola"
+(concatena '(#\S #\c #\h #\e #\m #\e #\space #\m #\o #\l #\a))  ; ⇒ "Scheme mola"
 ```
 
 
