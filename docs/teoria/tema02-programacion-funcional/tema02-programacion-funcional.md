@@ -3061,13 +3061,15 @@ devuelve la invocación de `g` con `x`:
 (aplica-2 suma-5 doble 3) ; ⇒ 11
 ```
 
-<!--
 
 ### Generalización ###
 
 La posibilidad de pasar funciones como parámetros de otras es una
-poderosa herramienta de abstracción. Por ejemplo, supongamos que
-queremos calcular el sumatorio de `a` hasta `b`:
+poderosa herramienta de abstracción. Nos va a permitir diseñar
+funciones más genéricas. 
+
+Veamos un ejemplo. Supongamos que queremos calcular el sumatorio de
+`a` hasta `b`:
 
 ```scheme
 (define (sum-x a b)
@@ -3112,13 +3114,15 @@ sospechar que no estamos generalizando suficientemente el código. Un
 modificaciones del código cuando en el futuro tengamos que cambiar
 cosas.
 
-La posibilidad de pasar una función como parámetro es una herramienta
-poderosa a la hora de generalizar código. En este caso, lo único que
+La posibilidad de pasar una función como parámetro viene a nuestra
+ayuda para generalizar el código anterior. En este caso, lo único que
 cambia en las tres funciones anteriores es la función a aplicar a los
-números de la serie. Podemos tomar esa función como un parámetro
-adicional y definir una función genérica `sum-f-x` que generaliza las
-tres funciones anteriores. Tendríamos el sumatorio desde `a` hasta `b`
-de `f(x)`:
+números de la serie. En primer caso no se hace nada, en el segundo se
+eleva al cuadrado y en el tercer caso al cubo.
+
+Podemos tomar esa función como un parámetro adicional y definir una
+función genérica `sum-f-x` que generaliza las tres funciones
+anteriores. Tendríamos el sumatorio desde `a` hasta `b` de `f(x)`:
 
 ```scheme
 (define (sum-f-x f a b)
@@ -3165,7 +3169,7 @@ lenguajes de programación funcionales de otros que no lo
 son. En lenguajes como C, C++ o Java (antes de Java 8) no es posible
 hacer esto.
 
-Para devolver una función en Scheme basta con usar la forma especial
+Para devolver una función en Scheme debemos usar la forma especial
 `lambda` en el cuerpo de una función. Así, cuando se invoca a esta
 función se evalúa `lambda` y se devuelve la función resultante. Es una
 función que creamos en tiempo de ejecución, durante la evaluación de
@@ -3338,24 +3342,24 @@ Lo podemos hacer con la siguiente función constructora:
 Por ejemplo, definimos distintos loggers y los probamos:
 
 ```scheme
-(define logger (construye-logger "Módulo acceso red: "))
+(define logger-red (construye-logger "Módulo acceso red: "))
 
-(logger "Error en el acceso a BD")
-(logger "Intentando conexión a red")
+(logger-red "Error en el acceso a BD")
+(logger-red "Intentando conexión a red")
 ; Módulo acceso red: Error en el acceso a BD
 ; Módulo acceso red: Intentando conexión a red
 
-(define logger2 (construye-logger "Módulo correo electrónico: "))
+(define logger-email (construye-logger "Módulo correo electrónico: "))
 
-(logger2 "Enviando e-mail")
-(logger2 "Problemas al recibir mensaje")
+(logger-email "Enviando e-mail")
+(logger-email "Problemas al recibir mensaje")
 ; Módulo correo electrónico: Enviando e-mail
 ; Módulo correo electrónico: Problemas al recibir mensaje
 
-(define logger3 (construye-logger "Módulo acceso a SO: "))
+(define logger-so (construye-logger "Módulo acceso a SO: "))
 
-(logger3 "Intentando abrir fichero")
-(logger3 "Sin espacio de memoria")
+(logger-so "Intentando abrir fichero")
+(logger-so "Sin espacio de memoria")
 ; Módulo acceso a SO: Intentando abrir fichero
 ; Módulo acceso a SO: Sin espacio de memoria
 ```
@@ -3624,9 +3628,9 @@ de símbolos en una lista con sus longitudes:
 ```
 
 
-> CONSEJO DE USO  
-> La función `map` recibe una lista de *n* elementos y devuelve otra
-> de *n* elementos transformados.
+!!! Tip "Consejo"
+    La función `map` recibe una lista de *n* elementos y devuelve otra
+    de *n* elementos transformados.
 
 ##### Implementación de `map`
 
@@ -3702,10 +3706,10 @@ de 4.
 ```
 
 
-> CONSEJO DE USO  
-> La función `filter` recibe una lista de *n* elementos y devuelve
-> otra de con *n* o menos elementos originales filtrados por una
-> condición.
+!!! Tip "Consejo"
+    La función `filter` recibe una lista de *n* elementos y devuelve
+    otra de con *n* o menos elementos originales filtrados por una
+    condición.
 
 
 ##### Implementación de `filter`
@@ -3770,9 +3774,10 @@ suma dos valores.
     (+ dato resultado))
 ```
 
-Llamamos a los parámetros `dato` y `resultado` para remarcar que el
-primer parámetro se va a coger de la lista y el segundo del resultado
-calculado.
+Esta función de plegado se aplicará a una lista de números para sumar
+todos sus elementos. Llamamos a los parámetros `dato` y `resultado`
+para remarcar que el primer parámetro se va a coger de la lista y el
+segundo del resultado calculado.
 
 Veamos qué pasa cuando hacemos un `fold-right` con esta función suma y
 la lista '(1 2 3) y con el número 0 como base:
@@ -3782,7 +3787,7 @@ la lista '(1 2 3) y con el número 0 como base:
 ```
 
 La función `suma` se va a ir aplicando a todos los elementos de la
-lista de derecha a izquierda, empezando por el valor base (0) y el
+lista de **derecha a izquierda**, empezando por el valor base (0) y el
 último elemento de la lista (3) y cogiendo el resultado obtenido y
 utilizándolo como nuevo parámetro `resultado` en la siguiente llamada.
 
@@ -3830,8 +3835,8 @@ Un último ejemplo:
 ##### Función `fold-left` #####
 
 La función `fold-left` es similar a `fold-right` con la diferencia de
-que la secuencia de aplicaciones de la función de plegado se hace de
-izquierda a derecha en lugar de derecha a izquierda.
+que la secuencia de aplicaciones de la función de plegado se hace **de
+izquierda a derecha** en lugar de derecha a izquierda.
 
 La función de plegado también cambia, porque tiene invertidos sus
 argumentos:
@@ -3855,8 +3860,8 @@ La secuencia de llamadas a `-` son:
 ```
 
 
-> CONSEJO DE USO  
-> Las funciones `fold-right` o `fold-left` reciben una lista de datos y devuelven un único resultado
+!!! Tip "Consejo"
+    Las funciones `fold-right` o `fold-left` reciben una lista de datos y devuelven un único resultado.
 
 
 ##### Implementación de `fold-right` y `fold-left`
@@ -3885,14 +3890,10 @@ Y la función `fold-left`:
 El uso de funciones de orden superior y las expresiones lambda
 proporciona muchísima expresividad en un lenguaje de programación. Es
 posible escribir código muy conciso, que hace cosas complicadas en
-pocas líneas.
+pocas líneas. Veamos algunos ejemplos.
 
 
 ##### Función `(suma-n n lista)`
-
-Como hemos visto en las clausuras, es posible utilizar en el cuerpo de
-las expresiones lambda los parámetros de la función principal en la
-que se usa esta expresión. Veamos un ejemplo.
 
 Supongamos que queremos definir una función `(suma-n n lista)` que
 devuelve la lista resultante el resultado de sumar un número `n` a
@@ -3941,7 +3942,7 @@ valor de los elementos de la lista.
 
 Dado que muchas de las anteriores funciones de orden superior
 devuelven listas, es muy común componer las llamadas, de forma que la
-salida de una haga de entrada de otra.
+salida de función se utilice como entrada de otra.
 
 Por ejemplo, podemos implementar una función que sume un número
 `n` a todos los elementos de una lista (igual que la anterior) y
@@ -4079,8 +4080,6 @@ libro *Structure and Intepretation of Computer Programs*:
 - [2.2 - Hierarchical Data and the Closure Property](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2) (Introducción de la sección)
 - [2.2.1 - Representing Sequences](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.1)
 - [2.3.1 - Quotation](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-16.html#%_sec_2.3.1)
-
--->
 
 ----
 
