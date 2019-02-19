@@ -604,7 +604,7 @@ comprueba con el intérprete si tu respuesta era correcta.</p>
 <span class="p">(</span><span class="k">define </span><span class="nv">f</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">a</span> <span class="nv">b</span><span class="p">)</span> <span class="p">(</span><span class="nb">string-append </span><span class="s">&quot;***&quot;</span> <span class="nv">a</span> <span class="nv">b</span> <span class="s">&quot;***&quot;</span><span class="p">)))</span>
 <span class="p">(</span><span class="k">define </span><span class="nv">g</span> <span class="nv">f</span><span class="p">)</span>
 <span class="p">(</span><span class="nb">procedure? </span><span class="nv">g</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
-<span class="p">(</span><span class="nf">g</span> <span class="s">&quot;Hola&quot;</span> <span class="err">&quot;</span><span class="nv">Adios</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="nf">g</span> <span class="s">&quot;Hola&quot;</span> <span class="s">&quot;Adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
 </pre></div>
 </td></tr></table>
 
@@ -664,8 +664,8 @@ respuesta era correcta.</p>
        <span class="p">(</span><span class="nf">f</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">)</span>
        <span class="ss">&#39;error</span><span class="p">))</span>
 
-<span class="p">(</span><span class="nf">foo</span> <span class="nv">+</span> <span class="mi">10</span> <span class="nv">doble</span> <span class="mi">15</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">foo</span> <span class="nv">doble</span> <span class="nv">+</span> <span class="mi">10</span> <span class="mi">15</span><span class="p">)</span> 
+<span class="p">(</span><span class="nf">foo</span> <span class="nv">+</span> <span class="mi">10</span> <span class="nv">doble</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="nf">foo</span> <span class="nv">doble</span> <span class="nv">+</span> <span class="mi">10</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
 <span class="p">(</span><span class="nf">foo</span> <span class="nv">+</span> <span class="nv">doble</span> <span class="mi">10</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
 <span class="p">(</span><span class="nf">foo</span> <span class="nv">string-append</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">string-append </span><span class="s">&quot;***&quot;</span> <span class="nv">x</span><span class="p">))</span> <span class="s">&quot;Hola&quot;</span> <span class="s">&quot;Adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
 

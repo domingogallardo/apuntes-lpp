@@ -4309,12 +4309,12 @@ entonces como:</p>
 </pre></div>
 </td></tr></table>
 
-<p>El caso base sería en el que la lista de funciones tiene sólo una
-función:</p>
+<p>El caso base sería en el que la lista de funciones es vacía, en cuyo
+caso se devuelve el propio número:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">null? </span><span class="p">(</span><span class="nb">cdr </span><span class="nv">lista-funcs</span><span class="p">))</span> <span class="c1">; la lista de funciones solo tiene una función</span>
-    <span class="p">((</span><span class="nb">car </span><span class="nv">lista-funcs</span><span class="p">)</span> <span class="nv">x</span><span class="p">)</span> <span class="c1">; invocamos a la función con el parámetro x</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">null? </span><span class="nv">lista-funcs</span><span class="p">)</span> <span class="c1">; la lista de funciones está vacía</span>
+    <span class="nv">x</span> <span class="c1">; devolvemos el propio número</span>
     <span class="o">...</span>
 </pre></div>
 </td></tr></table>
