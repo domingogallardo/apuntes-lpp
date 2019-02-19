@@ -91,7 +91,7 @@ comprueba con el intérprete si tu respuesta era correcta.
 (define f (lambda (a b) (string-append "***" a b "***")))
 (define g f)
 (procedure? g) ; ⇒ ?
-(g "Hola" "Adios) ; ⇒ ?
+(g "Hola" "Adios") ; ⇒ ?
 ```
 
 b) Hemos visto en teoría que la forma especial `define` para construir
@@ -133,8 +133,8 @@ respuesta era correcta.
        (f x y)
        'error))
        
-(foo + 10 doble 15)
-(foo doble + 10 15) 
+(foo + 10 doble 15) ; ⇒ ?
+(foo doble + 10 15) ; ⇒ ?
 (foo + doble 10 15) ; ⇒ ?
 (foo string-append (lambda (x) (string-append "***" x)) "Hola" "Adios") ; ⇒ ?
 

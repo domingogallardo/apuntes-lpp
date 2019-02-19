@@ -3509,12 +3509,12 @@ entonces como:
 (aplica-funcs lista-funcs x) = ((car lista-funcs) (aplica-funcs (cdr lista-funcs) x))
 ```
 
-El caso base sería en el que la lista de funciones tiene sólo una
-función:
+El caso base sería en el que la lista de funciones es vacía, en cuyo
+caso se devuelve el propio número:
 
 ```scheme
-(if (null? (cdr lista-funcs)) ; la lista de funciones solo tiene una función
-    ((car lista-funcs) x) ; invocamos a la función con el parámetro x
+(if (null? lista-funcs) ; la lista de funciones está vacía
+    x ; devolvemos el propio número
     ...
 ```
 
