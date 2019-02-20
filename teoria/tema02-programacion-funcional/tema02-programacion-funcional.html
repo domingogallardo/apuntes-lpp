@@ -4662,17 +4662,8 @@ argumentos:</p>
 </pre></div>
 </td></tr></table>
 
-<p>Y la función <code>fold-left</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">mi-fold-left</span> <span class="nv">func</span> <span class="nv">base</span> <span class="nv">lista</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">null? </span><span class="nv">lista</span><span class="p">)</span>
-      <span class="nv">base</span>
-      <span class="p">(</span><span class="nf">func</span> <span class="p">(</span><span class="nf">mi-fold-left</span> <span class="nv">func</span> <span class="nv">base</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">lista</span><span class="p">))</span> <span class="p">(</span><span class="nb">car </span><span class="nv">lista</span><span class="p">))))</span>
-</pre></div>
-</td></tr></table>
-
+<p>La implementación de <code>fold-left</code> la veremos cuando hablemos de
+recursión por la cola (<em>tail recursion</em>) en el próximo tema.</p>
 <h4>Uso de funciones de orden superior</h4>
 <p>El uso de funciones de orden superior y las expresiones lambda
 proporciona muchísima expresividad en un lenguaje de programación. Es
