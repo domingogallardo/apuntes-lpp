@@ -3875,15 +3875,8 @@ Podríamos implementar de forma recursiva la función `fold-right`:
       (func (car lista) (mi-fold-right func base (cdr lista)))))
 ```
 
-Y la función `fold-left`:
-
-```scheme
-(define (mi-fold-left func base lista)
-  (if (null? lista)
-      base
-      (func (mi-fold-left func base (cdr lista)) (car lista))))
-```
-
+La implementación de `fold-left` la veremos cuando hablemos de
+recursión por la cola (_tail recursion_) en el próximo tema.
 
 #### Uso de funciones de orden superior
 
