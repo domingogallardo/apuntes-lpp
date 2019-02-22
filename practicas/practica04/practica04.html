@@ -36,7 +36,7 @@
     
     
       
-        <title>Práctica 4: Funciones como datos de primera clase y funciones de orden superior - LPP</title>
+        <title>Práctica 4 - LPP</title>
       
     
     
@@ -105,7 +105,7 @@
                 LPP
               </span>
               <span class="md-header-nav__topic">
-                Práctica 4: Funciones como datos de primera clase y funciones de orden superior
+                Práctica 4
               </span>
             
           
@@ -225,6 +225,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html" title="Tema 3: Procedimientos recursivos" class="md-nav__link">
+      Tema 3: Procedimientos recursivos
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -270,10 +282,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Prácticas
@@ -318,6 +332,111 @@
     <a href="../practica03/practica03.html" title="Práctica 3" class="md-nav__link">
       Práctica 3
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Práctica 4
+      </label>
+    
+    <a href="practica04.html" title="Práctica 4" class="md-nav__link md-nav__link--active">
+      Práctica 4
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" title="Entrega de la práctica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" title="Ejercicios" class="md-nav__link">
+    Ejercicios
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" title="Ejercicio 1" class="md-nav__link">
+    Ejercicio 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" title="Ejercicio 2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" title="Ejercicio 3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" title="Ejercicio 4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" title="Ejercicio 5" class="md-nav__link">
+    Ejercicio 5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" title="Ejercicio 6" class="md-nav__link">
+    Ejercicio 6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -438,151 +557,162 @@ solución debe incluir:</p>
 </ul>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
-<p>Implementa, utilizando funciones de orden superior, las funciones
-<code>longitud-impar</code>, <code>suma-longitudes</code> y <code>mayusculas</code> que reciben una
-lista de símbolos y devuelven:</p>
-<ul>
-<li><code>(longitud-impar lista-simbolos)</code>: una lista con aquellos símbolos
-  que tienen longitud impar.</li>
-<li><code>(suma-longitudes lista-simbolos)</code>: la suma de las longitudes
-  de todos los símbolos de la lista.</li>
-<li><code>(mayusculas lista-simbolos)</code>: una lista con los símbolos escritos
-  en mayúscula.</li>
-</ul>
-<p><strong>Pista</strong>: Puedes usar las funciones <code>symbol-&gt;string</code>,
-<code>string-&gt;symbol</code> y <code>string-upcase</code>.</p>
-<p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">longitud-impar</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">me</span> <span class="nv">gusta</span> <span class="nv">LPP</span> <span class="nv">porque</span> <span class="nv">aprendo</span> <span class="nv">nuevos</span> <span class="nv">paradigmas</span> <span class="nv">de</span> <span class="nv">programaci</span><span class="err">ó</span><span class="nv">n</span><span class="p">))</span> 
-<span class="c1">; ⇒ {gusta LPP aprendo}</span>
-<span class="p">(</span><span class="nf">suma-longitudes</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">me</span> <span class="nv">gusta</span> <span class="nv">LPP</span> <span class="nv">porque</span> <span class="nv">aprendo</span> <span class="nv">nuevos</span> <span class="nv">paradigmas</span> <span class="nv">de</span> <span class="nv">programaci</span><span class="err">ó</span><span class="nv">n</span><span class="p">))</span>
-<span class="c1">; ⇒ 53</span>
-<span class="p">(</span><span class="nf">mayusculas</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">me</span> <span class="nv">gusta</span> <span class="nv">LPP</span> <span class="nv">porque</span> <span class="nv">aprendo</span> <span class="nv">nuevos</span> <span class="nv">paradigmas</span> <span class="nv">de</span> <span class="nv">programaci</span><span class="err">ó</span><span class="nv">n</span><span class="p">))</span>
-<span class="c1">; ⇒ {ME GUSTA LPP PORQUE APRENDO NUEVOS PARADIGMAS DE PROGRAMACIÓN}</span>
+<p>a) Indica qué devuelven las siguientes expresiones, sin utilizar el
+intérprete. Comprueba después si has acertado.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span>
+         <span class="p">(</span><span class="k">cond </span>
+            <span class="p">((</span><span class="nb">symbol? </span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">symbol-&gt;string </span><span class="nv">x</span><span class="p">))</span>
+            <span class="p">((</span><span class="nb">number? </span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">number-&gt;string </span><span class="nv">x</span><span class="p">))</span>
+            <span class="p">((</span><span class="nb">boolean? </span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="k">if </span><span class="nv">x</span> <span class="s">&quot;#t&quot;</span> <span class="s">&quot;#f&quot;</span><span class="p">))</span>
+            <span class="p">(</span><span class="k">else </span><span class="s">&quot;desconocido&quot;</span><span class="p">)))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="no">#t</span> <span class="nv">hola</span> <span class="no">#f</span> <span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)))</span> <span class="c1">; ⇒ ?</span>
+
+<span class="p">(</span><span class="nf">filter</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> 
+            <span class="p">(</span><span class="nb">equal? </span><span class="p">(</span><span class="nb">string-ref </span><span class="p">(</span><span class="nb">symbol-&gt;string </span><span class="nv">x</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span> <span class="sc">#\a</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">alicante</span> <span class="nv">barcelona</span> <span class="nv">madrid</span> <span class="nv">almer</span><span class="err">í</span><span class="nv">a</span><span class="p">))</span> <span class="c1">; ⇒ ?</span>
+
+<span class="p">(</span><span class="nf">fold-right</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">dato</span> <span class="nv">resultado</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="nv">dato</span> <span class="nv">resultado</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ ?</span>
+
+<span class="p">(</span><span class="nf">fold-left</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">resultado</span> <span class="nv">dato</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="nv">dato</span> <span class="nv">resultado</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ ?</span>
 </pre></div>
 </td></tr></table>
 
-<h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
-<p>Implementa utilizando funciones de orden las funciones
-<code>(resultados‐quiniela lista‐parejas)</code>, <code>(cuenta-resultados resultado
-lista-resultados)</code> y <code>(cuenta-resultados-lista lista-resultados)</code> de
-la práctica 3.</p>
-<h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
-<p>Sin utilizar el intérprete DrRacket, rellena los siguientes huecos
+<p>b) Sin utilizar el intérprete DrRacket, rellena los siguientes huecos
 para obtener el resultado esperado. Después usa el intérprete para
 comprobar si has acertado.</p>
-<p>a)</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">______</span> <span class="nv">list</span> <span class="mi">0</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">______</span> <span class="nv">list</span> <span class="mi">0</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
 <span class="c1">; ⇒ {1 {2 {3 0}}}</span>
-</pre></div>
-</td></tr></table>
 
-<p>b)</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">______</span> <span class="nv">list</span> <span class="s">&quot;hola&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;como&quot;</span> <span class="s">&quot;estas&quot;</span> <span class="s">&quot;adios&quot;</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">______</span> <span class="nv">list</span> <span class="s">&quot;hola&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;como&quot;</span> <span class="s">&quot;estas&quot;</span> <span class="s">&quot;adios&quot;</span><span class="p">))</span>
 <span class="c1">; ⇒ {{{&quot;hola&quot; &quot;como&quot;} &quot;estas&quot;} &quot;adios&quot;}</span>
-</pre></div>
-</td></tr></table>
 
-<p>Los siguientes apartados se realizan a partir de la siguiente lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">7</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="mi">10</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)))</span>
-</pre></div>
-</td></tr></table>
 
-<p>c) Queremos obtener una lista donde cada número es la suma de las
-parejas que son pares</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">filter</span> <span class="nv">________</span>
+<span class="c1">; Los siguientes ejercicios se realizan con esta</span>
+<span class="c1">; definición de lista</span>
+
+<span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">7</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="mi">10</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)))</span>
+
+
+<span class="c1">; Queremos obtener una lista donde cada número es la suma de las</span>
+<span class="c1">; parejas que son pares</span>
+
+<span class="p">(</span><span class="nf">filter</span> <span class="nv">________</span>
         <span class="p">(</span><span class="nf">________</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">car </span><span class="nv">x</span><span class="p">)</span>
                                  <span class="p">(</span><span class="nb">cdr </span><span class="nv">x</span><span class="p">)))</span>
                <span class="nv">lista</span><span class="p">))</span>
 <span class="c1">; ⇒ {8 14 10}</span>
-</pre></div>
-</td></tr></table>
 
-<p>d) Queremos obtener una lista de parejas invertidas donde la "nueva"
-parte izquierda es mayor que la derecha.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">filter</span> <span class="nv">___________</span>
+<span class="c1">; Queremos obtener una lista de parejas invertidas donde la &quot;nueva&quot;</span>
+<span class="c1">; parte izquierda es mayor que la derecha.</span>
+
+<span class="p">(</span><span class="nf">filter</span> <span class="nv">___________</span>
         <span class="p">(</span><span class="nb">map </span><span class="nv">____________</span> <span class="nv">lista</span><span class="p">))</span>
 <span class="c1">; ⇒ {{7 . 2} {5 . 3}}</span>
+
+<span class="c1">; Queremos obtener una lista cuyos elementos son las partes izquierda</span>
+<span class="c1">; de aquellas parejas cuya suma sea par.</span>
+
+<span class="p">(</span><span class="nf">fold-right</span> <span class="nv">__________</span> <span class="o">&#39;</span><span class="p">()</span>
+        <span class="p">(</span><span class="nf">_________</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">even? </span><span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">car </span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">x</span><span class="p">))))</span> <span class="nv">lista</span><span class="p">))</span>
+<span class="c1">; ⇒ {3 10 5}</span>
 </pre></div>
 </td></tr></table>
 
-<p>e) Queremos obtener una lista cuyos elementos son las partes izquierda
-de aquellas parejas cuya suma sea par.</p>
+<p>c) Rellena los siguientes huecos <strong>con una única expresión</strong>. Comprueba
+con el intérprete si lo has hecho correctamente.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">f</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">y</span> <span class="nv">z</span><span class="p">)</span> <span class="p">(</span><span class="nb">string-append </span><span class="nv">y</span> <span class="nv">z</span> <span class="nv">x</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define </span><span class="nv">g</span> <span class="p">(</span><span class="nf">f</span> <span class="s">&quot;a&quot;</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">check-equal?</span> <span class="nv">____________________</span> <span class="s">&quot;claselppa&quot;</span><span class="p">)</span>
+
+
+
+<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">f</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">y</span> <span class="nv">z</span><span class="p">)</span> <span class="p">(</span><span class="nb">list </span><span class="nv">y</span> <span class="nv">x</span> <span class="nv">z</span><span class="p">)))</span>
+<span class="nv">_____________</span>
+
+<span class="p">(</span><span class="nf">check-equal?</span> <span class="p">(</span><span class="nf">g</span> <span class="s">&quot;hola&quot;</span> <span class="s">&quot;clase&quot;</span><span class="p">)</span> <span class="p">(</span><span class="nb">list </span><span class="s">&quot;hola&quot;</span> <span class="s">&quot;lpp&quot;</span> <span class="s">&quot;clase&quot;</span><span class="p">))</span>
+
+
+
+<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">f</span> <span class="nv">g</span><span class="p">)</span> <span class="p">(</span><span class="nf">lambda</span><span class="p">(</span><span class="nf">z</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nf">g</span> <span class="nv">z</span> <span class="nv">x</span><span class="p">)))</span>
+<span class="nv">_________</span> <span class="k">=&gt; </span><span class="err">{</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">4</span><span class="err">}</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
+<p>Implementa <strong>utilizando funciones de orden superior</strong> las funciones
+<code>(cartas lista-simbolos)</code> y <code>(cuenta-cartas n lista-parejas)</code> de la
+práctica 3.</p>
+<h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
+<p>Implementa la función <code>(posicion dato lista)</code> que devuelva la
+posición de un dato en una lista o <code>#f</code> si el dato no está en la
+lista. Puedes usar funciones auxiliares y funciones de orden
+superior <strong>pero no recursión</strong>.</p>
+<p>Ejemplos:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(fold-right __________ &#39;()
-        (_________ (lambda (x) (even? (+ (car x) (cdr x)))) lista))
-; ⇒ {3 10 5}
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">posicion</span> <span class="ss">&#39;c</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span> <span class="nv">d</span><span class="p">))</span> <span class="c1">; ⇒ 2</span>
+<span class="p">(</span><span class="nf">posicion</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
 </pre></div>
 </td></tr></table>
 
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
-<p>a) Implementa las funciones constructoras <code>(construye-multiplicador k)</code> y
-<code>(construye-exponenciador k)</code> similares al ejemplo visto en teoría
-<code>(construye-sumador k)</code>.</p>
-<p>La función <code>construye-multiplicador</code> construye una función multiplicadora
-por <code>k</code>. Y la función <code>construye-exponenciador</code> construye una función de un
-argumento <code>x</code> que eleva <code>k</code> a <code>x</code>.</p>
-<p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">multiplica-por-10</span> <span class="p">(</span><span class="nf">construye-multiplicador</span> <span class="mi">10</span><span class="p">))</span>
-<span class="p">(</span><span class="nf">multiplica-por-10</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 30</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">multiplica-por-5</span> <span class="p">(</span><span class="nf">construye-multiplicador</span> <span class="mi">5</span><span class="p">))</span>
-<span class="p">(</span><span class="nf">multiplica-por-5</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 15</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">elevado-2-a</span> <span class="p">(</span><span class="nf">construye-exponenciador</span> <span class="mi">2</span><span class="p">))</span>
-<span class="p">(</span><span class="nf">elevado-2-a</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 8</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">elevado-5-a</span> <span class="p">(</span><span class="nf">construye-exponenciador</span> <span class="mi">5</span><span class="p">))</span>
-<span class="p">(</span><span class="nf">elevado-5-a</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 125</span>
-</pre></div>
-</td></tr></table>
-
-<p>b) La diferencia fundamental entre las funciones anteriores es que
-<code>(construye-exponenciador k)</code> debe fijar a <code>k</code> el primer parámetro de
-la función <code>expt</code>, mientras que <code>(construye-sumador k)</code> y
-<code>(construye-multiplicador k)</code> fijan el segundo parámetro.</p>
-<p>Podemos generalizar estas funciones definiendo la función
-<code>(fija-arg f i k)</code> que recibe una función de dos argumentos <code>f</code>, un
-valor <code>i</code> que indica si queremos fijar el primer parámetro (cuando
-i = 1) o el segundo parámetro (i = 2) y el valor <code>k</code> al que fijamos el
-parámetro correspondiente.</p>
-<p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">suma-10</span> <span class="p">(</span><span class="nf">fija-arg</span> <span class="nv">+</span> <span class="mi">2</span> <span class="mi">10</span><span class="p">))</span>
-<span class="p">(</span><span class="nf">suma-10</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">; ⇒ 18</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">elevado-3-a</span> <span class="p">(</span><span class="nf">fija-arg</span> <span class="nv">expt</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">))</span>
-<span class="p">(</span><span class="nf">elevado-3-a</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ 243</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">a</span><span class="err">ñ</span><span class="nv">ade-asteriscos</span> <span class="p">(</span><span class="nf">fija-arg</span> <span class="nv">string-append</span> <span class="mi">2</span> <span class="s">&quot;****&quot;</span><span class="p">))</span>
-<span class="p">(</span><span class="nf">a</span><span class="err">ñ</span><span class="nv">ade-asteriscos</span> <span class="s">&quot;Hola&quot;</span><span class="p">)</span> <span class="c1">; ⇒ &quot;Hola****&quot;</span>
-<span class="p">(</span><span class="k">define </span><span class="nv">precede-asteriscos</span> <span class="p">(</span><span class="nf">fija-arg</span> <span class="nv">string-append</span> <span class="mi">1</span> <span class="s">&quot;****&quot;</span><span class="p">))</span>
-<span class="p">(</span><span class="nf">precede-asteriscos</span> <span class="s">&quot;Hola&quot;</span><span class="p">)</span> <span class="c1">; ⇒ &quot;****Hola&quot;</span>
-</pre></div>
-</td></tr></table>
-
-<h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
 <p>a) Implementa usando funciones de orden superior la función <code>(suma-n-izq n
 lista-parejas)</code> que recibe una lista de parejas y devuelve otra lista
 a la que hemos sumado <code>n</code> a todas las partes izquierdas.</p>
@@ -614,34 +744,83 @@ función a los elementos izquierdo y derecho de cada pareja.</p>
 </pre></div>
 </td></tr></table>
 
+<h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
+<p>a) Implementa las <strong>funciones constructoras</strong> <code>(construye-multiplicador k)</code> y
+<code>(construye-exponenciador k)</code> similares al ejemplo visto en teoría
+<code>(construye-sumador k)</code>.</p>
+<p>La función <code>construye-multiplicador</code> construye una función multiplicadora
+por <code>k</code>. Y la función <code>construye-exponenciador</code> construye una función de un
+argumento <code>x</code> que eleva <code>k</code> a <code>x</code>.</p>
+<p>Ejemplo:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">multiplica-por-10</span> <span class="p">(</span><span class="nf">construye-multiplicador</span> <span class="mi">10</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">multiplica-por-10</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 30</span>
+<span class="p">(</span><span class="k">define </span><span class="nv">multiplica-por-5</span> <span class="p">(</span><span class="nf">construye-multiplicador</span> <span class="mi">5</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">multiplica-por-5</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 15</span>
+<span class="p">(</span><span class="k">define </span><span class="nv">elevado-2-a</span> <span class="p">(</span><span class="nf">construye-exponenciador</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">elevado-2-a</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 8</span>
+<span class="p">(</span><span class="k">define </span><span class="nv">elevado-5-a</span> <span class="p">(</span><span class="nf">construye-exponenciador</span> <span class="mi">5</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">elevado-5-a</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 125</span>
+</pre></div>
+</td></tr></table>
+
+<p>b) Queremos definir una función constructora que obtenga una <strong>función
+segura</strong> a partir de otra función, como en el ejemplo de teoría. Pero
+en este caso queremos que la función a convertir en segura sea una
+función de dos argumentos.</p>
+<p>Define la función <code>(construye-segura-2 f p)</code> que recibe una
+función <code>f</code> de dos argumentos y un predicado <code>p</code> también de dos
+argumentos y que devuelva una versión segura de la función en la que
+antes de invocarla se debe comprobar si los argumentos cumplen el
+predicado.</p>
+<p>Pruébala con la función <code>es-prefijo?</code> de la práctica anterior,
+y con <code>append</code>.</p>
+<p>Ejemplos de uso:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">es-prefijo-segura?</span> <span class="p">(</span><span class="nf">construye-segura-2</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span> <span class="nv">y</span><span class="p">)</span> <span class="nv">_________</span><span class="p">)</span> <span class="nv">es-prefijo?</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define </span><span class="nv">append-segura</span> <span class="p">(</span><span class="nf">construye-segura-2</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span> <span class="nv">y</span><span class="p">)</span> <span class="nv">_______</span><span class="p">)</span> <span class="nv">append</span><span class="p">))</span>
+
+<span class="p">(</span><span class="nf">es-prefijo-segura?</span> <span class="s">&quot;pre&quot;</span> <span class="s">&quot;prefijo&quot;</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="nf">es-prefijo-segura?</span> <span class="s">&quot;pre&quot;</span> <span class="s">&quot;p&quot;</span><span class="p">)</span> <span class="c1">; ⇒ &#39;error</span>
+<span class="p">(</span><span class="nf">append-segura</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(1 2 3 4 5)</span>
+<span class="p">(</span><span class="nf">append-segura</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ &#39;error</span>
+</pre></div>
+</td></tr></table>
+
 <h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
-<p>a) Utilizando una composición de las funciones de orden superior
-<code>fold-right</code> y <code>map</code>, implementa la función <code>(cadena-mayor lista)</code> que
-recibe un lista de cadenas y devuelve una pareja con la cadena de
-mayor longitud y dicha longitud.  En el caso de que haya más de una
-cadena con la máxima longitud, se devolverá la última de ellas que
-aparezca en la lista.</p>
+<p>a) Completa la definición de la siguiente función de orden superior
+<code>(busca-mayor mayor?  lista)</code> que busca el mayor elemento de una
+lista. Recibe el predicado <code>mayor?</code> que compara dos elementos de la
+lista. Escribe algún <code>check-equal?</code> en los que compruebes su funcionamiento.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cadena-mayor</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;vamos&quot;</span> <span class="s">&quot;a&quot;</span> <span class="s">&quot;obtener&quot;</span> <span class="s">&quot;la&quot;</span> <span class="s">&quot;cadena&quot;</span> <span class="s">&quot;mayor&quot;</span><span class="p">))</span> <span class="c1">; ⇒  {&quot;obtener&quot; . 7}  </span>
-<span class="p">(</span><span class="nf">cadena-mayor</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;prueba&quot;</span> <span class="s">&quot;con&quot;</span> <span class="s">&quot;maximo&quot;</span> <span class="s">&quot;igual&quot;</span><span class="p">))</span> <span class="c1">; ⇒ {&quot;maximo&quot; . 6} </span>
-<span class="p">(</span><span class="nf">cadena-mayor</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;hola&quot;</span><span class="p">))</span> <span class="c1">; ⇒ {&quot;hola&quot; . 4} </span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">busca-mayor</span> <span class="nv">mayor?</span> <span class="nv">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">fold-left</span> <span class="nv">__________</span> <span class="p">(</span><span class="nb">car </span><span class="nv">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">lista</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
-<p>b) La función <code>map</code> de Scheme también puede mapear una función de dos
-argumentos sobre dos listas. Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span> <span class="nv">y</span><span class="p">)</span>
-         <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="nv">y</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="mi">4</span> <span class="mi">4</span> <span class="mi">4</span><span class="p">))</span>
-<span class="c1">; ⇒ {5 6 7 8}</span>
+<p>Implementa, utilizando una composición con la función anterior y otra
+función de orden superior, la función <code>(carta-ganadora
+lista-simbolos)</code> que recibe una lista de símbolos que representan
+cartas (con el formato explicado en la práctica 2) y devuelve la carta
+mayor, en forma de pareja.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">check-equal?</span> <span class="p">(</span><span class="nf">carta-ganadora</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">B6</span> <span class="nv">O3</span> <span class="nv">CC</span> <span class="nv">C2</span> <span class="nv">O7</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">Oros</span> <span class="o">.</span> <span class="mi">9</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
-<p>Implementa la función <code>(filtra-simbolos lista-simbolos lista-num)</code> de
-de la práctica 3, usando una composición de funciones en las que se
-use <code>map</code> como en el ejemplo anterior.</p>
+<p>b) Implementa la función <code>(filtra-simbolos lista-simbolos lista-num)</code> de
+de la práctica 3, usando <strong>una composición de funciones en las que se
+use <code>map</code></strong>.</p>
 <hr />
 <p>Lenguajes y Paradigmas de Programación, curso 2018-19<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
@@ -662,6 +841,27 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../practica03/practica03.html" title="Práctica 3" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Práctica 3
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
