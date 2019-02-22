@@ -78,42 +78,38 @@ comprobar si has acertado.
 ; ⇒ {3 10 5}
 ```
 
+c) Rellena los siguientes huecos **con una única expresión**. Comprueba
+con el intérprete si lo has hecho correctamente.
+
+
+```scheme
+(define (f x) (lambda (y z) (string-append y z x)))
+(define g (f "a"))
+(check-equal? ____________________ "claselppa")
+
+
+
+(define (f x) (lambda (y z) (list y x z)))
+_____________
+
+(check-equal? (g "hola" "clase") (list "hola" "lpp" "clase"))
+
+
+
+(define (f g) (lambda(z x) (g z x)))
+_________ => {3 . 4}
+```
 
 ### Ejercicio 2 ###
 
-Implementa, utilizando funciones de orden superior, las funciones
-`longitud-impar`, `suma-longitudes` y `mayusculas` que reciben una
-lista de símbolos y devuelven:
-
-- `(longitud-impar lista-simbolos)`: una lista con aquellos símbolos
-  que tienen longitud impar.
-- `(suma-longitudes lista-simbolos)`: la suma de las longitudes
-  de todos los símbolos de la lista.
-- `(mayusculas lista-simbolos)`: una lista con los símbolos escritos
-  en mayúscula.
-
-!!!Hint "Pista" 
-    Puedes usar las funciones `symbol->string`, `string->symbol` y
-    `string-upcase`.
-
-Ejemplos:
-
-```scheme
-(define lista '(me gusta LPP porque aprendo nuevos paradigmas de programación)
-(longitud-impar lista) ; ⇒ {gusta LPP aprendo}
-(suma-longitudes lista) ; ⇒ 53
-(mayusculas lista)
-; ⇒ {ME GUSTA LPP PORQUE APRENDO NUEVOS PARADIGMAS DE PROGRAMACIÓN}
-```
+Implementa **utilizando funciones de orden superior** las funciones
+`(cartas lista-simbolos)` y `(cuenta-cartas n lista-parejas)` de la
+práctica 3.
 
 
 ### Ejercicio 3 ###
 
-a) Implementa **utilizando funciones de orden superior** las funciones
-`(cartas lista-simbolos)` y `(cuenta-cartas n lista-parejas)` de la
-práctica 3.
-
-b) Implementa la función `(posicion dato lista)` que devuelva la
+Implementa la función `(posicion dato lista)` que devuelva la
 posición de un dato en una lista o `#f` si el dato no está en la
 lista. Puedes usar funciones auxiliares y funciones de orden
 superior **pero no recursión**.
@@ -126,7 +122,6 @@ Ejemplos:
 ```
 
 ### Ejercicio 4 ###
-
 
 a) Implementa usando funciones de orden superior la función `(suma-n-izq n
 lista-parejas)` que recibe una lista de parejas y devuelve otra lista
@@ -193,9 +188,8 @@ argumentos y que devuelva una versión segura de la función en la que
 antes de invocarla se debe comprobar si los argumentos cumplen el
 predicado.
 
-Pruébala con las funciones `es-prefijo?` de la práctica anterior,
-`append` y alguna otra función que se te ocurra. Para que la prueba
-funcione correctamente deberás completar también la expresión lambda.
+Pruébala con la función `es-prefijo?` de la práctica anterior,
+y con `append`.
 
 Ejemplos de uso:
 
@@ -212,31 +206,29 @@ Ejemplos de uso:
 
 ### Ejercicio 6 ###
 
-a) Utilizando una **composición de las funciones de orden superior
-`fold-right` y `map`**, implementa la función `(cadena-mayor lista)` que
-recibe un lista de cadenas y devuelve una pareja con la cadena de
-mayor longitud y dicha longitud.  En el caso de que haya más de una
-cadena con la máxima longitud, se devolverá la última de ellas que
-aparezca en la lista.
+a) Completa la definición de la siguiente función de orden superior
+`(busca-mayor mayor?  lista)` que busca el mayor elemento de una
+lista. Recibe el predicado `mayor?` que compara dos elementos de la
+lista. Escribe algún `check-equal?` en los que compruebes su funcionamiento.
 
 ```scheme
-(cadena-mayor '("vamos" "a" "obtener" "la" "cadena" "mayor")) ; ⇒  {"obtener" . 7}  
-(cadena-mayor '("prueba" "con" "maximo" "igual")) ; ⇒ {"maximo" . 6} 
-(cadena-mayor '("hola")) ; ⇒ {"hola" . 4} 
-``` 
+(define (busca-mayor mayor? lista)
+  (fold-left __________ (car lista) (cdr lista)))
+```  
 
-b) La función `map` de Scheme también puede mapear una función de dos
-argumentos sobre dos listas. Por ejemplo:
+Implementa, utilizando una composición con la función anterior y otra
+función de orden superior, la función `(carta-ganadora
+lista-simbolos)` que recibe una lista de símbolos que representan
+cartas (con el formato explicado en la práctica 2) y devuelve la carta
+mayor, en forma de pareja.
 
 ```scheme
-(map (lambda (x y)
-         (+ x y)) '(1 2 3 4) '(4 4 4 4))
-; ⇒ {5 6 7 8}
+(check-equal? (carta-ganadora '(B6 O3 CC C2 O7)) '(Oros . 9))
 ```
 
-Implementa la función `(filtra-simbolos lista-simbolos lista-num)` de
+b) Implementa la función `(filtra-simbolos lista-simbolos lista-num)` de
 de la práctica 3, usando **una composición de funciones en las que se
-use `map`** como en el ejemplo anterior.
+use `map`**.
 
 
 ----
