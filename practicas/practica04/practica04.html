@@ -801,14 +801,17 @@ y con <code>append</code>.</p>
 <h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
 <p>a) Completa la definición de la siguiente función de orden superior
 <code>(busca-mayor mayor?  lista)</code> que busca el mayor elemento de una
-lista. Recibe el predicado <code>mayor?</code> que compara dos elementos de la
-lista. Escribe algún <code>check-equal?</code> en los que compruebes su funcionamiento.</p>
+lista. Recibe un predicado <code>mayor?</code> que compara dos elementos de la
+lista y devuelve <code>#t</code> o <code>#f</code> dependiendo de si el primero es mayor que
+el segundo. </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">busca-mayor</span> <span class="nv">mayor?</span> <span class="nv">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="nf">fold-left</span> <span class="nv">__________</span> <span class="p">(</span><span class="nb">car </span><span class="nv">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">lista</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
+<p>Escribe algunos <code>check-equal?</code> en los que compruebes el funcionamiento
+de <code>busca-mayor</code>.</p>
 <p>Implementa, utilizando una composición con la función anterior y otra
 función de orden superior, la función <code>(carta-ganadora
 lista-simbolos)</code> que recibe una lista de símbolos que representan
