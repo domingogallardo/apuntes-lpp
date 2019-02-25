@@ -684,7 +684,7 @@ La función `(hipot x)` devuelve la longitud de la hipotenusa de un
 triángulo rectángulo con dos lados de longitud `x`. O sea, la
 expresión:
 
-$$hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}$$
+<img src="imagenes/hipot.png" width="250px"/>
 
 Como puedes comprobar, el código es imperativo. La forma especial
 `begin` permite realizar una serie de pasos de ejecución que modifican

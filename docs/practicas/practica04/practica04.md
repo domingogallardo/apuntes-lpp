@@ -208,13 +208,17 @@ Ejemplos de uso:
 
 a) Completa la definición de la siguiente función de orden superior
 `(busca-mayor mayor?  lista)` que busca el mayor elemento de una
-lista. Recibe el predicado `mayor?` que compara dos elementos de la
-lista. Escribe algún `check-equal?` en los que compruebes su funcionamiento.
+lista. Recibe un predicado `mayor?` que compara dos elementos de la
+lista y devuelve `#t` o `#f` dependiendo de si el primero es mayor que
+el segundo. 
 
 ```scheme
 (define (busca-mayor mayor? lista)
   (fold-left __________ (car lista) (cdr lista)))
 ```  
+
+Escribe algunos `check-equal?` en los que compruebes el funcionamiento
+de `busca-mayor`.
 
 Implementa, utilizando una composición con la función anterior y otra
 función de orden superior, la función `(carta-ganadora
