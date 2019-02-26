@@ -109,20 +109,6 @@ práctica 3.
 
 ### Ejercicio 3 ###
 
-Implementa la función `(posicion dato lista)` que devuelva la
-posición de un dato en una lista o `#f` si el dato no está en la
-lista. Puedes usar funciones auxiliares y funciones de orden
-superior **pero no recursión**.
-
-Ejemplos:
-
-```scheme
-(posicion 'c '(a b c d)) ; ⇒ 2
-(posicion 10 '(1 2 3 4 5)) ; ⇒ #f
-```
-
-### Ejercicio 4 ###
-
 a) Implementa usando funciones de orden superior la función `(suma-n-izq n
 lista-parejas)` que recibe una lista de parejas y devuelve otra lista
 a la que hemos sumado `n` a todas las partes izquierdas.
@@ -150,6 +136,29 @@ Ejemplo:
                  y
                  (* y -1))) '((2 . 3) (1 . 3) (5 . 4) (8 . 10)))
 ; ⇒ {3 -3 -4 10}
+```
+
+
+### Ejercicio 4 ###
+
+Implementa la función `(posicion dato lista)` que devuelva la
+posición de un dato en una lista o `#f` si el dato no está en la
+lista. Puedes usar funciones auxiliares y funciones de orden
+superior **pero no recursión**.
+
+!!! Hint "Pista"
+    Puedes utilizar la función `fold-left` para recorrer la lista de
+    izquierda a derecha buscando el dato. Puedes usar como resultado
+    del `fold-left` una pareja en cuya parte derecha vayamos calculando 
+    la posicion y en la parte izquierda haya un booleano que indique
+    si hemos encontrado o no el dato.
+    
+
+Ejemplos:
+
+```scheme
+(posicion 'c '(a b c d)) ; ⇒ 2
+(posicion 10 '(1 2 3 4 5)) ; ⇒ #f
 ```
 
 
