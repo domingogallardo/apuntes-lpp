@@ -191,11 +191,10 @@ segura** a partir de otra función, como en el ejemplo de teoría. Pero
 en este caso queremos que la función a convertir en segura sea una
 función de dos argumentos.
 
-Define la función `(construye-segura-2 f p)` que recibe una
-función `f` de dos argumentos y un predicado `p` también de dos
-argumentos y que devuelva una versión segura de la función en la que
-antes de invocarla se debe comprobar si los argumentos cumplen el
-predicado.
+Define la función `(construye-segura-2 p f)` que recibe un predicado
+`p` de dos argumentos y una función `f` también de dos argumentos y
+que devuelva una versión segura de la función en la que antes de
+invocarla se debe comprobar si los argumentos cumplen el predicado.
 
 Pruébala con la función `es-prefijo?` de la práctica anterior,
 y con `append`.
