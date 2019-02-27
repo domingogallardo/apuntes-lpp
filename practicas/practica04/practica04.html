@@ -782,11 +782,10 @@ argumento <code>x</code> que eleva <code>k</code> a <code>x</code>.</p>
 segura</strong> a partir de otra función, como en el ejemplo de teoría. Pero
 en este caso queremos que la función a convertir en segura sea una
 función de dos argumentos.</p>
-<p>Define la función <code>(construye-segura-2 f p)</code> que recibe una
-función <code>f</code> de dos argumentos y un predicado <code>p</code> también de dos
-argumentos y que devuelva una versión segura de la función en la que
-antes de invocarla se debe comprobar si los argumentos cumplen el
-predicado.</p>
+<p>Define la función <code>(construye-segura-2 p f)</code> que recibe un predicado
+<code>p</code> de dos argumentos y una función <code>f</code> también de dos argumentos y
+que devuelva una versión segura de la función en la que antes de
+invocarla se debe comprobar si los argumentos cumplen el predicado.</p>
 <p>Pruébala con la función <code>es-prefijo?</code> de la práctica anterior,
 y con <code>append</code>.</p>
 <p>Ejemplos de uso:</p>
