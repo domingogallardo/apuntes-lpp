@@ -567,24 +567,29 @@ para poder probar la _memoization_.
 
 ```scheme
 (import (rnrs)
-      (rnrs mutable-pairs))
+        (rnrs mutable-pairs))
 
 (define lista (list 'lista-asoc))
 
+(define (buscar key lista)
+   (cond ((null? lista) #f)
+         ((equal? (caar lista) key) (car lista))
+         (else (buscar key (cdr lista)))))
+
 (define (get key lista)
-  (define record (assq key (cdr lista)))
-  (if (not record)
+   (define record (buscar key (cdr lista)))
+   (if (not record)
       '()
       (cdr record)))
 
 (define (put key value lista)
-  (define record (assq key (cdr lista)))
-  (if (not record)
+   (define record (buscar key (cdr lista)))
+   (if (not record)
       (set-cdr! lista
-                (cons (cons key value)
-                      (cdr lista)))
+         (cons (cons key value)
+               (cdr lista)))
       (set-cdr! record value))
-  value)
+   value)
 ```
 
 La función `fib-memo` realiza el cálculo de la serie de Fibonacci
