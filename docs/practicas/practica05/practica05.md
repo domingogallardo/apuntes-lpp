@@ -61,7 +61,8 @@ Ejemplo:
 
 b) Implementa utilizando recursión por la cola la función `(rotar k
 lista)` que mueve `k` elementos de la cabeza de la lista al
-final. **No es necesario utilizar función auxiliar**, puedes usar el
+final. **No es necesario utilizar una función iterativa auxiliar**,
+puedes hacer que la propia función `rotar` sea iterativa usando el
 parámetro `lista` como el parámetro donde acumular el resultado.
 
 Ejemplo:
