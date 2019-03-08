@@ -36,7 +36,7 @@
     
     
       
-        <title>Práctica 5: Procedimientos recursivos - LPP</title>
+        <title>Práctica 5 - LPP</title>
       
     
     
@@ -105,7 +105,7 @@
                 LPP
               </span>
               <span class="md-header-nav__topic">
-                Práctica 5: Procedimientos recursivos
+                Práctica 5
               </span>
             
           
@@ -237,6 +237,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../teoria/tema04-estructuras-recursivas/tema04-estructuras-recursivas.html" title="Tema 4: Estructuras recursivas" class="md-nav__link">
+      Tema 4: Estructuras recursivas
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -282,10 +294,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Prácticas
@@ -342,6 +356,111 @@
     <a href="../practica04/practica04.html" title="Práctica 4" class="md-nav__link">
       Práctica 4
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Práctica 5
+      </label>
+    
+    <a href="practica05.html" title="Práctica 5" class="md-nav__link md-nav__link--active">
+      Práctica 5
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" title="Entrega de la práctica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" title="Ejercicios" class="md-nav__link">
+    Ejercicios
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" title="Ejercicio 1" class="md-nav__link">
+    Ejercicio 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" title="Ejercicio 2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" title="Ejercicio 3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" title="Ejercicio 4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" title="Ejercicio 5" class="md-nav__link">
+    Ejercicio 5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" title="Ejercicio 6" class="md-nav__link">
+    Ejercicio 6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -420,6 +539,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" title="Ejercicio 6" class="md-nav__link">
+    Ejercicio 6
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -455,45 +581,61 @@ solución debe incluir:</p>
 </ul>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
-<p>a) Implementa <strong>utilizando recursión por la cola</strong> la versión iterativa de la función
-<code>(cuadrado-lista lista)</code> que toma como argumento una lista de números
-y devuelve una lista con sus cuadrados.</p>
-<p>La función <code>cuadrado-lista</code> deberá llamar a la función
-<code>cuadrado-lista-iter</code> que es la que implementa propiamente la versión
+<p>a) Implementa una versión recursiva iterativa de la función
+<code>(concat lista)</code> que toma como argumento una lista de cadenas
+y devuelve una cadena resultante de concatenar todas las palabras de
+la lista.</p>
+<p>La función <code>concat</code> deberá llamar a la función
+<code>concat-iter</code> que es la que implementa propiamente la versión
 iterativa usando recursión por la cola.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrado-lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ (4 9 16 25)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">concat</span>  <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;hola&quot;</span> <span class="s">&quot;y&quot;</span> <span class="s">&quot;adiós&quot;</span><span class="p">))</span> <span class="c1">; ⇒ &quot;holayadiós&quot;)</span>
+<span class="p">(</span><span class="nf">concat-iter</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;hola&quot;</span> <span class="s">&quot;y&quot;</span> <span class="s">&quot;adiós&quot;</span><span class="p">)</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="c1">; ⇒ &quot;holayadiós&quot;)</span>
 </pre></div>
 </td></tr></table>
 
-<p>b) Define <strong>utilizando recursión por la cola</strong> la función <code>(max-lista
-lista)</code> que recibe una lista numérica y devuelve el máximo de sus
-elementos.</p>
+<p>b) Define utilizando recursión por la cola la función <code>(min-max
+lista)</code> que recibe una lista numérica y devuelve una pareja con el
+mínimo y el máximo de sus elementos.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">max-lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">5</span> <span class="mi">9</span> <span class="mi">12</span> <span class="mi">5</span> <span class="mi">0</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ 12</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">min-max</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">5</span> <span class="mi">9</span> <span class="mi">12</span> <span class="mi">5</span> <span class="mi">0</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ (0 . 12)</span>
+<span class="p">(</span><span class="nf">min-max-iter</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">5</span> <span class="mi">9</span> <span class="mi">12</span> <span class="mi">5</span> <span class="mi">0</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">2</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">; ⇒ (0 . 12)</span>
 </pre></div>
 </td></tr></table>
 
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
-<p>Implementa <strong>utilizando recursión por la cola</strong> las funciones
+<p>a) Implementa utilizando recursión por la cola las funciones
 <code>expande-pareja</code> y <code>expande</code> de la práctica 3.</p>
+<p>Ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">expande-pareja</span> <span class="p">(</span><span class="nb">cons </span><span class="ss">&#39;a</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ {a a a a}</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">expande-pareja</span> <span class="p">(</span><span class="nb">cons </span><span class="ss">&#39;a</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ {a a a a}</span>
 <span class="p">(</span><span class="nf">expande</span> <span class="o">&#39;</span><span class="p">((</span><span class="no">#t</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="s">&quot;LPP&quot;</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nf">b</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)))</span>
 <span class="err">⇒</span> <span class="err">{</span><span class="no">#t</span> <span class="no">#t</span> <span class="no">#t</span> <span class="s">&quot;LPP&quot;</span> <span class="s">&quot;LPP&quot;</span> <span class="nv">b</span> <span class="nv">b</span> <span class="nv">b</span> <span class="nv">b</span><span class="err">}</span>
 </pre></div>
 </td></tr></table>
 
-<h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
-<p>Implementa <strong>utilizando recursión por la cola</strong> función <code>(aplica-funciones
-lista-parejas)</code> que recibe una lista de parejas <code>{{función
-. argumento} ...}</code> y devuelve la lista con los resultados de aplicar
-cada función al argumento situado en la parte derecha de la pareja.</p>
+<p>b) Implementa utilizando recursión por la cola la función <code>(rotar k
+lista)</code> que mueve <code>k</code> elementos de la cabeza de la lista al
+final. <strong>No es necesario utilizar función auxiliar</strong>, puedes usar el
+parámetro <code>lista</code> como el parámetro donde acumular el resultado.</p>
 <p>Ejemplo:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">rotar</span> <span class="mi">4</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span> <span class="nv">d</span> <span class="nv">e</span> <span class="nv">f</span> <span class="nv">g</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(e f g a b c d)</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
+<p>Implementa utilizando recursión por la cola la función <code>mi-fold-left</code>
+que haga lo mismo que la función de orden superior <code>fold-left</code>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">aplica-funciones</span> <span class="p">(</span><span class="nb">list </span><span class="p">(</span><span class="nb">cons </span><span class="nv">sqrt</span> <span class="mi">16</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="nv">list</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="nv">even?</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="nv">not</span> <span class="no">#f</span><span class="p">)))</span> 
-<span class="c1">; ⇒ {4 {2} #f #t}</span>
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">mi-fold-left</span> <span class="nv">-</span> <span class="mi">0</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ -6</span>
+<span class="p">(</span><span class="nf">mi-fold-left</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">res</span> <span class="nv">dato</span><span class="p">)</span>
+                         <span class="p">(</span><span class="nb">cons </span><span class="nv">dato</span> <span class="nv">res</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<span class="c1">; ⇒ &#39;(3 2 1)</span>
 </pre></div>
 </td></tr></table>
 
@@ -520,21 +662,32 @@ lista con el número hexadecimal correspondiente en forma de cadena:</p>
 </td></tr></table>
 
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
+<p>Realiza una implementación que utilice la <a href="https://domingogallardo.github.io/apuntes-lpp/teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html#soluciones-al-coste-de-la-recursion-memoization">técnica de la
+<em>memoization</em></a>
+del algoritmo que devuelve la <a href="https://domingogallardo.github.io/apuntes-lpp/teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html#triangulo-de-pascal">serie de
+Pascal</a>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">pascal-memo</span> <span class="mi">8</span> <span class="mi">4</span> <span class="nv">lista</span><span class="p">)</span> <span class="c1">; ⇒ 70</span>
+<span class="p">(</span><span class="nf">pascal-memo</span> <span class="mi">40</span> <span class="mi">20</span> <span class="nv">lista</span><span class="p">)</span> <span class="c1">; ⇒ 137846528820</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
 <p>a) Usando gráficos de tortuga, implementa la función
 <code>(piramide-hexagonal lado decremento)</code> que dibuje hexágonos
 concéntricos con el lado inicial <code>lado</code> y que cada vez vaya
 decrementando ese valor con el <code>decremento</code>.</p>
 <p>Por ejemplo, la llamada a <code>(piramide-hexagonal 150 10)</code> debe dibujar
 la siguiente figura:</p>
+<p><img src="imagenes/hexagono.png" width="300px"/></p>
 <p><strong>Pista</strong>: el desplazamiento que debe realizar la tortuga antes de
 dibujar cada hexágono es de <code>decremento</code>, en la dirección del ángulo
 que va al centro del hexágono.</p>
-<p><img src="imagenes/hexagono.png" width="300px"/></p>
-<p>b) Define la función <code>(alfombra-sierpinski tam min)</code> que construya la
+<p>b) Define la función <code>(alfombra-sierpinski tam)</code> que construya la
 Alfombra de Sierpinski (una variante del Triágulo de Sierpinski que
 hemos visto en teoría) de lado <code>tam</code> píxeles utilizando gráficos de
 tortuga. </p>
-<p>Por ejemplo, la llamada a <code>(alfombra-sierpinski 500 6)</code> debe dibujar la
+<p>Por ejemplo, la llamada a <code>(alfombra-sierpinski 500)</code> debe dibujar la
 siguiente figura:</p>
 <p><img src="imagenes/alfombra-sierpinski.png" width="400px"/></p>
 <hr />
@@ -557,6 +710,27 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../practica04/practica04.html" title="Práctica 4" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Práctica 4
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
