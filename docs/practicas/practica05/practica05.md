@@ -16,56 +16,72 @@ solución debe incluir:
 
 ### Ejercicio 1  ###
 
-a) Implementa **utilizando recursión por la cola** la versión iterativa de la función
-`(cuadrado-lista lista)` que toma como argumento una lista de números
-y devuelve una lista con sus cuadrados.
+a) Implementa una versión recursiva iterativa de la función
+`(concat lista)` que toma como argumento una lista de cadenas
+y devuelve una cadena resultante de concatenar todas las palabras de
+la lista.
 
-La función `cuadrado-lista` deberá llamar a la función
-`cuadrado-lista-iter` que es la que implementa propiamente la versión
+La función `concat` deberá llamar a la función
+`concat-iter` que es la que implementa propiamente la versión
 iterativa usando recursión por la cola.
 
 Ejemplo:
 
 ```scheme
-(cuadrado-lista '(2 3 4 5)) ; ⇒ (4 9 16 25)
+(concat  '("hola" "y" "adiós")) ; ⇒ "holayadiós")
+(concat-iter '("hola" "y" "adiós") "") ; ⇒ "holayadiós")
 ```
 
 
-b) Define **utilizando recursión por la cola** la función `(max-lista
-lista)` que recibe una lista numérica y devuelve el máximo de sus
-elementos.
+b) Define utilizando recursión por la cola la función `(min-max
+lista)` que recibe una lista numérica y devuelve una pareja con el
+mínimo y el máximo de sus elementos.
 
 Ejemplo:
 
 ```scheme
-(max-lista '(2 5 9 12 5 0 4)) ; ⇒ 12
+(min-max '(2 5 9 12 5 0 4)) ; ⇒ (0 . 12)
+(min-max-iter '(5 9 12 5 0 4) (cons 2 2)) ; ⇒ (0 . 12)
 ```
 
 
 ### Ejercicio 2 ###
 
-Implementa **utilizando recursión por la cola** las funciones
+a) Implementa utilizando recursión por la cola las funciones
 `expande-pareja` y `expande` de la práctica 3.
 
+Ejemplo:
+
 ```scheme
-(expande-pareja (cons 'a 4)) ; ⇒ {a a a a}
+(expande-pareja (cons 'a 4) ; ⇒ {a a a a}
 (expande '((#t . 3) ("LPP" . 2) (b . 4)))
 ⇒ {#t #t #t "LPP" "LPP" b b b b}
 ```
 
 
-### Ejercicio 3
-
-Implementa **utilizando recursión por la cola** función `(aplica-funciones
-lista-parejas)` que recibe una lista de parejas `{{función
-. argumento} ...}` y devuelve la lista con los resultados de aplicar
-cada función al argumento situado en la parte derecha de la pareja.
+b) Implementa utilizando recursión por la cola la función `(rotar k
+lista)` que mueve `k` elementos de la cabeza de la lista al
+final. **No es necesario utilizar función auxiliar**, puedes usar el
+parámetro `lista` como el parámetro donde acumular el resultado.
 
 Ejemplo:
 
 ```scheme
-(aplica-funciones (list (cons sqrt 16) (cons list 2) (cons even? 5) (cons not #f))) 
-; ⇒ {4 {2} #f #t}
+(rotar 4 '(a b c d e f g)) ; ⇒ '(e f g a b c d)
+```
+
+
+### Ejercicio 3
+
+Implementa utilizando recursión por la cola la función `mi-fold-left`
+que haga lo mismo que la función de orden superior `fold-left`.
+
+
+```scheme
+(mi-fold-left - 0 '(1 2 3)) ; ⇒ -6
+(mi-fold-left (lambda (res dato)
+                         (cons dato res)) '() '(1 2 3))
+; ⇒ '(3 2 1)
 ```
 
 ### Ejercicio 4 ###
@@ -95,6 +111,19 @@ lista con el número hexadecimal correspondiente en forma de cadena:
 
 ### Ejercicio 5 ###
 
+Realiza una implementación que utilice la [técnica de la
+_memoization_](https://domingogallardo.github.io/apuntes-lpp/teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html#soluciones-al-coste-de-la-recursion-memoization)
+del algoritmo que devuelve la [serie de
+Pascal](https://domingogallardo.github.io/apuntes-lpp/teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html#triangulo-de-pascal).
+
+```scheme
+(pascal-memo 8 4 lista) ; ⇒ 70
+(pascal-memo 40 20 lista) ; ⇒ 137846528820
+```
+
+
+### Ejercicio 6 ###
+
 a) Usando gráficos de tortuga, implementa la función
 `(piramide-hexagonal lado decremento)` que dibuje hexágonos
 concéntricos con el lado inicial `lado` y que cada vez vaya
@@ -103,18 +132,18 @@ decrementando ese valor con el `decremento`.
 Por ejemplo, la llamada a `(piramide-hexagonal 150 10)` debe dibujar
 la siguiente figura:
 
+<img src="imagenes/hexagono.png" width="300px"/>
+
 **Pista**: el desplazamiento que debe realizar la tortuga antes de
 dibujar cada hexágono es de `decremento`, en la dirección del ángulo
 que va al centro del hexágono.
 
-<img src="imagenes/hexagono.png" width="300px"/>
-
-b) Define la función `(alfombra-sierpinski tam min)` que construya la
+b) Define la función `(alfombra-sierpinski tam)` que construya la
 Alfombra de Sierpinski (una variante del Triágulo de Sierpinski que
 hemos visto en teoría) de lado `tam` píxeles utilizando gráficos de
 tortuga. 
 
-Por ejemplo, la llamada a `(alfombra-sierpinski 500 6)` debe dibujar la
+Por ejemplo, la llamada a `(alfombra-sierpinski 500)` debe dibujar la
 siguiente figura:
 
 <img src="imagenes/alfombra-sierpinski.png" width="400px"/>
