@@ -1,4 +1,4 @@
-# Práctica 5: Procedimientos recursivos
+# Práctica 5: Procedimientos recursivos e iterativos
 
 ## Entrega de la práctica
 
