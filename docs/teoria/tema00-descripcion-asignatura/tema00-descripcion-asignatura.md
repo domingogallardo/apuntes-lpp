@@ -337,7 +337,7 @@ Para ampliar algunos conceptos se recomiendan los dos siguientes manuales:
 
 * Harold Abelson y Gerald Jay Sussman, *Structure and Interpretation
   of Computer Programs*, MIT Press, 1996
-* [Enlace a la edición on-line](http://mitpress.mit.edu/sicp/full-text/book/book.html)
+* [Enlace a la edición on-line](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html)
 * Signatura en la Biblioteca Politécnica: I.06/ABE/STR
 
 <img src="imagenes/swift-cover.png" width="170px"/>
