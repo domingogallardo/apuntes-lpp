@@ -59,7 +59,7 @@ es una lista estructurada con 4 elementos:
 
 Se puede construir con cualquiera de las siguientes expresiones:
 
-```
+```scheme
 (define lista (list 'a 'b (list 'c 'd 'e) (list 'f (list 'g 'h))))
 (define lista '(a b (c d e) (f (g h))))
 ```
@@ -67,7 +67,7 @@ Se puede construir con cualquiera de las siguientes expresiones:
 Una lista formada por parejas la consideraremos una lista plana, ya
 que no contiene ninguna sublista. Por ejemplo, la lista
 
-```
+```scheme
 '((a . 3) (b . 5) (c . 12))
 ```
 
@@ -82,7 +82,7 @@ Vamos a escribir las definiciones anteriores de `hoja`, `plana` y
 
 Un dato es una hoja si no es una lista:
 
-```
+```scheme
 (define (hoja? dato)
    (not (list? dato)))
 ```
@@ -91,7 +91,7 @@ Utilizaremos esta función para comprobar si un determinado elemento de
 una lista es o no una hoja. Por ejemplo, supongamos la siguiente
 lista:
 
-```
+```scheme
 '((1 2) 3 4 (5 6))
 ```
 
@@ -99,7 +99,7 @@ Es una lista de 4 elementos, siendo el primero y el último otras
 sublistas y el segundo y el tercero hojas. Podemos comprobar si son o
 no hojas sus elementos:
 
-```
+```scheme
 (define lista '((1 2) 3 4 (5 6)))
 (hoja? (car lista)) ; ⇒ #f
 (hoja? (cadr lista)) ; ⇒ #t
@@ -109,7 +109,7 @@ no hojas sus elementos:
 
 La lista vacía no es una hoja
 
-```
+```scheme
 (hoja? '()) ; ⇒ #f
 ```
 
@@ -127,7 +127,7 @@ Y el caso base:
 Usando esta definición recursiva, podemos implementar en Scheme la
 función `(plana? lista)` que comprueba si una lista es plana:
 
-```
+```scheme
 (define (plana? lista)
    (or (null? lista)
        (and (hoja? (car lista))
@@ -158,7 +158,7 @@ lista cumplen una propiedad. En esta caso, ser hoja.
 Una lista es estructurada cuando alguno de sus elementos es otra
 lista. Como caso base, una lista vacía no es estructurada.
 
-```
+```scheme
 (define (estructurada? lista)
    (and (not (null? lista))
         (or (list? (car lista))
@@ -186,7 +186,7 @@ lista.
 Realmente bastaría con haber hecho una de las dos definiciones y
 escribir la otra como la negación de la primera:
 
-```
+```scheme
 (define (estructurada? lista)
    (not (plana? lista)))
 ```
@@ -265,7 +265,7 @@ el número de hojas de una lista estructurada.
 
 Por ejemplo:
 
-```
+```scheme
 (num-hojas '((1 2) (3 4 (5) 6) (7))) ⇒ 7
 ```
 
