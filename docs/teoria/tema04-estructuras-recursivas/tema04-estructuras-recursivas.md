@@ -143,17 +143,26 @@ Ejemplos:
 (plana? '(a () b)) ; ⇒ #f
 ```
 
+Se podría también implementar la función `plana?` usando la función de
+orden superior `for-all` que comprueba que todos los elementos de una
+lista cumplen una propiedad. En esta caso, ser hoja.
+
+```scheme
+(define (plana-fos? lista)
+  (for-all hoja? lista))
+```
+
 
 ##### Función `(estructurada? lista)`
 
-Una lista es estructurada cuando alguno de sus elementos es otra lista:
+Una lista es estructurada cuando alguno de sus elementos es otra
+lista. Como caso base, una lista vacía no es estructurada.
 
 ```
 (define (estructurada? lista)
-   (if (null? lista)
-      #f
-      (or (list? (car lista))
-          (estructurada? (cdr lista)))))
+   (and (not (null? lista))
+        (or (list? (car lista))
+            (estructurada? (cdr lista)))))
 ```
 
 Ejemplos:
@@ -163,6 +172,15 @@ Ejemplos:
 (estructurada? (list (cons 'a 1) (cons 'b 2) (cons 'c 3))) ; ⇒ #f
 (estructurada? '(a () b)) ; ⇒ #t
 (estructurada? '(a (b c) d)) ; ⇒ #t
+```
+
+Se podría implementar también usando la función de orden superior
+`exists` para consultar si algún elemento de la lista es también otra
+lista.
+
+```scheme
+(define (estructurada-fos? lista)
+  (exists list? lista))
 ```
 
 Realmente bastaría con haber hecho una de las dos definiciones y
@@ -182,9 +200,9 @@ elementos.
 Por ejemplo, las expresiones de Scheme son listas estructuradas:
 
 ```scheme
-(= 4 (+ 2 2))
-(if (= x y) (* x y) (+ (/ x y) 45))
-(define (factorial x) (if (= x 0) 1 (* x (factorial (- x 1)))))
+'(= 4 (+ 2 2))
+'(if (= x y) (* x y) (+ (/ x y) 45))
+'(define (factorial x) (if (= x 0) 1 (* x (factorial (- x 1)))))
 ```
 
 El análisis sintáctico de una oración puede generar una lista
@@ -221,9 +239,11 @@ Las hojas `d` y `e` están en el nivel 1 y en las posiciones 2 y 3 de
 la lista y las hojas `a`, `b` y `c` en el nivel 2 y en la posición 1
 de la lista.
 
-> UNA LISTA ESTRUCTURADA NO ES UN ÁRBOL  
-> Una lista estructurada no es un árbol propiamente dicho, porque
-> todos los datos están en las hojas.
+!!! Important "Importante"
+    UNA LISTA ESTRUCTURADA NO ES UN ÁRBOL  
+    Una lista estructurada no es un árbol propiamente dicho, porque
+    todos los datos están en las hojas. En una estructura de árbol los
+    datos están en todos los nodos, tanto las hojas como en las raíces.
 
 Otro ejemplo. ¿Cuál sería la representación en niveles de la siguiente
 lista estructurada?:
