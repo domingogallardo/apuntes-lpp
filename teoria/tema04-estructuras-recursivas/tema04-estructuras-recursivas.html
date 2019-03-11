@@ -645,17 +645,25 @@ función <code>(plana? lista)</code> que comprueba si una lista es plana:</p>
 </pre></div>
 </td></tr></table>
 
+<p>Se podría también implementar la función <code>plana?</code> usando la función de
+orden superior <code>for-all</code> que comprueba que todos los elementos de una
+lista cumplen una propiedad. En esta caso, ser hoja.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">plana-fos?</span> <span class="nv">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">for-all</span> <span class="nv">hoja?</span> <span class="nv">lista</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
 <h5>Función <code>(estructurada? lista)</code></h5>
-<p>Una lista es estructurada cuando alguno de sus elementos es otra lista:</p>
+<p>Una lista es estructurada cuando alguno de sus elementos es otra
+lista. Como caso base, una lista vacía no es estructurada.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define (estructurada? lista)
-   (if (null? lista)
-      #f
-      (or (list? (car lista))
-          (estructurada? (cdr lista)))))
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define (estructurada? lista)
+   (and (not (null? lista))
+        (or (list? (car lista))
+            (estructurada? (cdr lista)))))
 </pre></div>
 </td></tr></table>
 
@@ -667,6 +675,15 @@ función <code>(plana? lista)</code> que comprueba si una lista es plana:</p>
 <span class="p">(</span><span class="nf">estructurada?</span> <span class="p">(</span><span class="nb">list </span><span class="p">(</span><span class="nb">cons </span><span class="ss">&#39;a</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="ss">&#39;b</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="ss">&#39;c</span> <span class="mi">3</span><span class="p">)))</span> <span class="c1">; ⇒ #f</span>
 <span class="p">(</span><span class="nf">estructurada?</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="p">()</span> <span class="nv">b</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="nf">estructurada?</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="p">(</span><span class="nf">b</span> <span class="nv">c</span><span class="p">)</span> <span class="nv">d</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+</pre></div>
+</td></tr></table>
+
+<p>Se podría implementar también usando la función de orden superior
+<code>exists</code> para consultar si algún elemento de la lista es también otra
+lista.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">estructurada-fos?</span> <span class="nv">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">exists</span> <span class="nv">list?</span> <span class="nv">lista</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
@@ -685,9 +702,9 @@ elementos.</p>
 <p>Por ejemplo, las expresiones de Scheme son listas estructuradas:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">= </span><span class="mi">4</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">2</span><span class="p">))</span>
-<span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="nv">x</span> <span class="nv">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">/ </span><span class="nv">x</span> <span class="nv">y</span><span class="p">)</span> <span class="mi">45</span><span class="p">))</span>
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">factorial</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="nv">x</span> <span class="mi">0</span><span class="p">)</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="p">(</span><span class="nf">factorial</span> <span class="p">(</span><span class="nb">- </span><span class="nv">x</span> <span class="mi">1</span><span class="p">)))))</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="nv">=</span> <span class="mi">4</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">2</span><span class="p">))</span>
+<span class="o">&#39;</span><span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="nv">x</span> <span class="nv">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">/ </span><span class="nv">x</span> <span class="nv">y</span><span class="p">)</span> <span class="mi">45</span><span class="p">))</span>
+<span class="o">&#39;</span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">factorial</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="nv">x</span> <span class="mi">0</span><span class="p">)</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="p">(</span><span class="nf">factorial</span> <span class="p">(</span><span class="nb">- </span><span class="nv">x</span> <span class="mi">1</span><span class="p">)))))</span>
 </pre></div>
 </td></tr></table>
 
@@ -720,11 +737,13 @@ c) d e)</code> es la siguiente:</p>
 <p>Las hojas <code>d</code> y <code>e</code> están en el nivel 1 y en las posiciones 2 y 3 de
 la lista y las hojas <code>a</code>, <code>b</code> y <code>c</code> en el nivel 2 y en la posición 1
 de la lista.</p>
-<blockquote>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
 <p>UNA LISTA ESTRUCTURADA NO ES UN ÁRBOL<br />
 Una lista estructurada no es un árbol propiamente dicho, porque
-todos los datos están en las hojas.</p>
-</blockquote>
+todos los datos están en las hojas. En una estructura de árbol los
+datos están en todos los nodos, tanto las hojas como en las raíces.</p>
+</div>
 <p>Otro ejemplo. ¿Cuál sería la representación en niveles de la siguiente
 lista estructurada?:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1123,7 +1142,7 @@ Los nodos hoja serán por tanto listas de un elemento, el propio dato
 Por ejemplo, el árbol anterior lo representaremos en Scheme con la
 siguiente lista:
 
-wzxhzdk:37
+wzxhzdk:39
 
 Los elementos de esta lista son:
 
@@ -1138,7 +1157,7 @@ Los elementos de esta lista son:
 
 Podríamos definir el árbol con la siguiente sentencia:
 
-wzxhzdk:38
+wzxhzdk:40
 
 Otro ejemplo más. ¿Cómo se implementa en Scheme el árbol de la siguiente figura?
 
@@ -1146,7 +1165,7 @@ Otro ejemplo más. ¿Cómo se implementa en Scheme el árbol de la siguiente fig
 
 Se haría con la lista de la siguiente sentencia:
 
-wzxhzdk:39
+wzxhzdk:41
 
 #### Barrera de abstracción
 
@@ -1170,7 +1189,7 @@ dato compuesto reciben el nombre de **selectores**.
 
 Funciones que obtienen los elementos de un árbol:
 
-wzxhzdk:40
+wzxhzdk:42
 
 Es importante tener claro los tipos devueltos por las dos primeras
 funciones:
@@ -1182,7 +1201,7 @@ funciones:
 Por ejemplo, en el árbol `arbol1` las funciones anteriores devuelven
 los siguientes valores:
 
-wzxhzdk:41
+wzxhzdk:43
 
 - La llamada `(dato-arbol arbol1)` devuelve el dato que hay en la raíz
   del árbol, el símbolo `+`
@@ -1215,7 +1234,7 @@ dato. Recordemos que `hijos-arbol` devuelve la lista de árboles hijos,
 por lo que utilizaremos las funciones `car` y `cdr` para recorrerlas y
 obtener los elementos que nos interesen:
 
-wzxhzdk:42
+wzxhzdk:44
 
 
 **Constructor**
@@ -1225,7 +1244,7 @@ Definimos una función constructora que abstrae la construcción de un
 necesitamos un dato y una lista de árboles hijos. Si la lista de
 árboles hijos es vacía, tendremos un nodo hoja.
 
-wzxhzdk:43
+wzxhzdk:45
 
 Llamaremos a la función `construye-arbol` pasando su dato
 (obligatorio) y la lista de arboles hijos. Si se pasa una lista vacía
@@ -1233,14 +1252,14 @@ como parámetro se estará definiendo un nodo hoja.
 
 Por ejemplo, para definir un nodo hoja con el dato 2:
 
-wzxhzdk:44
+wzxhzdk:46
 
 Y para definir un árbol con 3 hijos:
 
-wzxhzdk:45
+wzxhzdk:47
 El árbol 1 anterior se puede construir con las siguientes llamadas al constructor:
 
-wzxhzdk:46
+wzxhzdk:48
 
 #### Diferencia entre árboles y listas estructuradas
 
@@ -1280,13 +1299,13 @@ de un árbol como la suma del dato de su raíz y lo que devuelva la
 llamada a una función auxiliar que sume los datos de su lista de hijos
 (un bosque):
 
-wzxhzdk:47
+wzxhzdk:49
 
 Esta función suma los datos de **UN** árbol. La podemos utilizar
 entonces para construir la siguiente función que suma una lista de
 árboles:
 
-wzxhzdk:48
+wzxhzdk:50
 
 Tenemos una **recursión mutua**: para sumar los datos de una lista de
 árboles llamamos a la suma de un árbol individual que a su vez llama a
@@ -1295,7 +1314,7 @@ suma de un árbol hoja. Entonces se pasa a `suma-datos-bosque` una
 lista vacía y ésta devolverá 0.
 
 
-wzxhzdk:49
+wzxhzdk:51
 
 **Versión alternativa con funciones de orden superior**
 
@@ -1303,21 +1322,21 @@ Al igual que hacíamos con las listas estructuradas, es posible
 conseguir una versión más concisa y elegante utilizando funciones de
 orden superior:
 
-wzxhzdk:50
+wzxhzdk:52
 
 La función `map` aplica la propia función que estamos definiendo a
 cada uno de los árboles de `(hijos-arbol arbol)`, devolviendo una lista
 de números. Esta lista de número la sumamos haciendo un `fold-right +
 0`. Una traza de su funcionamiento sería la siguiente:
 
-wzxhzdk:51
+wzxhzdk:53
 
 #### `(to-list-arbol arbol)`
 
 Queremos diseñar una función `(to-list-arbol arbol)` que devuelva una
 lista con los datos del árbol en un recorrido *preorden*.
 
-wzxhzdk:52
+wzxhzdk:54
 
 La función utiliza una *recursión mutua*: para listar todos los nodos,
 añadimos el dato a la lista de nodos que nos devuelve la función
@@ -1328,11 +1347,11 @@ de nodos del resto de árboles (que devuelve la llamada recursiva).
 
 Ejemplo:
 
-wzxhzdk:53
+wzxhzdk:55
 
 Una definición alternativa usando funciones de orden superior:
 
-wzxhzdk:54
+wzxhzdk:56
 
 Esta versión es muy elegante y concisa. Usa la función `map` que
 aplica una función a los elementos de una lista y devuelve la lista
@@ -1347,15 +1366,15 @@ Veamos ahora la función `(cuadrado-arbol arbol)` que toma un árbol de
 números y devuelve un árbol con la misma estructura y sus datos
 elevados al cuadrado:
 
-wzxhzdk:55
+wzxhzdk:57
 
 Ejemplo:
 
-wzxhzdk:56
+wzxhzdk:58
 
 Versión 2, con la función de orden superior `map`:
 
-wzxhzdk:57
+wzxhzdk:59
 
 #### `map-arbol`
 
@@ -1363,15 +1382,15 @@ La función `map-arbol` es una función de orden superior que generaliza
 la función anterior. Definimos un parámetro adicional en el que se
 pasa la función a aplicar a los elementos del árbol.
 
-wzxhzdk:58
+wzxhzdk:60
 
 Ejemplos:
 
-wzxhzdk:59
+wzxhzdk:61
 
 Con `map`:
 
-wzxhzdk:60
+wzxhzdk:62
 
 
 #### `altura-arbol`
@@ -1382,16 +1401,16 @@ Vamos por último a definir una función que devuelve la altura de un
 
 Solución 1:
 
-wzxhzdk:61
+wzxhzdk:63
 
 Ejemplos:
 
 
-wzxhzdk:62
+wzxhzdk:64
 
 Solución con funciones de orden superior:
 
-wzxhzdk:63
+wzxhzdk:65
 
 La función `map` mapea sobre los árboles hijos la propia función que
 calcula la altura del hijo (será uno menos que la altura del padre, 0
@@ -1427,12 +1446,12 @@ utilizaremos una lista vacía para indicar un nodo vacío.
 
 De esta manera, un nodo hoja con el dato 10 se representará en Scheme con la lista:
 
-wzxhzdk:64
+wzxhzdk:66
 
 Por ejemplo, representamos el árbol de la figura anterior con la
 siguiente lista:
 
-wzxhzdk:65
+wzxhzdk:67
 
 #### Barrera de abstracción ####
 
@@ -1442,22 +1461,22 @@ binarios. Terminamos todos los nombres de las funciones con el sufijo
 
 **Selectores**
 
-wzxhzdk:66
+wzxhzdk:68
 
 **Constructor**
 
-wzxhzdk:67
+wzxhzdk:69
 
 Por ejemplo, para construir un árbol con 10 en la raíz y 8 en su hijo
 izquierdo y 15 en su derecho utilizando el constructor de la barrera
 de abstracción:
 
-wzxhzdk:68
+wzxhzdk:70
 
 Otro ejemplo, el árbol binario de la figura anterior utilizando el
 constructor de la barrera de abstracción:
 
-wzxhzdk:69
+wzxhzdk:71
 
 ### Funciones recursivas sobre árboles binarios
 
@@ -1470,18 +1489,18 @@ Veamos las siguientes funciones recursivas sobre árboles binarios:
 
 **suma-datos-arbolb**
 
-wzxhzdk:70
+wzxhzdk:72
 
 
 
 **to-list-arbolb**
 
-wzxhzdk:71
+wzxhzdk:73
 
 
 **cuadrado-arbolb**
 
-wzxhzdk:72
+wzxhzdk:74
 
 -->
 
