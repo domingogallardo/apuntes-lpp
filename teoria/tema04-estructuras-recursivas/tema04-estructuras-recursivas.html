@@ -562,14 +562,14 @@ el contexto de la programación funcional <em>expresiones-S</em>
 </ul>
 <p>Se puede construir con cualquiera de las siguientes expresiones:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define lista (list &#39;a &#39;b (list &#39;c &#39;d &#39;e) (list &#39;f (list &#39;g &#39;h))))
-(define lista &#39;(a b (c d e) (f (g h))))
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="p">(</span><span class="nb">list </span><span class="ss">&#39;a</span> <span class="ss">&#39;b</span> <span class="p">(</span><span class="nb">list </span><span class="ss">&#39;c</span> <span class="ss">&#39;d</span> <span class="ss">&#39;e</span><span class="p">)</span> <span class="p">(</span><span class="nb">list </span><span class="ss">&#39;f</span> <span class="p">(</span><span class="nb">list </span><span class="ss">&#39;g</span> <span class="ss">&#39;h</span><span class="p">))))</span>
+<span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="p">(</span><span class="nf">c</span> <span class="nv">d</span> <span class="nv">e</span><span class="p">)</span> <span class="p">(</span><span class="nf">f</span> <span class="p">(</span><span class="nf">g</span> <span class="nv">h</span><span class="p">))))</span>
 </pre></div>
 </td></tr></table>
 
 <p>Una lista formada por parejas la consideraremos una lista plana, ya
 que no contiene ninguna sublista. Por ejemplo, la lista</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&#39;((a . 3) (b . 5) (c . 12))
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">((</span><span class="nf">a</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nf">b</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="nf">c</span> <span class="o">.</span> <span class="mi">12</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
@@ -580,15 +580,15 @@ que no contiene ninguna sublista. Por ejemplo, la lista</p>
 <h5>Función <code>(hoja? dato)</code></h5>
 <p>Un dato es una hoja si no es una lista:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define (hoja? dato)
-   (not (list? dato)))
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">hoja?</span> <span class="nv">dato</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">not </span><span class="p">(</span><span class="nb">list? </span><span class="nv">dato</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
 <p>Utilizaremos esta función para comprobar si un determinado elemento de
 una lista es o no una hoja. Por ejemplo, supongamos la siguiente
 lista:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&#39;((1 2) 3 4 (5 6))
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="mi">4</span> <span class="p">(</span><span class="mi">5</span> <span class="mi">6</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
@@ -599,16 +599,16 @@ no hojas sus elementos:</p>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define lista &#39;((1 2) 3 4 (5 6)))
-(hoja? (car lista)) ; ⇒ #f
-(hoja? (cadr lista)) ; ⇒ #t
-(hoja? (caddr lista)) ; ⇒ #t
-(hoja? (cadddr lista)) ; ⇒ #f
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="mi">4</span> <span class="p">(</span><span class="mi">5</span> <span class="mi">6</span><span class="p">)))</span>
+<span class="p">(</span><span class="nf">hoja?</span> <span class="p">(</span><span class="nb">car </span><span class="nv">lista</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="nf">hoja?</span> <span class="p">(</span><span class="nb">cadr </span><span class="nv">lista</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="nf">hoja?</span> <span class="p">(</span><span class="nb">caddr </span><span class="nv">lista</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="nf">hoja?</span> <span class="p">(</span><span class="nb">cadddr </span><span class="nv">lista</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
 </pre></div>
 </td></tr></table>
 
 <p>La lista vacía no es una hoja</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(hoja? &#39;()) ; ⇒ #f
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">hoja?</span> <span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ #f</span>
 </pre></div>
 </td></tr></table>
 
@@ -627,10 +627,10 @@ función <code>(plana? lista)</code> que comprueba si una lista es plana:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define (plana? lista)
-   (or (null? lista)
-       (and (hoja? (car lista))
-            (plana? (cdr lista)))))
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">plana?</span> <span class="nv">lista</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">or </span><span class="p">(</span><span class="nb">null? </span><span class="nv">lista</span><span class="p">)</span>
+       <span class="p">(</span><span class="k">and </span><span class="p">(</span><span class="nf">hoja?</span> <span class="p">(</span><span class="nb">car </span><span class="nv">lista</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">plana?</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">lista</span><span class="p">)))))</span>
 </pre></div>
 </td></tr></table>
 
@@ -660,10 +660,10 @@ lista. Como caso base, una lista vacía no es estructurada.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define (estructurada? lista)
-   (and (not (null? lista))
-        (or (list? (car lista))
-            (estructurada? (cdr lista)))))
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">estructurada?</span> <span class="nv">lista</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">and </span><span class="p">(</span><span class="nb">not </span><span class="p">(</span><span class="nb">null? </span><span class="nv">lista</span><span class="p">))</span>
+        <span class="p">(</span><span class="k">or </span><span class="p">(</span><span class="nb">list? </span><span class="p">(</span><span class="nb">car </span><span class="nv">lista</span><span class="p">))</span>
+            <span class="p">(</span><span class="nf">estructurada?</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">lista</span><span class="p">)))))</span>
 </pre></div>
 </td></tr></table>
 
@@ -690,8 +690,8 @@ lista.</p>
 <p>Realmente bastaría con haber hecho una de las dos definiciones y
 escribir la otra como la negación de la primera:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define (estructurada? lista)
-   (not (plana? lista)))
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">estructurada?</span> <span class="nv">lista</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">not </span><span class="p">(</span><span class="nf">plana?</span> <span class="nv">lista</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
@@ -760,7 +760,7 @@ lista estructurada?:</p>
 <p>Veamos como primer ejemplo la función <code>(num-hojas lista)</code> que cuenta
 el número de hojas de una lista estructurada.</p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(num-hojas &#39;((1 2) (3 4 (5) 6) (7))) ⇒ 7
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">num-hojas</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="mi">4</span> <span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="mi">7</span><span class="p">)))</span> <span class="err">⇒</span> <span class="mi">7</span>
 </pre></div>
 </td></tr></table>
 
