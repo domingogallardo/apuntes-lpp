@@ -1,4 +1,4 @@
-# Práctica 6: Listas estructuradas
+# Práctica 5: Listas estructuradas
 
 ## Entrega de la práctica
 
@@ -17,8 +17,9 @@ solución debe incluir:
 ### Ejercicio 1 ###
 
 a) Escribe la lista estructurada correspondiente a la siguiente
-representación gráfica por niveles, y escribe una única expresión que
-devuelva el elemento 'h
+representación gráfica por niveles. Para comprobar si la has definido
+correctamente puedes intentar obtener algunos de los elementos de la
+lista, como mostramos en el `check-equal?` que hay a continuación.
 
 ```text
        *
@@ -33,13 +34,14 @@ devuelva el elemento 'h
 
 ```scheme
 (define lista-a '(________))
-(check-equal? _________ 'h)
+(check-equal? (cadddr (caddr lista-a)) 'h)
 ```
 
 
 b) Escribe la lista estructurada correspondiente a la siguiente
-representación gráfica por niveles, y escribe una única expresión que
-devuelva el elemento 10
+representación gráfica por niveles. Comprueba que está definida
+correctamente haciendo algunos `check-equal?` que obtengan algunos de
+sus elementos.
 
 ```text
       *
@@ -53,14 +55,15 @@ devuelva el elemento 10
 
 ```scheme
 (define lista-b '(________))
-(check-equal? _______ 10)
 ```
 
 
 ### Ejercicio 2  ###
 
-a) Define la función recursiva `(cuenta-pares lista)` que recibe una
-lista estructurada y cuenta la cantidad de números pares que contiene
+Implementa la función recursiva `(cuenta-pares lista)` que recibe una
+lista estructurada y cuenta la cantidad de números pares que
+contiene. Implementa dos versiones de la función, una con
+**recursión pura** y otra con **funciones de orden superior**.
 
 Ejemplos:
 
@@ -69,14 +72,12 @@ Ejemplos:
 (cuenta-pares '(((1 2) 3 (4) 5) ((((6)))))) ; ⇒ 3
 ```
 
-b) Define la función del apartado anterior utilizando funciones de
-orden superior.
-
 ### Ejercicio 3 ###
 
 a) Implementa la función `(cumplen-predicado pred lista)` que devuelva
 una lista con todos los elementos de lista estructurada que cumplen un
-predicado.
+predicado. Implementa dos versiones, una **recursiva pura** y otra usando
+**funciones de orden superior**.
 
 Ejemplo:
 
@@ -85,14 +86,44 @@ Ejemplo:
 (cumplen-predicado pair? '(((1 . 2) 3 (4 . 3) 5) 6)) ; ⇒ {{1 . 2} {4 . 3}
 ```
 
-b) Implementa la función del apartado anterior utilizando funciones de
-orden superior.
+Utilizando la función anterior implementa las siguientes funciones:
+
+- Función `(busca-mayores n lista-num)` que recibe una lista
+  estructurada con números y un número `n` y devuelve una lista plana
+  con los números de la lista original mayores que `n`.
+  
+  ```scheme
+  (busca-mayores '(-1 (20 (10 12) (30 (25 (15))))) 10) ; ⇒ {20 12 30 25 15}
+  ```
+
+- Función `(empieza-por char lista-pal)` que recibe una lista
+  estructurada con símbolos y un carácter `char` y devuelve una lista
+  plana con los símbolos de la lista original que comienzan por el
+  carácter `char`.
+  
+  ```scheme
+  (empieza-por #\m '((hace (mucho tiempo)) (en) (una galaxia ((muy muy) lejana))) ; ⇒ {mucho muy muy}
+  ```
+
+
+b) Implementa la función recursiva `(mayor-plana lista)` que devuelve
+la lista plana de mayor longitud de la lista estructurada `lista`. En
+el caso en que haya más de una lista plana de igual longitud se
+devolverá la que se encuentra situada más a la derecha.
+
+Ejemplos:
+
+```scheme
+(mayor-plana '(a b c)) ; ⇒ '(a b c)
+(mayor-plana '((a b) (a (b (c d))) g)) ; ⇒ '(c d)
+(mayor-plana '((a b) (a (b (c d e f))) g)) ; ⇒ '(c d e f)
+```
 
 
 ### Ejercicio 4 ###
 
-Implementa la función recursiva `(sustituye-elem lista elem-old
-elem-new)` que recibe como argumentos una lista estructurada y dos
+a) Implementa la función recursiva `(sustituye-elem elem-old
+elem-new lista)` que recibe como argumentos una lista estructurada y dos
 elementos, y devuelve otra lista con la misma estructura, pero en la
 que se ha sustituido las ocurrencias de `elem-old` por `elem-new`.
 
@@ -104,9 +135,7 @@ Ejemplo:
 ```
 
 
-### Ejercicio 5 ###
-
-Implementa la función recursiva `(diff-listas l1 l2)` que tome como
+b) Implementa la función recursiva `(diff-listas l1 l2)` que tome como
 argumentos dos listas estructuradas con la misma estructura, pero con
 diferentes elementos, y devuelva una lista de parejas que contenga los
 elementos que son diferentes.
@@ -122,7 +151,7 @@ Ejemplos:
 ```
 
 
-### Ejercicio 6 ###
+### Ejercicio 5 ###
 
 Dos funciones sobre niveles:
 
@@ -150,6 +179,6 @@ recursión o con funciones de orden superior.
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2018-19  
+Lenguajes y Paradigmas de Programación, curso 2019-19  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
