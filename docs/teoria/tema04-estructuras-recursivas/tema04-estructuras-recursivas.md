@@ -566,8 +566,6 @@ Por ejemplo:
 (map-lista (lambda (x) (* x x)) '(2 3 (4 (5)))) ⇒ (4 9 (16 (25))
 ```
 
-<!--
-
 ## Árboles
 
 ### Definición de árboles en Scheme
@@ -602,24 +600,26 @@ El árbol anterior tiene como dato de la raíz es el símbolo `+` y tiene
 
 #### Representación de árboles con listas
 
-En Scheme tenemos como estructura de datos principal la lista. ¿Cómo
-construimos un árbol usando listas?
+En Scheme la lista es la estructura de datos principal. ¿Cómo
+podemos construir un árbol usando listas?
 
-La forma de hacerlo será usar **una lista de _n+1_ elems** para
-representar un árbol con n hijos:
+Podemos hacerlo de varias formas, pero escogemos la siguiente: usar
+**una lista de _n+1_ elems** para representar un árbol con n hijos:
 
 - el primer elemento la lista será el dato de la raíz
 - el resto serán los árboles hijos
 
 > Árbol: '(dato hijo-1 hijo-2 ... hijo-n)
 
-Los nodos hoja serán por tanto listas de un elemento, el propio dato
-(no tiene más elementos porque no tiene hijos)
+Los nodos hoja (datos al final del árbol que no tienen ningún hijo)
+son también árboles. Al no tener hijos, como listas con un único
+elemento, el propio dato:
 
 > Nodo hoja: '(dato)
 
-Por ejemplo, el árbol anterior lo representaremos en Scheme con la
-siguiente lista:
+<img src="imagenes/arbol-sencillo.png" width="250px"/>
+
+La forma de representar el árbol anterior será la siguiente lista:
 
 ```scheme
 '(+ (5) (* (2) (3)) (10))
@@ -655,20 +655,17 @@ Se haría con la lista de la siguiente sentencia:
 #### Barrera de abstracción
 
 Una vez definida la forma de representar árboles, vamos a definir las
-funciones para manejarlos. Veremos las funciones para obtener el dato
+funciones básicas para manejarlos. Veremos las funciones para obtener el dato
 y los hijos y la función para construir un árbol nuevo. Estas
-funciones proporcionarán lo que se denomina _barrera de abstracción_
+funciones proporcionan lo que se denomina _barrera de abstracción_
 del tipo datos *árbol*.
 
 En todos los nombres de las funciones de la barrera de abstracción
 añadimos el sufijo `-arbol`.
 
-Definimos dos conjuntos de funciones: constructores para construir un
-nuevo árbol y selectores para obtener los elementos del árbol. Vamos a
+Definimos dos conjuntos de funciones: **constructores** para construir un
+nuevo árbol y **selectores** para obtener los elementos del árbol. Vamos a
 empezar por los selectores.
-
-Las funciones que permiten obtener los elementos que constituyen un
-dato compuesto reciben el nombre de **selectores**.
 
 **Selectores**
 
@@ -688,12 +685,17 @@ Funciones que obtienen los elementos de un árbol:
 Es importante tener claro los tipos devueltos por las dos primeras
 funciones:
 
-- `(dato-arbol arbol)`: devuelve el dato de la raíz del árbol.
-- `(hijos-arbol arbol)`: devuelve una lista de árboles hijos. En
-  algunas ocasiones llamaremos *bosque* a una lista de árboles.
+- `(dato-arbol arbol)`: devuelve **el dato** de la raíz del árbol.
+- `(hijos-arbol arbol)`: devuelve **una lista de árboles** hijos. En
+  algunas ocasiones llamaremos *bosque* a una lista de
+  árboles. Podremos recorrer esa lista usando las funciones `car` y
+  `cdr` para obtener los árboles hijos.
 
-Por ejemplo, en el árbol `arbol1` las funciones anteriores devuelven
-los siguientes valores:
+Volvemos a mostrar el `arbol1` para comprobar estas funciones.
+
+<img src="imagenes/arbol-sencillo.png" width="250px"/>
+
+Las funciones anteriores devuelven los siguientes valores:
 
 ```scheme
 (dato-arbol arbol1) ; ⇒ +
@@ -705,14 +707,18 @@ los siguientes valores:
   del árbol, el símbolo `+`
 - La invocación `(hijos-arbol arbol1)` devuelve una lista de tres
   elementos, los árboles hijos: `'((5) (* (2) (3)) (10))`:
-    - El primer elemento es la lista `'(5)`, que representa el árbol
+    - El primer elemento se puede obtener con la función `(car
+      (hijos-arbol arbol))` y es la lista `'(5)`, que representa el árbol
       hoja formado por el `5`
     - El segundo es la lista `'(* (2) (3))`, que representa el árbol
-      formado por el `*` en su raíz y las hojas `2` y `3`
-    - El tercero es la lista `'(10)`, que representa el árbol hoja
-      `10`.
-- El primer elemento de la lista de hijos es un árbol hoja:
-  `(hoja-arbol? (car (hijos-arbol arbol1))) ⇒ #t`
+      formado por el `*` en su raíz y las hojas `2` y `3`. Se puede
+      obtener con la llamada `(cadr (hijos-arbol arbol))`.
+    - El tercero es el árbol hoja `10`, representado por la lista
+      `'(10)`, que se puede obtener con la llamada `(caddr
+      (hijos-arbol arbol))`.
+- El primer y el tercer elemento de la lista de hijos son árboles hoja:
+  `(hoja-arbol? (car (hijos-arbol arbol1))) ⇒ #t` y `(hoja-arbol?
+  (caddr (hijos-arbol arbol1))) ⇒ #t`.
 				   
 Es muy importante considerar en cada caso con qué tipo de dato estamos
 trabajando y usar la barrera de abstracción adecuada en cada caso:
@@ -723,7 +729,7 @@ trabajando y usar la barrera de abstracción adecuada en cada caso:
   es un árbol y debemos de usar las funciones de su barrera de
   abstracción: `dato-arbol` e `hijos-arbol`.
 - La función `dato-arbol` devuelve un dato de árbol, del tipo que
-  guardemos en el árbol.
+  guardemos en el árbol. En el caso del árbol ejemplo es un número.
 
 Por ejemplo, para obtener el número 2 en el árbol anterior tendríamos
 que hacer lo siguiente: acceder al segundo elemento de la lista de
@@ -751,7 +757,7 @@ necesitamos un dato y una lista de árboles hijos. Si la lista de
 
 Llamaremos a la función `construye-arbol` pasando su dato
 (obligatorio) y la lista de arboles hijos. Si se pasa una lista vacía
-como parámetro se estará definiendo un nodo hoja.
+como parámetro estaremos definiendo un nodo hoja.
 
 Por ejemplo, para definir un nodo hoja con el dato 2:
 
@@ -775,7 +781,7 @@ El árbol 1 anterior se puede construir con las siguientes llamadas al construct
                           (construye-arbol 10 '()))
 ```
 
-#### Diferencia entre árboles y listas estructuradas
+#### Barreras de abstracción de árboles y listas estructuradas
 
 Es importante diferenciar la barrera de abstracción de los árboles de
 la de las listas estructuradas. Aunque un árbol se implementa en
@@ -786,6 +792,14 @@ El siguiente esquema resumen las características de los selectores de
 la barrera de abstracción de listas y árboles:
 
 <img src="imagenes/barrera-abstraccion.png" width="550px">
+
+!!! Important "Importante"
+    Es muy importante usar la barrera de abstracción al trabajar con
+    árboles porque así separamos nuestro código de la implementación
+    subyacente del tipo de dato. De esta forma es posible cambiar la
+    implementación del tipo de dato sin afectar a las funciones que hemos
+    definido usando la barrera. Lo único que hay que hacer es cambiar la
+    implementación de la barrera de abstracción.
 
 ### Funciones recursivas sobre árboles
 
@@ -801,7 +815,7 @@ Vamos a diseñar las siguientes funciones recursivas:
 
 Todas comparten un patrón similar de recursión mutua.
 
-#### `(suma-datos-arbol arbol)`
+#### Función `(suma-datos-arbol arbol)`
 
 Vamos a implementar una función recursiva que sume todos los datos de
 un árbol.
@@ -811,7 +825,7 @@ ser vacía) que obtenemos con las funciones `dato-arbol` e
 `hijos-arbol`. Podemos plantear entonces el problema de sumar los datos
 de un árbol como la suma del dato de su raíz y lo que devuelva la
 llamada a una función auxiliar que sume los datos de su lista de hijos
-(un bosque):
+(llamamos _bosque_ a una lista de hijos):
 
 ```scheme
 (define (suma-datos-arbol arbol)
@@ -819,7 +833,7 @@ llamada a una función auxiliar que sume los datos de su lista de hijos
        (suma-datos-bosque (hijos-arbol arbol))))
 ```
 
-Esta función suma los datos de **UN** árbol. La podemos utilizar
+Esta función suma los datos de **un** árbol. La podemos utilizar
 entonces para construir la siguiente función que suma una lista de
 árboles:
 
@@ -867,10 +881,12 @@ de números. Esta lista de número la sumamos haciendo un `fold-right +
 28
 ```
 
-#### `(to-list-arbol arbol)`
+#### Función `(to-list-arbol arbol)`
 
 Queremos diseñar una función `(to-list-arbol arbol)` que devuelva una
 lista con los datos del árbol en un recorrido *preorden*.
+
+La solución, siguiendo el patrón visto en `suma-datos`, es la siguiente.
 
 ```scheme
 (define (to-list-arbol arbol)
@@ -884,7 +900,7 @@ lista con los datos del árbol en un recorrido *preorden*.
                (to-list-bosque (cdr bosque)))))
 ```
 
-La función utiliza una *recursión mutua*: para listar todos los nodos,
+La función utiliza también una *recursión mutua*: para listar todos los nodos,
 añadimos el dato a la lista de nodos que nos devuelve la función
 `to-list-bosque`. Esta función coge una lista de árboles (un *bosque*)
 y devuelve la lista *preorden* de sus nodos. Para ello, concatena la
@@ -913,7 +929,7 @@ una lista de árboles podemos aplicar a sus elementos cualquier función
 definida sobre árboles. Incluso la propia función que estamos
 definiendo (¡confía en la recursión!).
 
-#### `(cuadrado-arbol arbol)`
+#### Función `(cuadrado-arbol arbol)`
 
 Veamos ahora la función `(cuadrado-arbol arbol)` que toma un árbol de
 números y devuelve un árbol con la misma estructura y sus datos
@@ -946,7 +962,7 @@ Versión 2, con la función de orden superior `map`:
    	                (map cuadrado-arbol-fos (hijos-arbol arbol))))
 ```
 
-#### `map-arbol`
+#### Función `map-arbol`
 
 La función `map-arbol` es una función de orden superior que generaliza
 la función anterior. Definimos un parámetro adicional en el que se
@@ -983,25 +999,30 @@ Con `map`:
 ```
 
 
-#### `altura-arbol`
+#### Función `altura-arbol`
 
 Vamos por último a definir una función que devuelve la altura de un
 árbol (el nivel del nodo de mayor nivel). Un nodo hoja tiene de altura
 0.
 
-Solución 1:
+Podemos implementarla de una forma similar a como hicimos con las
+listas estructuradas: comprobamos la altura del bosque y sumamos uno
+para compensar el nivel de la raíz.
+
+Para calcular la altura del bosque, devolvemos la máxima altura de sus
+árboles.
 
 ```scheme
 (define (altura-arbol arbol)
    (if (hoja-arbol? arbol)
        0
-       (+ 1 (max-altura-bosque (hijos-arbol arbol)))))  
+       (+ 1 (altura-bosque (hijos-arbol arbol)))))  
 
-(define (max-altura-bosque bosque)
+(define (altura-bosque bosque)
     (if (null? bosque)
         0
         (max (altura-arbol (car bosque))
-             (max-altura-bosque (cdr bosque)))))
+             (altura-bosque (cdr bosque)))))
 ```
 
 Ejemplos:
@@ -1012,14 +1033,16 @@ Ejemplos:
 (altura-arbol '(4 (9 (16) (25)) (36))) ; ⇒ 2
 ```
 
-Solución con funciones de orden superior:
+La solución con funciones de orden superior es también similar a la
+que vimos con listas estructuradas
 
 ```scheme
 (define (altura-arbol-fos arbol)
-   (if (hoja-arbol? arbol)
-       0
-       (+ 1 (fold-right max 0
-               (map altura-arbol-fos (hijos-arbol arbol))))))
+  (+ 1 (fold-right max 0
+              (map (lambda (x)
+                     (if (hoja-arbol? x)
+                         0
+                         (altura-arbol-fos x))) (hijos-arbol arbol)))))
 ```
 	
 La función `map` mapea sobre los árboles hijos la propia función que
@@ -1143,6 +1166,14 @@ Veamos las siguientes funciones recursivas sobre árboles binarios:
 * `(cuadrado-arbolb arbol)`: eleva al cuadrado todos los datos de un
   árbol manteniendo la estructura del árbol original
 
+Estas funciones utilizan una mezcla de los patrones usados en la
+recursión para trabajar con árboles genéricos y la recursión para
+trabajar con listas estructuradas. Tenemos un dato en la raíz, que
+tenemos que combinar con lo que devuelve la recursión aplicada sobre
+el hijo izquierdo y lo que devuelve la recursión aplicada sobre el
+hijo derecho.
+
+
 **suma-datos-arbolb**
 
 ```scheme
@@ -1155,7 +1186,6 @@ Veamos las siguientes funciones recursivas sobre árboles binarios:
 
 (suma-datos-arbolb arbolb2) ; ⇒ 212
 ```
-
 
 
 **to-list-arbolb**
@@ -1174,6 +1204,11 @@ Veamos las siguientes funciones recursivas sobre árboles binarios:
 
 **cuadrado-arbolb**
 
+Por último, la función `cuadrado-arbolb` construye un nuevo árbol
+binario elevando al cuadrado el dato de la raíz, su hijo izquierdo y
+su hijo derecho. Para construir el árbol binario llamamos al
+constructor `construye-arbolb`.
+
 ```scheme
 (define (cuadrado-arbolb arbol)
    (if (vacio-arbolb? arbol)
@@ -1185,14 +1220,11 @@ Veamos las siguientes funciones recursivas sobre árboles binarios:
 (cuadrado-arbolb arbolb1) ; ⇒ (100 (64 () ()) (225 () ()))
 ```
 
--->
-
 
 ## Bibliografía - SICP
 
 En este tema explicamos conceptos de los siguientes capítulos del libro *Structure and Intepretation of Computer Programs*:
 
-- [1.2.2 - Tree Recursion](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-11.html#%_sec_1.2.2)
 - [2.2.2 - Hierarchical Structures](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.2)
 
 ----

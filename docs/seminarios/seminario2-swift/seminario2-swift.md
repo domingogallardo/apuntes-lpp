@@ -127,9 +127,10 @@ root@97265a262a58:/# exit
 
 
 El argumento `-v "${PWD}:/home"` del comando `docker run` hace que el
-contenedor monte el directorio actual en su directorio `/home`. De
-esta forma podemos editar los programas Swift en el ordenador
-anfitrión y ejecutarlos desde línea de comando en el contenedor.
+contenedor monte el **directorio actual** del ordenador anfitrión en
+el directorio `/home` de la máquina docker. De esta forma podemos
+editar los programas Swift en el ordenador anfitrión y ejecutarlos
+desde línea de comando en el contenedor.
 
 Recomendamos utilizar un editor de textos orientado a la programación
 para editar los programas Swift en el ordenador anfitrión. Más
