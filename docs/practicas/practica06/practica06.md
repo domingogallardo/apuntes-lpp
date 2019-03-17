@@ -1,4 +1,4 @@
-# Práctica 5: Listas estructuradas
+# Práctica 6: Listas estructuradas
 
 ## Entrega de la práctica
 
