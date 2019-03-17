@@ -36,7 +36,7 @@
     
     
       
-        <title>Práctica 6: Listas estructuradas - LPP</title>
+        <title>Práctica 6 - LPP</title>
       
     
     
@@ -79,7 +79,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#practica-6-listas-estructuradas" tabindex="1" class="md-skip">
+      <a href="../../#practica-5-listas-estructuradas" tabindex="1" class="md-skip">
         Saltar a contenido
       </a>
     
@@ -105,7 +105,7 @@
                 LPP
               </span>
               <span class="md-header-nav__topic">
-                Práctica 6: Listas estructuradas
+                Práctica 6
               </span>
             
           
@@ -294,10 +294,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Prácticas
@@ -366,6 +368,104 @@
     <a href="../practica05/practica05.html" title="Práctica 5" class="md-nav__link">
       Práctica 5
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Práctica 6
+      </label>
+    
+    <a href="practica06.html" title="Práctica 6" class="md-nav__link md-nav__link--active">
+      Práctica 6
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" title="Entrega de la práctica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" title="Ejercicios" class="md-nav__link">
+    Ejercicios
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" title="Ejercicio 1" class="md-nav__link">
+    Ejercicio 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" title="Ejercicio 2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" title="Ejercicio 3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" title="Ejercicio 4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" title="Ejercicio 5" class="md-nav__link">
+    Ejercicio 5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -444,13 +544,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ejercicio-6" title="Ejercicio 6" class="md-nav__link">
-    Ejercicio 6
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -473,7 +566,7 @@
               
                 
                 
-                <h1 id="practica-6-listas-estructuradas">Práctica 6: Listas estructuradas<a class="headerlink" href="#practica-6-listas-estructuradas" title="Permanent link">&para;</a></h1>
+                <h1 id="practica-5-listas-estructuradas">Práctica 5: Listas estructuradas<a class="headerlink" href="#practica-5-listas-estructuradas" title="Permanent link">&para;</a></h1>
 <h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
 <p>Para entregar la práctica debes subir a Moodle el fichero
 <code>practica06.rkt</code> con una cabecera inicial con tu nombre y apellidos, y
@@ -487,8 +580,9 @@ solución debe incluir:</p>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
 <p>a) Escribe la lista estructurada correspondiente a la siguiente
-representación gráfica por niveles, y escribe una única expresión que
-devuelva el elemento 'h</p>
+representación gráfica por niveles. Para comprobar si la has definido
+correctamente puedes intentar obtener algunos de los elementos de la
+lista, como mostramos en el <code>check-equal?</code> que hay a continuación.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -509,13 +603,14 @@ devuelva el elemento 'h</p>
 
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista-a</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">________</span><span class="p">))</span>
-<span class="p">(</span><span class="nf">check-equal?</span> <span class="nv">_________</span> <span class="ss">&#39;h</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">check-equal?</span> <span class="p">(</span><span class="nb">cadddr </span><span class="p">(</span><span class="nb">caddr </span><span class="nv">lista-a</span><span class="p">))</span> <span class="ss">&#39;h</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p>b) Escribe la lista estructurada correspondiente a la siguiente
-representación gráfica por niveles, y escribe una única expresión que
-devuelva el elemento 10</p>
+representación gráfica por niveles. Comprueba que está definida
+correctamente haciendo algunos <code>check-equal?</code> que obtengan algunos de
+sus elementos.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -532,15 +627,15 @@ devuelva el elemento 10</p>
 </pre></div>
 </td></tr></table>
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista-b</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">________</span><span class="p">))</span>
-<span class="p">(</span><span class="nf">check-equal?</span> <span class="nv">_______</span> <span class="mi">10</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">lista-b</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">________</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
-<p>a) Define la función recursiva <code>(cuenta-pares lista)</code> que recibe una
-lista estructurada y cuenta la cantidad de números pares que contiene</p>
+<p>Implementa la función recursiva <code>(cuenta-pares lista)</code> que recibe una
+lista estructurada y cuenta la cantidad de números pares que
+contiene. Implementa dos versiones de la función, una con
+<strong>recursión pura</strong> y otra con <strong>funciones de orden superior</strong>.</p>
 <p>Ejemplos:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuenta-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span> <span class="p">(</span><span class="mi">5</span> <span class="mi">6</span><span class="p">)))</span> <span class="c1">; ⇒ 3</span>
@@ -548,12 +643,11 @@ lista estructurada y cuenta la cantidad de números pares que contiene</p>
 </pre></div>
 </td></tr></table>
 
-<p>b) Define la función del apartado anterior utilizando funciones de
-orden superior.</p>
 <h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
 <p>a) Implementa la función <code>(cumplen-predicado pred lista)</code> que devuelva
 una lista con todos los elementos de lista estructurada que cumplen un
-predicado.</p>
+predicado. Implementa dos versiones, una <strong>recursiva pura</strong> y otra usando
+<strong>funciones de orden superior</strong>.</p>
 <p>Ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cumplen-predicado</span> <span class="nv">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)))</span> <span class="p">(</span><span class="mi">5</span> <span class="mi">6</span><span class="p">)))</span> <span class="c1">; ⇒ {2 4 6}</span>
@@ -561,11 +655,42 @@ predicado.</p>
 </pre></div>
 </td></tr></table>
 
-<p>b) Implementa la función del apartado anterior utilizando funciones de
-orden superior.</p>
+<p>Utilizando la función anterior implementa las siguientes funciones:</p>
+<ul>
+<li>Función <code>(busca-mayores n lista-num)</code> que recibe una lista
+  estructurada con números y un número <code>n</code> y devuelve una lista plana
+  con los números de la lista original mayores que <code>n</code>.</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">busca-mayores</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">-1</span> <span class="p">(</span><span class="mi">20</span> <span class="p">(</span><span class="mi">10</span> <span class="mi">12</span><span class="p">)</span> <span class="p">(</span><span class="mi">30</span> <span class="p">(</span><span class="mi">25</span> <span class="p">(</span><span class="mi">15</span><span class="p">)))))</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ {20 12 30 25 15}</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>Función <code>(empieza-por char lista-pal)</code> que recibe una lista
+  estructurada con símbolos y un carácter <code>char</code> y devuelve una lista
+  plana con los símbolos de la lista original que comienzan por el
+  carácter <code>char</code>.</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">empieza-por</span> <span class="sc">#\m</span> <span class="o">&#39;</span><span class="p">((</span><span class="nf">hace</span> <span class="p">(</span><span class="nf">mucho</span> <span class="nv">tiempo</span><span class="p">))</span> <span class="p">(</span><span class="nf">en</span><span class="p">)</span> <span class="p">(</span><span class="nf">una</span> <span class="nv">galaxia</span> <span class="p">((</span><span class="nf">muy</span> <span class="nv">muy</span><span class="p">)</span> <span class="nv">lejana</span><span class="p">)))</span> <span class="c1">; ⇒ {mucho muy muy}</span>
+</pre></div>
+</td></tr></table>
+
+<p>b) Implementa la función recursiva <code>(mayor-plana lista)</code> que devuelve
+la lista plana de mayor longitud de la lista estructurada <code>lista</code>. En
+el caso en que haya más de una lista plana de igual longitud se
+devolverá la que se encuentra situada más a la derecha.</p>
+<p>Ejemplos:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">mayor-plana</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(a b c)</span>
+<span class="p">(</span><span class="nf">mayor-plana</span> <span class="o">&#39;</span><span class="p">((</span><span class="nf">a</span> <span class="nv">b</span><span class="p">)</span> <span class="p">(</span><span class="nf">a</span> <span class="p">(</span><span class="nf">b</span> <span class="p">(</span><span class="nf">c</span> <span class="nv">d</span><span class="p">)))</span> <span class="nv">g</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(c d)</span>
+<span class="p">(</span><span class="nf">mayor-plana</span> <span class="o">&#39;</span><span class="p">((</span><span class="nf">a</span> <span class="nv">b</span><span class="p">)</span> <span class="p">(</span><span class="nf">a</span> <span class="p">(</span><span class="nf">b</span> <span class="p">(</span><span class="nf">c</span> <span class="nv">d</span> <span class="nv">e</span> <span class="nv">f</span><span class="p">)))</span> <span class="nv">g</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(c d e f)</span>
+</pre></div>
+</td></tr></table>
+
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
-<p>Implementa la función recursiva <code>(sustituye-elem lista elem-old
-elem-new)</code> que recibe como argumentos una lista estructurada y dos
+<p>a) Implementa la función recursiva <code>(sustituye-elem elem-old
+elem-new lista)</code> que recibe como argumentos una lista estructurada y dos
 elementos, y devuelve otra lista con la misma estructura, pero en la
 que se ha sustituido las ocurrencias de <code>elem-old</code> por <code>elem-new</code>.</p>
 <p>Ejemplo:</p>
@@ -575,8 +700,7 @@ que se ha sustituido las ocurrencias de <code>elem-old</code> por <code>elem-new
 </pre></div>
 </td></tr></table>
 
-<h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
-<p>Implementa la función recursiva <code>(diff-listas l1 l2)</code> que tome como
+<p>b) Implementa la función recursiva <code>(diff-listas l1 l2)</code> que tome como
 argumentos dos listas estructuradas con la misma estructura, pero con
 diferentes elementos, y devuelva una lista de parejas que contenga los
 elementos que son diferentes.</p>
@@ -593,7 +717,7 @@ elementos que son diferentes.</p>
 </pre></div>
 </td></tr></table>
 
-<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
+<h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
 <p>Dos funciones sobre niveles:</p>
 <p>a) Implementa la función <code>(cuenta-hojas-debajo-nivel lista n)</code> que recibe
 una lista estructurada y un número que indica un nivel, y devuelve el
@@ -618,7 +742,7 @@ recursión o con funciones de orden superior.</p>
 </td></tr></table>
 
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2018-19<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2019-19<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
                 
@@ -637,6 +761,27 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../practica05/practica05.html" title="Práctica 5" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Práctica 5
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
