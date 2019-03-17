@@ -612,8 +612,8 @@ Podemos hacerlo de varias formas, pero escogemos la siguiente: usar
 > Árbol: '(dato hijo-1 hijo-2 ... hijo-n)
 
 Los nodos hoja (datos al final del árbol que no tienen ningún hijo)
-son también árboles. Al no tener hijos, como listas con un único
-elemento, el propio dato:
+son también árboles. Al no tener hijos, se representan como listas con
+un único elemento, el propio dato:
 
 > Nodo hoja: '(dato)
 
