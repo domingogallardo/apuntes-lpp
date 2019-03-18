@@ -60,7 +60,7 @@ sus elementos.
 
 ### Ejercicio 2  ###
 
-Implementa la función recursiva `(cuenta-pares lista)` que recibe una
+a) Implementa la función recursiva `(cuenta-pares lista)` que recibe una
 lista estructurada y cuenta la cantidad de números pares que
 contiene. Implementa dos versiones de la función, una con
 **recursión pura** y otra con **funciones de orden superior**.
@@ -70,6 +70,18 @@ Ejemplos:
 ```scheme
 (cuenta-pares '(1 (2 3) 4 (5 6))) ; ⇒ 3
 (cuenta-pares '(((1 2) 3 (4) 5) ((((6)))))) ; ⇒ 3
+```
+
+b) Implementa la función recursiva `(todos-positivos lista)` que
+recibe una lista estructurada con números y comprueba si todos sus
+elementos son positivos. Implementa dos versiones de la función, una con
+**recursión pura** y otra con **funciones de orden superior**.
+
+Ejemplos:
+
+```scheme
+(todos-positivos-fos '(1 (2 (3 (-3))) 4)) ; ⇒ #f
+(todos-positivos-fos '(1 (2 (3 (3))) 4)) ; ⇒ #t
 ```
 
 ### Ejercicio 3 ###
