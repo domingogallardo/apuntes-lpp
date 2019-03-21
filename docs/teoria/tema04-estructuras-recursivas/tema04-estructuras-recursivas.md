@@ -80,11 +80,12 @@ Vamos a escribir las definiciones anteriores de `hoja`, `plana` y
 
 ##### Función `(hoja? dato)`
 
-Un dato es una hoja si no es una lista:
+Definimos una hoja como aquellos elementos de una lista estructurada
+que no son listas:
 
 ```scheme
-(define (hoja? dato)
-   (not (list? dato)))
+(define (hoja? elem)
+   (not (list? elem)))
 ```
 
 Utilizaremos esta función para comprobar si un determinado elemento de
@@ -296,15 +297,15 @@ En la implementación siguiente llamamos siempre a la recursión por el
 determinará dentro de esa llamada recursiva.
 
 ```scheme
-(define (num-hojas x)
+(define (num-hojas elem)
    (cond
-      ((null? x) 0)
-      ((hoja? x) 1)
-      (else (+ (num-hojas (car x))
-               (num-hojas (cdr x))))))
+      ((null? elem) 0)
+      ((hoja? elem) 1)
+      (else (+ (num-hojas (car elem))
+               (num-hojas (cdr elem))))))
 ```
 
-Hay que hacer notar que el parámetro `x` puede ser tanto una lista
+Hay que hacer notar que el parámetro `elem` puede ser tanto una lista
 como un dato atómico (una hoja). Estamos aprovechándonos de la
 característica de Scheme de ser débilmente tipeado para hacer un
 código bastante conciso.
@@ -359,12 +360,12 @@ Como casos base, la altura de una lista vacía o de una hoja (dato) es 0.
 En Scheme:
 
 ```scheme
-(define (altura x)
+(define (altura elem)
    (cond 
-      ((null? x) 0)
-      ((hoja? x) 0)
-      (else (max (+ 1 (altura (car x)))
-                 (altura (cdr x))))))
+      ((null? elem) 0)
+      ((hoja? elem) 0)
+      (else (max (+ 1 (altura (car elem)))
+                 (altura (cdr elem))))))
 ```
 Por ejemplo:
 
@@ -409,13 +410,13 @@ estructura jerárquica de las listas estructuradas.
 Devuelve una lista plana con todas las hojas de la lista.
 
 ```scheme
-(define (aplana x)
+(define (aplana elem)
   (cond
-    ((null? x) '())
-    ((hoja? x) (list x))
+    ((null? elem) '())
+    ((hoja? elem) (list elem))
     (else 
-     (append (aplana (car x))
-             (aplana (cdr x))))))
+     (append (aplana (car elem))
+             (aplana (cdr elem))))))
 ```
 Por ejemplo:
 
@@ -441,12 +442,12 @@ Con funciones de orden superior:
 Comprueba si el `dato` aparece en la lista estructurada. 
 
 ```scheme
-(define (pertenece? dato x)
+(define (pertenece? dato elem)
   (cond 
-    ((null? x) #f)
-    ((hoja? x) (equal? dato x))
-    (else (or (pertenece? dato (car x))
-              (pertenece? dato (cdr x))))))
+    ((null? elem) #f)
+    ((hoja? elem) (equal? dato elem))
+    (else (or (pertenece? dato (car elem))
+              (pertenece? dato (cdr elem))))))
 ```
 
 Ejemplos:
@@ -483,12 +484,12 @@ Ejemplos:
 ```
 
 ```scheme
-(define (nivel-hoja dato x)
+(define (nivel-hoja dato elem)
   (cond
-    ((null? x) -1)
-    ((hoja? x) (if (equal? x dato) 0 -1))
-    (else (max (suma-1-si-mayor-igual-que-0 (nivel-hoja dato (car x)))
-               (nivel-hoja dato (cdr x))))))
+    ((null? elem) -1)
+    ((hoja? elem) (if (equal? elem dato) 0 -1))
+    (else (max (suma-1-si-mayor-igual-que-0 (nivel-hoja dato (car elem)))
+               (nivel-hoja dato (cdr elem))))))
 ```
 
 La función auxiliar se define de la siguiente forma:
@@ -529,13 +530,13 @@ se encuentra:
     ((not y) x)
     (else (max x y))))
 
-(define (nivel-hoja2 dato x)
+(define (nivel-hoja2 dato elem)
   (cond
-    ((null? x) #f)
-    ((hoja? x) (if (equal? x dato) 0 #f))
+    ((null? elem) #f)
+    ((hoja? elem) (if (equal? x dato) 0 #f))
     (else (mayor-nivel-si-encontrado
-               (incrementa-nivel-si-encontrado (nivel-hoja dato (car x)))
-               (nivel-hoja2 dato (cdr x))))))
+               (incrementa-nivel-si-encontrado (nivel-hoja dato (car elem)))
+               (nivel-hoja2 dato (cdr elem))))))
 ```
 
 Las funciones auxiliares `incrementa-nivel-si-encontrado` y
@@ -558,11 +559,11 @@ Devuelve una lista estructurada con la misma estructura y sus números
 elevados al cuadrado.
 
 ```scheme
-(define (cuadrado-lista x)
-  (cond ((null? x) '())
-        ((hoja? x) (* x x))
-        (else (cons (cuadrado-lista (car x))
-                    (cuadrado-lista (cdr x))))))
+(define (cuadrado-lista elem)
+  (cond ((null? elem) '())
+        ((hoja? elem) (* elem elem))
+        (else (cons (cuadrado-lista (car elem))
+                    (cuadrado-lista (cdr elem))))))
 ```
 
 Por ejemplo:
@@ -593,11 +594,11 @@ Devuelve una lista estructurada igual que la original con el resultado
 de aplicar a cada uno de sus hojas la función f
  
 ```scheme
-(define (map-lista f x)
-  (cond ((null? x) '())
-        ((hoja? x) (f x))
-        (else (cons (map-lista f (car x))
-                    (map-lista f (cdr x))))))
+(define (map-lista f elem)
+  (cond ((null? elem) '())
+        ((hoja? elem) (f elem))
+        (else (cons (map-lista f (car elem))
+                    (map-lista f (cdr elem))))))
 ```
 	
 Por ejemplo:
