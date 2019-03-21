@@ -406,6 +406,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../seminarios/seminario2-swift/seminario2-swift.html" title="Seminario de Swift" class="md-nav__link">
+      Seminario de Swift
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1149,6 +1161,62 @@ de un lugar de la lista se devolverá el nivel mayor.</p>
 </pre></div>
 </td></tr></table>
 
+<p>Se puede hacer otra versión de la función anterior, que aproveche que
+Scheme es un lenguaje débilmente tipado y que devuelva <code>#f</code> si el dato no
+se encuentra:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">incrementa-nivel-si-encontrado</span> <span class="nv">x</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">not </span><span class="nv">x</span><span class="p">)</span>
+      <span class="nv">x</span> 
+      <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="mi">1</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">mayor-nivel-si-encontrado</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">cond</span>
+    <span class="p">((</span><span class="nb">not </span><span class="nv">x</span><span class="p">)</span> <span class="nv">y</span><span class="p">)</span>
+    <span class="p">((</span><span class="nb">not </span><span class="nv">y</span><span class="p">)</span> <span class="nv">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">else </span><span class="p">(</span><span class="nb">max </span><span class="nv">x</span> <span class="nv">y</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">nivel-hoja2</span> <span class="nv">dato</span> <span class="nv">x</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">cond</span>
+    <span class="p">((</span><span class="nb">null? </span><span class="nv">x</span><span class="p">)</span> <span class="no">#f</span><span class="p">)</span>
+    <span class="p">((</span><span class="nf">hoja?</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">equal? </span><span class="nv">x</span> <span class="nv">dato</span><span class="p">)</span> <span class="mi">0</span> <span class="no">#f</span><span class="p">))</span>
+    <span class="p">(</span><span class="k">else </span><span class="p">(</span><span class="nf">mayor-nivel-si-encontrado</span>
+               <span class="p">(</span><span class="nf">incrementa-nivel-si-encontrado</span> <span class="p">(</span><span class="nf">nivel-hoja</span> <span class="nv">dato</span> <span class="p">(</span><span class="nb">car </span><span class="nv">x</span><span class="p">)))</span>
+               <span class="p">(</span><span class="nf">nivel-hoja2</span> <span class="nv">dato</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">x</span><span class="p">))))))</span>
+</pre></div>
+</td></tr></table>
+
+<p>Las funciones auxiliares <code>incrementa-nivel-si-encontrado</code> y
+<code>mayor-nivel-si-encontrado</code> realizan la suma de 1 y calculan el máximo
+tratando con los casos en los que alguno de los argumentos es <code>#f</code>
+porque no se ha encontrado el dato.</p>
+<p>Ejemplos:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">nivel-hoja2</span> <span class="ss">&#39;b</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="p">(</span><span class="nf">c</span><span class="p">)))</span> <span class="c1">; ⇒ 1</span>
+<span class="p">(</span><span class="nf">nivel-hoja2</span> <span class="ss">&#39;b</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="p">(</span><span class="nf">b</span><span class="p">)</span> <span class="nv">c</span><span class="p">))</span> <span class="c1">; ⇒ 2</span>
+<span class="p">(</span><span class="nf">nivel-hoja2</span> <span class="ss">&#39;b</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="p">(</span><span class="nf">b</span><span class="p">)</span> <span class="nv">d</span> <span class="p">((</span><span class="nf">b</span><span class="p">))))</span> <span class="c1">; ⇒ 3</span>
+<span class="p">(</span><span class="nf">nivel-hoja2</span> <span class="ss">&#39;b</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">c</span> <span class="nv">d</span> <span class="p">((</span><span class="nf">e</span><span class="p">))))</span> <span class="c1">; ⇒ #f</span>
+</pre></div>
+</td></tr></table>
+
 <h5><code>(cuadrado-lista lista)</code></h5>
 <p>Devuelve una lista estructurada con la misma estructura y sus números
 elevados al cuadrado.</p>
@@ -1165,7 +1233,7 @@ elevados al cuadrado.</p>
 </td></tr></table>
 
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrado-lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span> <span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span> <span class="err">⇒</span> <span class="p">(</span><span class="mi">4</span> <span class="mi">9</span> <span class="p">(</span><span class="mi">16</span> <span class="p">(</span><span class="mi">25</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">cuadrado-lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span> <span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span> <span class="c1">; ⇒ (4 9 (16 (25))</span>
 </pre></div>
 </td></tr></table>
 
@@ -1683,24 +1751,22 @@ para compensar el nivel de la raíz.</p>
 </pre></div>
 </td></tr></table>
 
-<p>La solución con funciones de orden superior es también similar a la
+<p>La solución con funciones de orden superior es algo distinta de la
 que vimos con listas estructuradas</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
-5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">altura-arbol-fos</span> <span class="nv">arbol</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="p">(</span><span class="nf">fold-right</span> <span class="nv">max</span> <span class="mi">0</span>
-              <span class="p">(</span><span class="nb">map </span><span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span>
-                     <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">hoja-arbol?</span> <span class="nv">x</span><span class="p">)</span>
-                         <span class="mi">0</span>
-                         <span class="p">(</span><span class="nf">altura-arbol-fos</span> <span class="nv">x</span><span class="p">)))</span> <span class="p">(</span><span class="nf">hijos-arbol</span> <span class="nv">arbol</span><span class="p">)))))</span>
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">altura-arbol-fos</span> <span class="nv">arbol</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">hoja-arbol?</span> <span class="nv">arbol</span><span class="p">)</span>
+       <span class="mi">0</span>
+      <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span>  <span class="p">(</span><span class="nf">fold-right</span> <span class="nv">max</span> <span class="mi">0</span>
+                           <span class="p">(</span><span class="nb">map </span><span class="nv">altura-arbol-fos</span> <span class="p">(</span><span class="nf">hijos-arbol</span> <span class="nv">arbol</span><span class="p">))))))</span>
 </pre></div>
 </td></tr></table>
 
-<p>La función <code>map</code> mapea sobre los árboles hijos la propia función que
-calcula la altura del hijo (será uno menos que la altura del padre, 0
+<p>La función <code>map</code> mapea sobre los árboles hijos la propia función, que
+calcula la altura de cada hijo (será uno menos que la altura del padre, 0
 si se trata de una hoja).</p>
 <p>La función <code>map</code> devuelve entonces una lista altura de los hijos, de
 la que obtenemos el máximo plegando la lista con la función <code>max</code>. </p>
