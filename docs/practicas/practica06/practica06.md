@@ -105,7 +105,7 @@ Utilizando la función anterior implementa las siguientes funciones:
   con los números de la lista original mayores que `n`.
   
   ```scheme
-  (busca-mayores '(-1 (20 (10 12) (30 (25 (15))))) 10) ; ⇒ {20 12 30 25 15}
+  (busca-mayores 10 '(-1 (20 (10 12) (30 (25 (15)))))) ; ⇒ {20 12 30 25 15}
   ```
 
 - Función `(empieza-por char lista-pal)` que recibe una lista
