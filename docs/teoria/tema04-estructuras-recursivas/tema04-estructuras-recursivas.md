@@ -266,7 +266,7 @@ el número de hojas de una lista estructurada.
 Por ejemplo:
 
 ```scheme
-(num-hojas '((1 2) (3 4 (5) 6) (7))) ⇒ 7
+(num-hojas '((1 2) (3 4 (5) 6) (7))) ; ⇒ 7
 ```
 
 Como hemos comentado antes, una cuestión clave en las funciones que
@@ -369,8 +369,8 @@ En Scheme:
 Por ejemplo:
 
 ```scheme
-(altura '(1 (2 3) 4)) ⇒ 2
-(altura '(1 (2 (3)) 3)) ⇒ 3
+(altura '(1 (2 3) 4)) ; ⇒ 2
+(altura '(1 (2 (3)) 3)) ; ⇒ 3
 ```
 
 ##### Versión con funciones de orden superior
@@ -452,8 +452,8 @@ Comprueba si el `dato` aparece en la lista estructurada.
 Ejemplos:
 
 ```scheme
-(pertenece? 'a '(b c (d (a)))) ⇒ #t
-(pertenece? 'a '(b c (d e (f)) g)) ⇒ #f
+(pertenece? 'a '(b c (d (a)))) ; ⇒ #t
+(pertenece? 'a '(b c (d e (f)) g)) ; ⇒ #f
 ```
 Con funciones de orden superior:
 
@@ -512,6 +512,46 @@ Con funciones de orden superior:
                               (nivel-hoja-fos dato elem)))  lista))))
 ```
 
+
+Se puede hacer otra versión de la función anterior, que aproveche que
+Scheme es un lenguaje débilmente tipado y que devuelva `#f` si el dato no
+se encuentra:
+
+```scheme
+(define (incrementa-nivel-si-encontrado x)
+  (if (not x)
+      x 
+      (+ x 1)))
+
+(define (mayor-nivel-si-encontrado x y)
+  (cond
+    ((not x) y)
+    ((not y) x)
+    (else (max x y))))
+
+(define (nivel-hoja2 dato x)
+  (cond
+    ((null? x) #f)
+    ((hoja? x) (if (equal? x dato) 0 #f))
+    (else (mayor-nivel-si-encontrado
+               (incrementa-nivel-si-encontrado (nivel-hoja dato (car x)))
+               (nivel-hoja2 dato (cdr x))))))
+```
+
+Las funciones auxiliares `incrementa-nivel-si-encontrado` y
+`mayor-nivel-si-encontrado` realizan la suma de 1 y calculan el máximo
+tratando con los casos en los que alguno de los argumentos es `#f`
+porque no se ha encontrado el dato.
+
+Ejemplos:
+
+```scheme
+(nivel-hoja2 'b '(a b (c))) ; ⇒ 1
+(nivel-hoja2 'b '(a (b) c)) ; ⇒ 2
+(nivel-hoja2 'b '(a (b) d ((b)))) ; ⇒ 3
+(nivel-hoja2 'b '(a c d ((e)))) ; ⇒ #f
+```
+
 ##### `(cuadrado-lista lista)`
 
 Devuelve una lista estructurada con la misma estructura y sus números
@@ -528,7 +568,7 @@ elevados al cuadrado.
 Por ejemplo:
 
 ```scheme
-(cuadrado-lista '(2 3 (4 (5)))) ⇒ (4 9 (16 (25))
+(cuadrado-lista '(2 3 (4 (5)))) ; ⇒ (4 9 (16 (25))
 ```
 
 Es muy interesante la versión de esta función con funciones de orden
@@ -563,7 +603,7 @@ de aplicar a cada uno de sus hojas la función f
 Por ejemplo:
 
 ```scheme
-(map-lista (lambda (x) (* x x)) '(2 3 (4 (5)))) ⇒ (4 9 (16 (25))
+(map-lista (lambda (x) (* x x)) '(2 3 (4 (5)))) ; ⇒ (4 9 (16 (25))
 ```
 
 ## Árboles
@@ -1033,20 +1073,19 @@ Ejemplos:
 (altura-arbol '(4 (9 (16) (25)) (36))) ; ⇒ 2
 ```
 
-La solución con funciones de orden superior es también similar a la
+La solución con funciones de orden superior es algo distinta de la
 que vimos con listas estructuradas
 
 ```scheme
 (define (altura-arbol-fos arbol)
-  (+ 1 (fold-right max 0
-              (map (lambda (x)
-                     (if (hoja-arbol? x)
-                         0
-                         (altura-arbol-fos x))) (hijos-arbol arbol)))))
+   (if (hoja-arbol? arbol)
+       0
+      (+ 1  (fold-right max 0
+                           (map altura-arbol-fos (hijos-arbol arbol))))))
 ```
 	
-La función `map` mapea sobre los árboles hijos la propia función que
-calcula la altura del hijo (será uno menos que la altura del padre, 0
+La función `map` mapea sobre los árboles hijos la propia función, que
+calcula la altura de cada hijo (será uno menos que la altura del padre, 0
 si se trata de una hoja).
 
 La función `map` devuelve entonces una lista altura de los hijos, de
