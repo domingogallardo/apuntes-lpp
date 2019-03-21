@@ -579,7 +579,7 @@ superior:
 (define (cuadrado-lista-fos lista)
     (map (lambda (elem)
            (if (hoja? elem)
-               (* sublista elem)
+               (* elem elem)
                (cuadrado-lista-fos elem))) lista))
 ```
 
