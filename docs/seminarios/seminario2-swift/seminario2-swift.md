@@ -48,6 +48,14 @@ un entorno unificado en el que hacer las prácticas.
 A continuación explicamos las distintas formas de ejecutar programas
 Swift.
 
+### Ejecución on-line ###
+
+Existen varios sitios on-line en los que es posible ejecutar código
+Swift. Recomendamos la dirección [http://online.swiftplayground.run](http://online.swiftplayground.run).
+
+<img src="imagenes/swift-on-line.png" width="700px"/>
+
+
 ### Ejecución en una máquina Docker
 
 [Docker](https://docs.docker.com) es una tecnología que ha tenido una gran expansión en los
