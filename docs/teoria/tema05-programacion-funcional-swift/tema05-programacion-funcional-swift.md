@@ -3,12 +3,11 @@
 
 ## Introducción
 
-Te recomendamos que leas el
-[seminario de Swift](https://github.com/domingogallardo/apuntes-lpp/blob/master/seminarios/seminario2-swift/seminario2-swift.md),
+Te recomendamos que leas el seminario de Swift
 en el que se introduce el lenguaje y se explica cómo ejecutar
 programas en este lenguaje:
 
-- [El lenguaje de programación Swift](https://github.com/domingogallardo/apuntes-lpp/blob/master/seminarios/seminario2-swift/seminario2-swift.md#-1-el-lenguaje-de-programación-swift)
+- [Seminario de Swift](https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario2-swift/seminario2-swift.html)
 
 Swift es un lenguaje principalmente imperativo, pero en su diseño se
 han introducido conceptos modernos de programación funcional,
