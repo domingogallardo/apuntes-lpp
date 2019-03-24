@@ -232,24 +232,8 @@ $ tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
 ### Editor de código
 
 Para editar código Swift puedes usar cualquier editor orientado a
-programación. Aconsejamos [Atom](https://atom.io) o [Visual Studio
-Code](https://code.visualstudio.com). Ambos son multi-plataforma.
-
-#### Atom ####
-
-Atom es un editor modular en el que se pueden instalar múltiples
-extensiones desarrolladas por terceros. Para programar con swift es
-conveniente instalar los siguientes paquetes (en **Preferencias >
-Settings > Install Packages**):
-
-- `language-swift`: proporciona coloreado de sintaxis de
-  Swift
-- `platformio-ide-terminal`: proporciona la posibilidad de abrir un
-  terminal en la parte inferior de la ventana.
-
-<img src="imagenes/atom.png" width="700px"/>
-
-Puedes consultar los conceptos básicos de Atom y el manual completo en [este enlace](http://flight-manual.atom.io/getting-started/sections/atom-basics/).
+programación como Visual Studio Code o Atom. Aconsejamos [Visual Studio
+Code](https://code.visualstudio.com).
 
 #### Visual Studio Code ####
 

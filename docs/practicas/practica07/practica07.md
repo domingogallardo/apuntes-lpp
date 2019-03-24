@@ -13,10 +13,18 @@ solución debe incluir:
 
 ## Ejercicios
 
-**Importante**: Copia al principio de la práctica las funciones de las
-barreras de abstracción de árboles y árboles binarios y utiliza esas
-funciones en todos los ejercicios cuando estés realizando operaciones
-sobre árboles.
+!!! Important "Importante"
+    Antes de empezar la práctica debes haber estudiado los apartados
+    de [árboles
+    genéricos](https://domingogallardo.github.io/apuntes-lpp/teoria/tema04-estructuras-recursivas/tema04-estructuras-recursivas.html#arboles)
+    y [árboles
+    binarios](https://domingogallardo.github.io/apuntes-lpp/teoria/tema04-estructuras-recursivas/tema04-estructuras-recursivas.html#arboles-binarios)
+    del tema 4 de teoría.
+
+    Copia al principio de la práctica las funciones de las
+    barreras de abstracción de árboles y árboles binarios y utiliza
+    esas funciones en todos los ejercicios cuando estés realizando
+    operaciones sobre árboles.
 
 
 ### Ejercicio 1 ###
@@ -28,8 +36,8 @@ abstracción de árboles** una expresión que devuelva el número 10.
 <img src="imagenes/arbol.png" width="400px"/>
 
 ```
-(define arbol '(_________))
-(check-equal? __________ 10)
+(define arbol '(------------))
+(check-equal? ------------------- 10)
 ```
 
 a.2) Las funciones que suman los datos de un árbol utilizando
@@ -92,15 +100,14 @@ abstracción de árboles binarios** una expresión que devuelva el número 29.
 <img src="imagenes/arbol-binario.png" width="230px"/>
 
 ```
-(define arbolb '(_________))
-(check-equal? __________ 29)
+(define arbolb '(------------------))
+(check-equal? ---------------------- 29)
 ```
-
 
 
 ### Ejercicio 2 ###
 
-Implementa dos versiones de la función `(to-string-arbol arbol)` que
+a) Implementa dos versiones de la función `(to-string-arbol arbol)` que
 recibe un árbol de símbolos y devuelve la cadena resultante de
 concatenar todos los símbolos en recorrido preorden. Debes implementar
 una versión con recursión mutua y otra (llamada `to-string-arbol-fos`)
@@ -110,65 +117,71 @@ Ejemplo:
 
 ```scheme
 (define arbol2 '(a (b (c (d)) (e)) (f)))
-(to-string-arbol arbol2) ⇒ "abcdef"
+(to-string-arbol arbol2) ; ⇒ "abcdef"
 ```
 
+b) Implementa dos versiones de la función `(veces-arbol dato arbol)` que
+recibe un árbol y un dato y comprueba el número de veces que aparece
+el dato en el árbol. Debes implementar una función con recursión mutua
+y otra con funciones de orden superior.
 
+```scheme
+(veces-arbol 'b '(a (b (c) (d)) (b (b) (f)))) ; ⇒ 3
+(veces-arbol 'g '(a (b (c) (d)) (b (b) (f)))) ; ⇒ 0
+```
 
 ### Ejercicio 3 ###
 
-Decimos que un árbol está ordenado cuando cumple las siguientes
-propiedades:
+a) Implementa, utilizando funciones de orden superior, la función
+`(suma-raices-hijos arbol)` que devuelva la suma de las raíces de los
+hijos de un árbol genérico.
 
-- La raíz es mayor que las raíces de sus hijos.
-- Las raíces de sus hijos están en orden creciente.
-- Todos los hijos son árboles que están ordenados.
+Ejemplo:
 
-Por ejemplo, en la siguiente figura, el primer árbol está ordenado. El
-segundo árbol no lo está, porque las raíces de sus hijos no están en
-orden creciente. Y el tercer árbol no lo está porque hay una raíz de
-un hijo (el único) es mayor que la propia raíz. 
+<img src="imagenes/arbol-suma-raices.png" width="180px"/>
 
-<img src="imagenes/arboles-ordenados.png" width="500px"/>
+```scheme
+(define arbol3 '(20 (2) (8 (4) (2)) (9 (5))))
+(suma-raices-hijos arbol3) ; ⇒ 19
+(suma-raices-hijos (cadr (hijos-arbol arbol3))) ; ⇒ 6
+```
 
-Implementa la función `(ordenado-arbol? arbol)` que compruebe si un
-árbol cumple las condiciones anteriores. Puedes usar FOS, recursión
-mutua y/o funciones auxiliares.
+b) Implementa dos versiones, una con recursión mutua y otra con funciones de
+orden superior, de la función `(raices-mayores-arbol? arbol)` que
+recibe un árbol y comprueba que su raíz sea mayor que la suma de las
+raíces de los hijos y que todos los hijos cumplen también esta
+propiedad.
 
 Ejemplos:
 
 ```scheme
-(ordenado-arbol? '(10 (5) (7))) ⇒ #t
-(ordenado-arbol? '(50 (10 (4) (6) (8)) (25 (15)))) ⇒ #t
-(ordenado-arbol? '(10 (8) (7))) ⇒ #f
-(ordenado-arbol? '(6 (5) (7))) ⇒ #f
-(ordenado-arbol? '(50 (10 (4) (6) (11)) (25) (15))) ⇒ #f
+(raices-mayores-arbol? arbol3) ; ⇒ #t
+(raices-mayores-arbol? '(20 (2) (8 (4) (5)) (9 (5)))) ; ⇒ #f
 ```
+
+c) Define la función `(comprueba-raices-arbol arbol)` que recibe un
+arbol y que devuelve otro arbol en el que los nodos se han sustituido
+por 1 o 0 según si son mayores que la suma de las raíces de sus hijos
+o no.
+
+Ejemplos:
+
+```scheme
+(comprueba-raices-arbol arbol3) ; ⇒ {1 {1} {1 {1} {1}} {1 {1}}}
+(comprueba-raices-arbol '(20 (2) (8 (4) (5)) (9 (5)))) 
+; ⇒ {1 {1} {0 {1} {1}} {1 {1}}}
+```
+
 
 ### Ejercicio 4 ###
 
-a) Implementa la función `(veces a b arbol)` que busca en el árbol arbol
-los valores a y b y devuelve una pareja con el número de veces que
-aparece a y el número de veces que aparece b. Debe recorrerse el árbol
-una única vez. Los valores a y b siempre serán distintos. Puedes usar
-recursión o funciones de orden superior.
-
-
-```scheme
-(define arbol '(1 (1 (1)) (2 (3) (2)) (1 (2) (3))))
-(veces 1 2 arbol) => {4 . 3}
-(veces 4 3 arbol) => {0 . 2}
-(veces 4 5 arbol) => {0 . 0}
-```
-
-
-b) Define la función `(es-camino? lista arbol)` que debe comprobar si
+a) Define la función `(es-camino? lista arbol)` que debe comprobar si
 la secuencia de elementos de la lista se corresponde con un camino
 del árbol que empieza en la raíz y que termina exactamente en una
 hoja. Suponemos que `lista` contiene al menos un elemento
 
-Por ejemplo, la lista ```'(a b a)``` sí que es camino en el siguiente árbol,
-pero la lista ```'(a b)``` no.
+Por ejemplo, la lista `'(a b a)` sí que es camino en el siguiente árbol,
+pero la lista `'(a b)` no.
 
 <img src="imagenes/es-camino.png" width="300px"/>
 
@@ -183,7 +196,7 @@ anterior:
 ```
 
 
-c) Escribe la función `(nodos-nivel nivel arbol)` que reciba un nivel
+b) Escribe la función `(nodos-nivel nivel arbol)` que reciba un nivel
 y un árbol genérico y devuelva una lista con todos los nodos que se
 encuentran en ese nivel.
 
@@ -200,38 +213,7 @@ Ejemplos, suponiendo que `arbol` es el árbol definido por la figura anterior:
 
 ### Ejercicio 5 ###
 
-
-a) Define la función `(pertenece? dato arbolb)` que recibe un dato y
-un árbol binario ordenado y que busque **eficientemente** el dato (realizando
-el menor recorrido posible) en el árbol binario ordenado.
-
-```scheme
-(define arbolb '(40 (18 (3 () ())
-                        (23 ()
-                            (29 () ())))
-                    (52 (47 () ())
-                        ())))
-(pertenece? 29 arbolb) ⇒ #t
-(pertenece? 42 arbolb) ⇒ #f
-```
-
-b) Un árbol binario está ordenado cuando todos sus hijos de la rama
-izquierda son menores que el dato de la raíz y los de la rama derecha
-son mayores y, a su vez, los árboles binarios de las ramas izquierda y
-derecha también están ordenados. 
-
-Escribe el procedimiento `(ordenado-arbolb? arbolb)` que reciba un
-árbol binario como argumento y devuelva verdadero si está ordenado y
-falso si no lo está.
-
-**Pista**: Implementa como funciones auxiliares las funciones
-`(menor-arbolb arbolb)` y `(mayor-arbolb arbolb)` que devuelvan el
-menor y mayor número respectivamente de un árbol binario.
-
-<img src="imagenes/ordenado-arbolb.png" width="400px"/>
-
-
-c) Dado un árbol binario y un camino definido como una lista de símbolos:
+Dado un árbol binario y un camino definido como una lista de símbolos:
 `'(< > = > > =)` en el que:
 
 - `<`: indica que nos vamos por la rama izquierda
