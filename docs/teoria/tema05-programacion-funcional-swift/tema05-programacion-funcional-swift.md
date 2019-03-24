@@ -984,6 +984,8 @@ print(suma(lista: z))
 /// Devuelve 30
 ```
 
+<!--
+
 ## Inmutabilidad
 
 Una de las características funcionales importantes de Swift es el
@@ -1794,6 +1796,7 @@ print(car(cdr(lista)!)!) // Imprime 30
 print(car(cdr(cdr(lista)!)!)!) // Imprime 40
 print(vacia(cdr(cdr(cdr(lista)!)!)!)) // Imprime true
 ```
+-->
 
 ## Bibliografía
 
@@ -1802,8 +1805,7 @@ print(vacia(cdr(cdr(cdr(lista)!)!)!)) // Imprime true
     - [Collection Types](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/CollectionTypes.html#//apple_ref/doc/uid/TP40014097-CH8-ID105)
     - [Functions](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-ID158)
     - [Closures](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html#//apple_ref/doc/uid/TP40014097-CH11-ID94)
-    -
-      [Enumerations](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Enumerations.html#//apple_ref/doc/uid/TP40014097-CH12-ID145)
+    - [Enumerations](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Enumerations.html#//apple_ref/doc/uid/TP40014097-CH12-ID145)
     - [Generics](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-ID179)
 - [Biblioteca estándar de Swift](https://developer.apple.com/library/ios/documentation/General/Reference/SwiftStandardLibraryReference/)
 
