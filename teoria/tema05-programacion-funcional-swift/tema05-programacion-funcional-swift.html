@@ -450,6 +450,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#operador-nil-coalescing" title="Operador nil-coalescing" class="md-nav__link">
+    Operador nil-coalescing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encadenamiento-de-opcionales" title="Encadenamiento de opcionales" class="md-nav__link">
+    Encadenamiento de opcionales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ejemplos-de-uso-de-opcionales" title="Ejemplos de uso de opcionales" class="md-nav__link">
     Ejemplos de uso de opcionales
   </a>
@@ -822,6 +836,20 @@
           <li class="md-nav__item">
   <a href="#ligado-opcional" title="Ligado opcional" class="md-nav__link">
     Ligado opcional
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operador-nil-coalescing" title="Operador nil-coalescing" class="md-nav__link">
+    Operador nil-coalescing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encadenamiento-de-opcionales" title="Encadenamiento de opcionales" class="md-nav__link">
+    Encadenamiento de opcionales
   </a>
   
 </li>
@@ -1970,6 +1998,53 @@ distintos de <code>nil</code> usando varios <code>let</code> en el mismo <code>i
 </pre></div>
 </td></tr></table>
 
+<h3 id="operador-nil-coalescing">Operador <em>nil-coalescing</em><a class="headerlink" href="#operador-nil-coalescing" title="Permanent link">&para;</a></h3>
+<p>El operador <em>nil-coalescing</em> (<code>??</code>) permite asignar un valor por defecto si
+un opcional es nil:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span>
+<span class="kd">let</span> <span class="nv">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="kd">let</span> <span class="nv">x</span> <span class="p">=</span> <span class="n">a</span> <span class="p">??</span> <span class="o">-</span><span class="mi">1</span>
+<span class="kd">let</span> <span class="nv">y</span> <span class="p">=</span> <span class="n">b</span> <span class="p">??</span> <span class="o">-</span><span class="mi">1</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Resultado: </span><span class="si">\(</span><span class="n">x</span><span class="si">)</span><span class="s">, </span><span class="si">\(</span><span class="n">y</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime Resultado: -1, 10</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="encadenamiento-de-opcionales">Encadenamiento de opcionales<a class="headerlink" href="#encadenamiento-de-opcionales" title="Permanent link">&para;</a></h3>
+<p>El encadenamiento de opcionales (<em>optional chaining</em>) permite llamar a
+un método de una variable que contiene un opcional. Si la variable no
+es <code>nil</code>, se ejecuta el método y se devuelve su valor. Si la variable
+es <code>nil</code> se devuelve <code>nil</code>.</p>
+<p>El valor devuelto es un opcional, porque puede ser <code>nil</code>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">nombre1</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="s">&quot;Pedro&quot;</span>
+<span class="kd">let</span> <span class="nv">nombre2</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span>
+
+<span class="c1">// Error: let str1 = nombre1.lowercased()</span>
+<span class="c1">// No podemos llamar al método lowercased() del String</span>
+<span class="c1">// porque nombre es opcional y puede tener nil</span>
+
+<span class="kd">let</span> <span class="nv">str1</span> <span class="p">=</span> <span class="n">nombre1</span><span class="p">?.</span><span class="n">lowercased</span><span class="p">()</span>
+<span class="kd">let</span> <span class="nv">str2</span> <span class="p">=</span> <span class="n">nombre2</span><span class="p">?.</span><span class="n">lowercased</span><span class="p">()</span>
+<span class="c1">// str1: String? = &quot;pedro&quot;</span>
+<span class="c1">// str2: String? = nil</span>
+</pre></div>
+</td></tr></table>
+
 <h3 id="ejemplos-de-uso-de-opcionales">Ejemplos de uso de opcionales<a class="headerlink" href="#ejemplos-de-uso-de-opcionales" title="Permanent link">&para;</a></h3>
 <p>Como ejemplo de uso de opcionales adaptamos el ejemplo anterior de la
 función <code>minMax</code> para que pueda recibir un array vacío, en cuyo caso
@@ -2090,7 +2165,7 @@ lenguaje. Veamos algunas características relacionadas con esto.
 La palabra clave `let` permite definir constantes. El valor asignado
 puede no conocerse en tiempo de compilación:
 
-wzxhzdk:55
+wzxhzdk:57
 
 ### Semántica de copia en estructuras
 
@@ -2106,18 +2181,18 @@ la mayor parte de los tipos definidos son estructuras. Los tipos
 básicos de Swift como `Int`, `Double`, `Bool`, `String`, etc. son
 todos ellos estructuras y, por tanto, tienen semántica de copia.
 
-wzxhzdk:56
+wzxhzdk:58
 
 Los arrays también son estructuras y, por tanto, también tienen
 semántica de copia:
 
-wzxhzdk:57
+wzxhzdk:59
 
 A diferencia de otros lenguajes como Java, los parámetros de una
 función siempre son inmutables y se pasan por copia. Por ejemplo, el
 siguiente código sería un error:
 
-wzxhzdk:58
+wzxhzdk:60
 
 A pesar de tener una semántica de copia, la asignación de un array de
 una variable a otra o el paso de un array como parámetro de una
@@ -2135,7 +2210,7 @@ Por ejemplo, hemos visto que el método `append(_:)` de un
 `String` modifica la propia cadena. Si definimos una cadena con `let`
 no podremos modificarla:
 
-wzxhzdk:59
+wzxhzdk:61
 
 ### Tipos valor y tipos referencia
 
@@ -2194,7 +2269,7 @@ devuelve los elementos ordenados de un
 original no se modifica. La comparación entre los elementos se realiza
 usando el comparador `<`.
 
-wzxhzdk:60
+wzxhzdk:62
 
 Esta función es similar a las que hay en muchos lenguajes. El único
 aspecto funcional es que el array original no se modifica, sino que la
@@ -2210,7 +2285,7 @@ otras).
 
 El perfil de la función `sorted(by:)` es:
 
-wzxhzdk:61
+wzxhzdk:63
 
 El parámetro es una función de dos parámetros (del tipo de los
 elementos del array) que devuelve un booleano indicando si el primer
@@ -2221,7 +2296,7 @@ del segundo valor y `false` en otro caso.
 Por ejemplo, podríamos ordenar un array de cadenas en orden alfabético
 inverso. 
 
-wzxhzdk:62
+wzxhzdk:64
 
 Si la primera cadena (`s1`) es mayor que la segunda cadena (`s2`), la
 función `primeroMayor(s1:s2:)` devolverá `true`, indicando que `s1`
@@ -2239,11 +2314,11 @@ _inline_, utilizando la sintaxis de expresiones de clausuras.
 La sintaxis de las expresiones de clausura tiene la siguiente forma
 general:
 
-wzxhzdk:63
+wzxhzdk:65
 
 Si aplicamos esta sintaxis al ejemplo anterior:
 
-wzxhzdk:64
+wzxhzdk:66
 
 Hay que hacer notar que la declaración de los parámetros y el tipo
 devuelto por esta clausura _inline_ es idéntica a la declaración de la
@@ -2260,7 +2335,7 @@ cuerpo de la clausura va a comenzar.
 Como el cuerpo de la clausura es corto, podemos incluso escribirlo en
 una única línea:
 
-wzxhzdk:65
+wzxhzdk:67
 
 ### Inferencia del tipo por el contexto
 
@@ -2274,14 +2349,14 @@ expresión de la clausura. Debido a que todos los tipos pueden ser
 inferidos, la flecha del tipo devuelto y los paréntesis alrededor de
 los nombres de los parámetros también pueden omitirse:
 
-wzxhzdk:66
+wzxhzdk:68
 
 ### Devoluciones implícitas en clausuras con una única expresión
 
 En clausuras con una única expresión podemos omitir también la palabra
 clave `return`:
 
-wzxhzdk:67
+wzxhzdk:69
 
 ### Abreviaturas en los nombres de los argumentos
 
@@ -2292,7 +2367,7 @@ a los valores de los argumentos de la clausura usando los nombres
 
 Si se usa estos argumentos abreviados, se puede omitir la definición de la lista de los argumentos:
 
-wzxhzdk:68
+wzxhzdk:70
 
 ### Funciones operadoras
 
@@ -2304,7 +2379,7 @@ lo que necesita el método `sorted(by:)`. Podemos, por tanto, pasar
 simplemente este operador mayor-que, y Swift inferirá que queremos
 usar el específico de cadenas:
 
-wzxhzdk:69
+wzxhzdk:71
 
 ### Clausuras al final
 
@@ -2315,13 +2390,13 @@ closure_). Una clausura al final es una expresión de clausura que se
 escribe fuera de (y después de) los paréntesis de la función a la que
 se le pasa como parámetro:
 
-wzxhzdk:70
+wzxhzdk:72
 
 Cuando se proporciona una expresión de clausura como único argumento de
 una función o método y se pasa como una clausura al final, no es
 necesario escribir los paréntesis tras el nombre de la función:
 
-wzxhzdk:71
+wzxhzdk:73
 
 Las clausuras al final son útiles sobre todo cuando la clausura es
 suficientemente larga que no es posible escribirla _inline_ en una
@@ -2342,7 +2417,7 @@ final para convertir un array de valores `Int` en un array de valores
 `String`. El array `[16, 58, 510]` se usa para crear el array
 ["UnoSeis", "CincoOcho", "CincoUnoCero"]:
 
-wzxhzdk:72
+wzxhzdk:74
 
 El código de arriba crea un diccionario que relaciona los dígitos
 enteros con sus nombres en castellano y un array de enteros que se
@@ -2352,7 +2427,7 @@ Ahora podemos usar el array de nombres para crear un array de valores
 `String`, pasando una expresión de clausura al método `map(_:)` del
 array como una clausura al final:
 
-wzxhzdk:73
+wzxhzdk:75
 
 El método `map(_:)` llama a la expresión de clausura una vez por cada
 elemento del array. La variable `numero` se incializa con el valor
@@ -2383,7 +2458,7 @@ Veamos un ejemplo similar al que vimos en Scheme. La función
 clausura que incrementa `totalAcumulado` en `cantidad` cada vez que se
 llama.
 
-wzxhzdk:74
+wzxhzdk:76
 
 El tipo devuelto de `construyeIncrementador` es `() -> Int`. Esto
 significa que devuelve una función que no tiene parámetros y que
@@ -2401,7 +2476,7 @@ devuelve el resultado.
 Si la consideramos aislada, la función anidada `incrementador()`
 podría parecer extraña:
 
-wzxhzdk:75
+wzxhzdk:77
 
 La función no tiene ningún parámetro, y sin embargo se refiere a
 `totalAcumulado` y a `cantidad` en su cuerpo. Lo puede hacer porque ha
@@ -2413,7 +2488,7 @@ disponibles la próxima vez que se llame la función `incrementador`.
 
 Aquí hay un ejemplo de `construyeIncrementador` en acción:
 
-wzxhzdk:76
+wzxhzdk:78
 
 Este ejemplo define una constante llamada `incrementaDiez` para
 referenciar la función `incrementador` que devuelve
@@ -2421,26 +2496,26 @@ referenciar la función `incrementador` que devuelve
 `totalAcumulado` cada vez que se es llamada. Si llamamos a la función
 más de una vez podemos comprobar su conducta en acción:
 
-wzxhzdk:77
+wzxhzdk:79
 
 Si creamos un segundo incrementador, tendrá sus propias referencias a
 un variable `totalAcumulado` nueva, distinta de la anterior:
 
 
-wzxhzdk:78
+wzxhzdk:80
 
 Si llamamos a la función `incrementador` original (`incrementaDiez`)
 vemos que sigue incrementando su propia variable `totalAcumulado` y
 que no se ve afectada por la variable capturada por `incrementaSiete`:
 
-wzxhzdk:79
+wzxhzdk:81
 
 ### Mutación de variables capturadas 
 
 Las clausuras también pueden modificar el valor de las variables
 capturadas. Veamos un ejemplo:
 
-wzxhzdk:80
+wzxhzdk:82
 
 La clausura `prueba` **captura la variable `x` definida en el ámbito
 de `construyeFunc`** y la utiliza en su cuerpo. La variable capturada
@@ -2477,7 +2552,7 @@ Esto también significa que si asignamos una clausura a dos constantes
 o variables distintas, ambas constantes o variables se referirán a la
 misma clausura:
 
-wzxhzdk:81
+wzxhzdk:83
 
 
 ## Funciones de orden superior
@@ -2504,24 +2579,24 @@ colección). Devuelve un array que contiene el resultado de aplicar
 
 Por ejemplo:
 
-wzxhzdk:82
+wzxhzdk:84
 
 Otro ejemplo, en el que usamos `map` para implementar la función
 `sumaParejas(parejas: [(Int, Int)]) -> [Int]` que devuelve recibe el
 array `parejas` de tuplas de dos enteros y devuelve un array con el
 resultado de sumar los dos elementos de cada pareja:
 
-wzxhzdk:83
+wzxhzdk:85
 
 Podemos usar en el cuerpo de la expresión de clausura de `map` una
 variable capturada. Por ejemplo en la siguiente función
 `incrementaValores(_:con:)` que suma `con` a todos los números de un
 array que se le pasa por parámetro:
 
-wzxhzdk:84
+wzxhzdk:86
 La versión abreviada de la expresión de clausura es:
 
-wzxhzdk:85
+wzxhzdk:87
 
 
 ### Filter
@@ -2533,14 +2608,14 @@ colección para los que la clausura devuelve _true_.
 
 Ejemplo:
 
-wzxhzdk:86
+wzxhzdk:88
 
 
 ### Reduce 
 
 Similar al _fold_ de Scheme:
 
-wzxhzdk:87
+wzxhzdk:89
 
 La función combina los elementos de la colección usando la función de
 combinación que se pasa como parámetro. La función que se pasa como
@@ -2549,19 +2624,19 @@ combinación y el segundo se coge de la colección.
 
 Por ejemplo:
 
-wzxhzdk:88
+wzxhzdk:90
 
 Es posible simplificar la notación anterior:
 
-wzxhzdk:89
+wzxhzdk:91
 
 También se puede utilizar la notación de clausura al final:
 
-wzxhzdk:90
+wzxhzdk:92
 
 La combinación se hace de izquierda a derecha:
 
-wzxhzdk:91
+wzxhzdk:93
 
 ### Combinación de funciones de orden superior
 
@@ -2573,11 +2648,11 @@ Por ejemplo, la siguiente sentencia devuelve todos los números pares
 del array inicial elevados al cuadrado:
 
 
-wzxhzdk:92
+wzxhzdk:94
 
 Y la siguiente devuelve la suma números mayores de 100:
 
-wzxhzdk:93
+wzxhzdk:95
 
 
 ## Genéricos
@@ -2587,7 +2662,7 @@ Empecemos con un ejemplo sencillo. Supongamos la siguiente función
 `intercambia(_:)` que recibe una tupla `(Int, String)` y devuelve una
 tupla `(String, Int)` con los valores intercambiados.
 
-wzxhzdk:94
+wzxhzdk:96
 
 La función es interesante, pero sólo recibe tuplas cuya primera
 componente es un `Int` y su segunda componente es un
@@ -2595,14 +2670,14 @@ componente es un `Int` y su segunda componente es un
 intercambiar elementos de una tupla `(Int, Int)`. Tendríamos que usar
 el mismo código, pero cambiando los tipos:
 
-wzxhzdk:95
+wzxhzdk:97
 
 El código es el mismo, lo único distinto son los tipos. ¿Podríamos
 **generalizar** las funciones anteriores para hacer que el código
 pueda trabajar con cualquier tipo? La respuesta es sí, usando
 **función genérica**:
 
-wzxhzdk:96
+wzxhzdk:98
 
 El cuerpo de la función es idéntico a la función anterior. La
 diferencia es que en la versión genérica se usan *placeholders* (los
@@ -2612,7 +2687,7 @@ que se definen usando un identificador entre símbolos de `<` y
 cada invocación a la función, dependiendo del tipo del parámetro que
 se utiliza en la llamada:
 
-wzxhzdk:97
+wzxhzdk:99
 
 En el primer ejemplo, los tipos `A` y `B` se infieren como `Int` y
 `String`. En el segundo ejemplo como `Int` e `Int`. Y en el tercero
@@ -2626,7 +2701,7 @@ de listas al estilo Scheme, con las funciones `car`, `cdr` y `vacia`
 usando un enum recursivo con un tipo genérico que permite generalizar
 el tipo de elementos de la lista.
 
-wzxhzdk:98
+wzxhzdk:100
 -->
 
 <h2 id="bibliografia">Bibliografía<a class="headerlink" href="#bibliografia" title="Permanent link">&para;</a></h2>
