@@ -907,6 +907,43 @@ if let dato1 = x1, let dato2 = x2, let dato3 = x3 {
 }
 ```
 
+### Operador _nil-coalescing_ ###
+
+El operador _nil-coalescing_ (`??`) permite asignar un valor por defecto si
+un opcional es nil:
+
+```swift
+let a: Int? = nil
+let b: Int? = 10
+let x = a ?? -1
+let y = b ?? -1
+print("Resultado: \(x), \(y)")
+// Imprime Resultado: -1, 10
+```
+
+### Encadenamiento de opcionales ###
+
+El encadenamiento de opcionales (_optional chaining_) permite llamar a
+un método de una variable que contiene un opcional. Si la variable no
+es `nil`, se ejecuta el método y se devuelve su valor. Si la variable
+es `nil` se devuelve `nil`.
+
+El valor devuelto es un opcional, porque puede ser `nil`.
+
+```swift
+let nombre1: String? = "Pedro"
+let nombre2: String? = nil
+
+// Error: let str1 = nombre1.lowercased()
+// No podemos llamar al método lowercased() del String
+// porque nombre es opcional y puede tener nil
+
+let str1 = nombre1?.lowercased()
+let str2 = nombre2?.lowercased()
+// str1: String? = "pedro"
+// str2: String? = nil
+```
+
 
 ### Ejemplos de uso de opcionales
 
