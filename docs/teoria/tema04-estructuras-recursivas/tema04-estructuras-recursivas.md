@@ -841,6 +841,21 @@ la barrera de abstracción de listas y árboles:
     implementación del tipo de dato sin afectar a las funciones que hemos
     definido usando la barrera. Lo único que hay que hacer es cambiar la
     implementación de la barrera de abstracción.
+    
+    Otras ventajas de utilizar la barrera de abstracción, tan
+    importantes como la anterior, son:
+    
+    - El código es mucho más legible. Dado que Scheme es un lenguaje
+    débilmente tipado, en una expresión como `(dato-arbol elem)`
+    sabemos que el el elemento sobre el que se trabaja es un árbol (no
+    es un número, ni un string, ni un booleano).
+    
+    - El código es trasladable a cualquier lenguaje de
+    programación. Si queremos trabajar con árboles en JavaScript, por
+    ejemplo, sólo tendremos que implementar la barrera de abstracción
+    en este lenguaje. Una vez hecho eso todas las funciones que
+    trabajan con árboles, como las que veremos a continuación,
+    funcionarán correctaente.
 
 ### Funciones recursivas sobre árboles
 
