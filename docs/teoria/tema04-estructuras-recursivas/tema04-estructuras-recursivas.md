@@ -855,7 +855,7 @@ la barrera de abstracción de listas y árboles:
     ejemplo, sólo tendremos que implementar la barrera de abstracción
     en este lenguaje. Una vez hecho eso todas las funciones que
     trabajan con árboles, como las que veremos a continuación,
-    funcionarán correctaente.
+    funcionarán correctamente.
 
 ### Funciones recursivas sobre árboles
 
