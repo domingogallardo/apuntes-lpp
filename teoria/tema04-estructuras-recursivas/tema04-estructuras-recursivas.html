@@ -1582,10 +1582,15 @@ orden superior:</p>
 </pre></div>
 </td></tr></table>
 
-<p>La función <code>map</code> aplica la propia función que estamos definiendo a
-cada uno de los árboles de <code>(hijos-arbol arbol)</code>, devolviendo una lista
-de números. Esta lista de número la sumamos haciendo un <code>fold-right +
-0</code>. Una traza de su funcionamiento sería la siguiente:</p>
+<p>La función <code>map</code> aplica la propia función que estamos definiendo
+(<code>suma-datos-arbol-fos</code>) a cada uno de los árboles hijos (obtenidos
+con la función <code>(hijos-arbol arbol)</code>). Confiando en que la función
+hace su trabajo, devolverá para cada arbol hijo la suma de todos sus
+nodos. De esta forma, el resultado de <code>map</code> será una lista con la suma
+de los nodos de todos los árboles hijos.</p>
+<p>La función <code>fold-right</code> suma todos esos números de la lista y el
+número de la raíz.</p>
+<p>Un ejemplo de su funcionamiento sería el siguiente:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1600,6 +1605,13 @@ de números. Esta lista de número la sumamos haciendo un <code>fold-right +
 </pre></div>
 </td></tr></table>
 
+<ul>
+<li>El árbol que queremos sumar tiene un 1 en la raíz y tres hijos: <code>(2
+(3) (4))</code>, <code>(5)</code> y <code>(6 (7))</code>. </li>
+<li>La aplicación de <code>map suma-datos-arbol-fos</code> sobre la lista de hijos
+devuelve una lista con la suma de los nodos de cada hijo: <code>(9 5 13)</code>.</li>
+<li>La función <code>fold-right</code> suma esa lista y el valor del nodo raíz (<code>1</code>).</li>
+</ul>
 <h4>Función <code>(to-list-arbol arbol)</code></h4>
 <p>Queremos diseñar una función <code>(to-list-arbol arbol)</code> que devuelva una
 lista con los datos del árbol en un recorrido <em>preorden</em>.</p>
