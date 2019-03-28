@@ -908,10 +908,17 @@ orden superior:
        (map suma-datos-arbol-fos (hijos-arbol arbol))))
 ```	
 
-La función `map` aplica la propia función que estamos definiendo a
-cada uno de los árboles de `(hijos-arbol arbol)`, devolviendo una lista
-de números. Esta lista de número la sumamos haciendo un `fold-right +
-0`. Una traza de su funcionamiento sería la siguiente:
+La función `map` aplica la propia función que estamos definiendo
+(`suma-datos-arbol-fos`) a cada uno de los árboles hijos (obtenidos
+con la función `(hijos-arbol arbol)`). Confiando en que la función
+hace su trabajo, devolverá para cada arbol hijo la suma de todos sus
+nodos. De esta forma, el resultado de `map` será una lista con la suma
+de los nodos de todos los árboles hijos.
+
+La función `fold-right` suma todos esos números de la lista y el
+número de la raíz.
+
+Un ejemplo de su funcionamiento sería el siguiente:
 
 ```scheme
 (suma-datos-arbol-fos '(1 (2 (3) (4)) (5) (6 (7)))) ⇒
@@ -921,6 +928,12 @@ de números. Esta lista de número la sumamos haciendo un `fold-right +
 (fold-right + 1 '(9 5 13)) ⇒
 28
 ```
+
+- El árbol que queremos sumar tiene un 1 en la raíz y tres hijos: `(2
+(3) (4))`, `(5)` y `(6 (7))`. 
+- La aplicación de `map suma-datos-arbol-fos` sobre la lista de hijos
+devuelve una lista con la suma de los nodos de cada hijo: `(9 5 13)`.
+- La función `fold-right` suma esa lista y el valor del nodo raíz (`1`).
 
 #### Función `(to-list-arbol arbol)`
 
