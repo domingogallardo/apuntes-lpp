@@ -1518,6 +1518,24 @@ subyacente del tipo de dato. De esta forma es posible cambiar la
 implementación del tipo de dato sin afectar a las funciones que hemos
 definido usando la barrera. Lo único que hay que hacer es cambiar la
 implementación de la barrera de abstracción.</p>
+<p>Otras ventajas de utilizar la barrera de abstracción, tan
+importantes como la anterior, son:</p>
+<ul>
+<li>
+<p>El código es mucho más legible. Dado que Scheme es un lenguaje
+débilmente tipado, en una expresión como <code>(dato-arbol elem)</code>
+sabemos que el el elemento sobre el que se trabaja es un árbol (no
+es un número, ni un string, ni un booleano).</p>
+</li>
+<li>
+<p>El código es trasladable a cualquier lenguaje de
+programación. Si queremos trabajar con árboles en JavaScript, por
+ejemplo, sólo tendremos que implementar la barrera de abstracción
+en este lenguaje. Una vez hecho eso todas las funciones que
+trabajan con árboles, como las que veremos a continuación,
+funcionarán correctaente.</p>
+</li>
+</ul>
 </div>
 <h3 id="funciones-recursivas-sobre-arboles">Funciones recursivas sobre árboles<a class="headerlink" href="#funciones-recursivas-sobre-arboles" title="Permanent link">&para;</a></h3>
 <p>Vamos a diseñar las siguientes funciones recursivas:</p>
