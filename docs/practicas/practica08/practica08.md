@@ -14,11 +14,9 @@ solución debe incluir:
 !!! Warning "Importante" 
     Antes de proceder a realizar los ejercicios de la
     práctica te recomendamos que realices y pruebes los ejemplos
-    presentados en el [seminario de
-    Swift](https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario2-swift/seminario2-swift.html).
+    presentados en el [seminario de Swift](https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario2-swift/seminario2-swift.html).
     
-    También, como siempre, los [apuntes de
-    teoría](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html)
+    También, como siempre, los [apuntes de teoría](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html)
     de la semana pasada.
     
 
@@ -27,7 +25,7 @@ solución debe incluir:
 ### Ejercicio 1 ###
 
 En la clase de teoría [hemos presentado un
-ejemplo]((https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#ejemplos-de-uso-de-opcionales))
+ejemplo](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#ejemplos-de-uso-de-opcionales)
 de la función `minMax(array: [Int]) -> (min: Int, max: Int)?` que
 devuelve una tupla opcional. Se trata de una implementación que no es
 funcional, porque utiliza dos variables mutables definidas con `var`.
