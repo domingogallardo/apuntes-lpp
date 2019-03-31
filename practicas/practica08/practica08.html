@@ -36,7 +36,7 @@
     
     
       
-        <title>Práctica 8: Programación funcional en Swift (1) - LPP</title>
+        <title>Práctica 8 - LPP</title>
       
     
     
@@ -105,7 +105,7 @@
                 LPP
               </span>
               <span class="md-header-nav__topic">
-                Práctica 8: Programación funcional en Swift (1)
+                Práctica 8
               </span>
             
           
@@ -318,10 +318,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Prácticas
@@ -417,6 +419,104 @@
   </li>
 
         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Práctica 8
+      </label>
+    
+    <a href="practica08.html" title="Práctica 8" class="md-nav__link md-nav__link--active">
+      Práctica 8
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" title="Entrega de la práctica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" title="Ejercicios" class="md-nav__link">
+    Ejercicios
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" title="Ejercicio 1" class="md-nav__link">
+    Ejercicio 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" title="Ejercicio 2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" title="Ejercicio 3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" title="Ejercicio 4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" title="Ejercicio 5" class="md-nav__link">
+    Ejercicio 5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -492,13 +592,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ejercicio-6" title="Ejercicio 6" class="md-nav__link">
-    Ejercicio 6
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -535,80 +628,57 @@ solución debe incluir:</p>
 <div class="admonition warning">
 <p class="admonition-title">Importante</p>
 <p>Antes de proceder a realizar los ejercicios de la
-práctica, debes completar el <a href="https://github.com/domingogallardo/apuntes-lpp/blob/master/seminarios/seminario2-swift/seminario2-swift.md">seminario de
-Swift</a>
-hasta el apartado de <strong>Enumeraciones</strong>. Y, evidentemente, los
-<a href="https://github.com/domingogallardo/apuntes-lpp/blob/master/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.md">apuntes de
+práctica te recomendamos que realices y pruebes los ejemplos
+presentados en el <a href="https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario2-swift/seminario2-swift.html">seminario de
+Swift</a>.</p>
+<p>También, como siempre, los <a href="https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html">apuntes de
 teoría</a>
 de la semana pasada.</p>
-<p>En la práctica hay más de un ejercicio en el que tienes que
-trabajar con Arrays. Es conveniente que consultes el apartado sobre Arrays en
-la página <a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/CollectionTypes.html#//apple_ref/doc/uid/TP40014097-CH8-ID105">Collection
-Types</a>
-de la guía de Swift.</p>
 </div>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
-<p>Escribe una función en Swift <code>obtenerFrencuencias</code> que permita calcular las
-frecuencias de un conjunto de respuestas, números entre 0 y 9, que se
-guardan en un array de <code>Int</code>. Y otra <code>imprimir</code> que permita representar las
-frecuencias calculadas en forma de histograma.</p>
-<p>Como ejemplo de uso de las funciones puedes ver el siguiente
-código. El parámetro <code>maxAsteriscos</code> define el número de asteriscos
-con el que representaremos la frecuencia máxima en la gráfica de
-histogramas. Todos los demás asteriscos están escalados
-proporcionalmente a este número máximo.</p>
+<p>En la clase de teoría <a href="(https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#ejemplos-de-uso-de-opcionales)">hemos presentado un
+ejemplo</a>
+de la función <code>minMax(array: [Int]) -&gt; (min: Int, max: Int)?</code> que
+devuelve una tupla opcional. Se trata de una implementación que no es
+funcional, porque utiliza dos variables mutables definidas con <code>var</code>.</p>
+<p>Realiza una implementación funcional de la función, definiéndola de
+<strong>forma recursiva</strong>.</p>
+<p>Ejemplo de funcionamiento:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
 5
 6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">respuestas</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Valores: </span><span class="si">\(</span><span class="n">respuestas</span><span class="si">)</span><span class="s">&quot;</span> <span class="p">)</span>
-<span class="kd">let</span> <span class="nv">frec</span> <span class="p">=</span> <span class="n">obtenerFrecuencias</span><span class="p">(</span><span class="n">respuestas</span><span class="p">:</span> <span class="n">respuestas</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Frecuencias: </span><span class="si">\(</span><span class="n">frec</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Histograma&quot;</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;----------&quot;</span><span class="p">)</span>
-<span class="n">imprimir</span><span class="p">(</span><span class="n">frecuencias</span><span class="p">:</span> <span class="n">frec</span><span class="p">,</span> <span class="n">maxAsteriscos</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
-
-<p>Sacaría por pantalla lo siguiente:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Valores: [0, 0, 1, 1, 2, 1, 2, 3, 5, 1, 2, 2, 2, 6]
-Frecuencias: [2, 4, 5, 1, 0, 1, 1, 0, 0, 0]
-
-Histograma
-----------
-0: ****
-1: ********
-2: **********
-3: **
-4:
-5: **
-6: **
-7:
-8:
-9:
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">array</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;minMax(</span><span class="si">\(</span><span class="n">array</span><span class="si">)</span><span class="s">): </span><span class="si">\(</span><span class="n">minMax</span><span class="si">(</span><span class="n">array</span><span class="p">:</span> <span class="n">array</span><span class="si">)</span><span class="o">!</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">array2</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;minMax(</span><span class="si">\(</span><span class="n">array2</span><span class="si">)</span><span class="s">): </span><span class="si">\(</span><span class="nb">String</span><span class="si">(</span><span class="n">describing</span><span class="p">:</span> <span class="n">minMax</span><span class="si">(</span><span class="n">array</span><span class="p">:</span> <span class="n">array2</span><span class="si">)))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="err">\\</span> <span class="n">Imprime</span><span class="p">:</span> 
+<span class="err">\\</span> <span class="n">minMax</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">4</span><span class="p">]):</span> <span class="p">(</span><span class="bp">min</span><span class="p">:</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="bp">max</span><span class="p">:</span> <span class="mi">300</span><span class="p">)</span>
+<span class="err">\\</span> <span class="n">minMax</span><span class="p">([]):</span> <span class="kc">nil</span>
 </pre></div>
 </td></tr></table>
 
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
-<p>Implementa en Swift la <strong>función recursiva</strong>
+<div class="admonition hint">
+<p class="admonition-title">Pista</p>
+<p>Para resolver el ejercicio necesitarás concatenar dos arrays, de
+forma similar a la función <code>append</code> de Scheme para las
+listas. Puedes utilizar para ello el operador <code>+</code>:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">array1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="kd">let</span> <span class="nv">array2</span> <span class="p">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="kd">let</span> <span class="nv">array3</span> <span class="p">=</span> <span class="n">array1</span> <span class="o">+</span> <span class="n">array2</span>
+<span class="c1">// array3 contiene [1,2,3,4,5,6]</span>
+</pre></div>
+</td></tr></table>
+
+</div>
+<p>a) Implementa en Swift la <strong>función recursiva</strong>
 <code>compruebaParejas(_:funcion:)</code> con el siguiente perfil:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>([Int], (Int) -&gt; Int) -&gt; [(Int, Int)]
 </pre></div>
@@ -632,7 +702,46 @@ de aplicar la función al número situado en la posición anterior.</p>
 </pre></div>
 </td></tr></table>
 
+<p>b) Implementa en Swift la <strong>función recursiva</strong>
+<code>coinciden(parejas: [(Int,Int)], funcion: (Int)-&gt;Int)</code> que devuelve
+un array de booleanos que indica si el resultado de aplicar la función
+al primer número de cada pareja coincide con el segundo.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">array</span> <span class="p">=</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">16</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">25</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)]</span>
+<span class="kd">func</span> <span class="nf">cuadrado</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+<span class="p">}</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Resultado coinciden:  </span><span class="si">\(</span><span class="n">coinciden</span><span class="si">(</span><span class="n">parejas</span><span class="p">:</span> <span class="n">array</span><span class="p">,</span> <span class="n">funcion</span><span class="p">:</span> <span class="n">cuadrado</span><span class="si">))</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime: Resultado coinciden:  [true, false, true, true, true]</span>
+</pre></div>
+</td></tr></table>
+
 <h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
+<p>Supongamos que estamos escribiendo un programa que debe tratar
+movimientos de cuentas bancarias. Define un enumerado <code>Movimiento</code>
+con valores asociados con el que podamos representar:</p>
+<ul>
+<li>Depósito (valor asociado: <code>(Double)</code>)</li>
+<li>Cargo de un recibo (valor asociado: <code>(String, Double)</code>)</li>
+<li>Cajero (valor asociado: <code>(Double)</code>)</li>
+</ul>
+<p>Y define la función <code>aplica(movimientos:[Movimiento])</code> que reciba un
+array de movimientos y devuelva una pareja con el dinero resultante de acumular todos
+los movimientos y un array de Strings con todos los cargos realizados.</p>
+<p>Ejemplo:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">movimientos</span><span class="p">:</span> <span class="p">[</span><span class="n">Movimiento</span><span class="p">]</span> <span class="p">=</span> <span class="p">[.</span><span class="n">deposito</span><span class="p">(</span><span class="mf">830.0</span><span class="p">),</span> <span class="p">.</span><span class="n">cargoRecibo</span><span class="p">(</span><span class="s">&quot;Gimnasio&quot;</span><span class="p">,</span> <span class="mf">45.0</span><span class="p">),</span> <span class="p">.</span><span class="n">deposito</span><span class="p">(</span><span class="mf">400.0</span><span class="p">),</span> <span class="p">.</span><span class="n">cajero</span><span class="p">(</span><span class="mf">100.0</span><span class="p">),</span> <span class="p">.</span><span class="n">cargoRecibo</span><span class="p">(</span><span class="s">&quot;Fnac&quot;</span><span class="p">,</span> <span class="mf">38.70</span><span class="p">)]</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">aplica</span><span class="p">(</span><span class="n">movimientos</span><span class="p">:</span> <span class="n">movimientos</span><span class="p">))</span>
+<span class="c1">//Imprime (1046.3, [&quot;Gimnasio&quot;, &quot;Fnac&quot;])</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
 <p>Implementa en Swift un tipo enumerado recursivo que permita construir
 árboles binarios de enteros. El enumerado debe tener </p>
 <ul>
@@ -654,47 +763,7 @@ binarios (el hijo izquierdo y el hijo derecho)</li>
 </pre></div>
 </td></tr></table>
 
-<h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
-<p>Implementa en Swift la <strong>función recursiva</strong>
-<code>coinciden(parejas: [(Int,Int)], funcion: (Int)-&gt;Int)</code> que devuelve
-un array de booleanos que indica si el resultado de aplicar la función
-al primer número de cada pareja coincide con el segundo.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">array</span> <span class="p">=</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">16</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">25</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)]</span>
-<span class="kd">func</span> <span class="nf">cuadrado</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-   <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
-<span class="p">}</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Resultado coinciden:  </span><span class="si">\(</span><span class="n">coinciden</span><span class="si">(</span><span class="n">parejas</span><span class="p">:</span> <span class="n">array</span><span class="p">,</span> <span class="n">funcion</span><span class="p">:</span> <span class="n">cuadrado</span><span class="si">))</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="c1">// Imprime: Resultado coinciden:  [true, false, true, true, true]</span>
-</pre></div>
-</td></tr></table>
-
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
-<p>Supongamos que estamos escribiendo un programa que debe tratar
-movimientos de cuentas bancarias. Define un enumerado <code>Movimiento</code>
-con valores asociados con el que podamos representar:</p>
-<ul>
-<li>Depósito (valor asociado: <code>(Double)</code>)</li>
-<li>Cargo de un recibo (valor asociado: <code>(String, Double)</code>)</li>
-<li>Cajero (valor asociado: <code>(Double)</code>)</li>
-</ul>
-<p>Y define la función <code>aplica(movimientos:[Movimiento])</code> que reciba un
-array de movimientos y devuelva una pareja con el dinero resultante de acumular todos
-los movimientos y un array de Strings con todos los cargos realizados.</p>
-<p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">movimientos</span><span class="p">:</span> <span class="p">[</span><span class="n">Movimiento</span><span class="p">]</span> <span class="p">=</span> <span class="p">[.</span><span class="n">deposito</span><span class="p">(</span><span class="mf">830.0</span><span class="p">),</span> <span class="p">.</span><span class="n">cargoRecibo</span><span class="p">(</span><span class="s">&quot;Gimnasio&quot;</span><span class="p">,</span> <span class="mf">45.0</span><span class="p">),</span> <span class="p">.</span><span class="n">deposito</span><span class="p">(</span><span class="mf">400.0</span><span class="p">),</span> <span class="p">.</span><span class="n">cajero</span><span class="p">(</span><span class="mf">100.0</span><span class="p">),</span> <span class="p">.</span><span class="n">cargoRecibo</span><span class="p">(</span><span class="s">&quot;Fnac&quot;</span><span class="p">,</span> <span class="mf">38.70</span><span class="p">)]</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">aplica</span><span class="p">(</span><span class="n">movimientos</span><span class="p">:</span> <span class="n">movimientos</span><span class="p">))</span>
-<span class="c1">//Imprime (1046.3, [&quot;Gimnasio&quot;, &quot;Fnac&quot;])</span>
-</pre></div>
-</td></tr></table>
-
-<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
 <p>Implementa en Swift un tipo enumerado recursivo que permita construir
 árboles genéricos de enteros usando el mismo enfoque que en Scheme: un
 nodo está formado por un dato (un <code>Int</code>) y una colección de árboles
@@ -775,6 +844,27 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../practica07/practica07.html" title="Práctica 7" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Práctica 7
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
