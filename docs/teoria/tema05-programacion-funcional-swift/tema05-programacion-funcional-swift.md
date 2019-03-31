@@ -1020,7 +1020,6 @@ print(suma(lista: z))
 /// Devuelve 30
 ```
 
-<!--
 
 ## Inmutabilidad
 
@@ -1832,7 +1831,7 @@ print(car(cdr(lista)!)!) // Imprime 30
 print(car(cdr(cdr(lista)!)!)!) // Imprime 40
 print(vacia(cdr(cdr(cdr(lista)!)!)!)) // Imprime true
 ```
--->
+
 
 ## Bibliografía
 

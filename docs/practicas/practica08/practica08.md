@@ -13,72 +13,56 @@ solución debe incluir:
 
 !!! Warning "Importante" 
     Antes de proceder a realizar los ejercicios de la
-    práctica, debes completar el [seminario de
-    Swift](https://github.com/domingogallardo/apuntes-lpp/blob/master/seminarios/seminario2-swift/seminario2-swift.md)
-    hasta el apartado de **Enumeraciones**. Y, evidentemente, los
-    [apuntes de
-    teoría](https://github.com/domingogallardo/apuntes-lpp/blob/master/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.md)
+    práctica te recomendamos que realices y pruebes los ejemplos
+    presentados en el [seminario de
+    Swift](https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario2-swift/seminario2-swift.html).
+    
+    También, como siempre, los [apuntes de
+    teoría](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html)
     de la semana pasada.
-
-    En la práctica hay más de un ejercicio en el que tienes que
-    trabajar con Arrays. Es conveniente que consultes el apartado sobre Arrays en
-    la página [Collection
-    Types](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/CollectionTypes.html#//apple_ref/doc/uid/TP40014097-CH8-ID105)
-    de la guía de Swift.
-
+    
 
 ## Ejercicios
 
 ### Ejercicio 1 ###
 
-Escribe una función en Swift `obtenerFrencuencias` que permita calcular las
-frecuencias de un conjunto de respuestas, números entre 0 y 9, que se
-guardan en un array de `Int`. Y otra `imprimir` que permita representar las
-frecuencias calculadas en forma de histograma.
+En la clase de teoría [hemos presentado un
+ejemplo]((https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#ejemplos-de-uso-de-opcionales))
+de la función `minMax(array: [Int]) -> (min: Int, max: Int)?` que
+devuelve una tupla opcional. Se trata de una implementación que no es
+funcional, porque utiliza dos variables mutables definidas con `var`.
 
-Como ejemplo de uso de las funciones puedes ver el siguiente
-código. El parámetro `maxAsteriscos` define el número de asteriscos
-con el que representaremos la frecuencia máxima en la gráfica de
-histogramas. Todos los demás asteriscos están escalados
-proporcionalmente a este número máximo.
+Realiza una implementación funcional de la función, definiéndola de
+**forma recursiva**.
 
+Ejemplo de funcionamiento:
 
 ```swift
-let respuestas = [0,0,1,1,2,1,2,3,5,1,2,2,2,6]
-print("Valores: \(respuestas)" )
-let frec = obtenerFrecuencias(respuestas: respuestas)
-print("Frecuencias: \(frec)")
-print("\nHistograma")
-print("----------")
-imprimir(frecuencias: frec, maxAsteriscos: 10)
+let array = [-1, 10, 200, -20, 300, 4]
+print("minMax(\(array)): \(minMax(array: array)!)")
+let array2: [Int] = []
+print("minMax(\(array2)): \(String(describing: minMax(array: array2)))")
+\\ Imprime: 
+\\ minMax([-1, 10, 200, -20, 300, 4]): (min: -20, max: 300)
+\\ minMax([]): nil
 ```
-
-Sacaría por pantalla lo siguiente:
-
-
-```
-Valores: [0, 0, 1, 1, 2, 1, 2, 3, 5, 1, 2, 2, 2, 6]
-Frecuencias: [2, 4, 5, 1, 0, 1, 1, 0, 0, 0]
-
-Histograma
-----------
-0: ****
-1: ********
-2: **********
-3: **
-4:
-5: **
-6: **
-7:
-8:
-9:
-```
-
 
 
 ### Ejercicio 2 ###
 
-Implementa en Swift la **función recursiva**
+!!! Hint "Pista"
+    Para resolver el ejercicio necesitarás concatenar dos arrays, de
+    forma similar a la función `append` de Scheme para las
+    listas. Puedes utilizar para ello el operador `+`:
+    
+    ```swift
+    let array1 = [1,2,3]
+    let array2 = [4,5,6]
+    let array3 = array1 + array2
+    // array3 contiene [1,2,3,4,5,6]
+    ```
+
+a) Implementa en Swift la **función recursiva**
 `compruebaParejas(_:funcion:)` con el siguiente perfil:
 
 ```
@@ -101,8 +85,47 @@ print(compruebaParejas([2, 4, 16, 5, 10, 100, 105], funcion: cuadrado))
 // Imprime [(2,4), (4,16), (10,100)]
 ```
 
+b) Implementa en Swift la **función recursiva**
+`coinciden(parejas: [(Int,Int)], funcion: (Int)->Int)` que devuelve
+un array de booleanos que indica si el resultado de aplicar la función
+al primer número de cada pareja coincide con el segundo.
+
+    
+```swift
+let array = [(2,4), (4,14), (4,16), (5,25), (10,100)]
+func cuadrado(x: Int) -> Int {
+   return x * x
+}
+print("Resultado coinciden:  \(coinciden(parejas: array, funcion: cuadrado))\n")
+// Imprime: Resultado coinciden:  [true, false, true, true, true]
+```
+
 
 ### Ejercicio 3 ###
+
+Supongamos que estamos escribiendo un programa que debe tratar
+movimientos de cuentas bancarias. Define un enumerado `Movimiento `
+con valores asociados con el que podamos representar:
+
+- Depósito (valor asociado: `(Double)`)
+- Cargo de un recibo (valor asociado: `(String, Double)`)
+- Cajero (valor asociado: `(Double)`)
+
+Y define la función `aplica(movimientos:[Movimiento])` que reciba un
+array de movimientos y devuelva una pareja con el dinero resultante de acumular todos
+los movimientos y un array de Strings con todos los cargos realizados.
+
+Ejemplo:
+
+
+```swift
+let movimientos: [Movimiento] = [.deposito(830.0), .cargoRecibo("Gimnasio", 45.0), .deposito(400.0), .cajero(100.0), .cargoRecibo("Fnac", 38.70)]
+print(aplica(movimientos: movimientos))
+//Imprime (1046.3, ["Gimnasio", "Fnac"])
+```
+
+
+### Ejercicio 4 ###
 
 Implementa en Swift un tipo enumerado recursivo que permita construir
 árboles binarios de enteros. El enumerado debe tener 
@@ -127,49 +150,8 @@ print(suma(arbolb: arbol))
 // Imprime: 22
 ```
 
-### Ejercicio 4 ###
-
-Implementa en Swift la **función recursiva**
-`coinciden(parejas: [(Int,Int)], funcion: (Int)->Int)` que devuelve
-un array de booleanos que indica si el resultado de aplicar la función
-al primer número de cada pareja coincide con el segundo.
-
-```swift
-let array = [(2,4), (4,14), (4,16), (5,25), (10,100)]
-func cuadrado(x: Int) -> Int {
-   return x * x
-}
-print("Resultado coinciden:  \(coinciden(parejas: array, funcion: cuadrado))\n")
-// Imprime: Resultado coinciden:  [true, false, true, true, true]
-```
-
-
 
 ### Ejercicio 5 ###
-
-Supongamos que estamos escribiendo un programa que debe tratar
-movimientos de cuentas bancarias. Define un enumerado `Movimiento `
-con valores asociados con el que podamos representar:
-
-- Depósito (valor asociado: `(Double)`)
-- Cargo de un recibo (valor asociado: `(String, Double)`)
-- Cajero (valor asociado: `(Double)`)
-
-Y define la función `aplica(movimientos:[Movimiento])` que reciba un
-array de movimientos y devuelva una pareja con el dinero resultante de acumular todos
-los movimientos y un array de Strings con todos los cargos realizados.
-
-Ejemplo:
-
-
-```swift
-let movimientos: [Movimiento] = [.deposito(830.0), .cargoRecibo("Gimnasio", 45.0), .deposito(400.0), .cajero(100.0), .cargoRecibo("Fnac", 38.70)]
-print(aplica(movimientos: movimientos))
-//Imprime (1046.3, ["Gimnasio", "Fnac"])
-```
-
-
-### Ejercicio 6 ###
 
 Implementa en Swift un tipo enumerado recursivo que permita construir
 árboles genéricos de enteros usando el mismo enfoque que en Scheme: un
