@@ -86,6 +86,12 @@ correspondiente a tu sistema operativo. Descárgalo [desde esta
 página](https://www.docker.com/community-edition) y sigue las
 instrucciones correspondientes a tu sistema operativo.
 
+!!! Warning "Cuidado"
+    Si tienes Windows 10, la instalación nativa de Docker es
+    incompatible con la de Virtual Box. Puedes instalar [Docker
+    Toolbox](https://docs.docker.com/toolbox/overview/), que utiliza
+    una máquina Virtual Box para lanzar Docker.
+
 #### Instalación y ejecución de la imagen Swift ####
 
 Una vez instalado Docker, abre un terminal y lanza el siguiente
