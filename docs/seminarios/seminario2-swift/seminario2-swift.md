@@ -279,6 +279,60 @@ terminal.
 Puedes consultar los conceptos básicos de Visual Studio Code y el
 manual completo en [este enlace](https://code.visualstudio.com/docs).
 
+##### Integración del Docker Quickstart Terminal en Visual Studio Code
+
+Abre un _Docker Quickstart Terminal_, ejecuta el siguiente comando y
+anota los valores de las variables de entorno:
+
+```
+$ set | grep DOCKER_
+DOCKER_CERT_PATH='C:\Users\<usuario>\.docker\machine\machines\default'
+DOCKER_HOST=tcp://192.168.99.100:2376
+DOCKER_MACHINE_NAME=default
+DOCKER_TLS_VERIFY=1
+DOCKER_TOOLBOX_INSTALL_PATH='C:\Program Files\Docker Toolbox'
+```
+
+Abre la carpeta de trabajo como área de trabajo: _Archivo -> Abrir área de trabajo..._.
+
+Abre el Terminal integrado (Crtl+ñ). Te dá a elegir entre tres shells
+(PowerShell, CMD, o Git bash). Elige el que mejor te venga por
+defecto, ya que en cualquier caso, para trabajar con el Swift de
+Docker hay que ajustar la configuración.
+
+Abre la configuración (_Crl+_, o _Archivo->Preferencias->Configuración_).
+
+Fíjate que son tres los ficheros de configuración posibles:
+
+- Configuración predeterminada
+- Configuración de usuario
+- Configuración de área de trabajo
+
+En la Configuración de usuario o en la de área de trabajo, dependiendo de en
+cuál te convenga más, pon entre las `{}` los siguientes valores de configuración:
+
+```
+{
+"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+"terminal.integrated.env.windows": {
+"DOCKER_CERT_PATH": "C:\\Users\\<usuario>\\.docker\\machine\\machines\\default",
+"DOCKER_HOST": "tcp://192.168.99.100:2376",
+"DOCKER_MACHINE_NAME": "default",
+"DOCKER_TLS_VERIFY": "1",
+"DOCKER_TOOLBOX_INSTALL_PATH": "C:\\Program Files\\Docker Toolbox"
+},
+"terminal.integrated.shellArgs.windows": ["--login", "-i", "C:\\Program Files\\Docker Toolbox\\start.sh"]
+}
+```
+
+Fíjate que el valor de `terminal.integrated.env.windows` depende de los valores que
+obtuvistes en el Docker Quickstart Terminal cuando probamos las Docker Tools.
+
+Si eliges cambiar la Configuración de área de trabajo, en lugar de la de Usuario,
+la configuración se guarda en una subcarpeta `".vscode"` de la carpeta de trabajo,
+y este tipo de Terminal interactivo se abrirá solo cuando trabajes en esa carpeta.
+Por defecto, en otras carpetas podrás tener el terminal que elijas.
+
 ## Un tour de Swift
 
 Aquí empieza el seminario de Swift. El texto que hay a continuación es
