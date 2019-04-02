@@ -259,13 +259,11 @@ $ tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
 // Actualizar el PATH o mover usr/bin/swift al directorio /usr/bin
 ```
 
-### Editor de código
+### Visual Studio Code ###
 
 Para editar código Swift puedes usar cualquier editor orientado a
 programación como Visual Studio Code o Atom. Aconsejamos [Visual Studio
 Code](https://code.visualstudio.com).
-
-#### Visual Studio Code ####
 
 Es recomendable instalar la extensión `Swift Language` que realiza un
 coloreado de sintaxis de Swift.
@@ -279,7 +277,7 @@ terminal.
 Puedes consultar los conceptos básicos de Visual Studio Code y el
 manual completo en [este enlace](https://code.visualstudio.com/docs).
 
-##### Integración del Docker Quickstart Terminal en Visual Studio Code
+#### Integración del Docker Quickstart Terminal en Visual Studio Code ####
 
 Abre un _Docker Quickstart Terminal_, ejecuta el siguiente comando y
 anota los valores de las variables de entorno:
