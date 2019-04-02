@@ -915,6 +915,67 @@ terminal.</p>
 <p><img src="imagenes/vcode.png" width="700px"/></p>
 <p>Puedes consultar los conceptos básicos de Visual Studio Code y el
 manual completo en <a href="https://code.visualstudio.com/docs">este enlace</a>.</p>
+<h5>Integración del Docker Quickstart Terminal en Visual Studio Code</h5>
+<p>Abre un <em>Docker Quickstart Terminal</em>, ejecuta el siguiente comando y
+anota los valores de las variables de entorno:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ <span class="nb">set</span> <span class="p">|</span> grep DOCKER_
+<span class="nv">DOCKER_CERT_PATH</span><span class="o">=</span><span class="s1">&#39;C:\Users\&lt;usuario&gt;\.docker\machine\machines\default&#39;</span>
+<span class="nv">DOCKER_HOST</span><span class="o">=</span>tcp://192.168.99.100:2376
+<span class="nv">DOCKER_MACHINE_NAME</span><span class="o">=</span>default
+<span class="nv">DOCKER_TLS_VERIFY</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">DOCKER_TOOLBOX_INSTALL_PATH</span><span class="o">=</span><span class="s1">&#39;C:\Program Files\Docker Toolbox&#39;</span>
+</pre></div>
+</td></tr></table>
+
+<p>Abre la carpeta de trabajo como área de trabajo: <em>Archivo -&gt; Abrir área de trabajo...</em>.</p>
+<p>Abre el Terminal integrado (Crtl+ñ). Te dá a elegir entre tres shells
+(PowerShell, CMD, o Git bash). Elige el que mejor te venga por
+defecto, ya que en cualquier caso, para trabajar con el Swift de
+Docker hay que ajustar la configuración.</p>
+<p>Abre la configuración (<em>Crl+</em>, o <em>Archivo-&gt;Preferencias-&gt;Configuración</em>).</p>
+<p>Fíjate que son tres los ficheros de configuración posibles:</p>
+<ul>
+<li>Configuración predeterminada</li>
+<li>Configuración de usuario</li>
+<li>Configuración de área de trabajo</li>
+</ul>
+<p>En la Configuración de usuario o en la de área de trabajo, dependiendo de en
+cuál te convenga más, pon entre las <code>{}</code> los siguientes valores de configuración:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>{
+&quot;terminal.integrated.shell.windows&quot;: &quot;C:\\Program Files\\Git\\bin\\bash.exe&quot;,
+&quot;terminal.integrated.env.windows&quot;: {
+&quot;DOCKER_CERT_PATH&quot;: &quot;C:\\Users\\&lt;usuario&gt;\\.docker\\machine\\machines\\default&quot;,
+&quot;DOCKER_HOST&quot;: &quot;tcp://192.168.99.100:2376&quot;,
+&quot;DOCKER_MACHINE_NAME&quot;: &quot;default&quot;,
+&quot;DOCKER_TLS_VERIFY&quot;: &quot;1&quot;,
+&quot;DOCKER_TOOLBOX_INSTALL_PATH&quot;: &quot;C:\\Program Files\\Docker Toolbox&quot;
+},
+&quot;terminal.integrated.shellArgs.windows&quot;: [&quot;--login&quot;, &quot;-i&quot;, &quot;C:\\Program Files\\Docker Toolbox\\start.sh&quot;]
+}
+</pre></div>
+</td></tr></table>
+
+<p>Fíjate que el valor de <code>terminal.integrated.env.windows</code> depende de los valores que
+obtuvistes en el Docker Quickstart Terminal cuando probamos las Docker Tools.</p>
+<p>Si eliges cambiar la Configuración de área de trabajo, en lugar de la de Usuario,
+la configuración se guarda en una subcarpeta <code>".vscode"</code> de la carpeta de trabajo,
+y este tipo de Terminal interactivo se abrirá solo cuando trabajes en esa carpeta.
+Por defecto, en otras carpetas podrás tener el terminal que elijas.</p>
 <h2 id="un-tour-de-swift">Un tour de Swift<a class="headerlink" href="#un-tour-de-swift" title="Permanent link">&para;</a></h2>
 <p>Aquí empieza el seminario de Swift. El texto que hay a continuación es
 una traducción del documento de Apple
