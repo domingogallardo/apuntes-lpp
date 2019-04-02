@@ -90,7 +90,14 @@ instrucciones correspondientes a tu sistema operativo.
     Si tienes Windows 10, la instalación nativa de Docker es
     incompatible con la de Virtual Box. Puedes instalar [Docker
     Toolbox](https://docs.docker.com/toolbox/overview/), que utiliza
-    una máquina Virtual Box para lanzar Docker.
+    una máquina Virtual Box para lanzar Docker. Si ya tienes instalada
+    una versión de Virtual Box no lo reinstales con Docker
+    Toolbox. Cuando la instalación te lo pida deschequéalo.
+    
+    Una vez instalado Docker Toolbox debes abrir un _Docker Quickstart
+    Terminal_ que contiene un entorno _bash_ similar al de
+    Linux. Desde ese terminal puedes continuar la instalación de la
+    imagen Swift tal y como se explica a continuación.
 
 #### Instalación y ejecución de la imagen Swift ####
 
@@ -161,6 +168,15 @@ Vamos a probar a usar el directorio compartido:
 ~ $ cd swift
 ~/swift $ 
 ```
+
+!!! Warning "Aviso"
+    Si estás en Windows, por una cuestión de permisos, el directorio
+    de trabajo es recomendable que se encuentre bajo la ruta
+    `C:\Users\<usuario>\`. Por ejemplo:
+    
+    ```
+    $ cd /c/Users/<usuario>/Documents/Ejercicios/Swift
+    ```
 
 2. Creamos en el directorio actual un programa llamado
    `holaMundo.swift`.
