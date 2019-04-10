@@ -237,7 +237,9 @@ exit
 !!! Note "Script"
     El siguiente script realiza la llamada a la máquina docker y
     ejecuta el fichero que recibe como parámetro. Es muy cómodo para
-    ejecutar ficheros .swift en el directorio actual.
+    ejecutar ficheros .swift en el directorio actual. Lo puedes
+    ejecutar en **Linux**, **MacOS** o en **Windows** con el **Docker
+    Quickstart Terminal**. 
     
     **Fichero `swift.sh`**:
     
@@ -260,10 +262,8 @@ exit
     $ ./swift.sh holaMundo.swift
     ```
   
-    Puedes ejecutar el script anterior desde Linux o desde el Docker
-    Quickstart Terminal. 
     
-    Si estás en Windows y quieres ejecutar el script desde un terminal
+    Si estás en **Windows** y quieres ejecutar el script desde un terminal
     normal puedes hacer el siguiente fichero .bat que ejecuta el
     script anterior en el terminal Docker.
 
