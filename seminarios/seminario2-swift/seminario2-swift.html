@@ -881,6 +881,48 @@ exit
 </pre></div>
 </td></tr></table>
 
+<div class="admonition note">
+<p class="admonition-title">Script</p>
+<p>El siguiente script realiza la llamada a la máquina docker y
+ejecuta el fichero que recibe como parámetro. Es muy cómodo para
+ejecutar ficheros .swift en el directorio actual.</p>
+<p><strong>Fichero <code>swift.sh</code></strong>:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nv">SWIFT_VER</span><span class="o">=</span><span class="m">4</span>.0.3
+docker run --privileged -it --rm -v <span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">:/home&quot;</span> <span class="s2">&quot;swift:</span><span class="si">${</span><span class="nv">SWIFT_VER</span><span class="si">}</span><span class="s2">&quot;</span> /bin/bash -c <span class="s2">&quot;</span>
+<span class="s2">cd /home</span>
+<span class="s2">swift </span><span class="nv">$*</span><span class="s2">&quot;</span>
+</pre></div>
+</td></tr></table>
+
+<p>Puedes guardarlo en el directorio actual, hacerlo ejecutable con</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ chmod +x swift.sh
+</pre></div>
+</td></tr></table>
+
+<p>y llamarlo pasándole como parámetro el fichero swift a ejecutar:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ ./swift.sh holaMundo.swift
+</pre></div>
+</td></tr></table>
+
+<p>Puedes ejecutar el script anterior desde Linux o desde el Docker
+Quickstart Terminal. </p>
+<p>Si estás en Windows y quieres ejecutar el script desde un terminal
+normal puedes hacer el siguiente fichero .bat que ejecuta el
+script anterior en el terminal Docker.</p>
+<p><strong>Fichero <code>swift.bat</code></strong>:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&quot;C:\Program Files\Git\bin\bash.exe&quot; --login -i &quot;C:\Program Files\Docker Toolbox\start.sh&quot; &quot;./swift.sh %*&quot;
+</pre></div>
+</td></tr></table>
+
+<p>Uso:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>&gt; swift holaMundo.swift
+</pre></div>
+</td></tr></table>
+
+</div>
 <h3 id="instalacion-en-macos">Instalación en MacOS<a class="headerlink" href="#instalacion-en-macos" title="Permanent link">&para;</a></h3>
 <p>Para instalar la última versión de Swift en MacOs debes instalar
 Xcode. Una vez instalado puedes ejecutar Swift desde el terminal.</p>
