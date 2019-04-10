@@ -234,7 +234,51 @@ exit
 ~/swift $ 
 ```
 
+!!! Note "Script"
+    El siguiente script realiza la llamada a la máquina docker y
+    ejecuta el fichero que recibe como parámetro. Es muy cómodo para
+    ejecutar ficheros .swift en el directorio actual.
+    
+    **Fichero `swift.sh`**:
+    
+    ```shell
+    SWIFT_VER=4.0.3
+    docker run --privileged -it --rm -v "${PWD}:/home" "swift:${SWIFT_VER}" /bin/bash -c "
+    cd /home
+    swift $*"
+    ```
 
+    Puedes guardarlo en el directorio actual, hacerlo ejecutable con
+    
+    ```shell
+    $ chmod +x swift.sh
+    ```
+  
+    y llamarlo pasándole como parámetro el fichero swift a ejecutar:
+    
+    ```shell
+    $ ./swift.sh holaMundo.swift
+    ```
+  
+    Puedes ejecutar el script anterior desde Linux o desde el Docker
+    Quickstart Terminal. 
+    
+    Si estás en Windows y quieres ejecutar el script desde un terminal
+    normal puedes hacer el siguiente fichero .bat que ejecuta el
+    script anterior en el terminal Docker.
+
+    **Fichero `swift.bat`**:
+    
+    ```
+    "C:\Program Files\Git\bin\bash.exe" --login -i "C:\Program Files\Docker Toolbox\start.sh" "./swift.sh %*"
+    ```
+    
+    Uso:
+    
+    ```
+    > swift holaMundo.swift
+    ```
+    
 ### Instalación en MacOS
 
 Para instalar la última versión de Swift en MacOs debes instalar
