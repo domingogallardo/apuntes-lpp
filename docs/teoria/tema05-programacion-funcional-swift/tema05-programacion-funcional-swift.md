@@ -765,8 +765,8 @@ enum Quiniela: Int {
 }
 ```
 
-Se puede obtener el valor bruto de la siguiente asociado a la
-constante del enumerado de la siguiente forma:
+Se puede obtener el valor bruto asociado a la constante del enumerado
+de la siguiente forma:
 
 ```swift
 let valorEquis: Int = Quiniela.equis.rawValue
@@ -803,7 +803,7 @@ enum CaracterControlASCII: Character {
 }
 ```
 
-El carácter _nueva línea_ se puede obtener de la siguiente forma:
+El carácter nueva línea (_lineFeed_) se puede obtener de la siguiente forma:
 
 ```
 let nuevaLinea = CaracterControlASCII.LineFeed.rawValue
@@ -846,8 +846,7 @@ enum Prueba {
 ```
 
 Esta notación obliga a definir un valor concreto del `Int` asociado a
-`x` en el momento de creación de una variable que tenga el valor de
-este enumerado:
+`x` en el momento de creación del enumerado:
 
 ```swift
 let valor1 = Prueba.x(10)
@@ -858,8 +857,10 @@ Las variables `valor1` y `valor2` son de tipo `Prueba` y tiene como
 valor la constante `x`, y el entero asociado `10` y `40` en cada
 caso. Son parecidas a instancias de una clase.
 
-Para obtener el valor asociado debemos usar una variante de la
-sentencia  `switch` que nos permite asignar el valor a una variable:
+Para obtener el valor asociado debemos usar un `case let` en una
+sentencia `switch` con una variable a la que se asigna el valor. Por
+ejemplo, en el siguiente código el valor del enumerado se asigna a la
+variable `a`:
 
 ```swift
 switch valor1 {
@@ -871,15 +872,15 @@ case let .x(a):
 
 Los valores asociados y los valores brutos son distintos: el valor
 bruto de un caso de enumeración es el mismo para todas las instancias,
-mientras que el valor asociado se proporciona cuando se define el
-valor concreto de la enumeración.
+mientras que el valor asociado es distinto y se proporciona cuando se
+define el valor concreto de la enumeración.
 
 Cuando unimos a la característica del valor asociado la posibilidad de
 los enumerados de tener más de una opción tenemos lo que en otros
 lenguajes de programación se llaman _uniones etiquetadas_ o
 _variantes_.
 
-Veamos otro ejemplo más real, en el que usamos un enum para definir
+Veamos un ejemplo, más real, en el que usamos un enum para definir
 posibles valores de un código de barras, en el que incluimos dos
 posibles tipos de código de barras: el código de barras lineal
 (denominado UPC) y el código QR:
@@ -902,7 +903,7 @@ Veamos un ejemplo de uso, en el que creamos un código de barras de
 producto de tipo UPC, después lo modificamos a otro de tipo código QR
 y por último lo imprimimos:
 
-```
+```swift
 var codigoBarrasProducto = CodigoBarras.upc(8, 85909, 51226, 3)
 codigoBarrasProducto = .qrCode("ABCDEFGHIJKLMNOP")
 
