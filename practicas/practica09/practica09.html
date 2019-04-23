@@ -36,7 +36,7 @@
     
     
       
-        <title>Práctica 9: Programación funcional en Swift: clausuras y funciones de orden superior - LPP</title>
+        <title>Práctica 9 - LPP</title>
       
     
     
@@ -108,7 +108,7 @@
               LPP
             </span>
             <span class="md-header-nav__topic">
-              Práctica 9: Programación funcional en Swift: clausuras y funciones de orden superior
+              Práctica 9
             </span>
           
         </div>
@@ -318,10 +318,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Prácticas
@@ -426,6 +428,104 @@
     <a href="../practica08/practica08.html" title="Práctica 8" class="md-nav__link">
       Práctica 8
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Práctica 9
+      </label>
+    
+    <a href="practica09.html" title="Práctica 9" class="md-nav__link md-nav__link--active">
+      Práctica 9
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" title="Entrega de la práctica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" title="Ejercicios" class="md-nav__link">
+    Ejercicios
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" title="Ejercicio 1" class="md-nav__link">
+    Ejercicio 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" title="Ejercicio 2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" title="Ejercicio 3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" title="Ejercicio 4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" title="Ejercicio 5" class="md-nav__link">
+    Ejercicio 5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -679,7 +779,9 @@ de nota) </li>
 parcial 3 para aprobar la asignatura en la convocatoria de Junio
 (orden decreciente de nota necesaria)</li>
 </ul>
-<p><strong>AYUDA:</strong></p>
+<p>Las ordenaciones hay que realizarlas usando la función <code>sorted</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
 <p>Para que los listados se muestren formateados con espacios, puedes usar la siguiente
 función (para ello también debes incluir el import que se indica)</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -704,6 +806,7 @@ función (para ello también debes incluir el import que se indica)</p>
 </pre></div>
 </td></tr></table>
 
+</div>
 <p>Ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -825,137 +928,26 @@ de orden superior para obtener los datos requeridos en cada caso</p>
 </td></tr></table>
 
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
-<p>Queremos escribir la función <code>calcular(exp: String, sobre:
-[(Double, Double)])</code> que recibe una cadena que codifica una expresión
-sobre una tupla y una lista de tuplas y devuelve el resultado de aplicar
-esa expresión matemática sobre cada una de las tuplas de la lista.</p>
-<p>Por ejemplo:</p>
+<p>Implementa la función <code>construye</code> con el siguiente perfil:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">construye</span><span class="p">(</span><span class="n">operador</span><span class="p">:</span> <span class="nb">Character</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span>
+</pre></div>
+</td></tr></table>
+
+<p>La función recibe un operador que puede ser uno de los siguientes
+caracteres: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> y debe devolver una clausura que reciba
+dos argumentos y realice la operación indicada sobre ellos.</p>
+<p>Ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
 5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">tuplas</span> <span class="p">=</span> <span class="p">[(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">10.8</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">3.4</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">)]</span>
-
-<span class="bp">print</span><span class="p">(</span><span class="n">calcular</span><span class="p">(</span><span class="n">exp</span><span class="p">:</span> <span class="s">&quot;$1 * 2.0&quot;</span><span class="p">,</span> <span class="n">sobre</span><span class="p">:</span> <span class="n">tuplas</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
-<span class="c1">// [5.0, 6.5999999999999996, 24.0, 8.0]</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">calcular</span><span class="p">(</span><span class="n">exp</span><span class="p">:</span> <span class="s">&quot;$0 - 5.0&quot;</span><span class="p">,</span> <span class="n">sobre</span><span class="p">:</span> <span class="n">tuplas</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
-<span class="c1">// [-4.0, 5.8000000000000007, -6.0, -8.4000000000000004]</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">calcular</span><span class="p">(</span><span class="n">exp</span><span class="p">:</span> <span class="s">&quot;$0 + $1&quot;</span><span class="p">,</span> <span class="n">sobre</span><span class="p">:</span> <span class="n">tuplas</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
-<span class="c1">// [3.5, 14.100000000000001, 11.0, 0.60000000000000009]</span>
-</pre></div>
-</td></tr></table>
-
-<ul>
-<li>En el primer ejemplo la expresión indica que hay que multiplicar el
-  segundo número de cada tupla por 2.0.</li>
-<li>En el segundo ejemplo la expresión indica que hay que restar al
-  primer número de cada tupla 5.0.</li>
-<li>En el tercer ejemplo la expresión indica que hay que sumar el primer
-  y el segundo elemento de cada tupla.</li>
-</ul>
-<p>La expresión codificada tendrá siempre dos operandos y una
-operación. Los operandos pueden ser las expresiones <code>$0</code> y <code>$1</code> para
-referirse al primer y segundo elemento de cada tupla o números
-decimales. La operación puede ser <code>+</code>, <code>-</code>, <code>*</code> y <code>/</code> para referirse a
-las operaciones suma, resta, multiplicación y división.</p>
-<p>Vamos a realizar el ejercicio en tres partes. Primero hay que
-implementar una función que analiza la cadena y devuelve una tupla de
-enumerados; después una función convertirá la tupla de enumerados en
-una clausura y por último la función principal que usa las
-anteriores y aplica la clausura al array de tuplas. Vamos a detallar
-cada una de las partes.</p>
-<p>a) En primer lugar debes implementar la función <code>parse(exp:)</code> que analice la cadena y
-la transforme en una tupla de dos operandos y una operación, siendo
-éstos los siguientes tipos enumerados:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">enum</span> <span class="nc">Operando</span> <span class="p">{</span>
-   <span class="k">case</span> <span class="n">primero</span>
-   <span class="k">case</span> <span class="n">segundo</span>
-   <span class="k">case</span> <span class="n">valor</span><span class="p">(</span><span class="nb">Double</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kd">enum</span> <span class="nc">Operacion</span> <span class="p">{</span>
-   <span class="k">case</span> <span class="n">suma</span>
-   <span class="k">case</span> <span class="n">resta</span>
-   <span class="k">case</span> <span class="n">mult</span>
-   <span class="k">case</span> <span class="n">div</span>
-<span class="p">}</span>
-</pre></div>
-</td></tr></table>
-
-<p>La función <code>parse(exp:)</code> tiene el siguiente perfil:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">parse</span><span class="p">(</span><span class="n">exp</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="n">op1</span><span class="p">:</span> <span class="n">Operando</span><span class="p">,</span> <span class="n">op2</span><span class="p">:</span> <span class="n">Operando</span><span class="p">,</span> <span class="n">op</span><span class="p">:</span> <span class="n">Operacion</span><span class="p">)?</span>
-</pre></div>
-</td></tr></table>
-
-<p>Tendrás que definir <strong>funciones auxiliares</strong> para implementar esta
-función. </p>
-<p><strong>AYUDA</strong>: </p>
-<p>Para construir un array con las palabras que aparecen en la frase, puedes usar la siguiente sentencia:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">arrayPalabras</span> <span class="p">=</span> <span class="n">frase</span><span class="p">.</span><span class="bp">split</span><span class="p">(</span><span class="n">separator</span><span class="p">:</span> <span class="s">&quot; &quot;</span><span class="p">).</span><span class="bp">map</span><span class="p">(</span><span class="nb">String</span><span class="p">.</span><span class="kd">init</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
-
-<p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">parse</span><span class="p">(</span><span class="s">&quot;$0 + $1&quot;</span><span class="p">)</span> 
-<span class="c1">// Devuelve opcional con la tupla (Operando.primero, Operando.segundo, Operacion.suma)</span>
-<span class="n">parse</span><span class="p">(</span><span class="s">&quot;5.0 * $1&quot;</span><span class="p">)</span>
-<span class="c1">// Devuelve opcional con la tupla (Operando.valor(5.0), Operando.segundo, Operacion.mult)</span>
-<span class="n">parse</span><span class="p">(</span><span class="s">&quot;Hola&quot;</span><span class="p">)</span>
-<span class="c1">// Devuelve nil</span>
-</pre></div>
-</td></tr></table>
-
-<p>b) En segundo lugar debes implementar la función
-<code>construyeFunc(op1:op2:op:)</code> que recibe los enumerados que representan
-la expresión matemática y devuelve una clausura que aplica la
-expresión matemática a una tupla.</p>
-<p>La función tiene el siguiente perfil:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">construyeFunc</span><span class="p">(</span><span class="n">op1</span><span class="p">:</span> <span class="n">Operando</span><span class="p">,</span> <span class="n">op2</span><span class="p">:</span> <span class="n">Operando</span><span class="p">,</span> <span class="n">op</span><span class="p">:</span> <span class="n">Operacion</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">((</span><span class="nb">Double</span><span class="p">,</span> <span class="nb">Double</span><span class="p">))</span> <span class="p">-&gt;</span> <span class="nb">Double</span>
-</pre></div>
-</td></tr></table>
-
-<p>También es conveniente que definas <strong>funciones auxiliares</strong>.</p>
-<!-- Nota -->
-
-<table>
-<tr><td>
-
-<strong>Nota</strong>
-
-<p/>
-
-La clausura que se devuelve puede ser una clausura que captura los
-parámetros `op1`, `op2` y `op` y que los usa en su cuerpo. De esta
-forma podemos hacer una clausura genérica que llama a las funciones
-auxiliares y evitamos tener que escribir un número enorme de clasuras
-concretas con todas las posibles combinaciones de tuplas y operadores.
-</tr></td>
-</table>
-
-<!-- Nota -->
-
-<p>c) Por último debes implementar la función <code>calcular(exp:sobre:)</code> con
-el siguiente perfil:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">calcular</span><span class="p">(</span><span class="n">exp</span> <span class="n">str</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">sobre</span> <span class="n">tuplas</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="p">(</span><span class="nb">Double</span><span class="p">,</span> <span class="nb">Double</span><span class="p">)</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="nb">Double</span><span class="p">]?</span> 
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nv">f</span> <span class="p">=</span> <span class="n">construye</span><span class="p">(</span><span class="n">operador</span><span class="p">:</span> <span class="s">&quot;+&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="c1">// Imprime 5</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">construye</span><span class="p">(</span><span class="n">operador</span><span class="p">:</span> <span class="s">&quot;-&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="c1">// Imprime -1</span>
 </pre></div>
 </td></tr></table>
 
@@ -979,6 +971,27 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../practica08/practica08.html" title="Práctica 8" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Práctica 8
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
