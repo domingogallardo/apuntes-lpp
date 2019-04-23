@@ -157,24 +157,25 @@ de nota)
 parcial 3 para aprobar la asignatura en la convocatoria de Junio
 (orden decreciente de nota necesaria)
  
-**AYUDA:**
+Las ordenaciones hay que realizarlas usando la función `sorted`.
 
-Para que los listados se muestren formateados con espacios, puedes usar la siguiente
-función (para ello también debes incluir el import que se indica)
+!!! Note "Nota"
+    Para que los listados se muestren formateados con espacios, puedes usar la siguiente
+    función (para ello también debes incluir el import que se indica)
  
-```swift
+    ```swift
 
-import Foundation
+    import Foundation
 
-func imprimirListadoAlumnos(_ alumnos: [(String, Double, Double, Double, Int)]) {
-    print("Alumno   Parcial1   Parcial2   Cuest  Años")
-    for alu in alumnos {
-        alu.0.withCString {
-            print(String(format:"%-10s %5.2f      %5.2f    %5.2f  %3d", $0, alu.1,alu.2,alu.3,alu.4))
+    func imprimirListadoAlumnos(_ alumnos: [(String, Double, Double, Double, Int)]) {
+        print("Alumno   Parcial1   Parcial2   Cuest  Años")
+        for alu in alumnos {
+            alu.0.withCString {
+                print(String(format:"%-10s %5.2f      %5.2f    %5.2f  %3d", $0, alu.1,alu.2,alu.3,alu.4))
+            }
         }
     }
-}
-```
+    ```
 
  
 Ejemplo:
@@ -259,129 +260,28 @@ print(tupla)
 // Resultado: (6.6812499999999995, 2.7624999999999997, 5.2262500000000003)
 ```
 
-### Ejercicio 5
+### Ejercicio 5 ###
 
-Queremos escribir la función `calcular(exp: String, sobre:
-[(Double, Double)])` que recibe una cadena que codifica una expresión
-sobre una tupla y una lista de tuplas y devuelve el resultado de aplicar
-esa expresión matemática sobre cada una de las tuplas de la lista.
 
-Por ejemplo:
+Implementa la función `construye` con el siguiente perfil:
 
 ```swift
-
-let tuplas = [(1.0, 2.5), (10.8, 3.3), (-1.0, 12.0), (-3.4, 4.0)]
-
-print(calcular(exp: "$1 * 2.0", sobre: tuplas)!)
-// [5.0, 6.5999999999999996, 24.0, 8.0]
-print(calcular(exp: "$0 - 5.0", sobre: tuplas)!)
-// [-4.0, 5.8000000000000007, -6.0, -8.4000000000000004]
-print(calcular(exp: "$0 + $1", sobre: tuplas)!)
-// [3.5, 14.100000000000001, 11.0, 0.60000000000000009]
+func construye(operador: Character) -> (Int, Int) -> Int
 ```
 
-- En el primer ejemplo la expresión indica que hay que multiplicar el
-  segundo número de cada tupla por 2.0.
-- En el segundo ejemplo la expresión indica que hay que restar al
-  primer número de cada tupla 5.0.
-- En el tercer ejemplo la expresión indica que hay que sumar el primer
-  y el segundo elemento de cada tupla.
+La función recibe un operador que puede ser uno de los siguientes
+caracteres: `+`, `-`, `*`, `/` y debe devolver una clausura que reciba
+dos argumentos y realice la operación indicada sobre ellos.
 
-La expresión codificada tendrá siempre dos operandos y una
-operación. Los operandos pueden ser las expresiones `$0` y `$1` para
-referirse al primer y segundo elemento de cada tupla o números
-decimales. La operación puede ser `+`, `-`, `*` y `/` para referirse a
-las operaciones suma, resta, multiplicación y división.
-
-Vamos a realizar el ejercicio en tres partes. Primero hay que
-implementar una función que analiza la cadena y devuelve una tupla de
-enumerados; después una función convertirá la tupla de enumerados en
-una clausura y por último la función principal que usa las
-anteriores y aplica la clausura al array de tuplas. Vamos a detallar
-cada una de las partes.
-
-a) En primer lugar debes implementar la función `parse(exp:)` que analice la cadena y
-la transforme en una tupla de dos operandos y una operación, siendo
-éstos los siguientes tipos enumerados:
+Ejemplo:
 
 ```swift
-enum Operando {
-   case primero
-   case segundo
-   case valor(Double)
-}
-
-enum Operacion {
-   case suma
-   case resta
-   case mult
-   case div
-}
-```
-
-La función `parse(exp:)` tiene el siguiente perfil:
-
-```swift
-func parse(exp: String) -> (op1: Operando, op2: Operando, op: Operacion)?
-```
-
-Tendrás que definir **funciones auxiliares** para implementar esta
-función. 
-
-**AYUDA**: 
-
-Para construir un array con las palabras que aparecen en la frase, puedes usar la siguiente sentencia:
-
-```swift
-let arrayPalabras = frase.split(separator: " ").map(String.init)
-```
-
-Ejemplos:
-
-```swift
-parse("$0 + $1") 
-// Devuelve opcional con la tupla (Operando.primero, Operando.segundo, Operacion.suma)
-parse("5.0 * $1")
-// Devuelve opcional con la tupla (Operando.valor(5.0), Operando.segundo, Operacion.mult)
-parse("Hola")
-// Devuelve nil
-```
-
-b) En segundo lugar debes implementar la función
-`construyeFunc(op1:op2:op:)` que recibe los enumerados que representan
-la expresión matemática y devuelve una clausura que aplica la
-expresión matemática a una tupla.
-
-La función tiene el siguiente perfil:
-
-```swift
-func construyeFunc(op1: Operando, op2: Operando, op: Operacion) -> ((Double, Double)) -> Double
-```
-
-También es conveniente que definas **funciones auxiliares**.
-
-<!-- Nota -->
-<table>
-<tr><td>
-
-<strong>Nota</strong>
-
-<p/>
-
-La clausura que se devuelve puede ser una clausura que captura los
-parámetros `op1`, `op2` y `op` y que los usa en su cuerpo. De esta
-forma podemos hacer una clausura genérica que llama a las funciones
-auxiliares y evitamos tener que escribir un número enorme de clasuras
-concretas con todas las posibles combinaciones de tuplas y operadores.
-</tr></td>
-</table>
-<!-- Nota --> 
-
-c) Por último debes implementar la función `calcular(exp:sobre:)` con
-el siguiente perfil:
-
-```swift
-func calcular(exp str: String, sobre tuplas: Array<(Double, Double)>) -> [Double]? 
+var f = construye(operador: "+")
+print(f(2,3))
+// Imprime 5
+f = construye(operador: "-")
+print(f(2,3))
+// Imprime -1
 ```
 
 ----
