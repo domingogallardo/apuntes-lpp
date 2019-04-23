@@ -122,12 +122,7 @@ let y = 10
 y = 20 // error: y es inmutable
 ```
 
-Hablaremos más adelante de inmutabilidad, pero recordemos que una de
-las ventajas del paradigma funcional y de la inmutabilidad es que
-garantiza que el código que escribimos no tiene efectos laterales y
-puede ser ejecutado sin problemas en entornos multi-procesador o multi-hilo.
-
-Otra ventaja de la inmutabilidad es que permite que el compilador de
+Una ventaja de la inmutabilidad es que permite que el compilador de
 Swift optimice el código de forma muy eficiente. De hecho, el propio
 compilador nos indica que es preferible definir una variable como
 `let` si no la vamos a modificar:
@@ -141,6 +136,131 @@ func saluda(nombre: String) -> String {
 //    var saludo = "Hola " + nombre
 //    ~~~ ^
 //    let
+```
+
+
+## Inmutabilidad
+
+Una de las características funcionales importantes de Swift es el
+énfasis en la inmutabilidad para reforzar la seguridad del
+lenguaje. 
+
+Hemos visto que la palabra clave `let` permite definir constantes y
+que Swift recomienda su uso si el valor que definimos es un valor que
+no va a ser modificado.
+
+El valor asignado a una constante `let` puede no conocerse en tiempo
+de compilación, sino que puede ser obtenido en tiempo de ejecución
+como un valor devuelto por una función:
+
+```swift
+let respuesta: String = respuestaUsuario.respuesta()
+```
+
+Al declarar una variable como `let` se bloquea su contenido y no se
+permite su modificación. Una de las ventajas del paradigma funcional y
+de la inmutabilidad es que garantiza que el código que escribimos no
+tiene efectos laterales y puede ser ejecutado sin problemas en
+entornos multi-procesador o multi-hilo.
+
+### Creación de nuevas estructuras y mutación
+
+En la [biblioteca estándar de
+Swift](https://developer.apple.com/documentation/swift/swift_standard_library)
+existen una gran cantidad de estructuras (como `Int`, `Double`,
+`Bool`, `String`, `Array`, `Dictionary`, etc.) que tienen dos tipos de
+métodos: métodos que mutan la estructura y métodos que devuelven una
+nueva estructura. Cuando estemos escribiendo código con estilo
+funcional deberemos utilizar siempre estos últimos métodos, los que
+construyen estructuras nuevas.
+
+Por ejemplo, en el struct `Array` se define el método `sort` y el
+método `sorted`. El primero ordena el array con mutación y el segundo
+devuelve una copia ordenada, sin modificar el array original. En el
+siguiente código no se modifica el array original, sino que se
+construye un array nuevo ordenado:
+
+
+```swift
+// Código recomendable en programación funcional
+// porque utiliza el método sorted que devuelve una
+// copia del array original
+let miArray = [10, -1, 3, 80]
+let arrayOrdenado = miArray.sorted()
+print(miArray)
+print(arrayOrdenado)
+// Imprime:
+// [10, -1, 3, 80]
+// [-1, 3, 10, 80]
+```
+
+Este código es el recomendable cuando estemos escribiendo código con
+un estilo de programación funcional.
+
+Sin embargo, el siguiente código es imperativo y utiliza la mutación del array original:
+
+```swift
+// Código no recomendable en programación funcional
+// porque utiliza el método sort que muta el array original
+var miArray = [10, -1, 3, 80]
+miArray.sort()
+print(miArray)
+// Imprime:
+// [-1, 3, 10, 80]
+```
+
+Otro ejemplo es en la forma de añadir elementos a un array. Podemos
+hacerlo con un enfoque funcional, usando el operador `+` que construye
+un array nuevo:
+
+```swift
+// Código recomendable en programación funcional
+let miArray = [10, -1, 3, 80]
+let array2 = miArray + [100]
+print(array2)
+// Imprime:
+// [10, -1, 3, 80, 100]
+```
+
+Y podemos hacerlo usando un enfoque imperativo, con el método
+`append`:
+
+```swift
+// Código no recomendable en programación funcional
+var miArray = [10, -1, 3, 80]
+miArray.append(100)
+print(miArray)
+// Imprime:
+// [10, -1, 3, 80, 100]
+```
+
+!!! Important "Importante"
+    En programación funcional debemos usar siempre los métodos
+    **que no modifican las estructuras**. Así evitaremos los efectos
+    laterales y nuestro código funcionará correctamente en entornos
+    multi-hilo.
+
+Cuando definimos una variable de tipo `let` el valor que se
+asigne a esa variable se convierte en inmutable. Si se trata de una
+estructura o una clase con métodos mutables el compilador dará un
+error. Por ejemplo:
+
+```swift
+let miArray = [10, -1, 3, 80]
+miArray.append(100)
+// error: cannot use mutating member on immutable value: 'miArray' is a 'let' constant
+```
+
+Otro ejemplo. El método `append(_:)` de un `String` es un método
+mutable. Si definimos una cadena con `let` no podremos modificarla y
+daría error el siguiente código:
+
+```swift
+var cadenaMutable = "Hola"
+let cadenaInmutable = "Adios"
+cadenaMutable.append(cadenaInmutable) // cadenaMutable es "HolaAdios"
+cadenaInmutable.append("Adios")
+// error: cannot use mutating member on immutable value: 'cadenaInmutable' is a 'let' constant
 ```
 
 
@@ -693,7 +813,84 @@ print(quiniela(partido: (2,2)))
 ```
 
 
-### Enumeraciones
+### Tipos valor y tipos referencia
+
+En Swift existen dos tipos de construcciones que forman la base de la
+programación orientada a objetos: las estructuras (_structs_) y las
+clases. En el tema siguiente hablaremos sobre ello.
+
+En la [biblioteca estándar de
+Swift](https://developer.apple.com/documentation/swift/swift_standard_library)
+la mayor parte de los tipos definidos (como `Int`, `Double`, `Bool`,
+`String`, `Array`, `Dictionary`, etc.) son estructuras, no clases.
+
+Una de las diferencias más importantes entre estructuras y clases es
+su comportamiento en una asignación: las estructuras tienen una
+**semántica de copia** (son tipos valor) y las clases tienen una **semántica de
+referencia** (son tipos referencia).
+
+Un _tipo valor_ es un tipo que tiene semántica de copia en las
+asignaciones y cuando se pasan como parámetro en llamadas a funciones.
+
+Los tipos valor son muy útiles porque evitan los efectos laterales en
+los programas y simplifican el comportamiento del compilador en la
+gestión de memoria. Al no existir referencias, se simplifica
+enormemente la gestión de memoria de estas estructuras. No es
+necesario llevar la cuenta de qué referencias apuntan a un determinado
+valor, sino que se puede liberar la memoria en cuanto se elimina el
+ámbito actual.
+
+Frente a un tipo valor, un tipo de referencia es aquel en los que los
+valores se asignan a variables con una semántica de referencia. Cuando
+se realizan varias asignaciones de una misma instancia a distintas
+variables todas ellas guardan una referencia a la misma instancia. Si
+la instancia se modifica, todas las variables reflejarán el nuevo
+valor. Cuando veamos las clases en el próximo tema veremos algunos ejemplos.
+
+Veamos ahora algunos ejemplos de copia por valor en estructuras.
+
+Por ejemplo, si asignamos una cadena a otra, se realiza una copia:
+
+```swift
+var str1 = "Hola"
+var str2 = str1
+str1.append("Adios")
+print(str1) // Imprime "HolaAdios"
+print(str2) // Imprime "Hola"
+```
+
+Los arrays también son estructuras y, por tanto, también tienen
+semántica de copia:
+
+```swift
+var array1 = [1, 2, 3, 4]
+var array2 = array1
+array1[0] = 10
+print(array1) // [10, 2, 3, 4]
+print(array2) // [1, 2, 3, 4]
+```
+
+A diferencia de otros lenguajes como Java, los parámetros de una
+función siempre son inmutables y se pasan por copia, para reforzar el
+carácter funcional de las funciones. Por ejemplo, es incorrecto
+escribir lo siguiente:
+
+```
+func ponCero(array: [Int], pos: Int) {
+    array[pos] = 0
+// error: cannot assign through subscript: 'array' is a 'let' constant
+}
+```
+
+Se podría pensar que es muy costoso copiar un array entero. Por
+ejemplo, si asignamos o pasamos como parámetro un array de 1000
+elementos. Pero no es así. El compilador de Swift optimiza estas
+sentencias y sólo realiza la copia en el momento en que hay una
+modificación de una de las variables que comparten el array. Es lo que
+se llama _copy on write_.
+
+
+## Enumeraciones ##
 
 Las enumeraciones definen un tipo con un valor restringido de posibles
 valores:
@@ -1205,22 +1402,23 @@ Podemos leer el código anterior de la siguiente forma: "Si el `Int`
 opcional devuelto por `Int(posibleNumero)` contiene un valor, define
 la constante `numeroVerdadero` con el valor contenido en el opcional".
 
-En el siguiente ejemplo, recorremos un array de enteros opcionales,
-obtenemos los valores usando `if let` y los imprimimos:
+Por ejemplo, el método `first` de un array devuelve un opcional que
+contiene `nil` si el array está vacío o el primer elemento del
+array. El siguiente código utiliza un ligado opcional para implementar
+otra versión de la función `sumaValores`:
 
-```swift
-let array: [Int?] = [10, nil, 20]
-for x in array {
-    if let valor = x {
-        print(valor)
+```
+func sumaValores(_ valores: [Int]) -> Int {
+    if let primero = valores.first {
+        let resto = Array(valores.dropFirst())
+        return primero + sumaValores(resto)
     } else {
-        print("El valor es nil")
+        return 0
     }
 }
-// Imprime:
-// 10
-// El valor es nil
-// 20
+
+print(sumaValores([1,2,3,4,5,6,7,8])) 
+// Imprime "36"
 ```
 
 Si tenemos varios opcionales es posible comprobar que todos ellos son
@@ -1305,195 +1503,6 @@ print(suma(lista: z))
 /// Devuelve 30
 ```
 
-
-## Inmutabilidad
-
-Otra de las características funcionales importantes de Swift es el
-énfasis en la inmutabilidad para reforzar la seguridad del
-lenguaje. 
-
-Recordemos que la palabra clave `let` permite definir constantes y que
-Swift recomienda su uso si el valor que definimos es un valor que no
-va a ser modificado.
-
-El valor asignado a una constante `let` puede no conocerse en tiempo
-de compilación, sino que puede ser obtenido en tiempo de ejecución
-como un valor devuelto por una función:
-
-```swift
-let respuesta: String = respuestaUsuario.respuesta()
-```
-
-Al declarar una variable como `let` se bloquea su contenido y no se
-permite su modificación. Esto permite usarla sin problemas de que se
-puedan producir efectos laterales o condiciones de carrera en código
-multi-hilo.
-
-### Creación de nuevas estructuras y mutación
-
-En Swift existen dos tipos de construcciones que forman la base de la
-programación orientada a objetos: las estructuras (_structs_) y las
-clases. En el tema siguiente hablaremos sobre ello.
-
-En la [biblioteca estándar de
-Swift](https://developer.apple.com/documentation/swift/swift_standard_library)
-la mayor parte de los tipos definidos (como `Int`, `Double`, `Bool`,
-`String`, `Array`, `Dictionary`, etc.) son estructuras, no clases.
-
-En estructuras y clases se pueden definir dos tipos de métodos:
-métodos que mutan la estructura y métodos que devuelven una nueva
-estructura. Cuando estemos escribiendo código con estilo funcional
-deberemos utilizar siempre estos últimos métodos, los que construyen
-estructuras nuevas.
-
-Por ejemplo, en el struct `Array` se define el método `sort` y el
-método `sorted`. El primero ordena el array con mutación y el segundo
-devuelve una copia ordenada, sin modificar el array original. En el
-siguiente código no se modifica el array original, sino que se
-construye un array nuevo ordenado:
-
-
-```swift
-let miArray = [10, -1, 3, 80]
-let arrayOrdenado = miArray.sorted()
-print(miArray)
-print(arrayOrdenado)
-// Imprime:
-// [10, -1, 3, 80]
-// [-1, 3, 10, 80]
-```
-
-Este código es el recomendable cuando estemos escribiendo código con
-un estilo de programación funcional.
-
-Sin embargo, el siguiente código es imperativo y utiliza la mutación del array original:
-
-```swift
-var miArray = [10, -1, 3, 80]
-miArray.sort()
-print(miArray)
-// Imprime:
-// [-1, 3, 10, 80]
-```
-
-Otro ejemplo es en la forma de añadir elementos a un array. Podemos
-hacerlo con un enfoque funcional, usando el operador `+` que construye
-un array nuevo:
-
-```swift
-let miArray = [10, -1, 3, 80]
-let array2 = miArray + [100]
-print(array2)
-// Imprime:
-// [10, -1, 3, 80, 100]
-```
-
-Y podemos hacerlo usando un enfoque imperativo, con el método
-`append`:
-
-```swift
-var miArray = [10, -1, 3, 80]
-miArray.append(100)
-print(miArray)
-// Imprime:
-// [10, -1, 3, 80, 100]
-```
-
-!!! Important "Importante"
-    En programación funcional debemos usar siempre los métodos
-    **que no modifican las estructuras**. Así evitaremos los efectos
-    laterales y nuestro código funcionará correctamente en entornos
-    multi-hilo.
-
-Cuando definimos una variable de tipo `let` el valor que se
-asigne a esa variable se convierte en inmutable. Si se trata de una
-estructura o una clase con métodos mutables el compilador dará un
-error. Por ejemplo:
-
-```swift
-let miArray = [10, -1, 3, 80]
-miArray.append(100)
-// error: cannot use mutating member on immutable value: 'miArray' is a 'let' constant
-```
-
-Otro ejemplo. El método `append(_:)` de un `String` es un método
-mutable. Si definimos una cadena con `let` no podremos modificarla y
-daría error el siguiente código:
-
-```swift
-var cadenaMutable = "Hola"
-let cadenaInmutable = "Adios"
-cadenaMutable.append(cadenaInmutable) // cadenaMutable es "HolaAdios"
-cadenaInmutable.append("Adios")
-// error: cannot use mutating member on immutable value: 'cadenaInmutable' is a 'let' constant
-```
-
-### Tipos valor y tipos referencia
-
-Un _tipo valor_ es un tipo que tiene semántica de copia en las
-asignaciones y cuando se pasan como parámetro en llamadas a funciones.
-
-Una de las diferencias más importantes entre estructuras y clases es
-su comportamiento en una asignación: las estructuras tienen una
-**semántica de copia** (son tipos valor) y las clases tienen una **semántica de
-referencia** (son tipos referencia).
-
-Los tipos valor son muy útiles porque evitan los efectos laterales en
-los programas y simplifican el comportamiento del compilador en la
-gestión de memoria. Al no existir referencias, se simplifica
-enormemente la gestión de memoria de estas estructuras. No es
-necesario llevar la cuenta de qué referencias apuntan a un determinado
-valor, sino que se puede liberar la memoria en cuanto se elimina el
-ámbito actual.
-
-Frente a un tipo valor, un tipo de referencia es aquel en los que los
-valores se asignan a variables con una semántica de referencia. Cuando
-se realizan varias asignaciones de una misma instancia a distintas
-variables todas ellas guardan una referencia a la misma instancia. Si
-la instancia se modifica, todas las variables reflejarán el nuevo
-valor. Cuando veamos las clases en el próximo tema veremos algunos ejemplos.
-
-Veamos ahora algunos ejemplos de copia por valor en estructuras.
-
-Por ejemplo, si asignamos una cadena a otra, se realiza una copia:
-
-```swift
-var str1 = "Hola"
-var str2 = str1
-str1.append("Adios")
-print(str1) // Imprime "HolaAdios"
-print(str2) // Imprime "Hola"
-```
-
-Los arrays también son estructuras y, por tanto, también tienen
-semántica de copia:
-
-```swift
-var array1 = [1, 2, 3, 4]
-var array2 = array1
-array1[0] = 10
-print(array1) // [10, 2, 3, 4]
-print(array2) // [1, 2, 3, 4]
-```
-
-A diferencia de otros lenguajes como Java, los parámetros de una
-función siempre son inmutables y se pasan por copia, para reforzar el
-carácter funcional de las funciones. Por ejemplo, es incorrecto
-escribir lo siguiente:
-
-```
-func ponCero(array: [Int], pos: Int) {
-    array[pos] = 0
-// error: cannot assign through subscript: 'array' is a 'let' constant
-}
-```
-
-Se podría pensar que es muy costoso copiar un array entero. Por
-ejemplo, si asignamos o pasamos como parámetro un array de 1000
-elementos. Pero no es así. El compilador de Swift optimiza estas
-sentencias y sólo realiza la copia en el momento en que hay una
-modificación de una de las variables que comparten el array. Es lo que
-se llama _copy on write_.
 
 
 ## Clausuras
