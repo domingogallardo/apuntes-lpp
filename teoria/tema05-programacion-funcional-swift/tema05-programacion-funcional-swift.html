@@ -2832,12 +2832,12 @@ binding</em>):</p>
 </pre></div>
 </td></tr></table>
 
-<p>Podemos leer el código anterior de la siguiente forma: "Si el <code>Int</code>
-opcional devuelto por <code>Int(posibleNumero)</code> contiene un valor, define
-la constante <code>numeroVerdadero</code> con el valor contenido en el opcional".</p>
-<p>Por ejemplo, el método <code>first</code> de un array devuelve un opcional que
+<p>Podemos leer el código anterior de la siguiente forma: "Si el
+opcional <code>respuestaEncuesta</code> contiene un valor, define
+la constante <code>respuesta</code> con el valor contenido en el opcional".</p>
+<p>Otro ejemplo, el método <code>first</code> de un array devuelve un opcional que
 contiene <code>nil</code> si el array está vacío o el primer elemento del
-array. El siguiente código utiliza un ligado opcional para implementar
+array en el caso en que exista. El siguiente código utiliza un ligado opcional para implementar
 otra versión de la función <code>sumaValores</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -2849,17 +2849,17 @@ otra versión de la función <code>sumaValores</code>:</p>
  8
  9
 10
-11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>func sumaValores(_ valores: [Int]) -&gt; Int {
-    if let primero = valores.first {
-        let resto = Array(valores.dropFirst())
-        return primero + sumaValores(resto)
-    } else {
-        return 0
-    }
-}
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">sumaValores</span><span class="p">(</span><span class="kc">_</span> <span class="n">valores</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="kd">let</span> <span class="nv">primero</span> <span class="p">=</span> <span class="n">valores</span><span class="p">.</span><span class="bp">first</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">resto</span> <span class="p">=</span> <span class="nb">Array</span><span class="p">(</span><span class="n">valores</span><span class="p">.</span><span class="bp">dropFirst</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">primero</span> <span class="o">+</span> <span class="n">sumaValores</span><span class="p">(</span><span class="n">resto</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-print(sumaValores([1,2,3,4,5,6,7,8])) 
-// Imprime &quot;36&quot;
+<span class="bp">print</span><span class="p">(</span><span class="n">sumaValores</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]))</span> 
+<span class="c1">// Imprime &quot;36&quot;</span>
 </pre></div>
 </td></tr></table>
 
@@ -2902,12 +2902,13 @@ defecto en una asignación si un opcional es nil.</p>
 </pre></div>
 </td></tr></table>
 
+<p>En el ejemplo anterior, en la variable <code>x</code> se guardará el valor <code>-1</code> y
+en la variable <code>y</code> el valor <code>10</code>.</p>
 <h3 id="encadenamiento-de-opcionales">Encadenamiento de opcionales<a class="headerlink" href="#encadenamiento-de-opcionales" title="Permanent link">&para;</a></h3>
 <p>El encadenamiento de opcionales (<em>optional chaining</em>) permite llamar a
 un método de una variable que contiene un opcional. Si la variable no
-es <code>nil</code>, se ejecuta el método y se devuelve su valor. Si la variable
-es <code>nil</code> se devuelve <code>nil</code>.</p>
-<p>El valor devuelto es un opcional, porque puede ser <code>nil</code>.</p>
+es <code>nil</code>, se ejecuta el método y se devuelve su valor como un
+opcional. Si la variable es <code>nil</code> se devuelve <code>nil</code>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
