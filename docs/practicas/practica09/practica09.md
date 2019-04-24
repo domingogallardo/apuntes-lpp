@@ -13,7 +13,15 @@ solución debe incluir:
 
 ## Ejercicios
 
-
+!!! Warning "Importante"
+    Antes de empezar la práctica debes estudiar los apartados de
+    teoría del tema de Programación Funcional en Swift:
+    
+    - [Opcionales](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#opcionales)
+    - [Clausuras](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#clausuras)
+    - [Funciones de orden superior](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#funciones-de-orden-superior)
+    - [Genéricos](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#genericos)
+    
 ### Ejercicio 1 ###
 
 a) Indica qué devuelven las siguientes expresiones:

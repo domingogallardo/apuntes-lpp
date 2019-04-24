@@ -13,7 +13,7 @@ solución debe incluir:
 
 ## Ejercicios
 
-!!! Important "Importante"
+!!! Warning "Importante"
     Antes de empezar la práctica debes haber estudiado los apartados
     de [árboles
     genéricos](https://domingogallardo.github.io/apuntes-lpp/teoria/tema04-estructuras-recursivas/tema04-estructuras-recursivas.html#arboles)

@@ -1398,16 +1398,16 @@ if let respuesta = respuestaEncuesta {
 }
 ```
 
-Podemos leer el código anterior de la siguiente forma: "Si el `Int`
-opcional devuelto por `Int(posibleNumero)` contiene un valor, define
-la constante `numeroVerdadero` con el valor contenido en el opcional".
+Podemos leer el código anterior de la siguiente forma: "Si el
+opcional `respuestaEncuesta` contiene un valor, define
+la constante `respuesta` con el valor contenido en el opcional".
 
-Por ejemplo, el método `first` de un array devuelve un opcional que
+Otro ejemplo, el método `first` de un array devuelve un opcional que
 contiene `nil` si el array está vacío o el primer elemento del
-array. El siguiente código utiliza un ligado opcional para implementar
+array en el caso en que exista. El siguiente código utiliza un ligado opcional para implementar
 otra versión de la función `sumaValores`:
 
-```
+```swift
 func sumaValores(_ valores: [Int]) -> Int {
     if let primero = valores.first {
         let resto = Array(valores.dropFirst())
@@ -1450,14 +1450,16 @@ print("Resultado: \(x), \(y)")
 // Imprime Resultado: -1, 10
 ```
 
+En el ejemplo anterior, en la variable `x` se guardará el valor `-1` y
+en la variable `y` el valor `10`.
+
 ### Encadenamiento de opcionales ###
 
 El encadenamiento de opcionales (_optional chaining_) permite llamar a
 un método de una variable que contiene un opcional. Si la variable no
-es `nil`, se ejecuta el método y se devuelve su valor. Si la variable
-es `nil` se devuelve `nil`.
+es `nil`, se ejecuta el método y se devuelve su valor como un
+opcional. Si la variable es `nil` se devuelve `nil`.
 
-El valor devuelto es un opcional, porque puede ser `nil`.
 
 ```swift
 let nombre1: String? = "Pedro"
