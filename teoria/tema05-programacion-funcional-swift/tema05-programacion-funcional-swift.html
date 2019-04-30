@@ -1612,6 +1612,36 @@ etiquetas de los argumentos y el tipo devuelto por la función. En la
 documentación de las funciones usaremos las etiquetas separadas por
 dos puntos. Por ejemplo, las funciones anteriores son <code>max(_:_:)</code> y
 <code>divide(_:entre:)</code>.</p>
+<p>Las etiquetas de los argumentos son parte del nombre de la
+función. Es posible definir funciones distintas con
+sólo distintos nombres de argumentos, como las siguientes funciones
+<code>mitad(par:)</code> y <code>mitad(impar:)</code>:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">mitad</span><span class="p">(</span><span class="n">par</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">{</span>
+    <span class="k">return</span> <span class="n">par</span><span class="o">/</span><span class="mi">2</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">mitad</span><span class="p">(</span><span class="n">impar</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">impar</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+<span class="p">}</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">mitad</span><span class="p">(</span><span class="n">par</span><span class="p">:</span> <span class="mi">8</span><span class="p">))</span>
+<span class="c1">// Imprime 4</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">mitad</span><span class="p">(</span><span class="n">impar</span><span class="p">:</span> <span class="mi">9</span><span class="p">))</span>
+<span class="c1">// Imprime 5</span>
+</pre></div>
+</td></tr></table>
+
 <h3 id="parametros-y-valores-devueltos">Parámetros y valores devueltos<a class="headerlink" href="#parametros-y-valores-devueltos" title="Permanent link">&para;</a></h3>
 <p>Es posible definir funciones sin parámetros:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -2328,18 +2358,19 @@ un tipo subyacente, por ejemplo enteros:</p>
 </pre></div>
 </td></tr></table>
 
-<p>Se puede obtener el valor bruto asociado a la constante del enumerado
-de la siguiente forma:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">valorEquis</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="n">Quiniela</span><span class="p">.</span><span class="n">equis</span><span class="p">.</span><span class="n">rawValue</span>
-</pre></div>
-</td></tr></table>
-
-<p>Y obtener el valor asociado a un valor:</p>
+<p>Se puede obtener el valor bruto a partir del propio tipo o de una
+variable del tipo, usando <code>rawValue</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">res</span> <span class="p">=</span> <span class="n">Quiniela</span><span class="p">.</span><span class="n">uno</span>
-<span class="bp">print</span> <span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="n">rawValue</span><span class="p">)</span>
-<span class="c1">// Imprime &quot;1&quot;</span>
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">// Obtenemos el valor bruto a partir del tipo</span>
+<span class="kd">let</span> <span class="nv">valorEquis</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="n">Quiniela</span><span class="p">.</span><span class="n">equis</span><span class="p">.</span><span class="n">rawValue</span>
+
+<span class="c1">// Obtenemos el valor bruto a partir de una variable</span>
+<span class="kd">let</span> <span class="nv">res</span> <span class="p">=</span> <span class="n">Quiniela</span><span class="p">.</span><span class="n">equis</span>
+<span class="kd">let</span> <span class="nv">valorEquis</span> <span class="p">=</span> <span class="n">res</span><span class="p">.</span><span class="n">rawValue</span>
 </pre></div>
 </td></tr></table>
 
