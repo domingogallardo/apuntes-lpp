@@ -358,6 +358,28 @@ documentación de las funciones usaremos las etiquetas separadas por
 dos puntos. Por ejemplo, las funciones anteriores son `max(_:_:)` y
 `divide(_:entre:)`.
 
+Las etiquetas de los argumentos son parte del nombre de la
+función. Es posible definir funciones distintas con
+sólo distintos nombres de argumentos, como las siguientes funciones
+`mitad(par:)` y `mitad(impar:)`:
+
+```swift
+func mitad(par: Int) -> Int{
+    return par/2
+}
+
+func mitad(impar: Int) -> Int{
+    return (impar+1)/2
+}
+
+print(mitad(par: 8))
+// Imprime 4
+print(mitad(impar: 9))
+// Imprime 5
+```
+
+
+
 ### Parámetros y valores devueltos
 
 Es posible definir funciones sin parámetros:
@@ -962,21 +984,17 @@ enum Quiniela: Int {
 }
 ```
 
-Se puede obtener el valor bruto asociado a la constante del enumerado
-de la siguiente forma:
+Se puede obtener el valor bruto a partir del propio tipo o de una
+variable del tipo, usando `rawValue`:
 
 ```swift
+// Obtenemos el valor bruto a partir del tipo
 let valorEquis: Int = Quiniela.equis.rawValue
+
+// Obtenemos el valor bruto a partir de una variable
+let res = Quiniela.equis
+let valorEquis = res.rawValue
 ```
-
-Y obtener el valor asociado a un valor:
-
-```swift
-let res = Quiniela.uno
-print (res.rawValue)
-// Imprime "1"
-```
-
 
 También se puede asignar los valores de forma implícita, dando un
 valor a la primera constante. Las siguientes tienen el valor consecutivo:
