@@ -16,6 +16,195 @@ https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift
 
 # Tema 6: Programación Orientada a Objetos con Swift
 
+## Más conceptos sobre clausuras ##
+
+### Repaso de clausuras
+
+Ya vimos en el tema anterior que las clausuras en Swift son bloques de
+código con funcionalidades que se pueden pasar de un sitio a otro en
+nuestro programa. Son muy similares a las expresiones lambda de Scheme
+o de Java 8 o a los bloques de Objective-C. Una clausura puede
+capturar o almacenar referencias a cualquier constante o variable del
+contexto o ámbito dentro de la cual han sido definidas.
+
+Se pueden definir clausuras en Swift de las siguientes formas:
+
+ - Funciones anidadas que pueden capturar valores de la función englobante:
+
+```swift
+func construyeFunc() -> () -> Int {
+   var x = 0
+   func funcion() -> Int {
+      x = x + 1
+      return x
+   }
+   return funcion
+}
+
+let f = construyeFunc()
+f() // -> 1
+f() // -> 2
+```
+
+En el siguiente ejemplo vemos claramente que la función queda
+englobada en el ámbito donde se creó:
+
+```swift
+func usaFunc(_ f: () -> Int) -> Int {
+     var x = 4
+     return f()
+}
+
+usaFunc(f) // -> 3
+```
+
+- Funciones anónimas que pueden capturar valores del contexto que las rodean:
+
+```swift
+var x = 100
+usaFunc {return x + 10} // -> 110
+```
+ 
+En el ejemplo anterior la expresión de clausura se define en el ámbito
+global donde la `x`toma el valor 100. Ese valor queda capturado y es
+el que se usa en la evaluación de la función. Por tanto, en el
+contexto donde se evalúa esa clausura (dentro del cuerpo de la
+funcioón `usaFunc`), la `x`que toma es la capturada y no la definida
+en el cuerpo de `usaFunc`.
+
+
+### Clausuras escapadas
+
+Se dice que una clausura escapa de una función cuando la función
+recibe una función o clausura como parámetro que se llama después de
+que la función finalice su ejecución.
+
+Por ejemplo, definimos un array global de tipo función:
+
+```swift
+var array : [() -> Int] = []
+```
+
+Definimos una función que recibe una clausura como parámetro, pero no
+se llama dentro de la función que la recibe, sólo la almacena en el
+array. Al no ser llamada dentro de la función, hay que ponerle el
+atributo `@escaping` delante del tipo del parámetro para que Swift
+permita que sea llamada posteriormente fuera de la función que la
+recibe. Si no lo ponemos, el compilador da un error:
+
+```swift
+func usaClausura(_ f: @escaping () -> Int) -> Void {
+   array.append(f)
+}
+
+usaClausura {return 4}
+```
+
+Se llama posteriormente, fuera de la función:
+
+```swift
+array[0]() //-> 4
+```
+ 
+
+### Autoclausuras
+
+Una autoclausura es una clausura que se crea automáticamente al
+envolver una función que se pasa como argumento a una función. No
+tiene parámetros y devuelve el valor de la expresión. Permite omitir
+las llaves, de forma que escribimos una expresión en lugar de una
+clausura explícitamente.
+
+Se puede ver la autoclausura como una forma de retardar la evaluación,
+porque esa expresión no se evaluará hasta que se llame a la
+clausura. Retardar la evaluación es útil con trozos de código que
+provocan efectos laterales o son costosos computacionalmente, ya que
+nos permiten controlar el momento de su evaluación.
+
+Ejemplo de clausura que retarda la evaluación:
+
+
+```swift
+var customers = ["Pepe", "Alejandro", "Víctor", "Eva", "Daniela"]
+
+print(customers.count)  // 5
+
+// clausura:
+let customerProvider = { customers.remove(at: 0) }
+
+// todavía no la hemos llamado
+print(customers.count)  // 5
+
+// la llamamos:
+print("El siguiente de la lista es \(customerProvider())")
+
+print(customers.count)  // 4
+```
+
+Ahora hacemos lo mismo pasando la clausura como parámetro a una función:
+
+```swift
+//customers contiene ["Alejandro", "Víctor", "Eva", "Daniela"]
+
+func serve(customer customerProvider: () -> String) {
+    let cliente = customerProvider()
+    print("El siguiente de la lista es \(cliente)")
+}
+
+serve(customer: { customers.remove(at: 0)})
+//El siguiente de la lista es Alejandro
+```
+
+La función `serve(customer:)`anterior recibe una clausura que imprime
+un cliente.
+
+Definimos ahora otra versión que realiza lo mismo, pero en lugar de
+recibir una clausura explícitamente, recibe una autoclausura (marcando
+su tipo de parámetro con el atributo `@autoclosure`). De esta forma
+podemos llamar a la función pasándole un `String`en lugar de una
+clausura. El argumento se convierte automáticamente en una clausura.
+
+```swift
+//customers contiene ["Víctor", "Eva", "Daniela"]
+
+func serve(customer customerProvider: @autoclosure () -> String){
+    let cliente = customerProvider()
+    print("El siguiente de la lista es \(cliente)")
+}
+
+serve(customer: customers.remove(at: 0))
+// El siguiente de la lista es Víctor
+```
+
+No debemos abusar del uso de autoclausuras.
+
+Una autoclasura también puede escapar, tenemos que marcar el parámetro con ambos atributos:
+
+```swift
+var customersProviders : [() -> String] = []
+
+func collectCustomersProvider(_ customerProvider: @autoclosure @escaping () -> String){
+    customersProviders.append(customerProvider)
+}
+
+collectCustomersProvider(customers.remove(at: 0))
+collectCustomersProvider(customers.remove(at: 0))
+
+print("Hemos preparado a \(customersProviders.count)")
+
+for customerProvider in customersProviders {
+    let cliente = customerProvider()
+    print("Ahora estamos atendiendo a \(cliente)")
+}
+```
+
+En el ejemplo anterior, no se llama a la clausura que se pasa como
+parámetro dentro de la función, sino que se añade al array
+`customerProviders`, declarado fuera de la función. Las clausuras
+almacenadas en él se evaluarán después de que la función termine su
+ejecución.
+
+
 ## Introducción, historia y características de la Programación Orientada a Objetos
 
 ### Nacimiento
@@ -1149,6 +1338,7 @@ print("Se han registrado \(Ventana.ventanas.count) ventanas")
 // Imprime "Se han registrado 1 ventanas"
 ```
 
+<!--
 
 ## Herencia
 
@@ -3020,6 +3210,7 @@ if let topItem = stackOfStrings.topItem {
     - [Extensiones](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html#//apple_ref/doc/uid/TP40014097-CH24-ID151)
     - [Funciones operador](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-ID28)
     - [Genéricos](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-ID179)
+-->
 
 ----
 
