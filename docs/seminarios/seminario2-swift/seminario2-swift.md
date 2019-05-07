@@ -836,7 +836,7 @@ numeros.map({
 Tienes bastantes opciones para escribir clausuras de forma más
 concisa. Cuando ya se conoce el tipo de una clausura puedes omitir el
 tipo de sus parámetros, el tipo devuelto o ambos. Las clausuras
-escritas en una línea devuelven implícitamente el valor de su única
+escritas en una sentencia devuelven implícitamente el valor de esa única
 sentencia.
 
 ```swift
@@ -1239,8 +1239,8 @@ let descripcionB = b.descripcionSencilla
 > Escribe una enumeración que cumpla el protocolo.
 
 Date cuenta del uso de la palabra clave `mutating` en la declaración
-de `SimpleStructure` para marcar el método que modifica la
-estructura. La declaración de `SimpleClass` no necesita que se marquen
+de `EstructuraSencilla` para marcar el método que modifica la
+estructura. La declaración de `ClaseSencilla` no necesita que se marquen
 como mutadores ninguno de sus métodos porque los métodos en una clase
 siempre pueden modificar la clase.
 
