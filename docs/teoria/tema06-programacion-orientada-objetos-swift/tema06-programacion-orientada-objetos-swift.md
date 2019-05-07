@@ -1149,7 +1149,7 @@ Toda instancia de un tipo tiene una propiedad implícita llamada
 usar la propiedad `self` para referirnos a la instancia actual dentro
 de sus propios métodos de instancia.
 
-El método `increment()` en el ejemplo anterior podría haberse escrito
+El método `incrementa()` en el ejemplo anterior podría haberse escrito
 de esta forma:
 
 ```swift
@@ -1235,7 +1235,7 @@ print("El punto está ahora en (\(unPunto.x), \(unPunto.y))")
 ```
 
 La estructura `Punto` anterior define un método mutador
-`increment(incX:incY:)` que mueve una instancia de `Punto` una cierta
+`incrementado(incX:incY:)` que mueve una instancia de `Punto` una cierta
 cantidad. En lugar de devolver un nuevo punto, el método modifica
 realmente el punto en el que es llamado. La palabra clave `mutating`
 se añade a su definición para permitirle modificar sus propiedades.
@@ -1246,7 +1246,7 @@ pueden cambiar, incluso aunque sean propiedades variables:
 
 ```swift
 let puntoFijo = Punto(x: 3.0, y: 3.0)
-puntoFijo.incrementa(incX: 2.0, incY: 3.0)
+puntoFijo.incrementado(incX: 2.0, incY: 3.0)
 // esto provocará un error
 ```
 
