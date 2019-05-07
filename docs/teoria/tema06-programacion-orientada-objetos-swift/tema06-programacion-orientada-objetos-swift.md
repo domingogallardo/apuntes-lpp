@@ -59,8 +59,9 @@ func construyeFunc() -> () -> Int {
 }
 ```
 
-En el siguiente ejemplo vemos claramente que la función queda
-englobada en el ámbito donde se creó:
+En el siguiente ejemplo vemos claramente que la función captura las
+variables definidas en el ámbito en el que se creó. En el caso
+anterior la clausura devuelta captura la variable `x` con el valor 0.
 
 ```swift
 func usaFunc(_ f: () -> Int) -> Int {
