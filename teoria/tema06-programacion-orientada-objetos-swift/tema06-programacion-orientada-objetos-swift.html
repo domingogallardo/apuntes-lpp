@@ -1293,6 +1293,36 @@ como parámetro una sentencia que el compilador convierte a clausura:</p>
 
 <p>La expresión <code>x + 10</code> se considera <em>retardada</em>: se construye una
 clausura con ella y su evaluación se realiza dentro de <code>usaFunc</code>.</p>
+<p>Otro ejemplo en el que podemos comprobar el orden de evaluación:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">printTest2</span><span class="p">(</span><span class="kc">_</span> <span class="n">result</span><span class="p">:</span> <span class="kr">@autoclosure</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Antes&quot;</span><span class="p">)</span>
+    <span class="n">result</span><span class="p">()</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Después&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">printTest2</span><span class="p">(</span><span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hola&quot;</span><span class="p">))</span>
+
+<span class="c1">// Imprime: </span>
+<span class="c1">//     Antes</span>
+<span class="c1">//     Hola</span>
+<span class="c1">//     Después</span>
+</pre></div>
+</td></tr></table>
+
+<p>La sentencia <code>print("Hola")</code> se pasa como una autoclausura, por lo que
+el compilador crea automáticamente una clausura con ella sin tener
+nosotros que escribir la expresión de clausura.</p>
 <h2 id="introduccion-historia-y-caracteristicas-de-la-programacion-orientada-a-objetos">Introducción, historia y características de la Programación Orientada a Objetos<a class="headerlink" href="#introduccion-historia-y-caracteristicas-de-la-programacion-orientada-a-objetos" title="Permanent link">&para;</a></h2>
 <h3 id="nacimiento">Nacimiento<a class="headerlink" href="#nacimiento" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2688,19 +2718,19 @@ Un _inicializador_, en su forma más simple, es como un método de la
 instancia sin parámetros, escrito con la palabra clave `init`:
 
 
-wzxhzdk:47
+wzxhzdk:48
 
 Por ejemplo, podemos definir la estructura `Farenheit` que almacena
 una temperatura en grados Farenheit. Tiene una propiedad almacenada de
 tipo `Double`. Definimos un inicializador que inicializa las
 instancias a 32.0 (equivalente a 0.0 grados Celsius).
 
-wzxhzdk:48
+wzxhzdk:49
 
 La implementación anterior es equivalente a la siguiente (que es
 preferible, por ser más clara):
 
-wzxhzdk:49
+wzxhzdk:50
 
 ### Customización de la inicialización
 
@@ -2714,25 +2744,25 @@ de los valores que _customizan_ el proceso de inicialización. Los
 parámetros de inicialización tienen las mismas capacidades y sintaxis
 que los parámetros de funciones y métodos.
 
-wzxhzdk:50
+wzxhzdk:51
 
 Vemos que dependiendo del nombre de parámetro proporcionado se escoge
 un inicializador u otro. En los inicializadores es obligatorio
 proporcionar los nombres de todos los parámetros:
 
-wzxhzdk:51
+wzxhzdk:52
 
 Podemos evitar proporcionar nombres externos usando un subrayado. Por
 ejemplo, podemos añadir al struct anterior `Celsius` un inicializador
 sin nombre externo para el caso en que pasemos la temperatura inicial
 precisamente en Celsius:
 
-wzxhzdk:52
+wzxhzdk:53
 
 Por último, es posible dejar sin inicializar propiedades opcionales,
 ya que el valor que tomarían sería `nil`:
 
-wzxhzdk:53
+wzxhzdk:54
 
 En el ejemplo anterior se comprueba también que es posible inicializar
 constantes. Por ejemplo, la propiedad `text` está definida con un
@@ -2743,7 +2773,7 @@ invocar a inicializadores más básicos desde otros. Si definimos un
 inicializador en una estructura los inicializadores por defecto dejan
 de funcionar, es necesario escribirlos también.
 
-wzxhzdk:54
+wzxhzdk:55
 
 
 
@@ -2788,18 +2818,18 @@ La clase base `Vehiculo` también define un método llamdo
 un vehículo base, pero será modificado más adelante por las subclases
 de `Vehiculo`.
 
-wzxhzdk:55
+wzxhzdk:56
 
 Creamos una instancia nueva de `Vehiculo` con la sintaxis de
 inicialización que hemos visto, en la que se escribe el nombre del
 tipo de la clase seguido por paréntesis vacíos:
 
-wzxhzdk:56
+wzxhzdk:57
 
 Habiendo creado una instancia nueva de `Vehiculo`, podemos acceder a
 su descripción:
 
-wzxhzdk:57
+wzxhzdk:58
 
 La clase `Vehiculo` define características comunes para un vehículo
 arbitrario, pero no es de mucha utilidad por si misma. Para hacerla
@@ -2817,12 +2847,12 @@ Para indicar que una subclase tiene una superclase hay que escribir el
 nombre de la subclase antes de el de la superclase, separadas por dos
 puntos (`:`):
 
-wzxhzdk:58
+wzxhzdk:59
 
 En el ejemplo anterior del `Vehiculo` podemos definir una subclase
 `Bicicleta`:
 
-wzxhzdk:59
+wzxhzdk:60
 
 La nueva clase `Bicicleta` obtiene automáticamente todas las
 características del `Vehiculo`, como sus propiedades `velocidadActual`
@@ -2836,18 +2866,18 @@ Por defecto, cualquier instancia nueva de `Bicicleta` no tendrá una
 cesta. Puedes establecer la propiedad `tieneCesta` a `true` para una
 instancia particular de `Bicicleta` después de crearla:
 
-wzxhzdk:60
+wzxhzdk:61
 
 Podemos también modificar la propiedad heredada `velocidadActual` y
 preguntar por la propiedad `descripcion`:
 
-wzxhzdk:61
+wzxhzdk:62
 
 Podemos construir subclases a partir de otras subclases. El siguiente
 ejemplo crea una subclase de `Bicicleta` que representa una bicicleta
 de dos sillines (un "tandem"):
 
-wzxhzdk:62
+wzxhzdk:63
 
 `Tandem` hereda todas las propiedades y métodos de `Bicicleta`, que a
 su vez hereda todas sus propiedades y métodos de `Vehiculo`. La
@@ -2858,7 +2888,7 @@ Si creamos una instancia de `Tandem` podremos trabajar con cualquiera
 de sus propiedades nuevas y heredadas, y preguntar a la descripción de
 solo lectura que hereda de `Vehiculo`:
 
-wzxhzdk:63
+wzxhzdk:64
 
 ### Sobreescritura
 
@@ -2881,13 +2911,13 @@ podemos usar el prefijo `super`.
 El siguiente ejemplo define una nueva subclase de `Vehiculo` llamada
 `Tren`, que sobreescribe el método `hazRuido()`:
 
-wzxhzdk:64
+wzxhzdk:65
 
 Si creamos una nueva instancia de `Tren` y llamamos al método
 `hazRuido` podemos comprobar que se llama a la versión del método de
 la subclase:
 
-wzxhzdk:65
+wzxhzdk:66
 
 Podemos sobreescribir cualquier propiedad heredada del tipo o de la
 instancia y proporcionar nuestros propios _getters_ y _setters_ para
@@ -2909,11 +2939,11 @@ propiedad almacenada llamada `marcha`, con un valor por defecto
 de 1. También sobreescribe la propiedad heredada `descripcion`,
 incluyendo la marcha actual en la descripción:
 
-wzxhzdk:66
+wzxhzdk:67
 
 Podemos ver el funcionamiento en el siguiente ejemplo:
 
-wzxhzdk:67
+wzxhzdk:68
 
 Por último, podemos añadir observadores a propiedades heredadas. Esto
 nos permite ser notificados cuando el valor de una propiedad heredada
@@ -2925,14 +2955,14 @@ que es una subclase de `Coche`. La clase `CocheAutomatico` representa
 un coche con una caja de cambios automática, que selecciona
 automáticamente la marcha basándose en la velocidad actual:
 
-wzxhzdk:68
+wzxhzdk:69
 
 En cualquier momento que se modifica la propiedad `velocidadActual` de
 una instancia de `CocheAutomatico`, el observador `didSet` establece
 la propiedad `marcha` a un valor apropiado para la nueva velocidad. Un
 ejemplo de ejecución:
 
-wzxhzdk:69
+wzxhzdk:70
 
 Por último, es posible prevenir un método o propiedad de ser
 sobreescrito declarándolo como _final_. Para ello, hay que escribir el
@@ -2964,19 +2994,19 @@ implementación de algunos de los métodos requeridos por el protocolo.
 Los protocolos se definen de forma similar a las clases, estructuras y
 enumeraciones:
 
-wzxhzdk:70
+wzxhzdk:71
 
 Para definir un tipo que se ajusta a un protocolo particular se debe
 poner el nombre del protocolo tras el nombre del tipo, separado por
 dos puntos. Podemos listar más de un protocolo, y se separan por
 comas:
 
-wzxhzdk:71
+wzxhzdk:72
 
 Si una clase tiene una superclase, se escribe el nombre de la
 superclase antes los protocolos, seguido por una coma:
 
-wzxhzdk:72
+wzxhzdk:73
 
 ### Requisitos de propiedades
 
@@ -3002,23 +3032,23 @@ declaración de su tipo, y las propiedades de sólo lectura se indican
 escribiendo `{ get }`.
 
 
-wzxhzdk:73
+wzxhzdk:74
 
 Para definir una propiedad de tipo hay que precederla en el protocolo
 con la palabra clave `static`:
 
-wzxhzdk:74
+wzxhzdk:75
 
 Veamos un ejemplo. Definimos el protocolo `TieneNombre` en el que se
 requiere que cualquier clase que se ajuste a él debe tener una
 propiedad de instancia de lectura de tipo `String` que se llame
 `nombreCompleto`:
 
-wzxhzdk:75
+wzxhzdk:76
 
 Un ejemplo de una sencilla estructura que adopta el protocolo:
 
-wzxhzdk:76
+wzxhzdk:77
 
 Este ejemplo define una estructure llamada `Persona`, que representa
 una persona con una edad y un nombre específico. En la primera línea
@@ -3031,7 +3061,7 @@ requisito de un protocolo no se cumple).
 
 Otro ejemplo de una clase más compleja, que también adopta el protocolo:
 
-wzxhzdk:77
+wzxhzdk:78
 
 Esta clase implementa el requisito de la propiedad `nombreCompleto`
 como una propiedad calculada de solo lectura para una nave
@@ -3048,11 +3078,11 @@ se escriben como parte de la definición del protocolo de la misma
 forma que los métodos normales, pero sin sus cuerpos. Los métodos del
 tipo en el protocolo deben indicarse con la palabra clave `static`:
 
-wzxhzdk:78
+wzxhzdk:79
 
 Por ejemplo:
 
-wzxhzdk:79
+wzxhzdk:80
 
 Este protocolo, `GeneradorNumerosAleatorios`, requiere que cualquier
 tipo que se ajuste a él tenga un método de instancia llamado `random`,
@@ -3065,7 +3095,7 @@ que proporcione una forma estándar de generarlo.
 
 Una implementación de una clase que adopta el protocolo:
 
-wzxhzdk:80
+wzxhzdk:81
 
 ### Requisito de método `mutating`
 
@@ -3079,7 +3109,7 @@ enumeraciones.
 
 Un ejemplo:
 
-wzxhzdk:81
+wzxhzdk:82
 
 ### Protocolos como tipos
 
@@ -3096,7 +3126,7 @@ otros tipos, incluyendo:
 - El tipo de una constante, variable o propiedad
 - El tipo de los ítems de un array, diccionario u otro contenedor
 
-wzxhzdk:82
+wzxhzdk:83
 
 Este ejemplo define una nueva clase llamada `Dado`, que representa un
 dado de _n_ caras que se puede usar en un juego de tablero. Las
@@ -3124,7 +3154,7 @@ un método `random()` al que llamar.
 
 Un ejemplo de uso del código:
 
-wzxhzdk:83
+wzxhzdk:84
 
 ### Colecciones de tipos protocolo
 
@@ -3132,7 +3162,7 @@ Como hemos comentado anteriormente, un protocolo puede usarse como el
 tipo que se almacena un una colección (array, diccionario,
 etc.). Veamos un ejemplo:
 
-wzxhzdk:84
+wzxhzdk:85
 
 Hay que hacer notar que la constante `cosa` que itera sobre los
 elementos del array es de tipo `TieneNombre`], no es de tipo `Persona`
@@ -3159,7 +3189,7 @@ operación de diferencia ya tiene una implementación por defecto.
 
 Un ejemplo:
 
-wzxhzdk:85
+wzxhzdk:86
 
 El operador `==` se define en la propia estructura. Se utiliza la
 palabra `static` para indicar que se trata de un operador que estamos
@@ -3194,7 +3224,7 @@ digitales. Específicamente, declara una propiedad `nombre` de tipo
 `String` y un inicializador `init nombre` (suponemos que todos los
 ítems, incluyendo películas y canciones, tendrán un nombre).
 
-wzxhzdk:86
+wzxhzdk:87
 
 El siguiente fragmento define dos subclases de `MediaItem`. La primera
 subclase, `Pelicula`, encapsula información adicional sobre una
@@ -3202,20 +3232,20 @@ película. Añade una propiedad `director` a la clase base `MediaItem`,
 con su correspondiente inicializador. La segunda subclase, `Cancion`,
 añade una propiedad `artista` y un inicializador a la clase base:
 
-wzxhzdk:87
+wzxhzdk:88
 
 Por último, creamos un array constante llamado `biblioteca`, que
 contienen dos instancias de `Pelicula` y tres instancias de
 `Cancion`. 
 
-wzxhzdk:88
+wzxhzdk:89
 
 Podríamos también dejar que el compilador infiera el tipo del
 array. Es capaz de deducir que `Pelicula` y `Cancion` tienen una
 superclase común `MediaItem`, por lo que **infiere que el tipo del
 array es `[MediaItem]`**:
 
-wzxhzdk:89
+wzxhzdk:90
 
 Los ítems almacenados en la biblioteca son todavía instancias de
 `Pelicula` y `Cancion`. Sin embargo, si iteramos sobre los contenidos
@@ -3234,7 +3264,7 @@ de la subclase y `false` si no.
 Lo podemos comprobar en el siguiente ejemplo, en el que contamos las
 instancias de películas y canciones en el array `biblioteca`:
 
-wzxhzdk:90
+wzxhzdk:91
 
 El ejemplo itera por todos los ítems del array `biblioteca`. En cada
 paso, el bucle `for-in` guarda en la constante `item` el siguiente
@@ -3281,7 +3311,7 @@ podría ser una `Cancion`. No sabemos por anticipado la clase verdadera
 de cada ítem, por lo que es apropiado usar la versión condicional
 (`as?`) para comprobar el _downcast_ cada vez a lo largo del bucle:
 
-wzxhzdk:91
+wzxhzdk:92
 
 El ejemplo comienza intentando hacer `downcast` del ítem a una
 `Pelicula`. Debido a que es una instancia de `MediaItme`, es posible
@@ -3300,7 +3330,7 @@ correspondientes métodos de la clase `Pelicula`. Igual con `Cancion`.
 El tipo `Any` puede representar una instancia de cualquier tipo,
 incluyendo tipos función:
 
-wzxhzdk:92
+wzxhzdk:93
 
 El array contiene dos valores `Int`, dos valores `Double`, un valor
 `String`, una tupla del tipo `(Double, Double)`, la película
@@ -3311,7 +3341,7 @@ Puedes usar los operadores `is` y `as` en una sentencia `switch` para
 descubrir en tiempo de ejecución el tipo específico de una constante o
 variable de la que sólo se sabe que es de tipo `Any`:
 
-wzxhzdk:93
+wzxhzdk:94
 
 ### Comprobación de ajustarse a un protocolo
 
@@ -3322,11 +3352,11 @@ hacer un _cast_ a un protocolo específico.
 Veamos un ejemplo. Definimos el protocolo `TieneArea` con el único
 requisito de una propiedad de lectura llamada `area` de tipo `Double`:
 
-wzxhzdk:94
+wzxhzdk:95
 
 Definimos dos clases `Circulo` y `Pais` que se ajustan ambos al protocolo: 
 
-wzxhzdk:95
+wzxhzdk:96
 
 La clase `Circulo` implementa el requisito como una propiedad
 calculada, basada en la propiedad almacenada `radio`. La clase `Pais`
@@ -3336,19 +3366,19 @@ almacenada. Ambas clases se ajustan correctamente al protocolo
 
 Definimos una clase `Animal` que no se ajusta al protocolo:
 
-wzxhzdk:96
+wzxhzdk:97
 
 Las clases `Circulo`, `Pais` y `Animal` no tienen ninguna clase base
 compartida. Sin embargo, todas son clases, por lo que las instancias
 de los tres tipos pueden usarse para inicializar un array que almacena
 valores de tipo `Any`:
 
-wzxhzdk:97
+wzxhzdk:98
 
 Y ahora podemos iterar sobre el array de objetos, comprobando para
 cada ítem si la instancia se ajusta al protocolo `TieneArea`:
 
-wzxhzdk:98
+wzxhzdk:99
 
 Cuando un objeto en el array se ajusta al protocolo `TieneArea`, el
 valor opcional devuelto por el operador `as?` se desenvuelve con un
@@ -3382,7 +3412,7 @@ Entre otras cosas, las extensiones pueden:
 
 Para declarar una extensión hay que usar la palabra clave `extension`:
 
-wzxhzdk:99
+wzxhzdk:100
 
 ### Propiedades calculadas
 
@@ -3391,13 +3421,13 @@ de tipos. Como primer ejemplo, vamos a añadir a la clase persona la
 propiedad calcula `mayorEdad`, un `Bool` que indica si la edad de la
 persona es mayor o igual de 18:
 
-wzxhzdk:100
+wzxhzdk:101
 
 Una vez definida esta extensión, hemos ampliado la clase con esta
 nueva propiedad, sin tocar el código de la clase. Podemos preguntar si
 una persona es mayor de edad:
 
-wzxhzdk:101
+wzxhzdk:102
 
 Es posible incluso extender clases de las librerías estándar de
 Swift, como `Int`, `Double`, `Array`, etc.
@@ -3408,7 +3438,7 @@ convierten una cantidad en las unidades correspondientes a su
 equivalente en metros:
 
 
-wzxhzdk:102
+wzxhzdk:103
 
 Estas propiedades calculadas expresan que un valor `Double` debería
 considerarse como una cierta unidad de longitud. Aunque se implementan
@@ -3431,7 +3461,7 @@ que se expresan sin la palabra clave `get`, por brevedad. Sus valores
 devueltos son de tipo `Double`, y pueden usarse en cálculos
 matemáticos en cualquier sitio que se acepte un `Double`:
 
-wzxhzdk:103
+wzxhzdk:104
 
 
 ### Inicializadores
@@ -3447,20 +3477,20 @@ un rectángulo geométrico. Este ejemplo también define dos estructuras
 auxiliares llamadas `Tamaño` y `Punto`, que proporcionan valores por
 defecto de 0.0 a todas sus propiedades:
 
-wzxhzdk:104
+wzxhzdk:105
 
 Debido a que la estructura `Rectangulo` proporciona valores por
 defecto para todas sus propiedades, tiene un inicializador por defecto
 que puede utilizarse para crear nuevas instancias. También podemos
 inicializarlo asignando todas sus propieades:
 
-wzxhzdk:105
+wzxhzdk:106
 
 Podemos extender la estructura `Rectangulo` para proporcionar un
 inicializador adicional que toma un punto específico del centro y un
 tamaño:
 
-wzxhzdk:106
+wzxhzdk:107
 
 Este nuevo inicializador empieza por calcular un punto de origen
 basado en el centro propuesto y en el tamaño. El inicializador llama
@@ -3468,7 +3498,7 @@ después al inicializador automático de la estructura
 `init(origen:tamaño:)`, que almacena los nuevos valores de las
 propiedades:
 
-wzxhzdk:107
+wzxhzdk:108
 
 ### Métodos
 
@@ -3477,14 +3507,14 @@ métodos del tipo.
 
 Por ejemplo, podemos añadir el método `descripcion()` a la estructura `Persona`:
 
-wzxhzdk:108
+wzxhzdk:109
 
 También podemos añadir métodos a clases y estructuras importadas. Por
 ejemplo podemos añadir un nuevo método de
 instancia llamado `repeticiones` al tipo `Int`:
 
 
-wzxhzdk:109
+wzxhzdk:110
 
 El método `repeticiones(_:)` toma un único argumento de tipo `() ->
 Void`, que indica una función que no tiene parámetros y no devuelve
@@ -3493,11 +3523,11 @@ método `repeticiones(_:)` en cualquier número entero para ejecutar una
 tarea un cierto número de veces:
 
 
-wzxhzdk:110
+wzxhzdk:111
 
 Usando clausuras por la cola podemos hacer la llamada más concisa:
 
-wzxhzdk:111
+wzxhzdk:112
 
 ### Métodos de instancia mutadores
 
@@ -3508,7 +3538,7 @@ deben marcarse como `mutating`.
 
 Por ejemplo: 
 
-wzxhzdk:112
+wzxhzdk:113
 
 
 ### Ajustar un tipo a un protocolo mediante una extensión
@@ -3520,7 +3550,7 @@ protocolos se escriben exactamente de la misma forma que en una clase
 o estructura:
 
 
-wzxhzdk:113
+wzxhzdk:114
 
 Las instancias del tipo adoptarán automáticamente el protocolo y se
 ajustarán al protocolo con las propiedades y métodos añadidos por la
@@ -3531,11 +3561,11 @@ ser implementado por cualquier tipo que tenga una forma de
 representarse como texto. Esto puede ser una descripción de si mismo o
 una versión de texto de su estado actual:
 
-wzxhzdk:114
+wzxhzdk:115
 
 La clase `Dado` que vimos anteriormente puede extenderse para ajustarse al protocolo:
 
-wzxhzdk:115
+wzxhzdk:116
 
 Esta extensión adopta el nuevo protocolo exactamente como si el `Dado`
 lo hubiera proporcionado en su implementación original. El nombre del
@@ -3544,12 +3574,12 @@ y se proporciona una implementación entre llaves.
 
 Cualquier instancia de un dado se puede tratar ahora como `RepresentableComoTexto`:
 
-wzxhzdk:116
+wzxhzdk:117
 
 De forma similar, un `Rectangulo` también puede extenderse para
 adoptar y ajustarse al protocolo:
 
-wzxhzdk:117
+wzxhzdk:118
 
 ### Declaración de la adopción de un protocolo con una extensión
 
@@ -3557,12 +3587,12 @@ Si un tipo ya se ajusta a todos los requisitos de un protocolo, pero
 todavía no se ha declarado que se ajusta al protocolo, podemos hacer
 que lo adopte con una extensión vacía:
 
-wzxhzdk:118
+wzxhzdk:119
 
 Las instancias de `Hamster` pueden ahora usarse en cualquier sitio que
 se requiera un tipo `RepresentableComoTexto`:
 
-wzxhzdk:119
+wzxhzdk:120
 
 ### Implementación de métodos de un protocolo
 
@@ -3575,13 +3605,13 @@ Por ejemplo, el protocolo `GeneradorNumerosAleatorios` puede ser extendido
 para proporcionar un método `boolAleatorio()`, que usa el resultado del
 `random()` requerido para devolver un valor `Bool` aleatorio:
 
-wzxhzdk:120
+wzxhzdk:121
 
 Al crear una extensión en el protocolo, todos los tipos que se ajustan
 a él adquieren automáticamente esta implementación sin ninguna
 modificación adicional.
 
-wzxhzdk:121
+wzxhzdk:122
 
 El tipo que se ajusta al protocolo puede proporcionar su propia
 implementación, que se usará en lugar de la proporcionada por la extensión.
@@ -3600,24 +3630,24 @@ que se aplique a cualquier colección cuyos elementos cumplen el
 protocolo `Equatable`. De esta forma nos aseguramos de que los
 operadores `==` y `!=` están definidos y podemos usarlos en la extensión:
 
-wzxhzdk:122
+wzxhzdk:123
 
 El método `allEqual()` devuelve `true` si y sólo si todos los
 elementos en la colección son iguales.
 
 Un ejemplo:
 
-wzxhzdk:123
+wzxhzdk:124
 
 Dado que ambos arrays cumplen el protocolo `Collection` y los enteros
 cumplen el protocolo `Equatable` podemos usar el método `allEqual()`: 
 
-wzxhzdk:124
+wzxhzdk:125
 
 En una colección de una clase que no cumple el protocolo
 `Equatable` no se puede utilizar el método de la extensión:
 
-wzxhzdk:125
+wzxhzdk:126
 
 ## Funciones operadoras
 
@@ -3632,7 +3662,7 @@ operandos). Definimos una estructura `Vector2D` para un vector de
 posición de dos dimensiones:
 
 
-wzxhzdk:126
+wzxhzdk:127
 
 La función operador se define como una función estática con un un
 nombre de función que empareja con el operador a sobrecargar
@@ -3653,7 +3683,7 @@ estructura `Vector2D`, para que pueda usarse como un operador infijo
 entre instancias existentes de `Vector2D`:
 
 
-wzxhzdk:127
+wzxhzdk:128
 
 ### Operadores prefijos y postfijos
 
@@ -3668,14 +3698,14 @@ Para implementar un operador unario prefijo o postfijo se debe
 escribir el modificador `prefix` o `postfix` antes de la palabra clave
 `func` en la declaración de la función operador:
 
-wzxhzdk:128
+wzxhzdk:129
 
 El ejemplo anterior implementa el operador unario negación (`-a`) para
 instancias de `Vector2D`.
 
 Por ejemplo:
 
-wzxhzdk:129
+wzxhzdk:130
 
 ### Operadores de equivalencia
 
@@ -3693,7 +3723,7 @@ Lo hacemos definiendo una extensión que cumple el protocolo
 `Equatable`. De esta forma, como ya hemos visto anteriormente,
 conseguimos la implementación por defecto del operador `!=`:
 
-wzxhzdk:130
+wzxhzdk:131
 
 En el ejemplo anterior se implementa un operador "igual a" (`==`) que
 comprueba si dos instancias de `Vector2D` tienen valores
@@ -3707,7 +3737,7 @@ simplemente devuelve el inversa del resultado del operador "igual a".
 Ahora podemos usar estos operadores para chequear si dos instancias de
 `Vector2D` son equivalentes:
 
-wzxhzdk:131
+wzxhzdk:132
 
 ## Genéricos
 
@@ -3720,7 +3750,7 @@ elementos.
 La versión no genérica del tipo de dato es la siguiente, en la que se
 implementa una pila de enteros.
 
-wzxhzdk:132
+wzxhzdk:133
 
 La estructura usa un array para guardar los ítems y los métodos `push`
 y `pop` añaden y retiran los elementos. 
@@ -3730,7 +3760,7 @@ almacenar enteros.
 
 Aquí está una versión genérica del mismo código:
 
-wzxhzdk:133
+wzxhzdk:134
 
 El parámetro del tipo `Element` define un tipo genérico que se utiliza
 como _placeholder_ del tipo real del que se declare la
@@ -3741,11 +3771,11 @@ son también objetos de tipo `Element`.
 
 Por ejemplo, podemos crear una pila de cadenas:
 
-wzxhzdk:134
+wzxhzdk:135
 
 Y podemos retirar la última cadena de la pila:
 
-wzxhzdk:135
+wzxhzdk:136
 
 ### Extensión de un tipo genérico
 
@@ -3757,7 +3787,7 @@ extensión.
 Por ejemplo, podemos extender el tipo genérico `Stack` para añadir una
 propiedad computable de sólo lectura que devuelva el tope de la pila:
 
-wzxhzdk:136
+wzxhzdk:137
 
 En la extensión se utiliza el nombre genérico `Element` sin tener que
 declararlo después de `Stack`, porque está definido en la estructura
@@ -3765,7 +3795,7 @@ original.
 
 Ahora ya se puede acceder al tope de la pila sin retirar el elemento:
 
-wzxhzdk:137
+wzxhzdk:138
 
 ## Bibliografía
 
