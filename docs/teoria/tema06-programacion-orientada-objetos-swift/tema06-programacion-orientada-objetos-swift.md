@@ -46,6 +46,19 @@ f() // -> 1
 f() // -> 2
 ```
 
+La función devuelta por `construyeFunc()` también se puede formular
+como una expresión de clausura:
+
+```swift
+func construyeFunc() -> () -> Int {
+   var x = 0
+   return {
+      x = x + 1
+      return x
+   }
+}
+```
+
 En el siguiente ejemplo vemos claramente que la función queda
 englobada en el ámbito donde se creó:
 
@@ -55,8 +68,14 @@ func usaFunc(_ f: () -> Int) -> Int {
      return f()
 }
 
-usaFunc(f) // -> 3
+let f = construyeFunc()
+usaFunc(f) // -> 1
 ```
+
+El valor devuelto por `usaFunc` el el resultado de la invocación a
+`f()` en su segunda línea de código. Y el valor de `x` usado por la
+clausura `f` es el capturado en el momento de su creación (el valor
+`x=0` definido en la primera línea de `construyeFunc`).
 
 - Funciones anónimas que pueden capturar valores del contexto que las rodean:
 
@@ -109,11 +128,9 @@ array[0]() //-> 4
 
 ### Autoclausuras
 
-Una autoclausura es una clausura que se crea automáticamente al
-envolver una función que se pasa como argumento a una función. No
-tiene parámetros y devuelve el valor de la expresión. Permite omitir
-las llaves, de forma que escribimos una expresión en lugar de una
-clausura explícitamente.
+Una autoclausura permite crear automáticamente una función en tiempo
+de ejecución sin necesidad de utilizar la sintaxis de las expresiones
+de clausura.
 
 Se puede ver la autoclausura como una forma de retardar la evaluación,
 porque esa expresión no se evaluará hasta que se llame a la
@@ -121,88 +138,27 @@ clausura. Retardar la evaluación es útil con trozos de código que
 provocan efectos laterales o son costosos computacionalmente, ya que
 nos permiten controlar el momento de su evaluación.
 
-Ejemplo de clausura que retarda la evaluación:
-
-
-```swift
-var customers = ["Pepe", "Alejandro", "Víctor", "Eva", "Daniela"]
-
-print(customers.count)  // 5
-
-// clausura:
-let customerProvider = { customers.remove(at: 0) }
-
-// todavía no la hemos llamado
-print(customers.count)  // 5
-
-// la llamamos:
-print("El siguiente de la lista es \(customerProvider())")
-
-print(customers.count)  // 4
-```
-
-Ahora hacemos lo mismo pasando la clausura como parámetro a una función:
+Por ejemplo, podemos modificar la función anterior `usaFunc` añadiendo
+la anotación `@autoclosure` antes del tipo del parámetro clausura:
 
 ```swift
-//customers contiene ["Alejandro", "Víctor", "Eva", "Daniela"]
-
-func serve(customer customerProvider: () -> String) {
-    let cliente = customerProvider()
-    print("El siguiente de la lista es \(cliente)")
-}
-
-serve(customer: { customers.remove(at: 0)})
-//El siguiente de la lista es Alejandro
-```
-
-La función `serve(customer:)`anterior recibe una clausura que imprime
-un cliente.
-
-Definimos ahora otra versión que realiza lo mismo, pero en lugar de
-recibir una clausura explícitamente, recibe una autoclausura (marcando
-su tipo de parámetro con el atributo `@autoclosure`). De esta forma
-podemos llamar a la función pasándole un `String`en lugar de una
-clausura. El argumento se convierte automáticamente en una clausura.
-
-```swift
-//customers contiene ["Víctor", "Eva", "Daniela"]
-
-func serve(customer customerProvider: @autoclosure () -> String){
-    let cliente = customerProvider()
-    print("El siguiente de la lista es \(cliente)")
-}
-
-serve(customer: customers.remove(at: 0))
-// El siguiente de la lista es Víctor
-```
-
-No debemos abusar del uso de autoclausuras.
-
-Una autoclasura también puede escapar, tenemos que marcar el parámetro con ambos atributos:
-
-```swift
-var customersProviders : [() -> String] = []
-
-func collectCustomersProvider(_ customerProvider: @autoclosure @escaping () -> String){
-    customersProviders.append(customerProvider)
-}
-
-collectCustomersProvider(customers.remove(at: 0))
-collectCustomersProvider(customers.remove(at: 0))
-
-print("Hemos preparado a \(customersProviders.count)")
-
-for customerProvider in customersProviders {
-    let cliente = customerProvider()
-    print("Ahora estamos atendiendo a \(cliente)")
+func usaFunc(_ f: @autoclosure () -> Int) -> Int {
+     var x = 4
+     return f()
 }
 ```
 
-En el ejemplo anterior, no se llama a la clausura que se pasa como
-parámetro dentro de la función, sino que se añade al array
-`customerProviders`, declarado fuera de la función. Las clausuras
-almacenadas en él se evaluarán después de que la función termine su
-ejecución.
+
+Al declararlo de esta forma, se puede llamar a `usaFunc` escribiendo
+como parámetro una sentencia que el compilador convierte a clausura:
+
+```swift
+var x = 100
+usaFunc(x + 10)
+```
+
+La expresión `x + 10` se considera _retardada_: se construye una
+clausura con ella y su evaluación se realiza dentro de `usaFunc`.
 
 
 ## Introducción, historia y características de la Programación Orientada a Objetos
@@ -214,7 +170,7 @@ ejecución.
   60 y 70
 - Primer lenguaje con las ideas fundamentales de POO: Simula
 - Smalltalk (1980) como lenguaje paradigmática de POO
-- Alan Kay es el creador del término “Object-Oriented” y una de las
+- **Alan Kay** es el creador del término “Object-Oriented” y una de las
   figuras fundamentales de la historia de la informática
   moderna. Trabajó en Xerox Park y desarrolló allí ideas que han sido
   clave para la informática personal (como el Dynabook, precursor de
@@ -410,8 +366,8 @@ instancia de una estructura o una clase. La sintaxis para crear ambas
 es similar:
 
 ```swift
-let unasCoordsPantalla = CoordsPantalla()
-let unaVentana = Ventana()
+var unasCoordsPantalla = CoordsPantalla()
+var unaVentana = Ventana()
 ```
 
 La forma más sencilla de inicialización es la anterior. Se utiliza el
@@ -429,13 +385,11 @@ Se puede acceder y modificar las propiedades usando la _sintaxis de
 punto_:
 
 ```swift
-print("La posición x de unasCoordsPantalla es \(unasCoordsPantalla.posX)")
-// Imprime "La posición x de unasCoordsPantalla es 0"
-print("La posición y de la esquina de la venana es \(unaVentana.esquina.posY)")
-// Imprime "La posición y de la esquina de la venana es 0")
-unaVentana.esquina.posY = 900
-print("La posición y de la esquina de la venana es ahora \(unaVentana.esquina.posY)")
-// Imprime "La posición y de la esquina de la venana es ahora 900")
+// Accedemos a la propiedad
+coords.posX // Devuelve 0
+// Actualizamos la propiedad
+coords.posX = 100
+ventana.esquina.posY = 100
 ```
 
 ### Inicialización de las estructuras por sus propiedades
@@ -445,8 +399,17 @@ en el que damos valor a todas sus propiedades. En las clases no se
 puede usar esta inicialización por defecto.
 
 ```swift
-let coords = CoordsPantalla(posX: 200, posY: 400)
+var coords = CoordsPantalla(posX: 200, posY: 400)
 ```
+
+Es necesario inicializar todas las propiedades. Si no, el compilador
+da un error:
+  
+```swift
+var coords2 = CoordsPantalla(posX: 200)
+// error
+```
+
 
 ### Estructuras y enumeraciones son tipos valor
 
@@ -459,13 +422,10 @@ estructuras. Las estructuras y las enumeraciones son tipos valor en
 Swift.
 
 ```swift
-let coords1 = CoordsPantalla(posX: 600, posY: 600)
+var coords1 = CoordsPantalla(posX: 600, posY: 600)
 var coords2 = coords1
 coords2.posX = 1000
-print("coords2 tiene ahora como posición x: \(coords2.posX)")
-// imprime: "coords2 tiene ahora como posición x: 1000"
-print("coords1 tiene todavía la posición x: \(coords1.posX)")
-// imprime: "coords1 tiene todavía la posición x: 600"
+coords1.poxX // devuelve 600
 ```
 
 En el ejemplo se declara una constante llamada `coords1` y se asigna a una
@@ -489,15 +449,14 @@ referencia a la misma instancia existente.
 Veamos un ejemplo:
 
 ```swift
-let ventana1 = Ventana()
+var ventana1 = Ventana()
 ventana1.esquina = coords1
 ventana1.altura = 800
 ventana1.anchura = 800
 ventana1.etiqueta = "Finder"
-let ventana2 = ventana1
+var ventana2 = ventana1
 ventana2.anchura = 1000
-print("La propiedad anchura de ventana1 es ahora \(ventana1.anchura)")
-// imprime "La propiedad anchura de ventana1 es ahora 1000"
+ventana1.anchura // devuelve 1000
 ```
 
 Declaramos una constante llamada `ventana1` inicializada con una
@@ -524,10 +483,40 @@ un `let` define como constantes todas sus propiedades. Por ejemplo, el
 siguiente código generaría un error:
 
 ```swift
+var coords3 = CoordsPantalla(posX: 400, posY: 400)
+coords3.posX = 800
+// error: cannot assign to property: 'coords3' is a 'let' constant
+```
+
+### Declaración de instancias con `let`
+
+Las estructuras y clases tienen comportamientos distintos cuando se
+declaran las variables con `let`.
+
+Si definimos con `let` una instancia de una estructura estamos
+declarando constante la variable y todas las propiedades de la
+instancia. No podremos modificar ninguna:
+  
+```swift
 let coords3 = CoordsPantalla(posX: 400, posY: 400)
 coords3.posX = 800
 // error: cannot assign to property: 'coords3' is a 'let' constant
 ```
+  
+Si definimos con un `let` una instancia de una clase sólo estamos
+declarando constante la variable. No podremos reasignarla, pero sí que
+podremos modificar las propiedades de la instancia referenciada por la
+variable:
+
+```swift
+let ventana3 = Ventana()
+// Sí que podemos modificar una propiedad de la instancia:
+ventana3.etiqueta = "Listado"
+// Pero no podemos reasignar la variable:
+ventana3 = ventana1
+// error: cannot assign to value: 'ventana3' is a 'let' constant
+```
+
 
 ### Operadores de identidad
 
@@ -539,10 +528,8 @@ esto, Swift proporciona dos operadores de identidad:
 - No idéntico a (`!==`)
 
 ```swift
-if ventana1 === ventana2 {
-    print("ventana1 y ventana2 se refierena a la misma instancia de ventana.")
-}
-// Imprime "ventana1 y ventana2 se refierena a la misma instancia de ventana."
+ventana1 === ventana2 // devuelve true
+ventana1 === ventana3 // devuelve false
 ```
 
 Estos operadores "idéntico a" no son los mismos que los de "igual a"
@@ -662,22 +649,11 @@ constante, no podremos modificar las propiedades de la instancia,
 incluso si han sido declaradas como propiedades variables:
 
 ```swift
-let rangoDeCuatroItems = RangoLongitudFija(primerValor: 0, longitud: 4)
+var rangoDeCuatroItems = RangoLongitudFija(primerValor: 0, longitud: 4)
 // este rango representa valores enteros 0, 1, 2 y 3
 rangoDeCuatroItems.primerValor = 6
 // esto producirá un error, incluso aun siendo primerValor una propiedad variable
 ```
-
-Debido a que `rangoDeCuatroItems` se ha declarado como constante (con
-la palabra clave `let`), no es posible cambiar su propiedad
-`primerValor`, incluso aunque sea una propiedad variable. Esta
-conducta se debe a que las estructuras son _tipos valor_. Cuando una
-instancia de un tipo valor se marca como constante, también lo son
-todas sus propiedades.
-
-Esto no sucede así con las clases, que son _tipos referencia_. Si
-asignamos una instancia de un tipo referencia a una constante, puedes
-seguir cambiando las propiedades variables de esa instancia.
 
 ### Propiedades calculadas
 
@@ -972,46 +948,44 @@ variables (`var`).
 Ejemplo:
 
 ```swift
-
 struct UnaEstructura {
-    static let propiedadTipoAlmacenada = "Algún valor."
-    static var propiedadTipoCalculada : Int {
+    static var almacenada = "A"
+    static var calculada : Int {
         return 1
     }
 }
 enum UnaEnumeracion {
-    static var propiedadTipoAlmacenada = "Algún valor."
-    static var propiedadTipoCalculada: Int {
-        return 6
+    static var almacenada = "A"
+    static var calculada: Int {
+        return 1
     }
 }
 class UnaClase {
-    static var propiedadTipoAlmacenada = "Algún valor."
-    static var propiedadTipoCalculada: Int {
-        return 27
-    }
-    class var propiedadTipoCalculadaSobreescribible: Int {
-        return 107
+    static var almacenada = "A"
+    static var calculada: Int {
+        return 1
     }
 }
 ```
 
 Las propiedades del tipo se consultan y actualizan usando también la
-sintaxis de punto, pero sobre _el tipo_, no sobre una instancia:
+sintaxis de punto, pero sobre _el tipo_:
 
 ```swift
-print(UnaEstructura.propiedadTipoAlmacenada)
-// Imprime "Algún valor."
-UnaEstructura.propiedadTipoAlmacenada = "Otro valor."
-print(UnaEstructura.propiedadTipoAlmacenada)
-// Imprime "Otro valor."
-print(UnaEnumeracion.propiedadTipoCalculada)
-// Imprime "6"
-print(UnaClase.propiedadTipoCalculada)
-// Imprime "27"
+UnaEstructura.almacenada // devuelve "A"
+UnaEstructura.almacenada = "B" 
+UnaClase.calculada // devuelve 1
 ```
 
-Un ejemplo:
+- No es posible acceder a la variable del tipo a través de una instancia:
+
+```swift
+let a = UnaEstructura()
+a.almacenada // error
+```
+
+El siguiente ejemplo muestra cómo es posible usar una variable del
+tipo para almacenar información global a todas las instancias de ese tipo:
 
 ```swift
 struct Valor {
@@ -1093,6 +1067,29 @@ contador.incrementa(en: 5)
 contador.reset()
 // el valor del contador es ahora 0
 ```
+
+En el ejemplo anterior, los métodos no devuelven ningún
+valor. Podemos modificar el ejemplo para que los métodos
+devuelvan el valor actualizado del contador:
+
+```swift
+class Contador {
+    var veces = 0
+    func incrementa() -> Int {
+        veces += 1
+        return veces
+    }
+    func incrementa(en cantidad: Int) -> Int {
+        veces += cantidad
+        return veces
+    }
+    func reset() -> Int {
+        veces = 0
+        return veces
+    }
+}
+```
+
 
 ### Nombres locales y externos de parámetros
 
@@ -1184,19 +1181,40 @@ if unPunto.estaAlaDerecha(de: 1.0) {
 // Imprime "Este punto está a la derecha de la línea donde x == 1.0"
 ```
 
-## Modificación de tipos valor desde dentro de la instancia
+### Operaciones con instancias de tipo valor
 
-Las estructuras y las enumeraciones son tipos valor. Por defecto, las
-propiedades de un tipo valor no pueden ser modificadas desde dentro de
-los métodos de instancia.
+Las estructuras y las enumeraciones son **tipos valor**. Por defecto,
+las propiedades de un tipo valor no pueden ser modificadas desde
+dentro de los métodos de instancia.
 
-Sin embargo, si necesitamos modificar las propiedades de nuestra
-estructura o enumeración dentro de un método particular, podemos
-conseguir una conducta _mutadora_ para ese método. El método puede
-mutar (esto es, cambiar) sus propiedades desde dentro del método, así
-como asignar una instancia completamente nueva a su propiedad
-implícita `self`, con lo que esta nueva instancia reemplazará la
-existente cuando el método termine.
+Si queremos modificar una propiedad de un tipo valor la forma más
+natural de hacerlo es creando una instancia nueva, usando el estilo de 
+programación funcional:
+  
+```swift
+struct Punto {
+    var x = 0.0, y = 0.0
+    func incrementa(incX: Double, incY: Double) -> Punto {
+        return Punto(x: x+incX, y: y+incY)
+    }
+}
+let unPunto = Punto(x: 1.0, y: 1.0)
+var puntoMovido = unPunto.incrementa(incX: 2.0, incY: 3.0)
+print("Hemos movido el punto a (\(puntoMovido.x), \(puntoMovido.y))")
+// Imprime "Hemos movido el punto a (3.0, 4.0)"
+```
+
+### Modificación de tipos valor desde dentro de la instancia ###
+
+Sin embargo, hay ocasiones en las que necesitamos modificar las
+propiedades de nuestra estructura o enumeración dentro de un método
+particular. 
+
+Necesitamos conseguir una conducta _mutadora_ para ese método. El
+método puede mutar (esto es, cambiar) sus propiedades desde dentro del
+método, así como asignar una instancia completamente nueva a su
+propiedad implícita `self`, con lo que esta nueva instancia
+reemplazará la existente cuando el método termine.
 
 Podemos conseguir esta conducta colocando la palabra clave `mutating`
 antes de la palabra `func` del método:
@@ -1204,13 +1222,13 @@ antes de la palabra `func` del método:
 ```swift
 struct Punto {
     var x = 0.0, y = 0.0
-    mutating func incrementa(incX: Double, incY: Double) {
+    mutating func incrementado(incX: Double, incY: Double) {
         x += incX
         y += incY
     }
 }
 var unPunto = Punto(x: 1.0, y: 1.0)
-unPunto.incrementa(incX: 2.0, incY: 3.0)
+unPunto.incrementado(incX: 2.0, incY: 3.0)
 print("El punto está ahora en (\(unPunto.x), \(unPunto.y))")
 // Imprime "El punto está ahora en (3.0, 4.0)"
 ```
@@ -1339,6 +1357,207 @@ print("Se han registrado \(Ventana.ventanas.count) ventanas")
 ```
 
 <!--
+
+## Inicialización
+
+_Inicialización_ es el proceso de preparar para su uso una instancia
+de una clase, estructura o enumeración. Este proceso incluye la
+asignación de un valor inicial para cada propiedad almacenada y la
+ejecución de cualquier otra operación de inicialización que se
+necesite para que la nueva instancia esté lista para usarse.
+
+Para implementar este proceso de inicialización hay que definir
+_inicializadores_, que son como métodos especiales que pueden llamarse
+para crear una nueva instancia de un tipo particular. A diferencia de
+otros lenguajes, los inicializadores en Swift no devuelven un
+valor. Su papel principal es que las nuevas instancias del tipo estén
+correctamente inicializadas antes de poder ser usadas por primera vez.
+
+También es posible implementar _deinicializadores_, métodos que se
+ejecutan cuando las instancias son eliminadas de la memoria (no vamos
+a explicarlos por falta de tiempo).
+
+El proceso de inicialización de una instancia puede resultar un
+proceso complicado, sobre todo cuando se tienen relaciones de herencia
+y hay que especificar también cómo realizar la inicialización de la
+subclase utilizando la superclase. Por falta de tiempo no vamos a
+explicar todo el proceso completo. Recomendamos consultar la
+[documentación original de Swift](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203).
+
+### Inicialización de propiedades almacenadas
+
+Las clases y estructuras deben definir todas sus propiedades
+almacenadas a un valor inicial en el tiempo en la instancia se
+crea. Las propiedades almacenadas no pueden dejarse en un estado
+indeterminado. Podemos definir el valor inicial para una propiedad en
+un inicializador o asignándole un valor por defecto como parte de la
+definición de la propiedad.
+
+Un _inicializador_, en su forma más simple, es como un método de la
+instancia sin parámetros, escrito con la palabra clave `init`:
+
+
+```swift
+init() {
+    // realizar alguna inicialización aquí
+}
+```
+
+Por ejemplo, podemos definir la estructura `Farenheit` que almacena
+una temperatura en grados Farenheit. Tiene una propiedad almacenada de
+tipo `Double`. Definimos un inicializador que inicializa las
+instancias a 32.0 (equivalente a 0.0 grados Celsius).
+
+```swift
+struct Fahrenheit {
+    var temperatura: Double
+    init() {
+        temperatura = 32.0
+    }
+}
+var f = Fahrenheit()
+print("La temperatura por defecto es \(f.temperatura) Fahrenheit")
+// Imprime "La temperatura por defecto es 32.0° Fahrenheit"
+```
+
+La implementación anterior es equivalente a la siguiente (que es
+preferible, por ser más clara):
+
+```swift
+struct Fahrenheit {
+    var temperatura = 32.0
+}
+```
+
+### Customización de la inicialización
+
+Es posible _customizar_ el proceso de inicialización con parámetros de
+entrada y tipos opcionales, o asignando propiedades constantes durante
+la inicialización.
+
+Podemos proporcionar parámetros de inicialización como parte de la
+definición de un inicializador, para definir los tipos y los nombres
+de los valores que _customizan_ el proceso de inicialización. Los
+parámetros de inicialización tienen las mismas capacidades y sintaxis
+que los parámetros de funciones y métodos.
+
+```swift
+struct Celsius {
+    var temperaturaEnCelsius: Double
+    init(desdeFahrenheit fahrenheit: Double) {
+        temperaturaEnCelsius = (fahrenheit - 32.0) / 1.8
+    }
+    init(desdeKelvin kelvin: Double) {
+        temperaturaEnCelsius = kelvin - 273.15
+    }
+}
+
+let puntoDeEbullicionDelAgua = Celsius(desdeFahrenheit: 212.0)
+// puntoDeEbullicionDelAgua.temperaturaEnCelsius es 100.0
+let puntoDeCongelacionDelAgua = Celsius(desdeKelvin: 273.15)
+// puntoDeCongelacionDelAgua.temperaturaEnCelsius is 0.0
+```
+
+Vemos que dependiendo del nombre de parámetro proporcionado se escoge
+un inicializador u otro. En los inicializadores es obligatorio
+proporcionar los nombres de todos los parámetros:
+
+```swift
+struct Color {
+    let rojo, verde, azul: Double
+    init(rojo: Double, verde: Double, azul: Double) {
+        self.rojo   = rojo
+        self.verde = verde
+        self.azul  = azul
+    }
+    init(blanco: Double) {
+        rojo  = blanco
+        verde = blanco
+        azul  = blanco
+    }
+}
+let magenta = Color(rojo: 1.0, verde: 0.0, azul: 1.0)
+let medioGris = Color(blanco: 0.5)
+```
+
+Podemos evitar proporcionar nombres externos usando un subrayado. Por
+ejemplo, podemos añadir al struct anterior `Celsius` un inicializador
+sin nombre externo para el caso en que pasemos la temperatura inicial
+precisamente en Celsius:
+
+```swift
+struct Celsius {
+   var temperaturaEnCelsius: Double
+   init(desdeFahrenheit fahrenheit: Double) {
+      temperaturaEnCelsius = (fahrenheit - 32.0) / 1.8
+   }
+   init(desdeKelvin kelvin: Double) {
+      temperaturaEnCelsius = kelvin - 273.15
+   }
+   init(_ celsius: Double) {
+      temperaturaEnCelsius = celsius
+   }
+}
+
+let temperaturaCuerpo = Celsius(37.0)
+// temperaturaCuerpo.temperaturaEnCelsius es 37.0
+```
+
+Por último, es posible dejar sin inicializar propiedades opcionales,
+ya que el valor que tomarían sería `nil`:
+
+```swift
+class PreguntaEncuesta {
+    let texto: String
+    var respuesta: String?
+    init(texto: String) {
+        self.texto = texto
+    }
+    func pregunta() {
+        print(texto)
+    }
+}
+let preguntaQueso = PreguntaEncuesta(texto: "¿Te gusta el queso?")
+preguntaQueso.pregunta()
+// Imprime "¿Te gusta el queso?
+preguntaQueso.respuesta = "Sí, me gusta el queso."
+```
+
+En el ejemplo anterior se comprueba también que es posible inicializar
+constantes. Por ejemplo, la propiedad `text` está definida con un
+`let` y se inicializa en el inicializador.
+
+Por último, es posible definir más de un inicializador, así como
+invocar a inicializadores más básicos desde otros. Si definimos un
+inicializador en una estructura los inicializadores por defecto dejan
+de funcionar, es necesario escribirlos también.
+
+```swift
+struct Rectangulo {
+    var origen = Punto()
+    var tamaño = Tamaño()
+    init(){}
+    init(origen: Punto, tamaño: Tamaño) {
+        self.origen = origen
+        self.tamaño = tamaño
+    }
+    init(centro: Punto, tamaño: Tamaño) {
+        let origenX = centro.x - (tamaño.ancho / 2)
+        let origenY = centro.y - (tamaño.ancho / 2)
+        self.init(origen: Punto(x: origenX, y: origenY), tamaño: tamaño)
+    }
+}
+let basicRectangulo = Rectangulo()
+// el origen de basicRectangulo es (0.0, 0.0) y su tamaño (0.0, 0.0)
+let origenRectangulo = Rectangulo(origen: Punto(x: 2.0, y: 2.0),
+                        tamaño: Tamaño(ancho: 5.0, alto: 5.0))
+// el origne de origenRectangulo es (2.0, 2.0) y su tamaño (5.0, 5.0)
+let centroRectangulo = Rectangulo(centro: Punto(x: 4.0, y: 4.0),
+                        tamaño: Tamaño(ancho: 3.0, alto: 3.0))
+// el origen de centroRectangulo es (2.5, 2.5) y su tamaño (3.0, 3.0)
+```
+
+
 
 ## Herencia
 
@@ -1611,205 +1830,6 @@ el método o la propiedad (como `final var`, `final func` o `final
 class`). También es posible marcar la clase completa como final,
 escribiendo el modificador antes de `class` (`final class`).
 
-
-## Inicialización
-
-_Inicialización_ es el proceso de preparar para su uso una instancia
-de una clase, estructura o enumeración. Este proceso incluye la
-asignación de un valor inicial para cada propiedad almacenada y la
-ejecución de cualquier otra operación de inicialización que se
-necesite para que la nueva instancia esté lista para usarse.
-
-Para implementar este proceso de inicialización hay que definir
-_inicializadores_, que son como métodos especiales que pueden llamarse
-para crear una nueva instancia de un tipo particular. A diferencia de
-otros lenguajes, los inicializadores en Swift no devuelven un
-valor. Su papel principal es que las nuevas instancias del tipo estén
-correctamente inicializadas antes de poder ser usadas por primera vez.
-
-También es posible implementar _deinicializadores_, métodos que se
-ejecutan cuando las instancias son eliminadas de la memoria (no vamos
-a explicarlos por falta de tiempo).
-
-El proceso de inicialización de una instancia puede resultar un
-proceso complicado, sobre todo cuando se tienen relaciones de herencia
-y hay que especificar también cómo realizar la inicialización de la
-subclase utilizando la superclase. Por falta de tiempo no vamos a
-explicar todo el proceso completo. Recomendamos consultar la
-[documentación original de Swift](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203).
-
-### Inicialización de propiedades almacenadas
-
-Las clases y estructuras deben definir todas sus propiedades
-almacenadas a un valor inicial en el tiempo en la instancia se
-crea. Las propiedades almacenadas no pueden dejarse en un estado
-indeterminado. Podemos definir el valor inicial para una propiedad en
-un inicializador o asignándole un valor por defecto como parte de la
-definición de la propiedad.
-
-Un _inicializador_, en su forma más simple, es como un método de la
-instancia sin parámetros, escrito con la palabra clave `init`:
-
-
-```swift
-init() {
-    // realizar alguna inicialización aquí
-}
-```
-
-Por ejemplo, podemos definir la estructura `Farenheit` que almacena
-una temperatura en grados Farenheit. Tiene una propiedad almacenada de
-tipo `Double`. Definimos un inicializador que inicializa las
-instancias a 32.0 (equivalente a 0.0 grados Celsius).
-
-```swift
-struct Fahrenheit {
-    var temperatura: Double
-    init() {
-        temperatura = 32.0
-    }
-}
-var f = Fahrenheit()
-print("La temperatura por defecto es \(f.temperatura) Fahrenheit")
-// Imprime "La temperatura por defecto es 32.0° Fahrenheit"
-```
-
-La implementación anterior es equivalente a la siguiente (que es
-preferible, por ser más clara):
-
-```swift
-struct Fahrenheit {
-    var temperatura = 32.0
-}
-```
-
-### Customización de la inicialización
-
-Es posible _customizar_ el proceso de inicialización con parámetros de
-entrada y tipos opcionales, o asignando propiedades constantes durante
-la inicialización.
-
-Podemos proporcionar parámetros de inicialización como parte de la
-definición de un inicializador, para definir los tipos y los nombres
-de los valores que _customizan_ el proceso de inicialización. Los
-parámetros de inicialización tienen las mismas capacidades y sintaxis
-que los parámetros de funciones y métodos.
-
-```swift
-struct Celsius {
-    var temperaturaEnCelsius: Double
-    init(desdeFahrenheit fahrenheit: Double) {
-        temperaturaEnCelsius = (fahrenheit - 32.0) / 1.8
-    }
-    init(desdeKelvin kelvin: Double) {
-        temperaturaEnCelsius = kelvin - 273.15
-    }
-}
-
-let puntoDeEbullicionDelAgua = Celsius(desdeFahrenheit: 212.0)
-// puntoDeEbullicionDelAgua.temperaturaEnCelsius es 100.0
-let puntoDeCongelacionDelAgua = Celsius(desdeKelvin: 273.15)
-// puntoDeCongelacionDelAgua.temperaturaEnCelsius is 0.0
-```
-
-Vemos que dependiendo del nombre de parámetro proporcionado se escoge
-un inicializador u otro. En los inicializadores es obligatorio
-proporcionar los nombres de todos los parámetros:
-
-```swift
-struct Color {
-    let rojo, verde, azul: Double
-    init(rojo: Double, verde: Double, azul: Double) {
-        self.rojo   = rojo
-        self.verde = verde
-        self.azul  = azul
-    }
-    init(blanco: Double) {
-        rojo  = blanco
-        verde = blanco
-        azul  = blanco
-    }
-}
-let magenta = Color(rojo: 1.0, verde: 0.0, azul: 1.0)
-let medioGris = Color(blanco: 0.5)
-```
-
-Podemos evitar proporcionar nombres externos usando un subrayado. Por
-ejemplo, podemos añadir al struct anterior `Celsius` un inicializador
-sin nombre externo para el caso en que pasemos la temperatura inicial
-precisamente en Celsius:
-
-```swift
-struct Celsius {
-   var temperaturaEnCelsius: Double
-   init(desdeFahrenheit fahrenheit: Double) {
-      temperaturaEnCelsius = (fahrenheit - 32.0) / 1.8
-   }
-   init(desdeKelvin kelvin: Double) {
-      temperaturaEnCelsius = kelvin - 273.15
-   }
-   init(_ celsius: Double) {
-      temperaturaEnCelsius = celsius
-   }
-}
-
-let temperaturaCuerpo = Celsius(37.0)
-// temperaturaCuerpo.temperaturaEnCelsius es 37.0
-```
-
-Por último, es posible dejar sin inicializar propiedades opcionales,
-ya que el valor que tomarían sería `nil`:
-
-```swift
-class PreguntaEncuesta {
-    let texto: String
-    var respuesta: String?
-    init(texto: String) {
-        self.texto = texto
-    }
-    func pregunta() {
-        print(texto)
-    }
-}
-let preguntaQueso = PreguntaEncuesta(texto: "¿Te gusta el queso?")
-preguntaQueso.pregunta()
-// Imprime "¿Te gusta el queso?
-preguntaQueso.respuesta = "Sí, me gusta el queso."
-```
-
-En el ejemplo anterior se comprueba también que es posible inicializar
-constantes. Por ejemplo, la propiedad `text` está definida con un
-`let` y se inicializa en el inicializador.
-
-Por último, es posible definir más de un inicializador, así como
-invocar a inicializadores más básicos desde otros. Si definimos un
-inicializador en una estructura los inicializadores por defecto dejan
-de funcionar, es necesario escribirlos también.
-
-```swift
-struct Rectangulo {
-    var origen = Punto()
-    var tamaño = Tamaño()
-    init(){}
-    init(origen: Punto, tamaño: Tamaño) {
-        self.origen = origen
-        self.tamaño = tamaño
-    }
-    init(centro: Punto, tamaño: Tamaño) {
-        let origenX = centro.x - (tamaño.ancho / 2)
-        let origenY = centro.y - (tamaño.ancho / 2)
-        self.init(origen: Punto(x: origenX, y: origenY), tamaño: tamaño)
-    }
-}
-let basicRectangulo = Rectangulo()
-// el origen de basicRectangulo es (0.0, 0.0) y su tamaño (0.0, 0.0)
-let origenRectangulo = Rectangulo(origen: Punto(x: 2.0, y: 2.0),
-                        tamaño: Tamaño(ancho: 5.0, alto: 5.0))
-// el origne de origenRectangulo es (2.0, 2.0) y su tamaño (5.0, 5.0)
-let centroRectangulo = Rectangulo(centro: Punto(x: 4.0, y: 4.0),
-                        tamaño: Tamaño(ancho: 3.0, alto: 3.0))
-// el origen de centroRectangulo es (2.5, 2.5) y su tamaño (3.0, 3.0)
-```
 
 
 ## Protocolos
