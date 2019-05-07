@@ -1192,8 +1192,9 @@ como una expresión de clausura:</p>
 </pre></div>
 </td></tr></table>
 
-<p>En el siguiente ejemplo vemos claramente que la función queda
-englobada en el ámbito donde se creó:</p>
+<p>En el siguiente ejemplo vemos claramente que la función captura las
+variables definidas en el ámbito en el que se creó. En el caso
+anterior la clausura devuelta captura la variable <code>x</code> con el valor 0.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -2389,7 +2390,7 @@ indicar que ese parámetro no tendrá nombre externo.</p>
 <code>self</code>, que es exactamente equivalente a la instancia misma. Podemos
 usar la propiedad <code>self</code> para referirnos a la instancia actual dentro
 de sus propios métodos de instancia.</p>
-<p>El método <code>increment()</code> en el ejemplo anterior podría haberse escrito
+<p>El método <code>incrementa()</code> en el ejemplo anterior podría haberse escrito
 de esta forma:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -2496,7 +2497,7 @@ antes de la palabra <code>func</code> del método:</p>
 </td></tr></table>
 
 <p>La estructura <code>Punto</code> anterior define un método mutador
-<code>increment(incX:incY:)</code> que mueve una instancia de <code>Punto</code> una cierta
+<code>incrementado(incX:incY:)</code> que mueve una instancia de <code>Punto</code> una cierta
 cantidad. En lugar de devolver un nuevo punto, el método modifica
 realmente el punto en el que es llamado. La palabra clave <code>mutating</code>
 se añade a su definición para permitirle modificar sus propiedades.</p>
@@ -2506,7 +2507,7 @@ pueden cambiar, incluso aunque sean propiedades variables:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">puntoFijo</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
-<span class="n">puntoFijo</span><span class="p">.</span><span class="n">incrementa</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="n">puntoFijo</span><span class="p">.</span><span class="n">incrementado</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
 <span class="c1">// esto provocará un error</span>
 </pre></div>
 </td></tr></table>
