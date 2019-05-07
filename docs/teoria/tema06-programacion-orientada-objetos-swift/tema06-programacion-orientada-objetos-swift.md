@@ -161,6 +161,26 @@ usaFunc(x + 10)
 La expresión `x + 10` se considera _retardada_: se construye una
 clausura con ella y su evaluación se realiza dentro de `usaFunc`.
 
+Otro ejemplo en el que podemos comprobar el orden de evaluación:
+
+```swift
+func printTest2(_ result: @autoclosure () -> Void) {
+    print("Antes")
+    result()
+    print("Después")
+}
+
+printTest2(print("Hola"))
+
+// Imprime: 
+//     Antes
+//     Hola
+//     Después
+```
+
+La sentencia `print("Hola")` se pasa como una autoclausura, por lo que
+el compilador crea automáticamente una clausura con ella sin tener
+nosotros que escribir la expresión de clausura.
 
 ## Introducción, historia y características de la Programación Orientada a Objetos
 
