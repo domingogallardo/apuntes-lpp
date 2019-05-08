@@ -1230,7 +1230,7 @@ func construye(lista: [Int]) -> Lista {
     } else {
         let primero = lista[0]
         let resto = Array(lista.dropFirst())
-        return Lista.cons(primero, make(lista: resto))
+        return Lista.nodo(primero, construye(lista: resto))
     } 
 }
 
