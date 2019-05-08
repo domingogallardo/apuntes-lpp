@@ -814,7 +814,7 @@ propiedades se llaman cada vez que el valor de una propiedad es
 actualizado, incluso si el nuevo valor es el mismo que el valor actual
 de la propiedad.
 
-Se pueden añadir observadores a cualquier propiedad almacenada que se
+Se pueden añadir observadores a cualquier **propiedad almacenada** que se
 definan. Se pueden también añadir observadores a cualquier propiedad
 heredada (ya sea almacenada o calculada) sobreescribiendo la propiedad
 en la subclase. No es necesario definir observadores de propiedades
