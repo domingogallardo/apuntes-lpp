@@ -917,7 +917,7 @@ Usa `deinit` para crear un *desinicializador* si necesitas realizar
 alguna limpieza antes de que el objeto sea eliminado.
 
 Las subclases incluyen el nombre de su subclase después del nombre de
-la clase, separado por una coma. No hay ningún requisito de que las
+la clase, separado por dos puntos. No hay ningún requisito de que las
 clases deban ser subclases de alguna clase raíz, por lo que puedes
 omitir una superclase si así lo necesitas.
 
