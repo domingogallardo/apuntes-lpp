@@ -171,7 +171,7 @@ Definimos el árbol
 
 */
 
-let arbol1 = Arbol.nodo(10, [])
+let arbol1 = Arbol.nodo(1, [])
 let arbol3 = Arbol.nodo(3, [arbol1])
 let arbol5 = Arbol.nodo(5, [])
 let arbol8 = Arbol.nodo(8, [])
