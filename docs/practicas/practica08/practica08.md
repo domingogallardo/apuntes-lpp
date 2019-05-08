@@ -195,7 +195,7 @@ func esPar(x: Int) -> Bool {
 }
 
 print("La suma del árbol genérico es: \(suma(arbol: arbol10, cumplen: esPar))")
-// Imprime: La suma del árbol genérico es: 28
+// Imprime: La suma del árbol genérico es: 18
 ```
 
 
