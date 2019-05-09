@@ -2237,10 +2237,10 @@ sobrecargando (hablaremos más adelante de los operadores).
 El operador `!=` que se usa en la última instrucción se define en una
 implementación por defecto.
 
-En Swift 5 el compilador define una implementación del operador `==`
-en las estructuras y enumeraciones al añadir el protocolo
-`Equatable`, siempre que las propiedades almacenadas y
-los valores asociados cumplan ese protocolo.
+En **Swift 5** el compilador define una **implementación automática
+del operador `==` en las estructuras y enumeraciones** al añadir el
+protocolo `Equatable`, siempre que las propiedades almacenadas y los
+valores asociados cumplan ese protocolo.
   
 Por ejemplo, si en lugar de una clase definimos una estructura
 Punto3D el código quedaría como sigue (no es necesario definir ni el
