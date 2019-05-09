@@ -2242,8 +2242,8 @@ del operador `==` en las estructuras y enumeraciones** al añadir el
 protocolo `Equatable`, siempre que las propiedades almacenadas y los
 valores asociados cumplan ese protocolo.
   
-Por ejemplo, si en lugar de una clase definimos una estructura
-Punto3D el código quedaría como sigue (no es necesario definir ni el
+Por ejemplo, si en lugar de una clase definimos un `struct Punto3D` el
+código quedaría como sigue (no es necesario definir ni el
 inicializador por defecto ni el operador `==`):
 
 ```swift
