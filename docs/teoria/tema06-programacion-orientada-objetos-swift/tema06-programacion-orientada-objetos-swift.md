@@ -2,7 +2,6 @@
 <!--
 
 Para el curso que viene:
- - Incluir modificador 'opcional' en protocolos
 
 Cosas importantes que no contamos, que habría que contar (si hubiera 
 tiempo en la última sesión):
@@ -1377,7 +1376,6 @@ print("Se han registrado \(Ventana.ventanas.count) ventanas")
 // Imprime "Se han registrado 1 ventanas"
 ```
 
-<!--
 
 ## Inicialización
 
@@ -1539,9 +1537,8 @@ class PreguntaEncuesta {
     }
 }
 let preguntaQueso = PreguntaEncuesta(texto: "¿Te gusta el queso?")
-preguntaQueso.pregunta()
-// Imprime "¿Te gusta el queso?
-preguntaQueso.respuesta = "Sí, me gusta el queso."
+preguntaQueso.pregunta() // -> "¿Te gusta el queso?
+preguntaQueso.respuesta // -> nil
 ```
 
 En el ejemplo anterior se comprueba también que es posible inicializar
@@ -1549,9 +1546,13 @@ constantes. Por ejemplo, la propiedad `text` está definida con un
 `let` y se inicializa en el inicializador.
 
 Por último, es posible definir más de un inicializador, así como
-invocar a inicializadores más básicos desde otros. Si definimos un
-inicializador en una estructura los inicializadores por defecto dejan
-de funcionar, es necesario escribirlos también.
+invocar a inicializadores más básicos desde otros. 
+
+Si definimos un inicializador en una estructura el inicializador por
+defecto deja de funcionar, es necesario escribirlo también. El
+inicializador por defecto permite que las propiedades se
+inicialicen a los valores por defecto. 
+
 
 ```swift
 struct Rectangulo {
@@ -2002,8 +2003,16 @@ crear un nombre completo de la nave estelar.
 Los protocolos pueden requerir que los tipos que se ajusten a ellos
 implementen métodos de instancia y de tipos específicos. Estos métodos
 se escriben como parte de la definición del protocolo de la misma
-forma que los métodos normales, pero sin sus cuerpos. Los métodos del
-tipo en el protocolo deben indicarse con la palabra clave `static`:
+forma que los métodos normales, pero sin sus cuerpos:
+
+```swift
+protocol UnProtocolo {
+    func unMetodo() -> Int
+}
+```
+
+Los métodos del tipo en el protocolo deben indicarse con la palabra
+clave `static`:
 
 ```swift
 protocol UnProtocolo {
@@ -2011,7 +2020,7 @@ protocol UnProtocolo {
 }
 ```
 
-Por ejemplo:
+Un ejemplo:
 
 ```swift
 protocol GeneradorNumerosAleatorios {
@@ -2195,7 +2204,7 @@ operación de diferencia ya tiene una implementación por defecto.
 Un ejemplo:
 
 ```swift
-struct Punto3D: Equatable {
+class Punto3D: Equatable {
     let x, y, z: Double
 
     init(x: Double, y: Double, z: Double) {
@@ -2227,6 +2236,29 @@ sobrecargando (hablaremos más adelante de los operadores).
 
 El operador `!=` que se usa en la última instrucción se define en una
 implementación por defecto.
+
+En Swift 5 el compilador define una implementación del operador `==`
+en las estructuras y enumeraciones al añadir el protocolo
+`Equatable`, siempre que las propiedades almacenadas y
+los valores asociados cumplan ese protocolo.
+  
+Por ejemplo, si en lugar de una clase definimos una estructura
+Punto3D el código quedaría como sigue (no es necesario definir ni el
+inicializador por defecto ni el operador `==`):
+
+```swift
+struct Punto3D: Equatable {
+    let x, y, z: Double
+}
+
+let p1 = Punto3D(x: 0.0, y: 0.0, z: 0.0)
+let p2 = Punto3D(x: 0.0, y: 0.0, z: 0.0)
+
+print(p1 == p2)
+// Imprime true
+print(p1 != p2)
+// Imprime false
+```
 
 
 ## Casting de tipos
@@ -2423,7 +2455,7 @@ imprimir una descripción de la película llamando a los
 correspondientes métodos de la clase `Pelicula`. Igual con `Cancion`.
 
 
-### _Casting_ para `Any` 
+### El tipo `Any` 
 
 El tipo `Any` puede representar una instancia de cualquier tipo,
 incluyendo tipos función:
@@ -2574,6 +2606,7 @@ embargo, en el momento en se almacenan en la constante
 `objetoConArea`, sólo se sabe que son del tipo `TieneArea`, por lo que
 sólo podremos acceder a su propiedad `area`.
 
+<!--
 
 ## Extensiones
 
@@ -2603,9 +2636,9 @@ extension UnTipo {
 ### Propiedades calculadas
 
 Las extensiones pueden añadir propiedades calculadas de instancias y
-de tipos. Como primer ejemplo, vamos a añadir a la clase persona la
-propiedad calcula `mayorEdad`, un `Bool` que indica si la edad de la
-persona es mayor o igual de 18:
+de tipos. Como primer ejemplo, vamos a añadir a la clase persona
+definida anteriormente la propiedad calculada `mayorEdad`, un `Bool` que
+indica si la edad de la persona es mayor o igual de 18:
 
 ```swift
 extension Persona {
@@ -2616,8 +2649,10 @@ extension Persona {
 ```
 
 Una vez definida esta extensión, hemos ampliado la clase con esta
-nueva propiedad, sin tocar el código de la clase. Podemos preguntar si
-una persona es mayor de edad:
+nueva propiedad, sin modificar el código inicial con la definición de
+la clase. 
+
+Podemos preguntar si una persona es mayor de edad:
 
 ```swift
 var p = Persona(edad: 15, nombreCompleto: "Lucía")
