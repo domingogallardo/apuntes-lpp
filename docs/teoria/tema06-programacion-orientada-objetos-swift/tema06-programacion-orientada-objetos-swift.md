@@ -2185,7 +2185,7 @@ de escena son do esos tipos. Por ser del tipo `TieneNombre` sabemos
 que tiene una propiedad `nombreCompleto` que podemos usar sobre la
 variable iteradora.
 
-### Protocolos de la biblioteca estándar de Swift
+### Protocolo `Equatable`
 
 En la [biblioteca estándar de
 Swift](https://developer.apple.com/documentation/swift) se definen
