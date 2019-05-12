@@ -36,7 +36,7 @@
     
     
       
-        <title>Práctica 11: Programación Orientada a Objetos en Swift (2) - LPP</title>
+        <title>Practica11 - LPP</title>
       
     
     
@@ -108,7 +108,7 @@
               LPP
             </span>
             <span class="md-header-nav__topic">
-              Práctica 11: Programación Orientada a Objetos en Swift (2)
+              Practica11
             </span>
           
         </div>
@@ -453,6 +453,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../practica10/practica10.html" title="Práctica 10" class="md-nav__link">
+      Práctica 10
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -536,7 +548,134 @@
               
                 
                 
-                <h1 id="practica-11-programacion-orientada-a-objetos-en-swift-2">Práctica 11: Programación Orientada a Objetos en Swift (2)<a class="headerlink" href="#practica-11-programacion-orientada-a-objetos-en-swift-2" title="Permanent link">&para;</a></h1>
+                <!--
+
+De la práctica pasada..
+
+b) El siguiente código utiliza la inicialización de una clase. 
+
+¿Qué errores tiene? ¿Qué se imprimiría en su ejecución una vez
+arreglado? Intenta descubrirlo sin utilizar el compilador. Prueba
+distintas formas de arreglar el código cambiando lo mínimo posible de
+lo ya definido (por ejemplo, no debes cambiar la función
+`prueba`). Compruébalo con el compilador.
+
+wzxhzdk:0
+
+
+c) Escribe un ejemplo de código en el que definas una relación de
+herencia entre una clase base y una clase derivada. Comprueba en el
+código que un objeto de la clase derivada hereda las propiedades y
+métodos de la clase base.
+
+Investiga sobre lo el funcionamiento de la herencia en Swift. Escribe
+ejemplos en donde compruebes este funcionamiento. Algunos ejemplos de
+preguntas que puedes investigar (puedes añadir tú más preguntas):
+
+- ¿Se puede sobreescribir el valor de una propiedad almacenada? ¿Y
+calculada? 
+- ¿Se puede añadir un observador a una propiedad de la clase base en
+  una clase derivada?
+- ¿Hereda la clase derivada propiedades y métodos estáticos de la clase base?
+- ¿Cómo se puede llamar a la implementación de un método de la clase
+  base en una sobreescritura de ese mismo método en la clase derivada?
+
+
+### Ejercicio 4
+
+En este ejercicio deberás implementar un conjunto de clases con las
+que podamos "simular" una carrera de coches.
+
+#### Función `random`
+
+Utilizaremos la función del sistema `random()` que devuelve un número
+aleatorio. Hay que importar la librería `Glibc` (en Linux) y
+`Foundation` (en iOS) para usarla.
+
+A continuación puedes ver un ejemplo de su utilización en un método de
+tipo del enumerado `MarcaCoche` para devolver una marca aleatoria de
+coche:
+
+
+wzxhzdk:1
+
+#### Enumerados y clases que gestionan los vehículos
+
+Deberás implementar los siguientes enumerados y clases, con las propiedades indicadas.
+
+**Enumerado `MarcaCoche`** 
+
+- Posibles valores: `Mercedes`, `Ferrari`, `RedBull` y `McLaren`
+- Método del tipo `random()` que devuelva aleatoriamente uno de los
+  valores (consultar el código anterior).
+
+**Enumerado `TipoCambio`**
+
+- Posibles valores: `Automatico` o `Manual`
+- Método del tipo `random()` que devuelve uno de esos valores.
+
+**Clase base `Coche`**
+
+- Propiedades de instancia almacenadas: `velocidadActual` (`Double`),
+  `marcha` (`Int`), `distanciaRecorrida` (`Double`) y `marca`
+  (`MarcaCoche`).
+- Propiedad de instancia calculada: `descripcion` (`String`), que
+  devuelve la marca del coche.
+- Propiedades del tipo: Constantes `velocidadMaxima` (`Double`) y
+  `marchaMaxima` (`Int`) inicializadas a 150.0 y 6
+
+**Subclase `CocheAutomatico`**
+
+- Hereda de `Coche` y sobreescribe la descripción, añadiendo la cadena
+  "Automático".
+
+**Subclase `CocheManual`**
+
+- Hereda de `Coche` y sobreescribe la descripción, añadiendo la cadena
+  "Manual".
+
+**Observadores de propiedades en las subclases**
+
+La velocidad de un coche manual se modifica cambiando su propiedad
+`marcha` y la de un coche automático cambiando su propiedad
+`velocidadActual`. En cada caso hay que definir observadores de
+propiedades que modifiquen la otra propiedad.
+
+La velocidad se calcula a partir de la marcha según la siguiente expresión:
+
+wzxhzdk:2
+
+Y la marcha se calcula a partir de la velocidad con la expresión que
+puedes encontrar en los apuntes de teoría, en la definición de la
+clase `CocheAutomatico`.
+
+
+**Distancia recorrida e información en pantalla**
+
+Suponemos que se cambia la velocidad del coche cada hora y que en cada
+cambio de velocidad se actualiza la propiedad `distanciaRecorrida`,
+que irá acumulando la distancia recorrida por el coche desde su
+inicialización. Cada vez que se cambia la velocidad también se
+imprimirá la velocidad actual y la marca del coche en pantalla (ver el
+ejemplo al final del ejercicio). Esto se puede implementar también en
+los observadores.
+
+#### Clase Carrera
+
+Debes implementar las clases anteriores y una clase `Carrera` con la
+que simular una carrera de `n` coches que conducen durante `k` horas.
+
+Un ejemplo de uso de la clase `Carrera`:
+
+wzxhzdk:3
+
+Y su correspondiente salida por pantalla:
+
+wzxhzdk:4
+
+-->
+
+<h1 id="practica-11-programacion-orientada-a-objetos-en-swift-2">Práctica 11: Programación Orientada a Objetos en Swift (2)<a class="headerlink" href="#practica-11-programacion-orientada-a-objetos-en-swift-2" title="Permanent link">&para;</a></h1>
 <h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
 <p>Para entregar la práctica debes subir a Moodle el fichero
 <code>practica11.swift</code> con una cabecera inicial con tu nombre y apellidos,
