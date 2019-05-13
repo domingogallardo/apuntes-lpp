@@ -229,6 +229,40 @@ código en el que se creen al menos un rectángulo y un círculo, se
 prueben sus propiedades, se añadan al almacén de figuras y se prueben
 sus métodos.
 
+### Ejercicio 4 ###
+
+Tenemos que escribir un programa que permita definir resultados de
+partidos de fútbol y calcular la puntuación de un conjunto de equipos
+una vez que se han jugado esos partidos.
+
+Escribe código en Swift que permita resolver el problema, **utilizando structs**.
+
+Un ejemplo de ejecución del código debería ser cómo sigue:
+
+```
+--------------
+Puntuación antes de los partidos:
+Real Madrid: 0 puntos
+Barcelona: 0 puntos
+Atlético Madrid: 0 puntos
+Valencia: 0 puntos
+Athlétic Bilbao: 0 puntos
+Sevilla: 0 puntos
+--------------
+Resultados:
+Real Madrid 0 - Barcelona 3
+Sevilla 1 - Athlétic Bilbao 1
+Valencia 2 - Atlético Madrid 1
+--------------
+Puntuación después de los partidos:
+Real Madrid: 0 puntos
+Barcelona: 3 puntos
+Atlético Madrid: 0 puntos
+Valencia: 3 puntos
+Athlétic Bilbao: 1 puntos
+Sevilla: 1 puntos
+```
+
 ----
 
 Lenguajes y Paradigmas de Programación, curso 2018-19  
