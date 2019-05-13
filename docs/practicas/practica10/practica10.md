@@ -37,9 +37,10 @@ usa(funcion: g)
 ```
 
 b) El siguiente código tiene errores, pero los comentarios indican
-correctamente su intención, pero éste tiene errores. Indica cuáles son
-y qué se imprimirá al ejecutarlo. Después compruébalo con el
-compilador y experimenta haciendo cambios y comprobando el resultado.
+correctamente su intención. Indica cuáles son los errores, cómo
+solucionarlos y qué se imprimirá al ejecutarlo. Después compruébalo
+con el compilador y experimenta haciendo cambios y comprobando el
+resultado.
 
 ```swift
 var y = 0
