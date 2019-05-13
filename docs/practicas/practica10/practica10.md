@@ -42,30 +42,22 @@ y qué se imprimirá al ejecutarlo. Después compruébalo con el
 compilador y experimenta haciendo cambios y comprobando el resultado.
 
 ```swift
-let x = 0
+var y = 0
 var almacen: [() -> Int] = []
 
-func construye() -> () -> Int {
-  var x = 10
-  return {
-    x = x + 5
-    return x
-  }
-}
-
-func usa(funcion: () -> Int) {
-  var x = 20
+func usa2(funcion: () -> Int) {
+  var y = 20
   almacen.append(funcion)
 }
 
-let g = construye()
-usa(funcion: g)
+usa2 {y = y + 5
+    return y}
 
 // Obtenemos la clausura guardada en almacen
-let f = almacen[0]()
+let h = almacen[0]()
 // Invocamos a la clausura
-print(f)
-print(f)
+print(h)
+print(h)
 ```
 
 
