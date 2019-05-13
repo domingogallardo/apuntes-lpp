@@ -676,38 +676,22 @@ compilador y experimenta haciendo cambios y comprobando el resultado.</p>
 13
 14
 15
-16
-17
-18
-19
-20
-21
-22
-23
-24</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">0</span>
+16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nv">y</span> <span class="p">=</span> <span class="mi">0</span>
 <span class="kd">var</span> <span class="nv">almacen</span><span class="p">:</span> <span class="p">[()</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>
 
-<span class="kd">func</span> <span class="nf">construye</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">10</span>
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="n">x</span> <span class="p">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5</span>
-    <span class="k">return</span> <span class="n">x</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">usa</span><span class="p">(</span><span class="n">funcion</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">20</span>
+<span class="kd">func</span> <span class="nf">usa2</span><span class="p">(</span><span class="n">funcion</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">y</span> <span class="p">=</span> <span class="mi">20</span>
   <span class="n">almacen</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">funcion</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="kd">let</span> <span class="nv">g</span> <span class="p">=</span> <span class="n">construye</span><span class="p">()</span>
-<span class="n">usa</span><span class="p">(</span><span class="n">funcion</span><span class="p">:</span> <span class="n">g</span><span class="p">)</span>
+<span class="n">usa2</span> <span class="p">{</span><span class="n">y</span> <span class="p">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">5</span>
+    <span class="k">return</span> <span class="n">y</span><span class="p">}</span>
 
 <span class="c1">// Obtenemos la clausura guardada en almacen</span>
-<span class="kd">let</span> <span class="nv">f</span> <span class="p">=</span> <span class="n">almacen</span><span class="p">[</span><span class="mi">0</span><span class="p">]()</span>
+<span class="kd">let</span> <span class="nv">h</span> <span class="p">=</span> <span class="n">almacen</span><span class="p">[</span><span class="mi">0</span><span class="p">]()</span>
 <span class="c1">// Invocamos a la clausura</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
