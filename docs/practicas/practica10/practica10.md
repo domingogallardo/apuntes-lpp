@@ -52,7 +52,7 @@ func usa2(funcion: () -> Int) {
 }
 
 usa2 {y = y + 5
-    return y}
+      return y}
 
 // Obtenemos la clausura guardada en almacen
 let h = almacen[0]()
