@@ -188,7 +188,6 @@ Las debes declarar tal y como aparecen en los apuntes.
     - `origen` (`Punto`) que contiene las coordenadas de la esquina
       inferior izquierda del rectángulo.
     - `tamaño` (`Tamaño`) que contiene las dimensiones del rectángulo. 
-    - Ambas propiedades se inicializan en un inicializador.
 - Propiedades de instancia calculadas: 
     - `centro` (`Punto`, de lectura y escritura) que devuelve el
       centro del rectángulo. El `setter` modifica la posición del
@@ -201,7 +200,6 @@ Las debes declarar tal y como aparecen en los apuntes.
     - `centro` (`Punto`) que contiene las coordenadas del centro del
       círculo.
     - `radio` (`Double`) que contiene la longitud del radio.
-    - Ambas propiedades se inicializan en un inicializador.
 - Propiedades de instancia calculadas:
     - `area` (`Double`, de lectura y escritura) que devuelve el área
       del círculo. El `setter` modifica el tamaño del círculo (su
