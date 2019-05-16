@@ -2583,7 +2583,6 @@ embargo, en el momento en se almacenan en la constante
 `objetoConArea`, sólo se sabe que son del tipo `TieneArea`, por lo que
 sólo podremos acceder a su propiedad `area`.
 
-<!--
 
 ## Extensiones
 
@@ -2594,7 +2593,7 @@ conoce como _modelado retroactivo_).
 
 Entre otras cosas, las extensiones pueden: 
 
-- Añadir propiedades calculadas de instancia y de tipo
+- Añadir **propiedades calculadas** de instancia y de tipo
 - Definir métodos de instancia y de tipo
 - Proporcionar nuevos inicializadores
 - Hacer que un tipo existente se ajuste a un protocolo
@@ -2602,10 +2601,12 @@ Entre otras cosas, las extensiones pueden:
 
 ### Sintaxis
 
-Para declarar una extensión hay que usar la palabra clave `extension`:
+Para declarar una extensión hay que usar la palabra clave `extension`,
+indicando después el tipo que se quiere extender (enumeración, clase,
+estructura o protocolo)
 
 ```swift
-extension UnTipo {
+extension UnTipoExistente {
     // nueva funcionalidad para añadir a UnTipo
 }
 ```
@@ -2613,9 +2614,21 @@ extension UnTipo {
 ### Propiedades calculadas
 
 Las extensiones pueden añadir propiedades calculadas de instancias y
-de tipos. Como primer ejemplo, vamos a añadir a la clase persona
-definida anteriormente la propiedad calculada `mayorEdad`, un `Bool` que
-indica si la edad de la persona es mayor o igual de 18:
+de tipos. Como primer ejemplo, recordemos el tipo `Persona`:
+
+```swift
+protocol TieneNombre {
+    var nombreCompleto: String { get }
+}
+
+struct Persona: TieneNombre {
+    var edad: Int
+    var nombreCompleto: String
+}
+```
+
+Vamos a añadir a la estructura la propiedad calculada `mayorEdad`, un
+`Bool` que indica si la edad de la persona es mayor o igual de 18:
 
 ```swift
 extension Persona {
@@ -2653,6 +2666,12 @@ extension Double {
     var mm: Double { return self / 1_000.0 }
     var ft: Double { return self / 3.28084 }
 }
+```
+
+Una vez definida la extensión, podemos usarla en cualquier variable
+`Double`. Incluso la podemos usar en literales:
+
+```swift
 let distancia = 11.km
 // En distancia tendremos 11000 metros
 let unaPulgada = 25.4.mm
@@ -2662,13 +2681,6 @@ let tresPies = 3.ft
 print("Tres pies son \(tresPies) metros")
 // Tres pies son 0.914399970739201 metros
 ```
-
-Estas propiedades calculadas expresan que un valor `Double` debería
-considerarse como una cierta unidad de longitud. Aunque se implementan
-como propiedades calculadas, los nombres de las propiedades pueden
-añadirse a un literal en punto flotante con la sintaxis del punto,
-como una forma de usar el valor del literal para ejecutar conversiones
-de distancia.
 
 Por ejemplo, cuando se escribe `11.km` se pide el valor de la
 propiedad calculada `km` de la instancia `11`. La propiedad calculada
@@ -2699,10 +2711,8 @@ nuestros propios tipos como parámetros de la inicialización, o para
 proporcionar opciones adicionales que no estaban incluidos en la
 implementación original del tipo.
 
-El siguiente ejemplo define una estructura `Rectangulo` que representa
-un rectángulo geométrico. Este ejemplo también define dos estructuras
-auxiliares llamadas `Tamaño` y `Punto`, que proporcionan valores por
-defecto de 0.0 a todas sus propiedades:
+Recordemos la estructura `Rectangulo`, definida por un `Punto` y un
+`Tamaño`. Supongamos que la definimos sin inicializadores:
 
 ```swift
 struct Tamaño {
@@ -2717,10 +2727,10 @@ struct Rectangulo {
 }
 ```
 
-Debido a que la estructura `Rectangulo` proporciona valores por
-defecto para todas sus propiedades, tiene un inicializador por defecto
-que puede utilizarse para crear nuevas instancias. También podemos
-inicializarlo asignando todas sus propieades:
+Recordemos que debido a que la estructura `Rectangulo` proporciona
+valores por defecto para todas sus propiedades, tiene un inicializador
+por defecto que puede utilizarse para crear nuevas instancias. También
+podemos inicializarlo asignando todas sus propieades:
 
 ```swift
 let rectanguloPorDefecto = Rectangulo()
@@ -2728,7 +2738,7 @@ let rectanguloInicializado = Rectangulo(origen: Punto(x: 2.0, y: 2.0),
                                 tamaño: Tamaño(ancho: 5.0, alto: 5.0))
 ```
 
-Podemos extender la estructura `Rectangulo` para proporcionar un
+Podemos ahora extender la estructura `Rectangulo` para proporcionar un
 inicializador adicional que toma un punto específico del centro y un
 tamaño:
 
@@ -2757,9 +2767,10 @@ propiedades:
 ### Métodos
 
 Las extensiones pueden añadir nuevos métodos de instancia y nuevos
-métodos del tipo. 
+métodos del tipo.
 
-Por ejemplo, podemos añadir el método `descripcion()` a la estructura `Persona`:
+Por ejemplo, podemos añadir el método `descripcion()` a la estructura
+`Persona`:
 
 ```swift
 extension Persona {
@@ -2773,8 +2784,8 @@ print(reedRichards.descripcion())
 ```
 
 También podemos añadir métodos a clases y estructuras importadas. Por
-ejemplo podemos añadir un nuevo método de
-instancia llamado `repeticiones` al tipo `Int`:
+ejemplo podemos añadir un nuevo método de instancia llamado
+`repeticiones` al tipo `Int`:
 
 
 ```swift
@@ -3052,10 +3063,13 @@ binario, esta función operador toma dos parámetros de entrada de tipo
 
 En esta implementación, llamamos a los parámetros de entrada
 `izquierdo` y `derecho` para representar las instancias de `Vector2D`
-que estarán a la izquierda y a la derecha del operador `+`. La función
-devuelve una nueva instancia de `Vector2D`, cuyas propiedades `x` e
-`y` se inicializan con la suma de las propiedades `x` e `y` de las
-instancias de `Vector2D` que se están sumando.
+que estarán a la izquierda y a la derecha del operador `+`. Son
+nombres arbitrarios, lo importante es la posición. El primer parámetro
+de la función es el que hace de primer operador.
+
+La función devuelve una nueva instancia de `Vector2D`, cuyas
+propiedades `x` e `y` se inicializan con la suma de las propiedades
+`x` e `y` de las instancias de `Vector2D` que se están sumando.
 
 La función se define globalmente, más que como un método en la
 estructura `Vector2D`, para que pueda usarse como un operador infijo
@@ -3106,21 +3120,23 @@ let tambienPositivo = -negativo
 
 ### Operadores de equivalencia
 
-Como ya hemos visto, las clases y estructuras construidas no tienen
-una implementación por defecto de los operadores "igual a" (`==`) y
-"no igual a" (`!=`). No es posible para Swift adivinar qué valores
-serán "iguales" en nuestras clases, porque el significado de "igual"
-depende del papel que esos tipos juegan en nuestro código.
+Como ya hemos visto, las clases no tienen una implementación por
+defecto de los operadores "igual a" (`==`) y "no igual a" (`!=`), pero
+las estructuras sí (a partir de Swift 5). Debemos proporcionar una
+implementación de la misma forma que para otros operadores infijos.
 
-Para poder usar los operadores de igualdad en nuestros propios tipos,
-debemos proporcionar una implementación de la misma forma que para
-otros operadores infijos.
+A partir de Swift 5 si declaramos que la estructura cumple el
+protocolo `Equatable` el compilador de Swift implementa una
+comparación por defecto, siempre que todas las propiedades de la
+estructura sean a su vez `Equatable`.
 
-Lo hacemos definiendo una extensión que cumple el protocolo
+En Swift 4 para implementar la igualdad en la estructura `Vector2D`
+tenemos que definir una extensión que cumple el protocolo
 `Equatable`. De esta forma, como ya hemos visto anteriormente,
 conseguimos la implementación por defecto del operador `!=`:
 
 ```swift
+// Swift 4
 extension Vector2D: Equatable {
    static func == (izquierdo: Vector2D, derecho: Vector2D) -> Bool {
        return (izquierdo.x == derecho.x) && (izquierdo.y == derecho.y)
@@ -3136,6 +3152,14 @@ lo que esta es la lógica usada por la implementación.
 
 La implementación por defecto del operador "no igual a" (`!=`),
 simplemente devuelve el inversa del resultado del operador "igual a".
+
+En Swift 5 basta con declarar con la extensión que el `Vector2D`
+cumple el protocolo:
+
+```swift
+// Swift 5
+extension Vector2D: Equatable {}
+```
 
 Ahora podemos usar estos operadores para chequear si dos instancias de
 `Vector2D` son equivalentes:
@@ -3263,7 +3287,6 @@ if let topItem = stackOfStrings.topItem {
     - [Extensiones](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html#//apple_ref/doc/uid/TP40014097-CH24-ID151)
     - [Funciones operador](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-ID28)
     - [Genéricos](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-ID179)
--->
 
 ----
 
