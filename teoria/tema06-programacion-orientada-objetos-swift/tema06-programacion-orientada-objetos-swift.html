@@ -1564,7 +1564,7 @@ anterior la clausura devuelta captura la variable <code>x</code> con el valor 0.
 </pre></div>
 </td></tr></table>
 
-<p>El valor devuelto por <code>usaFunc</code> el el resultado de la invocación a
+<p>El valor devuelto por <code>usaFunc</code> en el resultado de la invocación a
 <code>f()</code> en su segunda línea de código. Y el valor de <code>x</code> usado por la
 clausura <code>f</code> es el capturado en el momento de su creación (el valor
 <code>x=0</code> definido en la primera línea de <code>construyeFunc</code>).</p>
@@ -1962,7 +1962,8 @@ distintas. Después, la propiedad <code>posX</code> de <code>coords2</code> se a
 <p>A diferencia de los tipos valor, los tipos de referencias no se copian
 cuando se asignan o se pasan a funciones. En su lugar se usa una
 referencia a la misma instancia existente.</p>
-<p>Veamos un ejemplo:</p>
+<p>En Swift las clases son tipos referencias. Veamos, por ejemplo, una
+instancia de la clase <code>Ventana</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1981,36 +1982,29 @@ referencia a la misma instancia existente.</p>
 </pre></div>
 </td></tr></table>
 
-<p>Declaramos una constante llamada <code>ventana1</code> inicializada con una
+<p>Declaramos una variable llamada <code>ventana1</code> inicializada con una
 instancia nueva de la clase <code>Ventana</code>. Le asignamos a la propiedad
 <code>esquina</code> una copia de la resolución anterior <code>coords1</code>. Después
-declaramos la altura, anchura y etiqueta de la ventana.</p>
-<p>Después, <code>ventana1</code> se asigna a una nueva constante llamada
-<code>ventan2</code>, y la anchura se modifica. Debido a que son
-tipos de referencia, <code>ventana1</code> y <code>ventana2</code> se refieren
-a la misma instancia de <code>Ventana</code>. Son sólo dos nombres distintos
-para la misma única instancia.</p>
-<p>Hay que hacer notar que <code>ventana1</code> y <code>ventana2</code> se
-declaran con <code>let</code> como constantes. Sin embargo, podemos modificar sus
-propiedades debido a que no se ha reasignado su instancia a la que se
-refieren". Esas variables no "almacenan" instancias de <code>Ventana</code>, sino que se
-"refieren" a una instancia de la clase. Es la propiedad <code>anchura</code>
-de la instancia subyacente la que se cambia, no los valores de las
-referencias constantes a la instancia de <code>Ventana</code>.</p>
-<p>A diferencia de las clases, una instancia de un <code>struct</code> definida con
-un <code>let</code> define como constantes todas sus propiedades. Por ejemplo, el
-siguiente código generaría un error:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nv">coords3</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">(</span><span class="n">posX</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span> <span class="n">posY</span><span class="p">:</span> <span class="mi">400</span><span class="p">)</span>
-<span class="n">coords3</span><span class="p">.</span><span class="n">posX</span> <span class="p">=</span> <span class="mi">800</span>
-<span class="c1">// error: cannot assign to property: &#39;coords3&#39; is a &#39;let&#39; constant</span>
-</pre></div>
-</td></tr></table>
-
+declaramos la altura, anchura y etiqueta de la ventana. Y, por último,
+<code>ventana1</code> se asigna a una nueva constante llamada <code>ventan2</code>, y la
+anchura se modifica.</p>
+<p>Debido a que son tipos de referencia, <strong><code>ventana1</code> y <code>ventana2</code> se
+refieren a la misma instancia de <code>Ventana</code></strong>. Son sólo dos nombres
+distintos para la misma única instancia. </p>
+<p>Lo podemos comprobar modificando una propiedad mediante una variable y
+viendo que esa misma propiedad en la otra variable se ha modificado
+también (líneas 7 y 8).</p>
+<p>Si tienes experiencia con C, C++, o Objective-C, puedes saber que
+estos lenguajes usan punteros para referirse a una dirección de
+memoria. Una constante o variable en Swift que se refiere a una
+instancia de un tipo referencia es similar a un puntero en C, pero no
+es un puntero que apunta a una dirección de memoria y no requiere que
+se escriba un asterisco (*) para indicar que estas creando una
+referencia. En su lugar, estas referencias se definen como cualquier
+otra constante o variable en Swift.</p>
 <h3 id="declaracion-de-instancias-con-let">Declaración de instancias con <code>let</code><a class="headerlink" href="#declaracion-de-instancias-con-let" title="Permanent link">&para;</a></h3>
-<p>Las estructuras y clases tienen comportamientos distintos cuando se
-declaran las variables con <code>let</code>.</p>
+<p>Las estructuras y clases también tienen comportamientos distintos
+cuando se declaran las variables con <code>let</code>.</p>
 <p>Si definimos con <code>let</code> una instancia de una estructura estamos
 declarando constante la variable y todas las propiedades de la
 instancia. No podremos modificar ninguna:</p>
@@ -2063,14 +2057,6 @@ esto, Swift proporciona dos operadores de identidad:</p>
   "equivalentes" en su valor. Es responsabilidad del diseñador de la
   clase definir la implementación de estos operadores.</li>
 </ul>
-<p>Si tienes experiencia con C, C++, o Objective-C, puedes saber que
-estos lenguajes usan punteros para referirse a una dirección de
-memoria. Una constante o variable en Swift que se refiere a una
-instancia de un tipo referencia es similar a un puntero en C, pero no
-es un puntero que apunta a una dirección de memoria y no requiere que
-se escriba un asterisco (*) para indicar que estas creando una
-referencia. En su lugar, estas referencias se definen como cualquier
-otra constante o variable en Swift.</p>
 <h3 id="criterios-para-usar-estructuras-y-clases">Criterios para usar estructuras y clases<a class="headerlink" href="#criterios-para-usar-estructuras-y-clases" title="Permanent link">&para;</a></h3>
 <p>Podemos usar tanto clases como estructuras para definir nuestros tipos
 de datos y utilizarlos como bloques de construcción del código de
@@ -2161,19 +2147,6 @@ variable llamada <code>primerValor</code> y una propiedad almacenada constante
 llamada <code>longitud</code>. En el ejemplo, <code>longitud</code> se inicializa cuando se
 crea el nuevo rango y no puede ser cambiada en el futuro, por ser una
 propiedad constante.</p>
-<p>Si creamos una instancia de una estructura y la asignamos a una
-constante, no podremos modificar las propiedades de la instancia,
-incluso si han sido declaradas como propiedades variables:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nv">rangoDeCuatroItems</span> <span class="p">=</span> <span class="n">RangoLongitudFija</span><span class="p">(</span><span class="n">primerValor</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">longitud</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
-<span class="c1">// este rango representa valores enteros 0, 1, 2 y 3</span>
-<span class="n">rangoDeCuatroItems</span><span class="p">.</span><span class="n">primerValor</span> <span class="p">=</span> <span class="mi">6</span>
-<span class="c1">// esto producirá un error, incluso aun siendo primerValor una propiedad variable</span>
-</pre></div>
-</td></tr></table>
-
 <h3 id="propiedades-calculadas">Propiedades calculadas<a class="headerlink" href="#propiedades-calculadas" title="Permanent link">&para;</a></h3>
 <p>Además de las propiedades almacenadas, las clases, estructuras y
 enumeraciones pueden definir <em>propiedades calculadas</em>, que no
@@ -2252,11 +2225,11 @@ necesitamos almacenarlo como un <code>Punto</code> explícito. En su lugar,
 variable calculada llamada <code>centro</code>, para permitirnos trabajar con el
 centro del rectángulo como si fuera una propiedad almacenada.</p>
 <p>En el ejemplo se crea una variable <code>Rectangulo</code> llamada <code>cuadrado</code>. La
-variable <code>cuadrado</code> se inicializa un un punto origen de <code>(0, 0)</code> y un
+variable <code>cuadrado</code> se inicializa un punto origen de <code>(0, 0)</code> y un
 ancho y tamaño de <code>10</code>. Este cuadrado está representado por el
 cuadrado azul en el diagrama de abajo.</p>
 <p>Accedemos entonces a la propiedad <code>centro</code> de la variable <code>cuadrado</code>
-usando la sintaxis del punto (<code>square.centro</code>), lo que causa que se
+usando la sintaxis del punto (<code>cuadrado.centro</code>), lo que causa que se
 llame al <em>getter</em> de <code>centro</code> para devolver el valor actual de la
 propiedad. En lugar de devolver los valores existentes, el <em>getter</em>
 calcula realmente y devuelve un nuevo <code>Punto</code> para representar el
@@ -2371,11 +2344,11 @@ defecto de <code>oldValue</code>. Si asignamos un valor a la propiedad dentro de
 su propio observador <code>didSet</code>, el nuevo valor que asignamos reemplaza
 el que acaba de añadirse a la propiedad.</p>
 <p>A continuación podemos ver un ejemplo de <code>willSet</code> y <code>didSet</code> en
-acción. En el definimos una clase nueva llamada <code>CuentaPasos</code>, que
+acción. En él definimos una clase nueva llamada <code>CuentaPasos</code>, que
 hace un seguimiento del número total de pasos que una persona hace al
 caminar. Esta clase puede usarse con datos de entrada de un
 <em>podómetro</em> o cualquier otro sistema de seguir el ejercicio de la
-persona durante sus rutina diaria.</p>
+persona durante su rutina diaria.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -2785,11 +2758,10 @@ de esta forma:</p>
 
 <p>En la práctica no es necesario usar <code>self</code> casi nunca. Swift asume que
 cualquier referencia a una propiedad dentro de un método se refiere a
-la propiedad de la instancia. El único caso en que es obligado usarlo
-es cuando el nombre de la propiedad coincide con el nombre de un
-parámetro. En esta situación el nombre del parámetro toma precedencia
-y es necesario usar <code>self</code> para poder referirse a la propiedad de la
-instancia.</p>
+la propiedad de la instancia. Es obligado usarlo es cuando el nombre
+de la propiedad coincide con el nombre de un parámetro. En esta
+situación el nombre del parámetro toma precedencia y es necesario usar
+<code>self</code> para poder referirse a la propiedad de la instancia.</p>
 <p>Un ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -2885,7 +2857,7 @@ cantidad. En lugar de devolver un nuevo punto, el método modifica
 realmente el punto en el que es llamado. La palabra clave <code>mutating</code>
 se añade a su definición para permitirle modificar sus propiedades.</p>
 <p>Hay que hacer notar que no es posible llamar a un método mutador sobre
-una constante de un tiempo estructura, porque sus propiedades no se
+una constante de un tipo estructura, porque sus propiedades no se
 pueden cambiar, incluso aunque sean propiedades variables:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -4524,7 +4496,7 @@ Entre otras cosas, las extensiones pueden:
 
 Para declarar una extensión hay que usar la palabra clave `extension`:
 
-wzxhzdk:102
+wzxhzdk:100
 
 ### Propiedades calculadas
 
@@ -4533,7 +4505,7 @@ de tipos. Como primer ejemplo, vamos a añadir a la clase persona
 definida anteriormente la propiedad calculada `mayorEdad`, un `Bool` que
 indica si la edad de la persona es mayor o igual de 18:
 
-wzxhzdk:103
+wzxhzdk:101
 
 Una vez definida esta extensión, hemos ampliado la clase con esta
 nueva propiedad, sin modificar el código inicial con la definición de
@@ -4541,7 +4513,7 @@ la clase.
 
 Podemos preguntar si una persona es mayor de edad:
 
-wzxhzdk:104
+wzxhzdk:102
 
 Es posible incluso extender clases de las librerías estándar de
 Swift, como `Int`, `Double`, `Array`, etc.
@@ -4552,7 +4524,7 @@ convierten una cantidad en las unidades correspondientes a su
 equivalente en metros:
 
 
-wzxhzdk:105
+wzxhzdk:103
 
 Estas propiedades calculadas expresan que un valor `Double` debería
 considerarse como una cierta unidad de longitud. Aunque se implementan
@@ -4575,7 +4547,7 @@ que se expresan sin la palabra clave `get`, por brevedad. Sus valores
 devueltos son de tipo `Double`, y pueden usarse en cálculos
 matemáticos en cualquier sitio que se acepte un `Double`:
 
-wzxhzdk:106
+wzxhzdk:104
 
 
 ### Inicializadores
@@ -4591,20 +4563,20 @@ un rectángulo geométrico. Este ejemplo también define dos estructuras
 auxiliares llamadas `Tamaño` y `Punto`, que proporcionan valores por
 defecto de 0.0 a todas sus propiedades:
 
-wzxhzdk:107
+wzxhzdk:105
 
 Debido a que la estructura `Rectangulo` proporciona valores por
 defecto para todas sus propiedades, tiene un inicializador por defecto
 que puede utilizarse para crear nuevas instancias. También podemos
 inicializarlo asignando todas sus propieades:
 
-wzxhzdk:108
+wzxhzdk:106
 
 Podemos extender la estructura `Rectangulo` para proporcionar un
 inicializador adicional que toma un punto específico del centro y un
 tamaño:
 
-wzxhzdk:109
+wzxhzdk:107
 
 Este nuevo inicializador empieza por calcular un punto de origen
 basado en el centro propuesto y en el tamaño. El inicializador llama
@@ -4612,7 +4584,7 @@ después al inicializador automático de la estructura
 `init(origen:tamaño:)`, que almacena los nuevos valores de las
 propiedades:
 
-wzxhzdk:110
+wzxhzdk:108
 
 ### Métodos
 
@@ -4621,14 +4593,14 @@ métodos del tipo.
 
 Por ejemplo, podemos añadir el método `descripcion()` a la estructura `Persona`:
 
-wzxhzdk:111
+wzxhzdk:109
 
 También podemos añadir métodos a clases y estructuras importadas. Por
 ejemplo podemos añadir un nuevo método de
 instancia llamado `repeticiones` al tipo `Int`:
 
 
-wzxhzdk:112
+wzxhzdk:110
 
 El método `repeticiones(_:)` toma un único argumento de tipo `() ->
 Void`, que indica una función que no tiene parámetros y no devuelve
@@ -4637,11 +4609,11 @@ método `repeticiones(_:)` en cualquier número entero para ejecutar una
 tarea un cierto número de veces:
 
 
-wzxhzdk:113
+wzxhzdk:111
 
 Usando clausuras por la cola podemos hacer la llamada más concisa:
 
-wzxhzdk:114
+wzxhzdk:112
 
 ### Métodos de instancia mutadores
 
@@ -4652,7 +4624,7 @@ deben marcarse como `mutating`.
 
 Por ejemplo: 
 
-wzxhzdk:115
+wzxhzdk:113
 
 
 ### Ajustar un tipo a un protocolo mediante una extensión
@@ -4664,7 +4636,7 @@ protocolos se escriben exactamente de la misma forma que en una clase
 o estructura:
 
 
-wzxhzdk:116
+wzxhzdk:114
 
 Las instancias del tipo adoptarán automáticamente el protocolo y se
 ajustarán al protocolo con las propiedades y métodos añadidos por la
@@ -4675,11 +4647,11 @@ ser implementado por cualquier tipo que tenga una forma de
 representarse como texto. Esto puede ser una descripción de si mismo o
 una versión de texto de su estado actual:
 
-wzxhzdk:117
+wzxhzdk:115
 
 La clase `Dado` que vimos anteriormente puede extenderse para ajustarse al protocolo:
 
-wzxhzdk:118
+wzxhzdk:116
 
 Esta extensión adopta el nuevo protocolo exactamente como si el `Dado`
 lo hubiera proporcionado en su implementación original. El nombre del
@@ -4688,12 +4660,12 @@ y se proporciona una implementación entre llaves.
 
 Cualquier instancia de un dado se puede tratar ahora como `RepresentableComoTexto`:
 
-wzxhzdk:119
+wzxhzdk:117
 
 De forma similar, un `Rectangulo` también puede extenderse para
 adoptar y ajustarse al protocolo:
 
-wzxhzdk:120
+wzxhzdk:118
 
 ### Declaración de la adopción de un protocolo con una extensión
 
@@ -4701,12 +4673,12 @@ Si un tipo ya se ajusta a todos los requisitos de un protocolo, pero
 todavía no se ha declarado que se ajusta al protocolo, podemos hacer
 que lo adopte con una extensión vacía:
 
-wzxhzdk:121
+wzxhzdk:119
 
 Las instancias de `Hamster` pueden ahora usarse en cualquier sitio que
 se requiera un tipo `RepresentableComoTexto`:
 
-wzxhzdk:122
+wzxhzdk:120
 
 ### Implementación de métodos de un protocolo
 
@@ -4719,13 +4691,13 @@ Por ejemplo, el protocolo `GeneradorNumerosAleatorios` puede ser extendido
 para proporcionar un método `boolAleatorio()`, que usa el resultado del
 `random()` requerido para devolver un valor `Bool` aleatorio:
 
-wzxhzdk:123
+wzxhzdk:121
 
 Al crear una extensión en el protocolo, todos los tipos que se ajustan
 a él adquieren automáticamente esta implementación sin ninguna
 modificación adicional.
 
-wzxhzdk:124
+wzxhzdk:122
 
 El tipo que se ajusta al protocolo puede proporcionar su propia
 implementación, que se usará en lugar de la proporcionada por la extensión.
@@ -4744,24 +4716,24 @@ que se aplique a cualquier colección cuyos elementos cumplen el
 protocolo `Equatable`. De esta forma nos aseguramos de que los
 operadores `==` y `!=` están definidos y podemos usarlos en la extensión:
 
-wzxhzdk:125
+wzxhzdk:123
 
 El método `allEqual()` devuelve `true` si y sólo si todos los
 elementos en la colección son iguales.
 
 Un ejemplo:
 
-wzxhzdk:126
+wzxhzdk:124
 
 Dado que ambos arrays cumplen el protocolo `Collection` y los enteros
 cumplen el protocolo `Equatable` podemos usar el método `allEqual()`: 
 
-wzxhzdk:127
+wzxhzdk:125
 
 En una colección de una clase que no cumple el protocolo
 `Equatable` no se puede utilizar el método de la extensión:
 
-wzxhzdk:128
+wzxhzdk:126
 
 ## Funciones operadoras
 
@@ -4776,7 +4748,7 @@ operandos). Definimos una estructura `Vector2D` para un vector de
 posición de dos dimensiones:
 
 
-wzxhzdk:129
+wzxhzdk:127
 
 La función operador se define como una función estática con un un
 nombre de función que empareja con el operador a sobrecargar
@@ -4797,7 +4769,7 @@ estructura `Vector2D`, para que pueda usarse como un operador infijo
 entre instancias existentes de `Vector2D`:
 
 
-wzxhzdk:130
+wzxhzdk:128
 
 ### Operadores prefijos y postfijos
 
@@ -4812,14 +4784,14 @@ Para implementar un operador unario prefijo o postfijo se debe
 escribir el modificador `prefix` o `postfix` antes de la palabra clave
 `func` en la declaración de la función operador:
 
-wzxhzdk:131
+wzxhzdk:129
 
 El ejemplo anterior implementa el operador unario negación (`-a`) para
 instancias de `Vector2D`.
 
 Por ejemplo:
 
-wzxhzdk:132
+wzxhzdk:130
 
 ### Operadores de equivalencia
 
@@ -4837,7 +4809,7 @@ Lo hacemos definiendo una extensión que cumple el protocolo
 `Equatable`. De esta forma, como ya hemos visto anteriormente,
 conseguimos la implementación por defecto del operador `!=`:
 
-wzxhzdk:133
+wzxhzdk:131
 
 En el ejemplo anterior se implementa un operador "igual a" (`==`) que
 comprueba si dos instancias de `Vector2D` tienen valores
@@ -4851,7 +4823,7 @@ simplemente devuelve el inversa del resultado del operador "igual a".
 Ahora podemos usar estos operadores para chequear si dos instancias de
 `Vector2D` son equivalentes:
 
-wzxhzdk:134
+wzxhzdk:132
 
 ## Genéricos
 
@@ -4864,7 +4836,7 @@ elementos.
 La versión no genérica del tipo de dato es la siguiente, en la que se
 implementa una pila de enteros.
 
-wzxhzdk:135
+wzxhzdk:133
 
 La estructura usa un array para guardar los ítems y los métodos `push`
 y `pop` añaden y retiran los elementos. 
@@ -4874,7 +4846,7 @@ almacenar enteros.
 
 Aquí está una versión genérica del mismo código:
 
-wzxhzdk:136
+wzxhzdk:134
 
 El parámetro del tipo `Element` define un tipo genérico que se utiliza
 como _placeholder_ del tipo real del que se declare la
@@ -4885,11 +4857,11 @@ son también objetos de tipo `Element`.
 
 Por ejemplo, podemos crear una pila de cadenas:
 
-wzxhzdk:137
+wzxhzdk:135
 
 Y podemos retirar la última cadena de la pila:
 
-wzxhzdk:138
+wzxhzdk:136
 
 ### Extensión de un tipo genérico
 
@@ -4901,7 +4873,7 @@ extensión.
 Por ejemplo, podemos extender el tipo genérico `Stack` para añadir una
 propiedad computable de sólo lectura que devuelva el tope de la pila:
 
-wzxhzdk:139
+wzxhzdk:137
 
 En la extensión se utiliza el nombre genérico `Element` sin tener que
 declararlo después de `Stack`, porque está definido en la estructura
@@ -4909,7 +4881,7 @@ original.
 
 Ahora ya se puede acceder al tope de la pila sin retirar el elemento:
 
-wzxhzdk:140
+wzxhzdk:138
 
 ## Bibliografía
 
