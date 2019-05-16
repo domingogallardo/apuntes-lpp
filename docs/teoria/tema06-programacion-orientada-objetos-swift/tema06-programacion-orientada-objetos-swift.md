@@ -72,7 +72,7 @@ let f = construyeFunc()
 usaFunc(f) // -> 1
 ```
 
-El valor devuelto por `usaFunc` el el resultado de la invocación a
+El valor devuelto por `usaFunc` en el resultado de la invocación a
 `f()` en su segunda línea de código. Y el valor de `x` usado por la
 clausura `f` es el capturado en el momento de su creación (el valor
 `x=0` definido en la primera línea de `construyeFunc`).
@@ -466,7 +466,8 @@ A diferencia de los tipos valor, los tipos de referencias no se copian
 cuando se asignan o se pasan a funciones. En su lugar se usa una
 referencia a la misma instancia existente.
 
-Veamos un ejemplo:
+En Swift las clases son tipos referencias. Veamos, por ejemplo, una
+instancia de la clase `Ventana`:
 
 ```swift
 var ventana1 = Ventana()
@@ -479,39 +480,34 @@ ventana2.anchura = 1000
 ventana1.anchura // devuelve 1000
 ```
 
-Declaramos una constante llamada `ventana1` inicializada con una
+Declaramos una variable llamada `ventana1` inicializada con una
 instancia nueva de la clase `Ventana`. Le asignamos a la propiedad
 `esquina` una copia de la resolución anterior `coords1`. Después
-declaramos la altura, anchura y etiqueta de la ventana.
+declaramos la altura, anchura y etiqueta de la ventana. Y, por último,
+`ventana1` se asigna a una nueva constante llamada `ventan2`, y la
+anchura se modifica.
 
-Después, `ventana1` se asigna a una nueva constante llamada
-`ventan2`, y la anchura se modifica. Debido a que son
-tipos de referencia, `ventana1` y `ventana2` se refieren
-a la misma instancia de `Ventana`. Son sólo dos nombres distintos
-para la misma única instancia.
+Debido a que son tipos de referencia, **`ventana1` y `ventana2` se
+refieren a la misma instancia de `Ventana`**. Son sólo dos nombres
+distintos para la misma única instancia. 
 
-Hay que hacer notar que `ventana1` y `ventana2` se
-declaran con `let` como constantes. Sin embargo, podemos modificar sus
-propiedades debido a que no se ha reasignado su instancia a la que se
-refieren". Esas variables no "almacenan" instancias de `Ventana`, sino que se
-"refieren" a una instancia de la clase. Es la propiedad `anchura`
-de la instancia subyacente la que se cambia, no los valores de las
-referencias constantes a la instancia de `Ventana`.
+Lo podemos comprobar modificando una propiedad mediante una variable y
+viendo que esa misma propiedad en la otra variable se ha modificado
+también (líneas 7 y 8).
 
-A diferencia de las clases, una instancia de un `struct` definida con
-un `let` define como constantes todas sus propiedades. Por ejemplo, el
-siguiente código generaría un error:
-
-```swift
-var coords3 = CoordsPantalla(posX: 400, posY: 400)
-coords3.posX = 800
-// error: cannot assign to property: 'coords3' is a 'let' constant
-```
+Si tienes experiencia con C, C++, o Objective-C, puedes saber que
+estos lenguajes usan punteros para referirse a una dirección de
+memoria. Una constante o variable en Swift que se refiere a una
+instancia de un tipo referencia es similar a un puntero en C, pero no
+es un puntero que apunta a una dirección de memoria y no requiere que
+se escriba un asterisco (*) para indicar que estas creando una
+referencia. En su lugar, estas referencias se definen como cualquier
+otra constante o variable en Swift.
 
 ### Declaración de instancias con `let`
 
-Las estructuras y clases tienen comportamientos distintos cuando se
-declaran las variables con `let`.
+Las estructuras y clases también tienen comportamientos distintos
+cuando se declaran las variables con `let`.
 
 Si definimos con `let` una instancia de una estructura estamos
 declarando constante la variable y todas las propiedades de la
@@ -561,14 +557,6 @@ Estos operadores "idéntico a" no son los mismos que los de "igual a"
   "equivalentes" en su valor. Es responsabilidad del diseñador de la
   clase definir la implementación de estos operadores.
 
-Si tienes experiencia con C, C++, o Objective-C, puedes saber que
-estos lenguajes usan punteros para referirse a una dirección de
-memoria. Una constante o variable en Swift que se refiere a una
-instancia de un tipo referencia es similar a un puntero en C, pero no
-es un puntero que apunta a una dirección de memoria y no requiere que
-se escriba un asterisco (*) para indicar que estas creando una
-referencia. En su lugar, estas referencias se definen como cualquier
-otra constante o variable en Swift.
 
 ### Criterios para usar estructuras y clases
 
@@ -664,16 +652,6 @@ llamada `longitud`. En el ejemplo, `longitud` se inicializa cuando se
 crea el nuevo rango y no puede ser cambiada en el futuro, por ser una
 propiedad constante.
 
-Si creamos una instancia de una estructura y la asignamos a una
-constante, no podremos modificar las propiedades de la instancia,
-incluso si han sido declaradas como propiedades variables:
-
-```swift
-var rangoDeCuatroItems = RangoLongitudFija(primerValor: 0, longitud: 4)
-// este rango representa valores enteros 0, 1, 2 y 3
-rangoDeCuatroItems.primerValor = 6
-// esto producirá un error, incluso aun siendo primerValor una propiedad variable
-```
 
 ### Propiedades calculadas
 
@@ -730,12 +708,12 @@ variable calculada llamada `centro`, para permitirnos trabajar con el
 centro del rectángulo como si fuera una propiedad almacenada.
 
 En el ejemplo se crea una variable `Rectangulo` llamada `cuadrado`. La
-variable `cuadrado` se inicializa un un punto origen de `(0, 0)` y un
+variable `cuadrado` se inicializa un punto origen de `(0, 0)` y un
 ancho y tamaño de `10`. Este cuadrado está representado por el
 cuadrado azul en el diagrama de abajo.
 
 Accedemos entonces a la propiedad `centro` de la variable `cuadrado`
-usando la sintaxis del punto (`square.centro`), lo que causa que se
+usando la sintaxis del punto (`cuadrado.centro`), lo que causa que se
 llame al _getter_ de `centro` para devolver el valor actual de la
 propiedad. En lugar de devolver los valores existentes, el _getter_
 calcula realmente y devuelve un nuevo `Punto` para representar el
@@ -842,11 +820,11 @@ su propio observador `didSet`, el nuevo valor que asignamos reemplaza
 el que acaba de añadirse a la propiedad.
 
 A continuación podemos ver un ejemplo de `willSet` y `didSet` en
-acción. En el definimos una clase nueva llamada `CuentaPasos`, que
+acción. En él definimos una clase nueva llamada `CuentaPasos`, que
 hace un seguimiento del número total de pasos que una persona hace al
 caminar. Esta clase puede usarse con datos de entrada de un
 _podómetro_ o cualquier otro sistema de seguir el ejercicio de la
-persona durante sus rutina diaria.
+persona durante su rutina diaria.
 
 ```swift
 class ContadorPasos {
@@ -1179,11 +1157,10 @@ func incrementa() {
 
 En la práctica no es necesario usar `self` casi nunca. Swift asume que
 cualquier referencia a una propiedad dentro de un método se refiere a
-la propiedad de la instancia. El único caso en que es obligado usarlo
-es cuando el nombre de la propiedad coincide con el nombre de un
-parámetro. En esta situación el nombre del parámetro toma precedencia
-y es necesario usar `self` para poder referirse a la propiedad de la
-instancia.
+la propiedad de la instancia. Es obligado usarlo es cuando el nombre
+de la propiedad coincide con el nombre de un parámetro. En esta
+situación el nombre del parámetro toma precedencia y es necesario usar
+`self` para poder referirse a la propiedad de la instancia.
 
 Un ejemplo:
 
@@ -1260,7 +1237,7 @@ realmente el punto en el que es llamado. La palabra clave `mutating`
 se añade a su definición para permitirle modificar sus propiedades.
 
 Hay que hacer notar que no es posible llamar a un método mutador sobre
-una constante de un tiempo estructura, porque sus propiedades no se
+una constante de un tipo estructura, porque sus propiedades no se
 pueden cambiar, incluso aunque sean propiedades variables:
 
 ```swift
