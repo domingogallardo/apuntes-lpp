@@ -36,7 +36,7 @@
     
     
       
-        <title>Practica11 - LPP</title>
+        <title>Práctica 11 - LPP</title>
       
     
     
@@ -108,7 +108,7 @@
               LPP
             </span>
             <span class="md-header-nav__topic">
-              Practica11
+              Práctica 11
             </span>
           
         </div>
@@ -330,10 +330,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Prácticas
@@ -465,6 +467,97 @@
   </li>
 
         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Práctica 11
+      </label>
+    
+    <a href="practica11.html" title="Práctica 11" class="md-nav__link md-nav__link--active">
+      Práctica 11
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" title="Entrega de la práctica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" title="Ejercicios" class="md-nav__link">
+    Ejercicios
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" title="Ejercicio 1" class="md-nav__link">
+    Ejercicio 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" title="Ejercicio 2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" title="Ejercicio 3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" title="Ejercicio 4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -526,6 +619,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" title="Ejercicio 4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -548,141 +648,30 @@
               
                 
                 
-                <!--
-
-De la práctica pasada..
-
-b) El siguiente código utiliza la inicialización de una clase. 
-
-¿Qué errores tiene? ¿Qué se imprimiría en su ejecución una vez
-arreglado? Intenta descubrirlo sin utilizar el compilador. Prueba
-distintas formas de arreglar el código cambiando lo mínimo posible de
-lo ya definido (por ejemplo, no debes cambiar la función
-`prueba`). Compruébalo con el compilador.
-
-wzxhzdk:0
-
-
-c) Escribe un ejemplo de código en el que definas una relación de
-herencia entre una clase base y una clase derivada. Comprueba en el
-código que un objeto de la clase derivada hereda las propiedades y
-métodos de la clase base.
-
-Investiga sobre lo el funcionamiento de la herencia en Swift. Escribe
-ejemplos en donde compruebes este funcionamiento. Algunos ejemplos de
-preguntas que puedes investigar (puedes añadir tú más preguntas):
-
-- ¿Se puede sobreescribir el valor de una propiedad almacenada? ¿Y
-calculada? 
-- ¿Se puede añadir un observador a una propiedad de la clase base en
-  una clase derivada?
-- ¿Hereda la clase derivada propiedades y métodos estáticos de la clase base?
-- ¿Cómo se puede llamar a la implementación de un método de la clase
-  base en una sobreescritura de ese mismo método en la clase derivada?
-
-
-### Ejercicio 4
-
-En este ejercicio deberás implementar un conjunto de clases con las
-que podamos "simular" una carrera de coches.
-
-#### Función `random`
-
-Utilizaremos la función del sistema `random()` que devuelve un número
-aleatorio. Hay que importar la librería `Glibc` (en Linux) y
-`Foundation` (en iOS) para usarla.
-
-A continuación puedes ver un ejemplo de su utilización en un método de
-tipo del enumerado `MarcaCoche` para devolver una marca aleatoria de
-coche:
-
-
-wzxhzdk:1
-
-#### Enumerados y clases que gestionan los vehículos
-
-Deberás implementar los siguientes enumerados y clases, con las propiedades indicadas.
-
-**Enumerado `MarcaCoche`** 
-
-- Posibles valores: `Mercedes`, `Ferrari`, `RedBull` y `McLaren`
-- Método del tipo `random()` que devuelva aleatoriamente uno de los
-  valores (consultar el código anterior).
-
-**Enumerado `TipoCambio`**
-
-- Posibles valores: `Automatico` o `Manual`
-- Método del tipo `random()` que devuelve uno de esos valores.
-
-**Clase base `Coche`**
-
-- Propiedades de instancia almacenadas: `velocidadActual` (`Double`),
-  `marcha` (`Int`), `distanciaRecorrida` (`Double`) y `marca`
-  (`MarcaCoche`).
-- Propiedad de instancia calculada: `descripcion` (`String`), que
-  devuelve la marca del coche.
-- Propiedades del tipo: Constantes `velocidadMaxima` (`Double`) y
-  `marchaMaxima` (`Int`) inicializadas a 150.0 y 6
-
-**Subclase `CocheAutomatico`**
-
-- Hereda de `Coche` y sobreescribe la descripción, añadiendo la cadena
-  "Automático".
-
-**Subclase `CocheManual`**
-
-- Hereda de `Coche` y sobreescribe la descripción, añadiendo la cadena
-  "Manual".
-
-**Observadores de propiedades en las subclases**
-
-La velocidad de un coche manual se modifica cambiando su propiedad
-`marcha` y la de un coche automático cambiando su propiedad
-`velocidadActual`. En cada caso hay que definir observadores de
-propiedades que modifiquen la otra propiedad.
-
-La velocidad se calcula a partir de la marcha según la siguiente expresión:
-
-wzxhzdk:2
-
-Y la marcha se calcula a partir de la velocidad con la expresión que
-puedes encontrar en los apuntes de teoría, en la definición de la
-clase `CocheAutomatico`.
-
-
-**Distancia recorrida e información en pantalla**
-
-Suponemos que se cambia la velocidad del coche cada hora y que en cada
-cambio de velocidad se actualiza la propiedad `distanciaRecorrida`,
-que irá acumulando la distancia recorrida por el coche desde su
-inicialización. Cada vez que se cambia la velocidad también se
-imprimirá la velocidad actual y la marca del coche en pantalla (ver el
-ejemplo al final del ejercicio). Esto se puede implementar también en
-los observadores.
-
-#### Clase Carrera
-
-Debes implementar las clases anteriores y una clase `Carrera` con la
-que simular una carrera de `n` coches que conducen durante `k` horas.
-
-Un ejemplo de uso de la clase `Carrera`:
-
-wzxhzdk:3
-
-Y su correspondiente salida por pantalla:
-
-wzxhzdk:4
-
--->
-
-<h1 id="practica-11-programacion-orientada-a-objetos-en-swift-2">Práctica 11: Programación Orientada a Objetos en Swift (2)<a class="headerlink" href="#practica-11-programacion-orientada-a-objetos-en-swift-2" title="Permanent link">&para;</a></h1>
+                <h1 id="practica-11-programacion-orientada-a-objetos-en-swift-2">Práctica 11: Programación Orientada a Objetos en Swift (2)<a class="headerlink" href="#practica-11-programacion-orientada-a-objetos-en-swift-2" title="Permanent link">&para;</a></h1>
 <h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
 <p>Para entregar la práctica debes subir a Moodle el fichero
 <code>practica11.swift</code> con una cabecera inicial con tu nombre y apellidos,
 y las soluciones de cada ejercicio separadas por comentarios.</p>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
-<p>a) El siguiente código tiene errores. Intenta descubrir cuáles son sin
+<p>a) Escribe un ejemplo de código en el que definas una relación de
+herencia entre una clase base y una clase derivada. Comprueba en el
+código que un objeto de la clase derivada hereda las propiedades y
+métodos de la clase base.</p>
+<p>Investiga sobre el funcionamiento de la herencia en Swift. Escribe
+ejemplos en donde compruebes este funcionamiento. Algunos ejemplos de
+preguntas que puedes investigar (puedes añadir tú más preguntas):</p>
+<ul>
+<li>¿Se puede sobreescribir el valor de una propiedad almacenada? ¿Y
+calculada? </li>
+<li>¿Se puede añadir un observador a una propiedad de la clase base en
+  una clase derivada?</li>
+<li>¿Hereda la clase derivada propiedades y métodos estáticos de la clase base?</li>
+<li>¿Cómo se puede llamar a la implementación de un método de la clase
+  base en una sobreescritura de ese mismo método en la clase derivada?</li>
+</ul>
+<p>b) El siguiente código tiene errores. Intenta descubrir cuáles son sin
 utilizar el compilador. Prueba distintas formas de arreglar el código
 cambiando lo mínimo posible de lo ya definido (por ejemplo, no debes
 añadir nuevas propiedades en <code>MiStruct</code>). Compruébalo con el compilador.</p>
@@ -720,7 +709,7 @@ añadir nuevas propiedades en <code>MiStruct</code>). Compruébalo con el compil
 </pre></div>
 </td></tr></table>
 
-<p>b) Repasa el protocolo <code>GeneradorNumerosAleatorios</code> visto en
+<p>c) Repasa el protocolo <code>GeneradorNumerosAleatorios</code> visto en
 teoría. Define otra implementación del protocol llamada
 <code>GeneradorFake</code> en la que siempre se devuelva el número <code>0.1</code>. Cambia
 el ejemplo del dado para que utilice este generador y comprueba que
@@ -748,6 +737,173 @@ nombre en orden alfabético.</p>
 correctamente creando varios equipos, insertándolos en un array y
 llamando al método <code>sorted</code>.</p>
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
+<p>En este ejercicio deberás implementar un conjunto de clases con las
+que podamos "simular" una carrera de coches.</p>
+<h4>Función <code>random</code></h4>
+<p>Utilizaremos la función del sistema <code>random()</code> que devuelve un número
+aleatorio. Hay que importar la librería <code>Glibc</code> (en Linux) y
+<code>Foundation</code> (en iOS) para usarla.</p>
+<p>A continuación puedes ver un ejemplo de su utilización en un método de
+tipo del enumerado <code>MarcaCoche</code> para devolver una marca aleatoria de
+coche:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">import</span> <span class="nc">Glibc</span>
+
+<span class="kd">func</span> <span class="nf">rand</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">random</span><span class="p">()</span> <span class="o">%</span> <span class="n">n</span>
+<span class="p">}</span>
+
+<span class="kd">enum</span> <span class="nc">MarcaCoche</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">Mercedes</span><span class="p">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Ferrari</span><span class="p">,</span> <span class="n">RedBull</span><span class="p">,</span> <span class="n">McLaren</span>
+
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">random</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="n">MarcaCoche</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">maxValue</span> <span class="p">=</span> <span class="n">McLaren</span><span class="p">.</span><span class="n">rawValue</span>
+
+        <span class="kd">let</span> <span class="nv">r</span> <span class="p">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">maxValue</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">MarcaCoche</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="n">r</span><span class="p">)</span><span class="o">!</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<h4>Enumerados y clases que gestionan los vehículos</h4>
+<p>Deberás implementar los siguientes enumerados y clases, con las propiedades indicadas.</p>
+<p><strong>Enumerado <code>MarcaCoche</code></strong> </p>
+<ul>
+<li>Posibles valores: <code>Mercedes</code>, <code>Ferrari</code>, <code>RedBull</code> y <code>McLaren</code></li>
+<li>Método del tipo <code>random()</code> que devuelva aleatoriamente uno de los
+  valores (consultar el código anterior).</li>
+</ul>
+<p><strong>Enumerado <code>TipoCambio</code></strong></p>
+<ul>
+<li>Posibles valores: <code>Automatico</code> o <code>Manual</code></li>
+<li>Método del tipo <code>random()</code> que devuelve uno de esos valores.</li>
+</ul>
+<p><strong>Clase base <code>Coche</code></strong></p>
+<ul>
+<li>Propiedades de instancia almacenadas: <code>velocidadActual</code> (<code>Double</code>),
+  <code>marcha</code> (<code>Int</code>), <code>distanciaRecorrida</code> (<code>Double</code>) y <code>marca</code>
+  (<code>MarcaCoche</code>).</li>
+<li>Propiedad de instancia calculada: <code>descripcion</code> (<code>String</code>), que
+  devuelve la marca del coche.</li>
+<li>Propiedades del tipo: Constantes <code>velocidadMaxima</code> (<code>Double</code>) y
+  <code>marchaMaxima</code> (<code>Int</code>) inicializadas a 150.0 y 6</li>
+</ul>
+<p><strong>Subclase <code>CocheAutomatico</code></strong></p>
+<ul>
+<li>Hereda de <code>Coche</code> y sobreescribe la descripción, añadiendo la cadena
+  "Automático".</li>
+</ul>
+<p><strong>Subclase <code>CocheManual</code></strong></p>
+<ul>
+<li>Hereda de <code>Coche</code> y sobreescribe la descripción, añadiendo la cadena
+  "Manual".</li>
+</ul>
+<p><strong>Observadores de propiedades en las subclases</strong></p>
+<p>La velocidad de un coche manual se modifica cambiando su propiedad
+<code>marcha</code> y la de un coche automático cambiando su propiedad
+<code>velocidadActual</code>. En cada caso hay que definir observadores de
+propiedades que modifiquen la otra propiedad.</p>
+<p>La velocidad se calcula a partir de la marcha según la siguiente expresión:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">velocidadActual</span> <span class="p">=</span> <span class="mf">25.0</span> <span class="o">*</span> <span class="n">marcha</span>
+</pre></div>
+</td></tr></table>
+
+<p>Y la marcha se calcula a partir de la velocidad con la expresión que
+puedes encontrar en los apuntes de teoría, en la definición de la
+clase <code>CocheAutomatico</code>.</p>
+<p><strong>Distancia recorrida e información en pantalla</strong></p>
+<p>Suponemos que se cambia la velocidad del coche cada hora y que en cada
+cambio de velocidad se actualiza la propiedad <code>distanciaRecorrida</code>,
+que irá acumulando la distancia recorrida por el coche desde su
+inicialización. Cada vez que se cambia la velocidad también se
+imprimirá la velocidad actual y la marca del coche en pantalla (ver el
+ejemplo al final del ejercicio). Esto se puede implementar también en
+los observadores.</p>
+<h4>Clase Carrera</h4>
+<p>Debes implementar las clases anteriores y una clase <code>Carrera</code> con la
+que simular una carrera de <code>n</code> coches que conducen durante <code>k</code> horas.</p>
+<p>Un ejemplo de uso de la clase <code>Carrera</code>:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">carrera</span> <span class="p">=</span> <span class="n">Carrera</span><span class="p">(</span><span class="n">numCoches</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">horas</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Descripción de la carrera:&quot;</span><span class="p">)</span>
+<span class="n">carrera</span><span class="p">.</span><span class="n">descripcion</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">!!! Comienza la carrera !!!&quot;</span><span class="p">)</span>
+<span class="n">carrera</span><span class="p">.</span><span class="n">empezar</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">!!! Clasificación !!!&quot;</span><span class="p">)</span>
+<span class="n">carrera</span><span class="p">.</span><span class="n">clasificacion</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<p>Y su correspondiente salida por pantalla:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Descripción de la carrera:
+2 coches con una duración de 3 horas
+ McLaren Automatico
+ Mercedes Manual
+
+!!! Comienza la carrera !!!
+
+Horas transcurridas 1
+McLaren Automatico viajando a 141.0 kilómetros por hora con la marcha 6
+Mercedes Manual viajando a 25.0 kilómetros por hora con la marcha 1
+
+Horas transcurridas 2
+McLaren Automatico viajando a 114.0 kilómetros por hora con la marcha 5
+Mercedes Manual viajando a 25.0 kilómetros por hora con la marcha 1
+
+Horas transcurridas 3
+McLaren Automatico viajando a 105.0 kilómetros por hora con la marcha 5
+Mercedes Manual viajando a 100.0 kilómetros por hora con la marcha 4
+
+!!! Clasificación !!!
+1. McLaren Automatico (360.0 kilómetros recorridos)
+2. Mercedes Manual (150.0 kilómetros recorridos)
+</pre></div>
+</td></tr></table>
+
+<h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
 <p>a) Completa el bucle con el código que comprueba el tipo de la variable
 <code>i</code> e imprime su propiedad <code>x</code> y su propiedad <code>b</code> o <code>c</code>, dependiendo
 de su tipo.</p>
@@ -876,7 +1032,7 @@ tipo de los elementos del árbol deben cumplir el protocolo
 <code>Comparable</code>, para poder realizar la comparación y obtener el mínimo.</p>
 <p>Haz una prueba con un árbol de equipos, objetos de la estructura <code>Equipo</code>
 definida en el apartado anterior.</p>
-<h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
+<h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
 <p>Continuamos con el ejercicio de las figuras geométricas de la
 práctica anterior.</p>
 <p>Comienza incluyendo en la práctica el código de todas las definiciones
@@ -933,9 +1089,6 @@ características específicas.</p>
 </pre></div>
 </td></tr></table>
 
-<h4>Cumplimiento de <code>Equatable</code></h4>
-<p>Implementa las extensiones necesarias para que las clases geométricas
-definidas en el ejercicio cumplan el protocolo <code>Equatable</code>.</p>
 <hr />
 <p>Lenguajes y Paradigmas de Programación, curso 2018-19<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
@@ -956,6 +1109,27 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../practica10/practica10.html" title="Práctica 10" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Práctica 10
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
