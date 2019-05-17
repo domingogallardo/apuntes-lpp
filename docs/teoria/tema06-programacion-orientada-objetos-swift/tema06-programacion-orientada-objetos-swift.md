@@ -3122,18 +3122,17 @@ let tambienPositivo = -negativo
 
 Como ya hemos visto, las clases no tienen una implementación por
 defecto de los operadores "igual a" (`==`) y "no igual a" (`!=`), pero
-las estructuras sí (a partir de Swift 5). Debemos proporcionar una
-implementación de la misma forma que para otros operadores infijos.
+las estructuras sí (a partir de Swift 5). Para comparar dos instancias
+de una clase debemos proporcionar una implementación del operador `==`.
 
-A partir de Swift 5 si declaramos que la estructura cumple el
-protocolo `Equatable` el compilador de Swift implementa una
+A partir de Swift 5 si declaramos que una estructura cumple el
+protocolo `Equatable` el compilador de Swift implementará una
 comparación por defecto, siempre que todas las propiedades de la
 estructura sean a su vez `Equatable`.
 
 En Swift 4 para implementar la igualdad en la estructura `Vector2D`
 tenemos que definir una extensión que cumple el protocolo
-`Equatable`. De esta forma, como ya hemos visto anteriormente,
-conseguimos la implementación por defecto del operador `!=`:
+`Equatable`:
 
 ```swift
 // Swift 4
@@ -3150,8 +3149,8 @@ equivalentes. En el contexto del `Vector2D` tiene sentido considerar
 "igual" como "ambas instancias tienen los mismos valores x e y", por
 lo que esta es la lógica usada por la implementación. 
 
-La implementación por defecto del operador "no igual a" (`!=`),
-simplemente devuelve el inversa del resultado del operador "igual a".
+La implementación del operador "no igual a" (`!=`) se realiza por
+defecto como una negación del anterior.
 
 En Swift 5 basta con declarar con la extensión que el `Vector2D`
 cumple el protocolo:
@@ -3161,8 +3160,7 @@ cumple el protocolo:
 extension Vector2D: Equatable {}
 ```
 
-Ahora podemos usar estos operadores para chequear si dos instancias de
-`Vector2D` son equivalentes:
+Una vez definido el operador `==` podemos comparar dos instancias de `Vector2D`:
 
 ```swift
 let dosTres = Vector2D(x: 2.0, y: 3.0)

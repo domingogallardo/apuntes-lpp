@@ -1,46 +1,22 @@
-<!--
 
-De la práctica pasada..
+# Práctica 11: Programación Orientada a Objetos en Swift (2)
 
-b) El siguiente código utiliza la inicialización de una clase. 
+## Entrega de la práctica
 
-¿Qué errores tiene? ¿Qué se imprimiría en su ejecución una vez
-arreglado? Intenta descubrirlo sin utilizar el compilador. Prueba
-distintas formas de arreglar el código cambiando lo mínimo posible de
-lo ya definido (por ejemplo, no debes cambiar la función
-`prueba`). Compruébalo con el compilador.
+Para entregar la práctica debes subir a Moodle el fichero
+`practica11.swift` con una cabecera inicial con tu nombre y apellidos,
+y las soluciones de cada ejercicio separadas por comentarios.
 
-```swift
+## Ejercicios
 
-func prueba(x: Int) -> Int? {
-    if x < 100 {
-        return nil
-    } else {
-        return x
-    }
-}
+### Ejercicio 1 ###
 
-class A {
-    var a = prueba(x: 100)
-    var b, c: Int
-    init() {}
-    init(b: Int) {
-        self.b = c
-    }
-}
-
-let a = A(b: 0)
-let b: Int = a.a
-print("El valor de a.a es: \(b)")
-```
-
-
-c) Escribe un ejemplo de código en el que definas una relación de
+a) Escribe un ejemplo de código en el que definas una relación de
 herencia entre una clase base y una clase derivada. Comprueba en el
 código que un objeto de la clase derivada hereda las propiedades y
 métodos de la clase base.
 
-Investiga sobre lo el funcionamiento de la herencia en Swift. Escribe
+Investiga sobre el funcionamiento de la herencia en Swift. Escribe
 ejemplos en donde compruebes este funcionamiento. Algunos ejemplos de
 preguntas que puedes investigar (puedes añadir tú más preguntas):
 
@@ -53,7 +29,60 @@ calculada?
   base en una sobreescritura de ese mismo método en la clase derivada?
 
 
-### Ejercicio 4
+b) El siguiente código tiene errores. Intenta descubrir cuáles son sin
+utilizar el compilador. Prueba distintas formas de arreglar el código
+cambiando lo mínimo posible de lo ya definido (por ejemplo, no debes
+añadir nuevas propiedades en `MiStruct`). Compruébalo con el compilador.
+
+```swift
+protocol A {
+    var a: String {get set}
+    func foo(a: Int, b: Int) -> Int?
+}
+
+protocol B {
+    mutating func bar()
+}
+
+struct MiStruct: A, B {
+    let a = 10
+    func foo(valor1 a: Int, valor2 b: Int) -> Int {
+        let res = a > 10 ? a: b
+        return res
+    }
+}
+```
+
+c) Repasa el protocolo `GeneradorNumerosAleatorios` visto en
+teoría. Define otra implementación del protocol llamada
+`GeneradorFake` en la que siempre se devuelva el número `0.1`. Cambia
+el ejemplo del dado para que utilice este generador y comprueba que
+siempre devuelve el número 1.
+
+c) Supongamos la estructura `Equipo` que aparece a continuación que
+representa un equipo en una competición deportiva: 
+
+```swift
+struct Equipo {
+    let puntos: Int
+    let nombre: String
+}
+```
+
+Debes hacer que la estructura se ajuste al protocolo `Comparable` para
+poder comparar dos equipos . Consulta el protocolo en [documentación
+de
+Swift](https://developer.apple.com/documentation/swift/comparable). Un
+equipo será menor que otro cuando tenga menos puntos. En el caso en
+que ambos tengan los mismos puntos, será menor el que tenga menor
+nombre en orden alfabético.
+
+Una vez definidos los operadores necesarios comprueba que funcionan
+correctamente creando varios equipos, insertándolos en un array y
+llamando al método `sorted`.
+
+
+### Ejercicio 2
 
 En este ejercicio deberás implementar un conjunto de clases con las
 que podamos "simular" una carrera de coches.
@@ -196,74 +225,9 @@ Mercedes Manual viajando a 100.0 kilómetros por hora con la marcha 4
 2. Mercedes Manual (150.0 kilómetros recorridos)
 ```
 
--->
-
-# Práctica 11: Programación Orientada a Objetos en Swift (2)
-
-## Entrega de la práctica
-
-Para entregar la práctica debes subir a Moodle el fichero
-`practica11.swift` con una cabecera inicial con tu nombre y apellidos,
-y las soluciones de cada ejercicio separadas por comentarios.
-
-## Ejercicios
-
-### Ejercicio 1 ###
-
-a) El siguiente código tiene errores. Intenta descubrir cuáles son sin
-utilizar el compilador. Prueba distintas formas de arreglar el código
-cambiando lo mínimo posible de lo ya definido (por ejemplo, no debes
-añadir nuevas propiedades en `MiStruct`). Compruébalo con el compilador.
-
-```swift
-protocol A {
-    var a: String {get set}
-    func foo(a: Int, b: Int) -> Int?
-}
-
-protocol B {
-    mutating func bar()
-}
-
-struct MiStruct: A, B {
-    let a = 10
-    func foo(valor1 a: Int, valor2 b: Int) -> Int {
-        let res = a > 10 ? a: b
-        return res
-    }
-}
-```
-
-b) Repasa el protocolo `GeneradorNumerosAleatorios` visto en
-teoría. Define otra implementación del protocol llamada
-`GeneradorFake` en la que siempre se devuelva el número `0.1`. Cambia
-el ejemplo del dado para que utilice este generador y comprueba que
-siempre devuelve el número 1.
-
-c) Supongamos la estructura `Equipo` que aparece a continuación que
-representa un equipo en una competición deportiva: 
-
-```swift
-struct Equipo {
-    let puntos: Int
-    let nombre: String
-}
-```
-
-Debes hacer que la estructura se ajuste al protocolo `Comparable` para
-poder comparar dos equipos . Consulta el protocolo en [documentación
-de
-Swift](https://developer.apple.com/documentation/swift/comparable). Un
-equipo será menor que otro cuando tenga menos puntos. En el caso en
-que ambos tengan los mismos puntos, será menor el que tenga menor
-nombre en orden alfabético.
-
-Una vez definidos los operadores necesarios comprueba que funcionan
-correctamente creando varios equipos, insertándolos en un array y
-llamando al método `sorted`.
 
 
-### Ejercicio 2 ##
+### Ejercicio 3 ##
 
 
 a) Completa el bucle con el código que comprueba el tipo de la variable
@@ -351,7 +315,7 @@ Haz una prueba con un árbol de equipos, objetos de la estructura `Equipo`
 definida en el apartado anterior.
 
 
-### Ejercicio 3
+### Ejercicio 4
 
 Continuamos con el ejercicio de las figuras geométricas de la
 práctica anterior.
@@ -406,11 +370,6 @@ Por ejemplo:
 - Descripción de la figura: Una figura con centro Punto(x: 0.0, y: 2.0) y área 78.5398163397448
   Circulo con centro Punto(x: 0.0, y: 2.0) y radio 5.0
 ```
-
-#### Cumplimiento de `Equatable`
-
-Implementa las extensiones necesarias para que las clases geométricas
-definidas en el ejercicio cumplan el protocolo `Equatable`.
 
 
 
