@@ -5468,10 +5468,15 @@ disponibles en aquellos tipos que se ajusten al protocolo y cumplan el
 requisito.</p>
 <p>El requisito se definen usando una cláusula genérica <code>where</code> en la que
 se indica una condición sobre algún <em>tipo asociado</em> definido en el
-protocolo (no hemos visto el concepto de <em>tipo asociado</em> en un
-protocolo; es una especie de tipo genérico que se define en el
+protocolo.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>No hemos visto el concepto de <a href="https://docs.swift.org/swift-book/LanguageGuide/Generics.html#ID189"><em>tipo
+asociado</em></a>
+en un protocolo. Es una especie de tipo genérico que se define en el
 protocolo y que se convierte en un tipo concreto en la clase que se
-ajusta al protocolo).</p>
+ajusta al protocolo.</p>
+</div>
 <p>Por ejemplo, podemos definir una extensión al protocolo <code>Collection</code>
 que se aplique a cualquier colección cuyos elementos cumplen el
 protocolo <code>Equatable</code>. De esta forma nos aseguramos de que los
