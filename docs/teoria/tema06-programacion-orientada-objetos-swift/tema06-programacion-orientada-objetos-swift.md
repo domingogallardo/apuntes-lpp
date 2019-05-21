@@ -3225,10 +3225,14 @@ requisito.
 
 El requisito se definen usando una cláusula genérica `where` en la que
 se indica una condición sobre algún _tipo asociado_ definido en el
-protocolo (no hemos visto el concepto de _tipo asociado_ en un
-protocolo; es una especie de tipo genérico que se define en el
-protocolo y que se convierte en un tipo concreto en la clase que se
-ajusta al protocolo).
+protocolo.
+
+!!!Note "Nota"
+    No hemos visto el concepto de [_tipo
+    asociado_](https://docs.swift.org/swift-book/LanguageGuide/Generics.html#ID189)
+    en un protocolo. Es una especie de tipo genérico que se define en el
+    protocolo y que se convierte en un tipo concreto en la clase que se
+    ajusta al protocolo.
 
 Por ejemplo, podemos definir una extensión al protocolo `Collection`
 que se aplique a cualquier colección cuyos elementos cumplen el
