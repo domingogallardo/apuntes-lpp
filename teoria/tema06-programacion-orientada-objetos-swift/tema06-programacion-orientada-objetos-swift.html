@@ -600,6 +600,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#inicializadores-por-defecto-y-memberwise" title="Inicializadores por defecto y memberwise" class="md-nav__link">
+    Inicializadores por defecto y memberwise
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#inicializacion-de-propiedades-almacenadas" title="Inicialización de propiedades almacenadas" class="md-nav__link">
     Inicialización de propiedades almacenadas
   </a>
@@ -1437,6 +1444,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#inicializadores-por-defecto-y-memberwise" title="Inicializadores por defecto y memberwise" class="md-nav__link">
+    Inicializadores por defecto y memberwise
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#inicializacion-de-propiedades-almacenadas" title="Inicialización de propiedades almacenadas" class="md-nav__link">
     Inicialización de propiedades almacenadas
   </a>
@@ -2168,8 +2182,33 @@ es similar:</p>
 <p>La forma más sencilla de inicialización es la anterior. Se utiliza el
 nombre del tipo de la clase o estructura seguidos de paréntesis
 vacíos. Esto crea una nueva instancia de una clase o estructura, con
-sus propiedades inicializadas a sus valores por defectos. Más adelante
-comentaremos otras formas más elaboradas de inicialización.</p>
+sus propiedades inicializadas a los valores por defecto definidos en
+la declaración de las propiedades.</p>
+<p>Swift proporciona este <strong>inicializador por defecto</strong> para clases y
+estructuras, siempre que no se defina algún inicializador
+explícito. Más adelante comentaremos cómo definir estos
+inicializadores explícitos.</p>
+<p>En el caso de la instancia <code>unasCoordsPantalla</code> los valores a los que
+se han inicializado sus propiedades son:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">unasCoordsPantalla</span><span class="p">.</span><span class="n">posX</span> <span class="c1">// 0</span>
+<span class="n">unasCoordsPantalla</span><span class="p">.</span><span class="n">posY</span> <span class="c1">// 0</span>
+</pre></div>
+</td></tr></table>
+
+<p>Las propiedades de la instancia <code>unaVentana</code> son:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">unaVentana</span><span class="p">.</span><span class="n">esquina</span> <span class="c1">// CoordsPantalla con posX = 0 y posY = 0</span>
+<span class="n">unaVentana</span><span class="p">.</span><span class="n">altura</span> <span class="c1">// 0</span>
+<span class="n">unaVentana</span><span class="p">.</span><span class="n">anchura</span> <span class="c1">// 0</span>
+<span class="n">unaVentana</span><span class="p">.</span><span class="n">visible</span> <span class="c1">// true</span>
+<span class="n">unaVentana</span><span class="p">.</span><span class="n">etiqueta</span> <span class="c1">// nil</span>
+</pre></div>
+</td></tr></table>
+
 <p>Todas las propiedades de una instancia deben estar definidas después
 de haberse inicializado, a no ser que la propiedad se un opcional.</p>
 <h3 id="acceso-a-propiedades">Acceso a propiedades<a class="headerlink" href="#acceso-a-propiedades" title="Permanent link">&para;</a></h3>
@@ -2188,9 +2227,12 @@ punto</em>:</p>
 </td></tr></table>
 
 <h3 id="inicializacion-de-las-estructuras-por-sus-propiedades">Inicialización de las estructuras por sus propiedades<a class="headerlink" href="#inicializacion-de-las-estructuras-por-sus-propiedades" title="Permanent link">&para;</a></h3>
-<p>Podemos inicializar las estructuras el <strong>inicializador por defecto</strong>,
-en el que damos valor a todas sus propiedades. En las clases no se
-puede usar esta inicialización por defecto.</p>
+<p>Si en las estructuras no se se definen inicializadores explícitos
+(veremos más adelante cómo hacerlo) podemos utilizar un
+<strong>inicializador <em>memberwise</em></strong> (de todas las propiedades) en el que
+hay que proporcionar los valores de todas sus propiedades.</p>
+<p>En las clases no existen los inicializadores <em>memberwise</em>, sólo en las
+estructuras.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nv">coords</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">(</span><span class="n">posX</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="n">posY</span><span class="p">:</span> <span class="mi">400</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
@@ -3295,15 +3337,54 @@ y hay que especificar también cómo realizar la inicialización de la
 subclase utilizando la superclase. Por falta de tiempo no vamos a
 explicar todo el proceso completo. Recomendamos consultar la
 <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203">documentación original de Swift</a>.</p>
+<h3 id="inicializadores-por-defecto-y-memberwise">Inicializadores por defecto y <em>memberwise</em><a class="headerlink" href="#inicializadores-por-defecto-y-memberwise" title="Permanent link">&para;</a></h3>
+<p>Ya hemos visto que es posible inicializar clases y estructuras
+definiendo valores por defecto a todas sus propiedades (con la posible
+excepción de las que tienen un tipo opcional). En ese caso, podemos no
+definir ningún inicializador y usar el inicializador por defecto que
+proporciona Swift.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">struct</span> <span class="nc">Punto2D</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mf">0.0</span>
+    <span class="kd">var</span> <span class="nv">y</span> <span class="p">=</span> <span class="mf">0.0</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Segmento</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">p1</span> <span class="p">=</span> <span class="n">Punto2D</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nv">p2</span> <span class="p">=</span> <span class="n">Punto2D</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">s</span> <span class="p">=</span> <span class="n">Segmento</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<p>También es posible en las estructuras utilizar el inicializador
+<em>memberwise</em>, en el que especificamos todos los valores de las
+propiedades:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nv">p</span> <span class="p">=</span> <span class="n">Punto2D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Los inicializadores por defecto y <em>memberwise</em> desaparecen en el
+momento en que definimos algún inicializador con la palabra
+<code>init</code>. Veamos cómo definir inicializadores.</p>
 <h3 id="inicializacion-de-propiedades-almacenadas">Inicialización de propiedades almacenadas<a class="headerlink" href="#inicializacion-de-propiedades-almacenadas" title="Permanent link">&para;</a></h3>
-<p>Las clases y estructuras deben definir todas sus propiedades
-almacenadas a un valor inicial en el tiempo en la instancia se
-crea. Las propiedades almacenadas no pueden dejarse en un estado
-indeterminado. Podemos definir el valor inicial para una propiedad en
-un inicializador o asignándole un valor por defecto como parte de la
+<p>Como hemos dicho, las clases y estructuras deben definir todas sus
+propiedades almacenadas a un valor inicial en el tiempo en la
+instancia se crea, a no ser que éstas sean opcionales, en cuyo caso
+quedarían inicializadas a <code>nil</code>.</p>
+<p>Podemos definir el valor inicial para una propiedad en un
+inicializador o asignándole un valor por defecto como parte de la
 definición de la propiedad.</p>
-<p>Un <em>inicializador</em>, en su forma más simple, es como un método de la
-instancia sin parámetros, escrito con la palabra clave <code>init</code>:</p>
+<p>Un <em>inicializador</em>, en su forma más simple se escribe con la palabra
+clave <code>init</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">init</span><span class="p">()</span> <span class="p">{</span>
@@ -3336,8 +3417,8 @@ instancias a 32.0 (equivalente a 0.0 grados Celsius).</p>
 </pre></div>
 </td></tr></table>
 
-<p>La implementación anterior es equivalente a la siguiente (que es
-preferible, por ser más clara):</p>
+<p>La implementación anterior es equivalente a la que ya hemos visto con
+el inicializador por defecto:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">struct</span> <span class="nc">Fahrenheit</span> <span class="p">{</span>
@@ -3347,9 +3428,6 @@ preferible, por ser más clara):</p>
 </td></tr></table>
 
 <h3 id="customizacion-de-la-inicializacion">Customización de la inicialización<a class="headerlink" href="#customizacion-de-la-inicializacion" title="Permanent link">&para;</a></h3>
-<p>Es posible <em>customizar</em> el proceso de inicialización con parámetros de
-entrada y tipos opcionales, o asignando propiedades constantes durante
-la inicialización.</p>
 <p>Podemos proporcionar parámetros de inicialización como parte de la
 definición de un inicializador, para definir los tipos y los nombres
 de los valores que <em>customizan</em> el proceso de inicialización. Los
@@ -3456,8 +3534,9 @@ precisamente en Celsius:</p>
 </pre></div>
 </td></tr></table>
 
-<p>Por último, es posible dejar sin inicializar propiedades opcionales,
-ya que el valor que tomarían sería <code>nil</code>:</p>
+<p>Por último, es posible inicializar propiedades constantes definidas
+con <code>let</code>. Sólo toman valor en el momento de la inicialización y
+después no pueden modificarse.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -3486,15 +3565,10 @@ ya que el valor que tomarían sería <code>nil</code>:</p>
 </pre></div>
 </td></tr></table>
 
-<p>En el ejemplo anterior se comprueba también que es posible inicializar
-constantes. Por ejemplo, la propiedad <code>text</code> está definida con un
-<code>let</code> y se inicializa en el inicializador.</p>
+<p>La propiedad <code>respuesta</code> se inicializa a <code>nil</code> al ser un opcional y no
+inicializarla en el inicializador.</p>
 <p>Por último, es posible definir más de un inicializador, así como
 invocar a inicializadores más básicos desde otros. </p>
-<p>Si definimos un inicializador en una estructura el inicializador por
-defecto deja de funcionar, es necesario escribirlo también. El
-inicializador por defecto permite que las propiedades se
-inicialicen a los valores por defecto. </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -3541,6 +3615,11 @@ inicialicen a los valores por defecto. </p>
 </pre></div>
 </td></tr></table>
 
+<p>El inicializador <code>init(){}</code> permite inicializar el <code>Rectangulo</code> a los
+valores por defecto definidos en las propiedades. Proporciona la misma
+funcionalidad que el inicializador por defecto, que tal y como hemos
+comentado, no se crea en una estructura o clase en la que definimos
+sus propios inicializadores.</p>
 <h2 id="herencia">Herencia<a class="headerlink" href="#herencia" title="Permanent link">&para;</a></h2>
 <p>Una clase puede <em>heredar</em> métodos, propiedades y otras características
 de otra clase. Cuando una clase hereda de otra, la clase que hereda se
@@ -3819,9 +3898,9 @@ ejemplo de ejecución:</p>
 <p>Por último, es posible prevenir un método o propiedad de ser
 sobreescrito declarándolo como <em>final</em>. Para ello, hay que escribir el
 modificador <code>final</code> antes del nombre de la palabra clave que introduce
-el método o la propiedad (como <code>final var</code>, <code>final func</code> o <code>final
-class</code>). También es posible marcar la clase completa como final,
-escribiendo el modificador antes de <code>class</code> (<code>final class</code>).</p>
+el método o la propiedad (como <code>final var</code>, <code>final func</code>). </p>
+<p>También es posible marcar la clase completa como final, escribiendo el
+modificador antes de <code>class</code> (<code>final class</code>).</p>
 <h2 id="protocolos">Protocolos<a class="headerlink" href="#protocolos" title="Permanent link">&para;</a></h2>
 <p>Un <em>protocolo</em> (<em>protocol</em>) define un esquema de métodos, propiedades
 y otros requisitos que encajan en una tarea particular o un trozo de
@@ -3858,7 +3937,7 @@ comas:</p>
 </td></tr></table>
 
 <p>Si una clase tiene una superclase, se escribe el nombre de la
-superclase antes los protocolos, seguido por una coma:</p>
+superclase antes de los protocolos, seguido por una coma:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">UnaClase</span><span class="p">:</span> <span class="n">UnaSuperClase</span><span class="p">,</span> <span class="n">PrimerProtocolo</span><span class="p">,</span> <span class="n">OtroProto</span> <span class="p">{</span>
@@ -4492,7 +4571,7 @@ comprobar si ha habido un <em>downcast</em> con éxito.</p>
 <em>downcast</em> tendrá éxito. Esta versión del operador lanzará un error en
 tiempo de ejecución si intentamos hacer un <em>downcast</em> a un tipo
 incorrecto.</p>
-<p>El siguiente ejemplo itera sobre cada <code>MediaIyem</code> en <code>biblioteca</code>, e
+<p>El siguiente ejemplo itera sobre cada <code>MediaItem</code> en <code>biblioteca</code>, e
 imprime una descripción apropiada para cada ítem. Para hacerlo,
 necesita acceder a cada ítem como una <code>Pelicula</code> o <code>Cancion</code> y no sólo
 como una <code>MediaItem</code>. Esto es necesario para poder acceder a la
@@ -4615,7 +4694,7 @@ variable de la que sólo se sabe que es de tipo <code>Any</code>:</p>
     <span class="k">case</span> <span class="kd">let</span> <span class="nv">unDouble</span> <span class="k">as</span> <span class="nb">Double</span> <span class="k">where</span> <span class="n">unDouble</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="bp">print</span><span class="p">(</span><span class="s">&quot;a valor positivo de </span><span class="si">\(</span><span class="n">unDouble</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
     <span class="k">case</span> <span class="k">is</span> <span class="nb">Double</span><span class="p">:</span>
-        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;algún otro valor double que no quier imprimir&quot;</span><span class="p">)</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;algún otro valor double que no quiero imprimir&quot;</span><span class="p">)</span>
     <span class="k">case</span> <span class="kd">let</span> <span class="nv">someString</span> <span class="k">as</span> <span class="nb">String</span><span class="p">:</span>
         <span class="bp">print</span><span class="p">(</span><span class="s">&quot;una cadena con valor de </span><span class="se">\&quot;</span><span class="si">\(</span><span class="n">someString</span><span class="si">)</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">)</span>
     <span class="k">case</span> <span class="kd">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">as</span> <span class="p">(</span><span class="nb">Double</span><span class="p">,</span> <span class="nb">Double</span><span class="p">):</span>
