@@ -1444,6 +1444,7 @@ Los inicializadores por defecto y _memberwise_ desaparecen en el
 momento en que definimos algún inicializador con la palabra
 `init`. Veamos cómo definir inicializadores.
 
+
 ### Inicialización de propiedades almacenadas
 
 Como hemos dicho, las clases y estructuras deben definir todas sus
@@ -1490,11 +1491,11 @@ struct Fahrenheit {
 }
 ```
 
-### Customización de la inicialización
+### Inicializadores personalizados
 
 Podemos proporcionar parámetros de inicialización como parte de la
 definición de un inicializador, para definir los tipos y los nombres
-de los valores que _customizan_ el proceso de inicialización. Los
+de los valores que personalizan el proceso de inicialización. Los
 parámetros de inicialización tienen las mismas capacidades y sintaxis
 que los parámetros de funciones y métodos.
 
