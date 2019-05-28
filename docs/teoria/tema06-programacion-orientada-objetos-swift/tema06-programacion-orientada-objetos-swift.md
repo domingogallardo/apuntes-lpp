@@ -393,11 +393,35 @@ var unaVentana = Ventana()
 La forma más sencilla de inicialización es la anterior. Se utiliza el
 nombre del tipo de la clase o estructura seguidos de paréntesis
 vacíos. Esto crea una nueva instancia de una clase o estructura, con
-sus propiedades inicializadas a sus valores por defectos. Más adelante
-comentaremos otras formas más elaboradas de inicialización.
+sus propiedades inicializadas a los valores por defecto definidos en
+la declaración de las propiedades.
+
+Swift proporciona este **inicializador por defecto** para clases y
+estructuras, siempre que no se defina algún inicializador
+explícito. Más adelante comentaremos cómo definir estos
+inicializadores explícitos.
+
+En el caso de la instancia `unasCoordsPantalla` los valores a los que
+se han inicializado sus propiedades son:
+
+```swift
+unasCoordsPantalla.posX // 0
+unasCoordsPantalla.posY // 0
+```
+
+Las propiedades de la instancia `unaVentana` son:
+
+```swift
+unaVentana.esquina // CoordsPantalla con posX = 0 y posY = 0
+unaVentana.altura // 0
+unaVentana.anchura // 0
+unaVentana.visible // true
+unaVentana.etiqueta // nil
+```
 
 Todas las propiedades de una instancia deben estar definidas después
 de haberse inicializado, a no ser que la propiedad se un opcional.
+
 
 ### Acceso a propiedades
 
@@ -414,9 +438,13 @@ ventana.esquina.posY = 100
 
 ### Inicialización de las estructuras por sus propiedades
 
-Podemos inicializar las estructuras el **inicializador por defecto**,
-en el que damos valor a todas sus propiedades. En las clases no se
-puede usar esta inicialización por defecto.
+Si en las estructuras no se se definen inicializadores explícitos
+(veremos más adelante cómo hacerlo) podemos utilizar un
+**inicializador _memberwise_** (de todas las propiedades) en el que
+hay que proporcionar los valores de todas sus propiedades.
+
+En las clases no existen los inicializadores _memberwise_, sólo en las
+estructuras.
 
 ```swift
 var coords = CoordsPantalla(posX: 200, posY: 400)
@@ -1380,18 +1408,55 @@ subclase utilizando la superclase. Por falta de tiempo no vamos a
 explicar todo el proceso completo. Recomendamos consultar la
 [documentación original de Swift](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203).
 
+
+### Inicializadores por defecto y _memberwise_ ###
+
+Ya hemos visto que es posible inicializar clases y estructuras
+definiendo valores por defecto a todas sus propiedades (con la posible
+excepción de las que tienen un tipo opcional). En ese caso, podemos no
+definir ningún inicializador y usar el inicializador por defecto que
+proporciona Swift.
+
+
+```swift
+struct Punto2D {
+    var x = 0.0
+    var y = 0.0
+}
+class Segmento {
+    var p1 = Punto2D()
+    var p2 = Punto2D()
+}
+
+var s = Segmento()
+```
+
+También es posible en las estructuras utilizar el inicializador
+_memberwise_, en el que especificamos todos los valores de las
+propiedades:
+
+
+```swift
+var p = Punto2D(x: 10.0, y: 10.0)
+```
+
+Los inicializadores por defecto y _memberwise_ desaparecen en el
+momento en que definimos algún inicializador con la palabra
+`init`. Veamos cómo definir inicializadores.
+
 ### Inicialización de propiedades almacenadas
 
-Las clases y estructuras deben definir todas sus propiedades
-almacenadas a un valor inicial en el tiempo en la instancia se
-crea. Las propiedades almacenadas no pueden dejarse en un estado
-indeterminado. Podemos definir el valor inicial para una propiedad en
-un inicializador o asignándole un valor por defecto como parte de la
+Como hemos dicho, las clases y estructuras deben definir todas sus
+propiedades almacenadas a un valor inicial en el tiempo en la
+instancia se crea, a no ser que éstas sean opcionales, en cuyo caso
+quedarían inicializadas a `nil`.
+
+Podemos definir el valor inicial para una propiedad en un
+inicializador o asignándole un valor por defecto como parte de la
 definición de la propiedad.
 
-Un _inicializador_, en su forma más simple, es como un método de la
-instancia sin parámetros, escrito con la palabra clave `init`:
-
+Un _inicializador_, en su forma más simple se escribe con la palabra
+clave `init`:
 
 ```swift
 init() {
@@ -1416,8 +1481,8 @@ print("La temperatura por defecto es \(f.temperatura) Fahrenheit")
 // Imprime "La temperatura por defecto es 32.0° Fahrenheit"
 ```
 
-La implementación anterior es equivalente a la siguiente (que es
-preferible, por ser más clara):
+La implementación anterior es equivalente a la que ya hemos visto con
+el inicializador por defecto:
 
 ```swift
 struct Fahrenheit {
@@ -1426,10 +1491,6 @@ struct Fahrenheit {
 ```
 
 ### Customización de la inicialización
-
-Es posible _customizar_ el proceso de inicialización con parámetros de
-entrada y tipos opcionales, o asignando propiedades constantes durante
-la inicialización.
 
 Podemos proporcionar parámetros de inicialización como parte de la
 definición de un inicializador, para definir los tipos y los nombres
@@ -1499,8 +1560,9 @@ let temperaturaCuerpo = Celsius(37.0)
 // temperaturaCuerpo.temperaturaEnCelsius es 37.0
 ```
 
-Por último, es posible dejar sin inicializar propiedades opcionales,
-ya que el valor que tomarían sería `nil`:
+Por último, es posible inicializar propiedades constantes definidas
+con `let`. Sólo toman valor en el momento de la inicialización y
+después no pueden modificarse.
 
 ```swift
 class PreguntaEncuesta {
@@ -1518,18 +1580,11 @@ preguntaQueso.pregunta() // -> "¿Te gusta el queso?
 preguntaQueso.respuesta // -> nil
 ```
 
-En el ejemplo anterior se comprueba también que es posible inicializar
-constantes. Por ejemplo, la propiedad `text` está definida con un
-`let` y se inicializa en el inicializador.
+La propiedad `respuesta` se inicializa a `nil` al ser un opcional y no
+inicializarla en el inicializador.
 
 Por último, es posible definir más de un inicializador, así como
 invocar a inicializadores más básicos desde otros. 
-
-Si definimos un inicializador en una estructura el inicializador por
-defecto deja de funcionar, es necesario escribirlo también. El
-inicializador por defecto permite que las propiedades se
-inicialicen a los valores por defecto. 
-
 
 ```swift
 struct Rectangulo {
@@ -1556,7 +1611,11 @@ let centroRectangulo = Rectangulo(centro: Punto(x: 4.0, y: 4.0),
 // el origen de centroRectangulo es (2.5, 2.5) y su tamaño (3.0, 3.0)
 ```
 
-
+El inicializador `init(){}` permite inicializar el `Rectangulo` a los
+valores por defecto definidos en las propiedades. Proporciona la misma
+funcionalidad que el inicializador por defecto, que tal y como hemos
+comentado, no se crea en una estructura o clase en la que definimos
+sus propios inicializadores.
 
 ## Herencia
 
@@ -1825,10 +1884,10 @@ print("CocheAutomatico: \(automatico.descripcion)")
 Por último, es posible prevenir un método o propiedad de ser
 sobreescrito declarándolo como _final_. Para ello, hay que escribir el
 modificador `final` antes del nombre de la palabra clave que introduce
-el método o la propiedad (como `final var`, `final func` o `final
-class`). También es posible marcar la clase completa como final,
-escribiendo el modificador antes de `class` (`final class`).
+el método o la propiedad (como `final var`, `final func`). 
 
+También es posible marcar la clase completa como final, escribiendo el
+modificador antes de `class` (`final class`).
 
 
 ## Protocolos
@@ -1870,7 +1929,7 @@ struct UnStruct: PrimerProtocolo, OtroProtocolo {
 ```
 
 Si una clase tiene una superclase, se escribe el nombre de la
-superclase antes los protocolos, seguido por una coma:
+superclase antes de los protocolos, seguido por una coma:
 
 ```swift
 class UnaClase: UnaSuperClase, PrimerProtocolo, OtroProto {
@@ -2392,7 +2451,7 @@ _downcast_ tendrá éxito. Esta versión del operador lanzará un error en
 tiempo de ejecución si intentamos hacer un _downcast_ a un tipo
 incorrecto.
 
-El siguiente ejemplo itera sobre cada `MediaIyem` en `biblioteca`, e
+El siguiente ejemplo itera sobre cada `MediaItem` en `biblioteca`, e
 imprime una descripción apropiada para cada ítem. Para hacerlo,
 necesita acceder a cada ítem como una `Pelicula` o `Cancion` y no sólo
 como una `MediaItem`. Esto es necesario para poder acceder a la
@@ -2471,7 +2530,7 @@ for item in array {
     case let unDouble as Double where unDouble > 0:
         print("a valor positivo de \(unDouble)")
     case is Double:
-        print("algún otro valor double que no quier imprimir")
+        print("algún otro valor double que no quiero imprimir")
     case let someString as String:
         print("una cadena con valor de \"\(someString)\"")
     case let (x, y) as (Double, Double):
