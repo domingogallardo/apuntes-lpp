@@ -14,8 +14,8 @@ source_ bajo la licencia Apache 2.0, para las plataformas Apple y
 Linux. Los cambios en el lenguaje son propuestos y discutidos por la
 comunidad en un proceso denominado [Swift
 evolution](https://github.com/apple/swift-evolution). En la actualidad
-se ha estabilizado la versión 4 del lenguaje y se está desarrollando
-la versión 5 que se presentará a finales de 2018.
+se ha estabilizado la versión 5 del lenguaje y se está desarrollando
+la versión 6 que se presentará a finales de 2019.
  
 La siguiente descripción se ha extraído del repositorio GitHub de
 Swift:
@@ -76,7 +76,7 @@ mejor esta interesante tecnología. Puedes empezar por la guía [Get
 started with Docker](https://docs.docker.com/get-started/).
 
 Usaremos la [imagen Docker
-swift:4.0.3](https://hub.docker.com/_/swift/), que contiene el
+swift:5.1.2](https://hub.docker.com/_/swift/), que contiene el
 comando `swift` necesario para compilar y ejecutar aplicaciones Swift.
 
 #### Instalación de Docker ####
@@ -105,14 +105,14 @@ Una vez instalado Docker, abre un terminal y lanza el siguiente
 comando:
 
 ```text
-$ docker pull swift:4.0.3
+$ docker pull swift:5.1.2
 ```
 
-El comando descarga la imagen `swift:4.0.3` a nuestro ordenador. Una
+El comando descarga la imagen `swift:5.1.2` a nuestro ordenador. Una
 vez descargada lanzamos el contenedor con el siguiente comando:
 
 ```text
-$ docker run --privileged -it --rm -v "${PWD}:/home" swift:4.0.3 /bin/bash
+$ docker run --privileged -it --rm -v "${PWD}:/home" swift:5.1.2 /bin/bash
 ```
 
 El contenedor arranca en muy pocos segundos y aparece su prompt,
@@ -129,7 +129,8 @@ Lanzamos el intérprete de Swift con el comando `swift`:
     
 ```text
 root@97265a262a58:/# swift
-Welcome to Swift version 4.0.3 (swift-4.0.3-RELEASE). Type :help for assistance.
+Welcome to Swift version 5.1.2 (swift-5.1.2-RELEASE).
+Type :help for assistance.
 1> "hola".uppercased()
 $R0: String = "HOLA"
 2>
@@ -145,7 +146,6 @@ root@97265a262a58:/# exit
 
 
 #### Directorio compartido entre el ordenador _host_ y el contenedor ####
-
 
 El argumento `-v "${PWD}:/home"` del comando `docker run` hace que el
 contenedor monte el **directorio actual** del ordenador anfitrión en
@@ -204,7 +204,7 @@ print("El resultado de la suma es = \(totalSum)")
 3. Arrancamos el contenedor swift:
 
 ```text
-$ docker run --privileged -it --rm -v "${PWD}:/home" swift:4.0.3 /bin/bash
+$ docker run --privileged -it -v "${PWD}:/home" swift:5.1.2 /bin/bash
 ```
 
 4. Compilamos y ejecutamos el programa desde el contenedor, cambiando
@@ -224,10 +224,6 @@ El resultado de la suma es = 7
    y que el programa se ejecuta con las modificaciones que has
    introducido.
 
-6. Cuando termines de trabajar con el contenedor Docker recuerda salir
-   de él. El argumento `--rm` del comando `docker run` hace que el
-   contenedor se elimine al terminar su ejecución.
-   
 ```text
 root@3131534ce480:~# exit
 exit
@@ -244,7 +240,7 @@ exit
     **Fichero `swift.sh`**:
     
     ```shell
-    SWIFT_VER=4.0.3
+    SWIFT_VER=5.1.2
     docker run --privileged -it --rm -v "${PWD}:/home" "swift:${SWIFT_VER}" /bin/bash -c "
     cd /home
     swift $*"
@@ -321,7 +317,7 @@ terminal.
 Puedes consultar los conceptos básicos de Visual Studio Code y el
 manual completo en [este enlace](https://code.visualstudio.com/docs).
 
-#### Integración del Docker Quickstart Terminal en Visual Studio Code ####
+#### Integración del Docker Quickstart Terminal en Visual Studio Code (Windows) ####
 
 Abre un _Docker Quickstart Terminal_, ejecuta el siguiente comando y
 anota los valores de las variables de entorno:
