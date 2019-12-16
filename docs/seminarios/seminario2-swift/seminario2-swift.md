@@ -14,8 +14,8 @@ source_ bajo la licencia Apache 2.0, para las plataformas Apple y
 Linux. Los cambios en el lenguaje son propuestos y discutidos por la
 comunidad en un proceso denominado [Swift
 evolution](https://github.com/apple/swift-evolution). En la actualidad
-se ha estabilizado la versión 5 del lenguaje y se está desarrollando
-la versión 6 que se presentará a finales de 2019.
+se ha estabilizado la versión 5 del lenguaje, que es la que
+utilizaremos para realizar las prácticas.
  
 La siguiente descripción se ha extraído del repositorio GitHub de
 Swift:
