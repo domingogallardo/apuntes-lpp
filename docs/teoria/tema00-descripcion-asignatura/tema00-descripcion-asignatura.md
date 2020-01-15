@@ -70,6 +70,31 @@ dominios concretos.
 
 ## Temario
 
+### Bloques temáticos ###
+
+La asignatura se divide en 3 bloques temáticos, todos ellos de igual
+duración, en los que se utilizará el lenguaje de programación que
+aparece entre paréntesis:
+
+1. Programación funcional (Scheme): temas 1 y 2
+2. Procesos y estructuras recursivas (Scheme): temas 3 y 4
+3. Programación funcional en Swift y programación orientada a objetos
+   (Swift): temas 5 y 6
+
+Los lenguajes de programación se introducirán mediante seminarios que
+impartidos en las clases de prácticas.
+
+* Seminario 1. **El lenguaje de programación Scheme**:
+  Primitivas. Tipos de datos
+  básicos. Símbolos. Cadenas. Listas. Definición de funciones. 
+* Seminario 2. **El lenguaje de programación Swift**. Intérprete y
+  scripts. Tipos de datos básicos. Operadores. Estructuras de
+  control. Ámbito de variables. Tipos de datos compuestos: tuplas,
+  arrays y colecciones. Recorriendo colecciones. Valores mutables e
+  inmutables. Inicialización. Tipos de referencia y valor en Swift.
+
+### Temas ###
+
 * Tema 1. **Lenguajes de programación**: Historia de los lenguajes de
   programación. Elementos de los lenguajes de
   programación. Abstracción. Paradigmas de programación. Compiladores
@@ -99,17 +124,6 @@ dominios concretos.
   avanzados de POO en Swift: Extensiones, Protocolos y
   Genéricos. Gestión de errores.
 
-Seminarios:
-
-* Seminario 1. **El lenguaje de programación Scheme**:
-  Primitivas. Tipos de datos
-  básicos. Símbolos. Cadenas. Listas. Definición de funciones.
-* Seminario 2. **El lenguaje de programación Swift**. Intérprete y
-  scripts. Tipos de datos básicos. Operadores. Estructuras de
-  control. Ámbito de variables. Tipos de datos compuestos: tuplas,
-  arrays y colecciones. Recorriendo colecciones. Valores mutables e
-  inmutables. Inicialización. Tipos de referencia y valor en Swift.
-
 El calendario de temas, prácticas y exámenes se puede ver en la
 siguiente figura.
 
@@ -118,10 +132,9 @@ siguiente figura.
 
 ## Prácticas
 
-Las prácticas consistirán en la resolución de hojas de ejercicios con
-5 o 6 problemas de programación relacionados con los conceptos vistos
-en las sesiones de teoría. Estos ejercicios servirán para reforzar y
-profundizar en las competencias de la asignatura.
+Las prácticas son fundamentales en la asignatura y sirven para
+comprender, trabajar y profundizar los conceptos y competencias
+estudiados en las clases de teoría.
 
 Para el desarrollo de las prácticas utilizaremos los siguientes
 lenguajes de programación y entornos de desarrollo:
@@ -131,6 +144,10 @@ lenguajes de programación y entornos de desarrollo:
 * [Swift](https://swift.org) (lenguaje multiparadigma creado por
   Apple, con conceptos modernos de programación funcional y
   programación orientada a objetos)
+
+Cada práctica consistirá en la resolución de una **hoja de ejercicios**
+con 5 o 6 pequeños problemas de programación relacionados con la
+teoría vista durante la semana.
 
 Se realizarán 11 sesiones de ejercicios de prácticas de una semana de
 duración y 2 seminarios sobre los anteriores lenguajes de programación.
@@ -147,19 +164,39 @@ los profesores. Es preferible el foro, porque de esta forma las
 contestaciones y aclaraciones serán compartidas con el resto de
 compañeros.
 
-El domingo por la noche se entregará la práctica terminada en Moodle
-para su archivo.
+Al final de la siguiente semana de realización de la hoja de
+ejercicios (una vez realizado su cuestionario) se publicará su
+solución.
 
-Durante la semana siguiente se realizará al comienzo de la clase de
-prácticas un **cuestionario de prácticas** individual sobre los
-ejercicios realizados y sobre los conceptos de teoría asociados. El
-cuestionario se evaluará con una calificación de 0 a 10.
+### Cuestionarios ###
 
-Una vez realizados todos los cuestionarios, se publicará la solución
-de la práctica y la calificación de los cuestionarios.
+Al comienzo de cada sesión de prácticas se realizará un **cuestionario
+sobre la hoja de ejercicios de la semana anterior**. La superación de
+los cuestionarios de cada bloque sumará 0,5 puntos a la nota del
+parcial de ese bloque (ver el apartado de evaluación).
 
-La nota media de todos los cuestionarios formará parte de la
-calificación final de la asignatura, ponderada en un 20%.
+Los cuestionarios constarán de unas 3 preguntas cortas **sobre la
+práctica y sobre los conceptos de teoría asociados**. Dentro de cada
+bloque temático deberás haber **aprobado los cuestionarios previos para
+poder realizar el cuestionario actual**. Se permitirá recuperar los
+cuestionarios previos suspendidos, **una vez por sesión** y siempre
+**dentro del tiempo** destinado a la realización de los mismos. Sólo
+se podrán recuperar cuestionarios del bloque temático actual.
+
+El cuestionario se realizará en Moodle y se evaluará con una
+calificación de 0 a 10 (aprobando con una nota >= 5). Constará de 3
+preguntas de igual puntuación (3,333 puntos). En cada pregunta se
+permitirán 3 intentos y cada intento fallado descontará 1/3 de la
+puntuación de la pregunta (1,111 puntos). De esta forma, para aprobar
+un cuestionario se podrán fallar como máximo 4 intentos.
+
+Tendrás que tener cuidado al escribir las respuestas de los
+cuestionarios. Deberás escribirlas de forma totalmente correcta,
+**incluyendo los espacios en blanco**. Deberás fijarte en los ejemplos
+que proporcionamos en teoría y en los resultados de la ejecución de
+expresiones en el intérprete del lenguaje.
+
+<img src="imagenes/respuestas-cuestionario.png" width="500px"/>
 
 !!! Warning "Uso del software iTALC"
     Durante el desarrollo de las sesiones prácticas es obligatorio 
@@ -203,19 +240,17 @@ La distribución de grupos del curso 2018-19 es la siguiente:
 
 ### Convocatoria normal C3 (evaluación continua)
 
-La asignatura se divide en 3 bloques temáticos, todos ellos de igual
-duración, en los que se utilizará el lenguaje de programación que
-aparece entre paréntesis:
+Para cada bloque temático se realizará un examen parcial. En cada
+bloque temático se pueden obtener 0,5 puntos adicionales que se suman
+a la nota del parcial. Los puntos adicionales se obtienen si se
+aprueban n-1 cuestionarios del bloque. 
 
-1. Programación funcional (Scheme)
-2. Procesos y estructuras recursivas. (Scheme)
-3. Programación funcional en Swift y programación orientada a objetos (Swift)
+Cada bloque pondera 1/3 en la nota final. No hay nota mínima en
+ningún bloque.
 
-Para cada bloque temático se realizará un examen parcial escrito que
-ponderará un 26,67% (80% en total) en la nota final.
- 
-El 20% restante para la nota final se obtendrá con la nota media de
-los cuestionarios realizados en las sesiones de prácticas.
+La siguiente figura resume la evaluación:
+
+<img src="imagenes/evaluacion.png" width="800px"/>
 
 !!! Warning "Normas importantes sobre la realización de los cuestionarios de prácticas "
     - Por cuestiones de logística de la asignatura, cada alumno debe
