@@ -205,30 +205,6 @@ expresiones en el intérprete del lenguaje.
     recomendaciones cuando lo considere oportuno. Además se utilizará
     iTALC para vigilar la contestación de los cuestionarios.
 
-### Planificación de la semana
-
-Podemos resumir la planificación de una semana en la que se trabaja
-sobre la práctica _n_ de la siguiente forma:
-
-- El viernes de la semana anterior se habrá publicado la práctica _n_.
-- En la clase de prácticas se realiza el cuestionario sobre la
-  práctica _n-1_ y se trabaja en la práctica _n_.
-- En casa se termina la práctica _n_ y se estudia la teoría para
-  poder empezar a hacer la práctica _n+1_.
-- El viernes se publica la práctica _n+1_, la solución de la práctica
-  _n-1_ y la calificación de los cuestionarios realizados durante la
-  semana sobre esa práctica _n-1_.
-- El domingo es el plazo límite para entregar la práctica _n_.
-
-En la siguiente figura se puede ver un ejemplo de cómo sería esta
-planificación para una semana concreta en la que se trabaja en la
-práctica P3:
-
-<img src="imagenes/semana-practicas.png" width="800px"/>
-
-Esta planificación podría cambiarse de forma puntual, en cuyo caso se
-avisará a través del foro de  Moodle.
-
 ## Horarios
 
 La distribución de grupos del curso 2018-19 es la siguiente:
