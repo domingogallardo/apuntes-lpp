@@ -164,9 +164,8 @@ los profesores. Es preferible el foro, porque de esta forma las
 contestaciones y aclaraciones serán compartidas con el resto de
 compañeros.
 
-Al final de la siguiente semana de realización de la hoja de
-ejercicios (una vez realizado su cuestionario) se publicará su
-solución.
+Al final de la semana de realización de la hoja de ejercicios se
+publicará su solución.
 
 ### Cuestionarios ###
 
