@@ -7,11 +7,7 @@ recomendamos que les echéis un vistazo y, si os interesa y os queda
 tiempo, que exploréis también en los enlaces que hemos dejado en los
 apuntes para ampliar información.
 
-* [DrRacket](http://racket-lang.org/), [Entorno de programación DrRacket](http://docs.racket-lang.org/drracket/index.html)
-* _R6RS_ base [(pdf)](http://www.r6rs.org/final/r6rs.pdf)
-[(html)](http://www.r6rs.org/final/html/r6rs/r6rs.html)
-* Librerías R6RS [(pdf)](http://www.r6rs.org/final/r6rs-lib.pdf)
-[(html)](http://www.r6rs.org/final/html/r6rs-lib/r6rs-lib.html)
+* [The Racket Guide](https://docs.racket-lang.org/guide/)
 * [Simply Scheme](http://www.eecs.berkeley.edu/~bh/ss-toc2.html)
 
 ## El lenguaje de programación Scheme
@@ -29,6 +25,23 @@ la utilidad empresarial. Por eso Scheme es considerado como uno de los
 lenguajes mejor diseñados de propósito general. Aprender Scheme hará
 que seáis mejores programadores cuando utilicéis otros lenguajes de
 programación.
+
+### El lenguaje de programación Racket ###
+
+¿Qué vamos a aprender? ¿Racket o Scheme? La respuesta es: Scheme
+trabajando en Racket. 
+
+[Racket](https://en.wikipedia.org/wiki/Racket_(programming_language))
+se diseñó en 1995 basándose en Scheme y ampliándolo con nuevas
+funcionalidades, como la posibilidad de extenderlo con librerías. El
+lenguaje contiene librerías muy útiles (librerías gráficas, de
+conexión a servidores HTTP, de conexión a bases de datos, etc.) con
+las que se moderniza el lenguaje original y se convierte en un
+lenguaje práctico para desarrollar todo tipo de aplicaciones, desde
+videojuegos a servidores web.
+
+Sin embargo, nosotros sólo vamos a usar Racket para aprender la parte
+que corresponde al núcleo original de Scheme.
 
 ### El entorno de programación DrRacket
 
