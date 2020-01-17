@@ -207,8 +207,9 @@ contestación de un cuestionario.
 - La realización de cuestionarios comenzará puntualmente a los 5
   minutos de empezar la clase de prácticas y durará 20 minutos, para
   permitir recuperar algún cuestionario anterior suspendido.
-- Deberás realizar los cuestionarios en el aula de tu sesión de
-  prácticas.
+- Deberás realizar los cuestionarios en el grupo de prácticas en el
+  que está matriculado y en el aula en la que se imparte ese grupo
+  de prácticas.
 - Se deberán realizar en los ordenadores del aula. De forma
   excepcional, si no hay ordenadores libres, podrás utilizar tu
   portátil, pero sentado cerca de la mesa del profesor y con la
@@ -218,6 +219,10 @@ contestación de un cuestionario.
   prohibido abrir cualquier otra ventana o aplicación.
 - Durante la realización del cuestionario no deberás tener acceso
   al móvil.
+- Excepcionalmente, si por algún motivo JUSTIFICADO, hay alguna vez
+  que no podáis asistir a vuestro turno de prácticas, se debe asistir
+  a otro turno de ESA MISMA SEMANA y antes de empezar la clase
+  entregarle el justificante al profesor.
 
 ### Uso del software iTALC ###
 
@@ -251,16 +256,6 @@ La siguiente figura resume la evaluación:
 
 <img src="imagenes/evaluacion.png" width="800px"/>
 
-!!! Warning "Normas importantes sobre la realización de los cuestionarios de prácticas "
-    - Por cuestiones de logística de la asignatura, cada alumno debe
-    realizar el cuestionario en el turno de prácticas en el que está
-    matriculado (o el acordado con el profesor si ha sido posible el
-    cambio).
-
-    - Excepcionalmente, si por algún motivo JUSTIFICADO, hay alguna
-    vez que no podáis asistir a vuestro turno de prácticas, se debe
-    asistir a otro turno de ESA MISMA SEMANA y antes de empezar la
-    clase entregarle el justificante al profesor. 
     
 !!! Danger "Sobre los dispositivos móviles"
     - Como norma básica de todas las pruebas de evaluación de esta
