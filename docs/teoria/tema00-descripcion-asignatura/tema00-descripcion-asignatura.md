@@ -12,9 +12,9 @@ prácticas de 2 h. a la semana
   prácticas: 2, 9 y 401
 * Domingo Gallardo ([e-mail](mailto:domingo.gallardo@ua.es)): Profesor
   coordinador de la asignatura. Grupos de teoría: 3, 4 y 40. Grupos de
-  prácticas: 4 y 402
+  prácticas: 402
 * Francisco Martínez ([e-mail](mailto:fmartine@ua.es)): Grupos de
-  prácticas: 5, 6 y 8
+  prácticas: 4, 5, 6 y 8
 * Cristina Pomares ([e-mail](mailto:cpomares@ua.es)): Grupos de
   teoría: 1 y 2. Grupos de prácticas: 1, 3 y 7.
 
