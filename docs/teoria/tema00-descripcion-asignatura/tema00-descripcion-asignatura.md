@@ -174,10 +174,10 @@ sobre la hoja de ejercicios de la semana anterior**. La superación de
 los cuestionarios de cada bloque sumará 0,5 puntos a la nota del
 parcial de ese bloque (ver el apartado de evaluación).
 
-Los cuestionarios constarán de unas 3 preguntas cortas **sobre la
-práctica y sobre los conceptos de teoría asociados**. Dentro de cada
-bloque temático deberás haber **aprobado los cuestionarios previos para
-poder realizar el cuestionario actual**. Se permitirá recuperar los
+Los cuestionarios constarán de 3 preguntas cortas **sobre la práctica
+y sobre los conceptos de teoría asociados**. Dentro de cada bloque
+temático deberás haber **aprobado los cuestionarios previos para poder
+realizar el cuestionario actual**. Se permitirá recuperar los
 cuestionarios previos suspendidos, **una vez por sesión** y siempre
 **dentro del tiempo** destinado a la realización de los mismos. Sólo
 se podrán recuperar cuestionarios del bloque temático actual.
@@ -195,15 +195,39 @@ cuestionarios. Deberás escribirlas de forma totalmente correcta,
 que proporcionamos en teoría y en los resultados de la ejecución de
 expresiones en el intérprete del lenguaje.
 
+A continuación puedes ver ejemplos incorrectos y correctos de
+contestación de un cuestionario.
+
 <img src="imagenes/respuestas-cuestionario.png" width="500px"/>
 
-!!! Warning "Uso del software iTALC"
-    Durante el desarrollo de las sesiones prácticas es obligatorio 
-    usar el ordenador del aula y no el portátil personal. El
-    profesor de prácticas abrirá el programa iTALC, con el que podrá
-    comprobar cómo estáis desarrollando los ejercicios y podrá haceros
-    recomendaciones cuando lo considere oportuno. Además se utilizará
-    iTALC para vigilar la contestación de los cuestionarios.
+
+### Normas para realización de los cuestionarios ###
+
+- Cada cuestionario tendrá una duración máxima de 10 minutos.
+- La realización de cuestionarios comenzará puntualmente a los 5
+  minutos de empezar la clase de prácticas y durará 20 minutos, para
+  permitir recuperar algún cuestionario anterior suspendido.
+- Deberás realizar los cuestionarios en el aula de tu sesión de
+  prácticas.
+- Se deberán realizar en los ordenadores del aula. De forma
+  excepcional, si no hay ordenadores libres, podrás utilizar tu
+  portátil, pero sentado cerca de la mesa del profesor y con la
+  pantalla en su dirección.
+- Durante la realización del cuestionario únicamente deberás tener
+  abierta la ventana del navegador en la que estás realizándolo. Está
+  prohibido abrir cualquier otra ventana o aplicación.
+- Durante la realización del cuestionario no deberás tener acceso
+  al móvil.
+
+### Uso del software iTALC ###
+
+Durante el desarrollo de las sesiones prácticas es obligatorio usar el
+ordenador del aula y no el portátil personal. El profesor de prácticas
+abrirá el programa iTALC, con el que podrá comprobar cómo estáis
+desarrollando los ejercicios y podrá haceros recomendaciones cuando lo
+considere oportuno. Además se utilizará iTALC para vigilar la
+contestación de los cuestionarios.
+
 
 ## Horarios
 
