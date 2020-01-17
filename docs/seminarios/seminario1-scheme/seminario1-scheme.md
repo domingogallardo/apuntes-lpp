@@ -214,34 +214,57 @@ función devuelve el número 13:
     expresión y el resultado calculado en esa expresión es el que
     siempre se devuelve.
 
-Podemos comprobar una característica muy importante de Scheme. Se
-trata de un lenguaje **débilmente tipado**, en el que los argumentos `x`
-e `y` no tienen tipo. Si se invoca a la función pasando algún dato que
-no sea un número, el intérprete no detectará ningún error hasta que el
-momento en que se intente evaluar la multiplicación. Lo podemos
-comprobar con el siguiente ejemplo:
+
+### Lenguaje débilmente tipado ###
+
+Vamos a comprobar una característica muy importante de Scheme: ser un
+**lenguaje débilmente tipado**. Por esto entendemos, entre otras
+cosas, que las variables, funciones y argumentos no tienen un tipo
+declarado. Es posible usar valores de distintos tipos de datos para
+asignar sucesivamente a una misma variable (en el caso de un lenguaje
+imperativo) o para pasar como parámetro a una misma función (en el
+caso de un lenguaje funcional). Por ejemplo, JavaScript o PHP son
+también lenguajes débilmente tipados imperativos.
+
+Veamos cómo funciona esto en Scheme usando la función anterior como
+ejemplo.
 
 ```racket
-(suma-cuadrados 10 "hola")
+(define (suma-cuadrados x y)
+   (+ (* x x) (* y y)))
 ```
 
-Veremos más adelante que hay distintos tipos de números, y la función
-definida va a funcionar bien para todos ellos. En el ejemplo anterior
-hemos pasado como parámetro números enteros. Podemos pasar números
-reales:
+Vemos que los argumentos `x` e `y` no tienen ningún tipo.  Si se
+invoca a la función pasando algún dato que no sea un número, el
+intérprete no detectará ningún error y permitirá asignar a los
+argumentos `x` e `y` esos datos. El error se produce en el momento en
+que se intenta evaluar la multiplicación.
+
+Lo podemos comprobar con el siguiente ejemplo:
 
 ```racket
+> (suma-cuadrados 10 "hola")
+*: contract violation
+  expected: number?
+  given: "hola"
+  argument position: 1st
+  other arguments...:
+```
+
+Veremos más adelante que hay distintos tipos de números que podemos
+operar usando la división, la suma y la multiplicación. La función
+definida va a funcionar bien para todos ello. 
+
+Podemos pasar a la función números enteros, números reales o incluso fracciones:
+
+```racket
+(suma-cuadrados 2 5) ; ⇒ 29
 (suma-cuadrados 2.4 5.8)  ; ⇒ 39.4
-```
-
-o fracciones:
-
-```racket
 (suma-cuadrados (/ 2 3) (/ 3 5))  ; ⇒ 181/225
 ```
 
-En la expresión anterior también pueden pasarse directamente los
-números fracionales:
+En la última expresión también pueden pasarse directamente los
+números fracionales, el intérprete de Scheme entiende esa notación:
 
 ```racket
 (suma-cuadrados 2/3 3/5) ; ⇒ 181/225
