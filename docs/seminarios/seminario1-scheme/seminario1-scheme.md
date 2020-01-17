@@ -91,50 +91,23 @@ obligará a reiniciar el intérprete para aceptar los cambios.
 
 ### Eligiendo un lenguaje
 
-DrRacket soporta muchos dialectos de Scheme, entre los cuales se
-encuentra su primera versión estándar IEEE, llamada _R5RS_ (_Revised 5
-Report on the Algorithmic Language Scheme_), que aparece en el
-año 1998. Nosotros vamos a utilizar la siguiente versión _R6RS_
-(2007). Para ello, cuando arranquemos DrRacket, debemos hacer lo
-siguiente:
+DrRacket soporta muchos lenguajes y dialectos de Scheme. Nosotros
+vamos a utilizar el lenguaje por defecto, el lenguaje _Racket_. Para
+ello no es necesario realizar nada, sólo asegurarnos de lo siguiente:
 
-1. Asegurarnos que en la parte inferior de la ventana aparece
+1. En la parte inferior de la ventana aparece
    "_Determine language from source_"
 
-2. En el panel de edición debemos escribir las siguientes líneas:
+2. El fichero que se está editando en el panel de edición comienza con la línea:
 
     ```scheme
-    #lang r6rs
-    (import (rnrs))
+    #lang racket
     ```
 
-3. Finalmente pulsar el botón _Run_ (Ejecutar) para que se cargue ese
-   lenguaje en el intérprete.
+3. Finalmente, si pulsamos el botón _Run_ (Ejecutar) comprobaremos que
+   se carga ese lenguaje en el intérprete.
 
-<img src="imagenes/racket3.png" width="800px"/>
-
-!!! Note "Nota"
-    La línea de código
-    
-    ```scheme
-    #lang r6rs
-    ```
-
-    es una directiva de DrRacket que determina qué lenguaje será
-    interpretado.
-    
-    La línea
-
-    ```scheme
-    (import (rnrs))
-    ```
-
-    Permite importar la librería `rnrs`, que es la librería que
-    contiene todas las funciones del lenguaje r6rs. Además de ésta, en
-    la asignatura usaremos otras librerías que se indicarán en los
-    correspondientes enunciados de las prácticas cuando sean
-    necesarias. 
-
+<img src="imagenes/racket3.png" width="500px"/>
 
 ## El lenguaje Scheme
 
