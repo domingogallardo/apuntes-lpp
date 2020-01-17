@@ -71,13 +71,13 @@ estado abajo.
 <img src="imagenes/racket1.png" width="500px"/>
 
 El panel de edición superior es la ventana de definiciones. Se utiliza
-para implementar funciones, como la función square en el ejemplo. El
+para implementar funciones, como la función `cuadrado` en el ejemplo. El
 panel inferior, llamado _ventana de interacción_, se utiliza para
 evaluar expresiones interactivamente, usando el intérprete de
 Racket. Pulsando el botón _Run_, se evalúa el programa de la _ventana
 de definiciones_, haciendo que esas definiciones estén disponibles en
-la ventana de interacción. Así, dada la definición de `square`,
-después de pulsar _Run_, podemos teclear la expresión `(square 2)` en
+la ventana de interacción. Así, dada la definición de `cuadrado`,
+después de pulsar _Run_, podemos teclear la expresión `(cuadrado 2)` en
 el intérprete, se evaluará y mostrará el resultado, en este caso 4.
 
 ### Cambiar el idioma del entorno
