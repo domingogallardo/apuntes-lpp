@@ -45,6 +45,21 @@ que corresponde al núcleo original de Scheme.
 
 ### El entorno de programación DrRacket
 
+Veamos una pequeña introducción al entorno de programación que
+proporciona DrRacket. Puedes encontrar más información en la
+[documentación original](http://docs.racket-lang.org/drracket/index.html).
+
+**Importante**: Antes de empezar a trabajar con Racket debemos
+asegurarnos que la sintaxis de la salida tiene activada la opción
+`write`, como aparece en la siguiente imagen:
+
+<img src="imagenes/output-syntax.png" width="600px"/>
+
+Podemos modificar esa opción con los siguientes menús:
+
+_Language > Choose Language (seleccionamos The Racket Language) > Show
+details > Output Syntax > write_
+
 Cuando lanzamos DrRacket, vemos que tiene tres partes: una fila de
 botones arriba, dos paneles de edición en el medio y una barra de
 estado abajo.
