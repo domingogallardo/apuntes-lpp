@@ -117,7 +117,7 @@ Scheme es un lenguaje interpretado. Vamos a lanzar DrRacket y teclear
 en la ventana de interacción algunas expresiones. El intérprete
 analizará la expresión y mostrará el valor resultante de evaluarla.
 
-```scheme
+```racket
 2
 (+ 2 3)
 (+)
@@ -131,7 +131,7 @@ Cambridge, Massachusets, donde reside el MIT, lugar en el que se ideó
 el Lisp), en la que la expresión está delimitada por paréntesis y el
 operador va seguido de los operandos. La sintaxis es la siguiente:
 
-```scheme
+```racket
 (<función> <arg1> ... <argn>)
 ```
 
@@ -143,7 +143,7 @@ forma que tiene Scheme de evaluar una expresión es muy sencilla:
 2. Aplica la función nombrada tras el paréntesis a los valores
    resultantes de la evaluación anterior
 
-```scheme
+```racket
 (+ (* 2 3) (- 3 (/ 12 3)))
 ⇒ (+ 6 (- 3 (/ 12 3)))
 ⇒ (+ 6 (- 3 4))
@@ -157,7 +157,7 @@ procedimientos: +, -, \*. En Scheme la evaluación de una función
 siempre devuelve un valor, a no ser que se produzca un error que
 detiene la evaluación:
 
-```scheme
+```racket
 (* (+ 3 4) (/ 3 0))
 ```
 
@@ -175,7 +175,7 @@ definir variables asociadas a valores, y para implementar funciones.
 Podemos definir variables en la ventana de interacción para facilitar
 la escritura de expresiones:
 
-```scheme
+```racket
 (define pi 3.14159)
 pi ; ⇒ 3.14159
 (sin (/ pi 2)) ; ⇒ 0.9999999999991198
@@ -186,7 +186,7 @@ a ; ⇒ 14
 Para implementar una función también se utiliza define, con la
 siguiente sintaxis:
 
-```scheme
+```racket
 (define (<nombre-funcion> <args>)
 	<cuerpo-funcion>
 )
@@ -195,7 +195,7 @@ siguiente sintaxis:
 Por ejemplo, vamos a implementar una función que toma dos números como
 parámetros y devuelve la suma de sus cuadrados:
 
-```scheme
+```racket
 (define (suma-cuadrados x y)
 	(+ (* x x) (* y y)))
 ```
@@ -203,7 +203,7 @@ parámetros y devuelve la suma de sus cuadrados:
 Si llamamos a la función pasando el 2 y el 3 como parámetros, la
 función devuelve el número 13:
 
-```scheme
+```racket
 (suma-cuadrados 2 3)  ; ⇒ 13
 ```
 
@@ -221,7 +221,7 @@ no sea un número, el intérprete no detectará ningún error hasta que el
 momento en que se intente evaluar la multiplicación. Lo podemos
 comprobar con el siguiente ejemplo:
 
-```scheme
+```racket
 (suma-cuadrados 10 "hola")
 ```
 
@@ -230,20 +230,20 @@ definida va a funcionar bien para todos ellos. En el ejemplo anterior
 hemos pasado como parámetro números enteros. Podemos pasar números
 reales:
 
-```scheme
+```racket
 (suma-cuadrados 2.4 5.8)  ; ⇒ 39.4
 ```
 
 o fracciones:
 
-```scheme
+```racket
 (suma-cuadrados (/ 2 3) (/ 3 5))  ; ⇒ 181/225
 ```
 
 En la expresión anterior también pueden pasarse directamente los
 números fracionales:
 
-```scheme
+```racket
 (suma-cuadrados 2/3 3/5) ; ⇒ 181/225
 ```
 
@@ -269,7 +269,7 @@ Scheme, tenemos los símbolos `#t` y `#f` para expresar verdadero y falso
 respectivamente, pero en muchas operaciones se considera que cualquier
 valor distinto de `#f` es verdadero. Ejemplos:
 
-```scheme
+```racket
 #t
 #f
 (> 3 1.5)
@@ -287,7 +287,7 @@ La cantidad de tipos numéricos que soporta Scheme es grande,
 incluyendo enteros de diferente precisión, números racionales,
 complejos e inexactos. Por ejemplo:
 
-```scheme
+```racket
 (/ 1 3) ; ⇒ Devuelve la fracción 1/3
 (+ 1/3 1/3) ; ⇒ 2/3
 (+ 1/3 0.0) ; ⇒ 0.3333333333333333
@@ -298,7 +298,7 @@ complejos e inexactos. Por ejemplo:
 
 ##### Algunas primitivas sobre números
 
-```scheme
+```racket
 (<= 2 3 3 4 5)
 (max 3 5 10 1000)
 (/ 22 4)  ; Devuelve una fracción
@@ -312,7 +312,7 @@ complejos e inexactos. Por ejemplo:
 
 ##### Funciones de redondeo
 
-```scheme
+```racket
 ; (floor x) devuelve el entero más grande no mayor que x
 ; (ceiling x) devuelve el entero más pequeño no menor que x
 ; (truncate x) devuelve el entero más cercano a x cuyo valor absoluto no es mayor que el valor absoluto de x
@@ -331,7 +331,7 @@ complejos e inexactos. Por ejemplo:
 
 Se denominan _predicados_ a funciones que devuelven un booleano.
 
-```scheme
+```racket
 (number? 1)
 (integer? 2.3)
 (integer? 4.0)
@@ -347,7 +347,7 @@ Se denominan _predicados_ a funciones que devuelven un booleano.
 
 Se soportan caracteres internacionales y se codifican en UTF-8.
 
-```scheme
+```racket
 #\a
 #\A
 #\space
@@ -357,7 +357,7 @@ Se soportan caracteres internacionales y se codifican en UTF-8.
 
 ##### Operaciones sobre caracteres
 
-```scheme
+```racket
 (char<? #\a #\b)
 (char-numeric? #\1)
 (char-alphabetic? #\3)
@@ -385,21 +385,21 @@ Estos dos últimos los veremos en detalle en futuras clases de teoría.
 
 Las cadenas son secuencias finitas de caracteres.
 
-```scheme
+```racket
 "hola"
 "La palabra \"hola\" tiene 4 letras"
 ```
 
 ##### Constructores de cadenas
 
-```scheme
+```racket
 (make-string 5 #\o) ; ⇒ "ooooo"
 (string #\h #\o #\l #\a) ; ⇒ "hola"
 ```
 
 ##### Operaciones con cadenas
 
-```scheme
+```racket
 (substring "Hola que tal" 2 4)
 (string? "hola")
 (string->list "hola")
@@ -410,7 +410,7 @@ Las cadenas son secuencias finitas de caracteres.
 
 ##### Comparadores de cadenas
 
-```scheme
+```racket
 (string=? "Hola" "hola")
 (string=? "hola" "hola")
 (string<? "aab" "cde")
@@ -422,7 +422,7 @@ Las cadenas son secuencias finitas de caracteres.
 Elemento fundamental de Scheme. Es un tipo compuesto formado por dos
 elementos (no necesariamente del mismo tipo).
 
-```scheme
+```racket
 (cons 1 2)        ; cons crea una pareja
 (cons #t 3)       ; elementos de tipos diferentes
 (car (cons "hola" 2))  ; elemento izquierdo
@@ -432,20 +432,20 @@ elementos (no necesariamente del mismo tipo).
 Cuando evaluamos las expresiones anteriores en el intérprete, Scheme
 muestra el resultado de construir la pareja con la sintaxis:
 
-```scheme
+```racket
 {elemento izquierdo . elemento derecho}
 ```
 
 Por ejemplo:
 
-```scheme
+```racket
 (cons 1 2) ; ⇒ {1 . 2}
 ```
 
 Scheme es un lenguaje débilmente tipado y las variables y parejas
 pueden contener cualquier tipo de dato. Incluso otras parejas:
 
-```scheme
+```racket
 (define p1 (cons 1 2)) ; definimos una pareja formada por 1 y 2
 (cons p1 3)            ; definimos una pareja formada por la pareja (1 . 2) y 3
                        ; ⇒ {{1 . 2} . 3}
@@ -458,7 +458,7 @@ para Scheme. Si la pareja está en la parte derecha de la pareja
 principal el intérprete imprime esto, que no se corresponde con lo que
 esperamos:
 
-```scheme
+```racket
 (cons 1 (cons 2 3)) ; ⇒ {1 2 . 3}
 ```
 
@@ -474,13 +474,13 @@ definir, crear, recorrer y concatenar listas:
 
 Podemos crear una lista con la función `list`:
 
-```scheme
+```racket
 (list 1 2 3 4)     ;list crea una lista
 ```
 
 El intérprete de Scheme R6RS muestra las listas entre llaves:
 
-```scheme
+```racket
 (list 1 2 3 4) ;  ⇒ {1 2 3 4}
 ```
     
@@ -490,7 +490,7 @@ la lista. Son las mismas funciones de las parejas, pero ahora se
 aplican a listas. También veremos más adelante por qué estas funciones
 pueden trabajar tanto sobre parejas como sobre listas.
 
-```scheme
+```racket
 (define l1 (list 1 2 3 4)) ; se crea la lista {1 2 3 4} y se guarda en l1
 (car l1)  ; ⇒ 1
 (cdr l1)  ; ⇒ {2 3 4} 
@@ -500,7 +500,7 @@ El `cdr` de una lista siempre devuelve otra lista. El `cdr` de una
 lista de un elemento es la _lista vacía_, que en Scheme se representa
 con `()`:
 
-```scheme
+```racket
 (define l2 (list 1 2 3))
 (cdr l2) ; ⇒ {2 3} 
 (cdr (cdr l2)) ; ⇒ {3} 
@@ -511,7 +511,7 @@ La función `list` sin argumentos devuelve una lista vacía y la función
 `null?` comprueba si una lista es vacía. Es el caso base de gran parte
 de funciones recursivas que recorren listas.
 
-```scheme
+```racket
 (list) ; ⇒ () 
 (null? (list)) ; ⇒ #t
 (null? (list 1 2 3)) ; ⇒ #f
@@ -522,13 +522,13 @@ una lista existente usando la función `cons` (la misma función sobre
 pareja, ya explicaremos también por qué) usando como parámetro un
 elemento y una lista:
 
-```scheme
+```racket
 (cons elemento lista) 
 ```
 
 Por ejemplo:
 
-```scheme
+```racket
 (cons 1 (list 2 3 4 5))  ; ⇒ {1 2 3 4 5}
 (cons 1 (list))  ; ⇒ {1} 
 (cons 1 (cons 2 (list))) ; ⇒ {1 2} 
@@ -544,14 +544,14 @@ Por ejemplo:
     
     Por ejemplo:
     
-    ```scheme
+    ```racket
     (cons (list 1 2 3) 4) ; ⇒ {{1 2 3} . 4}
     ```
 
 
 También podemos usar la función `append` para concatenar dos o más listas
 
-```scheme
+```racket
 (define l3 (list 1))
 (define l4 (list 2 3 4))
 (define l5 (list 5 6))
@@ -563,7 +563,7 @@ También podemos usar la función `append` para concatenar dos o más listas
     hacerlo convirtiéndolo en una lista y usando `append` para
     concatenar la lista resultante al final de la primera:
     
-    ```scheme
+    ```racket
     ;;; Definimos la función cons-al-final
     (define (cons-al-final x lista)
        (append lista (list x)))
@@ -575,14 +575,14 @@ También podemos usar la función `append` para concatenar dos o más listas
 Igual que las parejas, las listas pueden contener distintos tipos de
 datos:
 
-```scheme
+```racket
 (list "hola" "que" "tal") ; ⇒ {"hola" "que" "tal"} lista de cadenas
 (cons "hola" (list 1 2 3 4))  ; ⇒ {"hola" 1 2 3 4} lista de distintos tipos de datos
 ```
 
 Una lista puede incluso contener otras listas:
 
-```scheme
+```racket
 (list (list 1 2) 3 4 (list 5 6))   ; lista que contiene listas
 ; ⇒ {{1 2} 3 4 {5 6}} 
 (cons (list 1 2) (list 3 4 5)) ; nueva lista añadiendo una lista
@@ -616,7 +616,7 @@ cuatro elementos: el propio `if`, la condición, la expresión que se
 evalúa si la condición es verdadera y la expresión que se evalúa si la
 expresión es falsa:
 
-```scheme
+```racket
 (if (> 2 3) "2 es mayor que 3" "2 es menor o igual que 3")
 ```
 
@@ -624,7 +624,7 @@ Al escribir código en Scheme es habitual colocar el `if` y la
 condición en una línea y las otras dos expresiones en las siguientes
 líneas:
 
-```scheme
+```racket
 (if (> 2 3)
     "2 es mayor que 3"
     "2 es menor o igual que 3")
@@ -634,7 +634,7 @@ En las expresiones que devuelven el valor cuando la condición es
 cierta o falsa se puede escribir cualquier expresión de Scheme,
 incluido otro `if`:
 
-```scheme
+```racket
 (if (> 2 3)
     (if (< 10 5)
         "2 es mayor que 3 y 10 es menor que 5"
@@ -646,7 +646,7 @@ Un ejemplo en el que vemos una función que contiene un `if`. La
 siguiente función de tres argumentos devuelve la suma de los últimos
 si el primero es positivo o la resta en caso contrario:
 
-```scheme
+```racket
 (define (suma-si-x-positivo x y z)
     (if (>= x 0)
         (+ y z)
@@ -662,7 +662,7 @@ Cuando tenemos un conjunto de alternativas o para evitar usar ifs
 anidados.  `cond` evalúa una serie de condiciones y devuelve el valor
 de la expresión asociada a la primera condición verdadera.
 
-```scheme
+```racket
 (cond
     ((> 3 4) "3 es mayor que 4")
 	((< 2 1) "2 es menor que 1")
@@ -700,7 +700,7 @@ Recordamos la fórmula:
 
 Primer definimos la función que define el discriminante:
 
-```scheme
+```racket
 (define (discriminante a b c)
 	(- (* b b) (* 4 a c)))
 ```
@@ -708,7 +708,7 @@ Primer definimos la función que define el discriminante:
 Después definimos las funciones que devuelven la raíz positiva y la
 raíz negativa, usando la función `discriminante` anterior:
 
-```scheme
+```racket
 (define (raiz-pos a b c)
 	(/ (+ (* b -1) (sqrt (discriminante a b c))) (* 2 a)))
 
@@ -719,14 +719,14 @@ raíz negativa, usando la función `discriminante` anterior:
 Por último, definimos la función `ecuacion` que invoca a las funciones
 anteriores y devuelve una pareja con los valores resultantes:
 
-```scheme
+```racket
 (define (ecuacion a b c)
 	(cons (raiz-pos a b c) (raiz-neg a b c)))
 ```
 
 Lo probamos:
 
-```scheme
+```racket
 (ecuacion 1 -5 6)
 ; ⇒ {3 . 2}
 (ecuacion 2 -7 3)
@@ -755,7 +755,7 @@ Las fórmulas de conversión son las siguientes:
 Primero definimos unas funciones auxiliares que calculan las
 expresiones anteriores:
 
-```scheme
+```racket
 (define (a-grados-fahrenheit grados-centigrados)
   (+ (* (/ 9 5) grados-centigrados) 32))
 
@@ -765,7 +765,7 @@ expresiones anteriores:
 
 Y ahora ya podemos definir la función principal:
 
-```scheme
+```racket
 (define (convertir-temperatura grados tipo)
   (cond ((equal? tipo #\F) (list (a-grados-centigrados grados) "grados centigrados"))
         ((equal? tipo #\C) (list (a-grados-fahrenheit grados) "grados fahrenheit"))
@@ -774,7 +774,7 @@ Y ahora ya podemos definir la función principal:
 
 Por ejemplo:
 
-```scheme
+```racket
 (convertir-temperatura 50 #\F) ; => {10 "grados centigrados"}
 (convertir-temperatura 50 #\C) ; => {122 "grados fahrenheit"}
 ```
@@ -785,7 +785,7 @@ Para imprimir por pantalla en Scheme se pude usar la función
 `display`, similar a la sentencia `print` de muchos otros
 lenguajes. 
 
-```scheme
+```racket
 #lang r6rs
 (import (rnrs))
 
@@ -830,7 +830,7 @@ En las prácticas de la asignatura, para realizar pruebas usaremos el
 importar esta nueva librería. Por tanto, debemos añadir en nuestros
 ficheros de prácticas lo siguiente:
 
-```scheme
+```racket
 (import (rnrs)
         (schemeunit))  
 ```
@@ -840,7 +840,7 @@ funciones. En concreto, utilizaremos las siguientes:
 
 - **check-true**
 
-```scheme
+```racket
 (check-true expr)   
 ;; Comprueba si su argumento es #t.
 ;; En caso contrario, se imprime un mensaje de error.
@@ -848,7 +848,7 @@ funciones. En concreto, utilizaremos las siguientes:
 
 - **check-false**
 
-```scheme
+```racket
 (check-false expr)   
 ;; Comprueba si su argumento es #f.
 ;; En caso contrario, se imprime un mensaje de error.
@@ -856,7 +856,7 @@ funciones. En concreto, utilizaremos las siguientes:
 
 - **check-equal?**
 
-```scheme
+```racket
 (check-equal? resultado-real resultado-esperado)   
 ;; Comprueba si sus dos argumentos son iguales.
 ;; En caso contrario, se imprime un mensaje de error.
@@ -880,7 +880,7 @@ significa que nuestra función _ecuacion_ es 'CORRECTA' para estas
 pruebas, es decir, que con los valores de entrada utilizados, su
 resultado se corresponde con el esperado.
 
-```scheme
+```racket
 (check-equal? (ecuacion 1 -5 6) (cons 3 2))
 (check-equal? (ecuacion 2 -7 3) (cons 3 (/ 1 2)))
 (check-equal? (ecuacion -1 7 -10) (cons 2 5))
@@ -891,14 +891,14 @@ función _ecuacion_, por ejemplo en el orden de los argumentos al
 invocar a la función auxiliar _raiz-pos_, en la llamada que se hace en
 la parte izquierda de la pareja resultante.
 
-```scheme
+```racket
 (define (ecuacion a b c)
 	(cons (raiz-pos b a c) (raiz-neg a b c)))
 ```
 
 Con esta nueva definición, si ejecutamos la siguiente prueba:
 
-```scheme
+```racket
 (check-equal? (ecuacion 1 -5 6) (cons 3 2))
 ```
 
@@ -1005,34 +1005,34 @@ de Scheme.
 a) Dada la siguiente lista, indica la expresión correcta para que
 Scheme devuelva 5:
 
-```scheme
+```racket
 (list 1 2 3 4 5 6 7 8)
 ```
 
 b) Dada la siguiente lista, indica la expresión correcta para que
 Scheme devuelva (8).
 
-```scheme
+```racket
 (list 1 2 3 4 5 6 7 8)
 ```
 
 c) Dada la siguiente lista, indica la expresión correcta para que
 Scheme devuelva 8.
 
-```scheme
+```racket
 (list 1 2 3 4 5 6 7 8)
 ```
 
 
 d) Dada la siguiente expresión, ¿qué devuelve Scheme?
 
-```scheme
+```racket
 (car (cdr (cdr (list 1 (list 2 3) (list 4 5) 6))))
 ```
 
 e) Dada la siguiente expresión, ¿qué devuelve Scheme?
 
-```scheme
+```racket
 (cdr (cdr (list 1 (list 2 3) 4 5)))
 ```
 
