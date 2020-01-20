@@ -274,9 +274,7 @@ números fracionales, el intérprete de Scheme entiende esa notación:
 
 Las primitivas de Scheme consisten en un conjunto de tipos de datos,
 formas especiales y funciones incluidas en el lenguaje. A lo largo del
-curso iremos introduciendo estas primitivas. Las primitivas básicas
-del lenguaje están descritas en las 30 páginas del apartado 11 (_Base
-library_) del manual de referencia del R6RS.
+curso iremos introduciendo estas primitivas. 
 
 Vamos a revisar algunos tipos de datos simples de Scheme, así como
 algunas funciones primitivas para trabajar con valores de esos tipos.
@@ -293,15 +291,16 @@ respectivamente, pero en muchas operaciones se considera que cualquier
 valor distinto de `#f` es verdadero. Ejemplos:
 
 ```racket
-#t
-#f
-(> 3 1.5)
-(= 3 3.0)
-(equal? 3 3.0)
-(or (< 3 1.5) #t)
-(and #t #t #f)
-(not #f)
-(not 3)
+#t ; verdadero
+#f ; falso
+(> 3 1.5) ; ⇒ #t
+(= 3 3.0) ; ⇒ #t (igualdad matemática)
+(equal? 3 3.0) ; ⇒ #f (igualdad de tipo)
+(or (< 3 1.5) #t) ; ⇒ #t
+(and #t #t #f) ; ⇒ #f
+(not #f) ; ⇒ #t
+(not 3) ; ⇒ #f (permite cualquier argumento; 
+        ;       sólo devuelve #t cuando el argumento es #f)
 ```
 
 #### Números
@@ -313,23 +312,25 @@ complejos e inexactos. Por ejemplo:
 ```racket
 (/ 1 3) ; ⇒ Devuelve la fracción 1/3
 (+ 1/3 1/3) ; ⇒ 2/3
-(+ 1/3 0.0) ; ⇒ 0.3333333333333333
-(sqrt -1) ; ⇒ 0+1i
-(+ 3+2i 2-i) ; ⇒ 5+1i
+(+ 2 3 4) ; ⇒ 11 (la función + admite un número variable de argumentos)
+(+ 1/3 0.0) ; número real con infinita precisión ⇒ 0.3333333333333333 
+(* (+ 1/3 0.0) 3) ; ⇒ 1
+(sqrt -1) ; ⇒ 0+1i (número imaginario)
+(+ 3+2i 2-i) ; ⇒ 5+1i (operaciones con números imaginarios)
 ```
 
 
 ##### Algunas primitivas sobre números
 
 ```racket
-(<= 2 3 3 4 5)
-(max 3 5 10 1000)
+(<= 2 3 3 4 5) ; ⇒ #t (los argumentos están en orden creciente)
+(max 3 5 10 1000) ; ⇒ #1000
 (/ 22 4)  ; Devuelve una fracción
-(div 22 4)
-(mod 22 4)
-(equal? 0.5 (/ 1 2))
-(= 0.5 (/ 1 2))
-(abs (* 3 -2))
+(quotient 22 4) ; ⇒ 5 (cociente de la división entera)
+(modulo 22 4) ; ⇒ 2 (resto de la división entera)
+(equal? 0.5 (/ 1 2)) ; ⇒ #f (distintos tipos de datos)
+(= 0.5 (/ 1 2)) ; ⇒ #t (igualdad matemática)
+(abs (* 3 -2)) ; ⇒ 6 (valor absoluto)
 (sin 2.2) ; relacionados: cos, tan, asin, acos, ata
 ```
 
@@ -338,7 +339,8 @@ complejos e inexactos. Por ejemplo:
 ```racket
 ; (floor x) devuelve el entero más grande no mayor que x
 ; (ceiling x) devuelve el entero más pequeño no menor que x
-; (truncate x) devuelve el entero más cercano a x cuyo valor absoluto no es mayor que el valor absoluto de x
+; (truncate x) devuelve el entero más cercano a x cuyo valor absoluto 
+;              no es mayor que el valor absoluto de x
 ; (round x) devuelve el entero más cercano a x, redondeado
 (floor -4.3)    ; ⇒ -5.0
 (floor 3.5)     ; ⇒ 3.0
@@ -352,18 +354,25 @@ complejos e inexactos. Por ejemplo:
 
 ##### Predicados sobre números
 
-Se denominan _predicados_ a funciones que devuelven un booleano.
+Se denominan _predicados_ a funciones que devuelven un booleano. 
 
 ```racket
-(number? 1)
-(integer? 2.3)
-(integer? 4.0)
-(real? 1)
-(positive? -4)
-(negative? -4)
-(zero? 0.2)
-(even? 2)
-(odd? 3)
+(positive? -4) ; ⇒ #f (-4 no es positivo)
+(negative? -4) ; ⇒ #t (-4 es negativo)
+(zero? 0.2) ; ⇒ #f (comprueba si el resultado es cero)
+(even? 2) ; ⇒ #t (comprueba si es par)
+(odd? 3) ; ⇒ #t (comprueba si es impar)
+```
+
+En Scheme tenemos predicados que nos permiten comprobar el tipo de un
+parámetro. En el caso de los números, el tipo de número:
+
+```racket
+(number? 1) ; ⇒ #t (el argumento 1 es un número)
+(integer? 2.3) ; ⇒ #f (el argumento 2.3 no es un entero)
+(integer? 4.0) ; ⇒ #t (el número 4.0 matemáticamente es idéntico 
+               ;        al número 4)
+(real? 1) ; ⇒ #t
 ```
 
 #### Caracteres
@@ -381,16 +390,18 @@ Se soportan caracteres internacionales y se codifican en UTF-8.
 ##### Operaciones sobre caracteres
 
 ```racket
-(char<? #\a #\b)
-(char-numeric? #\1)
-(char-alphabetic? #\3)
-(char-whitespace? #\space)
-(char-upper-case? #\A)
-(char-lower-case? #\a)
-(char-upcase #\ñ)
-(char->integer #\space)
-(integer->char 32) ;#\space
-(char->integer (integer->char 5000))
+(char<? #\a #\b) ; ⇒ #t (el carácter #\a es anterior al #\b)
+(char-numeric? #\1) ; ⇒ #t (el carácter #\1 es un número)
+(char-alphabetic? #\3) ; ⇒ #f (el carácter #\3 es un número)
+(char-whitespace? #\tab) ; ⇒ #t (el carácter tabulador es un espacio
+                         ;        en blanco) 
+(char-upper-case? #\A) ; ⇒ #t (el carácter #\A es una letra mayúscula)
+(char-lower-case? #\a) ; ⇒ #t (el carácter #\a es una letra minúscula)
+(char-upcase #\ñ) ; ⇒ #\Ñ (transforma la letra a mayúsculas)
+(char->integer #\space) ; ⇒ 32 (el carácter espacio ocupa la posición
+                        ;        32 en la lista de caracteres)
+(integer->char 32) ; ⇒ #\space (igual que antes pero a la inversa)
+(char->integer (integer->char 5000)) ; ⇒ 5000 
 ```
 
 ### Tipos de datos compuestos
@@ -416,28 +427,33 @@ Las cadenas son secuencias finitas de caracteres.
 ##### Constructores de cadenas
 
 ```racket
-(make-string 5 #\o) ; ⇒ "ooooo"
-(string #\h #\o #\l #\a) ; ⇒ "hola"
+(make-string 5 #\o) ; ⇒ "ooooo" (función constructora que recibe un
+                    ;            entero y un carácter) 
+(string #\h #\o #\l #\a) ; ⇒ "hola" (función constructora que recibe
+                         ;           un número variable de caracteres) 
 ```
 
 ##### Operaciones con cadenas
 
 ```racket
-(substring "Hola que tal" 2 4)
-(string? "hola")
-(string->list "hola")
-(string-length "hola")
-(string-ref "hola" 0)
-(string-append "hola" "adios")
+(substring "Hola que tal" 2 4) ; ⇒ "la" (subcadena que va de la
+                               ;      posición 2 a la 4, sin llegar a ella) 
+(string? "hola") ; ⇒ #t (predicado que comprueba que el argumento es
+                 ;       una cadena) 
+(string->list "hola") ; ⇒  (#\h #\o #\l #\a) (devuelve una lista de
+                      ;     caracteres) 
+(string-length "hola") ; ⇒ 4 (longitud de la cadena)
+(string-ref "hola" 0) ; ⇒ #\h (carácter en la posición 0)
+(string-append "hola" "adios") ; ⇒ "holaadios" (concatenación de cadenas) 
 ```
 
 ##### Comparadores de cadenas
 
 ```racket
-(string=? "Hola" "hola")
-(string=? "hola" "hola")
-(string<? "aab" "cde")
-(string>=? "www" "qqq")
+(string=? "Hola" "hola") ; ⇒ #f 
+(string=? "hola" "hola") ; ⇒ #t 
+(string<? "aab" "cde") ; ⇒ #t (se compara usando el orden lexicográfico)
+(string>=? "www" "qqq") ; ⇒ #t
 ```
 
 #### Parejas
@@ -446,23 +462,23 @@ Elemento fundamental de Scheme. Es un tipo compuesto formado por dos
 elementos (no necesariamente del mismo tipo).
 
 ```racket
-(cons 1 2)        ; cons crea una pareja
-(cons #t 3)       ; elementos de tipos diferentes
-(car (cons "hola" 2))  ; elemento izquierdo
-(cdr (cons "bye" 5))   ; elemento derecho
+(cons 1 2) ; ⇒ (1 . 2) (cons crea una pareja)
+(cons #t 3) ; ⇒ (#t . 3) (elementos de tipos diferentes)
+(car (cons "hola" 2)) ; ⇒ "hola" (elemento izquierdo de la pareja)
+(cdr (cons "bye" 5)) ; ⇒ 5 (elemento derecho de la pareja)
 ```
 
 Cuando evaluamos las expresiones anteriores en el intérprete, Scheme
 muestra el resultado de construir la pareja con la sintaxis:
 
 ```racket
-{elemento izquierdo . elemento derecho}
+(elemento izquierdo . elemento derecho)
 ```
 
 Por ejemplo:
 
 ```racket
-(cons 1 2) ; ⇒ {1 . 2}
+(cons 1 2) ; ⇒ (1 . 2)
 ```
 
 Scheme es un lenguaje débilmente tipado y las variables y parejas
@@ -471,9 +487,9 @@ pueden contener cualquier tipo de dato. Incluso otras parejas:
 ```racket
 (define p1 (cons 1 2)) ; definimos una pareja formada por 1 y 2
 (cons p1 3)            ; definimos una pareja formada por la pareja (1 . 2) y 3
-                       ; ⇒ {{1 . 2} . 3}
+                       ; ⇒ ((1 . 2) . 3)
 (cons (cons 1 2) 3)    ; igual que la expresión anterior
-                       ; ⇒ {{1 . 2} . 3}
+                       ; ⇒ ((1 . 2) . 3)
 ```
 
 Hay veces que el trabajo de imprimir una pareja no es tan sencillo
@@ -482,7 +498,7 @@ principal el intérprete imprime esto, que no se corresponde con lo que
 esperamos:
 
 ```racket
-(cons 1 (cons 2 3)) ; ⇒ {1 2 . 3}
+(cons 1 (cons 2 3)) ; ⇒ (1 2 . 3)
 ```
 
 Más adelante explicaremos por qué.
@@ -501,10 +517,10 @@ Podemos crear una lista con la función `list`:
 (list 1 2 3 4)     ;list crea una lista
 ```
 
-El intérprete de Scheme R6RS muestra las listas entre llaves:
+Las listas se representan entre paréntesis:
 
 ```racket
-(list 1 2 3 4) ;  ⇒ {1 2 3 4}
+(list 1 2 3 4) ;  ⇒ (1 2 3 4)
 ```
     
 La forma más básica de trabajar con una lista es usando las funciones
@@ -514,10 +530,15 @@ aplican a listas. También veremos más adelante por qué estas funciones
 pueden trabajar tanto sobre parejas como sobre listas.
 
 ```racket
-(define l1 (list 1 2 3 4)) ; se crea la lista {1 2 3 4} y se guarda en l1
-(car l1)  ; ⇒ 1
-(cdr l1)  ; ⇒ {2 3 4} 
+(define l1 (list 1 2 3 4)) ; se crea la lista (1 2 3 4) y se guarda en l1
+(car l1)  ; ⇒ 1 (primer elemento de l1)
+(cdr l1)  ; ⇒ (2 3 4) (resto de la lista, resultado de quitar a la
+          ;           lista su primer elemento)
 ```
+
+Las operaciones sobre listas construyen listas nuevas y no modifican
+la lista que se pasa como argumento. En el ejemplo anterior, la lista
+`l1` sigue conteniendo la lista original `(1 2 3 4)`.
 
 El `cdr` de una lista siempre devuelve otra lista. El `cdr` de una
 lista de un elemento es la _lista vacía_, que en Scheme se representa
@@ -525,18 +546,20 @@ con `()`:
 
 ```racket
 (define l2 (list 1 2 3))
-(cdr l2) ; ⇒ {2 3} 
-(cdr (cdr l2)) ; ⇒ {3} 
+(cdr l2) ; ⇒ (2 3) 
+(cdr (cdr l2)) ; ⇒ (3) 
 (cdr (cdr (cdr l2))) ; ⇒ () lista vacía
 ```
 
 La función `list` sin argumentos devuelve una lista vacía y la función
-`null?` comprueba si una lista es vacía. Es el caso base de gran parte
+`null?` comprueba si una lista es vacía. La lista vacía también se
+puede definir con el símbolo `'()`. Es el caso base de gran parte
 de funciones recursivas que recorren listas.
 
 ```racket
 (list) ; ⇒ () 
 (null? (list)) ; ⇒ #t
+(null? '())    ; ⇒ #t
 (null? (list 1 2 3)) ; ⇒ #f
 ```
 
@@ -552,9 +575,11 @@ elemento y una lista:
 Por ejemplo:
 
 ```racket
-(cons 1 (list 2 3 4 5))  ; ⇒ {1 2 3 4 5}
-(cons 1 (list))  ; ⇒ {1} 
-(cons 1 (cons 2 (list))) ; ⇒ {1 2} 
+(cons 1 (list 2 3 4 5))  ; ⇒ (1 2 3 4 5) (se añade 1 a la cabeza de 
+                         ;   la lista (2 3 4 5)
+(cons 1 (list))  ; ⇒ (1) (se añade 1 a la lista vacía
+(cons 1 (cons 2 (list))) ; ⇒ (1 2) 
+(cons 1 (cons 2 (cons 3 '()))) ; ⇒ (1 2 3)
 ```
 
 !!! Warning "Importante"
@@ -568,7 +593,7 @@ Por ejemplo:
     Por ejemplo:
     
     ```racket
-    (cons (list 1 2 3) 4) ; ⇒ {{1 2 3} . 4}
+    (cons (list 1 2 3) 4) ; ⇒ ((1 2 3) . 4)
     ```
 
 
@@ -578,7 +603,9 @@ También podemos usar la función `append` para concatenar dos o más listas
 (define l3 (list 1))
 (define l4 (list 2 3 4))
 (define l5 (list 5 6))
-(append l3 l4 l5) ; ⇒ {1 2 3 4 5 6}
+(append l3 l4 l5) ; ⇒ (1 2 3 4 5 6)
+(append l3 '()) ; ⇒ (1)
+(append (list 1 2 3) (list 4)) ; ⇒ (1 2 3 4)
 ```
 
 !!! Note "Nota"
@@ -588,30 +615,30 @@ También podemos usar la función `append` para concatenar dos o más listas
     
     ```racket
     ;;; Definimos la función cons-al-final
-    (define (cons-al-final x lista)
+    (define (añade-al-final x lista)
        (append lista (list x)))
     
     ;;; La probamos
-    (cons-al-final 10 (list 1 2 3)) ; ⇒ {1 2 3 10}
+    (añade-al-final 10 (list 1 2 3)) ; ⇒ (1 2 3 10)
     ```
 
 Igual que las parejas, las listas pueden contener distintos tipos de
 datos:
 
 ```racket
-(list "hola" "que" "tal") ; ⇒ {"hola" "que" "tal"} lista de cadenas
-(cons "hola" (list 1 2 3 4))  ; ⇒ {"hola" 1 2 3 4} lista de distintos tipos de datos
+(list "hola" "que" "tal") ; ⇒ ("hola" "que" "tal") (lista de cadenas)
+(cons "hola" (list #t #\a 3 4))  ; ⇒ ("hola" #t #\a 3 4) lista de distintos
+                              ;   tipos de datos)
+
 ```
 
 Una lista puede incluso contener otras listas:
 
 ```racket
-(list (list 1 2) 3 4 (list 5 6))   ; lista que contiene listas
-; ⇒ {{1 2} 3 4 {5 6}} 
-(cons (list 1 2) (list 3 4 5)) ; nueva lista añadiendo una lista
-; ⇒ {{1 2} 3 4 5}}
-(list (cons 1 2) (cons 3 4))  ; lista que contiene parejas
-; ⇒ {{1 . 2} {3 . 4}}
+(list (list 1 2) 3 4 (list 5 6)) ; ⇒ ((1 2) 3 4 (5 6)) (lista que contiene listas)
+(cons (list 1 2) (list 3 4 5))   ; ⇒ ((1 2) 3 4 5)) (se añade una
+                                 ;    lista como primer elemento)
+(list (cons 1 2) (cons 3 4)) ; ⇒ ((1 . 2) (3 . 4)) (lista que contiene parejas)
 ```
 
 En clase de teoría estudiaremos con más profundidad las listas en
@@ -751,11 +778,11 @@ Lo probamos:
 
 ```racket
 (ecuacion 1 -5 6)
-; ⇒ {3 . 2}
+; ⇒ (3 . 2)
 (ecuacion 2 -7 3)
-; ⇒ {3 . 1/2}
+; ⇒ (3 . 1/2)
 (ecuacion -1 7 -10)
-; ⇒ {2 . 5}
+; ⇒ (2 . 5)
 ```
 
 ### Conversión de grados Celsius a Farenheit
@@ -798,8 +825,8 @@ Y ahora ya podemos definir la función principal:
 Por ejemplo:
 
 ```racket
-(convertir-temperatura 50 #\F) ; => {10 "grados centigrados"}
-(convertir-temperatura 50 #\C) ; => {122 "grados fahrenheit"}
+(convertir-temperatura 50 #\F) ; ⇒ (10 "grados centigrados")
+(convertir-temperatura 50 #\C) ; ⇒ (122 "grados fahrenheit")
 ```
 
 ## Función `display`
@@ -831,8 +858,8 @@ hemos diseñado dos casos de prueba:
 
 | Datos de Entrada |  Resultado Esperado |
 | :---------------:| :------------------ |
-|   50 ,     #\F   | {10 "grados centigrados"} |
-|   50 ,     #\C   | {122 "grados fahrenheit"} |
+|   50 ,     #\F   | (10 "grados centigrados") |
+|   50 ,     #\C   | (122 "grados fahrenheit") |
 
 
 El resultado esperado a partir de unos valores concretos de entrada,
@@ -930,8 +957,8 @@ el resultado será:
 ```txt
 --------------------
 FAILURE
-actual:     {-1 . 2}
-expected:   {3 . 2}
+actual:     (-1 . 2)
+expected:   (3 . 2)
 name:       check-equal?
 location:   (#<path:/.../filename.rkt>)
 expression: (check-equal? (ecuacion 1 -5 6) (cons 3 2))
@@ -940,7 +967,7 @@ expression: (check-equal? (ecuacion 1 -5 6) (cons 3 2))
 
 Esta prueba muestra un mensaje de error, lo que significa que la nueva
 definición de _ecuacion_ 'FALLA', es decir, que el resultado que
-devuelve _{-1 . 2}_ no coincide con el resultado esperado _{3 . 2}_.
+devuelve _(-1 . 2)_ no coincide con el resultado esperado _(3 . 2)_.
 
 
 ## Ejercicios
