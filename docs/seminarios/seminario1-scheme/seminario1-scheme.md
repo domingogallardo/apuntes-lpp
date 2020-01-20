@@ -818,8 +818,10 @@ Y ahora ya podemos definir la función principal:
 
 ```racket
 (define (convertir-temperatura grados tipo)
-  (cond ((equal? tipo #\F) (list (a-grados-centigrados grados) "grados centigrados"))
-        ((equal? tipo #\C) (list (a-grados-fahrenheit grados) "grados fahrenheit"))
+  (cond ((equal? tipo #\F) 
+         (list (a-grados-centigrados grados) "grados centigrados"))
+        ((equal? tipo #\C) 
+         (list (a-grados-fahrenheit grados) "grados fahrenheit"))
         (else "tipo de cambio incorrecto")))
 ```
 
@@ -832,15 +834,15 @@ Por ejemplo:
 
 ## Función `display`
 
-Para imprimir por pantalla en Scheme se pude usar la función
+Para imprimir por pantalla en Scheme se pude usar la instrucción
 `display`, similar a la sentencia `print` de muchos otros
 lenguajes. 
 
 ```racket
-#lang r6rs
-(import (rnrs))
-
-(display "\nHola mundo!\n")
+(display "\nHola mundo!\n") ; display no es una función, porque no
+                            ; devuelve nada. Imprime una
+                            ; expresión en el terminal
+(define a (display "Hola")) ; a no tiene ningún valor
 (display "La suma de 2 + 3 es: ")
 (display (+ 2 3))
 (display "\n")
@@ -876,14 +878,16 @@ obvia:
 > casos de prueba y ocuparnos de **cómo implementarla**.
 
 
-En las prácticas de la asignatura, para realizar pruebas usaremos el
-**API SchemeUnit**. Para ello, lo primero que tendremos que hacer es
-importar esta nueva librería. Por tanto, debemos añadir en nuestros
-ficheros de prácticas lo siguiente:
+En las prácticas de la asignatura, para realizar pruebas usaremos la
+librería [**RackUnit**](https://docs.racket-lang.org/rackunit/). 
+
+Para ello, lo primero que tendremos que hacer es importar esta nueva
+librería. Por tanto, debemos añadir en nuestros ficheros de prácticas
+lo siguiente:
 
 ```racket
-(import (rnrs)
-        (schemeunit))  
+#lang racket
+(require rackunit)
 ```
 
 Una vez importada la librería, ya podemos hacer uso de algunas de sus
@@ -924,7 +928,7 @@ representado por el argumento _resultado-real_, es igual al resultado
 que esperamos, dado por el argumento _resultado-esperado_.
 
 
-### Ejemplo de pruebas de la función **ecuacion** definida anteriormente
+### Ejemplo de pruebas de la función `ecuacion` definida anteriormente
 
 Las siguientes pruebas no mostrarán ningún mensaje de error, lo que
 significa que nuestra función _ecuacion_ es 'CORRECTA' para estas
