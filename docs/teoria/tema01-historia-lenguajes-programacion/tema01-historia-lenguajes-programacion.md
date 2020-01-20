@@ -169,6 +169,8 @@ Pages 247-260)
 
 ### El nacimiento de los computadores comerciales
 
+**UNIVAC**
+
 El [UNIVAC](http://en.wikipedia.org/wiki/UNIVAC_I) fue el primer
 computador comercial (1951). Con este computadora aparece por primera
 vez la figura del programador: manuales, cursos de formación, ofertas
@@ -182,15 +184,15 @@ de empleo, etc.
 
 *Instalaciones comerciales del UNIVAC*
 
+<!--
+
 #### Manual de programación del UNIVAC (1959)
 
-Los computadores son lentos y muy complicados de instalar y mantener.
-
-Son más importantes las horas de funcionamiento del computador que las
-horas de trabajo del programador.
-
-La complejidad de las tareas a programar es pequeña y es suficiente
-con los programas en ensamblador.
+Los computadores son lentos y muy complicados de instalar y
+mantener. Son más importantes las horas de funcionamiento del
+computador que las horas de trabajo del programador. La complejidad de
+las tareas a programar es pequeña y es suficiente con los programas en
+ensamblador.
 
 El
 [manual de 1959 de programación del UNIVAC](http://www.bitsavers.org/pdf/univac/univac1/UNIVAC1_Programming_1959.pdf)
@@ -217,7 +219,9 @@ computadores ([YouTube](https://www.youtube.com/watch?v=Pd63MHGQygQ))
 
 *Anuncio UNIVAC*
 
-#### IBM 704
+-->
+
+**IBM 704**
 
 El [IBM 704](http://en.wikipedia.org/wiki/IBM_704) fue el otro gran
 ordenador comercial de la década de los 50.
@@ -235,22 +239,21 @@ para este computador.
 
 #### Programando los primeros computadores
 
-> The UNIVAC I was an interesting machine to program, with its mercury
-> delay line storage and its short mean time to failure. Programs were
-> entered into the computer by typing them onto steel magnetic tape, a
-> major innovation at that time.
+> El UNIVAC I era una máquina interesante para programar, con su
+> almacenamiento basado en líneas de retardo de mercurio y su
+> propensión a fallar. Los programas se introducían en el computador
+> tecleándolos en cintas magnéticas, una innovación importante en ese
+> tiempo.
 
-> Working with the IBM 704 at NYU was an entirely different experience
-> from the UNIVAC I. It was built for executing scientific
-> applications, and had as its major innovation a magnetic core
-> memory, replacing the Williams tube memory of the IBM 701 and the
-> primary memory drum of the IBM 650. It also had a floating point
-> arithmetic unit and index registers to form effective addresses,
-> both of which were significant advances at that time. The machine
-> had the equivalent of 128 KB primary memory, 32 KB of secondary drum
-> memory and magnetic tapes that held 5 MB of data. It operated at
-> 0.04 MIPS, and cost $3 million dollars in 1957, the equivalent of
-> perhaps $20 million today.
+> El trabajo con el IBM 704 en la Universidad de NY fue una
+> experiencia radicalmente distinta de la del UNIVAC I. Fue construido
+> para ejecutar aplicaciones científicas, y su principal innovación
+> era una memoria de núcleo magnético, reemplazando la memoria de
+> tubos Williams del IBM 701. También tenía una unidad aritmética en
+> punto flotante. La máquina tenía el equivalente a 128 KB de memoria
+> principal, 32 KB de memoria secundaria y cintas magnéticas que podía
+> almacenar 5 MB de datos. Operaba a 0.04 MIPS y costó 3 millones de
+> dólares en 1957.
 
 > George Sadowsky,
 > [My Second Computer was a UNIVAC I](http://www.georgesadowsky.com/papers/Univac-I.pdf)
@@ -288,10 +291,11 @@ Desarrollado por IBM para programar el IBM 704. Algunos datos:
 
 Cita de John Backus ([Wikipedia sobre FORTRAN](http://en.wikipedia.org/wiki/Fortran)):
 
-> Much of my work has come from being lazy. I didn't like writing
-> programs, and so, when I was working on the IBM 701, writing
-> programs for computing missile trajectories, I started work on a
-> programming system to make it easier to write programs.
+> Una gran parte de mi trabajo viene del hecho de que soy perezoso. No
+> me gustaba escribir programas, y cuando estaba trabajando en el IBM
+> 701, escribiendo programas para calcular la trayectoria de misiles,
+> comencé a trabajar en un sistema de programación que hiciera más
+> fácil escribir programas.
 
 <img src="imagenes/john-backus.png" width="150px"/>
 
@@ -318,11 +322,17 @@ listas es una de las características principales del Lisp.
 
 McCarthy explica en un artículo de 1979 la historia inicial del Lisp:
 
-> [...] My desire for an algebraic list processing language for
-> artificial intelligence work on the IBM 704 computer arose in the
-> summer of 1956 during the Dartmouth Summer Research Project on
-> Artificial Intelligence which was the first organized study of
-> AI. [...]
+> [...] En el verano de 1956 durante el Dartmouth Summer Research
+> Project on Artificial Intelligence, el primer estudio organizado de
+> Inteligencia Artificial, tuve la idea de desarrollar un lenguaje
+> algebraico para el procesamiento de listas. Quería usarlo para el
+> desarrollo de trabajo en inteligencia artificial en el
+> IBM 704. [...] 
+> John McCarthy, [History of LISP]
+
+[History of LISP]: http://www-formal.stanford.edu/jmc/history/lisp/lisp.html
+
+<!--
 
 > [...] There were two motivations for developing a language for the
 > IBM 704. First, IBM was generously establishing a New England
@@ -350,10 +360,7 @@ McCarthy explica en un artículo de 1979 la historia inicial del Lisp:
 > expression which evaluates only one of N1 and N2 according to
 > whether M is true or false and to a desire for a programming
 > language that would allow its use.[...]
-
-> John McCarthy, [History of LISP]
-
-[History of LISP]: http://www-formal.stanford.edu/jmc/history/lisp/lisp.html
+-->
 
 <img src="imagenes/john-mccarthy.png"/>
 
@@ -428,6 +435,7 @@ Algunas notas sobre la genealogía:
 | 1967 SIMULA |      |    |    |   |  
 
 
+<!--
 #### Aspectos que provocan la evolución de los LP
 
 ¿Por qué hay tanta variedad en los lenguajes de programación? Hay
@@ -448,6 +456,8 @@ fueron importante a finales del siglo 20.
 <img src="imagenes/lenguajes-influencias.png"/>
 
 *Evolución de los lenguajes*
+-->
+
 
 #### Los creadores de los LPs
 
@@ -570,36 +580,34 @@ multiparadigma.
 
 ### Definición de la Encyclopedia of Computer Science
 
-A programming language is a set of characters, rules for combining
-them, and rules specifying their effects when executed by a computer,
-which have the following four characteristics:
+Un lenguaje de programación es un conjunto de caracteres, reglas para
+combinarlos y reglas para especificar sus efectos cuando sean
+ejecutados por un computador, que tienen las siguientes cuatro
+características:
 
-1. It requires no knowledge of machine code on the part of the user
-2. It has machine independence
-3. Is translated into machine language
-4. Employs a notation that is closer to that of the specific problem
-      being solved than is machine code
+1. No requiere ningún conocimiento de código máquina por parte del
+   usuario.
+2. Tiene independencia de la máquina.
+3. Se traduce a lenguaje máguina.
+4. Utiliza una notación que es más cercana al problema específico que
+   se está resolviendo que al código máquina.
 
 ### Definición de Abelson y Sussman
 
-> We are about to study the idea of a **computational
-> process**. Computational processes are abstract beings that inhabit
-> computers. As they evolve, processes manipulate other abstract
-> things called **data**. The evolution of a process is directed by a
-> pattern of rules called a program. […] The programs we use to
-> conjure processes are like a sorcerer's spells. They are carefully
-> composed from symbolic expressions in arcane and esoteric
-> programming languages that prescribe the tasks we want our processes
-> to perform.
+> Vamos a estudiar la idea de un **proceso computacional**. Los
+> procesos computacionales son seres abstractos que habitan los
+> computadores. Cuando están en marcha, los procesos manipulan otras cosas
+> abstractas denominadas **datos**. La evolución de un proceso está
+> dirigida por un patrón de reglas denominado un programa. [...] 
 
 Y otra idea fundamental
 
-> A powerful programming language is more than just a means for
-> instructing a computer to perform tasks. The language also serves as
-> a framework within which we organize our ideas about
-> processes. Thus, when we describe a language, we should pay
-> particular attention to the means that the language provides for
-> combining simple ideas to form more complex ideas.
+> Un lenguaje de programación potente es más que sólo una forma de
+> pedir a un computador que realice tareas. El lenguaje también sirve
+> como un marco dentro del que organizamos nuestras ideas acerca de
+> los procesos. Así, cuando describimos un lenguaje, deberíamos
+> prestar atención particular a los medios que proporciona el lenguaje
+> para combinar ideas simples para formar ideas más complejas.
 
 ### Características de un LP
 
@@ -716,17 +724,17 @@ tratar con la complejidad del mundo real.
 Cita de Joel Spolsky en su blog
 [Joel on Software](http://www.joelonsoftware.com/articles/LeakyAbstractions.html)
 
-> TCP is what computer scientists like to call an abstraction: a
-> simplification of something much more complicated that is going on
-> under the covers. As it turns out, a lot of computer programming
-> consists of building abstractions. What is a string library? It's a
-> way to pretend that computers can manipulate strings just as easily
-> as they can manipulate numbers. What is a file system? It's a way to
-> pretend that a hard drive isn't really a bunch of spinning magnetic
-> platters that can store bits at certain locations, but rather a
-> hierarchical system of folders-within-folders containing individual
-> files that in turn consist of one or more strings of bytes.
-
+> TCP es lo que los científicos de computación llaman una abstracción:
+> una simplificación de algo mucho más complicado que va por debajo de
+> la cubierta. Resulta que una gran parte de la programación de
+> computadores consiste en construir abstracciones. ¿Qué es una
+> librería de cadenas? Es una forma de hacer creer que los
+> computadores pueden manipular cadenas tan fácilmente como manipulan
+> los números. ¿Qué es un sistema de ficheros? Es una forma de hacer
+> creer que un disco duro no es en realidad un montón de platos
+> magnéticos en rotación que pueden almacenar bits en ciertas
+> posiciones, sino en su lugar, un sistema jerárquico de
+> carpetas-dentro-de-carpetas que contiene ficheros individuales.
 
 ### Distintos aspectos de los lenguajes de programación
 
@@ -1067,6 +1075,6 @@ por ejemplo VirtualBox).
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2018-19  
+Lenguajes y Paradigmas de Programación, curso 2019-20  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
