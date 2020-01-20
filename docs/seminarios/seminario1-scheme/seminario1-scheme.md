@@ -1042,15 +1042,15 @@ Ejercicios con listas. Predice lo que hace Scheme cuando escribas las
 siguientes expresiones. Después, pruébalas y comprueba si tu
 predicción era correcta. Si no lo era, intenta comprender por qué.
 
-|Instrucción                              | Instrucción                             |
-|-----------------------------------------|-----------------------------------------|
-|`(list 1 2 3 4)`                         | `(cons 3 (list 1 2 3))`                 |
-|`(cdr  (list 1 2 3 4))`                  | `(cdr (cons 8 (list 1 2 3 4)))`         |
-|`(car (list 1 2 3 4))`                   | `(car (list (list 1 2) 1 2 3 4))`       |
-|`(list 1 (list 2 3) (list 4 (list 5)))`  | `(list 1 (list 2 3) (list 4 (list 5))`) |
-|`(car (cdr (list 1 2 3 4)))`             | `(cons (list 1 2 3) (list 4 5 6))`      |
-|`(cdr (cdr (list 1 2 3 4)))`             | `(car (cdr (list 1 2 3 4)))`            |
-|`(list 1 2 3 4)`                         | `(cdr (cdr (list 1 2 3 4)))`            |
+|Instrucción                        | Instrucción                             |
+|---------------------  ------------|-----------------------------------------|
+|`(list 1 2 3 4)`                   | `(cons 3 (list 1 2 3))`                 |
+|`(cdr  (list 1 2 3 4))`            | `(cdr (cons #t (cons "Hola" (list 1)))` |
+|`(car (list 1 2 3 4))`             | `(car (list (list 1 2) 1 2 3 4))`       |
+|`(car (list #t 1 "Hola"))`         | `(car (cdr (list (list 1 2) 1 2)`       |
+|`(car (cdr (list 1 2 3 4)))`       | `(cons (list 1 2 3) (list 4 5 6))`      |
+|`(cdr (cdr (list 1 2 3 4)))`       | `(car (cdr (list 1 2 3 4)))`            |
+|`(car (cdr (cdr (list 1 2 3 4))))` | `(cdr (cdr (list 1 2 3 4)))`            |
 
 ### Ejercicio 5
 
@@ -1093,6 +1093,6 @@ e) Dada la siguiente expresión, ¿qué devuelve Scheme?
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2018-19  
+Lenguajes y Paradigmas de Programación, curso 2019-20  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
