@@ -739,9 +739,9 @@ funciones auxiliares.
 
 Recordamos la fórmula:
 
-<img src="imagenes/ecuacion1.png" width="200px"/>
+<!--<img src="imagenes/ecuacion1.png" width="200px"/>-->
 
-<!-- $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$ -->
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}$$
 
 !!! Note "Nota"
     En lugar de definir una función con una expresión muy larga
@@ -797,10 +797,11 @@ indica la unidad de medida en la que están expresados los grados.
 
 Las fórmulas de conversión son las siguientes:
 
-<img src="imagenes/ecuacion2.png" width="200px"/>
+<!-- <img src="imagenes/ecuacion2.png" width="200px"/>-->
 
-<!-- $$C = (F - 32) * 5/9$$ -->
-<!-- $$F = (C * 9/5) + 32$$ -->
+$$C = (F - 32) * 5/9$$
+
+$$F = (C * 9/5) + 32$$
 
 Primero definimos unas funciones auxiliares que calculan las
 expresiones anteriores:
