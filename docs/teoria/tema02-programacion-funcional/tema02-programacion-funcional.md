@@ -309,11 +309,31 @@ su cálculo de la hoja, pero cuando estamos usándola no nos
 preocupa esa implementación. Podemos no preocuparnos de ella y usar
 únicamente el modelo matemático definido en la hoja.
 
-En la programación funcional se cumplen estas características, porque
-se definen funciones en las que se realizan unas operaciones sobre
-unos parámetros de entrada y se devuelve un valor, sin modificar ningún
-estado del programa ni utilizar pasos de ejecución definidos como
-tales.
+Otro ejemplo muy actual de programación declarativa es SwiftUI, el
+nuevo API creado por Apple para definir las interfaces de usuario de
+las aplicaciones iOS.
+
+<img src="imagenes/swiftui.png" width="700px"/>
+
+En el código de la imagen vemos una descripción de cómo está definida
+la aplicación: una lista de lugares (_landmarks_) apilada
+verticalmente. Para cada lugar se define su imagen, su texto, y
+una estrella si el lugar es favorito.
+
+El código es declarativo porque no hay pasos de ejecución para definir
+la interfaz. No existe un bucle que va añadiendo elementos a la
+interfaz. Vemos una declaración de cómo la interfaz va estar
+definida. El compilador del lenguaje y el API son los responsables de
+construir esa declaración y mostrar la interfaz tal y como nosotros
+queremos.
+
+La programación funcional utiliza un estilo de programación
+declarativo. Definimos funciones en las que se realizan unas
+operaciones sobre unos parámetros de entrada y se devuelve un
+valor. Veremos que estas operaciones se realizan sin definir valores
+intermedios, ni variables auxiliares, ni pasos de
+ejecución. Únicamente se van componiendo llamadas a funciones
+auxiliares que construyen el valor resultante.
 
 El siguiente ejemplo es una **declaración** en Scheme de una función
 que toma como entrada un número y devuelve su cuadrado:
@@ -323,16 +343,17 @@ que toma como entrada un número y devuelve su cuadrado:
    (* x x))
 ```
 
-La llamada a la función con un parámetro concreto devuelve el
-resultado de evaluar su definición. 
+En el cuerpo de la función `cuadrado` vemos que no se utiliza ninguna
+variable auxiliar, sino que únicamente se llama a la función `*`
+(multiplicación) pasando el valor de `x`. El valor resultante es el
+que se devuelve.
+
+Por ejemplo, si llamamos a la función pasándole el parámetro `4`
+devuelve el resultado de multiplicar 4 por si mismo, 16.
 
 ```scheme
 (cuadrado 4) ; ⇒ 16
 ```
-
-Debemos pensar que esta evaluación se hace de forma instantánea, sin
-realizar pasos de ejecución ni mutación de valores en variables
-auxiliares.
 
 La programación declarativa no es exclusiva de los lenguajes
 funcionales. Existen muchos lenguajes no funcionales con
@@ -1489,6 +1510,7 @@ concatenar dos o más listas
 (append list1 list2) ; ⇒ {1 2 3 4 hola como estás}
 ```
 
+<!--
 
 ### Recursión
 
@@ -4073,6 +4095,8 @@ libro *Structure and Intepretation of Computer Programs*:
 - [2.2 - Hierarchical Data and the Closure Property](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2) (Introducción de la sección)
 - [2.2.1 - Representing Sequences](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.1)
 - [2.3.1 - Quotation](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-16.html#%_sec_2.3.1)
+
+-->
 
 ----
 
