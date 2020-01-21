@@ -338,7 +338,7 @@ auxiliares que construyen el valor resultante.
 El siguiente ejemplo es una **declaración** en Scheme de una función
 que toma como entrada un número y devuelve su cuadrado:
 
-```scheme
+```racket
 (define (cuadrado x)
    (* x x))
 ```
@@ -351,7 +351,7 @@ que se devuelve.
 Por ejemplo, si llamamos a la función pasándole el parámetro `4`
 devuelve el resultado de multiplicar 4 por si mismo, 16.
 
-```scheme
+```racket
 (cuadrado 4) ; ⇒ 16
 ```
 
@@ -408,13 +408,13 @@ existen pasos de ejecución separados por sentencias. La forma típica
 de expresar las instrucciones anteriores es componer todas las
 operaciones en una única instrucción:
 
-```scheme
+```racket
 (cuadrado (doble (cuadrado 8)))
 ```
 
 El segundo ejemplo lo podemos componer de la misma forma:
 
-```scheme
+```racket
 (procesa (filtra pedidos))
 ```
 
@@ -456,7 +456,7 @@ Por ejemplo, la forma especial `define` en Scheme crea un nuevo
 identificador y le da el valor definido de forma permanente. Si
 escribimos el siguiente código en un programa en Scheme R6RS:
 
-```scheme
+```racket
 #lang r6rs
 (import (rnrs base))
 
@@ -681,7 +681,7 @@ Ejemplos de expresiones en Scheme, junto con el resultado de su
 ejecución:
 
 
-```scheme
+```racket
 2 ; ⇒ 2
 (+ 2 3) ; ⇒ 5
 (+) ; ⇒ 0
@@ -713,7 +713,7 @@ de dentro a fuera. Por ejemplo, la expresión
 
 que devuelve 5, se evalúa así:
 
-```scheme
+```racket
 (+ (* 2 3) (- 3 (/ 12 3))) ⇒
 (+ 6 (- 3 (/ 12 3))) ⇒
 (+ 6 (- 3 4)) ⇒
@@ -741,7 +741,7 @@ de operar con esos parámetros.
 Por ejemplo, podemos definir la función `(cuadrado x)` que devuelve el
 cuadrado de un número que pasamos como parámetro:
 
-```scheme
+```racket
 (define (cuadrado x)
    (* x x))
 ```
@@ -757,14 +757,14 @@ evaluación es el resultado que se devuelve.
 Una vez definida la función `cuadrado` podemos usarla de la misma
 forma que las funciones primitivas de Scheme:
 
-```scheme
+```racket
 (cuadrado 10) ; ⇒ 100
 (cuadrado (+ 10 (cuadrado (+ 2 4)))) ; ⇒ 2116
 ```
 
 La evaluación de la última expresión se hace de la siguiente forma:
 
-```scheme
+```racket
 (cuadrado (+ 10 (cuadrado (+ 2 4)))) ⇒
 (cuadrado (+ 10 (cuadrado 6))) ⇒
 (cuadrado (+ 10 36)) ⇒
@@ -802,7 +802,7 @@ función que calcularía bien el resultado, pero que sería muy difícil
 de leer y entender para un compañero (o para nosotros mismos, cuando
 pasen unos meses):
 
-```scheme
+```racket
 ;
 ; Definición incorrecta: muy poco legible
 ;
@@ -826,7 +826,7 @@ nombres correctos a cada función, para entender qué hace. Scheme es un
 lenguaje débilmente tipado y no tenemos la ayuda de los tipos que nos
 dan más contexto de qué es cada parámetro y qué devuelve la función.
 
-```scheme
+```racket
 ; Definición correcta, modular y legible de la función tiempo-impacto
 
 ;
@@ -911,7 +911,7 @@ funcionales.
 
 Supongamos un conjunto de definiciones en Scheme:
 
-```scheme
+```racket
 (define (doble x) 
     (+ x x))
     
@@ -927,7 +927,7 @@ Supongamos un conjunto de definiciones en Scheme:
 Supongamos que, una vez realizadas esas definiciones, se evalúa la
 siguiente expresión:
 
-```scheme
+```racket
 (f (+ a 1))
 ```
 
@@ -989,7 +989,7 @@ Vamos a empezar con un ejemplo sencillo para comprobar cómo se evalúa
 una misma expresión utilizando ambos modelos de
 sustitución. Supongamos las siguientes definiciones:
 
-```scheme
+```racket
 (define (doble x) 
     (+ x x))
     
@@ -1001,7 +1001,7 @@ sustitución. Supongamos las siguientes definiciones:
 
 Queremos evaluar la siguiente expresión:
 
-```scheme
+```racket
 (doble (cuadrado a))
 ```
 
@@ -1045,7 +1045,7 @@ Veamos la evaluación del ejemplo algo más complicado que hemos
 planteado al comienzo:
 
     
-```scheme
+```racket
 (define (doble x) 
     (+ x x))
     
@@ -1060,7 +1060,7 @@ planteado al comienzo:
 
 Expresión a evaluar:
 
-```scheme
+```racket
 (f (+ a 1))
 ```
 
@@ -1113,7 +1113,7 @@ entrada.
 Evaluamos las siguientes expresiones con orden aplicativo y normal,
 para comprobar que el resultado es distinto
 
-```scheme
+```racket
 (define (zero x) (- x x))
 (zero (random 10))
 ```
@@ -1159,7 +1159,7 @@ evalúa de una forma diferente.
 
 **Sintaxis**
 
-```scheme
+```racket
 (define <identificador> <expresión>)
 ```
 
@@ -1170,7 +1170,7 @@ evalúa de una forma diferente.
 
 **Ejemplo**
 
-```scheme
+```racket
 (define base 10)   ; Asociamos a 'base' el valor 10
 (define altura 12) ; Asociamos a 'altura' el valor 12
 (define area (/ (* base altura) 2)) ; Asociamos a 'area' el valor 60
@@ -1198,7 +1198,7 @@ de la semántica:
 
 **Ejemplo**
 
-```scheme
+```racket
 (define (factorial x)
     (if (= x 0)
         1
@@ -1209,7 +1209,7 @@ de la semántica:
 
 **Sintaxis**
 
-```scheme
+```racket
 (if <condición> <expresión-true> <expresión-false>)
 ```
 
@@ -1221,7 +1221,7 @@ de la semántica:
 
 **Ejemplo**
 
-```scheme
+```racket
 (if (> 10 5) (substring "Hola qué tal" (+ 1 1) 4) (/ 12 0))
 
 ;; Evaluamos (> 10 5). Como el resultado es #t, evaluamos 
@@ -1235,7 +1235,7 @@ de la semántica:
     
     Por ejemplo, veamos la siguiente expresión:
     
-    ```scheme
+    ```racket
     (if (> 3 0) (+ 2 3) (/ 1 0)) ; ⇒ 5
     ```
 
@@ -1249,7 +1249,7 @@ de la semántica:
 
 **Sintaxis**
 
-```scheme
+```racket
 (cond 
 	(<exp-cond-1> <exp-consec-1>)
 	(<exp-cond-2> <exp-consec-2>)
@@ -1269,7 +1269,7 @@ de la semántica:
 
 **Ejemplo**
 
-```scheme
+```racket
 (cond
    ((> 3 4) "3 es mayor que 4")
    ((< 2 1) "2 es menor que 1")
@@ -1286,7 +1286,7 @@ de la semántica:
 
 **Sintaxis**
 
-```scheme
+```racket
 (quote <identificador>)
 (quote <expresion>)
 ```
@@ -1300,7 +1300,7 @@ de la semántica:
 
 **Ejemplo**
 
-```scheme
+```racket
 (quote x) ; el símbolo x
 'hola ; el símbolo hola
 ```
@@ -1318,7 +1318,7 @@ por el *código hash* del identificador.
 
 Ejemplos de funciones Scheme con símbolos:
 
-```scheme
+```racket
 (define x 12)
 (symbol? 'x) ; ⇒ #t
 (symbol? x) ; ⇒ #f ¿Por qué?
@@ -1338,7 +1338,7 @@ Como hemos visto anteriormente, un símbolo puede asociarse o ligarse
 (*bind*) a un valor (cualquier dato *de primera clase*) con la forma
 especial `define`.
 
-```scheme
+```racket
 (define pi 3.14159)
 ```
 
@@ -1397,7 +1397,7 @@ En el seminario de Scheme explicamos que podemos crear listas de forma
 dinámica, llamando a la función `list` y pasándole un número variable
 de parámetros que son los elementos que se incluirán en la lista:
 
-```scheme
+```racket
 (list 1 2 3 4 5) ; ⇒ {1 2 3 4}
 (list 'a 'b 'c) ; ⇒ {a b c}
 (list 1 'a 2 'b 3 'c #t) ; ⇒ {1 a 2 b 3 c #t}
@@ -1408,7 +1408,7 @@ con los valores resultantes.
 
 Otro ejemplo:
 
-```scheme
+```racket
 (define a 1)
 (define b 2)
 (define c 3)
@@ -1423,7 +1423,7 @@ paréntesis) se devuelve como una lista, sin evaluar sus elementos
 
 Por ejemplo:
 
-```scheme
+```racket
 '(1 2 3 4) ; ⇒ {1 2 3 4}
 (define a 1)
 (define b 2)
@@ -1441,7 +1441,7 @@ La última lista tiene 3 elementos:
 Es posible definir una lista vacía (sin elementos) realizando una
 llamada sin argumentos a la función `list` o utilizando el símbolo `():
 
-```scheme
+```racket
 (list) ; ⇒ {}
 `() ; ⇒ {}
 ```
@@ -1456,14 +1456,14 @@ siguiente invocación se obtiene una lista con cuatro elementos
 resultantes de las invocaciones de las funciones dentro del
 paréntesis:
 
-```scheme
+```racket
 (list 1 (/ 2 3) (+ 2 3)) ; ⇒ {1 2/3 5}
 ```
 
 Sin embargo, usamos `quote` obtenemos una lista con sublistas
 con símbolos en sus primeras posiciones:
 
-```scheme
+```racket
 '(1 (/ 2 3) (+ 2 3)) ; ⇒ {1 {/ 2 3} {+ 2 3}}
 ```
 
@@ -1476,7 +1476,7 @@ En el seminario vimos también cómo obtener los elementos de una lista.
 
 Ejemplos:
 
-```scheme
+```racket
 (define lista1 '(1 2 3 4))
 (car lista1) ; ⇒ 1
 (cdr lista1) ; ⇒ {2 3 4}
@@ -1495,7 +1495,7 @@ al comienzo de la lista. Esta función es la forma habitual de
 construir nuevas listas a partir de una lista ya existente y un
 nuevo elemento.
 
-```scheme
+```racket
 (cons 1 '(1 2 3 4)) ; ⇒ {1 1 2 3 4}
 (cons 'hola '(como estás)) ; ⇒ {hola como estás}
 (cons '(1 2) '(1 2 3 4))  ; ⇒ {{1 2} 1 2 3 4}
@@ -1504,7 +1504,7 @@ nuevo elemento.
 La función `append` se usa para crear una lista nueva resultado de
 concatenar dos o más listas
 
-```scheme
+```racket
 (define list1 '(1 2 3 4))
 (define list2 '(hola como estás))
 (append list1 list2) ; ⇒ {1 2 3 4 hola como estás}
@@ -1532,7 +1532,7 @@ Por ejemplo, `(suma-hasta 5)` devolverá `0+1+2+3+4+5 = 15`.
 
 La definición de la función es la siguiente:
 
-```scheme
+```racket
 (define (suma-hasta x)
    (if (= 0 x)
       0
@@ -1575,7 +1575,7 @@ Siempre es aconsejable usar un ejemplo concreto para probar el caso
 general. Por ejemplo, el caso general de la suma hasta 5 se calculará
 de la siguiente forma:
 
-```scheme
+```racket
 (+ (suma-hasta (- 5 1)) 5) ; ⇒
 (+ (suma-hasta 4) 5) ;  ⇒ confiamos en la recursión: 
                      ;    (suma-hasta 4) = 4+3+2+1 = 10  ⇒
@@ -1627,7 +1627,7 @@ Lo podemos expresar con el siguiente dibujo:
 Generalizamos este ejemplo y lo expresamos en Scheme de la siguiente
 forma:
 
-```scheme
+```racket
 (suma-hasta x) = (+ (suma-hasta (- x 1)) x)
 ```
 
@@ -1638,7 +1638,7 @@ que `x` es 0, en el que devolveríamos 0.
 
 Podemos ya escribirlo todo en Scheme:
 
-```scheme
+```racket
 (define (suma-hasta x)
    (if (= 0 x)
       0
@@ -1649,14 +1649,14 @@ Una aclaración sobre el caso general. En la implementación anterior la
 llamada recursiva a `suma-hasta` se realiza en el primer argumento de
 la suma:
 
-```scheme
+```racket
 (+ (suma-hasta (- x 1)) x)
 ```
 
 La expresión anterior es totalmente equivalente a la siguiente
 en la que la llamada recursiva aparece como segundo argumento
 
-```scheme
+```racket
 (+ x (suma-hasta (- x 1)))
 ```
 
@@ -1674,7 +1674,7 @@ en el carácter que le pasamos como parámetro.
 
 Por ejemplo:
 
-```scheme
+```racket
 (alfabeto-hasta #\h) ; ⇒ "abcdefgh"
 (alfabeto-hasta #\z) ; ⇒ "abcdefghijklmnopqrstuvwxyz"
 ```
@@ -1704,14 +1704,14 @@ auxiliar `(anterior char)` que devuelve el carácter anterior a uno
 dado.
 
 
-```scheme
+```racket
 (define (anterior char)
   (integer->char (- (char->integer char) 1)))
 ```
 
 El caso general quedaría como sigue:
 
-```scheme
+```racket
 (alfabeto-hasta char) =
     (string-append (alfabeto-hasta (anterior char)) (string char))
 ```
@@ -1722,7 +1722,7 @@ con devolver la cadena `"a"`.
 
 La función completa quedaría así:
 
-```scheme
+```racket
 (define (alfabeto-hasta char)
   (if (equal? char #\a)
       "a"
@@ -1745,7 +1745,7 @@ la suma de todos ellos.
 Siempre debemos empezar escribiendo un ejemplo de la función, para
 entenderla bien:
 
-```scheme
+```racket
 (suma-lista '(12 3 5 1 8)) = 29
 ```
 
@@ -1766,7 +1766,7 @@ siguiente dibujo:
 
 Podemos generalizar este ejemplo y expresarlo en Scheme de la siguiente forma:
 
-```scheme
+```racket
 (suma-lista lista) = (+ (car lista) (suma-lista (cdr lista)))
 ```
 
@@ -1778,7 +1778,7 @@ primero de ellos.
 
 Con todo junto, la recursión quedaría como sigue:
 
-```scheme
+```racket
 (define (suma-lista lista)
    (if (null? lista)
        0
@@ -1789,7 +1789,7 @@ Con todo junto, la recursión quedaría como sigue:
 
 Como último ejemplo vamos a definir la función 
 
-```scheme
+```racket
 (veces lista id)
 ```
 
@@ -1798,7 +1798,7 @@ lista.
 
 Por ejemplo,
 
-```scheme
+```racket
 (veces '(a b c a d a) 'a ) ; ⇒ 3
 ```
 
@@ -1810,7 +1810,7 @@ identificador.
 
 En Scheme hay que definir este caso general en una única expresión:
 
-```scheme
+```racket
 (if (equal? (car lista) id)
     (+ 1 (veces (cdr lista) id))
     (veces (cdr lista) id))
@@ -1820,7 +1820,7 @@ Como caso base, si la lista es vacía devolvemos 0.
 
 La versión completa:
 
-```scheme
+```racket
 (define (veces lista id)
   (cond
     ((null? lista) 0)
@@ -1841,7 +1841,7 @@ Ya hemos visto en el seminario de Scheme que el tipo de dato compuesto
 más simple es la pareja: una entidad formada por dos elementos. Se
 utiliza la función `cons` para construirla:
 
-```scheme
+```racket
 (cons 1 2) ; ⇒ {1 . 2}
 (define c (cons 1 2))
 ```
@@ -1863,7 +1863,7 @@ Al igual que las listas, es posible construir parejas con la forma
 especial `quote`, definiendo la pareja entre paréntesis y separando su
 parte izquierda y derecha con un punto:
 
-```scheme
+```racket
 '(1 . 2) ; ⇒ {1 . 2}
 ```
 
@@ -1875,7 +1875,7 @@ construir una pareja con los resultados de evaluar expresiones.
 
 Por ejemplo:
 
-```scheme
+```racket
 (define a 1)
 (define b 2)
 (cons a b) ; ⇒ {1 . 2}
@@ -1889,7 +1889,7 @@ Una vez construida una pareja, podemos obtener el elemento
 correspondiente a su parte izquierda con la función `car` y su parte
 derecha con la función `cdr`:
 
-```scheme
+```racket
 (define c (cons 1 2))
 (car c) ; ⇒ 1
 (cdr c) ; ⇒ 2
@@ -1900,7 +1900,7 @@ derecha con la función `cdr`:
 Las funciones `cons`, `car` y `cdr` quedan perfectamente definidas con
 las siguientes ecuaciones algebraicas:
 
-```scheme
+```racket
 (car (cons x y)) = x
 (cdr (cons x y)) = y
 ```
@@ -1918,7 +1918,7 @@ las siguientes ecuaciones algebraicas:
 
 La función `pair?` nos dice si un objeto es atómico o es una pareja:
 
-```scheme
+```racket
 (pair? 3) ; ⇒ #f
 (pair? (cons 3 4)) ; ⇒ #t
 ```
@@ -1932,7 +1932,7 @@ datos.
 Por ejemplo, podríamos definir la siguiente función `suma` que sume
 tanto números como cadenas:
 
-```scheme
+```racket
 (define (suma x y)
   (cond 
     ((and (number? x) (number? y)) (+ x y))
@@ -1948,7 +1948,7 @@ Sucede lo mismo con el contenido de las parejas. Es posible guardar en
 las parejas cualquier tipo de dato y combinar distintos tipos. Por
 ejemplo:
 
-```scheme
+```racket
 (define c (cons 'hola #f))
 (car c) ; ⇒ 'hola
 (cdr c) ; ⇒ #f
@@ -1983,14 +1983,14 @@ Las parejas son objetos de primera clase.
 
 Una pareja puede asignarse a una variable:
 
-```scheme
+```racket
 (define p1 (cons 1 2))
 (define p2 (cons #f "hola"))
 ```
 
 Una pareja puede pasarse como argumento y devolverse en una función:
 
-```scheme
+```racket
 (define (suma-parejas p1 p2)
     (cons (+ (car p1) (car p2))
           (+ (cdr p1) (cdr p2))))
@@ -2001,7 +2001,7 @@ Una pareja puede pasarse como argumento y devolverse en una función:
 Una vez definida esta función `suma-parejas` podríamos ampliar la
 función `suma` que vimos previamente con este nuevo tipo de datos:
 
-```scheme
+```racket
 (define (suma x y)
   (cond 
     ((and (number? x) (number? y)) (+ x y))
@@ -2018,7 +2018,7 @@ lo que se denomina la propiedad de clausura de la función `cons`:
 
 Ejemplo:
 
-```scheme
+```racket
 (define p1 (cons 1 2))
 (define p2 (cons 3 4))
 (define p (cons p1 p2))
@@ -2026,7 +2026,7 @@ Ejemplo:
 
 Expresión equivalente:
 
-```scheme
+```racket
 (define p (cons (cons 1 2)
                 (cons 3 4)))
 ```
@@ -2050,7 +2050,7 @@ Llamamos a estos diagramas *diagramas caja-y-puntero*
 Al escribir expresiones complicadas con `cons` anidados es conveniente
 para mejorar su legibilidad utilizar el siguiente formato:
 
-```scheme
+```racket
 (define p (cons (cons 1
                       (cons 3 4))
                 2))
@@ -2075,7 +2075,7 @@ devuelve la pareja contenida en `p`, no se crea una pareja nueva.
 Por ejemplo, si después de haber evaluado la sentencia anterior
 evaluamos la siguiente:
 
-```scheme
+```racket
 (define p2 (cons 5 (cons p 6)))
 ```
 
@@ -2106,7 +2106,7 @@ la estructura.
 La siguiente función `print-pareja` puede ser útil a la hora de
 mostrar por pantalla los elementos de una pareja
 
-```scheme
+```racket
 (define (print-pareja pareja)
     (if (pair? pareja)
         (begin 
@@ -2133,13 +2133,13 @@ mostrar por pantalla los elementos de una pareja
 Al trabajar con estructuras de parejas anidades es muy habitual
 realizar llamadas del tipo:
 
-```scheme
+```racket
 (cdr (cdr (car p))) ; ⇒ 4
 ```
 
 Es equivalente a la función `cadar` de Scheme:
 
-```scheme
+```racket
 (cddar p) ; ⇒ 4
 ```
 
@@ -2170,7 +2170,7 @@ parejas usando las funciones `list?` y `pair?`.
 Por ejemplo, una pareja formada por dos números es una pareja, pero no
 es una lista:
 
-```scheme
+```racket
 (define p1 (cons 1 2))
 (pair? p1) ; ⇒ #t
 (list? p1) ; ⇒ #f
@@ -2178,14 +2178,14 @@ es una lista:
 
 Y una lista vacía es una lista, pero no es una pareja:
 
-```scheme
+```racket
 (list? '()) ; ⇒ #t
 (pair? '()) ; ⇒ #f
 ```
 
 ¿Una lista es una pareja? Pues sí:
 
-```scheme
+```racket
 (define lista '(1 2 3))
 (list? lista) ; ⇒ #t
 (pair? lista) ; ⇒ #t
@@ -2194,7 +2194,7 @@ Y una lista vacía es una lista, pero no es una pareja:
 Por último, una pareja con una lista vacía como segundo elemento es
 una pareja y una lista:
 
-```scheme
+```racket
 (define p1 (cons 1 '()))
 (pair? p1) ; ⇒ #t
 (list? p1) ; ⇒ #t
@@ -2214,7 +2214,7 @@ Una lista es (definición recursiva):
 Por ejemplo, una lista muy sencilla con un solo elemento, `{1}`, se
 define con la siguiente pareja:
 
-```scheme
+```racket
 (cons 1 '())
 ```
 	
@@ -2231,7 +2231,7 @@ La pareja cumple las condiciones anteriores:
 El objeto es al mismo tiempo una pareja y una lista. La función
 `list?` permite comprobar si un objeto es una lista:
 
-```scheme
+```racket
 (define l (cons 1 '()))
 (pair? l)
 (list? l)
@@ -2240,7 +2240,7 @@ El objeto es al mismo tiempo una pareja y una lista. La función
 Por ejemplo, la lista '(1 2 3 4) se construye con la siguiente
 secuencia de parejas:
 
-```scheme
+```racket
 (cons 1
       (cons 2
             (cons 3
@@ -2265,13 +2265,13 @@ resto de la lista.
 
 La lista vacía es una lista:
 
-```scheme
+```racket
 (list? '()) ; ⇒ #t
 ```
 
 Y no es un símbolo ni una pareja:
 
-```scheme
+```racket
 (symbol? '()) ; ⇒ #f
 (pair? '()) ; ⇒ #f
 ```
@@ -2279,7 +2279,7 @@ Y no es un símbolo ni una pareja:
 Para saber si un objeto es la lista vacía, podemos utilizar la función
 `null?`:
 
-```scheme
+```racket
 (null? '()) ; ⇒ #t
 ```	
 
@@ -2291,7 +2291,7 @@ otras parejas.
 La siguiente estructura se denomina *lista de asociación*. Son listas
 cuyos elementos son parejas (*clave*, *valor*):
 
-```scheme
+```racket
 (list (cons 'a 1)
       (cons 'b 2)
       (cons 'c 3)) ; ⇒ {{a . 1} {b . 2} {c . 2}}
@@ -2304,7 +2304,7 @@ cuyos elementos son parejas (*clave*, *valor*):
 
 La expresión equivalente utilizando conses es:
 
-```scheme
+```racket
 (cons (cons 'a 1)
       (cons (cons 'b 2)
             (cons (cons 'c 3)
@@ -2315,13 +2315,13 @@ La expresión equivalente utilizando conses es:
 
 Hemos visto que podemos construir listas que contienen otras listas:
 
-```scheme
+```racket
 (define lista (list 1 (list 1 2 3) 3))
 ```
 
 La lista anterior también se puede definir con quote:
 
-```scheme
+```racket
 (define lista '(1 (1 2 3) 3))
 ```
 
@@ -2331,13 +2331,13 @@ son elementos atómicos (números) y el segundo es otra lista.
 Si preguntamos por la longitud de la lista Scheme nos dirá que es una
 lista de 3 elementos:
 
-```scheme
+```racket
 (length lista) ; ⇒ 3
 ```
 
 Y el segundo elemento de la lista es otra lista:
 
-```scheme
+```racket
 (car (cdr lista)) ; ⇒ {1 2 3}
 ```
 
@@ -2362,7 +2362,7 @@ su representación con diagramas caja y puntero para definir funciones
 de alto nivel. Algunas de estas funciones ya las conocemos, otras las
 vemos por primera vez en los siguientes ejemplos:
 
-```scheme
+```racket
 (append '(a (b) c) '((d) e f)) ; ⇒ {a {b} c {d} e f}
 (list-ref '(a (b) c d) 2) ; ⇒ c
 (length '(a (b (c))) ; ⇒ 2
@@ -2401,7 +2401,7 @@ Vamos a ver las siguientes funciones:
 La función `(mi-list-ref n lista)` devuelve el elemento `n` de una
 lista (empezando a contar por 0):
 
-```scheme
+```racket
 (define lista '(a b c d e f g))
 (mi-list-ref lista 2) ; ⇒ c
 ```
@@ -2438,7 +2438,7 @@ recursiva:
 
 La implementación de todo esto en Scheme sería la siguiente:
 
-```scheme
+```racket
 (define (mi-list-ref lista n)
    (if (= n 0) 
       (car lista)
@@ -2450,7 +2450,7 @@ La implementación de todo esto en Scheme sería la siguiente:
 La función `(mi-list-tail lista n)` devuelve la lista resultante de
 quitar n elementos de la cabeza de la lista original:
 
-```scheme
+```racket
 (mi-list-tail '(1 2 3 4 5 6 7) 2) ; ⇒ {3 4 5 6 7}
 ```
 
@@ -2458,7 +2458,7 @@ Piensa en cómo se implementaría de forma recursiva. Esta vez vamos a
 mostrar directamente la implementación, sin dar explicaciones de cómo
 se ha llegado a ella:
 
-```scheme
+```racket
 (define (mi-list-tail lista n)
    (if (= n 0) 
        lista
@@ -2473,7 +2473,7 @@ lista2)`.
 
 Por ejemplo:
 
-```scheme
+```racket
 (mi-append '(a b c) '(d e f)) ; ⇒ {a b c d e f}
 ```
 
@@ -2503,13 +2503,13 @@ El caso base, el caso en el que la función puede devolver un valor
 directamente sin llamar a la recursión, es aquel en el que `lista1` es
 `null?`. En ese caso devolvemos `lista2`:
 
-```scheme
+```racket
 (mi-append '() '(a b c)) = '{a b c}
 ```
 
 La formulación recursiva completa queda como sigue:
 
-```scheme
+```racket
 (define (mi-append l1 l2)
     (if (null? l1)
         l2
@@ -2522,7 +2522,7 @@ La formulación recursiva completa queda como sigue:
 Veamos cómo implementar de forma recursiva la función `mi-reverse` que
 invierte una lista
 
-```scheme
+```racket
 (mi-reverse '(1 2 3 4 5 6)) ; ⇒ {6 5 4 3 2 1}
 ```
 
@@ -2536,14 +2536,14 @@ añade un dato al final de una lista usando `append`:
 Veamos directamente su implementación, usando `mi-append` para añadir
 un elemento al final de la lista:
 
-```scheme
+```racket
 (define (añade-al-final dato lista)
     (append lista (list dato)))
 ```
 
 La función `mi-reverse` quedaría entonces como sigue:
 
-```scheme
+```racket
 (define (mi-reverse lista)
     (if (null? lista) '()
     (añade-al-final (car lista) (mi-reverse (cdr lista)))))
@@ -2562,7 +2562,7 @@ devolvemos una lista formada por el 1.
 
 En Scheme:
 
-```scheme
+```racket
 (define (cuadrados-hasta x)
    (if (= x 1)
       '(1)
@@ -2572,7 +2572,7 @@ En Scheme:
 
 Ejemplo:
 
-```scheme
+```racket
 (cuadrados-hasta 10) ; ⇒ {100 81 64 49 36 25 16 9 4 1}
 ```
 
@@ -2585,7 +2585,7 @@ condición.
 Por ejemplo, la siguiente función `filtra-pares` construye una lista
 con los números pares de la lista que le pasamos como parámetro:
 
-```scheme
+```racket
 (define (filtra-pares lista)
    (cond
       ((null? lista) '())
@@ -2596,7 +2596,7 @@ con los números pares de la lista que le pasamos como parámetro:
 
 Ejemplo:
 
-```scheme
+```racket
 (filtra-pares '(1 2 3 4 5 6)) ; ⇒ {2 4 6}
 ```
 
@@ -2612,7 +2612,7 @@ es dos. En ese caso será primo.
 
 Por ejemplo:
 
-```scheme
+```racket
 (divisores 8) ; ⇒ {1 2 4 8} longitud = 4, no primo
 (divisores 9) ; ⇒ {1 3 9} longitud = 3, no primo
 (divisores 11) ; ⇒ {1 11} longitud = 2, primo
@@ -2620,7 +2620,7 @@ Por ejemplo:
 
 Podemos definir entonces la función `(primo? x)` de la siguiente forma:
 
-```scheme
+```racket
 (define (primo? x)
    (=  2 
       (length (divisores x))))
@@ -2635,7 +2635,7 @@ siguiente forma:
 
 La función `(lista-hasta x)` devuelve una lista de números 1..x:
 
-```scheme
+```racket
 (define (lista-hasta x)
    (if (= x 0)
       '()
@@ -2644,7 +2644,7 @@ La función `(lista-hasta x)` devuelve una lista de números 1..x:
 
 Ejemplos:
 
-```scheme
+```racket
 (lista-hasta 2) ; ⇒ {1 2}
 (lista-hasta 10) ; ⇒ {1 2 3 4 5 6 7 8 9 10}
 ```
@@ -2652,14 +2652,14 @@ Ejemplos:
 Definimos la función `(divisor? x y)` que nos diga si x es divisor de
 y:
 
-```scheme
+```racket
 (define (divisor? x y)
       (= 0 (mod y x)))
 ```
 
 Ejemplos:
 
-```scheme
+```racket
 (divisor 2 10) ; ⇒ #t
 (divisor 3 10) ; ⇒ #f
 ```
@@ -2669,7 +2669,7 @@ para definir la función recursiva `(filtra-divisores lista x)` que
 devuelve una lista con los números de `lista` que son divisores de
 `x`:
 
-```scheme
+```racket
 (define (filtra-divisores lista x)
    (cond
       ((null? lista) '())
@@ -2682,13 +2682,13 @@ Ya podemos implementar la función que devuelve los divisores de un
 número `x` generando los números hasta `x` y filtrando los divisores
 de ese número. Por ejemplo, para calcular los divisores de 10:
 
-```scheme
+```racket
 (filtra-divisores {1 2 3 4 5 6 7 8 9 10} 10) ; ⇒ {1 2 5 10}
 ```
 
 Se puede implementar de una forma muy sencilla:
 
-```scheme
+```racket
 (define (divisores x)
    (filtra-divisores (lista-hasta x) x))
 ```
@@ -2712,14 +2712,14 @@ se pasarán en forma de lista en el último parámetro.
 
 Por ejemplo, si tenemos la definición
 
-```scheme
+```racket
 (define (funcion-dos-o-mas-args x y . lista-args) 
     <cuerpo>)
 ```
 
 podemos llamar a la función anterior con dos o más argumentos:
 
-```scheme
+```racket
 (funcion-dos-o-mas-args 1 2 3 4 5 6)
 ```
 	
@@ -2730,14 +2730,14 @@ restantes `(3 4 5 6)`.
 También es posible permitir que todos los argumentos sean opcionales
 no poniendo ningún argumento antes del punto::
 
-```scheme
+```racket
 (define (funcion-cualquier-numero-args . lista-args) 
     <cuerpo>)
 ```
 	
 Si hacemos la llamada
 
-```scheme
+```racket
 (funcion-cualquier-numero-args 1 2 3 4 5 6)
 ```
 	
@@ -2751,7 +2751,7 @@ suma de todos ellos. Es muy sencillo: recogemos todos los argumentos
 en la lista de argumentos variables y llamamos a la función
 `suma-lista` que suma una lista de números:
 
-```scheme
+```racket
 (define (mi-suma x y . lista-nums)
     (if (null? lista-nums)
         (+ x y)
@@ -2831,7 +2831,7 @@ Algunos ejemplos:
 
 Una función anónima que suma dos parejas:
 
-```scheme
+```racket
 (lambda (p1 p2)
     (cons (+ (car p1) (car p2))
           (+ (cdr p1) (cdr p2))))
@@ -2839,7 +2839,7 @@ Una función anónima que suma dos parejas:
 
 Una función anónima que devuelve el mayor de dos números:
 
-```scheme
+```racket
 (lambda (a b)
     (if (> a b)
         a
@@ -2854,7 +2854,7 @@ anónima en tiempo de ejecución.
 Por ejemplo, si ejecutamos una expresión lambda en el intérprete
 veremos que devuelve un procedimiento:
 
-```scheme
+```racket
 (lambda (x) (* x x)) ; ⇒ #<procedure>
 ```
 
@@ -2867,13 +2867,13 @@ Podemos asignarlo a un identificador. Por ejemplo, en la siguiente
 expresión, primero se evalúa la *expresión lambda* y el procedimiento
 resultante se asocia al identificador `f`.
 
-```scheme
+```racket
 (define f (lambda (x) (* x x)))
 ```
 
 El ejemplo anterior funciona de una forma idéntica al siguiente:
 
-```scheme
+```racket
 (define x (+ 2 3))
 ```
 
@@ -2885,7 +2885,7 @@ segundo un número, que se guarda en la variable `x`.
 Si escribimos los identificadores `f` y `x` en el intérprete Scheme los
 evalúa y muestra los valores guardados:
 
-```scheme
+```racket
 f ; ⇒ #<procedure:f>
 x ; ⇒ 5
 ```
@@ -2898,7 +2898,7 @@ Una vez asignado un procedimiento a un identificador, lo podemos
 utilizar como de la misma forma que invocamos habitualmente a una
 función:
 
-```scheme
+```racket
 (f 3) ; ⇒ 9
 ```
 
@@ -2906,14 +2906,14 @@ No es necesario un identificador para invocar a una función; podemos
 crear la función con una expresión lambda e invocar a la función
 anónima recién creada:
 
-```scheme
+```racket
 ((lambda (x) (* x x)) 3) ; ⇒ 9
 ```
 
 La llamada a `lambda` crea un procedimiento y el paréntesis a su
 izquierda lo invoca con el parámetro 3:
 
-```scheme
+```racket
 ((lambda (x) (* x x)) 3) = (#<procedure> 3) ⇒ 9
 ```
 
@@ -2958,7 +2958,7 @@ Tras conocer `lambda` ya podemos explicarnos por qué cuando escribimos
 en el intérprete de Scheme el nombre de una función, se evalúa a un
 *procedure*:
 
-```scheme
+```racket
 + ; ⇒ <procedure:+>
 ```
 
@@ -2969,7 +2969,7 @@ a los que están ligados *objetos de tipo función*.
 Podemos asignar funciones ya existentes a nuevos identificadores
 usando `define`, como en el ejemplo siguiente:
 
-```scheme
+```racket
 + ; ⇒ <procedure:+>
 (define suma +)
 (suma 1 2 3 4) ; ⇒ 10
@@ -3001,14 +3001,14 @@ siempre se convierte internamente en:
 
 Por ejemplo
 
-```scheme
+```racket
 (define (cuadrado x)
     (* x x))
 ```
 
 es equivalente a:
 
-```scheme
+```racket
 (define cuadrado 
     (lambda (x) (* x x)))
 ```
@@ -3020,7 +3020,7 @@ Scheme `procedure?`.
 
 Por ejemplo:
 
-```scheme
+```racket
 (procedure? (lambda (x) (* x x))) ; ⇒ #t
 (define suma +)
 (procedure? suma) ; ⇒ #t
@@ -3047,7 +3047,7 @@ basta con usar `func` como su nombre. La función se ha ligado al
 nombre `func` en el momento de la invocación a `aplica`, de la misma
 forma que los argumentos se ligan a los parámetros `x` e `y`:
 
-```scheme
+```racket
 (define (aplica f x y)
    (f x y))
 ```
@@ -3055,7 +3055,7 @@ forma que los argumentos se ligan a los parámetros `x` e `y`:
 Algunos ejemplos de invocación, usando funciones primitivas, funciones
 definidas y expresiones lambda:
 
-```scheme
+```racket
 (aplica + 2 3) ; ⇒ 5
 (aplica * 4 5) ; ⇒ 10
 (aplica string-append "hola" "adios") ; ⇒ "holaadios"
@@ -3072,7 +3072,7 @@ Otro ejemplo, la función `aplica-2` que toma dos funciones `f` y `g` y
 un argumento `x` y devuelve el resultado de aplicar `f` a lo que
 devuelve la invocación de `g` con `x`:
 
-```scheme
+```racket
 (define (aplica-2 f g x)
    (f (g x)))
 
@@ -3093,7 +3093,7 @@ funciones más genéricas.
 Veamos un ejemplo. Supongamos que queremos calcular el sumatorio de
 `a` hasta `b`:
 
-```scheme
+```racket
 (define (sum-x a b)
     (if (> a b)
         0
@@ -3105,7 +3105,7 @@ Veamos un ejemplo. Supongamos que queremos calcular el sumatorio de
 Supongamos ahora que queremos calcular el sumatorio de `a` hasta `b`
 sumando los números al cuadrado:
 
-```scheme
+```racket
 (define (sum-cuadrado-x a b)
     (if (> a b)
         0
@@ -3116,7 +3116,7 @@ sumando los números al cuadrado:
 
 Y el sumatorio de `a` hasta `b` sumando los cubos:
 
-```scheme
+```racket
 (define (sum-cubo-x a b)
     (if (> a b)
         0
@@ -3146,7 +3146,7 @@ Podemos tomar esa función como un parámetro adicional y definir una
 función genérica `sum-f-x` que generaliza las tres funciones
 anteriores. Tendríamos el sumatorio desde `a` hasta `b` de `f(x)`:
 
-```scheme
+```racket
 (define (sum-f-x f a b)
     (if (> a b)
         0
@@ -3157,7 +3157,7 @@ Las funciones anteriores son casos particulares de esta función que
 las generaliza. Por ejemplo, para calcular el sumatorio desde 1 hasta
 10 de `x` al cubo:
 
-```scheme
+```racket
 (define (cubo x)
     (* x x x))
 
@@ -3170,7 +3170,7 @@ También podemos utilizar una expresión lambda en la invocación a
 número. Por ejemplo, podemos sumar la expresión (n/(n-1)) para todos
 los números del 2 al 100:
   
-```scheme
+```racket
 (sum-f-x (lambda (n) (/ n (- n 1))) 2 100)
 ```
 
@@ -3209,7 +3209,7 @@ Vamos a empezar con un ejemplo muy sencillo. Definimos una función
 constructora que crea en su ejecución una función que suma
 `k` a un número:
 
-```scheme
+```racket
 (define (construye-sumador k)
    (lambda (x)
        (+ x k)))
@@ -3224,7 +3224,7 @@ argumento.
 
 Por ejemplo, podemos invocar a `construye-sumador` pasando 10 como parámetro:
 
-```scheme
+```racket
 (construye-sumador 10) ; => #<procedure>
 ```
 
@@ -3232,7 +3232,7 @@ Como hemos dicho, se devuelve un procedimiento, una función. Esta
 función devuelta debe invocarse con un argumento y devolverá el
 resultado de sumar 10 a ese argumento:
 
-```scheme
+```racket
 (define f (construye-sumador 10))
 (f 3) ; => 13
 ```
@@ -3240,7 +3240,7 @@ resultado de sumar 10 a ese argumento:
 También podemos invocar directamente a la función que devuelve la
 función constructora, sin guardarla en una variable:
 
-```scheme
+```racket
 ((construye-sumador 10) 3) ; => 13
 ```
 
@@ -3248,7 +3248,7 @@ Dependiendo del parámetro que le pasemos a la función constructora
 obtendremos una función sumadora que sume un número u otro. Por
 ejemplo para obtener una función sumadora que suma 100:
   
-```scheme
+```racket
 (define g (construye-sumador 100))
 (g 3) ; => 103
 ```
@@ -3265,7 +3265,7 @@ pinceladas.
 
 Recordemos la definición de `construye-sumador`:
 
-```scheme
+```racket
 (define (construye-sumador k)
    (lambda (x)
        (+ x k)))
@@ -3273,7 +3273,7 @@ Recordemos la definición de `construye-sumador`:
 
 Y supongamos que realizamos las siguientes invocaciones:
 
-```scheme
+```racket
 (define g (construye-sumador 100))
 (g 3) ; => 103
 ```
@@ -3305,7 +3305,7 @@ Otro ejemplo de una función que devuelve otra función es la función
 siguiente `(componedor f g)` que recibe dos funciones de un argumento
 y devuelve otra función que realiza la composición de ambas:
 
-```scheme
+```racket
 (define (componedor f g)
     (lambda (x)
 	    (f (g x))))
@@ -3318,7 +3318,7 @@ respectivamente. Podremos entonces llamar a `componedor` con esas dos
 funciones para construir otra función que primero calcule el cuadrado y
 después el doble de una número:
 
-```scheme
+```racket
 (define h (componendor doble cuadrado))
 ```
 
@@ -3326,7 +3326,7 @@ La variable `h` contiene la función devuelta por `componedor`. Una
 función de un argumento que devuelve el doble del cuadrado de un
 número:
 
-```scheme
+```racket
 (h 4) ; => 32
 ```
 
@@ -3355,7 +3355,7 @@ sólo tengamos que definirlo una vez, al crear la función
 
 Lo podemos hacer con la siguiente función constructora:
 
-```scheme
+```racket
 (define (construye-logger str-prefijo)
   (lambda (x)
     (display (string-append str-prefijo x "\n"))))
@@ -3363,7 +3363,7 @@ Lo podemos hacer con la siguiente función constructora:
 
 Por ejemplo, definimos distintos loggers y los probamos:
 
-```scheme
+```racket
 (define logger-red (construye-logger "Módulo acceso red: "))
 
 (logger-red "Error en el acceso a BD")
@@ -3391,7 +3391,7 @@ Por ejemplo, definimos distintos loggers y los probamos:
 
 Recordemos la función `divisores`:
 
-```scheme
+```racket
 (define (lista-hasta x)
    (if (= x 0)
       '()
@@ -3418,7 +3418,7 @@ Podemos definir la siguiente función general a la que le pasamos una
 función de un argumento `f` y devuelve la función f "segura" a la que
 sólo se va a invocar si el parámetro es mayor o igual que 0:
 
-```scheme
+```racket
 (define (construye-segura-menor-cero f)
   (lambda (x)
     (if (>= x 0)
@@ -3428,7 +3428,7 @@ sólo se va a invocar si el parámetro es mayor o igual que 0:
 
 Podemos entonces "segurizar" la función `divisores`:
 
-```scheme
+```racket
 (define divisores-segura (construye-segura-menor-cero divisores))
 (divisores-segura 10) ; => {10 5 2 1}
 (divisores-segura -10) ; => error
@@ -3437,7 +3437,7 @@ Podemos entonces "segurizar" la función `divisores`:
 La función `(construye-segura-menor-cero f)` se puede aplicar para
 "segurizar" cualquier función, no sólo `divisores`:
 
-```scheme
+```racket
 (define sqrt-segura (construye-segura-menor-cero sqrt))
 (sqrt-segura 100) ; => 10
 (sqrt-segura -100) ; => error
@@ -3446,7 +3446,7 @@ La función `(construye-segura-menor-cero f)` se puede aplicar para
 Se podría generalizar aún más la función "segurizadora" haciendo que
 la condición a cumplir por el número sea otra función que también pasamos:
   
-```scheme
+```racket
 (define (construye-segura condicion f)
   (lambda (x)
     (if (condicion x)
@@ -3457,7 +3457,7 @@ la condición a cumplir por el número sea otra función que también pasamos:
 La forma de definir una función `divisores` segura con esta nueva
 función sería:
   
-```scheme
+```racket
 (define divisores-segura2 (construye-segura (lambda (x) (>= x 0)) divisores))
 ```
 
@@ -3470,7 +3470,7 @@ formar parte de tipos de datos compuestos, como listas.
 Para construir una lista de funciones debemos llamar a `list` con las
 funciones:
 
-```scheme
+```racket
 (define lista (list cuadrado suma-1 doble))
 lista ; ⇒ {#<procedure:cuadrado>  #<procedure:suma-1>  #<procedure:doble>}
 ```
@@ -3479,7 +3479,7 @@ También podemos evaluar una expresión lambda y añadir el procedimiento
 resultante. Por ejemplo, para añadir otra función a la lista anterior
 podemos llamar a `cons`:
 
-```scheme
+```racket
 (define lista2 (cons (lambda (x) (+ x 5)) lista))
 lista2 ; ⇒ {#<procedure> #<procedure:cuadrado> #<procedure:suma-1> #<procedure:doble>}
 ```
@@ -3490,7 +3490,7 @@ otro dato guardado en la lista, las recuperamos con las funciones
 `car` o `list-ref` y las invocamos. Por ejemplo, para invocar a la
 primera función de `lista2`:
 
-```scheme
+```racket
 ((car lista2) 10) ; ⇒ 15
 ```
 
@@ -3503,7 +3503,7 @@ aplica todas al número que pasamos en el parámetro `x`.
 Por ejemplo, si construimos una lista con las funciones `cuadrado`,
 `cubo` y `suma-1`:
 
-```scheme
+```racket
 (define lista (list cuadrado cubo suma-1))
 ```
 
@@ -3511,7 +3511,7 @@ la llamada a `(aplica-funcs lista 5)` debería devolver el resultado de
 aplicar primero `suma-1` a 5, después `cubo` al resultado y después
 `cuadrado`:
 
-```scheme
+```racket
 (cuadrado (cubo (suma-1 5)) ; ⇒ 46656
 ```
 
@@ -3534,7 +3534,7 @@ entonces como:
 El caso base sería en el que la lista de funciones es vacía, en cuyo
 caso se devuelve el propio número:
 
-```scheme
+```racket
 (if (null? lista-funcs) ; la lista de funciones está vacía
     x ; devolvemos el propio número
     ...
@@ -3542,7 +3542,7 @@ caso se devuelve el propio número:
 
 La implementación completa es:
 
-```scheme
+```racket
 (define (aplica-funcs lista-funcs x)
     (if (null? lista-funcs)
         x
@@ -3552,7 +3552,7 @@ La implementación completa es:
 
 Un ejemplo de uso:
 
-```scheme
+```racket
 (define lista-funcs (list (lambda (x) (* x x))
                           (lambda (x) (* x x x))
                           (lambda (x) (+ x 1))))
@@ -3601,7 +3601,7 @@ transformación que se pasa como parámetro.
 
 En concreto, la función recibe otra función y una lista:
 
-```scheme
+```racket
 (map funcion lista)
 ```
 
@@ -3610,7 +3610,7 @@ elementos de la lista.
 
 Por ejemplo:
 
-```scheme
+```racket
 (map cuadrado '(1 2 3 4 5)) ; ⇒ {1 4 9 16 25}
 ```
 
@@ -3624,7 +3624,7 @@ la función de transformación debe recibir una pareja. Veamos un
 ejemplo de este caso, en el que a partir de una lista de parejas
 obtenemos una lista con las sumas de cada pareja:
 
-```scheme
+```racket
 (define (suma-pareja pareja)
     (+ (car pareja) (cdr pareja)))
 
@@ -3633,7 +3633,7 @@ obtenemos una lista con las sumas de cada pareja:
 
 También podríamos hacerlo con una expresión lambda:
 
-```scheme
+```racket
 (map (lambda (pareja)
          (+ (car pareja) (cdr pareja))) '((2 . 4) (3 . 6) (5 . 3))) 
 ; ⇒ {6 9 8}
@@ -3643,7 +3643,7 @@ También podríamos hacerlo con una expresión lambda:
 Un último ejemplo, en el que usamos `map` para transformar una lista
 de símbolos en una lista con sus longitudes:
 
-```scheme
+```racket
 (map (lambda (s) 
         (string-length (symbol->string s))) '(Esta es una lista de símbolos))
 ; => {4 2 3 5 2 8}
@@ -3659,7 +3659,7 @@ de símbolos en una lista con sus longitudes:
 ¿Cómo se podría implementar `map` de forma recursiva? Definimos la
 función `mi-map`. La implementación es la siguiente:
 
-```scheme
+```racket
 (define (mi-map f lista)
     (if (null? lista)
         '()
@@ -3672,7 +3672,7 @@ función `mi-map`. La implementación es la siguiente:
 Es posible pasar más de una lista como parámetro de la función
 `map`. Todas las listas deben tener la misma longitud:
 
-```scheme
+```racket
 (map f lista-1 ... lista-n)
 ```
 
@@ -3683,7 +3683,7 @@ con los resultados.
 
 Ejemplos:
 
-```scheme
+```racket
 (map + '(1 2 3) '(10 20 30)) ; ⇒ {11 22 33}
 (map cons '(1 2 3) '(10 20 30)) ; ⇒ {{1 . 10} {2 . 20} {3 . 30}}
 (map > '(12 3 40) '(20 0 10)) ; ⇒ {#f #t #t}
@@ -3702,7 +3702,7 @@ cumplen el predicado.
 
 Un ejemplo de uso:
 
-```scheme
+```racket
 (filter even? '(1 2 3 4 5 6 7 8)) ; ⇒ {2 4 6 8}
 ```
 
@@ -3711,7 +3711,7 @@ números, devolviendo aquellas que parejas que cumplen que su parte
 izquierda es mayor o igual que la derecha. Lo podríamos hacer con la
 siguiente expresión:
 
-```scheme
+```racket
 (filter (lambda (pareja)
             (>= (car pareja) (cdr pareja))) '((10 . 4) (2 . 4) (8 . 8) (10 . 20)))
 ; ⇒ {{10 . 4} {8 . 8}}
@@ -3720,7 +3720,7 @@ siguiente expresión:
 Y un último ejemplo: filtramos todos los símbolos con longitud menor
 de 4.
 
-```scheme
+```racket
 (filter (lambda (s) 
            (>= (string-length (symbol->string s)) 4))
            '(Esta es una lista de símbolos))
@@ -3738,7 +3738,7 @@ de 4.
 
 Podemos implementar la función `filter` de forma recursiva:
 
-```scheme
+```racket
 (define (mi-filter pred lista)
   (cond
     ((null? lista) '())
@@ -3754,7 +3754,7 @@ y comprueba si algún elemento de la lista cumple ese predicado.
 
 Ejemplo de uso:
 
-```scheme
+```racket
 (exists even? '(1 2 3 4 5 6)) ; ⇒ #t
 (exists (lambda (x)
              (> x 10)) '(1 3 5 8)) ; ⇒ #f
@@ -3769,7 +3769,7 @@ y comprueba que todos los elementos de la lista cumplen ese predicado.
 
 Ejemplo de uso:
 
-```scheme
+```racket
 (for-all even? '(2 4 6)) ; ⇒ #t
 (for-all (lambda (x)
              (> x 10)) '(12 30 50 80)) ; ⇒ #t
@@ -3791,7 +3791,7 @@ La explicación de su funcionamiento es la siguiente:
 Por ejemplo, supongamos que la función de plegado es una función que
 suma dos valores.
 
-```scheme
+```racket
 (define (suma dato resultado)
     (+ dato resultado))
 ```
@@ -3804,7 +3804,7 @@ segundo del resultado calculado.
 Veamos qué pasa cuando hacemos un `fold-right` con esta función suma y
 la lista '(1 2 3) y con el número 0 como base:
   
-```scheme
+```racket
 (fold-right suma 0 '(1 2 3)) ; => 6
 ```
 
@@ -3816,7 +3816,7 @@ utilizándolo como nuevo parámetro `resultado` en la siguiente llamada.
 En concreto, la secuencia de llamadas a la función `suma` serán las
 siguientes:
 
-```scheme
+```racket
 (suma 3 0) ; => 3
 (suma 2 3) ; => 5
 (suma 1 5) ; => 6
@@ -3824,14 +3824,14 @@ siguientes:
 
 Otro ejemplo de uso:
 
-```scheme
+```racket
 (fold-right string-append "****" '("hola" "que" "tal")) ; ⇒ "holaquetal****"
 ```
 
 En este caso la secuencia de llamadas a `string-append` que se van a
 producir son:
   
-```scheme
+```racket
 (string-append "tal" "****") ; => "tal****"
 (string-append "que" "tal****") ; => "quetal****"
 (string-append "hola" "quetal****") ; => "holaquetal****"
@@ -3839,14 +3839,14 @@ producir son:
 
 Otros ejemplos:
 
-```scheme
+```racket
 (fold-right (lambda (x y) (* x y)) 1 '(1 2 3 4 5 6 7 8)) ; ⇒ 40320
 (fold-right cons '() '(1 2 3 4)) ; ⇒ {1 2 3 4}
 ```
 
 Un último ejemplo:
 
-```scheme
+```racket
 (define (suma-parejas lista-parejas)
     (fold-right (lambda (pareja resultado)
                    (+ (car pareja) (cdr pareja) resultado)) 0 lista-parejas))
@@ -3863,19 +3863,19 @@ izquierda a derecha** en lugar de derecha a izquierda.
 La función de plegado también cambia, porque tiene invertidos sus
 argumentos:
 
-```scheme
+```racket
 (f resultado dato)
 ```
 
 Por ejemplo:
 
-```scheme
+```racket
 (fold-left - 0 '(1 2 3)) ; => -6
 ```
 
 La secuencia de llamadas a `-` son:
 
-```scheme
+```racket
 (- 0 1) ; => -1
 (- -1 2) ; => -3
 (- -3 3) ; => -6
@@ -3890,7 +3890,7 @@ La secuencia de llamadas a `-` son:
 
 Podríamos implementar de forma recursiva la función `fold-right`:
 
-```scheme
+```racket
 (define (mi-fold-right func base lista)
   (if (null? lista)
       base
@@ -3916,7 +3916,7 @@ todos los elementos de una lista.
 
 Podemos hacerlo de forma recursiva:
 
-```scheme
+```racket
 (define (suma-n n lista)
     (if (null? lista)
         '()
@@ -3926,7 +3926,7 @@ Podemos hacerlo de forma recursiva:
 
 Funciona de la siguiente manera:
 
-```scheme
+```racket
 (suma-n 10 '(1 2 3 4)) ; ⇒ (11 12 13 14)
 ```
 
@@ -3938,7 +3938,7 @@ misma función de una forma mucho más concisa y expresiva.
 Lo podemos hacer utilizando la función de orden superior `map` y una
 expresión lambda que sume el número `n` a los elementos de la lista:
 
-```scheme
+```racket
 (define (suma-n n lista)
     (map (lambda (x) (+ x n)) lista))
 ```
@@ -3949,7 +3949,7 @@ lista es una función que suma este número a cada elemento. La variable
 `x` en el parámetro de la expresión lambda es la que va tomando el
 valor de los elementos de la lista.
 
-```scheme
+```racket
 (suma-n 10 '(1 2 3 4) 10) => (map #<prodedure-que-suma-10-a-x> (1 2 3 4)) =  (11 12 13 14)
 ```
 
@@ -3966,7 +3966,7 @@ después que sume todos los elementos resultantes.
 Lo podríamos hacer reutilizando el código del ejemplo anterior, y
 añadiendo una llamada a `fold-right` para que haga la suma:
 
-```scheme
+```racket
 (define (suma-n-total n lista)
    (fold-right + 0
        (map (lambda (x) (+ x n)) lista)))
@@ -3974,7 +3974,7 @@ añadiendo una llamada a `fold-right` para que haga la suma:
 
 Funcionaría de la siguiente forma:
 
-```scheme
+```racket
 (suma-n-total 100 '(1 2 3 4))  => 410
 ```
 
@@ -3982,7 +3982,7 @@ Otro ejemplo. Supongamos que tenemos una lista de parejas de números y
 queremos contar aquellas parejas cuya suma de ambos números es mayor
 que un umbral (por ejemplo, 10).
 
-```scheme
+```racket
 (define lista-parejas (list (cons 1 2) 
                             (cons 3 8) 
                             (cons 2 3) 
@@ -3995,7 +3995,7 @@ a `map` para realizar la suma de cada pareja junto con una llamada a
 `filter` que compruebe que el resultado sea mayor de `n`. Y al final
 llamamos a `length` para contar la longitud de la lista resultante:
 
-```scheme
+```racket
 (define (cuenta-mayores-que n lista-parejas)
   (length
    (filter (lambda (x)
@@ -4012,7 +4012,7 @@ una lista que contienen un determinado carácter.
 
 Por ejemplo:
 
-```scheme
+```racket
 (contienen-letra #\a '("En" "un" "lugar" "de" "la" "Mancha")) ⇒ ("lugar" "la" "Mancha")
 ```
 
@@ -4021,7 +4021,7 @@ superior `filter`, con una expresión lambda que se aplicará a cada una
 de las palabras de la lista para comprobar si la palabra contiene el
 carácter:
 
-```scheme
+```racket
 (define (contienen-letra caracter lista-pal)
    (filter (lambda (pal)
               (letra-en-pal? caracter pal)) lista-pal))
@@ -4036,7 +4036,7 @@ tenemos que implementar.
 
 Por ejemplo:
 
-```scheme
+```racket
 (letra-en-pal? #\a "Hola") ; ⇒ #t
 (letra-en-pal? #\a "Pepe") ; ⇒ #f
 ```
@@ -4045,7 +4045,7 @@ La podemos implementar de una forma muy elegante obteniendo una lista
 de caracteres a partir de la cadena y usando la función de orden
 superior `exists`:
 
-```scheme
+```racket
 (define (letra-en-pal? caracter palabra)
   (exists (lambda (c)
             (equal? c caracter)) (string->list palabra)))
@@ -4060,7 +4060,7 @@ utilizando una función de orden superior.
 Suponemos que tenemos definidas las funciones `(numeros-hasta n)` y
 `(divisor? x n)`:
 
-```scheme
+```racket
 (define (numeros-hasta n)
   (if (= 0 n)
       '()
@@ -4073,7 +4073,7 @@ Suponemos que tenemos definidas las funciones `(numeros-hasta n)` y
 Entonces la función `(divisores n)` se implementaría de la siguiente forma:
 
 
-```scheme
+```racket
 (define (divisores n)
   (filter (lambda (x)
             (divisor? x n)) (numeros-hasta n)))
