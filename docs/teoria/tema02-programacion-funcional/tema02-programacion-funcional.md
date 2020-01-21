@@ -493,8 +493,7 @@ identificador y le da el valor definido de forma permanente. Si
 escribimos el siguiente código en un programa en Scheme R6RS:
 
 ```racket
-#lang r6rs
-(import (rnrs base))
+#lang racket
 
 (define a 12)
 (define a 200)
@@ -502,8 +501,8 @@ escribimos el siguiente código en un programa en Scheme R6RS:
 
 tendremos el siguiente error:
 
-```
-module: duplicate definition for identifier in: a
+```text
+module: identifier already defined in: a
 ```
 
 !!! Note "Nota" 
@@ -517,7 +516,7 @@ también sentencias declarativas. Por ejemplo, en el siguiente
 código Java las líneas 1 y 3 las podríamos considerar declarativas y
 las 2 y 4 imperativas:
 
-```
+```text
 1. int x = 1;
 2. x = x+1;
 3. int y = x+1;
@@ -575,10 +574,10 @@ typedef struct {
 }TPunto; 
 
 TPunto p1 = {3.0, 2.0};
-printf(“Coordenada x: %f”, p1.x);  // 3.0
+printf("Coordenada x: %f", p1.x);  // 3.0
 TPunto *p2 = &p1;
 p2->x = 10.0;
-printf(“Coordenada x: %f”, p1.x);  // 10.0 Efecto lateral
+printf("Coordenada x: %f", p1.x);  // 10.0 Efecto lateral
 ```
 
 Los efectos laterales son los responsables de muchos _bugs_ y hay que
@@ -659,7 +658,7 @@ int function contador () {
 
 Cada llamada a la función `contador()` devolverá un valor distinto:
 
-```	c
+```c
 contador() ;; 1
 contador() ;; 2
 contador() ;; 3
@@ -745,7 +744,9 @@ sus operandos.
 Una idea fundamental de Lisp y Scheme es que los paréntesis se evalúan
 de dentro a fuera. Por ejemplo, la expresión 
 
-```(+ (* 2 3) (- 3 (/ 12 3)))```
+```racket
+(+ (* 2 3) (- 3 (/ 12 3)))
+```
 
 que devuelve 5, se evalúa así:
 
@@ -1046,7 +1047,7 @@ usando paso a paso las reglas anteriores, es la siguiente (en cada
 línea se indica entre paréntesis la regla usada):
 
 
-```
+```text
 (doble (cuadrado a)) ⇒       ; Sustituimos a por su valor (R2)
 (doble (cuadrado 2)) ⇒       ; Sustitumos cuadrado por su cuerpo (R4)
 (doble (* 2 2)) ⇒            ; Evaluamos (* 2 2) (R3)
@@ -1062,7 +1063,7 @@ expresiones (regla 3).
 Por el contrario, la evaluación usando el **modelo de sustitución
 normal** es:
 
-```
+```text
 (doble (cuadrado a)) ⇒            ; Sustituimos doble por su cuerpo (R4)
 (+ (cuadrado a) (cuadrado a) ⇒    ; Sustituimos cuadrado por su cuerpo (R4)
 (+ (* a a) (* a a)  ⇒             ; Sustitumos a por su valor (R2)
@@ -1104,7 +1105,7 @@ Expresión a evaluar:
 Resultado de la evaluación usando el **modelo de sustitución
 aplicativo**:
 
-```
+```text
 (f (+ a 1)) ⇒                ; Para evaluar f, evaluamos primero su argumento (+ a 1) (R4)
                              ; y sustituimos a por 2 (R2) 
 (f (+ 2 1)) ⇒                ; Evaluamos (+ 2 1) (R3)
@@ -1119,7 +1120,7 @@ aplicativo**:
 
 Y veamos el resultado de usar el **modelo de sustitución normal**:
 
-```
+```text
 (f (+ a 1)) ⇒                      ; Sustituimos (f (+ a 1)) 
                                    ; por su definición, con z = (+ a 1) (R4)
 (+ (cuadrado (doble (+ a 1))) 1) ⇒ ; Sustituimos (cuadrado ...) (R4)
@@ -1217,7 +1218,7 @@ evalúa de una forma diferente.
 
 **Sintaxis**
 
-```
+```text
 (define (<nombre-funcion> <argumentos>)
 	<cuerpo>)
 ```
@@ -1386,7 +1387,7 @@ especial `define`.
 Cuando escribimos un símbolo en el prompt de Scheme el intérprete lo
 evalúa y devuelve su valor:
 
-```
+```text
 > pi 
 3.14159
 ```
@@ -1395,7 +1396,7 @@ Los nombres de las funciones (`equal?`, `sin`, `+`, ...) son también
 símbolos y Scheme también los evalúa (en un par de semanas hablaremos
 de las funciones como objetos primitivos en Scheme):
 
-```
+```text
 > sin
 #<procedure:sin>
 > +
@@ -1408,7 +1409,7 @@ de las funciones como objetos primitivos en Scheme):
 Los símbolos son tipos primitivos del lenguaje: pueden pasarse como
 parámetros o ligarse a variables.
 
-```
+```text
 > (define x 'hola)
 > x
 hola
