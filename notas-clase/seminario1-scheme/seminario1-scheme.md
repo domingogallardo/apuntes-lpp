@@ -100,10 +100,10 @@ ello no es necesario realizar nada, sólo asegurarnos de lo siguiente:
 
 2. El fichero que se está editando en el panel de edición comienza con la línea:
 
-        ```racket
-        #lang racket
-        ```
-
+    ```scheme
+    #lang racket
+    ```
+    
 3. Finalmente, si pulsamos el botón _Run_ (Ejecutar) comprobaremos que
    se carga ese lenguaje en el intérprete.
 
