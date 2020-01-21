@@ -870,7 +870,11 @@ ello no es necesario realizar nada, sólo asegurarnos de lo siguiente:</p>
 </li>
 <li>
 <p>El fichero que se está editando en el panel de edición comienza con la línea:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span><span class="nv">lang</span> <span class="nv">racket</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">```racket</span>
+<span class="err">#lang racket</span>
+<span class="err">```</span>
 </pre></div>
 </td></tr></table>
 
@@ -919,11 +923,11 @@ forma que tiene Scheme de evaluar una expresión es muy sencilla:</p>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">12</span> <span class="mi">3</span><span class="p">)))</span>
-<span class="n">⇒</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">6</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">12</span> <span class="mi">3</span><span class="p">)))</span>
-<span class="n">⇒</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">6</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">⇒</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">6</span> <span class="mi">-1</span><span class="p">)</span>
-<span class="n">⇒</span> <span class="mi">5</span>
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(+ (* 2 3) (- 3 (/ 12 3)))
+⇒ (+ 6 (- 3 (/ 12 3)))
+⇒ (+ 6 (- 3 4))
+⇒ (+ 6 -1)
+⇒ 5
 </pre></div>
 </td></tr></table>
 
@@ -1297,7 +1301,7 @@ elementos (no necesariamente del mismo tipo).</p>
 
 <p>Cuando evaluamos las expresiones anteriores en el intérprete, Scheme
 muestra el resultado de construir la pareja con la sintaxis:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">elemento</span> <span class="n">izquierdo</span> <span class="o">.</span> <span class="n">elemento</span> <span class="n">derecho</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(elemento izquierdo . elemento derecho)
 </pre></div>
 </td></tr></table>
 
@@ -1410,7 +1414,7 @@ elemento y una lista:</p>
 </pre></div>
 </td></tr></table>
 
-<div class="admonition warning">
+<div class="admonition danger">
 <p class="admonition-title">Importante</p>
 <p>Cuando queramos añadir un dato a la cabeza de una lista la
 lista siempre debe ser el <strong>segundo parámetro</strong> de la llamada a la
@@ -1834,14 +1838,14 @@ la parte izquierda de la pareja resultante.</p>
 5
 6
 7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">--------------------</span>
-<span class="err">FAILURE</span>
-<span class="c">actual:     (-1 . 2)</span>
-<span class="c">expected:   (3 . 2)</span>
-<span class="c">name:       check-equal?</span>
-<span class="c">location:   (#&lt;path:/.../filename.rkt&gt;)</span>
-<span class="c">expression: (check-equal? (ecuacion 1 -5 6) (cons 3 2))</span>
-<span class="err">--------------------</span>
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>--------------------
+FAILURE
+actual:     (-1 . 2)
+expected:   (3 . 2)
+name:       check-equal?
+location:   (#&lt;path:/.../filename.rkt&gt;)
+expression: (check-equal? (ecuacion 1 -5 6) (cons 3 2))
+--------------------
 </pre></div>
 </td></tr></table>
 
