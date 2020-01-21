@@ -364,6 +364,45 @@ dicha ejecución no son relevantes los pasos internos que realiza el
 sistema sino las relaciones lógicas entre los datos y los resultados
 finales.
 
+#### Composición de funciones ####
+
+Una idea fundamental de la programación funcional es la composición de
+funciones que transforman unos datos de entrada en otros de salida. Es
+una idea muy actual, porque es la forma en la que están planteados
+muchos algoritmos de procesamiento de datos en inteligencia
+artificial.
+
+Por ejemplo, podemos representar de la siguiente forma el algoritmo
+que maneja un vehículo autónomo:
+
+<img src="imagenes/composicion-funciones.png" width="700px"/>
+
+Las cajas representa funciones que transforman los datos de entrada
+(imágenes tomadas por las cámaras del vehículo) en los datos de salida
+(acciones a realizar sobre la dirección y el motor del vehículo). Las
+funciones intermedias representan transformaciones que se realizan
+sobre los datos de entrada y obtienen los datos de salida.
+
+En un lenguaje de programación funcional como Scheme el diagrama
+anterior se escribiría con el siguiente código:
+
+```racket
+(define (conduce-vehiculo imagenes)
+    (obten-acciones 
+        (reconoce 
+            (filtra 
+                (obten-caracteristicas imagenes)))))
+```
+
+Veremos más adelante que las expresiones en Scheme se evalúan de
+dentro a fuera y que tienen notación prefija. El resultado de cada
+función constituye la entrada de la siguiente. 
+
+En el caso de la función `conduce-vehiculo` primero se obtienen las
+características de las imágenes, después se filtran, después se
+reconoce la escena y, por último, se obtienen las acciones para
+conducir el vehículo.
+
 #### Programación imperativa
 
 Repasemos un algunas características propias de la programación
@@ -404,12 +443,12 @@ return procesados;
 ```
 
 Sin embargo, en programación funcional (por ejemplo, Scheme) no
-existen pasos de ejecución separados por sentencias. La forma típica
-de expresar las instrucciones anteriores es componer todas las
-operaciones en una única instrucción:
+existen pasos de ejecución separados por sentencias. Como hemos visto
+antes, la forma típica de expresar las instrucciones anteriores es
+componer todas las operaciones en una única instrucción:
 
 ```racket
-(cuadrado (doble (cuadrado 8)))
+(cuadrado (doble (cuadrado 8))) ; ⇒ 16384
 ```
 
 El segundo ejemplo lo podemos componer de la misma forma:
@@ -417,9 +456,6 @@ El segundo ejemplo lo podemos componer de la misma forma:
 ```racket
 (procesa (filtra pedidos))
 ```
-
-Veremos más adelante que las expresiones en Scheme tienen notación
-prefija y se evalúan de dentro a fuera.
 
 
 ##### Mutación 
