@@ -3,7 +3,9 @@
 
 Notas de clase de la semana 1 de LPP.
 
+---
 # Tema 0: Presentación de la asignatura
+---
 
 - Usamos
   [Moodle](https://moodle2019-20.ua.es/moodle/course/view.php?id=4822)
@@ -35,7 +37,7 @@ Notas de clase de la semana 1 de LPP.
 
 <img src="imagenes/planificacion.png" width="800px"/>
 
-## Horarios
+### Horarios ###
 
 <img src="imagenes/horario.png" width="800px"/>
 
@@ -130,9 +132,13 @@ intentos.
     memorizan los ejercicios de prácticas de las soluciones que se dan
     en clase.
 
+---
+
 # Tema 1: Lenguajes de programación.
 
 Tema no presencial para estudiar en casa.
+
+---
 
 ### Algunos lenguajes importantes y su fecha de creación
 
@@ -171,6 +177,8 @@ populares.
     * Paradigma imperativo o procedural (FORTRAN, BASIC, C, JavaScript)
     * Paradigma orientado a objetos (Modula, Java, C++)
 
+---
+
 # Tema 2: Programación funcional 
 
 ### Veremos hoy
@@ -188,14 +196,15 @@ populares.
 
 ---
 
-## 1. El paradigma de Programación Funcional
-
-## 1.1 Pasado y presente del paradigma funcional
+### Definición de programación funcional
 
 !!! Note "Un programa funcional es"
     Un conjunto de funciones matemáticas que convierten
     unas entradas en unas salidas, sin ningún estado interno y ningún
     efecto lateral.
+
+- Es posible utilizar este paradigma en muchos lenguajes de
+  programación, aunque no sean estrictamente funcionales.
 
 ### Principales características del paradigma funcional ###
 
@@ -267,8 +276,6 @@ Lenguaje funcional puro más importante:
      *streams* de forma muy concisa y compacta, aplicable a la
      programación de sistemas distribuidos en Internet.
    - la programación interactiva y evolutiva.
-
-## 1.2 Programación declarativa vs. imperativa
 
 ### Programación declarativa
 
@@ -496,8 +503,6 @@ valor el resultado final no debe cambiar. -> funciones no modifican estado.
 * Referencias
 * Pasos de ejecución
 
-## 1.3 Evaluación de expresiones y definición de funciones
-
 ### Evaluación de expresiones
 
 ```racket
@@ -557,9 +562,7 @@ las anteriores.
 - Devuelven un único resultado
 - No tienen estado local ni el resultado depende de un estado exterior mutable
 
-## 1.4. Modelo de computación de sustitución
-
-### Modelo de sustitución
+### Modelo de computación de sustitución
 
 - El **modelo de sustitución** es un modelo muy sencillo que permite
 definir la semántica de la evaluación de expresiones en lenguajes
