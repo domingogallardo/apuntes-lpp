@@ -5,85 +5,171 @@ Notas de clase de la semana 1 de LPP.
 
 # Tema 0: Presentación de la asignatura
 
-- Todos los recursos (apuntes, prácticas, etc.) están en Moodle.
-- Utilizad el foro para dudas, consultas, etc. Así todos nos enteremos
-  de las contestaciones.
+- Usamos
+  [Moodle](https://moodle2019-20.ua.es/moodle/course/view.php?id=4822)
+  para mostrar la planificación semanal, subir prácticas,
+  etc. 
+- Utilizaremos el foro para enviar avisos. También lo podéis usar
+  vosotros para plantear dudas, consultas, etc. Así todos nos
+  enteremos de las contestaciones.
+- Los apuntes y prácticas están en la web de apuntes de la asignatura: [https://domingogallardo.github.io/apuntes-lpp/](https://domingogallardo.github.io/apuntes-lpp/).
 
 ### Temario
 
-- T1. Lenguajes de programación
-- T2. Programación Funcional
-- T3. Procedimientos recursivos
-- T4. Estructuras recursivas
-- T5. Programación funcional en Swift
-- T6. Programación Orientada a Objetos en Swift
+- 3 bloques temáticos:
+
+    1. Programación funcional (Scheme): temas 1 y 2
+    2. Procesos y estructuras recursivas (Scheme): temas 3 y 4
+    3. Programación funcional en Swift y programación orientada a
+       objetos avanzada (Swift): temas 5 y 6
+
+- Temas:
+    - T1. Lenguajes de programación
+    - T2. Programación Funcional
+    - T3. Procedimientos recursivos
+    - T4. Estructuras recursivas
+    - T5. Programación funcional en Swift
+    - T6. Programación Orientada a Objetos Avanzada en Swift
+
+### Planificación  ###
 
 <img src="imagenes/planificacion.png" width="800px"/>
+
+## Horarios
+
+<img src="imagenes/horario.png" width="800px"/>
 
 ### Prácticas  ###
 
 - 2 seminarios: Scheme y Swift
-- 11 hojas de ejercicios semanales en Scheme (temas 1-4) y Swift (temas 5-6).
-- **Cuestionario de practicas** presencial al final de cada clase práctica.
+- 11 hojas de ejercicios semanales en Scheme (temas 1-4) y Swift
+  (temas 5-6).
+- Disponible los viernes y se realizarán durante la semana
+  siguiente. Al final de la semana se publicará la solución.
+
+### Cuestionarios ###
+
+- Al comienzo de cada sesión de prácticas se realizará en Moodle un
+**cuestionario sobre la hoja de ejercicios de la semana anterior**. La
+superación de los cuestionarios de cada bloque sumará 0,5 puntos a la
+nota del parcial de ese bloque.
+
+- 3 preguntas cortas **sobre la práctica y sobre los conceptos de
+teoría asociados**. 
+
+- Dentro de cada bloque temático deberás haber
+**aprobado los cuestionarios previos para poder realizar el
+cuestionario actual**. 
+
+- Se permitirá recuperar los cuestionarios previos suspendidos, **una
+vez por sesión** y siempre **dentro del tiempo** destinado a la
+realización de los mismos. Sólo se podrán recuperar cuestionarios del
+bloque temático actual.
+
+- En cada pregunta se permitirán 3 intentos y cada intento fallado
+descontará 1/3 de la puntuación de la pregunta (1,111 puntos). De esta
+forma, para aprobar un cuestionario se podrán fallar como máximo 4
+intentos.
+
+- Deberás escribir las respuestas de forma totalmente correcta,
+**incluyendo los espacios en blanco**:
+
+<img src="imagenes/respuestas-cuestionario.png" width="500px"/>
+
+### Normas para realización de los cuestionarios ###
+
+- Consultad las normas para la realización de los cuestionarios en la
+  web de apuntes (Teoría > Descripción de la asignatura).
 
 ### Evaluación
 
 - Tres bloques:
-  - Bloque 1. Programación funcional (Scheme; temas 1, 2; prácticas 1-4)
-  - Bloque 2. Procesos y estructuras recursivas (Scheme; temas 3, 4; prácticas 5-7)
-  - Bloque 3. Programación funcional en Swift y programación orientada a
-     objetos (Swift; temas 5, 6; prácticas 8-11)
+    - Bloque 1. Programación funcional (Scheme; temas 1, 2; prácticas 1-4)
+    - Bloque 2. Procesos y estructuras recursivas (Scheme; temas 3, 4; prácticas 5-7)
+    - Bloque 3. Programación funcional en Swift y programación orientada a
+      objetos avanzada (Swift; temas 5, 6; prácticas 8-11)
 
-- Teoría (80%): un examen parcial sobre cada uno de los bloques. Cada
-  examen pondera un 26,7% en la nota final (sin nota mínima).
+- Un examen parcial sobre cada uno de los bloques. Cada examen pondera
+  un 33,33% en la nota final (sin nota mínima).
 
-- Cuestionarios de prácticas (20%):
-   - Nota media de los cuestionarios
+- Cuestionarios de prácticas: si se aprueban `n-1` cuestionarios del
+  bloque se consiguen 0,5 puntos que se suman a la nota del parcial
+  del bloque.
+
+<img src="imagenes/evaluacion.png" width="600px"/>
 
 ### Consejos para aprender con éxito ###
 
 - Consejos:
-   - Trabajar todas las semanas y seguir el ritmo de la asignatura.
-   - Trabajar todos los ejemplos de teoría, probándolos en el
-     ordenador y entendiéndolos (no aprenderlos de memoria)
-   - Usar lápiz y papel para enfrentarse con los problemas
+     - Trabajar todas las semanas y seguir el ritmo de la asignatura.
+     - Trabajar todos los ejemplos de teoría, probándolos en el
+       ordenador y entendiéndolos (no aprenderlos de memoria)
+     - Usar lápiz y papel para enfrentarse con los problemas
 
 - Algunos comentarios:
 
-> "Para superar la asignatura lo que hice fue estudiar mucho. Hay que
-> practicar y sobre todo entender los ejercicios y no sabérselos de
-> memoria. Una vez dominados los ejercicios yo mismo me propuse
-> variantes de los mismos. Así es como se domina."
+!!! Danger "Cómo dominar los conceptos" 
+    Para superar la asignatura lo que hice fue estudiar mucho. Hay que practicar y sobre todo
+    entender los ejercicios y no sabérselos de memoria. Una vez
+    dominados los ejercicios yo mismo me propuse variantes de los
+    mismos. Así es como se domina.
 
+!!! Note "No copiar las prácticas"
+    El mayor problema que creo que existe es que muchas personas se
+    relajan y se copian las prácticas en cuanto les resultan un poco
+    difíciles o les lleva algo mas del tiempo que les gustaría. Esta
+    asignatura si no haces tu los ejercicios y te peleas con ellos es
+    prácticamente imposible de sacar.
 
-> "El mayor problema que creo que existe es que muchas personas se
-> relajan y se copian las prácticas en cuanto les resultan un poco
-> difíciles o les lleva algo mas del tiempo que les gustaría. Esta
-> asignatura si no haces tu los ejercicios y te peleas con ellos es
-> prácticamente imposible de sacar."
-
-
-> "Otra de las cosas es que tienes que cambiar la forma de estudiar,
-> no vale memorizar, ni hacer muchos ejercicios sin más. Tienes que
-> entender bien el funcionamiento de la recursión para luego poder
-> practicar con ejercicios, sino no sirve. [...] En mi opinión el
-> problema de LPP para mucha gente es que para los exámenes se
-> memorizan los ejercicios de prácticas de las soluciones que se dan
-> en clase. [...]
-
+!!! quote "No memorizar"
+    Otra de las cosas es que tienes que cambiar la forma de estudiar,
+    no vale memorizar, ni hacer muchos ejercicios sin más. Tienes que
+    entender bien el funcionamiento de la recursión para luego poder
+    practicar con ejercicios, sino no sirve. [...] En mi opinión el
+    problema de LPP para mucha gente es que para los exámenes se
+    memorizan los ejercicios de prácticas de las soluciones que se dan
+    en clase.
 
 # Tema 1: Lenguajes de programación.
 
 Tema no presencial para estudiar en casa.
 
+### Algunos lenguajes importantes y su fecha de creación
+
+| 1950-1960   | 1970  | 1980 | 1990 | 2000 |
+| :---------: | :---: | :---: | :---: | :---: |
+| 1957 FORTRAN | 1970 Pascal     | 1980 Smalltalk-80   |  1990 Haskell   | 2000 C#  |  
+| 1958 ALGOL |  1972 Prolog  | 1983 Objective-C   | 1991 Python   | 2003 Scala  |  
+| 1960 Lisp | 1972 C | 1983 Ada   |  1993 Ruby  | 2003 Groovy  |  
+| 1960 COBOL | 1975 Scheme | 1986 C++  | 1995 Java  | 2009 Go  |  
+| 1962 APL |  1975 Modula   | 1986 Eiffel   | 1995 Racket  |  2014 Swift |  
+| 1964 BASIC |      | 1987 Perl   |    |   |  
+| 1967 SIMULA |      |    |    |   |  
+
+
+### Genealogía de los lenguajes de programación
+
 <img src="imagenes/genealogia-de-los-lp.png" width="600px"/>
 
-* Paradigmas más importantes de programación:
-  * Paradigma funcional
-  * Paradigma lógico
-  * Paradigma imperativo o procedural
-  * Paradigma orientado a objetos
+### Lista TIOBE ###
 
+La [lista
+TIOBE](http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html)
+se publica cada año indicando los lenguajes de programación más
+populares.
+
+<img src="imagenes/lista-tiobe.png" width="800px"/>
+
+<img src="imagenes/tpci_trends.png" width="800px"/>
+
+
+### Paradigmas de programación  ###
+
+* Paradigmas más importantes de programación:
+    * Paradigma funcional (Lisp, Scheme, Haskell, Racket)
+    * Paradigma lógico (Prolog)
+    * Paradigma imperativo o procedural (FORTRAN, BASIC, C, JavaScript)
+    * Paradigma orientado a objetos (Modula, Java, C++)
 
 # Tema 2: Programación funcional 
 
@@ -106,15 +192,12 @@ Tema no presencial para estudiar en casa.
 
 ## 1.1 Pasado y presente del paradigma funcional
 
-### Definición y características de la PF
+!!! Quote "Un programa funcional es"
+    Un conjunto de funciones matemáticas que convierten
+    unas entradas en unas salidas, sin ningún estado interno y ningún
+    efecto lateral.
 
-Un **programa funcional**:
-
-> Un conjunto de funciones matemáticas que convierten
-> unas entradas en unas salidas, sin ningún estado interno y ningún
-> efecto lateral.
-
-Principales características del paradigma funcional:
+### Principales características del paradigma funcional ###
 
 - Definiciones de funciones matemáticas puras, sin estado interno ni
   efectos laterales
@@ -171,11 +254,10 @@ Lenguaje funcional puro más importante:
 
 - Paradigma muy popular en la actualidad
 - Algunos artículos y charlas:
-
-   - Lupo Montero - [Introducción a la programación funcional en JavaScript](https://medium.com/laboratoria-how-to/introducción-a-la-programación-funcional-en-javascript-parte-1-e0b1d0b2142e) (Blog)
-   - Andrés Marzal - [Por qué deberías aprender programación funcional ya mismo](https://www.youtube.com/watch?v=YU2i3L-euB0) (Charla en YouTube)
-   - Mary Rose Cook - [A practical introduction to functional programming](https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming) (Blog)
-   - Ben Christensen - [Functional Reactive Programming in the Netflix API](https://www.infoq.com/presentations/Netflix-API-rxjava-hystrix) (Charla en InfoQ)
+    - Lupo Montero - [Introducción a la programación funcional en JavaScript](https://medium.com/laboratoria-how-to/introducción-a-la-programación-funcional-en-javascript-parte-1-e0b1d0b2142e) (Blog)
+    - Andrés Marzal - [Por qué deberías aprender programación funcional ya mismo](https://www.youtube.com/watch?v=YU2i3L-euB0) (Charla en YouTube)
+    - Mary Rose Cook - [A practical introduction to functional programming](https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming) (Blog)
+    - Ben Christensen - [Functional Reactive Programming in the Netflix API](https://www.infoq.com/presentations/Netflix-API-rxjava-hystrix) (Charla en InfoQ)
 
 - El paradigma funcional facilita:
    - la programación de sistemas concurrentes, con múltiples hilos de
@@ -187,7 +269,6 @@ Lenguaje funcional puro más importante:
    - la programación interactiva y evolutiva.
 
 ## 1.2 Programación declarativa vs. imperativa
-
 
 ### Programación declarativa
 
@@ -296,7 +377,7 @@ module: duplicate definition for identifier in: a
 
 En lenguajes imperativos también hay sentencias declarativas:
 
-```
+```text
 1. int x = 1;   // declarativa
 2. x = x+1;     // imperativa
 3. int y = x+1; // declarativa
