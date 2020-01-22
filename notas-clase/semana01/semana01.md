@@ -108,13 +108,13 @@ intentos.
 
 - Algunos comentarios:
 
-!!! Danger "Cómo dominar los conceptos" 
+!!! quote "Cómo dominar los conceptos" 
     Para superar la asignatura lo que hice fue estudiar mucho. Hay que practicar y sobre todo
     entender los ejercicios y no sabérselos de memoria. Una vez
     dominados los ejercicios yo mismo me propuse variantes de los
     mismos. Así es como se domina.
 
-!!! Note "No copiar las prácticas"
+!!! quote "No copiar las prácticas"
     El mayor problema que creo que existe es que muchas personas se
     relajan y se copian las prácticas en cuanto les resultan un poco
     difíciles o les lleva algo mas del tiempo que les gustaría. Esta
@@ -192,7 +192,7 @@ populares.
 
 ## 1.1 Pasado y presente del paradigma funcional
 
-!!! Quote "Un programa funcional es"
+!!! Note "Un programa funcional es"
     Un conjunto de funciones matemáticas que convierten
     unas entradas en unas salidas, sin ningún estado interno y ningún
     efecto lateral.
@@ -286,21 +286,43 @@ Lenguaje funcional puro más importante:
   se declaran funciones y se evalúan matemáticamente expresiones.
 - La programación lógica (Prolog) es otro ejemplo de programación declarativa.
 
-Un ejemplo de declaración de función matemática en Scheme. Veremos que
-todas las funciones en Scheme no tienen pasos de ejecución, sólo una
-línea (eso sí, con muchas llamadas anidadas a funciones):
+Otro ejemplo de programación declarativa: SwiftUI.
 
-```scheme
+<img src="imagenes/swiftui.png" width="700px"/>
+
+
+- Un ejemplo de declaración de función matemática en Scheme. Veremos
+que todas las funciones en Scheme no tienen pasos de ejecución, sólo
+una línea (eso sí, con muchas llamadas anidadas a funciones):
+
+```racket
 (define (cuadrado x)
    (* x x))
 ```
 
-La llamada a la función con el parámetro 4 devuelve 16:
+- La llamada a la función con el parámetro 4 devuelve 16:
 
-```scheme
+```racket
 (cuadrado 4) ; devuelve 16
 ```
 
+### Composición de funciones
+
+- Una idea fundamental de la programación funcional es la composición de
+funciones que transforman unos datos de entrada en otros de salida. 
+- Ejemplo: procesamiento de imágenes en vehículos autónomos:
+
+<img src="imagenes/composicion-funciones.png" width="700px"/>
+
+- En un lenguaje de programación funcional como Scheme:
+
+```racket
+(define (conduce-vehiculo imagenes)
+    (obten-acciones 
+        (reconoce 
+            (filtra 
+                (obten-caracteristicas imagenes)))))
+```
 
 ### Programación imperativa
 
@@ -335,11 +357,11 @@ return procesados;
 
 Los mismos ejemplos sin pasos de ejecución, en programación funcional:
 
-```scheme
+```racket
 (cuadrado (doble (cuadrado 8)))
 ```
 
-```scheme
+```racket
 (procesa (filtra pedidos))
 ```
 
@@ -355,9 +377,8 @@ int x = x + 1;
 
 En programación funcional los valores definidos son inmutables:
 
-```scheme
-#lang r6rs
-(import (rnrs))
+```racket
+#lang racket
 
 (define a 12)
 (define a 200)
@@ -365,15 +386,15 @@ En programación funcional los valores definidos son inmutables:
 
 tendremos el siguiente error:
 
-```
-module: duplicate definition for identifier in: a
+```text
+module: identifier already defined in: a
 ```
 
-*Nota*: en el intérprete REPL del DrRacket sí que podemos definir más
- de una vez la misma función o identificador. Se ha diseñado así para
- facilitar el uso del intérprete para la prueba de expresiones en
- Scheme.
-
+!!! Note "Nota" 
+    En el intérprete del DrRacket sí que podemos definir más
+    de una vez la misma función o identificador. Se ha diseñado así para
+    facilitar el uso del intérprete para la prueba de expresiones en
+    Scheme.
 
 En lenguajes imperativos también hay sentencias declarativas:
 
@@ -479,7 +500,7 @@ valor el resultado final no debe cambiar. -> funciones no modifican estado.
 
 ### Evaluación de expresiones
 
-```scheme
+```racket
 2 ⇒ 2
 (+ 2 3) ⇒ 5
 (+) ⇒ 0
@@ -495,22 +516,26 @@ Partes de una expresión:
 - Operandos
 - Evaluación de dentro a fuera
 
-Ejemplo de evaluación de 
+Por ejemplo, ¿cuál es la evaluación de la siguiente expresión?:
 
-```(+ (* 2 3) (- 3 (/ 12 3)))```
+```racket
+(+ (* 2 3) (- 3 (/ 12 3)))
+```
+
+<p style="margin-bottom:3cm;"></p>
 
 ### Definición de funciones
 
 Definición
 
-```scheme
+```racket
 (define (cuadrado x)
    (* x x))
 ```
 
 Uso y evaluación:
 
-```scheme
+```racket
 (cuadrado 10) ⇒ 100
 (cuadrado (+ 10 (cuadrado (+ 2 4)))) ⇒ 2116
 ```
@@ -521,69 +546,10 @@ Uso y evaluación:
 pequeñas e ir construyendo funciones cada vez de mayor nivel usando
 las anteriores.
 
-
-### Ejemplo: tiempo de impacto
-
-Necesitamos calcular el tiempo que tarda un torpedo en llegar desde
-una posición `(x1, y1)` a otra `(x2, y2)`. Suponemos que la velocidad
-del torpedo es otro parámetro `v`.
-
-Incorrecta, por ser poco legible:
-
-```scheme
-;
-; Definición incorrecta: muy poco legible
-;
-; La función tiempo-impacto1 devuelve el tiempo que tarda
-; en llegar un torpedo a la velocidad v desde la posición
-; (x1, y1) a la posición (x2, y2)
-;
-
-(define (tiempo-impacto x1 y1 x2 y2 v)
-   (/ (sqrt (+ (* (- x2 x1) (- x2 x1))
-               (* (- y2 y1) (- y2 y1))))
-    v))
+```racket
+(define (suma-cuadrados x y)
+   (+ (cuadrado x) (cuadrado y)))
 ```
-
-Más correcta:
-
-```scheme
-; Definición correcta, modular y legible de la función tiempo-impacto
-
-;
-; La función 'cuadrado' devuelve el cuadrado de un número
-;
-
-(define (cuadrado x)
-    (* x x))
-
-;
-; La función 'distancia' devuelve la distancia entre dos
-; coordenadas (x1, y1) y (x2, y2)
-;
-
-(define (distancia x1 y1 x2 y2)
-    (sqrt (+ (cuadrado (- x2 x1))
-             (cuadrado (- y2 y1)))))
-
-;
-; La función 'tiempo' devuelve el tiempo que 
-; tarde en recorrer un móvil una distancia d a un velocidad v
-;
-
-(define (tiempo distancia velocidad)
-    (/ distancia velocidad))
-
-;
-; La función 'tiempo-impacto' devuelve el tiempo que tarda
-; en llegar un torpedo a la velocidad v desde la posición
-; (x1, y1) a la posición (x2, y2)
-;
-
-(define (tiempo-impacto x1 y1 x2 y2 velocidad)
-    (tiempo (distancia x1 y1 x2 y2) velocidad))
-```
-
 
 ### Funciones puras
 
@@ -603,7 +569,7 @@ funcionales como Scheme.
 
 Ejemplo:
 
-```scheme
+```racket
 (define (doble x) 
     (+ x x))
 
@@ -618,36 +584,35 @@ Ejemplo:
 (f (+ a 1))
 ```
 
-Reglas del modelo de sustitución:
-
-1. Si *e* es un valor primitivo (por ejemplo, un número), devolvemos ese
-   mismo valor.
-2. Si *e* es un identificador, devolvemos su valor asociado con un
-   `define` (se lanzará un error si no existe ese valor).
-3. Si *e* es una expresión del tipo *(f arg1 ... argn)*, donde *f* es
-   el nombre de una función primitiva (`+`, `-`, ...), evaluamos uno a
-   uno los argumentos *arg1* ... *argn* (con estas mismas reglas) y
-   evaluamos la función primitiva con los resultados.
+!!! Note "Reglas del modelo de sustitución"
+    1. Si *e* es un valor primitivo (por ejemplo, un número), devolvemos ese
+       mismo valor.
+    2. Si *e* es un identificador, devolvemos su valor asociado con un
+       `define` (se lanzará un error si no existe ese valor).
+    3. Si *e* es una expresión del tipo *(f arg1 ... argn)*, donde *f* es
+       el nombre de una función primitiva (`+`, `-`, ...), evaluamos uno a
+       uno los argumentos *arg1* ... *argn* (con estas mismas reglas) y
+       evaluamos la función primitiva con los resultados.
    
 La regla 4 tiene dos variantes, dependiendo del orden de
 evaluación que utilizamos.
 
-**Orden aplicativo**
+!!! Note "Orden aplicativo"
+    4. Si *e* es una expresión del tipo *(f arg1 ... argn)*, donde *f*
+       es el nombre de una función definida con un `define`, tenemos
+       que evaluar primero los argumentos _arg1_ ... _argn_ y después
+       **sustituir _f_ por su cuerpo**, reemplazando cada parámetro
+       formal de la función por el correspondiente **argumento
+       evaluado**. Después evaluaremos la expresión resultante usando
+       estas mismas reglas.
 
-4. Si *e* es una expresión del tipo *(f arg1 ... argn)*, donde *f* es
-   el nombre de una función definida con un `define`, tenemos que
-   evaluar primero los argumentos _arg1_ ... _argn_ y después
-   **sustituir _f_ por su cuerpo**, reemplazando cada parámetro formal
-   de la función por el correspondiente **argumento evaluado**. Después
-   evaluaremos la expresión resultante usando estas mismas reglas.
-
-**Orden normal**
-
-4. Si *e* es una expresión del tipo *(f arg1 ... argn)*, donde *f* es
-   el nombre de una función definida con un `define`, tenemos que
-   **sustituir _f_ por su cuerpo**, reemplazando cada parámetro formal
-   de la función por el correspondiente **argumento sin evaluar**. Después
-   evaluar la expresión resultante usando estas mismas reglas.
+!!! Note "Orden normal"
+    4. Si *e* es una expresión del tipo *(f arg1 ... argn)*, donde *f*
+       es el nombre de una función definida con un `define`, tenemos
+       que **sustituir _f_ por su cuerpo**, reemplazando cada
+       parámetro formal de la función por el correspondiente
+       **argumento sin evaluar**. Después evaluar la expresión
+       resultante usando estas mismas reglas.
 
 - Ambas formas de evaluación darán el mismo resultado en programación
 funcional. Scheme utiliza el orden aplicativo.
@@ -663,7 +628,7 @@ evalúa entonces.
 
 - Comprobamos las sustituciones en cada tipo de orden.
 
-```scheme
+```racket
 (define (doble x) 
     (+ x x))
     
@@ -678,7 +643,7 @@ evalúa entonces.
 
 Orden aplicativo:
 
-```
+```text
 (doble (cuadrado a)) ⇒       ; Sustituimos a por su valor (R2)
 (doble (cuadrado 2)) ⇒       ; Sustitumos cuadrado por su cuerpo (R4)
 (doble (* 2 2)) ⇒            ; Evaluamos (* 2 2) (R3)
@@ -690,7 +655,7 @@ Orden aplicativo:
 
 Orden normal:
 
-```
+```text
 (doble (cuadrado a)) ⇒            ; Sustituimos doble por su cuerpo (R4)
 (+ (cuadrado a) (cuadrado a) ⇒    ; Sustituimos cuadrado por su cuerpo (R4)
 (+ (* a a) (* a a)  ⇒             ; Sustitumos a por su valor (R2)
@@ -701,37 +666,28 @@ Orden normal:
 ```
 
 - Scheme utiliza orden aplicativo.
-
 - Repasar un ejemplo algo más complicado en los apuntes.
-
 - El resultado es el mismo, siempre que no se definan funciones no puras.
 
 Ejemplo de resultado distinto con funciones no puras:
 
-```scheme
+```racket
 (define (zero x) (- x x))
 (zero (random 10))
 ```
 
----
-
-## 2. Scheme como lenguaje de programación funcional
-
-## 2.1 Funciones y formas especiales en Scheme
+### Funciones y formas especiales en Scheme 
 
 - Primitivas de Scheme: funciones y formas especiales
-
-Las *formas especiales* son expresiones primitivas de Scheme que
+- Las funciones se evalúan con el modelo de evaluación visto. 
+- Las *formas especiales* son expresiones primitivas de Scheme que
 tienen una forma de evaluarse propia, distinta de las funciones.
-
-## 2.2. Formas especiales en Scheme: define, if, cond
-
 
 ### Forma especial `define`
 
 **Sintaxis**
 
-```scheme
+```racket
 (define <identificador> <expresión>)
 ```
 
@@ -742,7 +698,7 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 
 **Ejemplo**
 
-```scheme
+```racket
 (define base 10)   ; Asociamos a 'base' el valor 10
 (define altura 12) ; Asociamos a 'altura' el valor 12
 (define area (/ (* base altura) 2)) ; Asociamos a 'area' el valor 60
@@ -752,7 +708,7 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 
 **Sintaxis**
 
-```
+```text
 (define (<nombre-funcion> <argumentos>)
 	<cuerpo>)
 ```
@@ -764,7 +720,7 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 
 **Ejemplo**
 
-```scheme
+```racket
 (define (factorial x)
     (if (= x 0)
         1
@@ -775,7 +731,7 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 
 **Sintaxis**
 
-```scheme
+```racket
 (if <condición> <expresión-true> <expresión-false>)
 ```
 
@@ -787,7 +743,7 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 
 **Ejemplo**
 
-```scheme
+```racket
 (if (> 10 5) (substring "Hola qué tal" (+ 1 1) 4) (/ 12 0))
 
 ;; Evaluamos (> 10 5). Como el resultado es #t, evaluamos 
@@ -799,7 +755,7 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 
 **Sintaxis**
 
-```scheme
+```racket
 (cond 
 	(<exp-cond-1> <exp-consec-1>)
 	(<exp-cond-2> <exp-consec-2>)
@@ -819,7 +775,7 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 
 **Ejemplo**
 
-```scheme
+```racket
 (cond
    ((> 3 4) "3 es mayor que 4")
    ((< 2 1) "2 es menor que 1")
@@ -836,7 +792,7 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 
 **Sintaxis**
 
-```scheme
+```racket
 (quote <identificador>)
 (quote <expresion>)
 ```
@@ -850,7 +806,7 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 
 **Ejemplo**
 
-```scheme
+```racket
 (quote x) ; el símbolo x
 'hola ; el símbolo hola
 '(+ 1 2 3 4) ; la lista formada por el símbolo + y los números 1 2 3 4
@@ -867,7 +823,7 @@ dato compuesto, mientras que los símbolos se almacenan con un valor
 
 Ejemplos de funciones Scheme con símbolos:
 
-```scheme
+```racket
 (define x 12)
 (symbol? 'x) ; ⇒ #t
 (symbol? x) ; ⇒ #f ¿Por qué?
@@ -889,7 +845,7 @@ a un valor (cualquier dato *de primera clase*).
 Cuando escribimos un símbolo en el prompt de Scheme el intérprete lo
 evalúa y devuelve su valor:
 
-```scheme
+```racket
 (define pi 3.14159)
 pi
 ⇒3.14159
@@ -900,7 +856,7 @@ símbolos (los de las macros no) y Scheme también los evalúa (en un par
 de semanas hablaremos de las funciones como objetos primitivos en
 Scheme):
 
-```scheme
+```racket
 sin
 ⇒ #<procedure:sin>
 +
@@ -914,13 +870,13 @@ sin
 Los símbolos son tipos primitivos del lenguaje: pueden pasarse como
 parámetros o ligarse a variables.
 
-```scheme
+```racket
 (define x 'hola)
 x
 ⇒ hola
 ```
 
-## 2.4. Listas
+### Listas ###
 
 - En el seminario de Scheme hemos visto que una de sus características
 principales es el uso de listas. 
@@ -932,7 +888,7 @@ principales es el uso de listas.
 
 - Función `list`
 
-```scheme
+```racket
 (list 1 2 3 4 5) ⇒ {1 2 3 4}
 (list 'a 'b 'c) ⇒ {a b c}
 (list 1 'a 2 'b 3 'c #t) ⇒ {1 a 2 b 3 c #t}
@@ -941,23 +897,23 @@ principales es el uso de listas.
 
 Otro ejemplo:
 
-```scheme
+```racket
 (define a 1)
 (define b 2)
 (define c 3)
-(list a b c)) ⇒ {1 2 3}
+(list a b c) ; ⇒ {1 2 3}
 ```
 
 - La forma especial `quote` delante de una expresión entre paréntesis
   convierte la expresión en una lista y la devuelve:
 
-```scheme
-'(1 2 3 4) ⇒ {1 2 3 4}
+```racket
+'(1 2 3 4) ; ⇒ {1 2 3 4}
 (define a 1)
 (define b 2)
 (define c 3)
-'(a b c) ⇒ {a b c}
-'(1 (+ 1 1) (* 2 (+ 1 2))) ⇒ {1 {+ 1 1} {* 2 {+ 1 2}}}
+'(a b c) ; ⇒ {a b c}
+'(1 (+ 1 1) (* 2 (+ 1 2))) ; ⇒ {1 {+ 1 1} {* 2 {+ 1 2}}}
 ```
 
 La última lista tiene 3 elementos:
@@ -968,11 +924,11 @@ La última lista tiene 3 elementos:
 
 - Otro ejemplo sobre la diferencia entre `list` y `quote`:
 
-```scheme
+```racket
 (list 1 (/ 2 3) (+ 2 3)) ; ⇒ {1 2/3 5}
 ```
 
-```scheme
+```racket
 '(1 (/ 2 3) (+ 2 3)) ; ⇒ {1 {/ 2 3} {+ 2 3}}
 ```
 
@@ -983,13 +939,13 @@ La última lista tiene 3 elementos:
 
 Ejemplos:
 
-```scheme
+```racket
 (define lista1 '(1 2 3 4))
-(car lista1) ⇒ 1
-(cdr lista1) ⇒ {2 3 4}
+(car lista1) ; ⇒ 1
+(cdr lista1) ; ⇒ {2 3 4}
 (define lista2 '((1 2) 3 4))
-(car lista2) ⇒ {1 2}
-(cdr lista2) ⇒ {3 4}
+(car lista2) ; ⇒ {1 2}
+(cdr lista2) ; ⇒ {3 4}
 ```
 
 
@@ -997,7 +953,7 @@ Ejemplos:
 
 - La función `cons` añade un elemento a la cabeza de una lista
 
-```scheme
+```racket
 (cons 1 '(1 2 3 4)) ; ⇒ {1 1 2 3 4}
 (cons 'hola '(como estás)) ; ⇒ {hola como estás}
 (cons '(1 2) '(1 2 3 4))  ; ⇒ {{1 2} 1 2 3 4}
@@ -1005,7 +961,7 @@ Ejemplos:
 
 - La función `append` concatena dos o más listas
 
-```scheme
+```racket
 (define list1 '(1 2 3 4))
 (define list2 '(hola como estás))
 (append list1 list2) ; ⇒ {1 2 3 4 hola como estás}
