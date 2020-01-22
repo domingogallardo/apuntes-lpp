@@ -425,7 +425,7 @@ Algunas notas sobre la genealogía:
 #### Algunos lenguajes importantes y su fecha de creación
 
 | 1950-1960  | 1970  | 1980 | 1990 | 2000 |
-| :--------- | :---: | :---: | :---: | ---: |
+| :---------: | :---: | :---: | :---: | :---: |
 | 1957 FORTRAN | 1970 Pascal     | 1980 Smalltalk-80   |  1990 Haskell   | 2000 C#  |  
 | 1958 ALGOL |  1972 Prolog  | 1983 Objective-C   | 1991 Python   | 2003 Scala  |  
 | 1960 Lisp | 1972 C | 1983 Ada   |  1993 Ruby  | 2003 Groovy  |  
