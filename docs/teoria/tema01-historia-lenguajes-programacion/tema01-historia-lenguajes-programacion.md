@@ -42,9 +42,11 @@ una parte.
 
 <img src="imagenes/ada-lovelace.jpg" width="200px" align="right" style="margin:20px"/>
 
-La matemática [Ada Lovelace](https://en.wikipedia.org/wiki/Ada_Lovelace) tuvo un papel fundamental en la divulgación
-de la máquina, de sus sistema de programación y fue la primera que
-entendió sus posibilidades más allá del cálculo de fórmulas.
+La matemática [Ada
+Lovelace](https://en.wikipedia.org/wiki/Ada_Lovelace) tuvo un papel
+fundamental en la divulgación de la máquina, de su sistema de
+programación y fue la primera que entendió sus posibilidades más allá
+del cálculo de fórmulas.
 
 De forma poco habitual para la época, Ada fue educada en el campo de
 las ciencias y de las matemáticas. A principios de 1840, con
@@ -91,10 +93,13 @@ enormes avances en la velocidad y precisión de los cálculos.
 
 <img src="imagenes/John_von_Neumann.gif" width="200px" align="right" style="margin:20px"/>
 
-Pero no fue hasta 1945 cuando [John Von Neumann](https://en.wikipedia.org/wiki/John_von_Neumann), que trabajaba en la
-construcción del [ENIAC](https://en.wikipedia.org/wiki/ENIAC), propuso su famosa arquitectura en la que por
-primera vez se introducen las dos ideas claves de los computadores de
-propósito general: el programa almacenado en memoria y un conjunto de
+A mitad de esa década, en 1945, [John Von
+Neumann](https://en.wikipedia.org/wiki/John_von_Neumann), que
+trabajaba en la construcción del
+[ENIAC](https://en.wikipedia.org/wiki/ENIAC), introdujo un avance
+fundamental. Propuso su famosa arquitectura en la que por primera vez
+se proponen las dos ideas claves de los computadores de propósito
+general: el programa almacenado en memoria y un conjunto de
 instrucciones de procesamiento que incluye el direccionamiento
 indirecto.
 
@@ -113,7 +118,7 @@ ese momento.
 La máquina de Manchester fue el primer computador con un conjunto de
 instrucciones completo, capaz de realizar saltos, condicionales y
 direccionamiento indirecto. La primera ejecución de un programa fue el
-21 de junio de 1948. En esa fecha Alan Turing se incorporó a la
+21 de junio de 1948. En ese año Alan Turing se incorporó a la
 universidad de Manchester, como director del Laboratorio de
 Computación. Tres años después, con un diseño ampliado en el que
 también influyó Turing, una versión mucho mayor de la máquina se
@@ -133,15 +138,15 @@ de IA, como un jugador de ajedrez basado en heurísticas.
 
 ### Los primeros lenguajes de programación
 
-Los primeros computadores electrónicos se programan directamente
+Los primeros computadores electrónicos se programaban directamente
 usando el conjunto de instrucciones del procesador, en código máquina,
 código hexadecimal
 
 El primer lenguaje de un nivel algo más elevado que el código máquina
-es el ensamblador. Programas que empiezan a ayudar a los
-programadores: ensambladores. Hay una relación casi directa entre la
-notación en ensamblador y el código hexadecimal que produce el
-ensamblador.
+es el ensamblador. Comienzan a crearse los primeros programas que
+procesan lenguajes de programación, aunque se trata de programas muy
+sencillos, ya que hay una relación casi directa entre la notación en
+ensamblador y el código hexadecimal que produce el ensamblador.
 
 A finales de la década de los 40 se empiezan a intentar resolver con
 los primeros computadores los primeros problemas matemáticos distintos
@@ -465,16 +470,15 @@ Si comprobamos la historia de los lenguajes de programación, podemos
 clasificar a sus creadores en tres grandes categorías:
 
 * Investigadores trabajando en empresas
-([Backus](http://en.wikipedia.org/wiki/John_Backus), IBM-FORTRAN,
-[Gosling](http://en.wikipedia.org/wiki/James_Gosling), Sun-Java)
+([Backus](http://en.wikipedia.org/wiki/John_Backus)/IBM-FORTRAN,
+[Gosling](http://en.wikipedia.org/wiki/James_Gosling)/Sun-Java)
 * Investigadores en universidades y departamentos de Informática
-  ([McCarthy](http://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)),
-  MIT-Lisp, [Wirth](http://en.wikipedia.org/wiki/Niklaus_Wirth),
-  ETH-Pascal, [Odersky](http://en.wikipedia.org/wiki/Martin_Odersky),
-  EHT-Scala)
+  ([McCarthy](http://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist))/MIT-Lisp,
+  [Wirth](http://en.wikipedia.org/wiki/Niklaus_Wirth)/ETH-Pascal,
+  [Odersky](http://en.wikipedia.org/wiki/Martin_Odersky)/EHT-Scala)
 * Desarrolladores open source que distribuyen su trabajo a la
-  comunidad ([Wall](http://en.wikipedia.org/wiki/Larry_Wall), Perl,
-  [Matsumoto](http://en.wikipedia.org/wiki/Yukihiro_Matsumoto), Ruby)
+  comunidad ([Wall](http://en.wikipedia.org/wiki/Larry_Wall)/Perl,
+  [Matsumoto](http://en.wikipedia.org/wiki/Yukihiro_Matsumoto)/Ruby)
 
 
 ### Lenguajes de programación en la actualidad
@@ -632,14 +636,12 @@ tres mecanismos
 
 ### Sintaxis y semántica
 
-*Sintaxis*: un conjunto de reglas que definen qué expresiones de texto
+*Sintaxis*: conjunto de reglas que definen qué expresiones de texto
  son correctas. Por ejemplo, en C todas las sentencias deben terminar
- en ';'
+ en ';'.
 
-Los lenguajes de programación se ejecutan en un computador y tienen
-una determinada semántica que define cuál será el resultado de la
-ejecución de un programa.
-
+*Semántica*: conjunto de reglas que define cuál será el resultado de la
+ejecución de un programa en el computador.
 
 ### Los lenguajes son para las personas
 
@@ -667,10 +669,10 @@ programación y sus características comparadas.
 ## Abstracción
 
 Una misión fundamental de los lenguajes de programación es
-proporcionar herramientas que sirvan para construir estas
-abstracciones. Cuando definimos una abstracción le damos un **nombre**
-a una entidad del lenguaje (una variable, una función, una clase,
-etc.).
+proporcionar herramientas que sirvan para construir abstracciones. Por
+ejemplo, estamos construyendo una abstracción cuando damos un
+**nombre** a una entidad del lenguaje (una variable, una función, una
+clase, etc.).
 
 Escoger un buen nombre para los elementos que vamos construyendo en
 nuestro programas es fundamental para conseguir un código legible y
@@ -1058,11 +1060,11 @@ por ejemplo VirtualBox).
 ## Bibliografía
 
 
-* Introducción capítulo 1 SICP, *Building Abstractions with
+* Introducción y capítulo 1 del Structure and Interpretation of Computer Programs: *Building Abstractions with
   Procedures*
-* Capítulo 1.2 PLP, *The Programming Language Spectrum*
-* Capítulo 1.3 PLP, *Why Study Programming Languages*
-* Capítulo 1.4 PLP, *Compilation and Interpretation*
+* Capítulo 1.2 Programming Language Pragmatics: *The Programming Language Spectrum*
+* Capítulo 1.3 Programming Language Pragmatics, *Why Study Programming Languages*
+* Capítulo 1.4 Programming Language Pragmatics, *Compilation and Interpretation*
 * Raul Rojas, "Konrad Zuse's legacy the architecture of the Z1 and
   Z3", IEEE Annals of the History of Computing, Vol. 19, No. 2, 1997
 * Charles Petzold, "Code", Microsoft Press, 2000 (Capítulo 18: "From
