@@ -124,11 +124,16 @@ su resultado y se imprime. A este tipo de bucle se denomina en inglés
 REPL (_Read-Evaluate-Print Loop_).
 
 Las expresiones que escribimos en el intérprete se guardan en un
-_buffer_. Podemos recuperar las expresiones anteriores y movernos por
-ese _buffer_ usando las siguientes combinaciones de teclas:
+histórico. Podemos recuperar las expresiones anteriores y movernos por
+ese histórico usando las siguientes combinaciones de teclas:
 
-- `ESC` + `p` (Previous) / `n` (Next) (Mac)
-- `CTRL` + flecha arriba/abajo (Linux, Windows)
+- `CTRL` + flecha arriba/abajo
+
+Puede ser que esa combinación de teclas esté asignada a otras
+funciones en tu configuración de sistema operativo. Puedes cambiar esa
+configuración o usar la combinación alternativa de DrRacket:
+
+- `ESC` + `p` (previous) / `n` (next)
 
 ## El lenguaje Scheme
 
