@@ -83,7 +83,7 @@ de la memoria (creación y destrucción **automática** de memoria reservada
 para datos), la detección de excepciones y errores en tiempo de
 ejecución o la creación en tiempo de ejecución de funciones anónimas
 (expresiones *lambda*). Todas estas características se ejecutan
-mediante un *sistema de tiempo de ejecución* (*rutime system*)
+mediante un *sistema de tiempo de ejecución* (*runtime system*)
 presente en la ejecución de los programas. A partir del Lisp
 muchos otros lenguajes han usado estas características de
 interpretación o de sistemas de tiempo de ejecución. Por ejemplo,
