@@ -314,20 +314,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#cambiar-el-idioma-del-entorno" class="md-nav__link">
-    Cambiar el idioma del entorno
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#eligiendo-un-lenguaje" class="md-nav__link">
-    Eligiendo un lenguaje
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -582,20 +568,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#cambiar-el-idioma-del-entorno" class="md-nav__link">
-    Cambiar el idioma del entorno
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#eligiendo-un-lenguaje" class="md-nav__link">
-    Eligiendo un lenguaje
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -810,6 +782,7 @@ tiempo, que exploréis también en los enlaces que hemos dejado en los
 apuntes para ampliar información.</p>
 <ul>
 <li><a href="https://docs.racket-lang.org/guide/">The Racket Guide</a></li>
+<li><a href="https://docs.racket-lang.org/reference/">The Racket Reference</a></li>
 <li><a href="http://www.eecs.berkeley.edu/~bh/ss-toc2.html">Simply Scheme</a></li>
 </ul>
 <h2 id="el-lenguaje-de-programacion-scheme">El lenguaje de programación Scheme<a class="headerlink" href="#el-lenguaje-de-programacion-scheme" title="Permanent link">&para;</a></h2>
@@ -835,27 +808,36 @@ lenguaje contiene librerías muy útiles (librerías gráficas, de
 conexión a servidores HTTP, de conexión a bases de datos, etc.) con
 las que se moderniza el lenguaje original y se convierte en un
 lenguaje práctico para desarrollar todo tipo de aplicaciones, desde
-videojuegos a servidores web.</p>
-<p>Sin embargo, nosotros sólo vamos a usar Racket para aprender la parte
+videojuegos a servidores web.
+n
+Sin embargo, nosotros sólo vamos a usar Racket para aprender la parte
 que corresponde al núcleo original de Scheme.</p>
 <h3 id="el-entorno-de-programacion-drracket">El entorno de programación DrRacket<a class="headerlink" href="#el-entorno-de-programacion-drracket" title="Permanent link">&para;</a></h3>
 <p>Veamos una pequeña introducción al entorno de programación que
 proporciona DrRacket. Puedes encontrar más información en la
 <a href="http://docs.racket-lang.org/drracket/index.html">documentación original</a>.</p>
-<p><strong>Importante</strong>: Antes de empezar a trabajar con Racket debemos
-asegurarnos que la sintaxis de la salida tiene activada la opción
-<code>write</code>, como aparece en la siguiente imagen:</p>
-<p><img src="imagenes/output-syntax.png" width="600px"/></p>
+<h4>Configuración de DrRacket</h4>
+<p>Para poder trabajar correctamente con DrRacket debemos asegurarnos que
+el lenguaje activo es <code>The Racket Language</code> y que la sintaxis de la
+salida tiene activada la opción <code>write</code>, como aparece en la siguiente
+imagen:</p>
+<p><img src="imagenes/output-syntax.png" width="600px" style="border:1px solid black;"/></p>
 <p>Podemos modificar esa opción con los siguientes menús:</p>
 <p><em>Language &gt; Choose Language (seleccionamos The Racket Language) &gt; Show
 details &gt; Output Syntax &gt; write</em></p>
 <p>Esta opción determina la sintaxis de la salida del intérprete del
 lenguaje, que va a ser uno de los elementos fundamentales para
 aprender Scheme.</p>
+<div class="admonition warning">
+<p class="admonition-title">Aviso</p>
+<p>Una vez seleccionadas estas opciones, la configuración se guarda en
+las preferencias del usuario. En los laboratorios de la EPS hay
+que realizar la configuración al comienzo de cada sesión.</p>
+</div>
 <p>Cuando lanzamos DrRacket, vemos que tiene tres partes: una fila de
 botones arriba, dos paneles de edición en el medio y una barra de
 estado abajo.</p>
-<p><img src="imagenes/racket1.png" width="500px"/></p>
+<p><img src="imagenes/racket1.png" width="500px" style="border:1px solid black;"/></p>
 <p>El panel de edición superior es la ventana de definiciones. Se utiliza
 para implementar funciones, como la función <code>cuadrado</code> en el ejemplo. El
 panel inferior, llamado <em>ventana de interacción</em>, se utiliza para
@@ -865,13 +847,6 @@ de definiciones</em>, haciendo que esas definiciones estén disponibles en
 la ventana de interacción. Así, dada la definición de <code>cuadrado</code>,
 después de pulsar <em>Run</em>, podemos teclear la expresión <code>(cuadrado 2)</code> en
 el intérprete, se evaluará y mostrará el resultado, en este caso 4.</p>
-<h3 id="cambiar-el-idioma-del-entorno">Cambiar el idioma del entorno<a class="headerlink" href="#cambiar-el-idioma-del-entorno" title="Permanent link">&para;</a></h3>
-<p>Podemos interactuar con el entorno en el idioma que queramos. Si
-queremos tenerlo por ejemplo en español, vamos al menú <em>Help -&gt;
-Interactúa con DrRacket en español</em>. Nos aparecerá un diálogo que nos
-obligará a reiniciar el intérprete para aceptar los cambios.</p>
-<p><img src="imagenes/racket2.png" width="400px"/></p>
-<h3 id="eligiendo-un-lenguaje">Eligiendo un lenguaje<a class="headerlink" href="#eligiendo-un-lenguaje" title="Permanent link">&para;</a></h3>
 <p>DrRacket soporta muchos lenguajes y dialectos de Scheme. Nosotros
 vamos a utilizar el lenguaje por defecto, el lenguaje <em>Racket</em>. Para
 ello no es necesario realizar nada, sólo asegurarnos de lo siguiente:</p>
@@ -892,7 +867,30 @@ ello no es necesario realizar nada, sólo asegurarnos de lo siguiente:</p>
    se carga ese lenguaje en el intérprete.</p>
 </li>
 </ol>
-<p><img src="imagenes/racket3.png" width="500px"/></p>
+<p><img src="imagenes/racket3.png" width="500px" style="border:1px solid black;"/></p>
+<h4>Cambiar el idioma del entorno</h4>
+<p>Podemos interactuar con el entorno en el idioma que queramos. Si
+queremos tenerlo por ejemplo en español, vamos al menú <em>Help -&gt;
+Interactúa con DrRacket en español</em>. Nos aparecerá un diálogo que nos
+obligará a reiniciar el intérprete para aceptar los cambios.</p>
+<p><img src="imagenes/racket2.png" width="400px" style="border:1px solid black;"/></p>
+<h4>Cómo escribir en el intérprete</h4>
+<p>En la ventana inferior se encuentra el intérprete de Racket. El
+intérprete realiza un bucle en el que se lee una expresión, se evalúa
+su resultado y se imprime. A este tipo de bucle se denomina en inglés
+REPL (<em>Read-Evaluate-Print Loop</em>).</p>
+<p>Las expresiones que escribimos en el intérprete se guardan en un
+histórico. Podemos recuperar las expresiones anteriores y movernos por
+ese histórico usando las siguientes combinaciones de teclas:</p>
+<ul>
+<li><code>CTRL</code> + flecha arriba/abajo</li>
+</ul>
+<p>Puede ser que esa combinación de teclas esté asignada a otras
+funciones en tu configuración de sistema operativo. Puedes cambiar esa
+configuración o usar la combinación alternativa de DrRacket:</p>
+<ul>
+<li><code>ESC</code> + <code>p</code> (previous) / <code>n</code> (next)</li>
+</ul>
 <h2 id="el-lenguaje-scheme">El lenguaje Scheme<a class="headerlink" href="#el-lenguaje-scheme" title="Permanent link">&para;</a></h2>
 <h3 id="vamos-a-empezar-probando-algunos-ejemplos">Vamos a empezar probando algunos ejemplos<a class="headerlink" href="#vamos-a-empezar-probando-algunos-ejemplos" title="Permanent link">&para;</a></h3>
 <p>Scheme es un lenguaje interpretado. Vamos a lanzar DrRacket y teclear
@@ -902,11 +900,11 @@ analizará la expresión y mostrará el valor resultante de evaluarla.</p>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">2</span>
-<span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">+</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">))</span>
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">2</span> <span class="c1">; ⇒ 2</span>
+<span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 5</span>
+<span class="p">(</span><span class="nb">+</span><span class="p">)</span> <span class="c1">; ⇒ 0</span>
+<span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span> <span class="c1">; ⇒ 17</span>
+<span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">))</span> <span class="c1">; ⇒ 8</span>
 </pre></div>
 </td></tr></table>
 
@@ -944,7 +942,9 @@ se usan de forma intercambiable. Son ejemplos de funciones o
 procedimientos: +, -, *. En Scheme la evaluación de una función
 siempre devuelve un valor, a no ser que se produzca un error que
 detiene la evaluación:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">*</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">3</span> <span class="mi">0</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">*</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">3</span> <span class="mi">0</span><span class="p">))</span>
+<span class="c1">; Error /: division by zero</span>
 </pre></div>
 </td></tr></table>
 
@@ -1024,7 +1024,8 @@ invoca a la función pasando algún dato que no sea un número, el
 intérprete no detectará ningún error y permitirá asignar a los
 argumentos <code>x</code> e <code>y</code> esos datos. El error se produce en el momento en
 que se intenta evaluar la multiplicación.</p>
-<p>Lo podemos comprobar con el siguiente ejemplo:</p>
+<p>Lo podemos comprobar con el siguiente ejemplo, en el que se muestra el
+mensaje de error resultante:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
