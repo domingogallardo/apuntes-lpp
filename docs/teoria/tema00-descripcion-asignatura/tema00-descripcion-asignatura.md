@@ -81,7 +81,7 @@ aparece entre paréntesis:
 3. Programación funcional en Swift y programación orientada a objetos
    (Swift): temas 5 y 6
 
-Los lenguajes de programación se introducirán mediante seminarios que
+Los lenguajes de programación se introducirán mediante seminarios
 impartidos en las clases de prácticas.
 
 * Seminario 1. **El lenguaje de programación Scheme**:
@@ -104,7 +104,7 @@ impartidos en las clases de prácticas.
   imperativo. Características declarativas
   del paradigma funcional. Definición de funciones. Funciones como
   datos de primer orden. La forma especial lambda. Ámbito de variables
-  y closures. Datos compuestos en Scheme: parejas. Construcción,
+  y clausuras. Datos compuestos en Scheme: parejas. Construcción,
   recorrido y operaciones sobre listas. Listas con elementos
   compuestos. Listas de listas.
 * Tema 3. **Procedimientos recursivos**:  Diseño de
@@ -115,7 +115,7 @@ impartidos en las clases de prácticas.
 * Tema 5. **Programación funcional en Swift**: Lenguajes
   multiparadigma. Programación funcional en Swift. Valores
   opcionales. Listas. Recursión pura y recursión por la
-  cola. Funciones como datos de primer orden. Clousures y funciones
+  cola. Funciones como datos de primer orden. Clausuras y funciones
   anónimas. Funciones de orden superior: mappings y filtros de
   colecciones.
 * Tema 6. **Programación Orientada a Objetos en Swift**: Características e
@@ -290,7 +290,7 @@ de código queremos decir **entenderlos, no aprenderlos de
 memoria**. No tiene sentido aprender de memoria los ejercicios y los
 ejemplos vistos en clase. Hay que *trabajarlos*. Eso significa que,
 primero, hay que entenderlos sobre el papel y *muy importante* hay que
-**probar todos los ejemplos en el intérprete (el REPL)**. Y *probar*
+**probar todos los ejemplos en el intérprete**. Y *probar*
 significa escribir los ejemplos y jugar con ellos, proponiendo
 pequeñas variantes, preguntándose *¿qué pasaría si...?* y probándolo.
 
@@ -301,7 +301,7 @@ encontrando la solución por uno mismo.
 
 A la hora de enfrentarse con un problema es fundamental también **usar
 lápiz y papel** para probar enfoques y encontrar la solución más
-sencilla sobre el papel antes de probarla en el REPL. Los ejercicios
+sencilla sobre el papel antes de probarla en el intérprete. Los ejercicios
 que proponemos no son excesivamente complicados. Todos se resuelven
 con muy pocas líneas de código y su codificación en el ordenador no
 tiene dificultad, una vez que se ha encontrado la solución que lo
