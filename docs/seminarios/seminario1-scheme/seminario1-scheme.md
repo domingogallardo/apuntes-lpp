@@ -7,8 +7,9 @@ recomendamos que les echéis un vistazo y, si os interesa y os queda
 tiempo, que exploréis también en los enlaces que hemos dejado en los
 apuntes para ampliar información.
 
-* [The Racket Guide](https://docs.racket-lang.org/guide/)
-* [Simply Scheme](http://www.eecs.berkeley.edu/~bh/ss-toc2.html)
+- [The Racket Guide](https://docs.racket-lang.org/guide/)
+- [The Racket Reference](https://docs.racket-lang.org/reference/)
+- [Simply Scheme](http://www.eecs.berkeley.edu/~bh/ss-toc2.html)
 
 ## El lenguaje de programación Scheme
 
@@ -39,7 +40,7 @@ conexión a servidores HTTP, de conexión a bases de datos, etc.) con
 las que se moderniza el lenguaje original y se convierte en un
 lenguaje práctico para desarrollar todo tipo de aplicaciones, desde
 videojuegos a servidores web.
-
+n
 Sin embargo, nosotros sólo vamos a usar Racket para aprender la parte
 que corresponde al núcleo original de Scheme.
 
@@ -49,11 +50,14 @@ Veamos una pequeña introducción al entorno de programación que
 proporciona DrRacket. Puedes encontrar más información en la
 [documentación original](http://docs.racket-lang.org/drracket/index.html).
 
-**Importante**: Antes de empezar a trabajar con Racket debemos
-asegurarnos que la sintaxis de la salida tiene activada la opción
-`write`, como aparece en la siguiente imagen:
+#### Configuración de DrRacket
 
-<img src="imagenes/output-syntax.png" width="600px"/>
+Para poder trabajar correctamente con DrRacket debemos asegurarnos que
+el lenguaje activo es `The Racket Language` y que la sintaxis de la
+salida tiene activada la opción `write`, como aparece en la siguiente
+imagen:
+
+<img src="imagenes/output-syntax.png" width="600px" style="border:1px solid black;"/>
 
 Podemos modificar esa opción con los siguientes menús:
 
@@ -64,11 +68,16 @@ Esta opción determina la sintaxis de la salida del intérprete del
 lenguaje, que va a ser uno de los elementos fundamentales para
 aprender Scheme.
 
+!!! Warning "Aviso" 
+    Una vez seleccionadas estas opciones, la configuración se guarda en
+    las preferencias del usuario. En los laboratorios de la EPS hay
+    que realizar la configuración al comienzo de cada sesión.
+
 Cuando lanzamos DrRacket, vemos que tiene tres partes: una fila de
 botones arriba, dos paneles de edición en el medio y una barra de
 estado abajo.
 
-<img src="imagenes/racket1.png" width="500px"/>
+<img src="imagenes/racket1.png" width="500px" style="border:1px solid black;"/>
 
 El panel de edición superior es la ventana de definiciones. Se utiliza
 para implementar funciones, como la función `cuadrado` en el ejemplo. El
@@ -79,17 +88,6 @@ de definiciones_, haciendo que esas definiciones estén disponibles en
 la ventana de interacción. Así, dada la definición de `cuadrado`,
 después de pulsar _Run_, podemos teclear la expresión `(cuadrado 2)` en
 el intérprete, se evaluará y mostrará el resultado, en este caso 4.
-
-### Cambiar el idioma del entorno
-
-Podemos interactuar con el entorno en el idioma que queramos. Si
-queremos tenerlo por ejemplo en español, vamos al menú _Help ->
-Interactúa con DrRacket en español_. Nos aparecerá un diálogo que nos
-obligará a reiniciar el intérprete para aceptar los cambios.
-
-<img src="imagenes/racket2.png" width="400px"/>
-
-### Eligiendo un lenguaje
 
 DrRacket soporta muchos lenguajes y dialectos de Scheme. Nosotros
 vamos a utilizar el lenguaje por defecto, el lenguaje _Racket_. Para
@@ -107,7 +105,30 @@ ello no es necesario realizar nada, sólo asegurarnos de lo siguiente:
 3. Finalmente, si pulsamos el botón _Run_ (Ejecutar) comprobaremos que
    se carga ese lenguaje en el intérprete.
 
-<img src="imagenes/racket3.png" width="500px"/>
+<img src="imagenes/racket3.png" width="500px" style="border:1px solid black;"/>
+
+#### Cambiar el idioma del entorno ####
+
+Podemos interactuar con el entorno en el idioma que queramos. Si
+queremos tenerlo por ejemplo en español, vamos al menú _Help ->
+Interactúa con DrRacket en español_. Nos aparecerá un diálogo que nos
+obligará a reiniciar el intérprete para aceptar los cambios.
+
+<img src="imagenes/racket2.png" width="400px" style="border:1px solid black;"/>
+
+#### Cómo escribir en el intérprete ####
+
+En la ventana inferior se encuentra el intérprete de Racket. El
+intérprete realiza un bucle en el que se lee una expresión, se evalúa
+su resultado y se imprime. A este tipo de bucle se denomina en inglés
+REPL (_Read-Evaluate-Print Loop_).
+
+Las expresiones que escribimos en el intérprete se guardan en un
+_buffer_. Podemos recuperar las expresiones anteriores y movernos por
+ese _buffer_ usando las siguientes combinaciones de teclas:
+
+- `ESC` + `p` (Previous) / `n` (Next) (Mac)
+- `CTRL` + flecha arriba/abajo (Linux, Windows)
 
 ## El lenguaje Scheme
 
@@ -118,11 +139,11 @@ en la ventana de interacción algunas expresiones. El intérprete
 analizará la expresión y mostrará el valor resultante de evaluarla.
 
 ```racket
-2
-(+ 2 3)
-(+)
-(+ 2 4 5 6)
-(+ (* 2 3) (- 3 1))
+2 ; ⇒ 2
+(+ 2 3) ; ⇒ 5
+(+) ; ⇒ 0
+(+ 2 4 5 6) ; ⇒ 17
+(+ (* 2 3) (- 3 1)) ; ⇒ 8
 ```
 
 Las expresiones en Scheme tienen una forma denominada _notación
@@ -159,6 +180,7 @@ detiene la evaluación:
 
 ```racket
 (* (+ 3 4) (/ 3 0))
+; Error /: division by zero
 ```
 
 ### Definiendo variables y funciones
@@ -240,7 +262,8 @@ intérprete no detectará ningún error y permitirá asignar a los
 argumentos `x` e `y` esos datos. El error se produce en el momento en
 que se intenta evaluar la multiplicación.
 
-Lo podemos comprobar con el siguiente ejemplo:
+Lo podemos comprobar con el siguiente ejemplo, en el que se muestra el
+mensaje de error resultante:
 
 ```racket
 > (suma-cuadrados 10 "hola")
