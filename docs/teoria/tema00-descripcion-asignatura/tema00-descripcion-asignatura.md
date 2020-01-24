@@ -219,10 +219,11 @@ contestación de un cuestionario.
   prohibido abrir cualquier otra ventana o aplicación.
 - Durante la realización del cuestionario no deberás tener acceso
   al móvil.
-- Excepcionalmente, si por algún motivo JUSTIFICADO, hay alguna vez
-  que no podáis asistir a vuestro turno de prácticas, se debe asistir
-  a otro turno de ESA MISMA SEMANA y antes de empezar la clase
-  entregarle el justificante al profesor.
+- Una vez realizado un cuestionario, quedará bloqueado y no se podrá
+  repetir hasta que haya pasado exactamente una semana. Por ello es
+  muy importante que todas las semanas asistas al mismo grupo de
+  prácticas. Una vez comenzados los cuestionarios no será posible
+  realizar cambios de grupo en las prácticas.
 
 ### Uso del software iTALC ###
 
