@@ -892,10 +892,10 @@ principales es el uso de listas.
 - Función `list`
 
 ```racket
-(list 1 2 3 4 5) ⇒ {1 2 3 4}
-(list 'a 'b 'c) ⇒ {a b c}
-(list 1 'a 2 'b 3 'c #t) ⇒ {1 a 2 b 3 c #t}
-(list 1 (+ 1 1) (* 2 (+ 1 2))) ⇒ {1 2 6}
+(list 1 2 3 4 5) ⇒ (1 2 3 4)
+(list 'a 'b 'c) ⇒ (a b c)
+(list 1 'a 2 'b 3 'c #t) ⇒ (1 a 2 b 3 c #t)
+(list 1 (+ 1 1) (* 2 (+ 1 2))) ⇒ (1 2 6)
 ```
 
 Otro ejemplo:
@@ -904,35 +904,35 @@ Otro ejemplo:
 (define a 1)
 (define b 2)
 (define c 3)
-(list a b c) ; ⇒ {1 2 3}
+(list a b c) ; ⇒ (1 2 3)
 ```
 
 - La forma especial `quote` delante de una expresión entre paréntesis
   convierte la expresión en una lista y la devuelve:
 
 ```racket
-'(1 2 3 4) ; ⇒ {1 2 3 4}
+'(1 2 3 4) ; ⇒ (1 2 3 4)
 (define a 1)
 (define b 2)
 (define c 3)
-'(a b c) ; ⇒ {a b c}
-'(1 (+ 1 1) (* 2 (+ 1 2))) ; ⇒ {1 {+ 1 1} {* 2 {+ 1 2}}}
+'(a b c) ; ⇒ (a b c)
+'(1 (+ 1 1) (* 2 (+ 1 2))) ; ⇒ (1 (+ 1 1) (* 2 (+ 1 2)))
 ```
 
 La última lista tiene 3 elementos:
 
 - El número 1
-- La lista {+ 1 1}
-- La lista {* 2 {+ 1 2}}
+- La lista (+ 1 1)
+- La lista (* 2 (+ 1 2))
 
 - Otro ejemplo sobre la diferencia entre `list` y `quote`:
 
 ```racket
-(list 1 (/ 2 3) (+ 2 3)) ; ⇒ {1 2/3 5}
+(list 1 (/ 2 3) (+ 2 3)) ; ⇒ (1 2/3 5)
 ```
 
 ```racket
-'(1 (/ 2 3) (+ 2 3)) ; ⇒ {1 {/ 2 3} {+ 2 3}}
+'(1 (/ 2 3) (+ 2 3)) ; ⇒ (1 (/ 2 3) (+ 2 3))
 ```
 
 ### Selección de elementos de una lista: `car` y `cdr`
@@ -945,10 +945,10 @@ Ejemplos:
 ```racket
 (define lista1 '(1 2 3 4))
 (car lista1) ; ⇒ 1
-(cdr lista1) ; ⇒ {2 3 4}
+(cdr lista1) ; ⇒ (2 3 4)
 (define lista2 '((1 2) 3 4))
-(car lista2) ; ⇒ {1 2}
-(cdr lista2) ; ⇒ {3 4}
+(car lista2) ; ⇒ (1 2)
+(cdr lista2) ; ⇒ (3 4)
 ```
 
 
@@ -957,9 +957,9 @@ Ejemplos:
 - La función `cons` añade un elemento a la cabeza de una lista
 
 ```racket
-(cons 1 '(1 2 3 4)) ; ⇒ {1 1 2 3 4}
-(cons 'hola '(como estás)) ; ⇒ {hola como estás}
-(cons '(1 2) '(1 2 3 4))  ; ⇒ {{1 2} 1 2 3 4}
+(cons 1 '(1 2 3 4)) ; ⇒ (1 1 2 3 4)
+(cons 'hola '(como estás)) ; ⇒ (hola como estás)
+(cons '(1 2) '(1 2 3 4))  ; ⇒ ((1 2) 1 2 3 4)
 ```
 
 - La función `append` concatena dos o más listas
@@ -967,5 +967,5 @@ Ejemplos:
 ```racket
 (define list1 '(1 2 3 4))
 (define list2 '(hola como estás))
-(append list1 list2) ; ⇒ {1 2 3 4 hola como estás}
+(append list1 list2) ; ⇒ (1 2 3 4 hola como estás)
 ```

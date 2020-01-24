@@ -1435,10 +1435,10 @@ dinámica, llamando a la función `list` y pasándole un número variable
 de parámetros que son los elementos que se incluirán en la lista:
 
 ```racket
-(list 1 2 3 4 5) ; ⇒ {1 2 3 4}
-(list 'a 'b 'c) ; ⇒ {a b c}
-(list 1 'a 2 'b 3 'c #t) ; ⇒ {1 a 2 b 3 c #t}
-(list 1 (+ 1 1) (* 2 (+ 1 2))) ; ⇒ {1 2 6}
+(list 1 2 3 4 5) ; ⇒ (1 2 3 4)
+(list 'a 'b 'c) ; ⇒ (a b c)
+(list 1 'a 2 'b 3 'c #t) ; ⇒ (1 a 2 b 3 c #t)
+(list 1 (+ 1 1) (* 2 (+ 1 2))) ; ⇒ (1 2 6)
 ```
 Las expresiones interiores se evalúan y se llama a la función `list`
 con los valores resultantes.
@@ -1449,7 +1449,7 @@ Otro ejemplo:
 (define a 1)
 (define b 2)
 (define c 3)
-(list a b c) ; ⇒ {1 2 3}
+(list a b c) ; ⇒ (1 2 3)
 ```
 
 La otra forma de crear una lista es de forma estática, utilizando la
@@ -1461,26 +1461,26 @@ paréntesis) se devuelve como una lista, sin evaluar sus elementos
 Por ejemplo:
 
 ```racket
-'(1 2 3 4) ; ⇒ {1 2 3 4}
+'(1 2 3 4) ; ⇒ (1 2 3 4)
 (define a 1)
 (define b 2)
 (define c 3)
-'(a b c) ; ⇒ {a b c}
-'(1 (+ 1 1) (* 2 (+ 1 2))) ; ⇒ {1 {+ 1 1} {* 2 {+ 1 2}}}
+'(a b c) ; ⇒ (a b c)
+'(1 (+ 1 1) (* 2 (+ 1 2))) ; ⇒ (1 (+ 1 1) (* 2 (+ 1 2)))
 ```
 
 La última lista tiene 3 elementos:
 
 - El número 1
-- La lista `{+ 1 1}`
-- La lista `{* 2 {+ 1 2}}`
+- La lista `(+ 1 1)`
+- La lista `(* 2 (+ 1 2))`
 
 Es posible definir una lista vacía (sin elementos) realizando una
 llamada sin argumentos a la función `list` o utilizando el símbolo `():
 
 ```racket
-(list) ; ⇒ {}
-`() ; ⇒ {}
+(list) ; ⇒ ()
+`() ; ⇒ ()
 ```
 
 La diferencia entre creación de listas con la función `list` y con la
@@ -1494,14 +1494,14 @@ resultantes de las invocaciones de las funciones dentro del
 paréntesis:
 
 ```racket
-(list 1 (/ 2 3) (+ 2 3)) ; ⇒ {1 2/3 5}
+(list 1 (/ 2 3) (+ 2 3)) ; ⇒ (1 2/3 5)
 ```
 
 Sin embargo, usamos `quote` obtenemos una lista con sublistas
 con símbolos en sus primeras posiciones:
 
 ```racket
-'(1 (/ 2 3) (+ 2 3)) ; ⇒ {1 {/ 2 3} {+ 2 3}}
+'(1 (/ 2 3) (+ 2 3)) ; ⇒ (1 (/ 2 3) (+ 2 3))
 ```
 
 #### Selección de elementos de una lista: `car` y `cdr`
@@ -1516,10 +1516,10 @@ Ejemplos:
 ```racket
 (define lista1 '(1 2 3 4))
 (car lista1) ; ⇒ 1
-(cdr lista1) ; ⇒ {2 3 4}
+(cdr lista1) ; ⇒ (2 3 4)
 (define lista2 '((1 2) 3 4))
-(car lista2) ⇒ {1 2}
-(cdr lista2) ⇒ {3 4}
+(car lista2) ⇒ (1 2)
+(cdr lista2) ⇒ (3 4)
 ```
 
 #### Composición de listas: `cons` y `append`
@@ -1533,9 +1533,9 @@ construir nuevas listas a partir de una lista ya existente y un
 nuevo elemento.
 
 ```racket
-(cons 1 '(1 2 3 4)) ; ⇒ {1 1 2 3 4}
-(cons 'hola '(como estás)) ; ⇒ {hola como estás}
-(cons '(1 2) '(1 2 3 4))  ; ⇒ {{1 2} 1 2 3 4}
+(cons 1 '(1 2 3 4)) ; ⇒ (1 1 2 3 4)
+(cons 'hola '(como estás)) ; ⇒ (hola como estás)
+(cons '(1 2) '(1 2 3 4))  ; ⇒ ((1 2) 1 2 3 4)
 ```
 
 La función `append` se usa para crear una lista nueva resultado de
@@ -1544,7 +1544,7 @@ concatenar dos o más listas
 ```racket
 (define list1 '(1 2 3 4))
 (define list2 '(hola como estás))
-(append list1 list2) ; ⇒ {1 2 3 4 hola como estás}
+(append list1 list2) ; ⇒ (1 2 3 4 hola como estás)
 ```
 
 <!--
@@ -1879,7 +1879,7 @@ más simple es la pareja: una entidad formada por dos elementos. Se
 utiliza la función `cons` para construirla:
 
 ```racket
-(cons 1 2) ; ⇒ {1 . 2}
+(cons 1 2) ; ⇒ (1 . 2)
 (define c (cons 1 2))
 ```
 
@@ -1891,7 +1891,7 @@ siguiente forma:
 *Tipo compuesto pareja*
 
 La instrucción `cons` construye un dato compuesto a partir de otros
-dos datos (que llamaremos izquierdo y derecho). La expresión `{1 . 2}`
+dos datos (que llamaremos izquierdo y derecho). La expresión `(1 . 2)`
 es la forma que el intérprete tiene de imprimir las parejas.
 
 #### Construcción de parejas con `quote`
@@ -1901,7 +1901,7 @@ especial `quote`, definiendo la pareja entre paréntesis y separando su
 parte izquierda y derecha con un punto:
 
 ```racket
-'(1 . 2) ; ⇒ {1 . 2}
+'(1 . 2) ; ⇒ (1 . 2)
 ```
 
 Utilizaremos a veces `cons` y otras veces `quote` para definir
@@ -1915,8 +1915,8 @@ Por ejemplo:
 ```racket
 (define a 1)
 (define b 2)
-(cons a b) ; ⇒ {1 . 2}
-'(a . b) ; ⇒ {a . b}
+(cons a b) ; ⇒ (1 . 2)
+'(a . b) ; ⇒ (a . b)
 ```
 
 
@@ -2032,7 +2032,7 @@ Una pareja puede pasarse como argumento y devolverse en una función:
     (cons (+ (car p1) (car p2))
           (+ (cdr p1) (cdr p2))))
 
-(suma-parejas '(1 . 5) '(4 . 12)) ; ⇒ {5 . 17}
+(suma-parejas '(1 . 5) '(4 . 12)) ; ⇒ (5 . 17)
 ```
 
 Una vez definida esta función `suma-parejas` podríamos ampliar la
@@ -2147,11 +2147,11 @@ mostrar por pantalla los elementos de una pareja
 (define (print-pareja pareja)
     (if (pair? pareja)
         (begin 
-            (display "{")
+            (display "(")
             (print-dato (car pareja))
             (display " . ")
             (print-dato (cdr pareja))
-            (display "}"))))
+            (display ")"))))
 
 (define (print-dato dato)
     (if (pair? dato)
@@ -2248,7 +2248,7 @@ Una lista es (definición recursiva):
   la lista y en su parte derecha el resto de la lista
 * Un símbolo especial `'()` que denota la lista vacía
 
-Por ejemplo, una lista muy sencilla con un solo elemento, `{1}`, se
+Por ejemplo, una lista muy sencilla con un solo elemento, `(1)`, se
 define con la siguiente pareja:
 
 ```racket
@@ -2263,7 +2263,7 @@ La pareja cumple las condiciones anteriores:
 
 <img src="imagenes/pareja-lista.png" width="150px"/>
 
-*La lista {1}*
+*La lista (1)*
 
 El objeto es al mismo tiempo una pareja y una lista. La función
 `list?` permite comprobar si un objeto es una lista:
@@ -2331,7 +2331,7 @@ cuyos elementos son parejas (*clave*, *valor*):
 ```racket
 (list (cons 'a 1)
       (cons 'b 2)
-      (cons 'c 3)) ; ⇒ {{a . 1} {b . 2} {c . 2}}
+      (cons 'c 3)) ; ⇒ ((a . 1) (b . 2) (c . 2))
 ```
 
 
@@ -2375,7 +2375,7 @@ lista de 3 elementos:
 Y el segundo elemento de la lista es otra lista:
 
 ```racket
-(car (cdr lista)) ; ⇒ {1 2 3}
+(car (cdr lista)) ; ⇒ (1 2 3)
 ```
 
 ¿Cómo implementa Scheme esta lista usando parejas?
@@ -2400,11 +2400,11 @@ de alto nivel. Algunas de estas funciones ya las conocemos, otras las
 vemos por primera vez en los siguientes ejemplos:
 
 ```racket
-(append '(a (b) c) '((d) e f)) ; ⇒ {a {b} c {d} e f}
+(append '(a (b) c) '((d) e f)) ; ⇒ (a (b) c (d) e f)
 (list-ref '(a (b) c d) 2) ; ⇒ c
 (length '(a (b (c))) ; ⇒ 2
-(reverse '(a b c))  ; ‌⇒ {c b a}
-(list-tail '(a b c d) 2) ; ‌⇒ {c d}
+(reverse '(a b c))  ; ‌⇒ (c b a)
+(list-tail '(a b c d) 2) ; ‌⇒ (c d)
 ```
 
 En los siguientes apartados veremos cómo están implementadas.
@@ -2451,15 +2451,15 @@ más sencillo, **confiar en que la llamada nos devuelva el resultado
 correcto** y usar ese resultado para resolver el problema original.
 
 En este caso nuestro problema es obtener el número que está en la
-posición 2 de la lista `{a b c d e f g}`. Suponemos que la función que
+posición 2 de la lista `(a b c d e f g)`. Suponemos que la función que
 nos devuelve una posición de la lista ya la tenemos implementada y que
 la llamada recursiva nos va a devolver el resultado correcto. ¿Cómo
 podemos simplificar el problema original? Veamos la solución para este
 caso concreto:
 
 > Para devolver el elemento 2 (empezando a contar por 0) de la lista
-> `{a b c d e f g}` podemos hacer el `cdr` de la lista (obtendríamos
-> `{b c d e f g}`) y devolver su elemento 1. Sería el valor `c`.
+> `(a b c d e f g)` podemos hacer el `cdr` de la lista (obtendríamos
+> `(b c d e f g)`) y devolver su elemento 1. Sería el valor `c`.
 
 Generalizamos el ejemplo anterior, para cualquier `n` y cualquier lista:
 
@@ -2488,7 +2488,7 @@ La función `(mi-list-tail lista n)` devuelve la lista resultante de
 quitar n elementos de la cabeza de la lista original:
 
 ```racket
-(mi-list-tail '(1 2 3 4 5 6 7) 2) ; ⇒ {3 4 5 6 7}
+(mi-list-tail '(1 2 3 4 5 6 7) 2) ; ⇒ (3 4 5 6 7)
 ```
 
 Piensa en cómo se implementaría de forma recursiva. Esta vez vamos a
@@ -2511,7 +2511,7 @@ lista2)`.
 Por ejemplo:
 
 ```racket
-(mi-append '(a b c) '(d e f)) ; ⇒ {a b c d e f}
+(mi-append '(a b c) '(d e f)) ; ⇒ (a b c d e f)
 ```
 
 Para resolver el problema de forma recursiva, haremos el `cdr` de la
@@ -2520,14 +2520,14 @@ la segunda lista`:
 
 ```
 (mi-append (cdr '(a b c)) '(d e f)) =
-(mi-append '(b c) '(d e f) = {b c d e f}
+(mi-append '(b c) '(d e f) = (b c d e f)
 ```
 
 Y añadiremos el primer elemento a la lista resultante usando un `cons`:
 
 ```
 (cons (car '(a b c)) (mi-append (cdr '(a b c)) '(d e f))) =
-(cons 'a '(b c d e f)) = {a b c d e f}
+(cons 'a '(b c d e f)) = (a b c d e f)
 ```
 
 En general:
@@ -2541,7 +2541,7 @@ directamente sin llamar a la recursión, es aquel en el que `lista1` es
 `null?`. En ese caso devolvemos `lista2`:
 
 ```racket
-(mi-append '() '(a b c)) = '{a b c}
+(mi-append '() '(a b c)) = '(a b c)
 ```
 
 La formulación recursiva completa queda como sigue:
@@ -2560,7 +2560,7 @@ Veamos cómo implementar de forma recursiva la función `mi-reverse` que
 invierte una lista
 
 ```racket
-(mi-reverse '(1 2 3 4 5 6)) ; ⇒ {6 5 4 3 2 1}
+(mi-reverse '(1 2 3 4 5 6)) ; ⇒ (6 5 4 3 2 1)
 ```
 
 La idea es sencilla: llamamos a la recursión para hacer la inversa del
@@ -2610,7 +2610,7 @@ En Scheme:
 Ejemplo:
 
 ```racket
-(cuadrados-hasta 10) ; ⇒ {100 81 64 49 36 25 16 9 4 1}
+(cuadrados-hasta 10) ; ⇒ (100 81 64 49 36 25 16 9 4 1)
 ```
 
 #### Función `filtra-pares`
@@ -2634,7 +2634,7 @@ con los números pares de la lista que le pasamos como parámetro:
 Ejemplo:
 
 ```racket
-(filtra-pares '(1 2 3 4 5 6)) ; ⇒ {2 4 6}
+(filtra-pares '(1 2 3 4 5 6)) ; ⇒ (2 4 6)
 ```
 
 #### Función `primo?`
@@ -2650,9 +2650,9 @@ es dos. En ese caso será primo.
 Por ejemplo:
 
 ```racket
-(divisores 8) ; ⇒ {1 2 4 8} longitud = 4, no primo
-(divisores 9) ; ⇒ {1 3 9} longitud = 3, no primo
-(divisores 11) ; ⇒ {1 11} longitud = 2, primo
+(divisores 8) ; ⇒ (1 2 4 8) longitud = 4, no primo
+(divisores 9) ; ⇒ (1 3 9) longitud = 3, no primo
+(divisores 11) ; ⇒ (1 11) longitud = 2, primo
 ```
 
 Podemos definir entonces la función `(primo? x)` de la siguiente forma:
@@ -2682,8 +2682,8 @@ La función `(lista-hasta x)` devuelve una lista de números 1..x:
 Ejemplos:
 
 ```racket
-(lista-hasta 2) ; ⇒ {1 2}
-(lista-hasta 10) ; ⇒ {1 2 3 4 5 6 7 8 9 10}
+(lista-hasta 2) ; ⇒ (1 2)
+(lista-hasta 10) ; ⇒ (1 2 3 4 5 6 7 8 9 10)
 ```
 
 Definimos la función `(divisor? x y)` que nos diga si x es divisor de
@@ -2720,7 +2720,7 @@ número `x` generando los números hasta `x` y filtrando los divisores
 de ese número. Por ejemplo, para calcular los divisores de 10:
 
 ```racket
-(filtra-divisores {1 2 3 4 5 6 7 8 9 10} 10) ; ⇒ {1 2 5 10}
+(filtra-divisores (1 2 3 4 5 6 7 8 9 10) 10) ; ⇒ (1 2 5 10)
 ```
 
 Se puede implementar de una forma muy sencilla:
@@ -3467,7 +3467,7 @@ Podemos entonces "segurizar" la función `divisores`:
 
 ```racket
 (define divisores-segura (construye-segura-menor-cero divisores))
-(divisores-segura 10) ; => {10 5 2 1}
+(divisores-segura 10) ; => (10 5 2 1)
 (divisores-segura -10) ; => error
 ```
 
@@ -3509,7 +3509,7 @@ funciones:
 
 ```racket
 (define lista (list cuadrado suma-1 doble))
-lista ; ⇒ {#<procedure:cuadrado>  #<procedure:suma-1>  #<procedure:doble>}
+lista ; ⇒ (#<procedure:cuadrado>  #<procedure:suma-1>  #<procedure:doble>)
 ```
 
 También podemos evaluar una expresión lambda y añadir el procedimiento
@@ -3518,7 +3518,7 @@ podemos llamar a `cons`:
 
 ```racket
 (define lista2 (cons (lambda (x) (+ x 5)) lista))
-lista2 ; ⇒ {#<procedure> #<procedure:cuadrado> #<procedure:suma-1> #<procedure:doble>}
+lista2 ; ⇒ (#<procedure> #<procedure:cuadrado> #<procedure:suma-1> #<procedure:doble>)
 ```
 
 Una vez creada una lista con funciones, ¿cómo podemos invocar a alguna
@@ -3648,7 +3648,7 @@ elementos de la lista.
 Por ejemplo:
 
 ```racket
-(map cuadrado '(1 2 3 4 5)) ; ⇒ {1 4 9 16 25}
+(map cuadrado '(1 2 3 4 5)) ; ⇒ (1 4 9 16 25)
 ```
 
 La lista resultante es el resultado de construir una lista nueva
@@ -3665,7 +3665,7 @@ obtenemos una lista con las sumas de cada pareja:
 (define (suma-pareja pareja)
     (+ (car pareja) (cdr pareja)))
 
-(map suma-pareja '((2 . 4) (3 . 6) (5 . 3))) ; ⇒ {6 9 8}
+(map suma-pareja '((2 . 4) (3 . 6) (5 . 3))) ; ⇒ (6 9 8)
 ```
 
 También podríamos hacerlo con una expresión lambda:
@@ -3673,7 +3673,7 @@ También podríamos hacerlo con una expresión lambda:
 ```racket
 (map (lambda (pareja)
          (+ (car pareja) (cdr pareja))) '((2 . 4) (3 . 6) (5 . 3))) 
-; ⇒ {6 9 8}
+; ⇒ (6 9 8)
 ```
 
 
@@ -3683,7 +3683,7 @@ de símbolos en una lista con sus longitudes:
 ```racket
 (map (lambda (s) 
         (string-length (symbol->string s))) '(Esta es una lista de símbolos))
-; => {4 2 3 5 2 8}
+; => (4 2 3 5 2 8)
 ```
 
 
@@ -3721,11 +3721,11 @@ con los resultados.
 Ejemplos:
 
 ```racket
-(map + '(1 2 3) '(10 20 30)) ; ⇒ {11 22 33}
-(map cons '(1 2 3) '(10 20 30)) ; ⇒ {{1 . 10} {2 . 20} {3 . 30}}
-(map > '(12 3 40) '(20 0 10)) ; ⇒ {#f #t #t}
+(map + '(1 2 3) '(10 20 30)) ; ⇒ (11 22 33)
+(map cons '(1 2 3) '(10 20 30)) ; ⇒ ((1 . 10) (2 . 20) (3 . 30))
+(map > '(12 3 40) '(20 0 10)) ; ⇒ (#f #t #t)
 (map (lambda (x y)
-	    (if (> x y) x y)) '(12 3 40) '(20 0 10)) ; ⇒ {20 3 40}
+	    (if (> x y) x y)) '(12 3 40) '(20 0 10)) ; ⇒ (20 3 40)
 ```
 
 
@@ -3740,7 +3740,7 @@ cumplen el predicado.
 Un ejemplo de uso:
 
 ```racket
-(filter even? '(1 2 3 4 5 6 7 8)) ; ⇒ {2 4 6 8}
+(filter even? '(1 2 3 4 5 6 7 8)) ; ⇒ (2 4 6 8)
 ```
 
 Otro ejemplo: supongamos que queremos filtrar una lista de parejas de
@@ -3751,7 +3751,7 @@ siguiente expresión:
 ```racket
 (filter (lambda (pareja)
             (>= (car pareja) (cdr pareja))) '((10 . 4) (2 . 4) (8 . 8) (10 . 20)))
-; ⇒ {{10 . 4} {8 . 8}}
+; ⇒ ((10 . 4) (8 . 8))
 ```
 
 Y un último ejemplo: filtramos todos los símbolos con longitud menor
@@ -3761,7 +3761,7 @@ de 4.
 (filter (lambda (s) 
            (>= (string-length (symbol->string s)) 4))
            '(Esta es una lista de símbolos))
-; => {Esta lista símbolos}
+; => (Esta lista símbolos)
 ```
 
 
@@ -3878,7 +3878,7 @@ Otros ejemplos:
 
 ```racket
 (fold-right (lambda (x y) (* x y)) 1 '(1 2 3 4 5 6 7 8)) ; ⇒ 40320
-(fold-right cons '() '(1 2 3 4)) ; ⇒ {1 2 3 4}
+(fold-right cons '() '(1 2 3 4)) ; ⇒ (1 2 3 4)
 ```
 
 Un último ejemplo:
