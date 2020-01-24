@@ -1965,10 +1965,10 @@ de parámetros que son los elementos que se incluirán en la lista:</p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ {1 2 3 4}</span>
-<span class="p">(</span><span class="nb">list</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="ss">c</span><span class="p">)</span> <span class="c1">; ⇒ {a b c}</span>
-<span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="mi">2</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="mi">3</span> <span class="o">&#39;</span><span class="ss">c</span> <span class="no">#t</span><span class="p">)</span> <span class="c1">; ⇒ {1 a 2 b 3 c #t}</span>
-<span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)))</span> <span class="c1">; ⇒ {1 2 6}</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ (1 2 3 4)</span>
+<span class="p">(</span><span class="nb">list</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="ss">c</span><span class="p">)</span> <span class="c1">; ⇒ (a b c)</span>
+<span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="mi">2</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="mi">3</span> <span class="o">&#39;</span><span class="ss">c</span> <span class="no">#t</span><span class="p">)</span> <span class="c1">; ⇒ (1 a 2 b 3 c #t)</span>
+<span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)))</span> <span class="c1">; ⇒ (1 2 6)</span>
 </pre></div>
 </td></tr></table>
 Las expresiones interiores se evalúan y se llama a la función <code>list</code>
@@ -1980,7 +1980,7 @@ con los valores resultantes.</p>
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="mi">1</span><span class="p">)</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">b</span> <span class="mi">2</span><span class="p">)</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">c</span> <span class="mi">3</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">list</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span><span class="p">)</span> <span class="c1">; ⇒ {1 2 3}</span>
+<span class="p">(</span><span class="nb">list</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span><span class="p">)</span> <span class="c1">; ⇒ (1 2 3)</span>
 </pre></div>
 </td></tr></table>
 
@@ -1995,26 +1995,26 @@ paréntesis) se devuelve como una lista, sin evaluar sus elementos</p>
 3
 4
 5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ {1 2 3 4}</span>
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ (1 2 3 4)</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="mi">1</span><span class="p">)</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">b</span> <span class="mi">2</span><span class="p">)</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">c</span> <span class="mi">3</span><span class="p">)</span>
-<span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="c1">; ⇒ {a b c}</span>
-<span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="ss">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="ss">*</span> <span class="mi">2</span> <span class="p">(</span><span class="ss">+</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)))</span> <span class="c1">; ⇒ {1 {+ 1 1} {* 2 {+ 1 2}}}</span>
+<span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="c1">; ⇒ (a b c)</span>
+<span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="ss">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="ss">*</span> <span class="mi">2</span> <span class="p">(</span><span class="ss">+</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)))</span> <span class="c1">; ⇒ (1 (+ 1 1) (* 2 (+ 1 2)))</span>
 </pre></div>
 </td></tr></table>
 
 <p>La última lista tiene 3 elementos:</p>
 <ul>
 <li>El número 1</li>
-<li>La lista <code>{+ 1 1}</code></li>
-<li>La lista <code>{* 2 {+ 1 2}}</code></li>
+<li>La lista <code>(+ 1 1)</code></li>
+<li>La lista <code>(* 2 (+ 1 2))</code></li>
 </ul>
 <p>Es posible definir una lista vacía (sin elementos) realizando una
 llamada sin argumentos a la función <code>list</code> o utilizando el símbolo `():</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="c1">; ⇒ {}</span>
-<span class="o">`</span><span class="p">()</span> <span class="c1">; ⇒ {}</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="c1">; ⇒ ()</span>
+<span class="o">`</span><span class="p">()</span> <span class="c1">; ⇒ ()</span>
 </pre></div>
 </td></tr></table>
 
@@ -2026,13 +2026,13 @@ función con los argumentos evaluados. Por ejemplo, en la
 siguiente invocación se obtiene una lista con cuatro elementos
 resultantes de las invocaciones de las funciones dentro del
 paréntesis:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ {1 2/3 5}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ (1 2/3 5)</span>
 </pre></div>
 </td></tr></table>
 
 <p>Sin embargo, usamos <code>quote</code> obtenemos una lista con sublistas
 con símbolos en sus primeras posiciones:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="ss">/</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="ss">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ {1 {/ 2 3} {+ 2 3}}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="ss">/</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="ss">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ (1 (/ 2 3) (+ 2 3))</span>
 </pre></div>
 </td></tr></table>
 
@@ -2050,10 +2050,10 @@ con símbolos en sus primeras posiciones:</p>
 5
 6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">lista1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
 <span class="p">(</span><span class="nb">car</span> <span class="n">lista1</span><span class="p">)</span> <span class="c1">; ⇒ 1</span>
-<span class="p">(</span><span class="nb">cdr</span> <span class="n">lista1</span><span class="p">)</span> <span class="c1">; ⇒ {2 3 4}</span>
+<span class="p">(</span><span class="nb">cdr</span> <span class="n">lista1</span><span class="p">)</span> <span class="c1">; ⇒ (2 3 4)</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">lista2</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
-<span class="p">(</span><span class="nb">car</span> <span class="n">lista2</span><span class="p">)</span> <span class="n">⇒</span> <span class="p">{</span><span class="mi">1</span> <span class="mi">2</span><span class="p">}</span>
-<span class="p">(</span><span class="nb">cdr</span> <span class="n">lista2</span><span class="p">)</span> <span class="n">⇒</span> <span class="p">{</span><span class="mi">3</span> <span class="mi">4</span><span class="p">}</span>
+<span class="p">(</span><span class="nb">car</span> <span class="n">lista2</span><span class="p">)</span> <span class="n">⇒</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">cdr</span> <span class="n">lista2</span><span class="p">)</span> <span class="n">⇒</span> <span class="p">(</span><span class="mi">3</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -2066,9 +2066,9 @@ construir nuevas listas a partir de una lista ya existente y un
 nuevo elemento.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ {1 1 2 3 4}</span>
-<span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">hola</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">como</span> <span class="ss">estás</span><span class="p">))</span> <span class="c1">; ⇒ {hola como estás}</span>
-<span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>  <span class="c1">; ⇒ {{1 2} 1 2 3 4}</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ (1 1 2 3 4)</span>
+<span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">hola</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">como</span> <span class="ss">estás</span><span class="p">))</span> <span class="c1">; ⇒ (hola como estás)</span>
+<span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>  <span class="c1">; ⇒ ((1 2) 1 2 3 4)</span>
 </pre></div>
 </td></tr></table>
 
@@ -2078,7 +2078,7 @@ concatenar dos o más listas</p>
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">list1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">list2</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">hola</span> <span class="ss">como</span> <span class="ss">estás</span><span class="p">))</span>
-<span class="p">(</span><span class="nb">append</span> <span class="n">list1</span> <span class="n">list2</span><span class="p">)</span> <span class="c1">; ⇒ {1 2 3 4 hola como estás}</span>
+<span class="p">(</span><span class="nb">append</span> <span class="n">list1</span> <span class="n">list2</span><span class="p">)</span> <span class="c1">; ⇒ (1 2 3 4 hola como estás)</span>
 </pre></div>
 </td></tr></table>
 
@@ -2441,7 +2441,7 @@ más simple es la pareja: una entidad formada por dos elementos. Se
 utiliza la función `cons` para construirla:
 
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ {1 . 2}</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ (1 . 2)</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">c</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
@@ -2454,7 +2454,7 @@ siguiente forma:
 *Tipo compuesto pareja*
 
 La instrucción `cons` construye un dato compuesto a partir de otros
-dos datos (que llamaremos izquierdo y derecho). La expresión `{1 . 2}`
+dos datos (que llamaremos izquierdo y derecho). La expresión `(1 . 2)`
 es la forma que el intérprete tiene de imprimir las parejas.
 
 #### Construcción de parejas con `quote`
@@ -2463,7 +2463,7 @@ Al igual que las listas, es posible construir parejas con la forma
 especial `quote`, definiendo la pareja entre paréntesis y separando su
 parte izquierda y derecha con un punto:
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ {1 . 2}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ (1 . 2)</span>
 </pre></div>
 </td></tr></table>
 
@@ -2480,8 +2480,8 @@ Por ejemplo:
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="mi">1</span><span class="p">)</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">b</span> <span class="mi">2</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">cons</span> <span class="n">a</span> <span class="n">b</span><span class="p">)</span> <span class="c1">; ⇒ {1 . 2}</span>
-<span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="o">.</span> <span class="ss">b</span><span class="p">)</span> <span class="c1">; ⇒ {a . b}</span>
+<span class="p">(</span><span class="nb">cons</span> <span class="n">a</span> <span class="n">b</span><span class="p">)</span> <span class="c1">; ⇒ (1 . 2)</span>
+<span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="o">.</span> <span class="ss">b</span><span class="p">)</span> <span class="c1">; ⇒ (a . b)</span>
 </pre></div>
 </td></tr></table>
 
@@ -2612,7 +2612,7 @@ Una pareja puede pasarse como argumento y devolverse en una función:
     <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p2</span><span class="p">))</span>
           <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p2</span><span class="p">))))</span>
 
-<span class="p">(</span><span class="n">suma-parejas</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">12</span><span class="p">))</span> <span class="c1">; ⇒ {5 . 17}</span>
+<span class="p">(</span><span class="n">suma-parejas</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">12</span><span class="p">))</span> <span class="c1">; ⇒ (5 . 17)</span>
 </pre></div>
 </td></tr></table>
 
@@ -2749,11 +2749,11 @@ mostrar por pantalla los elementos de una pareja
 13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">print-pareja</span> <span class="n">pareja</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">pair?</span> <span class="n">pareja</span><span class="p">)</span>
         <span class="p">(</span><span class="k">begin</span> 
-            <span class="p">(</span><span class="nb">display</span> <span class="s2">&quot;{&quot;</span><span class="p">)</span>
+            <span class="p">(</span><span class="nb">display</span> <span class="s2">&quot;(&quot;</span><span class="p">)</span>
             <span class="p">(</span><span class="n">print-dato</span> <span class="p">(</span><span class="nb">car</span> <span class="n">pareja</span><span class="p">))</span>
             <span class="p">(</span><span class="nb">display</span> <span class="s2">&quot; . &quot;</span><span class="p">)</span>
             <span class="p">(</span><span class="n">print-dato</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">pareja</span><span class="p">))</span>
-            <span class="p">(</span><span class="nb">display</span> <span class="s2">&quot;}&quot;</span><span class="p">))))</span>
+            <span class="p">(</span><span class="nb">display</span> <span class="s2">&quot;)&quot;</span><span class="p">))))</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">print-dato</span> <span class="n">dato</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">pair?</span> <span class="n">dato</span><span class="p">)</span>
@@ -2858,7 +2858,7 @@ Una lista es (definición recursiva):
   la lista y en su parte derecha el resto de la lista
 * Un símbolo especial `'()` que denota la lista vacía
 
-Por ejemplo, una lista muy sencilla con un solo elemento, `{1}`, se
+Por ejemplo, una lista muy sencilla con un solo elemento, `(1)`, se
 define con la siguiente pareja:
 
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">())</span>
@@ -2873,7 +2873,7 @@ La pareja cumple las condiciones anteriores:
 
 <img src="imagenes/pareja-lista.png" width="150px"/>
 
-*La lista {1}*
+*La lista (1)*
 
 El objeto es al mismo tiempo una pareja y una lista. La función
 `list?` permite comprobar si un objeto es una lista:
@@ -2949,7 +2949,7 @@ cuyos elementos son parejas (*clave*, *valor*):
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="mi">1</span><span class="p">)</span>
       <span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="mi">2</span><span class="p">)</span>
-      <span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">c</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ {{a . 1} {b . 2} {c . 2}}</span>
+      <span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">c</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ ((a . 1) (b . 2) (c . 2))</span>
 </pre></div>
 </td></tr></table>
 
@@ -2996,7 +2996,7 @@ lista de 3 elementos:
 
 Y el segundo elemento de la lista es otra lista:
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">car</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ {1 2 3}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">car</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ (1 2 3)</span>
 </pre></div>
 </td></tr></table>
 
@@ -3025,11 +3025,11 @@ vemos por primera vez en los siguientes ejemplos:
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">append</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span><span class="p">)</span> <span class="ss">c</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">((</span><span class="ss">d</span><span class="p">)</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">))</span> <span class="c1">; ⇒ {a {b} c {d} e f}</span>
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">append</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span><span class="p">)</span> <span class="ss">c</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">((</span><span class="ss">d</span><span class="p">)</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">))</span> <span class="c1">; ⇒ (a (b) c (d) e f)</span>
 <span class="p">(</span><span class="nb">list-ref</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span><span class="p">)</span> <span class="ss">c</span> <span class="ss">d</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ c</span>
 <span class="p">(</span><span class="nb">length</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span> <span class="p">(</span><span class="ss">c</span><span class="p">)))</span> <span class="c1">; ⇒ 2</span>
-<span class="p">(</span><span class="nb">reverse</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">))</span>  <span class="c1">; ‌⇒ {c b a}</span>
-<span class="p">(</span><span class="nb">list-tail</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ‌⇒ {c d}</span>
+<span class="p">(</span><span class="nb">reverse</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">))</span>  <span class="c1">; ‌⇒ (c b a)</span>
+<span class="p">(</span><span class="nb">list-tail</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ‌⇒ (c d)</span>
 </pre></div>
 </td></tr></table>
 
@@ -3078,15 +3078,15 @@ más sencillo, **confiar en que la llamada nos devuelva el resultado
 correcto** y usar ese resultado para resolver el problema original.
 
 En este caso nuestro problema es obtener el número que está en la
-posición 2 de la lista `{a b c d e f g}`. Suponemos que la función que
+posición 2 de la lista `(a b c d e f g)`. Suponemos que la función que
 nos devuelve una posición de la lista ya la tenemos implementada y que
 la llamada recursiva nos va a devolver el resultado correcto. ¿Cómo
 podemos simplificar el problema original? Veamos la solución para este
 caso concreto:
 
 > Para devolver el elemento 2 (empezando a contar por 0) de la lista
-> `{a b c d e f g}` podemos hacer el `cdr` de la lista (obtendríamos
-> `{b c d e f g}`) y devolver su elemento 1. Sería el valor `c`.
+> `(a b c d e f g)` podemos hacer el `cdr` de la lista (obtendríamos
+> `(b c d e f g)`) y devolver su elemento 1. Sería el valor `c`.
 
 Generalizamos el ejemplo anterior, para cualquier `n` y cualquier lista:
 
@@ -3117,7 +3117,7 @@ La implementación de todo esto en Scheme sería la siguiente:
 La función `(mi-list-tail lista n)` devuelve la lista resultante de
 quitar n elementos de la cabeza de la lista original:
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">mi-list-tail</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ {3 4 5 6 7}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">mi-list-tail</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ (3 4 5 6 7)</span>
 </pre></div>
 </td></tr></table>
 
@@ -3143,7 +3143,7 @@ lista2)`.
 
 Por ejemplo:
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">mi-append</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">))</span> <span class="c1">; ⇒ {a b c d e f}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">mi-append</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">))</span> <span class="c1">; ⇒ (a b c d e f)</span>
 </pre></div>
 </td></tr></table>
 
@@ -3153,7 +3153,7 @@ la segunda lista`:
 
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">(mi-append (cdr &#39;(a b c)) &#39;(d e f)) =</span>
-<span class="err">(mi-append &#39;(b c) &#39;(d e f) = {b c d e f}</span>
+<span class="err">(mi-append &#39;(b c) &#39;(d e f) = (b c d e f)</span>
 </pre></div>
 </td></tr></table>
 
@@ -3161,7 +3161,7 @@ Y añadiremos el primer elemento a la lista resultante usando un `cons`:
 
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">(cons (car &#39;(a b c)) (mi-append (cdr &#39;(a b c)) &#39;(d e f))) =</span>
-<span class="err">(cons &#39;a &#39;(b c d e f)) = {a b c d e f}</span>
+<span class="err">(cons &#39;a &#39;(b c d e f)) = (a b c d e f)</span>
 </pre></div>
 </td></tr></table>
 
@@ -3175,7 +3175,7 @@ El caso base, el caso en el que la función puede devolver un valor
 directamente sin llamar a la recursión, es aquel en el que `lista1` es
 `null?`. En ese caso devolvemos `lista2`:
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">mi-append</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">))</span> <span class="nb">=</span> <span class="o">&#39;</span><span class="p">{</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">mi-append</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">))</span> <span class="nb">=</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -3198,7 +3198,7 @@ La formulación recursiva completa queda como sigue:
 Veamos cómo implementar de forma recursiva la función `mi-reverse` que
 invierte una lista
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">mi-reverse</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ {6 5 4 3 2 1}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">mi-reverse</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ (6 5 4 3 2 1)</span>
 </pre></div>
 </td></tr></table>
 
@@ -3255,7 +3255,7 @@ En Scheme:
 
 Ejemplo:
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">cuadrados-hasta</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ {100 81 64 49 36 25 16 9 4 1}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">cuadrados-hasta</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ (100 81 64 49 36 25 16 9 4 1)</span>
 </pre></div>
 </td></tr></table>
 
@@ -3284,7 +3284,7 @@ con los números pares de la lista que le pasamos como parámetro:
 
 Ejemplo:
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">filtra-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ {2 4 6}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">filtra-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ (2 4 6)</span>
 </pre></div>
 </td></tr></table>
 
@@ -3302,9 +3302,9 @@ Por ejemplo:
 
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">divisores</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">; ⇒ {1 2 4 8} longitud = 4, no primo</span>
-<span class="p">(</span><span class="n">divisores</span> <span class="mi">9</span><span class="p">)</span> <span class="c1">; ⇒ {1 3 9} longitud = 3, no primo</span>
-<span class="p">(</span><span class="n">divisores</span> <span class="mi">11</span><span class="p">)</span> <span class="c1">; ⇒ {1 11} longitud = 2, primo</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">divisores</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">; ⇒ (1 2 4 8) longitud = 4, no primo</span>
+<span class="p">(</span><span class="n">divisores</span> <span class="mi">9</span><span class="p">)</span> <span class="c1">; ⇒ (1 3 9) longitud = 3, no primo</span>
+<span class="p">(</span><span class="n">divisores</span> <span class="mi">11</span><span class="p">)</span> <span class="c1">; ⇒ (1 11) longitud = 2, primo</span>
 </pre></div>
 </td></tr></table>
 
@@ -3340,8 +3340,8 @@ La función `(lista-hasta x)` devuelve una lista de números 1..x:
 Ejemplos:
 
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">lista-hasta</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ {1 2}</span>
-<span class="p">(</span><span class="n">lista-hasta</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ {1 2 3 4 5 6 7 8 9 10}</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">lista-hasta</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ (1 2)</span>
+<span class="p">(</span><span class="n">lista-hasta</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ (1 2 3 4 5 6 7 8 9 10)</span>
 </pre></div>
 </td></tr></table>
 
@@ -3385,7 +3385,7 @@ Ya podemos implementar la función que devuelve los divisores de un
 número `x` generando los números hasta `x` y filtrando los divisores
 de ese número. Por ejemplo, para calcular los divisores de 10:
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">filtra-divisores</span> <span class="p">{</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span> <span class="mi">9</span> <span class="mi">10</span><span class="p">}</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ {1 2 5 10}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">filtra-divisores</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span> <span class="mi">9</span> <span class="mi">10</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ (1 2 5 10)</span>
 </pre></div>
 </td></tr></table>
 
@@ -4248,7 +4248,7 @@ Podemos entonces "segurizar" la función `divisores`:
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">divisores-segura</span> <span class="p">(</span><span class="n">construye-segura-menor-cero</span> <span class="n">divisores</span><span class="p">))</span>
-<span class="p">(</span><span class="n">divisores-segura</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; =&gt; {10 5 2 1}</span>
+<span class="p">(</span><span class="n">divisores-segura</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; =&gt; (10 5 2 1)</span>
 <span class="p">(</span><span class="n">divisores-segura</span> <span class="mi">-10</span><span class="p">)</span> <span class="c1">; =&gt; error</span>
 </pre></div>
 </td></tr></table>
@@ -4297,7 +4297,7 @@ funciones:
 
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="p">(</span><span class="nb">list</span> <span class="n">cuadrado</span> <span class="n">suma-1</span> <span class="n">doble</span><span class="p">))</span>
-<span class="n">lista</span> <span class="c1">; ⇒ {#&lt;procedure:cuadrado&gt;  #&lt;procedure:suma-1&gt;  #&lt;procedure:doble&gt;}</span>
+<span class="n">lista</span> <span class="c1">; ⇒ (#&lt;procedure:cuadrado&gt;  #&lt;procedure:suma-1&gt;  #&lt;procedure:doble&gt;)</span>
 </pre></div>
 </td></tr></table>
 
@@ -4307,7 +4307,7 @@ podemos llamar a `cons`:
 
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">lista2</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">5</span><span class="p">))</span> <span class="n">lista</span><span class="p">))</span>
-<span class="n">lista2</span> <span class="c1">; ⇒ {#&lt;procedure&gt; #&lt;procedure:cuadrado&gt; #&lt;procedure:suma-1&gt; #&lt;procedure:doble&gt;}</span>
+<span class="n">lista2</span> <span class="c1">; ⇒ (#&lt;procedure&gt; #&lt;procedure:cuadrado&gt; #&lt;procedure:suma-1&gt; #&lt;procedure:doble&gt;)</span>
 </pre></div>
 </td></tr></table>
 
@@ -4447,7 +4447,7 @@ elementos de la lista.
 
 Por ejemplo:
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map</span> <span class="n">cuadrado</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ {1 4 9 16 25}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map</span> <span class="n">cuadrado</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ (1 4 9 16 25)</span>
 </pre></div>
 </td></tr></table>
 
@@ -4467,7 +4467,7 @@ obtenemos una lista con las sumas de cada pareja:
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-pareja</span> <span class="n">pareja</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">pareja</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">pareja</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="nb">map</span> <span class="n">suma-pareja</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)))</span> <span class="c1">; ⇒ {6 9 8}</span>
+<span class="p">(</span><span class="nb">map</span> <span class="n">suma-pareja</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)))</span> <span class="c1">; ⇒ (6 9 8)</span>
 </pre></div>
 </td></tr></table>
 
@@ -4477,7 +4477,7 @@ También podríamos hacerlo con una expresión lambda:
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">pareja</span><span class="p">)</span>
          <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">pareja</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">pareja</span><span class="p">)))</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)))</span> 
-<span class="c1">; ⇒ {6 9 8}</span>
+<span class="c1">; ⇒ (6 9 8)</span>
 </pre></div>
 </td></tr></table>
 
@@ -4489,7 +4489,7 @@ de símbolos en una lista con sus longitudes:
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">s</span><span class="p">)</span> 
         <span class="p">(</span><span class="nb">string-length</span> <span class="p">(</span><span class="nb">symbol-&gt;string</span> <span class="n">s</span><span class="p">)))</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">Esta</span> <span class="ss">es</span> <span class="ss">una</span> <span class="ss">lista</span> <span class="ss">de</span> <span class="ss">símbolos</span><span class="p">))</span>
-<span class="c1">; =&gt; {4 2 3 5 2 8}</span>
+<span class="c1">; =&gt; (4 2 3 5 2 8)</span>
 </pre></div>
 </td></tr></table>
 
@@ -4535,11 +4535,11 @@ Ejemplos:
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map</span> <span class="nb">+</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span> <span class="mi">20</span> <span class="mi">30</span><span class="p">))</span> <span class="c1">; ⇒ {11 22 33}</span>
-<span class="p">(</span><span class="nb">map</span> <span class="nb">cons</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span> <span class="mi">20</span> <span class="mi">30</span><span class="p">))</span> <span class="c1">; ⇒ {{1 . 10} {2 . 20} {3 . 30}}</span>
-<span class="p">(</span><span class="nb">map</span> <span class="nb">&gt;</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span> <span class="mi">3</span> <span class="mi">40</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">20</span> <span class="mi">0</span> <span class="mi">10</span><span class="p">))</span> <span class="c1">; ⇒ {#f #t #t}</span>
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map</span> <span class="nb">+</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span> <span class="mi">20</span> <span class="mi">30</span><span class="p">))</span> <span class="c1">; ⇒ (11 22 33)</span>
+<span class="p">(</span><span class="nb">map</span> <span class="nb">cons</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span> <span class="mi">20</span> <span class="mi">30</span><span class="p">))</span> <span class="c1">; ⇒ ((1 . 10) (2 . 20) (3 . 30))</span>
+<span class="p">(</span><span class="nb">map</span> <span class="nb">&gt;</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span> <span class="mi">3</span> <span class="mi">40</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">20</span> <span class="mi">0</span> <span class="mi">10</span><span class="p">))</span> <span class="c1">; ⇒ (#f #t #t)</span>
 <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-        <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span> <span class="mi">3</span> <span class="mi">40</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">20</span> <span class="mi">0</span> <span class="mi">10</span><span class="p">))</span> <span class="c1">; ⇒ {20 3 40}</span>
+        <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span> <span class="mi">3</span> <span class="mi">40</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">20</span> <span class="mi">0</span> <span class="mi">10</span><span class="p">))</span> <span class="c1">; ⇒ (20 3 40)</span>
 </pre></div>
 </td></tr></table>
 
@@ -4554,7 +4554,7 @@ cumplen el predicado.
 
 Un ejemplo de uso:
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">filter</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ {2 4 6 8}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">filter</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ (2 4 6 8)</span>
 </pre></div>
 </td></tr></table>
 
@@ -4567,7 +4567,7 @@ siguiente expresión:
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">filter</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">pareja</span><span class="p">)</span>
             <span class="p">(</span><span class="nb">&gt;=</span> <span class="p">(</span><span class="nb">car</span> <span class="n">pareja</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">pareja</span><span class="p">)))</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">10</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">8</span> <span class="o">.</span> <span class="mi">8</span><span class="p">)</span> <span class="p">(</span><span class="mi">10</span> <span class="o">.</span> <span class="mi">20</span><span class="p">)))</span>
-<span class="c1">; ⇒ {{10 . 4} {8 . 8}}</span>
+<span class="c1">; ⇒ ((10 . 4) (8 . 8))</span>
 </pre></div>
 </td></tr></table>
 
@@ -4580,7 +4580,7 @@ de 4.
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">filter</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">s</span><span class="p">)</span> 
            <span class="p">(</span><span class="nb">&gt;=</span> <span class="p">(</span><span class="nb">string-length</span> <span class="p">(</span><span class="nb">symbol-&gt;string</span> <span class="n">s</span><span class="p">))</span> <span class="mi">4</span><span class="p">))</span>
            <span class="o">&#39;</span><span class="p">(</span><span class="ss">Esta</span> <span class="ss">es</span> <span class="ss">una</span> <span class="ss">lista</span> <span class="ss">de</span> <span class="ss">símbolos</span><span class="p">))</span>
-<span class="c1">; =&gt; {Esta lista símbolos}</span>
+<span class="c1">; =&gt; (Esta lista símbolos)</span>
 </pre></div>
 </td></tr></table>
 
@@ -4712,7 +4712,7 @@ Otros ejemplos:
 
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">fold-right</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ 40320</span>
-<span class="p">(</span><span class="n">fold-right</span> <span class="nb">cons</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ {1 2 3 4}</span>
+<span class="p">(</span><span class="n">fold-right</span> <span class="nb">cons</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ (1 2 3 4)</span>
 </pre></div>
 </td></tr></table>
 
