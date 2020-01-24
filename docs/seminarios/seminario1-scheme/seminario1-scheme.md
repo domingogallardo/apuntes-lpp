@@ -358,7 +358,7 @@ complejos e inexactos. Por ejemplo:
 (max 3 5 10 1000) ; ⇒ #1000
 (/ 22 4)  ; Devuelve una fracción
 (quotient 22 4) ; ⇒ 5 (cociente de la división entera)
-(modulo 22 4) ; ⇒ 2 (resto de la división entera)
+(remainder 22 4) ; ⇒ 2 (resto de la división entera)
 (equal? 0.5 (/ 1 2)) ; ⇒ #f (distintos tipos de datos)
 (= 0.5 (/ 1 2)) ; ⇒ #t (igualdad matemática)
 (abs (* 3 -2)) ; ⇒ 6 (valor absoluto)
@@ -512,8 +512,17 @@ Por ejemplo:
 (cons 1 2) ; ⇒ (1 . 2)
 ```
 
-Scheme es un lenguaje débilmente tipado y las variables y parejas
-pueden contener cualquier tipo de dato. Incluso otras parejas:
+La característica de Scheme de que las expresiones se evalúan de
+dentro a afuera se aplica a todas las funciones, incluyendo esta
+función `cons` que construye parejas:
+
+```racket
+(cons (+ 2 3) (string-append "hola" "adios")) ; ⇒ (5 . "holaadios")
+(cons (= 2 2.0) (* 2 (+ 1 3))) ; ⇒ (#t . 8)
+```
+
+Las parejas pueden contener también otras parejas. Veremos que esta es
+la forma de definir estructuras de datos en Scheme:
 
 ```racket
 (define p1 (cons 1 2)) ; definimos una pareja formada por 1 y 2
@@ -582,9 +591,27 @@ con `()`:
 (cdr (cdr (cdr l2))) ; ⇒ () lista vacía
 ```
 
+Otra forma de definir una lista es usando el `quote`, una comilla
+colocada al comienzo de la lista. Veremos en teoría una explicación
+más detallada de cómo funciona este `quote`.
+
+Por ejemplo, podemos definir listas usando las las siguientes
+expresiones:
+
+```racket
+'(1 2 3) ; ⇒ Construye la lista (1 2 3)
+(cdr '(1 2 3)) ; ⇒ (2 3)
+(define l3 '(1 2 3)) ; Construye la lista (1 2 3) y la guarda en l3
+```
+
+Durante el seminario usaremos tanto la función `list` como el `quote`
+para construir listas.
+
 La función `list` sin argumentos devuelve una lista vacía y la función
 `null?` comprueba si una lista es vacía. La lista vacía también se
-puede definir con el símbolo `'()`. Es el caso base de gran parte
+puede definir usando `quote`: `'()`. 
+
+Veremos más adelante que la lista vacía es el caso base de gran parte
 de funciones recursivas que recorren listas.
 
 ```racket
@@ -594,10 +621,10 @@ de funciones recursivas que recorren listas.
 (null? (list 1 2 3)) ; ⇒ #f
 ```
 
-Podemos construir una nueva lista añadiendo un elemento a la cabeza de
-una lista existente usando la función `cons` (la misma función sobre
-pareja, ya explicaremos también por qué) usando como parámetro un
-elemento y una lista:
+También podemos construir una nueva lista añadiendo un elemento a la
+cabeza de una lista existente, usando la función `cons` (la misma
+función sobre pareja, ya explicaremos también por qué) usando como
+parámetro un elemento y una lista:
 
 ```racket
 (cons elemento lista) 
@@ -606,9 +633,9 @@ elemento y una lista:
 Por ejemplo:
 
 ```racket
-(cons 1 (list 2 3 4 5))  ; ⇒ (1 2 3 4 5) (se añade 1 a la cabeza de 
+(cons 1 '(2 3 4 5))  ; ⇒ (1 2 3 4 5) (se añade 1 a la cabeza de 
                          ;   la lista (2 3 4 5)
-(cons 1 (list))  ; ⇒ (1) (se añade 1 a la lista vacía
+(cons 1 '())  ; ⇒ (1) (se añade 1 a la lista vacía
 (cons 1 (cons 2 (list))) ; ⇒ (1 2) 
 (cons 1 (cons 2 (cons 3 '()))) ; ⇒ (1 2 3)
 ```
@@ -624,7 +651,7 @@ Por ejemplo:
     Por ejemplo:
     
     ```racket
-    (cons (list 1 2 3) 4) ; ⇒ ((1 2 3) . 4)
+    (cons '(1 2 3) 4) ; ⇒ ((1 2 3) . 4)
     ```
 
 
@@ -667,8 +694,18 @@ Una lista puede incluso contener otras listas:
 
 ```racket
 (list (list 1 2) 3 4 (list 5 6)) ; ⇒ ((1 2) 3 4 (5 6)) (lista que contiene listas)
+'((1 2) 3 4 (5 6))               ; ⇒ La misma lista, definida con quote
 (cons (list 1 2) (list 3 4 5))   ; ⇒ ((1 2) 3 4 5)) (se añade una
                                  ;    lista como primer elemento)
+(cons '(1 2) '(3 4 5))           ; ⇒ La misma expresión anterior, con quote
+```
+
+La característica de Scheme de que las expresiones se evalúan de
+dentro a afuera se aplica a todas las funciones, incluyendo está
+función `list` que construye listas:
+
+```racket
+(list (+ 1 2) (string-append "hola" "adios") (* 2 3)) ; ⇒ (3 "holaadios" 6)
 (list (cons 1 2) (cons 3 4)) ; ⇒ ((1 . 2) (3 . 4)) (lista que contiene parejas)
 ```
 
@@ -863,22 +900,6 @@ Por ejemplo:
 (convertir-temperatura 50 #\C) ; ⇒ (122 "grados fahrenheit")
 ```
 
-## Función `display`
-
-Para imprimir por pantalla en Scheme se pude usar la instrucción
-`display`, similar a la sentencia `print` de muchos otros
-lenguajes. 
-
-```racket
-(display "\nHola mundo!\n") ; display no es una función, porque no
-                            ; devuelve nada. Imprime una
-                            ; expresión en el terminal
-(define a (display "Hola")) ; a no tiene ningún valor
-(display "La suma de 2 + 3 es: ")
-(display (+ 2 3))
-(display "\n")
-```
-
 ## Pruebas unitarias en Scheme
 
 Para verificar que las funciones que definimos tienen un
@@ -1059,13 +1080,13 @@ siguientes expresiones. Están ordenadas por dificultad de arriba abajo
 y de izquierda a derecha. Después, pruébalas y comprueba si tu
 predicción era correcta. Si no lo era, intenta comprender por qué.
 
-|Instrucción                       | Instrucción                      |
-|----------------------------------|----------------------------------|
-|`(cons 1 2)`                      | `(car (cons (cons 3 4) 2))`      |
-|`(car (cons 1 2))`                | `(cdr (cons (cons 3 4) 2))`      |
-|`(cdr (cons 1 2))`                | `(cdr (cons 1 (cons 2 3)))`      |
-|`(car (car (cons (cons 1 2) 3)))` | `(cdr (car (cons (cons 1 2) 3)))`|
-
+|Instrucción                           | Instrucción                       |
+|--------------------------------------|-----------------------------------|
+|`(cons 1 2)`                          | `(car (car (cons (cons 1 2) 3)))` |
+|`(car (cons 1 2))`                    | `(car (cons (cons 3 4) 2))`       |
+|`(cdr (cons 1 2))`                    | `(cdr (cons (cons 3 4) 2))`       |
+|`(cons (* 2 3) (/ 4 2))`              | `(cdr (cons 1 (cons 2 3)))`       |
+|`(cons (+ 2 1) (if (> 2 3) "2" "3"))` | `(cdr (car (cons (cons 1 2) 3)))` |
 
 ### Ejercicio 4
 
@@ -1075,13 +1096,15 @@ predicción era correcta. Si no lo era, intenta comprender por qué.
 
 |Instrucción                        | Instrucción                             |
 |---------------------  ------------|-----------------------------------------|
-|`(list 1 2 3 4)`                   | `(cons 3 (list 1 2 3))`                 |
-|`(cdr  (list 1 2 3 4))`            | `(cdr (cons #t (cons "Hola" (list 1)))` |
-|`(car (list 1 2 3 4))`             | `(car (list (list 1 2) 1 2 3 4))`       |
-|`(car (list #t 1 "Hola"))`         | `(car (cdr (list (list 1 2) 1 2)`       |
-|`(car (cdr (list 1 2 3 4)))`       | `(cons (list 1 2 3) (list 4 5 6))`      |
-|`(cdr (cdr (list 1 2 3 4)))`       | `(car (cdr (list 1 2 3 4)))`            |
+|`(list 1 2 3 4)`                   | `(cons 3 '(1 2 3))`                     |
+|`(cdr (list 1 2 3 4))`             | `(cdr (cons #t (cons "Hola" (list 1)))` |
+|`(car '(1 2 3 4))`                 | `(car (list (list 1 2) 1 2 3 4))`       |
+|`(car (list #t 1 "Hola"))`         | `(car (cdr '((1 2) 1 2)`                |
+|`(car (cdr (list 1 2 3 4)))`       | `(cons '(1 2 3) '(4 5 6))`              |
+|`(cdr (cdr '(1 2 3 4)))`           | `(car (cdr (list 1 2 3 4)))`            |
 |`(car (cdr (cdr (list 1 2 3 4))))` | `(cdr (cdr (list 1 2 3 4)))`            |
+|`(list (* 2 2) (+ 1 2) (/ 4 2))`   | `(car (cdr (cdr (cdr '(1 2 3 4)))))`    |
+|`(list (+ 2 3) (- 3 4) (string-ref "hola" 3))` | |
 
 ### Ejercicio 5
 
@@ -1119,7 +1142,7 @@ d) Dada la siguiente expresión, ¿qué devuelve Scheme?
 e) Dada la siguiente expresión, ¿qué devuelve Scheme?
 
 ```racket
-(cdr (cdr (list 1 (list 2 3) 4 5)))
+(cdr (cdr '(1 (2 3) 4 5)))
 ```
 
 ----
