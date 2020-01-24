@@ -135,6 +135,9 @@ configuración o usar la combinación alternativa de DrRacket:
 
 - `ESC` + `p` (previous) / `n` (next)
 
+También podemos seleccionar con el cursor una expresión y al pulsar
+`RETURN` se copia automáticamente en el _prompt_.
+
 ## El lenguaje Scheme
 
 ### Vamos a empezar probando algunos ejemplos
