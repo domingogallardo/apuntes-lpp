@@ -429,13 +429,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#funcion-display" class="md-nav__link">
-    Función display
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#pruebas-unitarias-en-scheme" class="md-nav__link">
     Pruebas unitarias en Scheme
   </a>
@@ -679,13 +672,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#funcion-display" class="md-nav__link">
-    Función display
-  </a>
   
 </li>
       
@@ -1131,7 +1117,7 @@ complejos e inexactos. Por ejemplo:</p>
 <span class="p">(</span><span class="nb">max</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">10</span> <span class="mi">1000</span><span class="p">)</span> <span class="c1">; ⇒ #1000</span>
 <span class="p">(</span><span class="nb">/</span> <span class="mi">22</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1">; Devuelve una fracción</span>
 <span class="p">(</span><span class="nb">quotient</span> <span class="mi">22</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ 5 (cociente de la división entera)</span>
-<span class="p">(</span><span class="nb">modulo</span> <span class="mi">22</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ 2 (resto de la división entera)</span>
+<span class="p">(</span><span class="nb">remainder</span> <span class="mi">22</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ 2 (resto de la división entera)</span>
 <span class="p">(</span><span class="nb">equal?</span> <span class="mf">0.5</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">; ⇒ #f (distintos tipos de datos)</span>
 <span class="p">(</span><span class="nb">=</span> <span class="mf">0.5</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">; ⇒ #t (igualdad matemática)</span>
 <span class="p">(</span><span class="nb">abs</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">3</span> <span class="mi">-2</span><span class="p">))</span> <span class="c1">; ⇒ 6 (valor absoluto)</span>
@@ -1321,8 +1307,17 @@ muestra el resultado de construir la pareja con la sintaxis:</p>
 </pre></div>
 </td></tr></table>
 
-<p>Scheme es un lenguaje débilmente tipado y las variables y parejas
-pueden contener cualquier tipo de dato. Incluso otras parejas:</p>
+<p>La característica de Scheme de que las expresiones se evalúan de
+dentro a afuera se aplica a todas las funciones, incluyendo esta
+función <code>cons</code> que construye parejas:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;adios&quot;</span><span class="p">))</span> <span class="c1">; ⇒ (5 . &quot;holaadios&quot;)</span>
+<span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">=</span> <span class="mi">2</span> <span class="mf">2.0</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">)))</span> <span class="c1">; ⇒ (#t . 8)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Las parejas pueden contener también otras parejas. Veremos que esta es
+la forma de definir estructuras de datos en Scheme:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1390,9 +1385,25 @@ con <code>()</code>:</p>
 </pre></div>
 </td></tr></table>
 
+<p>Otra forma de definir una lista es usando el <code>quote</code>, una comilla
+colocada al comienzo de la lista. Veremos en teoría una explicación
+más detallada de cómo funciona este <code>quote</code>.</p>
+<p>Por ejemplo, podemos definir listas usando las las siguientes
+expresiones:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ Construye la lista (1 2 3)</span>
+<span class="p">(</span><span class="nb">cdr</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ (2 3)</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">l3</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; Construye la lista (1 2 3) y la guarda en l3</span>
+</pre></div>
+</td></tr></table>
+
+<p>Durante el seminario usaremos tanto la función <code>list</code> como el <code>quote</code>
+para construir listas.</p>
 <p>La función <code>list</code> sin argumentos devuelve una lista vacía y la función
 <code>null?</code> comprueba si una lista es vacía. La lista vacía también se
-puede definir con el símbolo <code>'()</code>. Es el caso base de gran parte
+puede definir usando <code>quote</code>: <code>'()</code>. </p>
+<p>Veremos más adelante que la lista vacía es el caso base de gran parte
 de funciones recursivas que recorren listas.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -1404,10 +1415,10 @@ de funciones recursivas que recorren listas.</p>
 </pre></div>
 </td></tr></table>
 
-<p>Podemos construir una nueva lista añadiendo un elemento a la cabeza de
-una lista existente usando la función <code>cons</code> (la misma función sobre
-pareja, ya explicaremos también por qué) usando como parámetro un
-elemento y una lista:</p>
+<p>También podemos construir una nueva lista añadiendo un elemento a la
+cabeza de una lista existente, usando la función <code>cons</code> (la misma
+función sobre pareja, ya explicaremos también por qué) usando como
+parámetro un elemento y una lista:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons</span> <span class="n">elemento</span> <span class="n">lista</span><span class="p">)</span> 
 </pre></div>
 </td></tr></table>
@@ -1417,9 +1428,9 @@ elemento y una lista:</p>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1">; ⇒ (1 2 3 4 5) (se añade 1 a la cabeza de </span>
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1">; ⇒ (1 2 3 4 5) (se añade 1 a la cabeza de </span>
                          <span class="c1">;   la lista (2 3 4 5)</span>
-<span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">list</span><span class="p">))</span>  <span class="c1">; ⇒ (1) (se añade 1 a la lista vacía</span>
+<span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">())</span>  <span class="c1">; ⇒ (1) (se añade 1 a la lista vacía</span>
 <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">2</span> <span class="p">(</span><span class="nb">list</span><span class="p">)))</span> <span class="c1">; ⇒ (1 2) </span>
 <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">2</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span> <span class="o">&#39;</span><span class="p">())))</span> <span class="c1">; ⇒ (1 2 3)</span>
 </pre></div>
@@ -1434,7 +1445,7 @@ parámetro y el dato a añadir como segundo, Scheme no da un
 error sino que construye <strong>una pareja</strong> cuyo primer elemento es
 una lista y su segundo elemento es el dato.</p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ ((1 2 3) . 4)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ ((1 2 3) . 4)</span>
 </pre></div>
 </td></tr></table>
 
@@ -1488,9 +1499,20 @@ datos:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="mi">4</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ ((1 2) 3 4 (5 6)) (lista que contiene listas)</span>
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="mi">4</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ ((1 2) 3 4 (5 6)) (lista que contiene listas)</span>
+<span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="mi">4</span> <span class="p">(</span><span class="mi">5</span> <span class="mi">6</span><span class="p">))</span>               <span class="c1">; ⇒ La misma lista, definida con quote</span>
 <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span>   <span class="c1">; ⇒ ((1 2) 3 4 5)) (se añade una</span>
                                  <span class="c1">;    lista como primer elemento)</span>
+<span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span>           <span class="c1">; ⇒ La misma expresión anterior, con quote</span>
+</pre></div>
+</td></tr></table>
+
+<p>La característica de Scheme de que las expresiones se evalúan de
+dentro a afuera se aplica a todas las funciones, incluyendo está
+función <code>list</code> que construye listas:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;adios&quot;</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ (3 &quot;holaadios&quot; 6)</span>
 <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ ((1 . 2) (3 . 4)) (lista que contiene parejas)</span>
 </pre></div>
 </td></tr></table>
@@ -1699,26 +1721,6 @@ expresiones anteriores:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">convertir-temperatura</span> <span class="mi">50</span> <span class="sc">#\F</span><span class="p">)</span> <span class="c1">; ⇒ (10 &quot;grados centigrados&quot;)</span>
 <span class="p">(</span><span class="n">convertir-temperatura</span> <span class="mi">50</span> <span class="sc">#\C</span><span class="p">)</span> <span class="c1">; ⇒ (122 &quot;grados fahrenheit&quot;)</span>
-</pre></div>
-</td></tr></table>
-
-<h2 id="funcion-display">Función <code>display</code><a class="headerlink" href="#funcion-display" title="Permanent link">&para;</a></h2>
-<p>Para imprimir por pantalla en Scheme se pude usar la instrucción
-<code>display</code>, similar a la sentencia <code>print</code> de muchos otros
-lenguajes. </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">display</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hola mundo!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1">; display no es una función, porque no</span>
-                            <span class="c1">; devuelve nada. Imprime una</span>
-                            <span class="c1">; expresión en el terminal</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="p">(</span><span class="nb">display</span> <span class="s2">&quot;Hola&quot;</span><span class="p">))</span> <span class="c1">; a no tiene ningún valor</span>
-<span class="p">(</span><span class="nb">display</span> <span class="s2">&quot;La suma de 2 + 3 es: &quot;</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">display</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
-<span class="p">(</span><span class="nb">display</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -1990,18 +1992,22 @@ predicción era correcta. Si no lo era, intenta comprender por qué.</p>
 <tbody>
 <tr>
 <td><code>(cons 1 2)</code></td>
-<td><code>(car (cons (cons 3 4) 2))</code></td>
+<td><code>(car (car (cons (cons 1 2) 3)))</code></td>
 </tr>
 <tr>
 <td><code>(car (cons 1 2))</code></td>
-<td><code>(cdr (cons (cons 3 4) 2))</code></td>
+<td><code>(car (cons (cons 3 4) 2))</code></td>
 </tr>
 <tr>
 <td><code>(cdr (cons 1 2))</code></td>
+<td><code>(cdr (cons (cons 3 4) 2))</code></td>
+</tr>
+<tr>
+<td><code>(cons (* 2 3) (/ 4 2))</code></td>
 <td><code>(cdr (cons 1 (cons 2 3)))</code></td>
 </tr>
 <tr>
-<td><code>(car (car (cons (cons 1 2) 3)))</code></td>
+<td><code>(cons (+ 2 1) (if (&gt; 2 3) "2" "3"))</code></td>
 <td><code>(cdr (car (cons (cons 1 2) 3)))</code></td>
 </tr>
 </tbody>
@@ -2020,31 +2026,39 @@ predicción era correcta. Si no lo era, intenta comprender por qué.</p>
 <tbody>
 <tr>
 <td><code>(list 1 2 3 4)</code></td>
-<td><code>(cons 3 (list 1 2 3))</code></td>
+<td><code>(cons 3 '(1 2 3))</code></td>
 </tr>
 <tr>
-<td><code>(cdr  (list 1 2 3 4))</code></td>
+<td><code>(cdr (list 1 2 3 4))</code></td>
 <td><code>(cdr (cons #t (cons "Hola" (list 1)))</code></td>
 </tr>
 <tr>
-<td><code>(car (list 1 2 3 4))</code></td>
+<td><code>(car '(1 2 3 4))</code></td>
 <td><code>(car (list (list 1 2) 1 2 3 4))</code></td>
 </tr>
 <tr>
 <td><code>(car (list #t 1 "Hola"))</code></td>
-<td><code>(car (cdr (list (list 1 2) 1 2)</code></td>
+<td><code>(car (cdr '((1 2) 1 2)</code></td>
 </tr>
 <tr>
 <td><code>(car (cdr (list 1 2 3 4)))</code></td>
-<td><code>(cons (list 1 2 3) (list 4 5 6))</code></td>
+<td><code>(cons '(1 2 3) '(4 5 6))</code></td>
 </tr>
 <tr>
-<td><code>(cdr (cdr (list 1 2 3 4)))</code></td>
+<td><code>(cdr (cdr '(1 2 3 4)))</code></td>
 <td><code>(car (cdr (list 1 2 3 4)))</code></td>
 </tr>
 <tr>
 <td><code>(car (cdr (cdr (list 1 2 3 4))))</code></td>
 <td><code>(cdr (cdr (list 1 2 3 4)))</code></td>
+</tr>
+<tr>
+<td><code>(list (* 2 2) (+ 1 2) (/ 4 2))</code></td>
+<td><code>(car (cdr (cdr (cdr '(1 2 3 4)))))</code></td>
+</tr>
+<tr>
+<td><code>(list (+ 2 3) (- 3 4) (string-ref "hola" 3))</code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -2075,7 +2089,7 @@ Scheme devuelva 8.</p>
 </td></tr></table>
 
 <p>e) Dada la siguiente expresión, ¿qué devuelve Scheme?</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cdr</span> <span class="p">(</span><span class="nb">cdr</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">cdr</span> <span class="p">(</span><span class="nb">cdr</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
