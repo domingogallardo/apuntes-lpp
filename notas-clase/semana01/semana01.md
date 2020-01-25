@@ -56,32 +56,8 @@ Notas de clase de la semana 1 de LPP.
 superación de los cuestionarios de cada bloque sumará 0,5 puntos a la
 nota del parcial de ese bloque.
 
-- 3 preguntas cortas **sobre la práctica y sobre los conceptos de
-teoría asociados**. 
-
-- Dentro de cada bloque temático deberás haber
-**aprobado los cuestionarios previos para poder realizar el
-cuestionario actual**. 
-
-- Se permitirá recuperar los cuestionarios previos suspendidos, **una
-vez por sesión** y siempre **dentro del tiempo** destinado a la
-realización de los mismos. Sólo se podrán recuperar cuestionarios del
-bloque temático actual.
-
-- En cada pregunta se permitirán 3 intentos y cada intento fallado
-descontará 1/3 de la puntuación de la pregunta (1,111 puntos). De esta
-forma, para aprobar un cuestionario se podrán fallar como máximo 4
-intentos.
-
-- Deberás escribir las respuestas de forma totalmente correcta,
-**incluyendo los espacios en blanco**:
-
-<img src="imagenes/respuestas-cuestionario.png" width="500px"/>
-
-### Normas para realización de los cuestionarios ###
-
-- Consultad las normas para la realización de los cuestionarios en la
-  web de apuntes (Teoría > Descripción de la asignatura).
+- En clase de prácticas explicaremos más detalles sobre el
+  funcionamiento de estos cuestionarios.
 
 ### Evaluación
 
