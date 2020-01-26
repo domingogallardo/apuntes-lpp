@@ -88,24 +88,24 @@ nota del parcial de ese bloque.
 
 !!! quote "Cómo dominar los conceptos" 
     Para superar la asignatura lo que hice fue estudiar mucho. Hay que practicar y sobre todo
-    entender los ejercicios y no sabérselos de memoria. Una vez
+    entender los ejercicios y no sabérselos de memoria. Una vez
     dominados los ejercicios yo mismo me propuse variantes de los
-    mismos. Así es como se domina.
+    mismos. Así es como se domina.
 
 !!! quote "No copiar las prácticas"
     El mayor problema que creo que existe es que muchas personas se
-    relajan y se copian las prácticas en cuanto les resultan un poco
-    difíciles o les lleva algo mas del tiempo que les gustaría. Esta
+    relajan y se copian las prácticas en cuanto les resultan un poco
+    difíciles o les lleva algo mas del tiempo que les gustaría. Esta
     asignatura si no haces tu los ejercicios y te peleas con ellos es
-    prácticamente imposible de sacar.
+    prácticamente imposible de sacar.
 
 !!! quote "No memorizar"
     Otra de las cosas es que tienes que cambiar la forma de estudiar,
-    no vale memorizar, ni hacer muchos ejercicios sin más. Tienes que
-    entender bien el funcionamiento de la recursión para luego poder
-    practicar con ejercicios, sino no sirve. [...] En mi opinión el
-    problema de LPP para mucha gente es que para los exámenes se
-    memorizan los ejercicios de prácticas de las soluciones que se dan
+    no vale memorizar, ni hacer muchos ejercicios sin más. Tienes que
+    entender bien el funcionamiento de la recursión para luego poder
+    practicar con ejercicios, sino no sirve. [...] En mi opinión el
+    problema de LPP para mucha gente es que para los exámenes se
+    memorizan los ejercicios de prácticas de las soluciones que se dan
     en clase.
 
 ---
@@ -245,13 +245,13 @@ Lenguaje funcional puro más importante:
     - Ben Christensen - [Functional Reactive Programming in the Netflix API](https://www.infoq.com/presentations/Netflix-API-rxjava-hystrix) (Charla en InfoQ)
 
 - El paradigma funcional facilita:
-   - la programación de sistemas concurrentes, con múltiples hilos de
-     ejecución o con múltiples computadores ejecutando procesos
-     conectados concurrentes.
-   - la definición y composición de múltiples operaciones sobre
-     *streams* de forma muy concisa y compacta, aplicable a la
-     programación de sistemas distribuidos en Internet.
-   - la programación interactiva y evolutiva.
+    - la programación de sistemas concurrentes, con múltiples hilos de
+      ejecución o con múltiples computadores ejecutando procesos
+      conectados concurrentes.
+    - la definición y composición de múltiples operaciones sobre
+      *streams* de forma muy concisa y compacta, aplicable a la
+      programación de sistemas distribuidos en Internet.
+    - la programación interactiva y evolutiva.
 
 ### Programación declarativa
 
@@ -478,6 +478,15 @@ valor el resultado final no debe cambiar. -> funciones no modifican estado.
 * Asignación
 * Referencias
 * Pasos de ejecución
+
+### Programación funcional
+
+Primeras características que vamos a ver hoy:
+
+- Evaluación de expresiones
+- Definición de funciones
+- Funciones puras
+- Modelo de computación de sustitución
 
 ### Evaluación de expresiones
 
