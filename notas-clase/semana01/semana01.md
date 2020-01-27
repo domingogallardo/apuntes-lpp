@@ -88,24 +88,24 @@ nota del parcial de ese bloque.
 
 !!! quote "Cómo dominar los conceptos" 
     Para superar la asignatura lo que hice fue estudiar mucho. Hay que practicar y sobre todo
-    entender los ejercicios y no sabérselos de memoria. Una vez
+    entender los ejercicios y no sabérselos de memoria. Una vez
     dominados los ejercicios yo mismo me propuse variantes de los
-    mismos. Así es como se domina.
+    mismos. Así es como se domina.
 
 !!! quote "No copiar las prácticas"
     El mayor problema que creo que existe es que muchas personas se
-    relajan y se copian las prácticas en cuanto les resultan un poco
-    difíciles o les lleva algo mas del tiempo que les gustaría. Esta
+    relajan y se copian las prácticas en cuanto les resultan un poco
+    difíciles o les lleva algo mas del tiempo que les gustaría. Esta
     asignatura si no haces tu los ejercicios y te peleas con ellos es
-    prácticamente imposible de sacar.
+    prácticamente imposible de sacar.
 
 !!! quote "No memorizar"
     Otra de las cosas es que tienes que cambiar la forma de estudiar,
-    no vale memorizar, ni hacer muchos ejercicios sin más. Tienes que
-    entender bien el funcionamiento de la recursión para luego poder
-    practicar con ejercicios, sino no sirve. [...] En mi opinión el
-    problema de LPP para mucha gente es que para los exámenes se
-    memorizan los ejercicios de prácticas de las soluciones que se dan
+    no vale memorizar, ni hacer muchos ejercicios sin más. Tienes que
+    entender bien el funcionamiento de la recursión para luego poder
+    practicar con ejercicios, sino no sirve. [...] En mi opinión el
+    problema de LPP para mucha gente es que para los exámenes se
+    memorizan los ejercicios de prácticas de las soluciones que se dan
     en clase.
 
 ---
@@ -703,7 +703,7 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 (define (factorial x)
     (if (= x 0)
         1
-		(* x (factorial (- x 1)))))
+	(* x (factorial (- x 1)))))
 ```
 
 ### Forma especial `if`
