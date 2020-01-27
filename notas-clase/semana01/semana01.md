@@ -245,13 +245,13 @@ Lenguaje funcional puro más importante:
     - Ben Christensen - [Functional Reactive Programming in the Netflix API](https://www.infoq.com/presentations/Netflix-API-rxjava-hystrix) (Charla en InfoQ)
 
 - El paradigma funcional facilita:
-   - la programación de sistemas concurrentes, con múltiples hilos de
-     ejecución o con múltiples computadores ejecutando procesos
-     conectados concurrentes.
-   - la definición y composición de múltiples operaciones sobre
-     *streams* de forma muy concisa y compacta, aplicable a la
-     programación de sistemas distribuidos en Internet.
-   - la programación interactiva y evolutiva.
+    - la programación de sistemas concurrentes, con múltiples hilos de
+      ejecución o con múltiples computadores ejecutando procesos
+      conectados concurrentes.
+    - la definición y composición de múltiples operaciones sobre
+      *streams* de forma muy concisa y compacta, aplicable a la
+      programación de sistemas distribuidos en Internet.
+    - la programación interactiva y evolutiva.
 
 ### Programación declarativa
 
@@ -478,6 +478,15 @@ valor el resultado final no debe cambiar. -> funciones no modifican estado.
 * Asignación
 * Referencias
 * Pasos de ejecución
+
+### Programación funcional
+
+Primeras características que vamos a ver hoy:
+
+- Evaluación de expresiones
+- Definición de funciones
+- Funciones puras
+- Modelo de computación de sustitución
 
 ### Evaluación de expresiones
 
