@@ -2140,11 +2140,17 @@ expresión del caso general para construir el valor resultante.
 
 El caso general del ejemplo anterior indica lo siguiente:
 
-!!! Example "Caso general suma hasta x"
-    Para calcular la suma hasta _x_, llamamos a la recursión para que
-    calcule la suma hasta _x-1_. Esa llamada recursiva nos devolverá
-    el resultado (confiamos en que la implementación funciona bien) y
-    a ese resultado le sumamos el propio número _x_.
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Para calcular la suma hasta x: 
+    Llamamos a la recursión para que calcule la suma hasta x-1 
+    (confiamos en que la implementación funciona bien y esta llamada 
+    nos devolverá el resultado hasta x-1) y a ese resultado le sumamos
+    el propio número x.
+</pre></div>
+</td></tr></table>
 
 Siempre es aconsejable usar un ejemplo concreto para probar el caso
 general. Por ejemplo, el caso general de la suma hasta 5 se calculará
@@ -2206,7 +2212,9 @@ Lo podemos expresar con el siguiente dibujo:
 Generalizamos este ejemplo y lo expresamos en Scheme de la siguiente
 forma:
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">suma-hasta</span> <span class="n">x</span><span class="p">)</span> <span class="nb">=</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">suma-hasta</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">))</span> <span class="n">x</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-hasta</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">suma-hasta</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">))</span> <span class="n">x</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
@@ -2273,7 +2281,7 @@ añadir ese carácter a la cadena que devuelve la recursión.
 
 Veamos un ejemplo concreto:
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">(alfabeto-hasta #\h) = (alfabeto-hasta #\g) + \#h</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(alfabeto-hasta #\h) = (alfabeto-hasta #\g) + \#h
 </pre></div>
 </td></tr></table>
 
@@ -2296,8 +2304,8 @@ dado.
 El caso general quedaría como sigue:
 
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">alfabeto-hasta</span> <span class="n">char</span><span class="p">)</span> <span class="nb">=</span>
-    <span class="p">(</span><span class="nb">string-append</span> <span class="p">(</span><span class="n">alfabeto-hasta</span> <span class="p">(</span><span class="n">anterior</span> <span class="n">char</span><span class="p">))</span> <span class="p">(</span><span class="nb">string</span> <span class="n">char</span><span class="p">))</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">alfabeto-hasta</span> <span class="n">char</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">string-append</span> <span class="p">(</span><span class="n">alfabeto-hasta</span> <span class="p">(</span><span class="n">anterior</span> <span class="n">char</span><span class="p">))</span> <span class="p">(</span><span class="nb">string</span> <span class="n">char</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
@@ -2333,7 +2341,7 @@ la suma de todos ellos.
 Siempre debemos empezar escribiendo un ejemplo de la función, para
 entenderla bien:
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">suma-lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">1</span> <span class="mi">8</span><span class="p">))</span> <span class="nb">=</span> <span class="mi">29</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">suma-lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">1</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ 29</span>
 </pre></div>
 </td></tr></table>
 
@@ -2354,7 +2362,9 @@ siguiente dibujo:
 
 Podemos generalizar este ejemplo y expresarlo en Scheme de la siguiente forma:
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">suma-lista</span> <span class="n">lista</span><span class="p">)</span> <span class="nb">=</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))</span>
 </pre></div>
 </td></tr></table>
 
@@ -2575,7 +2585,7 @@ funcional no existe el *estado mutable*. Una vez declarado un valor,
 no se puede modificar. Esto debe suceder también con las parejas: una
 vez creada una pareja no se puede modificar su contenido.
 
-En Lisp y Scheme estándar (R6RS) las parejas sí que pueden ser
+En Lisp y Scheme estándar las parejas sí que pueden ser
 mutadas. Pero durante toda esta primera parte de la asignatura no lo
 contemplaremos, para no salirnos del paradigma funcional.
 
@@ -2634,10 +2644,11 @@ función `suma` que vimos previamente con este nuevo tipo de datos:
 </td></tr></table>
 
 
-Y, por último, las parejas *pueden formar parte de otras parejas*. Es
-lo que se denomina la propiedad de clausura de la función `cons`:
+Y, por último, las parejas *pueden formar parte de otras parejas*. 
 
-> El resultado de un `cons` puede usarse como parámetro de nuevas llamadas a `cons`.
+Es lo que se denomina la **propiedad de clausura de la función
+`cons`**: el resultado de un `cons` puede usarse como parámetro de
+nuevas llamadas a `cons`.
 
 Ejemplo:
 
