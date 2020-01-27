@@ -1049,7 +1049,7 @@ interpreta Scheme lo que escribes.
 |`+`              | `(= (* 3 2) (+ 1 (+ 2 2) 1))`                  |
 |`#\+`            | `(not (> (+ 3 2) 5))`                          |
 |`"+"`            | `(and (even? 2) (odd? (+ 3 2)))`               |
-|`"hola"`         | `(mod (+ 6 2) (+ 1 1))`                        |
+|`"hola"`         | `(remainder (+ 6 2) (+ 1 1))`                  |
 
 
 ### Ejercicio 2
