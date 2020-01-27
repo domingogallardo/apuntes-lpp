@@ -1784,7 +1784,7 @@ Siempre debemos empezar escribiendo un ejemplo de la función, para
 entenderla bien:
 
 ```racket
-(suma-lista '(12 3 5 1 8)) = 29
+(suma-lista '(12 3 5 1 8)) ; ⇒ 29
 ```
 
 Para diseñar una implementación recursiva de la función tenemos que

@@ -58,7 +58,7 @@ Definición recursiva:
       (+ (suma-hasta (- x 1)) x)))
 ```
 
-!!! Important "Importante"
+!!! Note "Importante"
     Para entender la recursión no es conveniente utilizar el depurador, ni
     hacer trazas, ni *entrar en la recursión*, sino que hay que
     suponer que **la llamada recursiva se ejecuta y devuelve el valor
@@ -133,7 +133,7 @@ Como antes, veamos un ejemplo concreto:
 recursiva que haga casi todo el trabajo y nos devuelva la cadena con
 el alfabeto casi calculada. 
 
-<p style="margin-bottom:3cm;"/>
+<p style="margin-bottom:3cm;"></p>
 
 ¿Podríamos llamar a la recursión para que nos devuelva el alfabeto
 hasta el carácter anterior a la `#\h` (el carácter `\#g`)? 
@@ -152,7 +152,7 @@ Sólo faltaría entonces añadir la `#\h` al final de la cadena:
 
 ¿Cómo lo expresamos en Scheme?
 
-<p style="margin-bottom:3cm;"/>
+<p style="margin-bottom:3cm;"></p>
 
 El caso general:
 
@@ -209,8 +209,8 @@ como parámetro una lista de números y devuelva la suma de todos ellos.
 
 Ejemplo:
 
-```txt
-(suma-lista '(12 3 5 1 8)) => 29
+```racket
+(suma-lista '(12 3 5 1 8)) ; ⇒ 29
 ```
 
 - En este caso podemos pensar que para sumar la lista de
@@ -256,12 +256,12 @@ aparece el identificador en este resto de la lista. Y después sumamos
 al valor devuelto 1 si el primer elemento de la lista coincide con el
 identificador.
 
-En Scheme:
+El caso general en Scheme:
 
-```txt
-(veces lista identificador) => (if (equal? (car lista) identificador)
-                                   (+ 1 (veces (cdr lista) identificador))
-                                   (veces (cdr lista) identificador))
+```racket
+(if (equal? (car lista) id)
+    (+ 1 (veces (cdr lista) id))
+    (veces (cdr lista) id))
 ```
 
 Como caso base, si la lista es vacía devolvemos 0.
@@ -374,7 +374,7 @@ Una pareja puede asignarse a una variable:
 
 Lo probamos ...
 
-<p style="margin-bottom:2cm"/>
+<p style="margin-bottom:2cm"></p>
 
 
 ### Ejemplo de función que recibe distintos tipos de datos
@@ -394,7 +394,7 @@ Lo probamos ...
 Lo probamos ...
 
 
-<p style="margin-bottom:3cm;"/>
+<p style="margin-bottom:3cm;"></p>
 
 
 
@@ -436,7 +436,7 @@ Diagramas *caja-y-puntero* (*box-and-pointer* en inglés):
 - Es importante recordar que las expresiones se evalúan *de dentro a afuera*.
 - ¿Qué estructura se construye con la sentencia anterior? Dibuja el diagrama *box-and-pointer*.
 
-<p style="margin-bottom:3cm;"/>
+<p style="margin-bottom:3cm;"></p>
 
 - ¿Cuál sería el diagrama resultante de la siguiente expresión?
 
@@ -445,11 +445,11 @@ Diagramas *caja-y-puntero* (*box-and-pointer* en inglés):
 (define p2 (cons 5 (cons p 6)))
 ```
 
-<p style="margin-bottom:4cm;"/>
+<p style="margin-bottom:4cm;"></p>
 
 - ¿Cómo sería la expresión formada por `car` y `cdr`s que devolviera 3 a partir de la variable `p2`?
 
-<p style="margin-bottom:4cm;"/>
+<p style="margin-bottom:4cm;"></p>
 
 
 ### Funciones c????r
@@ -503,7 +503,7 @@ Lo probamos ...
 (list? p1) 
 ```
 
-<p style="margin-bottom:2cm;"/>
+<p style="margin-bottom:2cm;"></p>
 
 ¿Una lista vacía es una lista? ¿Es una pareja?
 Lo probamos ...
@@ -513,7 +513,7 @@ Lo probamos ...
 (pair? '())
 ```
 
-<p style="margin-bottom:2cm;"/>
+<p style="margin-bottom:2cm;"></p>
 
 ¿Una lista es una pareja?
 Lo probamos ...
@@ -524,7 +524,7 @@ Lo probamos ...
 (pair? lista)
 ```
 
-<p style="margin-bottom:2cm;"/>
+<p style="margin-bottom:2cm;"></p>
 
 ¿Una pareja con una lista vacía como parte izquierda es una lista?
 Lo probamos ...
@@ -534,7 +534,7 @@ Lo probamos ...
 (pair? p1)
 (list? p1)
 ```
-<p style="margin-bottom:2cm;"/>
+<p style="margin-bottom:2cm;"></p>
 
 Con estos ejemplos ya tenemos pistas para deducir la relación entre listas y parejas en Scheme (y Lisp). Vamos a explicarlo.
 
@@ -623,7 +623,7 @@ Función `null?`:
 
 ¿Cuál sería el diagrama *box and pointer* de la estructura anterior?
 
-<p style="margin-bottom:4cm;"/>
+<p style="margin-bottom:4cm;"></p>
 
 - Expresión equivalente utilizando *conses* es:
 
@@ -649,7 +649,7 @@ Definición con `quote`:
 
 ¿Cuál sería el diagrama *box and pointer* de la estructura anterior?
 
-<p style="margin-bottom:4cm;"/>
+<p style="margin-bottom:4cm;"></p>
 
 
 ### Ejemplo inverso  ###
@@ -662,7 +662,7 @@ Un último ejemplo. Supongamos el siguiente diagrama caja y puntero:
 ¿Cuál sería la expresión en Scheme (usando llamadas a `list` y `cons`) que lo
 construye?
 
-<p style="margin-bottom:4cm;"/>
+<p style="margin-bottom:4cm;"></p>
 
 Solución: 
 
@@ -684,6 +684,6 @@ Solución:
     - `(list-ref lista n)`: devuelve la posición `n` de la lista
     - `(cons dato lista)`: devuelve una nueva lista con `dato` en su primera posición y `lista` como su resto
 
-<p style="margin-bottom:4cm;"/>
+<p style="margin-bottom:4cm;"></p>
 
 
