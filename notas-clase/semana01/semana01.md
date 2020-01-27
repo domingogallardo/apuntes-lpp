@@ -373,12 +373,6 @@ tendremos el siguiente error:
 module: identifier already defined in: a
 ```
 
-!!! Note "Nota" 
-    En el intérprete del DrRacket sí que podemos definir más
-    de una vez la misma función o identificador. Se ha diseñado así para
-    facilitar el uso del intérprete para la prueba de expresiones en
-    Scheme.
-
 En lenguajes imperativos también hay sentencias declarativas:
 
 ```text
@@ -555,23 +549,6 @@ funcionales como Scheme.
 
 - Basado en la reescritura de unos términos por otros
 
-Ejemplo:
-
-```racket
-(define (doble x) 
-    (+ x x))
-
-(define (cuadrado y) 
-    (* y y))
-
-(define (f z) 
-    (+ (cuadrado (doble z)) 1))
-
-(define a 2)
-
-(f (+ a 1))
-```
-
 !!! Note "Reglas del modelo de sustitución"
     1. Si *e* es un valor primitivo (por ejemplo, un número), devolvemos ese
        mismo valor.
@@ -681,8 +658,8 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 
 **Evaluación**
 
-1. Evaluar *<expresión>*
-2. Asociar el valor resultante con el *<identificador>*
+1. Evaluar *expresión*
+2. Asociar el valor resultante con el *identificador*
 
 **Ejemplo**
 
@@ -725,9 +702,9 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 
 **Evaluación**
 
-1. Evaluar *<condición>*
-2. Si el resultado es `#t` evaluar la *<expresión-true>*, en otro
-   caso, evaluar la *<expresión-false>*
+1. Evaluar *condición*
+2. Si el resultado es `#t` evaluar la *expresión-true*, en otro
+   caso, evaluar la *expresión-false*
 
 **Ejemplo**
 
@@ -816,7 +793,7 @@ Ejemplos de funciones Scheme con símbolos:
 (symbol? 'x) ; ⇒ #t
 (symbol? x) ; ⇒ #f ¿Por qué?
 (symbol? 'hola-que<>)
-(symbol⇒string 'hola-que<>)
+(symbol->string 'hola-que<>)
 'mañana
 'lápiz ; aunque sea posible, no vamos a usar acentos en los símbolos
 ; pero sí en los comentarios
