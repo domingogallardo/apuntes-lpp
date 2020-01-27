@@ -1547,6 +1547,9 @@ concatenar dos o más listas
 (append list1 list2) ; ⇒ (1 2 3 4 hola como estás)
 ```
 
+<!--
+
+
 ### Recursión
 
 Otra característica fundamental de la programación funcional es la no
@@ -2412,7 +2415,6 @@ vemos por primera vez en los siguientes ejemplos:
 
 En los siguientes apartados veremos cómo están implementadas.
 
-<!--
 
 ### Funciones recursivas que construyen listas
 
