@@ -1547,8 +1547,6 @@ concatenar dos o más listas
 (append list1 list2) ; ⇒ (1 2 3 4 hola como estás)
 ```
 
-<!--
-
 ### Recursión
 
 Otra característica fundamental de la programación funcional es la no
@@ -1602,11 +1600,13 @@ expresión del caso general para construir el valor resultante.
 
 El caso general del ejemplo anterior indica lo siguiente:
 
-!!! Example "Caso general suma hasta x"
-    Para calcular la suma hasta _x_, llamamos a la recursión para que
-    calcule la suma hasta _x-1_. Esa llamada recursiva nos devolverá
-    el resultado (confiamos en que la implementación funciona bien) y
-    a ese resultado le sumamos el propio número _x_.
+```text
+Para calcular la suma hasta x: 
+    Llamamos a la recursión para que calcule la suma hasta x-1 
+    (confiamos en que la implementación funciona bien y esta llamada 
+    nos devolverá el resultado hasta x-1) y a ese resultado le sumamos
+    el propio número x.
+```
 
 Siempre es aconsejable usar un ejemplo concreto para probar el caso
 general. Por ejemplo, el caso general de la suma hasta 5 se calculará
@@ -1665,7 +1665,8 @@ Generalizamos este ejemplo y lo expresamos en Scheme de la siguiente
 forma:
 
 ```racket
-(suma-hasta x) = (+ (suma-hasta (- x 1)) x)
+(define (suma-hasta x)
+   (+ (suma-hasta (- x 1)) x))
 ```
 
 Nos falta el caso base de la recursión. Debemos preguntarnos **¿cuál
@@ -1727,7 +1728,7 @@ añadir ese carácter a la cadena que devuelve la recursión.
 
 Veamos un ejemplo concreto:
 
-```txt
+```text
 (alfabeto-hasta #\h) = (alfabeto-hasta #\g) + \#h
 ```
 
@@ -1749,8 +1750,8 @@ dado.
 El caso general quedaría como sigue:
 
 ```racket
-(alfabeto-hasta char) =
-    (string-append (alfabeto-hasta (anterior char)) (string char))
+(define (alfabeto-hasta char)
+    (string-append (alfabeto-hasta (anterior char)) (string char)))
 ```
 
 Faltaría el caso base. ¿Cuál es el caso más sencillo posible que nos
@@ -1804,7 +1805,8 @@ siguiente dibujo:
 Podemos generalizar este ejemplo y expresarlo en Scheme de la siguiente forma:
 
 ```racket
-(suma-lista lista) = (+ (car lista) (suma-lista (cdr lista)))
+(define (suma-lista lista)
+    (+ (car lista) (suma-lista (cdr lista))))
 ```
 
 Falta el caso base. ¿Cuál es la lista más sencilla con la que podemos
@@ -1999,7 +2001,7 @@ funcional no existe el *estado mutable*. Una vez declarado un valor,
 no se puede modificar. Esto debe suceder también con las parejas: una
 vez creada una pareja no se puede modificar su contenido.
 
-En Lisp y Scheme estándar (R6RS) las parejas sí que pueden ser
+En Lisp y Scheme estándar las parejas sí que pueden ser
 mutadas. Pero durante toda esta primera parte de la asignatura no lo
 contemplaremos, para no salirnos del paradigma funcional.
 
@@ -2048,10 +2050,11 @@ función `suma` que vimos previamente con este nuevo tipo de datos:
 ```
 
 
-Y, por último, las parejas *pueden formar parte de otras parejas*. Es
-lo que se denomina la propiedad de clausura de la función `cons`:
+Y, por último, las parejas *pueden formar parte de otras parejas*. 
 
-> El resultado de un `cons` puede usarse como parámetro de nuevas llamadas a `cons`.
+Es lo que se denomina la **propiedad de clausura de la función
+`cons`**: el resultado de un `cons` puede usarse como parámetro de
+nuevas llamadas a `cons`.
 
 Ejemplo:
 
@@ -2409,6 +2412,7 @@ vemos por primera vez en los siguientes ejemplos:
 
 En los siguientes apartados veremos cómo están implementadas.
 
+<!--
 
 ### Funciones recursivas que construyen listas
 

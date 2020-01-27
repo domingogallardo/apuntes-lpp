@@ -22,11 +22,13 @@ Notas de clase de la semana 2 de LPP.
 - **4. Listas en Scheme**
     - **4.1 Implementación de listas en Scheme**
     - **4.2 Listas con elementos compuestos**
-    - **4.3 Funciones recursivas para construir listas**
 
 ---
 
-## 2.5. Recursión
+### Recursión ###
+
+- La recursión es una característica básica de la programación funcional.
+- Veremos varios ejemplos de cómo **diseñar** funciones recursivas.
 
 ### Confía en la recursión
 
@@ -49,27 +51,38 @@ invocación de la función.
 
 Definición recursiva:
 
-```scheme
+```racket
 (define (suma-hasta x)
    (if (= 0 x)
       0
       (+ (suma-hasta (- x 1)) x)))
 ```
 
-> Para calcular la suma hasta x, llamamos a la recursión para que
-> calcule la suma hasta x-1, obtenemos el resultado (confiamos en que la
-> función funciona bien) y a ese resultado le sumamos el propio número
-> x.
+!!! Important "Importante"
+    Para entender la recursión no es conveniente utilizar el depurador, ni
+    hacer trazas, ni *entrar en la recursión*, sino que hay que
+    suponer que **la llamada recursiva se ejecuta y devuelve el valor
+    que debería. ¡Debemos confiar en la recursión!**.
+
+El caso general del ejemplo anterior indica lo siguiente:
+
+```text
+Para calcular la suma hasta x: 
+    Llamamos a la recursión para que calcule la suma hasta x-1 
+    (confiamos en que la implementación funciona bien y esta llamada 
+    nos devolverá el resultado hasta x-1) y a ese resultado le sumamos
+    el propio número x.
+```
 
 Un ejemplo concreto, cuando `x` vale 5, `(suma-hasta 5)`:
 
-```txt
+```text
 (+ (suma-hasta (- 5 1)) 5)
 ``` 
 
 Evaluación:
 
-```txt
+```text
 (+ (suma-hasta (- 5 1)) 5) ⇒
 (+ (suma-hasta 4) 5) ⇒ (confiamos en la recursión: (suma-hasta 4) = 10)
 (+ 10 5) ⇒
@@ -88,8 +101,9 @@ llamada general.
 Generalizamos este ejemplo y lo expresamos en Scheme de la siguiente
 forma:
 
-```txt
-(suma-hasta x)  => (+ (suma-hasta (- x 1)) x)
+```racket
+(define (suma-hasta x)
+   (+ (suma-hasta (- x 1)) x))
 ```
 
 - Nos falta el caso base de la recursión. Debemos preguntarnos **¿cuál
@@ -99,7 +113,7 @@ que `x` es 0, en el que devolveríamos 0.
 
 - Podemos ya escribirlo todo en Scheme:
 
-```scheme
+```racket
 (define (suma-hasta x)
    (if (= 0 x)
       0
@@ -111,7 +125,7 @@ que `x` es 0, en el que devolveríamos 0.
 
 Como antes, veamos un ejemplo concreto:
 
-```scheme
+```racket
 (alfabeto-hasta #\h) ; ⇒ "abcdefgh"
 ```
 
@@ -126,13 +140,13 @@ hasta el carácter anterior a la `#\h` (el carácter `\#g`)?
 
 Si confiamos en la recursión:
 
-```scheme
+```racket
 (alfabeto-hasta #\g) ; ⇒ "abcdefg"
 ```
 
 Sólo faltaría entonces añadir la `#\h` al final de la cadena:
 
-```txt
+```text
 "abcdefg" + \#h ⇒ "abcdefgh"
 ```
 
@@ -142,18 +156,17 @@ Sólo faltaría entonces añadir la `#\h` al final de la cadena:
 
 El caso general:
 
-```scheme
-(alfabeto-hasta char) = 
-    (string-append (alfabeto-hasta (anterior char)) (string char))
+```racket
+(define (alfabeto-hasta char)
+    (string-append (alfabeto-hasta (anterior char)) (string char)))
 ```
 
 Función `(anterior char)`:
 
-```scheme
+```racket
 (define (anterior char)
   (integer->char (- (char->integer char) 1)))
 ```
-
 
 Nos faltaría únicamente el caso base.
 
@@ -163,7 +176,7 @@ cadena "a".
 
 Solución final:
 
-```scheme
+```racket
 (define (alfabeto-hasta char)
   (if (equal? char #\a)
       "a"
@@ -178,7 +191,7 @@ Solución final:
 
 Ejemplos:
 
-```scheme
+```racket
 (define lista1 '(1 2 3 4))
 (car lista1) ⇒ 1
 (cdr lista1) ⇒ {2 3 4}
@@ -213,8 +226,9 @@ lista. Lo podemos representar en el siguiente dibujo:
 
 - Podemos generalizar este ejemplo y expresarlo en Scheme de la siguiente forma:
 
-```txt
-(suma-lista lista) => (+ (car lista) (suma-lista (cdr lista)))
+```racket
+(define (suma-lista lista)
+    (+ (car lista) (suma-lista (cdr lista))))
 ```
 
 - Falta el caso base, que es el caso más sencillo en que podemos
@@ -224,7 +238,7 @@ que devolver 0.
 
 Con todo junto, quedaría la recursión como sigue
 
-```scheme
+```racket
 (define (suma-lista lista)
    (if (null? lista)
        0
@@ -254,7 +268,7 @@ Como caso base, si la lista es vacía devolvemos 0.
 
 La versión completa:
 
-```scheme
+```racket
 (define (veces lista id)
   (cond
     ((null? lista) 0)
@@ -267,14 +281,19 @@ La versión completa:
 
 
 
-## 3. Tipos de datos compuestos en Scheme
+### Tipos de datos compuestos en Scheme ###
+
+- El tipo pareja
+- Las parejas son objetos de primera clase
+- Diagramas caja-y-puntero
+
 
 ### El tipo de dato pareja
 
 - Ya lo hemos visto en el seminario
 - `cons` para construir parejas:
 
-```scheme
+```racket
 (cons 1 2) ; ⇒ {1 . 2}
 (define c (cons 1 2))
 ```
@@ -285,7 +304,7 @@ La versión completa:
 
 - `car` y `cdr` devuelven la parte izquierda y derecha:
 
-```scheme
+```racket
 (define c (cons 1 2))
 (car c) ; ⇒ 1
 (cdr c) ; ⇒ 2
@@ -295,7 +314,7 @@ La versión completa:
 ### Definición declarativa
 
 
-```scheme
+```racket
 (car (cons x y)) = x
 (cdr (cons x y)) = y
 ```
@@ -304,7 +323,7 @@ La versión completa:
 ### Función pair?
 
 
-```scheme
+```racket
 (pair? 3) ; ⇒ #f
 (pair? (cons 3 4)) ; ⇒ #t
 ```
@@ -312,7 +331,7 @@ La versión completa:
 
 ### Las parejas pueden contener cualquier tipo de dato
 
-```scheme
+```racket
 (define c (cons 'hola #f))
 (car c) ; ⇒ 'hola
 (cdr c) ; ⇒ #f
@@ -340,14 +359,14 @@ Las parejas son objetos de primera clase.
 
 Una pareja puede asignarse a una variable:
 
-```scheme
+```racket
 (define p1 (cons 1 2))
 (define p2 (cons #f "hola"))
 ```
 
 ### Paso como argumento y devolverse como resultado de una función (2 y 3)
 
-```scheme
+```racket
 (define (suma-parejas p1 p2)
     (cons (+ (car p1) (car p2))
           (+ (cdr p1) (cdr p2))))
@@ -363,7 +382,7 @@ Lo probamos ...
 - Scheme es débilmente tipeado
 - Podemos pasar cualquier tipo de dato en los parámetros de las funciones, por ejemplo a la siguiente función `suma`
 
-```scheme
+```racket
 (define (suma x y)
   (cond 
     ((and (number? x) (number? y)) (+ x y))
@@ -381,10 +400,10 @@ Lo probamos ...
 
 ### Formar parte de otras parejas (4)
 
-> El resultado de un `cons` puede usarse como parámetro de nuevas llamadas a `cons`.
+- El resultado de un `cons` puede usarse como parámetro de nuevas llamadas a `cons`.
 
 
-```scheme
+```racket
 (define p1 (cons 1 2))
 (define p2 (cons 3 4))
 (define p (cons p1 p2))
@@ -392,7 +411,7 @@ Lo probamos ...
 
 ### Diagramas caja-y-puntero
 
-```scheme
+```racket
 (define p (cons (cons 1 2)
                 (cons 3 4)))
 ```
@@ -408,7 +427,7 @@ Diagramas *caja-y-puntero* (*box-and-pointer* en inglés):
 
 - Es conveniente indentar correctamente los `cons`:
 
-```scheme
+```racket
 (define p (cons (cons 1
                       (cons 3 4))
                 2))
@@ -422,7 +441,7 @@ Diagramas *caja-y-puntero* (*box-and-pointer* en inglés):
 - ¿Cuál sería el diagrama resultante de la siguiente expresión?
 
 
-```scheme
+```racket
 (define p2 (cons 5 (cons p 6)))
 ```
 
@@ -437,13 +456,13 @@ Diagramas *caja-y-puntero* (*box-and-pointer* en inglés):
 
 - Al trabajar con estructuras de parejas anidades es muy habitual realizar llamadas del tipo:
 
-```scheme
+```racket
 (cdr (cdr (car p)))
 ```
 
 - Es equivalente a la función `cadar` de Scheme:
 
-```scheme
+```racket
 (cddar p)
 ```
 
@@ -452,7 +471,7 @@ Diagramas *caja-y-puntero* (*box-and-pointer* en inglés):
 - Hay definidas 2^4 funciones de este tipo: `caaaar`, `caaadr`, …, `cddddr`.
 
 
-## 4 Listas en Scheme 
+### Listas en Scheme 
 
 - Hemos comprobado que las listas y las parejas tienen las mismas
   funciones: `car`, `cdr` y `cons`. ¿Por qué? ¿Qué relación hay entre
@@ -464,7 +483,7 @@ Diagramas *caja-y-puntero* (*box-and-pointer* en inglés):
 - La función `cons` crea una lista nueva resultante de añadir un elemento
 al comienzo de la lista:
 
-```scheme
+```racket
 (cons 1 '(1 2 3 4)) ⇒ {1 1 2 3 4}
 (cons 'hola '(como estás)) ⇒ {hola como estás}
 (cons '(1 2) '(1 2 3 4))  ⇒ {{1 2} 1 2 3 4}
@@ -478,7 +497,7 @@ al comienzo de la lista:
 ¿Una pareja es una lista?
 Lo probamos ...
 
-```scheme
+```racket
 (define p1 (cons 1 2))
 (pair? p1) 
 (list? p1) 
@@ -489,7 +508,7 @@ Lo probamos ...
 ¿Una lista vacía es una lista? ¿Es una pareja?
 Lo probamos ...
 
-```scheme
+```racket
 (list? '())
 (pair? '())
 ```
@@ -499,7 +518,7 @@ Lo probamos ...
 ¿Una lista es una pareja?
 Lo probamos ...
 
-```scheme
+```racket
 (define lista '(1 2 3))
 (list? lista)
 (pair? lista)
@@ -510,7 +529,7 @@ Lo probamos ...
 ¿Una pareja con una lista vacía como parte izquierda es una lista?
 Lo probamos ...
 
-```scheme
+```racket
 (define p1 (cons 1 '()))
 (pair? p1)
 (list? p1)
@@ -530,9 +549,9 @@ Una lista es (definición recursiva):
 * Un **símbolo especial** `'()` que denota la lista vacía.
 
 
-### Ejemplo más sencillo: `{1}`
+### Ejemplo más sencillo: `(1)`
 
-```scheme
+```racket
 (cons 1 '())
 ```
 	
@@ -546,16 +565,16 @@ La pareja cumple las condiciones anteriores:
 
 - Es al mismo tiempo una pareja y una lista:
 
-```scheme
+```racket
 (define l (cons 1 '()))
 (pair? l)
 (list? l)
 ```
 
 
-### Otro ejemplo: `{1 2 3 4}`
+### Otro ejemplo: `(1 2 3 4)`
 
-```scheme
+```racket
 (cons 1
       (cons 2
             (cons 3
@@ -575,20 +594,20 @@ La pareja cumple las condiciones anteriores:
 
 La lista vacía es una lista:
 
-```scheme
+```racket
 (list? '())
 ```
 
 No es un símbolo ni una pareja:
 
-```scheme
+```racket
 (symbol? '())
 (pair? '())
 ```
 
 Función `null?`:
 
-```scheme
+```racket
 (null? '())
 ```	
 
@@ -596,7 +615,7 @@ Función `null?`:
 
 - *Lista de asociación*, listas cuyos elementos son parejas (*clave*, *valor*):
 
-```scheme
+```racket
 (list (cons 'a 1)
       (cons 'b 2)
       (cons 'c 3))
@@ -608,7 +627,7 @@ Función `null?`:
 
 - Expresión equivalente utilizando *conses* es:
 
-```scheme
+```racket
 (cons (cons 'a 1)
       (cons (cons 'b 2)
             (cons (cons 'c 3)
@@ -618,13 +637,13 @@ Función `null?`:
 
 ### Listas de listas
 
-```scheme
+```racket
 (define lista (list 1 (list 1 2 3) 3))
 ```
 
 Definición con `quote`:
 
-```scheme
+```racket
 (define lista '(1 (1 2 3) 3))
 ```
 
@@ -647,7 +666,7 @@ construye?
 
 Solución: 
 
-```scheme
+```racket
 (define p1 (list (cons (cons 1 2)
                        (cons 3 4))
                  (list 5 6 (cons 7
