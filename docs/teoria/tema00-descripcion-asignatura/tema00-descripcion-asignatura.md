@@ -153,7 +153,8 @@ Se realizarán 11 sesiones de ejercicios de prácticas de una semana de
 duración y 2 seminarios sobre los anteriores lenguajes de programación.
 
 La hoja de ejercicios estará disponible el viernes y se dispondrá de
-toda la semana siguiente para su realización. 
+toda la semana siguiente para su realización y su entrega en
+Moodle. La entrega se cerrará el viernes por la noche.
 
 En la clase de prácticas se trabajará en esa hoja de
 ejercicios. Durante la sesión de prácticas el profesor estará
