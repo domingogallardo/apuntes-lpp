@@ -5,7 +5,6 @@
 
 ### Pasado y presente del paradigma funcional
 
-
 #### Definición y características
 
 En una definición muy breve y concisa la programación funcional define
@@ -266,6 +265,285 @@ funcional se puede usar con múltiples metodologías de
 programación, debido a que los programas resultantes son muy claros,
 expresivos y fáciles de probar.
 
+### Evaluación de expresiones y definición de funciones
+
+En la asignatura usaremos Scheme como primer lenguaje en el que
+exploraremos la programación funcional.
+
+En el seminario de Scheme que se imparte en prácticas se estudiará en
+más profundidad los conceptos más importantes del lenguaje: tipos de
+datos, operadores, estructuras de control, intérprete, etc.
+
+#### Evaluación de expresiones
+
+Empezamos este apartado viendo cómo se definen y evalúan expresiones
+Scheme. Y después veremos cómo construir nuevas funciones.
+
+Scheme es un lenguaje que viene del Lisp. Una de sus características
+principales es que las expresiones se construyen utilizando
+paréntesis.
+
+Ejemplos de expresiones en Scheme, junto con el resultado de su
+ejecución:
+
+
+```racket
+2 ; ⇒ 2
+(+ 2 3) ; ⇒ 5
+(+) ; ⇒ 0
+(+ 2 4 5 6) ; ⇒ 17
+(+ (* 2 3) (- 3 1)) ; ⇒ 8
+```
+
+En programación funcional en lugar de decir "ejecutar una expresión"
+se dice "**evaluar una expresión**", para reforzar la idea de que se
+tratan de expresiones matemáticas que **siempre devuelven uno y sólo un
+resultado**.
+
+Las expresiones se definen con una notación prefija: el primer
+elemento después del paréntesis de apertura es el **operador** de la
+expresión y el resto de elementos (hasta el paréntesis de cierre) son
+sus operandos.
+
+- Por ejemplo, en la expresión `(+ 2 4 5 6)` el operador es el símbolo
+`+` que representa función _suma_ y los operandos son los números 2,
+4, 5 y 6.
+
+- Puede haber expresiones que no tengan operandos, como el ejemplo
+`(+)`, cuya evaluación devuelve 0.
+
+Una idea fundamental de Lisp y Scheme es que los paréntesis se evalúan
+de dentro a fuera. Por ejemplo, la expresión 
+
+```racket
+(+ (* 2 3) (- 3 (/ 12 3)))
+```
+
+que devuelve 5, se evalúa así:
+
+```racket
+(+ (* 2 3) (- 3 (/ 12 3))) ⇒
+(+ 6 (- 3 (/ 12 3))) ⇒
+(+ 6 (- 3 4)) ⇒
+(+ 6 -1) ⇒
+5
+```
+
+La evaluación de cada expresión devuelve un valor que se utiliza para
+continuar calculando la expresión exterior. En el caso anterior
+
+- primero se evalúa la expresión `(* 2 3)` que devuelve 6,
+- después se evalúa `(/ 12 3)` que devuelve 4,
+- después se evalúa `(- 3 4)` que devuelve -1
+- y por último se evalúa `(+ 6 -1)` que devuelve 5
+
+Cuando se evalúa una expresión en el intérprete de Scheme el 
+resultado aparece en la siguiente línea. 
+
+#### Definición de funciones
+
+En programación funcional las funciones son similares a las funciones
+matemáticas: reciben parámetros y devuelven siempre un único resultado
+de operar con esos parámetros.
+
+Por ejemplo, podemos definir la función `(cuadrado x)` que devuelve el
+cuadrado de un número que pasamos como parámetro:
+
+```racket
+(define (cuadrado x)
+   (* x x))
+```
+
+El cuerpo de la función es una expresión que se evaluará con el valor
+que se pase como parámetro. En el caso anterior la expresión es `(* x
+x)` y multiplicará el parámetro por si mismo.
+
+Hay que hacer notar que en Scheme no existe la palabra clave `return`,
+sino que las funciones siempre se definen con una única expresión cuya
+evaluación es el resultado que se devuelve.
+
+Una vez definida la función `cuadrado` podemos usarla de la misma
+forma que las funciones primitivas de Scheme:
+
+```racket
+(cuadrado 10) ; ⇒ 100
+(cuadrado (+ 10 (cuadrado (+ 2 4)))) ; ⇒ 2116
+```
+
+La evaluación de la última expresión se hace de la siguiente forma:
+
+```racket
+(cuadrado (+ 10 (cuadrado (+ 2 4)))) ⇒
+(cuadrado (+ 10 (cuadrado 6))) ⇒
+(cuadrado (+ 10 36)) ⇒
+(cuadrado 46) ⇒
+2116
+```
+
+
+#### Definición de funciones auxiliares
+
+Las funciones definidas se pueden utilizar a su vez para construir
+otras funciones.
+
+Lo habitual en programación funcional es definir funciones muy
+pequeñas e ir construyendo funciones cada vez de mayor nivel usando
+las anteriores.
+
+##### Ejemplo: tiempo de impacto
+
+Por ejemplo, supongamos que estamos programando un juego de guerra de
+barcos y submarinos, en el que utilizamos las coordenadas del plano
+para situar todos los elementos de nuestra flota.
+
+Supongamos que necesitamos calcular el tiempo que tarda un torpedo en
+llegar desde una posición `(x1, y1)` a otra `(x2, y2)`. Suponemos que
+la velocidad del torpedo es otro parámetro `v`. 
+
+¿Cómo calcularíamos este tiempo de impacto?
+
+La forma menos correcta de hacerlo es definir todo el cálculo en una
+única expresión. Como en programación funcional las funciones deben
+definirse con una única expresión deberíamos poner todo el cálculo en
+forma de expresiones anidadas, unas dentro de otras. Eso crearía una
+función que calcularía bien el resultado, pero que sería muy difícil
+de leer y entender para un compañero (o para nosotros mismos, cuando
+pasen unos meses):
+
+```racket
+;
+; Definición incorrecta: muy poco legible
+;
+; La función tiempo-impacto devuelve el tiempo que tarda
+; en llegar un torpedo a la velocidad v desde la posición
+; (x1, y1) a la posición (x2, y2)
+;
+
+(define (tiempo-impacto x1 y1 x2 y2 v)
+   (/ (sqrt (+ (* (- x2 x1) (- x2 x1))
+               (* (- y2 y1) (- y2 y1))))
+    v))
+```
+
+La función anterior haría bien el cálculo pero sería muy complicada de
+modificar y de entender.
+
+La forma más correcta de definir la función sería usando varias
+funciones auxiliares. Fíjate que es muy importante también poner los
+nombres correctos a cada función, para entender qué hace. Scheme es un
+lenguaje débilmente tipado y no tenemos la ayuda de los tipos que nos
+dan más contexto de qué es cada parámetro y qué devuelve la función.
+
+```racket
+; Definición correcta, modular y legible de la función tiempo-impacto
+
+;
+; La función 'cuadrado' devuelve el cuadrado de un número
+;
+
+(define (cuadrado x)
+    (* x x))
+
+;
+; La función 'distancia' devuelve la distancia entre dos
+; coordenadas (x1, y1) y (x2, y2)
+;
+
+(define (distancia x1 y1 x2 y2)
+    (sqrt (+ (cuadrado (- x2 x1))
+             (cuadrado (- y2 y1)))))
+
+;
+; La función 'tiempo' devuelve el tiempo que 
+; tarda en recorrer un móvil una distancia d a un velocidad v
+;
+
+(define (tiempo distancia velocidad)
+    (/ distancia velocidad))
+
+;
+; La función 'tiempo-impacto' devuelve el tiempo que tarda
+; en llegar un torpedo a la velocidad v desde la posición
+; (x1, y1) a la posición (x2, y2)
+;
+
+(define (tiempo-impacto x1 y1 x2 y2 velocidad)
+    (tiempo (distancia x1 y1 x2 y2) velocidad))
+```
+
+En esta segunda versión definimos más funciones, pero cada una es
+mucho más legible. Además las funciones como `cuadrado`, `distancia` o
+`tiempo` las vamos a poder reutilizar para otros cálculos.
+
+
+#### Funciones puras
+
+A diferencia de lo que hemos visto en programación imperativa, en
+programación funcional no es posible definir funciones con estado
+local. Las funciones que se definen son funciones matemáticas puras,
+que cumplen las siguientes condiciones:
+
+- No modifican los parámetros que se les pasa
+- Devuelven un único resultado
+- No tienen estado local ni el resultado depende de un estado exterior mutable
+
+Esta última propiedad es muy importante y quiere decir que la función
+siempre devuelve el mismo valor cuando se le pasan los mismos
+parámetros.
+
+Las funciones puras son muy fáciles de entender porque no es necesario
+tener en cuenta ningún contexto a la hora de describir su
+funcionamiento. El valor devuelto únicamente depende de los parámetros
+de entrada.
+
+Por ejemplo, funciones matemáticas como suma, resta, cuadrado, sin,
+cos, etc. cumplen esta propiedad.
+
+
+
+
+
+#### Composición de funciones ####
+
+Una idea fundamental de la programación funcional es la composición de
+funciones que transforman unos datos de entrada en otros de salida. Es
+una idea muy actual, porque es la forma en la que están planteados
+muchos algoritmos de procesamiento de datos en inteligencia
+artificial.
+
+Por ejemplo, podemos representar de la siguiente forma el algoritmo
+que maneja un vehículo autónomo:
+
+<img src="imagenes/composicion-funciones.png" width="700px"/>
+
+Las cajas representa funciones que transforman los datos de entrada
+(imágenes tomadas por las cámaras del vehículo) en los datos de salida
+(acciones a realizar sobre la dirección y el motor del vehículo). Las
+funciones intermedias representan transformaciones que se realizan
+sobre los datos de entrada y obtienen los datos de salida.
+
+En un lenguaje de programación funcional como Scheme el diagrama
+anterior se escribiría con el siguiente código:
+
+```racket
+(define (conduce-vehiculo imagenes)
+    (obten-acciones 
+        (reconoce 
+            (filtra 
+                (obten-caracteristicas imagenes)))))
+```
+
+Veremos más adelante que las expresiones en Scheme se evalúan de
+dentro a fuera y que tienen notación prefija. El resultado de cada
+función constituye la entrada de la siguiente. 
+
+En el caso de la función `conduce-vehiculo` primero se obtienen las
+características de las imágenes, después se filtran, después se
+reconoce la escena y, por último, se obtienen las acciones para
+conducir el vehículo.
+
+
+
 ### Programación declarativa vs. imperativa
 
 Hemos dicho que la programación funcional es un estilo de programación
@@ -363,45 +641,6 @@ realiza una deducción lógica matemática que devuelve un resultado. En
 dicha ejecución no son relevantes los pasos internos que realiza el
 sistema sino las relaciones lógicas entre los datos y los resultados
 finales.
-
-#### Composición de funciones ####
-
-Una idea fundamental de la programación funcional es la composición de
-funciones que transforman unos datos de entrada en otros de salida. Es
-una idea muy actual, porque es la forma en la que están planteados
-muchos algoritmos de procesamiento de datos en inteligencia
-artificial.
-
-Por ejemplo, podemos representar de la siguiente forma el algoritmo
-que maneja un vehículo autónomo:
-
-<img src="imagenes/composicion-funciones.png" width="700px"/>
-
-Las cajas representa funciones que transforman los datos de entrada
-(imágenes tomadas por las cámaras del vehículo) en los datos de salida
-(acciones a realizar sobre la dirección y el motor del vehículo). Las
-funciones intermedias representan transformaciones que se realizan
-sobre los datos de entrada y obtienen los datos de salida.
-
-En un lenguaje de programación funcional como Scheme el diagrama
-anterior se escribiría con el siguiente código:
-
-```racket
-(define (conduce-vehiculo imagenes)
-    (obten-acciones 
-        (reconoce 
-            (filtra 
-                (obten-caracteristicas imagenes)))))
-```
-
-Veremos más adelante que las expresiones en Scheme se evalúan de
-dentro a fuera y que tienen notación prefija. El resultado de cada
-función constituye la entrada de la siguiente. 
-
-En el caso de la función `conduce-vehiculo` primero se obtienen las
-características de las imágenes, después se filtran, después se
-reconoce la escena y, por último, se obtienen las acciones para
-conducir el vehículo.
 
 #### Programación imperativa
 
@@ -693,240 +932,6 @@ apartados explicaremos más estas características.
 * Asignación
 * Referencias
 * Pasos de ejecución
-
-### Evaluación de expresiones y definición de funciones
-
-En la asignatura usaremos Scheme como primer lenguaje en el que
-exploraremos la programación funcional.
-
-En el seminario de Scheme que se imparte en prácticas se estudiará en
-más profundidad los conceptos más importantes del lenguaje: tipos de
-datos, operadores, estructuras de control, intérprete, etc.
-
-#### Evaluación de expresiones
-
-Empezamos este apartado viendo cómo se definen y evalúan expresiones
-Scheme. Y después veremos cómo construir nuevas funciones.
-
-Scheme es un lenguaje que viene del Lisp. Una de sus características
-principales es que las expresiones se construyen utilizando
-paréntesis.
-
-Ejemplos de expresiones en Scheme, junto con el resultado de su
-ejecución:
-
-
-```racket
-2 ; ⇒ 2
-(+ 2 3) ; ⇒ 5
-(+) ; ⇒ 0
-(+ 2 4 5 6) ; ⇒ 17
-(+ (* 2 3) (- 3 1)) ; ⇒ 8
-```
-
-En programación funcional en lugar de decir "ejecutar una expresión"
-se dice "**evaluar una expresión**", para reforzar la idea de que se
-tratan de expresiones matemáticas que **siempre devuelven uno y sólo un
-resultado**.
-
-Las expresiones se definen con una notación prefija: el primer
-elemento después del paréntesis de apertura es el **operador** de la
-expresión y el resto de elementos (hasta el paréntesis de cierre) son
-sus operandos.
-
-- Por ejemplo, en la expresión `(+ 2 4 5 6)` el operador es el símbolo
-`+` que representa función _suma_ y los operandos son los números 2,
-4, 5 y 6.
-
-- Puede haber expresiones que no tengan operandos, como el ejemplo
-`(+)`, cuya evaluación devuelve 0.
-
-Una idea fundamental de Lisp y Scheme es que los paréntesis se evalúan
-de dentro a fuera. Por ejemplo, la expresión 
-
-```racket
-(+ (* 2 3) (- 3 (/ 12 3)))
-```
-
-que devuelve 5, se evalúa así:
-
-```racket
-(+ (* 2 3) (- 3 (/ 12 3))) ⇒
-(+ 6 (- 3 (/ 12 3))) ⇒
-(+ 6 (- 3 4)) ⇒
-(+ 6 -1) ⇒
-5
-```
-
-La evaluación de cada expresión devuelve un valor que se utiliza para
-continuar calculando la expresión exterior. En el caso anterior
-
-- primero se evalúa la expresión `(* 2 3)` que devuelve 6,
-- después se evalúa `(/ 12 3)` que devuelve 4,
-- después se evalúa `(- 3 4)` que devuelve -1
-- y por último se evalúa `(+ 6 -1)` que devuelve 5
-
-Cuando se evalúa una expresión en el intérprete de Scheme el 
-resultado aparece en la siguiente línea. 
-
-#### Definición de funciones
-
-En programación funcional las funciones son similares a las funciones
-matemáticas: reciben parámetros y devuelven siempre un único resultado
-de operar con esos parámetros.
-
-Por ejemplo, podemos definir la función `(cuadrado x)` que devuelve el
-cuadrado de un número que pasamos como parámetro:
-
-```racket
-(define (cuadrado x)
-   (* x x))
-```
-
-El cuerpo de la función es una expresión que se evaluará con el valor
-que se pase como parámetro. En el caso anterior la expresión es `(* x
-x)` y multiplicará el parámetro por si mismo.
-
-Hay que hacer notar que en Scheme no existe la palabra clave `return`,
-sino que las funciones siempre se definen con una única expresión cuya
-evaluación es el resultado que se devuelve.
-
-Una vez definida la función `cuadrado` podemos usarla de la misma
-forma que las funciones primitivas de Scheme:
-
-```racket
-(cuadrado 10) ; ⇒ 100
-(cuadrado (+ 10 (cuadrado (+ 2 4)))) ; ⇒ 2116
-```
-
-La evaluación de la última expresión se hace de la siguiente forma:
-
-```racket
-(cuadrado (+ 10 (cuadrado (+ 2 4)))) ⇒
-(cuadrado (+ 10 (cuadrado 6))) ⇒
-(cuadrado (+ 10 36)) ⇒
-(cuadrado 46) ⇒
-2116
-```
-
-
-#### Definición de funciones auxiliares
-
-Las funciones definidas se pueden utilizar a su vez para construir
-otras funciones.
-
-Lo habitual en programación funcional es definir funciones muy
-pequeñas e ir construyendo funciones cada vez de mayor nivel usando
-las anteriores.
-
-##### Ejemplo: tiempo de impacto
-
-Por ejemplo, supongamos que estamos programando un juego de guerra de
-barcos y submarinos, en el que utilizamos las coordenadas del plano
-para situar todos los elementos de nuestra flota.
-
-Supongamos que necesitamos calcular el tiempo que tarda un torpedo en
-llegar desde una posición `(x1, y1)` a otra `(x2, y2)`. Suponemos que
-la velocidad del torpedo es otro parámetro `v`. 
-
-¿Cómo calcularíamos este tiempo de impacto?
-
-La forma menos correcta de hacerlo es definir todo el cálculo en una
-única expresión. Como en programación funcional las funciones deben
-definirse con una única expresión deberíamos poner todo el cálculo en
-forma de expresiones anidadas, unas dentro de otras. Eso crearía una
-función que calcularía bien el resultado, pero que sería muy difícil
-de leer y entender para un compañero (o para nosotros mismos, cuando
-pasen unos meses):
-
-```racket
-;
-; Definición incorrecta: muy poco legible
-;
-; La función tiempo-impacto devuelve el tiempo que tarda
-; en llegar un torpedo a la velocidad v desde la posición
-; (x1, y1) a la posición (x2, y2)
-;
-
-(define (tiempo-impacto x1 y1 x2 y2 v)
-   (/ (sqrt (+ (* (- x2 x1) (- x2 x1))
-               (* (- y2 y1) (- y2 y1))))
-    v))
-```
-
-La función anterior haría bien el cálculo pero sería muy complicada de
-modificar y de entender.
-
-La forma más correcta de definir la función sería usando varias
-funciones auxiliares. Fíjate que es muy importante también poner los
-nombres correctos a cada función, para entender qué hace. Scheme es un
-lenguaje débilmente tipado y no tenemos la ayuda de los tipos que nos
-dan más contexto de qué es cada parámetro y qué devuelve la función.
-
-```racket
-; Definición correcta, modular y legible de la función tiempo-impacto
-
-;
-; La función 'cuadrado' devuelve el cuadrado de un número
-;
-
-(define (cuadrado x)
-    (* x x))
-
-;
-; La función 'distancia' devuelve la distancia entre dos
-; coordenadas (x1, y1) y (x2, y2)
-;
-
-(define (distancia x1 y1 x2 y2)
-    (sqrt (+ (cuadrado (- x2 x1))
-             (cuadrado (- y2 y1)))))
-
-;
-; La función 'tiempo' devuelve el tiempo que 
-; tarda en recorrer un móvil una distancia d a un velocidad v
-;
-
-(define (tiempo distancia velocidad)
-    (/ distancia velocidad))
-
-;
-; La función 'tiempo-impacto' devuelve el tiempo que tarda
-; en llegar un torpedo a la velocidad v desde la posición
-; (x1, y1) a la posición (x2, y2)
-;
-
-(define (tiempo-impacto x1 y1 x2 y2 velocidad)
-    (tiempo (distancia x1 y1 x2 y2) velocidad))
-```
-
-En esta segunda versión definimos más funciones, pero cada una es
-mucho más legible. Además las funciones como `cuadrado`, `distancia` o
-`tiempo` las vamos a poder reutilizar para otros cálculos.
-
-
-#### Funciones puras
-
-A diferencia de lo que hemos visto en programación imperativa, en
-programación funcional no es posible definir funciones con estado
-local. Las funciones que se definen son funciones matemáticas puras,
-que cumplen las siguientes condiciones:
-
-- No modifican los parámetros que se les pasa
-- Devuelven un único resultado
-- No tienen estado local ni el resultado depende de un estado exterior mutable
-
-Esta última propiedad es muy importante y quiere decir que la función
-siempre devuelve el mismo valor cuando se le pasan los mismos
-parámetros.
-
-Las funciones puras son muy fáciles de entender porque no es necesario
-tener en cuenta ningún contexto a la hora de describir su
-funcionamiento. El valor devuelto únicamente depende de los parámetros
-de entrada.
-
-Por ejemplo, funciones matemáticas como suma, resta, cuadrado, sin,
-cos, etc. cumplen esta propiedad.
 
 
 ### Modelo de computación de sustitución
