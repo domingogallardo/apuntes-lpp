@@ -265,15 +265,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#programacion-declarativa-vs-imperativa" class="md-nav__link">
-    Programación declarativa vs. imperativa
+  <a href="#evaluacion-de-expresiones-y-definicion-de-funciones" class="md-nav__link">
+    Evaluación de expresiones y definición de funciones
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#evaluacion-de-expresiones-y-definicion-de-funciones" class="md-nav__link">
-    Evaluación de expresiones y definición de funciones
+  <a href="#programacion-declarativa-vs-imperativa" class="md-nav__link">
+    Programación declarativa vs. imperativa
   </a>
   
 </li>
@@ -419,15 +419,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#programacion-declarativa-vs-imperativa" class="md-nav__link">
-    Programación declarativa vs. imperativa
+  <a href="#evaluacion-de-expresiones-y-definicion-de-funciones" class="md-nav__link">
+    Evaluación de expresiones y definición de funciones
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#evaluacion-de-expresiones-y-definicion-de-funciones" class="md-nav__link">
-    Evaluación de expresiones y definición de funciones
+  <a href="#programacion-declarativa-vs-imperativa" class="md-nav__link">
+    Programación declarativa vs. imperativa
   </a>
   
 </li>
@@ -741,88 +741,307 @@ aplicación que va a ser usada por usuarios finales. La programación
 funcional se puede usar con múltiples metodologías de
 programación, debido a que los programas resultantes son muy claros,
 expresivos y fáciles de probar.</p>
-<h3 id="programacion-declarativa-vs-imperativa">Programación declarativa vs. imperativa<a class="headerlink" href="#programacion-declarativa-vs-imperativa" title="Permanent link">&para;</a></h3>
-<p>Hemos dicho que la programación funcional es un estilo de programación
-declarativa, frente a la programación tradicional de los lenguajes
-denominados imperativos. Vamos a explicar esto un poco más.</p>
-<h4>Programación declarativa</h4>
-<p>Empecemos con lo que conocemos todos: un <strong>programa imperativo</strong>. Se trata
-de un conjunto de instrucciones que se ejecutan una tras otra (pasos
-de ejecución) de forma secuencial. En la ejecución de estas
-instrucciones se van cambiando los valores de las variables y,
-dependiendo de estos valores, se modifica el flujo de control de la
-ejecución del programa. </p>
-<p>Para entender el funcionamiento de un programa imperativo debemos
-imaginar toda la evolución del programa, los pasos que se ejecutan y
-cuál es el flujo de control en función de los cambios de los valores
-en las variables.</p>
-<p>En la <strong>programación declarativa</strong>, sin embargo, utilizamos un
-paradigma totalmente distinto. Hablamos de <em>programación declarativa</em>
-para referirnos a lenguajes de programación (o sentencias de código)
-en los que se <em>declaran</em> los valores, objetivos o características de
-los elementos del programa y en cuya ejecución no existe mutación
-(modificación de valores de variables) ni secuencias de pasos de
-ejecución.</p>
-<p>De esta forma, la ejecución de un programa declarativo tiene que ver
-más con algún modelo formal o matemático que con un programa
-tradicional imperativo.  Define un conjunto de reglas y definiciones
-<em>de estilo matemático</em>. </p>
-<p>Un ejemplo claro de programación declarativa es una <strong>hoja de
-cálculo</strong>. Las celdas contiene valores o expresiones matemáticas que se
-actualizan automáticamente cuando cambiamos los valores de entrada. La
-relación entre valores y resultados es totalmente matemática y para su
-cálculo no tenemos que tener en cuenta pasos de ejecución. Evidente,
-por debajo de la hoja de cálculo existe un programa que realiza el
-su cálculo de la hoja, pero cuando estamos usándola no nos
-preocupa esa implementación. Podemos no preocuparnos de ella y usar
-únicamente el modelo matemático definido en la hoja.</p>
-<p>Otro ejemplo muy actual de programación declarativa es SwiftUI, el
-nuevo API creado por Apple para definir las interfaces de usuario de
-las aplicaciones iOS.</p>
-<p><img src="imagenes/swiftui.png" width="700px"/></p>
-<p>En el código de la imagen vemos una descripción de cómo está definida
-la aplicación: una lista de lugares (<em>landmarks</em>) apilada
-verticalmente. Para cada lugar se define su imagen, su texto, y
-una estrella si el lugar es favorito.</p>
-<p>El código es declarativo porque no hay pasos de ejecución para definir
-la interfaz. No existe un bucle que va añadiendo elementos a la
-interfaz. Vemos una declaración de cómo la interfaz va estar
-definida. El compilador del lenguaje y el API son los responsables de
-construir esa declaración y mostrar la interfaz tal y como nosotros
-queremos.</p>
-<p>La programación funcional utiliza un estilo de programación
-declarativo. Definimos funciones en las que se realizan unas
-operaciones sobre unos parámetros de entrada y se devuelve un
-valor. Veremos que estas operaciones se realizan sin definir valores
-intermedios, ni variables auxiliares, ni pasos de
-ejecución. Únicamente se van componiendo llamadas a funciones
-auxiliares que construyen el valor resultante.</p>
-<p>El siguiente ejemplo es una <strong>declaración</strong> en Scheme de una función
-que toma como entrada un número y devuelve su cuadrado:</p>
+<h3 id="evaluacion-de-expresiones-y-definicion-de-funciones">Evaluación de expresiones y definición de funciones<a class="headerlink" href="#evaluacion-de-expresiones-y-definicion-de-funciones" title="Permanent link">&para;</a></h3>
+<p>En la asignatura usaremos Scheme como primer lenguaje en el que
+exploraremos la programación funcional.</p>
+<p>En el seminario de Scheme que se imparte en prácticas se estudiará en
+más profundidad los conceptos más importantes del lenguaje: tipos de
+datos, operadores, estructuras de control, intérprete, etc.</p>
+<h4>Evaluación de expresiones</h4>
+<p>Empezamos este apartado viendo cómo se definen y evalúan expresiones
+Scheme. Y después veremos cómo construir nuevas funciones.</p>
+<p>Scheme es un lenguaje que viene del Lisp. Una de sus características
+principales es que las expresiones se construyen utilizando
+paréntesis.</p>
+<p>Ejemplos de expresiones en Scheme, junto con el resultado de su
+ejecución:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">2</span> <span class="c1">; ⇒ 2</span>
+<span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 5</span>
+<span class="p">(</span><span class="nb">+</span><span class="p">)</span> <span class="c1">; ⇒ 0</span>
+<span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span> <span class="c1">; ⇒ 17</span>
+<span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">))</span> <span class="c1">; ⇒ 8</span>
+</pre></div>
+</td></tr></table>
+
+<p>En programación funcional en lugar de decir "ejecutar una expresión"
+se dice "<strong>evaluar una expresión</strong>", para reforzar la idea de que se
+tratan de expresiones matemáticas que <strong>siempre devuelven uno y sólo un
+resultado</strong>.</p>
+<p>Las expresiones se definen con una notación prefija: el primer
+elemento después del paréntesis de apertura es el <strong>operador</strong> de la
+expresión y el resto de elementos (hasta el paréntesis de cierre) son
+sus operandos.</p>
+<ul>
+<li>
+<p>Por ejemplo, en la expresión <code>(+ 2 4 5 6)</code> el operador es el símbolo
+<code>+</code> que representa función <em>suma</em> y los operandos son los números 2,
+4, 5 y 6.</p>
+</li>
+<li>
+<p>Puede haber expresiones que no tengan operandos, como el ejemplo
+<code>(+)</code>, cuya evaluación devuelve 0.</p>
+</li>
+</ul>
+<p>Una idea fundamental de Lisp y Scheme es que los paréntesis se evalúan
+de dentro a fuera. Por ejemplo, la expresión </p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">12</span> <span class="mi">3</span><span class="p">)))</span>
+</pre></div>
+</td></tr></table>
+
+<p>que devuelve 5, se evalúa así:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">12</span> <span class="mi">3</span><span class="p">)))</span> <span class="n">⇒</span>
+<span class="p">(</span><span class="nb">+</span> <span class="mi">6</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">12</span> <span class="mi">3</span><span class="p">)))</span> <span class="n">⇒</span>
+<span class="p">(</span><span class="nb">+</span> <span class="mi">6</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="n">⇒</span>
+<span class="p">(</span><span class="nb">+</span> <span class="mi">6</span> <span class="mi">-1</span><span class="p">)</span> <span class="n">⇒</span>
+<span class="mi">5</span>
+</pre></div>
+</td></tr></table>
+
+<p>La evaluación de cada expresión devuelve un valor que se utiliza para
+continuar calculando la expresión exterior. En el caso anterior</p>
+<ul>
+<li>primero se evalúa la expresión <code>(* 2 3)</code> que devuelve 6,</li>
+<li>después se evalúa <code>(/ 12 3)</code> que devuelve 4,</li>
+<li>después se evalúa <code>(- 3 4)</code> que devuelve -1</li>
+<li>y por último se evalúa <code>(+ 6 -1)</code> que devuelve 5</li>
+</ul>
+<p>Cuando se evalúa una expresión en el intérprete de Scheme el 
+resultado aparece en la siguiente línea. </p>
+<h4>Definición de funciones</h4>
+<p>En programación funcional las funciones son similares a las funciones
+matemáticas: reciben parámetros y devuelven siempre un único resultado
+de operar con esos parámetros.</p>
+<p>Por ejemplo, podemos definir la función <code>(cuadrado x)</code> que devuelve el
+cuadrado de un número que pasamos como parámetro:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span>
    <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
-<p>En el cuerpo de la función <code>cuadrado</code> vemos que no se utiliza ninguna
-variable auxiliar, sino que únicamente se llama a la función <code>*</code>
-(multiplicación) pasando el valor de <code>x</code>. El valor resultante es el
-que se devuelve.</p>
-<p>Por ejemplo, si llamamos a la función pasándole el parámetro <code>4</code>
-devuelve el resultado de multiplicar 4 por si mismo, 16.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">cuadrado</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ 16</span>
+<p>El cuerpo de la función es una expresión que se evaluará con el valor
+que se pase como parámetro. En el caso anterior la expresión es <code>(* x
+x)</code> y multiplicará el parámetro por si mismo.</p>
+<p>Hay que hacer notar que en Scheme no existe la palabra clave <code>return</code>,
+sino que las funciones siempre se definen con una única expresión cuya
+evaluación es el resultado que se devuelve.</p>
+<p>Una vez definida la función <code>cuadrado</code> podemos usarla de la misma
+forma que las funciones primitivas de Scheme:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">cuadrado</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 100</span>
+<span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">10</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">4</span><span class="p">))))</span> <span class="c1">; ⇒ 2116</span>
 </pre></div>
 </td></tr></table>
 
-<p>La programación declarativa no es exclusiva de los lenguajes
-funcionales. Existen muchos lenguajes no funcionales con
-características declarativas. Por ejemplo Prolog, en el que un
-programa se define como un conjunto de reglas lógicas y su ejecución
-realiza una deducción lógica matemática que devuelve un resultado. En
-dicha ejecución no son relevantes los pasos internos que realiza el
-sistema sino las relaciones lógicas entre los datos y los resultados
-finales.</p>
+<p>La evaluación de la última expresión se hace de la siguiente forma:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">10</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">4</span><span class="p">))))</span> <span class="n">⇒</span>
+<span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">10</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="mi">6</span><span class="p">)))</span> <span class="n">⇒</span>
+<span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">10</span> <span class="mi">36</span><span class="p">))</span> <span class="n">⇒</span>
+<span class="p">(</span><span class="n">cuadrado</span> <span class="mi">46</span><span class="p">)</span> <span class="n">⇒</span>
+<span class="mi">2116</span>
+</pre></div>
+</td></tr></table>
+
+<h4>Definición de funciones auxiliares</h4>
+<p>Las funciones definidas se pueden utilizar a su vez para construir
+otras funciones.</p>
+<p>Lo habitual en programación funcional es definir funciones muy
+pequeñas e ir construyendo funciones cada vez de mayor nivel usando
+las anteriores.</p>
+<h5>Ejemplo: suma de cuadrados</h5>
+<p>Por ejemplo, supongamos que tenemos que definir una función que
+devuelva la suma del cuadrado de dos números. Podríamos definirla
+escribiendo la expresión completa, pero queda una definición poco
+legible.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">; Definición poco legible de la suma de cuadrados</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">)</span>
+       <span class="p">(</span><span class="nb">*</span> <span class="n">y</span> <span class="n">y</span><span class="p">)))</span>
+</pre></div>
+</td></tr></table>
+
+<p>Podemos hacer una definición mucho más legible si usamos la función
+<code>cuadrado</code> definida anteriormente:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">; Definición de suma de cuadrados más legible.</span>
+<span class="c1">; Usamos la función auxiliar &#39;cuadrado&#39;</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span> 
+       <span class="p">(</span><span class="n">cuadrado</span> <span class="n">y</span><span class="p">)))</span>
+</pre></div>
+</td></tr></table>
+
+<p>Esta segunda definición es mucho más expresiva. Leyendo el código queda
+muy claro qué es lo que queremos hacer.</p>
+<h5>Ejemplo: tiempo de impacto</h5>
+<p>Veamos otro ejemplo de uso de funciones auxiliares. Supongamos que
+estamos programando un juego de guerra de barcos y submarinos, en el
+que utilizamos las coordenadas del plano para situar todos los
+elementos de nuestra flota.</p>
+<p>Supongamos que necesitamos calcular el tiempo que tarda un torpedo en
+llegar desde una posición <code>(x1, y1)</code> a otra <code>(x2, y2)</code>. Suponemos que
+la velocidad del torpedo es otro parámetro <code>v</code>. </p>
+<p>¿Cómo calcularíamos este tiempo de impacto?</p>
+<p>La forma menos correcta de hacerlo es definir todo el cálculo en una
+única expresión. Como en programación funcional las funciones deben
+definirse con una única expresión debemos realizar todo el cálculo en
+forma de expresiones anidadas, unas dentro de otras. Esto construye
+una función que calcula bien el resultado. El problema que tiene es
+que es muy difícil de leer y entender para un compañero (o para
+nosotros mismos, cuando pasen unos meses):</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">;</span>
+<span class="c1">; Definición incorrecta: muy poco legible</span>
+<span class="c1">;</span>
+<span class="c1">; La función tiempo-impacto devuelve el tiempo que tarda</span>
+<span class="c1">; en llegar un torpedo a la velocidad v desde la posición</span>
+<span class="c1">; (x1, y1) a la posición (x2, y2)</span>
+<span class="c1">;</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">tiempo-impacto</span> <span class="n">x1</span> <span class="n">y1</span> <span class="n">x2</span> <span class="n">y2</span> <span class="n">v</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">/</span> <span class="p">(</span><span class="nb">sqrt</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x2</span> <span class="n">x1</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x2</span> <span class="n">x1</span><span class="p">))</span>
+               <span class="p">(</span><span class="nb">*</span> <span class="p">(</span><span class="nb">-</span> <span class="n">y2</span> <span class="n">y1</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="n">y2</span> <span class="n">y1</span><span class="p">))))</span>
+    <span class="n">v</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>La función anterior hace bien el cálculo pero es muy complicada de
+modificar y de entender.</p>
+<p>La forma más correcta de definir la función sería usando varias
+funciones auxiliares. Fíjate que es muy importante también poner los
+nombres correctos a cada función, para entender qué hace. Scheme es un
+lenguaje débilmente tipado y no tenemos la ayuda de los tipos que nos
+dan más contexto de qué es cada parámetro y qué devuelve la función.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">; Definición correcta, modular y legible de la función tiempo-impacto</span>
+
+<span class="c1">;</span>
+<span class="c1">; La función &#39;cuadrado&#39; devuelve el cuadrado de un número</span>
+<span class="c1">;</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
+
+<span class="c1">;</span>
+<span class="c1">; La función &#39;distancia&#39; devuelve la distancia entre dos</span>
+<span class="c1">; coordenadas (x1, y1) y (x2, y2)</span>
+<span class="c1">;</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">distancia</span> <span class="n">x1</span> <span class="n">y1</span> <span class="n">x2</span> <span class="n">y2</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">sqrt</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x2</span> <span class="n">x1</span><span class="p">))</span>
+             <span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">-</span> <span class="n">y2</span> <span class="n">y1</span><span class="p">)))))</span>
+
+<span class="c1">;</span>
+<span class="c1">; La función &#39;tiempo&#39; devuelve el tiempo que </span>
+<span class="c1">; tarda en recorrer un móvil una distancia d a un velocidad v</span>
+<span class="c1">;</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">tiempo</span> <span class="n">distancia</span> <span class="n">velocidad</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">/</span> <span class="n">distancia</span> <span class="n">velocidad</span><span class="p">))</span>
+
+<span class="c1">;</span>
+<span class="c1">; La función &#39;tiempo-impacto&#39; devuelve el tiempo que tarda</span>
+<span class="c1">; en llegar un torpedo a la velocidad v desde la posición</span>
+<span class="c1">; (x1, y1) a la posición (x2, y2)</span>
+<span class="c1">;</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">tiempo-impacto</span> <span class="n">x1</span> <span class="n">y1</span> <span class="n">x2</span> <span class="n">y2</span> <span class="n">velocidad</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">tiempo</span> <span class="p">(</span><span class="n">distancia</span> <span class="n">x1</span> <span class="n">y1</span> <span class="n">x2</span> <span class="n">y2</span><span class="p">)</span> <span class="n">velocidad</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>En esta segunda versión definimos más funciones, pero cada una es
+mucho más legible. Además las funciones como <code>cuadrado</code>, <code>distancia</code> o
+<code>tiempo</code> las vamos a poder reutilizar para otros cálculos.</p>
+<h4>Funciones puras</h4>
+<p>A diferencia de lo que hemos visto en programación imperativa, en
+programación funcional no es posible definir funciones con estado
+local. Las funciones que se definen son funciones matemáticas puras,
+que cumplen las siguientes condiciones:</p>
+<ul>
+<li>No modifican los parámetros que se les pasa</li>
+<li>Devuelven un único resultado</li>
+<li>No tienen estado local ni el resultado depende de un estado exterior mutable</li>
+</ul>
+<p>Esta última propiedad es muy importante y quiere decir que la función
+siempre devuelve el mismo valor cuando se le pasan los mismos
+parámetros.</p>
+<p>Las funciones puras son muy fáciles de entender porque no es necesario
+tener en cuenta ningún contexto a la hora de describir su
+funcionamiento. El valor devuelto únicamente depende de los parámetros
+de entrada.</p>
+<p>Por ejemplo, funciones matemáticas como suma, resta, cuadrado, sin,
+cos, etc. cumplen esta propiedad.</p>
 <h4>Composición de funciones</h4>
 <p>Una idea fundamental de la programación funcional es la composición de
 funciones que transforman unos datos de entrada en otros de salida. Es
@@ -858,6 +1077,90 @@ función constituye la entrada de la siguiente. </p>
 características de las imágenes, después se filtran, después se
 reconoce la escena y, por último, se obtienen las acciones para
 conducir el vehículo.</p>
+<h3 id="programacion-declarativa-vs-imperativa">Programación declarativa vs. imperativa<a class="headerlink" href="#programacion-declarativa-vs-imperativa" title="Permanent link">&para;</a></h3>
+<p>Hemos dicho que la programación funcional es un estilo de programación
+declarativa, frente a la programación tradicional de los lenguajes
+denominados imperativos. Vamos a explicar esto un poco más.</p>
+<h4>Programación declarativa</h4>
+<p>Empecemos con lo que conocemos todos: un <strong>programa imperativo</strong>. Se trata
+de un conjunto de instrucciones que se ejecutan una tras otra (pasos
+de ejecución) de forma secuencial. En la ejecución de estas
+instrucciones se van cambiando los valores de las variables y,
+dependiendo de estos valores, se modifica el flujo de control de la
+ejecución del programa. </p>
+<p>Para entender el funcionamiento de un programa imperativo debemos
+imaginar toda la evolución del programa, los pasos que se ejecutan y
+cuál es el flujo de control en función de los cambios de los valores
+en las variables.</p>
+<p>En la <strong>programación declarativa</strong>, sin embargo, utilizamos un
+paradigma totalmente distinto. Hablamos de <em>programación declarativa</em>
+para referirnos a lenguajes de programación (o sentencias de código)
+en los que se <em>declaran</em> los valores, objetivos o características de
+los elementos del programa y en cuya ejecución no existe mutación
+(modificación de valores de variables) ni secuencias de pasos de
+ejecución.</p>
+<p>De esta forma, la ejecución de un programa declarativo tiene que ver
+más con algún modelo formal o matemático que con un programa
+tradicional imperativo.  Define un conjunto de reglas y definiciones
+<em>de estilo matemático</em>. </p>
+<p>La programación declarativa no es exclusiva de los lenguajes
+funcionales. Existen muchos lenguajes no funcionales con
+características declarativas. Por ejemplo Prolog, en el que un
+programa se define como un conjunto de reglas lógicas y su ejecución
+realiza una deducción lógica matemática que devuelve un resultado. En
+dicha ejecución no son relevantes los pasos internos que realiza el
+sistema sino las relaciones lógicas entre los datos y los resultados
+finales.</p>
+<p>Un ejemplo claro de programación declarativa es una <strong>hoja de
+cálculo</strong>. Las celdas contiene valores o expresiones matemáticas que se
+actualizan automáticamente cuando cambiamos los valores de entrada. La
+relación entre valores y resultados es totalmente matemática y para su
+cálculo no tenemos que tener en cuenta pasos de ejecución. Evidente,
+por debajo de la hoja de cálculo existe un programa que realiza el
+su cálculo de la hoja, pero cuando estamos usándola no nos
+preocupa esa implementación. Podemos no preocuparnos de ella y usar
+únicamente el modelo matemático definido en la hoja.</p>
+<p>Otro ejemplo muy actual de programación declarativa es SwiftUI, el
+nuevo API creado por Apple para definir las interfaces de usuario de
+las aplicaciones iOS.</p>
+<p><img src="imagenes/swiftui.png" width="700px"/></p>
+<p>En el código de la imagen vemos una descripción de cómo está definida
+la aplicación: una lista de lugares (<em>landmarks</em>) apilada
+verticalmente. Para cada lugar se define su imagen, su texto, y
+una estrella si el lugar es favorito.</p>
+<p>El código es declarativo porque no hay pasos de ejecución para definir
+la interfaz. No existe un bucle que va añadiendo elementos a la
+interfaz. Vemos una declaración de cómo la interfaz va estar
+definida. El compilador del lenguaje y el API son los responsables de
+construir esa declaración y mostrar la interfaz tal y como nosotros
+queremos.</p>
+<h5>Declaración de funciones</h5>
+<p>La programación funcional utiliza un estilo de programación
+declarativo. Declaramos funciones en las que se transforman unos datos
+de entrada en unos datos de salida. Veremos que esta transformación se
+realiza mediante la evaluación de expresiones, sin definir valores
+intermedios, ni variables auxiliares, ni pasos de
+ejecución. Únicamente se van componiendo llamadas a funciones
+auxiliares que construyen el valor resultante.</p>
+<p>Tal y como ya hemos visto, el siguiente ejemplo es una <strong>declaración</strong>
+en Scheme de una función que toma como entrada un número y devuelve su
+cuadrado:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>En el cuerpo de la función <code>cuadrado</code> vemos que no se utiliza ninguna
+variable auxiliar, sino que únicamente se llama a la función <code>*</code>
+(multiplicación) pasando el valor de <code>x</code>. El valor resultante es el
+que se devuelve.</p>
+<p>Por ejemplo, si llamamos a la función pasándole el parámetro <code>4</code>
+devuelve el resultado de multiplicar 4 por si mismo, 16.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">cuadrado</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ 16</span>
+</pre></div>
+</td></tr></table>
+
 <h4>Programación imperativa</h4>
 <p>Repasemos un algunas características propias de la programación
 imperativa <strong>que no existen en la programación funcional</strong>. Son
@@ -1151,6 +1454,7 @@ apartados explicaremos más estas características.</p>
 <p><strong>Características de la programación declarativa</strong></p>
 <ul>
 <li>Variable = nombre dado a un valor (declaración)</li>
+<li>En lugar de pasos de ejecución se utiliza la composición de funciones</li>
 <li>No existe asignación ni cambio de estado</li>
 <li>No existe mutación, se cumple la <em>transferencia referencial</em>: dentro
   de un mismo ámbito todas las ocurrencias de una variable y las
@@ -1163,265 +1467,6 @@ apartados explicaremos más estas características.</p>
 <li>Referencias</li>
 <li>Pasos de ejecución</li>
 </ul>
-<h3 id="evaluacion-de-expresiones-y-definicion-de-funciones">Evaluación de expresiones y definición de funciones<a class="headerlink" href="#evaluacion-de-expresiones-y-definicion-de-funciones" title="Permanent link">&para;</a></h3>
-<p>En la asignatura usaremos Scheme como primer lenguaje en el que
-exploraremos la programación funcional.</p>
-<p>En el seminario de Scheme que se imparte en prácticas se estudiará en
-más profundidad los conceptos más importantes del lenguaje: tipos de
-datos, operadores, estructuras de control, intérprete, etc.</p>
-<h4>Evaluación de expresiones</h4>
-<p>Empezamos este apartado viendo cómo se definen y evalúan expresiones
-Scheme. Y después veremos cómo construir nuevas funciones.</p>
-<p>Scheme es un lenguaje que viene del Lisp. Una de sus características
-principales es que las expresiones se construyen utilizando
-paréntesis.</p>
-<p>Ejemplos de expresiones en Scheme, junto con el resultado de su
-ejecución:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="mi">2</span> <span class="c1">; ⇒ 2</span>
-<span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 5</span>
-<span class="p">(</span><span class="nb">+</span><span class="p">)</span> <span class="c1">; ⇒ 0</span>
-<span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span> <span class="c1">; ⇒ 17</span>
-<span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">))</span> <span class="c1">; ⇒ 8</span>
-</pre></div>
-</td></tr></table>
-
-<p>En programación funcional en lugar de decir "ejecutar una expresión"
-se dice "<strong>evaluar una expresión</strong>", para reforzar la idea de que se
-tratan de expresiones matemáticas que <strong>siempre devuelven uno y sólo un
-resultado</strong>.</p>
-<p>Las expresiones se definen con una notación prefija: el primer
-elemento después del paréntesis de apertura es el <strong>operador</strong> de la
-expresión y el resto de elementos (hasta el paréntesis de cierre) son
-sus operandos.</p>
-<ul>
-<li>
-<p>Por ejemplo, en la expresión <code>(+ 2 4 5 6)</code> el operador es el símbolo
-<code>+</code> que representa función <em>suma</em> y los operandos son los números 2,
-4, 5 y 6.</p>
-</li>
-<li>
-<p>Puede haber expresiones que no tengan operandos, como el ejemplo
-<code>(+)</code>, cuya evaluación devuelve 0.</p>
-</li>
-</ul>
-<p>Una idea fundamental de Lisp y Scheme es que los paréntesis se evalúan
-de dentro a fuera. Por ejemplo, la expresión </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">12</span> <span class="mi">3</span><span class="p">)))</span>
-</pre></div>
-</td></tr></table>
-
-<p>que devuelve 5, se evalúa así:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">12</span> <span class="mi">3</span><span class="p">)))</span> <span class="n">⇒</span>
-<span class="p">(</span><span class="nb">+</span> <span class="mi">6</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">12</span> <span class="mi">3</span><span class="p">)))</span> <span class="n">⇒</span>
-<span class="p">(</span><span class="nb">+</span> <span class="mi">6</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="n">⇒</span>
-<span class="p">(</span><span class="nb">+</span> <span class="mi">6</span> <span class="mi">-1</span><span class="p">)</span> <span class="n">⇒</span>
-<span class="mi">5</span>
-</pre></div>
-</td></tr></table>
-
-<p>La evaluación de cada expresión devuelve un valor que se utiliza para
-continuar calculando la expresión exterior. En el caso anterior</p>
-<ul>
-<li>primero se evalúa la expresión <code>(* 2 3)</code> que devuelve 6,</li>
-<li>después se evalúa <code>(/ 12 3)</code> que devuelve 4,</li>
-<li>después se evalúa <code>(- 3 4)</code> que devuelve -1</li>
-<li>y por último se evalúa <code>(+ 6 -1)</code> que devuelve 5</li>
-</ul>
-<p>Cuando se evalúa una expresión en el intérprete de Scheme el 
-resultado aparece en la siguiente línea. </p>
-<h4>Definición de funciones</h4>
-<p>En programación funcional las funciones son similares a las funciones
-matemáticas: reciben parámetros y devuelven siempre un único resultado
-de operar con esos parámetros.</p>
-<p>Por ejemplo, podemos definir la función <code>(cuadrado x)</code> que devuelve el
-cuadrado de un número que pasamos como parámetro:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
-</pre></div>
-</td></tr></table>
-
-<p>El cuerpo de la función es una expresión que se evaluará con el valor
-que se pase como parámetro. En el caso anterior la expresión es <code>(* x
-x)</code> y multiplicará el parámetro por si mismo.</p>
-<p>Hay que hacer notar que en Scheme no existe la palabra clave <code>return</code>,
-sino que las funciones siempre se definen con una única expresión cuya
-evaluación es el resultado que se devuelve.</p>
-<p>Una vez definida la función <code>cuadrado</code> podemos usarla de la misma
-forma que las funciones primitivas de Scheme:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">cuadrado</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 100</span>
-<span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">10</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">4</span><span class="p">))))</span> <span class="c1">; ⇒ 2116</span>
-</pre></div>
-</td></tr></table>
-
-<p>La evaluación de la última expresión se hace de la siguiente forma:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">10</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">4</span><span class="p">))))</span> <span class="n">⇒</span>
-<span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">10</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="mi">6</span><span class="p">)))</span> <span class="n">⇒</span>
-<span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">10</span> <span class="mi">36</span><span class="p">))</span> <span class="n">⇒</span>
-<span class="p">(</span><span class="n">cuadrado</span> <span class="mi">46</span><span class="p">)</span> <span class="n">⇒</span>
-<span class="mi">2116</span>
-</pre></div>
-</td></tr></table>
-
-<h4>Definición de funciones auxiliares</h4>
-<p>Las funciones definidas se pueden utilizar a su vez para construir
-otras funciones.</p>
-<p>Lo habitual en programación funcional es definir funciones muy
-pequeñas e ir construyendo funciones cada vez de mayor nivel usando
-las anteriores.</p>
-<h5>Ejemplo: tiempo de impacto</h5>
-<p>Por ejemplo, supongamos que estamos programando un juego de guerra de
-barcos y submarinos, en el que utilizamos las coordenadas del plano
-para situar todos los elementos de nuestra flota.</p>
-<p>Supongamos que necesitamos calcular el tiempo que tarda un torpedo en
-llegar desde una posición <code>(x1, y1)</code> a otra <code>(x2, y2)</code>. Suponemos que
-la velocidad del torpedo es otro parámetro <code>v</code>. </p>
-<p>¿Cómo calcularíamos este tiempo de impacto?</p>
-<p>La forma menos correcta de hacerlo es definir todo el cálculo en una
-única expresión. Como en programación funcional las funciones deben
-definirse con una única expresión deberíamos poner todo el cálculo en
-forma de expresiones anidadas, unas dentro de otras. Eso crearía una
-función que calcularía bien el resultado, pero que sería muy difícil
-de leer y entender para un compañero (o para nosotros mismos, cuando
-pasen unos meses):</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">;</span>
-<span class="c1">; Definición incorrecta: muy poco legible</span>
-<span class="c1">;</span>
-<span class="c1">; La función tiempo-impacto devuelve el tiempo que tarda</span>
-<span class="c1">; en llegar un torpedo a la velocidad v desde la posición</span>
-<span class="c1">; (x1, y1) a la posición (x2, y2)</span>
-<span class="c1">;</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">tiempo-impacto</span> <span class="n">x1</span> <span class="n">y1</span> <span class="n">x2</span> <span class="n">y2</span> <span class="n">v</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">/</span> <span class="p">(</span><span class="nb">sqrt</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x2</span> <span class="n">x1</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x2</span> <span class="n">x1</span><span class="p">))</span>
-               <span class="p">(</span><span class="nb">*</span> <span class="p">(</span><span class="nb">-</span> <span class="n">y2</span> <span class="n">y1</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="n">y2</span> <span class="n">y1</span><span class="p">))))</span>
-    <span class="n">v</span><span class="p">))</span>
-</pre></div>
-</td></tr></table>
-
-<p>La función anterior haría bien el cálculo pero sería muy complicada de
-modificar y de entender.</p>
-<p>La forma más correcta de definir la función sería usando varias
-funciones auxiliares. Fíjate que es muy importante también poner los
-nombres correctos a cada función, para entender qué hace. Scheme es un
-lenguaje débilmente tipado y no tenemos la ayuda de los tipos que nos
-dan más contexto de qué es cada parámetro y qué devuelve la función.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">; Definición correcta, modular y legible de la función tiempo-impacto</span>
-
-<span class="c1">;</span>
-<span class="c1">; La función &#39;cuadrado&#39; devuelve el cuadrado de un número</span>
-<span class="c1">;</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
-
-<span class="c1">;</span>
-<span class="c1">; La función &#39;distancia&#39; devuelve la distancia entre dos</span>
-<span class="c1">; coordenadas (x1, y1) y (x2, y2)</span>
-<span class="c1">;</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">distancia</span> <span class="n">x1</span> <span class="n">y1</span> <span class="n">x2</span> <span class="n">y2</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">sqrt</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x2</span> <span class="n">x1</span><span class="p">))</span>
-             <span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">-</span> <span class="n">y2</span> <span class="n">y1</span><span class="p">)))))</span>
-
-<span class="c1">;</span>
-<span class="c1">; La función &#39;tiempo&#39; devuelve el tiempo que </span>
-<span class="c1">; tarda en recorrer un móvil una distancia d a un velocidad v</span>
-<span class="c1">;</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">tiempo</span> <span class="n">distancia</span> <span class="n">velocidad</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">/</span> <span class="n">distancia</span> <span class="n">velocidad</span><span class="p">))</span>
-
-<span class="c1">;</span>
-<span class="c1">; La función &#39;tiempo-impacto&#39; devuelve el tiempo que tarda</span>
-<span class="c1">; en llegar un torpedo a la velocidad v desde la posición</span>
-<span class="c1">; (x1, y1) a la posición (x2, y2)</span>
-<span class="c1">;</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">tiempo-impacto</span> <span class="n">x1</span> <span class="n">y1</span> <span class="n">x2</span> <span class="n">y2</span> <span class="n">velocidad</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">tiempo</span> <span class="p">(</span><span class="n">distancia</span> <span class="n">x1</span> <span class="n">y1</span> <span class="n">x2</span> <span class="n">y2</span><span class="p">)</span> <span class="n">velocidad</span><span class="p">))</span>
-</pre></div>
-</td></tr></table>
-
-<p>En esta segunda versión definimos más funciones, pero cada una es
-mucho más legible. Además las funciones como <code>cuadrado</code>, <code>distancia</code> o
-<code>tiempo</code> las vamos a poder reutilizar para otros cálculos.</p>
-<h4>Funciones puras</h4>
-<p>A diferencia de lo que hemos visto en programación imperativa, en
-programación funcional no es posible definir funciones con estado
-local. Las funciones que se definen son funciones matemáticas puras,
-que cumplen las siguientes condiciones:</p>
-<ul>
-<li>No modifican los parámetros que se les pasa</li>
-<li>Devuelven un único resultado</li>
-<li>No tienen estado local ni el resultado depende de un estado exterior mutable</li>
-</ul>
-<p>Esta última propiedad es muy importante y quiere decir que la función
-siempre devuelve el mismo valor cuando se le pasan los mismos
-parámetros.</p>
-<p>Las funciones puras son muy fáciles de entender porque no es necesario
-tener en cuenta ningún contexto a la hora de describir su
-funcionamiento. El valor devuelto únicamente depende de los parámetros
-de entrada.</p>
-<p>Por ejemplo, funciones matemáticas como suma, resta, cuadrado, sin,
-cos, etc. cumplen esta propiedad.</p>
 <h3 id="modelo-de-computacion-de-sustitucion">Modelo de computación de sustitución<a class="headerlink" href="#modelo-de-computacion-de-sustitucion" title="Permanent link">&para;</a></h3>
 <p>Un modelo computacional es un formalismo (conjunto de reglas) que
 definen el funcionamiento de un programa. En el caso de los lenguajes
