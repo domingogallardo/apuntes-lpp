@@ -429,6 +429,7 @@ Se soportan caracteres internacionales y se codifican en UTF-8.
 (char-upper-case? #\A) ; ⇒ #t (el carácter #\A es una letra mayúscula)
 (char-lower-case? #\a) ; ⇒ #t (el carácter #\a es una letra minúscula)
 (char-upcase #\ñ) ; ⇒ #\Ñ (transforma la letra a mayúsculas)
+(char-downcase #\A) ; ⇒ #\a (transforma la letra a minúsculas)
 (char->integer #\space) ; ⇒ 32 (el carácter espacio ocupa la posición
                         ;        32 en la lista de caracteres)
 (integer->char 32) ; ⇒ #\space (igual que antes pero a la inversa)
@@ -1097,9 +1098,9 @@ predicción era correcta. Si no lo era, intenta comprender por qué.
 |Instrucción                        | Instrucción                             |
 |---------------------  ------------|-----------------------------------------|
 |`(list 1 2 3 4)`                   | `(cons 3 '(1 2 3))`                     |
-|`(cdr (list 1 2 3 4))`             | `(cdr (cons #t (cons "Hola" (list 1)))` |
+|`(cdr (list 1 2 3 4))`             | `(cdr (cons #t (cons "Hola" (list 1))))` |
 |`(car '(1 2 3 4))`                 | `(car (list (list 1 2) 1 2 3 4))`       |
-|`(car (list #t 1 "Hola"))`         | `(car (cdr '((1 2) 1 2)`                |
+|`(car (list #t 1 "Hola"))`         | `(car (cdr '((1 2) 1 2)))`                |
 |`(car (cdr (list 1 2 3 4)))`       | `(cons '(1 2 3) '(4 5 6))`              |
 |`(cdr (cdr '(1 2 3 4)))`           | `(car (cdr (list 1 2 3 4)))`            |
 |`(car (cdr (cdr (list 1 2 3 4))))` | `(cdr (cdr (list 1 2 3 4)))`            |
