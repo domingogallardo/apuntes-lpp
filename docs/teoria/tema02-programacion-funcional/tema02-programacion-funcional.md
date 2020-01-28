@@ -390,11 +390,45 @@ Lo habitual en programación funcional es definir funciones muy
 pequeñas e ir construyendo funciones cada vez de mayor nivel usando
 las anteriores.
 
+##### Ejemplo: suma de cuadrados #####
+
+Por ejemplo, supongamos que tenemos que definir una función que
+devuelva la suma del cuadrado de dos números. Podríamos definirla
+escribiendo la expresión completa, pero queda una definición poco
+legible.
+
+```racket
+; Definición poco legible de la suma de cuadrados
+
+(define (suma-cuadrados x y)
+    (+ (* x x)
+       (* y y)))
+```
+
+Podemos hacer una definición mucho más legible si usamos la función
+`cuadrado` definida anteriormente:
+
+```racket
+; Definición de suma de cuadrados más legible.
+; Usamos la función auxiliar 'cuadrado'
+
+(define (cuadrado x)
+    (* x x))
+
+(define (suma-cuadrados x y)
+    (+ (cuadrado x) 
+       (cuadrado y)))
+```
+
+Esta segunda definición es mucho más expresiva. Leyendo el código queda
+muy claro qué es lo que queremos hacer.
+
 ##### Ejemplo: tiempo de impacto
 
-Por ejemplo, supongamos que estamos programando un juego de guerra de
-barcos y submarinos, en el que utilizamos las coordenadas del plano
-para situar todos los elementos de nuestra flota.
+Veamos otro ejemplo de uso de funciones auxiliares. Supongamos que
+estamos programando un juego de guerra de barcos y submarinos, en el
+que utilizamos las coordenadas del plano para situar todos los
+elementos de nuestra flota.
 
 Supongamos que necesitamos calcular el tiempo que tarda un torpedo en
 llegar desde una posición `(x1, y1)` a otra `(x2, y2)`. Suponemos que
@@ -404,11 +438,11 @@ la velocidad del torpedo es otro parámetro `v`.
 
 La forma menos correcta de hacerlo es definir todo el cálculo en una
 única expresión. Como en programación funcional las funciones deben
-definirse con una única expresión deberíamos poner todo el cálculo en
-forma de expresiones anidadas, unas dentro de otras. Eso crearía una
-función que calcularía bien el resultado, pero que sería muy difícil
-de leer y entender para un compañero (o para nosotros mismos, cuando
-pasen unos meses):
+definirse con una única expresión debemos realizar todo el cálculo en
+forma de expresiones anidadas, unas dentro de otras. Esto construye
+una función que calcula bien el resultado. El problema que tiene es
+que es muy difícil de leer y entender para un compañero (o para
+nosotros mismos, cuando pasen unos meses):
 
 ```racket
 ;
@@ -425,7 +459,7 @@ pasen unos meses):
     v))
 ```
 
-La función anterior haría bien el cálculo pero sería muy complicada de
+La función anterior hace bien el cálculo pero es muy complicada de
 modificar y de entender.
 
 La forma más correcta de definir la función sería usando varias
@@ -500,9 +534,6 @@ Por ejemplo, funciones matemáticas como suma, resta, cuadrado, sin,
 cos, etc. cumplen esta propiedad.
 
 
-
-
-
 #### Composición de funciones ####
 
 Una idea fundamental de la programación funcional es la composición de
@@ -542,8 +573,6 @@ características de las imágenes, después se filtran, después se
 reconoce la escena y, por último, se obtienen las acciones para
 conducir el vehículo.
 
-
-
 ### Programación declarativa vs. imperativa
 
 Hemos dicho que la programación funcional es un estilo de programación
@@ -577,6 +606,15 @@ más con algún modelo formal o matemático que con un programa
 tradicional imperativo.  Define un conjunto de reglas y definiciones
 *de estilo matemático*. 
 
+La programación declarativa no es exclusiva de los lenguajes
+funcionales. Existen muchos lenguajes no funcionales con
+características declarativas. Por ejemplo Prolog, en el que un
+programa se define como un conjunto de reglas lógicas y su ejecución
+realiza una deducción lógica matemática que devuelve un resultado. En
+dicha ejecución no son relevantes los pasos internos que realiza el
+sistema sino las relaciones lógicas entre los datos y los resultados
+finales.
+
 Un ejemplo claro de programación declarativa es una **hoja de
 cálculo**. Las celdas contiene valores o expresiones matemáticas que se
 actualizan automáticamente cuando cambiamos los valores de entrada. La
@@ -605,16 +643,19 @@ definida. El compilador del lenguaje y el API son los responsables de
 construir esa declaración y mostrar la interfaz tal y como nosotros
 queremos.
 
+##### Declaración de funciones #####
+
 La programación funcional utiliza un estilo de programación
-declarativo. Definimos funciones en las que se realizan unas
-operaciones sobre unos parámetros de entrada y se devuelve un
-valor. Veremos que estas operaciones se realizan sin definir valores
+declarativo. Declaramos funciones en las que se transforman unos datos
+de entrada en unos datos de salida. Veremos que esta transformación se
+realiza mediante la evaluación de expresiones, sin definir valores
 intermedios, ni variables auxiliares, ni pasos de
 ejecución. Únicamente se van componiendo llamadas a funciones
 auxiliares que construyen el valor resultante.
 
-El siguiente ejemplo es una **declaración** en Scheme de una función
-que toma como entrada un número y devuelve su cuadrado:
+Tal y como ya hemos visto, el siguiente ejemplo es una **declaración**
+en Scheme de una función que toma como entrada un número y devuelve su
+cuadrado:
 
 ```racket
 (define (cuadrado x)
@@ -633,14 +674,6 @@ devuelve el resultado de multiplicar 4 por si mismo, 16.
 (cuadrado 4) ; ⇒ 16
 ```
 
-La programación declarativa no es exclusiva de los lenguajes
-funcionales. Existen muchos lenguajes no funcionales con
-características declarativas. Por ejemplo Prolog, en el que un
-programa se define como un conjunto de reglas lógicas y su ejecución
-realiza una deducción lógica matemática que devuelve un resultado. En
-dicha ejecución no son relevantes los pasos internos que realiza el
-sistema sino las relaciones lógicas entre los datos y los resultados
-finales.
 
 #### Programación imperativa
 
@@ -921,6 +954,7 @@ apartados explicaremos más estas características.
 **Características de la programación declarativa**
 
 * Variable = nombre dado a un valor (declaración)
+* En lugar de pasos de ejecución se utiliza la composición de funciones
 * No existe asignación ni cambio de estado
 * No existe mutación, se cumple la *transferencia referencial*: dentro
   de un mismo ámbito todas las ocurrencias de una variable y las
