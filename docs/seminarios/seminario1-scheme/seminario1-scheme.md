@@ -1065,7 +1065,7 @@ era correcta. Si no lo era, intenta comprender por qué.
 |`(string-ref "pepe" 1)`                        | `(string-length (make-string 7 #\E))`                                    |
 |`(substring "buenos dias" 1 4)`                | `(define a 3)` <br/> `(define b (+ a 1))`                                |
 |`(= "hola" "hola")`                            | `(+ a b (* a b))`                                                        |
-|`(string-ref (substring "buenos dias 2 5) 1)`  | `(= a b)`                                                                |
+|`(string-ref (substring "buenos dias" 2 5) 1)`  | `(= a b)`                                                                |
 |`(define pi 3.14159)`                          | `(if (and (> a b) (< b (* a b))) b a)`                                   |
 |`pi`                                           | `(cond ((= a 4) 6)`<br/>`((= b 4) (+ 6 7 a))`<br/>`(else 25))`           |
 |`"pi"`                                         | `(+ 2 (if (> b a) b a))`                                                 |
