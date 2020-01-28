@@ -253,6 +253,86 @@ Lenguaje funcional puro más importante:
       programación de sistemas distribuidos en Internet.
     - la programación interactiva y evolutiva.
 
+
+### Evaluación de expresiones
+
+```racket
+2 ⇒ 2
+(+ 2 3) ⇒ 5
+(+) ⇒ 0
+(+ 2 4 5 6) ⇒ 17
+(+ (* 2 3) (- 3 1)) ⇒ 8
+```
+
+Se dice "**evaluar una expresión**" en lugar de "**ejecutar una expresión**".
+
+Partes de una expresión:
+
+- Operador
+- Operandos
+- Evaluación de dentro a fuera
+
+Por ejemplo, ¿cuál es la evaluación de la siguiente expresión?:
+
+```racket
+(+ (* 2 3) (- 3 (/ 12 3)))
+```
+
+<p style="margin-bottom:3cm;"></p>
+
+### Definición de funciones
+
+Definición
+
+```racket
+(define (cuadrado x)
+   (* x x))
+```
+
+Uso y evaluación:
+
+```racket
+(cuadrado 10) ⇒ 100
+(cuadrado (+ 10 (cuadrado (+ 2 4)))) ⇒ 2116
+```
+
+### Definición de funciones auxiliares
+
+- Lo habitual en programación funcional es definir funciones muy
+pequeñas e ir construyendo funciones cada vez de mayor nivel usando
+las anteriores.
+
+```racket
+(define (suma-cuadrados x y)
+   (+ (cuadrado x) (cuadrado y)))
+```
+
+### Funciones puras
+
+- No modifican los parámetros que se les pasa
+- Devuelven un único resultado
+- No tienen estado local ni el resultado depende de un estado exterior mutable
+
+### Composición de funciones
+
+- Una idea fundamental de la programación funcional es la composición de
+funciones que transforman unos datos de entrada en otros de salida. 
+- Ejemplo: procesamiento de imágenes en vehículos autónomos:
+
+<img src="imagenes/composicion-funciones.png" width="700px"/>
+
+- En un lenguaje de programación funcional como Scheme:
+
+```racket
+(define (conduce-vehiculo imagenes)
+    (obten-acciones 
+        (reconoce 
+            (filtra 
+                (obten-caracteristicas imagenes)))))
+```
+
+
+
 ### Programación declarativa
 
 - La PF es un estilo de **programación declarativa**, frente a la
@@ -274,9 +354,8 @@ Otro ejemplo de programación declarativa: SwiftUI.
 <img src="imagenes/swiftui.png" width="700px"/>
 
 
-- Un ejemplo de declaración de función matemática en Scheme. Veremos
-que todas las funciones en Scheme no tienen pasos de ejecución, sólo
-una línea (eso sí, con muchas llamadas anidadas a funciones):
+- Como hemos visto, en programación funcional **declaramos funciones**
+que transforman datos de entrada en datos de salida.
 
 ```racket
 (define (cuadrado x)
@@ -287,24 +366,6 @@ una línea (eso sí, con muchas llamadas anidadas a funciones):
 
 ```racket
 (cuadrado 4) ; devuelve 16
-```
-
-### Composición de funciones
-
-- Una idea fundamental de la programación funcional es la composición de
-funciones que transforman unos datos de entrada en otros de salida. 
-- Ejemplo: procesamiento de imágenes en vehículos autónomos:
-
-<img src="imagenes/composicion-funciones.png" width="700px"/>
-
-- En un lenguaje de programación funcional como Scheme:
-
-```racket
-(define (conduce-vehiculo imagenes)
-    (obten-acciones 
-        (reconoce 
-            (filtra 
-                (obten-caracteristicas imagenes)))))
 ```
 
 ### Programación imperativa
@@ -338,7 +399,9 @@ procesados = procesa(filtrados);
 return procesados;
 ```
 
-Los mismos ejemplos sin pasos de ejecución, en programación funcional:
+En programación funcional, en lugar de pasos de ejecución se utiliza
+como hemos visto la composición de funciones. Los ejemplos anteriores
+se expresan de la siguiente forma en programación funcional:
 
 ```racket
 (cuadrado (doble (cuadrado 8)))
@@ -481,65 +544,6 @@ Primeras características que vamos a ver hoy:
 - Definición de funciones
 - Funciones puras
 - Modelo de computación de sustitución
-
-### Evaluación de expresiones
-
-```racket
-2 ⇒ 2
-(+ 2 3) ⇒ 5
-(+) ⇒ 0
-(+ 2 4 5 6) ⇒ 17
-(+ (* 2 3) (- 3 1)) ⇒ 8
-```
-
-Se dice "**evaluar una expresión**" en lugar de "**ejecutar una expresión**".
-
-Partes de una expresión:
-
-- Operador
-- Operandos
-- Evaluación de dentro a fuera
-
-Por ejemplo, ¿cuál es la evaluación de la siguiente expresión?:
-
-```racket
-(+ (* 2 3) (- 3 (/ 12 3)))
-```
-
-<p style="margin-bottom:3cm;"></p>
-
-### Definición de funciones
-
-Definición
-
-```racket
-(define (cuadrado x)
-   (* x x))
-```
-
-Uso y evaluación:
-
-```racket
-(cuadrado 10) ⇒ 100
-(cuadrado (+ 10 (cuadrado (+ 2 4)))) ⇒ 2116
-```
-
-### Definición de funciones auxiliares
-
-- Lo habitual en programación funcional es definir funciones muy
-pequeñas e ir construyendo funciones cada vez de mayor nivel usando
-las anteriores.
-
-```racket
-(define (suma-cuadrados x y)
-   (+ (cuadrado x) (cuadrado y)))
-```
-
-### Funciones puras
-
-- No modifican los parámetros que se les pasa
-- Devuelven un único resultado
-- No tienen estado local ni el resultado depende de un estado exterior mutable
 
 ### Modelo de computación de sustitución
 
