@@ -1208,7 +1208,8 @@ parámetro. En el caso de los números, el tipo de número:</p>
  9
 10
 11
-12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">char&lt;?</span> <span class="sc">#\a</span> <span class="sc">#\b</span><span class="p">)</span> <span class="c1">; ⇒ #t (el carácter #\a es anterior al #\b)</span>
+12
+13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">char&lt;?</span> <span class="sc">#\a</span> <span class="sc">#\b</span><span class="p">)</span> <span class="c1">; ⇒ #t (el carácter #\a es anterior al #\b)</span>
 <span class="p">(</span><span class="nb">char-numeric?</span> <span class="sc">#\1</span><span class="p">)</span> <span class="c1">; ⇒ #t (el carácter #\1 es un número)</span>
 <span class="p">(</span><span class="nb">char-alphabetic?</span> <span class="sc">#\3</span><span class="p">)</span> <span class="c1">; ⇒ #f (el carácter #\3 es un número)</span>
 <span class="p">(</span><span class="nb">char-whitespace?</span> <span class="sc">#\tab</span><span class="p">)</span> <span class="c1">; ⇒ #t (el carácter tabulador es un espacio</span>
@@ -1216,6 +1217,7 @@ parámetro. En el caso de los números, el tipo de número:</p>
 <span class="p">(</span><span class="nb">char-upper-case?</span> <span class="sc">#\A</span><span class="p">)</span> <span class="c1">; ⇒ #t (el carácter #\A es una letra mayúscula)</span>
 <span class="p">(</span><span class="nb">char-lower-case?</span> <span class="sc">#\a</span><span class="p">)</span> <span class="c1">; ⇒ #t (el carácter #\a es una letra minúscula)</span>
 <span class="p">(</span><span class="nb">char-upcase</span> <span class="sc">#\ñ</span><span class="p">)</span> <span class="c1">; ⇒ #\Ñ (transforma la letra a mayúsculas)</span>
+<span class="p">(</span><span class="nb">char-downcase</span> <span class="sc">#\A</span><span class="p">)</span> <span class="c1">; ⇒ #\a (transforma la letra a minúsculas)</span>
 <span class="p">(</span><span class="nb">char-&gt;integer</span> <span class="sc">#\space</span><span class="p">)</span> <span class="c1">; ⇒ 32 (el carácter espacio ocupa la posición</span>
                         <span class="c1">;        32 en la lista de caracteres)</span>
 <span class="p">(</span><span class="nb">integer-&gt;char</span> <span class="mi">32</span><span class="p">)</span> <span class="c1">; ⇒ #\space (igual que antes pero a la inversa)</span>
@@ -2030,7 +2032,7 @@ predicción era correcta. Si no lo era, intenta comprender por qué.</p>
 </tr>
 <tr>
 <td><code>(cdr (list 1 2 3 4))</code></td>
-<td><code>(cdr (cons #t (cons "Hola" (list 1)))</code></td>
+<td><code>(cdr (cons #t (cons "Hola" (list 1))))</code></td>
 </tr>
 <tr>
 <td><code>(car '(1 2 3 4))</code></td>
@@ -2038,7 +2040,7 @@ predicción era correcta. Si no lo era, intenta comprender por qué.</p>
 </tr>
 <tr>
 <td><code>(car (list #t 1 "Hola"))</code></td>
-<td><code>(car (cdr '((1 2) 1 2)</code></td>
+<td><code>(car (cdr '((1 2) 1 2)))</code></td>
 </tr>
 <tr>
 <td><code>(car (cdr (list 1 2 3 4)))</code></td>
