@@ -693,7 +693,7 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 (define (factorial x)
     (if (= x 0)
         1
-	(* x (factorial (- x 1)))))
+        (* x (factorial (- x 1)))))
 ```
 
 ### Forma especial `if`
