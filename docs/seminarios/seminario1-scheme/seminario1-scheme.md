@@ -39,16 +39,24 @@ lenguaje contiene librerías muy útiles (librerías gráficas, de
 conexión a servidores HTTP, de conexión a bases de datos, etc.) con
 las que se moderniza el lenguaje original y se convierte en un
 lenguaje práctico para desarrollar todo tipo de aplicaciones, desde
-videojuegos a servidores web.
-n
-Sin embargo, nosotros sólo vamos a usar Racket para aprender la parte
-que corresponde al núcleo original de Scheme.
+videojuegos a servidores web. Sin embargo, nosotros sólo vamos a usar
+Racket para aprender la parte que corresponde al núcleo original de
+Scheme.
 
 ### El entorno de programación DrRacket
 
 Veamos una pequeña introducción al entorno de programación que
 proporciona DrRacket. Puedes encontrar más información en la
 [documentación original](http://docs.racket-lang.org/drracket/index.html).
+
+#### Descarga de DrRacket ####
+
+DrRacket es multiplataforma y puede ejecutarse en Linux, MacOS o
+Windows. Vamos a utilizar la versión 7.5. Puedes descargarla desde el
+siguiente enlace:
+
+[Descarga de DrRacket](https://download.racket-lang.org)
+
 
 #### Configuración de DrRacket
 
