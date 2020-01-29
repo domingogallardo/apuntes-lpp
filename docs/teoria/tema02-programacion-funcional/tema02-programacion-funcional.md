@@ -1113,7 +1113,12 @@ normal** es:
 ```
 
 Al usar este modelo de evaluación primero se realizan todas las
-sustituciones (regla 4) y después todas las evaluaciones (regla 3). 
+sustituciones (regla 4) y después todas las evaluaciones (regla
+3). 
+
+Las sustituciones se hacen de izquierda a derecha (de fuera a dentro
+de los paréntesis). Primero se sustituye `doble` por su cuerpo y
+después `cuadrado`.
 
 #### Ejemplo 2
 
@@ -1193,6 +1198,12 @@ para comprobar que el resultado es distinto
 (define (zero x) (- x x))
 (zero (random 10))
 ```
+
+Si evaluamos la última expresión en orden aplicativo:
+
+```text
+```
+
 
 ## Scheme como lenguaje de programación funcional
 
