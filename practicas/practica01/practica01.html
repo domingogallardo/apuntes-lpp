@@ -345,13 +345,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ejercicio-7" class="md-nav__link">
-    Ejercicio 7
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -383,15 +376,15 @@ solución debe incluir:</p>
 <ul>
 <li>La <strong>definición de las funciones</strong> que resuelven el ejercicio.</li>
 <li>Un conjunto de <strong>pruebas</strong> que comprueben su funcionamiento, y el de
-  funciones auxiliares que hayamos definido, utilizando el API SchemeUnit.</li>
+  funciones auxiliares que hayamos definido, utilizando el API RackUnit.</li>
 </ul>
 <p>Por ejemplo, supongamos que el primer ejercicio de la práctica 1 sea
 implementar la función <code>suma-cuadrados</code> que recibe dos números y
 devuelve la suma de sus cuadrados y se proponen en el enunciado los
 siguientes ejemplos:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">suma-cuadrados</span> <span class="mi">10</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 200</span>
-<span class="p">(</span><span class="nf">suma-cuadrados</span> <span class="mi">-2</span> <span class="mi">9</span><span class="p">)</span> <span class="c1">; ⇒  85</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">10</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 200</span>
+<span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">-2</span> <span class="mi">9</span><span class="p">)</span> <span class="c1">; ⇒  85</span>
 </pre></div>
 </td></tr></table>
 
@@ -427,16 +420,10 @@ siguientes ejemplos:</p>
 28
 29
 30
-31
-32
-33
-34
-35
-36</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">;; José Fernandez Muñoz</span>
+31</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">;; José Fernandez Muñoz</span>
 
-<span class="o">#</span><span class="nv">lang</span> <span class="nv">r6rs</span>
-<span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">rnrs</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">schemeunit</span><span class="p">))</span>
+<span class="kn">#lang </span><span class="nn">racket</span>
+<span class="p">(</span><span class="k">require</span> <span class="n">rackunit</span><span class="p">)</span>
 
 <span class="c1">;;</span>
 <span class="c1">;; Ejercicio 1: suma-cuadrados</span>
@@ -444,30 +431,26 @@ siguientes ejemplos:</p>
 
 <span class="c1">;; Función auxiliar cuadrado</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">cuadrado</span> <span class="nv">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
 
-<span class="p">(</span><span class="nb">display </span><span class="s">&quot;Probando &#39;cuadrado&#39;\n&quot;</span><span class="p">)</span>
-
-<span class="p">(</span><span class="nf">check-equal?</span> <span class="p">(</span><span class="nf">cuadrado</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">check-equal?</span> <span class="p">(</span><span class="nf">cuadrado</span> <span class="mi">10</span><span class="p">)</span> <span class="mi">100</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">check-equal?</span> <span class="p">(</span><span class="nf">cuadrado</span> <span class="mi">-2</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="mi">10</span><span class="p">)</span> <span class="mi">100</span><span class="p">)</span>
+<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="mi">-2</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span>
 
 <span class="c1">;; Función principal suma-cuadrados</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma-cuadrados</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">y</span> <span class="nv">y</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">y</span> <span class="n">y</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="nb">display </span><span class="s">&quot;Probando &#39;suma-cuadrados&#39;\n&quot;</span><span class="p">)</span>
-
-<span class="p">(</span><span class="nf">check-equal?</span>  <span class="p">(</span><span class="nf">suma-cuadrados</span> <span class="mi">10</span> <span class="mi">10</span><span class="p">)</span>  <span class="mi">200</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">check-equal?</span>  <span class="p">(</span><span class="nf">suma-cuadrados</span> <span class="mi">-2</span> <span class="mi">9</span><span class="p">)</span>  <span class="mi">85</span><span class="p">)</span>
+<span class="p">(</span><span class="n">check-equal?</span>  <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">10</span> <span class="mi">10</span><span class="p">)</span>  <span class="mi">200</span><span class="p">)</span>
+<span class="p">(</span><span class="n">check-equal?</span>  <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">-2</span> <span class="mi">9</span><span class="p">)</span>  <span class="mi">85</span><span class="p">)</span>
 
 <span class="c1">;;</span>
 <span class="c1">;; Ejercicio 2:</span>
 <span class="c1">;;</span>
 
-<span class="o">...</span>
+<span class="k">...</span>
 </pre></div>
 </td></tr></table>
 
@@ -480,14 +463,14 @@ del ejercicio.</p>
 decimal equivalente.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">binario-a-decimal</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">; ⇒ 15</span>
-<span class="p">(</span><span class="nf">binario-a-decimal</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">; ⇒ 6</span>
-<span class="p">(</span><span class="nf">binario-a-decimal</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">; ⇒ 2</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">binario-a-decimal</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">; ⇒ 15</span>
+<span class="p">(</span><span class="n">binario-a-decimal</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">; ⇒ 6</span>
+<span class="p">(</span><span class="n">binario-a-decimal</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">; ⇒ 2</span>
 </pre></div>
 </td></tr></table>
 
 <p><strong>Nota</strong>: recuerda que para realizar esta conversión, se utiliza la siguiente fórmula:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">n = b3 * 2ˆ3 + b2 * 2ˆ2 + b1 * 2ˆ1 + b0 * 2ˆ0</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>n = b3 * 2ˆ3 + b2 * 2ˆ2 + b1 * 2ˆ1 + b0 * 2ˆ0
 </pre></div>
 </td></tr></table>
 
@@ -497,9 +480,9 @@ reciba 4 bits de un número representado en binario y devuelva el
 carácter correspondiente a su representación en hexadecimal.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">binario-a-hexadecimal</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">; ⇒ #\F</span>
-<span class="p">(</span><span class="nf">binario-a-hexadecimal</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">; ⇒ #\6</span>
-<span class="p">(</span><span class="nf">binario-a-hexadecimal</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">; ⇒ #\A</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">binario-a-hexadecimal</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">; ⇒ #\F</span>
+<span class="p">(</span><span class="n">binario-a-hexadecimal</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">; ⇒ #\6</span>
+<span class="p">(</span><span class="n">binario-a-hexadecimal</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">; ⇒ #\A</span>
 </pre></div>
 </td></tr></table>
 
@@ -533,27 +516,27 @@ el número de condiciones sea mínima.</p>
   auxiliar.</li>
 </ul>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">menor-de-tres</span> <span class="mi">2</span> <span class="mi">8</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">;; ⇒ 1</span>
-<span class="p">(</span><span class="nf">menor-de-tres-v2</span> <span class="mi">3</span> <span class="mi">0</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">;; ⇒ 0</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">menor-de-tres</span> <span class="mi">2</span> <span class="mi">8</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">;; ⇒ 1</span>
+<span class="p">(</span><span class="n">menor-de-tres-v2</span> <span class="mi">3</span> <span class="mi">0</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">;; ⇒ 0</span>
 </pre></div>
 </td></tr></table>
 
 <h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
-<p>Supongamos las definiciones</p>
+<p>a) Supongamos las definiciones</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">f</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">+ </span><span class="nv">x</span> <span class="nv">y</span><span class="p">))</span>
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">f</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">cons</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">g</span> <span class="nv">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">* </span><span class="mi">2</span> <span class="nv">x</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">g</span> <span class="n">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">cons</span> <span class="mi">2</span> <span class="n">x</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
 <p>Realiza la evaluación paso a paso de la siguiente expresión </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">f</span> <span class="p">(</span><span class="nf">g</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">2</span> <span class="mi">1</span><span class="p">))</span> <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="n">g</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">))</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
@@ -561,6 +544,32 @@ el número de condiciones sea mínima.</p>
 aplicativo</strong> y como el <strong>orden normal</strong>.</p>
 <p>Escribe la solución entre comentarios en el propio fichero <code>.rkt</code> de
 la práctica.</p>
+<p>b) Supongamos las definiciones</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">f</span> <span class="n">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">/</span> <span class="n">x</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">g</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="mi">0</span>
+        <span class="n">y</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>Igual que en el apartado anterior, realiza la evaluación paso a paso
+de la siguiente expresión</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">g</span> <span class="mi">0</span> <span class="p">(</span><span class="n">f</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>mediante el <strong>modelo de sustitución</strong>, utilizando tanto el <strong>orden
+aplicativo</strong> y como el <strong>orden normal</strong>. Y escribe la solución entre
+comentarios en el propio fichero <code>.rkt</code> de la práctica.</p>
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
 <p>Implementa la función <code>(tirada-ganadora t1 t2)</code> que reciba 2 parejas
 como argumento, donde cada pareja representa una tirada con 2 dados
@@ -572,65 +581,62 @@ ganadora, 2 si <code>t2</code> es la ganadora o bien 0 si hay un empate. Este
 es la misma.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">tirada-ganadora</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ 2</span>
-<span class="p">(</span><span class="nf">tirada-ganadora</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">2</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">; ⇒ 1</span>
-<span class="p">(</span><span class="nf">tirada-ganadora</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">6</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">3</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ 0</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">tirada-ganadora</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ 2</span>
+<span class="p">(</span><span class="n">tirada-ganadora</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">2</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">; ⇒ 1</span>
+<span class="p">(</span><span class="n">tirada-ganadora</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">6</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ 0</span>
 </pre></div>
 </td></tr></table>
 
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
-<p>Supongamos que estamos implementando un <strong>juego de guerra de barcos</strong> en
-el que los barcos están situados en coordenadas del plano definidas
-por la posición <em>x</em> y la posición <em>y</em>, ambos números reales (<strong>metros</strong>).</p>
-<p>Cada barco puede lanzar un torpedo a otro barco con una velocidad
-determinada (<em>v</em>, en <strong>km/h</strong>). El torpedo tiene combustible, y seguirá
-moviéndose hasta que se termine. La distancia a la que eso sucede la
-denominamos el <strong>alcance</strong> del torpedo (ver la siguiente figura):</p>
-<p><img src="imagenes/barcos.png" width="400px"/></p>
-<p>Cuanto más alta es la velocidad del torpedo, antes termina su
-combustible. En concreto, el tiempo de terminación del combustible
-(<em>t</em>, en <strong>segundos</strong>) depende de la velocidad (en <strong>m/s</strong>) según la
-siguiente expresión:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">t = 10000 / v^2</span>
-</pre></div>
-</td></tr></table>
-
-<p>Recuerda que conociendo la velocidad y el tiempo que está moviéndose
-un objeto podemos calcular el espacio recorrido con la siguiente
-expresión:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">e = v * t</span>
-</pre></div>
-</td></tr></table>
-
-<p>En la expresión anterior las <strong>unidades de la velocidad y el tiempo
-deben ser compatibles</strong>. Esto es, si <em>v</em> está en m/s, <em>t</em> deberá estar
-en segundos y el espacio recorrido resultará en metros.</p>
-<p>Dadas todas estas condiciones, debes programar en Scheme la función </p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">dentro-alcance?</span> <span class="nv">x1</span> <span class="nv">y1</span> <span class="nv">x2</span> <span class="nv">y2</span> <span class="nv">v</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
-
-<p>que tome como parámetros las coordenadas <code>x1</code>, <code>y1</code> del barco 1 que
-lanza el torpedo (en <strong>metros</strong>), <code>x2</code>, <code>y2</code> del barco 2 al que se le
-lanza (en <strong>metros</strong>) y <code>v</code> la velocidad del torpedo (en <strong>km/h</strong>).</p>
-<p>La función debe comprobar si el barco 2 está dentro del alcance del
-torpedo, tal y como lo hemos definido previamente y devolver el 
-booleano correspondiente.</p>
-<p>Debes modularizar la implementación, <strong>creando las funciones auxiliares</strong>
-que necesites para que el código sea legible y auto-documentado (los
-nombres de las funciones y los parámetros deben ser lo más
-descriptivos posibles).</p>
-<p>Ejemplos:</p>
+<p>Supongamos que queremos programar un juego de cartas. Lo primero que
+debemos hacer es definir una forma de representar las cartas y
+funciones que trabajen con esa representación. En este ejercicio vamos
+a implementar esas funciones.</p>
+<p>Representaremos una carta por un símbolo con dos letras: la primera
+indicará el palo de la carta y la segunda su número o figura.</p>
+<p>Por ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">dentro-alcance?</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1000</span> <span class="mi">1000</span> <span class="mi">30</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
-<span class="p">(</span><span class="nf">dentro-alcance?</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">800</span> <span class="mi">800</span> <span class="mi">30</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">tres-de-oros</span> <span class="o">&#39;</span><span class="ss">3O</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">as-de-copas</span> <span class="o">&#39;</span><span class="ss">AC</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">caballo-de-espadas</span> <span class="o">&#39;</span><span class="ss">CE</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">rey-de-bastos</span> <span class="o">&#39;</span><span class="ss">RB</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
+<p>Debemos definir la función <code>carta</code> que devuelve una pareja con el palo
+de la carta (un símbolo) y el valor correspondiente a su orden en el
+juego (una carta con mayor valor vencerá a otra con menor valor).</p>
+<p>Para realizar el ejercicio debes definir en primer lugar las funciones
+<code>(obten-palo char)</code> y <code>(obten-valor char)</code> que devuelven el palo y el
+valor, dado un carácter.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">obten-palo</span> <span class="sc">#\O</span><span class="p">)</span> <span class="c1">; ⇒ &#39;Oros</span>
+<span class="p">(</span><span class="n">obten-palo</span> <span class="sc">#\E</span><span class="p">)</span> <span class="c1">; ⇒ &#39;Espadas</span>
+<span class="p">(</span><span class="n">obten-valor</span> <span class="sc">#\3</span><span class="p">)</span> <span class="c1">; ⇒ 3</span>
+<span class="p">(</span><span class="n">obten-valor</span> <span class="sc">#\S</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
+<span class="p">(</span><span class="n">carta</span> <span class="o">&#39;</span><span class="ss">AC</span><span class="p">)</span> <span class="c1">; ⇒ (1 . Copas)</span>
+<span class="p">(</span><span class="n">carta</span> <span class="o">&#39;</span><span class="ss">2O</span><span class="p">)</span> <span class="c1">; ⇒ (2 . Oros)</span>
+<span class="p">(</span><span class="n">carta</span> <span class="o">&#39;</span><span class="ss">RB</span><span class="p">)</span> <span class="c1">; ⇒ (12 . Bastos)</span>
+</pre></div>
+</td></tr></table>
+
+<div class="admonition note">
+<p class="admonition-title">Pista</p>
+<p>Puedes utilizar las funciones <code>symbol-&gt;string simbolo</code> que convierte un
+símbolo en una cadena y <code>string-ref cadena pos</code> que devuelve el
+carácter de una cadena situado en una determinada posición.</p>
+</div>
 <h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
 <p>Define la función <code>tipo-triangulo</code> que recibe como parámetro las
 coordenadas en el plano de los vértices de un triángulo representados
-con parejas. La función devuelve un símbolo con el tipo de triángulo
+con parejas. La función devuelve una cadena con el tipo de triángulo
 correspondiente: equilátero, isósceles o escaleno.</p>
 <p>Recuerda que un triángulo equilátero es aquel cuyos tres lados tienen
 la misma longitud, el isósceles el que tiene dos lados iguales y el
@@ -638,44 +644,31 @@ escaleno el que todos sus lados son diferentes.</p>
 <p>Ejemplos:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">tipo-triangulo</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span> <span class="mi">1</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">6</span> <span class="mi">1</span><span class="p">))</span> <span class="c1">; ⇒ &#39;isosceles</span>
-<span class="p">(</span><span class="nf">tipo-triangulo</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">-2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span> <span class="mi">2</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">5</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ &#39;escaleno</span>
-<span class="p">(</span><span class="nf">tipo-triangulo</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">-3</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span> <span class="mi">3</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">0</span> <span class="mf">5.1961</span><span class="p">))</span> <span class="c1">;  ⇒ &#39;equilatero</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">tipo-triangulo</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span>  <span class="mi">1</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">6</span> <span class="mi">1</span><span class="p">))</span> <span class="c1">; ⇒ &quot;isósceles&quot;</span>
+<span class="p">(</span><span class="n">tipo-triangulo</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">-2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span>  <span class="mi">2</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">5</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ &quot;escaleno&quot;</span>
+<span class="p">(</span><span class="n">tipo-triangulo</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">-3</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span>  <span class="mi">3</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">0</span> <span class="mf">5.1961</span><span class="p">))</span> <span class="c1">;  ⇒ &quot;equilatero&quot;</span>
 </pre></div>
 </td></tr></table>
 
-<p><strong>Nota</strong>: Para comparar dos números reales debemos comprobar si la
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Para comparar dos números reales debemos comprobar si la
 resta entre ambos es menor que una constante <code>epsilon</code> que hemos
 definido. Por ejemplo, <code>epsilon</code> puede valer 0.0001.</p>
 <p>Puedes usar la siguiente función auxiliar:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="nv">epsilon</span> <span class="mf">0.0001</span><span class="p">)</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">epsilon</span> <span class="mf">0.0001</span><span class="p">)</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">iguales-reales?</span> <span class="nv">x</span> <span class="nv">y</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">&lt; </span><span class="p">(</span><span class="nb">abs </span><span class="p">(</span><span class="nb">- </span><span class="nv">x</span> <span class="nv">y</span><span class="p">))</span> <span class="nv">epsilon</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">iguales-reales?</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">&lt;</span> <span class="p">(</span><span class="nb">abs</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span> <span class="n">epsilon</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
-<h3 id="ejercicio-7">Ejercicio 7<a class="headerlink" href="#ejercicio-7" title="Permanent link">&para;</a></h3>
-<p>Define la función <code>calculadora</code> que recibe una pareja como
-parámetro. La pareja contiene un carácter (<code>+</code>, <code>-</code>, <code>*</code> o <code>/</code>) que
-indica un operador y otra pareja con los operandos. La función realiza
-la operación y devuelve el resultado.</p>
-<p>Ejemplos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">calculadora</span> <span class="p">(</span><span class="nb">cons </span><span class="sc">#\+</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">2</span> <span class="mi">3</span><span class="p">)))</span> <span class="c1">; ⇒5</span>
-<span class="p">(</span><span class="nf">calculadora</span> <span class="p">(</span><span class="nb">cons </span><span class="o">#</span><span class="err">\</span><span class="nv">*</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">3</span> <span class="mi">4</span><span class="p">)))</span> <span class="c1">; ⇒ 12</span>
-<span class="p">(</span><span class="nf">calculadora</span> <span class="p">(</span><span class="nb">cons </span><span class="sc">#\-</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">7</span> <span class="mi">4</span><span class="p">)))</span> <span class="c1">; ⇒ 3</span>
-<span class="p">(</span><span class="nf">calculadora</span> <span class="p">(</span><span class="nb">cons </span><span class="sc">#\/</span> <span class="p">(</span><span class="nb">cons </span><span class="mi">6</span> <span class="mi">3</span><span class="p">)))</span> <span class="c1">; ⇒ 2</span>
-</pre></div>
-</td></tr></table>
-
+</div>
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2018-19<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2019-20<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
                 
