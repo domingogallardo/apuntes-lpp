@@ -210,7 +210,7 @@ funciones que trabajen con esa representación. En este ejercicio vamos
 a implementar esas funciones.
 
 Representaremos una carta por un símbolo con dos letras: la primera
-indicará el palo de la carta y la segunda su número o figura.
+indicará su número o figura y la segunda el palo de la carta.
 
 Por ejemplo:
 
@@ -221,22 +221,35 @@ Por ejemplo:
 (define rey-de-bastos 'RB)
 ```
 
-Debemos definir la función `carta` que devuelve una pareja con el palo
-de la carta (un símbolo) y el valor correspondiente a su orden en el
-juego (una carta con mayor valor vencerá a otra con menor valor).
-
-Para realizar el ejercicio debes definir en primer lugar las funciones
-`(obten-palo char)` y `(obten-valor char)` que devuelven el palo y el
-valor, dado un carácter.
+Debemos definir la función `carta` que devuelve una pareja con el
+valor correspondiente a su orden en la baraja española (un número) y el palo
+de la carta (un símbolo).
 
 ```racket
-(obten-palo #\O) ; ⇒ 'Oros
-(obten-palo #\E) ; ⇒ 'Espadas
-(obten-valor #\3) ; ⇒ 3
-(obten-valor #\S) ; ⇒ 10
 (carta 'AC) ; ⇒ (1 . Copas)
 (carta '2O) ; ⇒ (2 . Oros)
 (carta 'RB) ; ⇒ (12 . Bastos)
+```
+
+Los valores de las cartas de la baraja española son:
+
+```text
+A (As) ⇒ 1
+S (Sota) ⇒ 10
+C (Caballo) ⇒ 11
+R (Rey) ⇒ 12
+```
+
+Para realizar el ejercicio debes definir en primer lugar las funciones
+`(obten-palo char)` y `(obten-valor char)` que devuelven el palo y el
+valor, dado un carácter. Y debes implementar la función `carta` usando
+estas dos funciones.
+
+```racket
+(obten-palo #\O) ; ⇒ Oros
+(obten-palo #\E) ; ⇒ Espadas
+(obten-valor #\3) ; ⇒ 3
+(obten-valor #\S) ; ⇒ 10
 ```
 
 !!! Note "Pista"
