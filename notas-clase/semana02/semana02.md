@@ -194,10 +194,10 @@ Ejemplos:
 ```racket
 (define lista1 '(1 2 3 4))
 (car lista1) ⇒ 1
-(cdr lista1) ⇒ {2 3 4}
+(cdr lista1) ⇒ (2 3 4)
 (define lista2 '((1 2) 3 4))
-(car lista2) ⇒ {1 2}
-(cdr lista2) ⇒ {3 4}
+(car lista2) ⇒ (1 2)
+(cdr lista2) ⇒ (3 4)
 ```
 
 
@@ -294,7 +294,7 @@ La versión completa:
 - `cons` para construir parejas:
 
 ```racket
-(cons 1 2) ; ⇒ {1 . 2}
+(cons 1 2) ; ⇒ (1 . 2)
 (define c (cons 1 2))
 ```
 
@@ -484,9 +484,9 @@ Diagramas *caja-y-puntero* (*box-and-pointer* en inglés):
 al comienzo de la lista:
 
 ```racket
-(cons 1 '(1 2 3 4)) ⇒ {1 1 2 3 4}
-(cons 'hola '(como estás)) ⇒ {hola como estás}
-(cons '(1 2) '(1 2 3 4))  ⇒ {{1 2} 1 2 3 4}
+(cons 1 '(1 2 3 4)) ⇒ (1 1 2 3 4)
+(cons 'hola '(como estás)) ⇒ (hola como estás)
+(cons '(1 2) '(1 2 3 4))  ⇒ ((1 2) 1 2 3 4)
 ```
 
 
