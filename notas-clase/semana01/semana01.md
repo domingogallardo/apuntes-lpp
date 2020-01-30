@@ -253,6 +253,17 @@ Lenguaje funcional puro más importante:
       programación de sistemas distribuidos en Internet.
     - la programación interactiva y evolutiva.
 
+### Evaluación de expresiones y definición de funciones
+
+- En la asignatura usaremos Scheme como primer lenguaje en el que
+  exploraremos la programación funcional.
+
+- En el seminario de Scheme que se imparte en prácticas se estudiará
+  en más profundidad los conceptos más importantes del lenguaje: tipos
+  de datos, operadores, estructuras de control, intérprete, etc.
+
+- Vamos a empezar a ver ejemplo concretos de programación funcional
+  viendo cómo se evalúan expresiones y cómo se definen funciones en Scheme.
 
 ### Evaluación de expresiones
 
