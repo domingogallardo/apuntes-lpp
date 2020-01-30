@@ -9,14 +9,14 @@ solución debe incluir:
 
 - La **definición de las funciones** que resuelven el ejercicio.
 - Un conjunto de **pruebas** que comprueben su funcionamiento, y el de
-  funciones auxiliares que hayamos definido, utilizando el API SchemeUnit.
+  funciones auxiliares que hayamos definido, utilizando el API RackUnit.
 
 Por ejemplo, supongamos que el primer ejercicio de la práctica 1 sea
 implementar la función `suma-cuadrados` que recibe dos números y
 devuelve la suma de sus cuadrados y se proponen en el enunciado los
 siguientes ejemplos:
 
-```scheme
+```racket
 (suma-cuadrados 10 10) ; ⇒ 200
 (suma-cuadrados -2 9) ; ⇒  85
 ```
@@ -25,12 +25,11 @@ La solución se debería entregar de la siguiente forma:
 
 **`practica01.rkt`**:
 
-```scheme
+```racket
 ;; José Fernandez Muñoz
 
-#lang r6rs
-(import (rnrs)
-        (schemeunit))
+#lang racket
+(require rackunit)
 
 ;;
 ;; Ejercicio 1: suma-cuadrados
@@ -41,8 +40,6 @@ La solución se debería entregar de la siguiente forma:
 (define (cuadrado x)
     (* x x))
     
-(display "Probando 'cuadrado'\n")
-
 (check-equal? (cuadrado 2) 4)
 (check-equal? (cuadrado 10) 100)
 (check-equal? (cuadrado -2) 4)
@@ -51,8 +48,6 @@ La solución se debería entregar de la siguiente forma:
 
 (define (suma-cuadrados x y)
     (+ (* x x) (* y y)))
-
-(display "Probando 'suma-cuadrados'\n")
 
 (check-equal?  (suma-cuadrados 10 10)  200)
 (check-equal?  (suma-cuadrados -2 9)  85)
@@ -76,7 +71,7 @@ a) Implementa la función `(binario-a-decimal b3 b2 b1 b0)` que reciba
 4 bits que representan un número en binario y devuelva el número
 decimal equivalente.
 
-```scheme
+```racket
 (binario-a-decimal 1 1 1 1) ; ⇒ 15
 (binario-a-decimal 0 1 1 0) ; ⇒ 6
 (binario-a-decimal 0 0 1 0) ; ⇒ 2
@@ -84,7 +79,7 @@ decimal equivalente.
 
 **Nota**: recuerda que para realizar esta conversión, se utiliza la siguiente fórmula:
 
-```
+```text
 n = b3 * 2ˆ3 + b2 * 2ˆ2 + b1 * 2ˆ1 + b0 * 2ˆ0
 ```
 
@@ -95,7 +90,7 @@ b) Implementa la función `(binario-a-hexadecimal b3 b2 b1 b0)` que
 reciba 4 bits de un número representado en binario y devuelva el
 carácter correspondiente a su representación en hexadecimal.
 
-```scheme
+```racket
 (binario-a-hexadecimal 1 1 1 1) ; ⇒ #\F
 (binario-a-hexadecimal 0 1 1 0) ; ⇒ #\6
 (binario-a-hexadecimal 1 0 1 0) ; ⇒ #\A
@@ -136,7 +131,7 @@ Implementa dos versiones de la función:
   `menor-de-tres-v2` como una composición de llamadas a esta función
   auxiliar.
 
-```scheme
+```racket
 (menor-de-tres 2 8 1) ;; ⇒ 1
 (menor-de-tres-v2 3 0 3) ;; ⇒ 0
 ```
@@ -144,19 +139,19 @@ Implementa dos versiones de la función:
 
 ### Ejercicio 3
 
-Supongamos las definiciones
+a) Supongamos las definiciones
 
-```scheme
+```racket
 (define (f x y)
-    (+ x y))
+    (cons x y))
 
 (define (g x)
-    (* 2 x))
+    (cons 2 x))
 ```
 
 Realiza la evaluación paso a paso de la siguiente expresión 
 
-```scheme
+```racket
 (f (g (+ 2 1)) (+ 1 1))
 ```
 
@@ -165,6 +160,30 @@ aplicativo** y como el **orden normal**.
 
 Escribe la solución entre comentarios en el propio fichero `.rkt` de
 la práctica.
+
+b) Supongamos las definiciones
+
+```racket
+(define (f x)
+    (/ x 0))
+    
+(define (g x y)
+    (if (= x 0)
+        0
+        y))
+```
+
+Igual que en el apartado anterior, realiza la evaluación paso a paso
+de la siguiente expresión
+
+```racket
+(g 0 (f 10))
+```
+
+mediante el **modelo de sustitución**, utilizando tanto el **orden
+aplicativo** y como el **orden normal**. Y escribe la solución entre
+comentarios en el propio fichero `.rkt` de la práctica.
+
 
 ### Ejercicio 4
 
@@ -177,7 +196,7 @@ ganadora, 2 si `t2` es la ganadora o bien 0 si hay un empate. Este
 último caso se producirá cuando la diferencia con 7 de ambas tiradas
 es la misma.
 
-```scheme
+```racket
 (tirada-ganadora (cons 1 3) (cons 1 6)) ; ⇒ 2
 (tirada-ganadora (cons 1 5) (cons 2 2)) ; ⇒ 1
 (tirada-ganadora (cons 6 2) (cons 3 3)) ; ⇒ 0
@@ -185,70 +204,52 @@ es la misma.
 
 ### Ejercicio 5
 
-Supongamos que estamos implementando un **juego de guerra de barcos** en
-el que los barcos están situados en coordenadas del plano definidas
-por la posición _x_ y la posición _y_, ambos números reales (**metros**).
+Supongamos que queremos programar un juego de cartas. Lo primero que
+debemos hacer es definir una forma de representar las cartas y
+funciones que trabajen con esa representación. En este ejercicio vamos
+a implementar esas funciones.
 
-Cada barco puede lanzar un torpedo a otro barco con una velocidad
-determinada (_v_, en **km/h**). El torpedo tiene combustible, y seguirá
-moviéndose hasta que se termine. La distancia a la que eso sucede la
-denominamos el **alcance** del torpedo (ver la siguiente figura):
+Representaremos una carta por un símbolo con dos letras: la primera
+indicará el palo de la carta y la segunda su número o figura.
 
-<img src="imagenes/barcos.png" width="400px"/>
+Por ejemplo:
 
-Cuanto más alta es la velocidad del torpedo, antes termina su
-combustible. En concreto, el tiempo de terminación del combustible
-(_t_, en **segundos**) depende de la velocidad (en **m/s**) según la
-siguiente expresión:
-
-```
-t = 10000 / v^2
+```racket
+(define tres-de-oros '3O)
+(define as-de-copas 'AC)
+(define caballo-de-espadas 'CE)
+(define rey-de-bastos 'RB)
 ```
 
-Recuerda que conociendo la velocidad y el tiempo que está moviéndose
-un objeto podemos calcular el espacio recorrido con la siguiente
-expresión:
+Debemos definir la función `carta` que devuelve una pareja con el palo
+de la carta (un símbolo) y el valor correspondiente a su orden en el
+juego (una carta con mayor valor vencerá a otra con menor valor).
 
+Para realizar el ejercicio debes definir en primer lugar las funciones
+`(obten-palo char)` y `(obten-valor char)` que devuelven el palo y el
+valor, dado un carácter.
+
+```racket
+(obten-palo #\O) ; ⇒ 'Oros
+(obten-palo #\E) ; ⇒ 'Espadas
+(obten-valor #\3) ; ⇒ 3
+(obten-valor #\S) ; ⇒ 10
+(carta 'AC) ; ⇒ (1 . Copas)
+(carta '2O) ; ⇒ (2 . Oros)
+(carta 'RB) ; ⇒ (12 . Bastos)
 ```
-e = v * t
-```
 
-En la expresión anterior las **unidades de la velocidad y el tiempo
-deben ser compatibles**. Esto es, si _v_ está en m/s, _t_ deberá estar
-en segundos y el espacio recorrido resultará en metros.
-
-Dadas todas estas condiciones, debes programar en Scheme la función 
-
-```scheme
-(dentro-alcance? x1 y1 x2 y2 v)
-```
-
-que tome como parámetros las coordenadas `x1`, `y1` del barco 1 que
-lanza el torpedo (en **metros**), `x2`, `y2` del barco 2 al que se le
-lanza (en **metros**) y `v` la velocidad del torpedo (en **km/h**).
-
-La función debe comprobar si el barco 2 está dentro del alcance del
-torpedo, tal y como lo hemos definido previamente y devolver el 
-booleano correspondiente.
-
-Debes modularizar la implementación, **creando las funciones auxiliares**
-que necesites para que el código sea legible y auto-documentado (los
-nombres de las funciones y los parámetros deben ser lo más
-descriptivos posibles).
-
-Ejemplos:
-
-```scheme
-(dentro-alcance? 0 0 1000 1000 30) ; ⇒ #f
-(dentro-alcance? 0 0 800 800 30) ; ⇒ #t
-```
+!!! Note "Pista"
+    Puedes utilizar las funciones `symbol->string simbolo` que convierte un
+    símbolo en una cadena y `string-ref cadena pos` que devuelve el
+    carácter de una cadena situado en una determinada posición.
 
 
 ### Ejercicio 6
 
 Define la función `tipo-triangulo` que recibe como parámetro las
 coordenadas en el plano de los vértices de un triángulo representados
-con parejas. La función devuelve un símbolo con el tipo de triángulo
+con parejas. La función devuelve una cadena con el tipo de triángulo
 correspondiente: equilátero, isósceles o escaleno.
 
 Recuerda que un triángulo equilátero es aquel cuyos tres lados tienen
@@ -257,43 +258,28 @@ escaleno el que todos sus lados son diferentes.
 
 Ejemplos:
 
-```scheme
-(tipo-triangulo (cons 1 1) (cons  1 6) (cons 6 1)) ; ⇒ 'isosceles
-(tipo-triangulo (cons -2 3) (cons  2 6) (cons 5 3)) ; ⇒ 'escaleno
-(tipo-triangulo (cons -3 0) (cons  3 0) (cons 0 5.1961)) ;  ⇒ 'equilatero
+```racket
+(tipo-triangulo (cons 1 1) (cons  1 6) (cons 6 1)) ; ⇒ "isósceles"
+(tipo-triangulo (cons -2 3) (cons  2 6) (cons 5 3)) ; ⇒ "escaleno"
+(tipo-triangulo (cons -3 0) (cons  3 0) (cons 0 5.1961)) ;  ⇒ "equilatero"
 ```
 
-**Nota**: Para comparar dos números reales debemos comprobar si la
-resta entre ambos es menor que una constante `epsilon` que hemos
-definido. Por ejemplo, `epsilon` puede valer 0.0001.
+!!! Note "Nota"
+    Para comparar dos números reales debemos comprobar si la
+    resta entre ambos es menor que una constante `epsilon` que hemos
+    definido. Por ejemplo, `epsilon` puede valer 0.0001.
 
-Puedes usar la siguiente función auxiliar:
+    Puedes usar la siguiente función auxiliar:
 
-```scheme
-(define epsilon 0.0001)
+    ```racket
+    (define epsilon 0.0001)
+    
+    (define (iguales-reales? x y)
+        (< (abs (- x y)) epsilon))
+    ```
 
-(define (iguales-reales? x y)
-  (< (abs (- x y)) epsilon))
-```
-
-### Ejercicio 7
-
-Define la función `calculadora` que recibe una pareja como
-parámetro. La pareja contiene un carácter (`+`, `-`, `*` o `/`) que
-indica un operador y otra pareja con los operandos. La función realiza
-la operación y devuelve el resultado.
-
-
-Ejemplos:
-
-```scheme
-(calculadora (cons #\+ (cons 2 3))) ; ⇒5
-(calculadora (cons #\* (cons 3 4))) ; ⇒ 12
-(calculadora (cons #\- (cons 7 4))) ; ⇒ 3
-(calculadora (cons #\/ (cons 6 3))) ; ⇒ 2
-```
 
 ----
-Lenguajes y Paradigmas de Programación, curso 2018-19  
+Lenguajes y Paradigmas de Programación, curso 2019-20  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
