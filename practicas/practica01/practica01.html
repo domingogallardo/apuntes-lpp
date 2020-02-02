@@ -36,7 +36,7 @@
     
     
       
-        <title>Práctica 1: Introducción a Scheme - LPP</title>
+        <title>Práctica 1 - LPP</title>
       
     
     
@@ -109,7 +109,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Práctica 1: Introducción a Scheme
+                Práctica 1
               
             </span>
           
@@ -260,6 +260,137 @@
     <a href="../../seminarios/seminario1-scheme/seminario1-scheme.html" title="Seminario de Scheme" class="md-nav__link">
       Seminario de Scheme
     </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Prácticas
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Prácticas
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Práctica 1
+      </label>
+    
+    <a href="practica01.html" title="Práctica 1" class="md-nav__link md-nav__link--active">
+      Práctica 1
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    Ejercicios
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" class="md-nav__link">
+    Ejercicio 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" class="md-nav__link">
+    Ejercicio 5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" class="md-nav__link">
+    Ejercicio 6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -593,7 +724,7 @@ debemos hacer es definir una forma de representar las cartas y
 funciones que trabajen con esa representación. En este ejercicio vamos
 a implementar esas funciones.</p>
 <p>Representaremos una carta por un símbolo con dos letras: la primera
-indicará el palo de la carta y la segunda su número o figura.</p>
+indicará su número o figura y la segunda el palo de la carta.</p>
 <p>Por ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -605,25 +736,39 @@ indicará el palo de la carta y la segunda su número o figura.</p>
 </pre></div>
 </td></tr></table>
 
-<p>Debemos definir la función <code>carta</code> que devuelve una pareja con el palo
-de la carta (un símbolo) y el valor correspondiente a su orden en el
-juego (una carta con mayor valor vencerá a otra con menor valor).</p>
-<p>Para realizar el ejercicio debes definir en primer lugar las funciones
-<code>(obten-palo char)</code> y <code>(obten-valor char)</code> que devuelven el palo y el
-valor, dado un carácter.</p>
+<p>Debemos definir la función <code>carta</code> que devuelve una pareja con el
+valor correspondiente a su orden en la baraja española (un número) y el palo
+de la carta (un símbolo).</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">carta</span> <span class="o">&#39;</span><span class="ss">AC</span><span class="p">)</span> <span class="c1">; ⇒ (1 . Copas)</span>
+<span class="p">(</span><span class="n">carta</span> <span class="o">&#39;</span><span class="ss">2O</span><span class="p">)</span> <span class="c1">; ⇒ (2 . Oros)</span>
+<span class="p">(</span><span class="n">carta</span> <span class="o">&#39;</span><span class="ss">RB</span><span class="p">)</span> <span class="c1">; ⇒ (12 . Bastos)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Los valores de las cartas de la baraja española son:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">obten-palo</span> <span class="sc">#\O</span><span class="p">)</span> <span class="c1">; ⇒ &#39;Oros</span>
-<span class="p">(</span><span class="n">obten-palo</span> <span class="sc">#\E</span><span class="p">)</span> <span class="c1">; ⇒ &#39;Espadas</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>A (As) ⇒ 1
+S (Sota) ⇒ 10
+C (Caballo) ⇒ 11
+R (Rey) ⇒ 12
+</pre></div>
+</td></tr></table>
+
+<p>Para realizar el ejercicio debes definir en primer lugar las funciones
+<code>(obten-palo char)</code> y <code>(obten-valor char)</code> que devuelven el palo y el
+valor, dado un carácter. Y debes implementar la función <code>carta</code> usando
+estas dos funciones.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">obten-palo</span> <span class="sc">#\O</span><span class="p">)</span> <span class="c1">; ⇒ Oros</span>
+<span class="p">(</span><span class="n">obten-palo</span> <span class="sc">#\E</span><span class="p">)</span> <span class="c1">; ⇒ Espadas</span>
 <span class="p">(</span><span class="n">obten-valor</span> <span class="sc">#\3</span><span class="p">)</span> <span class="c1">; ⇒ 3</span>
 <span class="p">(</span><span class="n">obten-valor</span> <span class="sc">#\S</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
-<span class="p">(</span><span class="n">carta</span> <span class="o">&#39;</span><span class="ss">AC</span><span class="p">)</span> <span class="c1">; ⇒ (1 . Copas)</span>
-<span class="p">(</span><span class="n">carta</span> <span class="o">&#39;</span><span class="ss">2O</span><span class="p">)</span> <span class="c1">; ⇒ (2 . Oros)</span>
-<span class="p">(</span><span class="n">carta</span> <span class="o">&#39;</span><span class="ss">RB</span><span class="p">)</span> <span class="c1">; ⇒ (12 . Bastos)</span>
 </pre></div>
 </td></tr></table>
 
@@ -688,6 +833,27 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../seminarios/seminario1-scheme/seminario1-scheme.html" title="Seminario de Scheme" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Seminario de Scheme
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
