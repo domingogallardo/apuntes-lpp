@@ -526,7 +526,7 @@ Lo probamos ...
 
 <p style="margin-bottom:2cm;"></p>
 
-¿Una pareja con una lista vacía como parte izquierda es una lista?
+¿Una pareja con una lista vacía como parte derecha es una lista?
 Lo probamos ...
 
 ```racket
