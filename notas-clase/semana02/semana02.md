@@ -379,7 +379,7 @@ Lo probamos ...
 
 ### Ejemplo de función que recibe distintos tipos de datos
 
-- Scheme es débilmente tipeado
+- Scheme es débilmente tipado
 - Podemos pasar cualquier tipo de dato en los parámetros de las funciones, por ejemplo a la siguiente función `suma`
 
 ```racket
