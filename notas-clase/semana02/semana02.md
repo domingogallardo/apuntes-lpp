@@ -675,6 +675,34 @@ Solución:
 ```
 
 
+
+### Impresión de listas y parejas por el intérprete de Scheme
+
+El intérprete de Scheme siempre intenta mostrar una lista cuando
+encuentra una pareja cuyo siguiente elemento es otra pareja.
+
+Por ejemplo, si tenemos la siguiente estructura:
+
+```racket
+(define p (cons 1 (cons 2 3)))
+```
+
+Cuando se evalúe `p` el intérprete imprimirá por pantalla lo
+siguiente:
+
+```racket
+(1 2 . 3)
+```
+
+Si queremos comprobar la estructura de parejas podemos utilizar la
+función `print-pareja` definida en los apuntes, que imprimiría lo
+siguiente:
+
+```racket
+(print-pareja p) ; ⇒ (1 . (2 . 3))
+```
+
+
 ### Distintos niveles de abstracción
 
 - Una vez que conocemos la implementación de listas con parejas, no va a a ser necesario casi nunca *bajar* a este nivel de implementación

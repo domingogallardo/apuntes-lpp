@@ -2205,7 +2205,8 @@ mostrar por pantalla los elementos de una pareja
             (print-dato (car pareja))
             (display " . ")
             (print-dato (cdr pareja))
-            (display ")"))))
+            (display ")"))
+        (display "")))
 
 (define (print-dato dato)
     (if (pair? dato)
@@ -2445,6 +2446,40 @@ El diagrama *box and pointer*:
 <img src="imagenes/lista-lista.png" width="500px"/>
 
 *Lista que contiene otra lista como segundo elemento*
+
+#### Impresión de listas y parejas por el intérprete de Scheme ####
+
+El intérprete de Scheme siempre intenta mostrar una lista cuando
+encuentra una pareja cuyo siguiente elemento es otra pareja.
+
+Por ejemplo, si tenemos la siguiente estructura:
+
+```racket
+(define p (cons 1 (cons 2 3)))
+```
+
+Cuando se evalúe `p` el intérprete imprimirá por pantalla lo
+siguiente:
+
+```racket
+(1 2 . 3)
+```
+
+¿Por qué? Porque el intérprete va construyendo la salida conforme
+recorre la pareja `p`. Como encuentra una pareja cuya parte derecha es
+otra pareja, lo interpreta como el comienzo de una lista, y por eso
+escribe `(1 2` en lugar de `(1 . 2`. Pero inmediatamente después se
+encuentra con el `3` en lugar de una lista vacía. En ese momento el
+intérprete "se da cuenta" de que no tenemos una lista y termina la
+expresión escribiendo el `. 3` y el paréntesis final.
+
+Si queremos comprobar la estructura de parejas podemos utilizar la
+función `print-pareja` definida anteriormente, que imprimiría lo
+siguiente:
+
+```racket
+(print-pareja p) ; ⇒ (1 . (2 . 3))
+```
 
 #### Funciones de alto nivel sobre listas
 
