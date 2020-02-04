@@ -10,7 +10,7 @@ solución debe incluir:
 
 - La **definición de las funciones** que resuelven el ejercicio.
 - Un conjunto de **pruebas** que comprueben su funcionamiento
-  utilizando la librería `schemeunit`. 
+  utilizando el API `RackUnit`.
 
 ## Ejercicios
 
@@ -39,7 +39,7 @@ práctica anterior.
     
 Ejemplos:
 
-```scheme
+```racket
 (minimo '(1 8 6 4 3)) ; ⇒ 1
 (minimo '(1 -1 3 -6 4)) ; ⇒ -6
 ```
@@ -50,7 +50,7 @@ concatenarlos.
 
 Ejemplos:
 
-```scheme
+```racket
 (concatena '(#\H #\o #\l #\a)) ; ⇒ "Hola"
 (concatena '(#\S #\c #\h #\e #\m #\e #\space #\m #\o #\l #\a))  ; ⇒ "Scheme mola"
 ```
@@ -85,7 +85,7 @@ equivalente.
 !!! Hint "Pista"
     Puedes utilizar la función `length`.
 
-```scheme
+```racket
 (binario-a-decimal '(1 1 1 1)) ; ⇒ 15
 (binario-a-decimal '(1 1 0)) ; ⇒ 6
 (binario-a-decimal '(1 0)) ; ⇒ 2
@@ -96,7 +96,7 @@ que recibe como argumento una lista de números y devuelve `#t` si los
 números de la lista están ordenados de forma decreciente o `#f` en
 caso contrario. Suponemos listas de 1 o más elementos.
 
-```scheme
+```racket
 (ordenada-decreciente? '(99 59 45 23 -1))  ; ⇒ #t
 (ordenada-decreciente? '(12 50 -1 293 1000))  ; ⇒ #f
 (ordenada-decreciente? '(3))  ; ⇒ #t
@@ -115,7 +115,7 @@ indicará el palo de la carta y la segunda su número o figura.
 
 Por ejemplo:
 
-```scheme
+```racket
 (define tres-de-oros 'O3)
 (define as-de-copas 'CA)
 (define caballo-de-espadas 'EC)
@@ -128,7 +128,7 @@ juego (una carta con mayor valor vencerá a otra con menor valor).
 
 Por ejemplo:
 
-```scheme
+```racket
 (carta 'CA) ; ⇒ {Copas . 10}
 (carta 'O2) ; ⇒ {Oros . 1}
 (carta 'BS) ; ⇒ {Bastos . 6} 
@@ -137,7 +137,7 @@ Por ejemplo:
 Para calcular el palo y el valor definimos las siguientes listas, que
 dependen de la baraja y del juego.
 
-```scheme
+```racket
 (define orden '(#\2 #\4 #\5 #\6 #\7 #\S #\C #\R #\3 #\A))
 (define palos '((#\O . Oros) (#\C . Copas) (#\E . Espadas) (#\B . Bastos)))
 ```
@@ -150,7 +150,7 @@ Estas dos listas nos permiten generalizar el juego de cartas. Si
 cambiáramos de baraja sólo tendríamos que usar otro orden y otros
 palos:
 
-```scheme
+```racket
 ;; Para baraja inglesa: (es un ejemplo, pero no se usa)
 ;; Picas #\♠   Corazones #\♥   Diamantes #\♦   Tréboles #\♣
 ;; Ace #\A     Jack #\J        Queen #\Q       King #\K      10 #\0
@@ -165,7 +165,7 @@ lista de palos y una lista de orden de cartas.
 
 Deberán satisfacer, por ejemplo, las siguientes pruebas:
 
-```scheme
+```racket
 (check-equal? (obten-palo #\O palos) 'Oros)
 (check-equal? (obten-palo #\E palos) 'Espadas)
 (check-equal? (valora #\3 orden) 9)
@@ -193,7 +193,8 @@ definidas de la siguiente forma:
   incrementada en `n`.
 
 Ejemplos:
-```
+
+```racket
 (suma-izq (cons 10 20) 3)  ; ⇒ {13 . 20}
 (suma-der (cons 10 20) 5)  ; ⇒ {10 . 25}
 ```
@@ -207,7 +208,7 @@ apartado anterior. También puedes utilizar las funciones predefinidas
 
 Ejemplos:
 
-```scheme
+```racket
 (suma-impares-pares '(3 2 1 4 8 7 6 5)) ; ⇒ {16 . 20}
 (suma-impares-pares '(3 1 5))           ; ⇒ {9 . 0}
 ```
@@ -225,7 +226,7 @@ cadena vacía y un 0 (la longitud de la lista vacía).
 
 **Pista**: puedes utilizar la función `string-length`
 
-```scheme
+```racket
 (cadena-mayor '("vamos" "a" "obtener" "la" "cadena" "mayor")) ; ⇒  {"obtener" . 7}
 (cadena-mayor '("prueba" "con" "maximo" "igual")) ; ⇒ {"maximo" . 6} 
 (cadena-mayor '()) ; ⇒ {"" . 0} 
@@ -234,6 +235,6 @@ cadena vacía y un 0 (la longitud de la lista vacía).
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2018-19  
+Lenguajes y Paradigmas de Programación, curso 2019-20  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
