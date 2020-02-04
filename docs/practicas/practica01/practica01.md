@@ -1,4 +1,4 @@
-# Práctica 1: Introducción a Scheme
+# Práctica 1: Programación funcional en Scheme
 
 ## Entrega de la práctica
 
