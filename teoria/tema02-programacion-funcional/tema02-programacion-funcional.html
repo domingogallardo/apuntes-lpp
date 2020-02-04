@@ -2871,14 +2871,16 @@ mostrar por pantalla los elementos de una pareja</p>
 10
 11
 12
-13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">print-pareja</span> <span class="n">pareja</span><span class="p">)</span>
+13
+14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">print-pareja</span> <span class="n">pareja</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">pair?</span> <span class="n">pareja</span><span class="p">)</span>
         <span class="p">(</span><span class="k">begin</span> 
             <span class="p">(</span><span class="nb">display</span> <span class="s2">&quot;(&quot;</span><span class="p">)</span>
             <span class="p">(</span><span class="n">print-dato</span> <span class="p">(</span><span class="nb">car</span> <span class="n">pareja</span><span class="p">))</span>
             <span class="p">(</span><span class="nb">display</span> <span class="s2">&quot; . &quot;</span><span class="p">)</span>
             <span class="p">(</span><span class="n">print-dato</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">pareja</span><span class="p">))</span>
-            <span class="p">(</span><span class="nb">display</span> <span class="s2">&quot;)&quot;</span><span class="p">))))</span>
+            <span class="p">(</span><span class="nb">display</span> <span class="s2">&quot;)&quot;</span><span class="p">))</span>
+        <span class="p">(</span><span class="nb">display</span> <span class="s2">&quot;&quot;</span><span class="p">)))</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">print-dato</span> <span class="n">dato</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">pair?</span> <span class="n">dato</span><span class="p">)</span>
@@ -3092,6 +3094,34 @@ elementos de la lista propiamente dichos: un 1 y un 3 en la primera y
 <p>El diagrama <em>box and pointer</em>:</p>
 <p><img src="imagenes/lista-lista.png" width="500px"/></p>
 <p><em>Lista que contiene otra lista como segundo elemento</em></p>
+<h4>Impresión de listas y parejas por el intérprete de Scheme</h4>
+<p>El intérprete de Scheme siempre intenta mostrar una lista cuando
+encuentra una pareja cuyo siguiente elemento es otra pareja.</p>
+<p>Por ejemplo, si tenemos la siguiente estructura:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">p</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)))</span>
+</pre></div>
+</td></tr></table>
+
+<p>Cuando se evalúe <code>p</code> el intérprete imprimirá por pantalla lo
+siguiente:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>¿Por qué? Porque el intérprete va construyendo la salida conforme
+recorre la pareja <code>p</code>. Como encuentra una pareja cuya parte derecha es
+otra pareja, lo interpreta como el comienzo de una lista, y por eso
+escribe <code>(1 2</code> en lugar de <code>(1 . 2</code>. Pero inmediatamente después se
+encuentra con el <code>3</code> en lugar de una lista vacía. En ese momento el
+intérprete "se da cuenta" de que no tenemos una lista y termina la
+expresión escribiendo el <code>. 3</code> y el paréntesis final.</p>
+<p>Si queremos comprobar la estructura de parejas podemos utilizar la
+función <code>print-pareja</code> definida anteriormente, que imprimiría lo
+siguiente:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">print-pareja</span> <span class="n">p</span><span class="p">)</span> <span class="c1">; ⇒ (1 . (2 . 3))</span>
+</pre></div>
+</td></tr></table>
+
 <h4>Funciones de alto nivel sobre listas</h4>
 <p>Es importante conocer cómo se implementan las listas usando parejas y
 su representación con diagramas caja y puntero para definir funciones
