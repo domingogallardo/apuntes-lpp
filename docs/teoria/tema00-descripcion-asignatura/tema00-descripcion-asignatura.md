@@ -20,7 +20,7 @@ prácticas de 2 h. a la semana
 
 ## Recursos de la asignatura
 
-* [Ficha de la asignatura](https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wCodEst=C203&wcodasi=34017&wlengua=es&scaca=2018-19)
+* [Ficha de la asignatura](https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wCodEst=C203&wcodasi=34017&wlengua=es&scaca=2019-20)
 * [Apuntes de la asignatura (teoría, seminarios y prácticas)](https://domingogallardo.github.io/apuntes-lpp/)
 * [Sitio Moodle](https://moodle2019-20.ua.es/moodle/course/view.php?id=4822)
   abierto y accesible a toda la comunidad educativa, contiene los
