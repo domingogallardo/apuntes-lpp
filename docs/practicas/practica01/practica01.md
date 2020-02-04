@@ -218,7 +218,6 @@ Por ejemplo:
 (define tres-de-oros '3O)
 (define as-de-copas 'AC)
 (define caballo-de-espadas 'CE)
-(define rey-de-bastos 'RB)
 ```
 
 Debemos definir la función `carta` que devuelve una pareja con el
@@ -226,8 +225,8 @@ valor correspondiente a su orden en la baraja española (un número) y el palo
 de la carta (un símbolo).
 
 ```racket
-(carta 'AC) ; ⇒ (1 . Copas)
-(carta '2O) ; ⇒ (2 . Oros)
+(carta tres-de-oros) ; ⇒ (3 . Oros)
+(carta as-de-copas) ; ⇒ (1 . Copas)
 (carta 'RB) ; ⇒ (12 . Bastos)
 ```
 
@@ -253,8 +252,8 @@ estas dos funciones.
 ```
 
 !!! Note "Pista"
-    Puedes utilizar las funciones `symbol->string simbolo` que convierte un
-    símbolo en una cadena y `string-ref cadena pos` que devuelve el
+    Puedes utilizar las funciones `(symbol->string simbolo)` que convierte un
+    símbolo en una cadena y `(string-ref cadena pos)` que devuelve el
     carácter de una cadena situado en una determinada posición.
 
 
