@@ -2498,7 +2498,6 @@ vemos por primera vez en los siguientes ejemplos:
 
 En los siguientes apartados veremos cómo están implementadas.
 
-<!--
 
 ### Funciones recursivas que construyen listas
 
@@ -2547,21 +2546,30 @@ la llamada recursiva nos va a devolver el resultado correcto. ¿Cómo
 podemos simplificar el problema original? Veamos la solución para este
 caso concreto:
 
-> Para devolver el elemento 2 (empezando a contar por 0) de la lista
-> `(a b c d e f g)` podemos hacer el `cdr` de la lista (obtendríamos
-> `(b c d e f g)`) y devolver su elemento 1. Sería el valor `c`.
+```text
+Para devolver el elemento 2 de la lista (a b c d e f g):
+   Hacemos el cdr de la lista (obtenemos (b c d e f g)) 
+   y devolvemos su elemento 1. Será el valor c (empezamos 
+   a contar por 0).
+```
+
 
 Generalizamos el ejemplo anterior, para cualquier `n` y cualquier lista:
 
-> Para devolver el elemento que está en la posición `n` de una lista,
-> hago el cdr de la lista y devuelvo su elemento n-1.
+
+```text
+Para devolver el elemento que está en la posición `n` de una lista,
+devuelvo el elemento n-1 de su cdr.
+```
 
 Y, por último, formulamos el caso base de la recursión, el problema
 más sencillo que se puede resolver directamente, sin hacer una llamada
 recursiva:
 
-> Para devolver el elemento que está en la posición 0 de una lista,
-> devuelvo el `car` de la lista
+```text
+Para devolver el elemento que está en la posición 0 de una lista,
+devuelvo el `car` de la lista.
+```
 
 La implementación de todo esto en Scheme sería la siguiente:
 
@@ -2604,34 +2612,42 @@ Por ejemplo:
 (mi-append '(a b c) '(d e f)) ; ⇒ (a b c d e f)
 ```
 
-Para resolver el problema de forma recursiva, haremos el `cdr` de la
-primera lista, llamaremos a la recursión para que una el resultado con
-la segunda lista`:
+Para resolver el problema de forma recursiva, debemos confiar en la
+recursión para que resuelva un problema más sencillo y después
+terminar de arreglar el resultado devuelto por la recursión.
 
-```
-(mi-append (cdr '(a b c)) '(d e f)) =
-(mi-append '(b c) '(d e f) = (b c d e f)
+En este caso, podemos pasarle a la recursión un problema más sencillo
+quitando el primer elemento de la primera lista (con la función
+`cdr`) y llamando a la recursión para que concatene esta lista más pequeña
+con la segunda. Confiamos en que la recursión funciona correctamente y
+nos devuelve la concatenación de ambas listas
+
+```text
+(mi-append (cdr '(a b c)) '(d e f)) => (b c d e f)
 ```
 
 Y añadiremos el primer elemento a la lista resultante usando un `cons`:
 
-```
-(cons (car '(a b c)) (mi-append (cdr '(a b c)) '(d e f))) =
-(cons 'a '(b c d e f)) = (a b c d e f)
+```text
+(mi-append '(a b c) '(d e f)) = 
+(cons 'a (mi-append '(b c)) '(d e f)) =
+(cons 'a '(b c d e f)) = 
+(a b c d e f)
 ```
 
 En general:
 
-```
-(mi-append lista1 lista2) = (cons (car lista1) (mi-append (cdr lista1) lista2))
+```racket
+(define (mi-append lista1 lista2) 
+   (cons (car lista1) (mi-append (cdr lista1) lista2)))
 ```
 
 El caso base, el caso en el que la función puede devolver un valor
 directamente sin llamar a la recursión, es aquel en el que `lista1` es
 `null?`. En ese caso devolvemos `lista2`:
 
-```racket
-(mi-append '() '(a b c)) = '(a b c)
+```text
+(mi-append '() '(a b c)) => '(a b c)
 ```
 
 La formulación recursiva completa queda como sigue:
@@ -2679,12 +2695,14 @@ La función `mi-reverse` quedaría entonces como sigue:
 #### Función `cuadrados-hasta`
 
 La función `(cuadrados-hasta x)` devuelve una lista con los cuadrados
-de los números hasta x:
+de los números hasta `x`:
 
-> Para construir una lista de los cuadrados hasta x, añado el cuadrado
-> de x a la lista de los cuadrados hasta x-1
+```text
+Para construir una lista de los cuadrados hasta x:
+   construyo la lista de los cuadrados hasta x-1 y le añado el cuadrado de x
+```
 
-El caso base de la recursión es el caso en el que x es 1, entonces
+El caso base de la recursión es el caso en el que `x` es 1, entonces
 devolvemos una lista formada por el 1.
 
 En Scheme:
@@ -2720,6 +2738,14 @@ con los números pares de la lista que le pasamos como parámetro:
        (filtra-pares (cdr lista))))
       (else (filtra-pares (cdr lista)))))
 ```
+
+En el caso general, llamamos de forma recursiva a la función para que
+filtre el `cdr` de la lista. Y le añadimos el primer elemento si es
+par.
+
+Cada vez llamaremos a la recursión con una lista más pequeña, por lo
+que en el caso base tendremos que comprobar si la lista que
+recibimos. En ese caso devolvemos la lista vacía.
 
 Ejemplo:
 
@@ -2892,20 +2918,6 @@ funcional es la definición de funciones. Hemos visto también que no
 producen efectos laterales y no tienen estado. Una función toma unos
 datos como entrada y produce un resultado como salida.
 
-Para simbolizar el hecho de que las funciones toman parámetros de
-entrada y devuelven una única salida, vamos a representar las
-funciones como un símbolo especial, una pequeña casa invertida con
-unas flechas en la parte superior que representan las entradas y una
-única flecha que representa la salida. Por ejemplo, podemos
-representar de la siguiente forma la función que eleva al cuadrado un
-número:
-
-<img src="imagenes/funcion-cuadrado.png" width="80px"/>
-
-También podemos representar la función que suma dos parejas:
-
-<img src="imagenes/esquema-suma-parejas.png" width="200px"/>
-
 Una de las características fundamentales de la programación funcional
 es considerar a las funciones como *objetos de primera
 clase*. Recordemos que un tipo de primera clase es aquel que:
@@ -2945,7 +2957,7 @@ nombre mediante esta forma especial.
 
 La sintaxis de la forma especial `lambda` es:
 
-```
+```text
 (lambda (<arg1> ... <argn>) 
     <cuerpo>)
 ```
@@ -3113,14 +3125,14 @@ asigna a la variable `suma`. El resultado final es que tanto `+` como
 La forma especial `define` para definir una función no es más que
 *azucar sintáctico*.
 
-```
+```text
 (define (<nombre> <args>)
     <cuerpo>)
 ```
 
 siempre se convierte internamente en:
 
-```
+```text
 (define <nombre> 
     (lambda (<args>)
         <cuerpo>))
@@ -3210,6 +3222,7 @@ devuelve la invocación de `g` con `x`:
 (aplica-2 suma-5 doble 3) ; ⇒ 11
 ```
 
+<!---
 
 ### Generalización ###
 

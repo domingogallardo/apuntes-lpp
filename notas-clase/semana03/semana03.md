@@ -24,9 +24,7 @@ Notas de clase de la semana 3 de LPP.
     - 5.5. Generalización
     - 5.6. Funciones de orden superior
 
-----
-### 2.4.3. Funciones recursivas para construir listas
-----
+### Funciones recursivas para construir listas
 
 Vamos a ver cómo se implementan de forma recursiva:
 
@@ -43,7 +41,6 @@ Vamos a ver cómo se implementan de forma recursiva:
   un número es primo
     - Función `primo?`
 
-----
 
 ### Recordatorio: Diseño de funciones recursivas
 
@@ -60,121 +57,131 @@ Vamos a ver cómo se implementan de forma recursiva:
   recursión**: el caso más sencillo posible en el que no es necesario
   hacer una llamada recursiva para devolver la solución.
 
-----
 
 ### Función `mi-list-ref`
 
 - La función `(mi-list-ref n lista)` devuelve el elemento `n` de una
   lista (empezando a contar por 0). Un ejemplo concreto:
 
-```scheme
-(mi-list-ref '(a b c d e f g) 4) ; ⇒ c
-```
+    ```racket
+    (mi-list-ref '(a b c d e f g) 4) ; ⇒ c
+    ```
 
 - ¿Podemos formular `(mi-list-ref '(a b c d e f g) 4)` de forma
   recursiva?:
 
-> Para devolver el elemento 4 de lista `{a b c d e f g}`, podemos
-> quitar el primer elemento de la lista (obtendremos `{b c d e f g}`)
-> y devolver su elemento 3.
+<p style="margin-bottom:2cm;"></p>
+
+- Formulación recursiva de `mi-list-ref`:
+
+    ```text
+    Para devolver el elemento 2 de la lista (a b c d e f g):
+        Hacemos el cdr de la lista (obtenemos (b c d e f g)) 
+        y devolvemos su elemento 1. Será el valor c (empezamos 
+        a contar por 0).
+    ```
 
 - En general, para cualquier `n` y cualquier lista:
 
-> Para devolver el elemento `n` de una lista, hacemos el cdr de la
-> lista y devolvemos su elemento n-1.
+    ```text
+    Para devolver el elemento que está en la posición `n` de una lista,
+    devuelvo el elemento n-1 de su cdr.
+    ```
 
 - Por último, formulamos el caso base de la recursión, el problema más
   sencillo que se puede resolver directamente, sin hacer una llamada
   recursiva:
 
-> Para devolver el elemento que está en la posición 0 de una lista,
-> devuelvo el `car` de la lista
+    ```text
+    Para devolver el elemento que está en la posición 0 de una lista,
+    devuelvo el `car` de la lista.
+    ```
 
 - Implementación en Scheme (incluimos un segundo caso base en el que
   se intenta obtener la posición de una lista vacía; se llegaría a
   este caso si la posición que pedimos es mayor que el número de
   elementos de la lista):
 
-```scheme
-(define (mi-list-ref lista n)
-    (if (= n 0) 
-        (car lista)
-        (mi-list-ref (cdr lista) (- n 1))))
-```
+    ```racket
+    (define (mi-list-ref lista n)
+        (if (= n 0) 
+            (car lista)
+            (mi-list-ref (cdr lista) (- n 1))))
+    ```
 
-----
 
 ### Función `mi-list-tail`
 
 - La función `(mi-list-tail lista n)` devuelve la lista resultante de
   quitar n elementos de la lista original:
 
-```scheme
-(mi-list-tail '(1 2 3 4 5 6 7) 2) ; ⇒ {3 4 5 6 7}
-```
+    ```racket
+    (mi-list-tail '(1 2 3 4 5 6 7) 2) ; ⇒ (3 4 5 6 7)
+    ```
 
 - ¿Cómo se implementaría de forma recursiva?
 
-<p style="margin-bottom:2cm;"/>
+<p style="margin-bottom:2cm;"></p>
 
 - Solución en Scheme
 
-```scheme
-(define (mi-list-tail lista n)
-    (if (= n 0) 
-        lista
-        (mi-list-tail (cdr lista) (- n 1))))
-```
+    ```racket
+    (define (mi-list-tail lista n)
+        (if (= n 0) 
+            lista
+            (mi-list-tail (cdr lista) (- n 1))))
+    ```
 
-----
 
 ### Función `mi-append` 
 
 - Por ejemplo
 
-```scheme
-(mi-append '(a b c) '(d e f)) ; ⇒ {a b c d e f}
-```
+    ```racket
+    (mi-append '(a b c) '(d e f)) ; ⇒ (a b c d e f)
+    ```
 
 - Formulación recursiva del ejemplo:
 
-```scheme
-(mi-append '(a b c) '(d e f)) = (cons 'a (mi-append '(b c) '(d e f))) = 
-(cons 'a {b c d e f}) = {a b c d e f}
-```
+    ```text
+    (mi-append '(a b c) '(d e f)) = 
+    (cons 'a (mi-append '(b c) '(d e f))) = 
+    (cons 'a (b c d e f)) = 
+    (a b c d e f)
+    ```
 
 - En general:
 
-```scheme
-(mi-append lista1 lista2) = (cons (car lista1) (mi-append (cdr lista1) lista2))
-```
+    ```racket
+    (define (mi-append lista1 lista2) 
+        (cons (car lista1) (mi-append (cdr lista1) lista2)))
+    ```
 
 - El caso base es aquel en el que `lista1` es `null?`. En ese caso
   devolvemos `lista2`:
 
-```scheme
-(mi-append '() '(a b c)) ;⇒ '{a b c}
-```
+    ```racket
+    (mi-append '() '(a b c)) ;⇒ '(a b c)
+    ```
 
 - La formulación recursiva completa queda como sigue:
 
-```scheme
-(define (mi-append l1 l2)
-    (if (null? l1)
-        l2
-        (cons (car l1)
-              (mi-append (cdr l1) l2))))
-```
+    ```racket
+    (define (mi-append l1 l2)
+        (if (null? l1)
+            l2
+            (cons (car l1)
+                  (mi-append (cdr l1) l2))))
+    ```
 
-----
 
 ### Función `mi-reverse`
 
 - Ejemplo
 
-```scheme
-(mi-reverse '(1 2 3 4 5 6)) ; ⇒ {6 5 4 3 2 1}
-```
+    ```racket
+    (mi-reverse '(1 2 3 4 5 6)) ; ⇒ (6 5 4 3 2 1)
+    ```
 
 - La idea es sencilla: llamamos a la recursión para hacer la inversa
   del `cdr` de la lista y añadimos el primer elemento a la lista
@@ -183,58 +190,63 @@ Vamos a ver cómo se implementan de forma recursiva:
 - Podemos definir una función auxiliar `(añade-al-final dato lista)`
   que añade un dato al final de una lista usando `append`:
 
-```scheme
-(define (añade-al-final dato lista)
-    (append lista (list dato)))
-```
+    ```racket
+    (define (añade-al-final dato lista)
+        (append lista (list dato)))
+    ```
 
 - La función `mi-reverse` quedaría entonces como sigue:
 
-```scheme
-(define (mi-reverse lista)
-    (if (null? lista) '()
-        (añade-al-final (car lista) (mi-reverse (cdr lista)))))
-```
+    ```racket
+    (define (mi-reverse lista)
+        (if (null? lista) '()
+            (añade-al-final (car lista) (mi-reverse (cdr lista)))))
+    ```
 
-----
 
 ### Función `cuadrados-hasta`
 
 - La función `(cuadrados-hasta x)` devuelve una lista con los
   cuadrados de los números hasta x:
 
-```scheme
-(cuadrados-hasta 5) ; ⇒ {25 16 9 4 1}
-```
+    ```racket
+    (cuadrados-hasta 5) ; ⇒ (25 16 9 4 1)
+    ```
 
-¿Cómo formulamos el ejemplo de forma recursiva?
+- ¿Cómo formulamos el ejemplo de forma recursiva?
 
-<p style="margin-bottom: 3cm;"/>
+<p style="margin-bottom: 3cm;"></p>
 
-```txt
-(cuadrados-hasta 5) = (cons (cuadrado 5) (cuadrados-hasta 4) =
-(cons 25 {16 9 4 1}) = {25 16 9 4 1}
-```
+- Solución:
+
+    ```text
+    (cuadrados-hasta 5) = 
+    (cons (cuadrado 5) (cuadrados-hasta 4) =
+    (cons 25 (16 9 4 1)) = 
+    (25 16 9 4 1)
+    ```
 
 - En general:
 
-> Para construir una lista de los cuadrados hasta x, añado el cuadrado
-> de x a la lista de los cuadrados hasta x-1
+    ```text
+    Para construir una lista de los cuadrados hasta x:
+       construyo la lista de los cuadrados hasta x-1 y le añado 
+       el cuadrado de x
+    ```
 
 - El caso base de la recursión es el caso en el que x es 1, entonces
-  devolvemos `{1}
+  devolvemos `(1)
 
 - Ya podemos realizar la definición Scheme:
 
-```scheme
-(define (cuadrados-hasta x)
-    (if (= x 1)
-        '(1)
-        (cons (cuadrado x)
-              (cuadrados-hasta (- x 1)))))
-```
+    ```racket
+    (define (cuadrados-hasta x)
+        (if (= x 1)
+            '(1)
+            (cons (cuadrado x)
+                  (cuadrados-hasta (- x 1)))))
+    ```
 
-----
 
 ### Función `filtra-pares`
 
@@ -245,27 +257,26 @@ Vamos a ver cómo se implementan de forma recursiva:
 - La función `filtra-pares` construye una lista con los números pares
   de la lista que le pasamos como parámetro:
 
-```scheme
-(filtra-pares '(1 2 3 4 5 6)) ;⇒ {2 4 6}
-```
+    ```racket
+    (filtra-pares '(1 2 3 4 5 6)) ;⇒ (2 4 6)
+    ```
 
-¿Cómo la definimos de forma recursiva?
+- ¿Cómo la definimos de forma recursiva?
 
-<p style="margin-bottom:3cm;"/>
+<p style="margin-bottom:3cm;"></p>
 
 
 - Solución en Scheme
 
-```scheme
-(define (filtra-pares lista)
-    (cond
-        ((null? lista) '())
-        ((even? (car lista))
-        (cons (car lista) (filtra-pares (cdr lista))))
-        (else (filtra-pares (cdr lista)))))
-```
+    ```racket
+    (define (filtra-pares lista)
+        (cond
+            ((null? lista) '())
+            ((even? (car lista))
+            (cons (car lista) (filtra-pares (cdr lista))))
+            (else (filtra-pares (cdr lista)))))
+    ```
 
-----
 
 ### Ejemplo final: Función `primo?`
 
@@ -277,152 +288,141 @@ Vamos a ver cómo se implementan de forma recursiva:
   listas. Calcularemos la lista de divisores del número y
   comprobaremos si su longitud es dos:
 
-```scheme
-(divisores 8) ;⇒ {1 2 4 8} longitud = 4, no primo
-(divisores 9) ;⇒ {1 3 9} longitud = 3, no primo
-(divisores 11) ;⇒ {1 11} longitud = 2, primo
-```
+    ```racket
+    (divisores 8) ;⇒ (1 2 4 8) longitud = 4, no primo
+    (divisores 9) ;⇒ (1 3 9) longitud = 3, no primo
+    (divisores 11) ;⇒ (1 11) longitud = 2, primo
+    ```
 
 - En Scheme:
 
-```scheme
-(define (primo? x)
-    (=  2 
-    (length (divisores x))))
-```
+    ```racket
+    (define (primo? x)
+        (=  2 
+        (length (divisores x))))
+    ```
 
-----
 
 ### Función recursiva `(lista-hasta x)`
 
 
 - La función `(lista-hasta x)` devuelve una lista de números 1..x:
 
-```scheme
-(lista-hasta 2) ;⇒ {1 2}
-(lista-hasta 10) ;⇒ {1 2 3 4 5 6 7 8 9 10}
-```
+    ```racket
+    (lista-hasta 2) ;⇒ (1 2)
+    (lista-hasta 10) ;⇒ (1 2 3 4 5 6 7 8 9 10)
+    ```
 
 - Implementación recursiva:
 
 
-```scheme
-(define (lista-hasta x)
-    (if (= x 0)
-        '()
-        (cons x (lista-hasta (- x 1)))))
-```
+    ```racket
+    (define (lista-hasta x)
+        (if (= x 0)
+            '()
+            (cons x (lista-hasta (- x 1)))))
+    ```
 
 
-----
 
 ### Función `(divisor? x y)`
 
-```scheme
+```racket
 (define (divisor? x y)
       (= 0 (mod y x)))
 ```
 
-----
 
 ### Función recursiva `(filtra-divisores lista x)`
 
 - Función que filtra aquellos números `lista` que son divisores del número `x`
 
-```scheme
-(define (filtra-divisores lista x)
-   (cond
-      ((null? lista) '())
-      ((divisor? (car lista) x) (cons (car lista)
-                                      (filtra-divisores (cdr lista) x)))
-      (else (filtra-divisores (cdr lista) x))))
-```
-
-
-----
+    ```racket
+    (define (filtra-divisores lista x)
+       (cond
+          ((null? lista) '())
+          ((divisor? (car lista) x)
+           (cons (car lista)
+                 (filtra-divisores (cdr lista) x)))
+          (else (filtra-divisores (cdr lista) x))))
+    ```
 
 
 ### Función `(divisores x)` 
 
+- Una vez definidas las funciones auxiliares anteriores, se puede
+  implementar de una forma muy sencilla una función `(divisores x)`
+  que devuelve una lista de todos los divisores del número `x`:
 
-- Se puede implementar de una forma muy sencilla:
-
-```scheme
-(define (divisores x)
-    (filtra-divisores (lista-hasta x) x))
-```
+    ```racket
+    (define (divisores x)
+        (filtra-divisores (lista-hasta x) x))
+    ```
 
 - Por ejemplo, para calcular los divisores de 10:
 
-```scheme
-(filtra-divisores '(1 2 3 4 5 6 7 8 9 10) 10) ;⇒ {1 2 5 10}
-```
+    ```racket
+    (filtra-divisores '(1 2 3 4 5 6 7 8 9 10) 10) ;⇒ (1 2 5 10)
+    ```
 
-- Una vez definida esta función, ya puede funcionar correctamente la función `primo?`
+- Y, una vez definida esta función, ya funciona correctamente la
+  función `primo?` con la primera definición que vimos:
 
+    ```racket
+    (define (primo? x)
+        (=  2 
+        (length (divisores x))))
+    ```
+
+
+<p style="margin-bottom:1cm;"></p>
 ----
-### 2.4.4. Funciones con número variable de argumentos
-----
+<p style="margin-bottom:1cm;"></p>
+
+
+### Funciones con número variable de argumentos
 
 - Definición de número variable de argumentos con la notación de
   punto:
 
-```scheme
-(define (funcion-dos-o-mas-args x y . lista-args) 
-    <cuerpo>)
-```
+    ```racket
+    (define (funcion-dos-o-mas-args x y . lista-args) 
+        <cuerpo>)
+    ```
 
 - Podemos llamar a la función anterior con dos o más argumentos:
 
-```scheme
-(funcion-dos-o-mas-args 1 2 3 4 5 6)
-```
+    ```racket
+    (funcion-dos-o-mas-args 1 2 3 4 5 6)
+    ```
 	
 - En la llamada, los parámetros `x` e `y` tomarán los valores 1 y 2.
 - El parámetro `lista-args` tomará como valor una lista con los
   argumentos restantes `(3 4 5 6)`.
-
-<p style="margin-bottom:2cm;"/>
-
 - También es posible permitir que todos los argumentos sean opcionales
   no poniendo ningún argumento antes del punto::
 
-```scheme
-(define (funcion-cualquier-numero-args . lista-args) 
-    <cuerpo>)
-```
+    ```racket
+    (define (funcion-cualquier-numero-args . lista-args) 
+        <cuerpo>)
+    ```
 	
 - Ejemplo:
 
-```scheme
-(define (mi-suma x y . lista-nums)
-    (if (null? lista-nums)
-        (+ x y)
-        (+ x (+ y (suma-lista lista-nums)))))
-```
+    ```racket
+    (define (mi-suma x y . lista-nums)
+        (if (null? lista-nums)
+            (+ x y)
+            (+ x (+ y (suma-lista lista-nums)))))
+    ```
 
-<p style="margin-bottom:2cm;"/>
 
+<p style="margin-bottom:1cm;"></p>
 ----
-
-### 5. Funciones como tipos de datos de primera clase
-
-----
-
-### Una función es un bloque de código con varias entradas y una salida
-
-Función que eleva al cuadrado un número:
-
-<img src="./imagenes/funcion-cuadrado.png" style="width: 80px;"/>
-
-Función que suma dos parejas:
-
-<img src="./imagenes/esquema-suma-parejas.png" style="width: 200px;"/>
+<p style="margin-bottom:1cm;"></p>
 
 
-----
-
-### Las funciones son objetos de primera clase de un lenguaje
+### Funciones como tipos de datos de primera clase
 
 Recordemos que un tipo de primera clase es aquel que:
 
@@ -438,73 +438,82 @@ Con funciones:
 3. Una función se puede devolver como resultado de una invocación a otra función
 4. Una función se puede guardar en tipos de datos compuestos como listas
 
-Es una característica de muchos lenguajes multi-paradigma con
-características funcionales como
-[JavaScript](http://helephant.com/2008/08/19/functions-are-first-class-objects-in-javascript/),
-[Python](https://thenewcircle.com/static/bookshelf/python_fundamentals_tutorial/functional_programming.html),
-[Swift](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html)
-o incluso en la última versión de Java,
-[Java 8](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html),
-(donde se denominan *expresiones lambda*).
+- Las funciones son objetos de primera clase en lenguajes funcionales
+  y en muchos lenguajes multi-paradigma con características funcionales como
+  [JavaScript](http://helephant.com/2008/08/19/functions-are-first-class-objects-in-javascript/),
+  [Python](https://thenewcircle.com/static/bookshelf/python_fundamentals_tutorial/functional_programming.html),
+  [Swift](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html)
+  o incluso en la última versión de Java, [Java
+  8](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html),
+  (donde se denominan *expresiones lambda*).
 
-----
+### Forma especial `lambda`
 
-### 5.1 Forma especial `lambda`
+- Cualquier objeto de primera clase de un lenguaje debe poderse ser
+  creado de forma anónima, sin asignarle un nombre. Por ejemplo, en la
+  expresión:
+  
+    ```racket
+    (string-append "hola" "adiós")
+    ```
 
-----
+    las cadenas `"hola"` y `"adiós"` se han creado directamente,
+    sin darles nombre, y se han pasado como parámetros a la función
+    `string-append`.
+
+- La forma especial `lambda` permite hacer lo mismo con las funciones:
+  crear funciones anónimas en tiempo de ejecución.
+
 
 ### Sintaxis de la forma especial `lambda`
 
-La sintaxis de la forma especial `lambda` es:
+- La sintaxis de la forma especial `lambda` es:
 
-```
-(lambda (<arg1> ... <argn>) 
-    <cuerpo>)
-```
+    ```text
+    (lambda (<arg1> ... <argn>) 
+        <cuerpo>)
+    ```
 
-El cuerpo del lambda define un *bloque de código* y sus argumentos son
-los parámetros necesarios para ejecutar ese bloque de código. Llamamos
-a la función resultante una *función anónima*.
+- El cuerpo del lambda define un *bloque de código* y sus argumentos
+  son los parámetros necesarios para ejecutar ese bloque de
+  código. Llamamos a la función resultante una *función anónima*.
 
-Una función anónima que suma dos parejas:
+- Una función anónima que suma dos parejas:
 
-```scheme
-(lambda (p1 p2)
-    (cons (+ (car p1) (car p2))
-          (+ (cdr p1) (cdr p2))))
-```
+    ```racket
+    (lambda (p1 p2)
+        (cons (+ (car p1) (car p2))
+              (+ (cdr p1) (cdr p2))))
+    ```
 
-Una función anónima que devuelve el mayor de dos números:
+- Una función anónima que devuelve el mayor de dos números:
 
-```scheme
-(lambda (a b)
-    (if (> a b)
-        a
-        b))
-```
+    ```racket
+    (lambda (a b)
+        (if (> a b)
+            a
+            b))
+    ```
 
-----
 
 ### Semántica de la forma especial `lambda`
 
 - La invocación a la forma especial `lambda` construye una función
   anónima en tiempo de ejecución.
 
-```scheme
-(lambda (x) (* x x))
-; ⇒ #<procedure>
-```
+    ```racket
+    (lambda (x) (* x x)) ; ⇒ #<procedure>
+    ```
 
 - El procedimiento construido es un bloque de código que devuelve el
   cuadrado de un número.
 
 - ¿Qué podemos hacer con este procedimiento? 
 
-----
 
 ### Podemos asignar el procedimiento a un identificador (símbolo)
 
-```scheme
+```racket
 (define f (lambda (x) (* x x)))
 ```
 
@@ -513,40 +522,37 @@ Una función anónima que devuelve el mayor de dos números:
 - Si escribimos `f` en el intérprete, Scheme lo evalúa y muestra el
   procedimiento:
 
-```scheme
-f ; ⇒ #<procedure:f>
-```
+    ```racket
+    f ; ⇒ #<procedure:f>
+    ```
 
-Podemos usar el identificador `f` de la forma que habitualmente
-invocamos a una función:
+- Podemos usar el identificador `f` de la forma que habitualmente
+  invocamos a una función:
 
-```scheme
-(cuadrado 3) ; ⇒ 9
-```
+    ```racket
+    (cuadrado 3) ; ⇒ 9
+    ```
 
-----
 
 ### Podemos invocar a la función anónima directamente
 
 
-```scheme
+```racket
 ((lambda (x) (* x x)) 3) ; ⇒ 9
 ```
 
-La llamada a `lambda` crea un procedimiento y el paréntesis a su
+- La llamada a `lambda` crea un procedimiento y el paréntesis a su
 izquierda lo invoca con el parámetro 3:
 
-```scheme
-((lambda (x) (* x x)) 3) => (#<procedure> 3) ; ⇒ 9
-```
+    ```racket
+    ((lambda (x) (* x x)) 3) => (#<procedure> 3) ; ⇒ 9
+    ```
 
 - Es importante remarcar que con `lambda` estamos creando una función
   en *tiempo de ejecución*.
 
-----
 
 ### Expresiones lambda en distintos lenguajes de programación
-
 
 **Java 8**
 
@@ -562,7 +568,7 @@ Integer x -> {x*x}
 
 **Objective C**
 
-```objetive-c
+```objective-c
 ^int (int x)
 {
    x*x
@@ -575,109 +581,131 @@ Integer x -> {x*x}
 { (x: Int) -> Int in return x*x }
 ```
 
-----
 
 ### Identificadores y funciones
 
 - En Scheme una función está ligada al símbolo que define su nombre:
 
-```scheme
-+ ; ⇒ <procedure:+>
-```
+    ```racket
+    + ; ⇒ <procedure:+>
+    ```
 
 - Podemos asignar funciones ya existentes a nuevos identificadores
   usando `define`, como en el ejemplo siguiente:
 
-```scheme
-+ ;⇒ <procedure:+>
-(define suma +)
-(suma 1 2 3 4) ; ⇒ 10
-```
+    ```racket
+    + ;⇒ <procedure:+>
+    (define suma +)
+    (suma 1 2 3 4) ; ⇒ 10
+    ```
 
 <img src="./imagenes/suma.png" style="width:100px;"/>
 
-----
 
 ### La forma especial `define` para definir una función no es más que azucar sintáctico
 
-La forma especial `define`:
+- La forma especial `define` para definir funciones siempre se
+  convierte internamente en una llamada a `lambda` y una asociación de
+  la función a su nombre:
 
-```
-(define (<nombre> <args>)
-    <cuerpo>)
-```
+    ```text
+    (define (<nombre> <args>)
+        <cuerpo>)
+    ```
 
-siempre se convierte internamente en:
+    ```text
+    (define <nombre> 
+        (lambda (<args>)
+            <cuerpo>))
+    ```
 
-```
-(define <nombre> 
-    (lambda (<args>)
-        <cuerpo>))
-```
+- Ejemplo:
 
-Por ejemplo
+    ```racket
+    (define (cuadrado x)
+        (* x x))
+    ```
 
-```scheme
-(define (cuadrado x)
-    (* x x))
-```
+    ```racket
+    (define cuadrado 
+        (lambda (x) (* x x)))
+    ```
 
-es equivalente a:
-
-```scheme
-(define cuadrado 
-    (lambda (x) (* x x)))
-```
-
-----
 
 ### Predicado `procedure?`
 
 - Podemos comprobar si algo es una función utilizando el predicado de
   Scheme `procedure?`.
 
-Por ejemplo:
+    ```racket
+    (procedure? (lambda (x) (* x x)))
+    ; ⇒ #t
+    (define suma +)
+    (procedure? suma)
+    ; ⇒ #t
+    (procedure? '+)
+    ; ⇒ #f
+    ```
 
-```scheme
-(procedure? (lambda (x) (* x x)))
-; ⇒ #t
-(define suma +)
-(procedure? suma)
-; ⇒ #t
-(procedure? '+)
-; ⇒ #f
-```
 
-----
+### Funciones argumentos de otras funciones
 
-### 5.2 Funciones argumentos de otras funciones 
+- Ya hemos visto que una función se pueda asignar a una variable. Para
+  seguir comprobando que es un objeto de primera clase, vamos a
+  comprobar que se puede pasar como parámetro de otra función.
 
-Veamos más ejemplos de funciones que reciben otras funciones.
 
-----
+### Función `(aplica f x y)`
+
+- La función `(aplica f x y)` recibe una función como argumento y dos
+  parámetros. Devuelve el resultado de evaluar la función `f` con los
+  argumentos `x` e `y`
+  
+    ```racket
+    (define (aplica f x y)
+       (f x y))
+    ```
+
+- Ejemplos:
+
+    ```racket
+    (aplica + 2 3) ; ⇒ 5
+    (aplica * 4 5) ; ⇒ 10
+    (aplica string-append "hola" "adios") ; ⇒ "holaadios"
+
+    (define (string-append-con-guion s1 s2)
+        (string-append s1 "-" s2))
+
+    (aplica string-append-con-guion "hola" "adios") ; ⇒ "hola-adios"
+    ```
+
+- Podemos pasar la función creándola con una expresión lambda:
+
+    ```racket
+    (aplica (lambda (x y) (sqrt (+ (* x x) (* y y)))) 3 4) ; ⇒ 5
+    ```
 
 ### Función `aplica-2` 
 
-- La función `aplica-2` que toma dos funciones `f` y `g` y un
-  argumento `x` y devuelve el resultado de aplicar `f` a lo que
-  devuelve la invocación de `g` con `x`:
+- La función `aplica-2` toma dos funciones `f` y `g` y un argumento
+  `x` y devuelve el resultado de aplicar `f` a lo que devuelve la
+  invocación de `g` con `x`:
 
-```scheme
-(define (aplica-2 f g x)
-   (f (g x)))
-```
+    ```racket
+    (define (aplica-2 f g x)
+       (f (g x)))
+    ```
 
-¿Ejemplos de invocación?
+- Ejemplos de invocación
 
-<p style="margin-bottom:3cm;"/>
+    ```racket
+    (define (suma-5 x)
+       (+ x 5))
+    (define (doble x)
+       (+ x x))
+    (aplica-2 suma-5 doble 3) ; ⇒ 11
+    
+    (aplica-2 (lambda (x) (* x 2))
+              (lambda (x) (+ x 5)) 10) ; ⇒ 30
+    ```
 
-```schem
-(define (suma-5 x)
-   (+ x 5))
-(define (doble x)
-   (+ x x))
-(aplica-2 suma-5 doble 3)
-; ⇒ 11
-```
-
-----
