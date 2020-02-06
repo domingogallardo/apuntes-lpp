@@ -47,7 +47,7 @@ La solución se debería entregar de la siguiente forma:
 ;; Función principal suma-cuadrados
 
 (define (suma-cuadrados x y)
-    (+ (* x x) (* y y)))
+    (+ (cuadrado x) (cuadrado y)))
 
 (check-equal?  (suma-cuadrados 10 10)  200)
 (check-equal?  (suma-cuadrados -2 9)  85)
@@ -108,7 +108,7 @@ así sucesivamente hasta el 15 que es el F en hexadecimal.
 
 Para la implementación de esta función auxiliar que pasa de decimal a
 hexadecimal debes usar las funciones `integer->char` y
-`char->integer`. En la función `char->ingeger` los caracteres
+`char->integer`. En la función `char->integer` los caracteres
 consecutivos están asociados con números consecutivos. Por ejemplo, el
 entero correspondiente al carácter `#\A` es uno menos que el
 correspondiente al carácter `#\B`. Los caracteres de números y los de
