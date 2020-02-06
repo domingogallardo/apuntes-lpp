@@ -572,7 +572,7 @@ siguientes ejemplos:</p>
 <span class="c1">;; Función principal suma-cuadrados</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">y</span> <span class="n">y</span><span class="p">)))</span>
+    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">y</span><span class="p">)))</span>
 
 <span class="p">(</span><span class="n">check-equal?</span>  <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">10</span> <span class="mi">10</span><span class="p">)</span>  <span class="mi">200</span><span class="p">)</span>
 <span class="p">(</span><span class="n">check-equal?</span>  <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">-2</span> <span class="mi">9</span><span class="p">)</span>  <span class="mi">85</span><span class="p">)</span>
@@ -627,7 +627,7 @@ número decimal 10 se representa con el carácter A, el 11 con el B, y
 así sucesivamente hasta el 15 que es el F en hexadecimal.</p>
 <p>Para la implementación de esta función auxiliar que pasa de decimal a
 hexadecimal debes usar las funciones <code>integer-&gt;char</code> y
-<code>char-&gt;integer</code>. En la función <code>char-&gt;ingeger</code> los caracteres
+<code>char-&gt;integer</code>. En la función <code>char-&gt;integer</code> los caracteres
 consecutivos están asociados con números consecutivos. Por ejemplo, el
 entero correspondiente al carácter <code>#\A</code> es uno menos que el
 correspondiente al carácter <code>#\B</code>. Los caracteres de números y los de

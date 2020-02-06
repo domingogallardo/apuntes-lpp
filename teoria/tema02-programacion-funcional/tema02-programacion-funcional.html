@@ -401,6 +401,47 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#funciones-recursivas-que-construyen-listas" class="md-nav__link">
+    Funciones recursivas que construyen listas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funciones-con-numero-variable-de-argumentos" class="md-nav__link">
+    Funciones con número variable de argumentos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones-como-tipos-de-datos-de-primera-clase" class="md-nav__link">
+    Funciones como tipos de datos de primera clase
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forma-especial-lambda" class="md-nav__link">
+    Forma especial lambda
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funciones-argumentos-de-otras-funciones" class="md-nav__link">
+    Funciones argumentos de otras funciones
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -662,6 +703,47 @@
           <li class="md-nav__item">
   <a href="#listas-con-elementos-compuestos" class="md-nav__link">
     Listas con elementos compuestos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funciones-recursivas-que-construyen-listas" class="md-nav__link">
+    Funciones recursivas que construyen listas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funciones-con-numero-variable-de-argumentos" class="md-nav__link">
+    Funciones con número variable de argumentos
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funciones-como-tipos-de-datos-de-primera-clase" class="md-nav__link">
+    Funciones como tipos de datos de primera clase
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forma-especial-lambda" class="md-nav__link">
+    Forma especial lambda
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funciones-argumentos-de-otras-funciones" class="md-nav__link">
+    Funciones argumentos de otras funciones
   </a>
   
 </li>
@@ -3140,74 +3222,72 @@ vemos por primera vez en los siguientes ejemplos:</p>
 </td></tr></table>
 
 <p>En los siguientes apartados veremos cómo están implementadas.</p>
-<!--
-
-### Funciones recursivas que construyen listas
-
-Para terminar el apartado sobre las listas en Scheme vamos a ver
+<h3 id="funciones-recursivas-que-construyen-listas">Funciones recursivas que construyen listas<a class="headerlink" href="#funciones-recursivas-que-construyen-listas" title="Permanent link">&para;</a></h3>
+<p>Para terminar el apartado sobre las listas en Scheme vamos a ver
 ejemplos adicionales de funciones recursivas que trabajan con
 listas. Veremos alguna función que recibe una lista y, como antes, usa
 la recursión para recorrerla. Pero veremos también funciones que usan
-la recursión para **construir nuevas listas**.
-
-Algunas de las funciones que presentamos son implementaciones de las
+la recursión para <strong>construir nuevas listas</strong>.</p>
+<p>Algunas de las funciones que presentamos son implementaciones de las
 ya existentes en Scheme. Para no solapar con las definiciones de
-Scheme pondremos el prefijo `mi-` en todas ellas.
-
-Vamos a ver las siguientes funciones:
-
-- `mi-list-ref`: implementación de la función `list-ref`
-- `mi-list-tail`: implementación de la función `list-tail`
-- `mi-append`: implementación de la funión `append` 
-- `mi-reverse`: implementación de la función `reverse`
-- `cuadrados-hasta`: devuelve la lista de cuadrados hasta uno dado
-- `filtra-pares`: devuelve la lista de los números pares de la lista que se recibe
-- `primo?`: comprueba si un número es o no primo
-
-
-#### Función `mi-list-ref`
-
-La función `(mi-list-ref n lista)` devuelve el elemento `n` de una
-lista (empezando a contar por 0):
-
+Scheme pondremos el prefijo <code>mi-</code> en todas ellas.</p>
+<p>Vamos a ver las siguientes funciones:</p>
+<ul>
+<li><code>mi-list-ref</code>: implementación de la función <code>list-ref</code></li>
+<li><code>mi-list-tail</code>: implementación de la función <code>list-tail</code></li>
+<li><code>mi-append</code>: implementación de la funión <code>append</code> </li>
+<li><code>mi-reverse</code>: implementación de la función <code>reverse</code></li>
+<li><code>cuadrados-hasta</code>: devuelve la lista de cuadrados hasta uno dado</li>
+<li><code>filtra-pares</code>: devuelve la lista de los números pares de la lista que se recibe</li>
+<li><code>primo?</code>: comprueba si un número es o no primo</li>
+</ul>
+<h4>Función <code>mi-list-ref</code></h4>
+<p>La función <code>(mi-list-ref n lista)</code> devuelve el elemento <code>n</code> de una
+lista (empezando a contar por 0):</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span> <span class="ss">g</span><span class="p">))</span>
 <span class="p">(</span><span class="n">mi-list-ref</span> <span class="n">lista</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ c</span>
 </pre></div>
 </td></tr></table>
 
-Veamos con el ejemplo anterior cómo hacer la formulación recursiva.
-
-Hemos visto que, en general, cuando queremos resolver un problema de
+<p>Veamos con el ejemplo anterior cómo hacer la formulación recursiva.</p>
+<p>Hemos visto que, en general, cuando queremos resolver un problema de
 forma recursiva tenemos que hacer una llamada recursiva a un problema
-más sencillo, **confiar en que la llamada nos devuelva el resultado
-correcto** y usar ese resultado para resolver el problema original.
-
-En este caso nuestro problema es obtener el número que está en la
-posición 2 de la lista `(a b c d e f g)`. Suponemos que la función que
+más sencillo, <strong>confiar en que la llamada nos devuelva el resultado
+correcto</strong> y usar ese resultado para resolver el problema original.</p>
+<p>En este caso nuestro problema es obtener el número que está en la
+posición 2 de la lista <code>(a b c d e f g)</code>. Suponemos que la función que
 nos devuelve una posición de la lista ya la tenemos implementada y que
 la llamada recursiva nos va a devolver el resultado correcto. ¿Cómo
 podemos simplificar el problema original? Veamos la solución para este
-caso concreto:
+caso concreto:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Para devolver el elemento 2 de la lista (a b c d e f g):
+   Hacemos el cdr de la lista (obtenemos (b c d e f g)) 
+   y devolvemos su elemento 1. Será el valor c (empezamos 
+   a contar por 0).
+</pre></div>
+</td></tr></table>
 
-> Para devolver el elemento 2 (empezando a contar por 0) de la lista
-> `(a b c d e f g)` podemos hacer el `cdr` de la lista (obtendríamos
-> `(b c d e f g)`) y devolver su elemento 1. Sería el valor `c`.
+<p>Generalizamos el ejemplo anterior, para cualquier <code>n</code> y cualquier lista:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Para devolver el elemento que está en la posición `n` de una lista,
+devuelvo el elemento n-1 de su cdr.
+</pre></div>
+</td></tr></table>
 
-Generalizamos el ejemplo anterior, para cualquier `n` y cualquier lista:
-
-> Para devolver el elemento que está en la posición `n` de una lista,
-> hago el cdr de la lista y devuelvo su elemento n-1.
-
-Y, por último, formulamos el caso base de la recursión, el problema
+<p>Y, por último, formulamos el caso base de la recursión, el problema
 más sencillo que se puede resolver directamente, sin hacer una llamada
-recursiva:
+recursiva:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Para devolver el elemento que está en la posición 0 de una lista,
+devuelvo el `car` de la lista.
+</pre></div>
+</td></tr></table>
 
-> Para devolver el elemento que está en la posición 0 de una lista,
-> devuelvo el `car` de la lista
-
-La implementación de todo esto en Scheme sería la siguiente:
-
+<p>La implementación de todo esto en Scheme sería la siguiente:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -3218,19 +3298,16 @@ La implementación de todo esto en Scheme sería la siguiente:
 </pre></div>
 </td></tr></table>
 
-#### Función `mi-list-tail`
-
-La función `(mi-list-tail lista n)` devuelve la lista resultante de
-quitar n elementos de la cabeza de la lista original:
-
+<h4>Función <code>mi-list-tail</code></h4>
+<p>La función <code>(mi-list-tail lista n)</code> devuelve la lista resultante de
+quitar n elementos de la cabeza de la lista original:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">mi-list-tail</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ (3 4 5 6 7)</span>
 </pre></div>
 </td></tr></table>
 
-Piensa en cómo se implementaría de forma recursiva. Esta vez vamos a
+<p>Piensa en cómo se implementaría de forma recursiva. Esta vez vamos a
 mostrar directamente la implementación, sin dar explicaciones de cómo
-se ha llegado a ella:
-
+se ha llegado a ella:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -3241,52 +3318,53 @@ se ha llegado a ella:
 </pre></div>
 </td></tr></table>
 
-#### Función `mi-append` 
-
-Veamos ahora cómo podríamos implementar de forma recursiva la función
-`append` que une dos listas. La llamaremos `(mi-append lista1
-lista2)`.
-
-Por ejemplo:
-
+<h4>Función <code>mi-append</code></h4>
+<p>Veamos ahora cómo podríamos implementar de forma recursiva la función
+<code>append</code> que une dos listas. La llamaremos <code>(mi-append lista1
+lista2)</code>.</p>
+<p>Por ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">mi-append</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">))</span> <span class="c1">; ⇒ (a b c d e f)</span>
 </pre></div>
 </td></tr></table>
 
-Para resolver el problema de forma recursiva, haremos el `cdr` de la
-primera lista, llamaremos a la recursión para que una el resultado con
-la segunda lista`:
+<p>Para resolver el problema de forma recursiva, debemos confiar en la
+recursión para que resuelva un problema más sencillo y después
+terminar de arreglar el resultado devuelto por la recursión.</p>
+<p>En este caso, podemos pasarle a la recursión un problema más sencillo
+quitando el primer elemento de la primera lista (con la función
+<code>cdr</code>) y llamando a la recursión para que concatene esta lista más pequeña
+con la segunda. Confiamos en que la recursión funciona correctamente y
+nos devuelve la concatenación de ambas listas</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(mi-append (cdr &#39;(a b c)) &#39;(d e f)) =&gt; (b c d e f)
+</pre></div>
+</td></tr></table>
 
+<p>Y añadiremos el primer elemento a la lista resultante usando un <code>cons</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">(mi-append (cdr &#39;(a b c)) &#39;(d e f)) =</span>
-<span class="err">(mi-append &#39;(b c) &#39;(d e f) = (b c d e f)</span>
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(mi-append &#39;(a b c) &#39;(d e f)) = 
+(cons &#39;a (mi-append &#39;(b c)) &#39;(d e f)) =
+(cons &#39;a &#39;(b c d e f)) = 
+(a b c d e f)
 </pre></div>
 </td></tr></table>
 
-Y añadiremos el primer elemento a la lista resultante usando un `cons`:
-
+<p>En general:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">(cons (car &#39;(a b c)) (mi-append (cdr &#39;(a b c)) &#39;(d e f))) =</span>
-<span class="err">(cons &#39;a &#39;(b c d e f)) = (a b c d e f)</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-append</span> <span class="n">lista1</span> <span class="n">lista2</span><span class="p">)</span> 
+   <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista1</span><span class="p">)</span> <span class="p">(</span><span class="n">mi-append</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista1</span><span class="p">)</span> <span class="n">lista2</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
-En general:
-
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">(mi-append lista1 lista2) = (cons (car lista1) (mi-append (cdr lista1) lista2))</span>
+<p>El caso base, el caso en el que la función puede devolver un valor
+directamente sin llamar a la recursión, es aquel en el que <code>lista1</code> es
+<code>null?</code>. En ese caso devolvemos <code>lista2</code>:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(mi-append &#39;() &#39;(a b c)) =&gt; &#39;(a b c)
 </pre></div>
 </td></tr></table>
 
-El caso base, el caso en el que la función puede devolver un valor
-directamente sin llamar a la recursión, es aquel en el que `lista1` es
-`null?`. En ese caso devolvemos `lista2`:
-
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">mi-append</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">))</span> <span class="nb">=</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
-
-La formulación recursiva completa queda como sigue:
-
+<p>La formulación recursiva completa queda como sigue:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -3299,33 +3377,27 @@ La formulación recursiva completa queda como sigue:
 </pre></div>
 </td></tr></table>
 
-#### Función `mi-reverse`
-
-Veamos cómo implementar de forma recursiva la función `mi-reverse` que
-invierte una lista
-
+<h4>Función <code>mi-reverse</code></h4>
+<p>Veamos cómo implementar de forma recursiva la función <code>mi-reverse</code> que
+invierte una lista</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">mi-reverse</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ (6 5 4 3 2 1)</span>
 </pre></div>
 </td></tr></table>
 
-La idea es sencilla: llamamos a la recursión para hacer la inversa del
-`cdr` de la lista y añadimos el primer elemento a la lista resultante
-que devuelve ya invertida la llamada recursiva.
-
-Podemos definir una función auxiliar `(añade-al-final dato lista)` que
-añade un dato al final de una lista usando `append`:
-
-Veamos directamente su implementación, usando `mi-append` para añadir
-un elemento al final de la lista:
-
+<p>La idea es sencilla: llamamos a la recursión para hacer la inversa del
+<code>cdr</code> de la lista y añadimos el primer elemento a la lista resultante
+que devuelve ya invertida la llamada recursiva.</p>
+<p>Podemos definir una función auxiliar <code>(añade-al-final dato lista)</code> que
+añade un dato al final de una lista usando <code>append</code>:</p>
+<p>Veamos directamente su implementación, usando <code>mi-append</code> para añadir
+un elemento al final de la lista:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">añade-al-final</span> <span class="n">dato</span> <span class="n">lista</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">append</span> <span class="n">lista</span> <span class="p">(</span><span class="nb">list</span> <span class="n">dato</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
-La función `mi-reverse` quedaría entonces como sigue:
-
+<p>La función <code>mi-reverse</code> quedaría entonces como sigue:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-reverse</span> <span class="n">lista</span><span class="p">)</span>
@@ -3334,19 +3406,18 @@ La función `mi-reverse` quedaría entonces como sigue:
 </pre></div>
 </td></tr></table>
 
-#### Función `cuadrados-hasta`
+<h4>Función <code>cuadrados-hasta</code></h4>
+<p>La función <code>(cuadrados-hasta x)</code> devuelve una lista con los cuadrados
+de los números hasta <code>x</code>:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Para construir una lista de los cuadrados hasta x:
+   construyo la lista de los cuadrados hasta x-1 y le añado el cuadrado de x
+</pre></div>
+</td></tr></table>
 
-La función `(cuadrados-hasta x)` devuelve una lista con los cuadrados
-de los números hasta x:
-
-> Para construir una lista de los cuadrados hasta x, añado el cuadrado
-> de x a la lista de los cuadrados hasta x-1
-
-El caso base de la recursión es el caso en el que x es 1, entonces
-devolvemos una lista formada por el 1.
-
-En Scheme:
-
+<p>El caso base de la recursión es el caso en el que <code>x</code> es 1, entonces
+devolvemos una lista formada por el 1.</p>
+<p>En Scheme:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -3359,21 +3430,17 @@ En Scheme:
 </pre></div>
 </td></tr></table>
 
-Ejemplo:
-
+<p>Ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">cuadrados-hasta</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ (100 81 64 49 36 25 16 9 4 1)</span>
 </pre></div>
 </td></tr></table>
 
-#### Función `filtra-pares`
-
-Es muy habitual recorrer una lista y comprobar condiciones de sus
+<h4>Función <code>filtra-pares</code></h4>
+<p>Es muy habitual recorrer una lista y comprobar condiciones de sus
 elementos, construyendo una lista con los que cumplan una determinada
-condición.
-
-Por ejemplo, la siguiente función `filtra-pares` construye una lista
-con los números pares de la lista que le pasamos como parámetro:
-
+condición.</p>
+<p>Por ejemplo, la siguiente función <code>filtra-pares</code> construye una lista
+con los números pares de la lista que le pasamos como parámetro:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -3388,24 +3455,25 @@ con los números pares de la lista que le pasamos como parámetro:
 </pre></div>
 </td></tr></table>
 
-Ejemplo:
-
+<p>En el caso general, llamamos de forma recursiva a la función para que
+filtre el <code>cdr</code> de la lista. Y le añadimos el primer elemento si es
+par.</p>
+<p>Cada vez llamaremos a la recursión con una lista más pequeña, por lo
+que en el caso base tendremos que comprobar si la lista que
+recibimos. En ese caso devolvemos la lista vacía.</p>
+<p>Ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">filtra-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ (2 4 6)</span>
 </pre></div>
 </td></tr></table>
 
-#### Función `primo?`
-
-El uso de listas es uno de los elementos fundamentales de la
-programación funcional.
-
-Como ejemplo, vamos a ver cómo trabajar con listas para construir una
+<h4>Función <code>primo?</code></h4>
+<p>El uso de listas es uno de los elementos fundamentales de la
+programación funcional.</p>
+<p>Como ejemplo, vamos a ver cómo trabajar con listas para construir una
 función que calcula si un número es primo. La forma de hacerlo será
 calcular la lista de divisores del número y comprobar si su longitud
-es dos. En ese caso será primo.
-
-Por ejemplo:
-
+es dos. En ese caso será primo.</p>
+<p>Por ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">divisores</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">; ⇒ (1 2 4 8) longitud = 4, no primo</span>
@@ -3414,8 +3482,7 @@ Por ejemplo:
 </pre></div>
 </td></tr></table>
 
-Podemos definir entonces la función `(primo? x)` de la siguiente forma:
-
+<p>Podemos definir entonces la función <code>(primo? x)</code> de la siguiente forma:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">primo?</span> <span class="n">x</span><span class="p">)</span>
@@ -3424,15 +3491,14 @@ Podemos definir entonces la función `(primo? x)` de la siguiente forma:
 </pre></div>
 </td></tr></table>
 
-¿Cómo implementamos la función `(divisores x)` que nos devuelve la
-lista de los divisores de un número `x`. Vamos a construirla de la
-siguiente forma:
-
-1. Creamos una lista de todos los números del 1 a x
-2. Filtramos la lista para dejar los divisores de x
-
-La función `(lista-hasta x)` devuelve una lista de números 1..x:
-
+<p>¿Cómo implementamos la función <code>(divisores x)</code> que nos devuelve la
+lista de los divisores de un número <code>x</code>. Vamos a construirla de la
+siguiente forma:</p>
+<ol>
+<li>Creamos una lista de todos los números del 1 a x</li>
+<li>Filtramos la lista para dejar los divisores de x</li>
+</ol>
+<p>La función <code>(lista-hasta x)</code> devuelve una lista de números 1..x:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -3443,36 +3509,32 @@ La función `(lista-hasta x)` devuelve una lista de números 1..x:
 </pre></div>
 </td></tr></table>
 
-Ejemplos:
-
+<p>Ejemplos:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">lista-hasta</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ (1 2)</span>
 <span class="p">(</span><span class="n">lista-hasta</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ (1 2 3 4 5 6 7 8 9 10)</span>
 </pre></div>
 </td></tr></table>
 
-Definimos la función `(divisor? x y)` que nos diga si x es divisor de
-y:
-
+<p>Definimos la función <code>(divisor? x y)</code> que nos diga si x es divisor de
+y:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">divisor?</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
       <span class="p">(</span><span class="nb">=</span> <span class="mi">0</span> <span class="p">(</span><span class="n">mod</span> <span class="n">y</span> <span class="n">x</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
-Ejemplos:
-
+<p>Ejemplos:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">divisor</span> <span class="mi">2</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="n">divisor</span> <span class="mi">3</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
 </pre></div>
 </td></tr></table>
 
-Una vez que hemos definido La función `divisor?` podemos utilizarla
-para definir la función recursiva `(filtra-divisores lista x)` que
-devuelve una lista con los números de `lista` que son divisores de
-`x`:
-
+<p>Una vez que hemos definido La función <code>divisor?</code> podemos utilizarla
+para definir la función recursiva <code>(filtra-divisores lista x)</code> que
+devuelve una lista con los números de <code>lista</code> que son divisores de
+<code>x</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -3487,82 +3549,67 @@ devuelve una lista con los números de `lista` que son divisores de
 </pre></div>
 </td></tr></table>
 
-Ya podemos implementar la función que devuelve los divisores de un
-número `x` generando los números hasta `x` y filtrando los divisores
-de ese número. Por ejemplo, para calcular los divisores de 10:
-
+<p>Ya podemos implementar la función que devuelve los divisores de un
+número <code>x</code> generando los números hasta <code>x</code> y filtrando los divisores
+de ese número. Por ejemplo, para calcular los divisores de 10:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">filtra-divisores</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span> <span class="mi">9</span> <span class="mi">10</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ (1 2 5 10)</span>
 </pre></div>
 </td></tr></table>
 
-Se puede implementar de una forma muy sencilla:
-
+<p>Se puede implementar de una forma muy sencilla:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">divisores</span> <span class="n">x</span><span class="p">)</span>
    <span class="p">(</span><span class="n">filtra-divisores</span> <span class="p">(</span><span class="n">lista-hasta</span> <span class="n">x</span><span class="p">)</span> <span class="n">x</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
-Y una vez definida esta función, ya puede funcionar correctamente la
-función `primo?`.
-
-
-### Funciones con número variable de argumentos
-
-Hemos visto algunas funciones primitivas de Scheme, como `+` o `max`
+<p>Y una vez definida esta función, ya puede funcionar correctamente la
+función <code>primo?</code>.</p>
+<h3 id="funciones-con-numero-variable-de-argumentos">Funciones con número variable de argumentos<a class="headerlink" href="#funciones-con-numero-variable-de-argumentos" title="Permanent link">&para;</a></h3>
+<p>Hemos visto algunas funciones primitivas de Scheme, como <code>+</code> o <code>max</code>
 que admiten un número variable de argumentos. ¿Podemos hacerlo también
-en funciones definidas por nosotros?
-
-La respuesta es sí, utilizando lo que se denomina notación
-*dotted-tail* (punto-cola) para definir los parámetros de la
+en funciones definidas por nosotros?</p>
+<p>La respuesta es sí, utilizando lo que se denomina notación
+<em>dotted-tail</em> (punto-cola) para definir los parámetros de la
 función. En esta notación se coloca un punto antes del último
 parámetro. Los parámetros antes del punto (si existen) tendrán como
 valores los argumentos usados en la llamada y el resto de argumentos
-se pasarán en forma de lista en el último parámetro.
-
-Por ejemplo, si tenemos la definición
-
+se pasarán en forma de lista en el último parámetro.</p>
+<p>Por ejemplo, si tenemos la definición</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">funcion-dos-o-mas-args</span> <span class="n">x</span> <span class="n">y</span> <span class="o">.</span> <span class="n">lista-args</span><span class="p">)</span> 
     <span class="n">&lt;cuerpo&gt;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
-podemos llamar a la función anterior con dos o más argumentos:
-
+<p>podemos llamar a la función anterior con dos o más argumentos:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">funcion-dos-o-mas-args</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
-En la llamada, los parámetros `x` e `y` tomarán los valores 1 y 2. El
-parámetro `lista-args` tomará como valor una lista con los argumentos
-restantes `(3 4 5 6)`.
-
-También es posible permitir que todos los argumentos sean opcionales
-no poniendo ningún argumento antes del punto::
-
+<p>En la llamada, los parámetros <code>x</code> e <code>y</code> tomarán los valores 1 y 2. El
+parámetro <code>lista-args</code> tomará como valor una lista con los argumentos
+restantes <code>(3 4 5 6)</code>.</p>
+<p>También es posible permitir que todos los argumentos sean opcionales
+no poniendo ningún argumento antes del punto::</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">funcion-cualquier-numero-args</span> <span class="o">.</span> <span class="n">lista-args</span><span class="p">)</span> 
     <span class="n">&lt;cuerpo&gt;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
-Si hacemos la llamada
-
+<p>Si hacemos la llamada</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">funcion-cualquier-numero-args</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
-el parámetro `lista-args` tomará como valor la lista `(1 2 3 4 5 6)`.
-
-Veamos un sencillo ejemplo.
-
-Podemos implementar una función `mi-suma` que tome al menos dos
+<p>el parámetro <code>lista-args</code> tomará como valor la lista <code>(1 2 3 4 5 6)</code>.</p>
+<p>Veamos un sencillo ejemplo.</p>
+<p>Podemos implementar una función <code>mi-suma</code> que tome al menos dos
 argumentos y después un número variable de argumentos y devuelva la
 suma de todos ellos. Es muy sencillo: recogemos todos los argumentos
 en la lista de argumentos variables y llamamos a la función
-`suma-lista` que suma una lista de números:
-
+<code>suma-lista</code> que suma una lista de números:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -3573,80 +3620,54 @@ en la lista de argumentos variables y llamamos a la función
 </pre></div>
 </td></tr></table>
 
-## Funciones como tipos de datos de primera clase
-
-Hemos visto que la característica fundamental de la programación
+<h2 id="funciones-como-tipos-de-datos-de-primera-clase">Funciones como tipos de datos de primera clase<a class="headerlink" href="#funciones-como-tipos-de-datos-de-primera-clase" title="Permanent link">&para;</a></h2>
+<p>Hemos visto que la característica fundamental de la programación
 funcional es la definición de funciones. Hemos visto también que no
 producen efectos laterales y no tienen estado. Una función toma unos
-datos como entrada y produce un resultado como salida.
-
-Para simbolizar el hecho de que las funciones toman parámetros de
-entrada y devuelven una única salida, vamos a representar las
-funciones como un símbolo especial, una pequeña casa invertida con
-unas flechas en la parte superior que representan las entradas y una
-única flecha que representa la salida. Por ejemplo, podemos
-representar de la siguiente forma la función que eleva al cuadrado un
-número:
-
-<img src="imagenes/funcion-cuadrado.png" width="80px"/>
-
-También podemos representar la función que suma dos parejas:
-
-<img src="imagenes/esquema-suma-parejas.png" width="200px"/>
-
-Una de las características fundamentales de la programación funcional
-es considerar a las funciones como *objetos de primera
-clase*. Recordemos que un tipo de primera clase es aquel que:
-
-1. Puede ser asignado a una variable
-2. Puede ser pasado como argumento a una función
-3. Puede ser devuelto como resultado de una invocación a una función
-4. Puede ser parte de un tipo mayor
-
-Vamos a ver que las funciones son ejemplos de todos los casos
+datos como entrada y produce un resultado como salida.</p>
+<p>Una de las características fundamentales de la programación funcional
+es considerar a las funciones como <em>objetos de primera
+clase</em>. Recordemos que un tipo de primera clase es aquel que:</p>
+<ol>
+<li>Puede ser asignado a una variable</li>
+<li>Puede ser pasado como argumento a una función</li>
+<li>Puede ser devuelto como resultado de una invocación a una función</li>
+<li>Puede ser parte de un tipo mayor</li>
+</ol>
+<p>Vamos a ver que las funciones son ejemplos de todos los casos
 anteriores: vamos a poder crear funciones sin nombre y asignarlas a
 variables, pasarlas como parámetro de otras funciones, devolverlas
 como resultado de invocar a otra función y guardarlas en
-tipos de datos compuestos como listas.
-
-La posibilidad de usar funciones como objetos de primera clase es una
+tipos de datos compuestos como listas.</p>
+<p>La posibilidad de usar funciones como objetos de primera clase es una
 característica fundamental de los lenguajes funcionales. Es una
 característica de muchos lenguajes multi-paradigma con características
 funcionales como
-[JavaScript](http://helephant.com/2008/08/19/functions-are-first-class-objects-in-javascript/),
-[Python](https://thenewcircle.com/static/bookshelf/python_fundamentals_tutorial/functional_programming.html),
-[Swift](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html)
+<a href="http://helephant.com/2008/08/19/functions-are-first-class-objects-in-javascript/">JavaScript</a>,
+<a href="https://thenewcircle.com/static/bookshelf/python_fundamentals_tutorial/functional_programming.html">Python</a>,
+<a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html">Swift</a>
 o a partir de la versión 8 de Java,
-[Java 8](http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html),
-(donde se denominan *expresiones lambda*).
-
-### Forma especial `lambda`
-
-Vamos a empezar explicando la forma especial `lambda` de Scheme, que
-nos permite crear funciones anónimas en tiempo de ejecución.
-
-De la misma forma que podemos usar cadenas o enteros sin darles un
+<a href="http://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html">Java 8</a>,
+(donde se denominan <em>expresiones lambda</em>).</p>
+<h3 id="forma-especial-lambda">Forma especial <code>lambda</code><a class="headerlink" href="#forma-especial-lambda" title="Permanent link">&para;</a></h3>
+<p>Vamos a empezar explicando la forma especial <code>lambda</code> de Scheme, que
+nos permite crear funciones anónimas en tiempo de ejecución.</p>
+<p>De la misma forma que podemos usar cadenas o enteros sin darles un
 nombre, en Scheme es posible usar una función sin darle un
-nombre mediante esta forma especial.
-
-#### Sintaxis de la forma especial `lambda`
-
-La sintaxis de la forma especial `lambda` es:
-
+nombre mediante esta forma especial.</p>
+<h4>Sintaxis de la forma especial <code>lambda</code></h4>
+<p>La sintaxis de la forma especial <code>lambda</code> es:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">(lambda (&lt;arg1&gt; ... &lt;argn&gt;) </span>
-<span class="err">    &lt;cuerpo&gt;)</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(lambda (&lt;arg1&gt; ... &lt;argn&gt;) 
+    &lt;cuerpo&gt;)
 </pre></div>
 </td></tr></table>
 
-El cuerpo del lambda define un *bloque de código* y sus argumentos son
+<p>El cuerpo del lambda define un <em>bloque de código</em> y sus argumentos son
 los parámetros necesarios para ejecutar ese bloque de código. Llamamos
-a la función resultante una *función anónima*.
-
-Algunos ejemplos:
-
-Una función anónima que suma dos parejas:
-
+a la función resultante una <em>función anónima</em>.</p>
+<p>Algunos ejemplos:</p>
+<p>Una función anónima que suma dos parejas:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">p1</span> <span class="n">p2</span><span class="p">)</span>
@@ -3655,8 +3676,7 @@ Una función anónima que suma dos parejas:
 </pre></div>
 </td></tr></table>
 
-Una función anónima que devuelve el mayor de dos números:
-
+<p>Una función anónima que devuelve el mayor de dos números:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -3667,100 +3687,82 @@ Una función anónima que devuelve el mayor de dos números:
 </pre></div>
 </td></tr></table>
 
-#### Semántica de la forma especial `lambda`
-
-La invocación a la forma especial `lambda` construye una función
-anónima en tiempo de ejecución.
-
-Por ejemplo, si ejecutamos una expresión lambda en el intérprete
-veremos que devuelve un procedimiento:
-
+<h4>Semántica de la forma especial <code>lambda</code></h4>
+<p>La invocación a la forma especial <code>lambda</code> construye una función
+anónima en tiempo de ejecución.</p>
+<p>Por ejemplo, si ejecutamos una expresión lambda en el intérprete
+veremos que devuelve un procedimiento:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span> <span class="c1">; ⇒ #&lt;procedure&gt;</span>
 </pre></div>
 </td></tr></table>
 
-El procedimiento construido es un bloque de código que devuelve el
-cuadrado de un número.
-
-¿Qué podemos hacer con este procedimiento? 
-
-Podemos asignarlo a un identificador. Por ejemplo, en la siguiente
-expresión, primero se evalúa la *expresión lambda* y el procedimiento
-resultante se asocia al identificador `f`.
-
+<p>El procedimiento construido es un bloque de código que devuelve el
+cuadrado de un número.</p>
+<p>¿Qué podemos hacer con este procedimiento? </p>
+<p>Podemos asignarlo a un identificador. Por ejemplo, en la siguiente
+expresión, primero se evalúa la <em>expresión lambda</em> y el procedimiento
+resultante se asocia al identificador <code>f</code>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">f</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
-El ejemplo anterior funciona de una forma idéntica al siguiente:
-
+<p>El ejemplo anterior funciona de una forma idéntica al siguiente:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">x</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
-En ambos casos se evalúa la expresión derecha y el resultado se guarda
+<p>En ambos casos se evalúa la expresión derecha y el resultado se guarda
 en un identificador. En el primer caso la expresión que se evalúa
-devuelve un procedimiento, que se guarda en la variable `f` y en el
-segundo un número, que se guarda en la variable `x`.
-
-Si escribimos los identificadores `f` y `x` en el intérprete Scheme los
-evalúa y muestra los valores guardados:
-
+devuelve un procedimiento, que se guarda en la variable <code>f</code> y en el
+segundo un número, que se guarda en la variable <code>x</code>.</p>
+<p>Si escribimos los identificadores <code>f</code> y <code>x</code> en el intérprete Scheme los
+evalúa y muestra los valores guardados:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">f</span> <span class="c1">; ⇒ #&lt;procedure:f&gt;</span>
 <span class="n">x</span> <span class="c1">; ⇒ 5</span>
 </pre></div>
 </td></tr></table>
 
-En el primer caso se devuelve un procedimiento y en el segundo un
+<p>En el primer caso se devuelve un procedimiento y en el segundo un
 número. Fíjate que Scheme trata a los procedimientos y a los números
-de la misma forma; son lo que se denominan datos de primera clase.
-
-Una vez asignado un procedimiento a un identificador, lo podemos
+de la misma forma; son lo que se denominan datos de primera clase.</p>
+<p>Una vez asignado un procedimiento a un identificador, lo podemos
 utilizar como de la misma forma que invocamos habitualmente a una
-función:
-
+función:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">f</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 9</span>
 </pre></div>
 </td></tr></table>
 
-No es necesario un identificador para invocar a una función; podemos
+<p>No es necesario un identificador para invocar a una función; podemos
 crear la función con una expresión lambda e invocar a la función
-anónima recién creada:
-
+anónima recién creada:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 9</span>
 </pre></div>
 </td></tr></table>
 
-La llamada a `lambda` crea un procedimiento y el paréntesis a su
-izquierda lo invoca con el parámetro 3:
-
+<p>La llamada a <code>lambda</code> crea un procedimiento y el paréntesis a su
+izquierda lo invoca con el parámetro 3:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span> <span class="mi">3</span><span class="p">)</span> <span class="nb">=</span> <span class="p">(</span><span class="n">#&lt;procedure&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="n">⇒</span> <span class="mi">9</span>
 </pre></div>
 </td></tr></table>
 
-Es importante remarcar que con `lambda` estamos creando una función en
-*tiempo de ejecución*. Es código que creamos para su posterior
-invocación.
-
-Cada lenguaje de programación tiene su sintaxis propia de expresiones
+<p>Es importante remarcar que con <code>lambda</code> estamos creando una función en
+<em>tiempo de ejecución</em>. Es código que creamos para su posterior
+invocación.</p>
+<p>Cada lenguaje de programación tiene su sintaxis propia de expresiones
 lambda. Por ejemplo, las siguientes expresiones crean una función que
-devuelve el cuadrado de un número:
-
-**Java 8**
-
+devuelve el cuadrado de un número:</p>
+<p><strong>Java 8</strong></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Integer</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="p">{</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
-**Scala**
-
+<p><strong>Scala</strong></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">(</span><span class="n">x</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="o">{</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">}</span>
 </pre></div>
 </td></tr></table>
 
-**Objective C**
-
+<p><strong>Objective C</strong></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -3771,29 +3773,24 @@ devuelve el cuadrado de un número:
 </pre></div>
 </td></tr></table>
 
-**Swift**
-
+<p><strong>Swift</strong></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span> <span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span> <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
-#### Identificadores y funciones
-
-Tras conocer `lambda` ya podemos explicarnos por qué cuando escribimos
+<h4>Identificadores y funciones</h4>
+<p>Tras conocer <code>lambda</code> ya podemos explicarnos por qué cuando escribimos
 en el intérprete de Scheme el nombre de una función, se evalúa a un
-*procedure*:
-
+<em>procedure</em>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">+</span> <span class="c1">; ⇒ &lt;procedure:+&gt;</span>
 </pre></div>
 </td></tr></table>
 
-El identificador se evalúa y devuelve el *objeto función* al que está
+<p>El identificador se evalúa y devuelve el <em>objeto función</em> al que está
 ligado. En Scheme los nombres de las funciones son realmente símbolos
-a los que están ligados *objetos de tipo función*.
-
-Podemos asignar funciones ya existentes a nuevos identificadores
-usando `define`, como en el ejemplo siguiente:
-
+a los que están ligados <em>objetos de tipo función</em>.</p>
+<p>Podemos asignar funciones ya existentes a nuevos identificadores
+usando <code>define</code>, como en el ejemplo siguiente:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nb">+</span> <span class="c1">; ⇒ &lt;procedure:+&gt;</span>
@@ -3802,56 +3799,47 @@ usando `define`, como en el ejemplo siguiente:
 </pre></div>
 </td></tr></table>
 
-Es muy importante darse cuenta que la expresión `(define suma +)` se
-evalúa de forma idéntica a `(define y x)`. Primero se evalúa el
-identificador `+`, que devuelve el *objeto función* suma, que se
-asigna a la variable `suma`. El resultado final es que tanto `+` como
-`suma` tienen como valor el mismo procedimiento:
-
-<img src="imagenes/suma.png" width="100px"/>
-
-La forma especial `define` para definir una función no es más que
-*azucar sintáctico*.
-
+<p>Es muy importante darse cuenta que la expresión <code>(define suma +)</code> se
+evalúa de forma idéntica a <code>(define y x)</code>. Primero se evalúa el
+identificador <code>+</code>, que devuelve el <em>objeto función</em> suma, que se
+asigna a la variable <code>suma</code>. El resultado final es que tanto <code>+</code> como
+<code>suma</code> tienen como valor el mismo procedimiento:</p>
+<p><img src="imagenes/suma.png" width="100px"/></p>
+<p>La forma especial <code>define</code> para definir una función no es más que
+<em>azucar sintáctico</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">(define (&lt;nombre&gt; &lt;args&gt;)</span>
-<span class="err">    &lt;cuerpo&gt;)</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define (&lt;nombre&gt; &lt;args&gt;)
+    &lt;cuerpo&gt;)
 </pre></div>
 </td></tr></table>
 
-siempre se convierte internamente en:
-
+<p>siempre se convierte internamente en:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">(define &lt;nombre&gt; </span>
-<span class="err">    (lambda (&lt;args&gt;)</span>
-<span class="err">        &lt;cuerpo&gt;))</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(define &lt;nombre&gt; 
+    (lambda (&lt;args&gt;)
+        &lt;cuerpo&gt;))
 </pre></div>
 </td></tr></table>
 
-Por ejemplo
-
+<p>Por ejemplo</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
-es equivalente a:
-
+<p>es equivalente a:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">cuadrado</span> 
     <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
-#### Predicado `procedure?`
-
-Podemos comprobar si algo es una función utilizando el predicado de
-Scheme `procedure?`.
-
-Por ejemplo:
-
+<h4>Predicado <code>procedure?</code></h4>
+<p>Podemos comprobar si algo es una función utilizando el predicado de
+Scheme <code>procedure?</code>.</p>
+<p>Por ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -3862,35 +3850,29 @@ Por ejemplo:
 </pre></div>
 </td></tr></table>
 
-Hemos visto que las funciones pueden asignarse a variables. También
+<p>Hemos visto que las funciones pueden asignarse a variables. También
 cumplen las otras condiciones necesarias para ser consideradas objetos
-de primera clase.
-
-### Funciones argumentos de otras funciones 
-
-Hemos visto ya un ejemplo de cómo pasar una función como parámetro de
-otra. Veamos algún otro.
-
-Por ejemplo, podemos definir la función `aplica` que recibe una
-función en el parámetro `func` y dos valores en los parámetros `x` e
-`y` y devuelve el resultado de invocar a la función que pasamos como
-parámetro con `x` e `y`. La función que se pase como parámetro debe
-tener dos argumentos
-
-Para realizar la invocación a la función que se pasa como parámetro
-basta con usar `func` como su nombre. La función se ha ligado al
-nombre `func` en el momento de la invocación a `aplica`, de la misma
-forma que los argumentos se ligan a los parámetros `x` e `y`:
-
+de primera clase.</p>
+<h3 id="funciones-argumentos-de-otras-funciones">Funciones argumentos de otras funciones<a class="headerlink" href="#funciones-argumentos-de-otras-funciones" title="Permanent link">&para;</a></h3>
+<p>Hemos visto ya un ejemplo de cómo pasar una función como parámetro de
+otra. Veamos algún otro.</p>
+<p>Por ejemplo, podemos definir la función <code>aplica</code> que recibe una
+función en el parámetro <code>func</code> y dos valores en los parámetros <code>x</code> e
+<code>y</code> y devuelve el resultado de invocar a la función que pasamos como
+parámetro con <code>x</code> e <code>y</code>. La función que se pase como parámetro debe
+tener dos argumentos</p>
+<p>Para realizar la invocación a la función que se pasa como parámetro
+basta con usar <code>func</code> como su nombre. La función se ha ligado al
+nombre <code>func</code> en el momento de la invocación a <code>aplica</code>, de la misma
+forma que los argumentos se ligan a los parámetros <code>x</code> e <code>y</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">aplica</span> <span class="n">f</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
    <span class="p">(</span><span class="n">f</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
-Algunos ejemplos de invocación, usando funciones primitivas, funciones
-definidas y expresiones lambda:
-
+<p>Algunos ejemplos de invocación, usando funciones primitivas, funciones
+definidas y expresiones lambda:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -3913,10 +3895,9 @@ definidas y expresiones lambda:
 </pre></div>
 </td></tr></table>
 
-Otro ejemplo, la función `aplica-2` que toma dos funciones `f` y `g` y
-un argumento `x` y devuelve el resultado de aplicar `f` a lo que
-devuelve la invocación de `g` con `x`:
-
+<p>Otro ejemplo, la función <code>aplica-2</code> que toma dos funciones <code>f</code> y <code>g</code> y
+un argumento <code>x</code> y devuelve el resultado de aplicar <code>f</code> a lo que
+devuelve la invocación de <code>g</code> con <code>x</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -3935,6 +3916,7 @@ devuelve la invocación de `g` con `x`:
 </pre></div>
 </td></tr></table>
 
+<!---
 
 ### Generalización ###
 
