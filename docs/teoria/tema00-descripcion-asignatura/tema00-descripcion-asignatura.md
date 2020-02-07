@@ -226,6 +226,18 @@ contestación de un cuestionario.
   prácticas. Una vez comenzados los cuestionarios no será posible
   realizar cambios de grupo en las prácticas.
 
+### Comportamiento indebido en la realización de cuestionarios
+
+Cualquiera de las siguientes acciones se consideran un comportamiento
+indebido, y se penalizarán con la anulación de todos los cuestionarios
+del bloque temático:
+
+- Realizar un cuestionario fuera de tu grupo de prácticas.
+- Tener abiertas otras aplicaciones mientras se está realizando el
+  cuestionario.
+- Realizar fotografías o capturas de pantallas de las preguntas del
+  cuestionario. 
+
 ### Uso del software iTALC ###
 
 Durante el desarrollo de las sesiones prácticas es obligatorio usar el
