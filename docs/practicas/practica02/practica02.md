@@ -71,8 +71,8 @@ Ejemplos:
 
 c) Implementa la función `(contiene? cadena char)` que comprueba si
 una cadena contiene un carácter determinado. Debes usar la función
-`string->list` e implementar la función recursiva `(contiene-lista?
-lista dato)`.
+`string->list` e implementar la función auxiliar recursiva
+`(contiene-lista?  lista dato)`.
 
 Ejemplos:
 
