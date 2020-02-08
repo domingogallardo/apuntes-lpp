@@ -17,7 +17,7 @@ solución debe incluir:
 
 ### Ejercicio 1 ###
 
-a) Implementa la función recursiva `(mínimo lista)` que recibe una lista
+a.1) Implementa la función recursiva `(mínimo lista)` que recibe una lista
 con números como argumento y devuelve el menor número de la
 lista. Suponemos listas de 1 o más elementos.
 
@@ -44,6 +44,19 @@ Ejemplos:
 (minimo '(1 -1 3 -6 4)) ; ⇒ -6
 ```
 
+a.2) Vamos a investigar el funcionamiento de la recursión en la función
+`minimo`. Supongamos la siguiente llamada:
+
+```racket
+(minimo '(1 8 6 4 3)) ; ⇒ 1
+```
+
+- ¿Qué lista se pasa como parámetro a la primera llamada recursiva a
+  la función?
+- ¿Qué devuelve esa llamada recursiva?
+- ¿Qué argumentos se pasan a la función `menor` que devuelve el
+  resultado final (1)
+
 b) Implementa la función recursiva `(concatena lista-chars)` que recibe
 una lista de caracteres y devuelve la cadena resultante de
 concatenarlos.
@@ -52,35 +65,29 @@ Ejemplos:
 
 ```racket
 (concatena '(#\H #\o #\l #\a)) ; ⇒ "Hola"
-(concatena '(#\S #\c #\h #\e #\m #\e #\space #\m #\o #\l #\a))  ; ⇒ "Scheme mola"
+(concatena '(#\S #\c #\h #\e #\m #\e #\space #\m #\o #\l #\a))  
+; ⇒ "Scheme mola"
 ```
 
+c) Implementa la función `(contiene? cadena char)` que comprueba si
+una cadena contiene un carácter determinado. Debes usar la función
+`string->list` e implementar la función recursiva `(contiene-lista?
+lista dato)`.
+
+Ejemplos:
+
+```racket
+(contiene? "Hola" #\o) ; ⇒ #t
+(contiene? "Esto es una frase" #\space) ; ⇒ #t
+(contiene? "Hola" #\h) ; ⇒ #f
+```
 
 ### Ejercicio 2 ###
 
-a) Dado el siguiente _box & pointer_, escribe las sentencias en Scheme
-(usando el mínimo número de llamadas a `list` y `cons`) que definen a `p1`, `p2` y `p3`.
-
-<img src="imagenes/box-and-pointer.png" width="400px"/>
-
-b) Explica si `p1`, `p2` y `p3` son listas y cuántos elementos tienen
-(en el caso en que lo sean).
-
-c) Escribe las expresiones que:
-
-   1. devuelve 3 utilizando `p3`
-   2. devuelve 5 utilizando `p3` 
-
-d) Dado el siguiente diagrama caja y puntero, escribe las sentencias en
-Scheme (usando llamadas a `list` y `cons`) que definen `p4`.
-
-<img src="imagenes/box-and-pointer2.png" width="500px"/>
-
-### Ejercicio 3 
-
-a) Implementa la función `(binario-a-decimal lista-bits)` que reciba una lista de bits que representan
-un número en binario (el primer elemento será el bit más significativo) y devuelva el número decimal
-equivalente. 
+a) Implementa la función `(binario-a-decimal lista-bits)` que reciba
+una lista de bits que representan un número en binario (el primer
+elemento será el bit más significativo) y devuelva el número decimal
+equivalente.
 
 !!! Hint "Pista"
     Puedes utilizar la función `length`.
@@ -91,95 +98,87 @@ equivalente.
 (binario-a-decimal '(1 0)) ; ⇒ 2
 ```
 
-b) Implementa la función recursiva `(ordenada-decreciente? lista-nums)`
+b) Implementa la función recursiva `(ordenada-creciente? lista-nums)`
 que recibe como argumento una lista de números y devuelve `#t` si los
-números de la lista están ordenados de forma decreciente o `#f` en
+números de la lista están ordenados de forma creciente o `#f` en
 caso contrario. Suponemos listas de 1 o más elementos.
 
 ```racket
-(ordenada-decreciente? '(99 59 45 23 -1))  ; ⇒ #t
-(ordenada-decreciente? '(12 50 -1 293 1000))  ; ⇒ #f
-(ordenada-decreciente? '(3))  ; ⇒ #t
+(ordenada-creciente? '(-1 23 45 59 99))  ; ⇒ #t
+(ordenada-creciente? '(12 50 -1 293 1000))  ; ⇒ #f
+(ordenada-creciente? '(3))  ; ⇒ #t
 ```
 
+
+### Ejercicio 3 ###
+
+a.1) Dado el siguiente _box & pointer_, escribe la expresión en Scheme
+que define `p1` usando el mínimo número de llamadas a `list` y `cons`.
+
+<img src="imagenes/box-and-pointer.png" width="400px"/>
+
+a.2) Escribe las expresiones que devuelven 2 y 4 a partir de `p1`.
+
+b.1) Dado el siguiente diagrama caja y puntero, escribe la expresión en
+Scheme que define `p2` usando el mínimo número de llamadas a `list` y `cons`.
+
+<img src="imagenes/box-and-pointer2.png" width="500px"/>
+
+b.2) Escribe las expresiones que devuelven 9 y 2 a partir de `p2`.
 
 ### Ejercicio 4 ###
 
-Supongamos que queremos programar un juego de cartas. Lo primero que
-debemos hacer es definir una forma de representar las cartas y
-funciones que trabajen con esa representación. En este ejercicio vamos
-a implementar esas funciones.
+Vamos a programar una versión simplificada del _blackjack_
+o 21. Dos jugadores juegan un número de cartas y suman todos sus
+valores. Gana el que se acerque más al 21 sin pasarse.
 
-Representaremos una carta por un símbolo con dos letras: la primera
-indicará el palo de la carta y la segunda su número o figura.
+Representaremos las cartas como en la práctica 1, y podemos usar las
+funciones allí definidas para obtener su valor. Suponemos que el valor
+es el propio de la carta (no seguiremos la regla del juego original en
+el que las figuras valen 10).
 
-Por ejemplo:
+Cada jugador tendrá una lista de cartas y deberá indicar un número `n`
+que representa el número de cartas de esa lista con las que se queda.
 
-```racket
-(define tres-de-oros 'O3)
-(define as-de-copas 'CA)
-(define caballo-de-espadas 'EC)
-(define rey-de-bastos 'BR)
-```
+Tendremos que implementar la función `(blackjack cartas1 n1 cartas2 n2)`
+que recibe la lista de cartas del jugador 1, el número de cartas que
+se queda el jugador 1, la lista de cartas del jugador 2 y el número de cartas
+del jugador 2.
 
-Debemos definir la función `carta` que devuelve una pareja con el palo
-de la carta (un símbolo) y el valor correspondiente a su orden en el
-juego (una carta con mayor valor vencerá a otra con menor valor).
-
-Por ejemplo:
+Por ejemplo, supongamos las siguientes cartas del jugador 1 y del
+jugador 2:
 
 ```racket
-(carta 'CA) ; ⇒ {Copas . 10}
-(carta 'O2) ; ⇒ {Oros . 1}
-(carta 'BS) ; ⇒ {Bastos . 6} 
+(define cartas1 '(3O 5E AC 2B 5O 5C 4B))
+(define cartas2 '(CE AO 3B AC 2E SC 4C))
 ```
 
-Para calcular el palo y el valor definimos las siguientes listas, que
-dependen de la baraja y del juego.
+Supongamos que el jugador 1 se queda con 5 cartas de su lista y el
+jugador 2 con 3. Las primeras 5 cartas del jugador 1 suman 16 y las 3
+primeras cartas del jugador 2 suman 15. Ganaría el jugador 1.
 
 ```racket
-(define orden '(#\2 #\4 #\5 #\6 #\7 #\S #\C #\R #\3 #\A))
-(define palos '((#\O . Oros) (#\C . Copas) (#\E . Espadas) (#\B . Bastos)))
+(blackjack cartas1 5 cartas2 3) ; ⇒ 1
 ```
 
-La lista `orden` define el orden de las cartas, de menor a mayor. La
-lista `palos` define una lista de parejas que asocia un carácter con
-su correspondiente símbolo.
+La función `blackjack` devolverá 1 si gana el jugador 1, 2 si gana el
+jugador 2, 0 si empatan y -1 si los dos jugadores se pasan de 21.
 
-Estas dos listas nos permiten generalizar el juego de cartas. Si
-cambiáramos de baraja sólo tendríamos que usar otro orden y otros
-palos:
+Debes implementar la función `blackjack` y una función auxiliar
+recursiva que sea la que sume los valores de las `n` primeras cartas
+de una lista. Si `n` es mayor que el número de cartas, devolverá la
+suma de todas las cartas de la lista.
+
+Puedes definir cualquier otra función auxiliar que necesites.
+
+Otros ejemplos:
 
 ```racket
-;; Para baraja inglesa: (es un ejemplo, pero no se usa)
-;; Picas #\♠   Corazones #\♥   Diamantes #\♦   Tréboles #\♣
-;; Ace #\A     Jack #\J        Queen #\Q       King #\K      10 #\0
-;;(define orden '(#\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9 #\0 #\J #\Q #\K #\A))
-;;(define palos '((#\♠ . Picas) (#\♥ . Corazones) (#\♦ . Diamantes) (#\♣ . Tréboles)))
+(blackjack cartas1 5 cartas2 4) ; ⇒ 0
+(blackjack cartas1 3 cartas2 4) ; ⇒ 1
+(blackjack cartas1 3 cartas2 4) ; ⇒ 2
+(blackjack cartas1 7 cartas2 6) ; ⇒ -1
 ```
-
-Para realizar el ejercicio debes definir en primer lugar las funciones
-recursivas `(obten-palo char lista-palos)` y `(valora char
-lista-orden)` que devuelven el palo y el valor, dado un carácter y una
-lista de palos y una lista de orden de cartas.
-
-Deberán satisfacer, por ejemplo, las siguientes pruebas:
-
-```racket
-(check-equal? (obten-palo #\O palos) 'Oros)
-(check-equal? (obten-palo #\E palos) 'Espadas)
-(check-equal? (valora #\3 orden) 9)
-(check-equal? (valora #\S orden) 6)
-```
-
-!!! Hint "Pista"
-    Puedes utilizar las funciones `symbol->string simbolo` que convierte un
-    símbolo en una cadena y `string-ref cadena pos` que devuelve el
-    carácter de una cadena situado en una determinada posición.
-
-Y una vez definidas las funciones anteriores, debes definir la función
-`carta` que devuelve una pareja con el palo y el valor de una carta,
-tal y como se muestra en los ejemplos del comienzo del ejercicio.
 
 
 ### Ejercicio 5 ###
