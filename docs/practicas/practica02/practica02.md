@@ -175,7 +175,7 @@ Otros ejemplos:
 
 ```racket
 (blackjack cartas1 5 cartas2 4) ; ⇒ 0
-(blackjack cartas1 3 cartas2 4) ; ⇒ 1
+(blackjack cartas1 5 cartas2 3) ; ⇒ 1
 (blackjack cartas1 3 cartas2 4) ; ⇒ 2
 (blackjack cartas1 7 cartas2 6) ; ⇒ -1
 ```
