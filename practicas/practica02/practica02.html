@@ -36,7 +36,7 @@
     
     
       
-        <title>Práctica 2: Recursión, parejas y diagramas box-and-pointer - LPP</title>
+        <title>Práctica 2 - LPP</title>
       
     
     
@@ -109,7 +109,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Práctica 2: Recursión, parejas y diagramas box-and-pointer
+                Práctica 2
               
             </span>
           
@@ -272,10 +272,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Prácticas
@@ -296,6 +298,111 @@
     <a href="../practica01/practica01.html" title="Práctica 1" class="md-nav__link">
       Práctica 1
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Práctica 2
+      </label>
+    
+    <a href="practica02.html" title="Práctica 2" class="md-nav__link md-nav__link--active">
+      Práctica 2
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    Ejercicios
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" class="md-nav__link">
+    Ejercicio 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" class="md-nav__link">
+    Ejercicio 5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" class="md-nav__link">
+    Ejercicio 6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -416,7 +523,7 @@ solución debe incluir:</p>
 </ul>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
-<p>a) Implementa la función recursiva <code>(mínimo lista)</code> que recibe una lista
+<p>a.1) Implementa la función recursiva <code>(mínimo lista)</code> que recibe una lista
 con números como argumento y devuelve el menor número de la
 lista. Suponemos listas de 1 o más elementos.</p>
 <p>Para la implementación debes usar la función <code>menor</code> definida en la
@@ -441,34 +548,49 @@ primer elemento de la lista y el mínimo del resto de la lista.</p>
 </pre></div>
 </td></tr></table>
 
+<p>a.2) Vamos a investigar el funcionamiento de la recursión en la función
+<code>minimo</code>. Supongamos la siguiente llamada:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">minimo</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">8</span> <span class="mi">6</span> <span class="mi">4</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ 1</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>¿Qué lista se pasa como parámetro a la primera llamada recursiva a
+  la función?</li>
+<li>¿Qué devuelve esa llamada recursiva?</li>
+<li>¿Qué argumentos se pasan a la función <code>menor</code> que devuelve el
+  resultado final (1)</li>
+</ul>
 <p>b) Implementa la función recursiva <code>(concatena lista-chars)</code> que recibe
 una lista de caracteres y devuelve la cadena resultante de
 concatenarlos.</p>
 <p>Ejemplos:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">concatena</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\H</span> <span class="sc">#\o</span> <span class="sc">#\l</span> <span class="sc">#\a</span><span class="p">))</span> <span class="c1">; ⇒ &quot;Hola&quot;</span>
-<span class="p">(</span><span class="n">concatena</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\S</span> <span class="sc">#\c</span> <span class="sc">#\h</span> <span class="sc">#\e</span> <span class="sc">#\m</span> <span class="sc">#\e</span> <span class="sc">#\space</span> <span class="sc">#\m</span> <span class="sc">#\o</span> <span class="sc">#\l</span> <span class="sc">#\a</span><span class="p">))</span>  <span class="c1">; ⇒ &quot;Scheme mola&quot;</span>
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">concatena</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\H</span> <span class="sc">#\o</span> <span class="sc">#\l</span> <span class="sc">#\a</span><span class="p">))</span> <span class="c1">; ⇒ &quot;Hola&quot;</span>
+<span class="p">(</span><span class="n">concatena</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\S</span> <span class="sc">#\c</span> <span class="sc">#\h</span> <span class="sc">#\e</span> <span class="sc">#\m</span> <span class="sc">#\e</span> <span class="sc">#\space</span> <span class="sc">#\m</span> <span class="sc">#\o</span> <span class="sc">#\l</span> <span class="sc">#\a</span><span class="p">))</span>  
+<span class="c1">; ⇒ &quot;Scheme mola&quot;</span>
+</pre></div>
+</td></tr></table>
+
+<p>c) Implementa la función <code>(contiene? cadena char)</code> que comprueba si
+una cadena contiene un carácter determinado. Debes usar la función
+<code>string-&gt;list</code> e implementar la función recursiva <code>(contiene-lista?
+lista dato)</code>.</p>
+<p>Ejemplos:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">contiene?</span> <span class="s2">&quot;Hola&quot;</span> <span class="sc">#\o</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">contiene?</span> <span class="s2">&quot;Esto es una frase&quot;</span> <span class="sc">#\space</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">contiene?</span> <span class="s2">&quot;Hola&quot;</span> <span class="sc">#\h</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
 </pre></div>
 </td></tr></table>
 
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
-<p>a) Dado el siguiente <em>box &amp; pointer</em>, escribe las sentencias en Scheme
-(usando el mínimo número de llamadas a <code>list</code> y <code>cons</code>) que definen a <code>p1</code>, <code>p2</code> y <code>p3</code>.</p>
-<p><img src="imagenes/box-and-pointer.png" width="400px"/></p>
-<p>b) Explica si <code>p1</code>, <code>p2</code> y <code>p3</code> son listas y cuántos elementos tienen
-(en el caso en que lo sean).</p>
-<p>c) Escribe las expresiones que:</p>
-<ol>
-<li>devuelve 3 utilizando <code>p3</code></li>
-<li>devuelve 5 utilizando <code>p3</code> </li>
-</ol>
-<p>d) Dado el siguiente diagrama caja y puntero, escribe las sentencias en
-Scheme (usando llamadas a <code>list</code> y <code>cons</code>) que definen <code>p4</code>.</p>
-<p><img src="imagenes/box-and-pointer2.png" width="500px"/></p>
-<h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
-<p>a) Implementa la función <code>(binario-a-decimal lista-bits)</code> que reciba una lista de bits que representan
-un número en binario (el primer elemento será el bit más significativo) y devuelva el número decimal
-equivalente. </p>
+<p>a) Implementa la función <code>(binario-a-decimal lista-bits)</code> que reciba
+una lista de bits que representan un número en binario (el primer
+elemento será el bit más significativo) y devuelva el número decimal
+equivalente.</p>
 <div class="admonition hint">
 <p class="admonition-title">Pista</p>
 <p>Puedes utilizar la función <code>length</code>.</p>
@@ -481,98 +603,74 @@ equivalente. </p>
 </pre></div>
 </td></tr></table>
 
-<p>b) Implementa la función recursiva <code>(ordenada-decreciente? lista-nums)</code>
+<p>b) Implementa la función recursiva <code>(ordenada-creciente? lista-nums)</code>
 que recibe como argumento una lista de números y devuelve <code>#t</code> si los
-números de la lista están ordenados de forma decreciente o <code>#f</code> en
+números de la lista están ordenados de forma creciente o <code>#f</code> en
 caso contrario. Suponemos listas de 1 o más elementos.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">ordenada-decreciente?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">99</span> <span class="mi">59</span> <span class="mi">45</span> <span class="mi">23</span> <span class="mi">-1</span><span class="p">))</span>  <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">ordenada-decreciente?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span> <span class="mi">50</span> <span class="mi">-1</span> <span class="mi">293</span> <span class="mi">1000</span><span class="p">))</span>  <span class="c1">; ⇒ #f</span>
-<span class="p">(</span><span class="n">ordenada-decreciente?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>  <span class="c1">; ⇒ #t</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">ordenada-creciente?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">-1</span> <span class="mi">23</span> <span class="mi">45</span> <span class="mi">59</span> <span class="mi">99</span><span class="p">))</span>  <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">ordenada-creciente?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span> <span class="mi">50</span> <span class="mi">-1</span> <span class="mi">293</span> <span class="mi">1000</span><span class="p">))</span>  <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">ordenada-creciente?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>  <span class="c1">; ⇒ #t</span>
 </pre></div>
 </td></tr></table>
 
+<h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
+<p>a.1) Dado el siguiente <em>box &amp; pointer</em>, escribe la expresión en Scheme
+que define <code>p1</code> usando el mínimo número de llamadas a <code>list</code> y <code>cons</code>.</p>
+<p><img src="imagenes/box-and-pointer.png" width="400px"/></p>
+<p>a.2) Escribe las expresiones que devuelven 2 y 4 a partir de <code>p1</code>.</p>
+<p>b.1) Dado el siguiente diagrama caja y puntero, escribe la expresión en
+Scheme que define <code>p2</code> usando el mínimo número de llamadas a <code>list</code> y <code>cons</code>.</p>
+<p><img src="imagenes/box-and-pointer2.png" width="500px"/></p>
+<p>b.2) Escribe las expresiones que devuelven 9 y 2 a partir de <code>p2</code>.</p>
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
-<p>Supongamos que queremos programar un juego de cartas. Lo primero que
-debemos hacer es definir una forma de representar las cartas y
-funciones que trabajen con esa representación. En este ejercicio vamos
-a implementar esas funciones.</p>
-<p>Representaremos una carta por un símbolo con dos letras: la primera
-indicará el palo de la carta y la segunda su número o figura.</p>
-<p>Por ejemplo:</p>
+<p>Vamos a programar una versión simplificada del <em>blackjack</em>
+o 21. Dos jugadores juegan un número de cartas y suman todos sus
+valores. Gana el que se acerque más al 21 sin pasarse.</p>
+<p>Representaremos las cartas como en la práctica 1, y podemos usar las
+funciones allí definidas para obtener su valor. Suponemos que el valor
+es el propio de la carta (no seguiremos la regla del juego original en
+el que las figuras valen 10).</p>
+<p>Cada jugador tendrá una lista de cartas y deberá indicar un número <code>n</code>
+que representa el número de cartas de esa lista con las que se queda.</p>
+<p>Tendremos que implementar la función <code>(blackjack cartas1 n1 cartas2 n2)</code>
+que recibe la lista de cartas del jugador 1, el número de cartas que
+se queda el jugador 1, la lista de cartas del jugador 2 y el número de cartas
+del jugador 2.</p>
+<p>Por ejemplo, supongamos las siguientes cartas del jugador 1 y del
+jugador 2:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">cartas1</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">3O</span> <span class="ss">5E</span> <span class="ss">AC</span> <span class="ss">2B</span> <span class="ss">5O</span> <span class="ss">5C</span> <span class="ss">4B</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">cartas2</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">CE</span> <span class="ss">AO</span> <span class="ss">3B</span> <span class="ss">AC</span> <span class="ss">2E</span> <span class="ss">SC</span> <span class="ss">4C</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
+<p>Supongamos que el jugador 1 se queda con 5 cartas de su lista y el
+jugador 2 con 3. Las primeras 5 cartas del jugador 1 suman 16 y las 3
+primeras cartas del jugador 2 suman 15. Ganaría el jugador 1.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">blackjack</span> <span class="n">cartas1</span> <span class="mi">5</span> <span class="n">cartas2</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 1</span>
+</pre></div>
+</td></tr></table>
+
+<p>La función <code>blackjack</code> devolverá 1 si gana el jugador 1, 2 si gana el
+jugador 2, 0 si empatan y -1 si los dos jugadores se pasan de 21.</p>
+<p>Debes implementar la función <code>blackjack</code> y una función auxiliar
+recursiva que sea la que sume los valores de las <code>n</code> primeras cartas
+de una lista. Si <code>n</code> es mayor que el número de cartas, devolverá la
+suma de todas las cartas de la lista.</p>
+<p>Puedes definir cualquier otra función auxiliar que necesites.</p>
+<p>Otros ejemplos:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">tres-de-oros</span> <span class="o">&#39;</span><span class="ss">O3</span><span class="p">)</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">as-de-copas</span> <span class="o">&#39;</span><span class="ss">CA</span><span class="p">)</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">caballo-de-espadas</span> <span class="o">&#39;</span><span class="ss">EC</span><span class="p">)</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">rey-de-bastos</span> <span class="o">&#39;</span><span class="ss">BR</span><span class="p">)</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">blackjack</span> <span class="n">cartas1</span> <span class="mi">5</span> <span class="n">cartas2</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ 0</span>
+<span class="p">(</span><span class="n">blackjack</span> <span class="n">cartas1</span> <span class="mi">3</span> <span class="n">cartas2</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ 1</span>
+<span class="p">(</span><span class="n">blackjack</span> <span class="n">cartas1</span> <span class="mi">3</span> <span class="n">cartas2</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ 2</span>
+<span class="p">(</span><span class="n">blackjack</span> <span class="n">cartas1</span> <span class="mi">7</span> <span class="n">cartas2</span> <span class="mi">6</span><span class="p">)</span> <span class="c1">; ⇒ -1</span>
 </pre></div>
 </td></tr></table>
 
-<p>Debemos definir la función <code>carta</code> que devuelve una pareja con el palo
-de la carta (un símbolo) y el valor correspondiente a su orden en el
-juego (una carta con mayor valor vencerá a otra con menor valor).</p>
-<p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">carta</span> <span class="o">&#39;</span><span class="ss">CA</span><span class="p">)</span> <span class="c1">; ⇒ {Copas . 10}</span>
-<span class="p">(</span><span class="n">carta</span> <span class="o">&#39;</span><span class="ss">O2</span><span class="p">)</span> <span class="c1">; ⇒ {Oros . 1}</span>
-<span class="p">(</span><span class="n">carta</span> <span class="o">&#39;</span><span class="ss">BS</span><span class="p">)</span> <span class="c1">; ⇒ {Bastos . 6} </span>
-</pre></div>
-</td></tr></table>
-
-<p>Para calcular el palo y el valor definimos las siguientes listas, que
-dependen de la baraja y del juego.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">orden</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\2</span> <span class="sc">#\4</span> <span class="sc">#\5</span> <span class="sc">#\6</span> <span class="sc">#\7</span> <span class="sc">#\S</span> <span class="sc">#\C</span> <span class="sc">#\R</span> <span class="sc">#\3</span> <span class="sc">#\A</span><span class="p">))</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">palos</span> <span class="o">&#39;</span><span class="p">((</span><span class="sc">#\O</span> <span class="o">.</span> <span class="ss">Oros</span><span class="p">)</span> <span class="p">(</span><span class="sc">#\C</span> <span class="o">.</span> <span class="ss">Copas</span><span class="p">)</span> <span class="p">(</span><span class="sc">#\E</span> <span class="o">.</span> <span class="ss">Espadas</span><span class="p">)</span> <span class="p">(</span><span class="sc">#\B</span> <span class="o">.</span> <span class="ss">Bastos</span><span class="p">)))</span>
-</pre></div>
-</td></tr></table>
-
-<p>La lista <code>orden</code> define el orden de las cartas, de menor a mayor. La
-lista <code>palos</code> define una lista de parejas que asocia un carácter con
-su correspondiente símbolo.</p>
-<p>Estas dos listas nos permiten generalizar el juego de cartas. Si
-cambiáramos de baraja sólo tendríamos que usar otro orden y otros
-palos:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">;; Para baraja inglesa: (es un ejemplo, pero no se usa)</span>
-<span class="c1">;; Picas #\♠   Corazones #\♥   Diamantes #\♦   Tréboles #\♣</span>
-<span class="c1">;; Ace #\A     Jack #\J        Queen #\Q       King #\K      10 #\0</span>
-<span class="c1">;;(define orden &#39;(#\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9 #\0 #\J #\Q #\K #\A))</span>
-<span class="c1">;;(define palos &#39;((#\♠ . Picas) (#\♥ . Corazones) (#\♦ . Diamantes) (#\♣ . Tréboles)))</span>
-</pre></div>
-</td></tr></table>
-
-<p>Para realizar el ejercicio debes definir en primer lugar las funciones
-recursivas <code>(obten-palo char lista-palos)</code> y <code>(valora char
-lista-orden)</code> que devuelven el palo y el valor, dado un carácter y una
-lista de palos y una lista de orden de cartas.</p>
-<p>Deberán satisfacer, por ejemplo, las siguientes pruebas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">obten-palo</span> <span class="sc">#\O</span> <span class="n">palos</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">Oros</span><span class="p">)</span>
-<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">obten-palo</span> <span class="sc">#\E</span> <span class="n">palos</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">Espadas</span><span class="p">)</span>
-<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">valora</span> <span class="sc">#\3</span> <span class="n">orden</span><span class="p">)</span> <span class="mi">9</span><span class="p">)</span>
-<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">valora</span> <span class="sc">#\S</span> <span class="n">orden</span><span class="p">)</span> <span class="mi">6</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
-
-<div class="admonition hint">
-<p class="admonition-title">Pista</p>
-<p>Puedes utilizar las funciones <code>symbol-&gt;string simbolo</code> que convierte un
-símbolo en una cadena y <code>string-ref cadena pos</code> que devuelve el
-carácter de una cadena situado en una determinada posición.</p>
-</div>
-<p>Y una vez definidas las funciones anteriores, debes definir la función
-<code>carta</code> que devuelve una pareja con el palo y el valor de una carta,
-tal y como se muestra en los ejemplos del comienzo del ejercicio.</p>
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
 <p>a) Implementa las funciones <code>(suma-izq pareja n)</code> y <code>(suma-der pareja n)</code>
 definidas de la siguiente forma:</p>
@@ -640,6 +738,27 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../practica01/practica01.html" title="Práctica 1" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Práctica 1
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
