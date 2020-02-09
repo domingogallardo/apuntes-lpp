@@ -97,10 +97,7 @@ Vamos a ver cómo se implementan de forma recursiva:
     devuelvo el `car` de la lista.
     ```
 
-- Implementación en Scheme (incluimos un segundo caso base en el que
-  se intenta obtener la posición de una lista vacía; se llegaría a
-  este caso si la posición que pedimos es mayor que el número de
-  elementos de la lista):
+- Implementación en Scheme:
 
     ```racket
     (define (mi-list-ref lista n)
@@ -273,7 +270,7 @@ Vamos a ver cómo se implementan de forma recursiva:
         (cond
             ((null? lista) '())
             ((even? (car lista))
-            (cons (car lista) (filtra-pares (cdr lista))))
+                (cons (car lista) (filtra-pares (cdr lista))))
             (else (filtra-pares (cdr lista)))))
     ```
 
@@ -342,8 +339,8 @@ Vamos a ver cómo se implementan de forma recursiva:
        (cond
           ((null? lista) '())
           ((divisor? (car lista) x)
-           (cons (car lista)
-                 (filtra-divisores (cdr lista) x)))
+             (cons (car lista)
+                   (filtra-divisores (cdr lista) x)))
           (else (filtra-divisores (cdr lista) x))))
     ```
 
@@ -400,7 +397,7 @@ Vamos a ver cómo se implementan de forma recursiva:
 - El parámetro `lista-args` tomará como valor una lista con los
   argumentos restantes `(3 4 5 6)`.
 - También es posible permitir que todos los argumentos sean opcionales
-  no poniendo ningún argumento antes del punto::
+  no poniendo ningún argumento antes del punto:
 
     ```racket
     (define (funcion-cualquier-numero-args . lista-args) 
@@ -415,7 +412,7 @@ Vamos a ver cómo se implementan de forma recursiva:
             (+ x y)
             (+ x (+ y (suma-lista lista-nums)))))
     ```
-
+¿Las funciones con número variable de argumentos pueden ser recursivas? 
 
 <p style="margin-bottom:1cm;"></p>
 ----
@@ -449,8 +446,8 @@ Con funciones:
 
 ### Forma especial `lambda`
 
-- Cualquier objeto de primera clase de un lenguaje debe poderse ser
-  creado de forma anónima, sin asignarle un nombre. Por ejemplo, en la
+- Cualquier objeto de primera clase de un lenguaje debe poderse
+  crear de forma anónima, sin asignarle un nombre. Por ejemplo, en la
   expresión:
   
     ```racket
