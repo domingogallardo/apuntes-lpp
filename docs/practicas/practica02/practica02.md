@@ -84,7 +84,7 @@ Ejemplos:
 
 ### Ejercicio 2 ###
 
-a) Implementa la función `(binario-a-decimal lista-bits)` que reciba
+a) Implementa la función recursiva `(binario-a-decimal lista-bits)` que reciba
 una lista de bits que representan un número en binario (el primer
 elemento será el bit más significativo) y devuelva el número decimal
 equivalente.
