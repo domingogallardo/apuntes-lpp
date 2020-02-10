@@ -523,7 +523,7 @@ solución debe incluir:</p>
 </ul>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
-<p>a.1) Implementa la función recursiva <code>(mínimo lista)</code> que recibe una lista
+<p>a.1) Implementa la función recursiva <code>(minimo lista)</code> que recibe una lista
 con números como argumento y devuelve el menor número de la
 lista. Suponemos listas de 1 o más elementos.</p>
 <p>Para la implementación debes usar la función <code>menor</code> definida en la
@@ -558,8 +558,8 @@ primer elemento de la lista y el mínimo del resto de la lista.</p>
 <li>¿Qué lista se pasa como parámetro a la primera llamada recursiva a
   la función?</li>
 <li>¿Qué devuelve esa llamada recursiva?</li>
-<li>¿Qué argumentos se pasan a la función <code>menor</code> que devuelve el
-  resultado final (1)</li>
+<li>¿Con qué argumentos se llama a la función <code>menor</code> que devuelve el
+  resultado final?</li>
 </ul>
 <p>b) Implementa la función recursiva <code>(concatena lista-chars)</code> que recibe
 una lista de caracteres y devuelve la cadena resultante de
@@ -617,7 +617,8 @@ caso contrario. Suponemos listas de 1 o más elementos.</p>
 
 <h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
 <p>a.1) Dado el siguiente <em>box &amp; pointer</em>, escribe la expresión en Scheme
-que define <code>p1</code> usando el mínimo número de llamadas a <code>list</code> y <code>cons</code>.</p>
+que define <code>p1</code> usando el mínimo número de llamadas a <code>list</code> y
+<code>cons</code>. No debes utilizar expresiones con <code>quote</code>.</p>
 <p><img src="imagenes/box-and-pointer.png" width="400px"/></p>
 <p>a.2) Escribe las expresiones que devuelven 2 y 4 a partir de <code>p1</code>.</p>
 <p>b.1) Dado el siguiente diagrama caja y puntero, escribe la expresión en
@@ -682,8 +683,8 @@ definidas de la siguiente forma:</p>
 </ul>
 <p>Ejemplos:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">suma-izq</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">10</span> <span class="mi">20</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1">; ⇒ {13 . 20}</span>
-<span class="p">(</span><span class="n">suma-der</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">10</span> <span class="mi">20</span><span class="p">)</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1">; ⇒ {10 . 25}</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">suma-izq</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">10</span> <span class="mi">20</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1">; ⇒ (13 . 20)</span>
+<span class="p">(</span><span class="n">suma-der</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">10</span> <span class="mi">20</span><span class="p">)</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1">; ⇒ (10 . 25)</span>
 </pre></div>
 </td></tr></table>
 
@@ -695,8 +696,8 @@ apartado anterior. También puedes utilizar las funciones predefinidas
 <code>even?</code> y <code>odd?</code>.</p>
 <p>Ejemplos:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">suma-impares-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">8</span> <span class="mi">7</span> <span class="mi">6</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ {16 . 20}</span>
-<span class="p">(</span><span class="n">suma-impares-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="mi">1</span> <span class="mi">5</span><span class="p">))</span>           <span class="c1">; ⇒ {9 . 0}</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">suma-impares-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">8</span> <span class="mi">7</span> <span class="mi">6</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ (6 . 20)</span>
+<span class="p">(</span><span class="n">suma-impares-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="mi">1</span> <span class="mi">5</span><span class="p">))</span>           <span class="c1">; ⇒ (9 . 0)</span>
 </pre></div>
 </td></tr></table>
 
@@ -707,13 +708,13 @@ y dicha longitud.  En el caso de que haya más de una cadena con la
 máxima longitud, se devolverá la última de ellas que aparezca en la
 lista.</p>
 <p>En el caso en que la lista sea vacía se devolverá la pareja con la
-cadena vacía y un 0 (la longitud de la lista vacía).</p>
+cadena vacía y un 0 (la longitud de la cadena vacía).</p>
 <p><strong>Pista</strong>: puedes utilizar la función <code>string-length</code></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">cadena-mayor</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;vamos&quot;</span> <span class="s2">&quot;a&quot;</span> <span class="s2">&quot;obtener&quot;</span> <span class="s2">&quot;la&quot;</span> <span class="s2">&quot;cadena&quot;</span> <span class="s2">&quot;mayor&quot;</span><span class="p">))</span> <span class="c1">; ⇒  {&quot;obtener&quot; . 7}</span>
-<span class="p">(</span><span class="n">cadena-mayor</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;prueba&quot;</span> <span class="s2">&quot;con&quot;</span> <span class="s2">&quot;maximo&quot;</span> <span class="s2">&quot;igual&quot;</span><span class="p">))</span> <span class="c1">; ⇒ {&quot;maximo&quot; . 6} </span>
-<span class="p">(</span><span class="n">cadena-mayor</span> <span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ {&quot;&quot; . 0} </span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">cadena-mayor</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;vamos&quot;</span> <span class="s2">&quot;a&quot;</span> <span class="s2">&quot;obtener&quot;</span> <span class="s2">&quot;la&quot;</span> <span class="s2">&quot;cadena&quot;</span> <span class="s2">&quot;mayor&quot;</span><span class="p">))</span> <span class="c1">; ⇒  (&quot;obtener&quot; . 7)</span>
+<span class="p">(</span><span class="n">cadena-mayor</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;prueba&quot;</span> <span class="s2">&quot;con&quot;</span> <span class="s2">&quot;maximo&quot;</span> <span class="s2">&quot;igual&quot;</span><span class="p">))</span> <span class="c1">; ⇒ (&quot;maximo&quot; . 6)</span>
+<span class="p">(</span><span class="n">cadena-mayor</span> <span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ (&quot;&quot; . 0)</span>
 </pre></div>
 </td></tr></table>
 
