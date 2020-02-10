@@ -17,7 +17,7 @@ solución debe incluir:
 
 ### Ejercicio 1 ###
 
-a.1) Implementa la función recursiva `(mínimo lista)` que recibe una lista
+a.1) Implementa la función recursiva `(minimo lista)` que recibe una lista
 con números como argumento y devuelve el menor número de la
 lista. Suponemos listas de 1 o más elementos.
 
@@ -54,8 +54,8 @@ a.2) Vamos a investigar el funcionamiento de la recursión en la función
 - ¿Qué lista se pasa como parámetro a la primera llamada recursiva a
   la función?
 - ¿Qué devuelve esa llamada recursiva?
-- ¿Qué argumentos se pasan a la función `menor` que devuelve el
-  resultado final (1)
+- ¿Con qué argumentos se llama a la función `menor` que devuelve el
+  resultado final?
 
 b) Implementa la función recursiva `(concatena lista-chars)` que recibe
 una lista de caracteres y devuelve la cadena resultante de
@@ -113,7 +113,8 @@ caso contrario. Suponemos listas de 1 o más elementos.
 ### Ejercicio 3 ###
 
 a.1) Dado el siguiente _box & pointer_, escribe la expresión en Scheme
-que define `p1` usando el mínimo número de llamadas a `list` y `cons`.
+que define `p1` usando el mínimo número de llamadas a `list` y
+`cons`. No debes utilizar expresiones con `quote`.
 
 <img src="imagenes/box-and-pointer.png" width="400px"/>
 
@@ -194,8 +195,8 @@ definidas de la siguiente forma:
 Ejemplos:
 
 ```racket
-(suma-izq (cons 10 20) 3)  ; ⇒ {13 . 20}
-(suma-der (cons 10 20) 5)  ; ⇒ {10 . 25}
+(suma-izq (cons 10 20) 3)  ; ⇒ (13 . 20)
+(suma-der (cons 10 20) 5)  ; ⇒ (10 . 25)
 ```
 
 b) Implementa la función recursiva `(suma-impares-pares lista-num)`
@@ -208,8 +209,8 @@ apartado anterior. También puedes utilizar las funciones predefinidas
 Ejemplos:
 
 ```racket
-(suma-impares-pares '(3 2 1 4 8 7 6 5)) ; ⇒ {16 . 20}
-(suma-impares-pares '(3 1 5))           ; ⇒ {9 . 0}
+(suma-impares-pares '(3 2 1 4 8 7 6 5)) ; ⇒ (6 . 20)
+(suma-impares-pares '(3 1 5))           ; ⇒ (9 . 0)
 ```
 
 ### Ejercicio 6 ###
@@ -221,14 +222,14 @@ máxima longitud, se devolverá la última de ellas que aparezca en la
 lista.
 
 En el caso en que la lista sea vacía se devolverá la pareja con la
-cadena vacía y un 0 (la longitud de la lista vacía).
+cadena vacía y un 0 (la longitud de la cadena vacía).
 
 **Pista**: puedes utilizar la función `string-length`
 
 ```racket
-(cadena-mayor '("vamos" "a" "obtener" "la" "cadena" "mayor")) ; ⇒  {"obtener" . 7}
-(cadena-mayor '("prueba" "con" "maximo" "igual")) ; ⇒ {"maximo" . 6} 
-(cadena-mayor '()) ; ⇒ {"" . 0} 
+(cadena-mayor '("vamos" "a" "obtener" "la" "cadena" "mayor")) ; ⇒  ("obtener" . 7)
+(cadena-mayor '("prueba" "con" "maximo" "igual")) ; ⇒ ("maximo" . 6)
+(cadena-mayor '()) ; ⇒ ("" . 0)
 ```
 
 
