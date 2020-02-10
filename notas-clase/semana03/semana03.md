@@ -64,7 +64,7 @@ Vamos a ver cómo se implementan de forma recursiva:
   lista (empezando a contar por 0). Un ejemplo concreto:
 
     ```racket
-    (mi-list-ref '(a b c d e f g) 4) ; ⇒ c
+    (mi-list-ref '(a b c d e f g) 4) ; ⇒ e
     ```
 
 - ¿Podemos formular `(mi-list-ref '(a b c d e f g) 4)` de forma
@@ -326,7 +326,7 @@ Vamos a ver cómo se implementan de forma recursiva:
 
 ```racket
 (define (divisor? x y)
-      (= 0 (mod y x)))
+      (= 0 (remainder y x)))
 ```
 
 
