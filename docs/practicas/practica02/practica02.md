@@ -209,7 +209,7 @@ apartado anterior. También puedes utilizar las funciones predefinidas
 Ejemplos:
 
 ```racket
-(suma-impares-pares '(3 2 1 4 8 7 6 5)) ; ⇒ (6 . 20)
+(suma-impares-pares '(3 2 1 4 8 7 6 5)) ; ⇒ (16 . 20)
 (suma-impares-pares '(3 1 5))           ; ⇒ (9 . 0)
 ```
 
