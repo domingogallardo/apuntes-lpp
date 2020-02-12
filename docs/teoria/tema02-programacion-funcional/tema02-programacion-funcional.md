@@ -3337,6 +3337,7 @@ devuelve la invocación de `g` con `x`:
 (aplica-2 suma-5 doble 3) ; ⇒ 11
 ```
 
+<!--
 
 ### Generalización ###
 
@@ -3428,7 +3429,9 @@ los números del 2 al 100:
 (sum-f-x (lambda (n) (/ n (- n 1))) 2 100)
 ```
 
-
+Veremos más adelante muchos más ejemplos de funciones pasadas como
+parámetros y de la generalidad que permite este patrón, cuando
+estudiemos las funciones de orden superior.
 
 ### Funciones que devuelven funciones
 
@@ -4333,6 +4336,7 @@ Entonces la función `(divisores n)` se implementaría de la siguiente forma:
             (divisor? x n)) (numeros-hasta n)))
 ```
 
+-->
 
 ## Bibliografía - SICP
 

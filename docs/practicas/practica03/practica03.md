@@ -10,7 +10,7 @@ solución debe incluir:
 
 - La **definición de las funciones** que resuelven el ejercicio.
 - Un conjunto de **pruebas** que comprueben su funcionamiento
-  utilizando la librería `schemeunit`. 
+  utilizando el API `RackUnit`.
 
 ## Ejercicio 1
 
@@ -31,7 +31,7 @@ Ejemplos:
 
 ```scheme
 (es-prefijo? "ante" "anterior") ; ⇒ #t
-(contiene-prefijo "ante" '("anterior" "antígona" "antena" "anatema")) ; ⇒ {#t #f #t #f}
+(contiene-prefijo "ante" '("anterior" "antígona" "antena" "anatema")) ; ⇒ (#t #f #t #f)
 ```
 
 
@@ -42,7 +42,7 @@ de insertar el número `n` en la posición correspondiente de la lista.
 Ejemplo:
 
 ```scheme
-(inserta 10 '(-8 2 3 11 20)) ; ⇒ {-8 2 3 10 11 20}
+(inserta 10 '(-8 2 3 11 20)) ; ⇒ (-8 2 3 10 11 20)
 ```
 
 Usando la función anterior `inserta` implementa la función recursiva
@@ -52,7 +52,7 @@ ordenada.
 Ejemplo:
 
 ```scheme
-(ordena '(2 -1 100 4 -6)) ; ⇒ {-6 -1 2 4 100}
+(ordena '(2 -1 100 4 -6)) ; ⇒ (-6 -1 2 4 100)
 ```
 
 
@@ -68,8 +68,8 @@ los resultados de las operaciones.
 Ejemplos:
 
 ```scheme
-(calcular-lista '(+ (2 . 3) * (4 . 5))) ; ⇒ {5 20}
-(calcular-lista '(/ (-6 . 2) - (4.5 . 0.5) + (2 . 3))) ; ⇒ {-3 4.0 5}
+(calcular-lista '(+ (2 . 3) * (4 . 5))) ; ⇒ (5 20)
+(calcular-lista '(/ (-6 . 2) - (4.5 . 0.5) + (2 . 3))) ; ⇒ (-3 4.0 5)
 ```
 
 
@@ -163,7 +163,7 @@ Ejemplo:
 
 ```scheme
 (expande '(#t . 3) '("LPP" . 2) '(b . 4)) 
-⇒ {#t #t #t "LPP" "LPP" b b b b}
+; ⇒ (#t #t #t "LPP" "LPP" b b b b)
 ```
 
 ### Ejercicio 5 ###
@@ -174,7 +174,7 @@ lista de parejas con el palo y el valor de cada una. Debes llamar a la
 función `(carta simbolo)` definida en la práctica anterior.
 
 ```scheme
-(cartas '(O3 B6 C2 OA)) ; ⇒ {{Oros . 9} {Bastos . 4} {Copas . 1} {Oros . 10}}
+(cartas '(O3 B6 C2 OA)) ; ⇒ ((Oros . 9) (Bastos . 4) (Copas . 1) (Oros . 10))
 ```
 
 b) Implementa la función recursiva `(cuenta-cartas valor
@@ -200,9 +200,9 @@ es al revés, y una X cuando los dos números son iguales.
     que reciba una pareja y devuelva 1, X o 2.
 
 ```scheme
-(resultados-quiniela '((1 . 2) (1 . 1) (0 . 2) (1 . 0) (0 . 0)))  ; ⇒ {2 X 2 1 X}
-(resultados-quiniela '((2 . 2))) ; ⇒ {X}
-(resultados-quiniela '((3 . 2) (1 . 0) (0 . 1)))  ; ⇒ {1 1 2}
+(resultados-quiniela '((1 . 2) (1 . 1) (0 . 2) (1 . 0) (0 . 0)))  ; ⇒ (2 X 2 1 X)
+(resultados-quiniela '((2 . 2))) ; ⇒ (X)
+(resultados-quiniela '((3 . 2) (1 . 0) (0 . 1)))  ; ⇒ (1 1 2)
 ```
 
 b) Implementa la función recursiva `(cuenta-resultados resultado lista-resultados)`
@@ -227,9 +227,9 @@ resultados original.
     incremente el número de la lista situado en la posición `n`.
 
 ```scheme
-(cuenta-resultados-lista '((1 . 2) (1 . 1) (0 . 2) (1 . 0) (0 . 0))) ; ⇒ {1 2 2}
-(cuenta-resultados-lista '((2 . 2))) ; ⇒ {0 1 0}
-(cuenta-resultados-lista '((1 . 0) (2 . 0) (0 . 1)))  ; ⇒ {2 0 1}
+(cuenta-resultados-lista '((1 . 2) (1 . 1) (0 . 2) (1 . 0) (0 . 0))) ; ⇒ (1 2 2)
+(cuenta-resultados-lista '((2 . 2))) ; ⇒ (0 1 0)
+(cuenta-resultados-lista '((1 . 0) (2 . 0) (0 . 1)))  ; ⇒ (2 0 1)
 ```
 
 
@@ -248,7 +248,7 @@ Ejemplo:
 
 ```scheme
 (filtra-simbolos '(este es un ejercicio de examen) '(2 1 2 9 1 6))
-; ⇒ {{un . 2} {ejercicio . 9} {examen . 6}}
+; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))
 ```
 
 
