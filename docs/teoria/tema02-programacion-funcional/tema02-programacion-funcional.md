@@ -1875,6 +1875,121 @@ Con todo junto, la recursión quedaría como sigue:
 	   (+ (car lista) (suma-lista (cdr lista)))))
 ```
 
+#### Función recursiva `longitud`
+
+Veamos cómo definir la función recursiva que devuelve la longitud de
+una lista, el número de elementos que contiene.
+
+Comencemos como siempre con un ejemplo:
+
+```racket
+(longitud '(a b c d e)) ; ⇒ 5
+```
+
+Suponiendo que la función `longitud` funciona correctamente, ¿cómo
+podríamos formular el caso general de la recursión? ¿cómo podríamos
+llamar a la recursión con un problema más pequeño y cómo podemos
+aprovechar el resultado de esta llamada para obtener el resultado
+final?
+
+En este caso es bastante sencillo. Si a la lista le quitamos un
+elemento, cuando llamemos a la recursión nos va a devolver la longitud
+original menos uno. En este caso:
+
+```racket
+(longitud (cdr '(a b c d e))) ; ⇒
+(longitud '(b c d e )) ⇒ (confiamos en la recursión) 4
+```
+
+De esta forma, para conseguir la longitud de la lista inicial, sólo
+habría que sumarle 1 a lo que nos devuelve la llamada
+recursiva. 
+
+Si expresamos en Scheme este caso general:
+
+```racket
+; Sólo se define el caso general, falta el caso base
+(define (longitud lista)
+    (+ (longitud (cdr lista)) 1))
+```
+
+Para definir el caso base debemos preguntarnos cuál es el caso más
+simple que le podemos pasar a la función. Si en cada llamada recursiva
+vamos reduciendo la longitud de la lista, el caso base recibirá la
+lista vacía. ¿Cuál es la longitud de una lista vacía? Una lista vacía
+no tiene elementos, por lo que es 0. 
+
+De esta forma completamos la definición de la función:
+
+```racket
+(define (longitud lista)
+    (if (null? lista)
+        0
+        (+ (longitud (cdr lista)) 1)))
+```
+
+
+En Scheme existe la función `length` que hace lo mismo. Devuelve la
+longitud de una lista:
+
+```racket
+(length '(a b c d e)) ; ⇒ 5
+```
+
+
+#### Cómo comprobar si una lista tiene un único elemento ####
+
+En el caso base de algunas funciones recursivas es necesario comprobar
+que la lista que se pasa como parámetro tiene un único elemento. Por
+ejemplo, en el caso base de la función recursiva que comprueba si una
+lista está ordenada.
+
+Al estar definida la función `length` en Scheme la primera idea que se
+nos puede ocurrir es comprobar si la longitud de la lista es 1. Sin
+embargo es una mala idea.
+
+```racket
+; Ejemplo de función recursiva con un caso 
+; base en el que se comprueba si la lista tienen
+; un único elemento
+; ¡¡MALA IDEA, NO HACERLO ASÍ!!
+(define (foo lista)
+   (if (= (length lista) 1)
+       ; devuelve caso base
+       ; caso general
+       ))
+```
+
+El problema de la implementación anterior es que el coste de la
+función `length` es lineal. Tal y como hemos visto en el apartado
+anterior, para calcular la longitud de la lista es necesario recorrer
+todos sus elementos. Además, la función recursiva hace esa
+comprobación en cada llamada recursiva. El coste resultante de la
+función `foo`, por tanto, es cuadrático.
+
+¿Cómo mejorar el coste? Hay que tener en cuenta que la comprobación
+anterior está haciendo cosas de más. Realmente no queremos saber la
+longitud de la lista sino únicamente si esa longitud es mayor que
+uno. Esta comprobación sí que puede hacerse en tiempo
+constante. Lo único que debemos hacer es comprobar si el `cdr` de la
+lista es la lista vacía. Si lo es, ya sabemos que la lista original
+tenía un único elemento.
+
+Por tanto, la versión correcto del código anterior sería la siguiente:
+
+```racket
+; Versión correcta para comprobar si una lista tiene
+; un único elemento
+(define (foo lista)
+   (if (null? (cdr lista))
+       ; devuelve caso base
+       ; caso general
+       ))
+```
+
+El coste de la comprobación `(null? (cdr lista))` es constante. No
+depende de la longitud de la lista.
+
 #### Función recursiva `veces`
 
 Como último ejemplo vamos a definir la función 
@@ -3222,7 +3337,6 @@ devuelve la invocación de `g` con `x`:
 (aplica-2 suma-5 doble 3) ; ⇒ 11
 ```
 
-<!---
 
 ### Generalización ###
 
@@ -4236,7 +4350,6 @@ libro *Structure and Intepretation of Computer Programs*:
 - [2.2.1 - Representing Sequences](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.1)
 - [2.3.1 - Quotation](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-16.html#%_sec_2.3.1)
 
--->
 
 ----
 
