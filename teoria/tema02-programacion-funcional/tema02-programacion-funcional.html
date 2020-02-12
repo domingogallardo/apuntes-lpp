@@ -442,34 +442,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#generalizacion" class="md-nav__link">
-    Generalización
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#funciones-que-devuelven-funciones" class="md-nav__link">
-    Funciones que devuelven funciones
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#funciones-en-estructuras-de-datos" class="md-nav__link">
-    Funciones en estructuras de datos
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#funciones-de-orden-superior" class="md-nav__link">
-    Funciones de orden superior
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -791,34 +763,6 @@
           <li class="md-nav__item">
   <a href="#funciones-argumentos-de-otras-funciones" class="md-nav__link">
     Funciones argumentos de otras funciones
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#generalizacion" class="md-nav__link">
-    Generalización
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#funciones-que-devuelven-funciones" class="md-nav__link">
-    Funciones que devuelven funciones
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#funciones-en-estructuras-de-datos" class="md-nav__link">
-    Funciones en estructuras de datos
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#funciones-de-orden-superior" class="md-nav__link">
-    Funciones de orden superior
   </a>
   
 </li>
@@ -4114,12 +4058,17 @@ devuelve la invocación de <code>g</code> con <code>x</code>:</p>
 </pre></div>
 </td></tr></table>
 
-<h3 id="generalizacion">Generalización<a class="headerlink" href="#generalizacion" title="Permanent link">&para;</a></h3>
-<p>La posibilidad de pasar funciones como parámetros de otras es una
+<!--
+
+### Generalización ###
+
+La posibilidad de pasar funciones como parámetros de otras es una
 poderosa herramienta de abstracción. Nos va a permitir diseñar
-funciones más genéricas. </p>
-<p>Veamos un ejemplo. Supongamos que queremos calcular el sumatorio de
-<code>a</code> hasta <code>b</code>:</p>
+funciones más genéricas. 
+
+Veamos un ejemplo. Supongamos que queremos calcular el sumatorio de
+`a` hasta `b`:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4134,8 +4083,9 @@ funciones más genéricas. </p>
 </pre></div>
 </td></tr></table>
 
-<p>Supongamos ahora que queremos calcular el sumatorio de <code>a</code> hasta <code>b</code>
-sumando los números al cuadrado:</p>
+Supongamos ahora que queremos calcular el sumatorio de `a` hasta `b`
+sumando los números al cuadrado:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4150,7 +4100,8 @@ sumando los números al cuadrado:</p>
 </pre></div>
 </td></tr></table>
 
-<p>Y el sumatorio de <code>a</code> hasta <code>b</code> sumando los cubos:</p>
+Y el sumatorio de `a` hasta `b` sumando los cubos:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4165,23 +4116,27 @@ sumando los números al cuadrado:</p>
 </pre></div>
 </td></tr></table>
 
-<p>Vemos que el código de las tres funciones anteriores es muy similar,
-cada función la podemos obtener haciendo un <em>copy-paste</em> de otra
+Vemos que el código de las tres funciones anteriores es muy similar,
+cada función la podemos obtener haciendo un *copy-paste* de otra
 previa. Lo único que cambia es la función a aplicar a cada número de
-la serie.</p>
-<p>Siempre que hagamos <em>copy-paste</em> al programar tenemos que empezar a
+la serie.
+
+Siempre que hagamos *copy-paste* al programar tenemos que empezar a
 sospechar que no estamos generalizando suficientemente el código. Un
-<em>copy-paste</em> arrastra también <em>bugs</em> y obliga a realizar múltiples
+*copy-paste* arrastra también *bugs* y obliga a realizar múltiples
 modificaciones del código cuando en el futuro tengamos que cambiar
-cosas.</p>
-<p>La posibilidad de pasar una función como parámetro viene a nuestra
+cosas.
+
+La posibilidad de pasar una función como parámetro viene a nuestra
 ayuda para generalizar el código anterior. En este caso, lo único que
 cambia en las tres funciones anteriores es la función a aplicar a los
 números de la serie. En primer caso no se hace nada, en el segundo se
-eleva al cuadrado y en el tercer caso al cubo.</p>
-<p>Podemos tomar esa función como un parámetro adicional y definir una
-función genérica <code>sum-f-x</code> que generaliza las tres funciones
-anteriores. Tendríamos el sumatorio desde <code>a</code> hasta <code>b</code> de <code>f(x)</code>:</p>
+eleva al cuadrado y en el tercer caso al cubo.
+
+Podemos tomar esa función como un parámetro adicional y definir una
+función genérica `sum-f-x` que generaliza las tres funciones
+anteriores. Tendríamos el sumatorio desde `a` hasta `b` de `f(x)`:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4192,9 +4147,10 @@ anteriores. Tendríamos el sumatorio desde <code>a</code> hasta <code>b</code> d
 </pre></div>
 </td></tr></table>
 
-<p>Las funciones anteriores son casos particulares de esta función que
+Las funciones anteriores son casos particulares de esta función que
 las generaliza. Por ejemplo, para calcular el sumatorio desde 1 hasta
-10 de <code>x</code> al cubo:</p>
+10 de `x` al cubo:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4205,38 +4161,53 @@ las generaliza. Por ejemplo, para calcular el sumatorio desde 1 hasta
 </pre></div>
 </td></tr></table>
 
-<p>También podemos utilizar una expresión lambda en la invocación a
-<code>sum-f</code> que construya la función que queremos aplicar a cada
+
+También podemos utilizar una expresión lambda en la invocación a
+`sum-f` que construya la función que queremos aplicar a cada
 número. Por ejemplo, podemos sumar la expresión (n/(n-1)) para todos
-los números del 2 al 100:</p>
+los números del 2 al 100:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">sum-f-x</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">(</span><span class="nb">/</span> <span class="n">n</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)))</span> <span class="mi">2</span> <span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
-<h3 id="funciones-que-devuelven-funciones">Funciones que devuelven funciones<a class="headerlink" href="#funciones-que-devuelven-funciones" title="Permanent link">&para;</a></h3>
-<p>Cualquier objeto de primera clase puede ser devuelto por una
+Veremos más adelante muchos más ejemplos de funciones pasadas como
+parámetros y de la generalidad que permite este patrón, cuando
+estudiemos las funciones de orden superior.
+
+### Funciones que devuelven funciones
+
+Cualquier objeto de primera clase puede ser devuelto por una
 función; enteros, booleanos, parejas, etc. son objetos primitivos y
-podemos definir funciones que los devuelven.</p>
-<p>En el paradigma funcional lo mismo sucede con las funciones. Podemos
+podemos definir funciones que los devuelven.
+
+En el paradigma funcional lo mismo sucede con las funciones. Podemos
 definir una función que cuando se invoque construya otra función y la
-devuelva como resultado. </p>
-<p>Esta es una de la características más importantes que diferencia los
+devuelva como resultado. 
+
+Esta es una de la características más importantes que diferencia los
 lenguajes de programación funcionales de otros que no lo
 son. En lenguajes como C, C++ o Java (antes de Java 8) no es posible
-hacer esto.</p>
-<p>Para devolver una función en Scheme debemos usar la forma especial
-<code>lambda</code> en el cuerpo de una función. Así, cuando se invoca a esta
-función se evalúa <code>lambda</code> y se devuelve la función resultante. Es una
+hacer esto.
+
+Para devolver una función en Scheme debemos usar la forma especial
+`lambda` en el cuerpo de una función. Así, cuando se invoca a esta
+función se evalúa `lambda` y se devuelve la función resultante. Es una
 función que creamos en tiempo de ejecución, durante la evaluación de
-la función principal.</p>
-<p>La función que se devuelve se denomina <strong>clausura</strong>
-(<a href="https://es.wikipedia.org/wiki/Clausura_(informática)">Wikipedia</a>). Y
-decimos que la función que ha construido la clausura es una <strong>función
-constructora</strong>.</p>
-<h4>Función <code>sumador</code></h4>
-<p>Vamos a empezar con un ejemplo muy sencillo. Definimos una función
+la función principal.
+
+La función que se devuelve se denomina **clausura**
+([Wikipedia](https://es.wikipedia.org/wiki/Clausura_(informática))). Y
+decimos que la función que ha construido la clausura es una **función
+constructora**.
+
+
+#### Función `sumador`
+
+Vamos a empezar con un ejemplo muy sencillo. Definimos una función
 constructora que crea en su ejecución una función que suma
-<code>k</code> a un número:</p>
+`k` a un número:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">construye-sumador</span> <span class="n">k</span><span class="p">)</span>
@@ -4245,48 +4216,58 @@ constructora que crea en su ejecución una función que suma
 </pre></div>
 </td></tr></table>
 
-<p>El cuerpo de la función <code>(construye-sumador k)</code> está formado por una
-expresión lambda. Cuando se invoca a <code>construye-sumador</code> se evalúa
-esta expresión lambda y se devuelve el procedimiento creado. </p>
-<p>En este caso se construye otra función de 1 argumento que suma <code>k</code> al
-argumento. </p>
-<p>Por ejemplo, podemos invocar a <code>construye-sumador</code> pasando 10 como parámetro:</p>
+El cuerpo de la función `(construye-sumador k)` está formado por una
+expresión lambda. Cuando se invoca a `construye-sumador` se evalúa
+esta expresión lambda y se devuelve el procedimiento creado. 
+
+En este caso se construye otra función de 1 argumento que suma `k` al
+argumento. 
+
+Por ejemplo, podemos invocar a `construye-sumador` pasando 10 como parámetro:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">construye-sumador</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; =&gt; #&lt;procedure&gt;</span>
 </pre></div>
 </td></tr></table>
 
-<p>Como hemos dicho, se devuelve un procedimiento, una función. Esta
+Como hemos dicho, se devuelve un procedimiento, una función. Esta
 función devuelta debe invocarse con un argumento y devolverá el
-resultado de sumar 10 a ese argumento:</p>
+resultado de sumar 10 a ese argumento:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">f</span> <span class="p">(</span><span class="n">construye-sumador</span> <span class="mi">10</span><span class="p">))</span>
 <span class="p">(</span><span class="n">f</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; =&gt; 13</span>
 </pre></div>
 </td></tr></table>
 
-<p>También podemos invocar directamente a la función que devuelve la
-función constructora, sin guardarla en una variable:</p>
+También podemos invocar directamente a la función que devuelve la
+función constructora, sin guardarla en una variable:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="n">construye-sumador</span> <span class="mi">10</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; =&gt; 13</span>
 </pre></div>
 </td></tr></table>
 
-<p>Dependiendo del parámetro que le pasemos a la función constructora
+Dependiendo del parámetro que le pasemos a la función constructora
 obtendremos una función sumadora que sume un número u otro. Por
-ejemplo para obtener una función sumadora que suma 100:</p>
+ejemplo para obtener una función sumadora que suma 100:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">g</span> <span class="p">(</span><span class="n">construye-sumador</span> <span class="mi">100</span><span class="p">))</span>
 <span class="p">(</span><span class="n">g</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; =&gt; 103</span>
 </pre></div>
 </td></tr></table>
 
-<p>¿Cómo funciona la clausura? ¿Por qué la invocación a <code>(g 3)</code>
-devuelve 103?.</p>
-<p>Aquí hay que apartarse bastante del modelo de evaluación de
+¿Cómo funciona la clausura? ¿Por qué la invocación a `(g 3)`
+devuelve 103?.
+
+Aquí hay que apartarse bastante del modelo de evaluación de
 sustitución que hemos visto y utilizar un nuevo modelo en el que se
-tiene en cuenta los ámbitos de las variables.</p>
-<p>No vamos a explicar en detalle este modelo, pero sí dar unas breves
-pinceladas.</p>
-<p>Recordemos la definición de <code>construye-sumador</code>:</p>
+tiene en cuenta los ámbitos de las variables.
+
+No vamos a explicar en detalle este modelo, pero sí dar unas breves
+pinceladas.
+
+Recordemos la definición de `construye-sumador`:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">construye-sumador</span> <span class="n">k</span><span class="p">)</span>
@@ -4295,36 +4276,41 @@ pinceladas.</p>
 </pre></div>
 </td></tr></table>
 
-<p>Y supongamos que realizamos las siguientes invocaciones:</p>
+Y supongamos que realizamos las siguientes invocaciones:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">g</span> <span class="p">(</span><span class="n">construye-sumador</span> <span class="mi">100</span><span class="p">))</span>
 <span class="p">(</span><span class="n">g</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; =&gt; 103</span>
 </pre></div>
 </td></tr></table>
 
-<p>Podemos explicar lo que sucede en la evaluación de estas funciones de
-la siguiente forma:</p>
-<ul>
-<li>Cuando invocamos a <code>construye-sumador</code> con un valor concreto para
-  <code>k</code> (por  ejemplo 100), queda vinculado el valor de 100 al parámetro
-  <code>k</code> en el ámbito local de la función.</li>
-<li>En este ámbito local la expresión lambda crea una función. Esta
-  función creada en el ámbito local <strong>captura</strong> este ámbito local, con
-  sus variables y sus valores (en este caso la variable <code>k</code> y su valor
-  100).</li>
-<li>Cuando se invoca a la función desde fuera (cuando llamamos a <code>g</code> en
-  el ejemplo) se ejecuta el cuerpo de la función <code>(+ x k)</code> con <code>x</code>
-  valiendo el parámetro (3) y el valor de <code>k</code> se obtiene del ámbito
-  capturado (100).</li>
-</ul>
-<p>El hecho de que función creada en el ámbito local capture este ámbito
-es lo que hace que se denomine una <strong>clausura</strong> (del inglés
-<strong>closure</strong>). La función <em>se cierra</em> sobre el ámbito capturado y puede
-utilizar sus variables.</p>
-<h4>Función <code>componedor</code></h4>
-<p>Otro ejemplo de una función que devuelve otra función es la función
-siguiente <code>(componedor f g)</code> que recibe dos funciones de un argumento
-y devuelve otra función que realiza la composición de ambas:</p>
+Podemos explicar lo que sucede en la evaluación de estas funciones de
+la siguiente forma:
+
+- Cuando invocamos a `construye-sumador` con un valor concreto para
+  `k` (por  ejemplo 100), queda vinculado el valor de 100 al parámetro
+  `k` en el ámbito local de la función.
+- En este ámbito local la expresión lambda crea una función. Esta
+  función creada en el ámbito local **captura** este ámbito local, con
+  sus variables y sus valores (en este caso la variable `k` y su valor
+  100).
+- Cuando se invoca a la función desde fuera (cuando llamamos a `g` en
+  el ejemplo) se ejecuta el cuerpo de la función `(+ x k)` con `x`
+  valiendo el parámetro (3) y el valor de `k` se obtiene del ámbito
+  capturado (100).
+
+El hecho de que función creada en el ámbito local capture este ámbito
+es lo que hace que se denomine una **clausura** (del inglés
+**closure**). La función _se cierra_ sobre el ámbito capturado y puede
+utilizar sus variables.
+
+
+#### Función `componedor` 
+
+Otro ejemplo de una función que devuelve otra función es la función
+siguiente `(componedor f g)` que recibe dos funciones de un argumento
+y devuelve otra función que realiza la composición de ambas:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">componedor</span> <span class="n">f</span> <span class="n">g</span><span class="p">)</span>
@@ -4333,41 +4319,50 @@ y devuelve otra función que realiza la composición de ambas:</p>
 </pre></div>
 </td></tr></table>
 
-<p>La función devuelta invoca primero a <code>g</code> y el resultado se lo pasa a
-<code>f</code>. Veamos un ejemplo. Supongamos que tenemos definidas la función
-<code>cuadrado</code> y <code>doble</code> que calculan el cuadrado y el doble de un número
-respectivamente. Podremos entonces llamar a <code>componedor</code> con esas dos
+La función devuelta invoca primero a `g` y el resultado se lo pasa a
+`f`. Veamos un ejemplo. Supongamos que tenemos definidas la función
+`cuadrado` y `doble` que calculan el cuadrado y el doble de un número
+respectivamente. Podremos entonces llamar a `componedor` con esas dos
 funciones para construir otra función que primero calcule el cuadrado y
-después el doble de una número:</p>
+después el doble de una número:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">h</span> <span class="p">(</span><span class="n">componendor</span> <span class="n">doble</span> <span class="n">cuadrado</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
-<p>La variable <code>h</code> contiene la función devuelta por <code>componedor</code>. Una
+La variable `h` contiene la función devuelta por `componedor`. Una
 función de un argumento que devuelve el doble del cuadrado de un
-número:</p>
+número:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">h</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; =&gt; 32</span>
 </pre></div>
 </td></tr></table>
 
-<h4>Usos reales de las funciones constructoras</h4>
-<p>Las funciones que construyen otras funciones permiten un alto nivel de
-configuración y de generalización en la programación.</p>
-<p>Por ejemplo, un par de ejemplos de uso en problemas reales:</p>
-<ol>
-<li>Posibilidad de definir funciones configurables sin tener que
-  depender de variables globales o parámetros adicionales.</li>
-<li>Posibilidad de modificar funciones ya construidas, añadiéndoles condiciones
-  a comprobar antes o cálculos a realizar después.</li>
-</ol>
-<h5>Ejemplo de funciones constructoras para definir funciones configurables</h5>
-<p>Supongamos que queremos definir una función <code>logger</code> a la que le
-llamemos con una cadena para que imprima un mensaje de log.</p>
-<p>Queremos poder configurar el prefijo del mensaje de log, de forma que
+#### Usos reales de las funciones constructoras ####
+
+Las funciones que construyen otras funciones permiten un alto nivel de
+configuración y de generalización en la programación.
+
+Por ejemplo, un par de ejemplos de uso en problemas reales:
+
+1. Posibilidad de definir funciones configurables sin tener que
+  depender de variables globales o parámetros adicionales.
+2. Posibilidad de modificar funciones ya construidas, añadiéndoles condiciones
+  a comprobar antes o cálculos a realizar después.
+
+
+##### Ejemplo de funciones constructoras para definir funciones configurables #####
+
+Supongamos que queremos definir una función `logger` a la que le
+llamemos con una cadena para que imprima un mensaje de log.
+
+Queremos poder configurar el prefijo del mensaje de log, de forma que
 sólo tengamos que definirlo una vez, al crear la función
-<code>logger</code>. Después llamaremos a la función <code>logger</code> pasándole
-únicamente el mensaje de log.</p>
-<p>Lo podemos hacer con la siguiente función constructora:</p>
+`logger`. Después llamaremos a la función `logger` pasándole
+únicamente el mensaje de log.
+
+Lo podemos hacer con la siguiente función constructora:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">construye-logger</span> <span class="n">str-prefijo</span><span class="p">)</span>
@@ -4376,7 +4371,8 @@ sólo tengamos que definirlo una vez, al crear la función
 </pre></div>
 </td></tr></table>
 
-<p>Por ejemplo, definimos distintos loggers y los probamos:</p>
+Por ejemplo, definimos distintos loggers y los probamos:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -4419,8 +4415,11 @@ sólo tengamos que definirlo una vez, al crear la función
 </pre></div>
 </td></tr></table>
 
-<h5>Ejemplo de funciones constructoras para modificar funciones ya construidas</h5>
-<p>Recordemos la función <code>divisores</code>:</p>
+
+##### Ejemplo de funciones constructoras para modificar funciones ya construidas #####
+
+Recordemos la función `divisores`:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -4457,11 +4456,13 @@ sólo tengamos que definirlo una vez, al crear la función
 </pre></div>
 </td></tr></table>
 
-<p>Un problema de la función anterior <code>divisores</code> es que si le pasamos un
-número negativo entra en un bucle infinito.</p>
-<p>Podemos definir la siguiente función general a la que le pasamos una
-función de un argumento <code>f</code> y devuelve la función f "segura" a la que
-sólo se va a invocar si el parámetro es mayor o igual que 0:</p>
+Un problema de la función anterior `divisores` es que si le pasamos un
+número negativo entra en un bucle infinito.
+
+Podemos definir la siguiente función general a la que le pasamos una
+función de un argumento `f` y devuelve la función f "segura" a la que
+sólo se va a invocar si el parámetro es mayor o igual que 0:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4474,7 +4475,8 @@ sólo se va a invocar si el parámetro es mayor o igual que 0:</p>
 </pre></div>
 </td></tr></table>
 
-<p>Podemos entonces "segurizar" la función <code>divisores</code>:</p>
+Podemos entonces "segurizar" la función `divisores`:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">divisores-segura</span> <span class="p">(</span><span class="n">construye-segura-menor-cero</span> <span class="n">divisores</span><span class="p">))</span>
@@ -4483,8 +4485,9 @@ sólo se va a invocar si el parámetro es mayor o igual que 0:</p>
 </pre></div>
 </td></tr></table>
 
-<p>La función <code>(construye-segura-menor-cero f)</code> se puede aplicar para
-"segurizar" cualquier función, no sólo <code>divisores</code>:</p>
+La función `(construye-segura-menor-cero f)` se puede aplicar para
+"segurizar" cualquier función, no sólo `divisores`:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">sqrt-segura</span> <span class="p">(</span><span class="n">construye-segura-menor-cero</span> <span class="nb">sqrt</span><span class="p">))</span>
@@ -4493,8 +4496,9 @@ sólo se va a invocar si el parámetro es mayor o igual que 0:</p>
 </pre></div>
 </td></tr></table>
 
-<p>Se podría generalizar aún más la función "segurizadora" haciendo que
-la condición a cumplir por el número sea otra función que también pasamos:</p>
+Se podría generalizar aún más la función "segurizadora" haciendo que
+la condición a cumplir por el número sea otra función que también pasamos:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4507,75 +4511,89 @@ la condición a cumplir por el número sea otra función que también pasamos:</
 </pre></div>
 </td></tr></table>
 
-<p>La forma de definir una función <code>divisores</code> segura con esta nueva
-función sería:</p>
+La forma de definir una función `divisores` segura con esta nueva
+función sería:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">divisores-segura2</span> <span class="p">(</span><span class="n">construye-segura</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">&gt;=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">))</span> <span class="n">divisores</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
-<h3 id="funciones-en-estructuras-de-datos">Funciones en estructuras de datos<a class="headerlink" href="#funciones-en-estructuras-de-datos" title="Permanent link">&para;</a></h3>
-<p>La última característica de los tipos de primera clase es que pueden
-formar parte de tipos de datos compuestos, como listas.</p>
-<p>Para construir una lista de funciones debemos llamar a <code>list</code> con las
-funciones:</p>
+
+### Funciones en estructuras de datos
+
+La última característica de los tipos de primera clase es que pueden
+formar parte de tipos de datos compuestos, como listas.
+
+Para construir una lista de funciones debemos llamar a `list` con las
+funciones:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="p">(</span><span class="nb">list</span> <span class="n">cuadrado</span> <span class="n">suma-1</span> <span class="n">doble</span><span class="p">))</span>
 <span class="n">lista</span> <span class="c1">; ⇒ (#&lt;procedure:cuadrado&gt;  #&lt;procedure:suma-1&gt;  #&lt;procedure:doble&gt;)</span>
 </pre></div>
 </td></tr></table>
 
-<p>También podemos evaluar una expresión lambda y añadir el procedimiento
+También podemos evaluar una expresión lambda y añadir el procedimiento
 resultante. Por ejemplo, para añadir otra función a la lista anterior
-podemos llamar a <code>cons</code>:</p>
+podemos llamar a `cons`:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">lista2</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">5</span><span class="p">))</span> <span class="n">lista</span><span class="p">))</span>
 <span class="n">lista2</span> <span class="c1">; ⇒ (#&lt;procedure&gt; #&lt;procedure:cuadrado&gt; #&lt;procedure:suma-1&gt; #&lt;procedure:doble&gt;)</span>
 </pre></div>
 </td></tr></table>
 
-<p>Una vez creada una lista con funciones, ¿cómo podemos invocar a alguna
+Una vez creada una lista con funciones, ¿cómo podemos invocar a alguna
 de ellas?. Debemos tratarlas de la misma forma que tratamos cualquier
 otro dato guardado en la lista, las recuperamos con las funciones
-<code>car</code> o <code>list-ref</code> y las invocamos. Por ejemplo, para invocar a la
-primera función de <code>lista2</code>:</p>
+`car` o `list-ref` y las invocamos. Por ejemplo, para invocar a la
+primera función de `lista2`:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="nb">car</span> <span class="n">lista2</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 15</span>
 </pre></div>
 </td></tr></table>
 
-<h4>Funciones que trabajan con listas de funciones</h4>
-<p>Veamos un ejemplo de una función <code>(aplica-funcs lista-funcs x)</code> que
-recibe una lista de funciones en el parámetro <code>lista-funcs</code> y las
-aplica todas al número que pasamos en el parámetro <code>x</code>.</p>
-<p>Por ejemplo, si construimos una lista con las funciones <code>cuadrado</code>,
-<code>cubo</code> y <code>suma-1</code>:</p>
+#### Funciones que trabajan con listas de funciones
+
+Veamos un ejemplo de una función `(aplica-funcs lista-funcs x)` que
+recibe una lista de funciones en el parámetro `lista-funcs` y las
+aplica todas al número que pasamos en el parámetro `x`.
+
+Por ejemplo, si construimos una lista con las funciones `cuadrado`,
+`cubo` y `suma-1`:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="p">(</span><span class="nb">list</span> <span class="n">cuadrado</span> <span class="n">cubo</span> <span class="n">suma-1</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
-<p>la llamada a <code>(aplica-funcs lista 5)</code> debería devolver el resultado de
-aplicar primero <code>suma-1</code> a 5, después <code>cubo</code> al resultado y después
-<code>cuadrado</code>:</p>
+la llamada a `(aplica-funcs lista 5)` debería devolver el resultado de
+aplicar primero `suma-1` a 5, después `cubo` al resultado y después
+`cuadrado`:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="n">cubo</span> <span class="p">(</span><span class="n">suma-1</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ 46656</span>
 </pre></div>
 </td></tr></table>
 
-<p>Para implementar <code>aplica-funcs</code> tenemos que usar una recursión. Si
+Para implementar `aplica-funcs` tenemos que usar una recursión. Si
 vemos el ejemplo, podemos comprobar que es sencillo definir el caso
-general:</p>
+general:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">(aplica-funcs (cuadrado cubo suma-1) 5) = (cuadrado (aplica-funcs (cubo suma-1) 5))</span>
 <span class="err">= (cuadrado 216) = 46656</span>
 </pre></div>
 </td></tr></table>
 
-<p>El caso general de la recursión de la función <code>aplica-funcs</code> se define
-entonces como:</p>
+El caso general de la recursión de la función `aplica-funcs` se define
+entonces como:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">(aplica-funcs lista-funcs x) = ((car lista-funcs) (aplica-funcs (cdr lista-funcs) x))</span>
 </pre></div>
 </td></tr></table>
 
-<p>El caso base sería en el que la lista de funciones es vacía, en cuyo
-caso se devuelve el propio número:</p>
+El caso base sería en el que la lista de funciones es vacía, en cuyo
+caso se devuelve el propio número:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista-funcs</span><span class="p">)</span> <span class="c1">; la lista de funciones está vacía</span>
@@ -4584,7 +4602,8 @@ caso se devuelve el propio número:</p>
 </pre></div>
 </td></tr></table>
 
-<p>La implementación completa es:</p>
+La implementación completa es:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4597,7 +4616,8 @@ caso se devuelve el propio número:</p>
 </pre></div>
 </td></tr></table>
 
-<p>Un ejemplo de uso:</p>
+Un ejemplo de uso:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4608,56 +4628,71 @@ caso se devuelve el propio número:</p>
 </pre></div>
 </td></tr></table>
 
-<h3 id="funciones-de-orden-superior">Funciones de orden superior<a class="headerlink" href="#funciones-de-orden-superior" title="Permanent link">&para;</a></h3>
-<p>Llamamos funciones de orden superior (<em>higher order functions</em> en
+
+
+### Funciones de orden superior
+
+Llamamos funciones de orden superior (*higher order functions* en
 inglés) a las funciones que toman otras como parámetro o devuelven
 otra función. Permiten generalizar soluciones con un alto grado de
-abstracción.</p>
-<p>Los lenguajes de programación funcional como Scheme, Scala o Java 8
+abstracción.
+
+Los lenguajes de programación funcional como Scheme, Scala o Java 8
 tienen ya predefinidas algunas funciones de orden superior que
-permiten tratar listas o <em>streams</em> de una forma muy concisa y
-compacta.</p>
-<p>Las funciones que veremos son:</p>
-<ul>
-<li><code>map</code></li>
-<li><code>filter</code></li>
-<li><code>exists</code></li>
-<li><code>for-all</code></li>
-<li><code>fold-right</code> y <code>fold-left</code></li>
-</ul>
-<p>Para las tres primeras funciones veremos también una implementación
-recursiva que nos ayudará a comprobar su funcionamiento. </p>
-<p>Y después de explicar estas funciones terminaremos con un ejemplo de
+permiten tratar listas o *streams* de una forma muy concisa y
+compacta.
+
+Las funciones que veremos son:
+
+- `map`
+- `filter`
+- `exists`
+- `for-all`
+- `fold-right` y `fold-left`
+
+Para las tres primeras funciones veremos también una implementación
+recursiva que nos ayudará a comprobar su funcionamiento. 
+
+Y después de explicar estas funciones terminaremos con un ejemplo de
 su aplicación en el que comprobaremos cómo la utilización de funciones
 de orden superior es una excelente herramienta de la programación
-funcional que permite hacer código muy conciso y expresivo.</p>
-<p>La combinación de funciones de nivel superior con listas es una de las
-características más potentes de la programación funcional.</p>
-<h4>Función <code>map</code></h4>
-<p>Comenzamos con la función <code>map</code>. La palabra <code>map</code> viene del inglés
-<code>mapping</code> o transformación. Se trata de una función que <strong>transforma</strong>
+funcional que permite hacer código muy conciso y expresivo.
+
+La combinación de funciones de nivel superior con listas es una de las
+características más potentes de la programación funcional.
+
+#### Función `map`
+
+Comenzamos con la función `map`. La palabra `map` viene del inglés
+`mapping` o transformación. Se trata de una función que **transforma**
 una lista aplicando a todos sus elementos una función de
-transformación que se pasa como parámetro.</p>
-<p>En concreto, la función recibe otra función y una lista:</p>
+transformación que se pasa como parámetro.
+
+En concreto, la función recibe otra función y una lista:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map</span> <span class="n">funcion</span> <span class="n">lista</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
-<p>Y devuelve la lista resultante de aplicar la función a todos los
-elementos de la lista.</p>
-<p>Por ejemplo:</p>
+Y devuelve la lista resultante de aplicar la función a todos los
+elementos de la lista.
+
+Por ejemplo:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map</span> <span class="n">cuadrado</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ (1 4 9 16 25)</span>
 </pre></div>
 </td></tr></table>
 
-<p>La lista resultante es el resultado de construir una lista nueva
-aplicando la función <code>cuadrado</code> a todos los elementos de la lista
-original.</p>
-<p>La función de transformación debe ser compatible con los elementos de
+La lista resultante es el resultado de construir una lista nueva
+aplicando la función `cuadrado` a todos los elementos de la lista
+original.
+
+La función de transformación debe ser compatible con los elementos de
 la lista original. Por ejemplo, si la lista es una lista de parejas,
 la función de transformación debe recibir una pareja. Veamos un
 ejemplo de este caso, en el que a partir de una lista de parejas
-obtenemos una lista con las sumas de cada pareja:</p>
+obtenemos una lista con las sumas de cada pareja:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4668,7 +4703,8 @@ obtenemos una lista con las sumas de cada pareja:</p>
 </pre></div>
 </td></tr></table>
 
-<p>También podríamos hacerlo con una expresión lambda:</p>
+También podríamos hacerlo con una expresión lambda:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">pareja</span><span class="p">)</span>
@@ -4677,8 +4713,10 @@ obtenemos una lista con las sumas de cada pareja:</p>
 </pre></div>
 </td></tr></table>
 
-<p>Un último ejemplo, en el que usamos <code>map</code> para transformar una lista
-de símbolos en una lista con sus longitudes:</p>
+
+Un último ejemplo, en el que usamos `map` para transformar una lista
+de símbolos en una lista con sus longitudes:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">s</span><span class="p">)</span> 
@@ -4687,14 +4725,16 @@ de símbolos en una lista con sus longitudes:</p>
 </pre></div>
 </td></tr></table>
 
-<div class="admonition tip">
-<p class="admonition-title">Consejo</p>
-<p>La función <code>map</code> recibe una lista de <em>n</em> elementos y devuelve otra
-de <em>n</em> elementos transformados.</p>
-</div>
-<h5>Implementación de <code>map</code></h5>
-<p>¿Cómo se podría implementar <code>map</code> de forma recursiva? Definimos la
-función <code>mi-map</code>. La implementación es la siguiente:</p>
+
+!!! Tip "Consejo"
+    La función `map` recibe una lista de *n* elementos y devuelve otra
+    de *n* elementos transformados.
+
+##### Implementación de `map`
+
+¿Cómo se podría implementar `map` de forma recursiva? Definimos la
+función `mi-map`. La implementación es la siguiente:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4707,18 +4747,22 @@ función <code>mi-map</code>. La implementación es la siguiente:</p>
 </pre></div>
 </td></tr></table>
 
-<h5>Función <code>map</code> con más de una lista</h5>
-<p>Es posible pasar más de una lista como parámetro de la función
-<code>map</code>. Todas las listas deben tener la misma longitud:</p>
+##### Función `map` con más de una lista
+
+Es posible pasar más de una lista como parámetro de la función
+`map`. Todas las listas deben tener la misma longitud:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">map</span> <span class="n">f</span> <span class="n">lista-1</span> <span class="k">...</span> <span class="n">lista-n</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
-<p>En ese caso, la función de mapeado <code>f</code> debe tener tantos parámetros
-como listas. El resultado es el mismo que antes: la función <code>f</code> coge
+En ese caso, la función de mapeado `f` debe tener tantos parámetros
+como listas. El resultado es el mismo que antes: la función `f` coge
 sus argumentos de los elementos de las listas y se devuelve la lista
-con los resultados.</p>
-<p>Ejemplos:</p>
+con los resultados.
+
+Ejemplos:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4731,20 +4775,26 @@ con los resultados.</p>
 </pre></div>
 </td></tr></table>
 
-<h4>Función <code>filter</code></h4>
-<p>Veamos otra función de orden superior que trabaja sobre listas.</p>
-<p>La función <code>(filter predicado lista)</code> toma como parámetro un predicado
+
+#### Función `filter`
+
+Veamos otra función de orden superior que trabaja sobre listas.
+
+La función `(filter predicado lista)` toma como parámetro un predicado
 y una lista y devuelve como resultado los elementos de la lista que
-cumplen el predicado.</p>
-<p>Un ejemplo de uso:</p>
+cumplen el predicado.
+
+Un ejemplo de uso:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">filter</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ (2 4 6 8)</span>
 </pre></div>
 </td></tr></table>
 
-<p>Otro ejemplo: supongamos que queremos filtrar una lista de parejas de
+Otro ejemplo: supongamos que queremos filtrar una lista de parejas de
 números, devolviendo aquellas que parejas que cumplen que su parte
 izquierda es mayor o igual que la derecha. Lo podríamos hacer con la
-siguiente expresión:</p>
+siguiente expresión:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">filter</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">pareja</span><span class="p">)</span>
@@ -4753,8 +4803,9 @@ siguiente expresión:</p>
 </pre></div>
 </td></tr></table>
 
-<p>Y un último ejemplo: filtramos todos los símbolos con longitud menor
-de 4.</p>
+Y un último ejemplo: filtramos todos los símbolos con longitud menor
+de 4.
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4765,14 +4816,17 @@ de 4.</p>
 </pre></div>
 </td></tr></table>
 
-<div class="admonition tip">
-<p class="admonition-title">Consejo</p>
-<p>La función <code>filter</code> recibe una lista de <em>n</em> elementos y devuelve
-otra de con <em>n</em> o menos elementos originales filtrados por una
-condición.</p>
-</div>
-<h5>Implementación de <code>filter</code></h5>
-<p>Podemos implementar la función <code>filter</code> de forma recursiva:</p>
+
+!!! Tip "Consejo"
+    La función `filter` recibe una lista de *n* elementos y devuelve
+    otra de con *n* o menos elementos originales filtrados por una
+    condición.
+
+
+##### Implementación de `filter`
+
+Podemos implementar la función `filter` de forma recursiva:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4787,10 +4841,13 @@ condición.</p>
 </pre></div>
 </td></tr></table>
 
-<h4>Función <code>exists</code></h4>
-<p>La función de orden superior <code>exists</code> recibe un predicado y una lista
-y comprueba si algún elemento de la lista cumple ese predicado.</p>
-<p>Ejemplo de uso:</p>
+#### Función `exists`
+
+La función de orden superior `exists` recibe un predicado y una lista
+y comprueba si algún elemento de la lista cumple ese predicado.
+
+Ejemplo de uso:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">exists</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
@@ -4799,11 +4856,15 @@ y comprueba si algún elemento de la lista cumple ese predicado.</p>
 </pre></div>
 </td></tr></table>
 
-<p>¿Cuál sería la implementación recursiva de la función <code>exists</code>? </p>
-<h4>Función <code>for-all</code></h4>
-<p>La función de orden superior <code>for-all</code> recibe un predicado y una lista
-y comprueba que todos los elementos de la lista cumplen ese predicado.</p>
-<p>Ejemplo de uso:</p>
+¿Cuál sería la implementación recursiva de la función `exists`? 
+
+#### Función `for-all`
+
+La función de orden superior `for-all` recibe un predicado y una lista
+y comprueba que todos los elementos de la lista cumplen ese predicado.
+
+Ejemplo de uso:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">for-all</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
@@ -4812,38 +4873,48 @@ y comprueba que todos los elementos de la lista cumplen ese predicado.</p>
 </pre></div>
 </td></tr></table>
 
-<p>¿Cuál sería la implementación recursiva de la función <code>for-all</code>?</p>
-<h4>Función <code>fold-right</code></h4>
-<p>Veamos ahora la función <code>(fold-right func base lista)</code> que permite
+¿Cuál sería la implementación recursiva de la función `for-all`?
+
+
+#### Función `fold-right`
+
+Veamos ahora la función `(fold-right func base lista)` que permite
 recorrer una lista aplicando una función binaria de forma acumulativa
-a sus elementos. El nombre <code>fold</code> significa <em>plegado</em>. Utilizaremos la
+a sus elementos. El nombre `fold` significa *plegado*. Utilizaremos la
 función cuando necesitemos obtener un dato a partir de los elementos
-de una lista.</p>
-<p>La explicación de su funcionamiento es la siguiente:</p>
-<p>Por ejemplo, supongamos que la función de plegado es una función que
-suma dos valores.</p>
+de una lista.
+
+La explicación de su funcionamiento es la siguiente:
+
+Por ejemplo, supongamos que la función de plegado es una función que
+suma dos valores.
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma</span> <span class="n">dato</span> <span class="n">resultado</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">+</span> <span class="n">dato</span> <span class="n">resultado</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
-<p>Esta función de plegado se aplicará a una lista de números para sumar
-todos sus elementos. Llamamos a los parámetros <code>dato</code> y <code>resultado</code>
+Esta función de plegado se aplicará a una lista de números para sumar
+todos sus elementos. Llamamos a los parámetros `dato` y `resultado`
 para remarcar que el primer parámetro se va a coger de la lista y el
-segundo del resultado calculado.</p>
-<p>Veamos qué pasa cuando hacemos un <code>fold-right</code> con esta función suma y
-la lista '(1 2 3) y con el número 0 como base:</p>
+segundo del resultado calculado.
+
+Veamos qué pasa cuando hacemos un `fold-right` con esta función suma y
+la lista '(1 2 3) y con el número 0 como base:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">fold-right</span> <span class="n">suma</span> <span class="mi">0</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; =&gt; 6</span>
 </pre></div>
 </td></tr></table>
 
-<p>La función <code>suma</code> se va a ir aplicando a todos los elementos de la
-lista de <strong>derecha a izquierda</strong>, empezando por el valor base (0) y el
+La función `suma` se va a ir aplicando a todos los elementos de la
+lista de **derecha a izquierda**, empezando por el valor base (0) y el
 último elemento de la lista (3) y cogiendo el resultado obtenido y
-utilizándolo como nuevo parámetro <code>resultado</code> en la siguiente llamada.</p>
-<p>En concreto, la secuencia de llamadas a la función <code>suma</code> serán las
-siguientes:</p>
+utilizándolo como nuevo parámetro `resultado` en la siguiente llamada.
+
+En concreto, la secuencia de llamadas a la función `suma` serán las
+siguientes:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">suma</span> <span class="mi">3</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">; =&gt; 3</span>
@@ -4852,13 +4923,15 @@ siguientes:</p>
 </pre></div>
 </td></tr></table>
 
-<p>Otro ejemplo de uso:</p>
+Otro ejemplo de uso:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">fold-right</span> <span class="nb">string-append</span> <span class="s2">&quot;****&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;que&quot;</span> <span class="s2">&quot;tal&quot;</span><span class="p">))</span> <span class="c1">; ⇒ &quot;holaquetal****&quot;</span>
 </pre></div>
 </td></tr></table>
 
-<p>En este caso la secuencia de llamadas a <code>string-append</code> que se van a
-producir son:</p>
+En este caso la secuencia de llamadas a `string-append` que se van a
+producir son:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;tal&quot;</span> <span class="s2">&quot;****&quot;</span><span class="p">)</span> <span class="c1">; =&gt; &quot;tal****&quot;</span>
@@ -4867,14 +4940,16 @@ producir son:</p>
 </pre></div>
 </td></tr></table>
 
-<p>Otros ejemplos:</p>
+Otros ejemplos:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">fold-right</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ 40320</span>
 <span class="p">(</span><span class="n">fold-right</span> <span class="nb">cons</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ (1 2 3 4)</span>
 </pre></div>
 </td></tr></table>
 
-<p>Un último ejemplo:</p>
+Un último ejemplo:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4887,22 +4962,27 @@ producir son:</p>
 </pre></div>
 </td></tr></table>
 
-<h5>Función <code>fold-left</code></h5>
-<p>La función <code>fold-left</code> es similar a <code>fold-right</code> con la diferencia de
-que la secuencia de aplicaciones de la función de plegado se hace <strong>de
-izquierda a derecha</strong> en lugar de derecha a izquierda.</p>
-<p>La función de plegado también cambia, porque tiene invertidos sus
-argumentos:</p>
+##### Función `fold-left` #####
+
+La función `fold-left` es similar a `fold-right` con la diferencia de
+que la secuencia de aplicaciones de la función de plegado se hace **de
+izquierda a derecha** en lugar de derecha a izquierda.
+
+La función de plegado también cambia, porque tiene invertidos sus
+argumentos:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">f</span> <span class="n">resultado</span> <span class="n">dato</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
-<p>Por ejemplo:</p>
+Por ejemplo:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">fold-left</span> <span class="nb">-</span> <span class="mi">0</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; =&gt; -6</span>
 </pre></div>
 </td></tr></table>
 
-<p>La secuencia de llamadas a <code>-</code> son:</p>
+La secuencia de llamadas a `-` son:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">-</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">; =&gt; -1</span>
@@ -4911,12 +4991,15 @@ argumentos:</p>
 </pre></div>
 </td></tr></table>
 
-<div class="admonition tip">
-<p class="admonition-title">Consejo</p>
-<p>Las funciones <code>fold-right</code> o <code>fold-left</code> reciben una lista de datos y devuelven un único resultado.</p>
-</div>
-<h5>Implementación de <code>fold-right</code> y <code>fold-left</code></h5>
-<p>Podríamos implementar de forma recursiva la función <code>fold-right</code>:</p>
+
+!!! Tip "Consejo"
+    Las funciones `fold-right` o `fold-left` reciben una lista de datos y devuelven un único resultado.
+
+
+##### Implementación de `fold-right` y `fold-left`
+
+Podríamos implementar de forma recursiva la función `fold-right`:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4927,18 +5010,25 @@ argumentos:</p>
 </pre></div>
 </td></tr></table>
 
-<p>La implementación de <code>fold-left</code> la veremos cuando hablemos de
-recursión por la cola (<em>tail recursion</em>) en el próximo tema.</p>
-<h4>Uso de funciones de orden superior</h4>
-<p>El uso de funciones de orden superior y las expresiones lambda
+La implementación de `fold-left` la veremos cuando hablemos de
+recursión por la cola (_tail recursion_) en el próximo tema.
+
+#### Uso de funciones de orden superior
+
+El uso de funciones de orden superior y las expresiones lambda
 proporciona muchísima expresividad en un lenguaje de programación. Es
 posible escribir código muy conciso, que hace cosas complicadas en
-pocas líneas. Veamos algunos ejemplos.</p>
-<h5>Función <code>(suma-n n lista)</code></h5>
-<p>Supongamos que queremos definir una función <code>(suma-n n lista)</code> que
-devuelve la lista resultante el resultado de sumar un número <code>n</code> a
-todos los elementos de una lista.</p>
-<p>Podemos hacerlo de forma recursiva:</p>
+pocas líneas. Veamos algunos ejemplos.
+
+
+##### Función `(suma-n n lista)`
+
+Supongamos que queremos definir una función `(suma-n n lista)` que
+devuelve la lista resultante el resultado de sumar un número `n` a
+todos los elementos de una lista.
+
+Podemos hacerlo de forma recursiva:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4951,40 +5041,49 @@ todos los elementos de una lista.</p>
 </pre></div>
 </td></tr></table>
 
-<p>Funciona de la siguiente manera:</p>
+Funciona de la siguiente manera:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">suma-n</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ (11 12 13 14)</span>
 </pre></div>
 </td></tr></table>
 
-<p><strong>Implementacion con <code>map</code></strong></p>
-<p>Pero si utilizamos funciones de orden superior, podemos implementar la
-misma función de una forma mucho más concisa y expresiva. </p>
-<p>Lo podemos hacer utilizando la función de orden superior <code>map</code> y una
-expresión lambda que sume el número <code>n</code> a los elementos de la lista:</p>
+**Implementacion con `map`**
+
+Pero si utilizamos funciones de orden superior, podemos implementar la
+misma función de una forma mucho más concisa y expresiva. 
+
+Lo podemos hacer utilizando la función de orden superior `map` y una
+expresión lambda que sume el número `n` a los elementos de la lista:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-n</span> <span class="n">n</span> <span class="n">lista</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="n">n</span><span class="p">))</span> <span class="n">lista</span><span class="p">))</span>
 </pre></div>
 </td></tr></table>
 
-<p>Vemos que utilizamos el parámetro <code>n</code> en el cuerpo de la expresión
+Vemos que utilizamos el parámetro `n` en el cuerpo de la expresión
 lambda. De esta forma la función que se aplica a los elementos de la
 lista es una función que suma este número a cada elemento. La variable
-<code>x</code> en el parámetro de la expresión lambda es la que va tomando el
-valor de los elementos de la lista.</p>
+`x` en el parámetro de la expresión lambda es la que va tomando el
+valor de los elementos de la lista.
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">suma-n</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="p">(</span><span class="nb">map</span> <span class="n">#&lt;prodedure-que-suma-10-a-x&gt;</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="nb">=</span>  <span class="p">(</span><span class="mi">11</span> <span class="mi">12</span> <span class="mi">13</span> <span class="mi">14</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
-<h5>Composición de funciones de orden superior</h5>
-<p>Dado que muchas de las anteriores funciones de orden superior
+##### Composición de funciones de orden superior
+
+Dado que muchas de las anteriores funciones de orden superior
 devuelven listas, es muy común componer las llamadas, de forma que la
-salida de función se utilice como entrada de otra.</p>
-<p>Por ejemplo, podemos implementar una función que sume un número
-<code>n</code> a todos los elementos de una lista (igual que la anterior) y
-después que sume todos los elementos resultantes.</p>
-<p>Lo podríamos hacer reutilizando el código del ejemplo anterior, y
-añadiendo una llamada a <code>fold-right</code> para que haga la suma:</p>
+salida de función se utilice como entrada de otra.
+
+Por ejemplo, podemos implementar una función que sume un número
+`n` a todos los elementos de una lista (igual que la anterior) y
+después que sume todos los elementos resultantes.
+
+Lo podríamos hacer reutilizando el código del ejemplo anterior, y
+añadiendo una llamada a `fold-right` para que haga la suma:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-n-total</span> <span class="n">n</span> <span class="n">lista</span><span class="p">)</span>
@@ -4993,14 +5092,16 @@ añadiendo una llamada a <code>fold-right</code> para que haga la suma:</p>
 </pre></div>
 </td></tr></table>
 
-<p>Funcionaría de la siguiente forma:</p>
+Funcionaría de la siguiente forma:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">suma-n-total</span> <span class="mi">100</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>  <span class="k">=&gt;</span> <span class="mi">410</span>
 </pre></div>
 </td></tr></table>
 
-<p>Otro ejemplo. Supongamos que tenemos una lista de parejas de números y
+Otro ejemplo. Supongamos que tenemos una lista de parejas de números y
 queremos contar aquellas parejas cuya suma de ambos números es mayor
-que un umbral (por ejemplo, 10).</p>
+que un umbral (por ejemplo, 10).
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -5013,10 +5114,11 @@ que un umbral (por ejemplo, 10).</p>
 </pre></div>
 </td></tr></table>
 
-<p>Se podría implementar de una forma muy concisa componiendo una llamada
-a <code>map</code> para realizar la suma de cada pareja junto con una llamada a
-<code>filter</code> que compruebe que el resultado sea mayor de <code>n</code>. Y al final
-llamamos a <code>length</code> para contar la longitud de la lista resultante:</p>
+Se podría implementar de una forma muy concisa componiendo una llamada
+a `map` para realizar la suma de cada pareja junto con una llamada a
+`filter` que compruebe que el resultado sea mayor de `n`. Y al final
+llamamos a `length` para contar la longitud de la lista resultante:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -5029,19 +5131,24 @@ llamamos a <code>length</code> para contar la longitud de la lista resultante:</
 </pre></div>
 </td></tr></table>
 
-<h5>Función <code>(contienen-letra caracter lista-pal)</code></h5>
-<p>Veamos otro ejemplo. Supongamos que queremos definir la función
-<code>(contienen-letra caracter lista-pal)</code> que devuelve las palabras de
-una lista que contienen un determinado carácter.</p>
-<p>Por ejemplo:</p>
+
+##### Función `(contienen-letra caracter lista-pal)`
+
+Veamos otro ejemplo. Supongamos que queremos definir la función
+`(contienen-letra caracter lista-pal)` que devuelve las palabras de
+una lista que contienen un determinado carácter.
+
+Por ejemplo:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">contienen-letra</span> <span class="sc">#\a</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;En&quot;</span> <span class="s2">&quot;un&quot;</span> <span class="s2">&quot;lugar&quot;</span> <span class="s2">&quot;de&quot;</span> <span class="s2">&quot;la&quot;</span> <span class="s2">&quot;Mancha&quot;</span><span class="p">))</span> <span class="n">⇒</span> <span class="p">(</span><span class="s2">&quot;lugar&quot;</span> <span class="s2">&quot;la&quot;</span> <span class="s2">&quot;Mancha&quot;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
-<p>Podemos implementar <code>contienen-letra</code> usando la función de orden
-superior <code>filter</code>, con una expresión lambda que se aplicará a cada una
+Podemos implementar `contienen-letra` usando la función de orden
+superior `filter`, con una expresión lambda que se aplicará a cada una
 de las palabras de la lista para comprobar si la palabra contiene el
-carácter:</p>
+carácter:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">contienen-letra</span> <span class="n">caracter</span> <span class="n">lista-pal</span><span class="p">)</span>
@@ -5050,21 +5157,25 @@ carácter:</p>
 </pre></div>
 </td></tr></table>
 
-<p>El parámetro <code>pal</code> de la expresión lambda irá cogiendo el valor de
-todas las palabras de <code>lista-pal</code> y la función <code>(letra-en-pal?
-caracter pal)</code> comprobará si la cadena contiene el carácter.</p>
-<p>La función <code>(letra-en-pal? caracter pal)</code> es una función auxiliar que
-tenemos que implementar.</p>
-<p>Por ejemplo:</p>
+El parámetro `pal` de la expresión lambda irá cogiendo el valor de
+todas las palabras de `lista-pal` y la función `(letra-en-pal?
+caracter pal)` comprobará si la cadena contiene el carácter.
+
+La función `(letra-en-pal? caracter pal)` es una función auxiliar que
+tenemos que implementar.
+
+Por ejemplo:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">letra-en-pal?</span> <span class="sc">#\a</span> <span class="s2">&quot;Hola&quot;</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="n">letra-en-pal?</span> <span class="sc">#\a</span> <span class="s2">&quot;Pepe&quot;</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
 </pre></div>
 </td></tr></table>
 
-<p>La podemos implementar de una forma muy elegante obteniendo una lista
+La podemos implementar de una forma muy elegante obteniendo una lista
 de caracteres a partir de la cadena y usando la función de orden
-superior <code>exists</code>:</p>
+superior `exists`:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">letra-en-pal?</span> <span class="n">caracter</span> <span class="n">palabra</span><span class="p">)</span>
@@ -5073,11 +5184,15 @@ superior <code>exists</code>:</p>
 </pre></div>
 </td></tr></table>
 
-<h5>Función divisores</h5>
-<p>Un último ejemplo en el que implementamos la función <code>(divisores n)</code>
-utilizando una función de orden superior.</p>
-<p>Suponemos que tenemos definidas las funciones <code>(numeros-hasta n)</code> y
-<code>(divisor? x n)</code>:</p>
+
+##### Función divisores #####
+
+Un último ejemplo en el que implementamos la función `(divisores n)`
+utilizando una función de orden superior.
+
+Suponemos que tenemos definidas las funciones `(numeros-hasta n)` y
+`(divisor? x n)`:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -5094,7 +5209,9 @@ utilizando una función de orden superior.</p>
 </pre></div>
 </td></tr></table>
 
-<p>Entonces la función <code>(divisores n)</code> se implementaría de la siguiente forma:</p>
+Entonces la función `(divisores n)` se implementaría de la siguiente forma:
+
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">divisores</span> <span class="n">n</span><span class="p">)</span>
@@ -5102,6 +5219,8 @@ utilizando una función de orden superior.</p>
             <span class="p">(</span><span class="n">divisor?</span> <span class="n">x</span> <span class="n">n</span><span class="p">))</span> <span class="p">(</span><span class="n">numeros-hasta</span> <span class="n">n</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
+
+-->
 
 <h2 id="bibliografia-sicp">Bibliografía - SICP<a class="headerlink" href="#bibliografia-sicp" title="Permanent link">&para;</a></h2>
 <p>En este tema hemos explicado conceptos de los siguientes capítulos del
