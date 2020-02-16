@@ -227,9 +227,9 @@ de un argumento que sumará 10 a ese argumento:
 - Si le pasamos un número negativo entra en un bucle infinito.
 
 - Definimos la función `(construye-segura condicion f) ` que recibe
-  dos funciones: un predicado y otra función de un argumento, ambos de
-  1 argumento. Devuelve otra función en la que sólo se llamará a `f`
-  si el argumento cumple la `condicion`.
+  dos funciones: un predicado y otra función, ambos de 1
+  argumento. Devuelve otra función en la que sólo se llamará a `f` si
+  el argumento cumple la `condicion`.
 
     ```racket
     (define (construye-segura condicion f)
@@ -275,8 +275,9 @@ las funciones como parámetros
     ; ⇒ (#<procedure:cuadrado>  #<procedure:suma-1>  #<procedure:doble>)
     ```
 
-- También podemos construir la lista con procedimientos devueltos por
-llamadas a `lambda`:
+- También podemos usar expresiones `lambda` para crear la función que
+  se incluye en la lista. Por ejemplo, podemos añadir una función que
+  suma 5 a un número:
 
     ```racket
     (define lista2 (cons (lambda (x) (+ x 5)) lista))
@@ -306,10 +307,11 @@ llamadas a `lambda`:
 
 - Veamos un ejemplo de una función `(aplica-funcs lista-funcs x)` que
   recibe una lista de funciones en el parámetro `lista-funcs` y las
-  aplica todas al número que pasamos en el parámetro `x`.
+  aplica todas **de derecha a izquierda** al número que pasamos en el
+  parámetro `x`.
 
-- Por ejemplo, si construimos una lista con las funciones `cuadrado`,
-  `cubo` y `suma-1`:
+- Por ejemplo, la lista anterior con las funciones `cuadrado`, `cubo`
+  y `suma-1`:
 
     ```racket
     (define lista (list cuadrado cubo suma-1))
@@ -382,16 +384,20 @@ que permite hacer código muy conciso y expresivo.
 
 ### Función `map`
 
-- La función `(map transforma lista)` recibe otra función y una
+- La función `map` recibe otra función y una
   lista. Devuelve la lista resultante de aplicar la función
   `transforma` a todos los elementos de la lista.
+
+    ```text
+    (map transforma lista) -> lista
+    ```
 
 - La función `(transforma dato)` que usa `map` recibe como argumento
   elementos de la lista y devuelve el resultado de transformar ese
   elemento.
 
     ```text
-    (transforma dato) -> dato
+    (transforma elemento) -> elemento
     ```
 
 - Ejemplos:
@@ -422,8 +428,8 @@ que permite hacer código muy conciso y expresivo.
 - La función `map` puede recibir un número variable de listas, todas
   ellas de la misma longitud:
 
-    ```racket
-    (map transforma lista_1 ... lista_n)
+    ```text
+    (map transforma lista_1 ... lista_n) -> lista
     ```
 
 - En este caso la función de transforma debe recibir tantos argumentos
@@ -437,6 +443,10 @@ que permite hacer código muy conciso y expresivo.
   n listas y construye así la lista resultante:
   
     ```racket
+    (map + '(1 2 3) '(10 20 30)) ; ⇒ (11 22 33)
+    (map cons '(1 2 3) '(10 20 30)) ; ⇒ ((1 . 10) (2 . 20) (3 . 30))
+    (map > '(12 3 40) '(20 0 10)) ; ⇒ (#f #t #t)
+  
     (define (mayor a b) (if (> a b) a b))
     (define (mayor-de-tres a b c)
         (mayor a (mayor b c)))
@@ -458,9 +468,17 @@ que permite hacer código muy conciso y expresivo.
 - La función `(filter predicado lista)` toma como parámetro un
   predicado y una lista y devuelve como resultado los elementos de la
   lista que cumplen el `predicado`.
+  
+  ```text
+  (filter predicado lista) -> lista
+  ```
 
-- La función `(predicado dato)` que usa `filter` recibe elementos de
+- La función `(predicado elem)` que usa `filter` recibe elementos de
   la lista y devuelve `#t` o `#f`.
+
+    ```text
+    (predicado elem) -> boolean
+    ```
 
 - Ejemplos:
 
@@ -474,11 +492,13 @@ que permite hacer código muy conciso y expresivo.
     ; ⇒ (Esta lista símbolos)
 
     (filter (lambda (pareja)
-                (>= (car pareja) (cdr pareja))) '((10 . 4) (2 . 4) (8 . 8) (10 . 20)))
+                (>= (car pareja) (cdr pareja))) 
+                '((10 . 4) (2 . 4) (8 . 8) (10 . 20)))
     ; ⇒ ((10 . 4) (8 . 8))
     ```
 
-- Podemos implementar `filter` de forma recursiva. Llamamos a la función `mi-filter`.
+- Podemos implementar `filter` de forma recursiva. Llamamos a la
+  función `mi-filter`.
 
     ```racket
     (define (mi-filter pred lista)
@@ -503,8 +523,16 @@ que permite hacer código muy conciso y expresivo.
   predicado y una lista y comprueba si algún elemento de la lista
   cumple ese predicado.
   
+    ```text
+    (exists predicado lista) -> boolean
+    ```
+  
 - Igual que en `filter` el `predicado` recibe elementos de la lista y
   devuelve `#t` o `#f`.
+
+    ```text
+    (predicado elem) -> boolean
+    ```
 
 - Implementación:
 
@@ -598,12 +626,13 @@ que permite hacer código muy conciso y expresivo.
     ```
 
 - La función `suma` se va a ir aplicando a todos los elementos de la
-  lista de derecha a izquierda, empezando por el valor base (0) y el
-  último elemento de la lista (3) y cogiendo el resultado obtenido y
-  utilizándolo como nuevo parámetro `resultado` en
-  la siguiente llamada.
+  lista de **derecha a izquierda**, empezando por el valor base (0) y
+  el último elemento de la lista (3) y cogiendo el resultado obtenido
+  y utilizándolo como nuevo parámetro `resultado` en la siguiente
+  llamada.
 
-- En concreto, la secuencia de llamadas a la función `suma` serán las siguientes:
+- En concreto, la secuencia de llamadas a la función `suma` serán las
+  siguientes:
 
     ```racket
     (suma 3 0) ; ⇒ 3
