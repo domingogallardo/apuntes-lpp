@@ -3337,8 +3337,6 @@ devuelve la invocación de `g` con `x`:
 (aplica-2 suma-5 doble 3) ; ⇒ 11
 ```
 
-<!--
-
 ### Generalización ###
 
 La posibilidad de pasar funciones como parámetros de otras es una
@@ -3482,7 +3480,7 @@ argumento.
 Por ejemplo, podemos invocar a `construye-sumador` pasando 10 como parámetro:
 
 ```racket
-(construye-sumador 10) ; => #<procedure>
+(construye-sumador 10) ; ⇒ #<procedure>
 ```
 
 Como hemos dicho, se devuelve un procedimiento, una función. Esta
@@ -3491,14 +3489,14 @@ resultado de sumar 10 a ese argumento:
 
 ```racket
 (define f (construye-sumador 10))
-(f 3) ; => 13
+(f 3) ; ⇒ 13
 ```
 
 También podemos invocar directamente a la función que devuelve la
 función constructora, sin guardarla en una variable:
 
 ```racket
-((construye-sumador 10) 3) ; => 13
+((construye-sumador 10) 3) ; ⇒ 13
 ```
 
 Dependiendo del parámetro que le pasemos a la función constructora
@@ -3507,7 +3505,7 @@ ejemplo para obtener una función sumadora que suma 100:
   
 ```racket
 (define g (construye-sumador 100))
-(g 3) ; => 103
+(g 3) ; ⇒ 103
 ```
 
 ¿Cómo funciona la clausura? ¿Por qué la invocación a `(g 3)`
@@ -3532,7 +3530,7 @@ Y supongamos que realizamos las siguientes invocaciones:
 
 ```racket
 (define g (construye-sumador 100))
-(g 3) ; => 103
+(g 3) ; ⇒ 103
 ```
 
 Podemos explicar lo que sucede en la evaluación de estas funciones de
@@ -3556,14 +3554,14 @@ es lo que hace que se denomine una **clausura** (del inglés
 utilizar sus variables.
 
 
-#### Función `componedor` 
+#### Función `composicion` 
 
 Otro ejemplo de una función que devuelve otra función es la función
-siguiente `(componedor f g)` que recibe dos funciones de un argumento
+siguiente `(composicion f g)` que recibe dos funciones de un argumento
 y devuelve otra función que realiza la composición de ambas:
 
 ```racket
-(define (componedor f g)
+(define (composicion f g)
     (lambda (x)
 	    (f (g x))))
 ```
@@ -3571,138 +3569,45 @@ y devuelve otra función que realiza la composición de ambas:
 La función devuelta invoca primero a `g` y el resultado se lo pasa a
 `f`. Veamos un ejemplo. Supongamos que tenemos definidas la función
 `cuadrado` y `doble` que calculan el cuadrado y el doble de un número
-respectivamente. Podremos entonces llamar a `componedor` con esas dos
+respectivamente. Podremos entonces llamar a `composicion` con esas dos
 funciones para construir otra función que primero calcule el cuadrado y
 después el doble de una número:
 
 ```racket
-(define h (componendor doble cuadrado))
+(define h (composicion doble cuadrado))
 ```
 
-La variable `h` contiene la función devuelta por `componedor`. Una
+La variable `h` contiene la función devuelta por `composicion`. Una
 función de un argumento que devuelve el doble del cuadrado de un
 número:
 
 ```racket
-(h 4) ; => 32
-```
-
-#### Usos reales de las funciones constructoras ####
-
-Las funciones que construyen otras funciones permiten un alto nivel de
-configuración y de generalización en la programación.
-
-Por ejemplo, un par de ejemplos de uso en problemas reales:
-
-1. Posibilidad de definir funciones configurables sin tener que
-  depender de variables globales o parámetros adicionales.
-2. Posibilidad de modificar funciones ya construidas, añadiéndoles condiciones
-  a comprobar antes o cálculos a realizar después.
-
-
-##### Ejemplo de funciones constructoras para definir funciones configurables #####
-
-Supongamos que queremos definir una función `logger` a la que le
-llamemos con una cadena para que imprima un mensaje de log.
-
-Queremos poder configurar el prefijo del mensaje de log, de forma que
-sólo tengamos que definirlo una vez, al crear la función
-`logger`. Después llamaremos a la función `logger` pasándole
-únicamente el mensaje de log.
-
-Lo podemos hacer con la siguiente función constructora:
-
-```racket
-(define (construye-logger str-prefijo)
-  (lambda (x)
-    (display (string-append str-prefijo x "\n"))))
-```
-
-Por ejemplo, definimos distintos loggers y los probamos:
-
-```racket
-(define logger-red (construye-logger "Módulo acceso red: "))
-
-(logger-red "Error en el acceso a BD")
-(logger-red "Intentando conexión a red")
-; Módulo acceso red: Error en el acceso a BD
-; Módulo acceso red: Intentando conexión a red
-
-(define logger-email (construye-logger "Módulo correo electrónico: "))
-
-(logger-email "Enviando e-mail")
-(logger-email "Problemas al recibir mensaje")
-; Módulo correo electrónico: Enviando e-mail
-; Módulo correo electrónico: Problemas al recibir mensaje
-
-(define logger-so (construye-logger "Módulo acceso a SO: "))
-
-(logger-so "Intentando abrir fichero")
-(logger-so "Sin espacio de memoria")
-; Módulo acceso a SO: Intentando abrir fichero
-; Módulo acceso a SO: Sin espacio de memoria
+(h 4) ; ⇒ 32
 ```
 
 
-##### Ejemplo de funciones constructoras para modificar funciones ya construidas #####
+#### Función `construye-segura`
 
-Recordemos la función `divisores`:
+Vamos a ver un último ejemplo en el que definimos una función
+constructora que extiende funciones ya existentes.
+
+Recordemos la función `lista-hasta`:
 
 ```racket
 (define (lista-hasta x)
    (if (= x 0)
       '()
       (cons x (lista-hasta (- x 1)))))
-
-(define (divisor? x y)
-      (= 0 (mod y x)))
-
-(define (filtra-divisores lista x)
-   (cond
-      ((null? lista) '())
-      ((divisor? (car lista) x) (cons (car lista)
-                                      (filtra-divisores (cdr lista) x)))
-      (else (filtra-divisores (cdr lista) x))))
-
-(define (divisores x)
-   (filtra-divisores (lista-hasta x) x))
 ```
 
-Un problema de la función anterior `divisores` es que si le pasamos un
+Un problema de la función anterior es que si le pasamos un
 número negativo entra en un bucle infinito.
 
-Podemos definir la siguiente función general a la que le pasamos una
-función de un argumento `f` y devuelve la función f "segura" a la que
-sólo se va a invocar si el parámetro es mayor o igual que 0:
+Definimos la función `(construye-segura condicion f) ` que recibe dos
+funciones: un predicado y otra función, ambos de 1 argumento. Devuelve
+otra función en la que sólo se llamará a `f` si el argumento cumple la
+`condicion`.
 
-```racket
-(define (construye-segura-menor-cero f)
-  (lambda (x)
-    (if (>= x 0)
-        (f x)
-        'error)))
-```
-
-Podemos entonces "segurizar" la función `divisores`:
-
-```racket
-(define divisores-segura (construye-segura-menor-cero divisores))
-(divisores-segura 10) ; => (10 5 2 1)
-(divisores-segura -10) ; => error
-```
-
-La función `(construye-segura-menor-cero f)` se puede aplicar para
-"segurizar" cualquier función, no sólo `divisores`:
-
-```racket
-(define sqrt-segura (construye-segura-menor-cero sqrt))
-(sqrt-segura 100) ; => 10
-(sqrt-segura -100) ; => error
-```
-
-Se podría generalizar aún más la función "segurizadora" haciendo que
-la condición a cumplir por el número sea otra función que también pasamos:
-  
 ```racket
 (define (construye-segura condicion f)
   (lambda (x)
@@ -3711,11 +3616,45 @@ la condición a cumplir por el número sea otra función que también pasamos:
         'error)))
 ```
 
-La forma de definir una función `divisores` segura con esta nueva
-función sería:
+La función construye una función anónima de un argumento `x` (igual
+que `f`) en cuyo cuerpo se comprueba si el argumento cumple la
+condición y sólo en ese caso se llama a `f`.
+
+Podemos entonces construir una función segura a partir de la función
+`lista-hasta` en la que se devuelva `error` si el argumento es un
+número negativo:
   
 ```racket
-(define divisores-segura2 (construye-segura (lambda (x) (>= x 0)) divisores))
+(define lista-hasta-segura
+   (construye-segura (lambda (x) (>= x 0)) lista-hasta))
+(lista-hasta-segura 8) ; ⇒ (8 7 6 5 4 3 2 1)
+(lista-hasta-segura -1) ; ⇒ error
+```
+
+Podríamos usar `construye-segura` con cualquier función de 1 argumento
+que queramos hacer segura. Por ejemplo, la función `sqrt`:
+
+```racket
+(define sqrt-segura (construye-segura (lambda (x) (>= x 0) sqrt))
+(sqrt-segura 100) ; ⇒ 10
+(sqrt-segura -100) ; ⇒ error
+```
+
+La potencia de las funciones constructoras viene del hecho de que es
+posible crear nuevas funciones en tiempo de ejecución. No es necesario
+conocer las condiciones y las características de estas nuevas
+funciones a priori, cuando estamos compilando nuestro programa. Sino
+que pueden depender de datos obtenidos del usuario o de otros módulos
+del programa en tiempo de ejecución.
+
+Por ejemplo, la condición de `construye-segura` podría contener
+valores obtenidos en tiempo de ejecución, de forma que solo se llamara
+a la función que queremos hacer segura si el número está en un rango
+definido esos valores:
+
+```racket
+(construye-segura (lambda (x) (and (>= x limite-inf)
+                                   (<= x limite-sup))) f))
 ```
 
 
@@ -3728,37 +3667,51 @@ Para construir una lista de funciones debemos llamar a `list` con las
 funciones:
 
 ```racket
+(define (cuadrado x) (* x x))
+(define (suma-1 x) (+ x 1))
+(define (doble x) (* x 2))
+
 (define lista (list cuadrado suma-1 doble))
-lista ; ⇒ (#<procedure:cuadrado>  #<procedure:suma-1>  #<procedure:doble>)
+lista 
+; ⇒ (#<procedure:cuadrado>  #<procedure:suma-1>  #<procedure:doble>)
 ```
 
-También podemos evaluar una expresión lambda y añadir el procedimiento
-resultante. Por ejemplo, para añadir otra función a la lista anterior
-podemos llamar a `cons`:
+También podemos definir las funciones con expresiones lambda. Por
+ejemplo, podemos añadir a la lista una función que suma 5 a un número:
+
 
 ```racket
 (define lista2 (cons (lambda (x) (+ x 5)) lista))
-lista2 ; ⇒ (#<procedure> #<procedure:cuadrado> #<procedure:suma-1> #<procedure:doble>)
+lista2 
+; ⇒ (#<procedure> #<procedure:cuadrado> #<procedure:suma-1> #<procedure:doble>)
 ```
 
 Una vez creada una lista con funciones, ¿cómo podemos invocar a alguna
 de ellas?. Debemos tratarlas de la misma forma que tratamos cualquier
 otro dato guardado en la lista, las recuperamos con las funciones
-`car` o `list-ref` y las invocamos. Por ejemplo, para invocar a la
-primera función de `lista2`:
+`car` o `list-ref` y las invocamos. 
+
+Por ejemplo, para invocar a la primera función de `lista2`:
 
 ```racket
 ((car lista2) 10) ; ⇒ 15
+```
+
+O a la tercera:
+
+```racket
+((list-ref lista2 2) 10) ; ⇒ 11
 ```
 
 #### Funciones que trabajan con listas de funciones
 
 Veamos un ejemplo de una función `(aplica-funcs lista-funcs x)` que
 recibe una lista de funciones en el parámetro `lista-funcs` y las
-aplica todas al número que pasamos en el parámetro `x`.
+aplica todas **de derecha a izquierda** al número que pasamos en el
+parámetro `x`.
 
-Por ejemplo, si construimos una lista con las funciones `cuadrado`,
-`cubo` y `suma-1`:
+Por ejemplo, supongamos la lista anterior, que contiene las funciones
+`cuadrado`, `cubo` y `suma-1`:
 
 ```racket
 (define lista (list cuadrado cubo suma-1))
@@ -3776,16 +3729,19 @@ Para implementar `aplica-funcs` tenemos que usar una recursión. Si
 vemos el ejemplo, podemos comprobar que es sencillo definir el caso
 general:
 
-```
-(aplica-funcs (cuadrado cubo suma-1) 5) = (cuadrado (aplica-funcs (cubo suma-1) 5))
-= (cuadrado 216) = 46656
+```text
+(aplica-funcs (cuadrado cubo suma-1) 5) = 
+(cuadrado (aplica-funcs (cubo suma-1) 5)) =
+(cuadrado 216) = 46656
 ```
 
 El caso general de la recursión de la función `aplica-funcs` se define
 entonces como:
 
-```
-(aplica-funcs lista-funcs x) = ((car lista-funcs) (aplica-funcs (cdr lista-funcs) x))
+```racket
+(define (aplica-funcs lista-funcs x)
+    ; falta el caso base
+    ((car lista-funcs) (aplica-funcs (cdr lista-funcs) x)))
 ```
 
 El caso base sería en el que la lista de funciones es vacía, en cuyo
@@ -3817,7 +3773,6 @@ Un ejemplo de uso:
 ```
 
 
-
 ### Funciones de orden superior
 
 Llamamos funciones de orden superior (*higher order functions* en
@@ -3828,15 +3783,16 @@ abstracción.
 Los lenguajes de programación funcional como Scheme, Scala o Java 8
 tienen ya predefinidas algunas funciones de orden superior que
 permiten tratar listas o *streams* de una forma muy concisa y
-compacta.
+compacta. También podemos definirlas nosotros, si las funciones no
+están definidas en el lenguaje.
 
 Las funciones que veremos son:
 
 - `map`
 - `filter`
-- `exists`
-- `for-all`
-- `fold-right` y `fold-left`
+- `exists` (implementada por nosotros)
+- `for-all` (implementada por nosotros)
+- `foldr` y `foldl`
 
 Para las tres primeras funciones veremos también una implementación
 recursiva que nos ayudará a comprobar su funcionamiento. 
@@ -3858,12 +3814,20 @@ transformación que se pasa como parámetro.
 
 En concreto, la función recibe otra función y una lista:
 
-```racket
-(map funcion lista)
+```text
+(map transforma lista) -> lista
 ```
 
 Y devuelve la lista resultante de aplicar la función a todos los
 elementos de la lista.
+
+La función de transformación recibe como argumentos elementos de la
+lista y devuelve el resultado de transformar ese elemento.
+
+```text
+(transforma elemento) -> elemento
+```
+
 
 Por ejemplo:
 
@@ -3903,18 +3867,13 @@ de símbolos en una lista con sus longitudes:
 ```racket
 (map (lambda (s) 
         (string-length (symbol->string s))) '(Esta es una lista de símbolos))
-; => (4 2 3 5 2 8)
+; ⇒ (4 2 3 5 2 8)
 ```
-
-
-!!! Tip "Consejo"
-    La función `map` recibe una lista de *n* elementos y devuelve otra
-    de *n* elementos transformados.
 
 ##### Implementación de `map`
 
-¿Cómo se podría implementar `map` de forma recursiva? Definimos la
-función `mi-map`. La implementación es la siguiente:
+¿Cómo se podría implementar `map` de forma recursiva?
+Definimos la función `mi-map`. La implementación es la siguiente:
 
 ```racket
 (define (mi-map f lista)
@@ -3924,29 +3883,48 @@ función `mi-map`. La implementación es la siguiente:
               (mi-map f (cdr lista)))))
 ```
 
+
 ##### Función `map` con más de una lista
 
-Es posible pasar más de una lista como parámetro de la función
-`map`. Todas las listas deben tener la misma longitud:
 
-```racket
-(map f lista-1 ... lista-n)
+La función `map` puede recibir un número variable de listas, todas
+ellas de la misma longitud:
+
+```text
+(map transforma lista_1 ... lista_n) -> lista
 ```
 
-En ese caso, la función de mapeado `f` debe tener tantos parámetros
-como listas. El resultado es el mismo que antes: la función `f` coge
-sus argumentos de los elementos de las listas y se devuelve la lista
-con los resultados.
+En este caso la función de transforma debe recibir tantos argumentos
+como listas recibe `map`:
+  
+```text
+(transforma dato_1 ... dato_n) -> dato
+```
+
+La función `map` aplica `transforma` a los elementos cogidos de las n
+listas y construye así la lista resultante.
 
 Ejemplos:
-
+  
 ```racket
+
 (map + '(1 2 3) '(10 20 30)) ; ⇒ (11 22 33)
 (map cons '(1 2 3) '(10 20 30)) ; ⇒ ((1 . 10) (2 . 20) (3 . 30))
 (map > '(12 3 40) '(20 0 10)) ; ⇒ (#f #t #t)
-(map (lambda (x y)
-	    (if (> x y) x y)) '(12 3 40) '(20 0 10)) ; ⇒ (20 3 40)
+
+(define (mayor a b) (if (> a b) a b))
+(define (mayor-de-tres a b c)
+    (mayor a (mayor b c)))
+
+(map mayor-de-tres '(10 2 20 -1 34) 
+                   '(2 3 12 89 0) 
+                   '(100 -10 23 45 8))
+; ⇒ (100 3 23 89 34)
 ```
+
+!!! Tip "Consejo"
+    La función `map` recibe una lista de *n* elementos y devuelve otra
+    de *n* elementos transformados.
 
 
 #### Función `filter`
@@ -3956,6 +3934,17 @@ Veamos otra función de orden superior que trabaja sobre listas.
 La función `(filter predicado lista)` toma como parámetro un predicado
 y una lista y devuelve como resultado los elementos de la lista que
 cumplen el predicado.
+
+```text
+(filter predicado lista) -> lista
+```
+
+La función `(predicado elem)` que usa `filter` recibe elementos de
+la lista y devuelve `#t` o `#f`.
+
+```text
+(predicado elem) -> boolean
+```
 
 Un ejemplo de uso:
 
@@ -3970,7 +3959,8 @@ siguiente expresión:
 
 ```racket
 (filter (lambda (pareja)
-            (>= (car pareja) (cdr pareja))) '((10 . 4) (2 . 4) (8 . 8) (10 . 20)))
+            (>= (car pareja) (cdr pareja))) 
+        '((10 . 4) (2 . 4) (8 . 8) (10 . 20)))
 ; ⇒ ((10 . 4) (8 . 8))
 ```
 
@@ -3981,7 +3971,7 @@ de 4.
 (filter (lambda (s) 
            (>= (string-length (symbol->string s)) 4))
            '(Esta es una lista de símbolos))
-; => (Esta lista símbolos)
+; ⇒ (Esta lista símbolos)
 ```
 
 
@@ -4004,10 +3994,36 @@ Podemos implementar la función `filter` de forma recursiva:
     (else (mi-filter pred (cdr lista)))))
 ```
 
-#### Función `exists`
+#### Función `exists` (implementada por nosotros)
 
 La función de orden superior `exists` recibe un predicado y una lista
 y comprueba si algún elemento de la lista cumple ese predicado.
+
+```text
+(exists predicado lista) -> boolean
+```
+
+Igual que en `filter` el `predicado` recibe elementos de la lista y
+devuelve `#t` o `#f`.
+
+```text
+(predicado elem) -> boolean
+```
+
+La función `exists` no está definida en Racket. Vamos a implementarla
+de forma recursiva.
+
+```racket
+(define (exists predicado lista)
+  (if (null? lista)
+      #f
+      (or (predicado (car lista))
+          (exists predicado (cdr lista)))))
+```
+
+Se llama a la recursión con el resto de la lista y se devuelve #t si
+la recursión encuentra a algún elemento que cumple el predicado o si
+lo cumple el primer elemento de la lista.
 
 Ejemplo de uso:
 
@@ -4017,12 +4033,25 @@ Ejemplo de uso:
              (> x 10)) '(1 3 5 8)) ; ⇒ #f
 ```
 
-¿Cuál sería la implementación recursiva de la función `exists`? 
 
-#### Función `for-all`
+#### Función `for-all` (implementada por nosotros)
 
 La función de orden superior `for-all` recibe un predicado y una lista
 y comprueba que todos los elementos de la lista cumplen ese predicado.
+
+Tampoco está definida en Racket y la implementamos nosotros:
+
+```racket
+(define (for-all predicado lista)
+  (or (null? lista)
+      (and (predicado (car lista))
+           (for-all predicado (cdr lista)))))
+```
+
+La llamada recursiva comprueba que todos los elementos del resto de la
+lista cumplen el predicado y también lo debe cumplir el primer
+elemento. Una lista vacía cumple siempre devuelve `#t` (al no tener
+elementos, podemos decir que todos sus elementos cumplen el predicado).
 
 Ejemplo de uso:
 
@@ -4032,37 +4061,51 @@ Ejemplo de uso:
              (> x 10)) '(12 30 50 80)) ; ⇒ #t
 ```
 
-¿Cuál sería la implementación recursiva de la función `for-all`?
 
+#### Función `foldr`
 
-#### Función `fold-right`
-
-Veamos ahora la función `(fold-right func base lista)` que permite
+Veamos ahora la función `(foldr combina base lista)` que permite
 recorrer una lista aplicando una función binaria de forma acumulativa
-a sus elementos. El nombre `fold` significa *plegado*. Utilizaremos la
-función cuando necesitemos obtener un dato a partir de los elementos
-de una lista.
+a sus elementos y devolviendo un único valor como resultado.
 
-La explicación de su funcionamiento es la siguiente:
+```text
+(foldr combina base lista) -> valor
+```
 
-Por ejemplo, supongamos que la función de plegado es una función que
-suma dos valores.
+El nombre `fold` significa *plegado*, indicando que la lista a la que
+se aplica se va "plegando" y al final se devuelve un único
+resultado. El plegado lo realiza la **función de plegado** `(combina
+dato resultado)`, que recibe un dato de la lista y lo acumula con el
+otro parámetro `resultado` (al que debemos dar un valor inicial y es
+el parámetro `base` de la función `foldr`).
+
+```text
+(combina dato resultado) -> resultado
+```
+
+La función `combina` se aplica a los elementos de la lista **de
+derecha a izquierda**, empezando por el último elemento de la lista y
+el valor inicial `base` y aplicándose sucesivamente a los resultados
+que se van obteniendo.
+
+Veamos un ejemplo. Supongamos que la función de plegado es una función
+que suma el dato que viene de la lista con el valor acumulado:
+
 
 ```racket
 (define (suma dato resultado)
     (+ dato resultado))
 ```
 
-Esta función de plegado se aplicará a una lista de números para sumar
-todos sus elementos. Llamamos a los parámetros `dato` y `resultado`
-para remarcar que el primer parámetro se va a coger de la lista y el
-segundo del resultado calculado.
+Llamamos a los parámetros `dato` y `resultado` para remarcar que el
+primer parámetro se va a coger de la lista y el segundo del resultado
+calculado.
 
-Veamos qué pasa cuando hacemos un `fold-right` con esta función suma y
+Veamos qué pasa cuando hacemos un `foldr` con esta función suma y
 la lista '(1 2 3) y con el número 0 como base:
   
 ```racket
-(fold-right suma 0 '(1 2 3)) ; => 6
+(foldr suma 0 '(1 2 3)) ; ⇒ 6
 ```
 
 La función `suma` se va a ir aplicando a todos los elementos de la
@@ -4074,96 +4117,106 @@ En concreto, la secuencia de llamadas a la función `suma` serán las
 siguientes:
 
 ```racket
-(suma 3 0) ; => 3
-(suma 2 3) ; => 5
-(suma 1 5) ; => 6
+(suma 3 0) ; ⇒ 3
+(suma 2 3) ; ⇒ 5
+(suma 1 5) ; ⇒ 6
 ```
 
 Otro ejemplo de uso:
 
 ```racket
-(fold-right string-append "****" '("hola" "que" "tal")) ; ⇒ "holaquetal****"
+(foldr string-append "****" '("hola" "que" "tal")) ; ⇒ "holaquetal****"
 ```
 
 En este caso la secuencia de llamadas a `string-append` que se van a
 producir son:
   
 ```racket
-(string-append "tal" "****") ; => "tal****"
-(string-append "que" "tal****") ; => "quetal****"
-(string-append "hola" "quetal****") ; => "holaquetal****"
+(string-append "tal" "****") ; ⇒ "tal****"
+(string-append "que" "tal****") ; ⇒ "quetal****"
+(string-append "hola" "quetal****") ; ⇒ "holaquetal****"
 ```
 
 Otros ejemplos:
 
 ```racket
-(fold-right (lambda (x y) (* x y)) 1 '(1 2 3 4 5 6 7 8)) ; ⇒ 40320
-(fold-right cons '() '(1 2 3 4)) ; ⇒ (1 2 3 4)
+(foldr (lambda (x y) (* x y)) 1 '(1 2 3 4 5 6 7 8)) ; ⇒ 40320
+(foldr cons '() '(1 2 3 4)) ; ⇒ (1 2 3 4)
 ```
 
 Un último ejemplo:
 
 ```racket
 (define (suma-parejas lista-parejas)
-    (fold-right (lambda (pareja resultado)
+    (foldr (lambda (pareja resultado)
                    (+ (car pareja) (cdr pareja) resultado)) 0 lista-parejas))
 
 (suma-parejas (list (cons 3 6) (cons 2 9) (cons -1 8) (cons 9 3))) ; ⇒ 39
 ```
 
-##### Función `fold-left` #####
 
-La función `fold-left` es similar a `fold-right` con la diferencia de
-que la secuencia de aplicaciones de la función de plegado se hace **de
-izquierda a derecha** en lugar de derecha a izquierda.
+##### Implementación de `foldr` 
 
-La función de plegado también cambia, porque tiene invertidos sus
-argumentos:
+Podemos implementar de forma recursiva la función `foldr`:
 
 ```racket
-(f resultado dato)
-```
-
-Por ejemplo:
-
-```racket
-(fold-left - 0 '(1 2 3)) ; => -6
-```
-
-La secuencia de llamadas a `-` son:
-
-```racket
-(- 0 1) ; => -1
-(- -1 2) ; => -3
-(- -3 3) ; => -6
-```
-
-
-!!! Tip "Consejo"
-    Las funciones `fold-right` o `fold-left` reciben una lista de datos y devuelven un único resultado.
-
-
-##### Implementación de `fold-right` y `fold-left`
-
-Podríamos implementar de forma recursiva la función `fold-right`:
-
-```racket
-(define (mi-fold-right func base lista)
+(define (mi-foldr func base lista)
   (if (null? lista)
       base
-      (func (car lista) (mi-fold-right func base (cdr lista)))))
+      (func (car lista) (mi-foldr func base (cdr lista)))))
 ```
 
-La implementación de `fold-left` la veremos cuando hablemos de
+
+#### Función `foldl` ####
+
+La función `(foldl combina base lista)` (_fold left_) es similar a
+`foldr` con la diferencia de que la secuencia de aplicaciones de la
+función de plegado se hace **de izquierda a derecha** en lugar de
+derecha a izquierda.
+
+El perfil de la función de plegado es el mismo que en `foldr`:
+
+```text
+(func dato resultado) -> resultado
+```
+
+Por ejemplo, si la función de combinación es `string-append`:
+
+```racket
+(foldl string-append "****" '("hola" "que" "tal")) 
+; ⇒ "talquehola****"
+```
+
+La secuencia de llamadas a `string-append` es:
+
+```racket
+(string-append "hola" "****") ; ⇒ "hola****"
+(string-append "que" "hola****") ; ⇒ "quehola****"
+(string-append "tal" "quehola****") ; ⇒ "talquehola****"
+```
+
+Otro ejemplo:
+
+```racket
+(foldl cons '() '(1 2 3 4)) ; ⇒ (4 3 2 1)
+```
+
+La implementación de `foldl` la veremos cuando hablemos de
 recursión por la cola (_tail recursion_) en el próximo tema.
 
-#### Uso de funciones de orden superior
 
-El uso de funciones de orden superior y las expresiones lambda
+!!! Tip "Consejo" 
+    Las funciones `foldr` o `foldl` reciben una lista de
+    datos y devuelven un único resultado.
+
+
+#### Funciones recursivas con FOS y expresiones lambda
+
+El uso de funciones de orden superior (FOS) y expresiones lambda
 proporciona muchísima expresividad en un lenguaje de programación. Es
-posible escribir código muy conciso, que hace cosas complicadas en
-pocas líneas. Veamos algunos ejemplos.
-
+posible escribir código muy conciso y construir funciones recursivas
+que trabajan sobre listas sin usar la recursividad de forma
+explícita. 
 
 ##### Función `(suma-n n lista)`
 
@@ -4206,8 +4259,9 @@ lista es una función que suma este número a cada elemento. La variable
 `x` en el parámetro de la expresión lambda es la que va tomando el
 valor de los elementos de la lista.
 
-```racket
-(suma-n 10 '(1 2 3 4) 10) => (map #<prodedure-que-suma-10-a-x> (1 2 3 4)) =  (11 12 13 14)
+```text
+(suma-n 10 '(1 2 3 4) 10) => 
+(map #<prodedure-que-suma-10-a-x> (1 2 3 4)) =  (11 12 13 14)
 ```
 
 ##### Composición de funciones de orden superior
@@ -4221,18 +4275,18 @@ Por ejemplo, podemos implementar una función que sume un número
 después que sume todos los elementos resultantes.
 
 Lo podríamos hacer reutilizando el código del ejemplo anterior, y
-añadiendo una llamada a `fold-right` para que haga la suma:
+añadiendo una llamada a `foldr` para que haga la suma:
 
 ```racket
 (define (suma-n-total n lista)
-   (fold-right + 0
+   (foldr + 0
        (map (lambda (x) (+ x n)) lista)))
 ```
 
 Funcionaría de la siguiente forma:
 
 ```racket
-(suma-n-total 100 '(1 2 3 4))  => 410
+(suma-n-total 100 '(1 2 3 4)) ; ⇒ 410
 ```
 
 Otro ejemplo. Supongamos que tenemos una lista de parejas de números y
@@ -4244,7 +4298,7 @@ que un umbral (por ejemplo, 10).
                             (cons 3 8) 
                             (cons 2 3) 
                             (cons 9 6)))
-(cuenta-mayores-que 10 lista-parejas) ; => 2
+(cuenta-mayores-que 10 lista-parejas) ; ⇒ 2
 ```
 
 Se podría implementar de una forma muy concisa componiendo una llamada
@@ -4270,7 +4324,8 @@ una lista que contienen un determinado carácter.
 Por ejemplo:
 
 ```racket
-(contienen-letra #\a '("En" "un" "lugar" "de" "la" "Mancha")) ⇒ ("lugar" "la" "Mancha")
+(contienen-letra #\a '("En" "un" "lugar" "de" "la" "Mancha"))
+; ⇒ ("lugar" "la" "Mancha")
 ```
 
 Podemos implementar `contienen-letra` usando la función de orden
@@ -4336,7 +4391,6 @@ Entonces la función `(divisores n)` se implementaría de la siguiente forma:
             (divisor? x n)) (numeros-hasta n)))
 ```
 
--->
 
 ## Bibliografía - SICP
 
