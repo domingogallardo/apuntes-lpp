@@ -2081,7 +2081,7 @@ entero aleatorio entre 0 y <em>x</em>. Esta función no cumpliría el paradigma
 funcional, porque devuelve un valor distinto con el mismo parámetro de
 entrada.</p>
 <p>Evaluamos las siguientes expresiones con orden aplicativo y normal,
-para comprobar que el resultado es distinto</p>
+para comprobar que el resultado es distinto.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">zero</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
 <span class="p">(</span><span class="n">zero</span> <span class="p">(</span><span class="nb">random</span> <span class="mi">10</span><span class="p">))</span>
@@ -2089,7 +2089,24 @@ para comprobar que el resultado es distinto</p>
 </td></tr></table>
 
 <p>Si evaluamos la última expresión en orden aplicativo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(zero (random 10)) ⇒ ; Evaluamos (random 10) (R3)
+(zero 3) ⇒           ; Sustituimos (zero ...) (R4)
+(- 3 3) ⇒            ; Evaluamos - (R3)
+0
+</pre></div>
+</td></tr></table>
+
+<p>Si lo evaluamos en orden normal:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(zero (random 10)) ⇒            ; Sustituimos (zero ...) (R4)
+(- (random 10) (random 10)) ⇒   ; Evaluamos (random 10) (R3)
+(- 5 3) ⇒                       ; Evaluamos - (R3)
+2
 </pre></div>
 </td></tr></table>
 
