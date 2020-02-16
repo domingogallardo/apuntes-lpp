@@ -1192,7 +1192,7 @@ funcional, porque devuelve un valor distinto con el mismo parámetro de
 entrada.
 
 Evaluamos las siguientes expresiones con orden aplicativo y normal,
-para comprobar que el resultado es distinto
+para comprobar que el resultado es distinto.
 
 ```racket
 (define (zero x) (- x x))
@@ -1202,6 +1202,19 @@ para comprobar que el resultado es distinto
 Si evaluamos la última expresión en orden aplicativo:
 
 ```text
+(zero (random 10)) ⇒ ; Evaluamos (random 10) (R3)
+(zero 3) ⇒           ; Sustituimos (zero ...) (R4)
+(- 3 3) ⇒            ; Evaluamos - (R3)
+0
+```
+
+Si lo evaluamos en orden normal:
+
+```text
+(zero (random 10)) ⇒            ; Sustituimos (zero ...) (R4)
+(- (random 10) (random 10)) ⇒   ; Evaluamos (random 10) (R3)
+(- 5 3) ⇒                       ; Evaluamos - (R3)
+2
 ```
 
 
