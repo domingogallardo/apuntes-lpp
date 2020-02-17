@@ -404,7 +404,7 @@ que permite hacer código muy conciso y expresivo.
 
     ```racket
     (map cuadrado '(1 2 3 4 5))
-    ; ⇒ (1 4 9 25)
+    ; ⇒ (1 4 9 16 25)
 
     (map (lambda (str) (string-append "Hola-" str)) '("me" "llamo" "Ana"))
     ; ⇒ ("Hola-me" "Hola-llamo" "Hola-Ana")
@@ -458,7 +458,7 @@ que permite hacer código muy conciso y expresivo.
     ```
 
 !!! Hint "Consejo"
-    La función `map` recibe un o más listas de *n* elementos y devuelve otra
+    La función `map` recibe una o más listas de *n* elementos y devuelve otra
     de *n* elementos transformados.
 
 ----
@@ -690,7 +690,7 @@ derecha a izquierda.
 - El perfil de la función de plegado es el mismo que en `foldr`:
 
     ```text
-    (func dato resultado) -> resultado
+    (combina dato resultado) -> resultado
     ```
 
 - Por ejemplo, si la función de combinación es `string-append`:
@@ -832,7 +832,7 @@ es mayor que un umbral (por ejemplo, 10).
 
 ----
 
-### Función `(contienen-letra? caracter lista-pal)`
+### Función `(contienen-letra caracter lista-pal)`
 
 - Queremos definir la función `(contienen-letra
   caracter lista-pal)` que devuelve las palabras de una lista que
