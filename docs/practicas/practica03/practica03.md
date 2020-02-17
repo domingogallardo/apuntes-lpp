@@ -94,16 +94,17 @@ Ejemplo:
     sólo esa pareja.
 
 b) Implementa la función recursiva `(expande2 lista)`. Recibe una
-lista en la que hay intercalados algunos números. Devuelve la lista
-original en la que se han expandido los elementos siguientes a los
-números, tantas veces como indica el número. La lista nunca va a
-contener dos números consecutivos.
+lista en la que hay intercalados algunos números enteros
+positivos. Devuelve la lista original en la que se han expandido los
+elementos siguientes a los números, tantas veces como indica el
+número. La lista nunca va a contener dos números consecutivos y
+siempre va a haber un elemento después de un número.
 
 Ejemplo:
 
 ```racket
-(expande2 '(4 clase ua 3 lpp aulario)) ; ⇒
-'(clase clase clase clase ua lpp lpp lpp aulario))
+(expande2 '(4 clase ua 3 lpp aulario)) 
+; ⇒ (clase clase clase clase ua lpp lpp lpp aulario))
 ```
 
 En el ejemplo, el 4 indica que el siguiente elemento
@@ -150,9 +151,10 @@ Algunas pistas:
                                   ((2 3) (2) (3) ())
    ```
 
-b) Implementa la función `(producto-cartesiano lista1 lista2)` que
-devuelva una lista con todas las parejas resultantes de combinar todos
-los elementos de la lista 1 con todos los elementos de la lista 2.
+b) Implementa la función recursiva `(producto-cartesiano lista1
+lista2)` que devuelva una lista con todas las parejas resultantes de
+combinar todos los elementos de la lista 1 con todos los elementos de
+la lista 2.
 
 Ejemplo:
 
@@ -269,9 +271,12 @@ No hace falta que hagas ninguna prueba de la función. Basta con que
 dejes en el código la llamada a la función y al ejecutar el programa
 verás por pantalla que la baraja es correcta.
 
-c) Implementa la función `(mezcla lista)` que recibe una lista
+c) Implementa la función recursiva `(mezcla lista)` que recibe una lista
 y la devuelve mezclada (sus elementos se han intercambiando en
 posiciones aleatorias).
+
+Llama a la función con la baraja de póker para devuelva la baraja
+mezclada y la muestre por pantalla.
 
 ```racket
 (mezcla '(1 2 3 4 5 6)) ; ⇒ (2 1 6 4 5 3)
@@ -281,9 +286,6 @@ posiciones aleatorias).
     Puedes usar la función `inserta-pos` definida anteriormente y la
     función `(random inicial final)` que devuelve un número aleatorio
     entre el valor inicial (incluido) y el valor final (sin incluir).
-
-Llama a la función con la baraja de póker para devuelva la baraja
-mezclada y la muestre por pantalla.
 
 ### Ejercicio 6 ###
 
