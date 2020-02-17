@@ -39,8 +39,8 @@ Ejemplos:
 b) Implementa la función recursiva `(inserta-pos dato pos lista)` que
 recibe un dato, una posición y una lista e inserta el dato en la
 posición indicada de la lista. Si la posición es 0, el dato se inserta
-en cabeza. Suponemos que la posición siempre será menor o igual que la
-longitud de la lista.
+en cabeza. Suponemos que la posición siempre será positiva y menor o
+igual que la longitud de la lista.
 
 Ejemplos:
 
