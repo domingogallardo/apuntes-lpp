@@ -591,14 +591,15 @@ recibe una pareja y devuelve la lista expandida resultante de expandir
 sólo esa pareja.</p>
 </div>
 <p>b) Implementa la función recursiva <code>(expande2 lista)</code>. Recibe una
-lista en la que hay intercalados algunos números. Devuelve la lista
-original en la que se han expandido los elementos siguientes a los
-números, tantas veces como indica el número. La lista nunca va a
-contener dos números consecutivos.</p>
+lista en la que hay intercalados algunos números enteros
+positivos. Devuelve la lista original en la que se han expandido los
+elementos siguientes a los números, tantas veces como indica el
+número. La lista nunca va a contener dos números consecutivos y
+siempre va a haber un elemento después de un número.</p>
 <p>Ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">expande2</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="ss">clase</span> <span class="ss">ua</span> <span class="mi">3</span> <span class="ss">lpp</span> <span class="ss">aulario</span><span class="p">))</span> <span class="c1">; ⇒</span>
-<span class="o">&#39;</span><span class="p">(</span><span class="ss">clase</span> <span class="ss">clase</span> <span class="ss">clase</span> <span class="ss">clase</span> <span class="ss">ua</span> <span class="ss">lpp</span> <span class="ss">lpp</span> <span class="ss">lpp</span> <span class="ss">aulario</span><span class="p">)</span><span class="err">)</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">expande2</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="ss">clase</span> <span class="ss">ua</span> <span class="mi">3</span> <span class="ss">lpp</span> <span class="ss">aulario</span><span class="p">))</span> 
+<span class="c1">; ⇒ (clase clase clase clase ua lpp lpp lpp aulario))</span>
 </pre></div>
 </td></tr></table>
 
@@ -639,9 +640,10 @@ devuelva el conjunto potencia de la lista original.</p>
 </pre></div>
 </td></tr></table>
 
-<p>b) Implementa la función <code>(producto-cartesiano lista1 lista2)</code> que
-devuelva una lista con todas las parejas resultantes de combinar todos
-los elementos de la lista 1 con todos los elementos de la lista 2.</p>
+<p>b) Implementa la función recursiva <code>(producto-cartesiano lista1
+lista2)</code> que devuelva una lista con todas las parejas resultantes de
+combinar todos los elementos de la lista 1 con todos los elementos de
+la lista 2.</p>
 <p>Ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">producto-cartesiano</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
@@ -774,9 +776,11 @@ recursiva. Debes usar la función anterior <code>crea-baraja</code> y la funció
 <p>No hace falta que hagas ninguna prueba de la función. Basta con que
 dejes en el código la llamada a la función y al ejecutar el programa
 verás por pantalla que la baraja es correcta.</p>
-<p>c) Implementa la función <code>(mezcla lista)</code> que recibe una lista
+<p>c) Implementa la función recursiva <code>(mezcla lista)</code> que recibe una lista
 y la devuelve mezclada (sus elementos se han intercambiando en
 posiciones aleatorias).</p>
+<p>Llama a la función con la baraja de póker para devuelva la baraja
+mezclada y la muestre por pantalla.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">mezcla</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ (2 1 6 4 5 3)</span>
 </pre></div>
 </td></tr></table>
@@ -787,8 +791,6 @@ posiciones aleatorias).</p>
 función <code>(random inicial final)</code> que devuelve un número aleatorio
 entre el valor inicial (incluido) y el valor final (sin incluir).</p>
 </div>
-<p>Llama a la función con la baraja de póker para devuelva la baraja
-mezclada y la muestre por pantalla.</p>
 <h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
 <p>Implementa una función recursiva <code>(filtra-simbolos lista-simbolos
 lista-num)</code> que recibe una lista de símbolos y una lista de números
