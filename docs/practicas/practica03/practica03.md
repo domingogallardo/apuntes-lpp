@@ -253,9 +253,15 @@ Por ejemplo:
 ```
 
 b) Vamos a trabajar con cartas de póker. Los valores posibles son A,
-2, 3, ..., J, Q, K. Y los palos son los símbolos correspondientes a
+2, 3, ..., 8, 9, 0, J, Q, K (representamos el número 10 con el
+carácter y el símbolo 0). Y los palos son los símbolos correspondientes a
 los caracteres UTF #\u2660, #\u2663, #\u2665 y #\u2666: ♠, ♣, ♥
 y ♦.
+
+```racket
+(define palos '(#\u2660 #\u2663 #\u2665 #\u2666))
+(define valores '(#\A #\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9 #\0 #\J #\Q #\K))
+```
 
 Implementa la función `(baraja-poker)` que devuelve una lista con
 todas las cartas de una baraja de póker. No es una función
