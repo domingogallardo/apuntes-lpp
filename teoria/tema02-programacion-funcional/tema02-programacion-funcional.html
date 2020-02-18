@@ -4588,8 +4588,8 @@ están definidas en el lenguaje.</p>
 <ul>
 <li><code>map</code></li>
 <li><code>filter</code></li>
-<li><code>exists</code> (implementada por nosotros)</li>
-<li><code>for-all</code> (implementada por nosotros)</li>
+<li><code>exists?</code> (implementada por nosotros)</li>
+<li><code>for-all?</code> (implementada por nosotros)</li>
 <li><code>foldr</code> y <code>foldl</code></li>
 </ul>
 <p>Para las tres primeras funciones veremos también una implementación
@@ -4790,10 +4790,10 @@ condición.</p>
 </pre></div>
 </td></tr></table>
 
-<h4>Función <code>exists</code> (implementada por nosotros)</h4>
+<h4>Función <code>exists?</code> (implementada por nosotros)</h4>
 <p>La función de orden superior <code>exists</code> recibe un predicado y una lista
 y comprueba si algún elemento de la lista cumple ese predicado.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(exists predicado lista) -&gt; boolean
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(exists? predicado lista) -&gt; boolean
 </pre></div>
 </td></tr></table>
 
@@ -4809,11 +4809,11 @@ de forma recursiva.</p>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">exists</span> <span class="n">predicado</span> <span class="n">lista</span><span class="p">)</span>
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">exists?</span> <span class="n">predicado</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
       <span class="no">#f</span>
       <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-          <span class="p">(</span><span class="n">exists</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+          <span class="p">(</span><span class="n">exists?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
 </pre></div>
 </td></tr></table>
 
@@ -4823,23 +4823,23 @@ lo cumple el primer elemento de la lista.</p>
 <p>Ejemplo de uso:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">exists</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">exists</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">exists?</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">exists?</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
              <span class="p">(</span><span class="nb">&gt;</span> <span class="n">x</span> <span class="mi">10</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
 </pre></div>
 </td></tr></table>
 
-<h4>Función <code>for-all</code> (implementada por nosotros)</h4>
-<p>La función de orden superior <code>for-all</code> recibe un predicado y una lista
+<h4>Función <code>for-all?</code> (implementada por nosotros)</h4>
+<p>La función de orden superior <code>for-all?</code> recibe un predicado y una lista
 y comprueba que todos los elementos de la lista cumplen ese predicado.</p>
 <p>Tampoco está definida en Racket y la implementamos nosotros:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">for-all</span> <span class="n">predicado</span> <span class="n">lista</span><span class="p">)</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">for-all?</span> <span class="n">predicado</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
       <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-           <span class="p">(</span><span class="n">for-all</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+           <span class="p">(</span><span class="n">for-all?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
 </pre></div>
 </td></tr></table>
 
@@ -4850,8 +4850,8 @@ elementos, podemos decir que todos sus elementos cumplen el predicado).</p>
 <p>Ejemplo de uso:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">for-all</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">for-all</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">for-all?</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">for-all?</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
              <span class="p">(</span><span class="nb">&gt;</span> <span class="n">x</span> <span class="mi">10</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span> <span class="mi">30</span> <span class="mi">50</span> <span class="mi">80</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 </pre></div>
 </td></tr></table>
@@ -5134,11 +5134,11 @@ tenemos que implementar.</p>
 
 <p>La podemos implementar de una forma muy elegante obteniendo una lista
 de caracteres a partir de la cadena y usando la función de orden
-superior <code>exists</code>:</p>
+superior <code>exists?</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">letra-en-pal?</span> <span class="n">caracter</span> <span class="n">palabra</span><span class="p">)</span>
-  <span class="p">(</span><span class="n">exists</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">exists?</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span>
             <span class="p">(</span><span class="nb">equal?</span> <span class="n">c</span> <span class="n">caracter</span><span class="p">))</span> <span class="p">(</span><span class="nb">string-&gt;list</span> <span class="n">palabra</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
