@@ -281,12 +281,12 @@ c) Implementa la función recursiva `(mezcla lista)` que recibe una lista
 y la devuelve mezclada (sus elementos se han intercambiando en
 posiciones aleatorias).
 
-Llama a la función con la baraja de póker para devuelva la baraja
-mezclada y la muestre por pantalla.
-
 ```racket
 (mezcla '(1 2 3 4 5 6)) ; ⇒ (2 1 6 4 5 3)
 ```
+
+Llama a la función con la baraja de póker para devuelva la baraja
+mezclada y la muestre por pantalla.
 
 !!! Hint "Pista"
     Puedes usar la función `inserta-pos` definida anteriormente y la
