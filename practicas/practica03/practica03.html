@@ -760,9 +760,16 @@ práctica anterior.</p>
 </td></tr></table>
 
 <p>b) Vamos a trabajar con cartas de póker. Los valores posibles son A,
-2, 3, ..., J, Q, K. Y los palos son los símbolos correspondientes a
+2, 3, ..., 8, 9, 0, J, Q, K (representamos el número 10 con el
+carácter y el símbolo 0). Y los palos son los símbolos correspondientes a
 los caracteres UTF #\u2660, #\u2663, #\u2665 y #\u2666: ♠, ♣, ♥
 y ♦.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">palos</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\u2660</span> <span class="sc">#\u2663</span> <span class="sc">#\u2665</span> <span class="sc">#\u2666</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">valores</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\A</span> <span class="sc">#\2</span> <span class="sc">#\3</span> <span class="sc">#\4</span> <span class="sc">#\5</span> <span class="sc">#\6</span> <span class="sc">#\7</span> <span class="sc">#\8</span> <span class="sc">#\9</span> <span class="sc">#\0</span> <span class="sc">#\J</span> <span class="sc">#\Q</span> <span class="sc">#\K</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
 <p>Implementa la función <code>(baraja-poker)</code> que devuelve una lista con
 todas las cartas de una baraja de póker. No es una función
 recursiva. Debes usar la función anterior <code>crea-baraja</code> y la función
