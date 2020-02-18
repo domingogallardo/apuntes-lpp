@@ -368,8 +368,8 @@ las funciones como parámetros
 - Veremos:
     - `map`
     - `filter`
-    - `exists` (implementada por nosotros)
-    - `for-all` (implementada por nosotros)
+    - `exists?` (implementada por nosotros)
+    - `for-all?` (implementada por nosotros)
     - `foldr` y `foldl`
 
 - De alguna de las funciones veremos también su implementación
@@ -517,14 +517,14 @@ que permite hacer código muy conciso y expresivo.
 
 ----
 
-### Función `exists` (implementada por nosotros)
+### Función `exists?` (implementada por nosotros)
 
-- La función de orden superior `(exists predicado lista)` recibe un
+- La función de orden superior `(exists? predicado lista)` recibe un
   predicado y una lista y comprueba si algún elemento de la lista
   cumple ese predicado.
   
     ```text
-    (exists predicado lista) -> boolean
+    (exists? predicado lista) -> boolean
     ```
   
 - Igual que en `filter` el `predicado` recibe elementos de la lista y
@@ -537,45 +537,45 @@ que permite hacer código muy conciso y expresivo.
 - Implementación:
 
     ```racket
-    (define (exists predicado lista)
+    (define (exists? predicado lista)
       (if (null? lista)
           #f
           (or (predicado (car lista))
-              (exists predicado (cdr lista)))))
+              (exists? predicado (cdr lista)))))
     ```
 
 - Ejemplos:
 
     ```racket
-    (exists even? '(1 2 3 4 5 6)) ; ⇒ #t
+    (exists? even? '(1 2 3 4 5 6)) ; ⇒ #t
 
-    (exists (lambda (x)
+    (exists? (lambda (x)
                  (> x 10)) '(1 3 5 8)) ; ⇒ #f
     ```
 
 ----
 
-### Función `for-all` (implementada por nosotros)
+### Función `for-all?` (implementada por nosotros)
 
-- La función de orden superior `(for-all predicado lista)` recibe un
+- La función de orden superior `(for-all? predicado lista)` recibe un
   predicado y una lista y comprueba que todos los elementos de la
   lista cumplen ese predicado.
 
 - Implementación:
 
     ```racket
-    (define (for-all predicado lista)
+    (define (for-all? predicado lista)
       (or (null? lista)
           (and (predicado (car lista))
-               (for-all predicado (cdr lista)))))
+               (for-all? predicado (cdr lista)))))
     ```
 
 - Ejemplos:
 
     ```racket
-    (for-all even? '(2 4 6)) ; ⇒ #t
+    (for-all? even? '(2 4 6)) ; ⇒ #t
 
-    (for-all (lambda (x)
+    (for-all? (lambda (x)
                  (> x 10)) '(12 30 50 80)) ; ⇒ #t
     ```
 
@@ -855,7 +855,7 @@ es mayor que un umbral (por ejemplo, 10).
     ```
 
 - ¿Lo podemos implementar obteniendo una lista de caracteres a partir
-  de la cadena y usando la función `exists`?
+  de la cadena y usando la función `exists?`?
 
 <p style="margin-bottom:3cm;"></p>
 
@@ -863,7 +863,7 @@ es mayor que un umbral (por ejemplo, 10).
 
     ```racket
     (define (letra-en-pal? caracter palabra)
-        (exists (lambda (c) 
+        (exists? (lambda (c) 
                     (equal? c caracter)) (string->list palabra)))
     ```
 

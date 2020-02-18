@@ -3803,8 +3803,8 @@ Las funciones que veremos son:
 
 - `map`
 - `filter`
-- `exists` (implementada por nosotros)
-- `for-all` (implementada por nosotros)
+- `exists?` (implementada por nosotros)
+- `for-all?` (implementada por nosotros)
 - `foldr` y `foldl`
 
 Para las tres primeras funciones veremos también una implementación
@@ -4007,13 +4007,13 @@ Podemos implementar la función `filter` de forma recursiva:
     (else (mi-filter pred (cdr lista)))))
 ```
 
-#### Función `exists` (implementada por nosotros)
+#### Función `exists?` (implementada por nosotros)
 
 La función de orden superior `exists` recibe un predicado y una lista
 y comprueba si algún elemento de la lista cumple ese predicado.
 
 ```text
-(exists predicado lista) -> boolean
+(exists? predicado lista) -> boolean
 ```
 
 Igual que en `filter` el `predicado` recibe elementos de la lista y
@@ -4027,11 +4027,11 @@ La función `exists` no está definida en Racket. Vamos a implementarla
 de forma recursiva.
 
 ```racket
-(define (exists predicado lista)
+(define (exists? predicado lista)
   (if (null? lista)
       #f
       (or (predicado (car lista))
-          (exists predicado (cdr lista)))))
+          (exists? predicado (cdr lista)))))
 ```
 
 Se llama a la recursión con el resto de la lista y se devuelve #t si
@@ -4041,24 +4041,24 @@ lo cumple el primer elemento de la lista.
 Ejemplo de uso:
 
 ```racket
-(exists even? '(1 2 3 4 5 6)) ; ⇒ #t
-(exists (lambda (x)
+(exists? even? '(1 2 3 4 5 6)) ; ⇒ #t
+(exists? (lambda (x)
              (> x 10)) '(1 3 5 8)) ; ⇒ #f
 ```
 
 
-#### Función `for-all` (implementada por nosotros)
+#### Función `for-all?` (implementada por nosotros)
 
-La función de orden superior `for-all` recibe un predicado y una lista
+La función de orden superior `for-all?` recibe un predicado y una lista
 y comprueba que todos los elementos de la lista cumplen ese predicado.
 
 Tampoco está definida en Racket y la implementamos nosotros:
 
 ```racket
-(define (for-all predicado lista)
+(define (for-all? predicado lista)
   (or (null? lista)
       (and (predicado (car lista))
-           (for-all predicado (cdr lista)))))
+           (for-all? predicado (cdr lista)))))
 ```
 
 La llamada recursiva comprueba que todos los elementos del resto de la
@@ -4069,8 +4069,8 @@ elementos, podemos decir que todos sus elementos cumplen el predicado).
 Ejemplo de uso:
 
 ```racket
-(for-all even? '(2 4 6)) ; ⇒ #t
-(for-all (lambda (x)
+(for-all? even? '(2 4 6)) ; ⇒ #t
+(for-all? (lambda (x)
              (> x 10)) '(12 30 50 80)) ; ⇒ #t
 ```
 
@@ -4368,11 +4368,11 @@ Por ejemplo:
 
 La podemos implementar de una forma muy elegante obteniendo una lista
 de caracteres a partir de la cadena y usando la función de orden
-superior `exists`:
+superior `exists?`:
 
 ```racket
 (define (letra-en-pal? caracter palabra)
-  (exists (lambda (c)
+  (exists? (lambda (c)
             (equal? c caracter)) (string->list palabra)))
 ```
 
