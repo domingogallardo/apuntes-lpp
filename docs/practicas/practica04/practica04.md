@@ -9,8 +9,7 @@ solución debe incluir:
 
 - La **definición de las funciones** que resuelven el ejercicio.
 - Un conjunto de **pruebas** que comprueben su funcionamiento
-  utilizando la librería `schemeunit`.
-  
+  utilizando el API `RackUnit`.
 
 ## Ejercicios
 
@@ -19,7 +18,7 @@ solución debe incluir:
 a) Indica qué devuelven las siguientes expresiones, sin utilizar el
 intérprete. Comprueba después si has acertado.
 
-```scheme
+```racket
 (map (lambda (x)
          (cond 
             ((symbol? x) (symbol->string x))
@@ -40,12 +39,12 @@ para obtener el resultado esperado. Después usa el intérprete para
 comprobar si has acertado.
 
 
-```scheme 
+```racket 
 (______ list 0 '(1 2 3))
-; ⇒ {1 {2 {3 0}}}
+; ⇒ (1 (2 (3 0)))
 
 (______ list "hola" '("como" "estas" "adios"))
-; ⇒ {{{"hola" "como"} "estas"} "adios"}
+; ⇒ ((("hola" "como") "estas") "adios")
 
 
 ; Los siguientes ejercicios se realizan con esta
@@ -61,28 +60,28 @@ comprobar si has acertado.
         (________ (lambda (x) (+ (car x)
                                  (cdr x)))
                lista))
-; ⇒ {8 14 10}
+; ⇒ (8 14 10)
 
 ; Queremos obtener una lista de parejas invertidas donde la "nueva"
 ; parte izquierda es mayor que la derecha.
 
 (filter ___________
         (map ____________ lista))
-; ⇒ {{7 . 2} {5 . 3}}
+; ⇒ ((7 . 2) (5 . 3))
 
 ; Queremos obtener una lista cuyos elementos son las partes izquierda
 ; de aquellas parejas cuya suma sea par.
 
 (fold-right __________ '()
         (_________ (lambda (x) (even? (+ (car x) (cdr x)))) lista))
-; ⇒ {3 10 5}
+; ⇒ (3 10 5)
 ```
 
 c) Rellena los siguientes huecos **con una única expresión**. Comprueba
 con el intérprete si lo has hecho correctamente.
 
 
-```scheme
+```racket
 (define (f x) (lambda (y z) (string-append y z x)))
 (define g (f "a"))
 (check-equal? ____________________ "claselppa")
@@ -97,7 +96,7 @@ _____________
 
 
 (define (f g) (lambda(z x) (g z x)))
-_________ => {3 . 4}
+_________ => (3 . 4)
 ```
 
 ### Ejercicio 2 ###
@@ -115,9 +114,9 @@ a la que hemos sumado `n` a todas las partes izquierdas.
 
 Ejemplo
 
-```scheme
+```racket
 (suma-n-izq 10 '((1 . 3) (0 . 9) (5 . 8) (4 . 1)))
-; ⇒ {{11 . 3} {10 . 9} {15 . 8} {14 . 1}}
+; ⇒ ((11 . 3) (10 . 9) (15 . 8) (14 . 1))
 ```
 
 
@@ -128,14 +127,14 @@ función a los elementos izquierdo y derecho de cada pareja.
 
 Ejemplo:
 
-```scheme
+```racket
 (aplica-2 + '((2 . 3) (1 . -1) (5 . 4)))
-; ⇒ {5 0 9}
+; ⇒ (5 0 9)
 (aplica-2 (lambda (x y)
              (if (even? x)
                  y
                  (* y -1))) '((2 . 3) (1 . 3) (5 . 4) (8 . 10)))
-; ⇒ {3 -3 -4 10}
+; ⇒ (3 -3 -4 10)
 ```
 
 
@@ -156,7 +155,7 @@ superior **pero no recursión**.
 
 Ejemplos:
 
-```scheme
+```racket
 (posicion 'c '(a b c d)) ; ⇒ 2
 (posicion 10 '(1 2 3 4 5)) ; ⇒ #f
 ```
@@ -175,7 +174,7 @@ argumento `x` que eleva `k` a `x`.
 
 Ejemplo:
 
-```scheme
+```racket
 (define multiplica-por-10 (construye-multiplicador 10))
 (multiplica-por-10 3) ; ⇒ 30
 (define multiplica-por-5 (construye-multiplicador 5))
@@ -201,7 +200,7 @@ y con `append`.
 
 Ejemplos de uso:
 
-```scheme
+```racket
 (define es-prefijo-segura? (construye-segura-2 (lambda (x y) _________) es-prefijo?))
 (define append-segura (construye-segura-2 (lambda (x y) _______) append))
 
@@ -220,7 +219,7 @@ lista. Recibe un predicado `mayor?` que compara dos elementos de la
 lista y devuelve `#t` o `#f` dependiendo de si el primero es mayor que
 el segundo. 
 
-```scheme
+```racket
 (define (busca-mayor mayor? lista)
   (fold-left __________ (car lista) (cdr lista)))
 ```  
@@ -234,7 +233,7 @@ lista-simbolos)` que recibe una lista de símbolos que representan
 cartas (con el formato explicado en la práctica 2) y devuelve la carta
 mayor, en forma de pareja.
 
-```scheme
+```racket
 (check-equal? (carta-ganadora '(B6 O3 CC C2 O7)) '(Oros . 9))
 ```
 
@@ -245,6 +244,6 @@ use `map`**.
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2018-19  
+Lenguajes y Paradigmas de Programación, curso 2019-20  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
