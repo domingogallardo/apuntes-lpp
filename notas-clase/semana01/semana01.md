@@ -774,14 +774,11 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 
 ```racket
 (quote <identificador>)
-(quote <expresion>)
 ```
 
 **Evaluación**
 
-- Se devuelve el identificador o la expresión **sin evaluar**. Si la
-  expresión es compuesta (entre paréntesis), se devuelve una lista. La
-  expresión puede ser cualquier expresión correcta de Scheme. 
+- Se devuelve el identificador sin evaluar (un símbolo). 
 - Se abrevia en con el carácter `'`.
 
 **Ejemplo**
@@ -789,9 +786,6 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 ```racket
 (quote x) ; el símbolo x
 'hola ; el símbolo hola
-'(+ 1 2 3 4) ; la lista formada por el símbolo + y los números 1 2 3 4
-(quote (1 2 3 4)) ; la lista formada por los números 1 2 3 4
-'(* (+ 1 (+ 2 3)) 5) ; una lista con 3 elementos, el segundo de ellos otra lista
 ```
 
 - En Scheme los *identificadores* (nombres que se les da a las
@@ -854,6 +848,32 @@ parámetros o ligarse a variables.
 (define x 'hola)
 x
 ⇒ hola
+```
+
+### Forma especial `quote` y expresiones
+
+**Sintaxis**
+
+```racket
+(quote <expresión>)
+```
+
+**Evaluación**
+
+Si `quote` recibe una expresión correcta de Scheme (una expresión
+entre paréntesis) se devuelve la lista o pareja pareja definida por la
+expresión (sin evaluar sus elementos).
+
+**Ejemplos**
+
+```racket
+'(1 2 3) ; ⇒ (1 2 3) Una lista
+'(+ 1 2 3 4) ; La lista formada por el símbolo + y los números 1 2 3 4
+(quote (1 2 3 4)) ; La lista formada por los números 1 2 3 4
+'(a b c) ; ⇒ La lista con los símbolos a, b, y c
+'(* (+ 1 (+ 2 3)) 5) ; Una lista con 3 elementos, el segundo de ellos otra lista
+'(1 . 2) ; ⇒ La pareja (1 . 2)
+'((1 . 2) (2 . 3)) ; ⇒ Una lista con las parejas (1 . 2) y (2 . 3)
 ```
 
 ### Listas ###

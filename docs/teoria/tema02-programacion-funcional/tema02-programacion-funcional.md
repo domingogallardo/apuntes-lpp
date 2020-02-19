@@ -1388,17 +1388,14 @@ de la semántica:
 
 ```racket
 (quote <identificador>)
-(quote <expresion>)
 ```
 
 **Evaluación**
 
-- Se devuelve el identificador o la expresión **sin evaluar**. Si la
-  expresión es compuesta (entre paréntesis), se devuelve una lista. La
-  expresión puede ser cualquier expresión correcta de Scheme. 
+- Se devuelve el identificador sin evaluar (un símbolo).
 - Se abrevia en con el carácter `'`.
 
-**Ejemplo**
+**Ejemplos**
 
 ```racket
 (quote x) ; el símbolo x
@@ -1478,6 +1475,32 @@ parámetros o ligarse a variables.
 hola
 ```
 
+### Forma expecial `quote` con expresiones
+
+**Sintaxis**
+
+```racket
+(quote <expresión>)
+```
+
+**Evaluación**
+
+Si `quote` recibe una expresión correcta de Scheme (una expresión
+entre paréntesis) se devuelve la lista o pareja pareja definida por la
+expresión (sin evaluar sus elementos).
+
+**Ejemplos**
+
+```racket
+'(1 2 3) ; ⇒ (1 2 3) Una lista
+'(+ 1 2 3 4) ; La lista formada por el símbolo + y los números 1 2 3 4
+(quote (1 2 3 4)) ; La lista formada por los números 1 2 3 4
+'(a b c) ; ⇒ La lista con los símbolos a, b, y c
+'(* (+ 1 (+ 2 3)) 5) ; Una lista con 3 elementos, el segundo de ellos otra lista
+'(1 . 2) ; ⇒ La pareja (1 . 2)
+'((1 . 2) (2 . 3)) ; ⇒ Una lista con las parejas (1 . 2) y (2 . 3)
+```
+
 ### Listas
 
 Otra de las características fundamentales del paradigma funcional es
@@ -1491,7 +1514,7 @@ tipado. Una variable o parámetro no se declara de un tipo y puede
 contener cualquier valor. Sucede igual con las listas: una lista en
 Scheme puede contener cualquier valor, incluyendo otras listas.
 
-#### Función `list` y forma especial `quote`
+#### Diferencia entre la función `list` y la forma especial `quote`
 
 En el seminario de Scheme explicamos que podemos crear listas de forma
 dinámica, llamando a la función `list` y pasándole un número variable
@@ -1515,11 +1538,9 @@ Otro ejemplo:
 (list a b c) ; ⇒ (1 2 3)
 ```
 
-La otra forma de crear una lista es de forma estática, utilizando la
-forma especial `quote` vista anteriormente. Esa forma especial detiene
-la evaluación natural de Scheme y devuelve la expresión que hay a
-continuación sin evaluar. Si esa expresión es compuesta (entre
-paréntesis) se devuelve como una lista, sin evaluar sus elementos
+Como hemos visto cuando hemos hablado de `quote`, esta forma especial
+también puede construir una lista. Pero lo hace sin evaluar sus
+elementos.
 
 Por ejemplo:
 
