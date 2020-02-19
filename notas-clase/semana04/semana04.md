@@ -661,12 +661,6 @@ que permite hacer código muy conciso y expresivo.
     ```racket
     (foldr (lambda (x y) (* x y)) 1 '(1 2 3 4 5 6 7 8)) ; ⇒ 40320
     (foldr cons '() '(1 2 3 4)) ; ⇒ (1 2 3 4)
-
-    (define (suma-parejas lista-parejas)
-        (foldr (lambda (pareja resultado)
-                       (+ (car pareja) (cdr pareja) resultado)) 0 lista-parejas))
-
-    (suma-parejas (list (cons 3 6) (cons 2 9) (cons -1 8) (cons 9 3))) ; ⇒ 39
     ```
 
 - La **implementación recursiva** en Scheme de la función `foldr` es
@@ -775,6 +769,15 @@ derecha a izquierda.
         (map (lambda (x) (+ x n)) lista))
     ```
 
+Otro ejemplo: Función `suma-parejas`
+
+    ```racket
+    (define (suma-parejas lista-parejas)
+        (foldr (lambda (pareja resultado)
+                   (+ (car pareja) (cdr pareja) resultado)) 0 lista-parejas))
+
+    (suma-parejas (list (cons 3 6) (cons 2 9) (cons -1 8) (cons 9 3))) ; ⇒ 39
+    ``` 
 ----
 
 
