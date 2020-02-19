@@ -320,6 +320,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#forma-expecial-quote-con-expresiones" class="md-nav__link">
+    Forma expecial quote con expresiones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#listas" class="md-nav__link">
     Listas
   </a>
@@ -680,6 +687,13 @@
           <li class="md-nav__item">
   <a href="#forma-especial-quote-y-simbolos" class="md-nav__link">
     Forma especial quote y símbolos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forma-expecial-quote-con-expresiones" class="md-nav__link">
+    Forma expecial quote con expresiones
   </a>
   
 </li>
@@ -2274,20 +2288,16 @@ la suma <code>(+ 2 3)</code>.</p>
 
 <h3 id="forma-especial-quote-y-simbolos">Forma especial <code>quote</code> y símbolos<a class="headerlink" href="#forma-especial-quote-y-simbolos" title="Permanent link">&para;</a></h3>
 <p><strong>Sintaxis</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">quote</span> <span class="ss">&lt;identificador&gt;</span><span class="p">)</span>
-<span class="p">(</span><span class="k">quote</span> <span class="ss">&lt;expresion&gt;</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">quote</span> <span class="ss">&lt;identificador&gt;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p><strong>Evaluación</strong></p>
 <ul>
-<li>Se devuelve el identificador o la expresión <strong>sin evaluar</strong>. Si la
-  expresión es compuesta (entre paréntesis), se devuelve una lista. La
-  expresión puede ser cualquier expresión correcta de Scheme. </li>
+<li>Se devuelve el identificador sin evaluar (un símbolo).</li>
 <li>Se abrevia en con el carácter <code>'</code>.</li>
 </ul>
-<p><strong>Ejemplo</strong></p>
+<p><strong>Ejemplos</strong></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">quote</span> <span class="ss">x</span><span class="p">)</span> <span class="c1">; el símbolo x</span>
 <span class="o">&#39;</span><span class="ss">hola</span> <span class="c1">; el símbolo hola</span>
@@ -2381,6 +2391,33 @@ hola
 </pre></div>
 </td></tr></table>
 
+<h3 id="forma-expecial-quote-con-expresiones">Forma expecial <code>quote</code> con expresiones<a class="headerlink" href="#forma-expecial-quote-con-expresiones" title="Permanent link">&para;</a></h3>
+<p><strong>Sintaxis</strong></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">quote</span> <span class="ss">&lt;expresión&gt;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p><strong>Evaluación</strong></p>
+<p>Si <code>quote</code> recibe una expresión correcta de Scheme (una expresión
+entre paréntesis) se devuelve la lista o pareja pareja definida por la
+expresión (sin evaluar sus elementos).</p>
+<p><strong>Ejemplos</strong></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ (1 2 3) Una lista</span>
+<span class="o">&#39;</span><span class="p">(</span><span class="ss">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; La lista formada por el símbolo + y los números 1 2 3 4</span>
+<span class="p">(</span><span class="k">quote</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; La lista formada por los números 1 2 3 4</span>
+<span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="c1">; ⇒ La lista con los símbolos a, b, y c</span>
+<span class="o">&#39;</span><span class="p">(</span><span class="ss">*</span> <span class="p">(</span><span class="ss">+</span> <span class="mi">1</span> <span class="p">(</span><span class="ss">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; Una lista con 3 elementos, el segundo de ellos otra lista</span>
+<span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ La pareja (1 . 2)</span>
+<span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ Una lista con las parejas (1 . 2) y (2 . 3)</span>
+</pre></div>
+</td></tr></table>
+
 <h3 id="listas">Listas<a class="headerlink" href="#listas" title="Permanent link">&para;</a></h3>
 <p>Otra de las características fundamentales del paradigma funcional es
 la utilización de listas. Ya hemos visto en el seminario de Scheme las
@@ -2391,7 +2428,7 @@ recursión con listas.</p>
 tipado. Una variable o parámetro no se declara de un tipo y puede
 contener cualquier valor. Sucede igual con las listas: una lista en
 Scheme puede contener cualquier valor, incluyendo otras listas.</p>
-<h4>Función <code>list</code> y forma especial <code>quote</code></h4>
+<h4>Diferencia entre la función <code>list</code> y la forma especial <code>quote</code></h4>
 <p>En el seminario de Scheme explicamos que podemos crear listas de forma
 dinámica, llamando a la función <code>list</code> y pasándole un número variable
 de parámetros que son los elementos que se incluirán en la lista:</p>
@@ -2417,11 +2454,9 @@ con los valores resultantes.</p>
 </pre></div>
 </td></tr></table>
 
-<p>La otra forma de crear una lista es de forma estática, utilizando la
-forma especial <code>quote</code> vista anteriormente. Esa forma especial detiene
-la evaluación natural de Scheme y devuelve la expresión que hay a
-continuación sin evaluar. Si esa expresión es compuesta (entre
-paréntesis) se devuelve como una lista, sin evaluar sus elementos</p>
+<p>Como hemos visto cuando hemos hablado de <code>quote</code>, esta forma especial
+también puede construir una lista. Pero lo hace sin evaluar sus
+elementos.</p>
 <p>Por ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2

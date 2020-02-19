@@ -436,7 +436,7 @@ solución debe incluir:</p>
 <ul>
 <li>La <strong>definición de las funciones</strong> que resuelven el ejercicio.</li>
 <li>Un conjunto de <strong>pruebas</strong> que comprueben su funcionamiento
-  utilizando la librería <code>schemeunit</code>.</li>
+  utilizando el API <code>RackUnit</code>.</li>
 </ul>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
@@ -508,10 +508,10 @@ comprobar si has acertado.</p>
 33
 34
 35</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">______</span> <span class="nv">list</span> <span class="mi">0</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
-<span class="c1">; ⇒ {1 {2 {3 0}}}</span>
+<span class="c1">; ⇒ (1 (2 (3 0}}}</span>
 
 <span class="p">(</span><span class="nf">______</span> <span class="nv">list</span> <span class="s">&quot;hola&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;como&quot;</span> <span class="s">&quot;estas&quot;</span> <span class="s">&quot;adios&quot;</span><span class="p">))</span>
-<span class="c1">; ⇒ {{{&quot;hola&quot; &quot;como&quot;} &quot;estas&quot;} &quot;adios&quot;}</span>
+<span class="c1">; ⇒ (((&quot;hola&quot; &quot;como&quot;} &quot;estas&quot;} &quot;adios&quot;}</span>
 
 
 <span class="c1">; Los siguientes ejercicios se realizan con esta</span>
@@ -527,21 +527,21 @@ comprobar si has acertado.</p>
         <span class="p">(</span><span class="nf">________</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">car </span><span class="nv">x</span><span class="p">)</span>
                                  <span class="p">(</span><span class="nb">cdr </span><span class="nv">x</span><span class="p">)))</span>
                <span class="nv">lista</span><span class="p">))</span>
-<span class="c1">; ⇒ {8 14 10}</span>
+<span class="c1">; ⇒ (8 14 10}</span>
 
 <span class="c1">; Queremos obtener una lista de parejas invertidas donde la &quot;nueva&quot;</span>
 <span class="c1">; parte izquierda es mayor que la derecha.</span>
 
 <span class="p">(</span><span class="nf">filter</span> <span class="nv">___________</span>
         <span class="p">(</span><span class="nb">map </span><span class="nv">____________</span> <span class="nv">lista</span><span class="p">))</span>
-<span class="c1">; ⇒ {{7 . 2} {5 . 3}}</span>
+<span class="c1">; ⇒ ((7 . 2} (5 . 3}}</span>
 
 <span class="c1">; Queremos obtener una lista cuyos elementos son las partes izquierda</span>
 <span class="c1">; de aquellas parejas cuya suma sea par.</span>
 
 <span class="p">(</span><span class="nf">fold-right</span> <span class="nv">__________</span> <span class="o">&#39;</span><span class="p">()</span>
         <span class="p">(</span><span class="nf">_________</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">even? </span><span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">car </span><span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">x</span><span class="p">))))</span> <span class="nv">lista</span><span class="p">))</span>
-<span class="c1">; ⇒ {3 10 5}</span>
+<span class="c1">; ⇒ (3 10 5}</span>
 </pre></div>
 </td></tr></table>
 
@@ -575,7 +575,7 @@ con el intérprete si lo has hecho correctamente.</p>
 
 
 <span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">f</span> <span class="nv">g</span><span class="p">)</span> <span class="p">(</span><span class="nf">lambda</span><span class="p">(</span><span class="nf">z</span> <span class="nv">x</span><span class="p">)</span> <span class="p">(</span><span class="nf">g</span> <span class="nv">z</span> <span class="nv">x</span><span class="p">)))</span>
-<span class="nv">_________</span> <span class="k">=&gt; </span><span class="err">{</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">4</span><span class="err">}</span>
+<span class="nv">_________</span> <span class="k">=&gt; </span><span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">4</span><span class="err">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -590,7 +590,7 @@ a la que hemos sumado <code>n</code> a todas las partes izquierdas.</p>
 <p>Ejemplo</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">suma-n-izq</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">9</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">8</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">1</span><span class="p">)))</span>
-<span class="c1">; ⇒ {{11 . 3} {10 . 9} {15 . 8} {14 . 1}}</span>
+<span class="c1">; ⇒ ((11 . 3} (10 . 9} (15 . 8} (14 . 1}}</span>
 </pre></div>
 </td></tr></table>
 
@@ -606,12 +606,12 @@ función a los elementos izquierdo y derecho de cada pareja.</p>
 5
 6
 7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">aplica-2</span> <span class="nv">+</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">-1</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)))</span>
-<span class="c1">; ⇒ {5 0 9}</span>
+<span class="c1">; ⇒ (5 0 9}</span>
 <span class="p">(</span><span class="nf">aplica-2</span> <span class="p">(</span><span class="k">lambda </span><span class="p">(</span><span class="nf">x</span> <span class="nv">y</span><span class="p">)</span>
              <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">even? </span><span class="nv">x</span><span class="p">)</span>
                  <span class="nv">y</span>
                  <span class="p">(</span><span class="nb">* </span><span class="nv">y</span> <span class="mi">-1</span><span class="p">)))</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">8</span> <span class="o">.</span> <span class="mi">10</span><span class="p">)))</span>
-<span class="c1">; ⇒ {3 -3 -4 10}</span>
+<span class="c1">; ⇒ (3 -3 -4 10}</span>
 </pre></div>
 </td></tr></table>
 
@@ -715,7 +715,7 @@ mayor, en forma de pareja.</p>
 de la práctica 3, usando <strong>una composición de funciones en las que se
 use <code>map</code></strong>.</p>
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2018-19<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2019-20<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
                 
