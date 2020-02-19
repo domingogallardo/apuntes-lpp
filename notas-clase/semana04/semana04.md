@@ -769,7 +769,7 @@ derecha a izquierda.
         (map (lambda (x) (+ x n)) lista))
     ```
 
-Otro ejemplo: Función `suma-parejas`
+- Otro ejemplo: Función `suma-parejas`
 
     ```racket
     (define (suma-parejas lista-parejas)
