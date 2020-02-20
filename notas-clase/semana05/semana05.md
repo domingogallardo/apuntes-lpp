@@ -5,101 +5,14 @@ Notas de clase de la semana 5 de LPP.
 
 ## Tema 3: Procedimientos recursivos
 
-- 1 Procedimientos recursivos
-    - 1.1 Pensando recursivamente
-	- 1.2 El coste de la recursión
-	- 1.3 Soluciones al coste de la recursión: procesos iterativos
-	- 1.4 Soluciones al coste de la recursión: memoization
-    - 1.5 Recursión y gráficos de tortuga
+- El coste de la recursión
+- Soluciones al coste de la recursión: procesos iterativos
+- Soluciones al coste de la recursión: memoization
+- Recursión y gráficos de tortuga
 
 ----
 
-### 1 Procedimientos recursivos
-
-- La formulación recursiva pura de una función es natural y muy fácil
-  de entender (una vez aprendida)
-- A veces la función resultante no es eficiente
-- Veremos dos posibles soluciones: procesos iterativos y *memoization*
-- La semana que viene veremos algoritmos recursivos para dibujar
-  curvas fractales
-
-----
-
-### 1.1 Pensando recursivamente
-
-- Hemos diseñado muchas funciones recursivas sobre listas.
-- Ya hemos usado estos consejos:
-    - Para diseñar procedimientos recursivos no funciona el método de
-      _prueba y error_. Hay que diseñar la solución recursiva desde el
-      principio.
-    - Debemos fijarnos en *lo que devuelve la función*. Supondremos
-      que la llamada recursiva funciona correctamente y devuelve el
-      resultado correcto. Y después debemos transformar este resultado
-      correcto en el resultado de la solución completa.
-    - Debemos **confiar en que la llamada recursiva va a hacer su
-      trabajo y devolver el resultado correcto**, sin preocuparte de
-      cómo lo va a hacer.
-
-----
-
-### Un último ejemplo de diseño recursivo: `(palindroma? lista)`
-
-- ¿cómo definimos una lista palíndroma de forma recursiva?. Por
-  ejemplo, las siguientes listas son palíndromas:
-
-```racket
-(1 2 3 3 2 1)
-(1 2 1)
-(1)
-'()
-```
-
-- Comenzamos con una definición **no recursiva**:
-
-> Una lista es palíndroma cuando es igual a su inversa. 
-
-- Esta definición no es recursiva porque no llamamos a la recursión
-  con un caso más sencillo.
-
-- La definición **recursiva** del caso general es la siguiente:
-
-> Una lista es palíndroma cuando su primer elemento es igual que el
-> último y la lista resultante de quitar el primer y el último
-> elemento también es palíndroma
-
-Y las siguientes dos definiciones de los casos más sencillas completan
-esta definición general:
-
-> Una lista es palíndroma cuando tiene un elemento o cuando es vacía.
-
-Podemos definir la función recursiva usando un `or` que indique que
-una lista es palíndroma cuando se cumple alguna de las tres
-condiciones:
-
-```racket
-(define (palindroma? lista)
-    (or (null? lista)
-        (null? (cdr lista))
-        (and (equal? (car lista) (ultimo lista))
-             (palindroma? (quitar-primero-ultimo lista)))))
-```
-
-La función auxiliar `quitar-primero-ultimo` la podemos definir así:
-
-```racket
-(define (quitar-ultimo lista)
-    (if (null? (cdr lista))
-        '()
-        (cons (car lista)
-              (quitar-ultimo (cdr lista)))))
-
-(define (quitar-primero-ultimo lista)
-    (cdr (quitar-ultimo lista)))
-```
-
-----
-
-### 1.2 El coste de la recursión
+### El coste de la recursión
 
 - Vamos a analizar el coste de la recursión de una forma empírica, sin
   realizar una análisis matemático riguroso.
@@ -109,7 +22,7 @@ La función auxiliar `quitar-primero-ultimo` la podemos definir así:
 
 ----
 
-### 1.2.1 La pila de la recursión
+### La pila de la recursión
 
 - Para analizar una función vamos por primera vez a *entrar en la
   recursión* y hacer una traza de las llamadas recursivas del
@@ -127,7 +40,7 @@ La función auxiliar `quitar-primero-ultimo` la podemos definir así:
 
 <p style="margin-bottom:2cm;"></p>
 
-```
+```text
 (mi-length '(a b c d))
 (+ 1 (mi-length '(b c d)))
 (+ 1 (+ 1 (mi-length '(c d))))
@@ -175,7 +88,7 @@ La función auxiliar `quitar-primero-ultimo` la podemos definir así:
 
 - Formulación matemática de la secuencia de Fibonacci:
 
-```
+```text
 Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)  
 Fibonacci(0) = 0  
 Fibonacci(1) = 1
@@ -183,7 +96,7 @@ Fibonacci(1) = 1
 
 - Formulación recursiva en Scheme:
 
-```
+```racket
 (define (fib n)
     (cond ((= n 0) 0)
         ((= n 1) 1)
@@ -222,7 +135,7 @@ Fibonacci(1) = 1
 
 ----
 
-### 1.3.1 Factorial iterativo
+### Factorial iterativo
 
 - Definimos la función `(fact-iter n result)` que es la que
   define el proceso iterativo
@@ -231,7 +144,7 @@ Fibonacci(1) = 1
 - Al final de la recursión el factorial debe estar calculado en
   `result` y se devuelve
 
-```
+```racket
 (define (factorial n)
    (fact-iter n n))
 
@@ -243,7 +156,7 @@ Fibonacci(1) = 1
 
 Secuencia de llamadas:
 
-```
+```text
 (factorial 4)
 (factorial-iter 4 4)
 (factorial-iter 3 4*3=12)
@@ -307,7 +220,7 @@ Solución:
 
 ### Triángulo de Pascal
 
-```
+```text
 1
 1   1
 1   2   1
@@ -321,7 +234,7 @@ Solución:
 
 -- Formulación matemática:
 
-```
+```text
 Pascal(n, 0) = 1  
 Pascal(n, n) = 1  
 Pascal(fila, columna) = Pascal(fila-1,columna-1) + Pascal(fila-1, columna)
@@ -336,11 +249,8 @@ La versión recursiva pura:
           (else (+ (pascal (- row 1) (- col 1))
                    (pascal (- row 1) col) ))))
 (pascal 4 2)
-⇒ ?
 (pascal 8 4)
-⇒ ?
 (pascal 27 13)
-⇒ ?
 ```
 
 ----
@@ -362,7 +272,7 @@ Usando la función anterior definimos la función `pascal-fila` a la que
 le pasamos el número de fila `n` y nos devuelve la lista de `n+1`
 números que constituyen la fila `n` del triángulo de Pascal:
 
-```
+```text
 fila 0 = (1)
 fila 1 = (1 1)
 fila 2 = (1 2 1)
@@ -396,7 +306,7 @@ define (pascal fila col)
 
 ----
 
-### 1.4 Soluciones al coste de la recursión: memoization
+### Soluciones al coste de la recursión: memoization
 
 - Una alternativa que mantiene la elegancia de los procesos recursivos
   y la eficiencia de los iterativos es la
@@ -414,56 +324,61 @@ define (pascal fila col)
 
 ----
 
-### 1.4.1 Fibonacci con memoization
+### Fibonacci con memoization
 
 - Usamos los métodos procedurales `put` y `get` que implementan un
   diccionario *clave-valor*.
 - No te preocupes de cómo se implementa el siguiente código, es un
   código no funcional en el que se define una estructura de datos
   mutable (un diccionario). Para que funcione
-  hay que importar una librería de Scheme que permite mutar las
+  hay que usar las funciones de Racket que permiten mutar las
   parejas:
 
 ```racket
-(import (rnrs)
-      (rnrs mutable-pairs))
+(define (crea-diccionario)
+  (mcons '*diccionario* '()))
 
-(define lista (list 'lista-asoc))
+(define (busca key dic)
+  (cond
+    ((null? dic) #f)
+    ((equal? key (mcar (mcar dic)))
+     (mcar dic))
+    (else (busca key (mcdr dic)))))
 
-(define (get key lista)
-  (define record (assq key (cdr lista)))
+(define (get key dic)
+  (define record (busca key (mcdr dic)))
   (if (not record)
-      '()
-      (cdr record)))
+      #f
+      (mcdr record)))
 
-(define (put key value lista)
-  (define record (assq key (cdr lista)))
+(define (put key value dic)
+  (define record (busca key (mcdr dic)))
   (if (not record)
-      (set-cdr! lista
-                (cons (cons key value)
-                      (cdr lista)))
-      (set-cdr! record value))
+      (set-mcdr! dic
+                (mcons (mcons key value)
+                      (mcdr dic)))
+      (set-mcdr! record value))
   value)
 ```
 
-- La función `(put key value lista)` asocia un valor a una clave, la
- guarda en la lista (con mutación) y devuelve el valor.
+- La función `(put key value dic)` asocia un valor a una clave, la
+ guarda en el diccionario (con mutación) y devuelve el valor.
  
-- La función `(get key lista)` devuelve el valor de la lista asociado
-  a una clave.
+- La función `(get key dic)` devuelve el valor del diccionario asociado
+  a una clave, o #f si no existe la clave.
 
 Ejemplos:
 
 ```racket
-(define mi-lista (list 'lista-asoc))
-(put 1 10 mi-lista) ; ⇒ 10
-(get 1 mi-lista) ; ⇒ 10
-(get 2 mi-lista) ; ⇒ '()
+(define mi-dic (crea-diccionario))
+(put 1 10 mi-dic) ; ⇒ 10
+(get 1 mi-dic) ; ⇒ 10
+(get 2 mi-dic) ; ⇒ #f
 ```
 
 - La función `fib-memo` realiza el cálculo de la serie de Fibonacci
   utilizando el proceso recursivo visto anteriormente y la técnica de
-  memoización, en la que se consulta el valor de Fibonacci de la lista
+  memoización, en la que se consulta el valor de Fibonacci en el diccionario
   antes de realizar la llamada recursiva:
 
 ```racket
@@ -482,14 +397,14 @@ Ejemplos:
   imposible de utilizar.
 
 ```racket
-(define lista (list 'lista-asoc))
-(fib-memo 200 lista)
-⇒ 280571172992510140037611932413038677189525
+(define dic (crea-diccionario))
+(fib-memo 200 dic)
+; ⇒ 280571172992510140037611932413038677189525
 ```
 
 ----
 
-### 1.5 Recursión y gráficos de tortuga
+### Recursión y gráficos de tortuga
 
 - Último ejemplo algo distinto de los vistos hasta ahora
 - Usaremos la recursión para dibujar figuras fractales usando los
@@ -505,7 +420,7 @@ Ejemplos:
 
 ----
 
-### 1.5.1 Gráficos de tortuga en Racket
+### Gráficos de tortuga en Racket
 
 - Los
   [gráficos de tortuga](http://en.wikipedia.org/wiki/Turtle_graphics)
@@ -575,7 +490,7 @@ hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}
 
 ----
 
-### 1.5.2. Triángulo de Sierpinski
+### Triángulo de Sierpinski
 
 <img src="imagenes/sierpinski.png" style="width:400px"/>
 
@@ -614,7 +529,7 @@ hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}
 
 Una versión del algoritmo en *pseudocódigo*:
 
-```
+```text
 Sierpinsky (x, y, h):
    if (h > MIN) {
       Sierpinsky (x, y, h/2)
@@ -625,7 +540,7 @@ Sierpinsky (x, y, h):
 
 ----
 
-### 1.5.3 Sierpinski en Racket
+### Sierpinski en Racket
 
 ```racket
 #lang racket
@@ -669,7 +584,7 @@ Sierpinsky (x, y, h):
 
 ----
 
-### 1.5.4 Recursión mutua
+### Recursión mutua
 
 - En la recursión mutua definimos una función en base a una segunda,
   que a su vez se define en base a la primera.
@@ -695,7 +610,7 @@ Programas en Scheme:
 
 ----
 
-### 1.5.5. Otra figura recursiva: curvas de Hilbert
+### Otra figura recursiva: curvas de Hilbert
 
 - La curva de Hilbert es una curva fractal que tiene la propiedad de
   rellenar completamente el espacio
@@ -798,6 +713,6 @@ Curva de Hilbert de nivel 7 con trazo de longitud 5:
 (turn -90)
 (move 350)
 (turn 90)
-(h-izq 7 5))
+(h-izq 7 5)
 ```
 
