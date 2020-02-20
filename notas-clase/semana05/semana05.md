@@ -47,10 +47,10 @@ Notas de clase de la semana 5 de LPP.
 - ¿cómo definimos una lista palíndroma de forma recursiva?. Por
   ejemplo, las siguientes listas son palíndromas:
 
-```
-{1 2 3 3 2 1}
-{1 2 1}
-{1}
+```racket
+(1 2 3 3 2 1)
+(1 2 1)
+(1)
 '()
 ```
 
@@ -76,7 +76,7 @@ Podemos definir la función recursiva usando un `or` que indique que
 una lista es palíndroma cuando se cumple alguna de las tres
 condiciones:
 
-```scheme
+```racket
 (define (palindroma? lista)
     (or (null? lista)
         (null? (cdr lista))
@@ -86,7 +86,7 @@ condiciones:
 
 La función auxiliar `quitar-primero-ultimo` la podemos definir así:
 
-```scheme
+```racket
 (define (quitar-ultimo lista)
     (if (null? (cdr lista))
         '()
@@ -115,7 +115,7 @@ La función auxiliar `quitar-primero-ultimo` la podemos definir así:
   recursión* y hacer una traza de las llamadas recursivas del
   siguiente:
 
-```scheme
+```racket
 (define (mi-length items)
     (if (null? items)
         0
@@ -125,7 +125,7 @@ La función auxiliar `quitar-primero-ultimo` la podemos definir así:
 - ¿Cómo podemos representar las llamadas y el resultado de `(mi-length
   '(a b c d))`
 
-<p style="margin-bottom:2cm;"/>
+<p style="margin-bottom:2cm;"></p>
 
 ```
 (mi-length '(a b c d))
@@ -258,11 +258,11 @@ Secuencia de llamadas:
 
 ¿Cómo sería la versión iterativa de mi-length?
 
-<p style="margin-bottom:2cm;"/>
+<p style="margin-bottom:2cm;"></p>
 
 Solución:
 
-```scheme
+```racket
 (define (mi-length lista)
    (mi-length-iter lista 0))
 
@@ -293,7 +293,7 @@ Solución:
   difíciles de entender y depurar.
 - Ejemplo: Fibonacci iterativo
 
-```scheme
+```racket
 (define (fib n)
     (fib-iter 1 0 n))
 
@@ -329,7 +329,7 @@ Pascal(fila, columna) = Pascal(fila-1,columna-1) + Pascal(fila-1, columna)
 
 La versión recursiva pura:
 
-```scheme
+```racket
 (define (pascal row col)
     (cond ((= col 0) 1)
           ((= col row) 1)
@@ -353,9 +353,9 @@ como parámetro la fila anterior).
 
 Por ejemplo:
 
-```scheme
+```racket
 (pascal-sig-fila '(1 3 3 1))
-; ⇒ {1 4 6 4 1}
+; ⇒ (1 4 6 4 1)
 ```
 
 Usando la función anterior definimos la función `pascal-fila` a la que
@@ -363,17 +363,17 @@ le pasamos el número de fila `n` y nos devuelve la lista de `n+1`
 números que constituyen la fila `n` del triángulo de Pascal:
 
 ```
-fila 0 = {1}
-fila 1 = {1 1}
-fila 2 = {1 2 1}
-fila 3 = {1 3 3 1}
-fila 4 = {1 4 6 4 1}
+fila 0 = (1)
+fila 1 = (1 1)
+fila 2 = (1 2 1)
+fila 3 = (1 3 3 1)
+fila 4 = (1 4 6 4 1)
 ...
 ```
 
 El código completo:
 
-```scheme
+```racket
 define (pascal fila col)
    (list-ref (pascal-fila '(1) fila) col))
 
@@ -424,7 +424,7 @@ define (pascal fila col)
   hay que importar una librería de Scheme que permite mutar las
   parejas:
 
-```scheme
+```racket
 (import (rnrs)
       (rnrs mutable-pairs))
 
@@ -454,7 +454,7 @@ define (pascal fila col)
 
 Ejemplos:
 
-```scheme
+```racket
 (define mi-lista (list 'lista-asoc))
 (put 1 10 mi-lista) ; ⇒ 10
 (get 1 mi-lista) ; ⇒ 10
@@ -466,7 +466,7 @@ Ejemplos:
   memoización, en la que se consulta el valor de Fibonacci de la lista
   antes de realizar la llamada recursiva:
 
-```scheme
+```racket
 (define (fib-memo n lista)
   (cond ((= n 0) 0)
         ((= n 1) 1)
@@ -481,7 +481,7 @@ Ejemplos:
   O(n). Frente al coste O(2^n) de la versión inicial que la hacía
   imposible de utilizar.
 
-```scheme
+```racket
 (define lista (list 'lista-asoc))
 (fib-memo 200 lista)
 ⇒ 280571172992510140037611932413038677189525
@@ -498,9 +498,10 @@ Ejemplos:
   trazos de las figuras con pasos de ejecución secuenciales con la
   primitiva imperativa `begin`
 
-> Ten cuidado con la forma especial `begin`, es una forma especial
-> imperativa. No debes usarla en la implementación de ninguna función
-> cuando estemos usando el paradigma funcional.
+!!! Note "Importante"
+    Ten cuidado con la forma especial `begin`, es una forma especial
+    imperativa. No debes usarla en la implementación de ninguna función
+    cuando estemos usando el paradigma funcional.
 
 ----
 
@@ -512,10 +513,9 @@ Ejemplos:
   programar a niños y jóvenes, en los años 80.
 - Se pueden utilizar los  en Racket cargando la librería `(graphics turtles)`: 
 
-```scheme
-#lang r6rs
-(import (rnrs)
-      (graphics turtles))
+```racket
+#lang racket
+(require graphics/turtles)
 ```
 
 - Los comandos más importantes de esta librería son:
@@ -532,7 +532,7 @@ Ejemplos:
 ### Ejemplo `(triangulo-rectangulo)`
 
 
-```scheme
+```racket
 (define (hipot x)
 	(* x (sqrt 2)))
 
@@ -552,7 +552,7 @@ La función `(hipot x)` devuelve la longitud de la hipotenusa de un
 triángulo rectángulo con dos lados de longitud `x`. O sea, la
 expresión:
 
-$$hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}$$
+hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}
 
 ----
 
@@ -562,7 +562,7 @@ $$hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}$$
   triángulo rectángulo de base `w` y lados `w/2`.
 - va a ser la figura base del triángulo de Sierpinski.
 
-```scheme
+```racket
 (define (triangle w)
    (begin
       (draw w)
@@ -627,10 +627,9 @@ Sierpinsky (x, y, h):
 
 ### 1.5.3 Sierpinski en Racket
 
-```scheme
-#lang r6rs
-(import (rnrs)
-        (graphics turtles))
+```racket
+#lang racket
+(require graphics/turtles)
 
 (turtles #t)
 
@@ -658,11 +657,11 @@ Sierpinsky (x, y, h):
       (triangle w)))
 ```
 
-```scheme
+```racket
 (sierpinski 40)
 ```
 
-```scheme
+```racket
 (clear)
 (move -350)
 (sierpinski 700)
@@ -682,7 +681,7 @@ Sierpinsky (x, y, h):
 
 Programas en Scheme:
 
-```scheme
+```racket
 (define (par? x)
    (if (= 0 x)
       #t
@@ -735,10 +734,9 @@ i-1.
 
 ### Algoritmo en Scheme
 
-```scheme
-#lang r6rs
-(import (rnrs)
-      (graphics turtles))
+```racket
+#lang racket
+(require graphics/turtles)
 
 (define (h-izq i long)
    (if (> i 0)
@@ -777,13 +775,13 @@ de trazo.
 
 Curva de Hilbert de nivel 3 con trazo de longitud 20:
 
-```scheme
+```racket
 (h-izq 3 20)
 ```
 
 Curva de Hilbert de nivel 6 con trazo de longitud 10:
 
-```scheme
+```racket
 (clear)
 (move -350)
 (turn -90)
@@ -794,7 +792,7 @@ Curva de Hilbert de nivel 6 con trazo de longitud 10:
 
 Curva de Hilbert de nivel 7 con trazo de longitud 5:
 
-```scheme
+```racket
 (clear)
 (move -350)
 (turn -90)
