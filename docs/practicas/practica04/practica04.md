@@ -144,6 +144,11 @@ Ejemplo:
 ```
 
 
+c) Implementa la función `(filtra-simbolos lista-simbolos lista-num)` de
+de la práctica 3, usando una composición de funciones en las que se
+use `map`.
+
+
 ### Ejercicio 4 ###
 
 a) La función de Racket `(index-of lista dato)` devuelve la posición
@@ -189,35 +194,6 @@ posición del mayor elemento de la lista utilizando las dos funciones
 anteriores.
 
 ### Ejercicio 5 ###
-
-a) Implementa las funciones constructoras `(construye-multiplicador k)` y
-`(construye-exponenciador k)` similares al ejemplo visto en teoría
-`(construye-sumador k)`.
-
-La función `construye-multiplicador` construye una función multiplicadora
-por `k`. Y la función `construye-exponenciador` construye una función de un
-argumento `x` que eleva `k` a `x`.
-
-
-Ejemplo:
-
-```racket
-(define multiplica-por-10 (construye-multiplicador 10))
-(multiplica-por-10 3) ; ⇒ 30
-(define multiplica-por-5 (construye-multiplicador 5))
-(multiplica-por-5 3) ; ⇒ 15
-(define elevado-2-a (construye-exponenciador 2))
-(elevado-2-a 3) ; ⇒ 8
-(define elevado-5-a (construye-exponenciador 5))
-(elevado-5-a 3) ; ⇒ 125
-```
-
-b) Implementa la función `(filtra-simbolos lista-simbolos lista-num)` de
-de la práctica 3, usando una composición de funciones en las que se
-use `map`.
-
-
-### Ejercicio 6 ###
 
 a) Supongamos que vamos a representar una mano de cartas como una
 lista de cartas. Podemos entonces representar un juego de _n_
