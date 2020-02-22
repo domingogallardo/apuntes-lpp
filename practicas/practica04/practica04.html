@@ -407,13 +407,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ejercicio-6" class="md-nav__link">
-    Ejercicio 6
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -501,13 +494,6 @@
           <li class="md-nav__item">
   <a href="#ejercicio-5" class="md-nav__link">
     Ejercicio 5
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ejercicio-6" class="md-nav__link">
-    Ejercicio 6
   </a>
   
 </li>
@@ -729,6 +715,9 @@ función a los elementos izquierdo y derecho de cada pareja.</p>
 </pre></div>
 </td></tr></table>
 
+<p>c) Implementa la función <code>(filtra-simbolos lista-simbolos lista-num)</code> de
+de la práctica 3, usando una composición de funciones en las que se
+use <code>map</code>.</p>
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
 <p>a) La función de Racket <code>(index-of lista dato)</code> devuelve la posición
 de un dato en una lista o <code>#f</code> si el dato no está en la lista. Si el
@@ -769,35 +758,6 @@ de <code>busca-mayor</code>, utilizando funciones <code>mayor?</code> distintas.
 posición del mayor elemento de la lista utilizando las dos funciones
 anteriores.</p>
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
-<p>a) Implementa las funciones constructoras <code>(construye-multiplicador k)</code> y
-<code>(construye-exponenciador k)</code> similares al ejemplo visto en teoría
-<code>(construye-sumador k)</code>.</p>
-<p>La función <code>construye-multiplicador</code> construye una función multiplicadora
-por <code>k</code>. Y la función <code>construye-exponenciador</code> construye una función de un
-argumento <code>x</code> que eleva <code>k</code> a <code>x</code>.</p>
-<p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">multiplica-por-10</span> <span class="p">(</span><span class="n">construye-multiplicador</span> <span class="mi">10</span><span class="p">))</span>
-<span class="p">(</span><span class="n">multiplica-por-10</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 30</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">multiplica-por-5</span> <span class="p">(</span><span class="n">construye-multiplicador</span> <span class="mi">5</span><span class="p">))</span>
-<span class="p">(</span><span class="n">multiplica-por-5</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 15</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">elevado-2-a</span> <span class="p">(</span><span class="n">construye-exponenciador</span> <span class="mi">2</span><span class="p">))</span>
-<span class="p">(</span><span class="n">elevado-2-a</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 8</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">elevado-5-a</span> <span class="p">(</span><span class="n">construye-exponenciador</span> <span class="mi">5</span><span class="p">))</span>
-<span class="p">(</span><span class="n">elevado-5-a</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 125</span>
-</pre></div>
-</td></tr></table>
-
-<p>b) Implementa la función <code>(filtra-simbolos lista-simbolos lista-num)</code> de
-de la práctica 3, usando una composición de funciones en las que se
-use <code>map</code>.</p>
-<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
 <p>a) Supongamos que vamos a representar una mano de cartas como una
 lista de cartas. Podemos entonces representar un juego de <em>n</em>
 manos como una lista de <em>n</em> listas.</p>
