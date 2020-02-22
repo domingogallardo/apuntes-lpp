@@ -777,7 +777,7 @@ derecha a izquierda.
                    (+ (car pareja) (cdr pareja) resultado)) 0 lista-parejas))
 
     (suma-parejas (list (cons 3 6) (cons 2 9) (cons -1 8) (cons 9 3))) ; ⇒ 39
-    ``` 
+    ```
 ----
 
 

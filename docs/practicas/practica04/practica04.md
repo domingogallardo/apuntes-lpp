@@ -29,9 +29,15 @@ intérprete. Comprueba después si has acertado.
 (filter (lambda (x) 
             (equal? (string-ref (symbol->string x) 1) #\a)) '(alicante barcelona madrid almería)) ; ⇒ ?
 
-(fold-right (lambda (dato resultado) (cons dato resultado)) '() '(1 2 3 4 5)) ; ⇒ ?
+(foldl (lambda (dato resultado)
+         (string-append
+          (symbol->string (car dato))
+          (symbol->string (cdr dato))
+          resultado)) "" '((a . b) (hola . adios) (una . pareja))) ; ⇒ ?
 
-(fold-left (lambda (resultado dato) (cons dato resultado)) '() '(1 2 3 4 5)) ; ⇒ ?
+(foldr (lambda (dato resultado)
+           (cons (+ (car resultado) dato)
+                 (+ (cdr resultado) 1))) '(0 . 0) '(1 1 2 2 3 3)) ; ⇒ ?
 ```
 
 b) Sin utilizar el intérprete DrRacket, rellena los siguientes huecos
@@ -40,15 +46,8 @@ comprobar si has acertado.
 
 
 ```racket 
-(______ list 0 '(1 2 3))
-; ⇒ (1 (2 (3 0)))
 
-(______ list "hola" '("como" "estas" "adios"))
-; ⇒ ((("hola" "como") "estas") "adios")
-
-
-; Los siguientes ejercicios se realizan con esta
-; definición de lista
+; Los siguientes ejercicios utilizan esta definición de lista
 
 (define lista '((2 . 7) (3 . 5) (10 . 4) (5 . 5)))
 
@@ -90,21 +89,28 @@ con el intérprete si lo has hecho correctamente.
 
 (define (f x) (lambda (y z) (list y x z)))
 _____________
-
 (check-equal? (g "hola" "clase") (list "hola" "lpp" "clase"))
 
 
-
 (define (f g) (lambda(z x) (g z x)))
-_________ => (3 . 4)
+(check-equal? _____________________  '(3 . 4))
 ```
 
 ### Ejercicio 2 ###
 
-Implementa **utilizando funciones de orden superior** las funciones
-`(cartas lista-simbolos)` y `(cuenta-cartas n lista-parejas)` de la
-práctica 3.
+Implementa utilizando funciones de orden superior las funciones
+`(crea-baraja lista-parejas)` y `(expande-lista lista-parejas)` de la
+práctica 3. Para la implementación de `expande-lista` debes utilizar
+la función `expande-pareja` usada también en la práctica 3.
 
+```racket
+(crea-baraja '((#\u2660 . #\A) (#\u2663 . #\2) 
+               (#\u2665 . #\3) (#\u2666 . #\R)))
+; ⇒ (A♠ 2♣ 3♥ R♦)
+
+(expande-lista '((#t . 3) ("LPP" . 2) (b . 4))) 
+; ⇒ '(#t #t #t "LPP" "LPP" b b b b))
+```
 
 ### Ejercicio 3 ###
 
@@ -140,30 +146,51 @@ Ejemplo:
 
 ### Ejercicio 4 ###
 
-Implementa la función `(posicion dato lista)` que devuelva la
-posición de un dato en una lista o `#f` si el dato no está en la
-lista. Puedes usar funciones auxiliares y funciones de orden
-superior **pero no recursión**.
+a) La función de Racket `(index-of lista dato)` devuelve la posición
+de un dato en una lista o `#f` si el dato no está en la lista. Si el
+dato está repetido en la lista devuelve la posición de su primera
+aparición.
+
+Implementa la función `mi-index-of` que haga lo mismo, usando
+funciones de orden superior. Puedes usar también alguna función
+auxiliar.
 
 !!! Hint "Pista"
-    Puedes utilizar la función `fold-left` para recorrer la lista de
+    Puedes utilizar la función `foldl` para recorrer la lista de
     izquierda a derecha buscando el dato. Puedes usar como resultado
-    del `fold-left` una pareja en cuya parte derecha vayamos calculando 
-    la posicion y en la parte izquierda haya un booleano que indique
+    del `foldl` una pareja en cuya parte derecha vayamos calculando 
+    la posición y en la parte izquierda haya un booleano que indique
     si hemos encontrado o no el dato.
     
-
 Ejemplos:
 
 ```racket
-(posicion 'c '(a b c d)) ; ⇒ 2
-(posicion 10 '(1 2 3 4 5)) ; ⇒ #f
+(mi-index-of '(a b c d c) 'c) ; ⇒ 2
+(mi-index-of '(1 2 3 4 5) 10) ; ⇒ #f
 ```
 
 
+b) Completa la definición de la siguiente función de orden superior
+`(busca-mayor mayor?  lista)` que busca el mayor elemento de una
+lista. Recibe un predicado `mayor?` que compara dos elementos de la
+lista y devuelve `#t` o `#f` dependiendo de si el primero es mayor que
+el segundo. 
+
+```racket
+(define (busca-mayor mayor? lista)
+  (fold-left __________ (car lista) (cdr lista)))
+```  
+
+Escribe algunos `check-equal?` en los que compruebes el funcionamiento
+de `busca-mayor`, utilizando funciones `mayor?` distintas.
+
+c) Define la función `(posicion-mayor mayor? lista)` que devuelva la
+posición del mayor elemento de la lista utilizando las dos funciones
+anteriores.
+
 ### Ejercicio 5 ###
 
-a) Implementa las **funciones constructoras** `(construye-multiplicador k)` y
+a) Implementa las funciones constructoras `(construye-multiplicador k)` y
 `(construye-exponenciador k)` similares al ejemplo visto en teoría
 `(construye-sumador k)`.
 
@@ -185,62 +212,104 @@ Ejemplo:
 (elevado-5-a 3) ; ⇒ 125
 ```
 
-b) Queremos definir una función constructora que obtenga una **función
-segura** a partir de otra función, como en el ejemplo de teoría. Pero
-en este caso queremos que la función a convertir en segura sea una
-función de dos argumentos.
-
-Define la función `(construye-segura-2 p f)` que recibe un predicado
-`p` de dos argumentos y una función `f` también de dos argumentos y
-que devuelva una versión segura de la función en la que antes de
-invocarla se debe comprobar si los argumentos cumplen el predicado.
-
-Pruébala con la función `es-prefijo?` de la práctica anterior,
-y con `append`.
-
-Ejemplos de uso:
-
-```racket
-(define es-prefijo-segura? (construye-segura-2 (lambda (x y) _________) es-prefijo?))
-(define append-segura (construye-segura-2 (lambda (x y) _______) append))
-
-(es-prefijo-segura? "pre" "prefijo") ; ⇒ #t
-(es-prefijo-segura? "pre" "p") ; ⇒ 'error
-(append-segura '(1 2 3) '(4 5)) ; ⇒ '(1 2 3 4 5)
-(append-segura '(1 2 3) 4) ; ⇒ 'error
-```
+b) Implementa la función `(filtra-simbolos lista-simbolos lista-num)` de
+de la práctica 3, usando una composición de funciones en las que se
+use `map`.
 
 
 ### Ejercicio 6 ###
 
-a) Completa la definición de la siguiente función de orden superior
-`(busca-mayor mayor?  lista)` que busca el mayor elemento de una
-lista. Recibe un predicado `mayor?` que compara dos elementos de la
-lista y devuelve `#t` o `#f` dependiendo de si el primero es mayor que
-el segundo. 
+a) Supongamos que vamos a representar una mano de cartas como una
+lista de cartas. Podemos entonces representar un juego de _n_
+manos como una lista de _n_ listas.
 
-```racket
-(define (busca-mayor mayor? lista)
-  (fold-left __________ (car lista) (cdr lista)))
-```  
+Por ejemplo, la siguiente lista representaría un juego con 3 manos de
+5 cartas:
 
-Escribe algunos `check-equal?` en los que compruebes el funcionamiento
-de `busca-mayor`.
-
-Implementa, utilizando una composición con la función anterior y otra
-función de orden superior, la función `(carta-ganadora
-lista-simbolos)` que recibe una lista de símbolos que representan
-cartas (con el formato explicado en la práctica 2) y devuelve la carta
-mayor, en forma de pareja.
-
-```racket
-(check-equal? (carta-ganadora '(B6 O3 CC C2 O7)) '(Oros . 9))
+```text
+((K♦ J♥ 2♥ 2♠ 8♥) (A♥ 3♠ 5♦ 3♣ J♦) (3♦ Q♥ 0♠ 2♣ 9♦))
 ```
 
-b) Implementa la función `(filtra-simbolos lista-simbolos lista-num)` de
-de la práctica 3, usando **una composición de funciones en las que se
-use `map`**.
+Para construir este juego vamos a necesitar una función auxiliar que
+vaya construyendo las manos, añadiendo una carta a la primera mano de la
+lista si ésta no tiene todas las cartas necesarias.
 
+Tienes que definir la función `(añade-carta carta n-cartas manos)` que
+recibe una carta, un número que representa el número de cartas que
+deben tener las manos y una lista de manos, cuya primera mano puede
+estar incompleta. En ese caso, la función añadirá la carta a esa
+primera mano de la lista. Si la primera mano está completa, o la lista
+de manos está vacía, se deberá añadir una nueva mano a la lista, con
+la única carta que se pasa como parámetro.
+
+Por ejemplo, veamos cómo se añade el símbolo `a` a una lista de manos
+de 3 cartas:
+
+```racket
+(añade-carta 'K♦ 3 '()) ; ⇒  ((K♦))
+(añade-carta 'J♥ 3 '((2♥ 2♠) (5♦ 3♣ J♦))) ; ⇒ ((J♥ 2♥ 2♠) (5♦ 3♣ J♦))
+(añade-carta '3♠ 3 '((5♦ 3♣ J♦))) ; ⇒ ((3♠) (5♦ 3♣ J♦))
+```
+
+Una vez definida la función anterior, y utilizando funciones de
+orden superior, debes implementar la función `(reparte n-manos n-cartas
+baraja)` que devuelva un juego con _n_ manos de _n_ cartas sacadas de
+una baraja inicial. Puedes utilizar las funciones `baraja-poker` y
+`mezcla` de la práctica anterior para crear la baraja inicial.
+
+Ejemplo: 
+
+```racket
+(reparte 3 5 (mezcla (baraja-poker)))
+; ⇒ ((9♦ 2♦ K♥ 0♦ 7♥) (6♦ 4♠ 7♣ 5♥ 4♦) (0♣ 4♣ 5♠ 3♥ J♥))
+```
+
+b) La siguiente función devuelve el valor de una carta:
+
+```racket
+(define (valor-carta carta orden)
+  (+ 1 (index-of orden (string-ref (symbol->string carta) 0))))
+```
+
+El parámetro `orden` es una lista de todos los caracteres que
+representan los posibles valores de una carta, ordenados de menor a
+mayor.
+
+Por ejemplo:
+
+```racket
+(define orden '(#\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9 #\0 #\J #\Q #\K #\A))
+(valor-carta 'A♠ orden) ; ⇒ 13
+(valor-carta 'J♥ orden) ; ⇒ 10
+(valor-carta '2♦ orden) ; ⇒ 1
+```
+
+Implementa, utilizando funciones de orden superior y cualquiera de las
+funciones definidas anteriormente, la función `(mano-ganadora
+lista-manos)` que recibe una lista de manos y devuelve la posición de
+la mano ganadora utilizando la valoración del póker. La mano ganadora
+es la que tiene una carta más alta. Si hay empate, deberás devolver la
+posición de la primera mano que participa en el empate.
+
+!!! Note "Pista"
+    Puedes definir una función de un único parámetro
+    que devuelve el valor de una carta usando el orden definido por el
+    póker usando la siguiente expresión lambda:
+    
+    ```racket
+    (lambda (carta)
+          (valor-carta carta
+               '(#\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9 #\0 #\J #\Q #\K #\A)))
+    ```
+
+
+Puedes usar cualquier función definida anteriormente.
+
+```racket
+(define lista-manos (reparte 3 5 (mezcla (baraja-poker))))
+; lista-manos ⇒ ((9♦ 2♦ K♥ 0♦ 7♥) (6♦ 4♠ 7♣ 5♥ 4♦) (0♣ 4♣ 5♠ 3♥ J♥))
+(mano-ganadora lista-manos) ; ⇒ 0
+```
 
 ----
 
