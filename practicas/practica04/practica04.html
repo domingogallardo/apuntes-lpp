@@ -786,15 +786,20 @@ la única carta que se pasa como parámetro.</p>
 </pre></div>
 </td></tr></table>
 
-<p>Una vez definida la función anterior, y utilizando funciones de
-orden superior, debes implementar la función <code>(reparte n-manos n-cartas
-baraja)</code> que devuelva un juego con <em>n</em> manos de <em>n</em> cartas sacadas de
-una baraja inicial. Puedes utilizar las funciones <code>baraja-poker</code> y
-<code>mezcla</code> de la práctica anterior para crear la baraja inicial.</p>
+<p>Una vez definida la función anterior, y utilizando funciones de orden
+superior, debes implementar la función <code>(reparte n-manos n-cartas
+baraja)</code> que devuelva un juego con <em>n</em> manos de <em>n</em> cartas sacadas la
+parte de arriba de una baraja inicial. Puedes utilizar las funciones
+<code>baraja-poker</code> y <code>mezcla</code> de la práctica anterior para crear la baraja
+inicial.</p>
 <p>Ejemplo: </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">reparte</span> <span class="mi">3</span> <span class="mi">5</span> <span class="p">(</span><span class="n">mezcla</span> <span class="p">(</span><span class="n">baraja-poker</span><span class="p">)))</span>
-<span class="c1">; ⇒ ((9♦ 2♦ K♥ 0♦ 7♥) (6♦ 4♠ 7♣ 5♥ 4♦) (0♣ 4♣ 5♠ 3♥ J♥))</span>
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">definee</span> <span class="n">baraja</span> <span class="p">(</span><span class="n">mezcla</span> <span class="p">(</span><span class="n">baraja-poker</span><span class="p">)))</span>
+<span class="n">baraja</span> <span class="c1">; ⇒ (Q♠ 9♥ 4♣ K♠ 7♥ J♦ 5♠ 4♠ 5♦ 6♦ 8♦ A♦ Q♦ 0♣ 7♦ 3♠ Q♥ ...)</span>
+<span class="p">(</span><span class="n">reparte</span> <span class="mi">3</span> <span class="mi">5</span> <span class="n">baraja</span><span class="p">)</span>
+<span class="c1">; ⇒ ((7♦ 0♣ Q♦ A♦ 8♦) (6♦ 5♦ 4♠ 5♠ J♦) (7♥ K♠ 4♣ 9♥ Q♠))</span>
 </pre></div>
 </td></tr></table>
 
@@ -819,8 +824,8 @@ mayor.</p>
 </pre></div>
 </td></tr></table>
 
-<p>Implementa, utilizando funciones de orden superior y cualquiera de las
-funciones definidas anteriormente, la función <code>(mano-ganadora
+<p>Implementa, utilizando funciones de orden superior y funciones
+definidas anteriormente en esta práctica, la función <code>(mano-ganadora
 lista-manos)</code> que recibe una lista de manos y devuelve la posición de
 la mano ganadora utilizando la valoración del póker. La mano ganadora
 es la que tiene una carta más alta. Si hay empate, deberás devolver la
