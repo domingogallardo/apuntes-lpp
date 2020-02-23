@@ -226,17 +226,20 @@ Ejemplos:
 (añade-carta '3♠ 3 '((5♦ 3♣ J♦))) ; ⇒ ((3♠) (5♦ 3♣ J♦))
 ```
 
-Una vez definida la función anterior, y utilizando funciones de
-orden superior, debes implementar la función `(reparte n-manos n-cartas
-baraja)` que devuelva un juego con _n_ manos de _n_ cartas sacadas de
-una baraja inicial. Puedes utilizar las funciones `baraja-poker` y
-`mezcla` de la práctica anterior para crear la baraja inicial.
+Una vez definida la función anterior, y utilizando funciones de orden
+superior, debes implementar la función `(reparte n-manos n-cartas
+baraja)` que devuelva un juego con _n_ manos de _n_ cartas sacadas la
+parte de arriba de una baraja inicial. Puedes utilizar las funciones
+`baraja-poker` y `mezcla` de la práctica anterior para crear la baraja
+inicial.
 
 Ejemplo: 
 
 ```racket
-(reparte 3 5 (mezcla (baraja-poker)))
-; ⇒ ((9♦ 2♦ K♥ 0♦ 7♥) (6♦ 4♠ 7♣ 5♥ 4♦) (0♣ 4♣ 5♠ 3♥ J♥))
+(definee baraja (mezcla (baraja-poker)))
+baraja ; ⇒ (Q♠ 9♥ 4♣ K♠ 7♥ J♦ 5♠ 4♠ 5♦ 6♦ 8♦ A♦ Q♦ 0♣ 7♦ 3♠ Q♥ ...)
+(reparte 3 5 baraja)
+; ⇒ ((7♦ 0♣ Q♦ A♦ 8♦) (6♦ 5♦ 4♠ 5♠ J♦) (7♥ K♠ 4♣ 9♥ Q♠))
 ```
 
 b) La siguiente función devuelve el valor de una carta:
@@ -259,8 +262,8 @@ Por ejemplo:
 (valor-carta '2♦ orden) ; ⇒ 1
 ```
 
-Implementa, utilizando funciones de orden superior y cualquiera de las
-funciones definidas anteriormente, la función `(mano-ganadora
+Implementa, utilizando funciones de orden superior y funciones
+definidas anteriormente en esta práctica, la función `(mano-ganadora
 lista-manos)` que recibe una lista de manos y devuelve la posición de
 la mano ganadora utilizando la valoración del póker. La mano ganadora
 es la que tiene una carta más alta. Si hay empate, deberás devolver la
