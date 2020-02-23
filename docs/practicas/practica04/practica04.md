@@ -218,8 +218,7 @@ primera mano de la lista. Si la primera mano está completa, o la lista
 de manos está vacía, se deberá añadir una nueva mano a la lista, con
 la única carta que se pasa como parámetro.
 
-Por ejemplo, veamos cómo se añade el símbolo `a` a una lista de manos
-de 3 cartas:
+Ejemplos:
 
 ```racket
 (añade-carta 'K♦ 3 '()) ; ⇒  ((K♦))
