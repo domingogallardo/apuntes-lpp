@@ -56,8 +56,8 @@
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Ubuntu","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
     <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
@@ -176,10 +176,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1" checked>
     
     <label class="md-nav__link" for="nav-1">
       Teoría
@@ -224,6 +226,213 @@
     <a href="../tema02-programacion-funcional/tema02-programacion-funcional.html" title="Tema 2: Programación funcional" class="md-nav__link">
       Tema 2: Programación funcional
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Tema 3: Procedimientos recursivos
+      </label>
+    
+    <a href="tema03-procedimientos-recursivos.html" title="Tema 3: Procedimientos recursivos" class="md-nav__link md-nav__link--active">
+      Tema 3: Procedimientos recursivos
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-coste-de-la-recursion" class="md-nav__link">
+    El coste de la recursión
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#la-pila-de-la-recursion" class="md-nav__link">
+    La pila de la recursión
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coste-espacial-de-la-recursion" class="md-nav__link">
+    Coste espacial de la recursión
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-coste-depende-del-numero-de-llamadas-a-la-recursion" class="md-nav__link">
+    El coste depende del número de llamadas a la recursión
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soluciones-al-coste-de-la-recursion-procesos-iterativos" class="md-nav__link">
+    Soluciones al coste de la recursión: procesos iterativos
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#factorial-iterativo" class="md-nav__link">
+    Factorial iterativo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-iterativa-de-mi-length" class="md-nav__link">
+    Versión iterativa de mi-length
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcion-suma-lista-usando-recursion-por-la-cola" class="md-nav__link">
+    Función suma-lista usando recursión por la cola
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procesos-iterativos" class="md-nav__link">
+    Procesos iterativos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fibonacci-iterativo" class="md-nav__link">
+    Fibonacci iterativo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triangulo-de-pascal" class="md-nav__link">
+    Triángulo de Pascal
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#soluciones-al-coste-de-la-recursion-memoization" class="md-nav__link">
+    Soluciones al coste de la recursión: memoization
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fibonacci-con-memoization" class="md-nav__link">
+    Fibonacci con memoization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursion-y-graficos-de-tortuga" class="md-nav__link">
+    Recursión y gráficos de tortuga
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graficos-de-tortuga-en-racket" class="md-nav__link">
+    Gráficos de tortuga en Racket
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triangulo-de-sierpinski" class="md-nav__link">
+    Triángulo de Sierpinski
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sierpinski-en-racket" class="md-nav__link">
+    Sierpinski en Racket
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursion-mutua" class="md-nav__link">
+    Recursión mutua
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-avanzado-curvas-de-hilbert" class="md-nav__link">
+    Ejemplo avanzado: curvas de Hilbert
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bibliografia-sicp" class="md-nav__link">
+    Bibliografía - SICP
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -359,13 +568,6 @@
   
     <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
     <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#pensando-recursivamente" class="md-nav__link">
-    Pensando recursivamente
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#el-coste-de-la-recursion" class="md-nav__link">
@@ -549,7 +751,7 @@
                 
                 
                 <h1 id="tema-3-procedimientos-recursivos">Tema 3: Procedimientos recursivos<a class="headerlink" href="#tema-3-procedimientos-recursivos" title="Permanent link">&para;</a></h1>
-<p>Ya hemos visto algunos muchos ejemplos de funciones recursivas. Una
+<p>Ya hemos visto muchos ejemplos de funciones recursivas. Una
 función es recursiva cuando se llama a si misma. Una vez que uno se
 acostumbra a su uso, se comprueba que la recursión es una forma mucho
 más natural que la iteración de expresar un gran número de funciones y
@@ -569,101 +771,6 @@ enfoque automático llamado <em>memoization</em> en el que se guardan los
 resultados de cada llamada recursiva. Por último, veremos un último
 ejemplo curioso e interesante de la recursión para realizar figuras
 fractales con gráficos de tortuga.</p>
-<h2 id="pensando-recursivamente">Pensando recursivamente<a class="headerlink" href="#pensando-recursivamente" title="Permanent link">&para;</a></h2>
-<p>Para diseñar procedimientos recursivos no funciona el método de
-<em>prueba y error</em>. Hay que diseñar la solución recursiva desde el
-principio. Debemos fijarnos en <em>lo que devuelve la función</em> y debemos
-preguntarnos cómo sería posible descomponer el problema de forma que
-podamos lanzar la recursión sobre una versión más sencilla del
-mismo. Supondremos que la llamada recursiva funciona correctamente y
-devuelve el resultado correcto. Y después debemos transformar este
-resultado correcto de la versión más pequeña en el resultado de la
-solución completa.</p>
-<p>Es muy importante escribir y pensar en las funciones de forma
-declarativa, teniendo en cuenta lo que hacen y no cómo lo hacen.</p>
-<p>Debes <strong>confiar en que la llamada recursiva va a hacer su trabajo y
-devolver el resultado correcto</strong>, sin preocuparte de cómo lo va a
-hacer. Después tendrás que utilizar lo que la llamada recursiva ha
-devuelto para componer la solución definitiva al problema.</p>
-<p>Para diseñar un algoritmo recursivo es útil no ponerse a programar
-directamente, sino reflexionar sobre la solución recursiva con algún
-ejemplo. El objetivo es obtener una formulación abstracta del caso
-general de la recursión antes de programarlo. Una vez que encontramos
-esta formulación, pasarlo a un lenguaje de programación es muy
-sencillo.</p>
-<p>Por último, deberemos reflexionar en el caso base. Debe ser el caso
-más sencillo que puede recibir como parámetro la recursión. Debe
-devolver un valor compatible con la definición de la función. Por
-ejemplo, si la función debe construir una lista, el caso base debe
-devolver también una lista. Si la función construye una pareja, el
-caso base también devolverá una pareja. No debemos olvidar que el caso
-base es también un ejemplo de invocación de la función.</p>
-<p>Ya hemos usado todos estos consejos en el tema anterior y en las
-prácticas realizadas hasta ahora.</p>
-<p>Veamos ejemplo más. ¿cómo definimos una lista palíndroma de forma
-recursiva?. Por ejemplo, las siguientes listas son palíndromas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">{1 2 3 3 2 1}</span>
-<span class="err">{1 2 1}</span>
-<span class="err">{1}</span>
-<span class="err">&#39;()</span>
-</pre></div>
-</td></tr></table>
-
-<p>Comenzamos con una definición <strong>no recursiva</strong>:</p>
-<blockquote>
-<p>Una lista es palíndroma cuando es igual a su inversa. </p>
-</blockquote>
-<p>Esta definición no es recursiva porque no llamamos a la recursión con
-un caso más sencillo.</p>
-<p>La definición <strong>recursiva</strong> del caso general es la siguiente:</p>
-<blockquote>
-<p>Una lista es palíndroma cuando su primer elemento es igual que el
-último y la lista resultante de quitar el primer y el último
-elemento también es palíndroma</p>
-</blockquote>
-<p>En el caso base debemos buscar el caso más pequeño no contemplado por
-la definición anterior. En este caso, una lista de un elemento y una
-lista vacía también las consideraremos palíndromas.</p>
-<blockquote>
-<p>palindroma(lista) &lt;=&gt; (primer-elemento(lista) == ultimo-elemento(lista))  y palindroma(quitar-primero-ultimo(lista)) <br />
-palindroma(lista) &lt;=&gt; un-elemento(lista) o vacía(lista) </p>
-</blockquote>
-<p>Podemos escribir la definición en Scheme, usando la función <code>or</code> para
-indicar que la lista es palíndroma si sucede una de las tres condiciones:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">palindroma?</span> <span class="nv">lista</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">or </span><span class="p">(</span><span class="nb">null? </span><span class="nv">lista</span><span class="p">)</span>
-       <span class="p">(</span><span class="nb">null? </span><span class="p">(</span><span class="nb">cdr </span><span class="nv">lista</span><span class="p">))</span>
-       <span class="p">(</span><span class="k">and </span><span class="p">(</span><span class="nb">equal? </span><span class="p">(</span><span class="nb">car </span><span class="nv">lista</span><span class="p">)</span> <span class="p">(</span><span class="nf">ultimo</span> <span class="nv">lista</span><span class="p">))</span>
-            <span class="p">(</span><span class="nf">palindroma?</span> <span class="p">(</span><span class="nf">quitar-primero-ultimo</span> <span class="nv">lista</span><span class="p">)))))</span>
-</pre></div>
-</td></tr></table>
-
-<p>La función auxiliar <code>quitar-primero-ultimo</code> la podemos definir así:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">quitar-ultimo</span> <span class="nv">lista</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">null? </span><span class="p">(</span><span class="nb">cdr </span><span class="nv">lista</span><span class="p">))</span>
-      <span class="o">&#39;</span><span class="p">()</span>
-      <span class="p">(</span><span class="nb">cons </span><span class="p">(</span><span class="nb">car </span><span class="nv">lista</span><span class="p">)</span>
-            <span class="p">(</span><span class="nf">quitar-ultimo</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">lista</span><span class="p">)))))</span>
-
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">quitar-primero-ultimo</span> <span class="nv">lista</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">cdr </span><span class="p">(</span><span class="nf">quitar-ultimo</span> <span class="nv">lista</span><span class="p">)))</span>
-</pre></div>
-</td></tr></table>
-
 <h2 id="el-coste-de-la-recursion">El coste de la recursión<a class="headerlink" href="#el-coste-de-la-recursion" title="Permanent link">&para;</a></h2>
 <p>Hasta ahora hemos estudiado el diseño de funciones recursivas. Vamos a
 tratar por primera vez su coste. Veremos que hay casos en los que es
@@ -676,10 +783,10 @@ una función recursiva. Supongamos la función
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">mi-length</span> <span class="nv">items</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">null? </span><span class="nv">items</span><span class="p">)</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-length</span> <span class="n">items</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">items</span><span class="p">)</span>
       <span class="mi">0</span>
-      <span class="p">(</span><span class="nb">+ </span><span class="mi">1</span> <span class="p">(</span><span class="nf">mi-length</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">items</span><span class="p">)))))</span>
+      <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">mi-length</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">items</span><span class="p">)))))</span>
 </pre></div>
 </td></tr></table>
 
@@ -693,16 +800,16 @@ una función recursiva. Supongamos la función
  7
  8
  9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">(mi-length &#39;(a b c d))</span>
-<span class="err">(+ 1 (mi-length &#39;(b c d)))</span>
-<span class="err">(+ 1 (+ 1 (mi-length &#39;(c d))))</span>
-<span class="err">(+ 1 (+ 1 (+ 1 (mi-length &#39;(d)))))</span>
-<span class="err">(+ 1 (+ 1 (+ 1 (+ 1 (mi-length &#39;())))))</span>
-<span class="err">(+ 1 (+ 1 (+ 1 (+ 1 0))))</span>
-<span class="err">(+ 1 (+ 1 (+ 1 1)))</span>
-<span class="err">(+ 1 (+ 1 2))</span>
-<span class="err">(+ 1 3)</span>
-<span class="err">4</span>
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(mi-length &#39;(a b c d))
+(+ 1 (mi-length &#39;(b c d)))
+(+ 1 (+ 1 (mi-length &#39;(c d))))
+(+ 1 (+ 1 (+ 1 (mi-length &#39;(d)))))
+(+ 1 (+ 1 (+ 1 (+ 1 (mi-length &#39;())))))
+(+ 1 (+ 1 (+ 1 (+ 1 0))))
+(+ 1 (+ 1 (+ 1 1)))
+(+ 1 (+ 1 2))
+(+ 1 3)
+4
 </pre></div>
 </td></tr></table>
 
@@ -730,9 +837,9 @@ dispararse. Supongamos la famosa <a href="http://en.wikipedia.org/wiki/Fibonacci
 <p>Formulación matemática de la secuencia de Fibonacci:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)  </span>
-<span class="err">Fibonacci(0) = 0  </span>
-<span class="err">Fibonacci(1) = 1</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)
+Fibonacci(0) = 0
+Fibonacci(1) = 1
 </pre></div>
 </td></tr></table>
 
@@ -741,11 +848,11 @@ dispararse. Supongamos la famosa <a href="http://en.wikipedia.org/wiki/Fibonacci
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">fib</span> <span class="nv">n</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">cond </span><span class="p">((</span><span class="nb">= </span><span class="nv">n</span> <span class="mi">0</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="p">((</span><span class="nb">= </span><span class="nv">n</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">else </span><span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span><span class="p">))</span>
-               <span class="p">(</span><span class="nf">fib</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">2</span><span class="p">))))))</span>
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fib</span> <span class="n">n</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">0</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">((</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">fib</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">))</span>
+               <span class="p">(</span><span class="n">fib</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">2</span><span class="p">))))))</span>
 </pre></div>
 </td></tr></table>
 
@@ -781,13 +888,13 @@ pondremos de nombre a la función <code>factorial-iter</code>:</p>
 4
 5
 6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">factorial</span> <span class="nv">n</span><span class="p">)</span>
-   <span class="p">(</span><span class="nf">fact-iter</span> <span class="nv">n</span> <span class="nv">n</span><span class="p">))</span>
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">factorial</span> <span class="n">n</span><span class="p">)</span>
+   <span class="p">(</span><span class="n">fact-iter</span> <span class="n">n</span> <span class="n">n</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">fact-iter</span> <span class="nv">n</span> <span class="nv">result</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="nv">n</span> <span class="mi">1</span><span class="p">)</span>
-      <span class="nv">result</span>
-      <span class="p">(</span><span class="nf">fact-iter</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">* </span><span class="nv">result</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fact-iter</span> <span class="n">n</span> <span class="n">result</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">result</span>
+      <span class="p">(</span><span class="n">fact-iter</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">result</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
@@ -804,12 +911,12 @@ recursión el factorial debe estar calculado en <code>result</code> y se devuelv
 3
 4
 5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">(factorial 4)</span>
-<span class="err">(factorial-iter 4 4)</span>
-<span class="err">(factorial-iter 3 4*3=12)</span>
-<span class="err">(factorial-iter 2 12*2=24)</span>
-<span class="err">(factorial-iter 1 24*1=24)</span>
-<span class="err">24</span>
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(factorial 4)
+(factorial-iter 4 4)
+(factorial-iter 3 4*3=12)
+(factorial-iter 2 12*2=24)
+(factorial-iter 1 24*1=24)
+24
 </pre></div>
 </td></tr></table>
 
@@ -829,7 +936,7 @@ se encarga de inicializar este parámetro. En este caso es el mismo
 valor del número <code>n</code> a calcular el factorial. </p>
 <p>La secuencia de llamadas recursivas acumula en la variable <code>result</code> el
 valor del factorial:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">4 * 3 * 2 * 1 = 24</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>4 * 3 * 2 * 1 = 24
 </pre></div>
 </td></tr></table>
 
@@ -848,13 +955,13 @@ inicializar este resultado a 0.</p>
 4
 5
 6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">mi-length</span> <span class="nv">lista</span><span class="p">)</span>
-   <span class="p">(</span><span class="nf">mi-length-iter</span> <span class="nv">lista</span> <span class="mi">0</span><span class="p">))</span>
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-length</span> <span class="n">lista</span><span class="p">)</span>
+   <span class="p">(</span><span class="n">mi-length-iter</span> <span class="n">lista</span> <span class="mi">0</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">mi-length-iter</span> <span class="nv">lista</span> <span class="nv">result</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">null? </span><span class="nv">lista</span><span class="p">)</span>
-      <span class="nv">result</span>
-      <span class="p">(</span><span class="nf">mi-length-iter</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">result</span> <span class="mi">1</span><span class="p">))))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-length-iter</span> <span class="n">lista</span> <span class="n">result</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
+      <span class="n">result</span>
+      <span class="p">(</span><span class="n">mi-length-iter</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">result</span> <span class="mi">1</span><span class="p">))))</span>
 </pre></div>
 </td></tr></table>
 
@@ -874,13 +981,13 @@ recursiva acumulando el primer elemento de la lista:</p>
 4
 5
 6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma-lista</span> <span class="nv">lista</span><span class="p">)</span>
-   <span class="p">(</span><span class="nf">suma-lista-iter</span> <span class="nv">lista</span> <span class="mi">0</span><span class="p">))</span>
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="n">lista</span><span class="p">)</span>
+   <span class="p">(</span><span class="n">suma-lista-iter</span> <span class="n">lista</span> <span class="mi">0</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma-lista-iter</span> <span class="nv">lista</span> <span class="nv">result</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">null? </span><span class="nv">lista</span><span class="p">)</span>
-      <span class="nv">result</span>
-      <span class="p">(</span><span class="nf">suma-lista-iter</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">result</span> <span class="p">(</span><span class="nb">car </span><span class="nv">lista</span><span class="p">)))))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-lista-iter</span> <span class="n">lista</span> <span class="n">result</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
+      <span class="n">result</span>
+      <span class="p">(</span><span class="n">suma-lista-iter</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">result</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)))))</span>
 </pre></div>
 </td></tr></table>
 
@@ -907,13 +1014,13 @@ difíciles de entender y depurar.</p>
 4
 5
 6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">fib</span> <span class="nv">n</span><span class="p">)</span>
-   <span class="p">(</span><span class="nf">fib-iter</span> <span class="mi">1</span> <span class="mi">0</span> <span class="nv">n</span><span class="p">))</span>
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fib</span> <span class="n">n</span><span class="p">)</span>
+   <span class="p">(</span><span class="n">fib-iter</span> <span class="mi">1</span> <span class="mi">0</span> <span class="n">n</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">fib-iter</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">count</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="nv">count</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="nv">b</span>
-      <span class="p">(</span><span class="nf">fib-iter</span> <span class="p">(</span><span class="nb">+ </span><span class="nv">a</span> <span class="nv">b</span><span class="p">)</span> <span class="nv">a</span> <span class="p">(</span><span class="nb">- </span><span class="nv">count</span> <span class="mi">1</span><span class="p">))))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fib-iter</span> <span class="n">a</span> <span class="n">b</span> <span class="nb">count</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="nb">count</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="n">b</span>
+      <span class="p">(</span><span class="n">fib-iter</span> <span class="p">(</span><span class="nb">+</span> <span class="n">a</span> <span class="n">b</span><span class="p">)</span> <span class="n">a</span> <span class="p">(</span><span class="nb">-</span> <span class="nb">count</span> <span class="mi">1</span><span class="p">))))</span>
 </pre></div>
 </td></tr></table>
 
@@ -926,15 +1033,15 @@ difíciles de entender y depurar.</p>
 6
 7
 8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">(fib 6)</span>
-<span class="err">(fib-iter 1 0 6)</span>
-<span class="err">(fib-iter 1+0=1 1 5)</span>
-<span class="err">(fib-iter 1+1=2 1 4)</span>
-<span class="err">(fib-iter 2+1=3 2 3)</span>
-<span class="err">(fib-iter 3+2=5 3 2)</span>
-<span class="err">(fib-iter 5+3=8 5 1)</span>
-<span class="err">(fib-iter 8+5=13 8 0)</span>
-<span class="err">8</span>
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(fib 6)
+(fib-iter 1 0 6)
+(fib-iter 1+0=1 1 5)
+(fib-iter 1+1=2 1 4)
+(fib-iter 2+1=3 2 3)
+(fib-iter 3+2=5 3 2)
+(fib-iter 5+3=8 5 1)
+(fib-iter 8+5=13 8 0)
+8
 </pre></div>
 </td></tr></table>
 
@@ -952,15 +1059,15 @@ que es el que se devuelve. Conseguimos <code>n</code> llamadas inicializando
 6
 7
 8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">1</span>
-<span class="err">1   1</span>
-<span class="err">1   2   1</span>
-<span class="err">1   3   3   1</span>
-<span class="err">1   4   6   4   1</span>
-<span class="err">1   5  10   10  5   1</span>
-<span class="err">1   6  15  20   15  6   1</span>
-<span class="err">1   7  21  35   35  21  7   1</span>
-<span class="err">          ...</span>
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>1
+1   1
+1   2   1
+1   3   3   1
+1   4   6   4   1
+1   5  10   10  5   1
+1   6  15  20   15  6   1
+1   7  21  35   35  21  7   1
+          ...
 </pre></div>
 </td></tr></table>
 
@@ -969,9 +1076,11 @@ expresión general del valor en una fila y columna determinada se puede
 obtener con la siguiente definición recursiva:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">Pascal (n, 0) = 1  </span>
-<span class="err">Pascal (n, n) = 1  </span>
-<span class="err">Pascal (fila, columna) = Pascal (fila-1,columna-1) + Pascal (fila-1, columna)</span>
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Pascal (n, 0) = 1
+Pascal (n, n) = 1
+Pascal (fila, columna) = 
+    Pascal (fila-1,columna-1) + Pascal (fila-1, columna)
 </pre></div>
 </td></tr></table>
 
@@ -989,16 +1098,16 @@ definición anterior:</p>
  8
  9
 10
-11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">pascal</span> <span class="nv">fila</span> <span class="nv">col</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">cond </span><span class="p">((</span><span class="nb">= </span><span class="nv">col</span> <span class="mi">0</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
-         <span class="p">((</span><span class="nb">= </span><span class="nv">col</span> <span class="nv">fila</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
-         <span class="p">(</span><span class="k">else </span><span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">pascal</span> <span class="p">(</span><span class="nb">- </span><span class="nv">fila</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">- </span><span class="nv">col</span> <span class="mi">1</span><span class="p">))</span>
-                  <span class="p">(</span><span class="nf">pascal</span> <span class="p">(</span><span class="nb">- </span><span class="nv">fila</span> <span class="mi">1</span><span class="p">)</span> <span class="nv">col</span><span class="p">)</span> <span class="p">))))</span>
-<span class="p">(</span><span class="nf">pascal</span> <span class="mi">4</span> <span class="mi">2</span><span class="p">)</span>
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal</span> <span class="n">fila</span> <span class="n">col</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">=</span> <span class="n">col</span> <span class="mi">0</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+         <span class="p">((</span><span class="nb">=</span> <span class="n">col</span> <span class="n">fila</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+         <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">pascal</span> <span class="p">(</span><span class="nb">-</span> <span class="n">fila</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="n">col</span> <span class="mi">1</span><span class="p">))</span>
+                  <span class="p">(</span><span class="n">pascal</span> <span class="p">(</span><span class="nb">-</span> <span class="n">fila</span> <span class="mi">1</span><span class="p">)</span> <span class="n">col</span><span class="p">)</span> <span class="p">))))</span>
+<span class="p">(</span><span class="n">pascal</span> <span class="mi">4</span> <span class="mi">2</span><span class="p">)</span>
 <span class="c1">; ⇒ 6</span>
-<span class="p">(</span><span class="nf">pascal</span> <span class="mi">8</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="n">pascal</span> <span class="mi">8</span> <span class="mi">4</span><span class="p">)</span>
 <span class="c1">; ⇒ 70</span>
-<span class="p">(</span><span class="nf">pascal</span> <span class="mi">27</span> <span class="mi">13</span><span class="p">)</span>
+<span class="p">(</span><span class="n">pascal</span> <span class="mi">27</span> <span class="mi">13</span><span class="p">)</span>
 <span class="c1">; ⇒ 20058300</span>
 </pre></div>
 </td></tr></table>
@@ -1021,17 +1130,17 @@ constituyen la fila <code>n</code> del triángulo de Pascal:</p>
 3
 4
 5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">fila 0 = {1}</span>
-<span class="err">fila 1 = {1 1}</span>
-<span class="err">fila 2 = {1 2 1}</span>
-<span class="err">fila 3 = {1 3 3 1}</span>
-<span class="err">fila 4 = {1 4 6 4 1}</span>
-<span class="err">...</span>
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>fila 0 = (1)
+fila 1 = (1 1)
+fila 2 = (1 2 1)
+fila 3 = (1 3 3 1)
+fila 4 = (1 4 6 4 1)
+...
 </pre></div>
 </td></tr></table>
 
 <p>Esta función necesitará un parámetro adicional (<code>lista-fila</code>) que se
-inicializa con la lista <code>{1}</code> y en el que se va guardando cada fila
+inicializa con la lista <code>(1)</code> y en el que se va guardando cada fila
 sucesiva. Esta fila va creciendo hasta que llegamos a la fila que
 tenemos que devolver. Hay que hacer la iteración <code>n</code> veces, por lo que
 vamos decrementando el parámetro <code>n</code> hasta que se llega a 0.</p>
@@ -1040,8 +1149,8 @@ lista-fila)</code> que recibe una fila del triángulo y devuelve la
 siguiente. </p>
 <p>Por ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">pascal-sig-fila</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">))</span>
-<span class="c1">; ⇒ {1 4 6 4 1}</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">pascal-sig-fila</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">))</span>
+<span class="c1">; ⇒ (1 4 6 4 1)</span>
 </pre></div>
 </td></tr></table>
 
@@ -1066,31 +1175,31 @@ la que se encarga de realizar el cálculo de la nueva fila.</p>
 15
 16
 17
-18</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">pascal</span> <span class="nv">fila</span> <span class="nv">col</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">list-ref </span><span class="p">(</span><span class="nf">pascal-fila</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="nv">fila</span><span class="p">)</span> <span class="nv">col</span><span class="p">))</span>
+18</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal</span> <span class="n">fila</span> <span class="n">col</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">list-ref</span> <span class="p">(</span><span class="n">pascal-fila</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">fila</span><span class="p">)</span> <span class="n">col</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">pascal-fila</span> <span class="nv">lista-fila</span> <span class="nv">n</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="mi">0</span> <span class="nv">n</span><span class="p">)</span>
-      <span class="nv">lista-fila</span>
-      <span class="p">(</span><span class="nf">pascal-fila</span> <span class="p">(</span><span class="nf">pascal-sig-fila</span> <span class="nv">lista-fila</span><span class="p">)</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span><span class="p">))))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal-fila</span> <span class="n">lista-fila</span> <span class="n">n</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="mi">0</span> <span class="n">n</span><span class="p">)</span>
+      <span class="n">lista-fila</span>
+      <span class="p">(</span><span class="n">pascal-fila</span> <span class="p">(</span><span class="n">pascal-sig-fila</span> <span class="n">lista-fila</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">))))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">pascal-sig-fila</span> <span class="nv">lista-fila</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">append </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-           <span class="p">(</span><span class="nf">pascal-suma-dos-a-dos</span> <span class="nv">lista-fila</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal-sig-fila</span> <span class="n">lista-fila</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">append</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+           <span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span> <span class="n">lista-fila</span><span class="p">)</span>
            <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">pascal-suma-dos-a-dos</span> <span class="nv">lista-fila</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">null? </span><span class="p">(</span><span class="nb">cdr </span><span class="nv">lista-fila</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span> <span class="n">lista-fila</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista-fila</span><span class="p">))</span>
       <span class="o">&#39;</span><span class="p">()</span>
-      <span class="p">(</span><span class="nb">cons </span><span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">car </span><span class="nv">lista-fila</span><span class="p">)</span> <span class="p">(</span><span class="nb">car </span><span class="p">(</span><span class="nb">cdr </span><span class="nv">lista-fila</span><span class="p">)))</span>
-            <span class="p">(</span><span class="nf">pascal-suma-dos-a-dos</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">lista-fila</span><span class="p">)))))</span>
+      <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista-fila</span><span class="p">)</span> <span class="p">(</span><span class="nb">car</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista-fila</span><span class="p">)))</span>
+            <span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista-fila</span><span class="p">)))))</span>
 </pre></div>
 </td></tr></table>
 
 <p>Con esta implementación ya no se tiene un coste exponencial y se puede
 calcular el valor de números como Pascal(40, 20):</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">pascal</span> <span class="mi">40</span> <span class="mi">20</span><span class="p">)</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">pascal</span> <span class="mi">40</span> <span class="mi">20</span><span class="p">)</span>
 <span class="c1">; ⇒ 137846528820</span>
 </pre></div>
 </td></tr></table>
@@ -1109,31 +1218,29 @@ cada llamada en alguna estructura (una lista de asociación, por
 ejemplo) y no volver a realizar la llamada a la recursión las
 siguientes veces.</p>
 <h3 id="fibonacci-con-memoization">Fibonacci con memoization<a class="headerlink" href="#fibonacci-con-memoization" title="Permanent link">&para;</a></h3>
-<p>Para implementar la <em>memoization</em> necesitamos dos métodos imperativos 
+<p>Para implementar la <em>memoization</em> necesitamos odos métodos imperativos 
 <code>put</code> y <code>get</code> que implementan un diccionario <em>clave-valor</em>.</p>
 <ul>
-<li>La función <code>(put key value lista)</code> asocia un valor a una clave, la
-guarda en la lista (con mutación) y devuelve el valor.</li>
-<li>La función <code>(get key lista)</code> devuelve el valor de la lista asociado a
-una clave. En el caso en que no exista ningún valor se devuelve la
-lista vacía.</li>
+<li>La función <code>(put key value dic)</code> asocia un valor a una clave, la
+guarda en el diccionario (con mutación) y devuelve el valor.</li>
+<li>La función <code>(get key dic)</code> devuelve el valor del diccionario asociado a
+una clave. En el caso en que no exista ningún valor se devuelve <code>#f</code>.</li>
 </ul>
-<p>Inicialmente la lista debe tener un símbolo cualquiera al comienzo. </p>
 <p>Ejemplos:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">(define mi-lista (list &#39;lista-asoc))</span>
-<span class="err">(put 1 10 mi-lista) ; ⇒ 10</span>
-<span class="err">(get 1 mi-lista) ; ⇒ 10</span>
-<span class="err">(get 2 mi-lista) ; ⇒ &#39;()</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">mi-dic</span> <span class="p">(</span><span class="n">crea-diccionario</span><span class="p">))</span>
+<span class="p">(</span><span class="n">put</span> <span class="mi">1</span> <span class="mi">10</span> <span class="n">mi-dic</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
+<span class="p">(</span><span class="n">get</span> <span class="mi">1</span> <span class="n">mi-dic</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
+<span class="p">(</span><span class="n">get</span> <span class="mi">2</span> <span class="n">mi-dic</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
 </pre></div>
 </td></tr></table>
 
-<p>Estos métodos son imperativos porque modifican (mutan) los datos de la
-lista de asociación que pasamos como parámetro. Para implementarlos
-tenemos que salirnos del paradigma funcional, importando una librería
-de Scheme que permite mutar las parejas.</p>
+<p>Estos métodos son imperativos porque modifican (mutan) la estructura
+de datos que pasamos como parámetro. Para implementarlos tenemos que
+salirnos del paradigma funcional, usando las funciones de Racket que
+permiten mutar las parejas.</p>
 <p>No es importante la implementación, la dejamos aquí como referencia y
 para poder probar la <em>memoization</em>. </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -1159,30 +1266,30 @@ para poder probar la <em>memoization</em>. </p>
 21
 22
 23
-24</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">rnrs</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">rnrs</span> <span class="nv">mutable-pairs</span><span class="p">))</span>
+24</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">crea-diccionario</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">mcons</span> <span class="o">&#39;</span><span class="ss">*diccionario*</span> <span class="o">&#39;</span><span class="p">()))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="nv">lista</span> <span class="p">(</span><span class="nb">list </span><span class="ss">&#39;lista-asoc</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">busca</span> <span class="n">key</span> <span class="n">dic</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">cond</span>
+    <span class="p">((</span><span class="nb">null?</span> <span class="n">dic</span><span class="p">)</span> <span class="no">#f</span><span class="p">)</span>
+    <span class="p">((</span><span class="nb">equal?</span> <span class="n">key</span> <span class="p">(</span><span class="nb">mcar</span> <span class="p">(</span><span class="nb">mcar</span> <span class="n">dic</span><span class="p">)))</span>
+     <span class="p">(</span><span class="nb">mcar</span> <span class="n">dic</span><span class="p">))</span>
+    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">busca</span> <span class="n">key</span> <span class="p">(</span><span class="nb">mcdr</span> <span class="n">dic</span><span class="p">)))))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">buscar</span> <span class="nv">key</span> <span class="nv">lista</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">cond </span><span class="p">((</span><span class="nb">null? </span><span class="nv">lista</span><span class="p">)</span> <span class="no">#f</span><span class="p">)</span>
-         <span class="p">((</span><span class="nb">equal? </span><span class="p">(</span><span class="nb">caar </span><span class="nv">lista</span><span class="p">)</span> <span class="nv">key</span><span class="p">)</span> <span class="p">(</span><span class="nb">car </span><span class="nv">lista</span><span class="p">))</span>
-         <span class="p">(</span><span class="k">else </span><span class="p">(</span><span class="nf">buscar</span> <span class="nv">key</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">lista</span><span class="p">)))))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">get</span> <span class="n">key</span> <span class="n">dic</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">define</span> <span class="n">record</span> <span class="p">(</span><span class="n">busca</span> <span class="n">key</span> <span class="p">(</span><span class="nb">mcdr</span> <span class="n">dic</span><span class="p">)))</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">not</span> <span class="n">record</span><span class="p">)</span>
+      <span class="no">#f</span>
+      <span class="p">(</span><span class="nb">mcdr</span> <span class="n">record</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">get</span> <span class="nv">key</span> <span class="nv">lista</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">define </span><span class="nv">record</span> <span class="p">(</span><span class="nf">buscar</span> <span class="nv">key</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">lista</span><span class="p">)))</span>
-   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">not </span><span class="nv">record</span><span class="p">)</span>
-      <span class="o">&#39;</span><span class="p">()</span>
-      <span class="p">(</span><span class="nb">cdr </span><span class="nv">record</span><span class="p">)))</span>
-
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">put</span> <span class="nv">key</span> <span class="nv">value</span> <span class="nv">lista</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">define </span><span class="nv">record</span> <span class="p">(</span><span class="nf">buscar</span> <span class="nv">key</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">lista</span><span class="p">)))</span>
-   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">not </span><span class="nv">record</span><span class="p">)</span>
-      <span class="p">(</span><span class="nb">set-cdr! </span><span class="nv">lista</span>
-         <span class="p">(</span><span class="nb">cons </span><span class="p">(</span><span class="nb">cons </span><span class="nv">key</span> <span class="nv">value</span><span class="p">)</span>
-               <span class="p">(</span><span class="nb">cdr </span><span class="nv">lista</span><span class="p">)))</span>
-      <span class="p">(</span><span class="nb">set-cdr! </span><span class="nv">record</span> <span class="nv">value</span><span class="p">))</span>
-   <span class="nv">value</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">put</span> <span class="n">key</span> <span class="n">value</span> <span class="n">dic</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">define</span> <span class="n">record</span> <span class="p">(</span><span class="n">busca</span> <span class="n">key</span> <span class="p">(</span><span class="nb">mcdr</span> <span class="n">dic</span><span class="p">)))</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">not</span> <span class="n">record</span><span class="p">)</span>
+      <span class="p">(</span><span class="nb">set-mcdr!</span> <span class="n">dic</span>
+                <span class="p">(</span><span class="nb">mcons</span> <span class="p">(</span><span class="nb">mcons</span> <span class="n">key</span> <span class="n">value</span><span class="p">)</span>
+                      <span class="p">(</span><span class="nb">mcdr</span> <span class="n">dic</span><span class="p">)))</span>
+      <span class="p">(</span><span class="nb">set-mcdr!</span> <span class="n">record</span> <span class="n">value</span><span class="p">))</span>
+  <span class="n">value</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -1204,13 +1311,13 @@ valor calculado también lo devuelve.</p>
 4
 5
 6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">fib-memo</span> <span class="nv">n</span> <span class="nv">lista</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">cond </span><span class="p">((</span><span class="nb">= </span><span class="nv">n</span> <span class="mi">0</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="p">((</span><span class="nb">= </span><span class="nv">n</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="p">((</span><span class="nb">not </span><span class="p">(</span><span class="nb">null? </span><span class="p">(</span><span class="nf">get</span> <span class="nv">n</span> <span class="nv">lista</span><span class="p">)))</span>
-         <span class="p">(</span><span class="nf">get</span> <span class="nv">n</span> <span class="nv">lista</span><span class="p">))</span>
-        <span class="p">(</span><span class="k">else </span><span class="p">(</span><span class="nf">put</span> <span class="nv">n</span> <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">fib-memo</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">1</span><span class="p">)</span> <span class="nv">lista</span><span class="p">)</span>
-                        <span class="p">(</span><span class="nf">fib-memo</span> <span class="p">(</span><span class="nb">- </span><span class="nv">n</span> <span class="mi">2</span><span class="p">)</span> <span class="nv">lista</span><span class="p">))</span> <span class="nv">lista</span><span class="p">))))</span>
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fib-memo</span> <span class="n">n</span> <span class="n">dic</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">0</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">((</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">((</span><span class="nb">not</span> <span class="p">(</span><span class="nb">equal?</span> <span class="p">(</span><span class="n">get</span> <span class="n">n</span> <span class="n">dic</span><span class="p">)</span> <span class="no">#f</span><span class="p">))</span>
+         <span class="p">(</span><span class="n">get</span> <span class="n">n</span> <span class="n">dic</span><span class="p">))</span>
+        <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">put</span> <span class="n">n</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">fib-memo</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span> <span class="n">dic</span><span class="p">)</span>
+                        <span class="p">(</span><span class="n">fib-memo</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">2</span><span class="p">)</span> <span class="n">dic</span><span class="p">))</span> <span class="n">dic</span><span class="p">))))</span>
 </pre></div>
 </td></tr></table>
 
@@ -1219,8 +1326,8 @@ versión y la anterior. El coste de la función <em>memoizada</em> es
 O(n). Frente al coste O(2^n) de la versión inicial que la hacía
 imposible de utilizar.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">fib-memo</span> <span class="mi">200</span> <span class="nv">lista</span><span class="p">)</span>
-<span class="err">⇒</span> <span class="mi">280571172992510140037611932413038677189525</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">fib-memo</span> <span class="mi">200</span> <span class="n">lista</span><span class="p">)</span>
+<span class="n">⇒</span> <span class="mi">280571172992510140037611932413038677189525</span>
 </pre></div>
 </td></tr></table>
 
@@ -1233,18 +1340,19 @@ un estilo de programación no funcional, dibujando los distintos trazos
 de las figuras con pasos de ejecución secuenciales. Para ello usaremos
 una primitiva imperativa de Scheme: la forma especial <code>begin</code> que
 permite realizar un grupo de pasos de ejecución de forma secuencial.</p>
+<div class="admonition warning">
+<p class="admonition-title">Aviso</p>
 <p>Ten cuidado con la forma especial <code>begin</code>, es una forma especial
 imperativa. No debes usarla en la implementación de ninguna función
 cuando estemos usando el paradigma funcional.</p>
+</div>
 <h3 id="graficos-de-tortuga-en-racket">Gráficos de tortuga en Racket<a class="headerlink" href="#graficos-de-tortuga-en-racket" title="Permanent link">&para;</a></h3>
 <p>Se pueden utilizar los
 <a href="http://en.wikipedia.org/wiki/Turtle_graphics">gráficos de tortuga</a> en
 Racket cargando la librería <code>(graphics turtles)</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">#lang r6rs</span>
-<span class="p">(</span><span class="kn">import</span> <span class="p">(</span><span class="n">rnrs</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">graphics</span> <span class="n">turtles</span><span class="p">))</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">#lang </span><span class="nn">racket</span>
+<span class="p">(</span><span class="k">require</span> <span class="n">graphics/turtles</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -1274,26 +1382,29 @@ rectángulo con catetos de longitud <code>x</code>:</p>
 10
 11
 12
-13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">hipot</span> <span class="nv">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="p">(</span><span class="nb">sqrt </span><span class="mi">2</span><span class="p">)))</span>
+13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hipot</span> <span class="n">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">sqrt</span> <span class="mi">2</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">triangulo-rectangulo</span> <span class="nv">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="nf">begin</span>
-      <span class="p">(</span><span class="nf">draw</span> <span class="nv">x</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">turn</span> <span class="mi">90</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">draw</span> <span class="nv">x</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">turn</span> <span class="mi">135</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">draw</span> <span class="p">(</span><span class="nf">hipot</span> <span class="nv">x</span><span class="p">))</span>
-      <span class="p">(</span><span class="nf">turn</span> <span class="mi">135</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">triangulo-rectangulo</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">begin</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="n">x</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="n">x</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="p">(</span><span class="n">hipot</span> <span class="n">x</span><span class="p">))</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="nf">triangulo-rectangulo</span> <span class="mi">100</span><span class="p">)</span>
+<span class="p">(</span><span class="n">triangulo-rectangulo</span> <span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p>La función <code>(hipot x)</code> devuelve la longitud de la hipotenusa de un
 triángulo rectángulo con dos lados de longitud <code>x</code>. O sea, la
 expresión:</p>
-<p><img src="imagenes/hipot.png" width="250px"/></p>
+<div>
+<div class="MathJax_Preview">hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}</div>
+<script type="math/tex; mode=display">hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}</script>
+</div>
 <p>Como puedes comprobar, el código es imperativo. La forma especial
 <code>begin</code> permite realizar una serie de pasos de ejecución que modifican
 el estado (posición y orientación) de la <em>tortuga</em> y dibujan los
@@ -1308,14 +1419,14 @@ base del triángulo de Sierpinski.</p>
 5
 6
 7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">triangle</span> <span class="nv">w</span><span class="p">)</span>
-   <span class="p">(</span><span class="nf">begin</span>
-      <span class="p">(</span><span class="nf">draw</span> <span class="nv">w</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">turn</span> <span class="mi">135</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">draw</span> <span class="p">(</span><span class="nf">hipot</span> <span class="p">(</span><span class="nb">/ </span><span class="nv">w</span> <span class="mi">2</span><span class="p">)))</span>
-      <span class="p">(</span><span class="nf">turn</span> <span class="mi">90</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">draw</span> <span class="p">(</span><span class="nf">hipot</span> <span class="p">(</span><span class="nb">/ </span><span class="nv">w</span> <span class="mi">2</span><span class="p">)))</span>
-      <span class="p">(</span><span class="nf">turn</span> <span class="mi">135</span><span class="p">)))</span>
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">triangle</span> <span class="n">w</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">begin</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="n">w</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="p">(</span><span class="n">hipot</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">)))</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="p">(</span><span class="n">hipot</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">)))</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
@@ -1363,12 +1474,12 @@ altura <em>h/2</em> debemos:</p>
 3
 4
 5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">Sierpinsky (x, y, h):</span>
-<span class="err">   if (h &gt; MIN) {</span>
-<span class="err">      Sierpinsky (x, y, h/2)</span>
-<span class="err">      Sierpinsky (x+h/4, y+h/4, h/2)</span>
-<span class="err">      Sierpinsky (x+h/2, y, h/2)</span>
-<span class="err">   } else dibujaTriangulo (x, y, h)</span>
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Sierpinsky (x, y, h):
+   if (h &gt; MIN) {
+      Sierpinsky (x, y, h/2)
+      Sierpinsky (x+h/4, y+h/4, h/2)
+      Sierpinsky (x+h/2, y, h/2)
+   } else dibujaTriangulo (x, y, h)
 </pre></div>
 </td></tr></table>
 
@@ -1403,47 +1514,45 @@ en una misma función (por ejemplo la función <code>triangle</code>).</p>
 24
 25
 26
-27
-28</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span><span class="nv">lang</span> <span class="nv">r6rs</span>
-<span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">rnrs</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">graphics</span> <span class="nv">turtles</span><span class="p">))</span>
+27</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">#lang </span><span class="nn">racket</span>
+<span class="p">(</span><span class="k">require</span> <span class="n">graphics/turtles</span><span class="p">)</span>
 
-<span class="p">(</span><span class="nf">turtles</span> <span class="no">#t</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turtles</span> <span class="no">#t</span><span class="p">)</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">hipot</span> <span class="nv">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="p">(</span><span class="nb">sqrt </span><span class="mi">2</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hipot</span> <span class="n">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">sqrt</span> <span class="mi">2</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">triangle</span> <span class="nv">w</span><span class="p">)</span>
-   <span class="p">(</span><span class="nf">begin</span>
-      <span class="p">(</span><span class="nf">draw</span> <span class="nv">w</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">turn</span> <span class="mi">135</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">draw</span> <span class="p">(</span><span class="nf">hipot</span> <span class="p">(</span><span class="nb">/ </span><span class="nv">w</span> <span class="mi">2</span><span class="p">)))</span>
-      <span class="p">(</span><span class="nf">turn</span> <span class="mi">90</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">draw</span> <span class="p">(</span><span class="nf">hipot</span> <span class="p">(</span><span class="nb">/ </span><span class="nv">w</span> <span class="mi">2</span><span class="p">)))</span>
-      <span class="p">(</span><span class="nf">turn</span> <span class="mi">135</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">triangle</span> <span class="n">w</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">begin</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="n">w</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="p">(</span><span class="n">hipot</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">)))</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="p">(</span><span class="n">hipot</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">)))</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">sierpinski</span> <span class="nv">w</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="nv">w</span> <span class="mi">20</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">begin</span>
-         <span class="p">(</span><span class="nf">sierpinski</span> <span class="p">(</span><span class="nb">/ </span><span class="nv">w</span> <span class="mi">2</span><span class="p">))</span>
-         <span class="p">(</span><span class="nf">move</span> <span class="p">(</span><span class="nb">/ </span><span class="nv">w</span> <span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="nf">turn</span> <span class="mi">90</span><span class="p">)</span> <span class="p">(</span><span class="nf">move</span> <span class="p">(</span><span class="nb">/ </span><span class="nv">w</span> <span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="nf">turn</span> <span class="mi">-90</span><span class="p">)</span>
-         <span class="p">(</span><span class="nf">sierpinski</span> <span class="p">(</span><span class="nb">/ </span><span class="nv">w</span> <span class="mi">2</span><span class="p">))</span>
-         <span class="p">(</span><span class="nf">turn</span> <span class="mi">-90</span><span class="p">)</span> <span class="p">(</span><span class="nf">move</span> <span class="p">(</span><span class="nb">/ </span><span class="nv">w</span> <span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="nf">turn</span> <span class="mi">90</span><span class="p">)</span> <span class="p">(</span><span class="nf">move</span> <span class="p">(</span><span class="nb">/ </span><span class="nv">w</span> <span class="mi">4</span><span class="p">))</span>
-         <span class="p">(</span><span class="nf">sierpinski</span> <span class="p">(</span><span class="nb">/ </span><span class="nv">w</span> <span class="mi">2</span><span class="p">))</span>
-         <span class="p">(</span><span class="nf">turn</span> <span class="mi">180</span><span class="p">)</span> <span class="p">(</span><span class="nf">move</span> <span class="p">(</span><span class="nb">/ </span><span class="nv">w</span> <span class="mi">2</span><span class="p">))</span> <span class="p">(</span><span class="nf">turn</span> <span class="mi">-180</span><span class="p">))</span> <span class="c1">;; volvemos a la posición original</span>
-      <span class="p">(</span><span class="nf">triangle</span> <span class="nv">w</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">sierpinski</span> <span class="n">w</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">w</span> <span class="mi">20</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">begin</span>
+         <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">))</span>
+         <span class="p">(</span><span class="n">move</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span> <span class="p">(</span><span class="n">move</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+         <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">))</span>
+         <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span> <span class="p">(</span><span class="n">move</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span> <span class="p">(</span><span class="n">move</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">4</span><span class="p">))</span>
+         <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">))</span>
+         <span class="p">(</span><span class="n">turn</span> <span class="mi">180</span><span class="p">)</span> <span class="p">(</span><span class="n">move</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">))</span> <span class="p">(</span><span class="n">turn</span> <span class="mi">-180</span><span class="p">))</span> <span class="c1">;; volvemos a la posición original</span>
+      <span class="p">(</span><span class="n">triangle</span> <span class="n">w</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
 <p>La llamada a</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">sierpinski</span> <span class="mi">40</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">sierpinski</span> <span class="mi">40</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
 <p>produce la siguiente figura:</p>
 <p><img src="imagenes/sierpinski-40.png"/></p>
 <p>La llamada a</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">sierpinski</span> <span class="mi">700</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">sierpinski</span> <span class="mi">700</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -1453,9 +1562,9 @@ en una misma función (por ejemplo la función <code>triangle</code>).</p>
 antes de invocar a <code>sierpinski</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">clear</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">move</span> <span class="mi">-350</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">sierpinski</span> <span class="mi">700</span><span class="p">)</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">clear</span><span class="p">)</span>
+<span class="p">(</span><span class="n">move</span> <span class="mi">-350</span><span class="p">)</span>
+<span class="p">(</span><span class="n">sierpinski</span> <span class="mi">700</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -1478,15 +1587,15 @@ a su vez se define en base a la primera.</p>
 6
 7
 8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">par?</span> <span class="nv">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="mi">0</span> <span class="nv">x</span><span class="p">)</span>
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">par?</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="mi">0</span> <span class="n">x</span><span class="p">)</span>
       <span class="no">#t</span>
-      <span class="p">(</span><span class="nf">impar?</span> <span class="p">(</span><span class="nb">- </span><span class="nv">x</span> <span class="mi">1</span><span class="p">))))</span>
+      <span class="p">(</span><span class="n">impar?</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">))))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">impar?</span> <span class="nv">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="mi">0</span> <span class="nv">x</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">impar?</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="mi">0</span> <span class="n">x</span><span class="p">)</span>
       <span class="no">#f</span>
-      <span class="p">(</span><span class="nf">par?</span> <span class="p">(</span><span class="nb">- </span><span class="nv">x</span> <span class="mi">1</span><span class="p">))))</span>
+      <span class="p">(</span><span class="n">par?</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">))))</span>
 </pre></div>
 </td></tr></table>
 
@@ -1563,40 +1672,38 @@ una longitud de trazo <code>long</code> a la <em>izquierda</em> de la tortuga.</
 29
 30
 31
-32
-33</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span><span class="nv">lang</span> <span class="nv">r6rs</span>
-<span class="p">(</span><span class="nf">import</span> <span class="p">(</span><span class="nf">rnrs</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">graphics</span> <span class="nv">turtles</span><span class="p">))</span>
+32</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">#lang </span><span class="nn">racket</span>
+<span class="p">(</span><span class="k">require</span> <span class="n">graphics/turtles</span><span class="p">)</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">h-der</span> <span class="nv">i</span> <span class="nv">long</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="nv">i</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">begin</span>
-        <span class="p">(</span><span class="nf">turn</span> <span class="mi">-90</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">h-izq</span> <span class="p">(</span><span class="nb">- </span><span class="nv">i</span> <span class="mi">1</span><span class="p">)</span> <span class="nv">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">draw</span>  <span class="nv">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">turn</span> <span class="mi">90</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">h-der</span> <span class="p">(</span><span class="nb">- </span><span class="nv">i</span> <span class="mi">1</span><span class="p">)</span> <span class="nv">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">draw</span> <span class="nv">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">h-der</span> <span class="p">(</span><span class="nb">- </span><span class="nv">i</span> <span class="mi">1</span><span class="p">)</span> <span class="nv">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">turn</span> <span class="mi">90</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">draw</span> <span class="nv">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">h-izq</span> <span class="p">(</span><span class="nb">- </span><span class="nv">i</span> <span class="mi">1</span><span class="p">)</span> <span class="nv">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="nf">turn</span> <span class="mi">-90</span><span class="p">))))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">h-der</span> <span class="n">i</span> <span class="n">long</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">i</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">begin</span>
+        <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">h-izq</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">draw</span>  <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">h-der</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">draw</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">h-der</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">draw</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">h-izq</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">))))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">h-izq</span> <span class="nv">i</span> <span class="nv">long</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">&gt; </span><span class="nv">i</span> <span class="mi">0</span><span class="p">)</span>
-     <span class="p">(</span><span class="nf">begin</span>
-      <span class="p">(</span><span class="nf">turn</span> <span class="mi">90</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">h-der</span> <span class="p">(</span><span class="nb">- </span><span class="nv">i</span> <span class="mi">1</span><span class="p">)</span> <span class="nv">long</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">draw</span>  <span class="nv">long</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">turn</span> <span class="mi">-90</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">h-izq</span> <span class="p">(</span><span class="nb">- </span><span class="nv">i</span> <span class="mi">1</span><span class="p">)</span> <span class="nv">long</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">draw</span> <span class="nv">long</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">h-izq</span> <span class="p">(</span><span class="nb">- </span><span class="nv">i</span> <span class="mi">1</span><span class="p">)</span> <span class="nv">long</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">turn</span> <span class="mi">-90</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">draw</span> <span class="nv">long</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">h-der</span> <span class="p">(</span><span class="nb">- </span><span class="nv">i</span> <span class="mi">1</span><span class="p">)</span> <span class="nv">long</span><span class="p">)</span>
-      <span class="p">(</span><span class="nf">turn</span> <span class="mi">90</span><span class="p">))))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">h-izq</span> <span class="n">i</span> <span class="n">long</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">i</span> <span class="mi">0</span><span class="p">)</span>
+     <span class="p">(</span><span class="k">begin</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">h-der</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span>  <span class="n">long</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">h-izq</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="n">long</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">h-izq</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="n">long</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">h-der</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">))))</span>
 </pre></div>
 </td></tr></table>
 
@@ -1608,12 +1715,12 @@ de trazo.</p>
 3
 4
 5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">clear</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">move</span> <span class="mi">-350</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">turn</span> <span class="mi">-90</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">move</span> <span class="mi">350</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">turn</span> <span class="mi">90</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">h-izq</span> <span class="mi">3</span> <span class="mi">20</span><span class="p">)</span>
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">clear</span><span class="p">)</span>
+<span class="p">(</span><span class="n">move</span> <span class="mi">-350</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+<span class="p">(</span><span class="n">move</span> <span class="mi">350</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+<span class="p">(</span><span class="n">h-izq</span> <span class="mi">3</span> <span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -1623,12 +1730,12 @@ de trazo.</p>
 3
 4
 5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">clear</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">move</span> <span class="mi">-350</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">turn</span> <span class="mi">-90</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">move</span> <span class="mi">350</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">turn</span> <span class="mi">90</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">h-izq</span> <span class="mi">6</span> <span class="mi">10</span><span class="p">)</span>
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">clear</span><span class="p">)</span>
+<span class="p">(</span><span class="n">move</span> <span class="mi">-350</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+<span class="p">(</span><span class="n">move</span> <span class="mi">350</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+<span class="p">(</span><span class="n">h-izq</span> <span class="mi">6</span> <span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -1638,12 +1745,12 @@ de trazo.</p>
 3
 4
 5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nf">clear</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">move</span> <span class="mi">-350</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">turn</span> <span class="mi">-90</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">move</span> <span class="mi">350</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">turn</span> <span class="mi">90</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">h-izq</span> <span class="mi">7</span> <span class="mi">5</span><span class="p">)</span>
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">clear</span><span class="p">)</span>
+<span class="p">(</span><span class="n">move</span> <span class="mi">-350</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+<span class="p">(</span><span class="n">move</span> <span class="mi">350</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+<span class="p">(</span><span class="n">h-izq</span> <span class="mi">7</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
@@ -1656,7 +1763,7 @@ de trazo.</p>
 <li><a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-11.html#%_sec_1.2.2">1.2.2 - Tree Recursion</a></li>
 </ul>
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2018-19<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2019-20<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
                 
@@ -1676,6 +1783,41 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../tema02-programacion-funcional/tema02-programacion-funcional.html" title="Tema 2: Programación funcional" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Tema 2: Programación funcional
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../seminarios/seminario1-scheme/seminario1-scheme.html" title="Seminario de Scheme" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Siguiente
+                </span>
+                Seminario de Scheme
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
