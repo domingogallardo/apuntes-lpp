@@ -382,13 +382,13 @@ Ejemplos:
   antes de realizar la llamada recursiva:
 
 ```racket
-(define (fib-memo n lista)
+(define (fib-memo n dic)
   (cond ((= n 0) 0)
         ((= n 1) 1)
-        ((not (null? (get n lista)))
-         (get n lista))
-        (else (put n (+ (fib-memo (- n 1) lista)
-                        (fib-memo (- n 2) lista)) lista))))
+        ((not (equal? (get n dic) #f))
+         (get n dic))
+        (else (put n (+ (fib-memo (- n 1) dic)
+                        (fib-memo (- n 2) dic)) dic))))
 ```
 
 - Podemos comprobar la diferencia de tiempos de ejecución entre esta
