@@ -1,7 +1,7 @@
 
 # Tema 3: Procedimientos recursivos
 
-Ya hemos visto algunos muchos ejemplos de funciones recursivas. Una
+Ya hemos visto muchos ejemplos de funciones recursivas. Una
 función es recursiva cuando se llama a si misma. Una vez que uno se
 acostumbra a su uso, se comprueba que la recursión es una forma mucho
 más natural que la iteración de expresar un gran número de funciones y
@@ -24,99 +24,6 @@ resultados de cada llamada recursiva. Por último, veremos un último
 ejemplo curioso e interesante de la recursión para realizar figuras
 fractales con gráficos de tortuga.
 
-## Pensando recursivamente
-
-Para diseñar procedimientos recursivos no funciona el método de
-_prueba y error_. Hay que diseñar la solución recursiva desde el
-principio. Debemos fijarnos en *lo que devuelve la función* y debemos
-preguntarnos cómo sería posible descomponer el problema de forma que
-podamos lanzar la recursión sobre una versión más sencilla del
-mismo. Supondremos que la llamada recursiva funciona correctamente y
-devuelve el resultado correcto. Y después debemos transformar este
-resultado correcto de la versión más pequeña en el resultado de la
-solución completa.
-
-Es muy importante escribir y pensar en las funciones de forma
-declarativa, teniendo en cuenta lo que hacen y no cómo lo hacen.
-
-Debes **confiar en que la llamada recursiva va a hacer su trabajo y
-devolver el resultado correcto**, sin preocuparte de cómo lo va a
-hacer. Después tendrás que utilizar lo que la llamada recursiva ha
-devuelto para componer la solución definitiva al problema.
-
-Para diseñar un algoritmo recursivo es útil no ponerse a programar
-directamente, sino reflexionar sobre la solución recursiva con algún
-ejemplo. El objetivo es obtener una formulación abstracta del caso
-general de la recursión antes de programarlo. Una vez que encontramos
-esta formulación, pasarlo a un lenguaje de programación es muy
-sencillo.
-
-Por último, deberemos reflexionar en el caso base. Debe ser el caso
-más sencillo que puede recibir como parámetro la recursión. Debe
-devolver un valor compatible con la definición de la función. Por
-ejemplo, si la función debe construir una lista, el caso base debe
-devolver también una lista. Si la función construye una pareja, el
-caso base también devolverá una pareja. No debemos olvidar que el caso
-base es también un ejemplo de invocación de la función.
-
-Ya hemos usado todos estos consejos en el tema anterior y en las
-prácticas realizadas hasta ahora.
-
-Veamos ejemplo más. ¿cómo definimos una lista palíndroma de forma
-recursiva?. Por ejemplo, las siguientes listas son palíndromas:
-
-```
-{1 2 3 3 2 1}
-{1 2 1}
-{1}
-'()
-```
-
-Comenzamos con una definición **no recursiva**:
-
-> Una lista es palíndroma cuando es igual a su inversa. 
-
-Esta definición no es recursiva porque no llamamos a la recursión con
-un caso más sencillo.
-
-La definición **recursiva** del caso general es la siguiente:
-
-> Una lista es palíndroma cuando su primer elemento es igual que el
-> último y la lista resultante de quitar el primer y el último
-> elemento también es palíndroma
-
-En el caso base debemos buscar el caso más pequeño no contemplado por
-la definición anterior. En este caso, una lista de un elemento y una
-lista vacía también las consideraremos palíndromas.
-
-> palindroma(lista) <=> (primer-elemento(lista) == ultimo-elemento(lista))  y palindroma(quitar-primero-ultimo(lista))   
-> palindroma(lista) <=> un-elemento(lista) o vacía(lista) 
-
-
-Podemos escribir la definición en Scheme, usando la función `or` para
-indicar que la lista es palíndroma si sucede una de las tres condiciones:
-
-```scheme
-(define (palindroma? lista)
-   (or (null? lista)
-       (null? (cdr lista))
-       (and (equal? (car lista) (ultimo lista))
-            (palindroma? (quitar-primero-ultimo lista)))))
-```
-
-La función auxiliar `quitar-primero-ultimo` la podemos definir así:
-
-```scheme
-(define (quitar-ultimo lista)
-   (if (null? (cdr lista))
-      '()
-      (cons (car lista)
-            (quitar-ultimo (cdr lista)))))
-
-(define (quitar-primero-ultimo lista)
-   (cdr (quitar-ultimo lista)))
-```
-
 ## El coste de la recursión
 
 Hasta ahora hemos estudiado el diseño de funciones recursivas. Vamos a
@@ -130,7 +37,7 @@ Vamos a estudiar el comportamiento de la evaluación de una llamada a
 una función recursiva. Supongamos la función
 `mi-length`:
 
-```scheme
+```racket
 (define (mi-length items)
    (if (null? items)
       0
@@ -139,7 +46,7 @@ una función recursiva. Supongamos la función
 
 Examinamos cómo se evalúan las llamadas recursivas:
 
-```
+```text
 (mi-length '(a b c d))
 (+ 1 (mi-length '(b c d)))
 (+ 1 (+ 1 (mi-length '(c d))))
@@ -185,15 +92,15 @@ dispararse. Supongamos la famosa [secuencia de Fibonacci]:
 
 Formulación matemática de la secuencia de Fibonacci:
 
-```
-Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)  
-Fibonacci(0) = 0  
+```text
+Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)
+Fibonacci(0) = 0
 Fibonacci(1) = 1
 ```
 
 Formulación recursiva en Scheme:
 
-```scheme
+```racket
 (define (fib n)
    (cond ((= n 0) 0)
       ((= n 1) 1)
@@ -238,7 +145,7 @@ Empezamos a explicar la recursión por la cola con un ejemplo muy
 sencillo: la versión iterativa de la típica función `factorial`. Le
 pondremos de nombre a la función `factorial-iter`:
 
-```scheme
+```racket
 (define (factorial n)
    (fact-iter n n))
 
@@ -260,7 +167,7 @@ recursión el factorial debe estar calculado en `result` y se devuelve.
 
 Veamos la secuencia de llamadas:
 
-```
+```text
 (factorial 4)
 (factorial-iter 4 4)
 (factorial-iter 3 4*3=12)
@@ -289,7 +196,7 @@ valor del número `n` a calcular el factorial.
 La secuencia de llamadas recursivas acumula en la variable `result` el
 valor del factorial:
 
-```
+```text
 4 * 3 * 2 * 1 = 24
 ```
 
@@ -307,7 +214,7 @@ inicializar este resultado a 0.
 
 La solución es la siguiente:
 
-```scheme
+```racket
 (define (mi-length lista)
    (mi-length-iter lista 0))
 
@@ -331,7 +238,7 @@ Deberíamos añadir un parámetro adicional en el que vamos acumulando
 esa suma. Inicializaremos a 0 ese parámetro e iremos en cada llamada
 recursiva acumulando el primer elemento de la lista:
 
-```scheme
+```racket
 (define (suma-lista lista)
    (suma-lista-iter lista 0))
 
@@ -364,7 +271,7 @@ difíciles de entender y depurar.
 
 Veamos, por ejemplo, la formulación iterativa de Fibonacci:
 
-```scheme
+```racket
 (define (fib n)
    (fib-iter 1 0 n))
 
@@ -376,7 +283,7 @@ Veamos, por ejemplo, la formulación iterativa de Fibonacci:
 
 La secuencia de llamadas recursivas sería la siguiente:
 
-```
+```text
 (fib 6)
 (fib-iter 1 0 6)
 (fib-iter 1+0=1 1 5)
@@ -397,7 +304,7 @@ que es el que se devuelve. Conseguimos `n` llamadas inicializando
 
 El [triángulo de Pascal](https://en.wikipedia.org/wiki/Pascal's_triangle) es el siguiente triángulo de números.
 
-```
+```text
 1
 1   1
 1   2   1
@@ -413,10 +320,11 @@ Si numeramos las filas y columnas empezando a contar por 0, la
 expresión general del valor en una fila y columna determinada se puede
 obtener con la siguiente definición recursiva:
 
-```
-Pascal (n, 0) = 1  
-Pascal (n, n) = 1  
-Pascal (fila, columna) = Pascal (fila-1,columna-1) + Pascal (fila-1, columna)
+```text
+Pascal (n, 0) = 1
+Pascal (n, n) = 1
+Pascal (fila, columna) = 
+    Pascal (fila-1,columna-1) + Pascal (fila-1, columna)
 ```
 
 La función sólo está definida para valores de `columna` menores o
@@ -425,7 +333,7 @@ iguales que `fila`.
 En Scheme es fácil escribir una función recursiva que implemente la
 definición anterior:
 
-```scheme
+```racket
 (define (pascal fila col)
    (cond ((= col 0) 1)
          ((= col fila) 1)
@@ -456,17 +364,17 @@ La idea es definir una función iterativa `pascal-fila` a la que le
 pasamos el número de fila `n` y nos devuelve la lista de `n+1` números que
 constituyen la fila `n` del triángulo de Pascal:
 
-```
-fila 0 = {1}
-fila 1 = {1 1}
-fila 2 = {1 2 1}
-fila 3 = {1 3 3 1}
-fila 4 = {1 4 6 4 1}
+```text
+fila 0 = (1)
+fila 1 = (1 1)
+fila 2 = (1 2 1)
+fila 3 = (1 3 3 1)
+fila 4 = (1 4 6 4 1)
 ...
 ```
 
 Esta función necesitará un parámetro adicional (`lista-fila`) que se
-inicializa con la lista `{1}` y en el que se va guardando cada fila
+inicializa con la lista `(1)` y en el que se va guardando cada fila
 sucesiva. Esta fila va creciendo hasta que llegamos a la fila que
 tenemos que devolver. Hay que hacer la iteración `n` veces, por lo que
 vamos decrementando el parámetro `n` hasta que se llega a 0.
@@ -477,9 +385,9 @@ siguiente.
 
 Por ejemplo:
 
-```scheme
+```racket
 (pascal-sig-fila '(1 3 3 1))
-; ⇒ {1 4 6 4 1}
+; ⇒ (1 4 6 4 1)
 ```
 
 Esta función la implementamos con una función recursiva auxiliar (esta
@@ -488,7 +396,7 @@ la que se encarga de realizar el cálculo de la nueva fila.
 
 El código completo es el siguiente:
 
-```scheme
+```racket
 (define (pascal fila col)
    (list-ref (pascal-fila '(1) fila) col))
 
@@ -513,7 +421,7 @@ El código completo es el siguiente:
 Con esta implementación ya no se tiene un coste exponencial y se puede
 calcular el valor de números como Pascal(40, 20):
 
-```scheme
+```racket
 (pascal 40 20)
 ; ⇒ 137846528820
 ```
@@ -537,59 +445,56 @@ siguientes veces.
 
 ### Fibonacci con memoization
 
-Para implementar la _memoization_ necesitamos dos métodos imperativos 
+Para implementar la _memoization_ necesitamos odos métodos imperativos 
 `put` y `get` que implementan un diccionario *clave-valor*.
 
-- La función `(put key value lista)` asocia un valor a una clave, la
-guarda en la lista (con mutación) y devuelve el valor.
-- La función `(get key lista)` devuelve el valor de la lista asociado a
-una clave. En el caso en que no exista ningún valor se devuelve la
-lista vacía.
-
-Inicialmente la lista debe tener un símbolo cualquiera al comienzo. 
+- La función `(put key value dic)` asocia un valor a una clave, la
+guarda en el diccionario (con mutación) y devuelve el valor.
+- La función `(get key dic)` devuelve el valor del diccionario asociado a
+una clave. En el caso en que no exista ningún valor se devuelve `#f`.
 
 Ejemplos:
 
-```
-(define mi-lista (list 'lista-asoc))
-(put 1 10 mi-lista) ; ⇒ 10
-(get 1 mi-lista) ; ⇒ 10
-(get 2 mi-lista) ; ⇒ '()
+```racket
+(define mi-dic (crea-diccionario))
+(put 1 10 mi-dic) ; ⇒ 10
+(get 1 mi-dic) ; ⇒ 10
+(get 2 mi-dic) ; ⇒ #f
 ```
 
-Estos métodos son imperativos porque modifican (mutan) los datos de la
-lista de asociación que pasamos como parámetro. Para implementarlos
-tenemos que salirnos del paradigma funcional, importando una librería
-de Scheme que permite mutar las parejas.
+Estos métodos son imperativos porque modifican (mutan) la estructura
+de datos que pasamos como parámetro. Para implementarlos tenemos que
+salirnos del paradigma funcional, usando las funciones de Racket que
+permiten mutar las parejas.
 
 No es importante la implementación, la dejamos aquí como referencia y
 para poder probar la _memoization_. 
 
-```scheme
-(import (rnrs)
-        (rnrs mutable-pairs))
+```racket
+(define (crea-diccionario)
+  (mcons '*diccionario* '()))
 
-(define lista (list 'lista-asoc))
+(define (busca key dic)
+  (cond
+    ((null? dic) #f)
+    ((equal? key (mcar (mcar dic)))
+     (mcar dic))
+    (else (busca key (mcdr dic)))))
 
-(define (buscar key lista)
-   (cond ((null? lista) #f)
-         ((equal? (caar lista) key) (car lista))
-         (else (buscar key (cdr lista)))))
+(define (get key dic)
+  (define record (busca key (mcdr dic)))
+  (if (not record)
+      #f
+      (mcdr record)))
 
-(define (get key lista)
-   (define record (buscar key (cdr lista)))
-   (if (not record)
-      '()
-      (cdr record)))
-
-(define (put key value lista)
-   (define record (buscar key (cdr lista)))
-   (if (not record)
-      (set-cdr! lista
-         (cons (cons key value)
-               (cdr lista)))
-      (set-cdr! record value))
-   value)
+(define (put key value dic)
+  (define record (busca key (mcdr dic)))
+  (if (not record)
+      (set-mcdr! dic
+                (mcons (mcons key value)
+                      (mcdr dic)))
+      (set-mcdr! record value))
+  value)
 ```
 
 La función `fib-memo` realiza el cálculo de la serie de Fibonacci
@@ -606,14 +511,14 @@ lista. Sólo en el caso en que no esté guardado se llama a la recursión
 para calcularlo y guardarlo. La función `put` que guarda el nuevo
 valor calculado también lo devuelve.
 
-```scheme
-(define (fib-memo n lista)
+```racket
+(define (fib-memo n dic)
   (cond ((= n 0) 0)
         ((= n 1) 1)
-        ((not (null? (get n lista)))
-         (get n lista))
-        (else (put n (+ (fib-memo (- n 1) lista)
-                        (fib-memo (- n 2) lista)) lista))))
+        ((not (equal? (get n dic) #f))
+         (get n dic))
+        (else (put n (+ (fib-memo (- n 1) dic)
+                        (fib-memo (- n 2) dic)) dic))))
 ```
 
 Podemos comprobar la diferencia de tiempos de ejecución entre esta
@@ -621,7 +526,7 @@ versión y la anterior. El coste de la función *memoizada* es
 O(n). Frente al coste O(2^n) de la versión inicial que la hacía
 imposible de utilizar.
 
-```scheme
+```racket
 (fib-memo 200 lista)
 ⇒ 280571172992510140037611932413038677189525
 ```
@@ -637,9 +542,10 @@ de las figuras con pasos de ejecución secuenciales. Para ello usaremos
 una primitiva imperativa de Scheme: la forma especial `begin` que
 permite realizar un grupo de pasos de ejecución de forma secuencial.
 
-Ten cuidado con la forma especial `begin`, es una forma especial
-imperativa. No debes usarla en la implementación de ninguna función
-cuando estemos usando el paradigma funcional.
+!!! Warning "Aviso"
+    Ten cuidado con la forma especial `begin`, es una forma especial
+    imperativa. No debes usarla en la implementación de ninguna función
+    cuando estemos usando el paradigma funcional.
 
 ### Gráficos de tortuga en Racket
 
@@ -647,10 +553,9 @@ Se pueden utilizar los
 [gráficos de tortuga](http://en.wikipedia.org/wiki/Turtle_graphics) en
 Racket cargando la librería `(graphics turtles)`:
 
-```
-#lang r6rs
-(import (rnrs)
-      (graphics turtles))
+```racket
+#lang racket
+(require graphics/turtles)
 ```
 
 Los comandos más importantes de esta librería son:
@@ -669,7 +574,7 @@ de escribir el algoritmo en Scheme del triángulo de Sierpinski.
 Por ejemplo, podemos definir una función que dibuja un triángulo
 rectángulo con catetos de longitud `x`:
 
-```scheme
+```racket
 (define (hipot x)
 	(* x (sqrt 2)))
 
@@ -689,7 +594,7 @@ La función `(hipot x)` devuelve la longitud de la hipotenusa de un
 triángulo rectángulo con dos lados de longitud `x`. O sea, la
 expresión:
 
-<img src="imagenes/hipot.png" width="250px"/>
+$$hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}$$
 
 Como puedes comprobar, el código es imperativo. La forma especial
 `begin` permite realizar una serie de pasos de ejecución que modifican
@@ -700,7 +605,7 @@ El siguiente código es una variante del anterior que dibuja un
 triángulo rectángulo de base `w` y lados `w/2`. Va a ser la figura
 base del triángulo de Sierpinski.
 
-```scheme
+```racket
 (define (triangle w)
    (begin
       (draw w)
@@ -756,7 +661,7 @@ altura *h/2* debemos:
 
 Una versión del algoritmo en *pseudocódigo*:
 
-```
+```text
 Sierpinsky (x, y, h):
    if (h > MIN) {
       Sierpinsky (x, y, h/2)
@@ -773,10 +678,9 @@ triángulo de Sierpinski. No es funcional porque se realizan *pasos de
 ejecución*, usando la forma especial `begin` o múltiples instrucciones
 en una misma función (por ejemplo la función `triangle`).
 
-```scheme
-#lang r6rs
-(import (rnrs)
-        (graphics turtles))
+```racket
+#lang racket
+(require graphics/turtles)
 
 (turtles #t)
 
@@ -806,7 +710,7 @@ en una misma función (por ejemplo la función `triangle`).
 
 La llamada a
 
-```scheme
+```racket
 (sierpinski 40)
 ```
 
@@ -816,7 +720,7 @@ produce la siguiente figura:
 
 La llamada a
 
-```scheme
+```racket
 (sierpinski 700)
 ```
 
@@ -827,7 +731,7 @@ Produce la figura que vimos al principio del apartado:
 Para ocupar la venta completa debemos desplazar la tortuga hacia atrás
 antes de invocar a `sierpinski`:
 
-```scheme
+```racket
 (clear)
 (move -350)
 (sierpinski 700)
@@ -848,7 +752,7 @@ Por ejemplo:
 
 Programas en Scheme:
 
-```scheme
+```racket
 (define (par? x)
    (if (= 0 x)
       #t
@@ -899,10 +803,9 @@ una longitud de trazo `long` a la *izquierda* de la tortuga.
 
 El algoritmo en Scheme:
 
-```scheme
-#lang r6rs
-(import (rnrs)
-      (graphics turtles))
+```racket
+#lang racket
+(require graphics/turtles)
 
 (define (h-der i long)
    (if (> i 0)
@@ -940,7 +843,7 @@ de trazo.
 
 Curva de Hilbert de nivel 3 con trazo de longitud 20:
 
-```scheme
+```racket
 (clear)
 (move -350)
 (turn -90)
@@ -951,7 +854,7 @@ Curva de Hilbert de nivel 3 con trazo de longitud 20:
 
 Curva de Hilbert de nivel 6 con trazo de longitud 10:
 
-```scheme
+```racket
 (clear)
 (move -350)
 (turn -90)
@@ -962,7 +865,7 @@ Curva de Hilbert de nivel 6 con trazo de longitud 10:
 
 Curva de Hilbert de nivel 7 con trazo de longitud 5:
 
-```scheme
+```racket
 (clear)
 (move -350)
 (turn -90)
@@ -984,7 +887,7 @@ En este tema explicamos conceptos de los siguientes capítulos del libro *Struct
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2018-19  
+Lenguajes y Paradigmas de Programación, curso 2019-20  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
 
