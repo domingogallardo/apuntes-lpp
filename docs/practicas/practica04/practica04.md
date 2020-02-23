@@ -144,7 +144,7 @@ Ejemplo:
 ```
 
 
-c) Implementa la función `(filtra-simbolos lista-simbolos lista-num)` de
+c) Implementa la función `(filtra-simbolos lista-simbolos lista-num)` de
 de la práctica 3, usando una composición de funciones en las que se
 use `map`.
 
@@ -236,7 +236,7 @@ inicial.
 Ejemplo: 
 
 ```racket
-(definee baraja (mezcla (baraja-poker)))
+(define baraja (mezcla (baraja-poker)))
 baraja ; ⇒ (Q♠ 9♥ 4♣ K♠ 7♥ J♦ 5♠ 4♠ 5♦ 6♦ 8♦ A♦ Q♦ 0♣ 7♦ 3♠ Q♥ ...)
 (reparte 3 5 baraja)
 ; ⇒ ((7♦ 0♣ Q♦ A♦ 8♦) (6♦ 5♦ 4♠ 5♠ J♦) (7♥ K♠ 4♣ 9♥ Q♠))
