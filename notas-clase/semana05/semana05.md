@@ -284,7 +284,7 @@ fila 4 = (1 4 6 4 1)
 El código completo:
 
 ```racket
-define (pascal fila col)
+(define (pascal fila col)
    (list-ref (pascal-fila '(1) fila) col))
 
 (define (pascal-fila lista-fila n)
