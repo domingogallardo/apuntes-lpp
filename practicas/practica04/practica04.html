@@ -640,7 +640,7 @@ comprobar si has acertado.</p>
 <span class="c1">; Queremos obtener una lista cuyos elementos son las partes izquierda</span>
 <span class="c1">; de aquellas parejas cuya suma sea par.</span>
 
-<span class="p">(</span><span class="n">fold-right</span> <span class="n">__________</span> <span class="o">&#39;</span><span class="p">()</span>
+<span class="p">(</span><span class="nb">foldr</span> <span class="n">__________</span> <span class="o">&#39;</span><span class="p">()</span>
         <span class="p">(</span><span class="n">_________</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">even?</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">x</span><span class="p">))))</span> <span class="n">lista</span><span class="p">))</span>
 <span class="c1">; ⇒ (3 10 5)</span>
 </pre></div>
@@ -760,7 +760,7 @@ lista y devuelve <code>#t</code> o <code>#f</code> dependiendo de si el primero 
 el segundo. </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">busca-mayor</span> <span class="n">mayor?</span> <span class="n">lista</span><span class="p">)</span>
-  <span class="p">(</span><span class="n">fold-left</span> <span class="n">__________</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))</span>
+  <span class="p">(</span><span class="nb">foldl</span> <span class="n">__________</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
