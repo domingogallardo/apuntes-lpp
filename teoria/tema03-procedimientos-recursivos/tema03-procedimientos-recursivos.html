@@ -1672,23 +1672,10 @@ una longitud de trazo <code>long</code> a la <em>izquierda</em> de la tortuga.</
 29
 30
 31
-32</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">#lang </span><span class="nn">racket</span>
+32
+33
+34</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">#lang </span><span class="nn">racket</span>
 <span class="p">(</span><span class="k">require</span> <span class="n">graphics/turtles</span><span class="p">)</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">h-der</span> <span class="n">i</span> <span class="n">long</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">i</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">begin</span>
-        <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">h-izq</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">draw</span>  <span class="n">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">h-der</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">draw</span> <span class="n">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">h-der</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">draw</span> <span class="n">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">h-izq</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">))))</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">h-izq</span> <span class="n">i</span> <span class="n">long</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">i</span> <span class="mi">0</span><span class="p">)</span>
@@ -1703,7 +1690,24 @@ una longitud de trazo <code>long</code> a la <em>izquierda</em> de la tortuga.</
       <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
       <span class="p">(</span><span class="n">draw</span> <span class="n">long</span><span class="p">)</span>
       <span class="p">(</span><span class="n">h-der</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">))))</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">))</span>
+     <span class="p">(</span><span class="n">move</span> <span class="mi">0</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">h-der</span> <span class="n">i</span> <span class="n">long</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">i</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">begin</span>
+        <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">h-izq</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">draw</span>  <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">h-der</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">draw</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">h-der</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">draw</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">h-izq</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">))</span>
+      <span class="p">(</span><span class="n">move</span> <span class="mi">0</span><span class="p">)))</span>
 </pre></div>
 </td></tr></table>
 
@@ -1711,16 +1715,36 @@ una longitud de trazo <code>long</code> a la <em>izquierda</em> de la tortuga.</
 de trazo.</p>
 <p>Curva de Hilbert de nivel 3 con trazo de longitud 20:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">clear</span><span class="p">)</span>
-<span class="p">(</span><span class="n">move</span> <span class="mi">-350</span><span class="p">)</span>
-<span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
-<span class="p">(</span><span class="n">move</span> <span class="mi">350</span><span class="p">)</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">clear</span><span class="p">)</span>
+<span class="p">(</span><span class="n">h-izq</span> <span class="mi">3</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Para entender mejor el algoritmo podemos dibujar paso a paso esta
+figura usando los siguientes comandos:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">clear</span><span class="p">)</span>
 <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
-<span class="p">(</span><span class="n">h-izq</span> <span class="mi">3</span> <span class="mi">20</span><span class="p">)</span>
+<span class="p">(</span><span class="n">h-der</span> <span class="mi">2</span> <span class="mi">30</span><span class="p">)</span>
+<span class="p">(</span><span class="n">draw</span>  <span class="mi">30</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+<span class="p">(</span><span class="n">h-izq</span> <span class="mi">2</span> <span class="mi">30</span><span class="p">)</span>
+<span class="p">(</span><span class="n">draw</span> <span class="mi">30</span><span class="p">)</span>
+<span class="p">(</span><span class="n">h-izq</span> <span class="mi">2</span> <span class="mi">30</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+<span class="p">(</span><span class="n">draw</span> <span class="mi">30</span><span class="p">)</span>
+<span class="p">(</span><span class="n">h-der</span> <span class="mi">2</span> <span class="mi">30</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </td></tr></table>
 
