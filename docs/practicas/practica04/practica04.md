@@ -71,7 +71,7 @@ comprobar si has acertado.
 ; Queremos obtener una lista cuyos elementos son las partes izquierda
 ; de aquellas parejas cuya suma sea par.
 
-(fold-right __________ '()
+(foldr __________ '()
         (_________ (lambda (x) (even? (+ (car x) (cdr x)))) lista))
 ; ⇒ (3 10 5)
 ```
@@ -183,7 +183,7 @@ el segundo.
 
 ```racket
 (define (busca-mayor mayor? lista)
-  (fold-left __________ (car lista) (cdr lista)))
+  (foldl __________ (car lista) (cdr lista)))
 ```  
 
 Escribe algunos `check-equal?` en los que compruebes el funcionamiento
