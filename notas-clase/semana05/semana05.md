@@ -666,7 +666,8 @@ i-1.
       (turn -90)
       (draw long)
       (h-der (- i 1) long)
-      (turn 90))))
+      (turn 90))
+     (move 0)))
 
 (define (h-der i long)
    (if (> i 0)
@@ -681,7 +682,8 @@ i-1.
         (turn 90)
         (draw long)
         (h-izq (- i 1) long)
-        (turn -90))))
+        (turn -90))
+      (move 0)))
 ```
 
 
@@ -692,6 +694,23 @@ Curva de Hilbert de nivel 3 con trazo de longitud 20:
 
 ```racket
 (h-izq 3 20)
+```
+
+Podemos ver paso a paso cómo se construye:
+
+```racket
+(clear)
+(turn 90)
+(h-der 2 30)
+(draw  30)
+(turn -90)
+(h-izq 2 30)
+(draw 30)
+(h-izq 2 30)
+(turn -90)
+(draw 30)
+(h-der 2 30)
+(turn 90)
 ```
 
 Curva de Hilbert de nivel 6 con trazo de longitud 10:

@@ -807,21 +807,6 @@ El algoritmo en Scheme:
 #lang racket
 (require graphics/turtles)
 
-(define (h-der i long)
-   (if (> i 0)
-      (begin
-        (turn -90)
-        (h-izq (- i 1) long)
-        (draw  long)
-        (turn 90)
-        (h-der (- i 1) long)
-        (draw long)
-        (h-der (- i 1) long)
-        (turn 90)
-        (draw long)
-        (h-izq (- i 1) long)
-        (turn -90))))
-
 (define (h-izq i long)
    (if (> i 0)
      (begin
@@ -835,7 +820,24 @@ El algoritmo en Scheme:
       (turn -90)
       (draw long)
       (h-der (- i 1) long)
-      (turn 90))))
+      (turn 90))
+     (move 0)))
+
+(define (h-der i long)
+   (if (> i 0)
+      (begin
+        (turn -90)
+        (h-izq (- i 1) long)
+        (draw  long)
+        (turn 90)
+        (h-der (- i 1) long)
+        (draw long)
+        (h-der (- i 1) long)
+        (turn 90)
+        (draw long)
+        (h-izq (- i 1) long)
+        (turn -90))
+      (move 0)))
 ```
 
 Podemos probarlo con distintos parámetros de grado de curva y longitud
@@ -845,11 +847,25 @@ Curva de Hilbert de nivel 3 con trazo de longitud 20:
 
 ```racket
 (clear)
-(move -350)
-(turn -90)
-(move 350)
+(h-izq 3 30)
+```
+
+Para entender mejor el algoritmo podemos dibujar paso a paso esta
+figura usando los siguientes comandos:
+
+```racket
+(clear)
 (turn 90)
-(h-izq 3 20)
+(h-der 2 30)
+(draw  30)
+(turn -90)
+(h-izq 2 30)
+(draw 30)
+(h-izq 2 30)
+(turn -90)
+(draw 30)
+(h-der 2 30)
+(turn 90)
 ```
 
 Curva de Hilbert de nivel 6 con trazo de longitud 10:
