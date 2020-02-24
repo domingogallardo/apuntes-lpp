@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
     
     
       
@@ -40,7 +40,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
       
         <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -51,7 +51,7 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
@@ -83,7 +83,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#seminario-2-seminario-de-swift" tabindex="1" class="md-skip">
+      <a href="#seminario-2-seminario-de-swift" tabindex="0" class="md-skip">
         Saltar a contenido
       </a>
     
@@ -92,9 +92,9 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../.." title="LPP" class="md-header-nav__button md-logo">
+        <a href="../.." title="LPP" aria-label="LPP" class="md-header-nav__button md-logo">
           
-            <img src="../../imagenes/logo.png" width="24" height="24">
+            <img alt="logo" src="../../imagenes/logo.png" width="24" height="24">
           
         </a>
       </div>
@@ -123,7 +123,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -164,7 +164,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="../.." title="LPP" class="md-nav__button md-logo">
       
-        <img src="../../imagenes/logo.png" width="48" height="48">
+        <img alt="logo" src="../../imagenes/logo.png" width="48" height="48">
       
     </a>
     LPP
@@ -542,14 +542,14 @@ imagen Swift tal y como se explica a continuación.</p>
 <h4>Instalación y ejecución de la imagen Swift</h4>
 <p>Una vez instalado Docker, abre un terminal y lanza el siguiente
 comando:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ docker pull swift:5.1.2
-</pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>$ docker pull swift:5.1.2
+</code></pre></div>
 </td></tr></table>
 
 <p>El comando descarga la imagen <code>swift:5.1.2</code> a nuestro ordenador. Una
 vez descargada lanzamos el contenedor con el siguiente comando:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ docker run --privileged -it --rm -v &quot;${PWD}:/home&quot; swift:5.1.2 /bin/bash
-</pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>$ docker run --privileged -it --rm -v &quot;${PWD}:/home&quot; swift:5.1.2 /bin/bash
+</code></pre></div>
 </td></tr></table>
 
 <p>El contenedor arranca en muy pocos segundos y aparece su prompt,
@@ -557,10 +557,10 @@ indicando que ya estás dentro de él y puedes ejecutar cualquier
 comando linux:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>root@97265a262a58:/# ls
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>root@97265a262a58:/# ls
 bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
 root@97265a262a58:/# 
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Lanzamos el intérprete de Swift con el comando <code>swift</code>:</p>
@@ -569,21 +569,21 @@ root@97265a262a58:/#
 3
 4
 5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>root@97265a262a58:/# swift
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>root@97265a262a58:/# swift
 Welcome to Swift version 5.1.2 (swift-5.1.2-RELEASE).
 Type :help for assistance.
 1&gt; &quot;hola&quot;.uppercased()
 $R0: String = &quot;HOLA&quot;
 2&gt;
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Una vez hayamos terminado de trabajar podemos salir del intérprete
 de Swift y del contenedor de la siguiente forma:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>3&gt; :quit
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>3&gt; :quit
 root@97265a262a58:/# exit
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h4>Directorio compartido entre el ordenador <em>host</em> y el contenedor</h4>
@@ -603,9 +603,9 @@ cualquier otro editor orientado a programación te puede valer
    trabajaremos con los programas en Swift:</li>
 </ol>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">~ $ cd swift</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="err">~ $ cd swift</span>
 <span class="err">~/swift $ </span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <div class="admonition warning">
@@ -613,8 +613,8 @@ cualquier otro editor orientado a programación te puede valer
 <p>Si estás en Windows, por una cuestión de permisos, el directorio
 de trabajo es recomendable que se encuentre bajo la ruta
 <code>C:\Users\&lt;usuario&gt;\</code>. Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ <span class="nb">cd</span> /c/Users/&lt;usuario&gt;/Documents/Ejercicios/Swift
-</pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>$ <span class="nb">cd</span> /c/Users/&lt;usuario&gt;/Documents/Ejercicios/Swift
+</code></pre></div>
 </td></tr></table>
 
 </div>
@@ -637,7 +637,7 @@ de trabajo es recomendable que se encuentre bajo la ruta
 12
 13
 14
-15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">// Primer programa Swift</span>
+15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="c1">// Primer programa Swift</span>
 
 <span class="kd">var</span> <span class="nv">str</span> <span class="p">=</span> <span class="s">&quot;Mensaje&quot;</span>
 <span class="n">str</span> <span class="p">=</span> <span class="s">&quot;Hola mundo!&quot;</span>
@@ -652,14 +652,14 @@ de trabajo es recomendable que se encuentre bajo la ruta
 <span class="n">secondNumber</span> <span class="p">=</span> <span class="n">secondNumber</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="n">totalSum</span> <span class="p">=</span> <span class="n">firstNumber</span> <span class="o">+</span> <span class="n">secondNumber</span>
 <span class="bp">print</span><span class="p">(</span><span class="s">&quot;El resultado de la suma es = </span><span class="si">\(</span><span class="n">totalSum</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <ol start="3">
 <li>Arrancamos el contenedor swift:</li>
 </ol>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ docker run --privileged -it -v &quot;${PWD}:/home&quot; swift:5.1.2 /bin/bash
-</pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>$ docker run --privileged -it -v &quot;${PWD}:/home&quot; swift:5.1.2 /bin/bash
+</code></pre></div>
 </td></tr></table>
 
 <ol start="4">
@@ -670,11 +670,11 @@ de trabajo es recomendable que se encuentre bajo la ruta
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>root@3131534ce480:/# cd /home
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>root@3131534ce480:/# cd /home
 root@3131534ce480:~# swift holaMundo.swift 
 Hola mundo!
 El resultado de la suma es = 7
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <ol start="5">
@@ -686,10 +686,10 @@ El resultado de la suma es = 7
 </ol>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>root@3131534ce480:~# exit
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>root@3131534ce480:~# exit
 exit
 ~/swift $ 
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <div class="admonition note">
@@ -703,34 +703,34 @@ Quickstart Terminal</strong>. </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="nv">SWIFT_VER</span><span class="o">=</span><span class="m">5</span>.1.2
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="nv">SWIFT_VER</span><span class="o">=</span><span class="m">5</span>.1.2
 docker run --privileged -it --rm -v <span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">:/home&quot;</span> <span class="s2">&quot;swift:</span><span class="si">${</span><span class="nv">SWIFT_VER</span><span class="si">}</span><span class="s2">&quot;</span> /bin/bash -c <span class="s2">&quot;</span>
 <span class="s2">cd /home</span>
 <span class="s2">swift </span><span class="nv">$*</span><span class="s2">&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Puedes guardarlo en el directorio actual, hacerlo ejecutable con</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ chmod +x swift.sh
-</pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>$ chmod +x swift.sh
+</code></pre></div>
 </td></tr></table>
 
 <p>y llamarlo pasándole como parámetro el fichero swift a ejecutar:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ ./swift.sh holaMundo.swift
-</pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>$ ./swift.sh holaMundo.swift
+</code></pre></div>
 </td></tr></table>
 
 <p>Si estás en <strong>Windows</strong> y quieres ejecutar el script desde un terminal
 normal puedes hacer el siguiente fichero .bat que ejecuta el
 script anterior en el terminal Docker.</p>
 <p><strong>Fichero <code>swift.bat</code></strong>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">&quot;C:\Program Files\Git\bin\bash.exe&quot; --login -i &quot;C:\Program Files\Docker Toolbox\start.sh&quot; &quot;./swift.sh %*&quot;</span>
-</pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="err">&quot;C:\Program Files\Git\bin\bash.exe&quot; --login -i &quot;C:\Program Files\Docker Toolbox\start.sh&quot; &quot;./swift.sh %*&quot;</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Uso:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">&gt; swift holaMundo.swift</span>
-</pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="err">&gt; swift holaMundo.swift</span>
+</code></pre></div>
 </td></tr></table>
 
 </div>
@@ -747,12 +747,12 @@ Xcode. Una vez instalado puedes ejecutar Swift desde el terminal.</p>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ sudo apt-get install clang libicu-dev
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>$ sudo apt-get install clang libicu-dev
 // Descargar la versión y plataforma deseada <span class="o">(</span>fichero swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz<span class="o">)</span>
 $ tar xzf swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz
 // Esto crea el directorio usr/ en la localización del archivo
 // Actualizar el PATH o mover usr/bin/swift al directorio /usr/bin
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h3 id="visual-studio-code">Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permanent link">&para;</a></h3>
@@ -775,13 +775,13 @@ anota los valores de las variables de entorno:</p>
 3
 4
 5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>$ <span class="nb">set</span> <span class="p">|</span> grep DOCKER_
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>$ <span class="nb">set</span> <span class="p">|</span> grep DOCKER_
 <span class="nv">DOCKER_CERT_PATH</span><span class="o">=</span><span class="s1">&#39;C:\Users\&lt;usuario&gt;\.docker\machine\machines\default&#39;</span>
 <span class="nv">DOCKER_HOST</span><span class="o">=</span>tcp://192.168.99.100:2376
 <span class="nv">DOCKER_MACHINE_NAME</span><span class="o">=</span>default
 <span class="nv">DOCKER_TLS_VERIFY</span><span class="o">=</span><span class="m">1</span>
 <span class="nv">DOCKER_TOOLBOX_INSTALL_PATH</span><span class="o">=</span><span class="s1">&#39;C:\Program Files\Docker Toolbox&#39;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Abre la carpeta de trabajo como área de trabajo: <em>Archivo -&gt; Abrir área de trabajo...</em>.</p>
@@ -808,7 +808,7 @@ cuál te convenga más, pon entre las <code>{}</code> los siguientes valores de 
  8
  9
 10
-11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">{</span>
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="err">{</span>
 <span class="err">&quot;terminal.integrated.shell.windows&quot;: &quot;C:\\Program Files\\Git\\bin\\bash.exe&quot;,</span>
 <span class="err">&quot;terminal.integrated.env.windows&quot;: {</span>
 <span class="err">&quot;DOCKER_CERT_PATH&quot;: &quot;C:\\Users\\&lt;usuario&gt;\\.docker\\machine\\machines\\default&quot;,</span>
@@ -819,7 +819,7 @@ cuál te convenga más, pon entre las <code>{}</code> los siguientes valores de 
 <span class="err">},</span>
 <span class="err">&quot;terminal.integrated.shellArgs.windows&quot;: [&quot;--login&quot;, &quot;-i&quot;, &quot;C:\\Program Files\\Docker Toolbox\\start.sh&quot;]</span>
 <span class="err">}</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Fíjate que el valor de <code>terminal.integrated.env.windows</code> depende de los valores que
@@ -843,8 +843,8 @@ continuación. </p>
 <p>La tradición sugiere que el primer programa en un nuevo lenguaje
 debería imprimir las palabras "Hello, world!" en la pantalla. En
 Swift, esto puede hacerse con una única línea:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">)</span>
-</pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">)</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Si has escrito código en C o en Objective-C, esta sintaxis te parecerá
@@ -867,10 +867,10 @@ significa que puedes usar constantes para nombrar un valor que
 determinas una vez pero que usas en muchos lugares.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nv">miVariable</span> <span class="p">=</span> <span class="mi">42</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">var</span> <span class="nv">miVariable</span> <span class="p">=</span> <span class="mi">42</span>
 <span class="n">miVariable</span> <span class="p">=</span> <span class="mi">50</span>
 <span class="kd">let</span> <span class="nv">miConstante</span> <span class="p">=</span> <span class="mi">42</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Una constante o variable debe tener el mismo tipo que el valor que
@@ -884,10 +884,10 @@ valor inicial), especifica el tipo escribiéndolo después de la
 variable, separándolo por dos puntos.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">implicitoInteger</span> <span class="p">=</span> <span class="mi">70</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">implicitoInteger</span> <span class="p">=</span> <span class="mi">70</span>
 <span class="kd">let</span> <span class="nv">implicitoDouble</span> <span class="p">=</span> <span class="mf">70.0</span>
 <span class="kd">let</span> <span class="nv">explicitoDouble</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">=</span> <span class="mi">70</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -899,10 +899,10 @@ necesitas convertir un valor a un tipo diferente, construye
 explícitamente una instancia del tipo deseado.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">etiqueta</span> <span class="p">=</span> <span class="s">&quot;El ancho es &quot;</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">etiqueta</span> <span class="p">=</span> <span class="s">&quot;El ancho es &quot;</span>
 <span class="kd">let</span> <span class="nv">ancho</span> <span class="p">=</span> <span class="mi">94</span>
 <span class="kd">let</span> <span class="nv">anchoEtiqueta</span> <span class="p">=</span> <span class="n">etiqueta</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="n">ancho</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -915,11 +915,11 @@ de los paréntesis. Por ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">manzanas</span> <span class="p">=</span> <span class="mi">3</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">manzanas</span> <span class="p">=</span> <span class="mi">3</span>
 <span class="kd">let</span> <span class="nv">naranjas</span> <span class="p">=</span> <span class="mi">5</span>
 <span class="kd">let</span> <span class="nv">resumenManzanas</span> <span class="p">=</span> <span class="s">&quot;Tengo </span><span class="si">\(</span><span class="n">manzanas</span><span class="si">)</span><span class="s"> manzanas.&quot;</span>
 <span class="kd">let</span> <span class="nv">resumenFrutas</span> <span class="p">=</span> <span class="s">&quot;Tengo </span><span class="si">\(</span><span class="n">manzanas</span> <span class="o">+</span> <span class="n">naranjas</span><span class="si">)</span><span class="s"> frutas.&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -937,7 +937,7 @@ permite una coma después del último elemento.</p>
 5
 6
 7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nv">listaCompra</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;huevos&quot;</span><span class="p">,</span> <span class="s">&quot;agua&quot;</span><span class="p">,</span> <span class="s">&quot;tomates&quot;</span><span class="p">,</span> <span class="s">&quot;pan&quot;</span><span class="p">]</span>
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">var</span> <span class="nv">listaCompra</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;huevos&quot;</span><span class="p">,</span> <span class="s">&quot;agua&quot;</span><span class="p">,</span> <span class="s">&quot;tomates&quot;</span><span class="p">,</span> <span class="s">&quot;pan&quot;</span><span class="p">]</span>
 <span class="n">listaCompra</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;botella de agua&quot;</span>
 
 <span class="kd">var</span> <span class="nv">trabajos</span> <span class="p">=</span> <span class="p">[</span>
@@ -945,14 +945,14 @@ permite una coma después del último elemento.</p>
     <span class="s">&quot;Kaylee&quot;</span><span class="p">:</span> <span class="s">&quot;Mecánico&quot;</span><span class="p">,</span>
 <span class="p">]</span>
 <span class="n">trabajos</span><span class="p">[</span><span class="s">&quot;Jayne&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;Relaciones públicas&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Para crear un array o diccionario vacío, usa la sintaxis de inicialización.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">arrayVacio</span> <span class="p">=</span> <span class="p">[</span><span class="nb">String</span><span class="p">]()</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">arrayVacio</span> <span class="p">=</span> <span class="p">[</span><span class="nb">String</span><span class="p">]()</span>
 <span class="kd">let</span> <span class="nv">diccionarioVacio</span> <span class="p">=</span> <span class="p">[</span><span class="nb">String</span><span class="p">:</span> <span class="nb">Float</span><span class="p">]()</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Si el tipo de información puede ser inferido, puedes escribir un array
@@ -960,29 +960,29 @@ vacío como <code>[]</code> y un diccionario vacío como <code>[:]</code>; por e
 estableces un nuevo valor para una variable o pasas un argumento a una
 función.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">listaCompra</span> <span class="p">=</span> <span class="p">[]</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="n">listaCompra</span> <span class="p">=</span> <span class="p">[]</span>
 <span class="n">trabajos</span> <span class="p">=</span> <span class="p">[:]</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h4>Tuplas</h4>
 <p>Una tupla agrupa varios valores en un único valor compuesto.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">http404Error</span> <span class="p">=</span> <span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s">&quot;Not Found&quot;</span><span class="p">)</span>
-</pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">http404Error</span> <span class="p">=</span> <span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s">&quot;Not Found&quot;</span><span class="p">)</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>El tipo de la tupla es <code>(Int, String)</code>.</p>
 <p>Para obtener los valores de la tupla podemos <em>descomponerla</em>. Si
 queremos ignorar una parte podemos utilizar un subrrayado (<code>_</code>).</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="p">(</span><span class="n">statusCode</span><span class="p">,</span> <span class="n">statusMensaje</span><span class="p">)</span> <span class="p">=</span> <span class="n">http404Error</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="p">(</span><span class="n">statusCode</span><span class="p">,</span> <span class="n">statusMensaje</span><span class="p">)</span> <span class="p">=</span> <span class="n">http404Error</span>
 <span class="kd">let</span> <span class="p">(</span><span class="n">soloStatusCode</span><span class="p">,</span> <span class="kc">_</span><span class="p">)</span> <span class="p">=</span> <span class="n">http404Error</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>También podemos acceder por posición:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="bp">print</span><span class="p">(</span><span class="s">&quot;El código de estado es </span><span class="si">\(</span><span class="n">http404Error</span><span class="p">.</span><span class="mi">0</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-</pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="s">&quot;El código de estado es </span><span class="si">\(</span><span class="n">http404Error</span><span class="p">.</span><span class="mi">0</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+</code></pre></div>
 </td></tr></table>
 
 <h4>Control de flujo</h4>
@@ -999,7 +999,7 @@ requieren llaves alrededor del cuerpo.</p>
  7
  8
  9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">puntuacionesIndividuales</span> <span class="p">=</span> <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">puntuacionesIndividuales</span> <span class="p">=</span> <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
 <span class="kd">var</span> <span class="nv">puntuacionEquipo</span> <span class="p">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">puntuacion</span> <span class="k">in</span> <span class="n">puntuacionesIndividuales</span> <span class="p">{</span>
     <span class="k">if</span> <span class="n">puntuacion</span> <span class="o">&gt;</span> <span class="mi">50</span> <span class="p">{</span>
@@ -1009,7 +1009,7 @@ requieren llaves alrededor del cuerpo.</p>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">puntuacionEquipo</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>En una sentencia <code>if</code>, el condicional debe ser una expresión booleana;
@@ -1027,7 +1027,7 @@ valor para marcar el valor como opcional.</p>
 5
 6
 7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nv">cadenaOpcional</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="s">&quot;Hola&quot;</span>
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">var</span> <span class="nv">cadenaOpcional</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="s">&quot;Hola&quot;</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">cadenaOpcional</span> <span class="p">==</span> <span class="kc">nil</span><span class="p">)</span>
 
 <span class="kd">var</span> <span class="nv">nombreOpcional</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="s">&quot;John Appleseed&quot;</span>
@@ -1035,7 +1035,7 @@ valor para marcar el valor como opcional.</p>
 <span class="k">if</span> <span class="kd">let</span> <span class="nv">nombre</span> <span class="p">=</span> <span class="n">nombreOpcional</span> <span class="p">{</span>
     <span class="n">saludo</span> <span class="p">=</span> <span class="s">&quot;Hola, </span><span class="si">\(</span><span class="n">nombre</span><span class="si">)</span><span class="s">&quot;</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -1053,10 +1053,10 @@ defecto usando el operador <code>??</code>. Si falta el valor valor opcional, se
 usa el valor por defecto en su lugar.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">nombrePila</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">nombrePila</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span>
 <span class="kd">let</span> <span class="nv">nombreCompleto</span><span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;John Appleseed&quot;</span>
 <span class="kd">let</span> <span class="nv">saludoInformal</span> <span class="p">=</span> <span class="s">&quot;¿Qué tal, </span><span class="si">\(</span><span class="n">nombrePila</span> <span class="p">??</span> <span class="n">nombreCompleto</span><span class="si">)</span><span class="s">?&quot;</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Las sentencias <code>switch</code> permiten cualquier tipo de datos y una amplia
@@ -1070,7 +1070,7 @@ pruebas de igualdad.</p>
 6
 7
 8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">verdura</span> <span class="p">=</span> <span class="s">&quot;pimiento rojo&quot;</span>
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">verdura</span> <span class="p">=</span> <span class="s">&quot;pimiento rojo&quot;</span>
 <span class="k">switch</span> <span class="n">verdura</span> <span class="p">{</span>
     <span class="k">case</span> <span class="s">&quot;zanahoria&quot;</span><span class="p">:</span>
         <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Buena para la vista.&quot;</span><span class="p">)</span>
@@ -1079,7 +1079,7 @@ pruebas de igualdad.</p>
     <span class="k">default</span><span class="p">:</span>
         <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Siempre puedes hacer una buena sopa.&quot;</span><span class="p">)</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -1107,7 +1107,7 @@ sus claves y valores se iteran en un orden arbitrario.</p>
 11
 12
 13
-14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">numerosInteresantes</span> <span class="p">=</span> <span class="p">[</span>
+14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">numerosInteresantes</span> <span class="p">=</span> <span class="p">[</span>
     <span class="s">&quot;Primos&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span>
     <span class="s">&quot;Fibonacci&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
     <span class="s">&quot;Cuadrados&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span>
@@ -1121,7 +1121,7 @@ sus claves y valores se iteran en un orden arbitrario.</p>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">mayor</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -1141,7 +1141,7 @@ asegurando que el bucle se ejecuta al menos una vez.</p>
  8
  9
 10
-11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nv">n</span> <span class="p">=</span> <span class="mi">2</span>
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">var</span> <span class="nv">n</span> <span class="p">=</span> <span class="mi">2</span>
 <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="p">{</span>
     <span class="n">n</span> <span class="o">*=</span> <span class="mi">2</span>
 <span class="p">}</span>
@@ -1152,7 +1152,7 @@ asegurando que el bucle se ejecuta al menos una vez.</p>
     <span class="n">m</span> <span class="o">*=</span>  <span class="mi">2</span>
 <span class="p">}</span> <span class="k">while</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="mi">100</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Puedes definir un índice en un bucle usando <code>..&lt;</code> para construir un
@@ -1161,12 +1161,12 @@ rango de índices.</p>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nv">total</span> <span class="p">=</span> <span class="mi">0</span>
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">var</span> <span class="nv">total</span> <span class="p">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.&lt;</span><span class="mi">4</span> <span class="p">{</span>
     <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span>
 <span class="p">}</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Usa <code>..&lt;</code> para construir un rango que omita su valor superior, y usa
@@ -1178,11 +1178,11 @@ función.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">dia</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">dia</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
     <span class="k">return</span> <span class="s">&quot;Hola </span><span class="si">\(</span><span class="n">nombre</span><span class="si">)</span><span class="s">, hoy es </span><span class="si">\(</span><span class="n">dia</span><span class="si">)</span><span class="s">.&quot;</span>
 <span class="p">}</span>
 <span class="n">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="n">dia</span><span class="p">:</span> <span class="s">&quot;Martes&quot;</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -1197,11 +1197,11 @@ escribiendo <code>_</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">saluda</span><span class="p">(</span><span class="kc">_</span> <span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">el</span> <span class="n">dia</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">saluda</span><span class="p">(</span><span class="kc">_</span> <span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">el</span> <span class="n">dia</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
     <span class="k">return</span> <span class="s">&quot;Hola </span><span class="si">\(</span><span class="n">nombre</span><span class="si">)</span><span class="s">, hoy es </span><span class="si">\(</span><span class="n">dia</span><span class="si">)</span><span class="s">.&quot;</span>
 <span class="p">}</span>
 <span class="n">saluda</span><span class="p">(</span><span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="n">el</span><span class="p">:</span> <span class="s">&quot;Martes&quot;</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Las funciones pueden devolver cualquier tipo de dato, como tuplas.</p>
@@ -1224,7 +1224,7 @@ escribiendo <code>_</code>:</p>
 17
 18
 19
-20</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">calculaEstadisticas</span><span class="p">(</span><span class="n">puntuaciones</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> 
+20</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">calculaEstadisticas</span><span class="p">(</span><span class="n">puntuaciones</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> 
                         <span class="p">(</span><span class="bp">min</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="bp">max</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">sum</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">min</span> <span class="p">=</span> <span class="n">puntuaciones</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="kd">var</span> <span class="nv">max</span> <span class="p">=</span> <span class="n">puntuaciones</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1244,7 +1244,7 @@ escribiendo <code>_</code>:</p>
 <span class="kd">let</span> <span class="nv">estadisticas</span> <span class="p">=</span> <span class="n">calculaEstadisticas</span><span class="p">(</span><span class="n">puntuaciones</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">estadisticas</span><span class="p">.</span><span class="n">sum</span><span class="p">)</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">estadisticas</span><span class="p">.</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Las funciones también pueden tener un número variable de argumentos,
@@ -1257,7 +1257,7 @@ agrupándose todos ellos en un array.</p>
 6
 7
 8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">suma</span><span class="p">(</span><span class="n">numeros</span><span class="p">:</span> <span class="nb">Int</span><span class="p">...)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">suma</span><span class="p">(</span><span class="n">numeros</span><span class="p">:</span> <span class="nb">Int</span><span class="p">...)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">suma</span> <span class="p">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">numeros</span> <span class="k">in</span> <span class="n">numeros</span> <span class="p">{</span>
         <span class="n">suma</span> <span class="o">+=</span> <span class="n">numeros</span>
@@ -1266,7 +1266,7 @@ agrupándose todos ellos en un array.</p>
 <span class="p">}</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">suma</span><span class="p">())</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">suma</span><span class="p">(</span><span class="n">numeros</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">597</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -1284,7 +1284,7 @@ organizar el código en una función que es larga o complicada.</p>
 6
 7
 8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">devuelveQuince</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">devuelveQuince</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">y</span> <span class="p">=</span> <span class="mi">10</span>
     <span class="kd">func</span> <span class="nf">suma</span><span class="p">()</span> <span class="p">{</span>
         <span class="n">y</span> <span class="o">+=</span> <span class="mi">5</span>
@@ -1293,7 +1293,7 @@ organizar el código en una función que es larga o complicada.</p>
     <span class="k">return</span> <span class="n">y</span>
 <span class="p">}</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">devuelveQuince</span><span class="p">())</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Las funciones son un tipo de primera clase. Esto significa que una
@@ -1305,7 +1305,7 @@ función puede devolver otra función como resultado.</p>
 5
 6
 7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">construyeIncrementador</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">((</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeIncrementador</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">((</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">func</span> <span class="nf">sumaUno</span><span class="p">(</span><span class="n">numero</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
         <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">numero</span>
     <span class="p">}</span>
@@ -1313,7 +1313,7 @@ función puede devolver otra función como resultado.</p>
 <span class="p">}</span>
 <span class="kd">var</span> <span class="nv">incrementa</span> <span class="p">=</span> <span class="n">construyeIncrementador</span><span class="p">()</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">incrementa</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Podemos modificar el ejemplo <code>devuelveQuince</code> para que se devuelva una
@@ -1330,7 +1330,7 @@ versión modificada de la función <code>suma</code>. Llamamos a la función
  9
 10
 11
-12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">devuelveSuma</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">(()</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">devuelveSuma</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">(()</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">y</span> <span class="p">=</span> <span class="mi">10</span>
     <span class="kd">func</span> <span class="nf">suma</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
         <span class="n">y</span> <span class="o">+=</span> <span class="mi">5</span>
@@ -1342,7 +1342,7 @@ versión modificada de la función <code>suma</code>. Llamamos a la función
 <span class="kd">let</span> <span class="nv">f</span> <span class="p">=</span> <span class="n">devuelveSuma</span><span class="p">()</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">())</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">())</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Una función puede tomar otra función como uno de sus argumentos.</p>
@@ -1358,7 +1358,7 @@ versión modificada de la función <code>suma</code>. Llamamos a la función
 10
 11
 12
-13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">cumpleCondicion</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">],</span> <span class="n">condicion</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">cumpleCondicion</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">],</span> <span class="n">condicion</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
     <span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">lista</span> <span class="p">{</span>
         <span class="k">if</span> <span class="n">condicion</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span> <span class="kc">true</span>
@@ -1371,7 +1371,7 @@ versión modificada de la función <code>suma</code>. Llamamos a la función
 <span class="p">}</span>
 <span class="kd">var</span> <span class="nv">numeros</span> <span class="p">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">cumpleCondicion</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">numeros</span><span class="p">,</span> <span class="n">condicion</span><span class="p">:</span> <span class="n">menorQueDiez</span><span class="p">))</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Las funciones son en la realidad un caso especial de clausuras:
@@ -1386,12 +1386,12 @@ anidadas. Puedes escribir una clausura rodeando el código con llaves
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">numeros</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span>
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="n">numeros</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span>
     <span class="p">(</span><span class="n">numero</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span>
     <span class="kd">let</span> <span class="nv">resultado</span> <span class="p">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">numero</span>
     <span class="k">return</span> <span class="n">resultado</span>
 <span class="p">})</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -1405,9 +1405,9 @@ tipo de sus parámetros, el tipo devuelto o ambos. Las clausuras
 escritas en una sentencia devuelven implícitamente el valor de esa única
 sentencia.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">numerosMapeados</span> <span class="p">=</span> <span class="n">numeros</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span> <span class="n">numero</span> <span class="k">in</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">numero</span> <span class="p">})</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">numerosMapeados</span> <span class="p">=</span> <span class="n">numeros</span><span class="p">.</span><span class="bp">map</span><span class="p">({</span> <span class="n">numero</span> <span class="k">in</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">numero</span> <span class="p">})</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">numerosMapeados</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Puedes referirte a los parámetros por número en lugar de por nombre;
@@ -1416,9 +1416,9 @@ clausura pasada como último argumento puede aparecer inmediatamente
 después de los paréntesis. Cuando una clausura es el único argumento
 de una función, puedes omitir los paréntesis por completo.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">numerosOrdenados</span> <span class="p">=</span> <span class="n">numeros</span><span class="p">.</span><span class="bp">sorted</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">}</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">numerosOrdenados</span> <span class="p">=</span> <span class="n">numeros</span><span class="p">.</span><span class="bp">sorted</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">}</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">numerosOrdenados</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h4>Objetos y clases</h4>
@@ -1433,13 +1433,13 @@ funciones.</p>
 3
 4
 5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Figura</span> <span class="p">{</span>
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">class</span> <span class="nc">Figura</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">numeroDeLados</span> <span class="p">=</span> <span class="mi">0</span>
     <span class="kd">func</span> <span class="nf">descripcionSencilla</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
         <span class="k">return</span> <span class="s">&quot;Una figura con </span><span class="si">\(</span><span class="n">numeroDeLados</span><span class="si">)</span><span class="s"> lados.&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -1452,10 +1452,10 @@ de la clase. Usa la sintaxis de punto para acceder a las propiedades y
 los métodos de la instancia.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">var</span> <span class="nv">figura</span> <span class="p">=</span> <span class="n">Figura</span><span class="p">()</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">var</span> <span class="nv">figura</span> <span class="p">=</span> <span class="n">Figura</span><span class="p">()</span>
 <span class="n">figura</span><span class="p">.</span><span class="n">numeroDeLados</span> <span class="p">=</span> <span class="mi">7</span>
 <span class="kd">var</span> <span class="nv">descripcionFigura</span> <span class="p">=</span> <span class="n">figura</span><span class="p">.</span><span class="n">descripcionSencilla</span><span class="p">()</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>A esta versión de la clase <code>Figura</code> le falta algo importante: un
@@ -1472,7 +1472,7 @@ inicializador para preparar la clase cuando se crea una instancia. Usa
  9
 10
 11
-12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">FiguraConNombre</span> <span class="p">{</span>
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">class</span> <span class="nc">FiguraConNombre</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">numeroDeLados</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">0</span>
     <span class="kd">var</span> <span class="nv">nombre</span><span class="p">:</span> <span class="nb">String</span>
 
@@ -1484,7 +1484,7 @@ inicializador para preparar la clase cuando se crea una instancia. Usa
         <span class="k">return</span> <span class="s">&quot;Una figura con </span><span class="si">\(</span><span class="n">numeroDeLados</span><span class="si">)</span><span class="s"> lados.&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Fíjate en cómo se utiliza <code>self</code> para distinguir la propiedad <code>nombre</code>
@@ -1523,7 +1523,7 @@ realmente no sobreescriben ningún método de la superclase.</p>
 17
 18
 19
-20</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">Cuadrado</span><span class="p">:</span> <span class="n">FiguraConNombre</span> <span class="p">{</span>
+20</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">class</span> <span class="nc">Cuadrado</span><span class="p">:</span> <span class="n">FiguraConNombre</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">longitudLado</span><span class="p">:</span> <span class="nb">Double</span>
 
     <span class="kd">init</span><span class="p">(</span><span class="n">longitudLado</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
@@ -1543,7 +1543,7 @@ realmente no sobreescriben ningún método de la superclase.</p>
 <span class="kd">let</span> <span class="nv">test</span> <span class="p">=</span> <span class="n">Cuadrado</span><span class="p">(</span><span class="n">longitudLado</span><span class="p">:</span> <span class="mf">5.2</span><span class="p">,</span> <span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Mi cuadrado de prueba&quot;</span><span class="p">)</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">test</span><span class="p">.</span><span class="n">area</span><span class="p">())</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">test</span><span class="p">.</span><span class="n">descripcionSencilla</span><span class="p">())</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -1580,7 +1580,7 @@ tener un <em>getter</em> y un <em>setter</em>.</p>
 23
 24
 25
-26</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">TrianguloEquilatero</span><span class="p">:</span> <span class="n">FiguraConNombre</span> <span class="p">{</span>
+26</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">class</span> <span class="nc">TrianguloEquilatero</span><span class="p">:</span> <span class="n">FiguraConNombre</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">longitudLado</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">=</span> <span class="mf">0.0</span>
 
     <span class="kd">init</span><span class="p">(</span><span class="n">longitudLado</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
@@ -1606,7 +1606,7 @@ tener un <em>getter</em> y un <em>setter</em>.</p>
 <span class="bp">print</span><span class="p">(</span><span class="n">triangulo</span><span class="p">.</span><span class="n">perimetro</span><span class="p">)</span>
 <span class="n">triangulo</span><span class="p">.</span><span class="n">perimetro</span> <span class="p">=</span> <span class="mf">9.9</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">triangulo</span><span class="p">.</span><span class="n">longitudLado</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>En el <em>setter</em> de <code>perimetro</code>, el nuevo valor tiene el nombre
@@ -1647,7 +1647,7 @@ siempre es la misma que la longitud del lado de su cuadrado.</p>
 18
 19
 20
-21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">TrianguloYCuadrado</span> <span class="p">{</span>
+21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">class</span> <span class="nc">TrianguloYCuadrado</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">triangulo</span><span class="p">:</span> <span class="n">TrianguloEquilatero</span> <span class="p">{</span>
         <span class="kr">willSet</span> <span class="p">{</span>
             <span class="n">cuadrado</span><span class="p">.</span><span class="n">longitudLado</span> <span class="p">=</span> <span class="n">newValue</span><span class="p">.</span><span class="n">longitudLado</span>
@@ -1668,7 +1668,7 @@ siempre es la misma que la longitud del lado de su cuadrado.</p>
 <span class="bp">print</span><span class="p">(</span><span class="n">trianguloYCuadrado</span><span class="p">.</span><span class="n">triangulo</span><span class="p">.</span><span class="n">longitudLado</span><span class="p">)</span>
 <span class="n">trianguloYCuadrado</span><span class="p">.</span><span class="n">cuadrado</span> <span class="p">=</span> <span class="n">Cuadrado</span><span class="p">(</span><span class="n">longitudLado</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Cuadrado mayor&quot;</span><span class="p">)</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">trianguloYCuadrado</span><span class="p">.</span><span class="n">triangulo</span><span class="p">.</span><span class="n">longitudLado</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Cuando trabajamos con valores opcionales, puedes escribir <code>?</code> antes de
@@ -1679,9 +1679,9 @@ desenvuelve, y todo lo que hay después del <code>?</code> se realiza sobre el
 valor desenvuelto. En ambos casos, el valor de la expresión completa
 es un valor opcional.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">cuadradoOpcional</span><span class="p">:</span> <span class="n">Cuadrado</span><span class="p">?</span> <span class="p">=</span> <span class="n">Cuadrado</span><span class="p">(</span><span class="n">longitudLado</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Cuadrado opcional&quot;</span><span class="p">)</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">cuadradoOpcional</span><span class="p">:</span> <span class="n">Cuadrado</span><span class="p">?</span> <span class="p">=</span> <span class="n">Cuadrado</span><span class="p">(</span><span class="n">longitudLado</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Cuadrado opcional&quot;</span><span class="p">)</span>
 <span class="kd">let</span> <span class="nv">longitudLado</span> <span class="p">=</span> <span class="n">cuadradoOpcional</span><span class="p">?.</span><span class="n">longitudLado</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h4>Enumeraciones y estructuras</h4>
@@ -1707,7 +1707,7 @@ con nombre, las enumeraciones pueden tener métodos asociados.</p>
 18
 19
 20
-21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">enum</span> <span class="nc">Valor</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Valor</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
     <span class="k">case</span> <span class="n">uno</span> <span class="p">=</span> <span class="mi">1</span>
     <span class="k">case</span> <span class="n">dos</span><span class="p">,</span> <span class="n">tres</span><span class="p">,</span> <span class="n">cuatro</span><span class="p">,</span> <span class="n">cinco</span><span class="p">,</span> <span class="n">seis</span><span class="p">,</span> <span class="n">siete</span><span class="p">,</span> <span class="n">ocho</span><span class="p">,</span> <span class="n">nueve</span><span class="p">,</span> <span class="n">diez</span>
     <span class="k">case</span> <span class="n">sota</span><span class="p">,</span> <span class="n">caballo</span><span class="p">,</span> <span class="n">rey</span>
@@ -1728,7 +1728,7 @@ con nombre, las enumeraciones pueden tener métodos asociados.</p>
 <span class="p">}</span>
 <span class="kd">let</span> <span class="nv">carta</span> <span class="p">=</span> <span class="n">Valor</span><span class="p">.</span><span class="n">uno</span>
 <span class="kd">let</span> <span class="nv">valorBrutoCarta</span> <span class="p">=</span> <span class="n">carta</span><span class="p">.</span><span class="n">rawValue</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -1749,11 +1749,11 @@ inicializador devolverá <code>nil</code>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">if</span> <span class="kd">let</span> <span class="nv">valorConvertido</span> <span class="p">=</span> <span class="n">Valor</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">if</span> <span class="kd">let</span> <span class="nv">valorConvertido</span> <span class="p">=</span> <span class="n">Valor</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">let</span> <span class="nv">descripcionTres</span> <span class="p">=</span> <span class="n">valorConvertido</span><span class="p">.</span><span class="n">descripcionSencilla</span><span class="p">()</span>
     <span class="bp">print</span><span class="p">(</span><span class="n">descripcionTres</span><span class="p">)</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Los valores <em>case</em> de una enumeración son valores reales, no una forma
@@ -1776,7 +1776,7 @@ proporcionar uno.</p>
 14
 15
 16
-17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">enum</span> <span class="nc">Palo</span> <span class="p">{</span>
+17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Palo</span> <span class="p">{</span>
     <span class="k">case</span> <span class="n">oros</span><span class="p">,</span> <span class="n">bastos</span><span class="p">,</span> <span class="n">copas</span><span class="p">,</span> <span class="n">espadas</span>
     <span class="kd">func</span> <span class="nf">descripcionSencilla</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
         <span class="k">switch</span> <span class="kc">self</span> <span class="p">{</span>
@@ -1793,7 +1793,7 @@ proporcionar uno.</p>
 <span class="p">}</span>
 <span class="kd">let</span> <span class="nv">copas</span> <span class="p">=</span> <span class="n">Palo</span><span class="p">.</span><span class="n">copas</span>
 <span class="kd">let</span> <span class="nv">descripcionCopas</span> <span class="p">=</span> <span class="n">copas</span><span class="p">.</span><span class="n">descripcionSencilla</span><span class="p">()</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -1833,7 +1833,7 @@ error.</p>
 11
 12
 13
-14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">enum</span> <span class="nc">RespuestaServidor</span> <span class="p">{</span>
+14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">enum</span> <span class="nc">RespuestaServidor</span> <span class="p">{</span>
     <span class="k">case</span> <span class="n">resultado</span><span class="p">(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">String</span><span class="p">)</span>
     <span class="k">case</span> <span class="n">error</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span>
 <span class="p">}</span>
@@ -1847,7 +1847,7 @@ error.</p>
     <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">error</span><span class="p">):</span>
         <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Fallo...  </span><span class="si">\(</span><span class="n">error</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -1871,7 +1871,7 @@ referencia.</p>
 6
 7
 8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">struct</span> <span class="nc">Carta</span> <span class="p">{</span>
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Carta</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">valor</span><span class="p">:</span> <span class="n">Valor</span>
     <span class="kd">var</span> <span class="nv">palo</span><span class="p">:</span> <span class="n">Palo</span>
     <span class="kd">func</span> <span class="nf">descripcionSencilla</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
@@ -1880,7 +1880,7 @@ referencia.</p>
 <span class="p">}</span>
 <span class="kd">let</span> <span class="nv">tresDeEspadas</span> <span class="p">=</span> <span class="n">Carta</span><span class="p">(</span><span class="n">valor</span><span class="p">:</span> <span class="p">.</span><span class="n">tres</span><span class="p">,</span> <span class="n">palo</span><span class="p">:</span> <span class="p">.</span><span class="n">espadas</span><span class="p">)</span>
 <span class="kd">let</span> <span class="nv">descripcionTresDeEspadas</span> <span class="p">=</span> <span class="n">tresDeEspadas</span><span class="p">.</span><span class="n">descripcionSencilla</span><span class="p">()</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -1893,11 +1893,11 @@ una carta de cada combinación de valor y palo.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">protocol</span> <span class="nc">ProtocoloEjemplo</span> <span class="p">{</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">ProtocoloEjemplo</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">descripcionSencilla</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
     <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">ajustar</span><span class="p">()</span>
 <span class="p">}</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Clases, enumeraciones y estructuras pueden todas adoptar protocolos.</p>
@@ -1920,7 +1920,7 @@ una carta de cada combinación de valor y palo.</p>
 17
 18
 19
-20</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">ClaseSencilla</span><span class="p">:</span> <span class="n">ProtocoloEjemplo</span> <span class="p">{</span>
+20</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">class</span> <span class="nc">ClaseSencilla</span><span class="p">:</span> <span class="n">ProtocoloEjemplo</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">descripcionSencilla</span><span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;Una clase muy simple.&quot;</span>
     <span class="kd">var</span> <span class="nv">otraPropiedad</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">69105</span>
     <span class="kd">func</span> <span class="nf">ajustar</span><span class="p">()</span> <span class="p">{</span>
@@ -1940,7 +1940,7 @@ una carta de cada combinación de valor y palo.</p>
 <span class="kd">var</span> <span class="nv">b</span> <span class="p">=</span> <span class="n">EstructuraSencilla</span><span class="p">()</span>
 <span class="n">b</span><span class="p">.</span><span class="n">ajustar</span><span class="p">()</span>
 <span class="kd">let</span> <span class="nv">descripcionB</span> <span class="p">=</span> <span class="n">b</span><span class="p">.</span><span class="n">descripcionSencilla</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -1965,7 +1965,7 @@ biblioteca o un <em>framework</em>.</p>
 6
 7
 8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">extension</span> <span class="nc">Int</span><span class="p">:</span> <span class="n">ProtocoloEjemplo</span> <span class="p">{</span>
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Int</span><span class="p">:</span> <span class="n">ProtocoloEjemplo</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">descripcionSencilla</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
         <span class="k">return</span> <span class="s">&quot;El número </span><span class="si">\(</span><span class="kc">self</span><span class="si">)</span><span class="s">&quot;</span>
     <span class="p">}</span>
@@ -1974,7 +1974,7 @@ biblioteca o un <em>framework</em>.</p>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="bp">print</span><span class="p">(</span><span class="mf">7.</span><span class="n">descripcionSencilla</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Otro ejemplo usando una función:</p>
@@ -1986,7 +1986,7 @@ biblioteca o un <em>framework</em>.</p>
 6
 7
 8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">extension</span> <span class="nc">Int</span> <span class="p">{</span> 
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Int</span> <span class="p">{</span> 
     <span class="kd">func</span> <span class="nf">repetir</span><span class="p">(</span><span class="n">task</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="p">())</span> <span class="p">{</span> 
         <span class="k">for</span> <span class="kc">_</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">..</span><span class="kc">self</span> <span class="p">{</span> 
             <span class="n">task</span><span class="p">()</span> 
@@ -1995,7 +1995,7 @@ biblioteca o un <em>framework</em>.</p>
 <span class="p">}</span> 
 
 <span class="mf">10.</span><span class="n">repetir</span> <span class="p">{</span><span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hola&quot;</span><span class="p">)}</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <blockquote>
@@ -2010,10 +2010,10 @@ protocolo. Cuando trabajas con valores cuyo tipo es un tipo de
 protocolo, no están disponibles los métodos fuera del protocolo.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">valorProtocolo</span><span class="p">:</span> <span class="n">ProtocoloEjemplo</span> <span class="p">=</span> <span class="n">a</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">valorProtocolo</span><span class="p">:</span> <span class="n">ProtocoloEjemplo</span> <span class="p">=</span> <span class="n">a</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">valorProtocolo</span><span class="p">.</span><span class="n">descripcionSencilla</span><span class="p">)</span>
 <span class="c1">// print(valorProtocolo.otraPropiedad)  // Descomentar para comprobar el error</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Incluso aunque la variable <code>valorProtocolo</code> tenga un tipo en tiempo de
@@ -2031,7 +2031,7 @@ función o un tipo genérico.</p>
 5
 6
 7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">itemRepetido</span><span class="p">&lt;</span><span class="n">Item</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">item</span><span class="p">:</span> <span class="n">Item</span><span class="p">,</span> <span class="n">numeroDeVeces</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="n">Item</span><span class="p">]</span> <span class="p">{</span>
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">itemRepetido</span><span class="p">&lt;</span><span class="n">Item</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">item</span><span class="p">:</span> <span class="n">Item</span><span class="p">,</span> <span class="n">numeroDeVeces</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="n">Item</span><span class="p">]</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">resultado</span> <span class="p">=</span> <span class="p">[</span><span class="n">Item</span><span class="p">]()</span>
     <span class="k">for</span> <span class="kc">_</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.&lt;</span><span class="n">numeroDeVeces</span> <span class="p">{</span>
         <span class="n">resultado</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
@@ -2039,7 +2039,7 @@ función o un tipo genérico.</p>
     <span class="k">return</span> <span class="n">resultado</span>
 <span class="p">}</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">itemRepetido</span><span class="p">(</span><span class="s">&quot;knock&quot;</span><span class="p">,</span> <span class="n">numeroDeVeces</span><span class="p">:</span><span class="mi">4</span><span class="p">))</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Puedes hacer formas genéricas de funciones y métodos, así como de
@@ -2050,14 +2050,14 @@ clases, enumeraciones y estructuras.</p>
 4
 5
 6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">// Reimplementamos el tipo Optional de la biblioteca estándar de Swift</span>
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="c1">// Reimplementamos el tipo Optional de la biblioteca estándar de Swift</span>
 <span class="kd">enum</span> <span class="nc">ValorOpcional</span><span class="p">&lt;</span><span class="n">Envuelto</span><span class="p">&gt;</span> <span class="p">{</span>
     <span class="k">case</span> <span class="n">ninguno</span>
     <span class="k">case</span> <span class="n">alguno</span><span class="p">(</span><span class="n">Envuelto</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="kd">var</span> <span class="nv">posibleInteger</span><span class="p">:</span> <span class="n">ValorOpcional</span><span class="p">&lt;</span><span class="nb">Int</span><span class="p">&gt;</span> <span class="p">=</span> <span class="p">.</span><span class="n">ninguno</span>
 <span class="n">posibleInteger</span> <span class="p">=</span> <span class="p">.</span><span class="n">alguno</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Es posible usar <code>where</code> justo antes del cuerpo para especificar una
@@ -2076,7 +2076,7 @@ o para requerir que una clase tenga una superclase determinada.</p>
 10
 11
 12
-13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">func</span> <span class="nf">elementosComunes</span><span class="p">&lt;</span><span class="n">T</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">U</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">izq</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="kc">_</span> <span class="n">der</span><span class="p">:</span> <span class="n">U</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span>
+13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">elementosComunes</span><span class="p">&lt;</span><span class="n">T</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">U</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">izq</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="kc">_</span> <span class="n">der</span><span class="p">:</span> <span class="n">U</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span>
     <span class="k">where</span> <span class="n">T</span><span class="p">.</span><span class="n">Iterator</span><span class="p">.</span><span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span><span class="p">,</span> <span class="n">T</span><span class="p">.</span><span class="n">Iterator</span><span class="p">.</span><span class="n">Element</span> <span class="p">==</span> <span class="n">U</span><span class="p">.</span><span class="n">Iterator</span><span class="p">.</span><span class="n">Element</span> <span class="p">{</span>
         <span class="k">for</span> <span class="n">izqItem</span> <span class="k">in</span> <span class="n">izq</span> <span class="p">{</span>
             <span class="k">for</span> <span class="n">derItem</span> <span class="k">in</span> <span class="n">der</span> <span class="p">{</span>
@@ -2089,7 +2089,7 @@ o para requerir que una clase tenga una superclase determinada.</p>
 <span class="p">}</span>
 
 <span class="bp">print</span><span class="p">(</span><span class="n">elementosComunes</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Si se escribe <code>&lt;T: Equatable&gt;</code> es equivalente a escribir <code>&lt;T&gt; ... where T: Equatable</code>.</p>
@@ -2133,9 +2133,9 @@ Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad d
       <div class="md-footer-copyright">
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
@@ -2145,9 +2145,9 @@ Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad d
       
     </div>
     
-      <script src="../../assets/javascripts/application.808e90bb.js"></script>
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

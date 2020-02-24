@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
     
     
       
@@ -40,7 +40,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
       
         <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -51,7 +51,7 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
@@ -83,7 +83,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#practica-3-funciones-recursivas-sobre-listas" tabindex="1" class="md-skip">
+      <a href="#practica-3-funciones-recursivas-sobre-listas" tabindex="0" class="md-skip">
         Saltar a contenido
       </a>
     
@@ -92,9 +92,9 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../.." title="LPP" class="md-header-nav__button md-logo">
+        <a href="../.." title="LPP" aria-label="LPP" class="md-header-nav__button md-logo">
           
-            <img src="../../imagenes/logo.png" width="24" height="24">
+            <img alt="logo" src="../../imagenes/logo.png" width="24" height="24">
           
         </a>
       </div>
@@ -123,7 +123,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -164,7 +164,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="../.." title="LPP" class="md-nav__button md-logo">
       
-        <img src="../../imagenes/logo.png" width="48" height="48">
+        <img alt="logo" src="../../imagenes/logo.png" width="48" height="48">
       
     </a>
     LPP
@@ -559,10 +559,10 @@ la posición <code>final</code> (sin incluir).</p>
 <p>Ejemplos:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">es-prefijo?</span> <span class="s2">&quot;ante&quot;</span> <span class="s2">&quot;anterior&quot;</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">es-prefijo?</span> <span class="s2">&quot;ante&quot;</span> <span class="s2">&quot;anterior&quot;</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="n">contiene-prefijo</span> <span class="s2">&quot;ante&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;anterior&quot;</span> <span class="s2">&quot;antígona&quot;</span> <span class="s2">&quot;antena&quot;</span> <span class="s2">&quot;anatema&quot;</span><span class="p">))</span> 
 <span class="c1">; ⇒ (#t #f #t #f)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>b) Implementa la función recursiva <code>(inserta-pos dato pos lista)</code> que
@@ -572,9 +572,9 @@ en cabeza. Suponemos que la posición siempre será positiva y menor o
 igual que la longitud de la lista.</p>
 <p>Ejemplos:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">inserta-pos</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="mi">2</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(a a b a a)</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">inserta-pos</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="mi">2</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(a a b a a)</span>
 <span class="p">(</span><span class="n">inserta-pos</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="mi">0</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(b a a a a)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>c) Implementa la función recursiva <code>(inserta-ordenada n
@@ -582,16 +582,16 @@ lista-ordenada)</code> que recibe un número y una lista de números ordenados
 de menor a mayor y devuelve la lista resultante de insertar el número
 <code>n</code> en la posición correcta para que la lista siga estando ordenada.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">inserta-ordenada</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">-8</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">11</span> <span class="mi">20</span><span class="p">))</span> <span class="c1">; ⇒ (-8 2 3 10 11 20)</span>
-</pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">inserta-ordenada</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">-8</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">11</span> <span class="mi">20</span><span class="p">))</span> <span class="c1">; ⇒ (-8 2 3 10 11 20)</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Usando la función anterior <code>inserta-ordenada</code> implementa la función recursiva
 <code>(ordena lista)</code> que recibe una lista de números y devuelve una lista
 ordenada.</p>
 <p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">ordena</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">-1</span> <span class="mi">100</span> <span class="mi">4</span> <span class="mi">-6</span><span class="p">))</span> <span class="c1">; ⇒ (-6 -1 2 4 100)</span>
-</pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">ordena</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">-1</span> <span class="mi">100</span> <span class="mi">4</span> <span class="mi">-6</span><span class="p">))</span> <span class="c1">; ⇒ (-6 -1 2 4 100)</span>
+</code></pre></div>
 </td></tr></table>
 
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
@@ -603,9 +603,9 @@ como el número que indique cada pareja.</p>
 <code>(expande-lista lista-parejas)</code> que trabaje sobre una lista de parejas.</p>
 <p>Ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">expande-parejas</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#t</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;LPP&quot;</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="o">.</span> <span class="mi">4</span><span class="p">))</span> 
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">expande-parejas</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#t</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;LPP&quot;</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="o">.</span> <span class="mi">4</span><span class="p">))</span> 
 <span class="c1">; ⇒ (#t #t #t &quot;LPP&quot; &quot;LPP&quot; b b b b)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <div class="admonition hint">
@@ -622,9 +622,9 @@ número. La lista nunca va a contener dos números consecutivos y
 siempre va a haber un elemento después de un número.</p>
 <p>Ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">expande2</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="ss">clase</span> <span class="ss">ua</span> <span class="mi">3</span> <span class="ss">lpp</span> <span class="ss">aulario</span><span class="p">))</span> 
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">expande2</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="ss">clase</span> <span class="ss">ua</span> <span class="mi">3</span> <span class="ss">lpp</span> <span class="ss">aulario</span><span class="p">))</span> 
 <span class="c1">; ⇒ (clase clase clase clase ua lpp lpp lpp aulario))</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>En el ejemplo, el 4 indica que el siguiente elemento
@@ -642,9 +642,9 @@ como la lista de todas las sublistas posibles formadas con elementos
 de la lista original. </p>
 <p>Ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">conjunto-potencia</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> 
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">conjunto-potencia</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> 
 <span class="c1">; ⇒ ((1 2 3) (1 2) (1 3) (1) (2 3) (2) (3) ())</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Implementa la función recursiva <code>(conjunto-potencia lista)</code> que
@@ -659,9 +659,9 @@ devuelva el conjunto potencia de la lista original.</p>
   potencia de la lista sin el primer elemento.</li>
 </ul>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>(conjunto-potencia &#39;(1 2 3)) = ((1 2 3) (1 2) (1 3) (1)) + 
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>(conjunto-potencia &#39;(1 2 3)) = ((1 2 3) (1 2) (1 3) (1)) + 
                                ((2 3) (2) (3) ())
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>b) Implementa la función recursiva <code>(producto-cartesiano lista1
@@ -670,9 +670,9 @@ combinar todos los elementos de la lista 1 con todos los elementos de
 la lista 2.</p>
 <p>Ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">producto-cartesiano</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">producto-cartesiano</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
 <span class="c1">; ⇒ ((1 . 1) (1 . 2) (1 . 3) (2 . 1) (2 . 2) (2 . 3))</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
@@ -689,7 +689,7 @@ comprueba con el intérprete si tu respuesta era correcta.</p>
  7
  8
  9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
 <span class="p">((</span><span class="k">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">6</span> <span class="mi">4</span><span class="p">)))</span> <span class="c1">; ⇒ ?</span>
 <span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="n">y</span><span class="p">)))</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
 <span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="n">x</span><span class="p">)))</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
@@ -699,7 +699,7 @@ comprueba con el intérprete si tu respuesta era correcta.</p>
 <span class="p">(</span><span class="k">define</span> <span class="n">g</span> <span class="n">f</span><span class="p">)</span>
 <span class="p">(</span><span class="nb">procedure?</span> <span class="n">g</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
 <span class="p">(</span><span class="n">g</span> <span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;Adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>b) Hemos visto en teoría que la forma especial <code>define</code> para construir
@@ -714,14 +714,14 @@ especial <code>lambda</code> a las siguientes definiciones de funciones:</p>
 4
 5
 6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-3</span> <span class="n">x</span><span class="p">)</span>
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-3</span> <span class="n">x</span><span class="p">)</span>
    <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">3</span><span class="p">))</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">factorial</span> <span class="n">x</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">)</span>
       <span class="mi">1</span>
       <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="n">factorial</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))))</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>c) Suponiendo las siguientes definiciones de funciones indica qué
@@ -747,7 +747,7 @@ respuesta era correcta.</p>
 16
 17
 18
-19</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">doble</span> <span class="n">x</span><span class="p">)</span>
+19</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">doble</span> <span class="n">x</span><span class="p">)</span>
    <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="n">x</span><span class="p">))</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">foo</span> <span class="n">f</span> <span class="n">g</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
@@ -766,7 +766,7 @@ respuesta era correcta.</p>
 <span class="p">(</span><span class="n">bar</span> <span class="n">doble</span> <span class="nb">number?</span> <span class="mi">10</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
 <span class="p">(</span><span class="n">bar</span> <span class="nb">string-append</span> <span class="nb">string?</span> <span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;Adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
 <span class="p">(</span><span class="n">bar</span> <span class="nb">+</span> <span class="nb">number?</span> <span class="s2">&quot;Hola&quot;</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
@@ -777,10 +777,10 @@ práctica anterior.</p>
 <p>Por ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">crea-baraja</span> <span class="o">&#39;</span><span class="p">((</span><span class="sc">#\u2660</span> <span class="o">.</span> <span class="sc">#\A</span><span class="p">)</span> <span class="p">(</span><span class="sc">#\u2663</span> <span class="o">.</span> <span class="sc">#\2</span><span class="p">)</span> 
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">crea-baraja</span> <span class="o">&#39;</span><span class="p">((</span><span class="sc">#\u2660</span> <span class="o">.</span> <span class="sc">#\A</span><span class="p">)</span> <span class="p">(</span><span class="sc">#\u2663</span> <span class="o">.</span> <span class="sc">#\2</span><span class="p">)</span> 
                <span class="p">(</span><span class="sc">#\u2665</span> <span class="o">.</span> <span class="sc">#\3</span><span class="p">)</span> <span class="p">(</span><span class="sc">#\u2666</span> <span class="o">.</span> <span class="sc">#\R</span><span class="p">)))</span>
 <span class="c1">; ⇒ (A♠ 2♣ 3♥ R♦)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>b) Vamos a trabajar con cartas de póker. Los valores posibles son A,
@@ -789,9 +789,9 @@ carácter y el símbolo 0). Y los palos son los símbolos correspondientes a
 los caracteres UTF #\u2660, #\u2663, #\u2665 y #\u2666: ♠, ♣, ♥
 y ♦.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">palos</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\u2660</span> <span class="sc">#\u2663</span> <span class="sc">#\u2665</span> <span class="sc">#\u2666</span><span class="p">))</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">palos</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\u2660</span> <span class="sc">#\u2663</span> <span class="sc">#\u2665</span> <span class="sc">#\u2666</span><span class="p">))</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">valores</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\A</span> <span class="sc">#\2</span> <span class="sc">#\3</span> <span class="sc">#\4</span> <span class="sc">#\5</span> <span class="sc">#\6</span> <span class="sc">#\7</span> <span class="sc">#\8</span> <span class="sc">#\9</span> <span class="sc">#\0</span> <span class="sc">#\J</span> <span class="sc">#\Q</span> <span class="sc">#\K</span><span class="p">))</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Implementa la función <code>(baraja-poker)</code> que devuelve una lista con
@@ -799,9 +799,9 @@ todas las cartas de una baraja de póker. No es una función
 recursiva. Debes usar la función anterior <code>crea-baraja</code> y la función
 <code>producto-cartesiano</code> definida en el ejercicio 3.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">baraja-poker</span><span class="p">)</span> 
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">baraja-poker</span><span class="p">)</span> 
 <span class="c1">; ⇒ (A♠ 2♠ 3♠ ...K♠ A♣ 2♣ ... K♣ A♥ 2♥ ... K♥ A♦ 2♦ ... Q♦ K♦)</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>No hace falta que hagas ninguna prueba de la función. Basta con que
@@ -810,8 +810,8 @@ verás por pantalla que la baraja es correcta.</p>
 <p>c) Implementa la función recursiva <code>(mezcla lista)</code> que recibe una lista
 y la devuelve mezclada (sus elementos se han intercambiando en
 posiciones aleatorias).</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">mezcla</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ (2 1 6 4 5 3)</span>
-</pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">mezcla</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ (2 1 6 4 5 3)</span>
+</code></pre></div>
 </td></tr></table>
 
 <p>Llama a la función con la baraja de póker para devuelva la baraja
@@ -833,9 +833,9 @@ longitud de la cadena correspondiente al símbolo. Puedes utilizar las
 funciones predefinidas <code>string-length</code> y <code>symbol-&gt;string</code>.</p>
 <p>Ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">filtra-simbolos</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">este</span> <span class="ss">es</span> <span class="ss">un</span> <span class="ss">ejercicio</span> <span class="ss">de</span> <span class="ss">examen</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">6</span><span class="p">))</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">filtra-simbolos</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">este</span> <span class="ss">es</span> <span class="ss">un</span> <span class="ss">ejercicio</span> <span class="ss">de</span> <span class="ss">examen</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">6</span><span class="p">))</span>
 <span class="c1">; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <hr />
@@ -900,9 +900,9 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       <div class="md-footer-copyright">
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
@@ -912,9 +912,9 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       
     </div>
     
-      <script src="../../assets/javascripts/application.808e90bb.js"></script>
+      <script src="../../assets/javascripts/application.c33a9706.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
