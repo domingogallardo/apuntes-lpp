@@ -189,43 +189,6 @@ de empleo, etc.
 
 *Instalaciones comerciales del UNIVAC*
 
-<!--
-
-#### Manual de programación del UNIVAC (1959)
-
-Los computadores son lentos y muy complicados de instalar y
-mantener. Son más importantes las horas de funcionamiento del
-computador que las horas de trabajo del programador. La complejidad de
-las tareas a programar es pequeña y es suficiente con los programas en
-ensamblador.
-
-El
-[manual de 1959 de programación del UNIVAC](http://www.bitsavers.org/pdf/univac/univac1/UNIVAC1_Programming_1959.pdf)
-es una referencia histórica de gran interés de la que hemos extraído
-las siguientes imágenes:
-
-<img src="imagenes/manual-univac-0.png" width="400px"/>
-
-*Manual del UNIVAC*
-
-<img src="imagenes/manual-univac-1.png" width="400px"/>
-*Programación del UNIVAC*
-
-<img src="imagenes/manual-univac-2.png" width="500px"/>
-*Algoritmo UNIVAC*
-
-<img src="imagenes/manual-univac-3.png" width="500px"/>
-*Codigo UNIVAC*
-
-Se realizan los primeros anuncios y reportajes de televisión sobre
-computadores ([YouTube](https://www.youtube.com/watch?v=Pd63MHGQygQ))
-
-<img src="imagenes/anuncio-univac.png" width="400px"/>
-
-*Anuncio UNIVAC*
-
--->
-
 **IBM 704**
 
 El [IBM 704](http://en.wikipedia.org/wiki/IBM_704) fue el otro gran
@@ -337,35 +300,6 @@ McCarthy explica en un artículo de 1979 la historia inicial del Lisp:
 
 [History of LISP]: http://www-formal.stanford.edu/jmc/history/lisp/lisp.html
 
-<!--
-
-> [...] There were two motivations for developing a language for the
-> IBM 704. First, IBM was generously establishing a New England
-> Computation Center at M.I.T. which Dartmouth would use. Second, IBM
-> was undertaking to develop a program for proving theorems in plane
-> geometry (based on an idea of Marvin Minsky's), and I was to serve
-> as a consultant to that project. At the time, IBM looked like a good
-> bet to pursue artificial intelligence research vigorously, and
-> further projects were expected. It was not then clear whether IBM's
-> FORTRAN project would lead to a language within which list
-> processing could conveniently be carried out or whether a new
-> language would be required.[...]
-
-> [...] I invented conditional expressions in connection with a set of
-> chess legal move routines I wrote in FORTRAN for the IBM 704 at
-> M.I.T. during 1957-58. This program did not use list processing. The
-> IF statement provided in FORTRAN 1 and FORTRAN 2 was very awkward to
-> use, and it was natural to invent a function XIF(M,N1,N2) whose
-> value was N1 or N2 according to whether the expression M was zero or
-> not. The function shortened many programs and made them easier to
-> understand, but it had to be used sparingly, because all three
-> arguments had to be evaluated before XIF was entered, since XIF was
-> called as an ordinary FORTRAN function though written in machine
-> language. This led to the invention of the true conditional
-> expression which evaluates only one of N1 and N2 according to
-> whether M is true or false and to a desire for a programming
-> language that would allow its use.[...]
--->
 
 <img src="imagenes/john-mccarthy.png"/>
 
@@ -439,29 +373,6 @@ Algunas notas sobre la genealogía:
 | 1964 BASIC |      | 1987 Perl   |    |   |  
 | 1967 SIMULA |      |    |    |   |  
 
-
-<!--
-#### Aspectos que provocan la evolución de los LP
-
-¿Por qué hay tanta variedad en los lenguajes de programación? Hay
-muchos aspectos que fomentan esta variedad y que provocan la necesidad
-de nuevos lenguajes:
-
-* Nuevos recursos y tipos de ordenadores
-* Nuevas aplicaciones y necesidades de los usuarios
-* Nuevos métodos de programación
-* Descubrimientos en estudios teóricos
-* Necesidad de estandarización
-
-La siguiente tabla (extraída del libro *Programming Languages. Design
-and Implementation*, de Terrence W. Pratt y Marvin V. Zelkowitz)
-muestra una pequeña lista de los lenguajes y las influencias que
-fueron importante a finales del siglo 20.
-
-<img src="imagenes/lenguajes-influencias.png"/>
-
-*Evolución de los lenguajes*
--->
 
 
 #### Los creadores de los LPs
