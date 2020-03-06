@@ -9,10 +9,10 @@ solución debe incluir:
 
 - La **definición de las funciones** que resuelven el ejercicio.
 - Un conjunto de **pruebas** que comprueben su funcionamiento
-  utilizando la librería `schemeunit`.
+  utilizando el API `RackUnit`.
+
 
 ## Ejercicios
-
 
 ### Ejercicio 1  ###
 
@@ -27,7 +27,7 @@ iterativa usando recursión por la cola.
 
 Ejemplo:
 
-```scheme
+```racket
 (concat  '("hola" "y" "adiós")) ; ⇒ "holayadiós")
 (concat-iter '("hola" "y" "adiós") "") ; ⇒ "holayadiós")
 ```
@@ -39,7 +39,7 @@ mínimo y el máximo de sus elementos.
 
 Ejemplo:
 
-```scheme
+```racket
 (min-max '(2 5 9 12 5 0 4)) ; ⇒ (0 . 12)
 (min-max-iter '(5 9 12 5 0 4) (cons 2 2)) ; ⇒ (0 . 12)
 ```
@@ -48,14 +48,14 @@ Ejemplo:
 ### Ejercicio 2 ###
 
 a) Implementa utilizando recursión por la cola las funciones
-`expande-pareja` y `expande` de la práctica 3.
+`expande-pareja` y `expande-parejas` de la práctica 3.
 
 Ejemplo:
 
-```scheme
-(expande-pareja (cons 'a 4) ; ⇒ {a a a a}
-(expande '((#t . 3) ("LPP" . 2) (b . 4)))
-⇒ {#t #t #t "LPP" "LPP" b b b b}
+```racket
+(expande-pareja (cons 'a 4) ; ⇒ (a a a a)
+(expande-parejas '(#t . 3) '("LPP" . 2) '(b . 4))
+; ⇒ (#t #t #t "LPP" "LPP" b b b b)
 ```
 
 
@@ -67,79 +67,78 @@ parámetro `lista` como el parámetro donde acumular el resultado.
 
 Ejemplo:
 
-```scheme
-(rotar 4 '(a b c d e f g)) ; ⇒ '(e f g a b c d)
+```racket
+(rotar 4 '(a b c d e f g)) ; ⇒ (e f g a b c d)
 ```
 
 
 ### Ejercicio 3
 
-Implementa utilizando recursión por la cola la función `mi-fold-left`
-que haga lo mismo que la función de orden superior `fold-left`.
+a) Implementa utilizando recursión por la cola la función
+`mi-foldl` que haga lo mismo que la función de orden superior
+`foldl`.
 
 
-```scheme
-(mi-fold-left - 0 '(1 2 3)) ; ⇒ -6
-(mi-fold-left (lambda (res dato)
-                         (cons dato res)) '() '(1 2 3))
-; ⇒ '(3 2 1)
+```racket
+(mi-foldl string-append "****" '("hola" "que" "tal")) ⇒ "talquehola****"
+(mi-foldl cons '() '(1 2 3 4)) ; ⇒ (4 3 2 1)
 ```
+
+
+b) Implementa una versión con recursión por la cola del predicado
+`(prefijo-lista? lista1 lista2)` que comprueba si la primera lista es
+prefijo de la segunda. Suponemos que siempre la primera lista será más
+pequeña que la segunda.
+
+Ejemplos: 
+
+```racket
+(prefijo-lista? '(a b c) '(a b c d e)) ⇒ #t
+(prefijo-lista? '(b c) '(a b c d e)) ⇒ #f
+```
+
 
 ### Ejercicio 4 ###
-
-a) Implementa utilizando recursión por la cola la función
-`binario-a-decimal` que reciba una cadena con un número arbitrario de
-0s y 1s y devuelva el número decimal correspondiente a ese número
-binario.
-
-Ejemplos:
-
-```scheme
-(binario-a-decimal "101") ; ⇒ 5
-(binario-a-decimal "101101") ; ⇒ 45
-```
-
-Ejemplos:
-
-b) Implementa, utilizando recursión por la cola, la función
-`decimal-a-hexadecimal` que recibe un número decimal y devuelve una
-lista con el número hexadecimal correspondiente en forma de cadena:
-
-```scheme
-(decimal-a-hexadecimal 200) ; ⇒ "C8"
-(decimal-a-hexadecimal 999) ; ⇒ "3E7"
-```
-
-### Ejercicio 5 ###
 
 Realiza una implementación que utilice la [técnica de la
 _memoization_](https://domingogallardo.github.io/apuntes-lpp/teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html#soluciones-al-coste-de-la-recursion-memoization)
 del algoritmo que devuelve la [serie de
 Pascal](https://domingogallardo.github.io/apuntes-lpp/teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html#triangulo-de-pascal).
 
-```scheme
-(pascal-memo 8 4 lista) ; ⇒ 70
-(pascal-memo 40 20 lista) ; ⇒ 137846528820
+```racket
+(define diccionario (crea-diccionario))
+(pascal-memo 8 4 diccionario) ; ⇒ 70
+(pascal-memo 40 20 diccionario) ; ⇒ 137846528820
 ```
+
+### Ejercicio 5 ###
+
+a) Usando gráficos de tortuga implementa la figura recursiva conocida
+como _curva de Koch_. Debes definir una función recursiva `(koch nivel
+trazo)` que dibuje una curva de Koch de nivel `nivel` y de longitud
+`trazo`. 
+
+Como pista, para dibujar una curva de Koch de nivel n y longitud l, se
+deberán dibujar 4 curvas de Koch de nivel n-1 y longitud l/3. En estas
+4 curvas consecutivas, el ángulo de inclinación de la segunda curva
+con respecto a la primera es de 60 grados.
+
+Puedes ver ejemplos de las curvas de nivel 1, 2 y 3 en las siguientes
+figuras: 
+
+<img src="imagenes/koch.png" width="700px"/>
+
+b) Implementa la función `(copo-nieve nivel trazo)` que, usando la
+función anterior, dibuje el [_copo de nieve de
+Koch_](https://en.wikipedia.org/wiki/Koch_snowflake)
+que puedes ver en los siguientes ejemplos.
+
+<img src="imagenes/copo-nieve.png" width="700px"/>
 
 
 ### Ejercicio 6 ###
 
-a) Usando gráficos de tortuga, implementa la función
-`(piramide-hexagonal lado decremento)` que dibuje hexágonos
-concéntricos con el lado inicial `lado` y que cada vez vaya
-decrementando ese valor con el `decremento`.
-
-Por ejemplo, la llamada a `(piramide-hexagonal 150 10)` debe dibujar
-la siguiente figura:
-
-<img src="imagenes/hexagono.png" width="300px"/>
-
-**Pista**: el desplazamiento que debe realizar la tortuga antes de
-dibujar cada hexágono es de `decremento`, en la dirección del ángulo
-que va al centro del hexágono.
-
-b) Define la función `(alfombra-sierpinski tam)` que construya la
+Define la función `(alfombra-sierpinski tam)` que construya la
 Alfombra de Sierpinski (una variante del Triágulo de Sierpinski que
 hemos visto en teoría) de lado `tam` píxeles utilizando gráficos de
 tortuga. 
