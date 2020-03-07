@@ -151,6 +151,6 @@ siguiente figura:
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2018-19  
+Lenguajes y Paradigmas de Programación, curso 2019-20  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
