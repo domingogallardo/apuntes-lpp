@@ -49,8 +49,8 @@ Notas de clase de la semana 6 de LPP.
 
 - Por ejemplo, la lista estructurada:
 
-    ```scheme
-    '(a b (c d e) (f (g h)))
+    ```racket
+    (a b (c d e) (f (g h)))
     ```
 
     es una lista estructurada con 4 elementos:
@@ -63,8 +63,8 @@ Notas de clase de la semana 6 de LPP.
 - Una lista formada por parejas la consideraremos una lista plana, ya
   que no contiene ninguna sublista. Por ejemplo, la lista
 
-    ```scheme
-    '((a . 3) (b . 5) (c . 12))
+    ```racket
+    ((a . 3) (b . 5) (c . 12))
     ```
 
     es una lista plana de tres elementos (hojas) que son parejas.
@@ -75,22 +75,22 @@ Notas de clase de la semana 6 de LPP.
 
 - Un dato es una hoja si no es una lista:
 
-    ```scheme
+    ```racket
     (define (hoja? dato)
         (not (list? dato)))
     ```
 
 - Por ejemplo, supongamos la siguiente lista:
 
-    ```scheme
-    '((1 2) 3 4 (5 6))
+    ```racket
+    ((1 2) 3 4 (5 6))
     ```
 
     Es una lista de 4 elementos, siendo el primero y el último otras
     sublistas y el segundo y el tercero hojas. Podemos comprobar si
     son o no hojas sus elementos:
 
-    ```scheme
+    ```racket
     (define lista '((1 2) 3 4 (5 6)))
     (hoja? (car lista)) ; ⇒ #f
     (hoja? (cadr lista)) ; ⇒ #t
@@ -100,7 +100,7 @@ Notas de clase de la semana 6 de LPP.
 
 - La lista vacía no es una hoja
 
-    ```scheme
+    ```racket
     (hoja? '()) ; ⇒ #f
     ```
 
@@ -120,31 +120,38 @@ Notas de clase de la semana 6 de LPP.
 - Usando esta definición recursiva, podemos implementar en Scheme la
   función `(plana? lista)` que comprueba si una lista es plana:
 
-```scheme
-(define (plana? lista)
-   (or (null? lista)
-       (and (hoja? (car lista))
-            (plana? (cdr lista)))))
-```
+    ```racket
+    (define (plana? lista)
+       (or (null? lista)
+           (and (hoja? (car lista))
+                (plana? (cdr lista)))))
+    ```
 
 - Ejemplos:
 
-```scheme
-(plana? '(a b c d e f)) ; ⇒ #t
-(plana? (list (cons 'a 1) "Hola" #f)) ; ⇒ #t
-(plana? '(a (b c) d)) ; ⇒ #f
-(plana? '(a () b)) ; ⇒ #f
-```
+    ```racket
+    (plana? '(a b c d e f)) ; ⇒ #t
+    (plana? (list (cons 'a 1) "Hola" #f)) ; ⇒ #t
+    (plana? '(a (b c) d)) ; ⇒ #f
+    (plana? '(a () b)) ; ⇒ #f
+    ```
 
 ¿Cómo sería la definición de `plana?` utilizando funciones de orden superior?
 
-<p style="margin-bottom:3cm;"/>
+<p style="margin-bottom:3cm;"></p>
 
-```scheme
+
+```racket
 (define (plana-fos? lista)
-  (for-all hoja? lista))
+  (for-all? hoja? lista))
 ```
 
+```racket
+(define (for-all? predicado lista)
+  (or (null? lista)
+      (and (predicado (car lista))
+           (for-all? predicado (cdr lista)))))
+```
 
 ----
 
@@ -153,40 +160,48 @@ Notas de clase de la semana 6 de LPP.
 - Una lista es estructurada cuando alguno de sus elementos es otra
   lista:
 
-```scheme
-(define (estructurada? lista)
-   (and (not (null? lista))
-        (or (list? (car lista))
-            (estructurada? (cdr lista)))))
-```
+    ```racket
+    (define (estructurada? lista)
+       (and (not (null? lista))
+            (or (list? (car lista))
+                (estructurada? (cdr lista)))))
+    ```
 
 
 
 - Ejemplos:
 
-```scheme
-(estructurada? '(1 2 3 4)) ; ⇒ #f
-(estructurada? (list (cons 'a 1) (cons 'b 2) (cons 'c 3))) ; ⇒ #f
-(estructurada? '(a () b)) ; ⇒ #t
-(estructurada? '(a (b c) d)) ; ⇒ #t
-```
+    ```racket
+    (estructurada? '(1 2 3 4)) ; ⇒ #f
+    (estructurada? (list (cons 'a 1) (cons 'b 2) (cons 'c 3))) ; ⇒ #f
+    (estructurada? '(a () b)) ; ⇒ #t
+    (estructurada? '(a (b c) d)) ; ⇒ #t
+    ```
 
 ¿Cómo sería la definición de `estructurada?` utilizando funciones de orden superior?
 
-<p style="margin-bottom:3cm;"/>
+<p style="margin-bottom:3cm;"></p>
 
-```scheme
+```racket
 (define (estructurada-fos? lista)
-  (exists list? lista))
+  (exists? list? lista))
 ```
 
-Realmente bastaría con haber hecho una de las dos definiciones y
+```racket
+(define (exists? predicado lista)
+  (if (null? lista)
+      #f
+      (or (predicado (car lista))
+          (exists? predicado (cdr lista)))))
+```
+
+- Realmente bastaría con haber hecho una de las dos definiciones y
 escribir la otra como la negación de la primera:
 
-```scheme
-(define (estructurada? lista)
-   (not (plana? lista)))
-```
+    ```racket
+    (define (estructurada? lista)
+       (not (plana? lista)))
+    ```
 
 ----
 
@@ -198,18 +213,18 @@ escribir la otra como la negación de la primera:
 
 - Por ejemplo, las expresiones de Scheme son listas estructuradas:
 
-    ```scheme
-    '(= 4 (+ 2 2))
-    '(if (= x y) (* x y) (+ (/ x y) 45))
-    '(define (factorial x) (if (= x 0) 1 (* x (factorial (- x 1)))))
+    ```racket
+    (= 4 (+ 2 2))
+    (if (= x y) (* x y) (+ (/ x y) 45))
+    (define (factorial x) (if (= x 0) 1 (* x (factorial (- x 1)))))
     ```
 
 - El análisis sintáctico de una oración puede generar una lista
   estructurada de símbolos, en donde se agrupan los distintos
   elementos de la oración:
 
-    ```scheme
-    '((Juan) (compró) (la entrada (de los Miserables)) (el viernes por la tarde))
+    ```racket
+    ((Juan) (compró) (la entrada (de los Miserables)) (el viernes por la tarde))
     ```
 
 ----
@@ -220,32 +235,37 @@ escribir la otra como la negación de la primera:
   lista inicial representa el primer nivel, y cada sublista representa
   un nivel inferior. Los datos de las listas representan las hojas.
 
-- Por ejemplo, la representación en forma de niveles de la lista `'((a
+- Por ejemplo, la representación en forma de niveles de la lista `((a
   b c) d e)` es la siguiente:
 
-<img src="imagenes/expresion-e-1.png" width="350px"/>
+    <img src="imagenes/expresion-e-1.png" width="350px"/>
 
-Las hojas `d` y `e` están en el nivel 1 y en las posiciones 2 y 3 de
-la lista y las hojas `a`, `b` y `c` en el nivel 2 y en la posición 1
-de la lista.
+    Las hojas `d` y `e` están en el nivel 1 y en las posiciones 2 y 3 de
+    la lista y las hojas `a`, `b` y `c` en el nivel 2 y en la posición 1
+    de la lista.
 
-> UNA LISTA ESTRUCTURADA NO ES UN ÁRBOL  
-> Una lista estructurada no es un árbol propiamente dicho, porque
-> todos los datos están en las hojas.
+!!! Warning "Una lista estructurada no es un árbol"
+    Una lista estructurada no es un árbol propiamente dicho, porque
+    un árbol tiene datos en todos los nodos, mientras que en la lista 
+    estructurada los datos están sólo en las hojas.
 
-En un árbol, lo veremos más adelante, todos los nodos tienen
-datos. Tanto los nodos padres como los hijos. Sin embargo en una lista
-estructurada los nodos padres del árbol no tienen ningún dato, sino
-que sirven para agrupar un conjunto de hijos.
+- Las listas estructuradas sirven para agrupar de forma jerárquica
+  conjunto de hijos en distintos niveles. 
 
-- Otro ejemplo. ¿Cuál sería la representación en niveles de la
-  siguiente lista estructurada?:
+- A pesar de ser distintas de los árboles, ambas son estructuras de
+  datos jerárquicas (con niveles) que se pueden definir de forma
+  recursiva y sobre las que se pueden definir algoritmos recursivos.
+  
+- Veremos los árboles en la próxima clase.
 
-```scheme
-'(map (lambda (x) (+ x 10)) (quote (1 2 3 4)))
+Otro ejemplo. ¿Cuál sería la representación en niveles de la
+siguiente lista estructurada?:
+
+```racket
+(map (lambda (x) (+ x 10)) (quote (1 2 3 4)))
 ```
 
-<p style="margin-bottom:3cm;"/>
+<p style="margin-bottom:3cm;"></p>
 
 ----
 
@@ -254,14 +274,14 @@ que sirven para agrupar un conjunto de hijos.
 - `(num-hojas lista)`: número de hojas de una lista estructurada
 - `(altura lista)`: nivel mayor de una lista estructurada
 
-Como hemos dicho antes, la cuestión clave en este tipo de listas es
-que el `car` puede ser a su vez otra lista.
+- Como hemos dicho antes, la cuestión clave en este tipo de listas es
+  que el `car` puede ser a su vez otra lista.
 
 ----
 
 ### Número de hojas
 
-```scheme
+```racket
 (num-hojas '((1 2) (3 4 (5) 6) (7))) ⇒ 7
 ```
 
@@ -275,23 +295,59 @@ que el `car` puede ser a su vez otra lista.
   hojas**.
 - La definición de este caso general usando _pseudocódigo_ es:
 
-> El número de hojas de una lista estructurada es la suma del número
-> de hojas de su primer elemento (que puede ser otra lista) y del
-> número de hojas del resto.
+!!! Hint "Caso general de num-hojas"
+    El número de hojas de una lista estructurada es: 
+    la suma del número de hojas de su primer elemento (que puede ser otra lista) y del
+    número de hojas del resto.
 
+- La recursión tiene dos llamadas recursivas. Una que recibe el
+  elemento de la cabeza de la lista y otra que recibe el resto de la
+  lista. 
 
-```scheme
-(define (num-hojas x)
-   (cond
-      ((null? x) 0)
-      ((hoja? x) 1)
-      (else (+ (num-hojas (car x))
-               (num-hojas (cdr x))))))
-```
+    ```racket
+    ;Caso general num-hojas
+    (define (num-hojas lista)
+      ; Falta caso base
+      (+ (num-hojas (car lista))
+         (num-hojas (cdr lista))))
+    ```
+
+!!! Warning "No hay coste exponencial"
+    - A pesar de haber dos llamadas recursivas, no pasa lo mismo que en
+    Fibonacci o Pascal. 
+    - No se van a repetir llamadas a la recursión
+    con los mismos datos. 
+    - La recursión recorre lista estructurada y su coste será el número de
+    elementos de la lista.
+
+- Para considerar el **caso base**, veamos cómo las llamadas recursivas
+  reciben cada vez un problema más pequeño. 
+
+- La llamada recursiva sobre el resto de la lista recibe cada vez una
+  lista con 1 elemento menos. Al final se llamará a la función con una
+  lista vacía. Ese será un caso base. El número de elementos de una
+  lista vacía es 0.
+
+- La llamada recursiva sobre la cabeza de la lista es algo
+  distinta. Recibe una lista en la que se ha descendido un nivel y
+  tiene, por tanto, un nivel menos. Al final se llamará a la función
+  con una hoja (un dato). Ese será el otro caso base y habrá que
+  devolver 1.
+
+- Definición completa de la función:
+
+    ```racket
+    (define (num-hojas x)
+       (cond
+          ((null? x) 0)
+          ((hoja? x) 1)
+          (else (+ (num-hojas (car x))
+                   (num-hojas (cdr x))))))
+    ```
 
 - Hay que hacer notar que el parámetro `x` puede ser tanto una
   lista como un dato atómico. Estamos aprovechándonos de la
-  característica de Scheme de ser débilmente tipeado para hacer un
+  característica de Scheme de ser débilmente tipado para hacer un
   código bastante conciso.
 
 ----
@@ -299,24 +355,24 @@ que el `car` puede ser a su vez otra lista.
 ### Versión con funciones de orden superior
 
 - Podemos usar también las funciones de orden superior `map` y
-  `fold-right` para obtener una versión más concisa.
+  `foldr` para obtener una versión más concisa.
 - Una lista estructurada tiene como elementos hojas o listas. 
 - Podemos entonces mapear una expresión lambda con _la propia función
   que estamos definiendo_ sobre sus elementos, poniendo como caso
   especial el hecho de que la lista sea una hoja.
 - El resultado será una lista de números (el número de hojas de cada
-  componente), que podemos sumar haciendo un `fold-right` con la
-n  función `+`:
+  componente), que podemos sumar haciendo un `foldr` con la
+  función `+`:
 
-```scheme
+```racket
 (define (num-hojas-fos lista)
-    (fold-right + 0 (map (lambda (sublista)
-                           (if (hoja? sublista)
-                               1
-                               (num-hojas-fos sublista))) lista)))
+    (foldr + 0 (map (lambda (sublista)
+                       (if (hoja? sublista)
+                           1
+                           (num-hojas-fos sublista))) lista)))
 ```
 
-<img src="imagenes/map-lista.png" width="700px"/>
+<img src="imagenes/map-lista.png" width="600px"/>
 
 ----
 
@@ -324,47 +380,53 @@ n  función `+`:
 
 - La *altura* de una lista estructurada viene dada por su número de
   niveles
-- Una lista plana tiene una altura de 1, la lista `'((1 2 3) 4 5)`
+- Una lista plana tiene una altura de 1, la lista `((1 2 3) 4 5)`
   tiene una altura de 2.
 
-```scheme
-(altura '(1 (2 3) 4)) ⇒ 2
-(altura '(1 (2 (3)) 3)) ⇒ 3
-```
+    ```racket
+    (altura '(1 (2 3) 4)) ⇒ 2
+    (altura '(((1)) (2 3) 4)) ⇒ 3
+    ```
 
 <img src="imagenes/altura-estructurada.png" width="300"/>
 
-> Para calcular la altura de una lista estructurada tenemos que
-> obtener (de forma recursiva) la altura de su primer elemento, y la
-> altura del resto de la lista, sumarle 1 a la altura del primer
-> elemento y devolver el máximo de los dos números.
 
-En Scheme:
+!!! Hint "Caso general altura"
+    Para calcular la altura de una lista estructurada tenemos que
+    obtener (de forma recursiva) la altura de su primer elemento, y la
+    altura del resto de la lista, sumarle 1 a la altura del primer
+    elemento y devolver el máximo de los dos números.
 
-```scheme
-(define (altura x)
-   (cond 
-      ((null? x) 0)
-      ((hoja? x) 0)
-      (else (max (+ 1 (altura (car x)))
-                 (altura (cdr x))))))
-```
+- Caso base: la altura de una lista vacía y de una hoja es 0.
+
+- En Scheme:
+
+    ```racket
+    (define (altura x)
+       (cond 
+          ((null? x) 0)
+          ((hoja? x) 0)
+          (else (max (+ 1 (altura (car x)))
+                     (altura (cdr x))))))
+    ```
 
 ----
 
 ### Versión con funciones de orden superior
 
-Y la segunda versión, usando las funciones de orden superior `map`
-para obtener la altura de las sublistas y `fold-right` para quedarse
+- La segunda versión, usando las funciones de orden superior `map`
+para obtener la altura de las sublistas y `foldr` para quedarse
 con el máximo.
 
-```scheme
-(define (altura-fos lista)
-   (+ 1 (fold-right max 0 (map (lambda (sublista)
-                                 (if (hoja? sublista)
-                                     0
-                                     (altura-fos sublista))) lista))))
-```
+    ```racket
+    (define (altura-fos lista)
+       (+ 1 (foldr max 
+                   0 
+                   (map (lambda (sublista)
+                            (if (hoja? sublista)
+                                0
+                                (altura-fos sublista))) lista))))
+    ```
 
 ---
 
@@ -388,171 +450,177 @@ estructura jerárquica de las listas estructuradas.
 
 ### `(aplana lista)`
 
-Devuelve una lista plana con todas las hojas de la lista.
+- Devuelve una lista plana con todas las hojas de la lista.
 
-```scheme
-(define (aplana x)
-  (cond
-    ((null? x) '())
-    ((hoja? x) (list x))
-    (else 
-     (append (aplana (car x))
-             (aplana (cdr x))))))
-```
+    ```racket
+    (aplana '(1 2 (3 (4 (5))) (((6)))))
+    ; ⇒ (1 2 3 4 5 6)
+    ```
 
-Por ejemplo:
+- Solución recursiva:
 
-```scheme
-(aplana '(1 2 (3 (4 (5))) (((6)))))
-; ⇒ {1 2 3 4 5 6}
-```
+    ```racket
+    (define (aplana x)
+      (cond
+        ((null? x) '())
+        ((hoja? x) (list x))
+        (else 
+         (append (aplana (car x))
+                 (aplana (cdr x))))))
+    ```
 
-Con funciones de orden superior:
+- Solución con funciones de orden superior:
 
-```scheme
-(define (aplana-fos lista)
-  (fold-right append
-              '()
-              (map (lambda (x)
+    ```racket
+    (define (aplana-fos lista)
+      (foldr append 
+             '()
+             (map (lambda (x)
                      (if (hoja? x)
                          (list x)
                          (aplana-fos x))) lista)))
-```
+    ```
 
 
 ---
 
 ### `(pertenece-lista? dato lista)`
 
-Comprueba si el dato `dato` aparece en la lista estructurada. 
+- Comprueba si el dato `dato` aparece en la lista estructurada. 
 
-```scheme
-(define (pertenece? dato x)
-  (cond 
-    ((null? x) #f)
-    ((hoja? x) (equal? dato x))
-    (else (or (pertenece? dato (car x))
-              (pertenece? dato (cdr x))))))
-```
+    ```racket
+    (pertenece? 'a '(b c (d (a)))) ⇒ #t
+    (pertenece? 'a '(b c (d e (f)) g)) ⇒ #f
+    ```
 
-Ejemplos:
+- Solución recursiva:
 
-```scheme
-(pertenece? 'a '(b c (d (a)))) ⇒ #t
-(pertenece? 'a '(b c (d e (f)) g)) ⇒ #f
-```
+    ```racket
+    (define (pertenece? dato x)
+      (cond 
+        ((null? x) #f)
+        ((hoja? x) (equal? dato x))
+        (else (or (pertenece? dato (car x))
+                  (pertenece? dato (cdr x))))))
+    ```
 
-Con funciones de orden superior:
 
-```scheme
-(define (pertenece-fos? elem lista)
-  (exists (lambda (x)
-             (if (hoja? x)
-                 (equal? elem x)
-                 (pertenece-fos? elem x))) lista))
-```
+- Solución con funciones de orden superior:
+
+    ```racket
+    (define (pertenece-fos? elem lista)
+      (exists? (lambda (x)
+                  (if (hoja? x)
+                      (equal? elem x)
+                      (pertenece-fos? elem x))) lista))
+    ```
 
 ---
 
 ### `(nivel-hoja dato lista)`
 
-Veamos la función `(nivel-hoja dato lista)` que recorre la lista
-buscando el dato y devuelve el nivel en que se encuentra. Si el dato
-no se encuentra en la lista, se devolverá -1. Si el dato se encuentra
-en más de un lugar de la lista se devolverá el nivel mayor.
+- Recorre la lista buscando el dato y devuelve el nivel en que se
+encuentra. Si el dato no se encuentra en la lista, se devolverá -1. Si
+el dato se encuentra en más de un lugar de la lista se devolverá el
+nivel mayor.
 
-Ejemplos:
+    ```racket
+    (nivel-hoja 'b '(a b (c))) ; ⇒ 1
+    (nivel-hoja 'b '(a (b) c)) ; ⇒ 2
+    (nivel-hoja 'b '(a (b) d ((b)))) ; ⇒ 3
+    (nivel-hoja 'b '(a c d ((e)))) ; ⇒ -1
+    ```
 
-```scheme
-(nivel-hoja 'b '(a b (c))) ; ⇒ 1
-(nivel-hoja 'b '(a (b) c)) ; ⇒ 2
-(nivel-hoja 'b '(a (b) d ((b)))) ; ⇒ 3
-(nivel-hoja 'b '(a c d ((e)))) ; ⇒ -1
-```
+- Solución recursiva:
 
+    ```racket
+    (define (nivel-hoja dato x)
+      (cond
+        ((null? x) -1)
+        ((hoja? x) (if (equal? x dato) 0 -1))
+        (else (max (suma-1-si-mayor-igual-que-0 
+                        (nivel-hoja dato (car x)))
+                   (nivel-hoja dato (cdr x))))))
+    ```
 
-```scheme
-(define (nivel-hoja dato x)
-  (cond
-    ((null? x) -1)
-    ((hoja? x) (if (equal? x dato) 0 -1))
-    (else (max (suma-1-si-mayor-igual-que-0 (nivel-hoja dato (car x)))
-               (nivel-hoja dato (cdr x))))))
-```
+- La función auxiliar se define de la siguiente forma:
 
-Las funciones auxiliares se definen de la siguiente forma:
+    ```racket
+    (define (suma-1-si-mayor-igual-que-0 x)
+      (if (>= x 0)
+          (+ x 1)
+          x))
+    ```
 
-```scheme
-(define (suma-1-si-mayor-igual-que-0 x)
-  (if (>= x 0)
-      (+ x 1)
-      x))
-```
+- Solución con funciones de orden superior:
 
-Con funciones de orden superior:
+    ```racket
+    (define (nivel-hoja-fos dato lista)
+      (suma-1-si-mayor-igual-que-0
+           (foldr max 
+                  -1
+                  (map (lambda (sublista)
+                           (if (hoja? sublista)
+                               (if (equal? sublista dato) 0 -1)
+                               (nivel-hoja-fos dato sublista)))  
+                       lista))))
 
-```scheme
-(define (nivel-hoja-fos dato lista)
-  (suma-1-si-mayor-igual-que-0
-       (fold-right max -1
-                   (map (lambda (sublista)
-                          (if (hoja? sublista)
-                              (if (equal? sublista dato) 0 -1)
-                              (nivel-hoja-fos dato sublista)))  lista))))
-
-```
+    ```
                              
 ----
 
 ### `(cuadrado-lista lista)`
 
-Devuelve una lista estructurada con la misma estructura y sus
+- Devuelve una lista estructurada con la misma estructura y sus
 números elevados al cuadrado.
 
-```scheme
-(define (cuadrado-lista x)
-  (cond ((null? x) '())
-        ((hoja? x) (* x x))
-        (else (cons (cuadrado-lista (car x))
-                    (cuadrado-lista (cdr x))))))
-```
+    ```racket
+    (cuadrado-lista '(2 3 (4 (5)))) ⇒ (4 9 (16 (25))
+    ```
 
-Por ejemplo:
+- Solución recursiva:
 
-```scheme
-(cuadrado-lista '(2 3 (4 (5)))) ⇒ (4 9 (16 (25))
-```
+    ```racket
+    (define (cuadrado-lista x)
+      (cond ((null? x) '())
+            ((hoja? x) (* x x))
+            (else (cons (cuadrado-lista (car x))
+                        (cuadrado-lista (cdr x))))))
+    ```
 
-Versión con `map`:
 
-```scheme
-(define (cuadrado-lista-fos lista)
-    (map (lambda (sublista)
-           (if (hoja? sublista)
-               (* sublista sublista)
-               (cuadrado-lista-fos sublista))) lista))
-```
+- Solución con `map`:
+
+    ```racket
+    (define (cuadrado-lista-fos lista)
+        (map (lambda (sublista)
+               (if (hoja? sublista)
+                   (* sublista sublista)
+                   (cuadrado-lista-fos sublista))) lista))
+    ```
 
 ----
 
 ### `(map-lista f lista)`
 
-Devuelve una lista estructurada igual que la original con el
-resultado de aplicar a cada uno de sus hojas la función f
- 
-```scheme
-(define (map-lista f lista)
-  (cond ((null? lista) '())
-        ((hoja? lista) (f lista))
-        (else (cons (map-lista f (car lista))
-                    (map-lista f (cdr lista))))))
-```
-	
-Por ejemplo:
+- Devuelve una lista estructurada igual que la original con el
+resultado de aplicar a cada uno de sus hojas la función `f`
 
-```scheme
-(map-lista (lambda (x) (* x x)) '(2 3 (4 (5)))) ⇒ (4 9 (16 (25))
-```
+    ```racket
+    (map-lista (lambda (x) (* x x)) '(2 3 (4 (5)))) 
+    ; ⇒ (4 9 (16 (25))
+    ```
+
+- Solución recursiva:
+
+    ```racket
+    (define (map-lista f lista)
+      (cond ((null? lista) '())
+            ((hoja? lista) (f lista))
+            (else (cons (map-lista f (car lista))
+                        (map-lista f (cdr lista))))))
+    ```
+	
 
 ----
 
