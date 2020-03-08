@@ -116,6 +116,19 @@ La lista vacía no es una hoja
 
 ##### Función `(plana? lista)`
 
+Como hemos dicho antes, una lista es plana cuando todos sus elementos
+son hojas. Queremos implementar la función `(plana? lista)` que lo
+compruebe.
+
+Por ejemplo:
+
+```racket
+(plana? '(a b c d e f)) ; ⇒ #t
+(plana? (list (cons 'a 1) "Hola" #f)) ; ⇒ #t
+(plana? '(a (b c) d)) ; ⇒ #f
+(plana? '(a () b)) ; ⇒ #f
+```
+
 Una definición recursiva de lista plana:
 
 >Una lista es plana si y solo si el primer elemento es una hoja y el
@@ -135,14 +148,6 @@ función `(plana? lista)` que comprueba si una lista es plana:
             (plana? (cdr lista)))))
 ```
 
-Ejemplos:
-
-```racket
-(plana? '(a b c d e f)) ; ⇒ #t
-(plana? (list (cons 'a 1) "Hola" #f)) ; ⇒ #t
-(plana? '(a (b c) d)) ; ⇒ #f
-(plana? '(a () b)) ; ⇒ #f
-```
 
 Se podría también implementar la función `plana?` usando la función de
 orden superior `for-all?` que comprueba que todos los elementos de una
@@ -171,14 +176,8 @@ lista cumplen una propiedad. En esta caso, ser hoja.
 Una lista es estructurada cuando alguno de sus elementos es otra
 lista. Como caso base, una lista vacía no es estructurada.
 
-```racket
-(define (estructurada? lista)
-   (and (not (null? lista))
-        (or (list? (car lista))
-            (estructurada? (cdr lista)))))
-```
-
-Ejemplos:
+Queremos implementar la función `(estructurada? lista)` que compruebe
+si una lista es estructurada.
 
 ```racket
 (estructurada? '(1 2 3 4)) ; ⇒ #f
@@ -186,6 +185,14 @@ Ejemplos:
 (estructurada? '(a () b)) ; ⇒ #t
 (estructurada? '(a (b c) d)) ; ⇒ #t
 ```
+
+```racket
+(define (estructurada? lista)
+   (and (not (null? lista))
+        (or (list? (car lista))
+            (estructurada? (cdr lista)))))
+```
+
 
 Se podría implementar también usando la función de orden superior
 `exists?` para consultar si algún elemento de la lista es también otra

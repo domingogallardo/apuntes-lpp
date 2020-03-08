@@ -108,6 +108,15 @@ Notas de clase de la semana 6 de LPP.
 
 ### Función `(plana? lista)`
 
+- Una lista es plana cuando todos sus elementos son hojas.
+
+    ```racket
+    (plana? '(a b c d e f)) ; ⇒ #t
+    (plana? (list (cons 'a 1) "Hola" #f)) ; ⇒ #t
+    (plana? '(a (b c) d)) ; ⇒ #f
+    (plana? '(a () b)) ; ⇒ #f
+    ```
+
 - Una definición recursiva de lista plana:
 
 > Una lista es plana si y solo si el primer elemento es una hoja y el
@@ -127,14 +136,6 @@ Notas de clase de la semana 6 de LPP.
                 (plana? (cdr lista)))))
     ```
 
-- Ejemplos:
-
-    ```racket
-    (plana? '(a b c d e f)) ; ⇒ #t
-    (plana? (list (cons 'a 1) "Hola" #f)) ; ⇒ #t
-    (plana? '(a (b c) d)) ; ⇒ #f
-    (plana? '(a () b)) ; ⇒ #f
-    ```
 
 ¿Cómo sería la definición de `plana?` utilizando funciones de orden superior?
 
@@ -157,6 +158,15 @@ Notas de clase de la semana 6 de LPP.
 
 ### Función `(estructurada? lista)`
 
+- Ejemplos:
+
+    ```racket
+    (estructurada? '(1 2 3 4)) ; ⇒ #f
+    (estructurada? (list (cons 'a 1) (cons 'b 2) (cons 'c 3))) ; ⇒ #f
+    (estructurada? '(a () b)) ; ⇒ #t
+    (estructurada? '(a (b c) d)) ; ⇒ #t
+    ```
+
 - Una lista es estructurada cuando alguno de sus elementos es otra
   lista:
 
@@ -168,15 +178,6 @@ Notas de clase de la semana 6 de LPP.
     ```
 
 
-
-- Ejemplos:
-
-    ```racket
-    (estructurada? '(1 2 3 4)) ; ⇒ #f
-    (estructurada? (list (cons 'a 1) (cons 'b 2) (cons 'c 3))) ; ⇒ #f
-    (estructurada? '(a () b)) ; ⇒ #t
-    (estructurada? '(a (b c) d)) ; ⇒ #t
-    ```
 
 ¿Cómo sería la definición de `estructurada?` utilizando funciones de orden superior?
 
@@ -632,7 +633,6 @@ resultado de aplicar a cada uno de sus hojas la función `f`
                   (map-estruct-fos f elem))) lista))
 
     ```
-
 
 ----
 
