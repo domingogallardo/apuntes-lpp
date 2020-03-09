@@ -340,7 +340,7 @@ El código completo:
 
 (define (busca key dic)
   (cond
-    ((null? dic) #f)
+    ((null? (mcdr dic)) #f)
     ((equal? key (mcar (mcar dic)))
      (mcar dic))
     (else (busca key (mcdr dic)))))
