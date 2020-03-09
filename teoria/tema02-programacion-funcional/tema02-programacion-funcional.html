@@ -422,6 +422,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#funcion-apply" class="md-nav__link">
+    Función apply
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -842,6 +849,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#funcion-apply" class="md-nav__link">
+    Función apply
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1251,9 +1265,13 @@ cuadrado de un número que pasamos como parámetro:</p>
 </code></pre></div>
 </td></tr></table>
 
-<p>El cuerpo de la función es una expresión que se evaluará con el valor
-que se pase como parámetro. En el caso anterior la expresión es <code>(* x
-x)</code> y multiplicará el parámetro por si mismo.</p>
+<p>Después del nombre de la función se declaran sus argumentos. El número
+de argumentos de una función se denomina <strong>aridad de la función</strong>. Por
+ejemplo, la función <code>cuadrado</code> es una función de aridad 1, o <em>unaria</em>.</p>
+<p>Después de declarar los parámetros, se define el cuerpo de la
+función. Es una expresión que se evaluará con el valor que se pase
+como parámetro. En el caso anterior la expresión es <code>(* x x)</code> y
+multiplicará el parámetro por si mismo.</p>
 <p>Hay que hacer notar que en Scheme no existe la palabra clave <code>return</code>,
 sino que las funciones siempre se definen con una única expresión cuya
 evaluación es el resultado que se devuelve.</p>
@@ -3930,6 +3948,60 @@ en la lista de argumentos variables y llamamos a la función
 </code></pre></div>
 </td></tr></table>
 
+<h3 id="funcion-apply">Función <code>apply</code><a class="headerlink" href="#funcion-apply" title="Permanent link">&para;</a></h3>
+<p>Con la función <code>(apply funcion lista)</code> podemos aplicar una función de
+aridad <code>n</code> a una lista de datos de n datos, haciendo que cada uno de
+los datos se pasen a la función en orden como parámetros.</p>
+<p>Por ejemplo, podemos definir la función <code>(suma-cuadrados x y)</code> de
+aridad 2 de la siguiente forma:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">y</span> <span class="n">y</span><span class="p">)))</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Para invocar a <code>suma-cuadrados</code> hay que pasarle 2 parámetros:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">10</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ 100</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Podemos usar la función <code>apply</code> para aplicar esta función a los dos
+elementos de una lista:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="nb">apply</span> <span class="n">suma-cuadrados</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ 100</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Usando <code>apply</code> podemos definir funciones recursivas con número
+variable de argumentos.</p>
+<p>Por ejemplo la función <code>suma-parejas</code> que suma un número variable de
+parejas:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-pareja</span> <span class="n">p1</span> <span class="n">p2</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p2</span><span class="p">))</span>
+        <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p2</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-parejas</span> <span class="o">.</span> <span class="n">parejas</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">parejas</span><span class="p">)</span>
+      <span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">suma-pareja</span> <span class="p">(</span><span class="nb">car</span> <span class="n">parejas</span><span class="p">)</span> <span class="p">(</span><span class="nb">apply</span> <span class="n">suma-parejas</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">parejas</span><span class="p">)))))</span>
+
+<span class="p">(</span><span class="n">suma-parejas</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(9 . 12)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Hay que hacer notar en que la llamada recursiva es necesario usar
+<code>apply</code> porque <code>(cdr parejas)</code> es una lista. No podemos invocar a
+<code>suma-parejas</code> pasando una lista como parámetro, sino que hay que
+pasarle todos los argumentos por separado (recibe un número variable
+de argumentos). Eso lo conseguimos hacer con <code>apply</code>.</p>
 <h2 id="funciones-como-tipos-de-datos-de-primera-clase">Funciones como tipos de datos de primera clase<a class="headerlink" href="#funciones-como-tipos-de-datos-de-primera-clase" title="Permanent link">&para;</a></h2>
 <p>Hemos visto que la característica fundamental de la programación
 funcional es la definición de funciones. Hemos visto también que no
@@ -4662,24 +4734,26 @@ caso se devuelve el propio número:</p>
 inglés) a las funciones que toman otras como parámetro o devuelven
 otra función. Permiten generalizar soluciones con un alto grado de
 abstracción.</p>
-<p>Los lenguajes de programación funcional como Scheme, Scala o Java 8
-tienen ya predefinidas algunas funciones de orden superior que
-permiten tratar listas o <em>streams</em> de una forma muy concisa y
-compacta. También podemos definirlas nosotros, si las funciones no
-están definidas en el lenguaje.</p>
-<p>Las funciones que veremos son:</p>
+<p>Ya hemos visto algunas funciones de orden superior, unas construidas
+por nostros y otras propias de Scheme, como <code>apply</code>.</p>
+<p>Además de <code>apply</code>, los lenguajes de programación funcional como
+Scheme, Scala o Java 8 tienen ya predefinidas algunas otras funciones
+de orden superior que trabajan con listas. Estas funciones permiten
+definir operaciones sobre las listas de una forma muy concisa y
+compacta. Son muy usadas, porque también se pueden utilizar sobre
+<em>streams</em> de datos obtenidos en operaciones de entrada/salida (por
+ejemplo, datos JSON resultantes de una petición HTTP).</p>
+<p>Vamos a ver las funciones más importantes, su uso y su implementación.</p>
 <ul>
 <li><code>map</code></li>
 <li><code>filter</code></li>
-<li><code>exists?</code> (implementada por nosotros)</li>
-<li><code>for-all?</code> (implementada por nosotros)</li>
+<li><code>exists?</code> </li>
+<li><code>for-all?</code> </li>
 <li><code>foldr</code> y <code>foldl</code></li>
 </ul>
-<p>Para las tres primeras funciones veremos también una implementación
-recursiva que nos ayudará a comprobar su funcionamiento. </p>
-<p>Y después de explicar estas funciones terminaremos con un ejemplo de
-su aplicación en el que comprobaremos cómo la utilización de funciones
-de orden superior es una excelente herramienta de la programación
+<p>Después de explicar estas funciones terminaremos con un ejemplo de su
+aplicación en el que comprobaremos cómo la utilización de funciones de
+orden superior es una excelente herramienta de la programación
 funcional que permite hacer código muy conciso y expresivo.</p>
 <p>La combinación de funciones de nivel superior con listas es una de las
 características más potentes de la programación funcional.</p>
@@ -4873,7 +4947,7 @@ condición.</p>
 </code></pre></div>
 </td></tr></table>
 
-<h4>Función <code>exists?</code> (implementada por nosotros)</h4>
+<h4>Función <code>exists?</code></h4>
 <p>La función de orden superior <code>exists</code> recibe un predicado y una lista
 y comprueba si algún elemento de la lista cumple ese predicado.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>(exists? predicado lista) -&gt; boolean
@@ -4886,8 +4960,18 @@ devuelve <code>#t</code> o <code>#f</code>.</p>
 </code></pre></div>
 </td></tr></table>
 
-<p>La función <code>exists</code> no está definida en Racket. Vamos a implementarla
-de forma recursiva.</p>
+<p>La función <code>exists</code> no está definida con este nombre en Racket, aunque
+sí en Scheme. En Racket se llama <code>ormap</code>.</p>
+<p>Ejemplo de uso:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="nb">ormap</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="nb">ormap</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+             <span class="p">(</span><span class="nb">&gt;</span> <span class="n">x</span> <span class="mi">10</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>La implementación recursiva de <code>exists?</code> es la siguiente:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4900,22 +4984,21 @@ de forma recursiva.</p>
 </code></pre></div>
 </td></tr></table>
 
-<p>Se llama a la recursión con el resto de la lista y se devuelve #t si
-la recursión encuentra a algún elemento que cumple el predicado o si
-lo cumple el primer elemento de la lista.</p>
+<h4>Función <code>for-all?</code></h4>
+<p>La función de orden superior <code>for-all?</code> recibe un predicado y una lista
+y comprueba que todos los elementos de la lista cumplen ese predicado.</p>
+<p>La función tampoco está definida con este nombre en Racket, aunque
+sí en Scheme. En Racket existe una función equivalente que se llama <code>andmap</code>.</p>
 <p>Ejemplo de uso:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">exists?</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">exists?</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
-             <span class="p">(</span><span class="nb">&gt;</span> <span class="n">x</span> <span class="mi">10</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="nb">andmap</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="nb">andmap</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+             <span class="p">(</span><span class="nb">&gt;</span> <span class="n">x</span> <span class="mi">10</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span> <span class="mi">30</span> <span class="mi">50</span> <span class="mi">80</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 </code></pre></div>
 </td></tr></table>
 
-<h4>Función <code>for-all?</code> (implementada por nosotros)</h4>
-<p>La función de orden superior <code>for-all?</code> recibe un predicado y una lista
-y comprueba que todos los elementos de la lista cumplen ese predicado.</p>
-<p>Tampoco está definida en Racket y la implementamos nosotros:</p>
+<p>La implementación recursiva de <code>for-all?</code> es la siguiente:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -4930,15 +5013,6 @@ y comprueba que todos los elementos de la lista cumplen ese predicado.</p>
 lista cumplen el predicado y también lo debe cumplir el primer
 elemento. Una lista vacía cumple siempre devuelve <code>#t</code> (al no tener
 elementos, podemos decir que todos sus elementos cumplen el predicado).</p>
-<p>Ejemplo de uso:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">for-all?</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">for-all?</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
-             <span class="p">(</span><span class="nb">&gt;</span> <span class="n">x</span> <span class="mi">10</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span> <span class="mi">30</span> <span class="mi">50</span> <span class="mi">80</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
-</code></pre></div>
-</td></tr></table>
-
 <h4>Función <code>foldr</code></h4>
 <p>Veamos ahora la función <code>(foldr combina base lista)</code> que permite
 recorrer una lista aplicando una función binaria de forma acumulativa
