@@ -53,7 +53,7 @@ a) Implementa utilizando recursión por la cola las funciones
 Ejemplo:
 
 ```racket
-(expande-pareja (cons 'a 4) ; ⇒ (a a a a)
+(expande-pareja (cons 'a 4)) ; ⇒ (a a a a)
 (expande-parejas '(#t . 3) '("LPP" . 2) '(b . 4))
 ; ⇒ (#t #t #t "LPP" "LPP" b b b b)
 ```
