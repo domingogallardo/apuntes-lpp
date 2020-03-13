@@ -354,9 +354,14 @@ cuadrado de un número que pasamos como parámetro:
    (* x x))
 ```
 
-El cuerpo de la función es una expresión que se evaluará con el valor
-que se pase como parámetro. En el caso anterior la expresión es `(* x
-x)` y multiplicará el parámetro por si mismo.
+Después del nombre de la función se declaran sus argumentos. El número
+de argumentos de una función se denomina **aridad de la función**. Por
+ejemplo, la función `cuadrado` es una función de aridad 1, o _unaria_.
+
+Después de declarar los parámetros, se define el cuerpo de la
+función. Es una expresión que se evaluará con el valor que se pase
+como parámetro. En el caso anterior la expresión es `(* x x)` y
+multiplicará el parámetro por si mismo.
 
 Hay que hacer notar que en Scheme no existe la palabra clave `return`,
 sino que las funciones siempre se definen con una única expresión cuya
@@ -728,7 +733,6 @@ El segundo ejemplo lo podemos componer de la misma forma:
 ```racket
 (procesa (filtra pedidos))
 ```
-
 
 ##### Mutación 
 
@@ -3060,6 +3064,60 @@ en la lista de argumentos variables y llamamos a la función
         (+ x (+ y (suma-lista lista-nums)))))
 ```
 
+### Función `apply` ###
+
+Con la función `(apply funcion lista)` podemos aplicar una función de
+aridad `n` a una lista de datos de n datos, haciendo que cada uno de
+los datos se pasen a la función en orden como parámetros.
+
+Por ejemplo, podemos definir la función `(suma-cuadrados x y)` de
+aridad 2 de la siguiente forma:
+
+
+```racket
+(define (suma-cuadrados x y)
+    (+ (* x x) (* y y)))
+```
+
+Para invocar a `suma-cuadrados` hay que pasarle 2 parámetros:
+
+```racket
+(suma-cuadrados 10 5) ; ⇒ 100
+```
+
+Podemos usar la función `apply` para aplicar esta función a los dos
+elementos de una lista:
+
+```racket
+(apply suma-cuadrados '(10 5)) ; ⇒ 100
+```
+
+Usando `apply` podemos definir funciones recursivas con número
+variable de argumentos.
+
+Por ejemplo la función `suma-parejas` que suma un número variable de
+parejas:
+
+```racket
+(define (suma-pareja p1 p2)
+  (cons (+ (car p1) (car p2))
+        (+ (cdr p1) (cdr p2))))
+
+(define (suma-parejas . parejas)
+  (if (null? parejas)
+      '(0 . 0)
+      (suma-pareja (car parejas) (apply suma-parejas (cdr parejas)))))
+
+(suma-parejas '(1 . 2) '(3 . 4) '(5 . 6)) ; ⇒ '(9 . 12)
+```
+
+Hay que hacer notar en que la llamada recursiva es necesario usar
+`apply` porque `(cdr parejas)` es una lista. No podemos invocar a
+`suma-parejas` pasando una lista como parámetro, sino que hay que
+pasarle todos los argumentos por separado (recibe un número variable
+de argumentos). Eso lo conseguimos hacer con `apply`.
+
+
 ## Funciones como tipos de datos de primera clase
 
 Hemos visto que la característica fundamental de la programación
@@ -3814,26 +3872,28 @@ inglés) a las funciones que toman otras como parámetro o devuelven
 otra función. Permiten generalizar soluciones con un alto grado de
 abstracción.
 
-Los lenguajes de programación funcional como Scheme, Scala o Java 8
-tienen ya predefinidas algunas funciones de orden superior que
-permiten tratar listas o *streams* de una forma muy concisa y
-compacta. También podemos definirlas nosotros, si las funciones no
-están definidas en el lenguaje.
+Ya hemos visto algunas funciones de orden superior, unas construidas
+por nostros y otras propias de Scheme, como `apply`.
 
-Las funciones que veremos son:
+Además de `apply`, los lenguajes de programación funcional como
+Scheme, Scala o Java 8 tienen ya predefinidas algunas otras funciones
+de orden superior que trabajan con listas. Estas funciones permiten
+definir operaciones sobre las listas de una forma muy concisa y
+compacta. Son muy usadas, porque también se pueden utilizar sobre
+_streams_ de datos obtenidos en operaciones de entrada/salida (por
+ejemplo, datos JSON resultantes de una petición HTTP).
+
+Vamos a ver las funciones más importantes, su uso y su implementación.
 
 - `map`
 - `filter`
-- `exists?` (implementada por nosotros)
-- `for-all?` (implementada por nosotros)
+- `exists?` 
+- `for-all?` 
 - `foldr` y `foldl`
 
-Para las tres primeras funciones veremos también una implementación
-recursiva que nos ayudará a comprobar su funcionamiento. 
-
-Y después de explicar estas funciones terminaremos con un ejemplo de
-su aplicación en el que comprobaremos cómo la utilización de funciones
-de orden superior es una excelente herramienta de la programación
+Después de explicar estas funciones terminaremos con un ejemplo de su
+aplicación en el que comprobaremos cómo la utilización de funciones de
+orden superior es una excelente herramienta de la programación
 funcional que permite hacer código muy conciso y expresivo.
 
 La combinación de funciones de nivel superior con listas es una de las
@@ -4028,7 +4088,7 @@ Podemos implementar la función `filter` de forma recursiva:
     (else (mi-filter pred (cdr lista)))))
 ```
 
-#### Función `exists?` (implementada por nosotros)
+#### Función `exists?` 
 
 La función de orden superior `exists` recibe un predicado y una lista
 y comprueba si algún elemento de la lista cumple ese predicado.
@@ -4044,8 +4104,19 @@ devuelve `#t` o `#f`.
 (predicado elem) -> boolean
 ```
 
-La función `exists` no está definida en Racket. Vamos a implementarla
-de forma recursiva.
+La función `exists` no está definida con este nombre en Racket, aunque
+sí en Scheme. En Racket se llama `ormap`.
+
+Ejemplo de uso:
+
+```racket
+(ormap even? '(1 2 3 4 5 6)) ; ⇒ #t
+(ormap (lambda (x)
+             (> x 10)) '(1 3 5 8)) ; ⇒ #f
+```
+
+La implementación recursiva de `exists?` es la siguiente:
+
 
 ```racket
 (define (exists? predicado lista)
@@ -4055,25 +4126,24 @@ de forma recursiva.
           (exists? predicado (cdr lista)))))
 ```
 
-Se llama a la recursión con el resto de la lista y se devuelve #t si
-la recursión encuentra a algún elemento que cumple el predicado o si
-lo cumple el primer elemento de la lista.
 
-Ejemplo de uso:
-
-```racket
-(exists? even? '(1 2 3 4 5 6)) ; ⇒ #t
-(exists? (lambda (x)
-             (> x 10)) '(1 3 5 8)) ; ⇒ #f
-```
-
-
-#### Función `for-all?` (implementada por nosotros)
+#### Función `for-all?`
 
 La función de orden superior `for-all?` recibe un predicado y una lista
 y comprueba que todos los elementos de la lista cumplen ese predicado.
 
-Tampoco está definida en Racket y la implementamos nosotros:
+La función tampoco está definida con este nombre en Racket, aunque
+sí en Scheme. En Racket existe una función equivalente que se llama `andmap`.
+
+Ejemplo de uso:
+
+```racket
+(andmap even? '(2 4 6)) ; ⇒ #t
+(andmap (lambda (x)
+             (> x 10)) '(12 30 50 80)) ; ⇒ #t
+```
+
+La implementación recursiva de `for-all?` es la siguiente:
 
 ```racket
 (define (for-all? predicado lista)
@@ -4086,14 +4156,6 @@ La llamada recursiva comprueba que todos los elementos del resto de la
 lista cumplen el predicado y también lo debe cumplir el primer
 elemento. Una lista vacía cumple siempre devuelve `#t` (al no tener
 elementos, podemos decir que todos sus elementos cumplen el predicado).
-
-Ejemplo de uso:
-
-```racket
-(for-all? even? '(2 4 6)) ; ⇒ #t
-(for-all? (lambda (x)
-             (> x 10)) '(12 30 50 80)) ; ⇒ #t
-```
 
 
 #### Función `foldr`

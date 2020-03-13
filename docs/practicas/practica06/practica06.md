@@ -9,7 +9,7 @@ solución debe incluir:
 
 - La **definición de las funciones** que resuelven el ejercicio.
 - Un conjunto de **pruebas** que comprueben su funcionamiento
-  utilizando la librería `schemeunit`.
+  utilizando el API `RackUnit`.
 
 ## Ejercicios
 
@@ -37,26 +37,43 @@ lista, como mostramos en el `check-equal?` que hay a continuación.
 (check-equal? (cadddr (caddr lista-a)) 'h)
 ```
 
+b) Dibuja la representación en niveles de las siguientes listas estructurada
 
-b) Escribe la lista estructurada correspondiente a la siguiente
-representación gráfica por niveles. Comprueba que está definida
-correctamente haciendo algunos `check-equal?` que obtengan algunos de
-sus elementos.
-
-```text
-      *
-  /  / \   \
- 1  *   *   8  
-  / | \   \  
-6   *  10  2
-    |    
-    3   
+```racket
+(define lista-b1 '((2 (3)) (4 2) ((2) 3)))
+(define lista-b2 '((b) (c (a)) d (a)))
 ```
 
-```scheme
-(define lista-b '(________))
-```
+c) Dada la definición de `cuadrado-estruct` vista en teoría:
 
+<img src="imagenes/cuadrado-estruct.png" width="500px"/>
+
+1. Indica qué devuelve la expresión `(cuadrado-estruct lista-b1)`. La
+lista `lista-b1` es la definida en el apartado anterior.
+2. En la evaluación de la expresión anterior, indica cuáles son los
+argumentos que se pasan por parámetro en las llamadas recursivas a
+`cuadrado-estruct` marcadas con `1` y `2`.
+3. En la evaluación de la expresión anterior, indican qué devuelven
+las llamadas recursivas marcadas con `1` y `2`.
+
+
+d) Para entender el funcionamiento de las funciones de orden superior
+que trabajan sobre listas estructuradas es muy importante entender qué
+devuelve la expresión `map` que se aplica a la lista.
+
+Dada la definición de `(nivel-hoja-fos dato lista)` vista en teoría,
+indica qué devuelve la siguiente expresión (es la expresión `map` que
+hay en su cuerpo). La lista `lista-b2` es la definida en el apartado
+anterior. Utiliza el dibujo que has hecho en el ejercicio anterior
+para entender el funcionamiento de la expresión.
+
+```racket
+(map (lambda (elem)
+        (if (hoja? elem)
+              (if (equal? elem 'a) 0 -1)
+            (nivel-hoja-fos 'a elem)))
+        lista-b2)
+```
 
 ### Ejercicio 2  ###
 
@@ -86,16 +103,16 @@ Ejemplos:
 
 ### Ejercicio 3 ###
 
-a) Implementa la función `(cumplen-predicado pred lista)` que devuelva
+Implementa la función `(cumplen-predicado pred lista)` que devuelva
 una lista con todos los elementos de lista estructurada que cumplen un
-predicado. Implementa dos versiones, una **recursiva pura** y otra usando
-**funciones de orden superior**.
+predicado. Implementa dos versiones, una **recursiva pura** y otra
+usando **funciones de orden superior**.
 
 Ejemplo:
 
 ```scheme
-(cumplen-predicado even? '(1 (2 (3 (4))) (5 6))) ; ⇒ {2 4 6}
-(cumplen-predicado pair? '(((1 . 2) 3 (4 . 3) 5) 6)) ; ⇒ {{1 . 2} {4 . 3}
+(cumplen-predicado even? '(1 (2 (3 (4))) (5 6))) ; ⇒ (2 4 6)
+(cumplen-predicado pair? '(((1 . 2) 3 (4 . 3) 5) 6)) ; ⇒ ((1 . 2) (4 . 3)
 ```
 
 Utilizando la función anterior implementa las siguientes funciones:
@@ -105,7 +122,7 @@ Utilizando la función anterior implementa las siguientes funciones:
   con los números de la lista original mayores que `n`.
   
   ```scheme
-  (busca-mayores 10 '(-1 (20 (10 12) (30 (25 (15)))))) ; ⇒ {20 12 30 25 15}
+  (busca-mayores 10 '(-1 (20 (10 12) (30 (25 (15)))))) ; ⇒ (20 12 30 25 15)
   ```
 
 - Función `(empieza-por char lista-pal)` que recibe una lista
@@ -114,22 +131,9 @@ Utilizando la función anterior implementa las siguientes funciones:
   carácter `char`.
   
   ```scheme
-  (empieza-por #\m '((hace (mucho tiempo)) (en) (una galaxia ((muy muy) lejana))) ; ⇒ {mucho muy muy}
+  (empieza-por #\m '((hace (mucho tiempo)) (en) (una galaxia ((muy  muy) lejana))) 
+  ; ⇒ (mucho muy muy)
   ```
-
-
-b) Implementa la función recursiva `(mayor-plana lista)` que devuelve
-la lista plana de mayor longitud de la lista estructurada `lista`. En
-el caso en que haya más de una lista plana de igual longitud se
-devolverá la que se encuentra situada más a la derecha.
-
-Ejemplos:
-
-```scheme
-(mayor-plana '(a b c)) ; ⇒ '(a b c)
-(mayor-plana '((a b) (a (b (c d))) g)) ; ⇒ '(c d)
-(mayor-plana '((a b) (a (b (c d e f))) g)) ; ⇒ '(c d e f)
-```
 
 
 ### Ejercicio 4 ###
@@ -143,7 +147,7 @@ Ejemplo:
 
 ```scheme
 (sustituye-elem  '(a b (c d (e c)) c (f (c) g))  'c  'h)
-⇒ {a b {h d {e h}} h {f {h} g}}
+; ⇒ (a b (h d (e h)) h (f (h) g))
 ```
 
 
@@ -156,10 +160,10 @@ Ejemplos:
 
 ```scheme
 (diff-listas '(a (b ((c)) d e) f) '(1 (b ((2)) 3 4) f))
-⇒ {{a . 1} {c . 2} {d . 3} {e . 4}}
+; ⇒ ((a . 1) (c . 2) (d . 3) (e . 4))
 
 (diff-listas '((a b) c) '((a b) c))
-⇒ ()
+; ⇒ ()
 ```
 
 
@@ -167,14 +171,19 @@ Ejemplos:
 
 Dos funciones sobre niveles:
 
-a) Implementa la función `(cuenta-hojas-debajo-nivel lista n)` que recibe
-una lista estructurada y un número que indica un nivel, y devuelve el
-número de hojas que hay por debajo de ese nivel. Puedes hacerlo con
-recursión o con funciones de orden superior.
+a) Define la función recursiva `(mezclar lista1 lista2 n)` que reciba
+dos listas estructuradas con la misma estructura y un número que
+indica un nivel. Devuelve una nueva lista estructurada con la misma
+estructura que las listas originales, con los elementos de lista1 que
+tienen un nivel menor o igual que `n` y los elementos de lista2 que
+tienen un nivel mayor que `n`.
 
-```scheme
-(cuenta-hojas-debajo-nivel '(10 2 (4 6 (9 3) (8 7) 12) 1) 2) ; ⇒ 4
-(cuenta-hojas-debajo-nivel '(10 2 (4 6 (9 3) (8 7) 12) 1) 3) ; ⇒ 0
+<img src="imagenes/mezclar-listas.png" width="500px"/>
+
+```racket
+(define lista1 '(((a b) ((c))) (d) e))
+(define lista2 '(((1 2) ((3))) (4) 5))
+(mezclar lista1 lista2 2) → (((1 2) ((3))) (d) e)
 ```
 
 b) Implementa la función `(nivel-elemento lista)` que reciba una lista
@@ -191,6 +200,6 @@ recursión o con funciones de orden superior.
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2018-19  
+Lenguajes y Paradigmas de Programación, curso 2019-20  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

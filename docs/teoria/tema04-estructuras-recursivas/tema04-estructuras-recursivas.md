@@ -468,7 +468,7 @@ estructura jerárquica de las listas estructuradas.
   estructurada
 - `(nivel-hoja dato lista)`: devuelve el nivel en el que se encuentra
   un dato en una lista
-- `(cuadrado-lista lista)`: eleva todas las hojas al cuadrado
+- `(cuadrado-estruct lista)`: eleva todas las hojas al cuadrado
   (suponemos que la lista estructurada contiene números)
 - `(map-estruct f lista)`: similar a map, aplica una función a todas las
   hojas de la lista estructurada y devuelve el resultado (otra lista
@@ -630,40 +630,47 @@ Ejemplos:
 (nivel-hoja2 'b '(a c d ((e)))) ; ⇒ #f
 ```
 
-##### `(cuadrado-lista lista)`
+##### `(cuadrado-estruct lista)`
 
 Vamos ahora a ver un tipo de función distinta. Una que construye una
 lista estructurada y la devuelve. 
 
-Queremos implementar la función `(cuadrado-lista lista)` que recibe
+Queremos implementar la función `(cuadrado-estruct lista)` que recibe
 una lista estructurada y devuelve otra lista estructurada con la misma
 estructura y sus números elevados al cuadrado.
 
 Por ejemplo:
 
 ```racket
-(cuadrado-lista '(2 3 (4 (5)))) ; ⇒ (4 9 (16 (25))
+(cuadrado-estruct '(2 3 (4 (5)))) ; ⇒ (4 9 (16 (25))
 ```
 
 La solución recursiva es:
 
 ```racket
-(define (cuadrado-lista elem)
+(define (cuadrado-estruct elem)
   (cond ((null? elem) '())
         ((hoja? elem) (* elem elem))
-        (else (cons (cuadrado-lista (car elem))
-                    (cuadrado-lista (cdr elem))))))
+        (else (cons (cuadrado-estruct (car elem))
+                    (cuadrado-estruct (cdr elem))))))
 ```
+
+Se llama a la recursión con el `car` y con el `cdr` de la lista
+original. El resultado de ambas llamadas serán las correspondientes
+listas estructuradas con sus elementos elevados al cuadrado. Y se
+devuelve la lista resultante de insertar la lista devuelta en la
+llamada recursiva con el `car` en la primera posición de la lista
+devuelta en la llamada recursiva con el `cdr`.
 
 Es muy interesante la versión de esta función con funciones de orden
 superior:
 
 ```racket
-(define (cuadrado-lista-fos lista)
+(define (cuadrado-estruct-fos lista)
     (map (lambda (elem)
            (if (hoja? elem)
                (* elem elem)
-               (cuadrado-lista-fos elem))) lista))
+               (cuadrado-estruct-fos elem))) lista))
 ```
 
 Como una lista estructurada está compuesta de datos o de otras
