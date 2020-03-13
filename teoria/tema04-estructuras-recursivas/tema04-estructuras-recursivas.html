@@ -438,6 +438,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practicas/practica06/practica06.html" title="Práctica 6" class="md-nav__link">
+      Práctica 6
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -961,7 +973,7 @@ estructura jerárquica de las listas estructuradas.</p>
   estructurada</li>
 <li><code>(nivel-hoja dato lista)</code>: devuelve el nivel en el que se encuentra
   un dato en una lista</li>
-<li><code>(cuadrado-lista lista)</code>: eleva todas las hojas al cuadrado
+<li><code>(cuadrado-estruct lista)</code>: eleva todas las hojas al cuadrado
   (suponemos que la lista estructurada contiene números)</li>
 <li><code>(map-estruct f lista)</code>: similar a map, aplica una función a todas las
   hojas de la lista estructurada y devuelve el resultado (otra lista
@@ -1166,14 +1178,14 @@ porque no se ha encontrado el dato.</p>
 </code></pre></div>
 </td></tr></table>
 
-<h5><code>(cuadrado-lista lista)</code></h5>
+<h5><code>(cuadrado-estruct lista)</code></h5>
 <p>Vamos ahora a ver un tipo de función distinta. Una que construye una
 lista estructurada y la devuelve. </p>
-<p>Queremos implementar la función <code>(cuadrado-lista lista)</code> que recibe
+<p>Queremos implementar la función <code>(cuadrado-estruct lista)</code> que recibe
 una lista estructurada y devuelve otra lista estructurada con la misma
 estructura y sus números elevados al cuadrado.</p>
 <p>Por ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">cuadrado-lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span> <span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span> <span class="c1">; ⇒ (4 9 (16 (25))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">cuadrado-estruct</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span> <span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span> <span class="c1">; ⇒ (4 9 (16 (25))</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -1182,25 +1194,31 @@ estructura y sus números elevados al cuadrado.</p>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-lista</span> <span class="n">elem</span><span class="p">)</span>
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-estruct</span> <span class="n">elem</span><span class="p">)</span>
   <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">null?</span> <span class="n">elem</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">())</span>
         <span class="p">((</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">elem</span> <span class="n">elem</span><span class="p">))</span>
-        <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">cuadrado-lista</span> <span class="p">(</span><span class="nb">car</span> <span class="n">elem</span><span class="p">))</span>
-                    <span class="p">(</span><span class="n">cuadrado-lista</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">elem</span><span class="p">))))))</span>
+        <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">cuadrado-estruct</span> <span class="p">(</span><span class="nb">car</span> <span class="n">elem</span><span class="p">))</span>
+                    <span class="p">(</span><span class="n">cuadrado-estruct</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">elem</span><span class="p">))))))</span>
 </code></pre></div>
 </td></tr></table>
 
+<p>Se llama a la recursión con el <code>car</code> y con el <code>cdr</code> de la lista
+original. El resultado de ambas llamadas serán las correspondientes
+listas estructuradas con sus elementos elevados al cuadrado. Y se
+devuelve la lista resultante de insertar la lista devuelta en la
+llamada recursiva con el <code>car</code> en la primera posición de la lista
+devuelta en la llamada recursiva con el <code>cdr</code>.</p>
 <p>Es muy interesante la versión de esta función con funciones de orden
 superior:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-lista-fos</span> <span class="n">lista</span><span class="p">)</span>
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-estruct-fos</span> <span class="n">lista</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elem</span><span class="p">)</span>
            <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span>
                <span class="p">(</span><span class="nb">*</span> <span class="n">elem</span> <span class="n">elem</span><span class="p">)</span>
-               <span class="p">(</span><span class="n">cuadrado-lista-fos</span> <span class="n">elem</span><span class="p">)))</span> <span class="n">lista</span><span class="p">))</span>
+               <span class="p">(</span><span class="n">cuadrado-estruct-fos</span> <span class="n">elem</span><span class="p">)))</span> <span class="n">lista</span><span class="p">))</span>
 </code></pre></div>
 </td></tr></table>
 
