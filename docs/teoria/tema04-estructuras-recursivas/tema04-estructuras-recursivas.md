@@ -394,15 +394,15 @@ sobre la sublista, con lo que se devolverá el número de hojas de esa
 sublista.
 
 El resultado del map será una lista de números (el número de hojas de
-cada componente), que podemos sumar haciendo un `fold-right` con la
+cada componente), que podemos sumar haciendo un `foldr` con la
 función `+`:
 
 ```racket
 (define (num-hojas-fos lista)
-    (fold-right + 0 (map (lambda (elem)
-                           (if (hoja? elem)
-                               1
-                               (num-hojas-fos elem))) lista)))
+    (foldr + 0 (map (lambda (elem)
+                        (if (hoja? elem)
+                            1
+                            (num-hojas-fos elem))) lista)))
 ```
 
 Una explicación gráfica de cómo funciona la función sobre la lista `(1
@@ -447,15 +447,15 @@ Por ejemplo:
 
 Y la segunda versión, usando las funciones de orden superior `map`
 para obtener la altura de sus elementos del primer nivel (puedes ser
-hojas o sublistas) y `fold-right` para quedarse con el máximo de la
+hojas o sublistas) y `foldr` para quedarse con el máximo de la
 lista de valores que devuelve el map.
 
 ```racket
 (define (altura-fos lista)
-   (+ 1 (fold-right max 0 (map (lambda (elem)
-                                 (if (hoja? elem)
-                                     0
-                                     (altura-fos elem))) lista))))
+   (+ 1 (foldr max 0 (map (lambda (elem)
+                              (if (hoja? elem)
+                                  0
+                                  (altura-fos elem))) lista))))
 ```
 
 #### Otras funciones recursivas
@@ -501,12 +501,12 @@ Con funciones de orden superior:
 
 ```racket
 (define (aplana-fos lista)
-  (fold-right append
-              '()
-              (map (lambda (elem)
-                     (if (hoja? elem)
-                         (list elem)
-                         (aplana-fos elem))) lista)))
+  (foldr append
+         '()
+         (map (lambda (elem)
+                 (if (hoja? elem)
+                     (list elem)
+                     (aplana-fos elem))) lista)))
 ```
 
 ##### `(pertenece-lista? dato lista)`
@@ -582,12 +582,13 @@ Con funciones de orden superior:
 ```racket
 (define (nivel-hoja-fos dato lista)
   (suma-1-si-mayor-igual-que-0
-       (fold-right max -1
-                   (map (lambda (elem)
-                          (if (hoja? elem)
-                              (if (equal? elem dato) 0 -1)
-                              (nivel-hoja-fos dato elem)))  
-                        lista))))
+       (foldr max 
+              -1
+              (map (lambda (elem)
+                       (if (hoja? elem)
+                            (if (equal? elem dato) 0 -1)
+                            (nivel-hoja-fos dato elem)))  
+                      lista))))
 ```
 
 
@@ -713,7 +714,6 @@ Solución con `map`:
               
 ```
 
-<!--
 
 ## Árboles
 
@@ -735,17 +735,16 @@ Un **árbol** se puede definir recursivamente de la siguiente forma:
 
 Un ejemplo de árbol:
 
-<img src="imagenes/arbol-sencillo.png" width="250px"/>
+<img src="imagenes/arbol-sencillo.png" width="600px"/>
 
-El árbol anterior tiene como dato de la raíz es el símbolo `+` y tiene
-3 árboles hijos:
+El árbol anterior tiene como dato raíz el número 30 y tiene 3 árboles
+hijos:
 
-<img src="imagenes/tres-arboles-hijos.png" width="300px"/>
-
-- El primer hijo es un árbol hoja, con valor 5 y sin hijos
-- El segundo hijo es un árbol con valor `*` y dos hijos hoja, el 2 y
-  el 3
-- El tercer hijo es otro árbol hoja, con valor 10
+- El primer hijo es un árbol con raíz 15 y con dos hijos hoja, el 10 y
+  el 12
+- El segundo hijo es un árbol hoja, con valor 18
+- El tercer hijo es un árbol con raíz 25 y con tres hijos hoja, el 19,
+  21 y 22.
 
 #### Representación de árboles con listas
 
@@ -753,47 +752,59 @@ En Scheme la lista es la estructura de datos principal. ¿Cómo
 podemos construir un árbol usando listas?
 
 Podemos hacerlo de varias formas, pero escogemos la siguiente: usar
-**una lista de _n+1_ elems** para representar un árbol con n hijos:
+**una lista de _n+1_ elementos** para representar un árbol con _n_ hijos:
+
+<img src="imagenes/arbol-lista.png" width="600px"/>
 
 - el primer elemento la lista será el dato de la raíz
 - el resto serán los árboles hijos
 
-> Árbol: (dato hijo-1 hijo-2 ... hijo-n)
+```text
+arbol -> (dato hijo-1 hijo-2 ... hijo-n)
+```
 
 Los nodos hoja (datos al final del árbol que no tienen ningún hijo)
 son también árboles. Al no tener hijos, se representan como listas con
-un único elemento, el propio dato:
+un único elemento, el propio dato.
 
-> Nodo hoja: (dato)
+```text
+Nodo hoja -> (dato)
+```
 
-<img src="imagenes/arbol-sencillo.png" width="250px"/>
+La forma de representar el árbol anterior 
 
-La forma de representar el árbol anterior será la siguiente lista:
+<img src="imagenes/arbol-sencillo2.png" width="400px"/>
+
+será la siguiente lista:
+
 
 ```racket
-(+ (5) (* (2) (3)) (10))
+(30 (15 (10) (12)) (18) (25 (19) (21) (22)))
 ```
 
 Los elementos de esta lista son:
 
-- El primer elemento es el símbolo `+`, el dato valor de la raíz del
+<img src="imagenes/lista-arbol.png" width="600px"/>
+
+
+- El primer elemento es el número `30`, el dato valor de la raíz del
   árbol
-- El segundo elemento es la lista `(5)`, que representa el árbol hoja
-  formado por un 5
-- El tercer elemento es la lista `(* (2) (3))`, que representa el
-  árbol con un dato `*` y dos hijos
-- El cuarto elemento es la lista `(10)`, que representa el árbol hoja
-  formado por un 10
+- El segundo elemento es la lista `(15 (10) (12))`, que representa el
+  árbol con dato `15` y dos hijos
+- El tercer elemento es la lista `(18)` que representa el árbol hoja
+  formado por un 18
+- El tercer elemento es la lista `(15 (19) (21) (22))`, que representa el
+  árbol con un dato `15` y tres hijos
 
 Podríamos definir el árbol con la siguiente sentencia:
 
 ```racket
-(define arbol1 '(+ (5) (* (2) (3)) (10)))
+(define arbol1 '(30 (15 (10) (12)) (18) (25 (19) (21) (22))))
 ```
 
 Otro ejemplo más. ¿Cómo se implementa en Scheme el árbol de la siguiente figura?
 
-<img src="imagenes/binario-2.png" width="300px"/>
+<img src="imagenes/arbol2.png" width="300px"/>
 
 Se haría con la lista de la siguiente sentencia:
 
@@ -842,53 +853,49 @@ funciones:
 
 Volvemos a mostrar el `arbol1` para comprobar estas funciones.
 
-<img src="imagenes/arbol-sencillo.png" width="250px"/>
+<img src="imagenes/arbol-sencillo2.png" width="400px"/>
 
 Las funciones anteriores devuelven los siguientes valores:
 
 ```racket
-(dato-arbol arbol1) ; ⇒ +
-(hijos-arbol arbol1) ; ⇒ ((5) (* (2) (3)) (10))x
-(hoja-arbol? (car (hijos-arbol arbol1))) ; ⇒ #t
+(dato-arbol arbol1) ; ⇒ 30
+(hijos-arbol arbol1) ; ⇒ ((15 (10) (12)) (18) (25 (19) (21) (22)))
+(hoja-arbol? (car (hijos-arbol arbol1))) ; ⇒ #f
+(hoja-arbol? (cadr (hijos-arbol arbol1))) ; ⇒ #t
 ```
 
 - La llamada `(dato-arbol arbol1)` devuelve el dato que hay en la raíz
-  del árbol, el símbolo `+`
+  del árbol, el número `30`.
 - La invocación `(hijos-arbol arbol1)` devuelve una lista de tres
-  elementos, los árboles hijos: `((5) (* (2) (3)) (10))`:
-    - El primer elemento se puede obtener con la función `(car
-      (hijos-arbol arbol))` y es la lista `(5)`, que representa el árbol
-      hoja formado por el `5`
-    - El segundo es la lista `(* (2) (3))`, que representa el árbol
-      formado por el `*` en su raíz y las hojas `2` y `3`. Se puede
-      obtener con la llamada `(cadr (hijos-arbol arbol))`.
-    - El tercero es el árbol hoja `10`, representado por la lista
-      `(10)`, que se puede obtener con la llamada `(caddr
-      (hijos-arbol arbol))`.
-- El primer y el tercer elemento de la lista de hijos son árboles hoja:
-  `(hoja-arbol? (car (hijos-arbol arbol1))) ⇒ #t` y `(hoja-arbol?
-  (caddr (hijos-arbol arbol1))) ⇒ #t`.
+  elementos, los árboles hijos:
+    - El primer elemento es la lista `(15 (10) (12))`, que representa el árbol
+      formado por el `15` en su raíz y las hojas `10` y `12`.
+    - El segundo elemento es el árbol hoja `18`, representado por la
+      lista `(18)`.
+    - El tercero es la lista `(25 (19) (21) (22))`, que representa el
+      árbol formado por el `25` en su raíz y las hojas `19`, `21` y `22`.
 				   
 Es muy importante considerar en cada caso con qué tipo de dato estamos
 trabajando y usar la barrera de abstracción adecuada en cada caso:
 
-- La función `hijos-arbol` siempre devuelve una lista de árboles, que
+- La función `hijos-arbol` siempre devuelve una **lista de árboles**, que
   podemos recorrer usando `car` y `cdr`.
 - El `car` de una lista de árboles (devuelta por `hijos-arbol`) siempre
   es un árbol y debemos de usar las funciones de su barrera de
   abstracción: `dato-arbol` e `hijos-arbol`.
-- La función `dato-arbol` devuelve un dato de árbol, del tipo que
+- La función `dato-arbol` devuelve un **dato**, del tipo que
   guardemos en el árbol. En el caso del árbol ejemplo es un número.
 
-Por ejemplo, para obtener el número 2 en el árbol anterior tendríamos
-que hacer lo siguiente: acceder al segundo elemento de la lista de
-hijos, después al primer hijo de éste y por último acceder a su
+Por ejemplo, para obtener el número `12` en el árbol anterior tendríamos
+que hacer lo siguiente: acceder al primer elemento de la lista de
+hijos, después al segundo hijo de éste y por último acceder a su
 dato. Recordemos que `hijos-arbol` devuelve la lista de árboles hijos,
 por lo que utilizaremos las funciones `car` y `cdr` para recorrerlas y
 obtener los elementos que nos interesen:
 
 ```racket
-(dato-arbol (car (hijos-arbol (cadr (hijos-arbol arbol1))))) ; ⇒ 2
+(dato-arbol (cadr (hijos-arbol (car (hijos-arbol arbol1)))))
+; ⇒ 12
 ```
 
 
@@ -900,34 +907,42 @@ necesitamos un dato y una lista de árboles hijos. Si la lista de
 árboles hijos es vacía, tendremos un nodo hoja.
 
 ```racket
-(define (construye-arbol dato lista-arboles)  
+(define (nuevo-arbol dato lista-arboles)
    (cons dato lista-arboles))
 ```
 
-Llamaremos a la función `construye-arbol` pasando su dato
+Llamaremos a la función `nuevo-arbol` pasando su dato
 (obligatorio) y la lista de arboles hijos. Si se pasa una lista vacía
 como parámetro estaremos definiendo un nodo hoja.
 
 Por ejemplo, para definir un nodo hoja con el dato 2:
 
 ```racket
-(define arbol3 (construye-arbol 2 '()))
+(define arbol3 (nuevo-arbol 2 '()))
 ```
 
 Y para definir un árbol con 3 hijos:
 
 ```racket
-(define arbol4 (construye-arbol 10 (list (construye-arbol 2 '())
-                                         (construye-arbol 5 '()) 
-                                         (construye-arbol 9 '())))
+(define arbol4 (nuevo-arbol 10 (list (nuevo-arbol 2 '())
+                                     (nuevo-arbol 5 '()) 
+                                     (nuevo-arbol 9 '())))
 ```
-El árbol 1 anterior se puede construir con las siguientes llamadas al constructor:
+
+
+El árbol 1 anterior se puede construir con las siguientes llamadas al
+constructor. Guardamos los árboles hijos en variables auxiliares para
+hacer más entendible la expresión:
 
 ```racket
-(construye-arbol '+ (list (construye-arbol 5 '())
-                          (construye-arbol '* (list (construye-arbol 2 '())
-                                                    (construye-arbol 3 '())))
-                          (construye-arbol 10 '()))
+(define arbol-15 (nuevo-arbol 15 (list (nuevo-arbol 10 '())
+                                       (nuevo-arbol 12 '()))))
+(define arbol-18 (nuevo-arbol 18 '()))                                             
+(define arbol-25 (nuevo-arbol 25 (list (nuevo-arbol 19 '())
+                                       (nuevo-arbol 21 '())
+                                       (nuevo-arbol 22 '()))))
+(define arbol1b (nuevo-arbol 30 (list arbol-15 arbol-18 arbol-25)))
+arbol1b ; ⇒ (30 (15 (10) (12)) (18) (25 (19) (21) (22)))
 ```
 
 #### Barreras de abstracción de árboles y listas estructuradas
@@ -943,7 +958,7 @@ la barrera de abstracción de listas y árboles:
 <img src="imagenes/barrera-abstraccion.png" width="550px">
 
 !!! Important "Importante"
-    Es muy importante usar la barrera de abstracción al trabajar con
+    Debemos usar la barrera de abstracción al trabajar con
     árboles porque así separamos nuestro código de la implementación
     subyacente del tipo de dato. De esta forma es posible cambiar la
     implementación del tipo de dato sin afectar a las funciones que hemos
@@ -979,7 +994,7 @@ Vamos a diseñar las siguientes funciones recursivas:
 
 Todas comparten un patrón similar de recursión mutua.
 
-#### Función `(suma-datos-arbol arbol)`
+#### Función suma-datos-arbol
 
 Vamos a implementar una función recursiva que sume todos los datos de
 un árbol.
@@ -1008,6 +1023,17 @@ entonces para construir la siguiente función que suma una lista de
        (+ (suma-datos-arbol (car bosque)) (suma-datos-bosque (cdr bosque)))))
 ```
 
+Podemos visualizar el funcionamiento de la `suma-datos-bosque` en la
+siguiente figura:
+
+<img src="imagenes/suma-datos-bosque.png" width="600px"/>
+
+El caso general de la función obtiene el primer árbol de la lista (un
+árbol) y llama a la función `suma-datos-arbol` para obtener la suma de
+sus datos. También obtiene el resto del bosque (otra lista de árboles)
+y llama de forma recursiva a la propia función para sumar todos sus
+árboles.
+
 Tenemos una **recursión mutua**: para sumar los datos de una lista de
 árboles llamamos a la suma de un árbol individual que a su vez llama a
 la suma de sus hijos, etc. La recursión termina cuando calculamos la
@@ -1016,7 +1042,7 @@ lista vacía y ésta devolverá 0.
 
 
 ```racket
-(suma-datos-arbol arbol2) ; ⇒ 212
+(suma-datos-arbol arbol1) ; ⇒ 172
 ```
 
 **Versión alternativa con funciones de orden superior**
@@ -1027,8 +1053,9 @@ orden superior:
 
 ```racket
 (define (suma-datos-arbol-fos arbol)
-   (fold-right + (dato-arbol arbol) 
-       (map suma-datos-arbol-fos (hijos-arbol arbol))))
+   (foldr + 
+          (dato-arbol arbol) 
+          (map suma-datos-arbol-fos (hijos-arbol arbol))))
 ```	
 
 La función `map` aplica la propia función que estamos definiendo
@@ -1038,17 +1065,19 @@ hace su trabajo, devolverá para cada arbol hijo la suma de todos sus
 nodos. De esta forma, el resultado de `map` será una lista con la suma
 de los nodos de todos los árboles hijos.
 
-La función `fold-right` suma todos esos números de la lista y el
+La función `foldr` suma todos esos números de la lista y el
 número de la raíz.
 
 Un ejemplo de su funcionamiento sería el siguiente:
 
 ```racket
 (suma-datos-arbol-fos '(1 (2 (3) (4)) (5) (6 (7)))) ⇒
-   (fold-right + 1 (map suma-datos-arbol-fos '((2 (3) (4)) 
-                                                (5)
-                                                (6 (7))))) ⇒
-(fold-right + 1 '(9 5 13)) ⇒
+   (foldr + 
+          1 
+          (map suma-datos-arbol-fos '((2 (3) (4)) 
+                                      (5)
+                                      (6 (7))))) ⇒
+(foldr + 1 '(9 5 13)) ⇒
 28
 ```
 
@@ -1056,12 +1085,18 @@ Un ejemplo de su funcionamiento sería el siguiente:
 (3) (4))`, `(5)` y `(6 (7))`. 
 - La aplicación de `map suma-datos-arbol-fos` sobre la lista de hijos
 devuelve una lista con la suma de los nodos de cada hijo: `(9 5 13)`.
-- La función `fold-right` suma esa lista y el valor del nodo raíz (`1`).
+- La función `foldr` suma esa lista y el valor del nodo raíz (`1`).
 
-#### Función `(to-list-arbol arbol)`
+Podemos visualizar gráficamente el funcionamiento del `map` con la
+siguiente figura:
+
+<img src="imagenes/suma-datos-bosque-fos.png" width="500px"/>
+
+#### Función to-list-arbol
 
 Queremos diseñar una función `(to-list-arbol arbol)` que devuelva una
-lista con los datos del árbol en un recorrido *preorden*.
+lista con los datos del árbol en un recorrido *preorden* (primero el
+dato de la raíz y después el dato de sus hijos de izquierda a derecha).
 
 La solución, siguiendo el patrón visto en `suma-datos`, es la siguiente.
 
@@ -1077,12 +1112,13 @@ La solución, siguiendo el patrón visto en `suma-datos`, es la siguiente.
                (to-list-bosque (cdr bosque)))))
 ```
 
-La función utiliza también una *recursión mutua*: para listar todos los nodos,
-añadimos el dato a la lista de nodos que nos devuelve la función
-`to-list-bosque`. Esta función coge una lista de árboles (un *bosque*)
-y devuelve la lista *preorden* de sus nodos. Para ello, concatena la
-lista de los nodos de su primer elemento (el primer árbol) a la lista
-de nodos del resto de árboles (que devuelve la llamada recursiva).
+Igual que antes, la función utiliza una *recursión mutua*: para listar
+todos los nodos, añadimos el dato a la lista de nodos que nos devuelve
+la función `to-list-bosque`. Esta función coge una lista de árboles
+(un *bosque*) y devuelve la lista *preorden* de sus nodos. Para ello,
+concatena la lista de los nodos de su primer elemento (el primer
+árbol) a la lista de nodos del resto de árboles (que devuelve la
+llamada recursiva).
 
 Ejemplo:
 
@@ -1096,7 +1132,7 @@ Una definición alternativa usando funciones de orden superior:
 ```racket
 (define (to-list-arbol-fos arbol)
     (cons (dato-arbol arbol)
-          (fold-right append '() (map to-list-arbol-fos (hijos-arbol arbol)))))
+          (foldr append '() (map to-list-arbol-fos (hijos-arbol arbol)))))
 ```
 
 Esta versión es muy elegante y concisa. Usa la función `map` que
@@ -1106,7 +1142,7 @@ una lista de árboles podemos aplicar a sus elementos cualquier función
 definida sobre árboles. Incluso la propia función que estamos
 definiendo (¡confía en la recursión!).
 
-#### Función `(cuadrado-arbol arbol)`
+#### Función cuadrado-arbol
 
 Veamos ahora la función `(cuadrado-arbol arbol)` que toma un árbol de
 números y devuelve un árbol con la misma estructura y sus datos
@@ -1114,8 +1150,8 @@ elevados al cuadrado:
 
 ```racket
 (define (cuadrado-arbol arbol)
-   (construye-arbol (cuadrado (dato-arbol arbol))
-                    (cuadrado-bosque (hijos-arbol arbol))))  
+   (nuevo-arbol (cuadrado (dato-arbol arbol))
+                (cuadrado-bosque (hijos-arbol arbol))))
 
 (define (cuadrado-bosque bosque)
    (if (null? bosque)
@@ -1135,8 +1171,8 @@ Versión 2, con la función de orden superior `map`:
 
 ```racket
 (define (cuadrado-arbol-fos arbol)
-   (construye-arbol (cuadrado (dato-arbol arbol))
-   	                (map cuadrado-arbol-fos (hijos-arbol arbol))))
+   (nuevo-arbol (cuadrado (dato-arbol arbol))
+   	            (map cuadrado-arbol-fos (hijos-arbol arbol))))
 ```
 
 #### Función `map-arbol`
@@ -1147,8 +1183,8 @@ pasa la función a aplicar a los elementos del árbol.
 
 ```racket
 (define (map-arbol f arbol)
-   (construye-arbol (f (dato-arbol arbol))
-              (map-bosque f (hijos-arbol arbol))))  
+   (nuevo-arbol (f (dato-arbol arbol))
+                (map-bosque f (hijos-arbol arbol))))  
 
 (define (map-bosque f bosque)
    (if (null? bosque)
@@ -1170,9 +1206,9 @@ Con `map`:
 
 ```racket
 (define (map-arbol-fos f arbol)
-  (construye-arbol (f (dato-arbol arbol))
-             (map (lambda (x)
-                    (map-arbol-fos f x)) (hijos-arbol arbol))))
+  (nuevo-arbol (f (dato-arbol arbol))
+               (map (lambda (x)
+                       (map-arbol-fos f x)) (hijos-arbol arbol))))
 ```
 
 
@@ -1217,8 +1253,9 @@ que vimos con listas estructuradas
 (define (altura-arbol-fos arbol)
    (if (hoja-arbol? arbol)
        0
-      (+ 1  (fold-right max 0
-                           (map altura-arbol-fos (hijos-arbol arbol))))))
+      (+ 1  (foldr max 
+                   0
+                   (map altura-arbol-fos (hijos-arbol arbol))))))
 ```
 	
 La función `map` mapea sobre los árboles hijos la propia función, que
@@ -1270,6 +1307,12 @@ siguiente lista:
         ()))
 ```
 
+Visualmente lo podemos representar de la siguiente forma. La no
+existencia de un hijo izquierdo o un hijo derecho se representa por
+una lista vacía.
+
+<img src="imagenes/binario-3.png" width="350px"/>
+
 #### Barrera de abstracción ####
 
 Definimos la siguiente barrera de abstracción para los árboles
@@ -1277,6 +1320,9 @@ binarios. Terminamos todos los nombres de las funciones con el sufijo
 `-arbolb` (árbol binario).
 
 **Selectores**
+
+Los selectores de la barrera de abstracción del árbol binario son los
+siguientes.
 
 ```racket
 (define (dato-arbolb arbol)
@@ -1288,20 +1334,23 @@ binarios. Terminamos todos los nombres de las funciones con el sufijo
 (define (hijo-der-arbolb arbol)
    (caddr arbol))
    
+(define arbolb-vacio '())
+
 (define (vacio-arbolb? arbol)
-   (null? arbol))
+   (equal? arbol arbolb-vacio))
 
 (define (hoja-arbolb? arbol)
    (and (vacio-arbolb? (hijo-izq-arbolb arbol))
         (vacio-arbolb? (hijo-der-arbolb arbol))))
-   
-(define arbolb-vacio '())
 ```
+
+Como parte de la barrera de abstracción definimos la constante
+`arbolb-vacio`, que toma el valor de una lista vacía.
 
 **Constructor**
 
 ```racket
-(define (construye-arbolb dato hijo-izq hijo-der)
+(define (nuevo-arbolb dato hijo-izq hijo-der)
     (list dato hijo-izq hijo-der))
 ```
 
@@ -1311,8 +1360,8 @@ de abstracción:
 
 ```racket
 (define arbolb1
-   (construye-arbolb 10 (construye-arbolb 8 arbolb-vacio arbolb-vacio)
-                        (construye-arbolb 15 arbolb-vacio arbolb-vacio)))
+   (nuevo-arbolb 10 (nuevo-arbolb 8 arbolb-vacio arbolb-vacio)
+                    (nuevo-arbolb 15 arbolb-vacio arbolb-vacio)))
 ```
 
 Otro ejemplo, el árbol binario de la figura anterior utilizando el
@@ -1320,17 +1369,17 @@ constructor de la barrera de abstracción:
 
 ```racket
 (define arbolb2
-   (construye-arbolb 40 
-                    (construye-arbolb 18
-                                      (construye-arbolb 3 arbolb-vacio arbolb-vacio)
-                                      (construye-arbolb 23 
-                                                        arbolb-vacio
-                                                        (construye-arbolb 29 
-                                                                          arbolb-vacio
-                                                                          arbolb-vacio)))
-                    (construye-arbolb 52
-                                      (construye-arbolb 47 arbolb-vacio arbolb-vacio)
-                                      arbolb-vacio)))
+   (nuevo-arbolb 40 
+                 (nuevo-arbolb 18
+                               (nuevo-arbolb 3 arbolb-vacio arbolb-vacio)
+                               (nuevo-arbolb 23 
+                                             arbolb-vacio
+                                             (nuevo-arbolb 29 
+                                                           arbolb-vacio
+                                                           arbolb-vacio)))
+                 (nuevo-arbolb 52
+                               (nuevo-arbolb 47 arbolb-vacio arbolb-vacio)
+                               arbolb-vacio)))
 ```
 
 ### Funciones recursivas sobre árboles binarios
@@ -1363,8 +1412,26 @@ hijo derecho.
 (suma-datos-arbolb arbolb2) ; ⇒ 212
 ```
 
+Como el hijo izquierdo y el hijo derecho son también árboles binarios,
+podemos llamar a la recursión con esos árboles. Esas llamadas
+recursivas nos devolverán la suma de los datos en cada subárbol. Y
+sumamos el dato de la raíz.
+
+Para definir el caso base, podemos ver que en cada llamada recursiva
+vamos obteniendo el hijo izquierdo y el hijo derecho. Al final
+llegaremos a un árbol vacío, en cuyo caso devolvemos 0. 
+
+La siguiente figura representa el funcionamiento del caso general.
+
+<img src="imagenes/suma-datos-binario.png" width="500px"/>
+
 
 **to-list-arbolb**
+
+La función `to-list-arbolb` es similar a la vista con los árboles
+genéricos. Recibe un árbol binario y devuelve una lista con los datos
+en un recorrido preorden.
+
 
 ```racket
 (define (to-list-arbolb arbol)
@@ -1377,26 +1444,30 @@ hijo derecho.
 (to-list-arbolb arbolb2) ; ⇒ (40 18 3 23 29 52 47)
 ```
 
+El funcionamiento es similar a la suma: llamamos a la recursión por la
+izquierda y por la derecha. El resultado de las llamadas recursivas
+serán dos listas que tenemos que concatenar con `append`. Y por
+últimos añadimos en cabeza el dato de la raíz con `cons`.
+
 
 **cuadrado-arbolb**
 
 Por último, la función `cuadrado-arbolb` construye un nuevo árbol
 binario elevando al cuadrado el dato de la raíz, su hijo izquierdo y
 su hijo derecho. Para construir el árbol binario llamamos al
-constructor `construye-arbolb`.
+constructor `nuevo-arbolb`.
 
 ```racket
 (define (cuadrado-arbolb arbol)
    (if (vacio-arbolb? arbol)
       arbolb-vacio
-      (construye-arbolb (cuadrado (dato-arbolb arbol))
-                        (cuadrado-arbolb (hijo-izq-arbolb arbol))
-                        (cuadrado-arbolb (hijo-der-arbolb arbol)))))
+      (nuevo-arbolb (cuadrado (dato-arbolb arbol))
+                    (cuadrado-arbolb (hijo-izq-arbolb arbol))
+                    (cuadrado-arbolb (hijo-der-arbolb arbol)))))
 
 (cuadrado-arbolb arbolb1) ; ⇒ (100 (64 () ()) (225 () ()))
 ```
 
--->
 
 ## Bibliografía - SICP
 
