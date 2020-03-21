@@ -1021,6 +1021,20 @@ sublista.</p>
 <p>El resultado del map será una lista de números (el número de hojas de
 cada componente), que podemos sumar haciendo un <code>foldr</code> con la
 función <code>+</code>:</p>
+<!-- TODO
+
+Tenemos que plantearnos si cambiamos a una versión en la que la
+comprobación de hoja se hace antes de hacer el map.
+
+(define (num-hojas-fos lista)
+   (if (hoja? lista)
+        1
+        (foldr + 0 (map num-hojas-fos lista))))
+
+Igual en las FOS sobre árboles.
+
+-->
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
