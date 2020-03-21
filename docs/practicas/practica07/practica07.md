@@ -75,7 +75,7 @@ realiza también la suma de los datos de un árbol es:
 
 ```racket
 (define (suma-datos-arbol-fos arbol)
-   (fold-right + (dato-arbol arbol) 
+   (foldr + (dato-arbol arbol) 
        (map suma-datos-arbol-fos (hijos-arbol arbol))))
 ```	
 
@@ -88,7 +88,7 @@ definido en el apartado anterior:
 
 1. ¿Qué devuelve la invocación a `map` dentro de la función?
 2. ¿Qué invocaciones se realizan a la función `+` durante la ejecución
-   de `fold-right` sobre la lista devuelta por la invocación a `map`?
+   de `foldr` sobre la lista devuelta por la invocación a `map`?
    Enuméralas en orden, indicando sus parámetros y el valor devuelto
    en cada una de ellas.
 
