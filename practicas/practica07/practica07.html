@@ -36,7 +36,7 @@
     
     
       
-        <title>Práctica 7: Árboles - LPP</title>
+        <title>Práctica 7 - LPP</title>
       
     
     
@@ -109,7 +109,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Práctica 7: Árboles
+                Práctica 7
               
             </span>
           
@@ -296,10 +296,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Prácticas
@@ -383,6 +385,111 @@
   </li>
 
         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Práctica 7
+      </label>
+    
+    <a href="practica07.html" title="Práctica 7" class="md-nav__link md-nav__link--active">
+      Práctica 7
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    Ejercicios
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" class="md-nav__link">
+    Ejercicio 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" class="md-nav__link">
+    Ejercicio 5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" class="md-nav__link">
+    Ejercicio 6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -458,6 +565,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" class="md-nav__link">
+    Ejercicio 6
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -489,7 +603,7 @@ solución debe incluir:</p>
 <ul>
 <li>La <strong>definición de las funciones</strong> que resuelven el ejercicio.</li>
 <li>Un conjunto de <strong>pruebas</strong> que comprueben su funcionamiento
-  utilizando la librería <code>schemeunit</code>.</li>
+  utilizando el API <code>RackUnit</code>.</li>
 </ul>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
@@ -511,8 +625,8 @@ genérico y escribe <strong>utilizando las funciones de la barrera de
 abstracción de árboles</strong> una expresión que devuelva el número 10.</p>
 <p><img src="imagenes/arbol.png" width="400px"/></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="err">(define arbol &#39;(------------))</span>
-<span class="err">(check-equal? ------------------- 10)</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>(define arbol &#39;(------------))
+(check-equal? ------------------- 10)
 </code></pre></div>
 </td></tr></table>
 
@@ -526,21 +640,21 @@ recursión mutua y que hemos visto en teoría son las siguientes:</p>
 6
 7
 8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma-datos-arbol</span> <span class="nv">arbol</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">dato-arbol</span> <span class="nv">arbol</span><span class="p">)</span>
-       <span class="p">(</span><span class="nf">suma-datos-bosque</span> <span class="p">(</span><span class="nf">hijos-arbol</span> <span class="nv">arbol</span><span class="p">))))</span>
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-datos-arbol</span> <span class="n">arbol</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span>
+       <span class="p">(</span><span class="n">suma-datos-bosque</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>
 
-<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma-datos-bosque</span> <span class="nv">bosque</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">null? </span><span class="nv">bosque</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-datos-bosque</span> <span class="n">bosque</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">bosque</span><span class="p">)</span>
         <span class="mi">0</span>
-        <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">suma-datos-arbol</span> <span class="p">(</span><span class="nb">car </span><span class="nv">bosque</span><span class="p">))</span> 
-           <span class="p">(</span><span class="nf">suma-datos-bosque</span> <span class="p">(</span><span class="nb">cdr </span><span class="nv">bosque</span><span class="p">)))))</span>
+        <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">suma-datos-arbol</span> <span class="p">(</span><span class="nb">car</span> <span class="n">bosque</span><span class="p">))</span> 
+           <span class="p">(</span><span class="n">suma-datos-bosque</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">bosque</span><span class="p">)))))</span>
 </code></pre></div>
 </td></tr></table>
 
 <p>Si realizamos la siguiente llamada a la función <code>suma-datos-bosque</code>,
 siendo <code>arbol</code> el definido en el apartado anterior:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="nf">suma-datos-bosque</span> <span class="p">(</span><span class="nf">hijos-arbol</span> <span class="nv">arbol</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">suma-datos-bosque</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -555,15 +669,15 @@ fichero de la práctica.</p>
 realiza también la suma de los datos de un árbol es:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">suma-datos-arbol-fos</span> <span class="nv">arbol</span><span class="p">)</span>
-   <span class="p">(</span><span class="nf">fold-right</span> <span class="nv">+</span> <span class="p">(</span><span class="nf">dato-arbol</span> <span class="nv">arbol</span><span class="p">)</span> 
-       <span class="p">(</span><span class="nb">map </span><span class="nv">suma-datos-arbol-fos</span> <span class="p">(</span><span class="nf">hijos-arbol</span> <span class="nv">arbol</span><span class="p">))))</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-datos-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
+   <span class="p">(</span><span class="n">fold-right</span> <span class="nb">+</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span> 
+       <span class="p">(</span><span class="nb">map</span> <span class="n">suma-datos-arbol-fos</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>
 </code></pre></div>
 </td></tr></table>
 
 <p>Si realizamos la siguiente llamada a la función, siendo <code>arbol</code> el
 definido en el apartado anterior:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="nf">suma-datos-arbol-fos</span> <span class="nv">arbol</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">suma-datos-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -579,8 +693,8 @@ binario y escribe <strong>utilizando las funciones de la barrera de
 abstracción de árboles binarios</strong> una expresión que devuelva el número 29.</p>
 <p><img src="imagenes/arbol-binario.png" width="230px"/></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="err">(define arbolb &#39;(------------------))</span>
-<span class="err">(check-equal? ---------------------- 29)</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>(define arbolb &#39;(------------------))
+(check-equal? ---------------------- 29)
 </code></pre></div>
 </td></tr></table>
 
@@ -592,8 +706,8 @@ una versión con recursión mutua y otra (llamada <code>to-string-arbol-fos</cod
 con una única función en la que se use funciones de orden superior.</p>
 <p>Ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">arbol2</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="p">(</span><span class="nf">b</span> <span class="p">(</span><span class="nf">c</span> <span class="p">(</span><span class="nf">d</span><span class="p">))</span> <span class="p">(</span><span class="nf">e</span><span class="p">))</span> <span class="p">(</span><span class="nf">f</span><span class="p">)))</span>
-<span class="p">(</span><span class="nf">to-string-arbol</span> <span class="nv">arbol2</span><span class="p">)</span> <span class="c1">; ⇒ &quot;abcdef&quot;</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">arbol2</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span> <span class="p">(</span><span class="ss">c</span> <span class="p">(</span><span class="ss">d</span><span class="p">))</span> <span class="p">(</span><span class="ss">e</span><span class="p">))</span> <span class="p">(</span><span class="ss">f</span><span class="p">)))</span>
+<span class="p">(</span><span class="n">to-string-arbol</span> <span class="n">arbol2</span><span class="p">)</span> <span class="c1">; ⇒ &quot;abcdef&quot;</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -602,12 +716,43 @@ recibe un árbol y un dato y comprueba el número de veces que aparece
 el dato en el árbol. Debes implementar una función con recursión mutua
 y otra con funciones de orden superior.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="nf">veces-arbol</span> <span class="ss">&#39;b</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="p">(</span><span class="nf">b</span> <span class="p">(</span><span class="nf">c</span><span class="p">)</span> <span class="p">(</span><span class="nf">d</span><span class="p">))</span> <span class="p">(</span><span class="nf">b</span> <span class="p">(</span><span class="nf">b</span><span class="p">)</span> <span class="p">(</span><span class="nf">f</span><span class="p">))))</span> <span class="c1">; ⇒ 3</span>
-<span class="p">(</span><span class="nf">veces-arbol</span> <span class="ss">&#39;g</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="p">(</span><span class="nf">b</span> <span class="p">(</span><span class="nf">c</span><span class="p">)</span> <span class="p">(</span><span class="nf">d</span><span class="p">))</span> <span class="p">(</span><span class="nf">b</span> <span class="p">(</span><span class="nf">b</span><span class="p">)</span> <span class="p">(</span><span class="nf">f</span><span class="p">))))</span> <span class="c1">; ⇒ 0</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">veces-arbol</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span> <span class="p">(</span><span class="ss">c</span><span class="p">)</span> <span class="p">(</span><span class="ss">d</span><span class="p">))</span> <span class="p">(</span><span class="ss">b</span> <span class="p">(</span><span class="ss">b</span><span class="p">)</span> <span class="p">(</span><span class="ss">f</span><span class="p">))))</span> <span class="c1">; ⇒ 3</span>
+<span class="p">(</span><span class="n">veces-arbol</span> <span class="o">&#39;</span><span class="ss">g</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span> <span class="p">(</span><span class="ss">c</span><span class="p">)</span> <span class="p">(</span><span class="ss">d</span><span class="p">))</span> <span class="p">(</span><span class="ss">b</span> <span class="p">(</span><span class="ss">b</span><span class="p">)</span> <span class="p">(</span><span class="ss">f</span><span class="p">))))</span> <span class="c1">; ⇒ 0</span>
 </code></pre></div>
 </td></tr></table>
 
 <h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
+<p>a) Implementa dos versiones de la función <code>(hojas-cumplen pred arbol)</code>
+que recibe un predicado y un árbol y devuelve una lista con todas
+aquellas hojas del árbol que cumplen el predicado. Una función con
+recursión mutua y otra con funciones de orden superior. </p>
+<p>Para evitar complicar la función de orden superior, suponemos que el
+árbol inicial que pasamos como parámetro no es un árbol hoja.</p>
+<p><img src="imagenes/hojas-cumplen.png" width="400px"></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">arbol1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">12</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="p">(</span><span class="mi">10</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">arbol2</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">12</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="p">(</span><span class="mi">10</span> <span class="p">(</span><span class="mi">6</span><span class="p">))))</span>
+<span class="p">(</span><span class="n">hojas-cumplen</span> <span class="nb">even?</span> <span class="n">arbol1</span><span class="p">)</span> <span class="c1">; ⇒ &#39;(2 4 2)</span>
+<span class="p">(</span><span class="n">hojas-cumplen</span> <span class="nb">even?</span> <span class="n">arbol2</span><span class="p">)</span> <span class="c1">; ⇒ &#39;(2 4 2 6)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>b) Implementa dos versiones del predicado <code>(todas-hojas-cumplen? pred
+arbol)</code> que comprueba si todas las hojas de un árbol cumplen un
+determinado predicado. Una función con recursión mutua y otra con
+funciones de orden superior.</p>
+<p>No debes usar la función anterior, tienes que hacer un recorrido por
+todo el árbol. Para la función de orden superior puedes usar la
+función <code>for-all?</code> implementada en el <a href="https://domingogallardo.github.io/apuntes-lpp/teoria/tema02-programacion-funcional/tema02-programacion-funcional.html#funciones-de-orden-superior">tema 2</a>.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">todas-hojas-cumplen?</span> <span class="nb">even?</span> <span class="n">arbol1</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">todas-hojas-cumplen?</span> <span class="nb">even?</span> <span class="n">arbol2</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+</code></pre></div>
+</td></tr></table>
+
+<h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
 <p>a) Implementa, utilizando funciones de orden superior, la función
 <code>(suma-raices-hijos arbol)</code> que devuelva la suma de las raíces de los
 hijos de un árbol genérico.</p>
@@ -615,9 +760,9 @@ hijos de un árbol genérico.</p>
 <p><img src="imagenes/arbol-suma-raices.png" width="180px"/></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">arbol3</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">20</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">8</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="p">(</span><span class="mi">9</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span>
-<span class="p">(</span><span class="nf">suma-raices-hijos</span> <span class="nv">arbol3</span><span class="p">)</span> <span class="c1">; ⇒ 19</span>
-<span class="p">(</span><span class="nf">suma-raices-hijos</span> <span class="p">(</span><span class="nb">cadr </span><span class="p">(</span><span class="nf">hijos-arbol</span> <span class="nv">arbol3</span><span class="p">)))</span> <span class="c1">; ⇒ 6</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">arbol3</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">20</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">8</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="p">(</span><span class="mi">9</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span>
+<span class="p">(</span><span class="n">suma-raices-hijos</span> <span class="n">arbol3</span><span class="p">)</span> <span class="c1">; ⇒ 19</span>
+<span class="p">(</span><span class="n">suma-raices-hijos</span> <span class="p">(</span><span class="nb">cadr</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol3</span><span class="p">)))</span> <span class="c1">; ⇒ 6</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -628,8 +773,8 @@ raíces de los hijos y que todos los hijos cumplen también esta
 propiedad.</p>
 <p>Ejemplos:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="nf">raices-mayores-arbol?</span> <span class="nv">arbol3</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="nf">raices-mayores-arbol?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">20</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">8</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="p">(</span><span class="mi">9</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span> <span class="c1">; ⇒ #f</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">raices-mayores-arbol?</span> <span class="n">arbol3</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">raices-mayores-arbol?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">20</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">8</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="p">(</span><span class="mi">9</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span> <span class="c1">; ⇒ #f</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -640,27 +785,27 @@ o no.</p>
 <p>Ejemplos:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="nf">comprueba-raices-arbol</span> <span class="nv">arbol3</span><span class="p">)</span> <span class="c1">; ⇒ {1 {1} {1 {1} {1}} {1 {1}}}</span>
-<span class="p">(</span><span class="nf">comprueba-raices-arbol</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">20</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">8</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="p">(</span><span class="mi">9</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span> 
-<span class="c1">; ⇒ {1 {1} {0 {1} {1}} {1 {1}}}</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">comprueba-raices-arbol</span> <span class="n">arbol3</span><span class="p">)</span> <span class="c1">; ⇒ (1 (1) (1 (1) (1)) (1 (1)))</span>
+<span class="p">(</span><span class="n">comprueba-raices-arbol</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">20</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">8</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="p">(</span><span class="mi">9</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span> 
+<span class="c1">; ⇒ (1 (1) (0 (1) (1)) (1 (1)))</span>
 </code></pre></div>
 </td></tr></table>
 
-<h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
+<h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
 <p>a) Define la función <code>(es-camino? lista arbol)</code> que debe comprobar si
 la secuencia de elementos de la lista se corresponde con un camino
 del árbol que empieza en la raíz y que termina exactamente en una
 hoja. Suponemos que <code>lista</code> contiene al menos un elemento</p>
-<p>Por ejemplo, la lista <code>'(a b a)</code> sí que es camino en el siguiente árbol,
-pero la lista <code>'(a b)</code> no.</p>
+<p>Por ejemplo, la lista <code>(a b a)</code> sí que es camino en el siguiente árbol,
+pero la lista <code>(a b)</code> no.</p>
 <p><img src="imagenes/es-camino.png" width="300px"/></p>
 <p>Ejemplos: suponiendo que <code>arbol</code> es el árbol definido por la figura
 anterior:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="nf">es-camino?</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">a</span><span class="p">)</span> <span class="nv">arbol</span><span class="p">)</span> <span class="err">⇒</span> <span class="no">#t</span>
-<span class="p">(</span><span class="nf">es-camino?</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span><span class="p">)</span> <span class="nv">arbol</span><span class="p">)</span> <span class="err">⇒</span> <span class="no">#f</span>
-<span class="p">(</span><span class="nf">es-camino?</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="nv">a</span> <span class="nv">b</span><span class="p">)</span> <span class="nv">arbol</span><span class="p">)</span> <span class="err">⇒</span> <span class="no">#f</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">es-camino?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">a</span><span class="p">)</span> <span class="n">arbol</span><span class="p">)</span> <span class="n">⇒</span> <span class="no">#t</span>
+<span class="p">(</span><span class="n">es-camino?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span><span class="p">)</span> <span class="n">arbol</span><span class="p">)</span> <span class="n">⇒</span> <span class="no">#f</span>
+<span class="p">(</span><span class="n">es-camino?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">a</span> <span class="ss">b</span><span class="p">)</span> <span class="n">arbol</span><span class="p">)</span> <span class="n">⇒</span> <span class="no">#f</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -672,14 +817,14 @@ encuentran en ese nivel.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="nf">nodos-nivel</span> <span class="mi">0</span> <span class="nv">arbol</span><span class="p">)</span> <span class="err">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">nodos-nivel</span> <span class="mi">1</span> <span class="nv">arbol</span><span class="p">)</span> <span class="err">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">6</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">nodos-nivel</span> <span class="mi">2</span> <span class="nv">arbol</span><span class="p">)</span> <span class="err">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="mi">5</span> <span class="mi">7</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">nodos-nivel</span> <span class="mi">3</span> <span class="nv">arbol</span><span class="p">)</span> <span class="err">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="mi">2</span><span class="p">)</span>
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">nodos-nivel</span> <span class="mi">0</span> <span class="n">arbol</span><span class="p">)</span> <span class="n">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="n">nodos-nivel</span> <span class="mi">1</span> <span class="n">arbol</span><span class="p">)</span> <span class="n">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">6</span><span class="p">)</span>
+<span class="p">(</span><span class="n">nodos-nivel</span> <span class="mi">2</span> <span class="n">arbol</span><span class="p">)</span> <span class="n">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="mi">5</span> <span class="mi">7</span><span class="p">)</span>
+<span class="p">(</span><span class="n">nodos-nivel</span> <span class="mi">3</span> <span class="n">arbol</span><span class="p">)</span> <span class="n">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 
-<h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
+<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
 <p>Dado un árbol binario y un camino definido como una lista de símbolos:
 <code>'(&lt; &gt; = &gt; &gt; =)</code> en el que:</p>
 <ul>
@@ -691,13 +836,13 @@ encuentran en ese nivel.</p>
 lista con los datos recogidos por el camino.</p>
 <p><img src="imagenes/arbol-binario2.png" width="250px"/></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="nf">camino-b-tree</span> <span class="nv">b-tree</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">=</span> <span class="nv">&lt;</span> <span class="nv">&lt;</span> <span class="nv">=</span> <span class="nv">&gt;</span> <span class="nv">=</span><span class="p">))</span> <span class="err">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">9</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span>
-<span class="p">(</span><span class="nf">camino-b-tree</span> <span class="nv">b-tree</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">&gt;</span> <span class="nv">=</span> <span class="nv">&lt;</span> <span class="nv">&lt;</span> <span class="nv">=</span><span class="p">))</span> <span class="err">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">15</span> <span class="mi">10</span><span class="p">)</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">camino-b-tree</span> <span class="n">b-tree</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">=</span> <span class="ss">&lt;</span> <span class="ss">&lt;</span> <span class="ss">=</span> <span class="ss">&gt;</span> <span class="ss">=</span><span class="p">))</span> <span class="n">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">9</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="n">camino-b-tree</span> <span class="n">b-tree</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">&gt;</span> <span class="ss">=</span> <span class="ss">&lt;</span> <span class="ss">&lt;</span> <span class="ss">=</span><span class="p">))</span> <span class="n">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">15</span> <span class="mi">10</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2018-19<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2019-20<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
                 
@@ -717,6 +862,27 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../practica06/practica06.html" title="Práctica 6" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Práctica 6
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
