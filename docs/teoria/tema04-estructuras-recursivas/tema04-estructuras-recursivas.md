@@ -397,6 +397,20 @@ El resultado del map será una lista de números (el número de hojas de
 cada componente), que podemos sumar haciendo un `foldr` con la
 función `+`:
 
+<!-- TODO
+
+Tenemos que plantearnos si cambiamos a una versión en la que la
+comprobación de hoja se hace antes de hacer el map.
+
+(define (num-hojas-fos lista)
+   (if (hoja? lista)
+        1
+        (foldr + 0 (map num-hojas-fos lista))))
+
+Igual en las FOS sobre árboles.
+
+-->
+
 ```racket
 (define (num-hojas-fos lista)
     (foldr + 0 (map (lambda (elem)
