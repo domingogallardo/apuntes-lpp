@@ -9,7 +9,7 @@ solución debe incluir:
 
 - La **definición de las funciones** que resuelven el ejercicio.
 - Un conjunto de **pruebas** que comprueben su funcionamiento
-  utilizando la librería `schemeunit`.
+  utilizando el API `RackUnit`.
 
 ## Ejercicios
 
@@ -35,7 +35,7 @@ abstracción de árboles** una expresión que devuelva el número 10.
 
 <img src="imagenes/arbol.png" width="400px"/>
 
-```
+```text
 (define arbol '(------------))
 (check-equal? ------------------- 10)
 ```
@@ -43,7 +43,7 @@ abstracción de árboles** una expresión que devuelva el número 10.
 a.2) Las funciones que suman los datos de un árbol utilizando
 recursión mutua y que hemos visto en teoría son las siguientes:
 
-```scheme
+```racket
 (define (suma-datos-arbol arbol)
     (+ (dato-arbol arbol)
        (suma-datos-bosque (hijos-arbol arbol))))
@@ -59,7 +59,7 @@ recursión mutua y que hemos visto en teoría son las siguientes:
 Si realizamos la siguiente llamada a la función `suma-datos-bosque`,
 siendo `arbol` el definido en el apartado anterior:
 
-```scheme
+```racket
 (suma-datos-bosque (hijos-arbol arbol))
 ```
 
@@ -73,7 +73,7 @@ fichero de la práctica.
 a.3) La función de orden superior que hemos visto en teoría y que
 realiza también la suma de los datos de un árbol es:
 
-```scheme
+```racket
 (define (suma-datos-arbol-fos arbol)
    (fold-right + (dato-arbol arbol) 
        (map suma-datos-arbol-fos (hijos-arbol arbol))))
@@ -82,7 +82,7 @@ realiza también la suma de los datos de un árbol es:
 Si realizamos la siguiente llamada a la función, siendo `arbol` el
 definido en el apartado anterior:
 
-```scheme
+```racket
 (suma-datos-arbol-fos arbol)
 ```
 
@@ -99,7 +99,7 @@ abstracción de árboles binarios** una expresión que devuelva el número 29.
 
 <img src="imagenes/arbol-binario.png" width="230px"/>
 
-```
+```text
 (define arbolb '(------------------))
 (check-equal? ---------------------- 29)
 ```
@@ -115,7 +115,7 @@ con una única función en la que se use funciones de orden superior.
 
 Ejemplo:
 
-```scheme
+```racket
 (define arbol2 '(a (b (c (d)) (e)) (f)))
 (to-string-arbol arbol2) ; ⇒ "abcdef"
 ```
@@ -125,12 +125,45 @@ recibe un árbol y un dato y comprueba el número de veces que aparece
 el dato en el árbol. Debes implementar una función con recursión mutua
 y otra con funciones de orden superior.
 
-```scheme
+```racket
 (veces-arbol 'b '(a (b (c) (d)) (b (b) (f)))) ; ⇒ 3
 (veces-arbol 'g '(a (b (c) (d)) (b (b) (f)))) ; ⇒ 0
 ```
 
 ### Ejercicio 3 ###
+
+a) Implementa dos versiones de la función `(hojas-cumplen pred arbol)`
+que recibe un predicado y un árbol y devuelve una lista con todas
+aquellas hojas del árbol que cumplen el predicado. Una función con
+recursión mutua y otra con funciones de orden superior. 
+
+Para evitar complicar la función de orden superior, suponemos que el
+árbol inicial que pasamos como parámetro no es un árbol hoja.
+
+<img src="imagenes/hojas-cumplen.png" width="400px">
+
+```racket
+(define arbol1 '(10 (2) (12 (4) (2)) (10 (5))))
+(define arbol2 '(10 (2) (12 (4) (2)) (10 (6))))
+(hojas-cumplen even? arbol1) ; ⇒ '(2 4 2)
+(hojas-cumplen even? arbol2) ; ⇒ '(2 4 2 6)
+```
+
+b) Implementa dos versiones del predicado `(todas-hojas-cumplen? pred
+arbol)` que comprueba si todas las hojas de un árbol cumplen un
+determinado predicado. Una función con recursión mutua y otra con
+funciones de orden superior.
+
+No debes usar la función anterior, tienes que hacer un recorrido por
+todo el árbol. Para la función de orden superior puedes usar la
+función `for-all?` implementada en el [tema 2](https://domingogallardo.github.io/apuntes-lpp/teoria/tema02-programacion-funcional/tema02-programacion-funcional.html#funciones-de-orden-superior).
+
+```racket
+(todas-hojas-cumplen? even? arbol1) ; ⇒ #f
+(todas-hojas-cumplen? even? arbol2) ; ⇒ #t
+```
+
+### Ejercicio 4 ###
 
 a) Implementa, utilizando funciones de orden superior, la función
 `(suma-raices-hijos arbol)` que devuelva la suma de las raíces de los
@@ -140,7 +173,7 @@ Ejemplo:
 
 <img src="imagenes/arbol-suma-raices.png" width="180px"/>
 
-```scheme
+```racket
 (define arbol3 '(20 (2) (8 (4) (2)) (9 (5))))
 (suma-raices-hijos arbol3) ; ⇒ 19
 (suma-raices-hijos (cadr (hijos-arbol arbol3))) ; ⇒ 6
@@ -154,7 +187,7 @@ propiedad.
 
 Ejemplos:
 
-```scheme
+```racket
 (raices-mayores-arbol? arbol3) ; ⇒ #t
 (raices-mayores-arbol? '(20 (2) (8 (4) (5)) (9 (5)))) ; ⇒ #f
 ```
@@ -166,22 +199,22 @@ o no.
 
 Ejemplos:
 
-```scheme
-(comprueba-raices-arbol arbol3) ; ⇒ {1 {1} {1 {1} {1}} {1 {1}}}
+```racket
+(comprueba-raices-arbol arbol3) ; ⇒ (1 (1) (1 (1) (1)) (1 (1)))
 (comprueba-raices-arbol '(20 (2) (8 (4) (5)) (9 (5)))) 
-; ⇒ {1 {1} {0 {1} {1}} {1 {1}}}
+; ⇒ (1 (1) (0 (1) (1)) (1 (1)))
 ```
 
 
-### Ejercicio 4 ###
+### Ejercicio 5 ###
 
 a) Define la función `(es-camino? lista arbol)` que debe comprobar si
 la secuencia de elementos de la lista se corresponde con un camino
 del árbol que empieza en la raíz y que termina exactamente en una
 hoja. Suponemos que `lista` contiene al menos un elemento
 
-Por ejemplo, la lista `'(a b a)` sí que es camino en el siguiente árbol,
-pero la lista `'(a b)` no.
+Por ejemplo, la lista `(a b a)` sí que es camino en el siguiente árbol,
+pero la lista `(a b)` no.
 
 <img src="imagenes/es-camino.png" width="300px"/>
 
@@ -189,7 +222,7 @@ Ejemplos: suponiendo que `arbol` es el árbol definido por la figura
 anterior:
 
 
-```scheme
+```racket
 (es-camino? '(a b a) arbol) ⇒ #t
 (es-camino? '(a b) arbol) ⇒ #f
 (es-camino? '(a b a b) arbol) ⇒ #f
@@ -204,14 +237,14 @@ encuentran en ese nivel.
 
 Ejemplos, suponiendo que `arbol` es el árbol definido por la figura anterior:
 
-```scheme
+```racket
 (nodos-nivel 0 arbol) ⇒ '(1)
 (nodos-nivel 1 arbol) ⇒ '(2 6)
 (nodos-nivel 2 arbol) ⇒ '(3 5 7)
 (nodos-nivel 3 arbol) ⇒ '(4 2)
 ```
 
-### Ejercicio 5 ###
+### Ejercicio 6 ###
 
 Dado un árbol binario y un camino definido como una lista de símbolos:
 `'(< > = > > =)` en el que:
@@ -225,13 +258,13 @@ lista con los datos recogidos por el camino.
 
 <img src="imagenes/arbol-binario2.png" width="250px"/>
 
-```scheme
+```racket
 (camino-b-tree b-tree '(= < < = > =)) ⇒ '(9 3 4)
 (camino-b-tree b-tree '(> = < < =)) ⇒ '(15 10)
 ```
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2018-19  
+Lenguajes y Paradigmas de Programación, curso 2019-20  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
