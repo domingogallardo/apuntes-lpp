@@ -112,7 +112,7 @@ Ejemplo:
 
 ```scheme
 (cumplen-predicado even? '(1 (2 (3 (4))) (5 6))) ; ⇒ (2 4 6)
-(cumplen-predicado pair? '(((1 . 2) 3 (4 . 3) 5) 6)) ; ⇒ ((1 . 2) (4 . 3)
+(cumplen-predicado pair? '(((1 . 2) 3 (4 . 3) 5) 6)) ; ⇒ ((1 . 2) (4 . 3))
 ```
 
 Utilizando la función anterior implementa las siguientes funciones:
@@ -131,7 +131,7 @@ Utilizando la función anterior implementa las siguientes funciones:
   carácter `char`.
   
   ```scheme
-  (empieza-por #\m '((hace (mucho tiempo)) (en) (una galaxia ((muy  muy) lejana))) 
+  (empieza-por #\m '((hace (mucho tiempo)) (en) (una galaxia ((muy  muy) lejana))))
   ; ⇒ (mucho muy muy)
   ```
 
@@ -146,7 +146,7 @@ que se ha sustituido las ocurrencias de `elem-old` por `elem-new`.
 Ejemplo:
 
 ```scheme
-(sustituye-elem  '(a b (c d (e c)) c (f (c) g))  'c  'h)
+(sustituye-elem 'c 'h '(a b (c d (e c)) c (f (c) g)))
 ; ⇒ (a b (h d (e h)) h (f (h) g))
 ```
 
@@ -183,7 +183,7 @@ tienen un nivel mayor que `n`.
 ```racket
 (define lista1 '(((a b) ((c))) (d) e))
 (define lista2 '(((1 2) ((3))) (4) 5))
-(mezclar lista1 lista2 2) → (((1 2) ((3))) (d) e)
+(mezclar lista1 lista2 2) ; ⇒ (((1 2) ((3))) (d) e)
 ```
 
 b) Implementa la función `(nivel-elemento lista)` que reciba una lista
@@ -194,7 +194,7 @@ función auxiliar si lo necesitas. Puedes hacerlo con
 recursión o con funciones de orden superior.
 
 ```scheme
-(nivel-elemento '(2 (3))) ;⇒ (3 . 2)
+(nivel-elemento '(2 (3))) ; ⇒ (3 . 2)
 (nivel-elemento '((2) (3 (4)((((((5))) 6)) 7)) 8)) ; ⇒ (5 . 8)
 ```
 
