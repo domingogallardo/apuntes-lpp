@@ -14,7 +14,7 @@ source_ bajo la licencia Apache 2.0, para las plataformas Apple y
 Linux. Los cambios en el lenguaje son propuestos y discutidos por la
 comunidad en un proceso denominado [Swift
 evolution](https://github.com/apple/swift-evolution). En la actualidad
-se ha estabilizado la versión 5 del lenguaje, que es la que
+se ha estabilizado la versión 5.1 del lenguaje, que es la que
 utilizaremos para realizar las prácticas.
  
 La siguiente descripción se ha extraído del repositorio GitHub de
@@ -40,11 +40,6 @@ Swift:
 Es posible descargar el compilador de Swift en los sistemas operativos
 Mac (utilizando el entorno de desarrollo Xcode) o Linux.
 
-Para la asignatura recomendamos utilizar una máquina Docker basada en
-la distribución Linux. La utilización de la máquina Docker hace
-posible su utilización en Windows y Mac sin instalar Xcode y permite
-un entorno unificado en el que hacer las prácticas.
-
 A continuación explicamos las distintas formas de ejecutar programas
 Swift.
 
@@ -55,6 +50,92 @@ Swift. Recomendamos la dirección [http://online.swiftplayground.run](http://onl
 
 <img src="imagenes/swift-on-line.png" width="700px"/>
 
+### Ejecución con MacOS ###
+
+Podemos trabajar de dos formas: ejecutando los programas Swift desde
+la terminal o desde Xcode. Para ambas formas lo primero que hay que
+hacer es **instalar Xcode**. 
+
+La primera forma, usar la terminal, es más inmediata, porque no es
+necesario conocer Xcode. La segunda, usar Xcode, es un poco más
+complicada, porque hay que crear un proyecto Xcode y conocer algunos
+de sus comandos. Pero la ventaja principal es que podremos comprobar
+los errores de compilación del código conforme lo escribimos.
+
+Si tienes Mac, puedes probar las dos formas y elegir la que te parezca
+más cómoda.
+
+#### Ejecución desde la terminal  ####
+
+Una vez instalado Xcode podemos ejecutar programas Swift desde la terminal, de forma
+interactiva.
+
+Abre la terminar y escribe:
+
+```text
+$ swift
+```
+
+Verás que se ejecuta el intérprete de Swift y que puedes escribir y
+ejecutar código Swift:
+
+<img src="imagenes/terminal-swift.png" width="600px"/>
+
+Para editar un programa Swift puedes utilizar un editor como _Visual
+Studio Code_ o el propio Xcode. En Xcode puedes crear un fichero nuevo
+con la opción _File > New File..._ y seleccionar la plantilla _macOS >
+Swift File_.
+
+<img src="imagenes/template-new-swift-file.png" width="600px"/>
+
+Selecciona la carpeta y el nombre del fichero y ya puedes escribir
+código Swift:
+
+<img src="imagenes/xcode-file-swift.png" width="600px"/>
+
+Una vez grabado el programa, puedes ejecutarlo desde el terminal:
+
+```text
+$ swift prueba.swift
+Hola mundo
+```
+
+<img src="imagenes/terminal-swift-programa.png" width="500px"/>
+
+Si hay algún error de compilación se detectará al lanzar el comando
+desde el terminal.
+
+<img src="imagenes/programa-con-error.png" width="600px"/>
+
+<img src="imagenes/error-terminal.png" width="500px"/>
+
+#### Ejecución desde Xcode ####
+
+La otra forma de trabajar es crear desde Xcode un proyecto Swift. Es
+un poco más complicado (hay que conocer algunos comandos más de
+Xcode), pero tiene la ventaja de que Xcode muestra los errores en la
+propia ventana de edición.
+
+Desde Xcode pulsa la opción _File > New Project..._ y selecciona la
+plantilla _macOS > Command Line Tool_.
+
+<img src="imagenes/proyecto-xcode.png" width="600px"/>
+
+Puedes escribir el nombre que quieras, por ejemplo `prueba-swift`
+
+<img src="imagenes/proyecto-swift-xcode.png" width="600px"/>
+
+Selecciona el lugar en el disco donde se graba el proyecto y ya puedes
+trabajar con él. El fichero principal se llama `main.swift`. Pulsando
+la opción de _Run_ se compila el proyecto y se abre un panel con la
+salida:
+
+<img src="imagenes/ejecucion-xcode.png" width="700px"/>
+
+Si hay algún error de compilación se detecta cuando se escribe el
+código y se muestra en el propio editor:
+
+<img src="imagenes/xcode-error.png" width="700px"/>
 
 ### Ejecución en una máquina Docker
 
@@ -275,12 +356,6 @@ exit
     > swift holaMundo.swift
     ```
     
-### Instalación en MacOS
-
-Para instalar la última versión de Swift en MacOs debes instalar
-Xcode. Una vez instalado puedes ejecutar Swift desde el terminal.
-
-
 ### Instalación en Linux Ubuntu
 
 Existe una distribución oficial de Swift para Ubuntu de 64 bits
