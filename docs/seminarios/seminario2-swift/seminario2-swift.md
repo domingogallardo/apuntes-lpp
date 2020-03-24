@@ -448,14 +448,14 @@ Por defecto, en otras carpetas podrás tener el terminal que elijas.
 
 ## Un tour de Swift
 
-Aquí empieza el seminario de Swift. El texto que hay a continuación es
-una traducción del documento de Apple
-*[A Swift Tour](https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-ID1)*
-en el que se presenta una introducción rápida a los conceptos
-fundamentales del lenguaje. En los temas siguientes de la asignatura
-(Tema 5 - Programación Funcional con Swift y Tema 6 - Programación
-Orientada a Objetos con Swift) profundizaremos en aspectos como
-funciones, genéricos, clases o protocolos.
+!!! Note "Nota" 
+    El texto de este seminario es una traducción del
+    documento de Apple [A Swift
+    Tour](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html)
+    en el que se presenta una introducción rápida a los conceptos
+    fundamentales del lenguaje. En los temas siguientes de la
+    asignatura profundizaremos en aspectos como funciones, genéricos,
+    clases o protocolos.
 
 Te recomendamos que crees un fichero llamado `seminario.swift` y que
 vayas copiando y probando en él todos los ejemplos que aparecen a
@@ -480,8 +480,8 @@ comas al final de cada sentencia.
 Este tour te da información suficiente para empezar a escribir código
 in Swift enseñándote cómo conseguir una variedad de tareas de
 programación. No te preocupes si no entiendes algo, todo lo que se
-introduce en este tour se explica en detalle en el
-[resto del libro](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309).
+introduce en este tour se explica en detalle en la
+[Guía de Swift](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html)
 
 #### Valores simples
 
@@ -514,8 +514,13 @@ let implicitoDouble = 70.0
 let explicitoDouble: Double = 70
 ```
 
-> EXPERIMENTO  
-> Crea una constante con el tipo explícito de `Float` y un valor de 4.
+!!! Note "Nota"
+    A lo largo del seminario se plantean pequeños ejercicios que 
+    puedes hacer tu mismo, para practicar un poco más con el
+    lenguaje. Los verás en los bloques encabezados con "Experimento".
+
+!!! Example "Experimento"
+    Crea una constante con el tipo explícito de `Float` y un valor de 4.
 
 Los valores nunca se convierten implícitamente a otro tipo. Si
 necesitas convertir un valor a un tipo diferente, construye
@@ -527,8 +532,8 @@ let ancho = 94
 let anchoEtiqueta = etiqueta + String(ancho)
 ```
 
-> EXPERIMENTO  
-> Intenta eliminar la conversión a `String` en la última línea. ¿Qué error obtienes?
+!!! Example "Experimento"  
+    Intenta eliminar la conversión a `String` en la última línea. ¿Qué error obtienes?
 
 Hay una forma aún más sencilla de incluir valores en cadenas: escribe
 el valor entre paréntesis, y escribe una barra invertida (`\`) antes
@@ -541,9 +546,9 @@ let resumenManzanas = "Tengo \(manzanas) manzanas."
 let resumenFrutas = "Tengo \(manzanas + naranjas) frutas."
 ```
 
-> EXPERIMENTO  
-> Usa `\()` para incluir un cálculo en punto flotante en una cadena y
-> para incluir el nombre de alguien en un saludo.
+!!! Example "Experimento"  
+    Usa `\()` para incluir un cálculo en punto flotante en una cadena y
+    para incluir el nombre de alguien en un saludo.
 
 Crea arrays y diccionarios utilizando corchetes (`[]`), y accede a sus
 elementos escribiendo el índice o la clave en los corchetes. Se
@@ -622,8 +627,8 @@ print(puntuacionEquipo)
 ```
 
 En una sentencia `if`, el condicional debe ser una expresión booleana;
-esto significa que código como `if score { ... }` es un error, no una
-comparación implícita con cero.
+esto significa que código como `if puntuacion { ... }` es un error, no una
+comparación implícita con cero (como se permite en C).
 
 Puedes usar `if` y `let` juntos para trabajar con valores que pueden
 faltar. Estos valores se representan como opcionales. Un valor
@@ -642,10 +647,10 @@ if let nombre = nombreOpcional {
 }
 ```
 
-> EXPERIMENTO  
-> Cambia `nombreOpcional` a `nil`. ¿Qué saludo obtienes? Añade una
-> cláusula `else` que establezca un saludo diferente si
-> `nombreOpcional` es `nil`.
+!!! Example "Experimento"  
+    Cambia `nombreOpcional` a `nil`. ¿Qué saludo obtienes? Añade una
+    cláusula `else` que establezca un saludo diferente si
+    `nombreOpcional` es `nil`.
 
 Si el valor opcional es `nil`, el condicional es `false` y el código
 en las llaves se salta. En otro caso, el valor opcional se desenvuelve
@@ -678,8 +683,8 @@ switch verdura {
 }
 ```
 
-> EXPERIMENTO  
-> Intenta eliminar el caso por defecto. ¿Qué error obtienes?
+!!! Example "Experimento"  
+    Intenta eliminar el caso por defecto. ¿Qué error obtienes?
 
 Después de ejecutar el código dentro del caso que se empareja, el
 programa sale de la sentencia `switch`. La ejecución no continua con
@@ -708,8 +713,8 @@ for (clase, numeros) in numerosInteresantes {
 print(mayor)
 ```
 
-> EXPERIMENTO  
-> Añade otra variable para seguir qué clase de número es el mayor.
+!!! Example "Experimento"  
+    Añade otra variable para seguir qué clase de número es el mayor.
 
 Usa `while` para repetir un bloque de código hasta que una condición
 cambie. La condición de un bucle puede estar también al final,
@@ -754,12 +759,12 @@ función.
 func saluda(nombre: String, dia: String) -> String {
     return "Hola \(nombre), hoy es \(dia)."
 }
-saluda(nombre: "Bob", dia: "Martes")
+print(saluda(nombre: "Bob", dia: "Martes"))
 ```
 
-> EXPERIMENTO  
-> Elimina el parámetro día. Añade un parámetro para incluir la comida
-> de hoy en el saludo.
+!!! Example "Experimento"  
+    Elimina el parámetro día. Añade un parámetro para incluir la comida
+    de hoy en el saludo.
 
 Por defecto, las funciones usan los nombres de los parámetros como
 etiquetas de los argumentos. Es posible definir una etiqueta
@@ -770,7 +775,7 @@ escribiendo `_`:
 func saluda(_ nombre: String, el dia: String) -> String {
     return "Hola \(nombre), hoy es \(dia)."
 }
-saluda("Bob", el: "Martes")
+print(saluda("Bob", el: "Martes"))
 ```
 
 Las funciones pueden devolver cualquier tipo de dato, como tuplas.
@@ -813,8 +818,8 @@ print(suma())
 print(suma(numeros: 42, 597, 12))
 ```
 
-> EXPERIMENTO  
-> Escribe una función que calcule la media de sus argumentos.
+!!! Example "Experimento"  
+    Escribe una función que calcule la media de sus argumentos.
 
 Las funciones pueden anidarse. Las funciones pueden acceder variables
 declaradas en la función exterior. Puedes usar funciones anidadas para
@@ -900,9 +905,9 @@ numeros.map({
 })
 ```
 
-> EXPERIMENTO  
-> Reescribe la clausura para que devuelva cero para todos los números
-> impares.
+!!! Example "Experimento"  
+    Reescribe la clausura para que devuelva cero para todos los números
+    impares.
 
 Tienes bastantes opciones para escribir clausuras de forma más
 concisa. Cuando ya se conoce el tipo de una clausura puedes omitir el
@@ -944,9 +949,9 @@ class Figura {
 }
 ```
 
-> EXPERIMENTO  
-> Añade una propiedad constante con `let`, y añade otro método que
-> tome un argumento.
+!!! Example "Experimento"  
+    Añade una propiedad constante con `let`, y añade otro método que
+    tome un argumento.
 
 Crea una instancia de una clase poniendo paréntesis después del nombre
 de la clase. Usa la sintaxis de punto para acceder a las propiedades y
@@ -1021,11 +1026,11 @@ print(test.area())
 print(test.descripcionSencilla())
 ```
 
-> EXPERIMENTO  
-> Construye otra subclase de `FiguraConNombre` llamada `Circulo` que
-> tome un radio y un nombre como argumentos de su
-> inicializador. Implementa un método `area()` y
-> `descripcionSencilla()` en la clase `Circulo`.
+!!! Example "Experimento"  
+    Construye otra subclase de `FiguraConNombre` llamada `Circulo` que
+    tome un radio y un nombre como argumentos de su
+    inicializador. Implementa un método `area()` y
+    `descripcionSencilla()` en la clase `Circulo`.
 
 Además de propiedades simples que se almacenan, las propiedades pueden
 tener un *getter* y un *setter*.
@@ -1145,9 +1150,9 @@ let carta = Valor.uno
 let valorBrutoCarta = carta.rawValue
 ```
 
-> EXPERIMENTO  
-> Escribe una función que compare dos valores `Valor` a través de una
-> comparación de sus valores brutos.
+!!! Example "Experimento"  
+    Escribe una función que compare dos valores `Valor` a través de una
+    comparación de sus valores brutos.
 
 Por defecto, Swift asigna los valores brutos comenzando en cero e
 incrementándolos por uno cada vez, pero puedes cambiar esta conducta
@@ -1193,9 +1198,9 @@ let copas = Palo.copas
 let descripcionCopas = copas.descripcionSencilla()
 ```
 
-> EXPERIMENTO  
-> Añade un método `color()` a `Palo` que devuelva "agresivo" para
-> *bastos* y *espadas* y devuelva "reflexivo" para *oros* y *copas*.
+!!! Example "Experimento"  
+    Añade un método `color()` a `Palo` que devuelva "agresivo" para
+    *bastos* y *espadas* y devuelva "reflexivo" para *oros* y *copas*.
 
 Date cuenta de las dos formas en las que nos referimos al caso `copas`
 de la enumeración anterior: cuando se asigna un valor a la constante
@@ -1236,14 +1241,12 @@ switch exito {
 }
 ```
 
-> EXPERIMENTO  
-> Añade un tercer caso al `ServerResponse` y al switch.
+!!! Example "Experimento"  
+    Añade un tercer caso al `ServerResponse` y al switch.
 
 Date cuenta de cómo la hora de salir el sol y de ponerse el sol se
 extraen del `ServerResponse` como parte del emparejamiento entre el
 valor y los casos switch.
-
-
 
 Usa `struct` para crear una estructura. Las estructuras comparten
 muchas características de las clases, incluyendo métodos e
@@ -1264,10 +1267,9 @@ let tresDeEspadas = Carta(valor: .tres, palo: .espadas)
 let descripcionTresDeEspadas = tresDeEspadas.descripcionSencilla()
 ```
 
-> EXPERIMENTO  
-> Añade un método a `Carta` que cree un mazo completo de cartas, con
-> una carta de cada combinación de valor y palo.
-
+!!! Example "Experimento"  
+    Añade un método a `Carta` que cree un mazo completo de cartas, con
+    una carta de cada combinación de valor y palo.
 
 
 #### Protocolos y extensiones
@@ -1306,8 +1308,8 @@ b.ajustar()
 let descripcionB = b.descripcionSencilla
 ```
 
-> EXPERIMENTO  
-> Escribe una enumeración que cumpla el protocolo.
+!!! Example "Experimento"  
+    Escribe una enumeración que cumpla el protocolo.
 
 Date cuenta del uso de la palabra clave `mutating` en la declaración
 de `EstructuraSencilla` para marcar el método que modifica la
@@ -1347,10 +1349,9 @@ extension Int {
 10.repetir {print("Hola")}
 ```
 
-
-> EXPERIMENTO  
-> Escribe una extensión para el tipo `Double` que añada una propiedad
-> `absoluteValue`.
+!!! Example "Experimento"
+    Escribe una extensión para el tipo `Double` que añada una propiedad
+    `absoluteValue`.
 
 Puedes usar un nombre de un protocolo de la misma forma que cualquier
 otro tipo con nombre; por ejemplo, para crear una colección de objetos
@@ -1369,6 +1370,7 @@ ejecución de `ClaseSencilla`, el compilador lo trata como uno del tipo
 `ProtocoloEjemplo`. De esta forma no es posible acceder
 accidentalmente a métodos o propiedades que implemente la clase de
 forma adicional al cumplimiento del protocolo.
+
 
 #### Genéricos 
 
@@ -1424,6 +1426,7 @@ print(elementosComunes([1, 2, 3], [3]))
 
 Si se escribe `<T: Equatable>` es equivalente a escribir `<T> ... where T: Equatable`.
 
+
 ## Bibliografía y referencias
 
 - Documentación sobre Swift
@@ -1435,7 +1438,6 @@ Si se escribe `<T: Equatable>` es equivalente a escribir `<T> ... where T: Equat
     - [Repositorio `swift-evolution` en GitHub](https://github.com/apple/swift-evolution): documentos relacionados con la evolución continua de Swift, incluyendo objetivos de las próximas versiones y propuestas de cambios y extensiones de Swift.
 
 ---
-
-Lenguajes y Paradigmas de Programación, curso 2018-19  
+Lenguajes y Paradigmas de Programación, curso 2019-20_
 Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 
