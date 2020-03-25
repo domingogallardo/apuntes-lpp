@@ -989,9 +989,6 @@ instancia de la clase. Cada propiedad necesita un valor asignado; ya
 sea en su declaración (como `numeroDeLados`) o en el inicializador
 (como `nombre`).
 
-Usa `deinit` para crear un *desinicializador* si necesitas realizar
-alguna limpieza antes de que el objeto sea eliminado.
-
 Las subclases incluyen el nombre de su subclase después del nombre de
 la clase, separado por dos puntos. No hay ningún requisito de que las
 clases deban ser subclases de alguna clase raíz, por lo que puedes
@@ -1077,6 +1074,7 @@ tiene tres pasos diferentes:
    superclase. Cualquier trabajo adicional que use métodos, *getters*
    o *setters* puede hacerse también en este punto.
 
+<!--
 Si no necesitas calcular la propiedad pero necesitas proporcionar
 código que se ejecuta antes y después de establecer un nuevo valor,
 usa `willSet` y `didSet`. El código que proporcionas se ejecuta cada
@@ -1120,6 +1118,7 @@ es un valor opcional.
 let cuadradoOpcional: Cuadrado? = Cuadrado(longitudLado: 2.5, nombre: "Cuadrado opcional")
 let longitudLado = cuadradoOpcional?.longitudLado
 ```
+-->
 
 #### Enumeraciones y estructuras
 
@@ -1271,6 +1270,7 @@ let descripcionTresDeEspadas = tresDeEspadas.descripcionSencilla()
     Añade un método a `Carta` que cree un mazo completo de cartas, con
     una carta de cada combinación de valor y palo.
 
+<!--
 
 #### Protocolos y extensiones
 
@@ -1426,6 +1426,7 @@ print(elementosComunes([1, 2, 3], [3]))
 
 Si se escribe `<T: Equatable>` es equivalente a escribir `<T> ... where T: Equatable`.
 
+-->
 
 ## Bibliografía y referencias
 
