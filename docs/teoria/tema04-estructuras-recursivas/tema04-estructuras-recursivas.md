@@ -1069,7 +1069,8 @@ orden superior:
 (define (suma-datos-arbol-fos arbol)
    (foldr + 
           (dato-arbol arbol) 
-          (map suma-datos-arbol-fos (hijos-arbol arbol))))
+          (map (lambda (subarbol)
+                   (suma-datos-arbol-fos subarbol)) (hijos-arbol arbol))))
 ```	
 
 La función `map` aplica la propia función que estamos definiendo
@@ -1081,6 +1082,17 @@ de los nodos de todos los árboles hijos.
 
 La función `foldr` suma todos esos números de la lista y el
 número de la raíz.
+
+La expresión lambda de `map` no es necesaria, ya que la función
+`suma-datos-arbol-fos` tiene un único argumento que va a ser cada uno
+de los árboles hijos:
+
+```racket
+(define (suma-datos-arbol-fos arbol)
+   (foldr + 
+          (dato-arbol arbol) 
+          (map suma-datos-arbol-fos (hijos-arbol arbol))))
+```	
 
 Un ejemplo de su funcionamiento sería el siguiente:
 
@@ -1228,16 +1240,36 @@ Con `map`:
 
 #### Función `altura-arbol`
 
+<!--
+Definiciones: (https://courses.cs.washington.edu/courses/cse373/06sp/handouts/lecture06.pdf)
+
+longitud de camino: número de aristas
+profundidad de un nodo: longitud del camino de la raíz al nodo
+altura nodo: longitud del camino más largo del nodo a una hoja
+profundidad de un árbol: profundidad del nodo más profundo
+altura de un árbol: altura de la raíz
+nivel de un nodo: número de predecesores(https://www.quora.com/What-is-the-difference-between-the-height-and-level-of-a-full-binary-tree)
+-->
+
 Vamos por último a definir una función que devuelve la altura de un
-árbol (el nivel del nodo de mayor nivel). Un nodo hoja tiene de altura
-0.
+árbol. 
 
-Podemos implementarla de una forma similar a como hicimos con las
-listas estructuradas: comprobamos la altura del bosque y sumamos uno
-para compensar el nivel de la raíz.
+Recordemos las siguientes definiciones relacionadas con los árboles:
 
-Para calcular la altura del bosque, devolvemos la máxima altura de sus
-árboles.
+- Longitud de un camino entre dos nodos: número de aristas 
+- Altura de un nodo: longitud del camino del nodo a una hoja
+- Profundidad de un nodo: longitud del camino de la raíz al nodo
+- Profundidad de un árbol: profundidad del nodo más profundo
+- Nivel de un nodo: número de predecesores
+- Altura de árbol: altura de la raíz
+
+Podemos implementar la altura de una forma similar a como hicimos con
+las listas estructuradas: calculamos la altura de los árboles hijos,
+nos quedamos con la mayor, y sumamos 1 para añadir la arista del
+camino de la raíz al hijo.
+
+La mayor altura de los hijos la calculamos con la función
+`altura-bosque`.
 
 ```racket
 (define (altura-arbol arbol)
@@ -1261,7 +1293,7 @@ Ejemplos:
 ```
 
 La solución con funciones de orden superior es algo distinta de la
-que vimos con listas estructuradas
+que vimos con listas estructuradas:
 
 ```racket
 (define (altura-arbol-fos arbol)
