@@ -1256,12 +1256,12 @@ Vamos por último a definir una función que devuelve la altura de un
 
 Recordemos las siguientes definiciones relacionadas con los árboles:
 
-- Longitud de un camino entre dos nodos: número de aristas 
-- Altura de un nodo: longitud del camino del nodo a una hoja
-- Profundidad de un nodo: longitud del camino de la raíz al nodo
-- Profundidad de un árbol: profundidad del nodo más profundo
-- Nivel de un nodo: número de predecesores
-- Altura de árbol: altura de la raíz
+- Longitud de un camino entre dos nodos: número de aristas.
+- Altura de un nodo: longitud del camino más largo del nodo a una hoja.
+- Profundidad de un nodo: longitud del camino de la raíz al nodo.
+- Profundidad de un árbol: profundidad del nodo más profundo.
+- Nivel de un nodo: número de predecesores.
+- Altura de árbol: altura de la raíz.
 
 Podemos implementar la altura de una forma similar a como hicimos con
 las listas estructuradas: calculamos la altura de los árboles hijos,
