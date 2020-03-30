@@ -1386,7 +1386,7 @@ de la semántica:
 ;; es cierta se devuelve la cadena "ninguna condición es cierta".
 ```
 
-### Formas especiales `and` y `or` ###
+#### Formas especiales `and` y `or` ####
 
 Las expresiones lógicas `and` y `or` no son funciones, sino formas
 especiales. Lo podemos comprobar con el siguiente ejemplo:
