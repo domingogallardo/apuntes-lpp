@@ -306,8 +306,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#formas-especiales-en-scheme-define-if-cond" class="md-nav__link">
-    Formas especiales en Scheme: define, if, cond
+  <a href="#formas-especiales-en-scheme" class="md-nav__link">
+    Formas especiales en Scheme
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formas-especiales-and-y-or" class="md-nav__link">
+    Formas especiales and y or
   </a>
   
 </li>
@@ -769,8 +776,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#formas-especiales-en-scheme-define-if-cond" class="md-nav__link">
-    Formas especiales en Scheme: define, if, cond
+  <a href="#formas-especiales-en-scheme" class="md-nav__link">
+    Formas especiales en Scheme
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formas-especiales-and-y-or" class="md-nav__link">
+    Formas especiales and y or
   </a>
   
 </li>
@@ -2251,7 +2265,7 @@ aplicativo ya visto:</p>
 </ul>
 <p>Las <em>formas especiales</em> son expresiones primitivas de Scheme que
 tienen una forma de evaluarse propia, distinta de las funciones. </p>
-<h3 id="formas-especiales-en-scheme-define-if-cond">Formas especiales en Scheme: define, if, cond<a class="headerlink" href="#formas-especiales-en-scheme-define-if-cond" title="Permanent link">&para;</a></h3>
+<h3 id="formas-especiales-en-scheme">Formas especiales en Scheme<a class="headerlink" href="#formas-especiales-en-scheme" title="Permanent link">&para;</a></h3>
 <p>Veamos la forma de evaluar las distintas formas especiales en
 Scheme. En estas formas especiales no se aplica el modelo de
 sustitución, al no ser invocaciones de funciones, sino que cada una se
@@ -2388,6 +2402,69 @@ la suma <code>(+ 2 3)</code>.</p>
 </code></pre></div>
 </td></tr></table>
 
+<h3 id="formas-especiales-and-y-or">Formas especiales <code>and</code> y <code>or</code><a class="headerlink" href="#formas-especiales-and-y-or" title="Permanent link">&para;</a></h3>
+<p>Las expresiones lógicas <code>and</code> y <code>or</code> no son funciones, sino formas
+especiales. Lo podemos comprobar con el siguiente ejemplo:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">and</span> <span class="no">#f</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">3</span> <span class="mi">0</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="k">or</span> <span class="no">#t</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">3</span> <span class="mi">0</span><span class="p">))</span>  <span class="c1">; ⇒ #t</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Si <code>and</code> y <code>or</code> fueran funciones, seguirían la regla que hemos visto
+de evaluar primero los argumentos y después invocar a la función con
+los resultados. Esto produciría un error al evaluar la expresión <code>(/ 3
+0)</code>, al ser una división por 0.</p>
+<p>Sin embargo, vemos que las expresiones no dan error y devuelven un
+valor booleano. ¿Por qué? Porque <code>and</code> y <code>or</code> no son funciones, sino
+formas especiales que se evalúan de forma diferente a las funciones.</p>
+<p>En concreto, <code>and</code> y <code>or</code> van evaluando los argumentos hasta que
+encuentran un valor que hace que ya no sea necesario evaluar el resto.</p>
+<p><strong>Sintaxis</strong></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">and</span> <span class="n">exp1</span> <span class="k">...</span> <span class="n">expn</span><span class="p">)</span>
+<span class="p">(</span><span class="k">or</span> <span class="n">exp1</span> <span class="k">...</span> <span class="n">expn</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p><strong>Evaluación <code>and</code></strong></p>
+<ul>
+<li>Se evalúa la expresión 1. Si el resultado es <code>#f</code>, se devuelve <code>#f</code>, en
+otro caso, se evalúa la siguiente expresión.</li>
+<li>Se repite hasta la última expresión, cuyo resultado se devuelve.</li>
+</ul>
+<p><strong>Ejemplos <code>and</code></strong></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">and</span> <span class="no">#f</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">3</span> <span class="mi">0</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="k">and</span> <span class="no">#t</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">&lt;</span> <span class="mi">5</span> <span class="mi">10</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="k">and</span> <span class="no">#t</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">&lt;</span> <span class="mi">5</span> <span class="mi">10</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ 5</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>La regla de evaluación de <code>and</code> hace que sea posible que devuelva
+resultados no booleanos, como el último ejemplo. Sin embargo, no es
+recomendable usarlo de esta forma y en la asignatura no lo vamos a
+hacer nunca.</p>
+<p><strong>Evaluación <code>or</code></strong></p>
+<ul>
+<li>Se evalúa la expresión 1. Si el resultado es distinto de <code>#f</code> se
+  devuelve ese resultado. Si el resultado es <code>#f</code> se evalúa la
+  siguiente expresión.</li>
+<li>Se repite hasta la última expresión, cuyo resultado se devuelve.</li>
+</ul>
+<p><strong>Ejemplos <code>or</code></strong></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">or</span> <span class="no">#t</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">3</span> <span class="mi">0</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="k">or</span> <span class="no">#f</span> <span class="p">(</span><span class="nb">&lt;</span> <span class="mi">2</span> <span class="mi">10</span><span class="p">)</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="mi">5</span> <span class="mi">10</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="mi">5</span> <span class="mi">10</span><span class="p">))</span> <span class="c1">; ⇒ 5</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Al igual que <code>and</code>, la regla de evaluación de <code>or</code> hace que sea
+posible que devuelva resultados no booleanos, como el último
+ejemplo. Tampoco es recomendable usarlo de esta forma.</p>
 <h3 id="forma-especial-quote-y-simbolos">Forma especial <code>quote</code> y símbolos<a class="headerlink" href="#forma-especial-quote-y-simbolos" title="Permanent link">&para;</a></h3>
 <p><strong>Sintaxis</strong></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">quote</span> <span class="ss">&lt;identificador&gt;</span><span class="p">)</span>
@@ -4198,15 +4275,30 @@ devuelve el cuadrado de un número:</p>
 
 <h4>Identificadores y funciones</h4>
 <p>Tras conocer <code>lambda</code> ya podemos explicarnos por qué cuando escribimos
-en el intérprete de Scheme el nombre de una función, se evalúa a un
+en el intérprete de Scheme el nombre de cualquier función, se evalúa a un
 <em>procedure</em>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="nb">+</span> <span class="c1">; ⇒ &lt;procedure:+&gt;</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="nb">+</span> <span class="c1">; ⇒ &lt;procedure:+&gt;</span>
+<span class="nb">append</span> <span class="c1">; ⇒ #&lt;procedure:append&gt;</span>
 </code></pre></div>
 </td></tr></table>
 
 <p>El identificador se evalúa y devuelve el <em>objeto función</em> al que está
 ligado. En Scheme los nombres de las funciones son realmente símbolos
 a los que están ligados <em>objetos de tipo función</em>.</p>
+<p>Podemos comprobar también de esta manera que <code>and</code> y <code>or</code> no son
+funciones. Si escribimos <code>and</code> o <code>or</code> e intentamos evaluar cualquiera
+de los dos símbolos, veremos que Scheme devuelve un error:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">and</span>
+<span class="c1">; and: bad syntax in: and</span>
+<span class="k">or</span> 
+<span class="c1">; or: bad syntax in: or</span>
+</code></pre></div>
+</td></tr></table>
+
 <p>Podemos asignar funciones ya existentes a nuevos identificadores
 usando <code>define</code>, como en el ejemplo siguiente:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -5187,6 +5279,37 @@ recursión por la cola (<em>tail recursion</em>) en el próximo tema.</p>
 <p>Las funciones <code>foldr</code> o <code>foldl</code> reciben una lista de
 datos y devuelven un único resultado.</p>
 </div>
+<h4>Uso de <code>and</code> y <code>or</code> con FOS</h4>
+<p>Hemos visto que las primitivas <code>and</code> y <code>or</code> no son funciones, sino
+formas especiales. Debido a esto, no podemos usarlas como funciones
+que se pasan a otra función de orden superior.</p>
+<p>Por ejemplo, la siguiente expresión es incorrecta:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="nb">foldr</span> <span class="k">and</span> <span class="no">#t</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#t</span> <span class="no">#f</span> <span class="no">#f</span><span class="p">))</span>
+<span class="c1">; and: bad syntax in: and</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Para comprobar expresiones booleanas en una lista podemos
+usar <code>foldr</code> con una expresión lambda:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="nb">foldr</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">dato</span> <span class="n">result</span><span class="p">)</span>
+           <span class="p">(</span><span class="k">and</span> <span class="n">dato</span> <span class="n">result</span><span class="p">))</span> <span class="no">#t</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#t</span> <span class="no">#f</span> <span class="no">#f</span><span class="p">))</span>
+<span class="c1">; ⇒ #f</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>O, mejor aún, es posible usar <code>for-all</code> o <code>exists</code> (o las funciones
+equivalentes de Racket <code>andmap</code> o <code>ormap</code>).</p>
+<p>Por ejemplo, para comprobar si algún booleano de una lista es <code>#t</code>
+podríamos hacer:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="n">exists?</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">x</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#f</span> <span class="no">#f</span> <span class="no">#t</span> <span class="no">#f</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="nb">ormap</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">x</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#f</span> <span class="no">#f</span> <span class="no">#t</span> <span class="no">#f</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+</code></pre></div>
+</td></tr></table>
+
 <h4>Funciones recursivas con FOS y expresiones lambda</h4>
 <p>El uso de funciones de orden superior (FOS) y expresiones lambda
 proporciona muchísima expresividad en un lenguaje de programación. Es
