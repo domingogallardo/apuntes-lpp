@@ -4408,7 +4408,7 @@ usar `foldr` con una expresión lambda:
 ; ⇒ #f
 ```
 
-O, mejor aún, es posible usar `for-all` o `exists` (o las funciones
+O, mejor aún, es posible usar `for-all?` o `exists?` (o las funciones
 equivalentes de Racket `andmap` o `ormap`).
 
 Por ejemplo, para comprobar si algún booleano de una lista es `#t`
