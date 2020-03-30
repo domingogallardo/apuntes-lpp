@@ -1252,7 +1252,7 @@ aplicativo ya visto:
 Las *formas especiales* son expresiones primitivas de Scheme que
 tienen una forma de evaluarse propia, distinta de las funciones. 
 
-### Formas especiales en Scheme: define, if, cond
+### Formas especiales en Scheme
 
 Veamos la forma de evaluar las distintas formas especiales en
 Scheme. En estas formas especiales no se aplica el modelo de
@@ -1385,6 +1385,74 @@ de la semántica:
 ;; (< 2 1), (= 3 1) y (> 3 5). Como ninguna de ella
 ;; es cierta se devuelve la cadena "ninguna condición es cierta".
 ```
+
+### Formas especiales `and` y `or` ###
+
+Las expresiones lógicas `and` y `or` no son funciones, sino formas
+especiales. Lo podemos comprobar con el siguiente ejemplo:
+
+```racket
+(and #f (/ 3 0)) ; ⇒ #f
+(or #t (/ 3 0))  ; ⇒ #t
+```
+
+Si `and` y `or` fueran funciones, seguirían la regla que hemos visto
+de evaluar primero los argumentos y después invocar a la función con
+los resultados. Esto produciría un error al evaluar la expresión `(/ 3
+0)`, al ser una división por 0.
+
+Sin embargo, vemos que las expresiones no dan error y devuelven un
+valor booleano. ¿Por qué? Porque `and` y `or` no son funciones, sino
+formas especiales que se evalúan de forma diferente a las funciones.
+
+En concreto, `and` y `or` van evaluando los argumentos hasta que
+encuentran un valor que hace que ya no sea necesario evaluar el resto.
+
+**Sintaxis**
+
+```racket
+(and exp1 ... expn)
+(or exp1 ... expn)
+```
+
+**Evaluación `and`**
+
+- Se evalúa la expresión 1. Si el resultado es `#f`, se devuelve `#f`, en
+otro caso, se evalúa la siguiente expresión.
+- Se repite hasta la última expresión, cuyo resultado se devuelve.
+
+**Ejemplos `and`**
+
+
+```racket
+(and #f (/ 3 0)) ; ⇒ #f
+(and #t (> 2 1) (< 5 10)) ; ⇒ #t
+(and #t (> 2 1) (< 5 10) (+ 2 3)) ; ⇒ 5
+```
+
+La regla de evaluación de `and` hace que sea posible que devuelva
+resultados no booleanos, como el último ejemplo. Sin embargo, no es
+recomendable usarlo de esta forma y en la asignatura no lo vamos a
+hacer nunca.
+
+**Evaluación `or`**
+
+- Se evalúa la expresión 1. Si el resultado es distinto de `#f` se
+  devuelve ese resultado. Si el resultado es `#f` se evalúa la
+  siguiente expresión.
+- Se repite hasta la última expresión, cuyo resultado se devuelve.
+
+**Ejemplos `or`**
+
+```racket
+(or #t (/ 3 0)) ; ⇒ #t
+(or #f (< 2 10) (> 5 10)) ; ⇒ #t
+(or (+ 2 3) (> 5 10)) ; ⇒ 5
+```
+
+Al igual que `and`, la regla de evaluación de `or` hace que sea
+posible que devuelva resultados no booleanos, como el último
+ejemplo. Tampoco es recomendable usarlo de esta forma.
 
 ### Forma especial `quote` y símbolos
 
@@ -3301,16 +3369,28 @@ Integer x -> {x*x}
 #### Identificadores y funciones
 
 Tras conocer `lambda` ya podemos explicarnos por qué cuando escribimos
-en el intérprete de Scheme el nombre de una función, se evalúa a un
+en el intérprete de Scheme el nombre de cualquier función, se evalúa a un
 *procedure*:
 
 ```racket
 + ; ⇒ <procedure:+>
+append ; ⇒ #<procedure:append>
 ```
 
 El identificador se evalúa y devuelve el *objeto función* al que está
 ligado. En Scheme los nombres de las funciones son realmente símbolos
 a los que están ligados *objetos de tipo función*.
+
+Podemos comprobar también de esta manera que `and` y `or` no son
+funciones. Si escribimos `and` o `or` e intentamos evaluar cualquiera
+de los dos símbolos, veremos que Scheme devuelve un error:
+
+```racket
+and
+; and: bad syntax in: and
+or 
+; or: bad syntax in: or
+```
 
 Podemos asignar funciones ya existentes a nuevos identificadores
 usando `define`, como en el ejemplo siguiente:
@@ -4304,6 +4384,40 @@ recursión por la cola (_tail recursion_) en el próximo tema.
 !!! Tip "Consejo" 
     Las funciones `foldr` o `foldl` reciben una lista de
     datos y devuelven un único resultado.
+
+
+#### Uso de `and` y `or` con FOS ####
+
+Hemos visto que las primitivas `and` y `or` no son funciones, sino
+formas especiales. Debido a esto, no podemos usarlas como funciones
+que se pasan a otra función de orden superior.
+
+Por ejemplo, la siguiente expresión es incorrecta:
+
+```racket
+(foldr and #t '(#t #f #f))
+; and: bad syntax in: and
+```
+
+Para comprobar expresiones booleanas en una lista podemos
+usar `foldr` con una expresión lambda:
+
+```racket
+(foldr (lambda (dato result)
+           (and dato result)) #t '(#t #f #f))
+; ⇒ #f
+```
+
+O, mejor aún, es posible usar `for-all` o `exists` (o las funciones
+equivalentes de Racket `andmap` o `ormap`).
+
+Por ejemplo, para comprobar si algún booleano de una lista es `#t`
+podríamos hacer:
+
+```racket
+(exists? (lambda (x) x) '(#f #f #t #f)) ; ⇒ #t
+(ormap (lambda (x) x) '(#f #f #t #f)) ; ⇒ #t
+```
 
 
 #### Funciones recursivas con FOS y expresiones lambda
