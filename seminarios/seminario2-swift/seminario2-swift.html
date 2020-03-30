@@ -36,7 +36,7 @@
     
     
       
-        <title>Seminario 2: Seminario de Swift - LPP</title>
+        <title>Seminario de Swift - LPP</title>
       
     
     
@@ -109,7 +109,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Seminario 2: Seminario de Swift
+                Seminario de Swift
               
             </span>
           
@@ -260,10 +260,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
       Seminarios
@@ -284,6 +286,118 @@
     <a href="../seminario1-scheme/seminario1-scheme.html" title="Seminario de Scheme" class="md-nav__link">
       Seminario de Scheme
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Seminario de Swift
+      </label>
+    
+    <a href="seminario2-swift.html" title="Seminario de Swift" class="md-nav__link md-nav__link--active">
+      Seminario de Swift
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-lenguaje-de-programacion-swift" class="md-nav__link">
+    El lenguaje de programación Swift
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejecucion-de-programas-swift" class="md-nav__link">
+    Ejecución de programas Swift
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejecucion-on-line" class="md-nav__link">
+    Ejecución on-line
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejecucion-con-macos" class="md-nav__link">
+    Ejecución con MacOS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejecucion-en-una-maquina-docker" class="md-nav__link">
+    Ejecución en una máquina Docker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instalacion-en-linux-ubuntu" class="md-nav__link">
+    Instalación en Linux Ubuntu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-studio-code" class="md-nav__link">
+    Visual Studio Code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#un-tour-de-swift" class="md-nav__link">
+    Un tour de Swift
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bibliografia-y-referencias" class="md-nav__link">
+    Bibliografía y referencias
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -443,15 +557,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejecucion-en-una-maquina-docker" class="md-nav__link">
-    Ejecución en una máquina Docker
+  <a href="#ejecucion-con-macos" class="md-nav__link">
+    Ejecución con MacOS
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#instalacion-en-macos" class="md-nav__link">
-    Instalación en MacOS
+  <a href="#ejecucion-en-una-maquina-docker" class="md-nav__link">
+    Ejecución en una máquina Docker
   </a>
   
 </li>
@@ -519,7 +633,7 @@ source</em> bajo la licencia Apache 2.0, para las plataformas Apple y
 Linux. Los cambios en el lenguaje son propuestos y discutidos por la
 comunidad en un proceso denominado <a href="https://github.com/apple/swift-evolution">Swift
 evolution</a>. En la actualidad
-se ha estabilizado la versión 5 del lenguaje, que es la que
+se ha estabilizado la versión 5.1 del lenguaje, que es la que
 utilizaremos para realizar las prácticas.</p>
 <p>La siguiente descripción se ha extraído del repositorio GitHub de
 Swift:</p>
@@ -540,16 +654,72 @@ eliminando la necesidad de cabeceras y la duplicación de código que
 <h2 id="ejecucion-de-programas-swift">Ejecución de programas Swift<a class="headerlink" href="#ejecucion-de-programas-swift" title="Permanent link">&para;</a></h2>
 <p>Es posible descargar el compilador de Swift en los sistemas operativos
 Mac (utilizando el entorno de desarrollo Xcode) o Linux.</p>
-<p>Para la asignatura recomendamos utilizar una máquina Docker basada en
-la distribución Linux. La utilización de la máquina Docker hace
-posible su utilización en Windows y Mac sin instalar Xcode y permite
-un entorno unificado en el que hacer las prácticas.</p>
 <p>A continuación explicamos las distintas formas de ejecutar programas
 Swift.</p>
 <h3 id="ejecucion-on-line">Ejecución on-line<a class="headerlink" href="#ejecucion-on-line" title="Permanent link">&para;</a></h3>
 <p>Existen varios sitios on-line en los que es posible ejecutar código
 Swift. Recomendamos la dirección <a href="http://online.swiftplayground.run">http://online.swiftplayground.run</a>.</p>
 <p><img src="imagenes/swift-on-line.png" width="700px"/></p>
+<h3 id="ejecucion-con-macos">Ejecución con MacOS<a class="headerlink" href="#ejecucion-con-macos" title="Permanent link">&para;</a></h3>
+<p>Podemos trabajar de dos formas: ejecutando los programas Swift desde
+la terminal o desde Xcode. Para ambas formas lo primero que hay que
+hacer es <strong>instalar Xcode</strong>. </p>
+<p>La primera forma, usar la terminal, es más inmediata, porque no es
+necesario conocer Xcode. La segunda, usar Xcode, es un poco más
+complicada, porque hay que crear un proyecto Xcode y conocer algunos
+de sus comandos. Pero la ventaja principal es que podremos comprobar
+los errores de compilación del código conforme lo escribimos.</p>
+<p>Si tienes Mac, puedes probar las dos formas y elegir la que te parezca
+más cómoda.</p>
+<h4>Ejecución desde la terminal</h4>
+<p>Una vez instalado Xcode podemos ejecutar programas Swift desde la terminal, de forma
+interactiva.</p>
+<p>Abre la terminar y escribe:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>$ swift
+</code></pre></div>
+</td></tr></table>
+
+<p>Verás que se ejecuta el intérprete de Swift y que puedes escribir y
+ejecutar código Swift:</p>
+<p><img src="imagenes/terminal-swift.png" width="600px"/></p>
+<p>Para editar un programa Swift puedes utilizar un editor como <em>Visual
+Studio Code</em> o el propio Xcode. En Xcode puedes crear un fichero nuevo
+con la opción <em>File &gt; New File...</em> y seleccionar la plantilla <em>macOS &gt;
+Swift File</em>.</p>
+<p><img src="imagenes/template-new-swift-file.png" width="600px"/></p>
+<p>Selecciona la carpeta y el nombre del fichero y ya puedes escribir
+código Swift:</p>
+<p><img src="imagenes/xcode-file-swift.png" width="600px"/></p>
+<p>Una vez grabado el programa, puedes ejecutarlo desde el terminal:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>$ swift prueba.swift
+Hola mundo
+</code></pre></div>
+</td></tr></table>
+
+<p><img src="imagenes/terminal-swift-programa.png" width="500px"/></p>
+<p>Si hay algún error de compilación se detectará al lanzar el comando
+desde el terminal.</p>
+<p><img src="imagenes/programa-con-error.png" width="600px"/></p>
+<p><img src="imagenes/error-terminal.png" width="500px"/></p>
+<h4>Ejecución desde Xcode</h4>
+<p>La otra forma de trabajar es crear desde Xcode un proyecto Swift. Es
+un poco más complicado (hay que conocer algunos comandos más de
+Xcode), pero tiene la ventaja de que Xcode muestra los errores en la
+propia ventana de edición.</p>
+<p>Desde Xcode pulsa la opción <em>File &gt; New Project...</em> y selecciona la
+plantilla <em>macOS &gt; Command Line Tool</em>.</p>
+<p><img src="imagenes/proyecto-xcode.png" width="600px"/></p>
+<p>Puedes escribir el nombre que quieras, por ejemplo <code>prueba-swift</code></p>
+<p><img src="imagenes/proyecto-swift-xcode.png" width="600px"/></p>
+<p>Selecciona el lugar en el disco donde se graba el proyecto y ya puedes
+trabajar con él. El fichero principal se llama <code>main.swift</code>. Pulsando
+la opción de <em>Run</em> se compila el proyecto y se abre un panel con la
+salida:</p>
+<p><img src="imagenes/ejecucion-xcode.png" width="700px"/></p>
+<p>Si hay algún error de compilación se detecta cuando se escribe el
+código y se muestra en el propio editor:</p>
+<p><img src="imagenes/xcode-error.png" width="700px"/></p>
 <h3 id="ejecucion-en-una-maquina-docker">Ejecución en una máquina Docker<a class="headerlink" href="#ejecucion-en-una-maquina-docker" title="Permanent link">&para;</a></h3>
 <p><a href="https://docs.docker.com">Docker</a> es una tecnología que ha tenido una gran expansión en los
 últimos años. Permite construir máquinas virtuales ligeras que
@@ -782,9 +952,6 @@ script anterior en el terminal Docker.</p>
 </td></tr></table>
 
 </div>
-<h3 id="instalacion-en-macos">Instalación en MacOS<a class="headerlink" href="#instalacion-en-macos" title="Permanent link">&para;</a></h3>
-<p>Para instalar la última versión de Swift en MacOs debes instalar
-Xcode. Una vez instalado puedes ejecutar Swift desde el terminal.</p>
 <h3 id="instalacion-en-linux-ubuntu">Instalación en Linux Ubuntu<a class="headerlink" href="#instalacion-en-linux-ubuntu" title="Permanent link">&para;</a></h3>
 <p>Existe una distribución oficial de Swift para Ubuntu de 64 bits
 (distribuciones 14.04, 16.04 y 16.10).</p>
@@ -877,14 +1044,16 @@ la configuración se guarda en una subcarpeta <code>".vscode"</code> de la carpe
 y este tipo de Terminal interactivo se abrirá solo cuando trabajes en esa carpeta.
 Por defecto, en otras carpetas podrás tener el terminal que elijas.</p>
 <h2 id="un-tour-de-swift">Un tour de Swift<a class="headerlink" href="#un-tour-de-swift" title="Permanent link">&para;</a></h2>
-<p>Aquí empieza el seminario de Swift. El texto que hay a continuación es
-una traducción del documento de Apple
-<em><a href="https://developer.apple.com/library/prerelease/content/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-ID1">A Swift Tour</a></em>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>El texto de este seminario es una traducción del
+documento de Apple <a href="https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html">A Swift
+Tour</a>
 en el que se presenta una introducción rápida a los conceptos
-fundamentales del lenguaje. En los temas siguientes de la asignatura
-(Tema 5 - Programación Funcional con Swift y Tema 6 - Programación
-Orientada a Objetos con Swift) profundizaremos en aspectos como
-funciones, genéricos, clases o protocolos.</p>
+fundamentales del lenguaje. En los temas siguientes de la
+asignatura profundizaremos en aspectos como funciones, genéricos,
+clases o protocolos.</p>
+</div>
 <p>Te recomendamos que crees un fichero llamado <code>seminario.swift</code> y que
 vayas copiando y probando en él todos los ejemplos que aparecen a
 continuación. </p>
@@ -905,8 +1074,8 @@ comas al final de cada sentencia.</p>
 <p>Este tour te da información suficiente para empezar a escribir código
 in Swift enseñándote cómo conseguir una variedad de tareas de
 programación. No te preocupes si no entiendes algo, todo lo que se
-introduce en este tour se explica en detalle en el
-<a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309">resto del libro</a>.</p>
+introduce en este tour se explica en detalle en la
+<a href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html">Guía de Swift</a></p>
 <h4>Valores simples</h4>
 <p>Usa <code>let</code> para crear una constante y <code>var</code> para crear una variable. No
 es necesario que se conozca en tiempo de compilación el valor de una
@@ -938,10 +1107,16 @@ variable, separándolo por dos puntos.</p>
 </code></pre></div>
 </td></tr></table>
 
-<blockquote>
-<p>EXPERIMENTO<br />
-Crea una constante con el tipo explícito de <code>Float</code> y un valor de 4.</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>A lo largo del seminario se plantean pequeños ejercicios que 
+puedes hacer tu mismo, para practicar un poco más con el
+lenguaje. Los verás en los bloques encabezados con "Experimento".</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Experimento</p>
+<p>Crea una constante con el tipo explícito de <code>Float</code> y un valor de 4.</p>
+</div>
 <p>Los valores nunca se convierten implícitamente a otro tipo. Si
 necesitas convertir un valor a un tipo diferente, construye
 explícitamente una instancia del tipo deseado.</p>
@@ -953,10 +1128,10 @@ explícitamente una instancia del tipo deseado.</p>
 </code></pre></div>
 </td></tr></table>
 
-<blockquote>
-<p>EXPERIMENTO<br />
-Intenta eliminar la conversión a <code>String</code> en la última línea. ¿Qué error obtienes?</p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Experimento</p>
+<p>Intenta eliminar la conversión a <code>String</code> en la última línea. ¿Qué error obtienes?</p>
+</div>
 <p>Hay una forma aún más sencilla de incluir valores en cadenas: escribe
 el valor entre paréntesis, y escribe una barra invertida (<code>\</code>) antes
 de los paréntesis. Por ejemplo:</p>
@@ -970,11 +1145,11 @@ de los paréntesis. Por ejemplo:</p>
 </code></pre></div>
 </td></tr></table>
 
-<blockquote>
-<p>EXPERIMENTO<br />
-Usa <code>\()</code> para incluir un cálculo en punto flotante en una cadena y
+<div class="admonition example">
+<p class="admonition-title">Experimento</p>
+<p>Usa <code>\()</code> para incluir un cálculo en punto flotante en una cadena y
 para incluir el nombre de alguien en un saludo.</p>
-</blockquote>
+</div>
 <p>Crea arrays y diccionarios utilizando corchetes (<code>[]</code>), y accede a sus
 elementos escribiendo el índice o la clave en los corchetes. Se
 permite una coma después del último elemento.</p>
@@ -1061,8 +1236,8 @@ requieren llaves alrededor del cuerpo.</p>
 </td></tr></table>
 
 <p>En una sentencia <code>if</code>, el condicional debe ser una expresión booleana;
-esto significa que código como <code>if score { ... }</code> es un error, no una
-comparación implícita con cero.</p>
+esto significa que código como <code>if puntuacion { ... }</code> es un error, no una
+comparación implícita con cero (como se permite en C).</p>
 <p>Puedes usar <code>if</code> y <code>let</code> juntos para trabajar con valores que pueden
 faltar. Estos valores se representan como opcionales. Un valor
 opcional o bien contiene un valor o contiene <code>nil</code> para indicar que el
@@ -1086,12 +1261,12 @@ valor para marcar el valor como opcional.</p>
 </code></pre></div>
 </td></tr></table>
 
-<blockquote>
-<p>EXPERIMENTO<br />
-Cambia <code>nombreOpcional</code> a <code>nil</code>. ¿Qué saludo obtienes? Añade una
+<div class="admonition example">
+<p class="admonition-title">Experimento</p>
+<p>Cambia <code>nombreOpcional</code> a <code>nil</code>. ¿Qué saludo obtienes? Añade una
 cláusula <code>else</code> que establezca un saludo diferente si
 <code>nombreOpcional</code> es <code>nil</code>.</p>
-</blockquote>
+</div>
 <p>Si el valor opcional es <code>nil</code>, el condicional es <code>false</code> y el código
 en las llaves se salta. En otro caso, el valor opcional se desenvuelve
 y se asigna a la constante después del <code>let</code>, lo que hace que el valor
@@ -1130,10 +1305,10 @@ pruebas de igualdad.</p>
 </code></pre></div>
 </td></tr></table>
 
-<blockquote>
-<p>EXPERIMENTO<br />
-Intenta eliminar el caso por defecto. ¿Qué error obtienes?</p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Experimento</p>
+<p>Intenta eliminar el caso por defecto. ¿Qué error obtienes?</p>
+</div>
 <p>Después de ejecutar el código dentro del caso que se empareja, el
 programa sale de la sentencia <code>switch</code>. La ejecución no continua con
 el siguiente caso, por lo que no hay necesidad de romper el <code>switch</code>
@@ -1172,10 +1347,10 @@ sus claves y valores se iteran en un orden arbitrario.</p>
 </code></pre></div>
 </td></tr></table>
 
-<blockquote>
-<p>EXPERIMENTO<br />
-Añade otra variable para seguir qué clase de número es el mayor.</p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Experimento</p>
+<p>Añade otra variable para seguir qué clase de número es el mayor.</p>
+</div>
 <p>Usa <code>while</code> para repetir un bloque de código hasta que una condición
 cambie. La condición de un bucle puede estar también al final,
 asegurando que el bucle se ejecuta al menos una vez.</p>
@@ -1229,15 +1404,15 @@ función.</p>
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">dia</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
     <span class="k">return</span> <span class="s">&quot;Hola </span><span class="si">\(</span><span class="n">nombre</span><span class="si">)</span><span class="s">, hoy es </span><span class="si">\(</span><span class="n">dia</span><span class="si">)</span><span class="s">.&quot;</span>
 <span class="p">}</span>
-<span class="n">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="n">dia</span><span class="p">:</span> <span class="s">&quot;Martes&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="n">dia</span><span class="p">:</span> <span class="s">&quot;Martes&quot;</span><span class="p">))</span>
 </code></pre></div>
 </td></tr></table>
 
-<blockquote>
-<p>EXPERIMENTO<br />
-Elimina el parámetro día. Añade un parámetro para incluir la comida
+<div class="admonition example">
+<p class="admonition-title">Experimento</p>
+<p>Elimina el parámetro día. Añade un parámetro para incluir la comida
 de hoy en el saludo.</p>
-</blockquote>
+</div>
 <p>Por defecto, las funciones usan los nombres de los parámetros como
 etiquetas de los argumentos. Es posible definir una etiqueta
 escribiéndola antes del nombre del parámetro, o no usar etiqueta
@@ -1248,7 +1423,7 @@ escribiendo <code>_</code>:</p>
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">saluda</span><span class="p">(</span><span class="kc">_</span> <span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">el</span> <span class="n">dia</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
     <span class="k">return</span> <span class="s">&quot;Hola </span><span class="si">\(</span><span class="n">nombre</span><span class="si">)</span><span class="s">, hoy es </span><span class="si">\(</span><span class="n">dia</span><span class="si">)</span><span class="s">.&quot;</span>
 <span class="p">}</span>
-<span class="n">saluda</span><span class="p">(</span><span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="n">el</span><span class="p">:</span> <span class="s">&quot;Martes&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">saluda</span><span class="p">(</span><span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="n">el</span><span class="p">:</span> <span class="s">&quot;Martes&quot;</span><span class="p">))</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -1317,10 +1492,10 @@ agrupándose todos ellos en un array.</p>
 </code></pre></div>
 </td></tr></table>
 
-<blockquote>
-<p>EXPERIMENTO<br />
-Escribe una función que calcule la media de sus argumentos.</p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Experimento</p>
+<p>Escribe una función que calcule la media de sus argumentos.</p>
+</div>
 <p>Las funciones pueden anidarse. Las funciones pueden acceder variables
 declaradas en la función exterior. Puedes usar funciones anidadas para
 organizar el código en una función que es larga o complicada.</p>
@@ -1442,11 +1617,11 @@ anidadas. Puedes escribir una clausura rodeando el código con llaves
 </code></pre></div>
 </td></tr></table>
 
-<blockquote>
-<p>EXPERIMENTO<br />
-Reescribe la clausura para que devuelva cero para todos los números
+<div class="admonition example">
+<p class="admonition-title">Experimento</p>
+<p>Reescribe la clausura para que devuelva cero para todos los números
 impares.</p>
-</blockquote>
+</div>
 <p>Tienes bastantes opciones para escribir clausuras de forma más
 concisa. Cuando ya se conoce el tipo de una clausura puedes omitir el
 tipo de sus parámetros, el tipo devuelto o ambos. Las clausuras
@@ -1490,11 +1665,11 @@ funciones.</p>
 </code></pre></div>
 </td></tr></table>
 
-<blockquote>
-<p>EXPERIMENTO<br />
-Añade una propiedad constante con <code>let</code>, y añade otro método que
+<div class="admonition example">
+<p class="admonition-title">Experimento</p>
+<p>Añade una propiedad constante con <code>let</code>, y añade otro método que
 tome un argumento.</p>
-</blockquote>
+</div>
 <p>Crea una instancia de una clase poniendo paréntesis después del nombre
 de la clase. Usa la sintaxis de punto para acceder a las propiedades y
 los métodos de la instancia.</p>
@@ -1541,8 +1716,6 @@ inicializador se pasan como una llamada a una función cuando creas una
 instancia de la clase. Cada propiedad necesita un valor asignado; ya
 sea en su declaración (como <code>numeroDeLados</code>) o en el inicializador
 (como <code>nombre</code>).</p>
-<p>Usa <code>deinit</code> para crear un <em>desinicializador</em> si necesitas realizar
-alguna limpieza antes de que el objeto sea eliminado.</p>
 <p>Las subclases incluyen el nombre de su subclase después del nombre de
 la clase, separado por dos puntos. No hay ningún requisito de que las
 clases deban ser subclases de alguna clase raíz, por lo que puedes
@@ -1594,13 +1767,13 @@ realmente no sobreescriben ningún método de la superclase.</p>
 </code></pre></div>
 </td></tr></table>
 
-<blockquote>
-<p>EXPERIMENTO<br />
-Construye otra subclase de <code>FiguraConNombre</code> llamada <code>Circulo</code> que
+<div class="admonition example">
+<p class="admonition-title">Experimento</p>
+<p>Construye otra subclase de <code>FiguraConNombre</code> llamada <code>Circulo</code> que
 tome un radio y un nombre como argumentos de su
 inicializador. Implementa un método <code>area()</code> y
 <code>descripcionSencilla()</code> en la clase <code>Circulo</code>.</p>
-</blockquote>
+</div>
 <p>Además de propiedades simples que se almacenan, las propiedades pueden
 tener un <em>getter</em> y un <em>setter</em>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -1669,12 +1842,14 @@ tiene tres pasos diferentes:</p>
    superclase. Cualquier trabajo adicional que use métodos, <em>getters</em>
    o <em>setters</em> puede hacerse también en este punto.</li>
 </ol>
-<p>Si no necesitas calcular la propiedad pero necesitas proporcionar
+<!--
+Si no necesitas calcular la propiedad pero necesitas proporcionar
 código que se ejecuta antes y después de establecer un nuevo valor,
-usa <code>willSet</code> y <code>didSet</code>. El código que proporcionas se ejecuta cada
+usa `willSet` y `didSet`. El código que proporcionas se ejecuta cada
 vez que el valor cambia fuera de un inicializador. Por ejemplo, la
 siguiente clase se asegura de que la longitud del lado de su triángulo
-siempre es la misma que la longitud del lado de su cuadrado.</p>
+siempre es la misma que la longitud del lado de su cuadrado.
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1719,18 +1894,20 @@ siempre es la misma que la longitud del lado de su cuadrado.</p>
 </code></pre></div>
 </td></tr></table>
 
-<p>Cuando trabajamos con valores opcionales, puedes escribir <code>?</code> antes de
+Cuando trabajamos con valores opcionales, puedes escribir `?` antes de
 operaciones como métodos, propiedades y subíndices. Si el valor antes
-del <code>?</code> es <code>nil</code>, todo lo que hay después se ignora y el valor de la
-expresión completa es <code>nil</code>. En otro caso, el valor opcional se
-desenvuelve, y todo lo que hay después del <code>?</code> se realiza sobre el
+del `?` es `nil`, todo lo que hay después se ignora y el valor de la
+expresión completa es `nil`. En otro caso, el valor opcional se
+desenvuelve, y todo lo que hay después del `?` se realiza sobre el
 valor desenvuelto. En ambos casos, el valor de la expresión completa
-es un valor opcional.</p>
+es un valor opcional.
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">cuadradoOpcional</span><span class="p">:</span> <span class="n">Cuadrado</span><span class="p">?</span> <span class="p">=</span> <span class="n">Cuadrado</span><span class="p">(</span><span class="n">longitudLado</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Cuadrado opcional&quot;</span><span class="p">)</span>
 <span class="kd">let</span> <span class="nv">longitudLado</span> <span class="p">=</span> <span class="n">cuadradoOpcional</span><span class="p">?.</span><span class="n">longitudLado</span>
 </code></pre></div>
 </td></tr></table>
+-->
 
 <h4>Enumeraciones y estructuras</h4>
 <p>Usa <code>enum</code> para crear una enumeración. Como las clases y otros tipos
@@ -1779,11 +1956,11 @@ con nombre, las enumeraciones pueden tener métodos asociados.</p>
 </code></pre></div>
 </td></tr></table>
 
-<blockquote>
-<p>EXPERIMENTO<br />
-Escribe una función que compare dos valores <code>Valor</code> a través de una
+<div class="admonition example">
+<p class="admonition-title">Experimento</p>
+<p>Escribe una función que compare dos valores <code>Valor</code> a través de una
 comparación de sus valores brutos.</p>
-</blockquote>
+</div>
 <p>Por defecto, Swift asigna los valores brutos comenzando en cero e
 incrementándolos por uno cada vez, pero puedes cambiar esta conducta
 especificando explícitamente los valores. En el ejemplo anterior, a
@@ -1844,11 +2021,11 @@ proporcionar uno.</p>
 </code></pre></div>
 </td></tr></table>
 
-<blockquote>
-<p>EXPERIMENTO<br />
-Añade un método <code>color()</code> a <code>Palo</code> que devuelva "agresivo" para
+<div class="admonition example">
+<p class="admonition-title">Experimento</p>
+<p>Añade un método <code>color()</code> a <code>Palo</code> que devuelva "agresivo" para
 <em>bastos</em> y <em>espadas</em> y devuelva "reflexivo" para <em>oros</em> y <em>copas</em>.</p>
-</blockquote>
+</div>
 <p>Date cuenta de las dos formas en las que nos referimos al caso <code>copas</code>
 de la enumeración anterior: cuando se asigna un valor a la constante
 <code>copas</code>, nos referimos al caso de la enumeración <code>Palo.copas</code> usando
@@ -1898,10 +2075,10 @@ error.</p>
 </code></pre></div>
 </td></tr></table>
 
-<blockquote>
-<p>EXPERIMENTO<br />
-Añade un tercer caso al <code>ServerResponse</code> y al switch.</p>
-</blockquote>
+<div class="admonition example">
+<p class="admonition-title">Experimento</p>
+<p>Añade un tercer caso al <code>ServerResponse</code> y al switch.</p>
+</div>
 <p>Date cuenta de cómo la hora de salir el sol y de ponerse el sol se
 extraen del <code>ServerResponse</code> como parte del emparejamiento entre el
 valor y los casos switch.</p>
@@ -1931,13 +2108,17 @@ referencia.</p>
 </code></pre></div>
 </td></tr></table>
 
-<blockquote>
-<p>EXPERIMENTO<br />
-Añade un método a <code>Carta</code> que cree un mazo completo de cartas, con
+<div class="admonition example">
+<p class="admonition-title">Experimento</p>
+<p>Añade un método a <code>Carta</code> que cree un mazo completo de cartas, con
 una carta de cada combinación de valor y palo.</p>
-</blockquote>
-<h4>Protocolos y extensiones</h4>
-<p>Usa <code>protocol</code> para declarar un protocolo.</p>
+</div>
+<!--
+
+#### Protocolos y extensiones
+
+Usa `protocol` para declarar un protocolo.
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -1948,7 +2129,8 @@ una carta de cada combinación de valor y palo.</p>
 </code></pre></div>
 </td></tr></table>
 
-<p>Clases, enumeraciones y estructuras pueden todas adoptar protocolos.</p>
+Clases, enumeraciones y estructuras pueden todas adoptar protocolos.
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1991,20 +2173,21 @@ una carta de cada combinación de valor y palo.</p>
 </code></pre></div>
 </td></tr></table>
 
-<blockquote>
-<p>EXPERIMENTO<br />
-Escribe una enumeración que cumpla el protocolo.</p>
-</blockquote>
-<p>Date cuenta del uso de la palabra clave <code>mutating</code> en la declaración
-de <code>EstructuraSencilla</code> para marcar el método que modifica la
-estructura. La declaración de <code>ClaseSencilla</code> no necesita que se marquen
+!!! Example "Experimento"  
+    Escribe una enumeración que cumpla el protocolo.
+
+Date cuenta del uso de la palabra clave `mutating` en la declaración
+de `EstructuraSencilla` para marcar el método que modifica la
+estructura. La declaración de `ClaseSencilla` no necesita que se marquen
 como mutadores ninguno de sus métodos porque los métodos en una clase
-siempre pueden modificar la clase.</p>
-<p>Usa <code>extension</code> para añadir funcionalidad a un tipo existente, como
+siempre pueden modificar la clase.
+
+Usa `extension` para añadir funcionalidad a un tipo existente, como
 métodos nuevos y propiedades calculadas. Puedes utilizar una extensión
 para añadir un cumplimiento de un protocolo a un tipo que se declara
 en otro lugar, o incluso a un tipo que hayas importado de una
-biblioteca o un <em>framework</em>.</p>
+biblioteca o un *framework*.
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -2025,7 +2208,8 @@ biblioteca o un <em>framework</em>.</p>
 </code></pre></div>
 </td></tr></table>
 
-<p>Otro ejemplo usando una función:</p>
+Otro ejemplo usando una función:
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -2046,16 +2230,16 @@ biblioteca o un <em>framework</em>.</p>
 </code></pre></div>
 </td></tr></table>
 
-<blockquote>
-<p>EXPERIMENTO<br />
-Escribe una extensión para el tipo <code>Double</code> que añada una propiedad
-<code>absoluteValue</code>.</p>
-</blockquote>
-<p>Puedes usar un nombre de un protocolo de la misma forma que cualquier
+!!! Example "Experimento"
+    Escribe una extensión para el tipo `Double` que añada una propiedad
+    `absoluteValue`.
+
+Puedes usar un nombre de un protocolo de la misma forma que cualquier
 otro tipo con nombre; por ejemplo, para crear una colección de objetos
 que tienen tipos diferentes pero que cumplen un único
 protocolo. Cuando trabajas con valores cuyo tipo es un tipo de
-protocolo, no están disponibles los métodos fuera del protocolo.</p>
+protocolo, no están disponibles los métodos fuera del protocolo.
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">valorProtocolo</span><span class="p">:</span> <span class="n">ProtocoloEjemplo</span> <span class="p">=</span> <span class="n">a</span>
@@ -2064,14 +2248,18 @@ protocolo, no están disponibles los métodos fuera del protocolo.</p>
 </code></pre></div>
 </td></tr></table>
 
-<p>Incluso aunque la variable <code>valorProtocolo</code> tenga un tipo en tiempo de
-ejecución de <code>ClaseSencilla</code>, el compilador lo trata como uno del tipo
-<code>ProtocoloEjemplo</code>. De esta forma no es posible acceder
+Incluso aunque la variable `valorProtocolo` tenga un tipo en tiempo de
+ejecución de `ClaseSencilla`, el compilador lo trata como uno del tipo
+`ProtocoloEjemplo`. De esta forma no es posible acceder
 accidentalmente a métodos o propiedades que implemente la clase de
-forma adicional al cumplimiento del protocolo.</p>
-<h4>Genéricos</h4>
-<p>Escribe un nombre dentro de paréntesis angulares para construir una
-función o un tipo genérico.</p>
+forma adicional al cumplimiento del protocolo.
+
+
+#### Genéricos 
+
+Escribe un nombre dentro de paréntesis angulares para construir una
+función o un tipo genérico.
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -2090,8 +2278,9 @@ función o un tipo genérico.</p>
 </code></pre></div>
 </td></tr></table>
 
-<p>Puedes hacer formas genéricas de funciones y métodos, así como de
-clases, enumeraciones y estructuras.</p>
+Puedes hacer formas genéricas de funciones y métodos, así como de
+clases, enumeraciones y estructuras.
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -2108,10 +2297,12 @@ clases, enumeraciones y estructuras.</p>
 </code></pre></div>
 </td></tr></table>
 
-<p>Es posible usar <code>where</code> justo antes del cuerpo para especificar una
+Es posible usar `where` justo antes del cuerpo para especificar una
 lista de requisitos. Por ejemplo, para requerir el tipo que debe
 implementar un protocolo, para requerir que dos tipos sean los mismos
-o para requerir que una clase tenga una superclase determinada.</p>
+o para requerir que una clase tenga una superclase determinada.
+
+
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -2140,7 +2331,10 @@ o para requerir que una clase tenga una superclase determinada.</p>
 </code></pre></div>
 </td></tr></table>
 
-<p>Si se escribe <code>&lt;T: Equatable&gt;</code> es equivalente a escribir <code>&lt;T&gt; ... where T: Equatable</code>.</p>
+Si se escribe `<T: Equatable>` es equivalente a escribir `<T> ... where T: Equatable`.
+
+-->
+
 <h2 id="bibliografia-y-referencias">Bibliografía y referencias<a class="headerlink" href="#bibliografia-y-referencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Documentación sobre Swift<ul>
@@ -2156,7 +2350,7 @@ o para requerir que una clase tenga una superclase determinada.</p>
 </li>
 </ul>
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2018-19<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2019-20_
 Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  </p>
                 
                   
@@ -2175,6 +2369,41 @@ Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad d
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../seminario1-scheme/seminario1-scheme.html" title="Seminario de Scheme" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Seminario de Scheme
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../practicas/practica01/practica01.html" title="Práctica 1" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Siguiente
+                </span>
+                Práctica 1
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

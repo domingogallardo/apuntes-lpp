@@ -408,6 +408,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../seminarios/seminario2-swift/seminario2-swift.html" title="Seminario de Swift" class="md-nav__link">
+      Seminario de Swift
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1716,10 +1728,12 @@ orden superior:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-datos-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-datos-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
    <span class="p">(</span><span class="nb">foldr</span> <span class="nb">+</span> 
           <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span> 
-          <span class="p">(</span><span class="nb">map</span> <span class="n">suma-datos-arbol-fos</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>
+          <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">subarbol</span><span class="p">)</span>
+                   <span class="p">(</span><span class="n">suma-datos-arbol-fos</span> <span class="n">subarbol</span><span class="p">))</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -1731,6 +1745,19 @@ nodos. De esta forma, el resultado de <code>map</code> será una lista con la su
 de los nodos de todos los árboles hijos.</p>
 <p>La función <code>foldr</code> suma todos esos números de la lista y el
 número de la raíz.</p>
+<p>La expresión lambda de <code>map</code> no es necesaria, ya que la función
+<code>suma-datos-arbol-fos</code> tiene un único argumento que va a ser cada uno
+de los árboles hijos:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-datos-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">foldr</span> <span class="nb">+</span> 
+          <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span> 
+          <span class="p">(</span><span class="nb">map</span> <span class="n">suma-datos-arbol-fos</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>
+</code></pre></div>
+</td></tr></table>
+
 <p>Un ejemplo de su funcionamiento sería el siguiente:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -1901,14 +1928,34 @@ pasa la función a aplicar a los elementos del árbol.</p>
 </td></tr></table>
 
 <h4>Función <code>altura-arbol</code></h4>
+<!--
+Definiciones: (https://courses.cs.washington.edu/courses/cse373/06sp/handouts/lecture06.pdf)
+
+longitud de camino: número de aristas
+profundidad de un nodo: longitud del camino de la raíz al nodo
+altura nodo: longitud del camino más largo del nodo a una hoja
+profundidad de un árbol: profundidad del nodo más profundo
+altura de un árbol: altura de la raíz
+nivel de un nodo: número de predecesores(https://www.quora.com/What-is-the-difference-between-the-height-and-level-of-a-full-binary-tree)
+-->
+
 <p>Vamos por último a definir una función que devuelve la altura de un
-árbol (el nivel del nodo de mayor nivel). Un nodo hoja tiene de altura
-0.</p>
-<p>Podemos implementarla de una forma similar a como hicimos con las
-listas estructuradas: comprobamos la altura del bosque y sumamos uno
-para compensar el nivel de la raíz.</p>
-<p>Para calcular la altura del bosque, devolvemos la máxima altura de sus
-árboles.</p>
+árbol. </p>
+<p>Recordemos las siguientes definiciones relacionadas con los árboles:</p>
+<ul>
+<li>Longitud de un camino entre dos nodos: número de aristas </li>
+<li>Altura de un nodo: longitud del camino del nodo a una hoja</li>
+<li>Profundidad de un nodo: longitud del camino de la raíz al nodo</li>
+<li>Profundidad de un árbol: profundidad del nodo más profundo</li>
+<li>Nivel de un nodo: número de predecesores</li>
+<li>Altura de árbol: altura de la raíz</li>
+</ul>
+<p>Podemos implementar la altura de una forma similar a como hicimos con
+las listas estructuradas: calculamos la altura de los árboles hijos,
+nos quedamos con la mayor, y sumamos 1 para añadir la arista del
+camino de la raíz al hijo.</p>
+<p>La mayor altura de los hijos la calculamos con la función
+<code>altura-bosque</code>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1939,7 +1986,7 @@ para compensar el nivel de la raíz.</p>
 </td></tr></table>
 
 <p>La solución con funciones de orden superior es algo distinta de la
-que vimos con listas estructuradas</p>
+que vimos con listas estructuradas:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
