@@ -320,6 +320,10 @@ print(saluda(nombre: "Bill", de: "Cupertino"))
 // Imprime "Hola Bill! Me alegro de que hayas podido visitarnos desde Cupertino."
 ```
 
+En este caso el nombre externo del parámetro (el que usamos al invocar la función)
+es `de` y el nombre interno (el que se usa en el cuerpo de la función)
+es `ciudad`. 
+
 Otro ejemplo, la siguiente función `concatena(palabra:con:)`: 
 
 ```swift
@@ -332,7 +336,9 @@ print(concatena(palabra:"Hola", con:"adios"))
 
 Si no se quiere una etiqueta del argumento para un parámetro, se puede
 escribir un subrayado (`_`) en lugar de una etiqueta del argumento
-explícita para ese parámetro:
+explícita para ese parámetro. Esto nos permite llamar a la función sin
+usar un nombre de parámetro. Por ejemplo, la función `max(_:_:)` y la
+función `divide(_:entre:)`:
 
 ```swift
 func max(_ x:Int, _ y: Int) -> Int {
@@ -587,7 +593,7 @@ Podemos usar un tipo función en parámetros de otras funciones:
 
 ```swift
 func printResultado(funcion: (Int, Int) -> Int, _ a: Int, _ b: Int) {
-    print("Resultado: \(funcionMatematica(a, b))")
+    print("Resultado: \(funcion(a, b))")
 }
 printResultado(funcion: sumaDosInts, 3, 5)
 // Prints "Resultado: 8"
@@ -595,7 +601,8 @@ printResultado(funcion: sumaDosInts, 3, 5)
 
 La función `printResultado(funcion:_:_:)` toma como primer parámetro otra
 función que recibe dos `Int` y devuelve un `Int`, y como segundo y
-tercer parámetro dos `Int`.
+tercer parámetro dos `Int`. Y en el cuerpo llama a la función que se
+pasa como parámetro con los argumentos `a` y `b`.
 
 Veamos otro ejemplo, que ya vimos en Scheme. Supongamos que queremos
 calcular el sumatorio desde `a` hasta `b` en el que aplicamos una
@@ -684,15 +691,15 @@ func construyeSumador10() -> (Int) -> Int {
   return suma10
 }
 
-var f = construyeSumador10()
-print(f(20))
+var g = construyeSumador10()
+print(g(20))
 // Imprime 30
 ```
 
 La función devuelta por `construyeSumador10()` es una función con el tipo
 `(Int) -> Int` (recibe un parámetro entero y devuelve un entero). En
 la llamada a `construyeSumador10()` se crea esa función y se asigna a la
-variable `f`.
+variable `g`.
 
 Estas funciones devueltas se denominan **clausuras**. Más adelante
 hablaremos algo más de ellas. Veremos también más adelante que es
@@ -708,17 +715,17 @@ func construyeSumador(inc: Int) -> (Int) -> Int {
   return suma
 }
 
-var f = construyeSumador(inc: 10)
-var g = construyeSumador(inc: 100)
-print(f(20))
+var f2 = construyeSumador(inc: 10)
+var f3 = construyeSumador(inc: 100)
+print(f2(20))
 // Imprime "30"
-print(g(20))
+print(f3(20))
 // Imprime "120"
 ```
 
 Invocamos dos veces a `construyeSumador(inc:)` y guardamos las
-clausuras construidas en las variables `f` y `g`. En `f` se guarda una
-función que suma `10` a su argumento y en `g` otra que suma `100`.
+clausuras construidas en las variables `f2` y `f3`. En `f2` se guarda una
+función que suma `10` a su argumento y en `f3` otra que suma `100`.
 
 ## Tipos
 
@@ -973,7 +980,7 @@ enum Quiniela {
 }
 ```
 
-#### Valores brutos de enumeraciones ####
+### Valores brutos de enumeraciones ###
 
 Es posible asignar a las constantes del enumerado un valor concreto de
 un tipo subyacente, por ejemplo enteros:
@@ -1046,10 +1053,14 @@ let posiblePlaneta = Planeta(rawValue: 7)
 // posiblePlaneta es de tipo Planeta? y es igual a Planeta.urano
 ```
 
-#### Valores asociados a instancias de enumeraciones ####
+## Enumeraciones instanciables ##
 
 Una característica singular de las enumeraciones en Swift es que
-permiten definir valores variables asociados a cada caso. 
+permiten definir valores variables asociados a cada caso de la
+enumeración, creando algo muy parecido a una instancia de la
+enumeración.
+
+### Valores asociados a instancias de enumeraciones ###
 
 Veamos un ejemplo inicial muy sencillo, con una enumeración con un
 único caso, en el que se define una variable de tipo `Int`:
@@ -1060,8 +1071,8 @@ enum Prueba {
 }
 ```
 
-Esta notación obliga a definir un valor concreto del `Int` asociado a
-`x` en el momento de creación del enumerado:
+Esta notación obliga a definir un valor concreto del `Int` asociado al
+caso `x` en el momento de creación del enumerado:
 
 ```swift
 let valor1 = Prueba.x(10)
@@ -1069,13 +1080,13 @@ let valor2 = Prueba.x(40)
 ```
 
 Las variables `valor1` y `valor2` son de tipo `Prueba` y tiene como
-valor la constante `x`, y el entero asociado `10` y `40` en cada
-caso. Son parecidas a instancias de una clase.
+valor el caso `x`, y el entero asociado a ese caso (`10` y `40` en cada
+instancia). Son parecidas a instancias de una clase.
 
-Para obtener el valor asociado debemos usar un `case let` en una
-sentencia `switch` con una variable a la que se asigna el valor. Por
-ejemplo, en el siguiente código el valor del enumerado se asigna a la
-variable `a`:
+Para obtener el valor asociado debemos usar una expresión `case let`
+en una sentencia `switch` con una variable a la que se asigna el
+valor. Por ejemplo, en el siguiente código el valor del enumerado se
+asigna a la variable `a`:
 
 ```swift
 switch valor1 {
@@ -1085,17 +1096,55 @@ case let .x(a):
 // Imprime "Valor asociado a x: 10
 ```
 
-Los valores asociados y los valores brutos son distintos: el valor
+No hay que confundir un valor asociado a un caso y un valor bruto: el valor
 bruto de un caso de enumeración es el mismo para todas las instancias,
 mientras que el valor asociado es distinto y se proporciona cuando se
 define el valor concreto de la enumeración.
 
 Cuando unimos a la característica del valor asociado la posibilidad de
-los enumerados de tener más de una opción tenemos lo que en otros
+los enumerados de tener más de un caso tenemos lo que en otros
 lenguajes de programación se llaman _uniones etiquetadas_ o
 _variantes_.
 
-Veamos un ejemplo, más real, en el que usamos un enum para definir
+Por ejemplo, podemos definir un enumerado que permita guardar un
+`Int` o un `String`:
+
+```swift
+enum Multiple {
+    case x(Int)
+    case str(String)
+}
+```
+
+De esta forma, podemos crear valores de tipo `Multiple` que contienen
+un `Int` (instanciando el caso `x`) o un `String` (instanciando el
+caso `str`):
+
+```swift
+let valor3 = Multiple.x(10)
+let valor4 = Multiple.str("Hola")
+```
+
+Y podemos definir una función que reciba instancias de tipo `Multiple`
+y use un `switch` para comprobar qué caso tienen instanciado:
+
+```swift
+func imprime(multiple: Multiple) {
+    switch multiple {
+    case let .x(a):
+        print("Multiple tiene un Int: \(a)")
+    case let .str(s):
+        print("Multiple tiene un String: \(s)")
+    }
+}
+imprime(multiple: valor3)
+// Imprime "Multiple tiene un Int: 10"
+imprime(multiple: valor4)
+// Imprime "Multiple tiene un String: Hola
+```
+
+En un último ejemplo podemos ver que el tipo del caso también puede
+ser un tipo compuesto, como una tupla. Usamos un enum para definir
 posibles valores de un código de barras, en el que incluimos dos
 posibles tipos de código de barras: el código de barras lineal
 (denominado UPC) y el código QR:
@@ -1131,7 +1180,7 @@ case let .qrCode(codigoProducto):
 // Imprime  "Código QR : ABCDEFGHIJKLMNOP."
 ```
 
-#### Enumeraciones recursivas ####
+### Enumeraciones recursivas ###
 
 Es posible combinar las características de las enumeraciones con valor
 con la recursión para crear enumeraciones recursivas. Hay que preceder
@@ -1234,13 +1283,13 @@ func construye(lista: [Int]) -> Lista {
     } 
 }
 
-let lista = construye(lista: [1,2,3,4,5])
+let lista2 = construye(lista: [1,2,3,4,5])
 
-print(suma(lista: lista))
+print(suma(lista: lista2))
 // Imprime 15
 ```
 
-
+<!--
 
 ## Opcionales
 
@@ -1522,7 +1571,6 @@ let z: Lista = .nodo(20, .nodo(10, nil))
 print(suma(lista: z))
 /// Devuelve 30
 ```
-
 
 
 ## Clausuras
@@ -2224,6 +2272,9 @@ print(vacia(cdr(cdr(cdr(lista)!)!)!)) // Imprime true
 ```
 
 
+
+-->
+
 ## Bibliografía
 
 - Swift Language Guide
@@ -2237,6 +2288,6 @@ print(vacia(cdr(cdr(cdr(lista)!)!)!)) // Imprime true
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2018–19  
+Lenguajes y Paradigmas de Programación, curso 2019–20  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
