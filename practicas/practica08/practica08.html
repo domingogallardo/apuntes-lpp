@@ -36,7 +36,7 @@
     
     
       
-        <title>Práctica 8: Programación funcional en Swift (1) - LPP</title>
+        <title>Práctica 8 - LPP</title>
       
     
     
@@ -109,7 +109,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Práctica 8: Programación funcional en Swift (1)
+                Práctica 8
               
             </span>
           
@@ -251,6 +251,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html" title="Tema 5: Programación funcional con Swift" class="md-nav__link">
+      Tema 5: Programación funcional con Swift
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -308,10 +320,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Prácticas
@@ -404,6 +418,104 @@
     <a href="../practica07/practica07.html" title="Práctica 7" class="md-nav__link">
       Práctica 7
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Práctica 8
+      </label>
+    
+    <a href="practica08.html" title="Práctica 8" class="md-nav__link md-nav__link--active">
+      Práctica 8
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    Ejercicios
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" class="md-nav__link">
+    Ejercicio 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" class="md-nav__link">
+    Ejercicio 5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -543,9 +655,9 @@ funcional, porque utiliza dos variables mutables definidas con <code>var</code>.
 <span class="bp">print</span><span class="p">(</span><span class="s">&quot;minMax(</span><span class="si">\(</span><span class="n">array</span><span class="si">)</span><span class="s">): </span><span class="si">\(</span><span class="n">minMax</span><span class="si">(</span><span class="n">array</span><span class="p">:</span> <span class="n">array</span><span class="si">)</span><span class="o">!</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="kd">let</span> <span class="nv">array2</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>
 <span class="bp">print</span><span class="p">(</span><span class="s">&quot;minMax(</span><span class="si">\(</span><span class="n">array2</span><span class="si">)</span><span class="s">): </span><span class="si">\(</span><span class="nb">String</span><span class="si">(</span><span class="n">describing</span><span class="p">:</span> <span class="n">minMax</span><span class="si">(</span><span class="n">array</span><span class="p">:</span> <span class="n">array2</span><span class="si">)))</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="err">\\</span> <span class="n">Imprime</span><span class="p">:</span> 
-<span class="err">\\</span> <span class="n">minMax</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">4</span><span class="p">]):</span> <span class="p">(</span><span class="bp">min</span><span class="p">:</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="bp">max</span><span class="p">:</span> <span class="mi">300</span><span class="p">)</span>
-<span class="err">\\</span> <span class="n">minMax</span><span class="p">([]):</span> <span class="kc">nil</span>
+<span class="c1">// Imprime: </span>
+<span class="c1">// minMax([-1, 10, 200, -20, 300, 4]): (min: -20, max: 300)</span>
+<span class="c1">// minMax([]): nil</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -713,7 +825,7 @@ mutua.</p>
 </td></tr></table>
 
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2018-19<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2019-20<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
                 
@@ -733,6 +845,27 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../practica07/practica07.html" title="Práctica 7" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Práctica 7
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
