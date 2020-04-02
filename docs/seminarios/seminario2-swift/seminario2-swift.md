@@ -704,9 +704,9 @@ let numerosInteresantes = [
 ]
 var mayor = 0
 for (clase, numeros) in numerosInteresantes {
-    for numero in numeros {
-        if numero > mayor {
-            mayor = numero
+    for num in numeros {
+        if num > mayor {
+            mayor = num
         }
     }
 }
@@ -809,8 +809,8 @@ agrupándose todos ellos en un array.
 ```swift
 func suma(numeros: Int...) -> Int {
     var suma = 0
-    for numeros in numeros {
-        suma += numeros
+    for num in numeros {
+        suma += num
     }
     return suma
 }

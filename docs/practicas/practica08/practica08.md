@@ -40,9 +40,9 @@ let array = [-1, 10, 200, -20, 300, 4]
 print("minMax(\(array)): \(minMax(array: array)!)")
 let array2: [Int] = []
 print("minMax(\(array2)): \(String(describing: minMax(array: array2)))")
-\\ Imprime: 
-\\ minMax([-1, 10, 200, -20, 300, 4]): (min: -20, max: 300)
-\\ minMax([]): nil
+// Imprime: 
+// minMax([-1, 10, 200, -20, 300, 4]): (min: -20, max: 300)
+// minMax([]): nil
 ```
 
 
@@ -201,6 +201,6 @@ print("La suma del árbol genérico es: \(suma(arbol: arbol10, cumplen: esPar))"
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2018-19  
+Lenguajes y Paradigmas de Programación, curso 2019-20  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
