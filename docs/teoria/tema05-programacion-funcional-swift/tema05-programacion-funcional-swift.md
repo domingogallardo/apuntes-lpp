@@ -1289,8 +1289,6 @@ print(suma(lista: lista2))
 // Imprime 15
 ```
 
-<!--
-
 ## Opcionales
 
 Una de las características principales que Swift intenta promover es
@@ -1572,6 +1570,7 @@ print(suma(lista: z))
 /// Devuelve 30
 ```
 
+<!---
 
 ## Clausuras
 
