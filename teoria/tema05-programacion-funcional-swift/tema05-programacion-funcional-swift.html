@@ -489,6 +489,47 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#opcionales" class="md-nav__link">
+    Opcionales
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ligado-opcional" class="md-nav__link">
+    Ligado opcional
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operador-nil-coalescing" class="md-nav__link">
+    Operador nil-coalescing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encadenamiento-de-opcionales" class="md-nav__link">
+    Encadenamiento de opcionales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definicion-de-lista-con-opcionales" class="md-nav__link">
+    Definición de Lista con opcionales
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bibliografia" class="md-nav__link">
     Bibliografía
   </a>
@@ -893,6 +934,47 @@
           <li class="md-nav__item">
   <a href="#enumeraciones-recursivas" class="md-nav__link">
     Enumeraciones recursivas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opcionales" class="md-nav__link">
+    Opcionales
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ligado-opcional" class="md-nav__link">
+    Ligado opcional
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operador-nil-coalescing" class="md-nav__link">
+    Operador nil-coalescing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encadenamiento-de-opcionales" class="md-nav__link">
+    Encadenamiento de opcionales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definicion-de-lista-con-opcionales" class="md-nav__link">
+    Definición de Lista con opcionales
   </a>
   
 </li>
@@ -2446,70 +2528,58 @@ que devuelve una lista a partir de una array de enteros:</p>
 </code></pre></div>
 </td></tr></table>
 
-<!--
-
-## Opcionales
-
-Una de las características principales que Swift intenta promover es
+<h2 id="opcionales">Opcionales<a class="headerlink" href="#opcionales" title="Permanent link">&para;</a></h2>
+<p>Una de las características principales que Swift intenta promover es
 la seguridad y la robustez. Debe ser difícil que el desarrollador
 escriba código con errores y que rompa la aplicación. Por ejemplo, la
 comprobación estática de los tipos de datos o el manejo automático de
 la gestión de memoria son dos características del lenguaje que van en
-esta dirección.
-
-Otro de los elementos más importantes del lenguaje para promover la
-seguridad son los opcionales. Vamos a estudiar su uso y utilidad.
-
-En muchos lenguajes existe el concepto de _valor vacío_. Por ejemplo,
-en Java se usa _null_ o en Python _None_. 
-
-!!! Note "Nota"
-    Tony Hoare introdujo el concepto de _Null_ en ALGOL, en 1965. En
-    una conferencia en 2009 habla sobre esta idea y la considera un
-    costoso error: [Null References: The Billion Dollar
-    Mistake](https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare). 
-
-El concepto de _null_ es un concepto peligroso, como lo saben bien los
+esta dirección.</p>
+<p>Otro de los elementos más importantes del lenguaje para promover la
+seguridad son los opcionales. Vamos a estudiar su uso y utilidad.</p>
+<p>En muchos lenguajes existe el concepto de <em>valor vacío</em>. Por ejemplo,
+en Java se usa <em>null</em> o en Python <em>None</em>. </p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Tony Hoare introdujo el concepto de <em>Null</em> en ALGOL, en 1965. En
+una conferencia en 2009 habla sobre esta idea y la considera un
+costoso error: <a href="https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare">Null References: The Billion Dollar
+Mistake</a>. </p>
+</div>
+<p>El concepto de <em>null</em> es un concepto peligroso, como lo saben bien los
 desarrolladores Java. En Java, si intentamos usar una variable que
-contiene _null_ se produce la típica excepción _null pointer
-exception_ y la aplicación se rompe. Todos hemos caído en este error,
-y con más frecuencia de la que sería deseable.
-
-En Swift también existe el valor nulo. La forma de representarlo es el
-identificador `nil`. 
-
-La característica de seguridad que introduce Swift con respecto a Java
-y a otros lenguajes es que no es posible asignar `nil` a una variable
-de un tipo normal.
-
-Por ejemplo, la siguiente línea daría un error de compilación:
-
+contiene <em>null</em> se produce la típica excepción <em>null pointer
+exception</em> y la aplicación se rompe. Todos hemos caído en este error,
+y con más frecuencia de la que sería deseable.</p>
+<p>En Swift también existe el valor nulo. La forma de representarlo es el
+identificador <code>nil</code>. </p>
+<p>La característica de seguridad que introduce Swift con respecto a Java
+y a otros lenguajes es que no es posible asignar <code>nil</code> a una variable
+de un tipo normal.</p>
+<p>Por ejemplo, la siguiente línea daría un error de compilación:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">cadena</span><span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="kc">nil</span>
 <span class="c1">// error: &#39;nil&#39; cannot initialize specified type &#39;String&#39;</span>
 </code></pre></div>
 </td></tr></table>
 
-Si queremos utilizar `nil` debemos declarar la variable usando lo que
-se denomina **tipo opcional**:
-
+<p>Si queremos utilizar <code>nil</code> debemos declarar la variable usando lo que
+se denomina <strong>tipo opcional</strong>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">var</span> <span class="nv">cadena</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="s">&quot;Hola&quot;</span>
 <span class="n">cadena</span> <span class="p">=</span> <span class="kc">nil</span>
 </code></pre></div>
 </td></tr></table>
 
-El tipo `String?` indica que podemos tener un valor `nil` o un valor
-del tipo original. Primero estamos definiendo la variable `cadena` del
-tipo `String?` (`String` opcional) y le estamos asignando un valor
-determinado (de tipo `String`). Y después le asignamos `nil`.
-
-El uso de opcionales es necesario en situaciones en las que podemos
+<p>El tipo <code>String?</code> indica que podemos tener un valor <code>nil</code> o un valor
+del tipo original. Primero estamos definiendo la variable <code>cadena</code> del
+tipo <code>String?</code> (<code>String</code> opcional) y le estamos asignando un valor
+determinado (de tipo <code>String</code>). Y después le asignamos <code>nil</code>.</p>
+<p>El uso de opcionales es necesario en situaciones en las que podemos
 obtener un valor desconocido. Por ejemplo, en alguna función en la que
 pedimos un valor al usuario y el usuario puede no introducir
 ninguno. O en estructuras de datos en las que hacemos búsquedas que
-pueden no devolver ningún valor, como en un diccionario:
-
+pueden no devolver ningún valor, como en un diccionario:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -2524,23 +2594,19 @@ pueden no devolver ningún valor, como en un diccionario:
 </code></pre></div>
 </td></tr></table>
 
-En el código anterior definimos un diccionario `edades` con claves de
-tipo `String` y valores `Int`. La variable `edad1` se inicializa con
-un opcional con el valor `30` y la variable `edad2` con un opcional
-que vale `nil`.
-
-Un valor opcional no puede ser usado directamente. Primero debemos
-comprobar si el valor es distinto de `nil` y sólo después podremos
-usarlo. 
-
-Para reforzar esto, Swift _esconde_ o _envuelve_ (_wrap_) el valor
-real del opcional y obliga a llamar al operador `!` para
-_desenvolverlo_ (_unwrap_) y usarlo. Este operador se denomina de
-**desenvoltura forzosa** (_forced unwrapping_).
-
-Por ejemplo, el siguiente código produce un error de compilación
-porque intentamos usar un opcional sin desenvolverlo:
-
+<p>En el código anterior definimos un diccionario <code>edades</code> con claves de
+tipo <code>String</code> y valores <code>Int</code>. La variable <code>edad1</code> se inicializa con
+un opcional con el valor <code>30</code> y la variable <code>edad2</code> con un opcional
+que vale <code>nil</code>.</p>
+<p>Un valor opcional no puede ser usado directamente. Primero debemos
+comprobar si el valor es distinto de <code>nil</code> y sólo después podremos
+usarlo. </p>
+<p>Para reforzar esto, Swift <em>esconde</em> o <em>envuelve</em> (<em>wrap</em>) el valor
+real del opcional y obliga a llamar al operador <code>!</code> para
+<em>desenvolverlo</em> (<em>unwrap</em>) y usarlo. Este operador se denomina de
+<strong>desenvoltura forzosa</strong> (<em>forced unwrapping</em>).</p>
+<p>Por ejemplo, el siguiente código produce un error de compilación
+porque intentamos usar un opcional sin desenvolverlo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">var</span> <span class="nv">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="mi">10</span>
@@ -2549,9 +2615,8 @@ porque intentamos usar un opcional sin desenvolverlo:
 </code></pre></div>
 </td></tr></table>
 
-Para usar el valor asignado a `x` debemos desenvolverlo con el
-operador `!`:
-
+<p>Para usar el valor asignado a <code>x</code> debemos desenvolverlo con el
+operador <code>!</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -2562,15 +2627,13 @@ operador `!`:
 </code></pre></div>
 </td></tr></table>
 
-Podemos definir como opcional variables, parámetros
+<p>Podemos definir como opcional variables, parámetros
 o valores devueltos por funciones de cualquier tipo, añadiéndoles la
-interrogación al final.
-
-Por ejemplo, la siguiente función `max` es una función que devuelve un
-`Int?`, un entero opcional en el caso de que se le pase un array
+interrogación al final.</p>
+<p>Por ejemplo, la siguiente función <code>max</code> es una función que devuelve un
+<code>Int?</code>, un entero opcional en el caso de que se le pase un array
 vacío. Al devolver un opcional, debemos desenvolver el valor devuelto
-cuando queramos usarlo como `Int` (por ejemplo, en la llamada recursiva).
-
+cuando queramos usarlo como <code>Int</code> (por ejemplo, en la llamada recursiva).</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -2603,18 +2666,16 @@ cuando queramos usarlo como `Int` (por ejemplo, en la llamada recursiva).
 </code></pre></div>
 </td></tr></table>
 
-Una variable opcional sin asignar ningún valor se inicializa
-automáticamente a `nil`:
-
+<p>Una variable opcional sin asignar ningún valor se inicializa
+automáticamente a <code>nil</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">var</span> <span class="nv">respuestaEncuesta</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
 <span class="c1">// respuestaEncuesta es inicializado automáticamente a nil</span>
 </code></pre></div>
 </td></tr></table>
 
-Si se aplica el operador `!` a un valor `nil` se produce un error en
-tiempo de ejecución y la aplicación se rompe:
-
+<p>Si se aplica el operador <code>!</code> a un valor <code>nil</code> se produce un error en
+tiempo de ejecución y la aplicación se rompe:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">var</span> <span class="nv">respuestaEncuesta</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
@@ -2623,14 +2684,12 @@ tiempo de ejecución y la aplicación se rompe:
 </code></pre></div>
 </td></tr></table>
 
-### Ligado opcional
-
-Para comprobar si un valor opcional es `nil` podemos usar un `if`. Es
+<h3 id="ligado-opcional">Ligado opcional<a class="headerlink" href="#ligado-opcional" title="Permanent link">&para;</a></h3>
+<p>Para comprobar si un valor opcional es <code>nil</code> podemos usar un <code>if</code>. Es
 obligado hacerlo si desconocemos el valor que nos llega. Por ejemplo,
-supongamos que la función `leerRespuesta()` lee una respuesta del
-usuario y devuelve un `String?`. Para usar esta función deberíamos
-comprobar si el valor devuelto es distinto de `nil`:
-
+supongamos que la función <code>leerRespuesta()</code> lee una respuesta del
+usuario y devuelve un <code>String?</code>. Para usar esta función deberíamos
+comprobar si el valor devuelto es distinto de <code>nil</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -2643,11 +2702,10 @@ comprobar si el valor devuelto es distinto de `nil`:
 </code></pre></div>
 </td></tr></table>
 
-Como es muy habitual hacer lo anterior, en Swift es posible comprobar
+<p>Como es muy habitual hacer lo anterior, en Swift es posible comprobar
 si un opcional tiene valor y asignar su valor a otra variable al mismo
-tiempo con una construcción llamada _ligado opcional_ (_optional
-binding_):
-
+tiempo con una construcción llamada <em>ligado opcional</em> (<em>optional
+binding</em>):</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -2658,15 +2716,13 @@ binding_):
 </code></pre></div>
 </td></tr></table>
 
-Podemos leer el código anterior de la siguiente forma: "Si el
-opcional `respuestaEncuesta` contiene un valor, define
-la constante `respuesta` con el valor contenido en el opcional".
-
-Otro ejemplo, el método `first` de un array devuelve un opcional que
-contiene `nil` si el array está vacío o el primer elemento del
+<p>Podemos leer el código anterior de la siguiente forma: "Si el
+opcional <code>respuestaEncuesta</code> contiene un valor, define
+la constante <code>respuesta</code> con el valor contenido en el opcional".</p>
+<p>Otro ejemplo, el método <code>first</code> de un array devuelve un opcional que
+contiene <code>nil</code> si el array está vacío o el primer elemento del
 array en el caso en que exista. El siguiente código utiliza un ligado opcional para implementar
-otra versión de la función `sumaValores`:
-
+otra versión de la función <code>sumaValores</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -2691,9 +2747,8 @@ otra versión de la función `sumaValores`:
 </code></pre></div>
 </td></tr></table>
 
-Si tenemos varios opcionales es posible comprobar que todos ellos son
-distintos de `nil` usando varios `let` en el mismo `if`:
-
+<p>Si tenemos varios opcionales es posible comprobar que todos ellos son
+distintos de <code>nil</code> usando varios <code>let</code> en el mismo <code>if</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -2714,11 +2769,9 @@ distintos de `nil` usando varios `let` en el mismo `if`:
 </code></pre></div>
 </td></tr></table>
 
-### Operador _nil-coalescing_ ###
-
-El operador _nil-coalescing_ (`??`) permite definir un valor por
-defecto en una asignación si un opcional es nil.
-
+<h3 id="operador-nil-coalescing">Operador <em>nil-coalescing</em><a class="headerlink" href="#operador-nil-coalescing" title="Permanent link">&para;</a></h3>
+<p>El operador <em>nil-coalescing</em> (<code>??</code>) permite definir un valor por
+defecto en una asignación si un opcional es nil.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -2733,17 +2786,13 @@ defecto en una asignación si un opcional es nil.
 </code></pre></div>
 </td></tr></table>
 
-En el ejemplo anterior, en la variable `x` se guardará el valor `-1` y
-en la variable `y` el valor `10`.
-
-### Encadenamiento de opcionales ###
-
-El encadenamiento de opcionales (_optional chaining_) permite llamar a
+<p>En el ejemplo anterior, en la variable <code>x</code> se guardará el valor <code>-1</code> y
+en la variable <code>y</code> el valor <code>10</code>.</p>
+<h3 id="encadenamiento-de-opcionales">Encadenamiento de opcionales<a class="headerlink" href="#encadenamiento-de-opcionales" title="Permanent link">&para;</a></h3>
+<p>El encadenamiento de opcionales (<em>optional chaining</em>) permite llamar a
 un método de una variable que contiene un opcional. Si la variable no
-es `nil`, se ejecuta el método y se devuelve su valor como un
-opcional. Si la variable es `nil` se devuelve `nil`.
-
-
+es <code>nil</code>, se ejecuta el método y se devuelve su valor como un
+opcional. Si la variable es <code>nil</code> se devuelve <code>nil</code>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -2768,15 +2817,11 @@ opcional. Si la variable es `nil` se devuelve `nil`.
 </code></pre></div>
 </td></tr></table>
 
-
-### Definición de `Lista` con opcionales
-
-Veamos como último ejemplo una segunda versión del enum `Lista`, en el que
-utilizamos un único `case`, pero dando la posibilidad de que el resto
-de la lista sea `nil` haciéndolo opcional.
-
-Definimos el enumerado y también la función `suma(lista:)`:
-
+<h3 id="definicion-de-lista-con-opcionales">Definición de <code>Lista</code> con opcionales<a class="headerlink" href="#definicion-de-lista-con-opcionales" title="Permanent link">&para;</a></h3>
+<p>Veamos como último ejemplo una segunda versión del enum <code>Lista</code>, en el que
+utilizamos un único <code>case</code>, pero dando la posibilidad de que el resto
+de la lista sea <code>nil</code> haciéndolo opcional.</p>
+<p>Definimos el enumerado y también la función <code>suma(lista:)</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -2815,6 +2860,7 @@ Definimos el enumerado y también la función `suma(lista:)`:
 </code></pre></div>
 </td></tr></table>
 
+<!---
 
 ## Clausuras
 
