@@ -14,51 +14,51 @@ solución debe incluir:
 !!! Warning "Importante" 
     Antes de proceder a realizar los ejercicios de la
     práctica te recomendamos que realices y pruebes los ejemplos
-    presentados en el [seminario de Swift](https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario2-swift/seminario2-swift.html).
-    
-    También, como siempre, los [apuntes de teoría](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html)
-    de la semana pasada.
+    presentados en el [seminario de
+    Swift](https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario2-swift/seminario2-swift.html)
+    y los [apuntes de
+    teoría](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html)
+    de la primera parte del tema de Programación Funcional en Swift.
     
 
 ## Ejercicios
 
 ### Ejercicio 1 ###
 
-En la clase de teoría [hemos presentado un
-ejemplo](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#ejemplos-de-uso-de-opcionales)
-de la función `minMax(array: [Int]) -> (min: Int, max: Int)?` que
-devuelve una tupla opcional. Se trata de una implementación que no es
-funcional, porque utiliza dos variables mutables definidas con `var`.
+a) Implementa en Swift la función recursiva
+`prefijos(prefijo:palabras:)` que recibe una cadena y un array de
+palabras. Devuelve un array de `Bool` con los booleanos resultantes de
+comprobar si la cadena es prefijo de cada una de las palabras de la
+lista.
 
-Realiza una implementación funcional de la función, definiéndola de
-**forma recursiva**.
-
-Ejemplo de funcionamiento:
+Ejemplo:
 
 ```swift
-let array = [-1, 10, 200, -20, 300, 4]
-print("minMax(\(array)): \(minMax(array: array)!)")
-let array2: [Int] = []
-print("minMax(\(array2)): \(String(describing: minMax(array: array2)))")
-// Imprime: 
-// minMax([-1, 10, 200, -20, 300, 4]): (min: -20, max: 300)
-// minMax([]): nil
+let array = ["anterior", "antígona", "antena"]
+let prefijo = "ante"
+print("prefijos(prefijo: \(prefijo), palabras: \(array))")
+print(prefijos(prefijo: prefijo, palabras: array))
+// Imprime:
+// prefijos(prefijo: ante, palabras: ["anterior", "antígona", "antena"])
+// [true, false, true]
+```
+
+b) Implementa en Swift la función `parejaMayorParImpar(numeros:)` que
+recibe un array de enteros positivos y devuelve una pareja con dos
+enteros: el primero es el mayor número impar y el segundo el mayor
+número par. Si no hay ningún número par o impar se devolverá un 0.
+
+```swift
+let numeros = [10, 201, 12, 103, 204, 2]
+print("parejaMayorParImpar(numeros: \(numeros))")
+print(parejaMayorParImpar(numeros: numeros))
+// Imprime:
+// parejaMayorParImpar(numeros: [10, 201, 12, 103, 204, 2])
+// (201, 204)
 ```
 
 
 ### Ejercicio 2 ###
-
-!!! Hint "Pista"
-    Para resolver el ejercicio necesitarás concatenar dos arrays, de
-    forma similar a la función `append` de Scheme para las
-    listas. Puedes utilizar para ello el operador `+`:
-    
-    ```swift
-    let array1 = [1,2,3]
-    let array2 = [4,5,6]
-    let array3 = array1 + array2
-    // array3 contiene [1,2,3,4,5,6]
-    ```
 
 a) Implementa en Swift la **función recursiva**
 `compruebaParejas(_:funcion:)` con el siguiente perfil:
@@ -152,8 +152,8 @@ print(suma(arbolb: arbol))
 ### Ejercicio 5 ###
 
 Implementa en Swift un tipo enumerado recursivo que permita construir
-árboles genéricos de enteros usando el mismo enfoque que en Scheme: un
-nodo está formado por un dato (un `Int`) y una colección de árboles
+árboles de enteros usando el mismo enfoque que en Scheme: un nodo está
+formado por un dato (un `Int`) y una colección de árboles
 hijos. Llamaremos al tipo `Arbol`.
 
 Impleméntalo de forma que el siguiente ejemplo funcione correctamente:
@@ -179,7 +179,7 @@ let arbol10 = Arbol.nodo(10, [arbol3, arbol5, arbol8])
 ```
 
 Implementa también la función `suma(arbol:cumplen:)` que reciba una instancia de
-árbol genérico y una función `(Int) -> Bool` que comprueba una
+árbol y una función `(Int) -> Bool` que comprueba una
 condición sobre el nodo. La función debe devolver la suma de todos los
 nodos del árbol que cumplan la condición. 
 
@@ -189,15 +189,67 @@ mutua.
 
 
 ```swift
-
 func esPar(x: Int) -> Bool {
     return x % 2 == 0
 }
 
-print("La suma del árbol genérico es: \(suma(arbol: arbol10, cumplen: esPar))")
+print("La suma del árbol es: \(suma(arbol: arbol10, cumplen: esPar))")
 // Imprime: La suma del árbol genérico es: 18
 ```
 
+### Ejercicio 6 ###
+
+a) Define la función `maxOpt(_ x: Int?, _ y: Int?) -> Int?` que
+devuelve el máximo de dos enteros opcionales. En el caso en que ambos
+sean `nil` se devolverá `nil`. En el caso en que uno sea `nil` y el
+otro no se devolverá el entero que no es `nil`. En el caso en que
+ningún parámetro sea `nil` se devolverá el mayor.
+
+Ejemplo:
+
+```swift
+let res1 = maxOpt(nil, nil) 
+let res2 = maxOpt(10, nil)
+let res3 = maxOpt(-10, 30)
+print("res1 = \(String(describing: res1))")
+print("res2 = \(String(describing: res2))")
+print("res3 = \(String(describing: res3))")
+// Imprime:
+// res1 = nil
+// res2 = Optional(10)
+// res3 = Optional(30)
+
+```
+
+b1) Escribe una nueva versión del ejercicio 1b) que permita recibir
+números negativos y que devuelva una pareja de `(Int?, Int?)` con
+`nil` en la parte izquierda y/o derecha si no hay número impares o
+pares. 
+
+Ejemplo:
+
+```swift
+let numeros2 = [-10, 202, 12, 100, 204, 2]
+print("parejaMayorParImpar2(numeros: \(numeros2))")
+print(parejaMayorParImpar2(numeros: numeros2))
+// Imprime:
+// parejaMayorParImpar2(numeros: [-10, 202, 12, 100, 204, 2])
+// (nil, Optional(204))
+```
+
+b2) Escribe la función `sumaMaxParesImpares(numeros: [Int]) -> Int`
+que llama a la función anterior y devuelve la suma del máximo de los
+pares y el máximo de los impares. El array de números tendrá como
+mínimo un elemento, por lo que el valor devuelto por la función será
+un `Int` (no será `Int?`).
+
+```swift
+print("sumaMaxParesImpares(numeros: \(numeros2))")
+print(sumaMaxParesImpares(numeros: numeros2))
+// Imprime:
+// sumaMaxParesImpares(numeros: [-10, 202, 12, 100, 204, 2])
+// 204
+```
 
 ----
 

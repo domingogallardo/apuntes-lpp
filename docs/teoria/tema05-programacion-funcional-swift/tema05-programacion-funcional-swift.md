@@ -1359,9 +1359,11 @@ let edad2 = edades["Ana"]
 ```
 
 En el código anterior definimos un diccionario `edades` con claves de
-tipo `String` y valores `Int`. La variable `edad1` se inicializa con
-un opcional con el valor `30` y la variable `edad2` con un opcional
-que vale `nil`.
+tipo `String` y valores `Int`. Después buscamos en el diccionario por
+la clave `"Raquel"` y se devuelve el valor `30`, que se guarda en la
+variable `edad1`. Cuando se busca por la clave `"Ana"` se devuelve un
+`nil` porque no está definida. Por ello, la variable `edad2` será de
+tipo `Int?` (`Int` opcional) y contendrá un `nil`.
 
 Un valor opcional no puede ser usado directamente. Primero debemos
 comprobar si el valor es distinto de `nil` y sólo después podremos
