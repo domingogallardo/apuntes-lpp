@@ -36,7 +36,7 @@
     
     
       
-        <title>Práctica 8: Programación funcional en Swift (1) - LPP</title>
+        <title>Práctica 8 - LPP</title>
       
     
     
@@ -109,7 +109,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Práctica 8: Programación funcional en Swift (1)
+                Práctica 8
               
             </span>
           
@@ -251,6 +251,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html" title="Tema 5: Programación funcional con Swift" class="md-nav__link">
+      Tema 5: Programación funcional con Swift
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -308,10 +320,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Prácticas
@@ -407,6 +421,111 @@
   </li>
 
         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Práctica 8
+      </label>
+    
+    <a href="practica08.html" title="Práctica 8" class="md-nav__link md-nav__link--active">
+      Práctica 8
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    Ejercicios
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" class="md-nav__link">
+    Ejercicio 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" class="md-nav__link">
+    Ejercicio 5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" class="md-nav__link">
+    Ejercicio 6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -482,6 +601,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" class="md-nav__link">
+    Ejercicio 6
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -519,52 +645,55 @@ solución debe incluir:</p>
 <p class="admonition-title">Importante</p>
 <p>Antes de proceder a realizar los ejercicios de la
 práctica te recomendamos que realices y pruebes los ejemplos
-presentados en el <a href="https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario2-swift/seminario2-swift.html">seminario de Swift</a>.</p>
-<p>También, como siempre, los <a href="https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html">apuntes de teoría</a> de la semana pasada.</p>
+presentados en el <a href="https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario2-swift/seminario2-swift.html">seminario de
+Swift</a>
+y los <a href="https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html">apuntes de
+teoría</a>
+de la primera parte del tema de Programación Funcional en Swift.</p>
 </div>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
-<p>En la clase de teoría <a href="https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#ejemplos-de-uso-de-opcionales">hemos presentado un
-ejemplo</a>
-de la función <code>minMax(array: [Int]) -&gt; (min: Int, max: Int)?</code> que
-devuelve una tupla opcional. Se trata de una implementación que no es
-funcional, porque utiliza dos variables mutables definidas con <code>var</code>.</p>
-<p>Realiza una implementación funcional de la función, definiéndola de
-<strong>forma recursiva</strong>.</p>
-<p>Ejemplo de funcionamiento:</p>
+<p>a) Implementa en Swift la función recursiva
+<code>prefijos(prefijo:palabras:)</code> que recibe una cadena y un array de
+palabras. Devuelve un array de <code>Bool</code> con los booleanos resultantes de
+comprobar si la cadena es prefijo de cada una de las palabras de la
+lista.</p>
+<p>Ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
 5
 6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">array</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;minMax(</span><span class="si">\(</span><span class="n">array</span><span class="si">)</span><span class="s">): </span><span class="si">\(</span><span class="n">minMax</span><span class="si">(</span><span class="n">array</span><span class="p">:</span> <span class="n">array</span><span class="si">)</span><span class="o">!</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nv">array2</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;minMax(</span><span class="si">\(</span><span class="n">array2</span><span class="si">)</span><span class="s">): </span><span class="si">\(</span><span class="nb">String</span><span class="si">(</span><span class="n">describing</span><span class="p">:</span> <span class="n">minMax</span><span class="si">(</span><span class="n">array</span><span class="p">:</span> <span class="n">array2</span><span class="si">)))</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="c1">// Imprime: </span>
-<span class="c1">// minMax([-1, 10, 200, -20, 300, 4]): (min: -20, max: 300)</span>
-<span class="c1">// minMax([]): nil</span>
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">array</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;anterior&quot;</span><span class="p">,</span> <span class="s">&quot;antígona&quot;</span><span class="p">,</span> <span class="s">&quot;antena&quot;</span><span class="p">]</span>
+<span class="kd">let</span> <span class="nv">prefijo</span> <span class="p">=</span> <span class="s">&quot;ante&quot;</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;prefijos(prefijo: </span><span class="si">\(</span><span class="n">prefijo</span><span class="si">)</span><span class="s">, palabras: </span><span class="si">\(</span><span class="n">array</span><span class="si">)</span><span class="s">)&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">prefijos</span><span class="p">(</span><span class="n">prefijo</span><span class="p">:</span> <span class="n">prefijo</span><span class="p">,</span> <span class="n">palabras</span><span class="p">:</span> <span class="n">array</span><span class="p">))</span>
+<span class="c1">// Imprime:</span>
+<span class="c1">// prefijos(prefijo: ante, palabras: [&quot;anterior&quot;, &quot;antígona&quot;, &quot;antena&quot;])</span>
+<span class="c1">// [true, false, true]</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>b) Implementa en Swift la función <code>parejaMayorParImpar(numeros:)</code> que
+recibe un array de enteros positivos y devuelve una pareja con dos
+enteros: el primero es el mayor número impar y el segundo el mayor
+número par. Si no hay ningún número par o impar se devolverá un 0.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">numeros</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">204</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;parejaMayorParImpar(numeros: </span><span class="si">\(</span><span class="n">numeros</span><span class="si">)</span><span class="s">)&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">parejaMayorParImpar</span><span class="p">(</span><span class="n">numeros</span><span class="p">:</span> <span class="n">numeros</span><span class="p">))</span>
+<span class="c1">// Imprime:</span>
+<span class="c1">// parejaMayorParImpar(numeros: [10, 201, 12, 103, 204, 2])</span>
+<span class="c1">// (201, 204)</span>
 </code></pre></div>
 </td></tr></table>
 
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
-<div class="admonition hint">
-<p class="admonition-title">Pista</p>
-<p>Para resolver el ejercicio necesitarás concatenar dos arrays, de
-forma similar a la función <code>append</code> de Scheme para las
-listas. Puedes utilizar para ello el operador <code>+</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">array1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-<span class="kd">let</span> <span class="nv">array2</span> <span class="p">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
-<span class="kd">let</span> <span class="nv">array3</span> <span class="p">=</span> <span class="n">array1</span> <span class="o">+</span> <span class="n">array2</span>
-<span class="c1">// array3 contiene [1,2,3,4,5,6]</span>
-</code></pre></div>
-</td></tr></table>
-
-</div>
 <p>a) Implementa en Swift la <strong>función recursiva</strong>
 <code>compruebaParejas(_:funcion:)</code> con el siguiente perfil:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">(</span><span class="o">[</span><span class="n">Int</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nc">Int</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Int</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="o">[</span><span class="n">(Int, Int)</span><span class="o">]</span><span class="w"></span>
@@ -652,8 +781,8 @@ binarios (el hijo izquierdo y el hijo derecho)</li>
 
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
 <p>Implementa en Swift un tipo enumerado recursivo que permita construir
-árboles genéricos de enteros usando el mismo enfoque que en Scheme: un
-nodo está formado por un dato (un <code>Int</code>) y una colección de árboles
+árboles de enteros usando el mismo enfoque que en Scheme: un nodo está
+formado por un dato (un <code>Int</code>) y una colección de árboles
 hijos. Llamaremos al tipo <code>Arbol</code>.</p>
 <p>Impleméntalo de forma que el siguiente ejemplo funcione correctamente:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -691,7 +820,7 @@ hijos. Llamaremos al tipo <code>Arbol</code>.</p>
 </td></tr></table>
 
 <p>Implementa también la función <code>suma(arbol:cumplen:)</code> que reciba una instancia de
-árbol genérico y una función <code>(Int) -&gt; Bool</code> que comprueba una
+árbol y una función <code>(Int) -&gt; Bool</code> que comprueba una
 condición sobre el nodo. La función debe devolver la suma de todos los
 nodos del árbol que cumplan la condición. </p>
 <p>Implementa la función usando la misma estrategia que ya utilizamos en
@@ -706,8 +835,73 @@ mutua.</p>
     <span class="k">return</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="p">==</span> <span class="mi">0</span>
 <span class="p">}</span>
 
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La suma del árbol genérico es: </span><span class="si">\(</span><span class="n">suma</span><span class="si">(</span><span class="n">arbol</span><span class="p">:</span> <span class="n">arbol10</span><span class="p">,</span> <span class="n">cumplen</span><span class="p">:</span> <span class="n">esPar</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La suma del árbol es: </span><span class="si">\(</span><span class="n">suma</span><span class="si">(</span><span class="n">arbol</span><span class="p">:</span> <span class="n">arbol10</span><span class="p">,</span> <span class="n">cumplen</span><span class="p">:</span> <span class="n">esPar</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="c1">// Imprime: La suma del árbol genérico es: 18</span>
+</code></pre></div>
+</td></tr></table>
+
+<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
+<p>a) Define la función <code>maxOpt(_ x: Int?, _ y: Int?) -&gt; Int?</code> que
+devuelve el máximo de dos enteros opcionales. En el caso en que ambos
+sean <code>nil</code> se devolverá <code>nil</code>. En el caso en que uno sea <code>nil</code> y el
+otro no se devolverá el entero que no es <code>nil</code>. En el caso en que
+ningún parámetro sea <code>nil</code> se devolverá el mayor.</p>
+<p>Ejemplo:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">res1</span> <span class="p">=</span> <span class="n">maxOpt</span><span class="p">(</span><span class="kc">nil</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span> 
+<span class="kd">let</span> <span class="nv">res2</span> <span class="p">=</span> <span class="n">maxOpt</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">res3</span> <span class="p">=</span> <span class="n">maxOpt</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;res1 = </span><span class="si">\(</span><span class="nb">String</span><span class="si">(</span><span class="n">describing</span><span class="p">:</span> <span class="n">res1</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;res2 = </span><span class="si">\(</span><span class="nb">String</span><span class="si">(</span><span class="n">describing</span><span class="p">:</span> <span class="n">res2</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;res3 = </span><span class="si">\(</span><span class="nb">String</span><span class="si">(</span><span class="n">describing</span><span class="p">:</span> <span class="n">res3</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime:</span>
+<span class="c1">// res1 = nil</span>
+<span class="c1">// res2 = Optional(10)</span>
+<span class="c1">// res3 = Optional(30)</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>b1) Escribe una nueva versión del ejercicio 1b) que permita recibir
+números negativos y que devuelva una pareja de <code>(Int?, Int?)</code> con
+<code>nil</code> en la parte izquierda y/o derecha si no hay número impares o
+pares. </p>
+<p>Ejemplo:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">numeros2</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">202</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">204</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;parejaMayorParImpar2(numeros: </span><span class="si">\(</span><span class="n">numeros2</span><span class="si">)</span><span class="s">)&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">parejaMayorParImpar2</span><span class="p">(</span><span class="n">numeros</span><span class="p">:</span> <span class="n">numeros2</span><span class="p">))</span>
+<span class="c1">// Imprime:</span>
+<span class="c1">// parejaMayorParImpar2(numeros: [-10, 202, 12, 100, 204, 2])</span>
+<span class="c1">// (nil, Optional(204))</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>b2) Escribe la función <code>sumaMaxParesImpares(numeros: [Int]) -&gt; Int</code>
+que llama a la función anterior y devuelve la suma del máximo de los
+pares y el máximo de los impares. El array de números tendrá como
+mínimo un elemento, por lo que el valor devuelto por la función será
+un <code>Int</code> (no será <code>Int?</code>).</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="s">&quot;sumaMaxParesImpares(numeros: </span><span class="si">\(</span><span class="n">numeros2</span><span class="si">)</span><span class="s">)&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">sumaMaxParesImpares</span><span class="p">(</span><span class="n">numeros</span><span class="p">:</span> <span class="n">numeros2</span><span class="p">))</span>
+<span class="c1">// Imprime:</span>
+<span class="c1">// sumaMaxParesImpares(numeros: [-10, 202, 12, 100, 204, 2])</span>
+<span class="c1">// 204</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -732,6 +926,27 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../practica07/practica07.html" title="Práctica 7" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Práctica 7
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
