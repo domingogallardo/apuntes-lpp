@@ -179,11 +179,11 @@ Ejemplo:
 (suma-raices-hijos (cadr (hijos-arbol arbol3))) ; ⇒ 6
 ```
 
-b) Implementa dos versiones, una con recursión mutua y otra con funciones de
-orden superior, de la función `(raices-mayores-arbol? arbol)` que
-recibe un árbol y comprueba que su raíz sea mayor que la suma de las
-raíces de los hijos y que todos los hijos cumplen también esta
-propiedad.
+b) Implementa dos versiones, una con recursión mutua y otra con
+funciones de orden superior, de la función `(raices-mayores-arbol?
+arbol)` que recibe un árbol y comprueba que su raíz sea mayor que la
+suma de las raíces de los hijos y que todos los ~~hijos~~ nodos
+cumplen también esta propiedad.
 
 Ejemplos:
 
