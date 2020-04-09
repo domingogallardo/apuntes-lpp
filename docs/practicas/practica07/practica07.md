@@ -182,8 +182,8 @@ Ejemplo:
 b) Implementa dos versiones, una con recursión mutua y otra con
 funciones de orden superior, de la función `(raices-mayores-arbol?
 arbol)` que recibe un árbol y comprueba que su raíz sea mayor que la
-suma de las raíces de los hijos y que todos los ~~hijos~~ nodos
-cumplen también esta propiedad.
+suma de las raíces de los hijos y que todos los hijos (nos referimos a
+todos los descendientes) cumplen también esta propiedad.
 
 Ejemplos:
 
