@@ -43,7 +43,7 @@ print(prefijos(prefijo: prefijo, palabras: array))
 // [true, false, true]
 ```
 
-b) Implementa en Swift la función `parejaMayorParImpar(numeros:)` que
+b) Implementa en Swift la función recursiva `parejaMayorParImpar(numeros:)` que
 recibe un array de enteros positivos y devuelve una pareja con dos
 enteros: el primero es el mayor número impar y el segundo el mayor
 número par. Si no hay ningún número par o impar se devolverá un 0.
