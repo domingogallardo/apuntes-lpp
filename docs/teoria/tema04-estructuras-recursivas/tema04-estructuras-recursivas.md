@@ -1061,6 +1061,17 @@ lista vacía y ésta devolverá 0.
 
 **Versión alternativa con funciones de orden superior**
 
+<!--
+Hacer más énfasis en qué pasa cuando se llega a las hojas:
+el map se aplicará a la lista de hijos, que será una lista
+vacía. Y map de una lista vacía es otra lista vacía.
+
+Esta es la base de la recursión.
+
+Por eso aquí no hacemos como en las listas estructuradas
+en donde se hace un if que comprueba si el dato es una hoja.
+-->
+
 Al igual que hacíamos con las listas estructuradas, es posible
 conseguir una versión más concisa y elegante utilizando funciones de
 orden superior:

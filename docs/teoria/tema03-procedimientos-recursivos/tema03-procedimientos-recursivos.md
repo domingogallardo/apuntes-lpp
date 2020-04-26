@@ -426,6 +426,24 @@ calcular el valor de números como Pascal(40, 20):
 ; ⇒ 137846528820
 ```
 
+<!--
+
+Otro posible ejemplo es la función prefijo con el 'or' y el 'and'. 
+
+(define (prefijo-lista? lista1 lista2)
+    (or (null? lista1)
+        (and (equal? (car lista1) (car lista2))
+        (prefijo-lista? (cdr lista1) (cdr lista2)))))
+
+Sirve también para explicar el funcionamiento de and y or como 
+formas especiales.
+
+Podríamos también hacer alguna prueba de carga en la que se vea
+que con una recursión se genera un error de 'ran out of memory' y 
+con la recursión por la cola termina correctamente.
+
+-->
+
 ## Soluciones al coste de la recursión: memoization
 
 Una alternativa que mantiene la elegancia de los procesos recursivos y
