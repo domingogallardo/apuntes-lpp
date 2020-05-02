@@ -809,7 +809,7 @@ recursión mutua y la segunda usando funciones de orden superior.</p>
 <p>Implementa en Swift la función <code>imprimirListadosNotas(alumnos:)</code> que
 recibe un array de tuplas, en donde cada tupla contiene información de
 la evaluación de un alumno de LPP (nombreAlumno, notaParcial1,
-notaParcial2, notaCuestionarios, añosMatriculacion) y que debe imprimir por pantalla los
+notaParcial2, notaParcial3, añosMatriculacion) y que debe imprimir por pantalla los
 siguientes listados: </p>
 <ul>
 <li>listado 1: array ordenado por nombre del alumno (orden alfabético
@@ -819,10 +819,9 @@ decreciente de nota) </li>
 <li>listado 3: array ordenado por la nota del parcial 2 (orden creciente
 de nota) </li>
 <li>listado 4: array ordenado por año de matriculación y nota del
-  cuestionario (orden decreciente de año y nota) </li>
-<li>listado 5: array ordenado por nota que necesita obtener en el
-parcial 3 para aprobar la asignatura en la convocatoria de Junio
-(orden decreciente de nota necesaria)</li>
+  parcial 3 (orden decreciente de año y nota) </li>
+<li>listado 5: array ordenado por nota final (media de los tres
+parciales, ponderados en: 0,34, 0,33, 0,33) (orden decreciente de nota necesaria)</li>
 </ul>
 <p>Las ordenaciones hay que realizarlas usando la función <code>sorted</code>.</p>
 <div class="admonition note">
@@ -841,7 +840,7 @@ función (para ello también debes incluir el import que se indica)</p>
 10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">import</span> <span class="nc">Foundation</span>
 
 <span class="kd">func</span> <span class="nf">imprimirListadoAlumnos</span><span class="p">(</span><span class="kc">_</span> <span class="n">alumnos</span><span class="p">:</span> <span class="p">[(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Double</span><span class="p">,</span> <span class="nb">Double</span><span class="p">,</span> <span class="nb">Double</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)])</span> <span class="p">{</span>
-    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Alumno   Parcial1   Parcial2   Cuest  Años&quot;</span><span class="p">)</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Alumno   Parcial1   Parcial2   Parcial3  Años&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">alu</span> <span class="k">in</span> <span class="n">alumnos</span> <span class="p">{</span>
         <span class="n">alu</span><span class="p">.</span><span class="mf">0.</span><span class="n">withCString</span> <span class="p">{</span>
             <span class="bp">print</span><span class="p">(</span><span class="nb">String</span><span class="p">(</span><span class="n">format</span><span class="p">:</span><span class="s">&quot;%-10s %5.2f      %5.2f    %5.2f  %3d&quot;</span><span class="p">,</span> <span class="nv">$0</span><span class="p">,</span> <span class="n">alu</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span><span class="n">alu</span><span class="p">.</span><span class="mi">2</span><span class="p">,</span><span class="n">alu</span><span class="p">.</span><span class="mi">3</span><span class="p">,</span><span class="n">alu</span><span class="p">.</span><span class="mi">4</span><span class="p">))</span>
@@ -894,19 +893,8 @@ función (para ello también debes incluir el import que se indica)</p>
 18
 19
 20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="n">LISTADO</span> <span class="n">ORIGINAL</span>
-<span class="n">Alumno</span>   <span class="n">Parcial1</span>   <span class="n">Parcial2</span>   <span class="n">Cuest</span>  <span class="n">Años</span>
+21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="n">LISTADO</span> <span class="n">ORIGINAL</span>
+<span class="n">Alumno</span>   <span class="n">Parcial1</span>   <span class="n">Parcial2</span>   <span class="n">Parcial3</span>  <span class="n">Años</span>
 <span class="n">Pepe</span>        <span class="mi">8</span><span class="p">.</span><span class="mi">45</span>       <span class="mi">3</span><span class="p">.</span><span class="mi">75</span>     <span class="mi">6</span><span class="p">.</span><span class="mi">05</span>    <span class="mi">1</span>
 <span class="n">Maria</span>       <span class="mi">9</span><span class="p">.</span><span class="mi">10</span>       <span class="mi">7</span><span class="p">.</span><span class="mi">50</span>     <span class="mi">8</span><span class="p">.</span><span class="mi">18</span>    <span class="mi">1</span>
 <span class="n">Jose</span>        <span class="mi">8</span><span class="p">.</span><span class="mi">00</span>       <span class="mi">6</span><span class="p">.</span><span class="mi">65</span>     <span class="mi">7</span><span class="p">.</span><span class="mi">96</span>    <span class="mi">1</span>
@@ -917,24 +905,13 @@ función (para ello también debes incluir el import que se indica)</p>
 <span class="n">Loli</span>        <span class="mi">3</span><span class="p">.</span><span class="mi">00</span>       <span class="mi">1</span><span class="p">.</span><span class="mi">25</span>     <span class="mi">2</span><span class="p">.</span><span class="mi">19</span>    <span class="mi">3</span>
 
 <span class="n">LISTADO</span> <span class="n">ORDENADO</span> <span class="n">por</span> <span class="n">Parcial1</span>
-<span class="n">Alumno</span>   <span class="n">Parcial1</span>   <span class="n">Parcial2</span>   <span class="n">Cuest</span>  <span class="n">Años</span>
+<span class="n">Alumno</span>   <span class="n">Parcial1</span>   <span class="n">Parcial2</span>   <span class="n">Parcial3</span>  <span class="n">Años</span>
 <span class="n">Maria</span>       <span class="mi">9</span><span class="p">.</span><span class="mi">10</span>       <span class="mi">7</span><span class="p">.</span><span class="mi">50</span>     <span class="mi">8</span><span class="p">.</span><span class="mi">18</span>    <span class="mi">1</span>
 <span class="n">Pepe</span>        <span class="mi">8</span><span class="p">.</span><span class="mi">45</span>       <span class="mi">3</span><span class="p">.</span><span class="mi">75</span>     <span class="mi">6</span><span class="p">.</span><span class="mi">05</span>    <span class="mi">1</span>
 <span class="n">Jose</span>        <span class="mi">8</span><span class="p">.</span><span class="mi">00</span>       <span class="mi">6</span><span class="p">.</span><span class="mi">65</span>     <span class="mi">7</span><span class="p">.</span><span class="mi">96</span>    <span class="mi">1</span>
 <span class="n">Luis</span>        <span class="mi">6</span><span class="p">.</span><span class="mi">75</span>       <span class="mi">0</span><span class="p">.</span><span class="mi">25</span>     <span class="mi">4</span><span class="p">.</span><span class="mi">63</span>    <span class="mi">2</span>
 <span class="n">Carmen</span>      <span class="mi">6</span><span class="p">.</span><span class="mi">25</span>       <span class="mi">1</span><span class="p">.</span><span class="mi">20</span>     <span class="mi">5</span><span class="p">.</span><span class="mi">41</span>    <span class="mi">2</span>
 <span class="n">Carla</span>       <span class="mi">6</span><span class="p">.</span><span class="mi">25</span>       <span class="mi">1</span><span class="p">.</span><span class="mi">25</span>     <span class="mi">4</span><span class="p">.</span><span class="mi">23</span>    <span class="mi">2</span>
-<span class="n">Felipe</span>      <span class="mi">5</span><span class="p">.</span><span class="mi">65</span>       <span class="mi">0</span><span class="p">.</span><span class="mi">25</span>     <span class="mi">3</span><span class="p">.</span><span class="mi">16</span>    <span class="mi">3</span>
-<span class="n">Loli</span>        <span class="mi">3</span><span class="p">.</span><span class="mi">00</span>       <span class="mi">1</span><span class="p">.</span><span class="mi">25</span>     <span class="mi">2</span><span class="p">.</span><span class="mi">19</span>    <span class="mi">3</span>
-
-<span class="n">LISTADO</span> <span class="n">ORDENADO</span> <span class="n">por</span> <span class="n">Nota</span> <span class="n">para</span> <span class="n">aprobar</span> <span class="n">en</span> <span class="n">Junio</span>
-<span class="n">Alumno</span>   <span class="n">Parcial1</span>   <span class="n">Parcial2</span>   <span class="n">Cuest</span>  <span class="n">Años</span>
-<span class="n">Maria</span>       <span class="mi">9</span><span class="p">.</span><span class="mi">10</span>       <span class="mi">7</span><span class="p">.</span><span class="mi">50</span>     <span class="mi">8</span><span class="p">.</span><span class="mi">18</span>    <span class="mi">1</span>
-<span class="n">Jose</span>        <span class="mi">8</span><span class="p">.</span><span class="mi">00</span>       <span class="mi">6</span><span class="p">.</span><span class="mi">65</span>     <span class="mi">7</span><span class="p">.</span><span class="mi">96</span>    <span class="mi">1</span>
-<span class="n">Pepe</span>        <span class="mi">8</span><span class="p">.</span><span class="mi">45</span>       <span class="mi">3</span><span class="p">.</span><span class="mi">75</span>     <span class="mi">6</span><span class="p">.</span><span class="mi">05</span>    <span class="mi">1</span>
-<span class="n">Carmen</span>      <span class="mi">6</span><span class="p">.</span><span class="mi">25</span>       <span class="mi">1</span><span class="p">.</span><span class="mi">20</span>     <span class="mi">5</span><span class="p">.</span><span class="mi">41</span>    <span class="mi">2</span>
-<span class="n">Carla</span>       <span class="mi">6</span><span class="p">.</span><span class="mi">25</span>       <span class="mi">1</span><span class="p">.</span><span class="mi">25</span>     <span class="mi">4</span><span class="p">.</span><span class="mi">23</span>    <span class="mi">2</span>
-<span class="n">Luis</span>        <span class="mi">6</span><span class="p">.</span><span class="mi">75</span>       <span class="mi">0</span><span class="p">.</span><span class="mi">25</span>     <span class="mi">4</span><span class="p">.</span><span class="mi">63</span>    <span class="mi">2</span>
 <span class="n">Felipe</span>      <span class="mi">5</span><span class="p">.</span><span class="mi">65</span>       <span class="mi">0</span><span class="p">.</span><span class="mi">25</span>     <span class="mi">3</span><span class="p">.</span><span class="mi">16</span>    <span class="mi">3</span>
 <span class="n">Loli</span>        <span class="mi">3</span><span class="p">.</span><span class="mi">00</span>       <span class="mi">1</span><span class="p">.</span><span class="mi">25</span>     <span class="mi">2</span><span class="p">.</span><span class="mi">19</span>    <span class="mi">3</span>
 </code></pre></div>
@@ -942,7 +919,7 @@ función (para ello también debes incluir el import que se indica)</p>
 
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
 <p>Dado el array <code>listaAlumnos</code> del ejercicio anterior, utiliza funciones
-de orden superior para obtener los datos requeridos en cada caso</p>
+de orden superior para obtener los datos requeridos en cada caso.</p>
 <p>A) Número de alumnos que han aprobado primer parcial y suspendido el segundo</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="n">listaAlumnos</span><span class="p">.</span> <span class="n">________________________________</span> <span class="p">)</span>
@@ -950,18 +927,16 @@ de orden superior para obtener los datos requeridos en cada caso</p>
 </code></pre></div>
 </td></tr></table>
 
-<p>B) Nota que deben tener en el parcial 3 para sacar un 5 en la nota final</p>
+<p>B) Alumnos que han aprobado la asignatura (tienen una nota final &gt;= 5)</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3
-4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="n">listaAlumnos</span><span class="p">.</span><span class="n">_______________________________</span> <span class="p">)</span>
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="n">listaAlumnos</span><span class="p">.</span><span class="n">_______________________________</span> <span class="p">)</span>
 
 <span class="c1">// Resultado:</span>
-<span class="c1">// [1.8370370370370388, -4.1407407407407391, -2.0277777777777768, 7.0611111111111127, 10.277777777777777, 7.8851851851851862, 8.0888888888888903, 12.646296296296295]</span>
 </code></pre></div>
 </td></tr></table>
 
-<p>C) Nota media de todos los alumnos en forma de tupla <code>(media_p1, media_p2, media_cuest)</code></p>
+<p>C) Nota media de todos los alumnos en forma de tupla <code>(media_p1, media_p2, media_p3)</code></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
