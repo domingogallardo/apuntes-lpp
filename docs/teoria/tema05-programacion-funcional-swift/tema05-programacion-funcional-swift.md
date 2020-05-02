@@ -1572,7 +1572,6 @@ print(suma(lista: z))
 /// Devuelve 30
 ```
 
-<!---
 
 ## Clausuras
 
@@ -2272,9 +2271,6 @@ print(car(cdr(cdr(lista)!)!)!) // Imprime 40
 print(vacia(cdr(cdr(cdr(lista)!)!)!)) // Imprime true
 ```
 
-
-
--->
 
 ## Bibliografía
 

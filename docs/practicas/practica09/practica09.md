@@ -48,8 +48,9 @@ cadenas.sorted{$0.count < $1.count}.map{$0.count}
 a.4)
 ```swift
 let cadenas2 = ["En", "un", "lugar", "de", "La", "Mancha"]
-cadenas2.reduce([]) {(res: [(String, Int)], c: String) -> [(String, Int)] in
-                       res + [(c, c.count)]}.sorted(by: {$0.1 < $1.1})
+cadenas2.reduce([]) {
+    (res: [(String, Int)], c: String) -> [(String, Int)] in
+        res + [(c, c.count)]}.sorted(by: {$0.1 < $1.1})
 ```
 
 
@@ -66,13 +67,14 @@ func f(nums: [Int], n: Int) -> Int {
 b.2)
 ```swift
 func g(nums: [Int]) -> [Int] {
-    return nums.reduce([], {(res: [Int], n: Int) -> [Int] in
-                        if !res.contains(n) {
-                            return res + [n]
-                        } else {
-                            return res
-                        }
-                    })
+    return nums.reduce([], {
+        (res: [Int], n: Int) -> [Int] in
+            if !res.contains(n) {
+                return res + [n]
+            } else {
+                return res
+            }
+    })
 }
 ```
 
@@ -80,13 +82,14 @@ func g(nums: [Int]) -> [Int] {
 b.3)
 ```swift
 func h(nums: [Int], n: Int) -> ([Int], [Int]) {
-   return nums.reduce(([],[]), {(res: ([Int],[Int]), num: Int ) -> ([Int],[Int]) in
-                            if (num >= n) {
-                                return (res.0, res.1 + [num])
-                            } else {
-                                return ((res.0 + [num], res.1))
-                            }
-                        })
+   return nums.reduce(([],[]), {
+       (res: ([Int],[Int]), num: Int ) -> ([Int],[Int]) in
+           if (num >= n) {
+               return (res.0, res.1 + [num])
+           } else {
+               return ((res.0 + [num], res.1))
+           }
+   })
 }
 ```
 
@@ -124,9 +127,22 @@ En el siguiente ejemplo vemos cómo debería poderse definir con el
 mismo tipo genérico un árbol de enteros y un árbol de cadenas:
 
 ```swift
-let arbolInt: Arbol = .nodo(53, [.nodo(13, []), .nodo(32, []), .nodo(41, [.nodo(36, []), .nodo(39, [])])])
-let arbolString: Arbol = .nodo("Zamora", [.nodo("Buendía", [.nodo("Albeza", []), .nodo("Berenguer", []), .nodo("Bolardo", [])]), 
-                                          .nodo("Galván", [])])
+let arbolInt: Arbol = .nodo(53, 
+                            [.nodo(13, []), 
+                             .nodo(32, []), 
+                             .nodo(41, 
+                                   [.nodo(36, []), 
+                                    .nodo(39, [])
+                                   ])
+                            ])
+let arbolString: Arbol = .nodo("Zamora", 
+                               [.nodo("Buendía", 
+                                      [.nodo("Albeza", []), 
+                                       .nodo("Berenguer", []), 
+                                       .nodo("Bolardo", [])
+                                      ]), 
+                                .nodo("Galván", [])
+                               ])
 ```
 
 
@@ -294,6 +310,6 @@ print(f(2,3))
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2018-19  
+Lenguajes y Paradigmas de Programación, curso 2019-20  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
