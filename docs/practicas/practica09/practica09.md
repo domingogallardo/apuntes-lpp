@@ -166,7 +166,7 @@ print(toArrayFOS(arbol: arbolString))
 Implementa en Swift la función `imprimirListadosNotas(alumnos:)` que
 recibe un array de tuplas, en donde cada tupla contiene información de
 la evaluación de un alumno de LPP (nombreAlumno, notaParcial1,
-notaParcial2, notaCuestionarios, añosMatriculacion) y que debe imprimir por pantalla los
+notaParcial2, notaParcial3, añosMatriculacion) y que debe imprimir por pantalla los
 siguientes listados: 
 
 - listado 1: array ordenado por nombre del alumno (orden alfabético
@@ -176,10 +176,9 @@ decreciente de nota)
 - listado 3: array ordenado por la nota del parcial 2 (orden creciente
 de nota) 
 - listado 4: array ordenado por año de matriculación y nota del
-  cuestionario (orden decreciente de año y nota) 
-- listado 5: array ordenado por nota que necesita obtener en el
-parcial 3 para aprobar la asignatura en la convocatoria de Junio
-(orden decreciente de nota necesaria)
+  parcial 3 (orden decreciente de año y nota) 
+- listado 5: array ordenado por nota final (media de los tres
+parciales, ponderados en: 0,34, 0,33, 0,33) (orden decreciente de nota necesaria)
  
 Las ordenaciones hay que realizarlas usando la función `sorted`.
 
@@ -192,7 +191,7 @@ Las ordenaciones hay que realizarlas usando la función `sorted`.
     import Foundation
 
     func imprimirListadoAlumnos(_ alumnos: [(String, Double, Double, Double, Int)]) {
-        print("Alumno   Parcial1   Parcial2   Cuest  Años")
+        print("Alumno   Parcial1   Parcial2   Parcial3  Años")
         for alu in alumnos {
             alu.0.withCString {
                 print(String(format:"%-10s %5.2f      %5.2f    %5.2f  %3d", $0, alu.1,alu.2,alu.3,alu.4))
@@ -220,7 +219,7 @@ Algunos de los listados que se deben mostrar serían los siguientes:
 
 ```txt
 LISTADO ORIGINAL
-Alumno   Parcial1   Parcial2   Cuest  Años
+Alumno   Parcial1   Parcial2   Parcial3  Años
 Pepe        8.45       3.75     6.05    1
 Maria       9.10       7.50     8.18    1
 Jose        8.00       6.65     7.96    1
@@ -231,24 +230,13 @@ Luis        6.75       0.25     4.63    2
 Loli        3.00       1.25     2.19    3
 
 LISTADO ORDENADO por Parcial1
-Alumno   Parcial1   Parcial2   Cuest  Años
+Alumno   Parcial1   Parcial2   Parcial3  Años
 Maria       9.10       7.50     8.18    1
 Pepe        8.45       3.75     6.05    1
 Jose        8.00       6.65     7.96    1
 Luis        6.75       0.25     4.63    2
 Carmen      6.25       1.20     5.41    2
 Carla       6.25       1.25     4.23    2
-Felipe      5.65       0.25     3.16    3
-Loli        3.00       1.25     2.19    3
-
-LISTADO ORDENADO por Nota para aprobar en Junio
-Alumno   Parcial1   Parcial2   Cuest  Años
-Maria       9.10       7.50     8.18    1
-Jose        8.00       6.65     7.96    1
-Pepe        8.45       3.75     6.05    1
-Carmen      6.25       1.20     5.41    2
-Carla       6.25       1.25     4.23    2
-Luis        6.75       0.25     4.63    2
 Felipe      5.65       0.25     3.16    3
 Loli        3.00       1.25     2.19    3
 ```
@@ -257,7 +245,7 @@ Loli        3.00       1.25     2.19    3
 ### Ejercicio 4
 
 Dado el array `listaAlumnos` del ejercicio anterior, utiliza funciones
-de orden superior para obtener los datos requeridos en cada caso
+de orden superior para obtener los datos requeridos en cada caso.
 
 A) Número de alumnos que han aprobado primer parcial y suspendido el segundo
 
@@ -266,16 +254,15 @@ print(listaAlumnos. ________________________________ )
 // Resultado: 5
 ```
 
-B) Nota que deben tener en el parcial 3 para sacar un 5 en la nota final
+B) Alumnos que han aprobado la asignatura (tienen una nota final >= 5)
 
 ```swift
 print(listaAlumnos._______________________________ )
 
 // Resultado:
-// [1.8370370370370388, -4.1407407407407391, -2.0277777777777768, 7.0611111111111127, 10.277777777777777, 7.8851851851851862, 8.0888888888888903, 12.646296296296295]
 ```
 
-C) Nota media de todos los alumnos en forma de tupla `(media_p1, media_p2, media_cuest)`
+C) Nota media de todos los alumnos en forma de tupla `(media_p1, media_p2, media_p3)`
 
 ```swift
 var tupla = listaAlumnos._____________________________________ )
