@@ -36,7 +36,7 @@
     
     
       
-        <title>Práctica 9: Programación funcional en Swift: clausuras y funciones de orden superior - LPP</title>
+        <title>Práctica 9 - LPP</title>
       
     
     
@@ -109,7 +109,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Práctica 9: Programación funcional en Swift: clausuras y funciones de orden superior
+                Práctica 9
               
             </span>
           
@@ -320,10 +320,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Prácticas
@@ -428,6 +430,104 @@
     <a href="../practica08/practica08.html" title="Práctica 8" class="md-nav__link">
       Práctica 8
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Práctica 9
+      </label>
+    
+    <a href="practica09.html" title="Práctica 9" class="md-nav__link md-nav__link--active">
+      Práctica 9
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    Ejercicios
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" class="md-nav__link">
+    Ejercicio 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" class="md-nav__link">
+    Ejercicio 5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -574,9 +674,11 @@ teoría del tema de Programación Funcional en Swift:</p>
 <p>a.4)
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">cadenas2</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;En&quot;</span><span class="p">,</span> <span class="s">&quot;un&quot;</span><span class="p">,</span> <span class="s">&quot;lugar&quot;</span><span class="p">,</span> <span class="s">&quot;de&quot;</span><span class="p">,</span> <span class="s">&quot;La&quot;</span><span class="p">,</span> <span class="s">&quot;Mancha&quot;</span><span class="p">]</span>
-<span class="n">cadenas2</span><span class="p">.</span><span class="bp">reduce</span><span class="p">([])</span> <span class="p">{(</span><span class="n">res</span><span class="p">:</span> <span class="p">[(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)],</span> <span class="n">c</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)]</span> <span class="k">in</span>
-                       <span class="n">res</span> <span class="o">+</span> <span class="p">[(</span><span class="n">c</span><span class="p">,</span> <span class="n">c</span><span class="p">.</span><span class="bp">count</span><span class="p">)]}.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span><span class="nv">$0</span><span class="p">.</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="nv">$1</span><span class="p">.</span><span class="mi">1</span><span class="p">})</span>
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">cadenas2</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;En&quot;</span><span class="p">,</span> <span class="s">&quot;un&quot;</span><span class="p">,</span> <span class="s">&quot;lugar&quot;</span><span class="p">,</span> <span class="s">&quot;de&quot;</span><span class="p">,</span> <span class="s">&quot;La&quot;</span><span class="p">,</span> <span class="s">&quot;Mancha&quot;</span><span class="p">]</span>
+<span class="n">cadenas2</span><span class="p">.</span><span class="bp">reduce</span><span class="p">([])</span> <span class="p">{</span>
+    <span class="p">(</span><span class="n">res</span><span class="p">:</span> <span class="p">[(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)],</span> <span class="n">c</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)]</span> <span class="k">in</span>
+        <span class="n">res</span> <span class="o">+</span> <span class="p">[(</span><span class="n">c</span><span class="p">,</span> <span class="n">c</span><span class="p">.</span><span class="bp">count</span><span class="p">)]}.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span><span class="nv">$0</span><span class="p">.</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="nv">$1</span><span class="p">.</span><span class="mi">1</span><span class="p">})</span>
 </code></pre></div>
 </td></tr></table></p>
 <p>b) Explica qué hacen las siguientes funciones y pon un ejemplo de su funcionamiento:</p>
@@ -589,42 +691,46 @@ teoría del tema de Programación Funcional en Swift:</p>
 </code></pre></div>
 </td></tr></table></p>
 <p>b.2)
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">g</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">nums</span><span class="p">.</span><span class="bp">reduce</span><span class="p">([],</span> <span class="p">{(</span><span class="n">res</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="k">in</span>
-                        <span class="k">if</span> <span class="o">!</span><span class="n">res</span><span class="p">.</span><span class="bp">contains</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-                            <span class="k">return</span> <span class="n">res</span> <span class="o">+</span> <span class="p">[</span><span class="n">n</span><span class="p">]</span>
-                        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                            <span class="k">return</span> <span class="n">res</span>
-                        <span class="p">}</span>
-                    <span class="p">})</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">g</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">nums</span><span class="p">.</span><span class="bp">reduce</span><span class="p">([],</span> <span class="p">{</span>
+        <span class="p">(</span><span class="n">res</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="k">in</span>
+            <span class="k">if</span> <span class="o">!</span><span class="n">res</span><span class="p">.</span><span class="bp">contains</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">res</span> <span class="o">+</span> <span class="p">[</span><span class="n">n</span><span class="p">]</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">res</span>
+            <span class="p">}</span>
+    <span class="p">})</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table></p>
 <p>b.3)
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">h</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">([</span><span class="nb">Int</span><span class="p">],</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">{</span>
-   <span class="k">return</span> <span class="n">nums</span><span class="p">.</span><span class="bp">reduce</span><span class="p">(([],[]),</span> <span class="p">{(</span><span class="n">res</span><span class="p">:</span> <span class="p">([</span><span class="nb">Int</span><span class="p">],[</span><span class="nb">Int</span><span class="p">]),</span> <span class="n">num</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">)</span> <span class="p">-&gt;</span> <span class="p">([</span><span class="nb">Int</span><span class="p">],[</span><span class="nb">Int</span><span class="p">])</span> <span class="k">in</span>
-                            <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;=</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-                                <span class="k">return</span> <span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">res</span><span class="p">.</span><span class="mi">1</span> <span class="o">+</span> <span class="p">[</span><span class="n">num</span><span class="p">])</span>
-                            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                                <span class="k">return</span> <span class="p">((</span><span class="n">res</span><span class="p">.</span><span class="mi">0</span> <span class="o">+</span> <span class="p">[</span><span class="n">num</span><span class="p">],</span> <span class="n">res</span><span class="p">.</span><span class="mi">1</span><span class="p">))</span>
-                            <span class="p">}</span>
-                        <span class="p">})</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">h</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">([</span><span class="nb">Int</span><span class="p">],</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="n">nums</span><span class="p">.</span><span class="bp">reduce</span><span class="p">(([],[]),</span> <span class="p">{</span>
+       <span class="p">(</span><span class="n">res</span><span class="p">:</span> <span class="p">([</span><span class="nb">Int</span><span class="p">],[</span><span class="nb">Int</span><span class="p">]),</span> <span class="n">num</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">)</span> <span class="p">-&gt;</span> <span class="p">([</span><span class="nb">Int</span><span class="p">],[</span><span class="nb">Int</span><span class="p">])</span> <span class="k">in</span>
+           <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;=</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">res</span><span class="p">.</span><span class="mi">1</span> <span class="o">+</span> <span class="p">[</span><span class="n">num</span><span class="p">])</span>
+           <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="p">((</span><span class="n">res</span><span class="p">.</span><span class="mi">0</span> <span class="o">+</span> <span class="p">[</span><span class="n">num</span><span class="p">],</span> <span class="n">res</span><span class="p">.</span><span class="mi">1</span><span class="p">))</span>
+           <span class="p">}</span>
+   <span class="p">})</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table></p>
@@ -650,11 +756,37 @@ el último ejercicio de la práctica anterior, que tenga como genérico
 el tipo de dato que contiene.</p>
 <p>En el siguiente ejemplo vemos cómo debería poderse definir con el
 mismo tipo genérico un árbol de enteros y un árbol de cadenas:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">arbolInt</span><span class="p">:</span> <span class="n">Arbol</span> <span class="p">=</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">53</span><span class="p">,</span> <span class="p">[.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">[]),</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">[]),</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">41</span><span class="p">,</span> <span class="p">[.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span> <span class="p">[]),</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">39</span><span class="p">,</span> <span class="p">[])])])</span>
-<span class="kd">let</span> <span class="nv">arbolString</span><span class="p">:</span> <span class="n">Arbol</span> <span class="p">=</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Zamora&quot;</span><span class="p">,</span> <span class="p">[.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Buendía&quot;</span><span class="p">,</span> <span class="p">[.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Albeza&quot;</span><span class="p">,</span> <span class="p">[]),</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Berenguer&quot;</span><span class="p">,</span> <span class="p">[]),</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Bolardo&quot;</span><span class="p">,</span> <span class="p">[])]),</span> 
-                                          <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Galván&quot;</span><span class="p">,</span> <span class="p">[])])</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">arbolInt</span><span class="p">:</span> <span class="n">Arbol</span> <span class="p">=</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">53</span><span class="p">,</span> 
+                            <span class="p">[.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">[]),</span> 
+                             <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">[]),</span> 
+                             <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">41</span><span class="p">,</span> 
+                                   <span class="p">[.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span> <span class="p">[]),</span> 
+                                    <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">39</span><span class="p">,</span> <span class="p">[])</span>
+                                   <span class="p">])</span>
+                            <span class="p">])</span>
+<span class="kd">let</span> <span class="nv">arbolString</span><span class="p">:</span> <span class="n">Arbol</span> <span class="p">=</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Zamora&quot;</span><span class="p">,</span> 
+                               <span class="p">[.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Buendía&quot;</span><span class="p">,</span> 
+                                      <span class="p">[.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Albeza&quot;</span><span class="p">,</span> <span class="p">[]),</span> 
+                                       <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Berenguer&quot;</span><span class="p">,</span> <span class="p">[]),</span> 
+                                       <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Bolardo&quot;</span><span class="p">,</span> <span class="p">[])</span>
+                                      <span class="p">]),</span> 
+                                <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Galván&quot;</span><span class="p">,</span> <span class="p">[])</span>
+                               <span class="p">])</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -865,7 +997,7 @@ dos argumentos y realice la operación indicada sobre ellos.</p>
 </td></tr></table>
 
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2018-19<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2019-20<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
                 
@@ -885,6 +1017,27 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../practica08/practica08.html" title="Práctica 8" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Práctica 8
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

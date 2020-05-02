@@ -628,6 +628,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../practicas/practica09/practica09.html" title="Práctica 9" class="md-nav__link">
+      Práctica 9
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1287,6 +1299,24 @@ calcular el valor de números como Pascal(40, 20):</p>
 <span class="c1">; ⇒ 137846528820</span>
 </code></pre></div>
 </td></tr></table>
+
+<!--
+
+Otro posible ejemplo es la función prefijo con el 'or' y el 'and'. 
+
+(define (prefijo-lista? lista1 lista2)
+    (or (null? lista1)
+        (and (equal? (car lista1) (car lista2))
+        (prefijo-lista? (cdr lista1) (cdr lista2)))))
+
+Sirve también para explicar el funcionamiento de and y or como 
+formas especiales.
+
+Podríamos también hacer alguna prueba de carga en la que se vea
+que con una recursión se genera un error de 'ran out of memory' y 
+con la recursión por la cola termina correctamente.
+
+-->
 
 <h2 id="soluciones-al-coste-de-la-recursion-memoization">Soluciones al coste de la recursión: memoization<a class="headerlink" href="#soluciones-al-coste-de-la-recursion-memoization" title="Permanent link">&para;</a></h2>
 <p>Una alternativa que mantiene la elegancia de los procesos recursivos y
