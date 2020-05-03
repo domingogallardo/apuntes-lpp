@@ -1067,33 +1067,33 @@ Veamos un ejemplo inicial muy sencillo, con una enumeración con un
 
 ```swift
 enum Prueba {
-    case x(Int)
+    case num(Int)
 }
 ```
 
 Esta notación obliga a definir un valor concreto del `Int` asociado al
-caso `x` en el momento de creación del enumerado:
+caso `num` en el momento de creación del enumerado:
 
 ```swift
-let valor1 = Prueba.x(10)
-let valor2 = Prueba.x(40)
+let valor1 = Prueba.num(10)
+let valor2 = Prueba.num(40)
 ```
 
 Las variables `valor1` y `valor2` son de tipo `Prueba` y tiene como
-valor el caso `x`, y el entero asociado a ese caso (`10` y `40` en cada
+valor el caso `num`, y el entero asociado a ese caso (`10` y `40` en cada
 instancia). Son parecidas a instancias de una clase.
 
 Para obtener el valor asociado debemos usar una expresión `case let`
 en una sentencia `switch` con una variable a la que se asigna el
 valor. Por ejemplo, en el siguiente código el valor del enumerado se
-asigna a la variable `a`:
+asigna a la variable `x`:
 
 ```swift
 switch valor1 {
-case let .x(a):
-    print("Valor asociado a x: \(a)")
+case let .num(x):
+    print("Valor asociado al caso num: \(x)")
 }
-// Imprime "Valor asociado a x: 10
+// Imprime "Valor asociado al caso num: 10
 ```
 
 No hay que confundir un valor asociado a un caso y un valor bruto: el valor
@@ -1111,17 +1111,17 @@ Por ejemplo, podemos definir un enumerado que permita guardar un
 
 ```swift
 enum Multiple {
-    case x(Int)
+    case num(Int)
     case str(String)
 }
 ```
 
 De esta forma, podemos crear valores de tipo `Multiple` que contienen
-un `Int` (instanciando el caso `x`) o un `String` (instanciando el
+un `Int` (instanciando el caso `num`) o un `String` (instanciando el
 caso `str`):
 
 ```swift
-let valor3 = Multiple.x(10)
+let valor3 = Multiple.num(10)
 let valor4 = Multiple.str("Hola")
 ```
 
@@ -1131,8 +1131,8 @@ y use un `switch` para comprobar qué caso tienen instanciado:
 ```swift
 func imprime(multiple: Multiple) {
     switch multiple {
-    case let .x(a):
-        print("Multiple tiene un Int: \(a)")
+    case let .num(x):
+        print("Multiple tiene un Int: \(x)")
     case let .str(s):
         print("Multiple tiene un String: \(s)")
     }
