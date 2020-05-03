@@ -2530,35 +2530,35 @@ enumeración.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Prueba</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">x</span><span class="p">(</span><span class="nb">Int</span><span class="p">)</span>
+    <span class="k">case</span> <span class="n">num</span><span class="p">(</span><span class="nb">Int</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
 
 <p>Esta notación obliga a definir un valor concreto del <code>Int</code> asociado al
-caso <code>x</code> en el momento de creación del enumerado:</p>
+caso <code>num</code> en el momento de creación del enumerado:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">valor1</span> <span class="p">=</span> <span class="n">Prueba</span><span class="p">.</span><span class="n">x</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nv">valor2</span> <span class="p">=</span> <span class="n">Prueba</span><span class="p">.</span><span class="n">x</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">valor1</span> <span class="p">=</span> <span class="n">Prueba</span><span class="p">.</span><span class="n">num</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">valor2</span> <span class="p">=</span> <span class="n">Prueba</span><span class="p">.</span><span class="n">num</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 
 <p>Las variables <code>valor1</code> y <code>valor2</code> son de tipo <code>Prueba</code> y tiene como
-valor el caso <code>x</code>, y el entero asociado a ese caso (<code>10</code> y <code>40</code> en cada
+valor el caso <code>num</code>, y el entero asociado a ese caso (<code>10</code> y <code>40</code> en cada
 instancia). Son parecidas a instancias de una clase.</p>
 <p>Para obtener el valor asociado debemos usar una expresión <code>case let</code>
 en una sentencia <code>switch</code> con una variable a la que se asigna el
 valor. Por ejemplo, en el siguiente código el valor del enumerado se
-asigna a la variable <code>a</code>:</p>
+asigna a la variable <code>x</code>:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
 5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">switch</span> <span class="n">valor1</span> <span class="p">{</span>
-<span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">x</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Valor asociado a x: </span><span class="si">\(</span><span class="n">a</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">num</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Valor asociado al caso num: </span><span class="si">\(</span><span class="n">x</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="c1">// Imprime &quot;Valor asociado a x: 10</span>
+<span class="c1">// Imprime &quot;Valor asociado al caso num: 10</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -2576,17 +2576,17 @@ lenguajes de programación se llaman <em>uniones etiquetadas</em> o
 2
 3
 4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Multiple</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">x</span><span class="p">(</span><span class="nb">Int</span><span class="p">)</span>
+    <span class="k">case</span> <span class="n">num</span><span class="p">(</span><span class="nb">Int</span><span class="p">)</span>
     <span class="k">case</span> <span class="n">str</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
 
 <p>De esta forma, podemos crear valores de tipo <code>Multiple</code> que contienen
-un <code>Int</code> (instanciando el caso <code>x</code>) o un <code>String</code> (instanciando el
+un <code>Int</code> (instanciando el caso <code>num</code>) o un <code>String</code> (instanciando el
 caso <code>str</code>):</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">valor3</span> <span class="p">=</span> <span class="n">Multiple</span><span class="p">.</span><span class="n">x</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">valor3</span> <span class="p">=</span> <span class="n">Multiple</span><span class="p">.</span><span class="n">num</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="kd">let</span> <span class="nv">valor4</span> <span class="p">=</span> <span class="n">Multiple</span><span class="p">.</span><span class="n">str</span><span class="p">(</span><span class="s">&quot;Hola&quot;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
@@ -2606,8 +2606,8 @@ y use un <code>switch</code> para comprobar qué caso tienen instanciado:</p>
 11
 12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">imprime</span><span class="p">(</span><span class="n">multiple</span><span class="p">:</span> <span class="n">Multiple</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">switch</span> <span class="n">multiple</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">x</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Multiple tiene un Int: </span><span class="si">\(</span><span class="n">a</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">num</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Multiple tiene un Int: </span><span class="si">\(</span><span class="n">x</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
     <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">str</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
         <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Multiple tiene un String: </span><span class="si">\(</span><span class="n">s</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
     <span class="p">}</span>
