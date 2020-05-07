@@ -1776,6 +1776,15 @@ let alreves = estudiantes.sorted { $0 > $1 }
 
 ### Valores capturados
 
+!!! Danger "Cuidado"
+
+    Los ejemplos que vamos a ver a continuación no usan programación
+    funcional, porque la variable capturada por la clausura es una
+    variable **mutable** (se ha definido con `var` y no con `let`). Por
+    eso las funciones resultantes no son funciones puras, sino que
+    devuelven un valor distinto cada vez que son invocadas. Son 
+    funciones con estado local mutable.
+
 Una clausura puede capturar constantes y variables del contexto en el
 que se define. La clausura puede referirse y modificar esos valores
 dentro de su cuerpo, incluso si ya no existe el ámbito (_scope_)
@@ -1877,6 +1886,7 @@ incrementaDiez()
 // devuelve 40
 ```
 
+
 ### Clausuras con expresiones de clausura ###
 
 En el ejemplo anterior hemos usado una definición interna de una
@@ -1936,6 +1946,67 @@ print(incrementaDiez())
 print(incrementaDiez())
 // Imprime "20"
 ```
+
+
+### Valores capturados y valores del ámbito local de ejecución ###
+
+Las clasuras usan los valores capturados y no los valores declarados
+en el ámbito local de ejecución. Vamos a explicarlo con un ejemplo.
+
+```swift
+func construyeFunc() -> () -> Int {
+   var x = 0
+   return {
+      x = x + 1
+      return x
+   }
+}
+
+let f = construyeFunc()
+print(f()) // -> 1
+print(f()) // -> 2
+
+func usaFunc(_ f: () -> Int) -> Int {
+     var x = 10
+     return f()
+}
+
+print(usaFunc(f)) // -> 3
+
+var x = 100
+print(usaFunc {return x + 10}) // -> 110
+```
+
+La función `usaFunc` definida en la línea 13 recibe una función `f`
+sin parámetros que devuelve un entero. En el ámbito local de `usaFunc`
+se define una variable local `x` que tiene el valor `10` antes de
+invocar a la función `f` recibida.
+
+¿Qué pasa si la función recibida es una clausura que ha capturado una
+variable que también se llama `x`? En el caso de la invocación a
+`usaFunc` que hay en la línea 18, la función `f` que se pasa como
+parámetro es la clausura obtenida en la línea 9. Esta clausura ha
+capturado la variable `x` definida en la línea 2. Y en ese momento
+esa variable tiene el valor 2. El código de la clausura es el definido
+en las líneas 3 a 6:
+
+```swift
+{
+x = x + 1
+return x
+}
+```
+
+¿Qué valor va a tomar esa `x`? ¿El valor capturado (2)? ¿O el valor en
+el ámbito de ejecución (línea 14, 10)?
+
+Si ejecutamos el código veremos que la expresión devuelve 3. O sea que
+las clausuras usan siempre los valores capturados.
+
+Podemos compprobarlo también en la invocación de la línea 21. Ahí la
+clausura que se pasa es una expresión de clausura que captura la
+variable `x` definida en la línea anterior. Por eso cuando se ejecuta
+la sentencia se imprime el valor `110` y no el valor `20`.
 
 
 ### Las clausuras son tipos de referencia
