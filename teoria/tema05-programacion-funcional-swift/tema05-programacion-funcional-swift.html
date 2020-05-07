@@ -608,6 +608,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#valores-capturados-y-valores-del-ambito-local-de-ejecucion" class="md-nav__link">
+    Valores capturados y valores del ámbito local de ejecución
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#las-clausuras-son-tipos-de-referencia" class="md-nav__link">
     Las clausuras son tipos de referencia
   </a>
@@ -1208,6 +1215,13 @@
           <li class="md-nav__item">
   <a href="#clausuras-con-expresiones-de-clausura" class="md-nav__link">
     Clausuras con expresiones de clausura
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valores-capturados-y-valores-del-ambito-local-de-ejecucion" class="md-nav__link">
+    Valores capturados y valores del ámbito local de ejecución
   </a>
   
 </li>
@@ -3329,6 +3343,15 @@ necesario escribir los paréntesis tras el nombre de la función:</p>
 </td></tr></table>
 
 <h3 id="valores-capturados">Valores capturados<a class="headerlink" href="#valores-capturados" title="Permanent link">&para;</a></h3>
+<div class="admonition danger">
+<p class="admonition-title">Cuidado</p>
+<p>Los ejemplos que vamos a ver a continuación no usan programación
+funcional, porque la variable capturada por la clausura es una
+variable <strong>mutable</strong> (se ha definido con <code>var</code> y no con <code>let</code>). Por
+eso las funciones resultantes no son funciones puras, sino que
+devuelven un valor distinto cada vez que son invocadas. Son 
+funciones con estado local mutable.</p>
+</div>
 <p>Una clausura puede capturar constantes y variables del contexto en el
 que se define. La clausura puede referirse y modificar esos valores
 dentro de su cuerpo, incluso si ya no existe el ámbito (<em>scope</em>)
@@ -3516,6 +3539,82 @@ en el apartado anterior:</p>
 </code></pre></div>
 </td></tr></table>
 
+<h3 id="valores-capturados-y-valores-del-ambito-local-de-ejecucion">Valores capturados y valores del ámbito local de ejecución<a class="headerlink" href="#valores-capturados-y-valores-del-ambito-local-de-ejecucion" title="Permanent link">&para;</a></h3>
+<p>Las clasuras usan los valores capturados y no los valores declarados
+en el ámbito local de ejecución. Vamos a explicarlo con un ejemplo.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeFunc</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">0</span>
+   <span class="k">return</span> <span class="p">{</span>
+      <span class="n">x</span> <span class="p">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="k">return</span> <span class="n">x</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">f</span> <span class="p">=</span> <span class="n">construyeFunc</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">())</span> <span class="c1">// -&gt; 1</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">())</span> <span class="c1">// -&gt; 2</span>
+
+<span class="kd">func</span> <span class="nf">usaFunc</span><span class="p">(</span><span class="kc">_</span> <span class="n">f</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+     <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">10</span>
+     <span class="k">return</span> <span class="n">f</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">usaFunc</span><span class="p">(</span><span class="n">f</span><span class="p">))</span> <span class="c1">// -&gt; 3</span>
+
+<span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">100</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">usaFunc</span> <span class="p">{</span><span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span><span class="p">})</span> <span class="c1">// -&gt; 110</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>La función <code>usaFunc</code> definida en la línea 13 recibe una función <code>f</code>
+sin parámetros que devuelve un entero. En el ámbito local de <code>usaFunc</code>
+se define una variable local <code>x</code> que tiene el valor <code>10</code> antes de
+invocar a la función <code>f</code> recibida.</p>
+<p>¿Qué pasa si la función recibida es una clausura que ha capturado una
+variable que también se llama <code>x</code>? En el caso de la invocación a
+<code>usaFunc</code> que hay en la línea 18, la función <code>f</code> que se pasa como
+parámetro es la clausura obtenida en la línea 9. Esta clausura ha
+capturado la variable <code>x</code> definida en la línea 2. Y en ese momento
+esa variable tiene el valor 2. El código de la clausura es el definido
+en las líneas 3 a 6:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="n">x</span> <span class="p">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">return</span> <span class="n">x</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>¿Qué valor va a tomar esa <code>x</code>? ¿El valor capturado (2)? ¿O el valor en
+el ámbito de ejecución (línea 14, 10)?</p>
+<p>Si ejecutamos el código veremos que la expresión devuelve 3. O sea que
+las clausuras usan siempre los valores capturados.</p>
+<p>Podemos compprobarlo también en la invocación de la línea 21. Ahí la
+clausura que se pasa es una expresión de clausura que captura la
+variable <code>x</code> definida en la línea anterior. Por eso cuando se ejecuta
+la sentencia se imprime el valor <code>110</code> y no el valor <code>20</code>.</p>
 <h3 id="las-clausuras-son-tipos-de-referencia">Las clausuras son tipos de referencia<a class="headerlink" href="#las-clausuras-son-tipos-de-referencia" title="Permanent link">&para;</a></h3>
 <p>En el ejemplo anterior, <code>incrementaSiete</code> e <code>incrementaDiez</code> son
 constantes, pero las clausuras a las que estas constantes se refieren
