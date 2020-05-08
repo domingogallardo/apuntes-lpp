@@ -15,82 +15,9 @@ https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift
 
 # Tema 6: Programación Orientada a Objetos con Swift
 
+<!--
+
 ## Más conceptos sobre clausuras ##
-
-### Repaso de clausuras
-
-Ya vimos en el tema anterior que las clausuras en Swift son bloques de
-código con funcionalidades que se pueden pasar de un sitio a otro en
-nuestro programa. Son muy similares a las expresiones lambda de Scheme
-o de Java 8 o a los bloques de Objective-C. Una clausura puede
-capturar o almacenar referencias a cualquier constante o variable del
-contexto o ámbito dentro de la cual han sido definidas.
-
-Se pueden definir clausuras en Swift de las siguientes formas:
-
- - Funciones anidadas que pueden capturar valores de la función englobante:
-
-```swift
-func construyeFunc() -> () -> Int {
-   var x = 0
-   func funcion() -> Int {
-      x = x + 1
-      return x
-   }
-   return funcion
-}
-
-let f = construyeFunc()
-f() // -> 1
-f() // -> 2
-```
-
-La función devuelta por `construyeFunc()` también se puede formular
-como una expresión de clausura:
-
-```swift
-func construyeFunc() -> () -> Int {
-   var x = 0
-   return {
-      x = x + 1
-      return x
-   }
-}
-```
-
-En el siguiente ejemplo vemos claramente que la función captura las
-variables definidas en el ámbito en el que se creó. En el caso
-anterior la clausura devuelta captura la variable `x` con el valor 0.
-
-```swift
-func usaFunc(_ f: () -> Int) -> Int {
-     var x = 4
-     return f()
-}
-
-let f = construyeFunc()
-usaFunc(f) // -> 1
-```
-
-El valor devuelto por `usaFunc` en el resultado de la invocación a
-`f()` en su segunda línea de código. Y el valor de `x` usado por la
-clausura `f` es el capturado en el momento de su creación (el valor
-`x=0` definido en la primera línea de `construyeFunc`).
-
-- Funciones anónimas que pueden capturar valores del contexto que las rodean:
-
-```swift
-var x = 100
-usaFunc {return x + 10} // -> 110
-```
- 
-En el ejemplo anterior la expresión de clausura se define en el ámbito
-global donde la `x`toma el valor 100. Ese valor queda capturado y es
-el que se usa en la evaluación de la función. Por tanto, en el
-contexto donde se evalúa esa clausura (dentro del cuerpo de la
-funcioón `usaFunc`), la `x`que toma es la capturada y no la definida
-en el cuerpo de `usaFunc`.
-
 
 ### Clausuras escapadas
 
@@ -181,25 +108,47 @@ La sentencia `print("Hola")` se pasa como una autoclausura, por lo que
 el compilador crea automáticamente una clausura con ella sin tener
 nosotros que escribir la expresión de clausura.
 
-## Introducción, historia y características de la Programación Orientada a Objetos
+-->
 
-### Nacimiento
+## Introducción a la Programación Orientada a Objetos
 
-- La Programación Orientada a Objetos es un paradigma de programación
-  que explota en los 80 pero nace a partir de ideas a finales de los
-  60 y 70
-- Primer lenguaje con las ideas fundamentales de POO: Simula
-- Smalltalk (1980) como lenguaje paradigmática de POO
-- **Alan Kay** es el creador del término “Object-Oriented” y una de las
-  figuras fundamentales de la historia de la informática
-  moderna. Trabajó en Xerox Park y desarrolló allí ideas que han sido
-  clave para la informática personal (como el Dynabook, precursor de
-  tablets y dispositivos móviles y el lenguajes de programación Smalltalk)
-- Artículo de Alan Kay:
-  [“The Early History of Smalltalk”](http://gagne.homedns.org/%7etgagne/contrib/EarlyHistoryST.html),
-  ACM SIGPLAN, March 1993
+La Programación Orientada a Objetos (POO) es un paradigma de programación
+que explota en los 80 pero nace a partir de ideas a finales de los 
+60 y 70. Por ejemplo, el primer lenguaje con las ideas básicas de POO fue
+[Simula](https://en.wikipedia.org/wiki/Simula), un lenguaje creado en
+la década de los 60.
 
-### Alan Kay
+En la década de los 60 lo habitual era la programación
+procedural. Los programas se definían usando tipos de datos
+abstractos y funciones. La modularización se realizaba mediante
+funciones.
+
+Como hemos mencionado, a finales de los 60, el lenguaje Simula
+introduce el concepto de clase. Una abstracción que agrupa estado y
+funciones en una única entidad.
+  
+Sin embargo, tuvo que pasar más de una década, hasta principios de los
+80, para que el paradigma orientado a objetos se popularizara. Una de
+las razones principales de esta popularización fue el lenguaje
+[Smalltalk](https://en.wikipedia.org/wiki/Smalltalk), un lenguaje
+creado en Xerox Park que fue revolucionario en muchos aspectos. Por
+ejemplo, Smaltallk introdujo conceptos como las interfaces gráficas de
+usuario (el uso del ratón, de las ventanas) o un entorno integrado de
+programación que estaba escrito en el propio Smalltalk y que el
+programador podía adaptar y ampliar.
+
+[Alan Kay](https://en.wikipedia.org/wiki/Alan_Kay) fue uno de los padres de Smalltalk, el creador del
+término “Object-Oriented” y una de las figuras fundamentales de la
+historia de la informática moderna. Trabajó en Xerox Park y desarrolló
+allí ideas que han sido clave para la informática personal (como el
+Dynabook, precursor de tablets y dispositivos móviles y el lenguajes
+de programación Smalltalk)
+
+Se puede tener una idea de toda esta gesta en su artículo [“The Early
+History of
+Smalltalk”](http://gagne.homedns.org/%7etgagne/contrib/EarlyHistoryST.html). 
+
+Algunas frases de Alan Kay:
 
 > “I invented the term Object-Oriented and I can tell you I did not
 > have C++ in mind.”
@@ -215,87 +164,60 @@ nosotros que escribir la expresión de clausura.
 > its combination of state and process inside itself and can be dealt
 > with only through the exchange of messages.”
 
-### ¿Interesados en Smalltalk?
+En la década de los 80 el paradigma orientado a objetos tuvo una
+enorme repercusión y, a partir de ahí, casi todos los lenguajes lo han
+adoptado. Lenguajes como  Smalltalk, Java, Scala, Ruby, Python, C#,
+C++, Swift, etc. utilizan el paradigma orientado a objetos.
 
-Visitar:
+Entre las características principales del paradigma de programación
+orientado a objetos podemos destacar:
 
-- [http://www.squeak.org/](http://www.squeak.org/)
-- [http://swiki.agro.uba.ar/small_land](http://swiki.agro.uba.ar/small_land)
-- [http://www.squeakland.org](http://www.squeakland.org)
+- Las **clases** son plantillas estáticas definidas en tiempo de
+  compilación. Los objetos se instancian a partir de las clases y
+  se modifican e interactúan en tiempo de ejecución.
+- Los **objetos** agrupan estado interno (las denominadas _propiedades_,
+  _campos_ o _variables de instancias_) y conducta (los métodos a los
+  que puede responder el objeto).
+- Existe el **polimorfismo**. Un mismo método puede estar definido en más
+  de una clase. Dependiendo del tipo de la instancia el código que se
+  ejecuta es distinto. Por ejemplo, podríamos definir un método _suma_
+  en la clase _Int_ y otro método con el mismo nombre en otra clase
+  _String_. El primer método suma dos enteros y el segundo concatena
+  dos cadenas.
+- En algunos lenguajes orientados a objetos (como Python o Ruby) la
+  invocación los métodos se hace usando un  (**dispatch
+  dinámico**)[https://en.wikipedia.org/wiki/Dynamic_dispatch]: cuando una operación es invocada sobre un
+  objeto, el propio objeto determina en tiempo de ejecución qué código se ejecuta. 
+- Una característica fundamental de la POO es la **herencia**. Las clases se pueden definir utilizando otras clases como
+  plantillas y modificando sus métodos y/o variables de instancia para
+  hacerlas más especializadas.
 
-### Lenguajes OO
+Existen dos tendencias ortogonales en el diseño de lenguajes
+orientados a objetos. 
 
-- Smalltalk, Java, Scala, Ruby, Python, C#, C++, Swift, ...
+Por un lado una familia de lenguajes orientados a objetos son
+lenguajes muy
+[dinámicos](https://en.wikipedia.org/wiki/Dynamic_programming_language).
+Son lenguajes con un tipado débil en los que muchas características
+de los programas se obtienen en tiempo de ejecución.
 
-### Del paradigma imperativo al OO
+Estos lenguajes permiten mayor flexibilidad y generalidad del código,
+y tienen características como el dispatch dinámico o la reflexión
+(posibilidad de consultar características de la instancia como nombres
+de métodos o propiedades en tiempo de ejecución).
 
-- Programación procedural: estado abstracto (tipos de datos y barrera
-  de abstracción) + funciones
-- Siguiente paso: agrupar estado y funciones en una única entidad
-- Los objetos son estas entidades
+Ejemplos de este tipo de lenguajes son Smalltalk, Ruby, Python,
+JavaScript o Java (en menor medida).
 
+Por otro lado, existen lenguajes de programación orientados a objetos
+que tienen un alto componente estática, donde la mayoría de
+características del programa se obtienen en tiempo de compilación. En
+este tipo de lenguajes se prima que el compilador sea muy robusto y
+detecte la mayor cantidad de errores a priori y que genere código muy
+eficiente. Son lenguajes fuertemente tipados como C++ o Swift.
 
-### Características de la POO
-
-- Objetos (creados/instanciados en tiempo de ejecución) y clases
-  (plantillas estáticas/tiempo de compilación)
-- Los objetos agrupan estado y conducta (métodos)
-- Los métodos se invocan mediante mensajes
-- *Dispatch dinámico*: cuando una operación es invocada sobre un
-  objeto, el propio objeto determina qué código se ejecuta. Dos
-  objetos con la misma interfaz pueden tener implementaciones
-  distintas.
-- Herencia: las clases se pueden definir utilizando otras clases como
-  plantillas y modificando sus métodos y/o variables de instancia.
-
-### Clases y objetos
-
-Objeto:
-
-- Un objeto contiene un estado (propiedades, atributos o variables de
-  instancia) y un conjunto de funciones (métodos) que se ejecutan en
-  el ámbito del objeto e implementan las funcionalidades soportadas
-- Al ejecutar un método, el objeto modifica su estado
-- Pedimos a un objeto que ejecute un método
-
-Clase:
-
-- Una clase es la plantilla que sirve para definir los objetos
-- En una clase se define los elementos que componen el objeto (sus
-  atributos o campos) y sus métodos
-- En algunos lenguajes se pueden definir también en las clases
-  variables (variables de clase) compartidas por todos los objetos de
-  esa clase
-
-### Lenguajes POO dinámicos vs. estáticos
-
-Dos tendencias:
-
-- Lenguajes **dinámicos**: muchas características del programa se
-  obtienen en tiempo de ejecución
-    - Mayor flexibilidad y generalidad del código
-    - Dispatch dinámico
-    - Reflexión (posibilidad de consultar características de la
-      instancia (nombres de métodos, propiedades, etc.) en tiempo de
-      ejecución)
-    - Ejemplos: Smalltalk, Ruby, Python, JavaScript, Java (en menor
-      medida)
-
-- Lenguajes **estáticos**: la mayoría de características del programa
-  se obtienen en tiempo de compilación
-    - Mayor eficiencia
-    - Se conoce a priori el tipo de la mayor parte de instancias del
-      programa
-    - Fuertemente tipeado
-    - Ejemplos: C++, Swift
-
-
-Vamos a detallar a continuación las **características de Programación
-Orientada a Objetos de Swift**. Para tener una introducción rápida
-puedes empezar leyendo los últimos apartados del [seminario de
-Swift](https://github.com/domingogallardo/apuntes-lpp/blob/master/seminarios/seminario2-swift/seminario2-swift.md)
-(los apartados **Objetos, clases y estructuras**, **Protocolos y
-extensiones** y **Genéricos**).
+Vamos a detallar a continuación las características más importantes de
+Programación Orientada a Objetos de Swift.
 
 ## Clases y estructuras
 
@@ -318,7 +240,16 @@ común. Ambos pueden:
   implementación por defecto
 - Ajustarse a un protocolo 
 
-Las clases tienen características adicionales que no tienen las
+La diferencia fundamental es que las estructuras son tipos valor,
+mientras que las clases son tipos referencia. La semántica de copia de
+ambas es radicalmente distinta. Cuando asignamos una instancia de una
+estructura a una variable estamos realizando una copia de su valor
+(por ejemplo, cuando asignamos un número entero). Sin embargo, cuando
+asignamos una instancia de una clase a una estructura estamos
+guardando su referencia. De esta forma en las clases se permiten que
+existan más de una referencia apuntando a una instancia de una clase.
+
+Otras características adicionales de las clases que no tienen las
 estructuras:
 
 - Mediante la herencia una clase puede heredar las características de
@@ -327,8 +258,6 @@ estructuras:
   instancia de una clase en tiempo de ejecución
 - Los deinicializadores permiten a una instancia de una clase liberar
   los recursos que ha asignado
-- Mediante el conteo de referencias se permite que exista más de una
-  referencia a una instancia de una clase
 
 ### Definición
 
@@ -430,10 +359,10 @@ punto_:
 
 ```swift
 // Accedemos a la propiedad
-coords.posX // Devuelve 0
+unasCoordsPantalla.posX // Devuelve 0
 // Actualizamos la propiedad
-coords.posX = 100
-ventana.esquina.posY = 100
+unasCoordsPantalla.posX = 100
+unaVentana.esquina.posY = 100
 ```
 
 ### Inicialización de las estructuras por sus propiedades
@@ -480,8 +409,8 @@ En el ejemplo se declara una constante llamada `coords1` y se asigna a una
 instancia de `CoordsPantalla` inicializada con la posición x de 600 y
 la posición y de 600. Después se declara una variable llamada
 `coords2` y se asigna al valor actual de `coors1`. Debido a que `CoordsPantalla`
-es una estructura, se crea _una copia_ de la instancia existente y
-esta nueva copia se asigna a `coords2`. Aunque ahora `coords2` y `coords1` tienen
+es una estructura, **se crea _una copia_ de la instancia existente y
+esta nueva copia se asigna a `coords2`**. Aunque ahora `coords2` y `coords1` tienen
 las mismas `posX` y `posY`, son dos instancias completamente
 distintas. Después, la propiedad `posX` de `coords2` se actualiza a 1000.
 
@@ -586,6 +515,82 @@ Estos operadores "idéntico a" no son los mismos que los de "igual a"
   clase definir la implementación de estos operadores.
 
 
+### Paso como parámetro
+
+El paso como parámetro de una instancia se comporta de forma idéntica
+a la asignación. Si la instancia es una estructura, se pasa como
+parámetro una copia, si la instancia es una clase, se pasa una referencia.
+
+Por ejemplo, la siguiente función es típica de programación orientada
+a objetos. El parámetro `ventana` se pasa por referencia y se modifica
+en el interior de la función. Su estado cambia. Una vez terminada la
+función la variable que hemos pasado como parámetro contiene una
+instancia cambiada.
+
+```swift
+func mueve(ventana: Ventana, incX: Int, incY: Int) {
+    var nuevaPos = CoordsPantalla()
+    nuevaPos.posX = ventana.esquina.posX + incX
+    nuevaPos.posY = ventana.esquina.posY + incY
+    ventana.esquina = nuevaPos
+}
+
+var ventana1 = Ventana()
+mueve(ventana: ventana1, incX: 500, incY: 500)
+print(ventana1.esquina)
+// Imprime: CoordsPantalla(posX: 500, posY: 500)
+```
+
+Sin embargo, cuando trabajamos con estructuras lo hacemos con tipos
+valor que se pasan por copia. Además, Swift impide modificar los
+parámetros que son estructuras. El siguiente código genera un error en
+el compilador que indica que el parámetro `coordsPantalla` es una
+constante y no puede ser modificado:
+
+```swift
+// ¡¡CÓDIGO ERRÓNEO!!
+func mueve(coordsPantalla: CoordsPantalla, incX: Int, incY: Int) {
+    coordsPantalla.posX = coordsPantalla.posX + incX
+    coordsPantalla.posY = coordsPantalla.posY + incY
+}
+// error: cannot assign to property: 'coordsPantalla' is a 'let' constant
+```
+
+Si queremos modificar un tipo valor, como una estructura, la forma más
+correcta es hacerlo de forma funcional, creando una nueva estructura y
+devolviéndola como resultado:
+
+```swift
+func mueve(coordsPantalla: CoordsPantalla, incX: Int, incY: Int) -> CoordsPantalla {
+    var nuevaCoord = CoordsPantalla()
+    nuevaCoord.posX = coordsPantalla.posX + incX
+    nuevaCoord.posY = coordsPantalla.posY + incY
+    return nuevaCoord
+}
+
+var coord1 = CoordsPantalla()
+coord1 = mueve(coordsPantalla: coord1, incX: 100, incY: 100)
+print(coord1)
+// Imprime CoordsPantalla(posX: 100, posY: 100)
+```
+
+Usando esta última función podríamos reescribir el código de la
+función que mueve una ventana de la siguiente forma:
+
+```swift
+func mueve(ventana: Ventana, incX: Int, incY: Int) {
+    ventana.esquina = mueve(coordsPantalla: ventana.esquina, incX: incX, incY: incY)
+}
+```
+
+!!! Note "Nota"
+    Igual que en C, en Swift hay una forma de pasar como referencia una
+    estructura. Hay que utilizar el operador `inout` precediendo el
+    nombre del parámetro. Puedes encontrar más información en la
+        documentación oficial de Swift. Busca el apartado _In-Out
+    paremeters_ en la página sobre
+    [Funciones](https://docs.swift.org/swift-book/LanguageGuide/Functions.html). 
+
 ### Criterios para usar estructuras y clases
 
 Podemos usar tanto clases como estructuras para definir nuestros tipos
@@ -617,11 +622,15 @@ Ejemplos de buenos candidatos de estructuras incluyen:
 - Un punto en un sistema de coordenadas 3D, encapsulando quizás las
   propiedades `x`, `y` y `z`, todos ellos de tipo `Double`.
 
-En el resto de casos, definiremos una clase y crearemos instancias de
-esa clase que tendrán que ser gestionadas y pasadas por referencia. En
-la práctica, esto representa que la mayoría de datos que construiremos
-en nuestros programas deberían clases, no estructuras. Aunque usaremos
-muchas de las estructuras estándar de Swift.
+Usaremos clases cuando queramos utilizar una semántica de referencia
+en lugar de una semántica de valor. Por ejemplo, si queremos tener un
+grafo de objetos en los que más de un objeto refiere a otro. También
+cuando queramos utilizar herencia y polimorfismo en nuestro código.
+
+En la práctica, esto representa que la mayoría de datos que
+construiremos en nuestros programas serán clases, no
+estructuras. Aunque usaremos muchas de las estructuras estándar de
+Swift.
 
 ## Propiedades
 
@@ -1890,6 +1899,7 @@ el método o la propiedad (como `final var`, `final func`).
 También es posible marcar la clase completa como final, escribiendo el
 modificador antes de `class` (`final class`).
 
+<!--
 
 ## Protocolos
 
@@ -3347,6 +3357,7 @@ print(superHeroes.allEqual())
 //error: type 'Persona' does not conform to protocol 'Equatable'
 ```
 
+-->
 
 ## Bibliografía
 
@@ -3356,14 +3367,17 @@ print(superHeroes.allEqual())
     - [Methods](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Methods.html#//apple_ref/doc/uid/TP40014097-CH15-ID234)
     - [Inheritance](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Inheritance.html#//apple_ref/doc/uid/TP40014097-CH17-ID193=)
     - [Initialization](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203)
-    - [Protocolos](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-ID267)
+
+<!--
+- [Protocolos](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-ID267)
     - [Casting de tipos](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TypeCasting.html#//apple_ref/doc/uid/TP40014097-CH22-ID338)
     - [Extensiones](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html#//apple_ref/doc/uid/TP40014097-CH24-ID151)
     - [Funciones operador](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-ID28)
     - [Genéricos](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-ID179)
 
+-->
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2018–19  
+Lenguajes y Paradigmas de Programación, curso 2019–20  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
