@@ -517,15 +517,22 @@ Estos operadores "idéntico a" no son los mismos que los de "igual a"
 
 ### Paso como parámetro
 
-El paso como parámetro de una instancia se comporta de forma idéntica
-a la asignación. Si la instancia es una estructura, se pasa como
-parámetro una copia, si la instancia es una clase, se pasa una referencia.
+En Swift los parámetros de las funciones son constantes, se definen
+usando el operador `let`. Esto hace que sea muy distinto el
+comportamiento de un parámetro dependiendo de si es una estructura o
+una clase.
 
-Por ejemplo, la siguiente función es típica de programación orientada
-a objetos. El parámetro `ventana` se pasa por referencia y se modifica
+Si la instancia que se pasa como parámetro a una función es una
+estructura su contenido no se podrá modificar. Sin embargo, si lo que
+se pasa es una instancia de una clase, podremos modificar su
+contenido, ya que (como hemos visto anteriormente) el `let` hace
+constante únicamente la referencia, pero no el contenido.
+
+Por ejemplo, la siguiente función es típica de programación imperativa
+o procedural. El parámetro `ventana` se pasa por referencia y se modifica
 en el interior de la función. Su estado cambia. Una vez terminada la
 función la variable que hemos pasado como parámetro contiene una
-instancia cambiada.
+instancia cambiada. Podemos hacerlo porque `ventana` es una clase.
 
 ```swift
 func mueve(ventana: Ventana, incX: Int, incY: Int) {
@@ -541,10 +548,9 @@ print(ventana1.esquina)
 // Imprime: CoordsPantalla(posX: 500, posY: 500)
 ```
 
-Sin embargo, cuando trabajamos con estructuras lo hacemos con tipos
-valor que se pasan por copia. Además, Swift impide modificar los
-parámetros que son estructuras. El siguiente código genera un error en
-el compilador que indica que el parámetro `coordsPantalla` es una
+Sin embargo, si pasamos como parámetro una instancia de una
+estructura, ésta será inmutable. El siguiente código genera un error
+en el compilador que indica que el parámetro `coordsPantalla` es una
 constante y no puede ser modificado:
 
 ```swift
@@ -556,9 +562,9 @@ func mueve(coordsPantalla: CoordsPantalla, incX: Int, incY: Int) {
 // error: cannot assign to property: 'coordsPantalla' is a 'let' constant
 ```
 
-Si queremos modificar un tipo valor, como una estructura, la forma más
-correcta es hacerlo de forma funcional, creando una nueva estructura y
-devolviéndola como resultado:
+Si queremos obtener un valor modificado de un tipo valor, como una
+estructura, la forma más correcta es hacerlo de forma funcional,
+creando una nueva estructura y devolviéndola como resultado:
 
 ```swift
 func mueve(coordsPantalla: CoordsPantalla, incX: Int, incY: Int) -> CoordsPantalla {
@@ -573,6 +579,10 @@ coord1 = mueve(coordsPantalla: coord1, incX: 100, incY: 100)
 print(coord1)
 // Imprime CoordsPantalla(posX: 100, posY: 100)
 ```
+
+Vemos en el código que se crea una nueva instancia y que se modifica
+su valor de forma acorde a lo que quiere hacer la función y que se
+devuelve ese nuevo valor.
 
 Usando esta última función podríamos reescribir el código de la
 función que mueve una ventana de la siguiente forma:
