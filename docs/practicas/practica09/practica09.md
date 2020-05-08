@@ -178,7 +178,7 @@ de nota)
 - listado 4: array ordenado por año de matriculación y nota del
   parcial 3 (orden decreciente de año y nota) 
 - listado 5: array ordenado por nota final (media de los tres
-parciales, ponderados en: 0,34, 0,33, 0,33) (orden decreciente de nota necesaria)
+parciales, ponderados en: 0,34, 0,33, 0,33) (orden decreciente de nota final)
  
 Las ordenaciones hay que realizarlas usando la función `sorted`.
 
