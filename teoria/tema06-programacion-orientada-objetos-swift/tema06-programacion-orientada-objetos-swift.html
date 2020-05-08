@@ -1618,14 +1618,20 @@ esto, Swift proporciona dos operadores de identidad:</p>
   clase definir la implementación de estos operadores.</li>
 </ul>
 <h3 id="paso-como-parametro">Paso como parámetro<a class="headerlink" href="#paso-como-parametro" title="Permanent link">&para;</a></h3>
-<p>El paso como parámetro de una instancia se comporta de forma idéntica
-a la asignación. Si la instancia es una estructura, se pasa como
-parámetro una copia, si la instancia es una clase, se pasa una referencia.</p>
-<p>Por ejemplo, la siguiente función es típica de programación orientada
-a objetos. El parámetro <code>ventana</code> se pasa por referencia y se modifica
+<p>En Swift los parámetros de las funciones son constantes, se definen
+usando el operador <code>let</code>. Esto hace que sea muy distinto el
+comportamiento de un parámetro dependiendo de si es una estructura o
+una clase.</p>
+<p>Si la instancia que se pasa como parámetro a una función es una
+estructura su contenido no se podrá modificar. Sin embargo, si lo que
+se pasa es una instancia de una clase, podremos modificar su
+contenido, ya que (como hemos visto anteriormente) el <code>let</code> hace
+constante únicamente la referencia, pero no el contenido.</p>
+<p>Por ejemplo, la siguiente función es típica de programación imperativa
+o procedural. El parámetro <code>ventana</code> se pasa por referencia y se modifica
 en el interior de la función. Su estado cambia. Una vez terminada la
 función la variable que hemos pasado como parámetro contiene una
-instancia cambiada.</p>
+instancia cambiada. Podemos hacerlo porque <code>ventana</code> es una clase.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1650,10 +1656,9 @@ instancia cambiada.</p>
 </code></pre></div>
 </td></tr></table>
 
-<p>Sin embargo, cuando trabajamos con estructuras lo hacemos con tipos
-valor que se pasan por copia. Además, Swift impide modificar los
-parámetros que son estructuras. El siguiente código genera un error en
-el compilador que indica que el parámetro <code>coordsPantalla</code> es una
+<p>Sin embargo, si pasamos como parámetro una instancia de una
+estructura, ésta será inmutable. El siguiente código genera un error
+en el compilador que indica que el parámetro <code>coordsPantalla</code> es una
 constante y no puede ser modificado:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -1669,9 +1674,9 @@ constante y no puede ser modificado:</p>
 </code></pre></div>
 </td></tr></table>
 
-<p>Si queremos modificar un tipo valor, como una estructura, la forma más
-correcta es hacerlo de forma funcional, creando una nueva estructura y
-devolviéndola como resultado:</p>
+<p>Si queremos obtener un valor modificado de un tipo valor, como una
+estructura, la forma más correcta es hacerlo de forma funcional,
+creando una nueva estructura y devolviéndola como resultado:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1696,6 +1701,9 @@ devolviéndola como resultado:</p>
 </code></pre></div>
 </td></tr></table>
 
+<p>Vemos en el código que se crea una nueva instancia y que se modifica
+su valor de forma acorde a lo que quiere hacer la función y que se
+devuelve ese nuevo valor.</p>
 <p>Usando esta última función podríamos reescribir el código de la
 función que mueve una ventana de la siguiente forma:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
