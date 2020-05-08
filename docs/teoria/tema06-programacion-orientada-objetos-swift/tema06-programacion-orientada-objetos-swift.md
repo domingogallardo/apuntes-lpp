@@ -126,23 +126,30 @@ funciones.
 Como hemos mencionado, a finales de los 60, el lenguaje Simula
 introduce el concepto de clase. Una abstracción que agrupa estado y
 funciones en una única entidad.
-  
+
+<img src="imagenes/smalltalk-desktop.jpg" width="300px" align="right" style="margin:20px"/>
+
 Sin embargo, tuvo que pasar más de una década, hasta principios de los
 80, para que el paradigma orientado a objetos se popularizara. Una de
 las razones principales de esta popularización fue el lenguaje
 [Smalltalk](https://en.wikipedia.org/wiki/Smalltalk), un lenguaje
-creado en Xerox Park que fue revolucionario en muchos aspectos. Por
+creado en Xerox PARC que fue revolucionario en muchos aspectos. Por
 ejemplo, Smaltallk introdujo conceptos como las interfaces gráficas de
 usuario (el uso del ratón, de las ventanas) o un entorno integrado de
 programación que estaba escrito en el propio Smalltalk y que el
-programador podía adaptar y ampliar.
+programador podía adaptar y ampliar. En la figura de la derecha
+podemos ver un ejemplo del entorno, en el que se muestra un ejemplo de
+escritorio con múltiples ventanas que se solapan, menús
+desplegables, paneles gráficos, etc.
+
+<img src="imagenes/alan-kay.jpg" width="300px" align="left" style="margin:20px"/>
 
 [Alan Kay](https://en.wikipedia.org/wiki/Alan_Kay) fue uno de los padres de Smalltalk, el creador del
 término “Object-Oriented” y una de las figuras fundamentales de la
-historia de la informática moderna. Trabajó en Xerox Park y desarrolló
+historia de la informática moderna. Trabajó en Xerox PARC y desarrolló
 allí ideas que han sido clave para la informática personal (como el
 Dynabook, precursor de tablets y dispositivos móviles y el lenguajes
-de programación Smalltalk)
+de programación Smalltalk).
 
 Se puede tener una idea de toda esta gesta en su artículo [“The Early
 History of
