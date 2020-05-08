@@ -192,8 +192,8 @@ orientado a objetos podemos destacar:
   _String_. El primer método suma dos enteros y el segundo concatena
   dos cadenas.
 - En algunos lenguajes orientados a objetos (como Python o Ruby) la
-  invocación los métodos se hace usando un  (**dispatch
-  dinámico**)[https://en.wikipedia.org/wiki/Dynamic_dispatch]: cuando una operación es invocada sobre un
+  invocación los métodos se hace usando un [**dispatch
+  dinámico**](https://en.wikipedia.org/wiki/Dynamic_dispatch): cuando una operación es invocada sobre un
   objeto, el propio objeto determina en tiempo de ejecución qué código se ejecuta. 
 - Una característica fundamental de la POO es la **herencia**. Las clases se pueden definir utilizando otras clases como
   plantillas y modificando sus métodos y/o variables de instancia para
@@ -217,7 +217,7 @@ Ejemplos de este tipo de lenguajes son Smalltalk, Ruby, Python,
 JavaScript o Java (en menor medida).
 
 Por otro lado, existen lenguajes de programación orientados a objetos
-que tienen un alto componente estática, donde la mayoría de
+que tienen un alto componente estático, donde la mayoría de
 características del programa se obtienen en tiempo de compilación. En
 este tipo de lenguajes se prima que el compilador sea muy robusto y
 detecte la mayor cantidad de errores a priori y que genere código muy
