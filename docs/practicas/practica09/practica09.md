@@ -229,16 +229,16 @@ Carla       6.25       1.25     4.23    2
 Luis        6.75       0.25     4.63    2
 Loli        3.00       1.25     2.19    3
 
-LISTADO ORDENADO por Parcial1
+LISTADO ORDENADO por Parcial1 (decreciente)
 Alumno   Parcial1   Parcial2   Parcial3  Años
-Maria       9.10       7.50     8.18    1
-Pepe        8.45       3.75     6.05    1
-Jose        8.00       6.65     7.96    1
-Luis        6.75       0.25     4.63    2
+Loli        3.00       1.25     2.19    3
+Felipe      5.65       0.25     3.16    3
 Carmen      6.25       1.20     5.41    2
 Carla       6.25       1.25     4.23    2
-Felipe      5.65       0.25     3.16    3
-Loli        3.00       1.25     2.19    3
+Luis        6.75       0.25     4.63    2
+Jose        8.00       6.65     7.96    1
+Pepe        8.45       3.75     6.05    1
+Maria       9.10       7.50     8.18    1
 ```
 
 
