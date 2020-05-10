@@ -259,7 +259,7 @@ B) Alumnos que han aprobado la asignatura (tienen una nota final >= 5)
 ```swift
 print(listaAlumnos._______________________________ )
 
-// Resultado:
+// Resultado: ["Pepe", "Maria", "Jose"]
 ```
 
 C) Nota media de todos los alumnos en forma de tupla `(media_p1, media_p2, media_p3)`
