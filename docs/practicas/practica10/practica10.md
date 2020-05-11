@@ -1,4 +1,4 @@
-# Práctica 10: Programación Orientada a Objetos en Swift 1
+# Práctica 10: Programación Orientada a Objetos en Swift
 
 ## Entrega de la práctica
 
