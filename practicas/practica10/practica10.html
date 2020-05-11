@@ -36,7 +36,7 @@
     
     
       
-        <title>Práctica 10: Programación Orientada a Objetos en Swift 1 - LPP</title>
+        <title>Práctica 10 - LPP</title>
       
     
     
@@ -109,7 +109,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Práctica 10: Programación Orientada a Objetos en Swift 1
+                Práctica 10
               
             </span>
           
@@ -332,10 +332,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Prácticas
@@ -455,6 +457,90 @@
   </li>
 
         
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Práctica 10
+      </label>
+    
+    <a href="practica10.html" title="Práctica 10" class="md-nav__link md-nav__link--active">
+      Práctica 10
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1-repaso-de-clausuras" class="md-nav__link">
+    Ejercicio 1 (repaso de clausuras)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -489,8 +575,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ejercicio-1" class="md-nav__link">
-    Ejercicio 1
+  <a href="#ejercicio-1-repaso-de-clausuras" class="md-nav__link">
+    Ejercicio 1 (repaso de clausuras)
   </a>
   
 </li>
@@ -543,7 +629,9 @@
 <p>Para entregar la práctica debes subir a Moodle el fichero
 <code>practica10.swift</code> con una cabecera inicial con tu nombre y apellidos,
 y las soluciones de cada ejercicio separadas por comentarios.</p>
-<h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
+<h3 id="ejercicio-1-repaso-de-clausuras">Ejercicio 1 (repaso de clausuras)<a class="headerlink" href="#ejercicio-1-repaso-de-clausuras" title="Permanent link">&para;</a></h3>
+<p>Un ejercicio de repaso del apartado de clausuras del tema anterior. En
+este caso, se hace énfasis en las clausuras con estado local mutable.</p>
 <p>a) ¿Qué se imprime al ejecutar el siguiente programa? Reflexiona sobre el
 funcionamiento del código, compruébalo con el compilador y experimenta
 haciendo cambios y comprobando el resultado.</p>
@@ -587,11 +675,9 @@ haciendo cambios y comprobando el resultado.</p>
 </code></pre></div>
 </td></tr></table>
 
-<p>b) El siguiente código tiene errores, pero los comentarios indican
-correctamente su intención. Indica cuáles son los errores, cómo
-solucionarlos y qué se imprimirá al ejecutarlo. Después compruébalo
-con el compilador y experimenta haciendo cambios y comprobando el
-resultado.</p>
+<p>b) Completa el siguiente código para que compile y funcione
+correctamente e imprima lo indicado. El hueco puede contener más de
+una línea de código.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -603,30 +689,23 @@ resultado.</p>
  9
 10
 11
-12
-13
-14
-15
-16</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">var</span> <span class="nv">y</span> <span class="p">=</span> <span class="mi">0</span>
-<span class="kd">var</span> <span class="nv">almacen</span><span class="p">:</span> <span class="p">[()</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">var</span> <span class="nv">array</span> <span class="p">:</span> <span class="p">[()</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>
 
-<span class="kd">func</span> <span class="nf">usa2</span><span class="p">(</span><span class="n">funcion</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nv">y</span> <span class="p">=</span> <span class="mi">20</span>
-  <span class="n">almacen</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">funcion</span><span class="p">)</span>
+<span class="kd">func</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Void</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">0</span>
+   <span class="n">array</span><span class="p">.</span><span class="n">append</span> <span class="n">___________</span>
 <span class="p">}</span>
 
-<span class="n">usa2</span> <span class="p">{</span><span class="n">y</span> <span class="p">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">5</span>
-      <span class="k">return</span> <span class="n">y</span><span class="p">}</span>
-
-<span class="c1">// Obtenemos la clausura guardada en almacen</span>
-<span class="kd">let</span> <span class="nv">h</span> <span class="p">=</span> <span class="n">almacen</span><span class="p">[</span><span class="mi">0</span><span class="p">]()</span>
-<span class="c1">// Invocamos a la clausura</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+<span class="n">foo</span><span class="p">()</span>
+<span class="n">foo</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]())</span> <span class="c1">// Imprime 10</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]())</span> <span class="c1">// Imprime 20</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">]())</span> <span class="c1">// Imprime 10</span>
 </code></pre></div>
 </td></tr></table>
 
-<p>c) El siguiente código usa observadores de propiedades y una variable
+<h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
+<p>a) El siguiente código usa observadores de propiedades y una variable
 del tipo (estática). </p>
 <p>¿Qué se imprime al final de su ejecución? Reflexiona sobre el
 funcionamiento del código, compruébalo con el compilador y experimenta
@@ -671,182 +750,23 @@ haciendo cambios y comprobando el resultado.</p>
 </code></pre></div>
 </td></tr></table>
 
-<h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
-<p>Supongamos la siguiente clase <code>MisPalabras</code>:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">class</span> <span class="nc">MisPalabras</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">guardadas</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>
-    <span class="kd">func</span> <span class="nf">guarda</span><span class="p">(</span><span class="n">palabra</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">guardadas</span> <span class="p">=</span> <span class="n">guardadas</span> <span class="o">+</span> <span class="p">[</span><span class="n">palabra</span><span class="p">]</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">let</span> <span class="nv">palabras</span> <span class="p">=</span> <span class="n">MisPalabras</span><span class="p">()</span>
-<span class="n">palabras</span><span class="p">.</span><span class="n">guarda</span><span class="p">(</span><span class="n">palabra</span><span class="p">:</span> <span class="s">&quot;Hola&quot;</span><span class="p">)</span>
-<span class="n">palabras</span><span class="p">.</span><span class="n">guarda</span><span class="p">(</span><span class="n">palabra</span><span class="p">:</span> <span class="s">&quot;me&quot;</span><span class="p">)</span>
-<span class="n">palabras</span><span class="p">.</span><span class="n">guarda</span><span class="p">(</span><span class="n">palabra</span><span class="p">:</span> <span class="s">&quot;llamo&quot;</span><span class="p">)</span>
-<span class="n">palabras</span><span class="p">.</span><span class="n">guarda</span><span class="p">(</span><span class="n">palabra</span><span class="p">:</span> <span class="s">&quot;Yolanda&quot;</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">palabras</span><span class="p">.</span><span class="n">guardadas</span><span class="p">)</span>
-<span class="c1">// [&quot;Hola&quot;, &quot;me&quot;, &quot;llamo&quot;, &quot;Yolanda&quot;]</span>
-</code></pre></div>
-</td></tr></table>
-
-<p>Debes añadir una <strong>propiedad calculada</strong> <code>logitud</code> que devuelva la suma de las
-longitudes de todas las palabras guardadas (usa una función de orden
-superior para calcular esta suma). </p>
-<p>Haz también que sea una <strong>propiedad modificable</strong> de la siguiente forma:</p>
+<p>b) Escribe un ejemplo de código en el que definas una relación de
+herencia entre una clase base y una clase derivada. Comprueba en el
+código que un objeto de la clase derivada hereda las propiedades y
+métodos de la clase base.</p>
+<p>Investiga sobre el funcionamiento de la herencia en Swift. Escribe
+ejemplos en donde compruebes este funcionamiento. Algunos ejemplos de
+preguntas que puedes investigar (puedes añadir tú más preguntas):</p>
 <ul>
-<li>Si se intenta asignar un valor mayor o igual que la longitud de las cadenas
-  guardadas, o un número negativo, no se hace nada.</li>
-<li>Si se asigna un valor menor que la longitud de las cadenas se deben
-  dejar guardadas sólo las palabras que suman esa longitud, recortando la última
-  de ellas si es necesario.</li>
+<li>¿Se puede sobreescribir el valor de una propiedad almacenada? ¿Y
+calculada? </li>
+<li>¿Se puede añadir un observador a una propiedad de la clase base en
+  una clase derivada?</li>
+<li>¿Hereda la clase derivada propiedades y métodos estáticos de la clase base?</li>
+<li>¿Cómo se puede llamar a la implementación de un método de la clase
+  base en una sobreescritura de ese mismo método en la clase derivada?</li>
 </ul>
-<p>Ejemplo:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="n">palabras</span><span class="p">.</span><span class="n">longitud</span><span class="p">)</span>
-<span class="c1">// 18</span>
-<span class="n">palabras</span><span class="p">.</span><span class="n">longitud</span> <span class="p">=</span> <span class="mi">10</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">palabras</span><span class="p">.</span><span class="n">guardadas</span><span class="p">)</span>
-<span class="c1">// [&quot;Hola&quot;, &quot;me&quot;, &quot;llam&quot;]</span>
-</code></pre></div>
-</td></tr></table>
-
-<div class="admonition nota">
-<p class="admonition-title">Ayuda</p>
-<p>Puedes utilizar la siguiente función <code>recorta</code> para recortar una palabra:</p>
-</div>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">recorta</span><span class="p">(</span><span class="kc">_</span> <span class="n">palabra</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">hasta</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="n">hasta</span> <span class="o">&gt;=</span> <span class="n">palabra</span><span class="p">.</span><span class="bp">count</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">palabra</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-       <span class="kd">let</span> <span class="nv">start</span> <span class="p">=</span> <span class="n">palabra</span><span class="p">.</span><span class="n">startIndex</span>
-       <span class="kd">let</span> <span class="nv">end</span> <span class="p">=</span>  <span class="n">palabra</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">offsetBy</span><span class="p">:</span> <span class="n">hasta</span><span class="p">)</span>
-       <span class="k">return</span> <span class="nb">String</span><span class="p">(</span><span class="n">palabra</span><span class="p">[</span><span class="n">start</span><span class="p">..&lt;</span><span class="n">end</span><span class="p">])</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">recorta</span><span class="p">(</span><span class="s">&quot;Hola&quot;</span><span class="p">,</span> <span class="n">hasta</span><span class="p">:</span> <span class="mi">2</span><span class="p">))</span>
-<span class="c1">// Ho</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">recorta</span><span class="p">(</span><span class="s">&quot;Hola&quot;</span><span class="p">,</span> <span class="n">hasta</span><span class="p">:</span> <span class="mi">3</span><span class="p">))</span>
-<span class="c1">// Hol</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">recorta</span><span class="p">(</span><span class="s">&quot;Hola&quot;</span><span class="p">,</span> <span class="n">hasta</span><span class="p">:</span> <span class="mi">4</span><span class="p">))</span>
-<span class="c1">// Hola</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">recorta</span><span class="p">(</span><span class="s">&quot;Hola&quot;</span><span class="p">,</span> <span class="n">hasta</span><span class="p">:</span> <span class="mi">5</span><span class="p">))</span>
-<span class="c1">// Hola</span>
-</code></pre></div>
-</td></tr></table>
-
 <h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
-<p>En este ejercicio vamos a trabajar con estructuras y clases
-geométricas: <code>Punto</code>, <code>Tamaño</code>, <code>Rectangulo</code> y <code>Circulo</code>. Vamos a
-definir propiedades almacenadas y propiedades calculadas para todas
-las figuras geométricas.</p>
-<ul>
-<li>Para usar la función <code>sqrt</code> debes importar la librería <code>Foundation</code>:</li>
-</ul>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">import</span> <span class="nc">Foundation</span>
-</code></pre></div>
-</td></tr></table>
-
-<ul>
-<li>El valor de la constante matemática <em>pi</em> lo puedes obtener con la
-  propiedad <code>Double.pi</code>.</li>
-</ul>
-<p><strong>Estructuras <code>Punto</code> y <code>Tamaño</code></strong></p>
-<p>Las debes declarar tal y como aparecen en los apuntes.</p>
-<p><strong>Estructura <code>Rectangulo</code></strong></p>
-<ul>
-<li>Propiedades de instancia almacenadas: <ul>
-<li><code>origen</code> (<code>Punto</code>) que contiene las coordenadas de la esquina
-  inferior izquierda del rectángulo.</li>
-<li><code>tamaño</code> (<code>Tamaño</code>) que contiene las dimensiones del rectángulo. </li>
-</ul>
-</li>
-<li>Propiedades de instancia calculadas: <ul>
-<li><code>centro</code> (<code>Punto</code>, de lectura y escritura) que devuelve el
-  centro del rectángulo. El <code>setter</code> modifica la posición del
-  rectángulo manteniendo fijo su tamaño.</li>
-<li><code>area</code> (<code>Double</code>, sólo lectura ) que devuelve el área del rectángulo. </li>
-</ul>
-</li>
-</ul>
-<p><strong>Estructura <code>Circulo</code></strong></p>
-<ul>
-<li>Propiedades de instancia almacenadas:<ul>
-<li><code>centro</code> (<code>Punto</code>) que contiene las coordenadas del centro del
-  círculo.</li>
-<li><code>radio</code> (<code>Double</code>) que contiene la longitud del radio.</li>
-</ul>
-</li>
-<li>Propiedades de instancia calculadas:<ul>
-<li><code>area</code> (<code>Double</code>, de lectura y escritura) que devuelve el área
-  del círculo. El <code>setter</code> modifica el tamaño del círculo (su
-  radio), manteniéndolo en la misma posición.</li>
-</ul>
-</li>
-</ul>
-<p><strong>Estructura <code>AlmacenFiguras</code></strong></p>
-<ul>
-<li>Propiedades almacenadas:<ul>
-<li><code>rectangulos</code> y <code>circulos</code> que contienen respectivamente arrays
-  de rectángulos y círculos inicializados a arrays vacíos.</li>
-</ul>
-</li>
-<li>Propiedades calculadas:<ul>
-<li><code>numFiguras</code> (<code>Int</code>) que devuelve el número total de figuras creadas.</li>
-<li><code>areaTotal</code> (<code>Double</code>) que devuelve la suma total de las áreas
-  de todas las figuras creadas.</li>
-</ul>
-</li>
-<li>Métodos:<ul>
-<li><code>añade(rectangulo:)</code> y <code>añade(circulo:)</code> que añaden un
-  rectángulo y un círculo al array correspondiente.</li>
-</ul>
-</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>La definición anterior del almacén de figuras no es demasiado correcta,
-porque se utiliza una variable distinta para cada tipo de figura, sin
-generalizar. En la práctica de la semana que viene veremos cómo
-mejorarlo utilizando protocolos.</p>
-</div>
-<p>Implementa las estructuras anteriores y escribe algún ejemplo de
-código en el que se creen al menos un rectángulo y un círculo, se
-prueben sus propiedades, se añadan al almacén de figuras y se prueben
-sus métodos.</p>
-<h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
 <p>Tenemos que escribir un programa que permita definir resultados de
 partidos de fútbol y calcular la puntuación de un conjunto de equipos
 una vez que se han jugado esos partidos.</p>
@@ -872,32 +792,162 @@ una vez que se han jugado esos partidos.</p>
 18
 19
 20
-21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="err">--------------</span>
-<span class="err">Puntuación antes de los partidos:</span>
-<span class="err">Real Madrid: 0 puntos</span>
-<span class="c">Barcelona: 0 puntos</span>
-<span class="err">Atlético Madrid: 0 puntos</span>
-<span class="c">Valencia: 0 puntos</span>
-<span class="err">Athlétic Bilbao: 0 puntos</span>
-<span class="c">Sevilla: 0 puntos</span>
-<span class="err">--------------</span>
-<span class="c">Resultados:</span>
-<span class="err">Real Madrid 0 - Barcelona 3</span>
-<span class="err">Sevilla 1 - Athlétic Bilbao 1</span>
-<span class="err">Valencia 2 - Atlético Madrid 1</span>
-<span class="err">--------------</span>
-<span class="err">Puntuación después de los partidos:</span>
-<span class="err">Real Madrid: 0 puntos</span>
-<span class="c">Barcelona: 3 puntos</span>
-<span class="err">Atlético Madrid: 0 puntos</span>
-<span class="c">Valencia: 3 puntos</span>
-<span class="err">Athlétic Bilbao: 1 puntos</span>
-<span class="c">Sevilla: 1 puntos</span>
+21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>--------------
+Puntuación antes de los partidos:
+Real Madrid: 0 puntos
+Barcelona: 0 puntos
+Atlético Madrid: 0 puntos
+Valencia: 0 puntos
+Athlétic Bilbao: 0 puntos
+Sevilla: 0 puntos
+--------------
+Resultados:
+Real Madrid 0 - Barcelona 3
+Sevilla 1 - Athlétic Bilbao 1
+Valencia 2 - Atlético Madrid 1
+--------------
+Puntuación después de los partidos:
+Real Madrid: 0 puntos
+Barcelona: 3 puntos
+Atlético Madrid: 0 puntos
+Valencia: 3 puntos
+Athlétic Bilbao: 1 puntos
+Sevilla: 1 puntos
 </code></pre></div>
 </td></tr></table>
 
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2018-19<br />
+<h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
+<p>En este ejercicio vamos a trabajar con figuras geométricas usando estructuras y clases. </p>
+<p>En el ejercicio deberás usar la función para calcular la raíz
+cuadrada y el valor de la constante matemática <em>pi</em>.</p>
+<ul>
+<li>Para usar la función <code>sqrt</code> debes importar la librería <code>Foundation</code>:</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">import</span> <span class="nc">Foundation</span>
+</code></pre></div>
+</td></tr></table>
+
+<ul>
+<li>El valor de la constante matemática <em>pi</em> lo puedes obtener con la
+  propiedad <code>Double.pi</code>.</li>
+</ul>
+<p>Suponemos que estamos trabajando con coordenadas
+de pantalla, en las que la coordenada (0,0) representa la coordenada
+de la esquina superior izquierda de la pantalla. La coordenada Y crece
+hacia abajo y la coordenada X crece hacia la derecha. Las coordenadas
+se definirán con números decimales (<code>Double</code>).</p>
+<p>Vamos a definir las siguientes estructuras y clases:</p>
+<ul>
+<li>Estructuras: <code>Punto</code>, <code>Tamaño</code></li>
+<li>Clases: <code>Figura</code> (clase padre), <code>Rectangulo</code> y <code>Circulo</code> (clases
+derivadas). </li>
+</ul>
+<p><img src="imagenes/figuras.png" width="500px"/></p>
+<p>Vamos a definir propiedades almacenadas y propiedades calculadas para
+todas las figuras geométricas.</p>
+<p><strong>Estructuras <code>Punto</code> y <code>Tamaño</code></strong></p>
+<p>Las debes declarar tal y como aparecen en los apuntes.</p>
+<p><strong>Clase padre <code>Figura</code></strong>:</p>
+<ul>
+<li>Constructor:<ul>
+<li><code>Figura(origen: Punto, tamaño: Tamaño)</code></li>
+</ul>
+</li>
+<li>Propiedades de instancia almacenadas:<ul>
+<li><code>origen</code> (<code>Punto</code>) que define las coordenadas de la esquina
+  superior izquierda del rectángulo que define la figura</li>
+<li><code>tamaño</code> (<code>Tamaño</code>) que define el alto y el ancho del rectángulo
+  que define la figura.</li>
+</ul>
+</li>
+<li>Propiedades de instancia calculadas:<ul>
+<li><code>area</code> (<code>Double</code>, solo lectura) que devuelve el área del
+  rectángulo que engloba la figura.</li>
+<li><code>centro</code> (<code>Punto</code>, propiedad de lectura y escritura). Es el
+  centro del rectángulo que engloba la figura. Si modificamos el
+  centro se modifica la posición del origen de la figura.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Clase derivada <code>Cuadrilatero</code></strong></p>
+<p>Un cuadrilátero se define por cuatro puntos. La figura padre representa el
+rectángulo que engloba los cuatro puntos del cuadrilátero (ver imagen arriba).</p>
+<ul>
+<li>Constructor:<ul>
+<li><code>Cuadrilatero(p1: Punto, p2: Punto, p3: Punto, p4: Punto)</code>. Los
+  puntos se dan en el orden de las El
+  orden de los puntos  definido por el sentido de las agujas
+  del reloj. Suponemos que se . Al crear el cuadrilátero deberemos actualizar las
+  propiedades <code>origen</code> y <code>tamaño</code> de la figura.</li>
+</ul>
+</li>
+<li>Propiedades de instancia almacenadas:<ul>
+<li>Las hereda de la clase padre: <code>origen</code> y <code>tamaño</code>.</li>
+</ul>
+</li>
+<li>Propiedades de instancia calculadas: <ul>
+<li><code>centro</code> (<code>Punto</code>, de lectura y escritura), heredada de la clase
+  padre. El <code>setter</code> modifica la posición de los
+  puntos del cuadrilátero y del origen de la figura,
+  desplazándolos los mismos incrementos en los que ha sido
+  desplazado el centro de la figura.</li>
+<li><code>area</code> (<code>Double</code>, sólo lectura ) que devuelve el <a href="https://www.cuemath.com/coordinate-geometry/area-of-a-quadrilateral/">área del
+  cuadrilátero</a>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Clase derivada <code>Circulo</code></strong></p>
+<p>Un círculo se define por un centro y un radio. La figura padre
+representa el cuadrado más pequeño en el que está inscrito el círculo
+(ver imagen arriba).</p>
+<ul>
+<li>Constructor:<ul>
+<li><code>Circulo(centro: Punto, radio: Double)</code>. Al crear el círculo
+  deberemos actualizar las propiedades <code>origen</code> y <code>tamaño</code> de la
+  figura.</li>
+</ul>
+</li>
+<li>Propiedades de instancia almacenadas:<ul>
+<li><code>radio</code> (<code>Double</code>) que contiene la longitud del radio.</li>
+</ul>
+</li>
+<li>Propiedades de instancia calculadas:<ul>
+<li><code>centro</code> (<code>Punto</code>, de lectura y escritura), heredada de la clase
+  padre.</li>
+<li><code>area</code> (<code>Double</code>, de lectura y escritura) que devuelve el área
+  del círculo. El <code>setter</code> modifica el tamaño del círculo (su
+  radio), manteniéndolo en la misma posición.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Estructura <code>AlmacenFiguras</code></strong></p>
+<ul>
+<li>Propiedades almacenadas:<ul>
+<li><code>figuras</code>: array de figuras</li>
+</ul>
+</li>
+<li>Propiedades calculadas:<ul>
+<li><code>numFiguras</code> (<code>Int</code>) que devuelve el número total de figuras creadas.</li>
+<li><code>areaTotal</code> (<code>Double</code>) que devuelve la suma total de las áreas
+  de todas las figuras creadas.</li>
+</ul>
+</li>
+<li>Método:<ul>
+<li><code>añade(figura:)</code> que añade una figura al array.</li>
+<li><code>desplaza(incX: Double, incY: Double)</code>: desplaza todas las
+  figuras las dimensiones especificadas <code>incX</code> (incremento en la
+  coordenada X) e <code>incY</code> (incremento en la coordenada Y). Se
+  deberán mover los centros de todas las figuras en estas magnitudes.</li>
+</ul>
+</li>
+</ul>
+<p>Implementa las estructuras anteriores y escribe algún ejemplo de
+código en el que se creen al menos un cuadrilátero y un círculo, se
+prueben sus propiedades, se añadan al almacén de figuras y se prueben
+sus métodos.</p>
+<hr />
+<p>Lenguajes y Paradigmas de Programación, curso 2019-20<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
                 
@@ -917,6 +967,27 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../practica09/practica09.html" title="Práctica 9" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Práctica 9
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
