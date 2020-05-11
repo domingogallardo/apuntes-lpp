@@ -64,6 +64,25 @@ print(h)
 print(h)
 ```
 
+c) Completa el siguiente código para que compile y funcione
+correctamente e imprima lo indicado. El hueco puede contener más de
+una línea de código.
+
+```swift
+var array : [() -> Int] = []
+ 
+func foo() -> Void {
+   var x = 0
+   array.append ___________
+}
+ 
+foo()
+foo()
+print(array[0]()) // Imprime 10
+print(array[0]()) // Imprime 20
+print(array[1]()) // Imprime 10
+```
+
 
 ### Ejercicio 2 ###
 
