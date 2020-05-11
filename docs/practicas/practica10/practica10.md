@@ -39,32 +39,7 @@ usa(funcion: g)
 usa(funcion: g)
 ```
 
-b) El siguiente código tiene errores, pero los comentarios indican
-correctamente su intención. Indica cuáles son los errores, cómo
-solucionarlos y qué se imprimirá al ejecutarlo. Después compruébalo
-con el compilador y experimenta haciendo cambios y comprobando el
-resultado.
-
-```swift
-var y = 0
-var almacen: [() -> Int] = []
-
-func usa2(funcion: () -> Int) {
-  var y = 20
-  almacen.append(funcion)
-}
-
-usa2 {y = y + 5
-      return y}
-
-// Obtenemos la clausura guardada en almacen
-let h = almacen[0]()
-// Invocamos a la clausura
-print(h)
-print(h)
-```
-
-c) Completa el siguiente código para que compile y funcione
+b) Completa el siguiente código para que compile y funcione
 correctamente e imprima lo indicado. El hueco puede contener más de
 una línea de código.
 
