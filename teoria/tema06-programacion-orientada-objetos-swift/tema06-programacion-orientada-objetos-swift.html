@@ -1492,19 +1492,28 @@ punto</em>:</p>
 <h3 id="inicializacion-de-las-estructuras-por-sus-propiedades">Inicialización de las estructuras por sus propiedades<a class="headerlink" href="#inicializacion-de-las-estructuras-por-sus-propiedades" title="Permanent link">&para;</a></h3>
 <p>Si en las estructuras no se se definen inicializadores explícitos
 (veremos más adelante cómo hacerlo) podemos utilizar un
-<strong>inicializador <em>memberwise</em></strong> (de todas las propiedades) en el que
-hay que proporcionar los valores de todas sus propiedades.</p>
+<strong>inicializador <em>memberwise</em></strong> en el que
+podemos proporcionar valores de sus propiedades.</p>
 <p>En las clases no existen los inicializadores <em>memberwise</em>, sólo en las
 estructuras.</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">var</span> <span class="nv">coords</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">(</span><span class="n">posX</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="n">posY</span><span class="p">:</span> <span class="mi">400</span><span class="p">)</span>
+<p>Por ejemplo, podemos crear una instancia de la estructura anterior con
+valores distintos de los valores por defecto definidos en la propia
+estructura.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">coords</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">(</span><span class="n">posX</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="n">posY</span><span class="p">:</span> <span class="mi">400</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 
-<p>Es necesario inicializar todas las propiedades. Si no, el compilador
-da un error:</p>
+<p>Cuando se llama al inicializador <em>memberwise</em> podemos omitir valores
+de cualquier propiedad que tenga un valor por defecto, o que sea un
+opcional. En el ejemplo anterior, la estructura <code>CoordsPantalla</code> tiene
+valores por defecto de las propiedades <code>posX</code> y <code>posY</code>. Podríamos
+omitir cualquier propiedad o ambas y el inicializador usará el valor
+por defecto de lo que omitamos. Por ejemplo:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">var</span> <span class="nv">coords2</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">(</span><span class="n">posX</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span>
-<span class="c1">// error</span>
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="kd">let</span> <span class="nv">coords1</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">(</span><span class="n">posX</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">coords1</span><span class="p">.</span><span class="n">posX</span><span class="p">,</span> <span class="n">coords1</span><span class="p">.</span><span class="n">posY</span><span class="p">)</span>
+<span class="c1">// Imprime 200 0</span>
 </code></pre></div>
 </td></tr></table>
 
