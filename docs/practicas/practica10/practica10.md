@@ -196,7 +196,7 @@ Las debes declarar tal y como aparecen en los apuntes.
     - `area` (`Double`, solo lectura) que devuelve el área del
       rectángulo que engloba la figura.
     - `centro` (`Punto`, propiedad de lectura y escritura). Es el
-      centro del rectángulo que engloba la figura. Si modificamos el
+      centro del rectángulo que define la figura. Si modificamos el
       centro se modifica la posición del origen de la figura.
 
 **Clase derivada `Cuadrilatero`**
