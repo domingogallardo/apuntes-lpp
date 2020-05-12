@@ -171,7 +171,7 @@ se definirán con números decimales (`Double`).
 Vamos a definir las siguientes estructuras y clases:
 
 - Estructuras: `Punto`, `Tamaño`
-- Clases: `Figura` (clase padre), `Rectangulo` y `Circulo` (clases
+- Clases: `Figura` (clase padre), `Cuadrilátero` y `Circulo` (clases
 derivadas). 
 
 <img src="imagenes/figuras.png" width="500px"/>
