@@ -206,10 +206,12 @@ rectángulo que engloba los cuatro puntos del cuadrilátero (ver imagen arriba).
 
 - Constructor:
     - `Cuadrilatero(p1: Punto, p2: Punto, p3: Punto, p4: Punto)`. Los
-      puntos se dan en el orden de las El
-      orden de los puntos  definido por el sentido de las agujas
-      del reloj. Suponemos que se . Al crear el cuadrilátero deberemos actualizar las
-      propiedades `origen` y `tamaño` de la figura.
+      puntos se dan en el orden definido por el sentido de las agujas
+      del reloj, aunque no siempre se empezará por el punto que está
+      situado más a la derecha. Al crear el cuadrilátero deberemos
+      actualizar las propiedades `origen` y `tamaño` de la
+      figura. Para calcular estas propiedades deberás obtener las
+      coordenadas x e y mínimas y máximas de todos los puntos.
 - Propiedades de instancia almacenadas:
     - Las hereda de la clase padre: `origen` y `tamaño`.
 - Propiedades de instancia calculadas: 
@@ -235,19 +237,19 @@ representa el cuadrado más pequeño en el que está inscrito el círculo
     - `radio` (`Double`) que contiene la longitud del radio.
 - Propiedades de instancia calculadas:
     - `centro` (`Punto`, de lectura y escritura), heredada de la clase
-      padre.
+      padre. 
     - `area` (`Double`, de lectura y escritura) que devuelve el área
       del círculo. El `setter` modifica el tamaño del círculo (su
-      radio), manteniéndolo en la misma posición.
+      radio), manteniendo el centro en la misma posición.
 
 **Estructura `AlmacenFiguras`**
 
 - Propiedades almacenadas:
-    - `figuras`: array de figuras
+    - `figuras`: array de figuras.
 - Propiedades calculadas:
     - `numFiguras` (`Int`) que devuelve el número total de figuras creadas.
     - `areaTotal` (`Double`) que devuelve la suma total de las áreas
-      de todas las figuras creadas.
+      de todas las figuras añadidas.
 - Método:
     - `añade(figura:)` que añade una figura al array.
     - `desplaza(incX: Double, incY: Double)`: desplaza todas las
