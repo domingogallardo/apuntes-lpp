@@ -376,24 +376,32 @@ unaVentana.esquina.posY = 100
 
 Si en las estructuras no se se definen inicializadores explícitos
 (veremos más adelante cómo hacerlo) podemos utilizar un
-**inicializador _memberwise_** (de todas las propiedades) en el que
-hay que proporcionar los valores de todas sus propiedades.
+**inicializador _memberwise_** en el que
+podemos proporcionar valores de sus propiedades.
 
 En las clases no existen los inicializadores _memberwise_, sólo en las
 estructuras.
 
+Por ejemplo, podemos crear una instancia de la estructura anterior con
+valores distintos de los valores por defecto definidos en la propia
+estructura.
+
 ```swift
-var coords = CoordsPantalla(posX: 200, posY: 400)
+let coords = CoordsPantalla(posX: 200, posY: 400)
 ```
 
-Es necesario inicializar todas las propiedades. Si no, el compilador
-da un error:
-  
-```swift
-var coords2 = CoordsPantalla(posX: 200)
-// error
-```
+Cuando se llama al inicializador _memberwise_ podemos omitir valores
+de cualquier propiedad que tenga un valor por defecto, o que sea un
+opcional. En el ejemplo anterior, la estructura `CoordsPantalla` tiene
+valores por defecto de las propiedades `posX` y `posY`. Podríamos
+omitir cualquier propiedad o ambas y el inicializador usará el valor
+por defecto de lo que omitamos. Por ejemplo:
 
+```swift
+let coords1 = CoordsPantalla(posX: 200)
+print(coords1.posX, coords1.posY)
+// Imprime 200 0
+```
 
 ### Estructuras y enumeraciones son tipos valor
 
