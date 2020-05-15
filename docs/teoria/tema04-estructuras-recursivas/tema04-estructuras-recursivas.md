@@ -1,3 +1,16 @@
+<!--
+Cambiar los apuntes, tanto de hojas como de árboles,
+para que el caso base de la recursión esté fuera de
+la expresión lambda
+
+(define (aplana-fos elem)
+  (if (hoja? elem)
+      (list elem)
+      (foldr append
+             '()
+             (map aplana-fos elem))))
+
+-->
 
 # Tema 4: Estructuras de datos recursivas
 

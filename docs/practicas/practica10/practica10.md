@@ -213,8 +213,8 @@ rectángulo que engloba los cuatro puntos del cuadrilátero (ver imagen arriba).
       figura. Para calcular estas propiedades deberás obtener las
       coordenadas x e y mínimas y máximas de todos los puntos.
 - Propiedades de instancia almacenadas:
-    - Las hereda de la clase padre: `origen` y `tamaño`.
-- Propiedades de instancia calculadas: 
+    - Los puntos del cuadrilátero `p1`, `p2`, `p3` y `p4`.
+- Propiedades de instancia calculadas:
     - `centro` (`Punto`, de lectura y escritura), heredada de la clase
       padre. El `setter` modifica la posición de los
       puntos del cuadrilátero y del origen de la figura,
