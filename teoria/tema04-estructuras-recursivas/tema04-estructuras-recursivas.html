@@ -718,7 +718,21 @@
               
                 
                 
-                <h1 id="tema-4-estructuras-de-datos-recursivas">Tema 4: Estructuras de datos recursivas<a class="headerlink" href="#tema-4-estructuras-de-datos-recursivas" title="Permanent link">&para;</a></h1>
+                <!--
+Cambiar los apuntes, tanto de hojas como de árboles,
+para que el caso base de la recursión esté fuera de
+la expresión lambda
+
+(define (aplana-fos elem)
+  (if (hoja? elem)
+      (list elem)
+      (foldr append
+             '()
+             (map aplana-fos elem))))
+
+-->
+
+<h1 id="tema-4-estructuras-de-datos-recursivas">Tema 4: Estructuras de datos recursivas<a class="headerlink" href="#tema-4-estructuras-de-datos-recursivas" title="Permanent link">&para;</a></h1>
 <h2 id="listas-estructuradas">Listas estructuradas<a class="headerlink" href="#listas-estructuradas" title="Permanent link">&para;</a></h2>
 <p>Hemos visto que las listas en Scheme se implementan como un estructura
 de datos recursiva, formada por una pareja que enlaza en su parte
