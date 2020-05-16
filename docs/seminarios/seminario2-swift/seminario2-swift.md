@@ -162,9 +162,8 @@ comando `swift` necesario para compilar y ejecutar aplicaciones Swift.
 
 #### Instalación de Docker ####
 
-Debes instalar la versión de Docker CE (_Community Edition_)
-correspondiente a tu sistema operativo. Descárgalo [desde esta
-página](https://www.docker.com/community-edition) y sigue las
+Debes instalar la versión de Docker Desckto correspondiente a tu sistema operativo. Descárgalo [desde esta
+página](https://www.docker.com/products/docker-desktop) y sigue las
 instrucciones correspondientes a tu sistema operativo.
 
 !!! Warning "Cuidado"
