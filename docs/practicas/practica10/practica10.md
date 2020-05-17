@@ -247,7 +247,7 @@ representa el cuadrado más pequeño en el que está inscrito el círculo
 - Propiedades almacenadas:
     - `figuras`: array de figuras.
 - Propiedades calculadas:
-    - `numFiguras` (`Int`) que devuelve el número total de figuras creadas.
+    - `numFiguras` (`Int`) que devuelve el número total de figuras añadidas.
     - `areaTotal` (`Double`) que devuelve la suma total de las áreas
       de todas las figuras añadidas.
 - Método:
