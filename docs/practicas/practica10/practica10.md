@@ -162,11 +162,11 @@ import Foundation
 - El valor de la constante matemática _pi_ lo puedes obtener con la
   propiedad `Double.pi`.
 
-Suponemos que estamos trabajando con coordenadas
-de pantalla, en las que la coordenada (0,0) representa la coordenada
-de la esquina superior izquierda de la pantalla. La coordenada Y crece
-hacia abajo y la coordenada X crece hacia la derecha. Las coordenadas
-se definirán con números decimales (`Double`).
+Suponemos que estamos trabajando con coordenadas cartesianas, en las
+que la coordenada (0,0) representa la coordenada de la esquina
+inferior izquierda de la pantalla. La coordenada Y crece hacia arriba y
+la coordenada X crece hacia la derecha. Las coordenadas se definirán
+con números decimales (`Double`).
 
 Vamos a definir las siguientes estructuras y clases:
 
