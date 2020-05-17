@@ -162,11 +162,11 @@ import Foundation
 - El valor de la constante matemática _pi_ lo puedes obtener con la
   propiedad `Double.pi`.
 
-Suponemos que estamos trabajando con coordenadas cartesianas, en las
-que la coordenada (0,0) representa la coordenada de la esquina
-inferior izquierda de la pantalla. La coordenada Y crece hacia arriba y
-la coordenada X crece hacia la derecha. Las coordenadas se definirán
-con números decimales (`Double`).
+Suponemos que estamos trabajando con coordenadas
+de pantalla, en las que la coordenada (0,0) representa la coordenada
+de la esquina superior izquierda de la pantalla. La coordenada Y crece
+hacia abajo y la coordenada X crece hacia la derecha. Las coordenadas
+se definirán con números decimales (`Double`).
 
 Vamos a definir las siguientes estructuras y clases:
 
@@ -212,7 +212,7 @@ rectángulo que engloba los cuatro puntos del cuadrilátero (ver imagen arriba).
       actualizar las propiedades `origen` y `tamaño` de la
       figura. Para calcular estas propiedades deberás obtener las
       coordenadas x e y mínimas y máximas de todos los puntos.
-- Propiedades de instancia almacenadas:
+- Propiedades de instancia almacenadas propias:
     - Los puntos del cuadrilátero `p1`, `p2`, `p3` y `p4`.
 - Propiedades de instancia calculadas:
     - `centro` (`Punto`, de lectura y escritura), heredada de la clase
