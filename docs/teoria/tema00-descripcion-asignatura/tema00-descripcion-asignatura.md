@@ -193,11 +193,11 @@ grupo distinto del asignado.
 Las aulas online en las que se impartirán las clases son las
 siguientes:
 
-- Grupo 1 (jueves de 9:00 a 11:00 h.): aula online
-- Grupo 2 (lunes de 9:00 a 11:00 h.): aula online
-- Grupo 3 (lunes de 15:00 a 17:00 h.): [aula online](https://big9.cpd.ua.es/html5client/join?sessionToken=7zbgqjpzohyrelgs)
-- Grupo 4 (jueves de 17:00 a 19:00 h.): [aula online](https://big26.cpd.ua.es/html5client/join?sessionToken=jrmsacwwwzyebkxq)
-- Grupo I2ADE (lunes de 13:00 a 15:00 h.): [aula online](https://big22.cpd.ua.es/html5client/join?sessionToken=gt5kumg2lyo8yjyd)
+- Grupo 1 (jueves de 9:00 a 11:00 h.): [aula online](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331683&ts=1611139908)
+- Grupo 2 (lunes de 9:00 a 11:00 h.): [aula online](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331684&ts=1611139908)
+- Grupo 3 (lunes de 15:00 a 17:00 h.): [aula online](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331685&ts=1611141615)
+- Grupo 4 (jueves de 17:00 a 19:00 h.): [aula online](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331686&ts=1611141615)
+- Grupo I2ADE (lunes de 13:00 a 15:00 h.): [aula online](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=1221840&ts=1611141615)
 
 En los turnos de prácticas se debe asistir al grupo al que se ha
 asignado. El cambio de turno deberá solicitarse en la Secretaría de la EPS.
