@@ -55,7 +55,7 @@ DrRacket es multiplataforma y puede ejecutarse en Linux, MacOS o
 Windows. Vamos a utilizar la versión 7.5. Puedes descargarla desde el
 siguiente enlace:
 
-[Descarga de DrRacket](https://download.racket-lang.org)
+[Descarga de DrRacket](https://download.racket-lang.org/racket-v7.5.html)
 
 
 #### Configuración de DrRacket
