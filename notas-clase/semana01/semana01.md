@@ -245,33 +245,6 @@ populares.
 - Funciones como tipos de datos primitivos: expresiones lambda y
   funciones de orden superior
 
-
-<p style="margin-bottom:2cm;"></p>
-
-### Orígenes históricos
-
-- Cálculo lambda de Alonzo Curch (1930) basado en definición de
-  funciones matemáticas
-- Equivalencia del cálculo lambda a Máquina de Turing -> es posible
-  computar con funciones matemáticas
-- Llegada de computadores electrónicos -> posibilidad de definir
-  funciones matemáticas y **evaluarlas** en el computador
-
-
-<p style="margin-bottom:2cm;"></p>
-
-### Historia y características del Lisp
-
-- [Lisp](http://en.wikipedia.org/wiki/Lisp_(programming_language)) es
-  el primer lenguaje de programación de alto nivel basado en el
-  paradigma funcional.
-- Creado en 1958 por John McCarthy.
-- Lisp es un lenguaje revolucionario e introduce nuevos conceptos de
-  programación no existentes en la época en la que nace
-- Un número enorme de lenguajes se han creado tomando muchas ideas del Lisp
-- Lisp no es exclusivamente funcional (no es un lenguaje funcional _puro_)
-
-
 <p style="margin-bottom:2cm;"></p>
 
 ### Lenguajes de programación funcional
