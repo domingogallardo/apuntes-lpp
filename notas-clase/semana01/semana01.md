@@ -381,7 +381,19 @@ Uso y evaluación:
 pequeñas e ir construyendo funciones cada vez de mayor nivel usando
 las anteriores.
 
+- No demasiado bien:
+
 ```racket
+(define (suma-cuadrados x y)
+   (+ (* x x) (* y y)))
+```
+
+- Mucho más correcto:
+
+```racket
+(define (cuadrado x)
+   (* x x))
+
 (define (suma-cuadrados x y)
    (+ (cuadrado x) (cuadrado y)))
 ```
