@@ -5,5 +5,5 @@ Despliega **el menú de la izquierda** para consultar los apuntes.
 
 Otros enlaces:
 
-- [Ficha de la asignatura](https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wcodest=C203&wcodasi=34017&wlengua=es&scaca=2019-20)
-- [Plataforma docente Moodle](https://moodle2019-20.ua.es/moodle/course/view.php?id=4822)
+- [Ficha de la asignatura](https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wcodest=C203&wcodasi=34017&wlengua=es&scaca=2020-21)
+- [Plataforma docente Moodle](https://moodle2020-21.ua.es/moodle/course/view.php?id=8242)
