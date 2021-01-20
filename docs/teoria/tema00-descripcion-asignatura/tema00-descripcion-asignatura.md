@@ -188,16 +188,15 @@ La distribución de grupos del curso 2020-21 es la siguiente:
 <img src="imagenes/horario.png" width="800px"/>
 
 En los turnos de teoría es posible, de forma excepcional, asistir a un
-grupo distinto del asignado.
-
-Las aulas online en las que se impartirán las clases son las
+grupo distinto del asignado. Los enlaces a las aulas online en las que se impartirán las clases son los
 siguientes:
 
-- Grupo 1 (jueves de 9:00 a 11:00 h.): [aula online](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331683&ts=1611139908)
-- Grupo 2 (lunes de 9:00 a 11:00 h.): [aula online](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331684&ts=1611139908)
-- Grupo 3 (lunes de 15:00 a 17:00 h.): [aula online](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331685&ts=1611141615)
-- Grupo 4 (jueves de 17:00 a 19:00 h.): [aula online](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331686&ts=1611141615)
-- Grupo I2ADE (lunes de 13:00 a 15:00 h.): [aula online](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=1221840&ts=1611141615)
+- [Grupo 1]((https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331683&ts=1611139908) (jueves de 9:00 a 11:00 h.)
+- [Grupo 2](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331684&ts=1611139908) (lunes de 9:00 a 11:00 h.)
+- [Grupo 3](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331685&ts=1611141615) (lunes de 15:00 a 17:00 h.)
+- [Grupo 4](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331686&ts=1611141615) (jueves de 17:00 a 19:00 h.)
+- [Grupo I2ADE](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=1221840&ts=1611141615)
+  (lunes de 13:00 a 15:00 h.)
 
 En los turnos de prácticas se debe asistir al grupo al que se ha
 asignado. El cambio de turno deberá solicitarse en la Secretaría de la EPS.
