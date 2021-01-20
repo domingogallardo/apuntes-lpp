@@ -191,7 +191,7 @@ En los turnos de teoría es posible, de forma excepcional, asistir a un
 grupo distinto del asignado. Los enlaces a las aulas online en las que se impartirán las clases son los
 siguientes:
 
-- [Grupo 1]((https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331683&ts=1611139908) (jueves de 9:00 a 11:00 h.)
+- [Grupo 1](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331683&ts=1611139908) (jueves de 9:00 a 11:00 h.)
 - [Grupo 2](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331684&ts=1611139908) (lunes de 9:00 a 11:00 h.)
 - [Grupo 3](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331685&ts=1611141615) (lunes de 15:00 a 17:00 h.)
 - [Grupo 4](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331686&ts=1611141615) (jueves de 17:00 a 19:00 h.)
@@ -209,9 +209,9 @@ La asignatura se divide en 3 bloques temáticos, todos ellos de igual
 duración, en los que se utilizará el lenguaje de programación que
 aparece entre paréntesis: 
 
-Programación funcional (temas 1 y 2, Scheme)
-Recursión y estructuras de datos recursivas (temas 3 y 4, Scheme)
-Programación funcional en Swift y programación orientada a objetos (temas 5 y 6, Swift)
+- Programación funcional (temas 1 y 2, Scheme)
+- Recursión y estructuras de datos recursivas (temas 3 y 4, Scheme)
+- Programación funcional en Swift y programación orientada a objetos (temas 5 y 6, Swift)
 
 Se realizarán tres exámenes parciales escritos sobre los conceptos de
 cada uno de los bloques temáticos (teoría y práctica). Los parciales
@@ -227,7 +227,7 @@ fecha del examen oficial de la convocatoria ordinaria de la
 asignatura. 
     
 !!! Danger "Sobre los dispositivos móviles"
-    - Durante la realización de los exámenes no está permitido que llevéis encima
+    Durante la realización de los exámenes no está permitido que llevéis encima
     ningún dispositivo con conexión a internet (smartphones, smart
     watches, tablets, etc). Antes de empezar la prueba, se deberán
     dejar dentro de las mochilas, y éstas en el suelo. En caso de no

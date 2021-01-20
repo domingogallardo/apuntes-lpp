@@ -7,14 +7,18 @@ Notas de clase de la semana 1 de LPP.
 # Tema 0: Presentación de la asignatura
 ---
 
+<p style="margin-bottom:2cm;"></p>
+
 - Usamos
-  [Moodle](https://moodle2019-20.ua.es/moodle/course/view.php?id=4822)
+  [Moodle](https://moodle2020-21.ua.es/moodle/course/view.php?id=8242)
   para mostrar la planificación semanal, subir prácticas,
   etc. 
 - Utilizaremos el foro para enviar avisos. También lo podéis usar
   vosotros para plantear dudas, consultas, etc. Así todos nos
   enteremos de las contestaciones.
 - Los apuntes y prácticas están en la web de apuntes de la asignatura: [https://domingogallardo.github.io/apuntes-lpp/](https://domingogallardo.github.io/apuntes-lpp/).
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Temario
 
@@ -33,48 +37,86 @@ Notas de clase de la semana 1 de LPP.
     - T5. Programación funcional en Swift
     - T6. Programación Orientada a Objetos Avanzada en Swift
 
+<p style="margin-bottom:2cm;"></p>
+
 ### Planificación  ###
 
 <img src="imagenes/planificacion.png" width="800px"/>
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Horarios ###
 
 <img src="imagenes/horario.png" width="800px"/>
 
+En los turnos de teoría es posible, de forma excepcional, asistir a un
+grupo distinto del asignado. Los enlaces a las aulas online en las que se impartirán las clases son los
+siguientes:
+
+- [Grupo 1](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331683&ts=1611139908) (jueves de 9:00 a 11:00 h.)
+- [Grupo 2](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331684&ts=1611139908) (lunes de 9:00 a 11:00 h.)
+- [Grupo 3](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331685&ts=1611141615) (lunes de 15:00 a 17:00 h.)
+- [Grupo 4](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331686&ts=1611141615) (jueves de 17:00 a 19:00 h.)
+- [Grupo I2ADE](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=1221840&ts=1611141615)
+  (lunes de 13:00 a 15:00 h.)
+
+En los turnos de prácticas se debe asistir al grupo al que se ha
+asignado. El cambio de turno deberá solicitarse en la Secretaría de la EPS.
+
+<p style="margin-bottom:2cm;"></p>
+
 ### Prácticas  ###
 
 - 2 seminarios: Scheme y Swift
-- 11 hojas de ejercicios semanales en Scheme (temas 1-4) y Swift
+- 12 hojas de ejercicios semanales en Scheme (temas 1-4) y Swift
   (temas 5-6).
-- Disponible los viernes y se realizarán durante la semana
-  siguiente. Al final de la semana se publicará la solución.
+- Disponibles al comienzo de la semana y se realizarán en las sesiones
+  de prácticas y en casa. Al final de la semana se entregarán en
+  Moodle y se publicará la solución.
 
-### Cuestionarios ###
-
-- Al comienzo de cada sesión de prácticas se realizará en Moodle un
-**cuestionario sobre la hoja de ejercicios de la semana anterior**. La
-superación de los cuestionarios de cada bloque sumará 0,5 puntos a la
-nota del parcial de ese bloque.
-
-- En clase de prácticas explicaremos más detalles sobre el
-  funcionamiento de estos cuestionarios.
+!!! danger "No sirve de nada mirar las soluciones si no has trabajado" 
+    El objetivo de publicar la solución de los ejercicios es
+    que corrijas tú propia solución comparándola con la publicada.
+    En la clase de prácticas podrás preguntar a tu profesor cualquier
+    duda que te pueda surgir de esta revisión. Esta es la forma
+    correcta de aprender a programar. No sirve de nada aprender de
+    memoria las soluciones si no has trabajado previamente los
+    ejercicios.
+    
+<p style="margin-bottom:2cm;"></p>
 
 ### Evaluación
 
-- Tres bloques:
-    - Bloque 1. Programación funcional (Scheme; temas 1, 2; prácticas 1-4)
-    - Bloque 2. Procesos y estructuras recursivas (Scheme; temas 3, 4; prácticas 5-7)
-    - Bloque 3. Programación funcional en Swift y programación orientada a
-      objetos avanzada (Swift; temas 5, 6; prácticas 8-11)
+La asignatura se divide en 3 bloques temáticos, todos ellos de igual
+duración, en los que se utilizará el lenguaje de programación que
+aparece entre paréntesis: 
 
-- Un examen parcial sobre cada uno de los bloques. Cada examen pondera
-  un 33,33% en la nota final (sin nota mínima).
+- Programación funcional (temas 1 y 2, Scheme)
+- Recursión y estructuras de datos recursivas (temas 3 y 4, Scheme)
+- Programación funcional en Swift y programación orientada a objetos (temas 5 y 6, Swift)
 
-- Cuestionarios de prácticas: si se aprueban `n-1` cuestionarios del
-  bloque se consiguen 0,5 puntos que se suman a la nota del parcial
-  del bloque.
+Se realizarán tres exámenes parciales escritos sobre los conceptos de
+cada uno de los bloques temáticos (teoría y práctica). Los parciales
+tendrán la siguiente ponderación en la nota final: 
 
-<img src="imagenes/evaluacion.png" width="600px"/>
+- Parcial 1: 35%
+- Parcial 2: 30%
+- Parcial 3: 35%
+
+No se exige nota mínima en ninguno de los parciales. Los parciales 1 y
+2 se realizarán durante el curso. El parcial 3 se realizará en la
+fecha del examen oficial de la convocatoria ordinaria de la
+asignatura. 
+
+!!! danger "Sobre los dispositivos móviles"
+    Durante la realización de los exámenes no está permitido que llevéis encima
+    ningún dispositivo con conexión a internet (smartphones, smart
+    watches, tablets, etc). Antes de empezar la prueba, se deberán
+    dejar dentro de las mochilas, y éstas en el suelo. En caso de no
+    cumplir alguna esta norma, la prueba queda invalidada con
+    calificación de 0. 
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Consejos para aprender con éxito ###
 
@@ -108,13 +150,16 @@ nota del parcial de ese bloque.
     memorizan los ejercicios de prácticas de las soluciones que se dan
     en clase.
 
----
+<p style="margin-bottom:2cm;"></p>
 
+---
 # Tema 1: Lenguajes de programación.
 
 Tema no presencial para estudiar en casa.
 
 ---
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Algunos lenguajes importantes y su fecha de creación
 
@@ -129,9 +174,13 @@ Tema no presencial para estudiar en casa.
 | 1967 SIMULA |      |    |    |   |  
 
 
+<p style="margin-bottom:2cm;"></p>
+
 ### Genealogía de los lenguajes de programación
 
 <img src="imagenes/genealogia-de-los-lp.png" width="600px"/>
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Lista TIOBE ###
 
@@ -144,6 +193,7 @@ populares.
 
 <img src="imagenes/tpci_trends.png" width="800px"/>
 
+<p style="margin-bottom:2cm;"></p>
 
 ### Paradigmas de programación  ###
 
@@ -154,7 +204,6 @@ populares.
     * Paradigma orientado a objetos (Modula, Java, C++)
 
 ---
-
 # Tema 2: Programación funcional 
 
 ### Veremos hoy
@@ -169,8 +218,9 @@ populares.
     - 2.2. Formas especiales en Scheme: define, if, cond
     - 2.3. Forma especial quote y símbolos
     - 2.4. Listas
-
 ---
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Definición de programación funcional
 
@@ -181,6 +231,9 @@ populares.
 
 - Es posible utilizar este paradigma en muchos lenguajes de
   programación, aunque no sean estrictamente funcionales.
+
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Principales características del paradigma funcional ###
 
@@ -193,6 +246,8 @@ populares.
   funciones de orden superior
 
 
+<p style="margin-bottom:2cm;"></p>
+
 ### Orígenes históricos
 
 - Cálculo lambda de Alonzo Curch (1930) basado en definición de
@@ -202,6 +257,8 @@ populares.
 - Llegada de computadores electrónicos -> posibilidad de definir
   funciones matemáticas y **evaluarlas** en el computador
 
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Historia y características del Lisp
 
@@ -214,6 +271,8 @@ populares.
 - Un número enorme de lenguajes se han creado tomando muchas ideas del Lisp
 - Lisp no es exclusivamente funcional (no es un lenguaje funcional _puro_)
 
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Lenguajes de programación funcional
 
@@ -235,6 +294,8 @@ Lenguaje funcional puro más importante:
 - [Haskell](https://en.wikipedia.org/wiki/Haskell_(programming_language))
 
 
+<p style="margin-bottom:2cm;"></p>
+
 ### Aplicaciones prácticas de la programación funcional
 
 - Paradigma muy popular en la actualidad
@@ -253,6 +314,9 @@ Lenguaje funcional puro más importante:
       programación de sistemas distribuidos en Internet.
     - la programación interactiva y evolutiva.
 
+
+<p style="margin-bottom:2cm;"></p>
+
 ### Evaluación de expresiones y definición de funciones
 
 - En la asignatura usaremos Scheme como primer lenguaje en el que
@@ -264,6 +328,8 @@ Lenguaje funcional puro más importante:
 
 - Vamos a empezar a ver ejemplo concretos de programación funcional
   viendo cómo se evalúan expresiones y cómo se definen funciones en Scheme.
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Evaluación de expresiones
 
@@ -307,6 +373,8 @@ Uso y evaluación:
 (cuadrado (+ 10 (cuadrado (+ 2 4)))) ⇒ 2116
 ```
 
+<p style="margin-bottom:2cm;"></p>
+
 ### Definición de funciones auxiliares
 
 - Lo habitual en programación funcional es definir funciones muy
@@ -318,11 +386,15 @@ las anteriores.
    (+ (cuadrado x) (cuadrado y)))
 ```
 
+<p style="margin-bottom:2cm;"></p>
+
 ### Funciones puras
 
 - No modifican los parámetros que se les pasa
 - Devuelven un único resultado
 - No tienen estado local ni el resultado depende de un estado exterior mutable
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Composición de funciones
 
@@ -343,6 +415,7 @@ funciones que transforman unos datos de entrada en otros de salida.
 ```
 
 
+<p style="margin-bottom:2cm;"></p>
 
 ### Programación declarativa
 
@@ -379,6 +452,8 @@ que transforman datos de entrada en datos de salida.
 (cuadrado 4) ; devuelve 16
 ```
 
+<p style="margin-bottom:2cm;"></p>
+
 ### Programación imperativa
 
 - Lenguajes tradicionales (C, C++, Java, Python, etc.)
@@ -390,6 +465,8 @@ Características:
 - Efectos laterales
 - Estado local mutable en las funciones
 
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Pasos de ejecución
 
@@ -422,6 +499,8 @@ se expresan de la siguiente forma en programación funcional:
 (procesa (filtra pedidos))
 ```
 
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Mutación 
 
@@ -456,6 +535,7 @@ En lenguajes imperativos también hay sentencias declarativas:
 4. y = x;       // imperativa
 ```
 
+<p style="margin-bottom:2cm;"></p>
 
 ### Mutación y efectos laterales
 
@@ -484,6 +564,9 @@ p1.getCoordX(); // la coord x de p1 es 10.0, sin que ninguna sentencia haya modi
   eficientes, pero también generan _bugs_ complicados de
   depurar. Sobre todo cuando se están programando sistemas
   concurrentes con múltiples hilos de ejecución.
+
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Estado local mutable
 
@@ -529,6 +612,7 @@ contador() ;; 3
 de *transparencia referencial*: si se sustituye una expresión por su
 valor el resultado final no debe cambiar. -> funciones no modifican estado.
 
+<p style="margin-bottom:2cm;"></p>
 
 ### Resumen
 
@@ -547,6 +631,9 @@ valor el resultado final no debe cambiar. -> funciones no modifican estado.
 * Referencias
 * Pasos de ejecución
 
+
+<p style="margin-bottom:2cm;"></p>
+
 ### Programación funcional
 
 Primeras características que vamos a ver hoy:
@@ -555,6 +642,8 @@ Primeras características que vamos a ver hoy:
 - Definición de funciones
 - Funciones puras
 - Modelo de computación de sustitución
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Modelo de computación de sustitución
 
@@ -656,12 +745,17 @@ Ejemplo de resultado distinto con funciones no puras:
 (zero (random 10))
 ```
 
+<p style="margin-bottom:2cm;"></p>
+
 ### Funciones y formas especiales en Scheme 
 
 - Primitivas de Scheme: funciones y formas especiales
 - Las funciones se evalúan con el modelo de evaluación visto. 
 - Las *formas especiales* son expresiones primitivas de Scheme que
 tienen una forma de evaluarse propia, distinta de las funciones.
+
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Forma especial `define`
 
@@ -683,6 +777,8 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 (define altura 12) ; Asociamos a 'altura' el valor 12
 (define area (/ (* base altura) 2)) ; Asociamos a 'area' el valor 60
 ```
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Forma especial `define` para definir funciones
 
@@ -707,6 +803,9 @@ tienen una forma de evaluarse propia, distinta de las funciones.
         (* x (factorial (- x 1)))))
 ```
 
+
+<p style="margin-bottom:2cm;"></p>
+
 ### Forma especial `if`
 
 **Sintaxis**
@@ -730,6 +829,8 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 ;; (substring "Hola qué tal" (+ 1 1) 4), que devuelve "la"
 
 ```
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Forma especial `cond`
 
@@ -767,6 +868,8 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 ;; (< 2 1), (= 3 1) y (> 3 5). Como ninguna de ella
 ;; es cierta se devuelve la cadena "ninguna condición es cierta"
 ```
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Forma especial `quote` y símbolos
 
@@ -839,6 +942,8 @@ sin
 ⇒ #<procedure:cuadrado>
 ```
 
+<p style="margin-bottom:2cm;"></p>
+
 ### Símbolos como tipos primitivos
 
 Los símbolos son tipos primitivos del lenguaje: pueden pasarse como
@@ -849,6 +954,8 @@ parámetros o ligarse a variables.
 x
 ⇒ hola
 ```
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Forma especial `quote` y expresiones
 
@@ -876,6 +983,8 @@ expresión (sin evaluar sus elementos).
 '((1 . 2) (2 . 3)) ; ⇒ Una lista con las parejas (1 . 2) y (2 . 3)
 ```
 
+<p style="margin-bottom:2cm;"></p>
+
 ### Listas ###
 
 - En el seminario de Scheme hemos visto que una de sus características
@@ -883,6 +992,8 @@ principales es el uso de listas.
 
 - Repasamos las funciones más importantes y explicamos el uso de la
   forma especial `quote` para construir listas.
+
+<p style="margin-bottom:2cm;"></p>
 
 ### Función `list` y forma especial `quote`
 
@@ -932,6 +1043,8 @@ La última lista tiene 3 elementos:
 '(1 (/ 2 3) (+ 2 3)) ; ⇒ (1 (/ 2 3) (+ 2 3))
 ```
 
+<p style="margin-bottom:2cm;"></p>
+
 ### Selección de elementos de una lista: `car` y `cdr`
 
 - Primer elemento: función `car`
@@ -948,6 +1061,7 @@ Ejemplos:
 (cdr lista2) ; ⇒ (3 4)
 ```
 
+<p style="margin-bottom:2cm;"></p>
 
 ### Composición de listas: `cons` y `append`
 
