@@ -389,7 +389,8 @@ funciones que transforman unos datos de entrada en otros de salida.
 
 <img src="imagenes/composicion-funciones.png" width="700px"/>
 
-- En un lenguaje de programación funcional como Scheme:
+- En un lenguaje de programación funcional como Scheme (cuidado: la evaluación
+  se hace de dentro a afuera):
 
 ```racket
 (define (conduce-vehiculo imagenes)
