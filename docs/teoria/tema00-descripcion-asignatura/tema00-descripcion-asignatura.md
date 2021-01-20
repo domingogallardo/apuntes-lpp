@@ -9,10 +9,10 @@ prácticas de 2 h. a la semana
 **Profesores**:  
 
 * Antonio Botía ([e-mail](mailto:abotia@dccia.ua.es)): Grupos de
-  prácticas: 2, 9 y 401
+  prácticas: 2, 9 y 402
 * Domingo Gallardo ([e-mail](mailto:domingo.gallardo@ua.es)): Profesor
   coordinador de la asignatura. Grupos de teoría: 3, 4 y 40. Grupos de
-  prácticas: 402
+  prácticas: 401
 * Francisco Martínez ([e-mail](mailto:fmartine@ua.es)): Grupos de
   prácticas: 4, 5, 6 y 8
 * Cristina Pomares ([e-mail](mailto:cpomares@ua.es)): Grupos de
@@ -20,12 +20,12 @@ prácticas de 2 h. a la semana
 
 ## Recursos de la asignatura
 
-* [Ficha de la asignatura](https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wCodEst=C203&wcodasi=34017&wlengua=es&scaca=2019-20)
+* [Ficha de la asignatura](https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wCodEst=C203&wcodasi=34017&wlengua=es&scaca=2020-21)
 * [Apuntes de la asignatura (teoría, seminarios y prácticas)](https://domingogallardo.github.io/apuntes-lpp/)
-* [Sitio Moodle](https://moodle2019-20.ua.es/moodle/course/view.php?id=4822)
+* [Sitio Moodle](https://moodle2020-21.ua.es/moodle/course/view.php?id=8242)
   abierto y accesible a toda la comunidad educativa, contiene los
   apuntes, transparencias, prácticas y otros materiales docentes
-* [Foro de consultas y anuncios](https://moodle2019-20.ua.es/moodle/mod/forum/view.php?id=42798)
+* [Foro de consultas y anuncios](https://moodle2020-21.ua.es/moodle/mod/forum/view.php?id=80350)
   en el sitio Moodle (sólo accesible a estudiantes)
 
 ## Objetivos y competencias
@@ -62,11 +62,15 @@ dominios concretos.
   procedimientos y estructuras de datos (listas y árboles).
 * Ser capaz de diseñar, implementar y corregir programas funcionales,
   en concreto utilizando el lenguaje de programación Scheme.
-* Ser capaz de implementar programas sencillos en Swift, en los que se
-  utilicen las características multi-paradigma del lenguaje.
-* Comparar el paradigma orientado a objetos con el paradigma
-  procedural clásico, reconociendo las ventajas que aporta en cuanto a
-  abstracción, reutilización y modificación de código.
+* Ser capaz de diseñar, implementar y corregir programas funcionales,
+  en concreto utilizando el lenguaje de programación Swift.
+* Conocer las características de programación orientada a
+  objetos y de comprobación estática de tipos del lenguaje de
+  programación Swift. Conocer el uso de genéricos y protocolos que
+  proporciona el lenguaje.
+* Ser capaz de implementar programas en Swift en los que se
+  utilicen sus características de programación orientada a objetos,
+  genéricos y protocolos.
 
 ## Temario
 
@@ -122,7 +126,7 @@ impartidos en las clases de prácticas.
   historia del paradigma de Programación Orientada a
   Objetos. Estructuras y clases en Swift. Herencia. Conceptos
   avanzados de POO en Swift: Extensiones, Protocolos y
-  Genéricos. Gestión de errores.
+  Genéricos.
 
 El calendario de temas, prácticas y exámenes se puede ver en la
 siguiente figura.
@@ -149,94 +153,25 @@ Cada práctica consistirá en la resolución de una **hoja de ejercicios**
 con 5 o 6 pequeños problemas de programación relacionados con la
 teoría vista durante la semana.
 
-Se realizarán 11 sesiones de ejercicios de prácticas de una semana de
+Se realizarán 12 sesiones de ejercicios de prácticas de una semana de
 duración y 2 seminarios sobre los anteriores lenguajes de programación.
 
-La hoja de ejercicios estará disponible el viernes y se dispondrá de
-toda la semana siguiente para su realización y su entrega en
-Moodle. La entrega se cerrará el viernes por la noche.
+La hoja de ejercicios estará disponible al comienzo de la semana y se
+dispondrá de toda la semana siguiente para su realización y su entrega
+en Moodle. La entrega se cerrará el último día de la semana. Al día
+siguiente se publicará la solución.
 
-En la clase de prácticas se trabajará en esa hoja de
-ejercicios. Durante la sesión de prácticas el profesor estará
+En la clase de prácticas resolverán dudas sobre la solución de
+la práctica anterior y se trabajará en la hoja de ejercicios publicada
+esa semana. Durante la sesión de prácticas el profesor estará
 disponible para resolver dudas y dar pistas sobre cómo atacar los
-problemas. También durante la semana se podrán consultar las dudas que
+problemas. 
+
+También durante la semana se podrán consultar las dudas que
 puedan surgir en el foro de la asignatura (en Moodle) y con tutorías a
 los profesores. Es preferible el foro, porque de esta forma las
 contestaciones y aclaraciones serán compartidas con el resto de
 compañeros.
-
-Al final de la semana de realización de la hoja de ejercicios se
-publicará su solución.
-
-### Cuestionarios ###
-
-Al comienzo de cada sesión de prácticas se realizará un **cuestionario
-sobre la hoja de ejercicios de la semana anterior**. La superación de
-los cuestionarios de cada bloque sumará 0,5 puntos a la nota del
-parcial de ese bloque (ver el apartado de evaluación).
-
-Los cuestionarios constarán de 3 preguntas cortas **sobre la práctica
-y sobre los conceptos de teoría asociados**. Dentro de cada bloque
-temático deberás haber **aprobado los cuestionarios previos para poder
-realizar el cuestionario actual**. Se permitirá recuperar los
-cuestionarios previos suspendidos, **una vez por sesión** y siempre
-**dentro del tiempo** destinado a la realización de los mismos. Sólo
-se podrán recuperar cuestionarios del bloque temático actual.
-
-El cuestionario se realizará en Moodle y se evaluará con una
-calificación de 0 a 10 (aprobando con una nota >= 5). Constará de 3
-preguntas de igual puntuación (3,333 puntos). En cada pregunta se
-permitirán 3 intentos y cada intento fallado descontará 1/3 de la
-puntuación de la pregunta (1,111 puntos). De esta forma, para aprobar
-un cuestionario se podrán fallar como máximo 4 intentos.
-
-Tendrás que tener cuidado al escribir las respuestas de los
-cuestionarios. Deberás escribirlas de forma totalmente correcta,
-**incluyendo los espacios en blanco**. Deberás fijarte en los ejemplos
-que proporcionamos en teoría y en los resultados de la ejecución de
-expresiones en el intérprete del lenguaje.
-
-A continuación puedes ver ejemplos incorrectos y correctos de
-contestación de un cuestionario.
-
-<img src="imagenes/respuestas-cuestionario.png" width="500px"/>
-
-
-### Normas para realización de los cuestionarios ###
-
-- Cada cuestionario tendrá una duración máxima de 10 minutos.
-- La realización de cuestionarios comenzará puntualmente a los 5
-  minutos de empezar la clase de prácticas y durará 20 minutos, para
-  permitir recuperar algún cuestionario anterior suspendido.
-- Deberás realizar los cuestionarios en el grupo de prácticas en el
-  que está matriculado y en el aula en la que se imparte ese grupo
-  de prácticas.
-- Se deberán realizar en los ordenadores del aula. De forma
-  excepcional, si no hay ordenadores libres, podrás utilizar tu
-  portátil, pero sentado cerca de la mesa del profesor y con la
-  pantalla en su dirección.
-- Durante la realización del cuestionario únicamente deberás tener
-  abierta la ventana del navegador en la que estás realizándolo. Está
-  prohibido abrir cualquier otra ventana o aplicación.
-- Durante la realización del cuestionario no deberás tener acceso
-  al móvil.
-- Una vez realizado un cuestionario, quedará bloqueado y no se podrá
-  repetir hasta que haya pasado exactamente una semana. Por ello es
-  muy importante que todas las semanas asistas al mismo grupo de
-  prácticas. Una vez comenzados los cuestionarios no será posible
-  realizar cambios de grupo en las prácticas.
-
-### Comportamiento indebido en la realización de cuestionarios
-
-Cualquiera de las siguientes acciones se consideran un comportamiento
-indebido, y se penalizarán con la anulación de todos los cuestionarios
-del bloque temático:
-
-- Realizar un cuestionario fuera de tu grupo de prácticas.
-- Tener abiertas otras aplicaciones mientras se está realizando el
-  cuestionario.
-- Realizar fotografías o capturas de pantallas de las preguntas del
-  cuestionario. 
 
 ### Uso del software iTALC ###
 
@@ -244,44 +179,62 @@ Durante el desarrollo de las sesiones prácticas es obligatorio usar el
 ordenador del aula y no el portátil personal. El profesor de prácticas
 abrirá el programa iTALC, con el que podrá comprobar cómo estáis
 desarrollando los ejercicios y podrá haceros recomendaciones cuando lo
-considere oportuno. Además se utilizará iTALC para vigilar la
-contestación de los cuestionarios.
-
+considere oportuno. 
 
 ## Horarios
 
-La distribución de grupos del curso 2019-20 es la siguiente:
+La distribución de grupos del curso 2020-21 es la siguiente:
 
 <img src="imagenes/horario.png" width="800px"/>
 
+En los turnos de teoría es posible, de forma excepcional, asistir a un
+grupo distinto del asignado.
+
+Las aulas online en las que se impartirán las clases son las
+siguientes:
+
+- Grupo 1 (jueves de 9:00 a 11:00 h.): aula online
+- Grupo 2 (lunes de 9:00 a 11:00 h.): aula online
+- Grupo 3 (lunes de 15:00 a 17:00 h.): [aula online](https://big9.cpd.ua.es/html5client/join?sessionToken=7zbgqjpzohyrelgs)
+- Grupo 4 (jueves de 17:00 a 19:00 h.): [aula online](https://big26.cpd.ua.es/html5client/join?sessionToken=jrmsacwwwzyebkxq)
+- Grupo I2ADE (lunes de 13:00 a 15:00 h.): [aula online](https://big22.cpd.ua.es/html5client/join?sessionToken=gt5kumg2lyo8yjyd)
+
+En los turnos de prácticas se debe asistir al grupo al que se ha
+asignado. El cambio de turno deberá solicitarse en la Secretaría de la EPS.
+
 ## Evaluación
 
-### Convocatoria normal C3 (evaluación continua)
+### Convocatoria ordinaria C3 (evaluación continua)
 
-Para cada bloque temático se realizará un examen parcial. En cada
-bloque temático se pueden obtener 0,5 puntos adicionales que se suman
-a la nota del parcial. Los puntos adicionales se obtienen si se
-aprueban n-1 cuestionarios del bloque. 
+La asignatura se divide en 3 bloques temáticos, todos ellos de igual
+duración, en los que se utilizará el lenguaje de programación que
+aparece entre paréntesis: 
 
-Cada bloque pondera 1/3 en la nota final. No hay nota mínima en
-ningún bloque.
+Programación funcional (temas 1 y 2, Scheme)
+Recursión y estructuras de datos recursivas (temas 3 y 4, Scheme)
+Programación funcional en Swift y programación orientada a objetos (temas 5 y 6, Swift)
 
-La siguiente figura resume la evaluación:
+Se realizarán tres exámenes parciales escritos sobre los conceptos de
+cada uno de los bloques temáticos (teoría y práctica). Los parciales
+tendrán la siguiente ponderación en la nota final: 
 
-<img src="imagenes/evaluacion.png" width="800px"/>
+- Parcial 1: 35%
+- Parcial 2: 30%
+- Parcial 3: 35%
 
+No se exige nota mínima en ninguno de los parciales. Los parciales 1 y
+2 se realizarán durante el curso. El parcial 3 se realizará en la
+fecha del examen oficial de la convocatoria ordinaria de la
+asignatura. 
     
 !!! Danger "Sobre los dispositivos móviles"
-    - Como norma básica de todas las pruebas de evaluación de esta
-    asignatura (cuestionarios y exámenes escritos), durante la
-    realización de los mismos no está permitido que llevéis encima
-    ningún dispositivo con conexión a internet (smart phones, smart
+    - Durante la realización de los exámenes no está permitido que llevéis encima
+    ningún dispositivo con conexión a internet (smartphones, smart
     watches, tablets, etc). Antes de empezar la prueba, se deberán
     dejar dentro de las mochilas, y éstas en el suelo. En caso de no
     cumplir alguna esta norma, la prueba queda invalidada con
     calificación de 0. 
     
-
 ### Convocatoria extraordinaria C4
 
 En la convocatoria extraordinaria se realizará un examen final sobre
@@ -374,22 +327,18 @@ En Moodle se publican los apuntes de la asignatura, con ejercicios,
 explicaciones y ejemplos de todos los conceptos estudiados, tanto en
 teoría como en práctica.
 
-Para ampliar algunos conceptos se recomiendan los dos siguientes manuales:
+Para ampliar algunos conceptos se recomiendan las siguientes referencias:
 
-<img src="imagenes/sicp-cover.jpg" width="170px"/>
 
-* Harold Abelson y Gerald Jay Sussman, *Structure and Interpretation
-  of Computer Programs*, MIT Press, 1996
-* [Enlace a la edición on-line](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html)
-* Signatura en la Biblioteca Politécnica: I.06/ABE/STR
+- Harold Abelson y Gerald Jay Sussman, *Structure and Interpretation of Computer Programs*, MIT Press, 1996
+    - [Enlace a la edición on-line](http://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html)
+    - Signatura en la Biblioteca Politécnica: I.06/ABE/STR
+- Apple, [_The Swift Programming Language_](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/)
+- [_The Racket Guide_](https://docs.racket-lang.org/guide/index.html)
 
-<img src="imagenes/swift-cover.png" width="170px"/>
-
-* Apple, *The Swift Programming Language (Swift 4.2)*, 2019
-* [Web](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/)
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2019-20  
+Lenguajes y Paradigmas de Programación, curso 2020-21  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
