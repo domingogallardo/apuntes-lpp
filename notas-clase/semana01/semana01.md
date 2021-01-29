@@ -620,17 +620,6 @@ valor el resultado final no debe cambiar. -> funciones no modifican estado.
 
 <p style="margin-bottom:2cm;"></p>
 
-### Programación funcional
-
-Primeras características que vamos a ver hoy:
-
-- Evaluación de expresiones
-- Definición de funciones
-- Funciones puras
-- Modelo de computación de sustitución
-
-<p style="margin-bottom:2cm;"></p>
-
 ### Modelo de computación de sustitución
 
 - El **modelo de sustitución** es un modelo muy sencillo que permite
@@ -881,8 +870,9 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 variables) son datos del lenguaje de tipo **symbol**. 
 
 - Los símbolos son distintos de las cadenas. Una cadena es un tipo de
-dato compuesto, mientras que los símbolos se almacenan con un valor
-único denominado *valor hash*.
+dato compuesto formado por caracteres que podemos concatenar, dividir
+en subcadenas, etc. Nada de esto lo podemos hacer con un símbolo. Un
+símbolo es un tipo atómico, es sólo un identificador.
 
 Ejemplos de funciones Scheme con símbolos:
 
