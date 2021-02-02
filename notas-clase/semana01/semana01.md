@@ -76,7 +76,7 @@ asignado. El cambio de turno deberá solicitarse en la Secretaría de la EPS.
 
 !!! danger "No sirve de nada mirar las soluciones si no has trabajado" 
     El objetivo de publicar la solución de los ejercicios es
-    que corrijas tú propia solución comparándola con la publicada.
+    que corrijas tu propia solución comparándola con la publicada.
     En la clase de prácticas podrás preguntar a tu profesor cualquier
     duda que te pueda surgir de esta revisión. Esta es la forma
     correcta de aprender a programar. No sirve de nada aprender de
@@ -113,7 +113,7 @@ asignatura.
     ningún dispositivo con conexión a internet (smartphones, smart
     watches, tablets, etc). Antes de empezar la prueba, se deberán
     dejar dentro de las mochilas, y éstas en el suelo. En caso de no
-    cumplir alguna esta norma, la prueba queda invalidada con
+    cumplir esta norma, la prueba queda invalidada con
     calificación de 0. 
 
 <p style="margin-bottom:2cm;"></p>
@@ -123,8 +123,8 @@ asignatura.
 - Consejos:
      - Trabajar todas las semanas y seguir el ritmo de la asignatura.
      - Trabajar todos los ejemplos de teoría, probándolos en el
-       ordenador y entendiéndolos (no aprenderlos de memoria)
-     - Usar lápiz y papel para enfrentarse con los problemas
+       ordenador y entendiéndolos (no aprenderlos de memoria).
+     - Usar lápiz y papel para enfrentarse con los problemas.
 
 - Algunos comentarios:
 
