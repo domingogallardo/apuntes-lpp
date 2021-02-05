@@ -1075,6 +1075,35 @@ expresión (sin evaluar sus elementos).</p>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
+<h3>Forma especial <code>eval</code></h3>
+<p>La forma especial <code>eval</code> es una instrucción muy curiosa de los
+lenguajes funcionales. Permite invocar al intérprete en tiempo de
+ejecución y hacer que éste evalúe una expresión que puede haberse
+construido dinámicamente.</p>
+<p><strong>Sintaxis</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">eval</span> <span class="n">&lt;identificador&gt;</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">eval</span> <span class="n">&lt;expresión&gt;</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Evaluación</strong></p>
+<p>La forma especial <code>eval</code> evalúa el identificador o la expresión
+recibida.</p>
+<p><strong>Ejemplos</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="mi">10</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
+
+<span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ 6</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="n">l1</span> <span class="p">(</span><span class="nb">list</span> <span class="o">&#39;</span><span class="ss">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">eval</span> <span class="n">l1</span><span class="p">)</span> <span class="c1">; ⇒ 6</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="mi">10</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">x</span> <span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span>
+<span class="n">x</span> <span class="c1">; ⇒ a</span>
+<span class="p">(</span><span class="nb">eval</span> <span class="n">x</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
+<span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="ss">x</span><span class="p">)</span> <span class="c1">; ⇒ a</span>
+</code></pre></div>
+<p style="margin-bottom:2cm;"></p>
+
 <h3>Listas</h3>
 <ul>
 <li>

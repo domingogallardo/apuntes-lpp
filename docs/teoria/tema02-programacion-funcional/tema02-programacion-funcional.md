@@ -1573,6 +1573,43 @@ expresión (sin evaluar sus elementos).
 '((1 . 2) (2 . 3)) ; ⇒ Una lista con las parejas (1 . 2) y (2 . 3)
 ```
 
+### Forma especial `eval` ###
+
+La forma especial `eval` es una instrucción muy curiosa de los
+lenguajes funcionales. Permite invocar al intérprete en tiempo de
+ejecución y hacer que éste evalúe una expresión que puede haberse
+construido dinámicamente.
+
+**Sintaxis**
+
+```racket
+(eval <identificador>)
+(eval <expresión>)
+```
+
+**Evaluación**
+
+La forma especial `eval` evalúa el identificador o la expresión
+recibida.
+
+**Ejemplos**
+
+```racket
+(define a 10)
+(eval 'a) ; ⇒ 10
+
+(eval '(+ 1 2 3)) ; ⇒ 6
+
+(define l1 (list '+ 1 2 3))
+(eval l1) ; ⇒ 6
+
+(define a 10)
+(define x 'a)
+x ; ⇒ a
+(eval x) ; ⇒ 10
+(eval 'x) ; ⇒ a
+```
+
 ### Listas
 
 Otra de las características fundamentales del paradigma funcional es

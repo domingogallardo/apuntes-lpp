@@ -961,6 +961,47 @@ expresión (sin evaluar sus elementos).
 
 <p style="margin-bottom:2cm;"></p>
 
+
+### Forma especial `eval` ###
+
+La forma especial `eval` es una instrucción muy curiosa de los
+lenguajes funcionales. Permite invocar al intérprete en tiempo de
+ejecución y hacer que éste evalúe una expresión que puede haberse
+construido dinámicamente.
+
+**Sintaxis**
+
+```racket
+(eval <identificador>)
+(eval <expresión>)
+```
+
+**Evaluación**
+
+La forma especial `eval` evalúa el identificador o la expresión
+recibida.
+
+**Ejemplos**
+
+```racket
+(define a 10)
+(eval 'a) ; ⇒ 10
+
+(eval '(+ 1 2 3)) ; ⇒ 6
+
+(define l1 (list '+ 1 2 3))
+(eval l1) ; ⇒ 6
+
+(define a 10)
+(define x 'a)
+x ; ⇒ a
+(eval x) ; ⇒ 10
+(eval 'x) ; ⇒ a
+```
+
+<p style="margin-bottom:2cm;"></p>
+
+
 ### Listas ###
 
 - En el seminario de Scheme hemos visto que una de sus características
