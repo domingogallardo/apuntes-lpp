@@ -1573,7 +1573,7 @@ expresión (sin evaluar sus elementos).
 '((1 . 2) (2 . 3)) ; ⇒ Una lista con las parejas (1 . 2) y (2 . 3)
 ```
 
-### Forma especial `eval` ###
+### Función `eval` ###
 
 Una vez vista la forma especial `quote` podemos explicar la función
 `eval`. La función `eval` es una instrucción muy curiosa de los
