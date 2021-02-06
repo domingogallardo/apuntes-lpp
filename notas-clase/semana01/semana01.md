@@ -962,9 +962,10 @@ expresión (sin evaluar sus elementos).
 <p style="margin-bottom:2cm;"></p>
 
 
-### Forma especial `eval` ###
+### Función `eval` ###
 
-La forma especial `eval` es una instrucción muy curiosa de los
+Una vez vista la forma especial `quote` podemos explicar la función
+`eval`. La función `eval` es una instrucción muy curiosa de los
 lenguajes funcionales. Permite invocar al intérprete en tiempo de
 ejecución y hacer que éste evalúe una expresión que puede haberse
 construido dinámicamente.
@@ -972,14 +973,14 @@ construido dinámicamente.
 **Sintaxis**
 
 ```racket
-(eval <identificador>)
 (eval <expresión>)
 ```
 
 **Evaluación**
 
-La forma especial `eval` evalúa el identificador o la expresión
-recibida.
+La función `eval` invoca al intérprete para realizar la evaluación de
+la expresión que se le pasa como parámetro y devuelve el resultado de
+dicha evaluación.
 
 **Ejemplos**
 
@@ -989,15 +990,16 @@ recibida.
 
 (eval '(+ 1 2 3)) ; ⇒ 6
 
-(define l1 (list '+ 1 2 3))
-(eval l1) ; ⇒ 6
+(define lista (list '+ 1 2 3))
+(eval lista) ; ⇒ 6
 
 (define a 10)
 (define x 'a)
-x ; ⇒ a
-(eval x) ; ⇒ 10
-(eval 'x) ; ⇒ a
+(eval 'x) ; ⇒ 10
+(eval x) ; ⇒ a
+(eval (eval x)) ; ⇒ 10
 ```
+
 
 <p style="margin-bottom:2cm;"></p>
 
