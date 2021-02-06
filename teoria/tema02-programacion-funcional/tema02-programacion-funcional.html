@@ -1778,32 +1778,49 @@ expresión (sin evaluar sus elementos).</p>
 <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ Una lista con las parejas (1 . 2) y (2 . 3)</span>
 </code></pre></div>
 <h3 id="forma-especial-eval">Forma especial <code>eval</code><a class="headerlink" href="#forma-especial-eval" title="Permanent link">&para;</a></h3>
-<p>La forma especial <code>eval</code> es una instrucción muy curiosa de los
+<p>Una vez vista la forma especial <code>quote</code> podemos explicar la función
+<code>eval</code>. La función <code>eval</code> es una instrucción muy curiosa de los
 lenguajes funcionales. Permite invocar al intérprete en tiempo de
 ejecución y hacer que éste evalúe una expresión que puede haberse
 construido dinámicamente.</p>
 <p><strong>Sintaxis</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">eval</span> <span class="n">&lt;identificador&gt;</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">eval</span> <span class="n">&lt;expresión&gt;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">eval</span> <span class="n">&lt;expresión&gt;</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Evaluación</strong></p>
-<p>La forma especial <code>eval</code> evalúa el identificador o la expresión
-recibida.</p>
+<p>La función <code>eval</code> invoca al intérprete para realizar la evaluación de
+la expresión que se le pasa como parámetro y devuelve el resultado de
+dicha evaluación.</p>
 <p><strong>Ejemplos</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="mi">10</span><span class="p">)</span>
 <span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
 
 <span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ 6</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="n">l1</span> <span class="p">(</span><span class="nb">list</span> <span class="o">&#39;</span><span class="ss">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
-<span class="p">(</span><span class="nb">eval</span> <span class="n">l1</span><span class="p">)</span> <span class="c1">; ⇒ 6</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="p">(</span><span class="nb">list</span> <span class="o">&#39;</span><span class="ss">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">eval</span> <span class="n">lista</span><span class="p">)</span> <span class="c1">; ⇒ 6</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="mi">10</span><span class="p">)</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">x</span> <span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span>
-<span class="n">x</span> <span class="c1">; ⇒ a</span>
-<span class="p">(</span><span class="nb">eval</span> <span class="n">x</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
-<span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="ss">x</span><span class="p">)</span> <span class="c1">; ⇒ a</span>
+<span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="ss">x</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
+<span class="p">(</span><span class="nb">eval</span> <span class="n">x</span><span class="p">)</span> <span class="c1">; ⇒ a</span>
+<span class="p">(</span><span class="nb">eval</span> <span class="p">(</span><span class="nb">eval</span> <span class="n">x</span><span class="p">))</span> <span class="c1">; ⇒ 10</span>
 </code></pre></div>
+<p><strong>Una nota sobre la evaluación de eval</strong></p>
+<p>Al ser <code>eval</code> una función, la expresión que se le pasa como parámetro se
+evalúa previamente, antes de ser procesada por <code>eval</code>. En el caso de
+ser una expresión con <code>quote</code>, el resultado de la evaluación es la
+propia expresión (una lista), que es procesada por <code>eval</code>.</p>
+<p>Por ejemplo, en la siguiente expresión</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">eval</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ 5</span>
+</code></pre></div>
+<p>primero se evaluaría la expresión <code>(+ 2 3)</code> y lo que se le pasaría a
+<code>eval</code> sería un <code>5</code>. El resultado de evaluar un <code>5</code> sería un <code>5</code>.</p>
+<p>Sin embargo, en la siguiente expresión:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+<p>el resultado de evaluar <code>'(+ 2 3)</code> devolvería la lista <code>(+ 2 3)</code> que
+es la que se pasaría a <code>eval</code>. El resultado de evaluar esa expresión
+también sería <code>5</code>.</p>
 <h3 id="listas">Listas<a class="headerlink" href="#listas" title="Permanent link">&para;</a></h3>
 <p>Otra de las características fundamentales del paradigma funcional es
 la utilización de listas. Ya hemos visto en el seminario de Scheme las
