@@ -995,9 +995,9 @@ dicha evaluación.
 
 (define a 10)
 (define x 'a)
-(eval 'x) ; ⇒ 10
-(eval x) ; ⇒ a
-(eval (eval x)) ; ⇒ 10
+(eval 'x) ; ⇒ a
+(eval x) ; ⇒ 10
+(eval (eval 'x)) ; ⇒ 10 
 ```
 
 
