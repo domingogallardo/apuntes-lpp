@@ -1547,7 +1547,7 @@ En este tema explicamos conceptos de los siguientes capítulos del libro *Struct
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2019-20  
+Lenguajes y Paradigmas de Programación, curso 2020-21  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
 

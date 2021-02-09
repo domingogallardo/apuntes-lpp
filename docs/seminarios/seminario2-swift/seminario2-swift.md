@@ -1438,6 +1438,6 @@ Si se escribe `<T: Equatable>` es equivalente a escribir `<T> ... where T: Equat
     - [Repositorio `swift-evolution` en GitHub](https://github.com/apple/swift-evolution): documentos relacionados con la evolución continua de Swift, incluyendo objetivos de las próximas versiones y propuestas de cambios y extensiones de Swift.
 
 ---
-Lenguajes y Paradigmas de Programación, curso 2019-20_
+Lenguajes y Paradigmas de Programación, curso 2020-21_
 Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 
