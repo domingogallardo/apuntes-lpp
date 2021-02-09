@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<style type="text/css">
+
+/* Admonition */
+
+.admonition {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.admonition.note { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.admonition.quote { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #cecece;
+    border-color: #cccccc;
+}
+
+.admonition.warning { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #fcf8e3;
+    border-color: #fbeed5;
+}
+
+.admonition.hint { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #E9F9F6;
+    border-color: #AFEEEE;
+}
+
+.admonition.danger { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+}
+
+.admonition-title {
+    font-weight: bold;
+    text-align: left;
+}
+
+
+/* Codehilite */
+
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mb { color: #666666 } /* Literal.Number.Bin */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #0000FF } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
+/* Estilo LPP */
+
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: white;
+  padding: 60px;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+</style>
+
+</head>
+
+<body>
+<h2>Semana 2</h2>
+<p>Notas de clase de la semana 2 de LPP.</p>
+<h2>Tema 2: Programación funcional</h2>
+<h3>Veremos hoy</h3>
+<ul>
+<li>
+<ol>
+<li>El paradigma de Programación Funcional</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Scheme como lenguaje de programación funcional</li>
+<li>2.1. Funciones y formas especiales</li>
+<li>2.2. Formas especiales en Scheme: <code>define</code>, <code>if</code>, <code>cond</code></li>
+<li>2.3. Forma especial <code>quote</code> y símbolos</li>
+<li>2.4. Listas</li>
+<li><strong>2.5. Recursión</strong></li>
+</ol>
+</li>
+<li><strong>3. Tipos de datos compuestos en Scheme</strong><ul>
+<li><strong>3.1 El tipo de dato pareja</strong></li>
+<li><strong>3.2 Las parejas son objetos de primera clase</strong></li>
+<li><strong>3.3  Diagramas caja-y-puntero</strong></li>
+</ul>
+</li>
+<li><strong>4. Listas en Scheme</strong><ul>
+<li><strong>4.1 Implementación de listas en Scheme</strong></li>
+<li><strong>4.2 Listas con elementos compuestos</strong></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>Recursión</h3>
+<ul>
+<li>La recursión es una característica básica de la programación funcional.</li>
+<li>Veremos varios ejemplos de cómo <strong>diseñar</strong> funciones recursivas.</li>
+</ul>
+<h3>Confía en la recursión</h3>
+<ul>
+<li>En programación funcional las iteraciones se realizan con recursión.</li>
+<li>En una definición recursiva siempre tenemos un caso general y un caso
+base. </li>
+<li>El caso base define el valor que devuelve la función en el caso
+elemental en el que no hay que hacer ningún cálculo. </li>
+<li>El caso general
+define una expresión que contiene una llamada a la propia función que
+estamos definiendo.</li>
+</ul>
+<p>Ejemplo: </p>
+<p>Por ejemplo, podemos definir la función <code>(suma-hasta x)</code> que devuelve
+la suma de los números hasta el parámetro <code>x</code> cuyo valor pasamos en la
+invocación de la función.</p>
+<p><code>(suma-hasta 5)</code> devolverá <code>0+1+2+3+4+5 = 15</code>.</p>
+<p>Definición recursiva:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-hasta</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="mi">0</span> <span class="n">x</span><span class="p">)</span>
+      <span class="mi">0</span>
+      <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">suma-hasta</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">))</span> <span class="n">x</span><span class="p">)))</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Importante</p>
+<p>Para entender la recursión no es conveniente utilizar el depurador, ni
+hacer trazas, ni <em>entrar en la recursión</em>, sino que hay que
+suponer que <strong>la llamada recursiva se ejecuta y devuelve el valor
+que debería. ¡Debemos confiar en la recursión!</strong>.</p>
+</div>
+<p>El caso general del ejemplo anterior indica lo siguiente:</p>
+<div class="highlight"><pre><span></span><code>Para calcular la suma hasta x: 
+    Llamamos a la recursión para que calcule la suma hasta x-1 
+    (confiamos en que la implementación funciona bien y esta llamada 
+    nos devolverá el resultado hasta x-1) y a ese resultado le sumamos
+    el propio número x.
+</code></pre></div>
+<p>Un ejemplo concreto, cuando <code>x</code> vale 5, <code>(suma-hasta 5)</code>:</p>
+<div class="highlight"><pre><span></span><code>(+ (suma-hasta (- 5 1)) 5)
+</code></pre></div>
+<p>Evaluación:</p>
+<div class="highlight"><pre><span></span><code>(+ (suma-hasta (- 5 1)) 5) ⇒
+(+ (suma-hasta 4) 5) ⇒ (confiamos en la recursión: (suma-hasta 4) = 10)
+(+ 10 5) ⇒
+15
+</code></pre></div>
+<ul>
+<li>La llamada recursiva debe trabajar sobre un caso más sencillo que la
+llamada general.</li>
+</ul>
+<h3>Diseño de la función <code>(suma-hasta x)</code></h3>
+<p><img src="imagenes/suma-hasta.png" width="600px"/></p>
+<p>Generalizamos este ejemplo y lo expresamos en Scheme de la siguiente
+forma:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-hasta</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">suma-hasta</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">))</span> <span class="n">x</span><span class="p">))</span>
+</code></pre></div>
+<ul>
+<li>
+<p>Nos falta el caso base de la recursión. Debemos preguntarnos <strong>¿cuál
+es el caso más sencillo del problema, que podemos calcular sin hacer
+ninguna llamada recursiva?</strong>. En este caso podría ser el caso en el
+que <code>x</code> es 0, en el que devolveríamos 0.</p>
+</li>
+<li>
+<p>Podemos ya escribirlo todo en Scheme:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-hasta</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="mi">0</span> <span class="n">x</span><span class="p">)</span>
+      <span class="mi">0</span>
+      <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">suma-hasta</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">))</span> <span class="n">x</span><span class="p">)))</span>
+</code></pre></div>
+<h3>Otro ejemplo de función recursiva <code>(alfabeto-hasta char)</code></h3>
+<p>Como antes, veamos un ejemplo concreto:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">alfabeto-hasta</span> <span class="sc">#\h</span><span class="p">)</span> <span class="c1">; ⇒ &quot;abcdefgh&quot;</span>
+</code></pre></div>
+<p>¿Cómo plantear el caso general? Tenemos que hacer una llamada
+recursiva que haga casi todo el trabajo y nos devuelva la cadena con
+el alfabeto casi calculada. </p>
+<p style="margin-bottom:3cm;"></p>
+
+<p>¿Podríamos llamar a la recursión para que nos devuelva el alfabeto
+hasta el carácter anterior a la <code>#\h</code> (el carácter <code>\#g</code>)? </p>
+<p>Si confiamos en la recursión:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">alfabeto-hasta</span> <span class="sc">#\g</span><span class="p">)</span> <span class="c1">; ⇒ &quot;abcdefg&quot;</span>
+</code></pre></div>
+<p>Sólo faltaría entonces añadir la <code>#\h</code> al final de la cadena:</p>
+<div class="highlight"><pre><span></span><code>&quot;abcdefg&quot; + \#h ⇒ &quot;abcdefgh&quot;
+</code></pre></div>
+<p>¿Cómo lo expresamos en Scheme?</p>
+<p style="margin-bottom:3cm;"></p>
+
+<p>El caso general:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">alfabeto-hasta</span> <span class="n">char</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">string-append</span> <span class="p">(</span><span class="n">alfabeto-hasta</span> <span class="p">(</span><span class="n">anterior</span> <span class="n">char</span><span class="p">))</span> <span class="p">(</span><span class="nb">string</span> <span class="n">char</span><span class="p">)))</span>
+</code></pre></div>
+<p>Función <code>(anterior char)</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">anterior</span> <span class="n">char</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">integer-&gt;char</span> <span class="p">(</span><span class="nb">-</span> <span class="p">(</span><span class="nb">char-&gt;integer</span> <span class="n">char</span><span class="p">)</span> <span class="mi">1</span><span class="p">)))</span>
+</code></pre></div>
+<p>Nos faltaría únicamente el caso base.</p>
+<p>El caso base sería aquel en el que nos piden lo más sencillo: el
+alfabeto hasta el carácter <code>#\a</code>, en el que habría que devolver la
+cadena "a".</p>
+<p>Solución final:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">alfabeto-hasta</span> <span class="n">char</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">equal?</span> <span class="n">char</span> <span class="sc">#\a</span><span class="p">)</span>
+      <span class="s2">&quot;a&quot;</span>
+      <span class="p">(</span><span class="nb">string-append</span> <span class="p">(</span><span class="n">alfabeto-hasta</span> <span class="p">(</span><span class="n">anterior</span> <span class="n">char</span><span class="p">))</span> <span class="p">(</span><span class="nb">string</span> <span class="n">char</span><span class="p">))))</span>
+</code></pre></div>
+<h3>Repaso: Selección de elementos de una lista: <code>car</code> y <code>cdr</code></h3>
+<ul>
+<li>Primer elemento: función <code>car</code></li>
+<li>Resto de elementos: función <code>cdr</code></li>
+</ul>
+<p>Ejemplos:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">car</span> <span class="n">lista1</span><span class="p">)</span> <span class="n">⇒</span> <span class="mi">1</span>
+<span class="p">(</span><span class="nb">cdr</span> <span class="n">lista1</span><span class="p">)</span> <span class="n">⇒</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">lista2</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">car</span> <span class="n">lista2</span><span class="p">)</span> <span class="n">⇒</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">cdr</span> <span class="n">lista2</span><span class="p">)</span> <span class="n">⇒</span> <span class="p">(</span><span class="mi">3</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+<h3>Recursión y listas: Función <code>(suma-lista lista-nums)</code></h3>
+<p>Supongamos que queremos definir una función <code>suma-lista</code> que reciba
+como parámetro una lista de números y devuelva la suma de todos ellos.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">1</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ 29</span>
+</code></pre></div>
+<ul>
+<li>
+<p>En este caso podemos pensar que para sumar la lista de
+números <code>(12 3 5 1 8)</code> podemos obtener un problema más sencillo (una
+lista más pequeña) haciendo el <code>cdr</code> de la lista de números y llamando
+a la recursión con el resultado. </p>
+</li>
+<li>
+<p>La llamada recursiva devolverá la suma de esos números (confiamos en
+la recursión) y a ese valor basta con sumarle el primer número de la
+lista. Lo podemos representar en el siguiente dibujo:</p>
+</li>
+</ul>
+<p><img src="imagenes/suma-lista.png" width="600px"/></p>
+<ul>
+<li>Podemos generalizar este ejemplo y expresarlo en Scheme de la siguiente forma:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))</span>
+</code></pre></div>
+<ul>
+<li>Falta el caso base, que es el caso más sencillo en que podemos
+devolver un valor sin llamar a la recursión. En este caso, podría ser
+cuando le pesamos a la función una lista sin elementos, en donde hay
+que devolver 0.</li>
+</ul>
+<p>Con todo junto, quedaría la recursión como sigue</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="n">lista</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
+       <span class="mi">0</span>
+       <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+</code></pre></div>
+<h3>Función recursiva <code>veces</code></h3>
+<p>Como último ejemplo vamos a definir la función <code>(veces lista id)</code> que
+cuenta el número de veces que aparece un identificador en una lista.</p>
+<ul>
+<li>¿Cómo planteamos el caso general? Llamaremos a la recursión con el
+resto de la lista. Esta llamada nos devolverá el número de veces que
+aparece el identificador en este resto de la lista. Y después sumamos
+al valor devuelto 1 si el primer elemento de la lista coincide con el
+identificador.</li>
+</ul>
+<p>El caso general en Scheme:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">equal?</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">))</span>
+    <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">))</span>
+</code></pre></div>
+<p>Como caso base, si la lista es vacía devolvemos 0.</p>
+<p>La versión completa:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">veces</span> <span class="n">lista</span> <span class="n">id</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">cond</span>
+    <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">((</span><span class="nb">equal?</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)))</span>
+    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="n">veces</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">b</span> <span class="ss">b</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span> 
+<span class="n">⇒</span> <span class="mi">3</span> 
+</code></pre></div>
+<h3>Tipos de datos compuestos en Scheme</h3>
+<ul>
+<li>El tipo pareja</li>
+<li>Las parejas son objetos de primera clase</li>
+<li>Diagramas caja-y-puntero</li>
+</ul>
+<h3>El tipo de dato pareja</h3>
+<ul>
+<li>Ya lo hemos visto en el seminario</li>
+<li><code>cons</code> para construir parejas:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ (1 . 2)</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">c</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<h3>Funciones de acceso <code>car</code> y <code>cdr</code></h3>
+<ul>
+<li><code>car</code> y <code>cdr</code> devuelven la parte izquierda y derecha:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">c</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">car</span> <span class="n">c</span><span class="p">)</span> <span class="c1">; ⇒ 1</span>
+<span class="p">(</span><span class="nb">cdr</span> <span class="n">c</span><span class="p">)</span> <span class="c1">; ⇒ 2</span>
+</code></pre></div>
+<h3>Definición declarativa</h3>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">car</span> <span class="p">(</span><span class="nb">cons</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span> <span class="nb">=</span> <span class="n">x</span>
+<span class="p">(</span><span class="nb">cdr</span> <span class="p">(</span><span class="nb">cons</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span> <span class="nb">=</span> <span class="n">y</span>
+</code></pre></div>
+<h3>Función pair?</h3>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">pair?</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="nb">pair?</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+</code></pre></div>
+<h3>Las parejas pueden contener cualquier tipo de dato</h3>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">c</span> <span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">hola</span> <span class="no">#f</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">car</span> <span class="n">c</span><span class="p">)</span> <span class="c1">; ⇒ &#39;hola</span>
+<span class="p">(</span><span class="nb">cdr</span> <span class="n">c</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
+</code></pre></div>
+<h3>Las parejas son objetos inmutables</h3>
+<ul>
+<li>En programación funcional una vez creada una parea no está permitido modificar (mutar) su contenido.</li>
+<li>En Scheme hay funciones para mutar parejas, pero no las veremos hasta ver el paradigma de programación imperativa</li>
+</ul>
+<h3>Las parejas son objetos de primera clase</h3>
+<p>En un lenguaje de programación un elemento es de primera clase cuando puede:</p>
+<ul>
+<li>Asignarse a variables</li>
+<li>Pasarse como argumento</li>
+<li>Devolverse por una función</li>
+<li>Guardarse en una estructura de datos mayor</li>
+</ul>
+<p>Las parejas son objetos de primera clase.</p>
+<h3>Asignación a una variable (1)</h3>
+<p>Una pareja puede asignarse a una variable:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">p1</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">p2</span> <span class="p">(</span><span class="nb">cons</span> <span class="no">#f</span> <span class="s2">&quot;hola&quot;</span><span class="p">))</span>
+</code></pre></div>
+<h3>Paso como argumento y devolverse como resultado de una función (2 y 3)</h3>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-parejas</span> <span class="n">p1</span> <span class="n">p2</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p2</span><span class="p">))</span>
+          <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p2</span><span class="p">))))</span>
+</code></pre></div>
+<p>Lo probamos ...</p>
+<p style="margin-bottom:2cm"></p>
+
+<h3>Ejemplo de función que recibe distintos tipos de datos</h3>
+<ul>
+<li>Scheme es débilmente tipado</li>
+<li>Podemos pasar cualquier tipo de dato en los parámetros de las funciones, por ejemplo a la siguiente función <code>suma</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">cond</span> 
+    <span class="p">((</span><span class="k">and</span> <span class="p">(</span><span class="nb">number?</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">number?</span> <span class="n">y</span><span class="p">))</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span>
+    <span class="p">((</span><span class="k">and</span> <span class="p">(</span><span class="nb">pair?</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">pair?</span> <span class="n">y</span><span class="p">))</span> <span class="p">(</span><span class="n">suma-parejas</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span>
+    <span class="p">((</span><span class="k">and</span> <span class="p">(</span><span class="nb">string?</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">string?</span> <span class="n">y</span><span class="p">))</span> <span class="p">(</span><span class="nb">string-append</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span>
+    <span class="p">(</span><span class="k">else</span> <span class="o">&#39;</span><span class="ss">error</span><span class="p">)))</span>
+</code></pre></div>
+<p>Lo probamos ...</p>
+<p style="margin-bottom:3cm;"></p>
+
+<h3>Formar parte de otras parejas (4)</h3>
+<ul>
+<li>El resultado de un <code>cons</code> puede usarse como parámetro de nuevas llamadas a <code>cons</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">p1</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">p2</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">p</span> <span class="p">(</span><span class="nb">cons</span> <span class="n">p1</span> <span class="n">p2</span><span class="p">))</span>
+</code></pre></div>
+<h3>Diagramas caja-y-puntero</h3>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">p</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)))</span>
+</code></pre></div>
+<p><img src="./imagenes/pareja-pareja.png" width="300px"/></p>
+<p>Diagramas <em>caja-y-puntero</em> (<em>box-and-pointer</em> en inglés):</p>
+<p><img src="./imagenes/pareja-pareja2.png" width="250px"/></p>
+<h3>Ejemplos de diagramas caja-y-puntero</h3>
+<ul>
+<li>Es conveniente indentar correctamente los <code>cons</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">p</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span>
+                      <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
+                <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<ul>
+<li>Es importante recordar que las expresiones se evalúan <em>de dentro a afuera</em>.</li>
+<li>¿Qué estructura se construye con la sentencia anterior? Dibuja el diagrama <em>box-and-pointer</em>.</li>
+</ul>
+<p style="margin-bottom:3cm;"></p>
+
+<ul>
+<li>¿Cuál sería el diagrama resultante de la siguiente expresión?</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">p2</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">5</span> <span class="p">(</span><span class="nb">cons</span> <span class="n">p</span> <span class="mi">6</span><span class="p">)))</span>
+</code></pre></div>
+<p style="margin-bottom:4cm;"></p>
+
+<ul>
+<li>¿Cómo sería la expresión formada por <code>car</code> y <code>cdr</code>s que devolviera 3 a partir de la variable <code>p2</code>?</li>
+</ul>
+<p style="margin-bottom:4cm;"></p>
+
+<h3>Funciones c????r</h3>
+<ul>
+<li>Al trabajar con estructuras de parejas anidades es muy habitual realizar llamadas del tipo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">cdr</span> <span class="p">(</span><span class="nb">cdr</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p</span><span class="p">)))</span>
+</code></pre></div>
+<ul>
+<li>Es equivalente a la función <code>cadar</code> de Scheme:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">cddar</span> <span class="n">p</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>
+<p>El nombre de la función se obtiene concatenando a la letra "c", las letras "a" o "d" según hagamos un car o un cdr y terminando con la letra "r".</p>
+</li>
+<li>
+<p>Hay definidas 2^4 funciones de este tipo: <code>caaaar</code>, <code>caaadr</code>, …, <code>cddddr</code>.</p>
+</li>
+</ul>
+<h3>Listas en Scheme</h3>
+<ul>
+<li>Hemos comprobado que las listas y las parejas tienen las mismas
+  funciones: <code>car</code>, <code>cdr</code> y <code>cons</code>. ¿Por qué? ¿Qué relación hay entre
+  las parejas y las listas?</li>
+</ul>
+<h3>Repaso: función cons con listas</h3>
+<ul>
+<li>La función <code>cons</code> crea una lista nueva resultante de añadir un elemento
+al comienzo de la lista:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="n">⇒</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">hola</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">como</span> <span class="ss">estás</span><span class="p">))</span> <span class="n">⇒</span> <span class="p">(</span><span class="n">hola</span> <span class="n">como</span> <span class="n">estás</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>  <span class="n">⇒</span> <span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+<h3>Relación entre listas y parejas en Lisp y Scheme</h3>
+<ul>
+<li>Hagamos algunas pruebas.</li>
+</ul>
+<p>¿Una pareja es una lista?
+Lo probamos ...</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">p1</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">pair?</span> <span class="n">p1</span><span class="p">)</span> 
+<span class="p">(</span><span class="nb">list?</span> <span class="n">p1</span><span class="p">)</span> 
+</code></pre></div>
+<p style="margin-bottom:2cm;"></p>
+
+<p>¿Una lista vacía es una lista? ¿Es una pareja?
+Lo probamos ...</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">list?</span> <span class="o">&#39;</span><span class="p">())</span>
+<span class="p">(</span><span class="nb">pair?</span> <span class="o">&#39;</span><span class="p">())</span>
+</code></pre></div>
+<p style="margin-bottom:2cm;"></p>
+
+<p>¿Una lista es una pareja?
+Lo probamos ...</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">list?</span> <span class="n">lista</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">pair?</span> <span class="n">lista</span><span class="p">)</span>
+</code></pre></div>
+<p style="margin-bottom:2cm;"></p>
+
+<p>¿Una pareja con una lista vacía como parte derecha es una lista?
+Lo probamos ...</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">p1</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">()))</span>
+<span class="p">(</span><span class="nb">pair?</span> <span class="n">p1</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">list?</span> <span class="n">p1</span><span class="p">)</span>
+</code></pre></div>
+<p style="margin-bottom:2cm;"></p>
+
+<p>Con estos ejemplos ya tenemos pistas para deducir la relación entre listas y parejas en Scheme (y Lisp). Vamos a explicarlo.</p>
+<h3>Definición de listas con parejas</h3>
+<p>Una lista es (definición recursiva):</p>
+<ul>
+<li>Una <strong>pareja</strong> que contiene:<ul>
+<li><em>En su parte izquierda</em>: el primer elemento de la lista</li>
+<li><em>En su parte derecha</em>: el resto de la lista (volvemos a aplicar la definición)</li>
+</ul>
+</li>
+<li>Un <strong>símbolo especial</strong> <code>'()</code> que denota la lista vacía.</li>
+</ul>
+<h3>Ejemplo más sencillo: <code>(1)</code></h3>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">())</span>
+</code></pre></div>
+<p>La pareja cumple las condiciones anteriores: </p>
+<ul>
+<li>La parte izquierda de la pareja es el primer elemento de la lista (el número 1)</li>
+<li>La parte derecha es el resto de la lista (la lista vacía)</li>
+</ul>
+<p><img src="./imagenes/pareja-lista.png" width="150px"/></p>
+<ul>
+<li>Es al mismo tiempo una pareja y una lista:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">l</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">()))</span>
+<span class="p">(</span><span class="nb">pair?</span> <span class="n">l</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">list?</span> <span class="n">l</span><span class="p">)</span>
+</code></pre></div>
+<h3>Otro ejemplo: <code>(1 2 3 4)</code></h3>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span>
+      <span class="p">(</span><span class="nb">cons</span> <span class="mi">2</span>
+            <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span>
+                  <span class="p">(</span><span class="nb">cons</span> <span class="mi">4</span> 
+                        <span class="o">&#39;</span><span class="p">()))))</span>
+</code></pre></div>
+<ul>
+<li>
+<p>La primera pareja cumple las condiciones de ser una lista:</p>
+</li>
+<li>
+<p>Su primer elemento es el 1</p>
+</li>
+<li>Su parte derecha es la lista '(2 3 4)</li>
+</ul>
+<p><img src="./imagenes/lista.png" width="400px"/></p>
+<h3>Lista vacía</h3>
+<p>La lista vacía es una lista:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">list?</span> <span class="o">&#39;</span><span class="p">())</span>
+</code></pre></div>
+<p>No es un símbolo ni una pareja:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">symbol?</span> <span class="o">&#39;</span><span class="p">())</span>
+<span class="p">(</span><span class="nb">pair?</span> <span class="o">&#39;</span><span class="p">())</span>
+</code></pre></div>
+<p>Función <code>null?</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">null?</span> <span class="o">&#39;</span><span class="p">())</span>
+</code></pre></div>
+<h3>Listas con elementos compuestos</h3>
+<ul>
+<li><em>Lista de asociación</em>, listas cuyos elementos son parejas (<em>clave</em>, <em>valor</em>):</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="mi">2</span><span class="p">)</span>
+      <span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">c</span> <span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+<p>¿Cuál sería el diagrama <em>box and pointer</em> de la estructura anterior?</p>
+<p style="margin-bottom:4cm;"></p>
+
+<ul>
+<li>Expresión equivalente utilizando <em>conses</em> es:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">c</span> <span class="mi">3</span><span class="p">)</span>
+                  <span class="o">&#39;</span><span class="p">())))</span>
+</code></pre></div>
+<h3>Listas de listas</h3>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+<p>Definición con <code>quote</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">3</span><span class="p">))</span>
+</code></pre></div>
+<p>¿Cuál sería el diagrama <em>box and pointer</em> de la estructura anterior?</p>
+<p style="margin-bottom:4cm;"></p>
+
+<h3>Ejemplo inverso</h3>
+<p>Un último ejemplo. Supongamos el siguiente diagrama caja y puntero:</p>
+<p><img src="imagenes/lista-complicada.png" width="500px"/></p>
+<p>¿Cuál sería la expresión en Scheme (usando llamadas a <code>list</code> y <code>cons</code>) que lo
+construye?</p>
+<p style="margin-bottom:4cm;"></p>
+
+<p>Solución: </p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">p1</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span>
+                       <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
+                 <span class="p">(</span><span class="nb">list</span> <span class="mi">5</span> <span class="mi">6</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">7</span>
+                                 <span class="p">(</span><span class="nb">cons</span> <span class="mi">8</span> <span class="mi">9</span><span class="p">)))</span>
+                 <span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+<h3>Impresión de listas y parejas por el intérprete de Scheme</h3>
+<p>El intérprete de Scheme siempre intenta mostrar una lista cuando
+encuentra una pareja cuyo siguiente elemento es otra pareja.</p>
+<p>Por ejemplo, si tenemos la siguiente estructura:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">p</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)))</span>
+</code></pre></div>
+<p>Cuando se evalúe <code>p</code> el intérprete imprimirá por pantalla lo
+siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<p>Si queremos comprobar la estructura de parejas podemos utilizar la
+función <code>print-pareja</code> definida en los apuntes, que imprimiría lo
+siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">print-pareja</span> <span class="n">p</span><span class="p">)</span> <span class="c1">; ⇒ (1 . (2 . 3))</span>
+</code></pre></div>
+<h3>Distintos niveles de abstracción</h3>
+<ul>
+<li>Una vez que conocemos la implementación de listas con parejas, no va a a ser necesario casi nunca <em>bajar</em> a este nivel de implementación</li>
+<li>Podemos volver a la <em>abstracción</em> inicial en la que las funciones <code>car</code> y <code>cdr</code> trabajan sobre listas:<ul>
+<li><code>(car lista)</code>: devuelve el primer elemento de la lista</li>
+<li><code>(cdr lista)</code>: devuelve el resto de la lista</li>
+<li><code>(list-ref lista n)</code>: devuelve la posición <code>n</code> de la lista</li>
+<li><code>(cons dato lista)</code>: devuelve una nueva lista con <code>dato</code> en su primera posición y <code>lista</code> como su resto</li>
+</ul>
+</li>
+</ul>
+<p style="margin-bottom:4cm;"></p></body>
+
+</html>
