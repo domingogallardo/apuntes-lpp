@@ -560,18 +560,27 @@ Lo probamos ...</p>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
-<p>¿Una lista vacía es una lista? ¿Es una pareja?
-Lo probamos ...</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">list?</span> <span class="o">&#39;</span><span class="p">())</span>
-<span class="p">(</span><span class="nb">pair?</span> <span class="o">&#39;</span><span class="p">())</span>
-</code></pre></div>
-<p style="margin-bottom:2cm;"></p>
-
 <p>¿Una lista es una pareja?
 Lo probamos ...</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
 <span class="p">(</span><span class="nb">list?</span> <span class="n">lista</span><span class="p">)</span>
 <span class="p">(</span><span class="nb">pair?</span> <span class="n">lista</span><span class="p">)</span>
+</code></pre></div>
+<p style="margin-bottom:2cm;"></p>
+
+<p>Si una lista es una pareja, acabamos de descubrir por qué las
+funciones <code>car</code> y <code>cdr</code> funcionan también con las listas.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">?</span>
+<span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">?</span>
+</code></pre></div>
+<p style="margin-bottom:2cm;"></p>
+
+<p>Y también por qué la llamada a <code>cons</code> con un dato y una lista
+construye otra lista:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">p1</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="n">lista</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">list?</span> <span class="n">p1</span><span class="p">)</span>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
@@ -583,7 +592,16 @@ Lo probamos ...</p>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
-<p>Con estos ejemplos ya tenemos pistas para deducir la relación entre listas y parejas en Scheme (y Lisp). Vamos a explicarlo.</p>
+<p>¿Una lista vacía es una lista? ¿Es una pareja?
+Lo probamos ...</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">list?</span> <span class="o">&#39;</span><span class="p">())</span>
+<span class="p">(</span><span class="nb">pair?</span> <span class="o">&#39;</span><span class="p">())</span>
+</code></pre></div>
+<p style="margin-bottom:2cm;"></p>
+
+<p>Con estos ejemplos tenemos pistas más que de sobra para deducir la
+relación entre listas y parejas en Scheme (y Lisp). Vamos a
+explicarlo.</p>
 <h3>Definición de listas con parejas</h3>
 <p>Una lista es (definición recursiva):</p>
 <ul>

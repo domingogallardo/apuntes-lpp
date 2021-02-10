@@ -505,16 +505,6 @@ Lo probamos ...
 
 <p style="margin-bottom:2cm;"></p>
 
-¿Una lista vacía es una lista? ¿Es una pareja?
-Lo probamos ...
-
-```racket
-(list? '())
-(pair? '())
-```
-
-<p style="margin-bottom:2cm;"></p>
-
 ¿Una lista es una pareja?
 Lo probamos ...
 
@@ -522,6 +512,28 @@ Lo probamos ...
 (define lista '(1 2 3))
 (list? lista)
 (pair? lista)
+```
+
+<p style="margin-bottom:2cm;"></p>
+
+Si una lista es una pareja, acabamos de descubrir por qué las
+funciones `car` y `cdr` funcionan también con las listas.
+
+```racket
+(define lista '(1 2 3))
+(car lista) -> ?
+(cdr lista) -> ?
+```
+
+<p style="margin-bottom:2cm;"></p>
+
+Y también por qué la llamada a `cons` con un dato y una lista
+construye otra lista:
+
+```racket
+(define lista '(1 2 3))
+(define p1 (cons 1 lista))
+(list? p1)
 ```
 
 <p style="margin-bottom:2cm;"></p>
@@ -536,7 +548,19 @@ Lo probamos ...
 ```
 <p style="margin-bottom:2cm;"></p>
 
-Con estos ejemplos ya tenemos pistas para deducir la relación entre listas y parejas en Scheme (y Lisp). Vamos a explicarlo.
+¿Una lista vacía es una lista? ¿Es una pareja?
+Lo probamos ...
+
+```racket
+(list? '())
+(pair? '())
+```
+
+<p style="margin-bottom:2cm;"></p>
+
+Con estos ejemplos tenemos pistas más que de sobra para deducir la
+relación entre listas y parejas en Scheme (y Lisp). Vamos a
+explicarlo.
 
 
 ### Definición de listas con parejas
