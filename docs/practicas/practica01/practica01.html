@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<style type="text/css">
+
+/* Admonition */
+
+.admonition {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.admonition.note { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.admonition.quote { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #cecece;
+    border-color: #cccccc;
+}
+
+.admonition.warning { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #fcf8e3;
+    border-color: #fbeed5;
+}
+
+.admonition.hint { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #E9F9F6;
+    border-color: #AFEEEE;
+}
+
+.admonition.danger { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+}
+
+.admonition-title {
+    font-weight: bold;
+    text-align: left;
+}
+
+
+/* Codehilite */
+
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mb { color: #666666 } /* Literal.Number.Bin */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #0000FF } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
+/* Estilo LPP */
+
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: white;
+  padding: 60px;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+</style>
+
+</head>
+
+<body>
+<h1>Práctica 1: Programación funcional en Scheme</h1>
+<h2>Entrega de la práctica</h2>
+<p>Para entregar la práctica debes subir a Moodle el fichero
+<code>practica01.rkt</code> con una cabecera inicial con tu nombre y apellidos, y
+las soluciones de cada ejercicio separadas por comentarios. Cada
+solución debe incluir:</p>
+<ul>
+<li>La <strong>definición de las funciones</strong> que resuelven el ejercicio.</li>
+<li>Un conjunto de <strong>pruebas</strong> que comprueben su funcionamiento, y el de
+  funciones auxiliares que hayamos definido, utilizando el API RackUnit.</li>
+</ul>
+<p>Por ejemplo, supongamos que el primer ejercicio de la práctica 1 sea
+implementar la función <code>suma-cuadrados</code> que recibe dos números y
+devuelve la suma de sus cuadrados y se proponen en el enunciado los
+siguientes ejemplos:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">10</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 200</span>
+<span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">-2</span> <span class="mi">9</span><span class="p">)</span> <span class="c1">; ⇒  85</span>
+</code></pre></div>
+<p>La solución se debería entregar de la siguiente forma:</p>
+<p><strong><code>practica01.rkt</code></strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">;; José Fernandez Muñoz</span>
+
+<span class="kn">#lang </span><span class="nn">racket</span>
+<span class="p">(</span><span class="k">require</span> <span class="n">rackunit</span><span class="p">)</span>
+
+<span class="c1">;;</span>
+<span class="c1">;; Ejercicio 1: suma-cuadrados</span>
+<span class="c1">;;</span>
+
+<span class="c1">;; Función auxiliar cuadrado</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
+
+<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="mi">10</span><span class="p">)</span> <span class="mi">100</span><span class="p">)</span>
+<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="mi">-2</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c1">;; Función principal suma-cuadrados</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">y</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="n">check-equal?</span>  <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">10</span> <span class="mi">10</span><span class="p">)</span>  <span class="mi">200</span><span class="p">)</span>
+<span class="p">(</span><span class="n">check-equal?</span>  <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">-2</span> <span class="mi">9</span><span class="p">)</span>  <span class="mi">85</span><span class="p">)</span>
+
+<span class="c1">;;</span>
+<span class="c1">;; Ejercicio 2:</span>
+<span class="c1">;;</span>
+
+<span class="k">...</span>
+</code></pre></div>
+<p>En los casos de prueba se deben incluir los ejemplos del enunciado
+del ejercicio.</p>
+<h2>Ejercicios</h2>
+<h3>Ejercicio 1</h3>
+<p>a) Implementa la función <code>(binario-a-decimal b3 b2 b1 b0)</code> que reciba
+4 bits que representan un número en binario y devuelva el número
+decimal equivalente.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">binario-a-decimal</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">; ⇒ 15</span>
+<span class="p">(</span><span class="n">binario-a-decimal</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">; ⇒ 6</span>
+<span class="p">(</span><span class="n">binario-a-decimal</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">; ⇒ 2</span>
+</code></pre></div>
+<p><strong>Nota</strong>: recuerda que para realizar esta conversión, se utiliza la siguiente fórmula:</p>
+<div class="highlight"><pre><span></span><code>n = b3 * 2ˆ3 + b2 * 2ˆ2 + b1 * 2ˆ1 + b0 * 2ˆ0
+</code></pre></div>
+<p>Para la implementación de la expresión debes utilizar la función <code>expt</code>.</p>
+<p>b) Implementa la función <code>(binario-a-hexadecimal b3 b2 b1 b0)</code> que
+reciba 4 bits de un número representado en binario y devuelva el
+carácter correspondiente a su representación en hexadecimal.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">binario-a-hexadecimal</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">; ⇒ #\F</span>
+<span class="p">(</span><span class="n">binario-a-hexadecimal</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">; ⇒ #\6</span>
+<span class="p">(</span><span class="n">binario-a-hexadecimal</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">; ⇒ #\A</span>
+</code></pre></div>
+<p><strong>Nota</strong>: para realizar esta conversión, como paso intermedio debes
+pasar primero el número binario a su representación decimal
+(utilizando la función definida en el apartado anterior) y después a
+su correspondiente hexadecimal. </p>
+<p>Recuerda que la representación hexadecimal de los números decimales
+del 0 al 9 es el carácter correspondiente a ese número, y que el
+número decimal 10 se representa con el carácter A, el 11 con el B, y
+así sucesivamente hasta el 15 que es el F en hexadecimal.</p>
+<p>Para la implementación de esta función auxiliar que pasa de decimal a
+hexadecimal debes usar las funciones <code>integer-&gt;char</code> y
+<code>char-&gt;integer</code>. En la función <code>char-&gt;integer</code> los caracteres
+consecutivos están asociados con números consecutivos. Por ejemplo, el
+entero correspondiente al carácter <code>#\A</code> es uno menos que el
+correspondiente al carácter <code>#\B</code>. Los caracteres de números y los de
+letras no son consecutivos.</p>
+<h3>Ejercicio 2</h3>
+<p>Implementa la función <code>(menor-de-tres n1 n2 n3)</code> que reciba tres
+números como argumento y devuelva el menor de los tres, intentando que
+el número de condiciones sea mínima.</p>
+<p>No debes utilizar la función <code>min</code>. </p>
+<p>Implementa dos versiones de la función: </p>
+<ul>
+<li>versión 1: usando la forma especial <code>if</code> </li>
+<li>versión 2 (llámala <code>menor-de-tres-v2</code>): definiendo una función auxiliar <code>(menor x y)</code> que
+  devuelva el menor de dos números (deberás usar también la forma
+  especial <code>if</code> para implementarla) y construyendo la función
+  <code>menor-de-tres-v2</code> como una composición de llamadas a esta función
+  auxiliar.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">menor-de-tres</span> <span class="mi">2</span> <span class="mi">8</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">;; ⇒ 1</span>
+<span class="p">(</span><span class="n">menor-de-tres-v2</span> <span class="mi">3</span> <span class="mi">0</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">;; ⇒ 0</span>
+</code></pre></div>
+<h3>Ejercicio 3</h3>
+<p>a) Supongamos las definiciones</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">f</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">cons</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">g</span> <span class="n">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">cons</span> <span class="mi">2</span> <span class="n">x</span><span class="p">))</span>
+</code></pre></div>
+<p>Realiza la evaluación paso a paso de la siguiente expresión </p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="n">g</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">))</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+<p>mediante el <strong>modelo de sustitución</strong>, utilizando tanto el <strong>orden
+aplicativo</strong> y como el <strong>orden normal</strong>.</p>
+<p>Escribe la solución entre comentarios en el propio fichero <code>.rkt</code> de
+la práctica.</p>
+<p>b) Supongamos las definiciones</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">f</span> <span class="n">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">/</span> <span class="n">x</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">g</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="mi">0</span>
+        <span class="n">y</span><span class="p">))</span>
+</code></pre></div>
+<p>Igual que en el apartado anterior, realiza la evaluación paso a paso
+de la siguiente expresión</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">g</span> <span class="mi">0</span> <span class="p">(</span><span class="n">f</span> <span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+<p>mediante el <strong>modelo de sustitución</strong>, utilizando tanto el <strong>orden
+aplicativo</strong> y como el <strong>orden normal</strong>. Y escribe la solución entre
+comentarios en el propio fichero <code>.rkt</code> de la práctica.</p>
+<h3>Ejercicio 4</h3>
+<p>Implementa la función <code>(tirada-ganadora t1 t2)</code> que reciba 2 parejas
+como argumento, donde cada pareja representa una tirada con 2 dados
+(contiene dos números). La función debe determinar qué tirada es la
+ganadora, teniendo en cuenta que será aquella cuya suma de sus 2 dados
+esté más próxima al número 7. La función devolverá 1 si <code>t1</code> es la
+ganadora, 2 si <code>t2</code> es la ganadora o bien 0 si hay un empate. Este
+último caso se producirá cuando la diferencia con 7 de ambas tiradas
+es la misma.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">tirada-ganadora</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ 2</span>
+<span class="p">(</span><span class="n">tirada-ganadora</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">2</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">; ⇒ 1</span>
+<span class="p">(</span><span class="n">tirada-ganadora</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">6</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ 0</span>
+</code></pre></div>
+<h3>Ejercicio 5</h3>
+<p>Supongamos que queremos programar un juego de cartas. Lo primero que
+debemos hacer es definir una forma de representar las cartas y
+funciones que trabajen con esa representación. En este ejercicio vamos
+a implementar esas funciones.</p>
+<p>Representaremos una carta por un símbolo con dos letras: la primera
+indicará su número o figura y la segunda el palo de la carta.</p>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">tres-de-oros</span> <span class="o">&#39;</span><span class="ss">3O</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">as-de-copas</span> <span class="o">&#39;</span><span class="ss">AC</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">caballo-de-espadas</span> <span class="o">&#39;</span><span class="ss">CE</span><span class="p">)</span>
+</code></pre></div>
+<p>Debemos definir la función <code>carta</code> que devuelve una pareja con el
+valor correspondiente a su orden en la baraja española (un número) y el palo
+de la carta (un símbolo).</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">carta</span> <span class="n">tres-de-oros</span><span class="p">)</span> <span class="c1">; ⇒ (3 . Oros)</span>
+<span class="p">(</span><span class="n">carta</span> <span class="n">as-de-copas</span><span class="p">)</span> <span class="c1">; ⇒ (1 . Copas)</span>
+<span class="p">(</span><span class="n">carta</span> <span class="o">&#39;</span><span class="ss">RB</span><span class="p">)</span> <span class="c1">; ⇒ (12 . Bastos)</span>
+</code></pre></div>
+<p>Los valores de las cartas de la baraja española son:</p>
+<div class="highlight"><pre><span></span><code>A (As) ⇒ 1
+S (Sota) ⇒ 10
+C (Caballo) ⇒ 11
+R (Rey) ⇒ 12
+</code></pre></div>
+<p>Para realizar el ejercicio debes definir en primer lugar las funciones
+<code>(obten-palo char)</code> y <code>(obten-valor char)</code> que devuelven el palo y el
+valor, dado un carácter. Y debes implementar la función <code>carta</code> usando
+estas dos funciones.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">obten-palo</span> <span class="sc">#\O</span><span class="p">)</span> <span class="c1">; ⇒ Oros</span>
+<span class="p">(</span><span class="n">obten-palo</span> <span class="sc">#\E</span><span class="p">)</span> <span class="c1">; ⇒ Espadas</span>
+<span class="p">(</span><span class="n">obten-valor</span> <span class="sc">#\3</span><span class="p">)</span> <span class="c1">; ⇒ 3</span>
+<span class="p">(</span><span class="n">obten-valor</span> <span class="sc">#\S</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Pista</p>
+<p>Puedes utilizar las funciones <code>(symbol-&gt;string simbolo)</code> que convierte un
+símbolo en una cadena y <code>(string-ref cadena pos)</code> que devuelve el
+carácter de una cadena situado en una determinada posición.</p>
+</div>
+<h3>Ejercicio 6</h3>
+<p>Define la función <code>tipo-triangulo</code> que recibe como parámetro las
+coordenadas en el plano de los vértices de un triángulo representados
+con parejas. La función devuelve una cadena con el tipo de triángulo
+correspondiente: equilátero, isósceles o escaleno.</p>
+<p>Recuerda que un triángulo equilátero es aquel cuyos tres lados tienen
+la misma longitud, el isósceles el que tiene dos lados iguales y el
+escaleno el que todos sus lados son diferentes.</p>
+<p>Ejemplos:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">tipo-triangulo</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span>  <span class="mi">1</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">6</span> <span class="mi">1</span><span class="p">))</span> <span class="c1">; ⇒ &quot;isósceles&quot;</span>
+<span class="p">(</span><span class="n">tipo-triangulo</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">-2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span>  <span class="mi">2</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">5</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ &quot;escaleno&quot;</span>
+<span class="p">(</span><span class="n">tipo-triangulo</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">-3</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span>  <span class="mi">3</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">0</span> <span class="mf">5.1961</span><span class="p">))</span> <span class="c1">;  ⇒ &quot;equilatero&quot;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Para comparar dos números reales debemos comprobar si la
+resta entre ambos es menor que una constante <code>epsilon</code> que hemos
+definido. Por ejemplo, <code>epsilon</code> puede valer 0.0001.</p>
+<p>Puedes usar la siguiente función auxiliar:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">epsilon</span> <span class="mf">0.0001</span><span class="p">)</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">iguales-reales?</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">&lt;</span> <span class="p">(</span><span class="nb">abs</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span> <span class="n">epsilon</span><span class="p">))</span>
+</code></pre></div>
+</div>
+<hr />
+<p>Lenguajes y Paradigmas de Programación, curso 2020-21<br />
+© Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
+Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p></body>
+
+</html>
