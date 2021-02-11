@@ -60,8 +60,9 @@ La solución se debería entregar de la siguiente forma:
 
 ```
 
-En los casos de prueba se deben incluir los ejemplos del enunciado
-del ejercicio.
+Para los casos de prueba puedes incluir algunos de los ejemplos del
+enunciado del ejercicio, pero debes construir algunos casos nuevos,
+con ejemplos distintos.
 
 ## Ejercicios
 
