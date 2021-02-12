@@ -2802,8 +2802,6 @@ vemos por primera vez en los siguientes ejemplos:
 
 En los siguientes apartados veremos cómo están implementadas.
 
-<!--
-
 ### Funciones recursivas que construyen listas
 
 Para terminar el apartado sobre las listas en Scheme vamos a ver
@@ -3617,6 +3615,8 @@ Hay que hacer notar en que la llamada recursiva es necesario usar
 `suma-parejas` pasando una lista como parámetro, sino que hay que
 pasarle todos los argumentos por separado (recibe un número variable
 de argumentos). Eso lo conseguimos hacer con `apply`.
+
+<!--
 
 ### Generalización ###
 
