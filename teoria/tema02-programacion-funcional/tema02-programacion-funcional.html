@@ -2647,20 +2647,33 @@ es una lista:</p>
 <span class="p">(</span><span class="nb">pair?</span> <span class="n">p1</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="nb">list?</span> <span class="n">p1</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
 </code></pre></div>
-<p>Y una lista vacía es una lista, pero no es una pareja:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">list?</span> <span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="nb">pair?</span> <span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ #f</span>
-</code></pre></div>
-<p>¿Una lista es una pareja? Pues sí:</p>
+<p>Si preguntamos si una lista es una pareja, nos llevaremos la sorpresa
+de que sí. Una lista es una lista (evidentemente) pero también es una pareja:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
-<span class="p">(</span><span class="nb">list?</span> <span class="n">lista</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="nb">pair?</span> <span class="n">lista</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="nb">list?</span> <span class="n">lista</span><span class="p">)</span><span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="nb">pair?</span> <span class="n">lista</span><span class="p">)</span><span class="c1">; ⇒ #t</span>
 </code></pre></div>
-<p>Por último, una pareja con una lista vacía como segundo elemento es
-una pareja y una lista:</p>
+<p>Si una lista es también una pareja, acabamos de descubrir por qué las
+funciones <code>car</code> y <code>cdr</code> funcionan también con las listas:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="c1">; ⇒  1</span>
+<span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="c1">; ⇒  2</span>
+</code></pre></div>
+<p>Resulta que en la pareja que representa la lista, en la parte
+izquierda se guarda el primer el elemento de la lista y en la parte
+derecha se guarda el resto de la lista.</p>
+<p>También podemos explicar entonces por qué la llamada a <code>cons</code> con un
+dato y una lista construye otra lista:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">p1</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="n">lista</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">list?</span> <span class="n">p1</span><span class="p">)</span> <span class="c1">; ⇒  #t</span>
+<span class="n">p1</span> <span class="c1">; ⇒ (1 1 2 3)</span>
+</code></pre></div>
+<p>¿Una pareja con una lista vacía como parte derecha es una lista?
+Lo probamos:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">p1</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">()))</span>
-<span class="p">(</span><span class="nb">pair?</span> <span class="n">p1</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="nb">list?</span> <span class="n">p1</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="nb">pair?</span> <span class="n">p1</span><span class="p">)</span> <span class="c1">; ⇒  #t</span>
+<span class="p">(</span><span class="nb">list?</span> <span class="n">p1</span><span class="p">)</span> <span class="c1">; ⇒  #t</span>
 </code></pre></div>
 <p>Con estos ejemplos ya tenemos pistas para deducir la relación entre
 listas y parejas en Scheme (y Lisp). Vamos a explicarlo.</p>
@@ -3174,56 +3187,6 @@ en la lista de argumentos variables y llamamos a la función
         <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="p">(</span><span class="nb">+</span> <span class="n">y</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="n">lista-nums</span><span class="p">)))))</span>
 </code></pre></div>
 
-### Función `apply` ###
-
-Con la función `(apply funcion lista)` podemos aplicar una función de
-aridad `n` a una lista de datos de n datos, haciendo que cada uno de
-los datos se pasen a la función en orden como parámetros.
-
-Por ejemplo, podemos definir la función `(suma-cuadrados x y)` de
-aridad 2 de la siguiente forma:
-
-
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">y</span> <span class="n">y</span><span class="p">)))</span>
-</code></pre></div>
-
-Para invocar a `suma-cuadrados` hay que pasarle 2 parámetros:
-
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">10</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ 100</span>
-</code></pre></div>
-
-Podemos usar la función `apply` para aplicar esta función a los dos
-elementos de una lista:
-
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">apply</span> <span class="n">suma-cuadrados</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ 100</span>
-</code></pre></div>
-
-Usando `apply` podemos definir funciones recursivas con número
-variable de argumentos.
-
-Por ejemplo la función `suma-parejas` que suma un número variable de
-parejas:
-
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-pareja</span> <span class="n">p1</span> <span class="n">p2</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p2</span><span class="p">))</span>
-        <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p2</span><span class="p">))))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-parejas</span> <span class="o">.</span> <span class="n">parejas</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">parejas</span><span class="p">)</span>
-      <span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">suma-pareja</span> <span class="p">(</span><span class="nb">car</span> <span class="n">parejas</span><span class="p">)</span> <span class="p">(</span><span class="nb">apply</span> <span class="n">suma-parejas</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">parejas</span><span class="p">)))))</span>
-
-<span class="p">(</span><span class="n">suma-parejas</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(9 . 12)</span>
-</code></pre></div>
-
-Hay que hacer notar en que la llamada recursiva es necesario usar
-`apply` porque `(cdr parejas)` es una lista. No podemos invocar a
-`suma-parejas` pasando una lista como parámetro, sino que hay que
-pasarle todos los argumentos por separado (recibe un número variable
-de argumentos). Eso lo conseguimos hacer con `apply`.
-
-
 ## Funciones como tipos de datos de primera clase
 
 Hemos visto que la característica fundamental de la programación
@@ -3521,6 +3484,78 @@ devuelve la invocación de `g` con `x`:
    <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
 <span class="p">(</span><span class="n">aplica-2</span> <span class="n">suma-5</span> <span class="n">doble</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 11</span>
 </code></pre></div>
+
+### Función `apply` ###
+
+La función `(apply funcion lista)` de Scheme permite aplicar una
+función de aridad `n` a una lista de datos de n datos, haciendo que
+cada uno de los datos se pasen a la función en orden como parámetros.
+
+La función `apply` recibe una función y una lista y devuelve el
+resultado de aplicar la función a los datos de la lista, tomándolos
+como parámetros.
+
+Por ejemplo, podemos aplicar la función suma a una lista de números:
+
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">apply</span> <span class="nb">+</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ 10</span>
+</code></pre></div>
+
+Podemos pasar a `apply` una expresión lambda:
+
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">apply</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="n">y</span><span class="p">)))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ 12</span>
+</code></pre></div>
+
+La lista que pasamos como argumento de `apply` debe tener tantos
+elementos como parámetros tenga la función que aplicamos. En caso
+contrario, se produce un error:
+
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">apply</span> <span class="nb">cons</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">))</span> <span class="c1">; ⇒ error</span>
+<span class="n">cons:</span> <span class="n">arity</span> <span class="n">mismatch</span><span class="c1">;</span>
+ <span class="n">the</span> <span class="n">expected</span> <span class="n">number</span> <span class="n">of</span> <span class="n">arguments</span> <span class="n">does</span> <span class="nb">not</span> <span class="k">match</span> <span class="n">the</span> <span class="n">given</span> <span class="n">number</span>
+  <span class="n">expected:</span> <span class="mi">2</span>
+  <span class="n">given:</span> <span class="mi">3</span>
+  <span class="n">arguments...:</span>
+</code></pre></div>
+
+La forma correcta de hacerlo:
+
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">apply</span> <span class="nb">cons</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span><span class="p">))</span> <span class="c1">; ⇒ (a . b)</span>
+</code></pre></div>
+
+#### Función `apply` y funciones recursivas ####
+
+Usando `apply` podemos definir funciones recursivas con número
+variable de argumentos.
+
+Por ejemplo, supongamos que queremos definir la función `suma-parejas`
+que suma un número variable de parejas:
+
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-parejas</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(9 . 12)</span>
+</code></pre></div>
+
+Recordemos la definición de la función que suma dos parejas:
+
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-pareja</span> <span class="n">p1</span> <span class="n">p2</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p2</span><span class="p">))</span>
+        <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p2</span><span class="p">))))</span>
+</code></pre></div>
+
+Podemos entonces construir la función `suma-parejas` que recibe una
+lista de parejas (número variable de argumentos) llamando a `apply`
+para que sume todas las parejas del resto de la lista. Y sumar
+la pareja resultante con la primera pareja de la lista:
+
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-parejas</span> <span class="o">.</span> <span class="n">parejas</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">parejas</span><span class="p">)</span>
+      <span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">suma-pareja</span> <span class="p">(</span><span class="nb">car</span> <span class="n">parejas</span><span class="p">)</span> <span class="p">(</span><span class="nb">apply</span> <span class="n">suma-parejas</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">parejas</span><span class="p">)))))</span>
+</code></pre></div>
+
+Hay que hacer notar en que la llamada recursiva es necesario usar
+`apply` porque `(cdr parejas)` es una lista. No podemos invocar a
+`suma-parejas` pasando una lista como parámetro, sino que hay que
+pasarle todos los argumentos por separado (recibe un número variable
+de argumentos). Eso lo conseguimos hacer con `apply`.
 
 ### Generalización ###
 
