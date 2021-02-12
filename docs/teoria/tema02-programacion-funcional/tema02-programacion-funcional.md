@@ -2555,28 +2555,45 @@ es una lista:
 (list? p1) ; ⇒ #f
 ```
 
-Y una lista vacía es una lista, pero no es una pareja:
-
-```racket
-(list? '()) ; ⇒ #t
-(pair? '()) ; ⇒ #f
-```
-
-¿Una lista es una pareja? Pues sí:
+Si preguntamos si una lista es una pareja, nos llevaremos la sorpresa
+de que sí. Una lista es una lista (evidentemente) pero también es una pareja:
 
 ```racket
 (define lista '(1 2 3))
-(list? lista) ; ⇒ #t
-(pair? lista) ; ⇒ #t
+(list? lista); ⇒ #t
+(pair? lista); ⇒ #t
 ```
 
-Por último, una pareja con una lista vacía como segundo elemento es
-una pareja y una lista:
+Si una lista es también una pareja, acabamos de descubrir por qué las
+funciones `car` y `cdr` funcionan también con las listas:
+
+```racket
+(define lista '(1 2 3))
+(car lista) ; ⇒  1
+(cdr lista) ; ⇒  2
+```
+
+Resulta que en la pareja que representa la lista, en la parte
+izquierda se guarda el primer el elemento de la lista y en la parte
+derecha se guarda el resto de la lista.
+
+También podemos explicar entonces por qué la llamada a `cons` con un
+dato y una lista construye otra lista:
+
+```racket
+(define lista '(1 2 3))
+(define p1 (cons 1 lista))
+(list? p1) ; ⇒  #t
+p1 ; ⇒ (1 1 2 3)
+```
+
+¿Una pareja con una lista vacía como parte derecha es una lista?
+Lo probamos:
 
 ```racket
 (define p1 (cons 1 '()))
-(pair? p1) ; ⇒ #t
-(list? p1) ; ⇒ #t
+(pair? p1) ; ⇒  #t
+(list? p1) ; ⇒  #t
 ```
 
 Con estos ejemplos ya tenemos pistas para deducir la relación entre
@@ -2785,6 +2802,7 @@ vemos por primera vez en los siguientes ejemplos:
 
 En los siguientes apartados veremos cómo están implementadas.
 
+<!--
 
 ### Funciones recursivas que construyen listas
 
@@ -3599,9 +3617,6 @@ Hay que hacer notar en que la llamada recursiva es necesario usar
 `suma-parejas` pasando una lista como parámetro, sino que hay que
 pasarle todos los argumentos por separado (recibe un número variable
 de argumentos). Eso lo conseguimos hacer con `apply`.
-
-
-<!--
 
 ### Generalización ###
 
