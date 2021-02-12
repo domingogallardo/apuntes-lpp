@@ -62,7 +62,7 @@ La solución se debería entregar de la siguiente forma:
 
 Para los casos de prueba puedes incluir algunos de los ejemplos del
 enunciado del ejercicio, pero debes construir algunos casos nuevos,
-con ejemplos distintos.
+con ejemplos creados por ti..
 
 ## Ejercicios
 
