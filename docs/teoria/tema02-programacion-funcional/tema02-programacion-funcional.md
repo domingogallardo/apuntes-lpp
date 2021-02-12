@@ -2785,7 +2785,6 @@ vemos por primera vez en los siguientes ejemplos:
 
 En los siguientes apartados veremos cómo están implementadas.
 
-<!--
 
 ### Funciones recursivas que construyen listas
 
@@ -3199,60 +3198,6 @@ en la lista de argumentos variables y llamamos a la función
         (+ x (+ y (suma-lista lista-nums)))))
 ```
 
-### Función `apply` ###
-
-Con la función `(apply funcion lista)` podemos aplicar una función de
-aridad `n` a una lista de datos de n datos, haciendo que cada uno de
-los datos se pasen a la función en orden como parámetros.
-
-Por ejemplo, podemos definir la función `(suma-cuadrados x y)` de
-aridad 2 de la siguiente forma:
-
-
-```racket
-(define (suma-cuadrados x y)
-    (+ (* x x) (* y y)))
-```
-
-Para invocar a `suma-cuadrados` hay que pasarle 2 parámetros:
-
-```racket
-(suma-cuadrados 10 5) ; ⇒ 100
-```
-
-Podemos usar la función `apply` para aplicar esta función a los dos
-elementos de una lista:
-
-```racket
-(apply suma-cuadrados '(10 5)) ; ⇒ 100
-```
-
-Usando `apply` podemos definir funciones recursivas con número
-variable de argumentos.
-
-Por ejemplo la función `suma-parejas` que suma un número variable de
-parejas:
-
-```racket
-(define (suma-pareja p1 p2)
-  (cons (+ (car p1) (car p2))
-        (+ (cdr p1) (cdr p2))))
-
-(define (suma-parejas . parejas)
-  (if (null? parejas)
-      '(0 . 0)
-      (suma-pareja (car parejas) (apply suma-parejas (cdr parejas)))))
-
-(suma-parejas '(1 . 2) '(3 . 4) '(5 . 6)) ; ⇒ '(9 . 12)
-```
-
-Hay que hacer notar en que la llamada recursiva es necesario usar
-`apply` porque `(cdr parejas)` es una lista. No podemos invocar a
-`suma-parejas` pasando una lista como parámetro, sino que hay que
-pasarle todos los argumentos por separado (recibe un número variable
-de argumentos). Eso lo conseguimos hacer con `apply`.
-
-
 ## Funciones como tipos de datos de primera clase
 
 Hemos visto que la característica fundamental de la programación
@@ -3575,6 +3520,88 @@ devuelve la invocación de `g` con `x`:
    (+ x x))
 (aplica-2 suma-5 doble 3) ; ⇒ 11
 ```
+
+### Función `apply` ###
+
+La función `(apply funcion lista)` de Scheme permite aplicar una
+función de aridad `n` a una lista de datos de n datos, haciendo que
+cada uno de los datos se pasen a la función en orden como parámetros.
+
+La función `apply` recibe una función y una lista y devuelve el
+resultado de aplicar la función a los datos de la lista, tomándolos
+como parámetros.
+
+Por ejemplo, podemos aplicar la función suma a una lista de números:
+
+```racket
+(apply + '(1 2 3 4)) ; ⇒ 10
+```
+
+Podemos pasar a `apply` una expresión lambda:
+
+```racket
+(apply (lambda (x y) (+ x (* 2 y))) '(2 5)) ; ⇒ 12
+```
+
+La lista que pasamos como argumento de `apply` debe tener tantos
+elementos como parámetros tenga la función que aplicamos. En caso
+contrario, se produce un error:
+
+```racket
+(apply cons '(a b c)) ; ⇒ error
+cons: arity mismatch;
+ the expected number of arguments does not match the given number
+  expected: 2
+  given: 3
+  arguments...:
+```
+
+La forma correcta de hacerlo:
+
+```racket
+(apply cons '(a b)) ; ⇒ (a . b)
+```
+
+#### Función `apply` y funciones recursivas ####
+
+Usando `apply` podemos definir funciones recursivas con número
+variable de argumentos.
+
+Por ejemplo, supongamos que queremos definir la función `suma-parejas`
+que suma un número variable de parejas:
+
+```racket
+(suma-parejas '(1 . 2) '(3 . 4) '(5 . 6)) ; ⇒ '(9 . 12)
+```
+
+Recordemos la definición de la función que suma dos parejas:
+
+```racket
+(define (suma-pareja p1 p2)
+  (cons (+ (car p1) (car p2))
+        (+ (cdr p1) (cdr p2))))
+```
+
+Podemos entonces construir la función `suma-parejas` que recibe una
+lista de parejas (número variable de argumentos) llamando a `apply`
+para que sume todas las parejas del resto de la lista. Y sumar
+la pareja resultante con la primera pareja de la lista:
+
+```racket
+(define (suma-parejas . parejas)
+  (if (null? parejas)
+      '(0 . 0)
+      (suma-pareja (car parejas) (apply suma-parejas (cdr parejas)))))
+```
+
+Hay que hacer notar en que la llamada recursiva es necesario usar
+`apply` porque `(cdr parejas)` es una lista. No podemos invocar a
+`suma-parejas` pasando una lista como parámetro, sino que hay que
+pasarle todos los argumentos por separado (recibe un número variable
+de argumentos). Eso lo conseguimos hacer con `apply`.
+
+
+<!--
 
 ### Generalización ###
 

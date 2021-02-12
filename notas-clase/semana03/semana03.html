@@ -832,6 +832,59 @@ izquierda lo invoca con el parámetro 3:</p>
           <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">5</span><span class="p">))</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 30</span>
 </code></pre></div>
 </li>
-</ul></body>
+</ul>
+<h3>Función <code>apply</code></h3>
+<p>La función <code>(apply funcion lista)</code> de Scheme permite aplicar una función de
+aridad <code>n</code> a una lista de datos de n datos, haciendo que cada uno de
+los datos se pasen a la función en orden como parámetros.</p>
+<p>La función <code>apply</code> recibe una función y una lista y devuelve el
+resultado de aplicar la función a los datos de la lista, tomándolos
+como parámetros.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">apply</span> <span class="nb">+</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ 10</span>
+</code></pre></div>
+<p>Podemos pasar a <code>apply</code> una expresión lambda:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">apply</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="n">y</span><span class="p">)))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ 12</span>
+</code></pre></div>
+<p>La lista que pasamos como argumento de <code>apply</code> debe tener tantos
+elementos como parámetros tenga la función que aplicamos. En caso
+contrario, se produce un error:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">apply</span> <span class="nb">cons</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">))</span> <span class="c1">; ⇒ error</span>
+<span class="n">cons:</span> <span class="n">arity</span> <span class="n">mismatch</span><span class="c1">;</span>
+ <span class="n">the</span> <span class="n">expected</span> <span class="n">number</span> <span class="n">of</span> <span class="n">arguments</span> <span class="n">does</span> <span class="nb">not</span> <span class="k">match</span> <span class="n">the</span> <span class="n">given</span> <span class="n">number</span>
+  <span class="n">expected:</span> <span class="mi">2</span>
+  <span class="n">given:</span> <span class="mi">3</span>
+  <span class="n">arguments...:</span>
+</code></pre></div>
+<p>La forma correcta de hacerlo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">apply</span> <span class="nb">cons</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span><span class="p">))</span> <span class="c1">; ⇒ (a . b)</span>
+</code></pre></div>
+<h3>Función <code>apply</code> y funciones recursivas</h3>
+<p>Usando <code>apply</code> podemos definir funciones recursivas con número
+variable de argumentos.</p>
+<p>Por ejemplo, supongamos que queremos definir la función <code>suma-parejas</code>
+que suma un número variable de parejas:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-parejas</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(9 . 12)</span>
+</code></pre></div>
+<p>Recordemos la definición de la función que suma dos parejas:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-pareja</span> <span class="n">p1</span> <span class="n">p2</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p2</span><span class="p">))</span>
+        <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p2</span><span class="p">))))</span>
+</code></pre></div>
+<p>¿Cómo podríamos, usando <code>apply</code>, resolver el problema de la sumar un
+número variable de argumentos?</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-parejas</span> <span class="o">.</span> <span class="n">parejas</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">parejas</span><span class="p">)</span>
+      <span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">suma-pareja</span> <span class="n">???</span>  <span class="n">???</span><span class="p">)))</span>
+</code></pre></div>
+<p style="margin-bottom:3cm;"></p>
+
+<p>Solución:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-parejas</span> <span class="o">.</span> <span class="n">parejas</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">parejas</span><span class="p">)</span>
+      <span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">suma-pareja</span> <span class="p">(</span><span class="nb">car</span> <span class="n">parejas</span><span class="p">)</span> <span class="p">(</span><span class="nb">apply</span> <span class="n">suma-parejas</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">parejas</span><span class="p">)))))</span>
+</code></pre></div></body>
 
 </html>

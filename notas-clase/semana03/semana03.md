@@ -706,3 +706,85 @@ Integer x -> {x*x}
               (lambda (x) (+ x 5)) 10) ; ⇒ 30
     ```
 
+### Función `apply` ###
+
+La función `(apply funcion lista)` de Scheme permite aplicar una función de
+aridad `n` a una lista de datos de n datos, haciendo que cada uno de
+los datos se pasen a la función en orden como parámetros.
+
+La función `apply` recibe una función y una lista y devuelve el
+resultado de aplicar la función a los datos de la lista, tomándolos
+como parámetros.
+
+Ejemplo:
+
+```racket
+(apply + '(1 2 3 4)) ; ⇒ 10
+```
+
+Podemos pasar a `apply` una expresión lambda:
+
+```racket
+(apply (lambda (x y) (+ x (* 2 y))) '(2 5)) ; ⇒ 12
+```
+
+La lista que pasamos como argumento de `apply` debe tener tantos
+elementos como parámetros tenga la función que aplicamos. En caso
+contrario, se produce un error:
+
+```racket
+(apply cons '(a b c)) ; ⇒ error
+cons: arity mismatch;
+ the expected number of arguments does not match the given number
+  expected: 2
+  given: 3
+  arguments...:
+```
+
+La forma correcta de hacerlo:
+
+```racket
+(apply cons '(a b)) ; ⇒ (a . b)
+```
+
+### Función `apply` y funciones recursivas ###
+
+Usando `apply` podemos definir funciones recursivas con número
+variable de argumentos.
+
+Por ejemplo, supongamos que queremos definir la función `suma-parejas`
+que suma un número variable de parejas:
+
+```racket
+(suma-parejas '(1 . 2) '(3 . 4) '(5 . 6)) ; ⇒ '(9 . 12)
+```
+
+Recordemos la definición de la función que suma dos parejas:
+
+```racket
+(define (suma-pareja p1 p2)
+  (cons (+ (car p1) (car p2))
+        (+ (cdr p1) (cdr p2))))
+```
+
+¿Cómo podríamos, usando `apply`, resolver el problema de la sumar un
+número variable de argumentos?
+
+```racket
+(define (suma-parejas . parejas)
+  (if (null? parejas)
+      '(0 . 0)
+      (suma-pareja ???  ???)))
+```
+
+<p style="margin-bottom:3cm;"></p>
+
+Solución:
+
+```racket
+(define (suma-parejas . parejas)
+  (if (null? parejas)
+      '(0 . 0)
+      (suma-pareja (car parejas) (apply suma-parejas (cdr parejas)))))
+```
+
