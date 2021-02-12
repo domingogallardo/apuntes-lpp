@@ -31,7 +31,6 @@ Vamos a ver cómo se implementan de forma recursiva:
 - Funciones de Scheme que trabajan con listas (para no solapar con las
   definiciones de Scheme pondremos el prefijo `mi-` en todas ellas):
     - Función `mi-list-ref`
-    - Función `mi-list-tail`
     - Función `mi-append`
     - Función `mi-reverse`
 - Otras funciones recursivas
@@ -104,29 +103,6 @@ Vamos a ver cómo se implementan de forma recursiva:
         (if (= n 0) 
             (car lista)
             (mi-list-ref (cdr lista) (- n 1))))
-    ```
-
-
-### Función `mi-list-tail`
-
-- La función `(mi-list-tail lista n)` devuelve la lista resultante de
-  quitar n elementos de la lista original:
-
-    ```racket
-    (mi-list-tail '(1 2 3 4 5 6 7) 2) ; ⇒ (3 4 5 6 7)
-    ```
-
-- ¿Cómo se implementaría de forma recursiva?
-
-<p style="margin-bottom:2cm;"></p>
-
-- Solución en Scheme
-
-    ```racket
-    (define (mi-list-tail lista n)
-        (if (= n 0) 
-            lista
-            (mi-list-tail (cdr lista) (- n 1))))
     ```
 
 
@@ -767,14 +743,14 @@ Recordemos la definición de la función que suma dos parejas:
         (+ (cdr p1) (cdr p2))))
 ```
 
-¿Cómo podríamos, usando `apply`, resolver el problema de la sumar un
-número variable de argumentos?
+¿Cómo podríamos, usando `apply`, resolver el problema de sumar un
+número variable de parejas?
 
 ```racket
 (define (suma-parejas . parejas)
   (if (null? parejas)
       '(0 . 0)
-      (suma-pareja ???  ???)))
+      (suma-pareja ???  (apply ???))))
 ```
 
 <p style="margin-bottom:3cm;"></p>
@@ -788,3 +764,6 @@ Solución:
       (suma-pareja (car parejas) (apply suma-parejas (cdr parejas)))))
 ```
 
+Una representación gráfica de cómo funciona la recursión:
+
+<img src="imagenes/suma-parejas-apply.png" width="600px"/>

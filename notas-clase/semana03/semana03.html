@@ -216,7 +216,6 @@ table {
 <li>Funciones de Scheme que trabajan con listas (para no solapar con las
   definiciones de Scheme pondremos el prefijo <code>mi-</code> en todas ellas):<ul>
 <li>Función <code>mi-list-ref</code></li>
-<li>Función <code>mi-list-tail</code></li>
 <li>Función <code>mi-append</code></li>
 <li>Función <code>mi-reverse</code></li>
 </ul>
@@ -290,30 +289,6 @@ devuelvo el `car` de la lista.
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">0</span><span class="p">)</span> 
         <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span>
         <span class="p">(</span><span class="n">mi-list-ref</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">))))</span>
-</code></pre></div>
-</li>
-</ul>
-<h3>Función <code>mi-list-tail</code></h3>
-<ul>
-<li>
-<p>La función <code>(mi-list-tail lista n)</code> devuelve la lista resultante de
-  quitar n elementos de la lista original:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mi-list-tail</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ (3 4 5 6 7)</span>
-</code></pre></div>
-</li>
-<li>
-<p>¿Cómo se implementaría de forma recursiva?</p>
-</li>
-</ul>
-<p style="margin-bottom:2cm;"></p>
-
-<ul>
-<li>
-<p>Solución en Scheme</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-list-tail</span> <span class="n">lista</span> <span class="n">n</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">0</span><span class="p">)</span> 
-        <span class="n">lista</span>
-        <span class="p">(</span><span class="n">mi-list-tail</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">))))</span>
 </code></pre></div>
 </li>
 </ul>
@@ -871,12 +846,12 @@ que suma un número variable de parejas:</p>
   <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p2</span><span class="p">))</span>
         <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p2</span><span class="p">))))</span>
 </code></pre></div>
-<p>¿Cómo podríamos, usando <code>apply</code>, resolver el problema de la sumar un
-número variable de argumentos?</p>
+<p>¿Cómo podríamos, usando <code>apply</code>, resolver el problema de sumar un
+número variable de parejas?</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-parejas</span> <span class="o">.</span> <span class="n">parejas</span><span class="p">)</span>
   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">parejas</span><span class="p">)</span>
       <span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">suma-pareja</span> <span class="n">???</span>  <span class="n">???</span><span class="p">)))</span>
+      <span class="p">(</span><span class="n">suma-pareja</span> <span class="n">???</span>  <span class="p">(</span><span class="nb">apply</span> <span class="n">???</span><span class="p">))))</span>
 </code></pre></div>
 <p style="margin-bottom:3cm;"></p>
 
@@ -885,6 +860,8 @@ número variable de argumentos?</p>
   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">parejas</span><span class="p">)</span>
       <span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span>
       <span class="p">(</span><span class="n">suma-pareja</span> <span class="p">(</span><span class="nb">car</span> <span class="n">parejas</span><span class="p">)</span> <span class="p">(</span><span class="nb">apply</span> <span class="n">suma-parejas</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">parejas</span><span class="p">)))))</span>
-</code></pre></div></body>
+</code></pre></div>
+<p>Una representación gráfica de cómo funciona la recursión:</p>
+<p><img src="imagenes/suma-parejas-apply.png" width="600px"/></p></body>
 
 </html>

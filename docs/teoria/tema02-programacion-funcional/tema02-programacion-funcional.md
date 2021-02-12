@@ -3610,11 +3610,20 @@ la pareja resultante con la primera pareja de la lista:
       (suma-pareja (car parejas) (apply suma-parejas (cdr parejas)))))
 ```
 
+Se trata de una llamada recursiva indirecta, porque se invoca a la
+propia función `suma-parejas` no directamente, sino a través de
+`apply`.
+
 Hay que hacer notar en que la llamada recursiva es necesario usar
 `apply` porque `(cdr parejas)` es una lista. No podemos invocar a
 `suma-parejas` pasando una lista como parámetro, sino que hay que
 pasarle todos los argumentos por separado (recibe un número variable
 de argumentos). Eso lo conseguimos hacer con `apply`.
+
+La siguiente imagen muestra una representación gráfica del
+funcionamiento de la recursión:
+
+<img src="imagenes/suma-parejas-apply.png" width="600px"/>
 
 <!--
 
