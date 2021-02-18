@@ -3110,15 +3110,15 @@ siguiente forma:</p>
 <li>Creamos una lista de todos los números del 1 a x</li>
 <li>Filtramos la lista para dejar los divisores de x</li>
 </ol>
-<p>La función <code>(lista-hasta x)</code> devuelve una lista de números 1..x:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">lista-hasta</span> <span class="n">x</span><span class="p">)</span>
+<p>La función <code>(lista-desde x)</code> devuelve una lista de números x..1:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">lista-desde</span> <span class="n">x</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">)</span>
       <span class="o">&#39;</span><span class="p">()</span>
-      <span class="p">(</span><span class="nb">cons</span> <span class="n">x</span> <span class="p">(</span><span class="n">lista-hasta</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))))</span>
+      <span class="p">(</span><span class="nb">cons</span> <span class="n">x</span> <span class="p">(</span><span class="n">lista-desde</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))))</span>
 </code></pre></div>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">lista-hasta</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ (1 2)</span>
-<span class="p">(</span><span class="n">lista-hasta</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ (1 2 3 4 5 6 7 8 9 10)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">lista-desde</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ (2 1)</span>
+<span class="p">(</span><span class="n">lista-desde</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ (10 9 8 7 6 5 4 3 2 1)</span>
 </code></pre></div>
 <p>Definimos la función <code>(divisor? x y)</code> que nos diga si x es divisor de
 y:</p>
@@ -3147,7 +3147,7 @@ de ese número. Por ejemplo, para calcular los divisores de 10:</p>
 </code></pre></div>
 <p>Se puede implementar de una forma muy sencilla:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">divisores</span> <span class="n">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="n">filtra-divisores</span> <span class="p">(</span><span class="n">lista-hasta</span> <span class="n">x</span><span class="p">)</span> <span class="n">x</span><span class="p">))</span>
+   <span class="p">(</span><span class="n">filtra-divisores</span> <span class="p">(</span><span class="n">lista-disde</span> <span class="n">x</span><span class="p">)</span> <span class="n">x</span><span class="p">))</span>
 </code></pre></div>
 <p>Y una vez definida esta función, ya puede funcionar correctamente la
 función <code>primo?</code>.</p>
@@ -3709,12 +3709,12 @@ número:
 Vamos a ver un último ejemplo en el que definimos una función
 constructora que extiende funciones ya existentes.
 
-Recordemos la función `lista-hasta`:
+Recordemos la función `lista-desde`:
 
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">lista-hasta</span> <span class="n">x</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">lista-desde</span> <span class="n">x</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">)</span>
       <span class="o">&#39;</span><span class="p">()</span>
-      <span class="p">(</span><span class="nb">cons</span> <span class="n">x</span> <span class="p">(</span><span class="n">lista-hasta</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))))</span>
+      <span class="p">(</span><span class="nb">cons</span> <span class="n">x</span> <span class="p">(</span><span class="n">lista-desde</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))))</span>
 </code></pre></div>
 
 Un problema de la función anterior es que si le pasamos un
@@ -3737,13 +3737,13 @@ que `f`) en cuyo cuerpo se comprueba si el argumento cumple la
 condición y sólo en ese caso se llama a `f`.
 
 Podemos entonces construir una función segura a partir de la función
-`lista-hasta` en la que se devuelva `error` si el argumento es un
+`lista-desde` en la que se devuelva `error` si el argumento es un
 número negativo:
 
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista-hasta-segura</span>
-   <span class="p">(</span><span class="n">construye-segura</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">&gt;=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">))</span> <span class="n">lista-hasta</span><span class="p">))</span>
-<span class="p">(</span><span class="n">lista-hasta-segura</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">; ⇒ (8 7 6 5 4 3 2 1)</span>
-<span class="p">(</span><span class="n">lista-hasta-segura</span> <span class="mi">-1</span><span class="p">)</span> <span class="c1">; ⇒ error</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista-desde-segura</span>
+   <span class="p">(</span><span class="n">construye-segura</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">&gt;=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">))</span> <span class="n">lista-desde</span><span class="p">))</span>
+<span class="p">(</span><span class="n">lista-desde-segura</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">; ⇒ (8 7 6 5 4 3 2 1)</span>
+<span class="p">(</span><span class="n">lista-desde-segura</span> <span class="mi">-1</span><span class="p">)</span> <span class="c1">; ⇒ error</span>
 </code></pre></div>
 
 Podríamos usar `construye-segura` con cualquier función de 1 argumento
