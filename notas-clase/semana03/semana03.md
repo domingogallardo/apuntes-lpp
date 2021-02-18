@@ -34,7 +34,7 @@ Vamos a ver cómo se implementan de forma recursiva:
     - Función `mi-append`
     - Función `mi-reverse`
 - Otras funciones recursivas
-    - Función `cuadrados-hasta`
+    - Función `lista-desde`
     - Función `filtra-pares`
 - Ejemplo completo: usamos las funciones anteriores para comprobar si
   un número es primo
@@ -177,13 +177,13 @@ Vamos a ver cómo se implementan de forma recursiva:
     ```
 
 
-### Función `cuadrados-hasta`
+### Función `lista-desde`
 
-- La función `(cuadrados-hasta x)` devuelve una lista con los
-  cuadrados de los números hasta x:
+- La función `(lista-desde x)` devuelve una lista con los
+  números desde x hasta 1:
 
     ```racket
-    (cuadrados-hasta 5) ; ⇒ (25 16 9 4 1)
+    (lista-desde 5) ; ⇒ (5 4 3 2 1)
     ```
 
 - ¿Cómo formulamos el ejemplo de forma recursiva?
@@ -193,31 +193,31 @@ Vamos a ver cómo se implementan de forma recursiva:
 - Solución:
 
     ```text
-    (cuadrados-hasta 5) = 
-    (cons (cuadrado 5) (cuadrados-hasta 4) =
-    (cons 25 (16 9 4 1)) = 
-    (25 16 9 4 1)
+    (lista-desde 5) = 
+    (cons 5 (lista-desde 4) =
+    (cons 5 (4 3 2 1)) = 
+    (5 4 3 2 1)
     ```
 
 - En general:
 
     ```text
-    Para construir una lista de los cuadrados hasta x:
-       construyo la lista de los cuadrados hasta x-1 y le añado 
-       el cuadrado de x
+    Para construir una lista desde x hasta 1:
+       construyo la lista desde x-1 hasta 1 y le añado 
+       en cabeza el número x
     ```
 
 - El caso base de la recursión es el caso en el que x es 1, entonces
-  devolvemos `(1)
+  devolvemos '(1)
 
 - Ya podemos realizar la definición Scheme:
 
     ```racket
-    (define (cuadrados-hasta x)
+    (define (lista-desde x)
         (if (= x 1)
             '(1)
-            (cons (cuadrado x)
-                  (cuadrados-hasta (- x 1)))))
+            (cons x
+                  (lista-desde (- x 1)))))
     ```
 
 
@@ -276,28 +276,6 @@ Vamos a ver cómo se implementan de forma recursiva:
     ```
 
 
-### Función recursiva `(lista-hasta x)`
-
-
-- La función `(lista-hasta x)` devuelve una lista de números 1..x:
-
-    ```racket
-    (lista-hasta 2) ;⇒ (1 2)
-    (lista-hasta 10) ;⇒ (1 2 3 4 5 6 7 8 9 10)
-    ```
-
-- Implementación recursiva:
-
-
-    ```racket
-    (define (lista-hasta x)
-        (if (= x 0)
-            '()
-            (cons x (lista-hasta (- x 1)))))
-    ```
-
-
-
 ### Función `(divisor? x y)`
 
 ```racket
@@ -329,13 +307,13 @@ Vamos a ver cómo se implementan de forma recursiva:
 
     ```racket
     (define (divisores x)
-        (filtra-divisores (lista-hasta x) x))
+        (filtra-divisores (lista-desde x) x))
     ```
 
 - Por ejemplo, para calcular los divisores de 10:
 
     ```racket
-    (filtra-divisores '(1 2 3 4 5 6 7 8 9 10) 10) ;⇒ (1 2 5 10)
+    (filtra-divisores '(10 9 8 7 6 5 4 3 2 1) 10) ;⇒ (10 5 2 1)
     ```
 
 - Y, una vez definida esta función, ya funciona correctamente la

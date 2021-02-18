@@ -3089,20 +3089,20 @@ siguiente forma:
 1. Creamos una lista de todos los números del 1 a x
 2. Filtramos la lista para dejar los divisores de x
 
-La función `(lista-hasta x)` devuelve una lista de números 1..x:
+La función `(lista-desde x)` devuelve una lista de números x..1:
 
 ```racket
-(define (lista-hasta x)
+(define (lista-desde x)
    (if (= x 0)
       '()
-      (cons x (lista-hasta (- x 1)))))
+      (cons x (lista-desde (- x 1)))))
 ```
 
 Ejemplos:
 
 ```racket
-(lista-hasta 2) ; ⇒ (1 2)
-(lista-hasta 10) ; ⇒ (1 2 3 4 5 6 7 8 9 10)
+(lista-desde 2) ; ⇒ (2 1)
+(lista-desde 10) ; ⇒ (10 9 8 7 6 5 4 3 2 1)
 ```
 
 Definimos la función `(divisor? x y)` que nos diga si x es divisor de
@@ -3146,7 +3146,7 @@ Se puede implementar de una forma muy sencilla:
 
 ```racket
 (define (divisores x)
-   (filtra-divisores (lista-hasta x) x))
+   (filtra-divisores (lista-disde x) x))
 ```
 
 Y una vez definida esta función, ya puede funcionar correctamente la
@@ -3881,13 +3881,13 @@ número:
 Vamos a ver un último ejemplo en el que definimos una función
 constructora que extiende funciones ya existentes.
 
-Recordemos la función `lista-hasta`:
+Recordemos la función `lista-desde`:
 
 ```racket
-(define (lista-hasta x)
+(define (lista-desde x)
    (if (= x 0)
       '()
-      (cons x (lista-hasta (- x 1)))))
+      (cons x (lista-desde (- x 1)))))
 ```
 
 Un problema de la función anterior es que si le pasamos un
@@ -3911,14 +3911,14 @@ que `f`) en cuyo cuerpo se comprueba si el argumento cumple la
 condición y sólo en ese caso se llama a `f`.
 
 Podemos entonces construir una función segura a partir de la función
-`lista-hasta` en la que se devuelva `error` si el argumento es un
+`lista-desde` en la que se devuelva `error` si el argumento es un
 número negativo:
   
 ```racket
-(define lista-hasta-segura
-   (construye-segura (lambda (x) (>= x 0)) lista-hasta))
-(lista-hasta-segura 8) ; ⇒ (8 7 6 5 4 3 2 1)
-(lista-hasta-segura -1) ; ⇒ error
+(define lista-desde-segura
+   (construye-segura (lambda (x) (>= x 0)) lista-desde))
+(lista-desde-segura 8) ; ⇒ (8 7 6 5 4 3 2 1)
+(lista-desde-segura -1) ; ⇒ error
 ```
 
 Podríamos usar `construye-segura` con cualquier función de 1 argumento

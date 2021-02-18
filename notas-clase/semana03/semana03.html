@@ -221,7 +221,7 @@ table {
 </ul>
 </li>
 <li>Otras funciones recursivas<ul>
-<li>Función <code>cuadrados-hasta</code></li>
+<li>Función <code>lista-desde</code></li>
 <li>Función <code>filtra-pares</code></li>
 </ul>
 </li>
@@ -356,12 +356,12 @@ devuelvo el `car` de la lista.
 </code></pre></div>
 </li>
 </ul>
-<h3>Función <code>cuadrados-hasta</code></h3>
+<h3>Función <code>lista-desde</code></h3>
 <ul>
 <li>
-<p>La función <code>(cuadrados-hasta x)</code> devuelve una lista con los
-  cuadrados de los números hasta x:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cuadrados-hasta</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ (25 16 9 4 1)</span>
+<p>La función <code>(lista-desde x)</code> devuelve una lista con los
+  números desde x hasta 1:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">lista-desde</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ (5 4 3 2 1)</span>
 </code></pre></div>
 </li>
 <li>
@@ -373,30 +373,30 @@ devuelvo el `car` de la lista.
 <ul>
 <li>
 <p>Solución:</p>
-<div class="highlight"><pre><span></span><code>(cuadrados-hasta 5) = 
-(cons (cuadrado 5) (cuadrados-hasta 4) =
-(cons 25 (16 9 4 1)) = 
-(25 16 9 4 1)
+<div class="highlight"><pre><span></span><code>(lista-desde 5) = 
+(cons 5 (lista-desde 4) =
+(cons 5 (4 3 2 1)) = 
+(5 4 3 2 1)
 </code></pre></div>
 </li>
 <li>
 <p>En general:</p>
-<div class="highlight"><pre><span></span><code>Para construir una lista de los cuadrados hasta x:
-   construyo la lista de los cuadrados hasta x-1 y le añado 
-   el cuadrado de x
+<div class="highlight"><pre><span></span><code>Para construir una lista desde x hasta 1:
+   construyo la lista desde x-1 hasta 1 y le añado 
+   en cabeza el número x
 </code></pre></div>
 </li>
 <li>
 <p>El caso base de la recursión es el caso en el que x es 1, entonces
-  devolvemos `(1)</p>
+  devolvemos '(1)</p>
 </li>
 <li>
 <p>Ya podemos realizar la definición Scheme:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrados-hasta</span> <span class="n">x</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">lista-desde</span> <span class="n">x</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)</span>
         <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span>
-              <span class="p">(</span><span class="n">cuadrados-hasta</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))))</span>
+        <span class="p">(</span><span class="nb">cons</span> <span class="n">x</span>
+              <span class="p">(</span><span class="n">lista-desde</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))))</span>
 </code></pre></div>
 </li>
 </ul>
@@ -455,23 +455,6 @@ devuelvo el `car` de la lista.
 </code></pre></div>
 </li>
 </ul>
-<h3>Función recursiva <code>(lista-hasta x)</code></h3>
-<ul>
-<li>
-<p>La función <code>(lista-hasta x)</code> devuelve una lista de números 1..x:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">lista-hasta</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">;⇒ (1 2)</span>
-<span class="p">(</span><span class="n">lista-hasta</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">;⇒ (1 2 3 4 5 6 7 8 9 10)</span>
-</code></pre></div>
-</li>
-<li>
-<p>Implementación recursiva:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">lista-hasta</span> <span class="n">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="o">&#39;</span><span class="p">()</span>
-        <span class="p">(</span><span class="nb">cons</span> <span class="n">x</span> <span class="p">(</span><span class="n">lista-hasta</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))))</span>
-</code></pre></div>
-</li>
-</ul>
 <h3>Función <code>(divisor? x y)</code></h3>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">divisor?</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
       <span class="p">(</span><span class="nb">=</span> <span class="mi">0</span> <span class="p">(</span><span class="nb">remainder</span> <span class="n">y</span> <span class="n">x</span><span class="p">)))</span>
@@ -497,12 +480,12 @@ devuelvo el `car` de la lista.
   implementar de una forma muy sencilla una función <code>(divisores x)</code>
   que devuelve una lista de todos los divisores del número <code>x</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">divisores</span> <span class="n">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">filtra-divisores</span> <span class="p">(</span><span class="n">lista-hasta</span> <span class="n">x</span><span class="p">)</span> <span class="n">x</span><span class="p">))</span>
+    <span class="p">(</span><span class="n">filtra-divisores</span> <span class="p">(</span><span class="n">lista-desde</span> <span class="n">x</span><span class="p">)</span> <span class="n">x</span><span class="p">))</span>
 </code></pre></div>
 </li>
 <li>
 <p>Por ejemplo, para calcular los divisores de 10:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">filtra-divisores</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span> <span class="mi">9</span> <span class="mi">10</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">;⇒ (1 2 5 10)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">filtra-divisores</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span> <span class="mi">9</span> <span class="mi">8</span> <span class="mi">7</span> <span class="mi">6</span> <span class="mi">5</span> <span class="mi">4</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">;⇒ (10 5 2 1)</span>
 </code></pre></div>
 </li>
 <li>
