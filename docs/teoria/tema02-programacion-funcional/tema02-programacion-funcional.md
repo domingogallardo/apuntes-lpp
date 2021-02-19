@@ -3625,7 +3625,6 @@ funcionamiento de la recursión:
 
 <img src="imagenes/suma-parejas-apply.png" width="600px"/>
 
-<!--
 
 ### Generalización ###
 
@@ -3821,6 +3820,8 @@ Y supongamos que realizamos las siguientes invocaciones:
 ```racket
 (define g (construye-sumador 100))
 (g 3) ; ⇒ 103
+(define f (construye-sumador 50))
+(f 3) ; ⇒ 53
 ```
 
 Podemos explicar lo que sucede en la evaluación de estas funciones de
@@ -3837,6 +3838,11 @@ la siguiente forma:
   el ejemplo) se ejecuta el cuerpo de la función `(+ x k)` con `x`
   valiendo el parámetro (3) y el valor de `k` se obtiene del ámbito
   capturado (100).
+- En el caso de la segunda invocación a `construye-sumador` el valor
+  del parámetro es 50 y se crea otro ámbito local en el que `k`
+  vale 50. Ese valor es el capturado por la nueva clausura que crea la
+  expresión lambda, que es devuelta por la función y guardada en la
+  variable `f`.
 
 El hecho de que función creada en el ámbito local capture este ámbito
 es lo que hace que se denomine una **clausura** (del inglés
@@ -4719,8 +4725,6 @@ Entonces la función `(divisores n)` se implementaría de la siguiente forma:
             (divisor? x n)) (numeros-hasta n)))
 ```
 
-
--->
 
 ----
 

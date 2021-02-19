@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<style type="text/css">
+
+/* Admonition */
+
+.admonition {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.admonition.note { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.admonition.quote { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #cecece;
+    border-color: #cccccc;
+}
+
+.admonition.warning { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #fcf8e3;
+    border-color: #fbeed5;
+}
+
+.admonition.hint { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #E9F9F6;
+    border-color: #AFEEEE;
+}
+
+.admonition.danger { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+}
+
+.admonition-title {
+    font-weight: bold;
+    text-align: left;
+}
+
+
+/* Codehilite */
+
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mb { color: #666666 } /* Literal.Number.Bin */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #0000FF } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
+/* Estilo LPP */
+
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: white;
+  padding: 60px;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+</style>
+
+</head>
+
+<body>
+<h1>Práctica 3: Funciones recursivas sobre listas</h1>
+<h2>Entrega de la práctica</h2>
+<p>Para entregar la práctica debes subir a Moodle el fichero
+<code>practica03.rkt</code> con una cabecera inicial con tu nombre y apellidos, y
+las soluciones de cada ejercicio separadas por comentarios. Cada
+solución debe incluir:</p>
+<ul>
+<li>La <strong>definición de las funciones</strong> que resuelven el ejercicio.</li>
+<li>Un conjunto de <strong>pruebas</strong> que comprueben su funcionamiento
+  utilizando el API <code>RackUnit</code>.</li>
+</ul>
+<h2>Ejercicio 1</h2>
+<p>a) Implementa la función recursiva <code>(contiene-prefijo prefijo
+lista-pal)</code> que recibe una cadena y una lista de palabras. Devuelve
+una lista con los booleanos resultantes de comprobar si la cadena es
+prefijo de cada una de las palabras de la lista.</p>
+<p>Debes definir una función auxiliar <code>(es-prefijo? pal1 pal2)</code> que
+compruebe si la palabra 1 es prefijo de la palabra 2.</p>
+<div class="admonition hint">
+<p class="admonition-title">Pista</p>
+<p>Puedes usar la función <code>(substring palabra inicio final)</code> que devuelve
+la subcadena de la <code>palabra</code> que va desde la posición <code>inicio</code> hasta
+la posición <code>final</code> (sin incluir).</p>
+</div>
+<p>Ejemplos:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">es-prefijo?</span> <span class="s2">&quot;ante&quot;</span> <span class="s2">&quot;anterior&quot;</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">contiene-prefijo</span> <span class="s2">&quot;ante&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;anterior&quot;</span> <span class="s2">&quot;antígona&quot;</span> <span class="s2">&quot;antena&quot;</span> <span class="s2">&quot;anatema&quot;</span><span class="p">))</span> 
+<span class="c1">; ⇒ (#t #f #t #f)</span>
+</code></pre></div>
+<p>b) Implementa la función recursiva <code>(inserta-pos dato pos lista)</code> que
+recibe un dato, una posición y una lista e inserta el dato en la
+posición indicada de la lista. Si la posición es 0, el dato se inserta
+en cabeza. Suponemos que la posición siempre será positiva y menor o
+igual que la longitud de la lista.</p>
+<p>Ejemplos:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">inserta-pos</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="mi">2</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(a a b a a)</span>
+<span class="p">(</span><span class="n">inserta-pos</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="mi">0</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(b a a a a)</span>
+</code></pre></div>
+<p>c) Implementa la función recursiva <code>(inserta-ordenada n
+lista-ordenada)</code> que recibe un número y una lista de números ordenados
+de menor a mayor y devuelve la lista resultante de insertar el número
+<code>n</code> en la posición correcta para que la lista siga estando ordenada.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">inserta-ordenada</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">-8</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">11</span> <span class="mi">20</span><span class="p">))</span> <span class="c1">; ⇒ (-8 2 3 10 11 20)</span>
+</code></pre></div>
+<p>Usando la función anterior <code>inserta-ordenada</code> implementa la función recursiva
+<code>(ordena lista)</code> que recibe una lista de números y devuelve una lista
+ordenada.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">ordena</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">-1</span> <span class="mi">100</span> <span class="mi">4</span> <span class="mi">-6</span><span class="p">))</span> <span class="c1">; ⇒ (-6 -1 2 4 100)</span>
+</code></pre></div>
+<h3>Ejercicio 2</h3>
+<p>a) Escribe la función <code>(expande-parejas pareja1 pareja2 ... pareja_n)</code>
+que recibe un número variable de argumentos y devuelve una lista donde
+se han "expandido" las parejas, creando una lista con tantos elementos
+como el número que indique cada pareja.</p>
+<p>La función <code>expande-parejas</code> deberá llamar a una función recursiva
+<code>(expande-lista lista-parejas)</code> que trabaje sobre una lista de parejas.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">expande-parejas</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#t</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;LPP&quot;</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="o">.</span> <span class="mi">4</span><span class="p">))</span> 
+<span class="c1">; ⇒ (#t #t #t &quot;LPP&quot; &quot;LPP&quot; b b b b)</span>
+</code></pre></div>
+<div class="admonition hint">
+<p class="admonition-title">Pista</p>
+<p>Puedes definir una función auxiliar <code>(expande-pareja pareja)</code> que
+recibe una pareja y devuelve la lista expandida resultante de expandir
+sólo esa pareja.</p>
+</div>
+<p>b) Implementa la función recursiva <code>(expande2 lista)</code>. Recibe una
+lista en la que hay intercalados algunos números enteros
+positivos. Devuelve la lista original en la que se han expandido los
+elementos siguientes a los números, tantas veces como indica el
+número. La lista nunca va a contener dos números consecutivos y
+siempre va a haber un elemento después de un número.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">expande2</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="ss">clase</span> <span class="ss">ua</span> <span class="mi">3</span> <span class="ss">lpp</span> <span class="ss">aulario</span><span class="p">))</span> 
+<span class="c1">; ⇒ (clase clase clase clase ua lpp lpp lpp aulario))</span>
+</code></pre></div>
+<p>En el ejemplo, el 4 indica que el siguiente elemento
+(<code>clase</code>) se debe repetir 4 veces en la lista expandida y el 3 indica
+que el siguiente elemento (<code>lpp</code>) se va a repetir 3 veces.</p>
+<p>Como en los anteriores ejercicios, te recomendamos implementar alguna
+función auxiliar.</p>
+<h3>Ejercicio 3</h3>
+<p>a) En matemáticas, el conjunto potencia de un conjunto es el conjunto
+formado por todos los subconjuntos del conjunto original. Vamos a
+representar este concepto con listas y diseñar una función recursiva
+que lo implemente.</p>
+<p>Dada una lista de elementos, podemos representar su conjunto potencia
+como la lista de todas las sublistas posibles formadas con elementos
+de la lista original. </p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">conjunto-potencia</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> 
+<span class="c1">; ⇒ ((1 2 3) (1 2) (1 3) (1) (2 3) (2) (3) ())</span>
+</code></pre></div>
+<p>Implementa la función recursiva <code>(conjunto-potencia lista)</code> que
+devuelva el conjunto potencia de la lista original.</p>
+<p>Algunas pistas:</p>
+<ul>
+<li>El conjunto potencia de una lista vacía es una lista con la lista
+  vacía como único elemento.</li>
+<li>El conjunto potencia de una lista se puede construir uniendo dos
+  listas: la lista resultante de añadir el primer elemento a todas las
+  listas del conjunto potencia sin el primer elemento y el conjunto
+  potencia de la lista sin el primer elemento.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>(conjunto-potencia &#39;(1 2 3)) = ((1 2 3) (1 2) (1 3) (1)) + 
+                               ((2 3) (2) (3) ())
+</code></pre></div>
+<p>b) Implementa la función recursiva <code>(producto-cartesiano lista1
+lista2)</code> que devuelva una lista con todas las parejas resultantes de
+combinar todos los elementos de la lista 1 con todos los elementos de
+la lista 2.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">producto-cartesiano</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<span class="c1">; ⇒ ((1 . 1) (1 . 2) (1 . 3) (2 . 1) (2 . 2) (2 . 3))</span>
+</code></pre></div>
+<h3>Ejercicio 4</h3>
+<p>a) Indica qué devuelven las siguientes expresiones en Scheme. Puede ser
+que alguna expresión contenga algún error. Indícalo también en ese
+caso y explica qué tipo de error. Hazlo sin el intérprete, y después
+comprueba con el intérprete si tu respuesta era correcta.</p>
+<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">((</span><span class="k">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">6</span> <span class="mi">4</span><span class="p">)))</span> <span class="c1">; ⇒ ?</span>
+<span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="n">y</span><span class="p">)))</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="n">x</span><span class="p">)))</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+
+
+<span class="p">(</span><span class="k">define</span> <span class="n">f</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">a</span> <span class="n">b</span><span class="p">)</span> <span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;***&quot;</span> <span class="n">a</span> <span class="n">b</span> <span class="s2">&quot;***&quot;</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">g</span> <span class="n">f</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">procedure?</span> <span class="n">g</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">g</span> <span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;Adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+</code></pre></div>
+<p>b) Hemos visto en teoría que la forma especial <code>define</code> para construir
+funciones es <em>azucar sintáctico</em> y que el intérprete de Scheme la
+convierte en una expresión equivalente usando la forma especial
+<code>lambda</code>.</p>
+<p>Escribe cuál sería las expresiones equivalentes, usando la forma
+especial <code>lambda</code> a las siguientes definiciones de funciones:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-3</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">factorial</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="mi">1</span>
+      <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="n">factorial</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))))</span>
+</code></pre></div>
+<p>c) Suponiendo las siguientes definiciones de funciones indica qué
+devolverían las invocaciones. Puede ser que alguna expresión contenga
+algún error. Indícalo también en ese caso y explica qué tipo de error.</p>
+<p>Hazlo sin el intérprete, y después comprueba con el intérprete si tu
+respuesta era correcta.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">doble</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="n">x</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">foo</span> <span class="n">f</span> <span class="n">g</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+   <span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="n">g</span> <span class="n">x</span><span class="p">)</span> <span class="n">y</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">bar</span> <span class="n">f</span> <span class="n">p</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="n">p</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="n">p</span> <span class="n">y</span><span class="p">))</span>
+       <span class="p">(</span><span class="n">f</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+       <span class="o">&#39;</span><span class="ss">error</span><span class="p">))</span>
+
+<span class="p">(</span><span class="n">foo</span> <span class="nb">+</span> <span class="mi">10</span> <span class="n">doble</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">foo</span> <span class="n">doble</span> <span class="nb">+</span> <span class="mi">10</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">foo</span> <span class="nb">+</span> <span class="n">doble</span> <span class="mi">10</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">foo</span> <span class="nb">string-append</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;***&quot;</span> <span class="n">x</span><span class="p">))</span> <span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;Adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+
+<span class="p">(</span><span class="n">bar</span> <span class="n">doble</span> <span class="nb">number?</span> <span class="mi">10</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">bar</span> <span class="nb">string-append</span> <span class="nb">string?</span> <span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;Adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">bar</span> <span class="nb">+</span> <span class="nb">number?</span> <span class="s2">&quot;Hola&quot;</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+</code></pre></div>
+<h3>Ejercicio 5</h3>
+<p>a) Implementa la función recursiva <code>(crea-baraja lista-parejas)</code> que
+recibe una lista de parejas con un palo y un valor (ambos caracteres)
+y devuelve una lista de cartas tal y como se representaban en la
+práctica anterior.</p>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">crea-baraja</span> <span class="o">&#39;</span><span class="p">((</span><span class="sc">#\u2660</span> <span class="o">.</span> <span class="sc">#\A</span><span class="p">)</span> <span class="p">(</span><span class="sc">#\u2663</span> <span class="o">.</span> <span class="sc">#\2</span><span class="p">)</span> 
+               <span class="p">(</span><span class="sc">#\u2665</span> <span class="o">.</span> <span class="sc">#\3</span><span class="p">)</span> <span class="p">(</span><span class="sc">#\u2666</span> <span class="o">.</span> <span class="sc">#\R</span><span class="p">)))</span>
+<span class="c1">; ⇒ (A♠ 2♣ 3♥ R♦)</span>
+</code></pre></div>
+<p>b) Vamos a trabajar con cartas de póker. Los valores posibles son A,
+2, 3, ..., 8, 9, 0, J, Q, K (representamos el número 10 con el
+carácter y el símbolo 0). Y los palos son los símbolos correspondientes a
+los caracteres UTF #\u2660, #\u2663, #\u2665 y #\u2666: ♠, ♣, ♥
+y ♦.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">palos</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\u2660</span> <span class="sc">#\u2663</span> <span class="sc">#\u2665</span> <span class="sc">#\u2666</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">valores</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\A</span> <span class="sc">#\2</span> <span class="sc">#\3</span> <span class="sc">#\4</span> <span class="sc">#\5</span> <span class="sc">#\6</span> <span class="sc">#\7</span> <span class="sc">#\8</span> <span class="sc">#\9</span> <span class="sc">#\0</span> <span class="sc">#\J</span> <span class="sc">#\Q</span> <span class="sc">#\K</span><span class="p">))</span>
+</code></pre></div>
+<p>Implementa la función <code>(baraja-poker)</code> que devuelve una lista con
+todas las cartas de una baraja de póker. No es una función
+recursiva. Debes usar la función anterior <code>crea-baraja</code> y la función
+<code>producto-cartesiano</code> definida en el ejercicio 3.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">baraja-poker</span><span class="p">)</span> 
+<span class="c1">; ⇒ (A♠ 2♠ 3♠ ...K♠ A♣ 2♣ ... K♣ A♥ 2♥ ... K♥ A♦ 2♦ ... Q♦ K♦)</span>
+</code></pre></div>
+<p>No hace falta que hagas ninguna prueba de la función. Basta con que
+dejes en el código la llamada a la función y al ejecutar el programa
+verás por pantalla que la baraja es correcta.</p>
+<p>c) Implementa la función recursiva <code>(mezcla lista)</code> que recibe una lista
+y la devuelve mezclada (sus elementos se han intercambiando en
+posiciones aleatorias).</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mezcla</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ (2 1 6 4 5 3)</span>
+</code></pre></div>
+<p>Llama a la función con la baraja de póker para devuelva la baraja
+mezclada y la muestre por pantalla.</p>
+<div class="admonition hint">
+<p class="admonition-title">Pista</p>
+<p>Puedes usar la función <code>inserta-pos</code> definida anteriormente y la
+función <code>(random inicial final)</code> que devuelve un número aleatorio
+entre el valor inicial (incluido) y el valor final (sin incluir).</p>
+</div>
+<h3>Ejercicio 6</h3>
+<p>Implementa una función recursiva <code>(filtra-simbolos lista-simbolos
+lista-num)</code> que recibe una lista de símbolos y una lista de números
+enteros (ambas de la misma longitud) y devuelve una lista de
+parejas. Cada pareja está formada por el símbolo de la i-ésima
+posición de <code>lista-simbolos</code> y el número entero situado esa posición
+de <code>lista-num</code>, siempre y cuando dicho número se corresponda con la
+longitud de la cadena correspondiente al símbolo. Puedes utilizar las
+funciones predefinidas <code>string-length</code> y <code>symbol-&gt;string</code>.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">filtra-simbolos</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">este</span> <span class="ss">es</span> <span class="ss">un</span> <span class="ss">ejercicio</span> <span class="ss">de</span> <span class="ss">examen</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">6</span><span class="p">))</span>
+<span class="c1">; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))</span>
+</code></pre></div>
+<hr />
+<p>Lenguajes y Paradigmas de Programación, curso 2020-21<br />
+© Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
+Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p></body>
+
+</html>
