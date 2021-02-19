@@ -3850,7 +3850,7 @@ esta ejecución tiene en la memoria, incluyendo los valores asociados a
 las variables y los ámbitos locales creados en las distintas
 invocaciones a las funciones.
 
-<img src="imagenes/clasuras.png" width="700px"/>
+<img src="imagenes/clausuras.png" width="700px"/>
 
 El hecho de que función creada en el ámbito local capture este ámbito
 es lo que hace que se denomine una **clausura** (del inglés
