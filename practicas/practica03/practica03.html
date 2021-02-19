@@ -481,12 +481,15 @@ ordenada.</p>
 que recibe un número variable de argumentos y devuelve una lista donde
 se han "expandido" las parejas, creando una lista con tantos elementos
 como el número que indique cada pareja.</p>
-<p>La función <code>expande-parejas</code> deberá llamar a una función recursiva
-<code>(expande-lista lista-parejas)</code> que trabaje sobre una lista de parejas.</p>
 <p>Ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">expande-parejas</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#t</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;LPP&quot;</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="o">.</span> <span class="mi">4</span><span class="p">))</span> 
 <span class="c1">; ⇒ (#t #t #t &quot;LPP&quot; &quot;LPP&quot; b b b b)</span>
 </code></pre></div>
+<p>a.1) Escribe una solución en la que la función <code>expande-parejas</code>
+llame a una función recursiva <code>(expande-lista lista-parejas)</code>
+que trabaje sobre una lista de parejas.</p>
+<p>a.2) Escribe una solución en la que la propia función
+<code>expande-parejas</code> sea recursiva.</p>
 <div class="admonition hint">
 <p class="admonition-title">Pista</p>
 <p>Puedes definir una función auxiliar <code>(expande-pareja pareja)</code> que
@@ -526,14 +529,23 @@ devuelva el conjunto potencia de la lista original.</p>
 <ul>
 <li>El conjunto potencia de una lista vacía es una lista con la lista
   vacía como único elemento.</li>
-<li>El conjunto potencia de una lista se puede construir uniendo dos
-  listas: la lista resultante de añadir el primer elemento a todas las
-  listas del conjunto potencia sin el primer elemento y el conjunto
-  potencia de la lista sin el primer elemento.</li>
+<li>El conjunto potencia de una lista se puede construir como se muestra
+  en el siguiente ejemplo: </li>
 </ul>
 <div class="highlight"><pre><span></span><code>(conjunto-potencia &#39;(1 2 3)) = ((1 2 3) (1 2) (1 3) (1)) + 
                                ((2 3) (2) (3) ())
 </code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="err">Calculamos con una llamada recursiva el conjunto potencia de la</span>
+<span class="err">lista sin el primer elemento: `((2 3) (2) (3) ())` y unimos a la</span>
+<span class="err">cabeza de esta lista la lista resultante de añadir el primer</span>
+<span class="err">elemento de la lista original (el `1`) a todas las sublistas de</span>
+<span class="err">esta lista potencia: `((1 2 3) (1 2) (1 3) (1))`.</span>
+</code></pre></div>
+</td></tr></table>
 <p>b) Implementa la función recursiva <code>(producto-cartesiano lista1
 lista2)</code> que devuelva una lista con todas las parejas resultantes de
 combinar todos los elementos de la lista 1 con todos los elementos de
