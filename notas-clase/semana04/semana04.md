@@ -172,7 +172,7 @@ de un argumento que sumará 10 a ese argumento:
     (define g (construye-sumador 100))
     (define f (construye-sumador 50))
     (g 3) ; ⇒ 103
-    (f 3) ; ⇒ 50
+    (f 3) ; ⇒ 53
     ```
 
 - Cuando invocamos a `construye-sumador` con un valor concreto para
