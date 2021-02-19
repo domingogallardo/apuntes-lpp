@@ -3844,6 +3844,14 @@ la siguiente forma:
   expresión lambda, que es devuelta por la función y guardada en la
   variable `f`.
 
+La siguiente imagen muestra gráficamente la explicación anterior. Se
+ve a la izquierda la ejecución del código y a la derecha el efecto que
+esta ejecución tiene en la memoria, incluyendo los valores asociados a
+las variables y los ámbitos locales creados en las distintas
+invocaciones a las funciones.
+
+<img src="imagenes/clasuras.png" width="700px"/>
+
 El hecho de que función creada en el ámbito local capture este ámbito
 es lo que hace que se denomine una **clausura** (del inglés
 **closure**). La función _se cierra_ sobre el ámbito capturado y puede

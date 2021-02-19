@@ -78,9 +78,6 @@ que recibe un número variable de argumentos y devuelve una lista donde
 se han "expandido" las parejas, creando una lista con tantos elementos
 como el número que indique cada pareja.
 
-La función `expande-parejas` deberá llamar a una función recursiva
-`(expande-lista lista-parejas)` que trabaje sobre una lista de parejas.
-
 Ejemplo:
 
 ```racket
@@ -88,10 +85,18 @@ Ejemplo:
 ; ⇒ (#t #t #t "LPP" "LPP" b b b b)
 ```
 
+a.1) Escribe una solución en la que la función `expande-parejas`
+llame a una función recursiva `(expande-lista lista-parejas)`
+que trabaje sobre una lista de parejas.
+
+a.2) Escribe una solución en la que la propia función
+`expande-parejas` sea recursiva.
+
 !!! Hint "Pista"
     Puedes definir una función auxiliar `(expande-pareja pareja)` que
     recibe una pareja y devuelve la lista expandida resultante de expandir
     sólo esa pareja.
+
 
 b) Implementa la función recursiva `(expande2 lista)`. Recibe una
 lista en la que hay intercalados algunos números enteros
@@ -141,16 +146,21 @@ Algunas pistas:
 
 - El conjunto potencia de una lista vacía es una lista con la lista
   vacía como único elemento.
-- El conjunto potencia de una lista se puede construir uniendo dos
-  listas: la lista resultante de añadir el primer elemento a todas las
-  listas del conjunto potencia sin el primer elemento y el conjunto
-  potencia de la lista sin el primer elemento.
+- El conjunto potencia de una lista se puede construir como se muestra
+  en el siguiente ejemplo: 
+  
   
    ```text
    (conjunto-potencia '(1 2 3)) = ((1 2 3) (1 2) (1 3) (1)) + 
                                   ((2 3) (2) (3) ())
    ```
 
+    Calculamos con una llamada recursiva el conjunto potencia de la
+    lista sin el primer elemento: `((2 3) (2) (3) ())` y unimos a la
+    cabeza de esta lista la lista resultante de añadir el primer
+    elemento de la lista original (el `1`) a todas las sublistas de
+    esta lista potencia: `((1 2 3) (1 2) (1 3) (1))`.
+    
 b) Implementa la función recursiva `(producto-cartesiano lista1
 lista2)` que devuelva una lista con todas las parejas resultantes de
 combinar todos los elementos de la lista 1 con todos los elementos de
@@ -162,7 +172,6 @@ Ejemplo:
 (producto-cartesiano '(1 2) '(1 2 3))
 ; ⇒ ((1 . 1) (1 . 2) (1 . 3) (2 . 1) (2 . 2) (2 . 3))
 ```
-
 
 
 ### Ejercicio 4 ###
@@ -310,8 +319,6 @@ Ejemplo:
 (filtra-simbolos '(este es un ejercicio de examen) '(2 1 2 9 1 6))
 ; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))
 ```
-
-
 
 ----
 

@@ -331,13 +331,14 @@ de un argumento que sumará 10 a ese argumento:</p>
 </li>
 <li>
 <p>¿Cómo funciona la clausura?</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">construye-sumador</span> <span class="n">k</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">k</span> <span class="mi">10</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">construye-sumador</span> <span class="n">k</span><span class="p">)</span>
    <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
        <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="n">k</span><span class="p">)))</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">g</span> <span class="p">(</span><span class="n">construye-sumador</span> <span class="mi">100</span><span class="p">))</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">f</span> <span class="p">(</span><span class="n">construye-sumador</span> <span class="mi">50</span><span class="p">))</span>
 <span class="p">(</span><span class="n">g</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 103</span>
-<span class="p">(</span><span class="n">f</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 53</span>
+<span class="p">(</span><span class="n">f</span> <span class="mi">6</span><span class="p">)</span> <span class="c1">; ⇒ 56</span>
 </code></pre></div>
 </li>
 <li>
@@ -349,70 +350,20 @@ de un argumento que sumará 10 a ese argumento:</p>
   función creada en el ámbito local <strong>captura</strong> este ámbito local, con
   sus variables y sus valores (en este caso la variable <code>k</code> y su valor
   100).</li>
-<li>Cuando se invoca a la función desde fuera (cuando llamamos a <code>g</code> en
+<li>
+<p>Cuando se invoca a la función desde fuera (cuando llamamos a <code>g</code> en
   el ejemplo) se ejecuta el cuerpo de la función <code>(+ x k)</code> con <code>x</code>
   valiendo el parámetro (3) y el valor de <code>k</code> se obtiene del ámbito
-  capturado (100).</li>
-</ul>
-<hr />
-<h3>Ejemplo 2: función <code>composicion</code></h3>
-<ul>
-<li>
-<p>Una función que recibe otras dos funciones de un argumento y
-  devuelve otra función que realiza la composición de ambas:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">composicion</span> <span class="n">f</span> <span class="n">g</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="n">g</span> <span class="n">x</span><span class="p">))))</span>
-</code></pre></div>
+  capturado (100).</p>
 </li>
 <li>
-<p>Un ejemplo de su uso:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">doble</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="n">h</span> <span class="p">(</span><span class="n">composicion</span> <span class="n">doble</span> <span class="n">cuadrado</span><span class="p">))</span>
-<span class="p">(</span><span class="n">h</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ 32</span>
-</code></pre></div>
+<p>La siguiente imagen muestra gráficamente cómo se evalúan estas
+  expresiones y qué variables se crean en memoria. Se pueden ver
+  también los distintos ámbitos locales creados en las distintas
+  invocaciones a las funciones.</p>
 </li>
 </ul>
-<hr />
-<h3>Ejemplo 3: función <code>construye-segura</code></h3>
-<ul>
-<li>
-<p>Recordemos la función <code>lista-hasta</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">lista-hasta</span> <span class="n">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="o">&#39;</span><span class="p">()</span>
-      <span class="p">(</span><span class="nb">cons</span> <span class="n">x</span> <span class="p">(</span><span class="n">lista-hasta</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))))</span>
-</code></pre></div>
-</li>
-<li>
-<p>Si le pasamos un número negativo entra en un bucle infinito.</p>
-</li>
-<li>
-<p>Definimos la función <code>(construye-segura condicion f)</code> que recibe
-  dos funciones: un predicado y otra función, ambos de 1
-  argumento. Devuelve otra función en la que sólo se llamará a <code>f</code> si
-  el argumento cumple la <code>condicion</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">construye-segura</span> <span class="n">condicion</span> <span class="n">f</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">condicion</span> <span class="n">x</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">f</span> <span class="n">x</span><span class="p">)</span>
-        <span class="o">&#39;</span><span class="ss">error</span><span class="p">)))</span>
-</code></pre></div>
-</li>
-<li>
-<p>Podemos entonces construir una función segura a partir de la función
-  <code>lista-hasta</code> en la que se devuelva <code>error</code> si el argumento es un
-  número negativo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista-hasta-segura</span>
-   <span class="p">(</span><span class="n">construye-segura</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">&gt;=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">))</span> <span class="n">lista-hasta</span><span class="p">))</span>
-<span class="p">(</span><span class="n">lista-hasta-segura</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">; ⇒ (8 7 6 5 4 3 2 1)</span>
-<span class="p">(</span><span class="n">lista-hasta-segura</span> <span class="mi">-1</span><span class="p">)</span> <span class="c1">; ⇒ error</span>
-</code></pre></div>
-</li>
-</ul>
-<hr />
+<p><img src="imagenes/clausuras.png" width="700px"></p>
 <h3>Funciones en estructuras de datos</h3>
 <ul>
 <li>Vamos a ver ejemplos que muestran que las funciones cumplen la

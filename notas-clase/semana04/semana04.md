@@ -166,13 +166,14 @@ de un argumento que sumará 10 a ese argumento:
 - ¿Cómo funciona la clausura?
 
     ```racket
+    (define k 10)
     (define (construye-sumador k)
        (lambda (x)
            (+ x k)))
     (define g (construye-sumador 100))
     (define f (construye-sumador 50))
     (g 3) ; ⇒ 103
-    (f 3) ; ⇒ 53
+    (f 6) ; ⇒ 56
     ```
 
 - Cuando invocamos a `construye-sumador` con un valor concreto para
@@ -187,70 +188,13 @@ de un argumento que sumará 10 a ese argumento:
   valiendo el parámetro (3) y el valor de `k` se obtiene del ámbito
   capturado (100).
 
-----
+- La siguiente imagen muestra gráficamente cómo se evalúan estas
+  expresiones y qué variables se crean en memoria. Se pueden ver
+  también los distintos ámbitos locales creados en las distintas
+  invocaciones a las funciones.
 
-### Ejemplo 2: función `composicion`
+<img src="imagenes/clausuras.png" width="700px">
 
-- Una función que recibe otras dos funciones de un argumento y
-  devuelve otra función que realiza la composición de ambas:
-
-    ```racket
-    (define (composicion f g)
-        (lambda (x)
-            (f (g x))))
-    ```
-
-- Un ejemplo de su uso:
-
-    ```racket
-    (define (doble x) (+ x x))
-    (define (cuadrado x) (* x x))
-    
-    (define h (composicion doble cuadrado))
-    (h 4) ; ⇒ 32
-    ```
-
-----
-
-
-### Ejemplo 3: función `construye-segura`
-
-- Recordemos la función `lista-hasta`:
-
-    ```racket
-    (define (lista-hasta x)
-       (if (= x 0)
-          '()
-          (cons x (lista-hasta (- x 1)))))
-    ```
-
-- Si le pasamos un número negativo entra en un bucle infinito.
-
-- Definimos la función `(construye-segura condicion f) ` que recibe
-  dos funciones: un predicado y otra función, ambos de 1
-  argumento. Devuelve otra función en la que sólo se llamará a `f` si
-  el argumento cumple la `condicion`.
-
-    ```racket
-    (define (construye-segura condicion f)
-      (lambda (x)
-        (if (condicion x)
-            (f x)
-            'error)))
-    ```
-
-- Podemos entonces construir una función segura a partir de la función
-  `lista-hasta` en la que se devuelva `error` si el argumento es un
-  número negativo:
-  
-    ```racket
-    (define lista-hasta-segura
-       (construye-segura (lambda (x) (>= x 0)) lista-hasta))
-    (lista-hasta-segura 8) ; ⇒ (8 7 6 5 4 3 2 1)
-    (lista-hasta-segura -1) ; ⇒ error
-    ```
-
-----
 
 ### Funciones en estructuras de datos
 
