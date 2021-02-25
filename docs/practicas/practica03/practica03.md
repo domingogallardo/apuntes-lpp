@@ -261,15 +261,14 @@ Por ejemplo:
 ; ⇒ (A♠ 2♣ 3♥ R♦)
 ```
 
-b) Vamos a trabajar con cartas de póker. Los valores posibles son A,
-2, 3, ..., 8, 9, 0, J, Q, K (representamos el número 10 con el
-carácter y el símbolo 0). Y los palos son los símbolos correspondientes a
-los caracteres UTF #\u2660, #\u2663, #\u2665 y #\u2666: ♠, ♣, ♥
-y ♦.
+b) Vamos a trabajar con cartas de póker. Los valores posibles son 2,
+3, ..., 8, 9, 0, J, Q, K, A (representamos el número 10 con el carácter y
+el símbolo 0). Y los palos son los símbolos correspondientes a los
+caracteres UTF #\u2660, #\u2663, #\u2665 y #\u2666: ♠, ♣, ♥ y ♦.
 
 ```racket
 (define palos '(#\u2660 #\u2663 #\u2665 #\u2666))
-(define valores '(#\A #\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9 #\0 #\J #\Q #\K))
+(define valores '(#\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9 #\0 #\J #\Q #\K #\A))
 ```
 
 Implementa la función `(baraja-poker)` que devuelve una lista con
@@ -279,7 +278,7 @@ recursiva. Debes usar la función anterior `crea-baraja` y la función
 
 ```racket
 (baraja-poker) 
-; ⇒ (A♠ 2♠ 3♠ ...K♠ A♣ 2♣ ... K♣ A♥ 2♥ ... K♥ A♦ 2♦ ... Q♦ K♦)
+; ⇒ (2♠ 3♠ ... K♠ A♠ 2♣ ... K♣ A♣ 2♥ ... K♥ A♥ 2♦ ... K♦ A♦)
 ```
 
 No hace falta que hagas ninguna prueba de la función. Basta con que
