@@ -1,0 +1,259 @@
+# Comentarios práctica 1 #
+
+
+************************************************************
+- Los nombres de las funciones y los parámetros deben ser descriptivos (y correctos)
+- Indentación en Scheme: mirad cómo se colocan los paréntesis en la solución y en los ejemplos.
+- Un "cond" con 2 condiciones se debe escribir con un "if"
+************************************************************
+
+
+MEJORABLE:
+
+(define(mas-proximo-7 t)
+  (abs (- 7 (+ (car t) (cdr t)))))
+      
+(define(tirada-correcta d1 d2)
+  (cond((> d1 d2)2)((< d1 d2)1)
+    (else 0)
+    ))
+
+(define (tirada-ganadora t1 t2)
+  (tirada-correcta(mas-proximo-7 t1)(mas-proximo-7 t2)
+   ))
+   
+   
+BIEN:
+
+
+(define (distancia-a-7 t)
+  (abs (- 7 (+ (car t) (cdr t)))))
+
+(define (mejor-distancia d1 d2)
+  (cond
+    ((< d1 d2) 1)
+    ((> d1 d2) 2)
+    (else 0)))
+
+(define (tirada-ganadora t1 t2)
+  (mejor-distancia (distancia-a-7 t1)
+                   (distancia-a-7 t2)))
+
+************************************************************
+- Intentar no repetir varias veces la misma expresión. Si pasa esto,
+  es señal de que se puede hacer una función auxiliar.
+************************************************************
+
+
+MEJORABLE:
+
+(define (binario-a-hexadecimal b3 b2 b1 b0)
+  (if (<= (binario-a-decimal b3 b2 b1 b0) 9)
+      (integer->char(charIntegerNum (binario-a-decimal b3 b2 b1 b0)))
+      (integer->char (charIntegerLetra (binario-a-decimal b3 b2 b1 b0)))
+   )
+ )
+ 
+ BIEN:
+ 
+ 
+(define (decimal-a-hexadecimal valor)
+  (if (< valor 10)
+      (integer->char (+ (char->integer #\0) valor))
+      (integer->char (+ (char->integer #\A) (- valor 10)))))
+
+(define (binario-a-hexadecimal b3 b2 b1 b0)
+  (decimal-a-hexadecimal (binario-a-decimal b3 b2 b1 b0)))
+  
+  
+************************************************************
+- En Scheme se puede comparar cualquier tipo de dato no numérico con equal?
+************************************************************
+
+
+MEJORABLE:
+
+(define (obten-valor char)
+  (cond
+    ((< (char->integer char) 58) (- (char->integer char) 48))
+    ((string=? (string char) "S") (- (char->integer char) 73))
+    ((string=? (string char) "C") (- (char->integer char) 56))
+    ((string=? (string char) "R") (- (char->integer char) 70))))
+    
+
+(define (obten-valor char)
+  (if (char-numeric? char)
+      (- (char->integer char) (char->integer #\0) ) 
+    (cond
+    ((= (char->integer(char-upcase char)) (char->integer #\A)) 1)
+    ((= (char->integer(char-upcase char)) (char->integer #\S)) 10)
+    ((= (char->integer(char-upcase char)) (char->integer #\C)) 11)
+    (else 12)
+    )
+))
+
+BIEN:
+
+(define (obten-valor caracter)
+  (cond
+    ((equal? #\A caracter) 1)  ; As
+    ((equal? #\S caracter) 10) ; Sota
+    ((equal? #\C caracter) 11) ; Caballo
+    ((equal? #\R caracter) 12) ; Rey
+    (else (- (char->integer caracter) (char->integer #\0)))))
+    
+
+***********************************************
+- Los caracteres están ordenados secuencialmente al convertirlos a
+  enterios (char->int) y para obtener la  posición hay que restar la
+  posición del #\0
+***********************************************
+
+MAL:
+
+(define (obten-valor s)
+  (cond
+    ((char=? #\A s) 1)
+    ((char=? #\S s) 10)
+    ((char=? #\C s) 11)
+    ((char=? #\R s) 12)
+    ((char=? #\2 s) 2)
+    ((char=? #\3 s) 3)
+    ((char=? #\4 s) 4)
+    ((char=? #\5 s) 5)
+    ((char=? #\6 s) 6)
+    ((char=? #\7 s) 7)
+    ((char=? #\8 s) 8)
+    ((char=? #\9 s) 9) 
+  )
+  )
+
+BIEN:
+
+(define (obten-valor caracter)
+  (cond
+    ((equal? #\A caracter) 1)  ; As
+    ((equal? #\S caracter) 10) ; Sota
+    ((equal? #\C caracter) 11) ; Caballo
+    ((equal? #\R caracter) 12) ; Rey
+    (else (- (char->integer caracter) (char->integer #\0)))))
+    
+
+************************************************************
+- No hay que usar variables auxiliares, sino funciones auxiliares
+************************************************************
+
+MAL:
+
+(define (tipo-triangulo c1 c2 c3)
+  (define (lado-c12)
+    (halla-lado c1 c2))
+  (define (lado-c13)
+    (halla-lado c1 c3))
+  (define (lado-c23)
+    (halla-lado c2 c3))
+  (if (iguales-reales? (lado-c12) (lado-c13))
+      (if (iguales-reales? (lado-c12) (lado-c23))
+          "Equilátero"
+          "Isósceles")
+      (if (iguales-reales? (lado-c12) (lado-c23))
+          "Isósceles"
+          (if (iguales-reales? (lado-c13) (lado-c23))
+              "Isósceles"
+              
+BIEN:
+
+;; Funcion Principal tipo-triangulo
+(define (tipo-triangulo p1 p2 p3)
+  (if (iguales-reales? (calcular-distancia p1 p2) (calcular-distancia p1 p3)) 
+      (if (iguales-reales? (calcular-distancia p1 p2) (calcular-distancia p2 p3)) 
+         "Equilatero"
+         "Isosceles")
+      (if(iguales-reales? (calcular-distancia p1 p3) (calcular-distancia p2 p3))
+         "Isosceles"
+         "Escaleno")))
+
+
+EXCELENTE:
+
+ 
+(define (tipo-triangulo coor1 coor2 coor3)
+  (tipo-triangulo-por-lados (distancia coor1 coor2)
+                            (distancia coor2 coor3)
+                            (distancia coor3 coor1)))
+
+(define (tipo-triangulo-por-lados l1 l2 l3)
+   ...)
+   
+*******************
+- Indentación
+*******************
+
+
+
+BIEN:
+
+(define (menor-de-tres n1 n2 n3)
+   (if (< n1 n3)
+       (if (< n1 n2) n1 n2)
+       (if (< n3 n2) n3 n2)))
+
+
+EXCELENTE:
+
+(define (menor-de-tres n1 n2 n3)
+   (if (< n1 n3)
+       (if (< n1 n2) n1 n2)
+       (if (< n3 n2) n3 n2)))
+
+
+***********************************************
+- Hay que usar cond cuando hay muchas condiciones
+***********************************************
+
+
+MEJORABLE:
+
+(define (obten-palo c)
+  (if (eq? c #\O) 'Oros
+      (if (eq?  c #\E) 'Espadas
+           (if (eq? c #\C) 'Copas
+               (if (eq? c #\B) 'Bastos 'No_válido))))
+)
+
+BIEN:
+
+(define (obten-palo caracter)
+  (cond
+    ((equal? #\O caracter) 'Oros)
+    ((equal? #\C caracter) 'Copas)
+    ((equal? #\E caracter) 'Espadas)
+    (else 'Bastos)))
+    
+
+**************************************************
+- La pregunta sobre el modelo de substitución casi nadie la tiene
+  bien. Mirad los ejemplos en teoría y la solución.
+**************************************************
+
+
+
+# Caso base del ejercicio 4 #
+
+
+(suma-cartas lista-cartas n)
+
+
+(suma lista) => (+ (car lista) (suma (cdr lista)))
+
+(suma lista n) => (+ (car lista) (suma (cdr lista) (- n 1)))
+
+
+(suma (1 2 3 4 5 6 7 8) 3) => 6
+
+(suma (1 2 3 4 5) 0) => 0
+
+
+# Ejercicio 4 #
+
+

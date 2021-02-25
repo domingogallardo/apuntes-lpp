@@ -720,20 +720,19 @@ práctica anterior.</p>
                <span class="p">(</span><span class="sc">#\u2665</span> <span class="o">.</span> <span class="sc">#\3</span><span class="p">)</span> <span class="p">(</span><span class="sc">#\u2666</span> <span class="o">.</span> <span class="sc">#\R</span><span class="p">)))</span>
 <span class="c1">; ⇒ (A♠ 2♣ 3♥ R♦)</span>
 </code></pre></div>
-<p>b) Vamos a trabajar con cartas de póker. Los valores posibles son A,
-2, 3, ..., 8, 9, 0, J, Q, K (representamos el número 10 con el
-carácter y el símbolo 0). Y los palos son los símbolos correspondientes a
-los caracteres UTF #\u2660, #\u2663, #\u2665 y #\u2666: ♠, ♣, ♥
-y ♦.</p>
+<p>b) Vamos a trabajar con cartas de póker. Los valores posibles son 2,
+3, ..., 8, 9, 0, J, Q, K, A (representamos el número 10 con el carácter y
+el símbolo 0). Y los palos son los símbolos correspondientes a los
+caracteres UTF #\u2660, #\u2663, #\u2665 y #\u2666: ♠, ♣, ♥ y ♦.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">palos</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\u2660</span> <span class="sc">#\u2663</span> <span class="sc">#\u2665</span> <span class="sc">#\u2666</span><span class="p">))</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">valores</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\A</span> <span class="sc">#\2</span> <span class="sc">#\3</span> <span class="sc">#\4</span> <span class="sc">#\5</span> <span class="sc">#\6</span> <span class="sc">#\7</span> <span class="sc">#\8</span> <span class="sc">#\9</span> <span class="sc">#\0</span> <span class="sc">#\J</span> <span class="sc">#\Q</span> <span class="sc">#\K</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">valores</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\2</span> <span class="sc">#\3</span> <span class="sc">#\4</span> <span class="sc">#\5</span> <span class="sc">#\6</span> <span class="sc">#\7</span> <span class="sc">#\8</span> <span class="sc">#\9</span> <span class="sc">#\0</span> <span class="sc">#\J</span> <span class="sc">#\Q</span> <span class="sc">#\K</span> <span class="sc">#\A</span><span class="p">))</span>
 </code></pre></div>
 <p>Implementa la función <code>(baraja-poker)</code> que devuelve una lista con
 todas las cartas de una baraja de póker. No es una función
 recursiva. Debes usar la función anterior <code>crea-baraja</code> y la función
 <code>producto-cartesiano</code> definida en el ejercicio 3.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">baraja-poker</span><span class="p">)</span> 
-<span class="c1">; ⇒ (A♠ 2♠ 3♠ ...K♠ A♣ 2♣ ... K♣ A♥ 2♥ ... K♥ A♦ 2♦ ... Q♦ K♦)</span>
+<span class="c1">; ⇒ (2♠ 3♠ ... K♠ A♠ 2♣ ... K♣ A♣ 2♥ ... K♥ A♥ 2♦ ... K♦ A♦)</span>
 </code></pre></div>
 <p>No hace falta que hagas ninguna prueba de la función. Basta con que
 dejes en el código la llamada a la función y al ejecutar el programa
