@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<style type="text/css">
+
+/* Admonition */
+
+.admonition {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.admonition.note { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.admonition.quote { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #cecece;
+    border-color: #cccccc;
+}
+
+.admonition.warning { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #fcf8e3;
+    border-color: #fbeed5;
+}
+
+.admonition.hint { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #E9F9F6;
+    border-color: #AFEEEE;
+}
+
+.admonition.danger { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+}
+
+.admonition-title {
+    font-weight: bold;
+    text-align: left;
+}
+
+
+/* Codehilite */
+
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mb { color: #666666 } /* Literal.Number.Bin */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #0000FF } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
+/* Estilo LPP */
+
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: white;
+  padding: 60px;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+</style>
+
+</head>
+
+<body>
+<h2>Semana 5</h2>
+<p>Notas de clase de la semana 5 de LPP.</p>
+<h2>Tema 3: Procedimientos recursivos</h2>
+<ul>
+<li>El coste de la recursión</li>
+<li>Soluciones al coste de la recursión: procesos iterativos</li>
+<li>Soluciones al coste de la recursión: memoization</li>
+<li>Recursión y gráficos de tortuga</li>
+</ul>
+<hr />
+<h3>El coste de la recursión</h3>
+<ul>
+<li>Vamos a analizar el coste de la recursión de una forma empírica, sin
+  realizar una análisis matemático riguroso.</li>
+<li>Veremos que el coste se dispara cuando tenemos dos llamadas
+  recursivas.</li>
+<li>Veremos dos formas de conseguir que el coste sea menor.</li>
+</ul>
+<hr />
+<h3>La pila de la recursión</h3>
+<ul>
+<li>Para analizar una función vamos por primera vez a <em>entrar en la
+  recursión</em> y hacer una traza de las llamadas recursivas del
+  siguiente:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-length</span> <span class="n">items</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">items</span><span class="p">)</span>
+        <span class="mi">0</span>
+        <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">mi-length</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">items</span><span class="p">)))))</span>
+</code></pre></div>
+<ul>
+<li>¿Cómo podemos representar las llamadas y el resultado de <code>(mi-length
+  '(a b c d))</code></li>
+</ul>
+<p style="margin-bottom:2cm;"></p>
+
+<div class="highlight"><pre><span></span><code>(mi-length &#39;(a b c d))
+(+ 1 (mi-length &#39;(b c d)))
+(+ 1 (+ 1 (mi-length &#39;(c d))))
+(+ 1 (+ 1 (+ 1 (mi-length &#39;(d)))))
+(+ 1 (+ 1 (+ 1 (+ 1 (mi-length &#39;())))))
+(+ 1 (+ 1 (+ 1 (+ 1 0))))
+(+ 1 (+ 1 (+ 1 1)))
+(+ 1 (+ 1 2))
+(+ 1 3)
+4
+</code></pre></div>
+<ul>
+<li>Cada llamada a la recursión <strong>deja una función en espera de ser
+  evaluada cuando la recursión devuelva un valor</strong> (en el caso
+  anterior el +). Esta función, junto con sus argumentos, se almacenan
+  en la <strong>pila de la recursión</strong>.</li>
+<li>Cuando la recursión devuelve un valor, los valores se recuperan de
+  la pila, se realiza la llamada y se devuelve el valor a la anterior
+  llamada en espera.</li>
+<li>Si la recursión está mal hecha y nunca termina se genera un <em>stack
+  overflow</em> porque la memoria que se almacena en la pila sobrepasa la
+  memoria reservada para el intérprete DrRacket.</li>
+</ul>
+<hr />
+<h3>Coste espacial de la recursión</h3>
+<ul>
+<li>
+<p>El coste espacial de un programa es una función que relaciona la
+  memoria consumida por una llamada para resolver un problema con
+  alguna variable que determina el tamaño del problema a resolver.</p>
+</li>
+<li>
+<p>En el caso de la función <code>mi-length</code> el tamaño del problema viene
+  dado por la longitud de la lista. El coste espacial de <code>mi-lenght</code>
+  es <em>O(n)</em>, siendo <em>n</em> la longitud de la lista.</p>
+</li>
+</ul>
+<hr />
+<h3>1.2.3 El coste depende del número de llamadas a la recursión</h3>
+<ul>
+<li>
+<p>Veamos con un ejemplo que el coste de las llamadas recursivas puede
+  dispararse. Supongamos la famosa [secuencia de Fibonacci]:
+  0,1,1,2,3,5,8,13,...</p>
+</li>
+<li>
+<p>Secuencia de Fibonacci en la <a href="http://en.wikipedia.org/wiki/Fibonacci_number">Wikipedia</a></p>
+</li>
+<li>
+<p>Formulación matemática de la secuencia de Fibonacci:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>Fibonacci(n) = Fibonacci(n-1) + Fibonacci(n-2)  
+Fibonacci(0) = 0  
+Fibonacci(1) = 1
+</code></pre></div>
+<ul>
+<li>Formulación recursiva en Scheme:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fib</span> <span class="n">n</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">0</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">((</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">fib</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">))</span>
+                 <span class="p">(</span><span class="n">fib</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">2</span><span class="p">))))))</span>
+</code></pre></div>
+<ul>
+<li>Evaluación de una llamada a Fibonacci:</li>
+</ul>
+<p><img src="./imagenes/fibonacci.png"/></p>
+<ul>
+<li>
+<p>Cada llamada a la recursión produce otras dos llamadas, por lo que
+  el número de llamadas finales es 2^n siendo n el número que se pasa
+  a la función.</p>
+</li>
+<li>
+<p>El coste espacial y temporal es exponencial, O(2^n).</p>
+</li>
+<li>
+<p>¿Qué pasa si intentamos evaluar <code>(fibonaci 40)</code>?</p>
+</li>
+</ul>
+<hr />
+<h3>1.3 Soluciones al coste de la recursión: procesos iterativos</h3>
+<ul>
+<li>Diferenciamos entre procedimientos y procesos: un procedimiento es
+  un algoritmo y un proceso es la ejecución de ese algoritmo.</li>
+<li>Es posible definir <em>procedimientos recursivos</em> que generen <em>procesos
+  iterativos</em> en los que no se dejen llamadas recursivas en espera ni
+  se incremente la pila de la recursión.</li>
+<li>
+<p><strong>Solución</strong>: Construimos la recursión de forma que en cada llamada
+  se haga un cálculo parcial y en el caso base se pueda devolver
+  directamente el resultado obtenido.</p>
+</li>
+<li>
+<p>Este estilo de recursión se denomina <em>recursión por la cola</em>
+  (<a href="http://en.wikipedia.org/wiki/Tail_call">tail recursion</a>, en
+  inglés).</p>
+</li>
+</ul>
+<hr />
+<h3>Factorial iterativo</h3>
+<ul>
+<li>Definimos la función <code>(fact-iter n result)</code> que es la que
+  define el proceso iterativo</li>
+<li>Tiene un parámetro adicional (<code>result</code>) que es el parámetro en el
+  que se irán guardando los cálculos intermedios</li>
+<li>Al final de la recursión el factorial debe estar calculado en
+  <code>result</code> y se devuelve</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">factorial</span> <span class="n">n</span><span class="p">)</span>
+   <span class="p">(</span><span class="n">fact-iter</span> <span class="n">n</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fact-iter</span> <span class="n">n</span> <span class="n">result</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">result</span>
+      <span class="p">(</span><span class="n">fact-iter</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">result</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)))))</span>
+</code></pre></div>
+<p>Secuencia de llamadas:</p>
+<div class="highlight"><pre><span></span><code>(factorial 4)
+(factorial-iter 4 4)
+(factorial-iter 3 4*3=12)
+(factorial-iter 2 12*2=24)
+(factorial-iter 1 24*1=24)
+24
+</code></pre></div>
+<hr />
+<h3>Versión iterativa de mi-length</h3>
+<p>¿Cómo sería la versión iterativa de mi-length?</p>
+<p style="margin-bottom:2cm;"></p>
+
+<p>Solución:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-length</span> <span class="n">lista</span><span class="p">)</span>
+   <span class="p">(</span><span class="n">mi-length-iter</span> <span class="n">lista</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-length-iter</span> <span class="n">lista</span> <span class="n">result</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
+      <span class="n">result</span>
+      <span class="p">(</span><span class="n">mi-length-iter</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">result</span> <span class="mi">1</span><span class="p">))))</span>
+</code></pre></div>
+<hr />
+<h3>Procesos iterativos</h3>
+<ul>
+<li>La recursión resultante es menos elegante</li>
+<li>Se necesita una parámetro adicional en el que se van acumulando los
+  resultados parciales</li>
+<li>La última llamada a la recursión devuelve el valor acumulado</li>
+<li>El proceso resultante de la recursión es iterativo en el sentido de
+  que no deja llamadas en espera ni incurre en coste espacial</li>
+</ul>
+<hr />
+<h3>Fibonacci iterativo</h3>
+<ul>
+<li>Cualquier programa recursivo se puede transformar en otro que genera
+  un proceso iterativo.</li>
+<li>En general, las versiones iterativas son menos intuitivas y más
+  difíciles de entender y depurar.</li>
+<li>Ejemplo: Fibonacci iterativo</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fib</span> <span class="n">n</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">fib-iter</span> <span class="mi">1</span> <span class="mi">0</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fib-iter</span> <span class="n">a</span> <span class="n">b</span> <span class="nb">count</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="nb">count</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">b</span>
+        <span class="p">(</span><span class="n">fib-iter</span> <span class="p">(</span><span class="nb">+</span> <span class="n">a</span> <span class="n">b</span><span class="p">)</span> <span class="n">a</span> <span class="p">(</span><span class="nb">-</span> <span class="nb">count</span> <span class="mi">1</span><span class="p">))))</span>
+</code></pre></div>
+<hr />
+<h3>Triángulo de Pascal</h3>
+<div class="highlight"><pre><span></span><code>1
+1   1
+1   2   1
+1   3   3   1
+1   4   6   4   1
+1   5  10   10  5   1
+1   6  15  20   15  6   1
+1   7  21  35   35  21  7   1
+             ...
+</code></pre></div>
+<p>-- Formulación matemática:</p>
+<div class="highlight"><pre><span></span><code>Pascal(n, 0) = 1  
+Pascal(n, n) = 1  
+Pascal(fila, columna) = Pascal(fila-1,columna-1) + Pascal(fila-1, columna)
+</code></pre></div>
+<p>La versión recursiva pura:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal</span> <span class="n">row</span> <span class="n">col</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">=</span> <span class="n">col</span> <span class="mi">0</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+          <span class="p">((</span><span class="nb">=</span> <span class="n">col</span> <span class="n">row</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+          <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">pascal</span> <span class="p">(</span><span class="nb">-</span> <span class="n">row</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="n">col</span> <span class="mi">1</span><span class="p">))</span>
+                   <span class="p">(</span><span class="n">pascal</span> <span class="p">(</span><span class="nb">-</span> <span class="n">row</span> <span class="mi">1</span><span class="p">)</span> <span class="n">col</span><span class="p">)</span> <span class="p">))))</span>
+<span class="p">(</span><span class="n">pascal</span> <span class="mi">4</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="n">pascal</span> <span class="mi">8</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="n">pascal</span> <span class="mi">27</span> <span class="mi">13</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h3>Triángulo de Pascal versión iterativa</h3>
+<p>Utilizamos enfoque iterativo: cada fila se genera a partir de la
+anterior (lo hace la función <code>pascal-sig-fila</code> que recibe
+como parámetro la fila anterior).</p>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">pascal-sig-fila</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">))</span>
+<span class="c1">; ⇒ (1 4 6 4 1)</span>
+</code></pre></div>
+<p>Usando la función anterior definimos la función <code>pascal-fila</code> a la que
+le pasamos el número de fila <code>n</code> y nos devuelve la lista de <code>n+1</code>
+números que constituyen la fila <code>n</code> del triángulo de Pascal:</p>
+<div class="highlight"><pre><span></span><code>fila 0 = (1)
+fila 1 = (1 1)
+fila 2 = (1 2 1)
+fila 3 = (1 3 3 1)
+fila 4 = (1 4 6 4 1)
+...
+</code></pre></div>
+<p>El código completo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal</span> <span class="n">fila</span> <span class="n">col</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">list-ref</span> <span class="p">(</span><span class="n">pascal-fila</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">fila</span><span class="p">)</span> <span class="n">col</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal-fila</span> <span class="n">lista-fila</span> <span class="n">n</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="mi">0</span> <span class="n">n</span><span class="p">)</span>
+      <span class="n">lista-fila</span>
+      <span class="p">(</span><span class="n">pascal-fila</span> <span class="p">(</span><span class="n">pascal-sig-fila</span> <span class="n">lista-fila</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal-sig-fila</span> <span class="n">lista-fila</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">append</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+           <span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span> <span class="n">lista-fila</span><span class="p">)</span>
+           <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span> <span class="n">lista-fila</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista-fila</span><span class="p">))</span>
+      <span class="o">&#39;</span><span class="p">()</span>
+      <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista-fila</span><span class="p">)</span> <span class="p">(</span><span class="nb">car</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista-fila</span><span class="p">)))</span>
+            <span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista-fila</span><span class="p">)))))</span>
+</code></pre></div>
+<hr />
+<h3>Soluciones al coste de la recursión: memoization</h3>
+<ul>
+<li>
+<p>Una alternativa que mantiene la elegancia de los procesos recursivos
+  y la eficiencia de los iterativos es la
+  <a href="http://en.wikipedia.org/wiki/Memoization">memoization</a>. Si miramos
+  la traza de <code>(fibonacci 4)</code> podemos ver que el coste está producido
+  por la repetición de llamadas; por ejemplo <code>(fibonacci 3)</code> se evalúa
+  2 veces.</p>
+</li>
+<li>
+<p>En programación funcional la llamada a <code>(fibonacci 3)</code> siempre va a
+  devolver el mismo valor.</p>
+</li>
+<li>
+<p>Podemos guardar el valor devuelto por la primera llamada en alguna
+  estructura (una lista de asociación, por ejemplo) y no volver a
+  realizar la llamada a la recursión las siguientes veces.</p>
+</li>
+</ul>
+<hr />
+<h3>Fibonacci con memoization</h3>
+<ul>
+<li>Usamos los métodos procedurales <code>put</code> y <code>get</code> que implementan un
+  diccionario <em>clave-valor</em>.</li>
+<li>No te preocupes de cómo se implementa el siguiente código, es un
+  código no funcional en el que se define una estructura de datos
+  mutable (un diccionario). Para que funcione
+  hay que usar las funciones de Racket que permiten mutar las
+  parejas:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">crea-diccionario</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">mcons</span> <span class="o">&#39;</span><span class="ss">*diccionario*</span> <span class="o">&#39;</span><span class="p">()))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">busca</span> <span class="n">key</span> <span class="n">dic</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">cond</span>
+    <span class="p">((</span><span class="nb">null?</span> <span class="n">dic</span><span class="p">)</span> <span class="no">#f</span><span class="p">)</span>
+    <span class="p">((</span><span class="nb">equal?</span> <span class="n">key</span> <span class="p">(</span><span class="nb">mcar</span> <span class="p">(</span><span class="nb">mcar</span> <span class="n">dic</span><span class="p">)))</span>
+     <span class="p">(</span><span class="nb">mcar</span> <span class="n">dic</span><span class="p">))</span>
+    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">busca</span> <span class="n">key</span> <span class="p">(</span><span class="nb">mcdr</span> <span class="n">dic</span><span class="p">)))))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">get</span> <span class="n">key</span> <span class="n">dic</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">define</span> <span class="n">record</span> <span class="p">(</span><span class="n">busca</span> <span class="n">key</span> <span class="p">(</span><span class="nb">mcdr</span> <span class="n">dic</span><span class="p">)))</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">not</span> <span class="n">record</span><span class="p">)</span>
+      <span class="no">#f</span>
+      <span class="p">(</span><span class="nb">mcdr</span> <span class="n">record</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">put</span> <span class="n">key</span> <span class="n">value</span> <span class="n">dic</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">define</span> <span class="n">record</span> <span class="p">(</span><span class="n">busca</span> <span class="n">key</span> <span class="p">(</span><span class="nb">mcdr</span> <span class="n">dic</span><span class="p">)))</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">not</span> <span class="n">record</span><span class="p">)</span>
+      <span class="p">(</span><span class="nb">set-mcdr!</span> <span class="n">dic</span>
+                <span class="p">(</span><span class="nb">mcons</span> <span class="p">(</span><span class="nb">mcons</span> <span class="n">key</span> <span class="n">value</span><span class="p">)</span>
+                      <span class="p">(</span><span class="nb">mcdr</span> <span class="n">dic</span><span class="p">)))</span>
+      <span class="p">(</span><span class="nb">set-mcdr!</span> <span class="n">record</span> <span class="n">value</span><span class="p">))</span>
+  <span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>
+<p>La función <code>(put key value dic)</code> asocia un valor a una clave, la
+ guarda en el diccionario (con mutación) y devuelve el valor.</p>
+</li>
+<li>
+<p>La función <code>(get key dic)</code> devuelve el valor del diccionario asociado
+  a una clave, o #f si no existe la clave.</p>
+</li>
+</ul>
+<p>Ejemplos:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">mi-dic</span> <span class="p">(</span><span class="n">crea-diccionario</span><span class="p">))</span>
+<span class="p">(</span><span class="n">put</span> <span class="mi">1</span> <span class="mi">10</span> <span class="n">mi-dic</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
+<span class="p">(</span><span class="n">get</span> <span class="mi">1</span> <span class="n">mi-dic</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
+<span class="p">(</span><span class="n">get</span> <span class="mi">2</span> <span class="n">mi-dic</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
+</code></pre></div>
+<ul>
+<li>La función <code>fib-memo</code> realiza el cálculo de la serie de Fibonacci
+  utilizando el proceso recursivo visto anteriormente y la técnica de
+  memoización, en la que se consulta el valor de Fibonacci en el diccionario
+  antes de realizar la llamada recursiva:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fib-memo</span> <span class="n">n</span> <span class="n">dic</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">0</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">((</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">((</span><span class="nb">not</span> <span class="p">(</span><span class="nb">equal?</span> <span class="p">(</span><span class="n">get</span> <span class="n">n</span> <span class="n">dic</span><span class="p">)</span> <span class="no">#f</span><span class="p">))</span>
+         <span class="p">(</span><span class="n">get</span> <span class="n">n</span> <span class="n">dic</span><span class="p">))</span>
+        <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">put</span> <span class="n">n</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">fib-memo</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span> <span class="n">dic</span><span class="p">)</span>
+                        <span class="p">(</span><span class="n">fib-memo</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">2</span><span class="p">)</span> <span class="n">dic</span><span class="p">))</span> <span class="n">dic</span><span class="p">))))</span>
+</code></pre></div>
+<ul>
+<li>Podemos comprobar la diferencia de tiempos de ejecución entre esta
+  versión y la anterior. El coste de la función <em>memoizada</em> es
+  O(n). Frente al coste O(2^n) de la versión inicial que la hacía
+  imposible de utilizar.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">dic</span> <span class="p">(</span><span class="n">crea-diccionario</span><span class="p">))</span>
+<span class="p">(</span><span class="n">fib-memo</span> <span class="mi">200</span> <span class="n">dic</span><span class="p">)</span>
+<span class="c1">; ⇒ 280571172992510140037611932413038677189525</span>
+</code></pre></div>
+<hr />
+<h3>Recursión y gráficos de tortuga</h3>
+<ul>
+<li>Último ejemplo algo distinto de los vistos hasta ahora</li>
+<li>Usaremos la recursión para dibujar figuras fractales usando los
+  denominados <em>gráficos de tortuga</em></li>
+<li>Estilo de programación <strong>no funcional</strong>, dibujando los distintos
+  trazos de las figuras con pasos de ejecución secuenciales con la
+  primitiva imperativa <code>begin</code></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Importante</p>
+<p>Ten cuidado con la forma especial <code>begin</code>, es una forma especial
+imperativa. No debes usarla en la implementación de ninguna función
+cuando estemos usando el paradigma funcional.</p>
+</div>
+<hr />
+<h3>Gráficos de tortuga en Racket</h3>
+<ul>
+<li>Los
+  <a href="http://en.wikipedia.org/wiki/Turtle_graphics">gráficos de tortuga</a>
+  se crearon en el lenguaje de programación Logo, para enseñar a
+  programar a niños y jóvenes, en los años 80.</li>
+<li>Se pueden utilizar los  en Racket cargando la librería <code>(graphics turtles)</code>: </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
+<span class="p">(</span><span class="k">require</span> <span class="n">graphics/turtles</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>Los comandos más importantes de esta librería son:<ul>
+<li><code>(turtles #t)</code>: abre una ventana y coloca la tortuga en el
+  centro, mirando hacia el eje X (derecha)</li>
+<li><code>(clear)</code>: borra la ventana y coloca la tortuga en el centro</li>
+<li><code>(draw d)</code>: avanza la tortuga dibujando <em>d</em> píxeles </li>
+<li><code>(move d)</code>: mueve la tortuga <em>d</em> píxeles hacia adelante (sin dibujar)</li>
+<li><code>(turn g)</code>: gira la tortuga <em>g</em> grados (positivos: en el sentido
+  contrario a las agujas del reloj)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>Ejemplo <code>(triangulo-rectangulo)</code></h3>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hipot</span> <span class="n">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">sqrt</span> <span class="mi">2</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">triangulo-rectangulo</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">begin</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="n">x</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="n">x</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="p">(</span><span class="n">hipot</span> <span class="n">x</span><span class="p">))</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="n">triangulo-rectangulo</span> <span class="mi">100</span><span class="p">)</span>
+</code></pre></div>
+<p>La función <code>(hipot x)</code> devuelve la longitud de la hipotenusa de un
+triángulo rectángulo con dos lados de longitud <code>x</code>. O sea, la
+expresión:</p>
+<p>hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}</p>
+<hr />
+<h3>Triángulo de base <code>w</code> y lados <code>w/2</code></h3>
+<ul>
+<li>El siguiente código es una variante del anterior que dibuja un
+  triángulo rectángulo de base <code>w</code> y lados <code>w/2</code>.</li>
+<li>va a ser la figura base del triángulo de Sierpinski.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">triangle</span> <span class="n">w</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">begin</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="n">w</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="p">(</span><span class="n">hipot</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">)))</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="p">(</span><span class="n">hipot</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">)))</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)))</span>
+</code></pre></div>
+<hr />
+<h3>Triángulo de Sierpinski</h3>
+<p><img src="imagenes/sierpinski.png" style="width:400px"/></p>
+<p><em>Triángulo de Sierpinski</em></p>
+<ul>
+<li>¿Ves alguna recursión en la figura? </li>
+<li>¿Cuál podría ser el parámetro de la función que la dibujara? </li>
+<li>¿Se te ocurre un algoritmo recursivo que la dibuje?</li>
+</ul>
+<hr />
+<h3>Primera idea del algoritmo recursivo</h3>
+<ul>
+<li>Podríamos construir un triángulo de Sierpinski más grande dibujando
+  3 veces el mismo triángulo, pero en distintas posiciones:<ul>
+<li>Triángulo 1 en la posición (0,0)</li>
+<li>Triángulo 2 en la posición (h/2,h/2)</li>
+<li>Triángulo 3 en la posición (h,0)</li>
+</ul>
+</li>
+<li>El algoritmo recursivo se basa en la misma idea, pero <em>hacia
+  atrás</em>. Debemos intentar dibujar un triángulo de altura <em>h</em> situado
+  en la posición <em>x</em>, <em>y</em> basándonos en 3 llamadas recursivas a
+  triángulos más pequeños. En el caso base, cuando <em>h</em> sea menor que
+  un umbral, dibujaremos un triángulo de lado <em>h</em> y altura <em>h/2</em>:</li>
+</ul>
+<hr />
+<h3>Algoritmo recursivo</h3>
+<ul>
+<li>Para dibujar un triángulo de Sierpinski de base <em>h</em> y altura <em>h/2</em>
+  debemos:<ul>
+<li>Dibujar tres triángulos de Sierpinsky de la mitad del tamaño del
+  original (<em>h/2</em>) situadas en las posiciones <em>(x,y)</em>, <em>(x+h/4,
+  y+h/4)</em> y <em>(x+h/2,y)</em></li>
+<li>En el caso base de la recursión, en el que <em>h</em> es menor que una
+  constante, se dibuja un triángulo de base <em>h</em> y altura <em>h/2</em>.</li>
+</ul>
+</li>
+</ul>
+<p>Una versión del algoritmo en <em>pseudocódigo</em>:</p>
+<div class="highlight"><pre><span></span><code>Sierpinsky (x, y, h):
+   if (h &gt; MIN) {
+      Sierpinsky (x, y, h/2)
+      Sierpinsky (x+h/4, y+h/4, h/2)
+      Sierpinsky (x+h/2, y, h/2)
+   } else dibujaTriangulo (x, y, h)
+</code></pre></div>
+<hr />
+<h3>Sierpinski en Racket</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
+<span class="p">(</span><span class="k">require</span> <span class="n">graphics/turtles</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">turtles</span> <span class="no">#t</span><span class="p">)</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hipot</span> <span class="n">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">sqrt</span> <span class="mi">2</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">triangle</span> <span class="n">w</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">begin</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="n">w</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="p">(</span><span class="n">hipot</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">)))</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="p">(</span><span class="n">hipot</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">)))</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">sierpinski</span> <span class="n">w</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">w</span> <span class="mi">20</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">begin</span>
+         <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">))</span>
+         <span class="p">(</span><span class="n">move</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span> <span class="p">(</span><span class="n">move</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+         <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">))</span>
+         <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span> <span class="p">(</span><span class="n">move</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span> <span class="p">(</span><span class="n">move</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">4</span><span class="p">))</span>
+         <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">))</span>
+         <span class="p">(</span><span class="n">turn</span> <span class="mi">180</span><span class="p">)</span> <span class="p">(</span><span class="n">move</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">))</span> <span class="p">(</span><span class="n">turn</span> <span class="mi">-180</span><span class="p">))</span> <span class="c1">;; volvemos a la posición original</span>
+      <span class="p">(</span><span class="n">triangle</span> <span class="n">w</span><span class="p">)))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">sierpinski</span> <span class="mi">40</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">clear</span><span class="p">)</span>
+<span class="p">(</span><span class="n">move</span> <span class="mi">-350</span><span class="p">)</span>
+<span class="p">(</span><span class="n">sierpinski</span> <span class="mi">700</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h3>Recursión mutua</h3>
+<ul>
+<li>En la recursión mutua definimos una función en base a una segunda,
+  que a su vez se define en base a la primera.</li>
+<li>También debe haber un caso base que termine la recursión</li>
+<li>Por ejemplo:<ul>
+<li>x es par si x-1 es impar</li>
+<li>x es impar si x-1 es par</li>
+<li>0 es par</li>
+</ul>
+</li>
+</ul>
+<p>Programas en Scheme:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">par?</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="mi">0</span> <span class="n">x</span><span class="p">)</span>
+      <span class="no">#t</span>
+      <span class="p">(</span><span class="n">impar?</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">impar?</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="mi">0</span> <span class="n">x</span><span class="p">)</span>
+      <span class="no">#f</span>
+      <span class="p">(</span><span class="n">par?</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">))))</span>
+</code></pre></div>
+<hr />
+<h3>Otra figura recursiva: curvas de Hilbert</h3>
+<ul>
+<li>
+<p>La curva de Hilbert es una curva fractal que tiene la propiedad de
+  rellenar completamente el espacio</p>
+</li>
+<li>
+<p>Su dibujo tiene una formulación recursiva:</p>
+</li>
+</ul>
+<p><img src="imagenes/hilbert.png" style="width:600px;"/></p>
+<p>La curva H3 se puede construir a partir de la curva H2. El algoritmo
+recursivo se formula dibujando la curva i-ésima a partir de la curva
+i-1.</p>
+<hr />
+<h3>Algoritmo recursivo</h3>
+<ul>
+<li>
+<p>El algoritmo para dibujar una curva de Hilbert de orden 3 a la
+  <em>izquierda</em> de la tortuga sería el siguiente (seguir los pasos con
+  el dibujo):</p>
+<ol>
+<li>Gira la tortuga 90</li>
+<li>Dibuja una curva de orden 2 a la derecha</li>
+<li>Avanza w dibujando</li>
+<li>Gira -90</li>
+<li>Dibuja una curva de orden 2 a la izquierda</li>
+<li>Avanza w dibujando</li>
+<li>Dibuja una curva de orden 2 a la izquierda</li>
+<li>Gira -90</li>
+<li>Avanza w dibujando</li>
+<li>Dibuja una curva de orden 2 a la derecha</li>
+<li>Gira 90</li>
+</ol>
+</li>
+<li>
+<p>El algoritmo para dibujar a la izquierda es simétrico.</p>
+</li>
+</ul>
+<hr />
+<h3>Algoritmo en Scheme</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
+<span class="p">(</span><span class="k">require</span> <span class="n">graphics/turtles</span><span class="p">)</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">h-izq</span> <span class="n">i</span> <span class="n">long</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">i</span> <span class="mi">0</span><span class="p">)</span>
+     <span class="p">(</span><span class="k">begin</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">h-der</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span>  <span class="n">long</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">h-izq</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="n">long</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">h-izq</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">draw</span> <span class="n">long</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">h-der</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">))</span>
+     <span class="p">(</span><span class="n">move</span> <span class="mi">0</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">h-der</span> <span class="n">i</span> <span class="n">long</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">i</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">begin</span>
+        <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">h-izq</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">draw</span>  <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">h-der</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">draw</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">h-der</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">draw</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">h-izq</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">))</span>
+      <span class="p">(</span><span class="n">move</span> <span class="mi">0</span><span class="p">)))</span>
+</code></pre></div>
+<p>Podemos probarlo con distintos parámetros de grado de curva y longitud
+de trazo.</p>
+<p>Curva de Hilbert de nivel 3 con trazo de longitud 20:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">h-izq</span> <span class="mi">3</span> <span class="mi">20</span><span class="p">)</span>
+</code></pre></div>
+<p>Podemos ver paso a paso cómo se construye:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">clear</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+<span class="p">(</span><span class="n">h-der</span> <span class="mi">2</span> <span class="mi">30</span><span class="p">)</span>
+<span class="p">(</span><span class="n">draw</span>  <span class="mi">30</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+<span class="p">(</span><span class="n">h-izq</span> <span class="mi">2</span> <span class="mi">30</span><span class="p">)</span>
+<span class="p">(</span><span class="n">draw</span> <span class="mi">30</span><span class="p">)</span>
+<span class="p">(</span><span class="n">h-izq</span> <span class="mi">2</span> <span class="mi">30</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+<span class="p">(</span><span class="n">draw</span> <span class="mi">30</span><span class="p">)</span>
+<span class="p">(</span><span class="n">h-der</span> <span class="mi">2</span> <span class="mi">30</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+</code></pre></div>
+<p>Curva de Hilbert de nivel 6 con trazo de longitud 10:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">clear</span><span class="p">)</span>
+<span class="p">(</span><span class="n">move</span> <span class="mi">-350</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+<span class="p">(</span><span class="n">move</span> <span class="mi">350</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+<span class="p">(</span><span class="n">h-izq</span> <span class="mi">6</span> <span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+<p>Curva de Hilbert de nivel 7 con trazo de longitud 5:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">clear</span><span class="p">)</span>
+<span class="p">(</span><span class="n">move</span> <span class="mi">-350</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
+<span class="p">(</span><span class="n">move</span> <span class="mi">350</span><span class="p">)</span>
+<span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+<span class="p">(</span><span class="n">h-izq</span> <span class="mi">7</span> <span class="mi">5</span><span class="p">)</span>
+</code></pre></div></body>
+
+</html>
