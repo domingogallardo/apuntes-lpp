@@ -392,7 +392,9 @@ Por ejemplo:
 
 Esta función la implementamos con una función recursiva auxiliar (esta
 es recursiva pura) llamada `(pascal-suma-dos-a-dos lista-fila)` que es
-la que se encarga de realizar el cálculo de la nueva fila.
+la que se encarga de realizar el cálculo de la nueva fila. No es
+necesario convertir esta función a iterativa porque no genera un coste
+exponencial.
 
 El código completo es el siguiente:
 
@@ -417,6 +419,8 @@ El código completo es el siguiente:
             (pascal-suma-dos-a-dos (cdr lista-fila)))))
 			
 ```
+
+
 
 Con esta implementación ya no se tiene un coste exponencial y se puede
 calcular el valor de números como Pascal(40, 20):
