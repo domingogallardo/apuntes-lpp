@@ -29,6 +29,8 @@ intérprete. Comprueba después si has acertado.
 (filter (lambda (x) 
             (equal? (string-ref (symbol->string x) 1) #\a)) '(alicante barcelona madrid almería)) ; ⇒ ?
 
+(foldr append '() '((1 2) (3 4 5) (6 7) (8))) ; ⇒ ?
+
 (foldl (lambda (dato resultado)
          (string-append
           (symbol->string (car dato))
@@ -76,7 +78,8 @@ comprobar si has acertado.
 ; ⇒ (3 10 5)
 ```
 
-c) Rellena los siguientes huecos **con una única expresión**. Comprueba
+c) Rellena los siguientes huecos **con una única expresión** en la que
+se utilice alguna función previamente definida. Comprueba
 con el intérprete si lo has hecho correctamente.
 
 
@@ -156,16 +159,40 @@ de un dato en una lista o `#f` si el dato no está en la lista. Si el
 dato está repetido en la lista devuelve la posición de su primera
 aparición.
 
-Implementa la función `mi-index-of` que haga lo mismo, usando
-funciones de orden superior. Puedes usar también alguna función
-auxiliar.
+La siguiente es una implementación incompleta de una función
+`mi-index-of` que hace lo mismo que `index-of`, usando la función de
+orden superior `foldl` para recorrer la lista de izquierda a derecha
+buscando el dato. Como resultado del `foldl` se construye una pareja
+en cuya parte derecha se va calculando la posición y en la parte
+izquierda se introduce un booleano que indica si hemos encontrado o no
+el dato. También se usa una función auxiliar.
 
-!!! Hint "Pista"
-    Puedes utilizar la función `foldl` para recorrer la lista de
-    izquierda a derecha buscando el dato. Puedes usar como resultado
-    del `foldl` una pareja en cuya parte derecha vayamos calculando 
-    la posición y en la parte izquierda haya un booleano que indique
-    si hemos encontrado o no el dato.
+Debes completar las definiciones para que todo funcione
+correctamente. 
+
+```racket
+
+; Función auxiliar que devuelve la parte derecha
+; de una pareja si la parte izquierda es #t. Sino
+; devuelve #f
+
+(define (devuelve-si-existe pareja)
+   _____________)
+
+(define (mi-index-of lista dato)
+  (devuelve-si-existe 
+   (foldl (lambda (elemento resultado)
+            (cond
+              ((car resultado) resultado) ; el car es #t: hemos encontrado el dato
+                                          ; y no modificamos el resultado
+              ((equal? dato elemento) (cons ____________________))) ; encontramos el dato: construimos
+                                                                    ; la pareja con #t y la posición actual
+              (else (cons ________________________))) ; no es el dato: construimos la pareja con
+                                                       ; #f e incrementamos el resultado
+          (cons #f 0)  ; resultado inicial: pareja con #f (no encontrado) y 0 (posición inicial)
+          lista)))
+```
+
     
 Ejemplos:
 
@@ -186,6 +213,12 @@ el segundo.
   (foldl __________ (car lista) (cdr lista)))
 ```  
 
+
+!!! Hint "Pista"
+    Fíjate que como elemento base de `foldl` estamos usando el primer
+    elemento de la lista y que el plegado lo hacemos sobre el resto de
+    la lista.
+
 Escribe algunos `check-equal?` en los que compruebes el funcionamiento
 de `busca-mayor`, utilizando funciones `mayor?` distintas.
 
@@ -195,7 +228,7 @@ anteriores.
 
 ### Ejercicio 5 ###
 
-a) Supongamos que vamos a representar una mano de cartas como una
+Supongamos que vamos a representar una mano de cartas como una
 lista de cartas. Podemos entonces representar un juego de _n_
 manos como una lista de _n_ listas.
 
@@ -206,43 +239,7 @@ Por ejemplo, la siguiente lista representaría un juego con 3 manos de
 ((K♦ J♥ 2♥ 2♠ 8♥) (A♥ 3♠ 5♦ 3♣ J♦) (3♦ Q♥ 0♠ 2♣ 9♦))
 ```
 
-Para construir este juego vamos a necesitar una función auxiliar que
-vaya construyendo las manos, añadiendo una carta a la primera mano de la
-lista si ésta no tiene todas las cartas necesarias.
-
-Tienes que definir la función `(añade-carta carta n-cartas manos)` que
-recibe una carta, un número que representa el número de cartas que
-deben tener las manos y una lista de manos, cuya primera mano puede
-estar incompleta. En ese caso, la función añadirá la carta a esa
-primera mano de la lista. Si la primera mano está completa, o la lista
-de manos está vacía, se deberá añadir una nueva mano a la lista, con
-la única carta que se pasa como parámetro.
-
-Ejemplos:
-
-```racket
-(añade-carta 'K♦ 3 '()) ; ⇒  ((K♦))
-(añade-carta 'J♥ 3 '((2♥ 2♠) (5♦ 3♣ J♦))) ; ⇒ ((J♥ 2♥ 2♠) (5♦ 3♣ J♦))
-(añade-carta '3♠ 3 '((5♦ 3♣ J♦))) ; ⇒ ((3♠) (5♦ 3♣ J♦))
-```
-
-Una vez definida la función anterior, y utilizando funciones de orden
-superior, debes implementar la función `(reparte n-manos n-cartas
-baraja)` que devuelva un juego con _n_ manos de _n_ cartas sacadas la
-parte de arriba de una baraja inicial. Puedes utilizar las funciones
-`baraja-poker` y `mezcla` de la práctica anterior para crear la baraja
-inicial.
-
-Ejemplo: 
-
-```racket
-(define baraja (mezcla (baraja-poker)))
-baraja ; ⇒ (Q♠ 9♥ 4♣ K♠ 7♥ J♦ 5♠ 4♠ 5♦ 6♦ 8♦ A♦ Q♦ 0♣ 7♦ 3♠ Q♥ ...)
-(reparte 3 5 baraja)
-; ⇒ ((7♦ 0♣ Q♦ A♦ 8♦) (6♦ 5♦ 4♠ 5♠ J♦) (7♥ K♠ 4♣ 9♥ Q♠))
-```
-
-b) La siguiente función devuelve el valor de una carta:
+La siguiente función devuelve el valor de una carta:
 
 ```racket
 (define (valor-carta carta orden)
@@ -265,9 +262,12 @@ Por ejemplo:
 Implementa, utilizando funciones de orden superior y funciones
 definidas anteriormente en esta práctica, la función `(mano-ganadora
 lista-manos)` que recibe una lista de manos y devuelve la posición de
-la mano ganadora utilizando la valoración del póker. La mano ganadora
-es la que tiene una carta más alta. Si hay empate, deberás devolver la
-posición de la primera mano que participa en el empate.
+la mano ganadora utilizando la valoración del póker. 
+
+Consideramos mano ganadora aquella que tiene la carta más alta. 
+
+Si hay empate, deberás devolver la posición de la primera mano que
+participa en el empate.
 
 !!! Note "Pista"
     Puedes definir una función de un único parámetro
@@ -280,12 +280,10 @@ posición de la primera mano que participa en el empate.
                '(#\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9 #\0 #\J #\Q #\K #\A)))
     ```
 
-
-Puedes usar cualquier función definida anteriormente.
+Puedes usar cualquier función definida anteriormente en la práctica.
 
 ```racket
-(define lista-manos (reparte 3 5 (mezcla (baraja-poker))))
-; lista-manos ⇒ ((9♦ 2♦ K♥ 0♦ 7♥) (6♦ 4♠ 7♣ 5♥ 4♦) (0♣ 4♣ 5♠ 3♥ J♥))
+(define lista-manos '((9♦ 2♦ K♥ 0♦ 7♥) (6♦ 4♠ 7♣ 5♥ 4♦) (0♣ 4♣ 5♠ 3♥ J♥)))
 (mano-ganadora lista-manos) ; ⇒ 0
 ```
 
