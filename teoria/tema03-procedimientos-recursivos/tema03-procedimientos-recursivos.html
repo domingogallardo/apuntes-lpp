@@ -1062,7 +1062,9 @@ siguiente. </p>
 </code></pre></div>
 <p>Esta función la implementamos con una función recursiva auxiliar (esta
 es recursiva pura) llamada <code>(pascal-suma-dos-a-dos lista-fila)</code> que es
-la que se encarga de realizar el cálculo de la nueva fila.</p>
+la que se encarga de realizar el cálculo de la nueva fila. No es
+necesario convertir esta función a iterativa porque no genera un coste
+exponencial.</p>
 <p>El código completo es el siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal</span> <span class="n">fila</span> <span class="n">col</span><span class="p">)</span>
    <span class="p">(</span><span class="nb">list-ref</span> <span class="p">(</span><span class="n">pascal-fila</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">fila</span><span class="p">)</span> <span class="n">col</span><span class="p">))</span>
