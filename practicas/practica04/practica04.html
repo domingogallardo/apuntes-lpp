@@ -577,6 +577,8 @@ intérprete. Comprueba después si has acertado.</p>
 <span class="p">(</span><span class="nb">filter</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> 
             <span class="p">(</span><span class="nb">equal?</span> <span class="p">(</span><span class="nb">string-ref</span> <span class="p">(</span><span class="nb">symbol-&gt;string</span> <span class="n">x</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span> <span class="sc">#\a</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">alicante</span> <span class="ss">barcelona</span> <span class="ss">madrid</span> <span class="ss">almería</span><span class="p">))</span> <span class="c1">; ⇒ ?</span>
 
+<span class="p">(</span><span class="nb">foldr</span> <span class="nb">append</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="mi">6</span> <span class="mi">7</span><span class="p">)</span> <span class="p">(</span><span class="mi">8</span><span class="p">)))</span> <span class="c1">; ⇒ ?</span>
+
 <span class="p">(</span><span class="nb">foldl</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">dato</span> <span class="n">resultado</span><span class="p">)</span>
          <span class="p">(</span><span class="nb">string-append</span>
           <span class="p">(</span><span class="nb">symbol-&gt;string</span> <span class="p">(</span><span class="nb">car</span> <span class="n">dato</span><span class="p">))</span>
@@ -618,7 +620,8 @@ comprobar si has acertado.</p>
         <span class="p">(</span><span class="n">_________</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">even?</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">x</span><span class="p">))))</span> <span class="n">lista</span><span class="p">))</span>
 <span class="c1">; ⇒ (3 10 5)</span>
 </code></pre></div>
-<p>c) Rellena los siguientes huecos <strong>con una única expresión</strong>. Comprueba
+<p>c) Rellena los siguientes huecos <strong>con una única expresión</strong> en la que
+se utilice alguna función previamente definida. Comprueba
 con el intérprete si lo has hecho correctamente.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">f</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">y</span> <span class="n">z</span><span class="p">)</span> <span class="p">(</span><span class="nb">string-append</span> <span class="n">y</span> <span class="n">z</span> <span class="n">x</span><span class="p">)))</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">g</span> <span class="p">(</span><span class="n">f</span> <span class="s2">&quot;a&quot;</span><span class="p">))</span>
@@ -675,17 +678,35 @@ use <code>map</code>.</p>
 de un dato en una lista o <code>#f</code> si el dato no está en la lista. Si el
 dato está repetido en la lista devuelve la posición de su primera
 aparición.</p>
-<p>Implementa la función <code>mi-index-of</code> que haga lo mismo, usando
-funciones de orden superior. Puedes usar también alguna función
-auxiliar.</p>
-<div class="admonition hint">
-<p class="admonition-title">Pista</p>
-<p>Puedes utilizar la función <code>foldl</code> para recorrer la lista de
-izquierda a derecha buscando el dato. Puedes usar como resultado
-del <code>foldl</code> una pareja en cuya parte derecha vayamos calculando 
-la posición y en la parte izquierda haya un booleano que indique
-si hemos encontrado o no el dato.</p>
-</div>
+<p>La siguiente es una implementación incompleta de una función
+<code>mi-index-of</code> que hace lo mismo que <code>index-of</code>, usando la función de
+orden superior <code>foldl</code> para recorrer la lista de izquierda a derecha
+buscando el dato. Como resultado del <code>foldl</code> se construye una pareja
+en cuya parte derecha se va calculando la posición y en la parte
+izquierda se introduce un booleano que indica si hemos encontrado o no
+el dato. También se usa una función auxiliar.</p>
+<p>Debes completar las definiciones para que todo funcione
+correctamente. </p>
+<div class="highlight"><pre><span></span><code><span class="c1">; Función auxiliar que devuelve la parte derecha</span>
+<span class="c1">; de una pareja si la parte izquierda es #t. Sino</span>
+<span class="c1">; devuelve #f</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">devuelve-si-existe</span> <span class="n">pareja</span><span class="p">)</span>
+   <span class="n">_____________</span><span class="p">)</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-index-of</span> <span class="n">lista</span> <span class="n">dato</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">devuelve-si-existe</span> 
+   <span class="p">(</span><span class="nb">foldl</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elemento</span> <span class="n">resultado</span><span class="p">)</span>
+            <span class="p">(</span><span class="k">cond</span>
+              <span class="p">((</span><span class="nb">car</span> <span class="n">resultado</span><span class="p">)</span> <span class="n">resultado</span><span class="p">)</span> <span class="c1">; el car es #t: hemos encontrado el dato</span>
+                                          <span class="c1">; y no modificamos el resultado</span>
+              <span class="p">((</span><span class="nb">equal?</span> <span class="n">dato</span> <span class="n">elemento</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="n">____________________</span><span class="p">)))</span> <span class="c1">; encontramos el dato: construimos</span>
+                                                                    <span class="c1">; la pareja con #t y la posición actual</span>
+              <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">cons</span> <span class="n">________________________</span><span class="p">)))</span> <span class="c1">; no es el dato: construimos la pareja con</span>
+                                                       <span class="c1">; #f e incrementamos el resultado</span>
+          <span class="p">(</span><span class="nb">cons</span> <span class="no">#f</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1">; resultado inicial: pareja con #f (no encontrado) y 0 (posición inicial)</span>
+          <span class="n">lista</span><span class="p">)))</span>
+</code></pre></div>
 <p>Ejemplos:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mi-index-of</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">c</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">c</span><span class="p">)</span> <span class="c1">; ⇒ 2</span>
 <span class="p">(</span><span class="n">mi-index-of</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
@@ -698,47 +719,26 @@ el segundo. </p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">busca-mayor</span> <span class="n">mayor?</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">foldl</span> <span class="n">__________</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))</span>
 </code></pre></div>
+<div class="admonition hint">
+<p class="admonition-title">Pista</p>
+<p>Fíjate que como elemento base de <code>foldl</code> estamos usando el primer
+elemento de la lista y que el plegado lo hacemos sobre el resto de
+la lista.</p>
+</div>
 <p>Escribe algunos <code>check-equal?</code> en los que compruebes el funcionamiento
 de <code>busca-mayor</code>, utilizando funciones <code>mayor?</code> distintas.</p>
 <p>c) Define la función <code>(posicion-mayor mayor? lista)</code> que devuelva la
 posición del mayor elemento de la lista utilizando las dos funciones
 anteriores.</p>
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
-<p>a) Supongamos que vamos a representar una mano de cartas como una
+<p>Supongamos que vamos a representar una mano de cartas como una
 lista de cartas. Podemos entonces representar un juego de <em>n</em>
 manos como una lista de <em>n</em> listas.</p>
 <p>Por ejemplo, la siguiente lista representaría un juego con 3 manos de
 5 cartas:</p>
 <div class="highlight"><pre><span></span><code>((K♦ J♥ 2♥ 2♠ 8♥) (A♥ 3♠ 5♦ 3♣ J♦) (3♦ Q♥ 0♠ 2♣ 9♦))
 </code></pre></div>
-<p>Para construir este juego vamos a necesitar una función auxiliar que
-vaya construyendo las manos, añadiendo una carta a la primera mano de la
-lista si ésta no tiene todas las cartas necesarias.</p>
-<p>Tienes que definir la función <code>(añade-carta carta n-cartas manos)</code> que
-recibe una carta, un número que representa el número de cartas que
-deben tener las manos y una lista de manos, cuya primera mano puede
-estar incompleta. En ese caso, la función añadirá la carta a esa
-primera mano de la lista. Si la primera mano está completa, o la lista
-de manos está vacía, se deberá añadir una nueva mano a la lista, con
-la única carta que se pasa como parámetro.</p>
-<p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">añade-carta</span> <span class="o">&#39;</span><span class="ss">K♦</span> <span class="mi">3</span> <span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒  ((K♦))</span>
-<span class="p">(</span><span class="n">añade-carta</span> <span class="o">&#39;</span><span class="ss">J♥</span> <span class="mi">3</span> <span class="o">&#39;</span><span class="p">((</span><span class="ss">2♥</span> <span class="ss">2♠</span><span class="p">)</span> <span class="p">(</span><span class="ss">5♦</span> <span class="ss">3♣</span> <span class="ss">J♦</span><span class="p">)))</span> <span class="c1">; ⇒ ((J♥ 2♥ 2♠) (5♦ 3♣ J♦))</span>
-<span class="p">(</span><span class="n">añade-carta</span> <span class="o">&#39;</span><span class="ss">3♠</span> <span class="mi">3</span> <span class="o">&#39;</span><span class="p">((</span><span class="ss">5♦</span> <span class="ss">3♣</span> <span class="ss">J♦</span><span class="p">)))</span> <span class="c1">; ⇒ ((3♠) (5♦ 3♣ J♦))</span>
-</code></pre></div>
-<p>Una vez definida la función anterior, y utilizando funciones de orden
-superior, debes implementar la función <code>(reparte n-manos n-cartas
-baraja)</code> que devuelva un juego con <em>n</em> manos de <em>n</em> cartas sacadas la
-parte de arriba de una baraja inicial. Puedes utilizar las funciones
-<code>baraja-poker</code> y <code>mezcla</code> de la práctica anterior para crear la baraja
-inicial.</p>
-<p>Ejemplo: </p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">baraja</span> <span class="p">(</span><span class="n">mezcla</span> <span class="p">(</span><span class="n">baraja-poker</span><span class="p">)))</span>
-<span class="n">baraja</span> <span class="c1">; ⇒ (Q♠ 9♥ 4♣ K♠ 7♥ J♦ 5♠ 4♠ 5♦ 6♦ 8♦ A♦ Q♦ 0♣ 7♦ 3♠ Q♥ ...)</span>
-<span class="p">(</span><span class="n">reparte</span> <span class="mi">3</span> <span class="mi">5</span> <span class="n">baraja</span><span class="p">)</span>
-<span class="c1">; ⇒ ((7♦ 0♣ Q♦ A♦ 8♦) (6♦ 5♦ 4♠ 5♠ J♦) (7♥ K♠ 4♣ 9♥ Q♠))</span>
-</code></pre></div>
-<p>b) La siguiente función devuelve el valor de una carta:</p>
+<p>La siguiente función devuelve el valor de una carta:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">valor-carta</span> <span class="n">carta</span> <span class="n">orden</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">index-of</span> <span class="n">orden</span> <span class="p">(</span><span class="nb">string-ref</span> <span class="p">(</span><span class="nb">symbol-&gt;string</span> <span class="n">carta</span><span class="p">)</span> <span class="mi">0</span><span class="p">))))</span>
 </code></pre></div>
@@ -754,9 +754,10 @@ mayor.</p>
 <p>Implementa, utilizando funciones de orden superior y funciones
 definidas anteriormente en esta práctica, la función <code>(mano-ganadora
 lista-manos)</code> que recibe una lista de manos y devuelve la posición de
-la mano ganadora utilizando la valoración del póker. La mano ganadora
-es la que tiene una carta más alta. Si hay empate, deberás devolver la
-posición de la primera mano que participa en el empate.</p>
+la mano ganadora utilizando la valoración del póker. </p>
+<p>Consideramos mano ganadora aquella que tiene la carta más alta. </p>
+<p>Si hay empate, deberás devolver la posición de la primera mano que
+participa en el empate.</p>
 <div class="admonition note">
 <p class="admonition-title">Pista</p>
 <p>Puedes definir una función de un único parámetro
@@ -767,9 +768,8 @@ póker usando la siguiente expresión lambda:</p>
            <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\2</span> <span class="sc">#\3</span> <span class="sc">#\4</span> <span class="sc">#\5</span> <span class="sc">#\6</span> <span class="sc">#\7</span> <span class="sc">#\8</span> <span class="sc">#\9</span> <span class="sc">#\0</span> <span class="sc">#\J</span> <span class="sc">#\Q</span> <span class="sc">#\K</span> <span class="sc">#\A</span><span class="p">)))</span>
 </code></pre></div>
 </div>
-<p>Puedes usar cualquier función definida anteriormente.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista-manos</span> <span class="p">(</span><span class="n">reparte</span> <span class="mi">3</span> <span class="mi">5</span> <span class="p">(</span><span class="n">mezcla</span> <span class="p">(</span><span class="n">baraja-poker</span><span class="p">))))</span>
-<span class="c1">; lista-manos ⇒ ((9♦ 2♦ K♥ 0♦ 7♥) (6♦ 4♠ 7♣ 5♥ 4♦) (0♣ 4♣ 5♠ 3♥ J♥))</span>
+<p>Puedes usar cualquier función definida anteriormente en la práctica.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista-manos</span> <span class="o">&#39;</span><span class="p">((</span><span class="ss">9♦</span> <span class="ss">2♦</span> <span class="ss">K♥</span> <span class="ss">0♦</span> <span class="ss">7♥</span><span class="p">)</span> <span class="p">(</span><span class="ss">6♦</span> <span class="ss">4♠</span> <span class="ss">7♣</span> <span class="ss">5♥</span> <span class="ss">4♦</span><span class="p">)</span> <span class="p">(</span><span class="ss">0♣</span> <span class="ss">4♣</span> <span class="ss">5♠</span> <span class="ss">3♥</span> <span class="ss">J♥</span><span class="p">)))</span>
 <span class="p">(</span><span class="n">mano-ganadora</span> <span class="n">lista-manos</span><span class="p">)</span> <span class="c1">; ⇒ 0</span>
 </code></pre></div>
 <hr />
