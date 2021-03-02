@@ -4552,12 +4552,12 @@ podríamos hacer:
 ```
 
 
-#### Funciones iterativas con FOS y expresiones lambda
+#### Funciones con FOS y expresiones lambda
 
 El uso de funciones de orden superior (FOS) y expresiones lambda
 proporciona muchísima expresividad en un lenguaje de programación. Es
 posible escribir código muy conciso y construir funciones iterativas
-que trabajan sobre listas sin usar la recursividad. 
+que recorren listas y operan sobre sus elementos sin usar la recursividad. 
 
 ##### Función `(suma-n n lista)`
 

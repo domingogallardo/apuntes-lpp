@@ -662,7 +662,7 @@ derecha a izquierda.
 
 ----
 
-### Funciones iterativas con FOS y expresiones lambda
+### Funciones con FOS y expresiones lambda
 
 - Veamos por último unos ejemplos en los que definimos funciones
   que iteran sobre listas usando funciones de orden superior (FOS) y expresiones
