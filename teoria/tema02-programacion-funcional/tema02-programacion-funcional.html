@@ -4191,11 +4191,11 @@ podríamos hacer:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">exists?</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">x</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#f</span> <span class="no">#f</span> <span class="no">#t</span> <span class="no">#f</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="nb">ormap</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">x</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#f</span> <span class="no">#f</span> <span class="no">#t</span> <span class="no">#f</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 </code></pre></div>
-<h4>Funciones iterativas con FOS y expresiones lambda</h4>
+<h4>Funciones con FOS y expresiones lambda</h4>
 <p>El uso de funciones de orden superior (FOS) y expresiones lambda
 proporciona muchísima expresividad en un lenguaje de programación. Es
 posible escribir código muy conciso y construir funciones iterativas
-que trabajan sobre listas sin usar la recursividad. </p>
+que recorren listas y operan sobre sus elementos sin usar la recursividad. </p>
 <h5>Función <code>(suma-n n lista)</code></h5>
 <p>Supongamos que queremos definir una función <code>(suma-n n lista)</code> que
 devuelve la lista resultante el resultado de sumar un número <code>n</code> a
