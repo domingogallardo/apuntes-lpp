@@ -185,9 +185,9 @@ correctamente.
             (cond
               ((car resultado) resultado) ; el car es #t: hemos encontrado el dato
                                           ; y no modificamos el resultado
-              ((equal? dato elemento) (cons ____________________))) ; encontramos el dato: construimos
+              ((equal? dato elemento) (cons ____________________)) ; encontramos el dato: construimos
                                                                     ; la pareja con #t y la posición actual
-              (else (cons ________________________))) ; no es el dato: construimos la pareja con
+              (else (cons ________________________)))) ; no es el dato: construimos la pareja con
                                                        ; #f e incrementamos el resultado
           (cons #f 0)  ; resultado inicial: pareja con #f (no encontrado) y 0 (posición inicial)
           lista)))
