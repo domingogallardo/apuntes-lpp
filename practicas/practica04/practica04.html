@@ -700,9 +700,9 @@ correctamente. </p>
             <span class="p">(</span><span class="k">cond</span>
               <span class="p">((</span><span class="nb">car</span> <span class="n">resultado</span><span class="p">)</span> <span class="n">resultado</span><span class="p">)</span> <span class="c1">; el car es #t: hemos encontrado el dato</span>
                                           <span class="c1">; y no modificamos el resultado</span>
-              <span class="p">((</span><span class="nb">equal?</span> <span class="n">dato</span> <span class="n">elemento</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="n">____________________</span><span class="p">)))</span> <span class="c1">; encontramos el dato: construimos</span>
+              <span class="p">((</span><span class="nb">equal?</span> <span class="n">dato</span> <span class="n">elemento</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="n">____________________</span><span class="p">))</span> <span class="c1">; encontramos el dato: construimos</span>
                                                                     <span class="c1">; la pareja con #t y la posición actual</span>
-              <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">cons</span> <span class="n">________________________</span><span class="p">)))</span> <span class="c1">; no es el dato: construimos la pareja con</span>
+              <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">cons</span> <span class="n">________________________</span><span class="p">))))</span> <span class="c1">; no es el dato: construimos la pareja con</span>
                                                        <span class="c1">; #f e incrementamos el resultado</span>
           <span class="p">(</span><span class="nb">cons</span> <span class="no">#f</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1">; resultado inicial: pareja con #f (no encontrado) y 0 (posición inicial)</span>
           <span class="n">lista</span><span class="p">)))</span>
