@@ -662,18 +662,18 @@ derecha a izquierda.
 
 ----
 
-### Funciones recursivas con FOS y expresiones lambda
+### Funciones iterativas con FOS y expresiones lambda
 
 - Veamos por último unos ejemplos en los que definimos funciones
-  recursivas usando funciones de orden superior (FOS) y expresiones
+  que iteran sobre listas usando funciones de orden superior (FOS) y expresiones
   lambda.
   
-- La recursividad no se hará de forma explícita, sino que serán las
-  FOS las que la implementen.
+- La iteración no se realizará mediante recursividad, sino que serán
+  las FOS las que la implementen.
 
 !!! Hint "Combinación de funciones de orden superior"
     La combinación de funciones de orden superior y expresiones lamba
-    para definir funciones recursivas sobre listas es una de
+    para definir funciones iterativas sobre listas es una de
     las características más potentes de la programación funcional.
 
 ----
