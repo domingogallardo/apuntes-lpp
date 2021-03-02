@@ -453,11 +453,11 @@ con la recursión por la cola termina correctamente.
 Una alternativa que mantiene la elegancia de los procesos recursivos y
 la eficiencia de los iterativos es la
 [memoization](http://en.wikipedia.org/wiki/Memoization). Si miramos la
-traza de `(fibonacci 4)` podemos ver que el coste está producido por
-la repetición de llamadas; por ejemplo `(fibonacci 3)` se evalúa 2
+traza de `(fib 4)` podemos ver que el coste está producido por
+la repetición de llamadas; por ejemplo `(fib 3)` se evalúa 2
 veces.
 
-En programación funcional la llamada a `(fibonacci 3)` siempre va a
+En programación funcional la llamada a `(fib 3)` siempre va a
 devolver el mismo valor.
 
 La idea de la _memoization_ es guardar el valor devuelto por la

@@ -114,7 +114,7 @@ Fibonacci(1) = 1
 
 - El coste espacial y temporal es exponencial, O(2^n).
 
-- ¿Qué pasa si intentamos evaluar `(fibonaci 40)`?
+- ¿Qué pasa si intentamos evaluar `(fib 40)`?
 
 ----
 
@@ -311,11 +311,11 @@ El código completo:
 - Una alternativa que mantiene la elegancia de los procesos recursivos
   y la eficiencia de los iterativos es la
   [memoization](http://en.wikipedia.org/wiki/Memoization). Si miramos
-  la traza de `(fibonacci 4)` podemos ver que el coste está producido
-  por la repetición de llamadas; por ejemplo `(fibonacci 3)` se evalúa
+  la traza de `(fib 4)` podemos ver que el coste está producido
+  por la repetición de llamadas; por ejemplo `(fib 3)` se evalúa
   2 veces.
 
-- En programación funcional la llamada a `(fibonacci 3)` siempre va a
+- En programación funcional la llamada a `(fib 3)` siempre va a
   devolver el mismo valor.
 
 - Podemos guardar el valor devuelto por la primera llamada en alguna
