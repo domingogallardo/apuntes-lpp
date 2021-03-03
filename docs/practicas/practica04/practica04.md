@@ -40,6 +40,12 @@ intérprete. Comprueba después si has acertado.
 (foldr (lambda (dato resultado)
            (cons (+ (car resultado) dato)
                  (+ (cdr resultado) 1))) '(0 . 0) '(1 1 2 2 3 3)) ; ⇒ ?
+
+(apply + (map cdr '((1 . 3) (2 . 8) (2 . 4)))) ; ⇒ ?
+
+(apply min (map car (filter (lambda (p)
+                                  (> (car p) (cdr p))) 
+                                  '((3 . 1) (1 . 20) (5 . 2))))) ; ⇒ ?
 ```
 
 b) Sin utilizar el intérprete DrRacket, rellena los siguientes huecos
