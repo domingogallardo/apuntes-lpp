@@ -135,45 +135,15 @@ Fibonacci(1) = 1
 
 ----
 
-### Factorial iterativo
+### Versión iterativa de mi-length
 
-- Definimos la función `(fact-iter n result)` que es la que
+- Definimos la función `(mi-length-iter lista result)` que es la que
   define el proceso iterativo
 - Tiene un parámetro adicional (`result`) que es el parámetro en el
   que se irán guardando los cálculos intermedios
-- Al final de la recursión el factorial debe estar calculado en
+- Al final de la recursión la longitud debe estar calculada en
   `result` y se devuelve
 
-```racket
-(define (factorial n)
-   (fact-iter n n))
-
-(define (fact-iter n result)
-   (if (= n 1)
-      result
-      (fact-iter (- n 1) (* result (- n 1)))))
-```
-
-Secuencia de llamadas:
-
-```text
-(factorial 4)
-(factorial-iter 4 4)
-(factorial-iter 3 4*3=12)
-(factorial-iter 2 12*2=24)
-(factorial-iter 1 24*1=24)
-24
-```
-
-----
-
-### Versión iterativa de mi-length
-
-¿Cómo sería la versión iterativa de mi-length?
-
-<p style="margin-bottom:2cm;"></p>
-
-Solución:
 
 ```racket
 (define (mi-length lista)
@@ -184,6 +154,19 @@ Solución:
       result
       (mi-length-iter (cdr lista) (+ result 1))))
 ```
+
+Secuencia de llamadas:
+
+```text
+(mi-length '(a b c d)) =>
+(mi-length-iter '(a b c d) 0) =>
+(mi-length-iter '(b c d) 1) =>
+(mi-length-iter '(c d) 2) =>
+(mi-length-iter '(d) 3) =>
+(mi-length-iter '() 4) =>
+4
+```
+
 
 ----
 

@@ -309,37 +309,15 @@ Fibonacci(1) = 1
 </li>
 </ul>
 <hr />
-<h3>Factorial iterativo</h3>
+<h3>Versión iterativa de mi-length</h3>
 <ul>
-<li>Definimos la función <code>(fact-iter n result)</code> que es la que
+<li>Definimos la función <code>(mi-length-iter lista result)</code> que es la que
   define el proceso iterativo</li>
 <li>Tiene un parámetro adicional (<code>result</code>) que es el parámetro en el
   que se irán guardando los cálculos intermedios</li>
-<li>Al final de la recursión el factorial debe estar calculado en
+<li>Al final de la recursión la longitud debe estar calculada en
   <code>result</code> y se devuelve</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">factorial</span> <span class="n">n</span><span class="p">)</span>
-   <span class="p">(</span><span class="n">fact-iter</span> <span class="n">n</span> <span class="n">n</span><span class="p">))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fact-iter</span> <span class="n">n</span> <span class="n">result</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span>
-      <span class="n">result</span>
-      <span class="p">(</span><span class="n">fact-iter</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">result</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)))))</span>
-</code></pre></div>
-<p>Secuencia de llamadas:</p>
-<div class="highlight"><pre><span></span><code>(factorial 4)
-(factorial-iter 4 4)
-(factorial-iter 3 4*3=12)
-(factorial-iter 2 12*2=24)
-(factorial-iter 1 24*1=24)
-24
-</code></pre></div>
-<hr />
-<h3>Versión iterativa de mi-length</h3>
-<p>¿Cómo sería la versión iterativa de mi-length?</p>
-<p style="margin-bottom:2cm;"></p>
-
-<p>Solución:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-length</span> <span class="n">lista</span><span class="p">)</span>
    <span class="p">(</span><span class="n">mi-length-iter</span> <span class="n">lista</span> <span class="mi">0</span><span class="p">))</span>
 
@@ -347,6 +325,15 @@ Fibonacci(1) = 1
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
       <span class="n">result</span>
       <span class="p">(</span><span class="n">mi-length-iter</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">result</span> <span class="mi">1</span><span class="p">))))</span>
+</code></pre></div>
+<p>Secuencia de llamadas:</p>
+<div class="highlight"><pre><span></span><code>(mi-length &#39;(a b c d)) =&gt;
+(mi-length-iter &#39;(a b c d) 0) =&gt;
+(mi-length-iter &#39;(b c d) 1) =&gt;
+(mi-length-iter &#39;(c d) 2) =&gt;
+(mi-length-iter &#39;(d) 3) =&gt;
+(mi-length-iter &#39;() 4) =&gt;
+4
 </code></pre></div>
 <hr />
 <h3>Procesos iterativos</h3>
