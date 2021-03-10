@@ -1,16 +1,3 @@
-<!--
-Cambiar los apuntes, tanto de hojas como de árboles,
-para que el caso base de la recursión esté fuera de
-la expresión lambda
-
-(define (aplana-fos elem)
-  (if (hoja? elem)
-      (list elem)
-      (foldr append
-             '()
-             (map aplana-fos elem))))
-
--->
 
 # Tema 4: Estructuras de datos recursivas
 
@@ -410,26 +397,11 @@ El resultado del map será una lista de números (el número de hojas de
 cada componente), que podemos sumar haciendo un `foldr` con la
 función `+`:
 
-<!-- TODO
-
-Tenemos que plantearnos si cambiamos a una versión en la que la
-comprobación de hoja se hace antes de hacer el map.
-
-(define (num-hojas-fos lista)
-   (if (hoja? lista)
-        1
-        (foldr + 0 (map num-hojas-fos lista))))
-
-Igual en las FOS sobre árboles.
-
--->
-
 ```racket
 (define (num-hojas-fos lista)
-    (foldr + 0 (map (lambda (elem)
-                        (if (hoja? elem)
-                            1
-                            (num-hojas-fos elem))) lista)))
+    (if (hoja? lista)
+        1
+        (foldr + 0 (map num-hojas-fos lista))))
 ```
 
 Una explicación gráfica de cómo funciona la función sobre la lista `(1
@@ -437,6 +409,20 @@ Una explicación gráfica de cómo funciona la función sobre la lista `(1
 
 <img src="imagenes/map-lista.png" width="700px"/>
 
+Sería equivalente hacer un `apply` de la suma para sumar los números
+de la lista devuelta por el `map`:
+
+```racket
+(define (num-hojas-fos lista)
+    (if (hoja? lista)
+        1
+        (apply + (map num-hojas-fos lista))))
+```
+
+!!! Note "Nota"
+    Es interesante conocer ambas expresiones (la del `foldr` y la del
+    `apply`) porque hay lenguajes de programación en los que la función
+    `apply` no está definida. Por ejemplo, Swift.
 
 #### Altura de una lista estructurada
 
@@ -479,10 +465,19 @@ lista de valores que devuelve el map.
 
 ```racket
 (define (altura-fos lista)
-   (+ 1 (foldr max 0 (map (lambda (elem)
-                              (if (hoja? elem)
-                                  0
-                                  (altura-fos elem))) lista))))
+   (if (hoja? lista)
+       0
+       (+ 1 (foldr max 0 (map altura-fos lista)))))
+```
+
+Podríamos hacerlo también sustituyendo el `foldr` por un `apply`:
+
+
+```racket
+(define (altura-fos lista)
+   (if (hoja? lista)
+       0
+       (+ 1 (apply max (map altura-fos lista)))))
 ```
 
 #### Otras funciones recursivas
@@ -528,13 +523,20 @@ Con funciones de orden superior:
 
 ```racket
 (define (aplana-fos lista)
-  (foldr append
-         '()
-         (map (lambda (elem)
-                 (if (hoja? elem)
-                     (list elem)
-                     (aplana-fos elem))) lista)))
+  (if (hoja? lista)
+    (list lista)
+    (foldr append '() (map aplana-fos lista))))
 ```
+
+Usando `apply`:
+
+```racket
+(define (aplana-fos lista)
+  (if (hoja? lista)
+    (list lista)
+    (apply append (map aplana-fos lista))))
+```
+
 
 ##### `(pertenece-lista? dato lista)`
 
@@ -560,10 +562,10 @@ Con funciones de orden superior:
 
 ```racket
 (define (pertenece-fos? dato lista)
-  (exists (lambda (elem)
-             (if (hoja? elem)
-                 (equal? dato elem)
-                 (pertenece-fos? dato elem))) lista))
+  (if (hoja? lista)
+    (equal? dato lista)
+    (exists? (lambda (elem)
+               (pertenece-fos? dato elem)) lista)))
 ```
 
 ##### `(nivel-hoja dato lista)`
@@ -607,55 +609,13 @@ La función auxiliar se define de la siguiente forma:
 Con funciones de orden superior:
 
 ```racket
+
 (define (nivel-hoja-fos dato lista)
-  (suma-1-si-mayor-igual-que-0
-       (foldr max 
-              -1
-              (map (lambda (elem)
-                       (if (hoja? elem)
-                            (if (equal? elem dato) 0 -1)
-                            (nivel-hoja-fos dato elem)))  
-                      lista))))
-```
-
-
-Se puede hacer otra versión de la función anterior, que aproveche que
-Scheme es un lenguaje débilmente tipado y que devuelva `#f` si el dato no
-se encuentra:
-
-```racket
-(define (incrementa-nivel-si-encontrado x)
-  (if (not x)
-      x 
-      (+ x 1)))
-
-(define (mayor-nivel-si-encontrado x y)
-  (cond
-    ((not x) y)
-    ((not y) x)
-    (else (max x y))))
-
-(define (nivel-hoja2 dato elem)
-  (cond
-    ((null? elem) #f)
-    ((hoja? elem) (if (equal? x dato) 0 #f))
-    (else (mayor-nivel-si-encontrado
-               (incrementa-nivel-si-encontrado (nivel-hoja dato (car elem)))
-               (nivel-hoja2 dato (cdr elem))))))
-```
-
-Las funciones auxiliares `incrementa-nivel-si-encontrado` y
-`mayor-nivel-si-encontrado` realizan la suma de 1 y calculan el máximo
-tratando con los casos en los que alguno de los argumentos es `#f`
-porque no se ha encontrado el dato.
-
-Ejemplos:
-
-```racket
-(nivel-hoja2 'b '(a b (c))) ; ⇒ 1
-(nivel-hoja2 'b '(a (b) c)) ; ⇒ 2
-(nivel-hoja2 'b '(a (b) d ((b)))) ; ⇒ 3
-(nivel-hoja2 'b '(a c d ((e)))) ; ⇒ #f
+  (if (hoja? lista)
+      (if (equal? lista dato) 0 -1)
+      (suma-1-si-mayor-igual-que-0
+       (foldr max -1 (map (lambda (elem)
+                           (nivel-hoja-fos dato elem)) lista)))))
 ```
 
 ##### `(cuadrado-estruct lista)`
@@ -695,10 +655,9 @@ superior:
 
 ```racket
 (define (cuadrado-estruct-fos lista)
-    (map (lambda (elem)
-           (if (hoja? elem)
-               (* elem elem)
-               (cuadrado-estruct-fos elem))) lista))
+  (if (hoja? lista)
+      (* lista lista)
+      (map cuadrado-estruct-fos lista)))
 ```
 
 Como una lista estructurada está compuesta de datos o de otras
@@ -734,14 +693,28 @@ Solución con `map`:
 
 ```racket
 (define (map-estruct-fos f lista)
-  (map (lambda (elem)
-          (if (hoja? elem)
-              (f elem)
-              (map-estruct-fos f elem))) lista))
-              
+  (if (hoja? lista)
+      (f lista)
+      (map (lambda (elem)
+             (map-estruct-fos f elem)) lista)))
 ```
 
 <!--
+
+***Comentario
+
+Tenemos que plantearnos si cambiamos a una versión en la que la
+comprobación de hoja se hace antes de hacer el map.
+
+(define (num-hojas-fos lista)
+   (if (hoja? lista)
+        1
+        (foldr + 0 (map num-hojas-fos lista))))
+
+Igual en las FOS sobre árboles.
+
+***Fin del comentario
+
 
 ## Árboles
 
