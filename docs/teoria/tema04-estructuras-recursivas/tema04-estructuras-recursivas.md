@@ -741,6 +741,7 @@ Solución con `map`:
               
 ```
 
+<!--
 
 ## Árboles
 
@@ -1539,6 +1540,7 @@ constructor `nuevo-arbolb`.
 ```
 
 
+-->
 ## Bibliografía - SICP
 
 En este tema explicamos conceptos de los siguientes capítulos del libro *Structure and Intepretation of Computer Programs*:
