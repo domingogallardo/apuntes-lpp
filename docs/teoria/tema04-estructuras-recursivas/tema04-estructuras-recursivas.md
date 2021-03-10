@@ -1075,7 +1075,7 @@ lista vacía y ésta devolverá 0.
 
 **Versión alternativa con funciones de orden superior**
 
-#----comentario
+#****comentario
 #Hacer más énfasis en qué pasa cuando se llega a las hojas:
 #el map se aplicará a la lista de hijos, que será una lista
 #vacía. Y map de una lista vacía es otra lista vacía.
@@ -1084,7 +1084,7 @@ lista vacía y ésta devolverá 0.
 
 #Por eso aquí no hacemos como en las listas estructuradas
 #en donde se hace un if que comprueba si el dato es una hoja.
-#-----fin comentario
+#***fin comentario
 
 Al igual que hacíamos con las listas estructuradas, es posible
 conseguir una versión más concisa y elegante utilizando funciones de
@@ -1265,7 +1265,7 @@ Con `map`:
 
 #### Función `altura-arbol`
 
-#----comentario
+#*****comentario
 Definiciones: (https://courses.cs.washington.edu/courses/cse373/06sp/handouts/lecture06.pdf)
 
 longitud de camino: número de aristas
@@ -1274,7 +1274,7 @@ altura nodo: longitud del camino más largo del nodo a una hoja
 profundidad de un árbol: profundidad del nodo más profundo
 altura de un árbol: altura de la raíz
 nivel de un nodo: número de predecesores(https://www.quora.com/What-is-the-difference-between-the-height-and-level-of-a-full-binary-tree)
-#---fin comentario
+#****fin comentario
 
 Vamos por último a definir una función que devuelve la altura de un
 árbol. 
