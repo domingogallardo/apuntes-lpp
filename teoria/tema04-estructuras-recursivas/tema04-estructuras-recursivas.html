@@ -311,33 +311,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#arboles-binarios" class="md-nav__link">
-    Arboles binarios
-  </a>
-  
-    <nav class="md-nav" aria-label="Arboles binarios">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#definicion-de-arboles-binarios-en-scheme" class="md-nav__link">
-    Definición de árboles binarios en Scheme
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#funciones-recursivas-sobre-arboles-binarios" class="md-nav__link">
-    Funciones recursivas sobre árboles binarios
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#bibliografia-sicp" class="md-nav__link">
     Bibliografía - SICP
   </a>
@@ -534,33 +507,6 @@
           <li class="md-nav__item">
   <a href="#funciones-recursivas-sobre-listas-estructuradas" class="md-nav__link">
     Funciones recursivas sobre listas estructuradas
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#arboles-binarios" class="md-nav__link">
-    Arboles binarios
-  </a>
-  
-    <nav class="md-nav" aria-label="Arboles binarios">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#definicion-de-arboles-binarios-en-scheme" class="md-nav__link">
-    Definición de árboles binarios en Scheme
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#funciones-recursivas-sobre-arboles-binarios" class="md-nav__link">
-    Funciones recursivas sobre árboles binarios
   </a>
   
 </li>
@@ -1452,43 +1398,50 @@ lista vacía y ésta devolverá 0.
 
 **Versión alternativa con funciones de orden superior**
 
-<!--
-Hacer más énfasis en qué pasa cuando se llega a las hojas:
-el map se aplicará a la lista de hijos, que será una lista
-vacía. Y map de una lista vacía es otra lista vacía.
+#****comentario
+#Hacer más énfasis en qué pasa cuando se llega a las hojas:
+#el map se aplicará a la lista de hijos, que será una lista
+#vacía. Y map de una lista vacía es otra lista vacía.
 
-Esta es la base de la recursión.
+#Esta es la base de la recursión.
 
-Por eso aquí no hacemos como en las listas estructuradas
-en donde se hace un if que comprueba si el dato es una hoja.
--->
+#Por eso aquí no hacemos como en las listas estructuradas
+#en donde se hace un if que comprueba si el dato es una hoja.
+#***fin comentario
 
-<p>Al igual que hacíamos con las listas estructuradas, es posible
+Al igual que hacíamos con las listas estructuradas, es posible
 conseguir una versión más concisa y elegante utilizando funciones de
-orden superior:</p>
+orden superior:
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-datos-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
    <span class="p">(</span><span class="nb">foldr</span> <span class="nb">+</span> 
           <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span> 
           <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">subarbol</span><span class="p">)</span>
                    <span class="p">(</span><span class="n">suma-datos-arbol-fos</span> <span class="n">subarbol</span><span class="p">))</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>
 </code></pre></div>
-<p>La función <code>map</code> aplica la propia función que estamos definiendo
-(<code>suma-datos-arbol-fos</code>) a cada uno de los árboles hijos (obtenidos
-con la función <code>(hijos-arbol arbol)</code>). Confiando en que la función
+
+La función `map` aplica la propia función que estamos definiendo
+(`suma-datos-arbol-fos`) a cada uno de los árboles hijos (obtenidos
+con la función `(hijos-arbol arbol)`). Confiando en que la función
 hace su trabajo, devolverá para cada arbol hijo la suma de todos sus
-nodos. De esta forma, el resultado de <code>map</code> será una lista con la suma
-de los nodos de todos los árboles hijos.</p>
-<p>La función <code>foldr</code> suma todos esos números de la lista y el
-número de la raíz.</p>
-<p>La expresión lambda de <code>map</code> no es necesaria, ya que la función
-<code>suma-datos-arbol-fos</code> tiene un único argumento que va a ser cada uno
-de los árboles hijos:</p>
+nodos. De esta forma, el resultado de `map` será una lista con la suma
+de los nodos de todos los árboles hijos.
+
+La función `foldr` suma todos esos números de la lista y el
+número de la raíz.
+
+La expresión lambda de `map` no es necesaria, ya que la función
+`suma-datos-arbol-fos` tiene un único argumento que va a ser cada uno
+de los árboles hijos:
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-datos-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
    <span class="p">(</span><span class="nb">foldr</span> <span class="nb">+</span> 
           <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span> 
           <span class="p">(</span><span class="nb">map</span> <span class="n">suma-datos-arbol-fos</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>
 </code></pre></div>
-<p>Un ejemplo de su funcionamiento sería el siguiente:</p>
+
+Un ejemplo de su funcionamiento sería el siguiente:
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-datos-arbol-fos</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="mi">6</span> <span class="p">(</span><span class="mi">7</span><span class="p">))))</span> <span class="n">⇒</span>
    <span class="p">(</span><span class="nb">foldr</span> <span class="nb">+</span> 
           <span class="mi">1</span> 
@@ -1498,21 +1451,26 @@ de los árboles hijos:</p>
 <span class="p">(</span><span class="nb">foldr</span> <span class="nb">+</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">9</span> <span class="mi">5</span> <span class="mi">13</span><span class="p">))</span> <span class="n">⇒</span>
 <span class="mi">28</span>
 </code></pre></div>
-<ul>
-<li>El árbol que queremos sumar tiene un 1 en la raíz y tres hijos: <code>(2
-(3) (4))</code>, <code>(5)</code> y <code>(6 (7))</code>. </li>
-<li>La aplicación de <code>map suma-datos-arbol-fos</code> sobre la lista de hijos
-devuelve una lista con la suma de los nodos de cada hijo: <code>(9 5 13)</code>.</li>
-<li>La función <code>foldr</code> suma esa lista y el valor del nodo raíz (<code>1</code>).</li>
-</ul>
-<p>Podemos visualizar gráficamente el funcionamiento del <code>map</code> con la
-siguiente figura:</p>
-<p><img src="imagenes/suma-datos-bosque-fos.png" width="500px"/></p>
-<h4>Función to-list-arbol</h4>
-<p>Queremos diseñar una función <code>(to-list-arbol arbol)</code> que devuelva una
-lista con los datos del árbol en un recorrido <em>preorden</em> (primero el
-dato de la raíz y después el dato de sus hijos de izquierda a derecha).</p>
-<p>La solución, siguiendo el patrón visto en <code>suma-datos</code>, es la siguiente.</p>
+
+- El árbol que queremos sumar tiene un 1 en la raíz y tres hijos: `(2
+(3) (4))`, `(5)` y `(6 (7))`. 
+- La aplicación de `map suma-datos-arbol-fos` sobre la lista de hijos
+devuelve una lista con la suma de los nodos de cada hijo: `(9 5 13)`.
+- La función `foldr` suma esa lista y el valor del nodo raíz (`1`).
+
+Podemos visualizar gráficamente el funcionamiento del `map` con la
+siguiente figura:
+
+<img src="imagenes/suma-datos-bosque-fos.png" width="500px"/>
+
+#### Función to-list-arbol
+
+Queremos diseñar una función `(to-list-arbol arbol)` que devuelva una
+lista con los datos del árbol en un recorrido *preorden* (primero el
+dato de la raíz y después el dato de sus hijos de izquierda a derecha).
+
+La solución, siguiendo el patrón visto en `suma-datos`, es la siguiente.
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">to-list-arbol</span> <span class="n">arbol</span><span class="p">)</span>
    <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span>
          <span class="p">(</span><span class="n">to-list-bosque</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>
@@ -1523,32 +1481,41 @@ dato de la raíz y después el dato de sus hijos de izquierda a derecha).</p>
        <span class="p">(</span><span class="nb">append</span> <span class="p">(</span><span class="n">to-list-arbol</span> <span class="p">(</span><span class="nb">car</span> <span class="n">bosque</span><span class="p">))</span>
                <span class="p">(</span><span class="n">to-list-bosque</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">bosque</span><span class="p">)))))</span>
 </code></pre></div>
-<p>Igual que antes, la función utiliza una <em>recursión mutua</em>: para listar
+
+Igual que antes, la función utiliza una *recursión mutua*: para listar
 todos los nodos, añadimos el dato a la lista de nodos que nos devuelve
-la función <code>to-list-bosque</code>. Esta función coge una lista de árboles
-(un <em>bosque</em>) y devuelve la lista <em>preorden</em> de sus nodos. Para ello,
+la función `to-list-bosque`. Esta función coge una lista de árboles
+(un *bosque*) y devuelve la lista *preorden* de sus nodos. Para ello,
 concatena la lista de los nodos de su primer elemento (el primer
 árbol) a la lista de nodos del resto de árboles (que devuelve la
-llamada recursiva).</p>
-<p>Ejemplo:</p>
+llamada recursiva).
+
+Ejemplo:
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">to-list-arbol</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">*</span> <span class="p">(</span><span class="ss">+</span> <span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="ss">*</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="p">(</span><span class="ss">-</span> <span class="p">(</span><span class="mi">12</span><span class="p">))))</span> 
 <span class="c1">; ⇒ (* + 5 * 2 3 10 - 12)</span>
 </code></pre></div>
-<p>Una definición alternativa usando funciones de orden superior:</p>
+
+Una definición alternativa usando funciones de orden superior:
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">to-list-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span>
           <span class="p">(</span><span class="nb">foldr</span> <span class="nb">append</span> <span class="o">&#39;</span><span class="p">()</span> <span class="p">(</span><span class="nb">map</span> <span class="n">to-list-arbol-fos</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">)))))</span>
 </code></pre></div>
-<p>Esta versión es muy elegante y concisa. Usa la función <code>map</code> que
+
+Esta versión es muy elegante y concisa. Usa la función `map` que
 aplica una función a los elementos de una lista y devuelve la lista
-resultante. Como lo que devuelve <code>(hijos-arbol arbol)</code> es precisamente
+resultante. Como lo que devuelve `(hijos-arbol arbol)` es precisamente
 una lista de árboles podemos aplicar a sus elementos cualquier función
 definida sobre árboles. Incluso la propia función que estamos
-definiendo (¡confía en la recursión!).</p>
-<h4>Función cuadrado-arbol</h4>
-<p>Veamos ahora la función <code>(cuadrado-arbol arbol)</code> que toma un árbol de
+definiendo (¡confía en la recursión!).
+
+#### Función cuadrado-arbol
+
+Veamos ahora la función `(cuadrado-arbol arbol)` que toma un árbol de
 números y devuelve un árbol con la misma estructura y sus datos
-elevados al cuadrado:</p>
+elevados al cuadrado:
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-arbol</span> <span class="n">arbol</span><span class="p">)</span>
    <span class="p">(</span><span class="n">nuevo-arbol</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">))</span>
                 <span class="p">(</span><span class="n">cuadrado-bosque</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>
@@ -1559,19 +1526,26 @@ elevados al cuadrado:</p>
        <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">cuadrado-arbol</span> <span class="p">(</span><span class="nb">car</span> <span class="n">bosque</span><span class="p">))</span>
                <span class="p">(</span><span class="n">cuadrado-bosque</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">bosque</span><span class="p">)))))</span>
 </code></pre></div>
-<p>Ejemplo:</p>
+
+Ejemplo:
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cuadrado-arbol</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="p">(</span><span class="mi">6</span><span class="p">)))</span> 
 <span class="c1">; ⇒ (4 (9 (16) (25)) (36))</span>
 </code></pre></div>
-<p>Versión 2, con la función de orden superior <code>map</code>:</p>
+
+Versión 2, con la función de orden superior `map`:
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
    <span class="p">(</span><span class="n">nuevo-arbol</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">))</span>
                 <span class="p">(</span><span class="nb">map</span> <span class="n">cuadrado-arbol-fos</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>
 </code></pre></div>
-<h4>Función <code>map-arbol</code></h4>
-<p>La función <code>map-arbol</code> es una función de orden superior que generaliza
+
+#### Función `map-arbol`
+
+La función `map-arbol` es una función de orden superior que generaliza
 la función anterior. Definimos un parámetro adicional en el que se
-pasa la función a aplicar a los elementos del árbol.</p>
+pasa la función a aplicar a los elementos del árbol.
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">map-arbol</span> <span class="n">f</span> <span class="n">arbol</span><span class="p">)</span>
    <span class="p">(</span><span class="n">nuevo-arbol</span> <span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">))</span>
                 <span class="p">(</span><span class="n">map-bosque</span> <span class="n">f</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>  
@@ -1582,20 +1556,27 @@ pasa la función a aplicar a los elementos del árbol.</p>
        <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">map-arbol</span> <span class="n">f</span> <span class="p">(</span><span class="nb">car</span> <span class="n">bosque</span><span class="p">))</span>
              <span class="p">(</span><span class="n">map-bosque</span> <span class="n">f</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">bosque</span><span class="p">)))))</span>
 </code></pre></div>
-<p>Ejemplos:</p>
+
+Ejemplos:
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">map-arbol</span> <span class="n">cuadrado</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="p">(</span><span class="mi">6</span><span class="p">)))</span>
 <span class="c1">; ⇒ (4 (9 (16) (25)) (36))</span>
 <span class="p">(</span><span class="n">map-arbol</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">1</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="p">(</span><span class="mi">6</span><span class="p">)))</span>
 <span class="c1">; ⇒ (3 (4 (5) (6)) (7))</span>
 </code></pre></div>
-<p>Con <code>map</code>:</p>
+
+Con `map`:
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">map-arbol-fos</span> <span class="n">f</span> <span class="n">arbol</span><span class="p">)</span>
   <span class="p">(</span><span class="n">nuevo-arbol</span> <span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">))</span>
                <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
                        <span class="p">(</span><span class="n">map-arbol-fos</span> <span class="n">f</span> <span class="n">x</span><span class="p">))</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>
 </code></pre></div>
-<h4>Función <code>altura-arbol</code></h4>
-<!--
+
+
+#### Función `altura-arbol`
+
+#*****comentario
 Definiciones: (https://courses.cs.washington.edu/courses/cse373/06sp/handouts/lecture06.pdf)
 
 longitud de camino: número de aristas
@@ -1604,25 +1585,28 @@ altura nodo: longitud del camino más largo del nodo a una hoja
 profundidad de un árbol: profundidad del nodo más profundo
 altura de un árbol: altura de la raíz
 nivel de un nodo: número de predecesores(https://www.quora.com/What-is-the-difference-between-the-height-and-level-of-a-full-binary-tree)
--->
+#****fin comentario
 
-<p>Vamos por último a definir una función que devuelve la altura de un
-árbol. </p>
-<p>Recordemos las siguientes definiciones relacionadas con los árboles:</p>
-<ul>
-<li>Longitud de un camino entre dos nodos: número de aristas.</li>
-<li>Altura de un nodo: longitud del camino más largo del nodo a una hoja.</li>
-<li>Profundidad de un nodo: longitud del camino de la raíz al nodo.</li>
-<li>Profundidad de un árbol: profundidad del nodo más profundo.</li>
-<li>Nivel de un nodo: número de predecesores.</li>
-<li>Altura de árbol: altura de la raíz.</li>
-</ul>
-<p>Podemos implementar la altura de una forma similar a como hicimos con
+Vamos por último a definir una función que devuelve la altura de un
+árbol. 
+
+Recordemos las siguientes definiciones relacionadas con los árboles:
+
+- Longitud de un camino entre dos nodos: número de aristas.
+- Altura de un nodo: longitud del camino más largo del nodo a una hoja.
+- Profundidad de un nodo: longitud del camino de la raíz al nodo.
+- Profundidad de un árbol: profundidad del nodo más profundo.
+- Nivel de un nodo: número de predecesores.
+- Altura de árbol: altura de la raíz.
+
+Podemos implementar la altura de una forma similar a como hicimos con
 las listas estructuradas: calculamos la altura de los árboles hijos,
 nos quedamos con la mayor, y sumamos 1 para añadir la arista del
-camino de la raíz al hijo.</p>
-<p>La mayor altura de los hijos la calculamos con la función
-<code>altura-bosque</code>.</p>
+camino de la raíz al hijo.
+
+La mayor altura de los hijos la calculamos con la función
+`altura-bosque`.
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">altura-arbol</span> <span class="n">arbol</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja-arbol?</span> <span class="n">arbol</span><span class="p">)</span>
        <span class="mi">0</span>
@@ -1634,12 +1618,17 @@ camino de la raíz al hijo.</p>
         <span class="p">(</span><span class="nb">max</span> <span class="p">(</span><span class="n">altura-arbol</span> <span class="p">(</span><span class="nb">car</span> <span class="n">bosque</span><span class="p">))</span>
              <span class="p">(</span><span class="n">altura-bosque</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">bosque</span><span class="p">)))))</span>
 </code></pre></div>
-<p>Ejemplos:</p>
+
+Ejemplos:
+
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">altura-arbol</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1">;  ⇒ 0</span>
 <span class="p">(</span><span class="n">altura-arbol</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">9</span> <span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="p">(</span><span class="mi">25</span><span class="p">))</span> <span class="p">(</span><span class="mi">36</span><span class="p">)))</span> <span class="c1">; ⇒ 2</span>
 </code></pre></div>
-<p>La solución con funciones de orden superior es algo distinta de la
-que vimos con listas estructuradas:</p>
+
+La solución con funciones de orden superior es algo distinta de la
+que vimos con listas estructuradas:
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">altura-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja-arbol?</span> <span class="n">arbol</span><span class="p">)</span>
        <span class="mi">0</span>
@@ -1647,51 +1636,71 @@ que vimos con listas estructuradas:</p>
                    <span class="mi">0</span>
                    <span class="p">(</span><span class="nb">map</span> <span class="n">altura-arbol-fos</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))))</span>
 </code></pre></div>
-<p>La función <code>map</code> mapea sobre los árboles hijos la propia función, que
+
+La función `map` mapea sobre los árboles hijos la propia función, que
 calcula la altura de cada hijo (será uno menos que la altura del padre, 0
-si se trata de una hoja).</p>
-<p>La función <code>map</code> devuelve entonces una lista altura de los hijos, de
-la que obtenemos el máximo plegando la lista con la función <code>max</code>. </p>
-<p>Por último sumamos 1 para devolver la altura del árbol completo (un
-nivel más que el nivel máximo de los hijos).</p>
-<h2 id="arboles-binarios">Arboles binarios<a class="headerlink" href="#arboles-binarios" title="Permanent link">&para;</a></h2>
-<h3 id="definicion-de-arboles-binarios-en-scheme">Definición de árboles binarios en Scheme<a class="headerlink" href="#definicion-de-arboles-binarios-en-scheme" title="Permanent link">&para;</a></h3>
-<p>Los árboles binarios son árboles cuyos nodos tienen 0, 1 o 2
+si se trata de una hoja).
+
+La función `map` devuelve entonces una lista altura de los hijos, de
+la que obtenemos el máximo plegando la lista con la función `max`. 
+
+Por último sumamos 1 para devolver la altura del árbol completo (un
+nivel más que el nivel máximo de los hijos).
+
+## Arboles binarios
+
+### Definición de árboles binarios en Scheme
+
+Los árboles binarios son árboles cuyos nodos tienen 0, 1 o 2
 hijos. Por ejemplo, el árbol mostrado en la siguiente figura es un
-árbol binario.</p>
-<p><img src="imagenes/binario-2.png" width="300px"/></p>
-<p>A diferencia de los árboles genéricos vistos anteriormente un árbol
-binario no puede tener más de dos hijos.</p>
-<p>Los representaremos en Scheme utilizando una lista de tres elementos:</p>
-<ul>
-<li>Dato</li>
-<li>Hijo izquierdo (otro árbol binario)</li>
-<li>Hijo derecho (otro árbol binario)</li>
-</ul>
-<p>En el caso en que no exista el hijo izquierdo o el derecho (o ambos)
-utilizaremos una lista vacía para indicar un nodo vacío.</p>
-<p>De esta manera, un nodo hoja con el dato 10 se representará en Scheme con la lista:</p>
+árbol binario.
+
+<img src="imagenes/binario-2.png" width="300px"/>
+
+A diferencia de los árboles genéricos vistos anteriormente un árbol
+binario no puede tener más de dos hijos.
+
+Los representaremos en Scheme utilizando una lista de tres elementos:
+
+- Dato
+- Hijo izquierdo (otro árbol binario)
+- Hijo derecho (otro árbol binario)
+
+En el caso en que no exista el hijo izquierdo o el derecho (o ambos)
+utilizaremos una lista vacía para indicar un nodo vacío.
+
+De esta manera, un nodo hoja con el dato 10 se representará en Scheme con la lista:
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="mi">10</span> <span class="p">()</span> <span class="p">())</span>
 </code></pre></div>
-<p>Por ejemplo, representamos el árbol de la figura anterior con la
-siguiente lista:</p>
+
+Por ejemplo, representamos el árbol de la figura anterior con la
+siguiente lista:
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="mi">40</span> <span class="p">(</span><span class="mi">18</span> <span class="p">(</span><span class="mi">3</span> <span class="p">()</span> <span class="p">())</span>
         <span class="p">(</span><span class="mi">23</span> <span class="p">()</span>
             <span class="p">(</span><span class="mi">29</span> <span class="p">()</span> <span class="p">())))</span>
     <span class="p">(</span><span class="mi">52</span> <span class="p">(</span><span class="mi">47</span> <span class="p">()</span> <span class="p">())</span>
         <span class="p">()))</span>
 </code></pre></div>
-<p>Visualmente lo podemos representar de la siguiente forma. La no
+
+Visualmente lo podemos representar de la siguiente forma. La no
 existencia de un hijo izquierdo o un hijo derecho se representa por
-una lista vacía.</p>
-<p><img src="imagenes/binario-3.png" width="350px"/></p>
-<h4>Barrera de abstracción</h4>
-<p>Definimos la siguiente barrera de abstracción para los árboles
+una lista vacía.
+
+<img src="imagenes/binario-3.png" width="350px"/>
+
+#### Barrera de abstracción ####
+
+Definimos la siguiente barrera de abstracción para los árboles
 binarios. Terminamos todos los nombres de las funciones con el sufijo
-<code>-arbolb</code> (árbol binario).</p>
-<p><strong>Selectores</strong></p>
-<p>Los selectores de la barrera de abstracción del árbol binario son los
-siguientes.</p>
+`-arbolb` (árbol binario).
+
+**Selectores**
+
+Los selectores de la barrera de abstracción del árbol binario son los
+siguientes.
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">dato-arbolb</span> <span class="n">arbol</span><span class="p">)</span>
    <span class="p">(</span><span class="nb">car</span> <span class="n">arbol</span><span class="p">))</span>
 
@@ -1710,21 +1719,28 @@ siguientes.</p>
    <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="n">vacio-arbolb?</span> <span class="p">(</span><span class="n">hijo-izq-arbolb</span> <span class="n">arbol</span><span class="p">))</span>
         <span class="p">(</span><span class="n">vacio-arbolb?</span> <span class="p">(</span><span class="n">hijo-der-arbolb</span> <span class="n">arbol</span><span class="p">))))</span>
 </code></pre></div>
-<p>Como parte de la barrera de abstracción definimos la constante
-<code>arbolb-vacio</code>, que toma el valor de una lista vacía.</p>
-<p><strong>Constructor</strong></p>
+
+Como parte de la barrera de abstracción definimos la constante
+`arbolb-vacio`, que toma el valor de una lista vacía.
+
+**Constructor**
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">nuevo-arbolb</span> <span class="n">dato</span> <span class="n">hijo-izq</span> <span class="n">hijo-der</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">list</span> <span class="n">dato</span> <span class="n">hijo-izq</span> <span class="n">hijo-der</span><span class="p">))</span>
 </code></pre></div>
-<p>Por ejemplo, para construir un árbol con 10 en la raíz y 8 en su hijo
+
+Por ejemplo, para construir un árbol con 10 en la raíz y 8 en su hijo
 izquierdo y 15 en su derecho utilizando el constructor de la barrera
-de abstracción:</p>
+de abstracción:
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">arbolb1</span>
    <span class="p">(</span><span class="n">nuevo-arbolb</span> <span class="mi">10</span> <span class="p">(</span><span class="n">nuevo-arbolb</span> <span class="mi">8</span> <span class="n">arbolb-vacio</span> <span class="n">arbolb-vacio</span><span class="p">)</span>
                     <span class="p">(</span><span class="n">nuevo-arbolb</span> <span class="mi">15</span> <span class="n">arbolb-vacio</span> <span class="n">arbolb-vacio</span><span class="p">)))</span>
 </code></pre></div>
-<p>Otro ejemplo, el árbol binario de la figura anterior utilizando el
-constructor de la barrera de abstracción:</p>
+
+Otro ejemplo, el árbol binario de la figura anterior utilizando el
+constructor de la barrera de abstracción:
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">arbolb2</span>
    <span class="p">(</span><span class="n">nuevo-arbolb</span> <span class="mi">40</span> 
                  <span class="p">(</span><span class="n">nuevo-arbolb</span> <span class="mi">18</span>
@@ -1738,21 +1754,26 @@ constructor de la barrera de abstracción:</p>
                                <span class="p">(</span><span class="n">nuevo-arbolb</span> <span class="mi">47</span> <span class="n">arbolb-vacio</span> <span class="n">arbolb-vacio</span><span class="p">)</span>
                                <span class="n">arbolb-vacio</span><span class="p">)))</span>
 </code></pre></div>
-<h3 id="funciones-recursivas-sobre-arboles-binarios">Funciones recursivas sobre árboles binarios<a class="headerlink" href="#funciones-recursivas-sobre-arboles-binarios" title="Permanent link">&para;</a></h3>
-<p>Veamos las siguientes funciones recursivas sobre árboles binarios:</p>
-<ul>
-<li><code>(suma-datos-arbolb arbol)</code>: devuelve la suma de todos los nodos</li>
-<li><code>(to-list-arbolb arbol)</code>: devuelve una lista con los datos del árbol</li>
-<li><code>(cuadrado-arbolb arbol)</code>: eleva al cuadrado todos los datos de un
-  árbol manteniendo la estructura del árbol original</li>
-</ul>
-<p>Estas funciones utilizan una mezcla de los patrones usados en la
+
+### Funciones recursivas sobre árboles binarios
+
+Veamos las siguientes funciones recursivas sobre árboles binarios:
+
+* `(suma-datos-arbolb arbol)`: devuelve la suma de todos los nodos
+* `(to-list-arbolb arbol)`: devuelve una lista con los datos del árbol
+* `(cuadrado-arbolb arbol)`: eleva al cuadrado todos los datos de un
+  árbol manteniendo la estructura del árbol original
+
+Estas funciones utilizan una mezcla de los patrones usados en la
 recursión para trabajar con árboles genéricos y la recursión para
 trabajar con listas estructuradas. Tenemos un dato en la raíz, que
 tenemos que combinar con lo que devuelve la recursión aplicada sobre
 el hijo izquierdo y lo que devuelve la recursión aplicada sobre el
-hijo derecho.</p>
-<p><strong>suma-datos-arbolb</strong></p>
+hijo derecho.
+
+
+**suma-datos-arbolb**
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-datos-arbolb</span> <span class="n">arbol</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">vacio-arbolb?</span> <span class="n">arbol</span><span class="p">)</span>
       <span class="mi">0</span>
@@ -1762,19 +1783,28 @@ hijo derecho.</p>
 
 <span class="p">(</span><span class="n">suma-datos-arbolb</span> <span class="n">arbolb2</span><span class="p">)</span> <span class="c1">; ⇒ 212</span>
 </code></pre></div>
-<p>Como el hijo izquierdo y el hijo derecho son también árboles binarios,
+
+Como el hijo izquierdo y el hijo derecho son también árboles binarios,
 podemos llamar a la recursión con esos árboles. Esas llamadas
 recursivas nos devolverán la suma de los datos en cada subárbol. Y
-sumamos el dato de la raíz.</p>
-<p>Para definir el caso base, podemos ver que en cada llamada recursiva
+sumamos el dato de la raíz.
+
+Para definir el caso base, podemos ver que en cada llamada recursiva
 vamos obteniendo el hijo izquierdo y el hijo derecho. Al final
-llegaremos a un árbol vacío, en cuyo caso devolvemos 0. </p>
-<p>La siguiente figura representa el funcionamiento del caso general.</p>
-<p><img src="imagenes/suma-datos-binario.png" width="500px"/></p>
-<p><strong>to-list-arbolb</strong></p>
-<p>La función <code>to-list-arbolb</code> es similar a la vista con los árboles
+llegaremos a un árbol vacío, en cuyo caso devolvemos 0. 
+
+La siguiente figura representa el funcionamiento del caso general.
+
+<img src="imagenes/suma-datos-binario.png" width="500px"/>
+
+
+**to-list-arbolb**
+
+La función `to-list-arbolb` es similar a la vista con los árboles
 genéricos. Recibe un árbol binario y devuelve una lista con los datos
-en un recorrido preorden.</p>
+en un recorrido preorden.
+
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">to-list-arbolb</span> <span class="n">arbol</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">vacio-arbolb?</span> <span class="n">arbol</span><span class="p">)</span>
       <span class="o">&#39;</span><span class="p">()</span>
@@ -1784,15 +1814,20 @@ en un recorrido preorden.</p>
 
 <span class="p">(</span><span class="n">to-list-arbolb</span> <span class="n">arbolb2</span><span class="p">)</span> <span class="c1">; ⇒ (40 18 3 23 29 52 47)</span>
 </code></pre></div>
-<p>El funcionamiento es similar a la suma: llamamos a la recursión por la
+
+El funcionamiento es similar a la suma: llamamos a la recursión por la
 izquierda y por la derecha. El resultado de las llamadas recursivas
-serán dos listas que tenemos que concatenar con <code>append</code>. Y por
-últimos añadimos en cabeza el dato de la raíz con <code>cons</code>.</p>
-<p><strong>cuadrado-arbolb</strong></p>
-<p>Por último, la función <code>cuadrado-arbolb</code> construye un nuevo árbol
+serán dos listas que tenemos que concatenar con `append`. Y por
+últimos añadimos en cabeza el dato de la raíz con `cons`.
+
+
+**cuadrado-arbolb**
+
+Por último, la función `cuadrado-arbolb` construye un nuevo árbol
 binario elevando al cuadrado el dato de la raíz, su hijo izquierdo y
 su hijo derecho. Para construir el árbol binario llamamos al
-constructor <code>nuevo-arbolb</code>.</p>
+constructor `nuevo-arbolb`.
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-arbolb</span> <span class="n">arbol</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">vacio-arbolb?</span> <span class="n">arbol</span><span class="p">)</span>
       <span class="n">arbolb-vacio</span>
@@ -1802,7 +1837,9 @@ constructor <code>nuevo-arbolb</code>.</p>
 
 <span class="p">(</span><span class="n">cuadrado-arbolb</span> <span class="n">arbolb1</span><span class="p">)</span> <span class="c1">; ⇒ (100 (64 () ()) (225 () ()))</span>
 </code></pre></div>
-<p>--&gt;</p>
+
+
+-->
 <h2 id="bibliografia-sicp">Bibliografía - SICP<a class="headerlink" href="#bibliografia-sicp" title="Permanent link">&para;</a></h2>
 <p>En este tema explicamos conceptos de los siguientes capítulos del libro <em>Structure and Intepretation of Computer Programs</em>:</p>
 <ul>
