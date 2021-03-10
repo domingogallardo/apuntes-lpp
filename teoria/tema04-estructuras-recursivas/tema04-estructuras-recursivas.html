@@ -536,21 +536,7 @@
               
                 
                 
-                <!--
-Cambiar los apuntes, tanto de hojas como de árboles,
-para que el caso base de la recursión esté fuera de
-la expresión lambda
-
-(define (aplana-fos elem)
-  (if (hoja? elem)
-      (list elem)
-      (foldr append
-             '()
-             (map aplana-fos elem))))
-
--->
-
-<h1 id="tema-4-estructuras-de-datos-recursivas">Tema 4: Estructuras de datos recursivas<a class="headerlink" href="#tema-4-estructuras-de-datos-recursivas" title="Permanent link">&para;</a></h1>
+                <h1 id="tema-4-estructuras-de-datos-recursivas">Tema 4: Estructuras de datos recursivas<a class="headerlink" href="#tema-4-estructuras-de-datos-recursivas" title="Permanent link">&para;</a></h1>
 <h2 id="listas-estructuradas">Listas estructuradas<a class="headerlink" href="#listas-estructuradas" title="Permanent link">&para;</a></h2>
 <p>Hemos visto que las listas en Scheme se implementan como un estructura
 de datos recursiva, formada por una pareja que enlaza en su parte
@@ -837,29 +823,27 @@ sublista.</p>
 <p>El resultado del map será una lista de números (el número de hojas de
 cada componente), que podemos sumar haciendo un <code>foldr</code> con la
 función <code>+</code>:</p>
-<!-- TODO
-
-Tenemos que plantearnos si cambiamos a una versión en la que la
-comprobación de hoja se hace antes de hacer el map.
-
-(define (num-hojas-fos lista)
-   (if (hoja? lista)
-        1
-        (foldr + 0 (map num-hojas-fos lista))))
-
-Igual en las FOS sobre árboles.
-
--->
-
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">num-hojas-fos</span> <span class="n">lista</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">foldr</span> <span class="nb">+</span> <span class="mi">0</span> <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-                        <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span>
-                            <span class="mi">1</span>
-                            <span class="p">(</span><span class="n">num-hojas-fos</span> <span class="n">elem</span><span class="p">)))</span> <span class="n">lista</span><span class="p">)))</span>
+    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+        <span class="mi">1</span>
+        <span class="p">(</span><span class="nb">foldr</span> <span class="nb">+</span> <span class="mi">0</span> <span class="p">(</span><span class="nb">map</span> <span class="n">num-hojas-fos</span> <span class="n">lista</span><span class="p">))))</span>
 </code></pre></div>
 <p>Una explicación gráfica de cómo funciona la función sobre la lista <code>(1
 (2 3) (4) (5 (6 7) 8))</code>:</p>
 <p><img src="imagenes/map-lista.png" width="700px"/></p>
+<p>Sería equivalente hacer un <code>apply</code> de la suma para sumar los números
+de la lista devuelta por el <code>map</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">num-hojas-fos</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+        <span class="mi">1</span>
+        <span class="p">(</span><span class="nb">apply</span> <span class="nb">+</span> <span class="p">(</span><span class="nb">map</span> <span class="n">num-hojas-fos</span> <span class="n">lista</span><span class="p">))))</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Es interesante conocer ambas expresiones (la del <code>foldr</code> y la del
+<code>apply</code>) porque hay lenguajes de programación en los que la función
+<code>apply</code> no está definida. Por ejemplo, Swift.</p>
+</div>
 <h4>Altura de una lista estructurada</h4>
 <p>La <em>altura</em> de una lista estructurada viene dada por su número de
 niveles: una lista plana tiene una altura de 1, la lista <code>((1 2 3) 4
@@ -888,10 +872,15 @@ para obtener la altura de sus elementos del primer nivel (puedes ser
 hojas o sublistas) y <code>foldr</code> para quedarse con el máximo de la
 lista de valores que devuelve el map.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">altura-fos</span> <span class="n">lista</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">foldr</span> <span class="nb">max</span> <span class="mi">0</span> <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-                              <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span>
-                                  <span class="mi">0</span>
-                                  <span class="p">(</span><span class="n">altura-fos</span> <span class="n">elem</span><span class="p">)))</span> <span class="n">lista</span><span class="p">))))</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+       <span class="mi">0</span>
+       <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">foldr</span> <span class="nb">max</span> <span class="mi">0</span> <span class="p">(</span><span class="nb">map</span> <span class="n">altura-fos</span> <span class="n">lista</span><span class="p">)))))</span>
+</code></pre></div>
+<p>Podríamos hacerlo también sustituyendo el <code>foldr</code> por un <code>apply</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">altura-fos</span> <span class="n">lista</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+       <span class="mi">0</span>
+       <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">apply</span> <span class="nb">max</span> <span class="p">(</span><span class="nb">map</span> <span class="n">altura-fos</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 <h4>Otras funciones recursivas</h4>
 <p>Vamos a diseñar otras funciones recursivas que trabajan con la
@@ -925,12 +914,15 @@ estructura jerárquica de las listas estructuradas.</p>
 </code></pre></div>
 <p>Con funciones de orden superior:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">aplana-fos</span> <span class="n">lista</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">foldr</span> <span class="nb">append</span>
-         <span class="o">&#39;</span><span class="p">()</span>
-         <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-                 <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span>
-                     <span class="p">(</span><span class="nb">list</span> <span class="n">elem</span><span class="p">)</span>
-                     <span class="p">(</span><span class="n">aplana-fos</span> <span class="n">elem</span><span class="p">)))</span> <span class="n">lista</span><span class="p">)))</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">list</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">foldr</span> <span class="nb">append</span> <span class="o">&#39;</span><span class="p">()</span> <span class="p">(</span><span class="nb">map</span> <span class="n">aplana-fos</span> <span class="n">lista</span><span class="p">))))</span>
+</code></pre></div>
+<p>Usando <code>apply</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">aplana-fos</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">list</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">apply</span> <span class="nb">append</span> <span class="p">(</span><span class="nb">map</span> <span class="n">aplana-fos</span> <span class="n">lista</span><span class="p">))))</span>
 </code></pre></div>
 <h5><code>(pertenece-lista? dato lista)</code></h5>
 <p>Comprueba si el <code>dato</code> aparece en la lista estructurada. </p>
@@ -947,10 +939,10 @@ estructura jerárquica de las listas estructuradas.</p>
 </code></pre></div>
 <p>Con funciones de orden superior:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pertenece-fos?</span> <span class="n">dato</span> <span class="n">lista</span><span class="p">)</span>
-  <span class="p">(</span><span class="n">exists</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-             <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span>
-                 <span class="p">(</span><span class="nb">equal?</span> <span class="n">dato</span> <span class="n">elem</span><span class="p">)</span>
-                 <span class="p">(</span><span class="n">pertenece-fos?</span> <span class="n">dato</span> <span class="n">elem</span><span class="p">)))</span> <span class="n">lista</span><span class="p">))</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">equal?</span> <span class="n">dato</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">exists?</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+               <span class="p">(</span><span class="n">pertenece-fos?</span> <span class="n">dato</span> <span class="n">elem</span><span class="p">))</span> <span class="n">lista</span><span class="p">)))</span>
 </code></pre></div>
 <h5><code>(nivel-hoja dato lista)</code></h5>
 <p>Veamos una última función <code>(nivel-hoja dato lista)</code> que recorre una
@@ -981,46 +973,11 @@ nivel mayor.</p>
 </code></pre></div>
 <p>Con funciones de orden superior:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">nivel-hoja-fos</span> <span class="n">dato</span> <span class="n">lista</span><span class="p">)</span>
-  <span class="p">(</span><span class="n">suma-1-si-mayor-igual-que-0</span>
-       <span class="p">(</span><span class="nb">foldr</span> <span class="nb">max</span> 
-              <span class="mi">-1</span>
-              <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-                       <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span>
-                            <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">equal?</span> <span class="n">elem</span> <span class="n">dato</span><span class="p">)</span> <span class="mi">0</span> <span class="mi">-1</span><span class="p">)</span>
-                            <span class="p">(</span><span class="n">nivel-hoja-fos</span> <span class="n">dato</span> <span class="n">elem</span><span class="p">)))</span>  
-                      <span class="n">lista</span><span class="p">))))</span>
-</code></pre></div>
-<p>Se puede hacer otra versión de la función anterior, que aproveche que
-Scheme es un lenguaje débilmente tipado y que devuelva <code>#f</code> si el dato no
-se encuentra:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">incrementa-nivel-si-encontrado</span> <span class="n">x</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">not</span> <span class="n">x</span><span class="p">)</span>
-      <span class="n">x</span> 
-      <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mayor-nivel-si-encontrado</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">cond</span>
-    <span class="p">((</span><span class="nb">not</span> <span class="n">x</span><span class="p">)</span> <span class="n">y</span><span class="p">)</span>
-    <span class="p">((</span><span class="nb">not</span> <span class="n">y</span><span class="p">)</span> <span class="n">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">max</span> <span class="n">x</span> <span class="n">y</span><span class="p">))))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">nivel-hoja2</span> <span class="n">dato</span> <span class="n">elem</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">cond</span>
-    <span class="p">((</span><span class="nb">null?</span> <span class="n">elem</span><span class="p">)</span> <span class="no">#f</span><span class="p">)</span>
-    <span class="p">((</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span> <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">equal?</span> <span class="n">x</span> <span class="n">dato</span><span class="p">)</span> <span class="mi">0</span> <span class="no">#f</span><span class="p">))</span>
-    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">mayor-nivel-si-encontrado</span>
-               <span class="p">(</span><span class="n">incrementa-nivel-si-encontrado</span> <span class="p">(</span><span class="n">nivel-hoja</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">car</span> <span class="n">elem</span><span class="p">)))</span>
-               <span class="p">(</span><span class="n">nivel-hoja2</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">elem</span><span class="p">))))))</span>
-</code></pre></div>
-<p>Las funciones auxiliares <code>incrementa-nivel-si-encontrado</code> y
-<code>mayor-nivel-si-encontrado</code> realizan la suma de 1 y calculan el máximo
-tratando con los casos en los que alguno de los argumentos es <code>#f</code>
-porque no se ha encontrado el dato.</p>
-<p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">nivel-hoja2</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="p">(</span><span class="ss">c</span><span class="p">)))</span> <span class="c1">; ⇒ 1</span>
-<span class="p">(</span><span class="n">nivel-hoja2</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span><span class="p">)</span> <span class="ss">c</span><span class="p">))</span> <span class="c1">; ⇒ 2</span>
-<span class="p">(</span><span class="n">nivel-hoja2</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span><span class="p">)</span> <span class="ss">d</span> <span class="p">((</span><span class="ss">b</span><span class="p">))))</span> <span class="c1">; ⇒ 3</span>
-<span class="p">(</span><span class="n">nivel-hoja2</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">c</span> <span class="ss">d</span> <span class="p">((</span><span class="ss">e</span><span class="p">))))</span> <span class="c1">; ⇒ #f</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">equal?</span> <span class="n">lista</span> <span class="n">dato</span><span class="p">)</span> <span class="mi">0</span> <span class="mi">-1</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">suma-1-si-mayor-igual-que-0</span>
+       <span class="p">(</span><span class="nb">foldr</span> <span class="nb">max</span> <span class="mi">-1</span> <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+                           <span class="p">(</span><span class="n">nivel-hoja-fos</span> <span class="n">dato</span> <span class="n">elem</span><span class="p">))</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 <h5><code>(cuadrado-estruct lista)</code></h5>
 <p>Vamos ahora a ver un tipo de función distinta. Una que construye una
@@ -1047,10 +1004,9 @@ devuelta en la llamada recursiva con el <code>cdr</code>.</p>
 <p>Es muy interesante la versión de esta función con funciones de orden
 superior:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-estruct-fos</span> <span class="n">lista</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-           <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span>
-               <span class="p">(</span><span class="nb">*</span> <span class="n">elem</span> <span class="n">elem</span><span class="p">)</span>
-               <span class="p">(</span><span class="n">cuadrado-estruct-fos</span> <span class="n">elem</span><span class="p">)))</span> <span class="n">lista</span><span class="p">))</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+      <span class="p">(</span><span class="nb">*</span> <span class="n">lista</span> <span class="n">lista</span><span class="p">)</span>
+      <span class="p">(</span><span class="nb">map</span> <span class="n">cuadrado-estruct-fos</span> <span class="n">lista</span><span class="p">)))</span>
 </code></pre></div>
 <p>Como una lista estructurada está compuesta de datos o de otras
 sublistas podemos aplicar <code>map</code> para que devuelva la lista resultante
@@ -1074,12 +1030,27 @@ usando el parámetro <code>f</code>:</p>
 </code></pre></div>
 <p>Solución con <code>map</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">map-estruct-fos</span> <span class="n">f</span> <span class="n">lista</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-          <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span>
-              <span class="p">(</span><span class="n">f</span> <span class="n">elem</span><span class="p">)</span>
-              <span class="p">(</span><span class="n">map-estruct-fos</span> <span class="n">f</span> <span class="n">elem</span><span class="p">)))</span> <span class="n">lista</span><span class="p">))</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">f</span> <span class="n">lista</span><span class="p">)</span>
+      <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+             <span class="p">(</span><span class="n">map-estruct-fos</span> <span class="n">f</span> <span class="n">elem</span><span class="p">))</span> <span class="n">lista</span><span class="p">)))</span>
 </code></pre></div>
 <!--
+
+***Comentario
+
+Tenemos que plantearnos si cambiamos a una versión en la que la
+comprobación de hoja se hace antes de hacer el map.
+
+(define (num-hojas-fos lista)
+   (if (hoja? lista)
+        1
+        (foldr + 0 (map num-hojas-fos lista))))
+
+Igual en las FOS sobre árboles.
+
+***Fin del comentario
+
 
 ## Árboles
 
