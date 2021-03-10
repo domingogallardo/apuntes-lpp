@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<style type="text/css">
+
+/* Admonition */
+
+.admonition {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.admonition.note { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.admonition.quote { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #cecece;
+    border-color: #cccccc;
+}
+
+.admonition.warning { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #fcf8e3;
+    border-color: #fbeed5;
+}
+
+.admonition.hint { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #E9F9F6;
+    border-color: #AFEEEE;
+}
+
+.admonition.danger { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+}
+
+.admonition-title {
+    font-weight: bold;
+    text-align: left;
+}
+
+
+/* Codehilite */
+
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mb { color: #666666 } /* Literal.Number.Bin */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #0000FF } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
+/* Estilo LPP */
+
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: white;
+  padding: 60px;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+</style>
+
+</head>
+
+<body>
+<h2>Semana 6</h2>
+<p>Notas de clase de la semana 6 de LPP. </p>
+<h2>Tema 4: Estructuras de datos recursivas</h2>
+<ul>
+<li><strong>1 Listas estructuradas</strong><ul>
+<li><strong>1.1. Definición y ejemplos</strong></li>
+<li><strong>1.2. Funciones recursivas sobre listas estructuradas</strong></li>
+</ul>
+</li>
+<li>2 Árboles<ul>
+<li>2.1. Definición de árboles en Scheme</li>
+<li>2.2. Funciones recursivas sobre árboles</li>
+</ul>
+</li>
+<li>3 Árboles binarios<ul>
+<li>3.1. Definición de árboles binarios en Scheme</li>
+<li>3.2. Funciones recursivas sobre árboles binarios</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>Listas estructuradas</h3>
+<ul>
+<li>
+<p>Funciones para trabajar con listas:</p>
+<ul>
+<li><code>(car lista)</code> para obtener el primer elemento de una lista</li>
+<li><code>(cdr lista)</code> para obtener el resto de la lista</li>
+<li><code>(cons dato lista)</code> para construir una nueva lista con el dato
+  como primer elemento</li>
+</ul>
+</li>
+<li>
+<p>En este apartado vamos a estudiar cómo trabajar con <em>listas que
+  contienen otras listas</em>. Los elementos de las listas pueden ser
+  elementos atómicos u otras listas.</p>
+</li>
+<li>
+<p>La función <code>(car lista)</code> puede devolver un elemento u otra lista.</p>
+</li>
+</ul>
+<hr />
+<h3>Definición y ejemplos</h3>
+<ul>
+<li>
+<p>Llamaremos <strong>lista estructurada</strong> a una lista que contiene otras
+  sublistas. Lo contrario de lista estructurada es una <strong>lista
+  plana</strong>, una lista formada por elementos que no son
+  listas. Llamaremos <strong>hojas</strong> a los elementos de una lista que no son
+  sublistas.</p>
+</li>
+<li>
+<p>A las listas estructuradas cuyas hojas son símbolos se les denomina
+  en el contexto de la programación funcional <em>expresiones-S</em>
+  (<a href="http://en.wikipedia.org/wiki/S-expression">S-expression</a>).</p>
+</li>
+<li>
+<p>Por ejemplo, la lista estructurada:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">a</span> <span class="n">b</span> <span class="p">(</span><span class="n">c</span> <span class="n">d</span> <span class="n">e</span><span class="p">)</span> <span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="n">g</span> <span class="n">h</span><span class="p">)))</span>
+</code></pre></div>
+<p>es una lista estructurada con 4 elementos:</p>
+<ul>
+<li>El elemento <code>'a</code>, una hoja</li>
+<li>El elemento <code>'b</code>, otra hoja</li>
+<li>La lista plana <code>'(c d e)</code></li>
+<li>La lista estructurada <code>'(f (g h))</code></li>
+</ul>
+</li>
+<li>
+<p>Una lista formada por parejas la consideraremos una lista plana, ya
+  que no contiene ninguna sublista. Por ejemplo, la lista</p>
+<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="n">a</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="n">b</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="n">c</span> <span class="o">.</span> <span class="mi">12</span><span class="p">))</span>
+</code></pre></div>
+<p>es una lista plana de tres elementos (hojas) que son parejas.</p>
+</li>
+</ul>
+<hr />
+<h3>Función <code>(hoja? dato)</code></h3>
+<ul>
+<li>
+<p>Un dato es una hoja si no es una lista:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">dato</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nb">list?</span> <span class="n">dato</span><span class="p">)))</span>
+</code></pre></div>
+</li>
+<li>
+<p>Por ejemplo, supongamos la siguiente lista:</p>
+<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="mi">4</span> <span class="p">(</span><span class="mi">5</span> <span class="mi">6</span><span class="p">))</span>
+</code></pre></div>
+<p>Es una lista de 4 elementos, siendo el primero y el último otras
+sublistas y el segundo y el tercero hojas. Podemos comprobar si
+son o no hojas sus elementos:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="mi">4</span> <span class="p">(</span><span class="mi">5</span> <span class="mi">6</span><span class="p">)))</span>
+<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">cadr</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">caddr</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">cadddr</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+</code></pre></div>
+</li>
+<li>
+<p>La lista vacía no es una hoja</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">hoja?</span> <span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ #f</span>
+</code></pre></div>
+</li>
+</ul>
+<hr />
+<h3>Función <code>(plana? lista)</code></h3>
+<ul>
+<li>
+<p>Una lista es plana cuando todos sus elementos son hojas.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">plana?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">plana?</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="mi">1</span><span class="p">)</span> <span class="s2">&quot;Hola&quot;</span> <span class="no">#f</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">plana?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="ss">d</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">plana?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">()</span> <span class="ss">b</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+</code></pre></div>
+</li>
+<li>
+<p>Una definición recursiva de lista plana:</p>
+</li>
+</ul>
+<blockquote>
+<p>Una lista es plana si y solo si el primer elemento es una hoja y el
+resto es plana.</p>
+</blockquote>
+<ul>
+<li>Y el caso base:</li>
+</ul>
+<blockquote>
+<p>Una lista vacía es plana.</p>
+</blockquote>
+<ul>
+<li>
+<p>Usando esta definición recursiva, podemos implementar en Scheme la
+  función <code>(plana? lista)</code> que comprueba si una lista es plana:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">plana?</span> <span class="n">lista</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
+       <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
+            <span class="p">(</span><span class="n">plana?</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+</code></pre></div>
+</li>
+</ul>
+<p>¿Cómo sería la definición de <code>plana?</code> utilizando funciones de orden superior?</p>
+<p style="margin-bottom:3cm;"></p>
+
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">plana-fos?</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">for-all?</span> <span class="n">hoja?</span> <span class="n">lista</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">for-all?</span> <span class="n">predicado</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
+           <span class="p">(</span><span class="n">for-all?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+</code></pre></div>
+<hr />
+<h3>Función <code>(estructurada? lista)</code></h3>
+<ul>
+<li>
+<p>Ejemplos:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">estructurada?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">estructurada?</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">c</span> <span class="mi">3</span><span class="p">)))</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">estructurada?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">()</span> <span class="ss">b</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">estructurada?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="ss">d</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+</code></pre></div>
+</li>
+<li>
+<p>Una lista es estructurada cuando alguno de sus elementos es otra
+  lista:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">estructurada?</span> <span class="n">lista</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">))</span>
+        <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="nb">list?</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
+            <span class="p">(</span><span class="n">estructurada?</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+</code></pre></div>
+</li>
+</ul>
+<p>¿Cómo sería la definición de <code>estructurada?</code> utilizando funciones de orden superior?</p>
+<p style="margin-bottom:3cm;"></p>
+
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">estructurada-fos?</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">exists?</span> <span class="nb">list?</span> <span class="n">lista</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">exists?</span> <span class="n">predicado</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
+      <span class="no">#f</span>
+      <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
+          <span class="p">(</span><span class="n">exists?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+</code></pre></div>
+<ul>
+<li>
+<p>Realmente bastaría con haber hecho una de las dos definiciones y
+escribir la otra como la negación de la primera:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">estructurada?</span> <span class="n">lista</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="n">plana?</span> <span class="n">lista</span><span class="p">)))</span>
+</code></pre></div>
+</li>
+</ul>
+<hr />
+<h3>Ejemplos de listas estructuradas</h3>
+<ul>
+<li>
+<p>Las listas estructuradas son muy útiles para representar información
+  jerárquica en donde queremos representar elementos que contienen
+  otros elementos.</p>
+</li>
+<li>
+<p>Por ejemplo, las expresiones de Scheme son listas estructuradas:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">=</span> <span class="mi">4</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">/</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="mi">45</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">factorial</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">)</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="n">factorial</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))))</span>
+</code></pre></div>
+</li>
+<li>
+<p>El análisis sintáctico de una oración puede generar una lista
+  estructurada de símbolos, en donde se agrupan los distintos
+  elementos de la oración:</p>
+<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="n">Juan</span><span class="p">)</span> <span class="p">(</span><span class="n">compró</span><span class="p">)</span> <span class="p">(</span><span class="n">la</span> <span class="n">entrada</span> <span class="p">(</span><span class="n">de</span> <span class="n">los</span> <span class="n">Miserables</span><span class="p">))</span> <span class="p">(</span><span class="n">el</span> <span class="n">viernes</span> <span class="n">por</span> <span class="n">la</span> <span class="n">tarde</span><span class="p">))</span>
+</code></pre></div>
+</li>
+</ul>
+<hr />
+<h3><em>Pseudo árboles</em> con niveles</h3>
+<ul>
+<li>
+<p>Las listas estructuradas definen una estructura de niveles, donde la
+  lista inicial representa el primer nivel, y cada sublista representa
+  un nivel inferior. Los datos de las listas representan las hojas.</p>
+</li>
+<li>
+<p>Por ejemplo, la representación en forma de niveles de la lista <code>((a
+  b c) d e)</code> es la siguiente:</p>
+<p><img src="imagenes/expresion-e-1.png" width="350px"/></p>
+<p>Las hojas <code>d</code> y <code>e</code> están en el nivel 1 y en las posiciones 2 y 3 de
+la lista y las hojas <code>a</code>, <code>b</code> y <code>c</code> en el nivel 2 y en la posición 1
+de la lista.</p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Una lista estructurada no es un árbol</p>
+<p>Una lista estructurada no es un árbol propiamente dicho, porque
+un árbol tiene datos en todos los nodos, mientras que en la lista 
+estructurada los datos están sólo en las hojas.</p>
+</div>
+<ul>
+<li>
+<p>Las listas estructuradas sirven para agrupar de forma jerárquica
+  un conjunto de datos en distintos niveles. </p>
+</li>
+<li>
+<p>A pesar de ser distintas de los árboles, ambas son estructuras de
+  datos jerárquicas (con niveles) que se pueden definir de forma
+  recursiva y sobre las que se pueden definir algoritmos recursivos.</p>
+</li>
+<li>
+<p>Veremos los árboles en la próxima clase.</p>
+</li>
+</ul>
+<p>Otro ejemplo. ¿Cuál sería la representación en niveles de la
+siguiente lista estructurada?:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">10</span><span class="p">))</span> <span class="p">(</span><span class="k">quote</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)))</span>
+</code></pre></div>
+<p style="margin-bottom:3cm;"></p>
+
+<hr />
+<h3>Funciones recursivas sobre listas estructuradas</h3>
+<ul>
+<li><code>(num-hojas lista)</code>: número de hojas de una lista estructurada</li>
+<li>
+<p><code>(altura lista)</code>: nivel mayor de una lista estructurada</p>
+</li>
+<li>
+<p>Como hemos dicho antes, la cuestión clave en este tipo de listas es
+  que el <code>car</code> puede ser a su vez otra lista.</p>
+</li>
+</ul>
+<hr />
+<h3>Número de hojas</h3>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">num-hojas</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="mi">4</span> <span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="mi">7</span><span class="p">)))</span> <span class="n">⇒</span> <span class="mi">7</span>
+</code></pre></div>
+<p><img src="imagenes/num-hojas-estructurada.png" width="400px"/></p>
+<ul>
+<li>Podemos definir la función obteniendo el primer elemento y el resto
+  de la lista, y contando recursivamente el número de hojas del primer
+  elemento y del resto.</li>
+<li>Al ser una lista estructurada, <strong>el primer elemento puede ser a su
+  vez otra lista, por lo que llamamos a la recursión para contar sus
+  hojas</strong>.</li>
+<li>La definición de este caso general usando <em>pseudocódigo</em> es:</li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Caso general de num-hojas</p>
+<p>El número de hojas de una lista estructurada es: 
+la suma del número de hojas de su primer elemento (que puede ser otra lista) y del
+número de hojas del resto.</p>
+</div>
+<ul>
+<li>
+<p>La recursión tiene dos llamadas recursivas. Una que recibe el
+  elemento de la cabeza de la lista y otra que recibe el resto de la
+  lista. </p>
+<div class="highlight"><pre><span></span><code><span class="c1">;Caso general num-hojas</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">num-hojas</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="c1">; Falta caso base</span>
+  <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
+     <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))</span>
+</code></pre></div>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">No hay coste exponencial</p>
+<ul>
+<li>A pesar de haber dos llamadas recursivas, no pasa lo mismo que en
+Fibonacci o Pascal. </li>
+<li>No se van a repetir llamadas a la recursión
+con los mismos datos. </li>
+<li>La recursión recorre la lista estructurada y su coste será el
+número de elementos de la lista.</li>
+</ul>
+</div>
+<ul>
+<li>
+<p>Para considerar el <strong>caso base</strong>, veamos cómo las llamadas recursivas
+  reciben cada vez un problema más pequeño. </p>
+</li>
+<li>
+<p>La llamada recursiva sobre el resto de la lista recibe cada vez una
+  lista con 1 elemento menos. Al final se llamará a la función con una
+  lista vacía. Ese será un caso base. El número de elementos de una
+  lista vacía es 0.</p>
+</li>
+<li>
+<p>La llamada recursiva sobre la cabeza de la lista es algo
+  distinta. Recibe una lista en la que se ha descendido un nivel y
+  tiene, por tanto, un nivel menos. Al final se llamará a la función
+  con una hoja (un dato). Ese será el otro caso base y habrá que
+  devolver 1.</p>
+</li>
+<li>
+<p>Definición completa de la función:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">num-hojas</span> <span class="n">elem</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">cond</span>
+      <span class="p">((</span><span class="nb">null?</span> <span class="n">elem</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">((</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">car</span> <span class="n">elem</span><span class="p">))</span>
+               <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">elem</span><span class="p">))))))</span>
+</code></pre></div>
+</li>
+<li>
+<p>Hay que hacer notar que el parámetro <code>elem</code> puede ser tanto una
+  lista como un dato atómico. Estamos aprovechándonos de la
+  característica de Scheme de ser débilmente tipado para hacer un
+  código bastante conciso.</p>
+</li>
+</ul>
+<hr />
+<h3>Versión con funciones de orden superior</h3>
+<ul>
+<li>Podemos usar también las funciones de orden superior <code>map</code> y
+  <code>foldr</code> para obtener una versión más concisa.</li>
+<li>Una lista estructurada tiene como elementos hojas o listas. </li>
+<li>Podemos entonces mapear una expresión lambda con <em>la propia función
+  que estamos definiendo</em> sobre sus elementos, poniendo como caso
+  especial el hecho de que la lista sea una hoja.</li>
+<li>El resultado será una lista de números (el número de hojas de cada
+  componente), que podemos sumar haciendo un <code>foldr</code> con la
+  función <code>+</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">num-hojas-fos</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+        <span class="mi">1</span>
+        <span class="p">(</span><span class="nb">foldr</span> <span class="nb">+</span> <span class="mi">0</span> <span class="p">(</span><span class="nb">map</span> <span class="n">num-hojas-fos</span> <span class="n">lista</span><span class="p">))))</span>
+</code></pre></div>
+<p><img src="imagenes/map-lista.png" width="600px"/></p>
+<ul>
+<li>Sería equivalente hacer un <code>apply</code> de la suma para sumar los números
+de la lista devuelta por el <code>map</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">num-hojas-fos</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+        <span class="mi">1</span>
+        <span class="p">(</span><span class="nb">apply</span> <span class="nb">+</span> <span class="p">(</span><span class="nb">map</span> <span class="n">num-hojas-fos</span> <span class="n">lista</span><span class="p">))))</span>
+</code></pre></div>
+<hr />
+<h3>Altura de una lista estructurada</h3>
+<ul>
+<li>La <em>altura</em> de una lista estructurada viene dada por su número de
+  niveles</li>
+<li>
+<p>Una lista plana tiene una altura de 1, la lista <code>((1 2 3) 4 5)</code>
+  tiene una altura de 2.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">altura</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span><span class="p">))</span> <span class="n">⇒</span> <span class="mi">2</span>
+<span class="p">(</span><span class="n">altura</span> <span class="o">&#39;</span><span class="p">(((</span><span class="mi">1</span><span class="p">))</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span><span class="p">))</span> <span class="n">⇒</span> <span class="mi">3</span>
+</code></pre></div>
+</li>
+</ul>
+<p><img src="imagenes/altura-estructurada.png" width="300"/></p>
+<div class="admonition hint">
+<p class="admonition-title">Caso general altura</p>
+<p>Para calcular la altura de una lista estructurada tenemos que
+obtener (de forma recursiva) la altura de su primer elemento, y la
+altura del resto de la lista, sumarle 1 a la altura del primer
+elemento y devolver el máximo de los dos números.</p>
+</div>
+<ul>
+<li>
+<p>Caso base: la altura de una lista vacía y de una hoja es 0.</p>
+</li>
+<li>
+<p>En Scheme:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">altura</span> <span class="n">elem</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">cond</span> 
+      <span class="p">((</span><span class="nb">null?</span> <span class="n">elem</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">((</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">max</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">altura</span> <span class="p">(</span><span class="nb">car</span> <span class="n">elem</span><span class="p">)))</span>
+                 <span class="p">(</span><span class="n">altura</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">elem</span><span class="p">))))))</span>
+</code></pre></div>
+</li>
+</ul>
+<hr />
+<h3>Versión con funciones de orden superior</h3>
+<ul>
+<li>
+<p>La segunda versión, usando las funciones de orden superior <code>map</code>
+para obtener la altura de las sublistas y <code>foldr</code> para quedarse
+con el máximo.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">altura-fos</span> <span class="n">lista</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+       <span class="mi">0</span>
+       <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">foldr</span> <span class="nb">max</span> <span class="mi">0</span> <span class="p">(</span><span class="nb">map</span> <span class="n">altura-fos</span> <span class="n">lista</span><span class="p">)))))</span>
+</code></pre></div>
+</li>
+</ul>
+<hr />
+<h3>Otras funciones recursivas</h3>
+<p>Vamos a diseñar otras funciones recursivas que trabajan con la
+estructura jerárquica de las listas estructuradas.</p>
+<ul>
+<li><code>(aplana lista)</code>: devuelve una lista plana con todas las hojas de la lista</li>
+<li><code>(pertenece-lista? dato lista)</code>: busca una hoja en una lista
+  estructurada</li>
+<li><code>(nivel-lista dato lista)</code>: devuelve el nivel en el que se encuentra
+  un dato en una lista</li>
+<li><code>(cuadrado-lista lista)</code>: eleva todas las hojas al cuadrado
+  (suponemos que la lista estructurada contiene números)</li>
+<li><code>(map-estruct f lista)</code>: similar a map, aplica una función a todas las
+  hojas de la lista estructurada y devuelve el resultado (otra lista
+  estructurada)</li>
+</ul>
+<hr />
+<h3><code>(aplana lista)</code></h3>
+<ul>
+<li>
+<p>Devuelve una lista plana con todas las hojas de la lista.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">aplana</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">5</span><span class="p">)))</span> <span class="p">(((</span><span class="mi">6</span><span class="p">)))))</span>
+<span class="c1">; ⇒ (1 2 3 4 5 6)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Solución recursiva:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">aplana</span> <span class="n">elem</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">cond</span>
+    <span class="p">((</span><span class="nb">null?</span> <span class="n">elem</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">())</span>
+    <span class="p">((</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span> <span class="p">(</span><span class="nb">list</span> <span class="n">elem</span><span class="p">))</span>
+    <span class="p">(</span><span class="k">else</span> 
+     <span class="p">(</span><span class="nb">append</span> <span class="p">(</span><span class="n">aplana</span> <span class="p">(</span><span class="nb">car</span> <span class="n">elem</span><span class="p">))</span>
+             <span class="p">(</span><span class="n">aplana</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">elem</span><span class="p">))))))</span>
+</code></pre></div>
+</li>
+<li>
+<p>Solución con funciones de orden superior:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">aplana-fos</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">list</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">foldr</span> <span class="nb">append</span> <span class="o">&#39;</span><span class="p">()</span> <span class="p">(</span><span class="nb">map</span> <span class="n">aplana-fos</span> <span class="n">lista</span><span class="p">))))</span>
+</code></pre></div>
+</li>
+<li>
+<p>Usando <code>apply</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">aplana-fos</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">list</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">apply</span> <span class="nb">append</span> <span class="p">(</span><span class="nb">map</span> <span class="n">aplana-fos</span> <span class="n">lista</span><span class="p">))))</span>
+</code></pre></div>
+</li>
+</ul>
+<hr />
+<h3><code>(pertenece-lista? dato lista)</code></h3>
+<ul>
+<li>
+<p>Comprueba si el dato <code>dato</code> aparece en la lista estructurada. </p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">pertenece?</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="ss">c</span> <span class="p">(</span><span class="ss">d</span> <span class="p">(</span><span class="ss">a</span><span class="p">))))</span> <span class="n">⇒</span> <span class="no">#t</span>
+<span class="p">(</span><span class="n">pertenece?</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="ss">c</span> <span class="p">(</span><span class="ss">d</span> <span class="ss">e</span> <span class="p">(</span><span class="ss">f</span><span class="p">))</span> <span class="ss">g</span><span class="p">))</span> <span class="n">⇒</span> <span class="no">#f</span>
+</code></pre></div>
+</li>
+<li>
+<p>Solución recursiva:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pertenece?</span> <span class="n">dato</span> <span class="n">elem</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">cond</span> 
+    <span class="p">((</span><span class="nb">null?</span> <span class="n">x</span><span class="p">)</span> <span class="no">#f</span><span class="p">)</span>
+    <span class="p">((</span><span class="n">hoja?</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal?</span> <span class="n">dato</span> <span class="n">elem</span><span class="p">))</span>
+    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="n">pertenece?</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">car</span> <span class="n">elem</span><span class="p">))</span>
+              <span class="p">(</span><span class="n">pertenece?</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">elem</span><span class="p">))))))</span>
+</code></pre></div>
+</li>
+<li>
+<p>Solución con funciones de orden superior:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pertenece-fos?</span> <span class="n">dato</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">equal?</span> <span class="n">dato</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">exists?</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+               <span class="p">(</span><span class="n">pertenece-fos?</span> <span class="n">dato</span> <span class="n">elem</span><span class="p">))</span> <span class="n">lista</span><span class="p">)))</span>
+</code></pre></div>
+</li>
+</ul>
+<hr />
+<h3><code>(nivel-hoja dato lista)</code></h3>
+<ul>
+<li>
+<p>Recorre la lista buscando el dato y devuelve el nivel en que se
+encuentra. Si el dato no se encuentra en la lista, se devolverá -1. Si
+el dato se encuentra en más de un lugar de la lista se devolverá el
+nivel mayor.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">nivel-hoja</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="p">(</span><span class="ss">c</span><span class="p">)))</span> <span class="c1">; ⇒ 1</span>
+<span class="p">(</span><span class="n">nivel-hoja</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span><span class="p">)</span> <span class="ss">c</span><span class="p">))</span> <span class="c1">; ⇒ 2</span>
+<span class="p">(</span><span class="n">nivel-hoja</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span><span class="p">)</span> <span class="ss">d</span> <span class="p">((</span><span class="ss">b</span><span class="p">))))</span> <span class="c1">; ⇒ 3</span>
+<span class="p">(</span><span class="n">nivel-hoja</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">c</span> <span class="ss">d</span> <span class="p">((</span><span class="ss">e</span><span class="p">))))</span> <span class="c1">; ⇒ -1</span>
+</code></pre></div>
+</li>
+<li>
+<p>Solución recursiva:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">nivel-hoja</span> <span class="n">dato</span> <span class="n">elem</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">cond</span>
+    <span class="p">((</span><span class="nb">null?</span> <span class="n">elem</span><span class="p">)</span> <span class="mi">-1</span><span class="p">)</span>
+    <span class="p">((</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span> <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">equal?</span> <span class="n">elem</span> <span class="n">dato</span><span class="p">)</span> <span class="mi">0</span> <span class="mi">-1</span><span class="p">))</span>
+    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">max</span> <span class="p">(</span><span class="n">suma-1-si-mayor-igual-que-0</span> 
+                    <span class="p">(</span><span class="n">nivel-hoja</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">car</span> <span class="n">elem</span><span class="p">)))</span>
+               <span class="p">(</span><span class="n">nivel-hoja</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">elem</span><span class="p">))))))</span>
+</code></pre></div>
+</li>
+<li>
+<p>La función auxiliar se define de la siguiente forma:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-1-si-mayor-igual-que-0</span> <span class="n">x</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">x</span><span class="p">))</span>
+</code></pre></div>
+</li>
+<li>
+<p>Solución con funciones de orden superior:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">nivel-hoja-fos</span> <span class="n">dato</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">equal?</span> <span class="n">lista</span> <span class="n">dato</span><span class="p">)</span> <span class="mi">0</span> <span class="mi">-1</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">suma-1-si-mayor-igual-que-0</span>
+       <span class="p">(</span><span class="nb">foldr</span> <span class="nb">max</span> <span class="mi">-1</span> <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+                           <span class="p">(</span><span class="n">nivel-hoja-fos</span> <span class="n">dato</span> <span class="n">elem</span><span class="p">))</span> <span class="n">lista</span><span class="p">)))))</span>
+</code></pre></div>
+</li>
+</ul>
+<hr />
+<h3><code>(cuadrado-lista lista)</code></h3>
+<ul>
+<li>
+<p>Devuelve una lista estructurada con la misma estructura y sus
+números elevados al cuadrado.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cuadrado-lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span> <span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span> <span class="n">⇒</span> <span class="p">(</span><span class="mi">4</span> <span class="mi">9</span> <span class="p">(</span><span class="mi">16</span> <span class="p">(</span><span class="mi">25</span><span class="p">))</span>
+</code></pre></div>
+</li>
+<li>
+<p>Solución recursiva:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-lista</span> <span class="n">elem</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">null?</span> <span class="n">elem</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">())</span>
+        <span class="p">((</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">elem</span> <span class="n">elem</span><span class="p">))</span>
+        <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">cuadrado-lista</span> <span class="p">(</span><span class="nb">car</span> <span class="n">elem</span><span class="p">))</span>
+                    <span class="p">(</span><span class="n">cuadrado-lista</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">elem</span><span class="p">))))))</span>
+</code></pre></div>
+</li>
+<li>
+<p>Solución con <code>map</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-estruct-fos</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+      <span class="p">(</span><span class="nb">*</span> <span class="n">lista</span> <span class="n">lista</span><span class="p">)</span>
+      <span class="p">(</span><span class="nb">map</span> <span class="n">cuadrado-estruct-fos</span> <span class="n">lista</span><span class="p">)))</span>
+</code></pre></div>
+</li>
+</ul>
+<hr />
+<h3><code>(map-estruct f lista)</code></h3>
+<ul>
+<li>
+<p>Devuelve una lista estructurada igual que la original con el
+resultado de aplicar a cada uno de sus hojas la función <code>f</code></p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">map-estruct</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">3</span> <span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span> 
+<span class="c1">; ⇒ (4 9 (16 (25))</span>
+</code></pre></div>
+</li>
+<li>
+<p>Solución recursiva:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">map-estruct</span> <span class="n">f</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">())</span>
+        <span class="p">((</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">f</span> <span class="n">lista</span><span class="p">))</span>
+        <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">map-estruct</span> <span class="n">f</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
+                    <span class="p">(</span><span class="n">map-estruct</span> <span class="n">f</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))))</span>
+</code></pre></div>
+</li>
+<li>
+<p>Solución con <code>map</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">map-estruct-fos</span> <span class="n">f</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">f</span> <span class="n">lista</span><span class="p">)</span>
+      <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+             <span class="p">(</span><span class="n">map-estruct-fos</span> <span class="n">f</span> <span class="n">elem</span><span class="p">))</span> <span class="n">lista</span><span class="p">)))</span>
+</code></pre></div>
+</li>
+</ul>
+<hr /></body>
+
+</html>
