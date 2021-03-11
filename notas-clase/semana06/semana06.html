@@ -30,8 +30,8 @@
 
 .admonition.warning { /* csslint allow: adjoining-classes */
     color: black;
-    background-color: #fcf8e3;
-    border-color: #fbeed5;
+    background-color: #FCC8BE;
+    border-color: #FCC8BE;
 }
 
 .admonition.hint { /* csslint allow: adjoining-classes */
@@ -42,8 +42,8 @@
 
 .admonition.danger { /* csslint allow: adjoining-classes */
     color: black;
-    background-color: #f2dede;
-    border-color: #eed3d7;
+    background-color: #F7B2A4;
+    border-color: #F7B2A4;
 }
 
 .admonition-title {
@@ -507,21 +507,29 @@ número de elementos de la lista.</li>
 </li>
 <li>
 <p>Definición completa de la función:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">num-hojas</span> <span class="n">elem</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">num-hojas</span> <span class="n">lista</span><span class="p">)</span>
    <span class="p">(</span><span class="k">cond</span>
-      <span class="p">((</span><span class="nb">null?</span> <span class="n">elem</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="p">((</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">car</span> <span class="n">elem</span><span class="p">))</span>
-               <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">elem</span><span class="p">))))))</span>
+      <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">((</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
+               <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))))</span>
 </code></pre></div>
 </li>
-<li>
-<p>Hay que hacer notar que el parámetro <code>elem</code> puede ser tanto una
-  lista como un dato atómico. Estamos aprovechándonos de la
-  característica de Scheme de ser débilmente tipado para hacer un
-  código bastante conciso.</p>
-</li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Importante</p>
+<p>Hay que hacer notar que el parámetro <code>lista</code> puede ser tanto una lista
+como un dato atómico. En ese caso la función <code>(hoja? lista)</code>
+devuelve <code>#t</code>.</p>
+<p>En lenguajes de programación fuertemente tipados esto no
+sería posible, porque la lista y el dato serían de distinto
+tipo. En ese caso el código debería ser un poco más largo y antes
+de llamar a la recursión habría que comprobar si el elemento es un
+dato o es otra lista. En el caso de Scheme, podemos aprovecharnos
+de su característica de ser débilmente tipado y podemos hacer el
+código más conciso, llamando siempre a la recursión con el <code>car</code>
+de la lista, independientemente de si es un dato u otra lista.</p>
+</div>
 <hr />
 <h3>Versión con funciones de orden superior</h3>
 <ul>
@@ -551,7 +559,90 @@ de la lista devuelta por el <code>map</code>:</li>
         <span class="p">(</span><span class="nb">apply</span> <span class="nb">+</span> <span class="p">(</span><span class="nb">map</span> <span class="n">num-hojas-fos</span> <span class="n">lista</span><span class="p">))))</span>
 </code></pre></div>
 <hr />
-<h3>Altura de una lista estructurada</h3>
+<h3><code>(aplana lista)</code></h3>
+<ul>
+<li>
+<p>Devuelve una lista plana con todas las hojas de la lista.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">aplana</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">5</span><span class="p">)))</span> <span class="p">(((</span><span class="mi">6</span><span class="p">)))))</span>
+<span class="c1">; ⇒ (1 2 3 4 5 6)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Solución recursiva:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">aplana</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">cond</span>
+    <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">())</span>
+    <span class="p">((</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">list</span> <span class="n">lista</span><span class="p">))</span>
+    <span class="p">(</span><span class="k">else</span> 
+     <span class="p">(</span><span class="nb">append</span> <span class="p">(</span><span class="n">aplana</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
+             <span class="p">(</span><span class="n">aplana</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))))</span>
+</code></pre></div>
+</li>
+<li>
+<p>Solución con funciones de orden superior:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">aplana-fos</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">list</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">foldr</span> <span class="nb">append</span> <span class="o">&#39;</span><span class="p">()</span> <span class="p">(</span><span class="nb">map</span> <span class="n">aplana-fos</span> <span class="n">lista</span><span class="p">))))</span>
+</code></pre></div>
+</li>
+<li>
+<p>Usando <code>apply</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">aplana-fos</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">list</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">apply</span> <span class="nb">append</span> <span class="p">(</span><span class="nb">map</span> <span class="n">aplana-fos</span> <span class="n">lista</span><span class="p">))))</span>
+</code></pre></div>
+</li>
+</ul>
+<hr />
+<h3>Otras funciones recursivas</h3>
+<p>Vamos a diseñar otras funciones recursivas que trabajan con la
+estructura jerárquica de las listas estructuradas.</p>
+<ul>
+<li><code>(pertenece-lista? dato lista)</code>: busca una hoja en una lista
+  estructurada</li>
+<li><code>(altura lista)</code>: devuelve el número de niveles de una lista
+  estructurada.</li>
+<li><code>(nivel-lista dato lista)</code>: devuelve el nivel en el que se encuentra
+  un dato en una lista</li>
+<li><code>(cuadrado-lista lista)</code>: eleva todas las hojas al cuadrado
+  (suponemos que la lista estructurada contiene números)</li>
+<li><code>(map-estruct f lista)</code>: similar a map, aplica una función a todas las
+  hojas de la lista estructurada y devuelve el resultado (otra lista
+  estructurada)</li>
+</ul>
+<hr />
+<h3><code>(pertenece-lista? dato lista)</code></h3>
+<ul>
+<li>
+<p>Comprueba si el dato <code>dato</code> aparece en la lista estructurada. </p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">pertenece?</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="ss">c</span> <span class="p">(</span><span class="ss">d</span> <span class="p">(</span><span class="ss">a</span><span class="p">))))</span> <span class="n">⇒</span> <span class="no">#t</span>
+<span class="p">(</span><span class="n">pertenece?</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="ss">c</span> <span class="p">(</span><span class="ss">d</span> <span class="ss">e</span> <span class="p">(</span><span class="ss">f</span><span class="p">))</span> <span class="ss">g</span><span class="p">))</span> <span class="n">⇒</span> <span class="no">#f</span>
+</code></pre></div>
+</li>
+<li>
+<p>Solución recursiva:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pertenece?</span> <span class="n">dato</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">cond</span> 
+    <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="no">#f</span><span class="p">)</span>
+    <span class="p">((</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal?</span> <span class="n">dato</span> <span class="n">lista</span><span class="p">))</span>
+    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="n">pertenece?</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
+              <span class="p">(</span><span class="n">pertenece?</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))))</span>
+</code></pre></div>
+</li>
+<li>
+<p>Solución con funciones de orden superior:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pertenece-fos?</span> <span class="n">dato</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">equal?</span> <span class="n">dato</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">exists?</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+               <span class="p">(</span><span class="n">pertenece-fos?</span> <span class="n">dato</span> <span class="n">elem</span><span class="p">))</span> <span class="n">lista</span><span class="p">)))</span>
+</code></pre></div>
+</li>
+</ul>
+<hr />
+<h3><code>(altura lista)</code></h3>
 <ul>
 <li>La <em>altura</em> de una lista estructurada viene dada por su número de
   niveles</li>
@@ -577,17 +668,16 @@ elemento y devolver el máximo de los dos números.</p>
 </li>
 <li>
 <p>En Scheme:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">altura</span> <span class="n">elem</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">altura</span> <span class="n">lista</span><span class="p">)</span>
    <span class="p">(</span><span class="k">cond</span> 
-      <span class="p">((</span><span class="nb">null?</span> <span class="n">elem</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="p">((</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">max</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">altura</span> <span class="p">(</span><span class="nb">car</span> <span class="n">elem</span><span class="p">)))</span>
-                 <span class="p">(</span><span class="n">altura</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">elem</span><span class="p">))))))</span>
+      <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">((</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">max</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">altura</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)))</span>
+                 <span class="p">(</span><span class="n">altura</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))))</span>
 </code></pre></div>
 </li>
 </ul>
 <hr />
-<h3>Versión con funciones de orden superior</h3>
 <ul>
 <li>
 <p>La segunda versión, usando las funciones de orden superior <code>map</code>
@@ -597,88 +687,6 @@ con el máximo.</p>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
        <span class="mi">0</span>
        <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">foldr</span> <span class="nb">max</span> <span class="mi">0</span> <span class="p">(</span><span class="nb">map</span> <span class="n">altura-fos</span> <span class="n">lista</span><span class="p">)))))</span>
-</code></pre></div>
-</li>
-</ul>
-<hr />
-<h3>Otras funciones recursivas</h3>
-<p>Vamos a diseñar otras funciones recursivas que trabajan con la
-estructura jerárquica de las listas estructuradas.</p>
-<ul>
-<li><code>(aplana lista)</code>: devuelve una lista plana con todas las hojas de la lista</li>
-<li><code>(pertenece-lista? dato lista)</code>: busca una hoja en una lista
-  estructurada</li>
-<li><code>(nivel-lista dato lista)</code>: devuelve el nivel en el que se encuentra
-  un dato en una lista</li>
-<li><code>(cuadrado-lista lista)</code>: eleva todas las hojas al cuadrado
-  (suponemos que la lista estructurada contiene números)</li>
-<li><code>(map-estruct f lista)</code>: similar a map, aplica una función a todas las
-  hojas de la lista estructurada y devuelve el resultado (otra lista
-  estructurada)</li>
-</ul>
-<hr />
-<h3><code>(aplana lista)</code></h3>
-<ul>
-<li>
-<p>Devuelve una lista plana con todas las hojas de la lista.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">aplana</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">5</span><span class="p">)))</span> <span class="p">(((</span><span class="mi">6</span><span class="p">)))))</span>
-<span class="c1">; ⇒ (1 2 3 4 5 6)</span>
-</code></pre></div>
-</li>
-<li>
-<p>Solución recursiva:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">aplana</span> <span class="n">elem</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">cond</span>
-    <span class="p">((</span><span class="nb">null?</span> <span class="n">elem</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">())</span>
-    <span class="p">((</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span> <span class="p">(</span><span class="nb">list</span> <span class="n">elem</span><span class="p">))</span>
-    <span class="p">(</span><span class="k">else</span> 
-     <span class="p">(</span><span class="nb">append</span> <span class="p">(</span><span class="n">aplana</span> <span class="p">(</span><span class="nb">car</span> <span class="n">elem</span><span class="p">))</span>
-             <span class="p">(</span><span class="n">aplana</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">elem</span><span class="p">))))))</span>
-</code></pre></div>
-</li>
-<li>
-<p>Solución con funciones de orden superior:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">aplana-fos</span> <span class="n">lista</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">list</span> <span class="n">lista</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">foldr</span> <span class="nb">append</span> <span class="o">&#39;</span><span class="p">()</span> <span class="p">(</span><span class="nb">map</span> <span class="n">aplana-fos</span> <span class="n">lista</span><span class="p">))))</span>
-</code></pre></div>
-</li>
-<li>
-<p>Usando <code>apply</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">aplana-fos</span> <span class="n">lista</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">list</span> <span class="n">lista</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">apply</span> <span class="nb">append</span> <span class="p">(</span><span class="nb">map</span> <span class="n">aplana-fos</span> <span class="n">lista</span><span class="p">))))</span>
-</code></pre></div>
-</li>
-</ul>
-<hr />
-<h3><code>(pertenece-lista? dato lista)</code></h3>
-<ul>
-<li>
-<p>Comprueba si el dato <code>dato</code> aparece en la lista estructurada. </p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">pertenece?</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="ss">c</span> <span class="p">(</span><span class="ss">d</span> <span class="p">(</span><span class="ss">a</span><span class="p">))))</span> <span class="n">⇒</span> <span class="no">#t</span>
-<span class="p">(</span><span class="n">pertenece?</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="ss">c</span> <span class="p">(</span><span class="ss">d</span> <span class="ss">e</span> <span class="p">(</span><span class="ss">f</span><span class="p">))</span> <span class="ss">g</span><span class="p">))</span> <span class="n">⇒</span> <span class="no">#f</span>
-</code></pre></div>
-</li>
-<li>
-<p>Solución recursiva:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pertenece?</span> <span class="n">dato</span> <span class="n">elem</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">cond</span> 
-    <span class="p">((</span><span class="nb">null?</span> <span class="n">x</span><span class="p">)</span> <span class="no">#f</span><span class="p">)</span>
-    <span class="p">((</span><span class="n">hoja?</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal?</span> <span class="n">dato</span> <span class="n">elem</span><span class="p">))</span>
-    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="n">pertenece?</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">car</span> <span class="n">elem</span><span class="p">))</span>
-              <span class="p">(</span><span class="n">pertenece?</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">elem</span><span class="p">))))))</span>
-</code></pre></div>
-</li>
-<li>
-<p>Solución con funciones de orden superior:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pertenece-fos?</span> <span class="n">dato</span> <span class="n">lista</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">equal?</span> <span class="n">dato</span> <span class="n">lista</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">exists?</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-               <span class="p">(</span><span class="n">pertenece-fos?</span> <span class="n">dato</span> <span class="n">elem</span><span class="p">))</span> <span class="n">lista</span><span class="p">)))</span>
 </code></pre></div>
 </li>
 </ul>
@@ -698,13 +706,13 @@ nivel mayor.</p>
 </li>
 <li>
 <p>Solución recursiva:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">nivel-hoja</span> <span class="n">dato</span> <span class="n">elem</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">nivel-hoja</span> <span class="n">dato</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="k">cond</span>
-    <span class="p">((</span><span class="nb">null?</span> <span class="n">elem</span><span class="p">)</span> <span class="mi">-1</span><span class="p">)</span>
-    <span class="p">((</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span> <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">equal?</span> <span class="n">elem</span> <span class="n">dato</span><span class="p">)</span> <span class="mi">0</span> <span class="mi">-1</span><span class="p">))</span>
+    <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="mi">-1</span><span class="p">)</span>
+    <span class="p">((</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">equal?</span> <span class="n">lista</span> <span class="n">dato</span><span class="p">)</span> <span class="mi">0</span> <span class="mi">-1</span><span class="p">))</span>
     <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">max</span> <span class="p">(</span><span class="n">suma-1-si-mayor-igual-que-0</span> 
-                    <span class="p">(</span><span class="n">nivel-hoja</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">car</span> <span class="n">elem</span><span class="p">)))</span>
-               <span class="p">(</span><span class="n">nivel-hoja</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">elem</span><span class="p">))))))</span>
+                    <span class="p">(</span><span class="n">nivel-hoja</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)))</span>
+               <span class="p">(</span><span class="n">nivel-hoja</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))))</span>
 </code></pre></div>
 </li>
 <li>
@@ -737,11 +745,11 @@ números elevados al cuadrado.</p>
 </li>
 <li>
 <p>Solución recursiva:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-lista</span> <span class="n">elem</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">null?</span> <span class="n">elem</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">())</span>
-        <span class="p">((</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">elem</span> <span class="n">elem</span><span class="p">))</span>
-        <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">cuadrado-lista</span> <span class="p">(</span><span class="nb">car</span> <span class="n">elem</span><span class="p">))</span>
-                    <span class="p">(</span><span class="n">cuadrado-lista</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">elem</span><span class="p">))))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-lista</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">())</span>
+        <span class="p">((</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">lista</span> <span class="n">lista</span><span class="p">))</span>
+        <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">cuadrado-lista</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
+                    <span class="p">(</span><span class="n">cuadrado-lista</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))))</span>
 </code></pre></div>
 </li>
 <li>

@@ -365,18 +365,27 @@ una hoja (un dato). Ese será el otro caso base y habrá que devolver 1.
 La definición completa de la función queda de la siguiente forma:
 
 ```racket
-(define (num-hojas elem)
+(define (num-hojas lista)
    (cond
-      ((null? elem) 0)
-      ((hoja? elem) 1)
-      (else (+ (num-hojas (car elem))
-               (num-hojas (cdr elem))))))
+      ((null? lista) 0)
+      ((hoja? lista) 1)
+      (else (+ (num-hojas (car lista))
+               (num-hojas (cdr lista))))))
 ```
 
-Hay que hacer notar que el parámetro `elem` puede ser tanto una lista
-como un dato atómico (una hoja). Estamos aprovechándonos de la
-característica de Scheme de ser débilmente tipado para hacer un
-código bastante conciso.
+!!! Warning "Importante"
+    Hay que hacer notar que el parámetro `lista` puede ser tanto una lista
+    como un dato atómico. En ese caso la función `(hoja? lista)`
+    devuelve `#t`.
+    
+    En lenguajes de programación fuertemente tipados esto no
+    sería posible, porque la lista y el dato serían de distinto
+    tipo. En ese caso el código debería ser un poco más largo y antes
+    de llamar a la recursión habría que comprobar si el elemento es un
+    dato o es otra lista. En el caso de Scheme, podemos aprovecharnos
+    de su característica de ser débilmente tipado y podemos hacer el
+    código más conciso, llamando siempre a la recursión con el `car`
+    de la lista, independientemente de si es un dato u otra lista.
 
 
 ##### Versión con funciones de orden superior
@@ -424,7 +433,97 @@ de la lista devuelta por el `map`:
     `apply`) porque hay lenguajes de programación en los que la función
     `apply` no está definida. Por ejemplo, Swift.
 
-#### Altura de una lista estructurada
+#### Aplanar lista ####
+
+Veamos otro ejemplo. La función `(aplana lista) ` que devuelve una
+lista plana con todas las hojas de la lista. 
+
+Por ejemplo:
+
+```racket
+(aplana '(1 2 (3 (4 (5))) (((6)))))
+; ⇒ (1 2 3 4 5 6)
+```
+
+La solución recursiva es:
+
+```racket
+(define (aplana lista)
+  (cond
+    ((null? lista) '())
+    ((hoja? lista) (list lista))
+    (else 
+     (append (aplana (car lista))
+             (aplana (cdr lista))))))
+```
+
+Con funciones de orden superior:
+
+```racket
+(define (aplana-fos lista)
+  (if (hoja? lista)
+    (list lista)
+    (foldr append '() (map aplana-fos lista))))
+```
+
+Usando `apply`:
+
+```racket
+(define (aplana-fos lista)
+  (if (hoja? lista)
+    (list lista)
+    (apply append (map aplana-fos lista))))
+```
+
+
+#### Otras funciones recursivas
+
+Vamos a diseñar otras funciones recursivas que trabajan con la
+estructura jerárquica de las listas estructuradas.
+
+- `(pertenece-lista? dato lista)`: busca una hoja en una lista
+  estructurada.
+- `(altura lista)`: devuelve el número de niveles de una lista
+  estructurada.
+- `(nivel-hoja dato lista)`: devuelve el nivel en el que se encuentra
+  un dato en una lista.
+- `(cuadrado-estruct lista)`: eleva todas las hojas al cuadrado
+  (suponemos que la lista estructurada contiene números).
+- `(map-estruct f lista)`: similar a map, aplica una función a todas las
+  hojas de la lista estructurada y devuelve el resultado (otra lista
+  estructurada).
+
+##### `(pertenece-lista? dato lista)`
+
+Comprueba si el `dato` aparece en la lista estructurada. 
+
+```racket
+(pertenece? 'a '(b c (d (a)))) ; ⇒ #t
+(pertenece? 'a '(b c (d e (f)) g)) ; ⇒ #f
+```
+
+Solución recursiva:
+
+```racket
+(define (pertenece? dato lista)
+  (cond 
+    ((null? lista) #f)
+    ((hoja? lista) (equal? dato lista))
+    (else (or (pertenece? dato (car lista))
+              (pertenece? dato (cdr lista))))))
+```
+
+Con funciones de orden superior:
+
+```racket
+(define (pertenece-fos? dato lista)
+  (if (hoja? lista)
+    (equal? dato lista)
+    (exists? (lambda (elem)
+               (pertenece-fos? dato elem)) lista)))
+```
+
+##### `(altura lista)` #####
 
 La *altura* de una lista estructurada viene dada por su número de
 niveles: una lista plana tiene una altura de 1, la lista `((1 2 3) 4
@@ -442,12 +541,12 @@ Como casos base, la altura de una lista vacía o de una hoja (dato) es 0.
 En Scheme:
 
 ```racket
-(define (altura elem)
+(define (altura lista)
    (cond 
-      ((null? elem) 0)
-      ((hoja? elem) 0)
-      (else (max (+ 1 (altura (car elem)))
-                 (altura (cdr elem))))))
+      ((null? lista) 0)
+      ((hoja? lista) 0)
+      (else (max (+ 1 (altura (car lista)))
+                 (altura (cdr lista))))))
 ```
 Por ejemplo:
 
@@ -456,7 +555,7 @@ Por ejemplo:
 (altura '(1 (2 (3)) 3)) ; ⇒ 3
 ```
 
-##### Versión con funciones de orden superior
+###### Versión con funciones de orden superior ######
 
 Y la segunda versión, usando las funciones de orden superior `map`
 para obtener la altura de sus elementos del primer nivel (puedes ser
@@ -480,95 +579,7 @@ Podríamos hacerlo también sustituyendo el `foldr` por un `apply`:
        (+ 1 (apply max (map altura-fos lista)))))
 ```
 
-#### Otras funciones recursivas
-
-Vamos a diseñar otras funciones recursivas que trabajan con la
-estructura jerárquica de las listas estructuradas.
-
-- `(aplana lista)`: devuelve una lista plana con todas las hojas de la lista
-- `(pertenece-lista? dato lista)`: busca una hoja en una lista
-  estructurada
-- `(nivel-hoja dato lista)`: devuelve el nivel en el que se encuentra
-  un dato en una lista
-- `(cuadrado-estruct lista)`: eleva todas las hojas al cuadrado
-  (suponemos que la lista estructurada contiene números)
-- `(map-estruct f lista)`: similar a map, aplica una función a todas las
-  hojas de la lista estructurada y devuelve el resultado (otra lista
-  estructurada)
-
-##### `(aplana lista)`
-
-Devuelve una lista plana con todas las hojas de la lista.
-
-Por ejemplo:
-
-```racket
-(aplana '(1 2 (3 (4 (5))) (((6)))))
-; ⇒ (1 2 3 4 5 6)
-```
-
-La solución recursiva es:
-
-```racket
-(define (aplana elem)
-  (cond
-    ((null? elem) '())
-    ((hoja? elem) (list elem))
-    (else 
-     (append (aplana (car elem))
-             (aplana (cdr elem))))))
-```
-
-Con funciones de orden superior:
-
-```racket
-(define (aplana-fos lista)
-  (if (hoja? lista)
-    (list lista)
-    (foldr append '() (map aplana-fos lista))))
-```
-
-Usando `apply`:
-
-```racket
-(define (aplana-fos lista)
-  (if (hoja? lista)
-    (list lista)
-    (apply append (map aplana-fos lista))))
-```
-
-
-##### `(pertenece-lista? dato lista)`
-
-Comprueba si el `dato` aparece en la lista estructurada. 
-
-```racket
-(pertenece? 'a '(b c (d (a)))) ; ⇒ #t
-(pertenece? 'a '(b c (d e (f)) g)) ; ⇒ #f
-```
-
-Solución recursiva:
-
-```racket
-(define (pertenece? dato elem)
-  (cond 
-    ((null? elem) #f)
-    ((hoja? elem) (equal? dato elem))
-    (else (or (pertenece? dato (car elem))
-              (pertenece? dato (cdr elem))))))
-```
-
-Con funciones de orden superior:
-
-```racket
-(define (pertenece-fos? dato lista)
-  (if (hoja? lista)
-    (equal? dato lista)
-    (exists? (lambda (elem)
-               (pertenece-fos? dato elem)) lista)))
-```
-
-##### `(nivel-hoja dato lista)`
+##### `(nivel-hoja dato lista)` #####
 
 Veamos una última función `(nivel-hoja dato lista)` que recorre una
 lista estructurada buscando el dato y devuelve el nivel en que se
@@ -588,13 +599,13 @@ Ejemplos:
 Solución recursiva:
 
 ```racket
-(define (nivel-hoja dato elem)
+(define (nivel-hoja dato lista)
   (cond
-    ((null? elem) -1)
-    ((hoja? elem) (if (equal? elem dato) 0 -1))
+    ((null? lista) -1)
+    ((hoja? lista) (if (equal? lista dato) 0 -1))
     (else (max (suma-1-si-mayor-igual-que-0 
-                    (nivel-hoja dato (car elem)))
-               (nivel-hoja dato (cdr elem))))))
+                    (nivel-hoja dato (car lista)))
+               (nivel-hoja dato (cdr lista))))))
 ```
 
 La función auxiliar se define de la siguiente forma:
@@ -618,7 +629,7 @@ Con funciones de orden superior:
                            (nivel-hoja-fos dato elem)) lista)))))
 ```
 
-##### `(cuadrado-estruct lista)`
+##### `(cuadrado-estruct lista)` #####
 
 Vamos ahora a ver un tipo de función distinta. Una que construye una
 lista estructurada y la devuelve. 
@@ -636,11 +647,11 @@ Por ejemplo:
 La solución recursiva es:
 
 ```racket
-(define (cuadrado-estruct elem)
+(define (cuadrado-estruct lista)
   (cond ((null? elem) '())
-        ((hoja? elem) (* elem elem))
-        (else (cons (cuadrado-estruct (car elem))
-                    (cuadrado-estruct (cdr elem))))))
+        ((hoja? elem) (* lista lista ))
+        (else (cons (cuadrado-estruct (car lista))
+                    (cuadrado-estruct (cdr lista))))))
 ```
 
 Se llama a la recursión con el `car` y con el `cdr` de la lista
@@ -665,7 +676,7 @@ sublistas podemos aplicar `map` para que devuelva la lista resultante
 de transformar la original con la función que le pasamos como
 parámetro.
 
-##### `(map-estruct f lista)`
+##### `(map-estruct f lista)` #####
 
 Podemos generalizar la función anterior y definir la función de orden
 superior sobre listas estructuradas `(map-estructurada f lista)` que
@@ -682,11 +693,11 @@ La solución recursiva es una generalización de la función anterior,
 usando el parámetro `f`:
 
 ```racket
-(define (map-estruct f elem)
-  (cond ((null? elem) '())
-        ((hoja? elem) (f elem))
-        (else (cons (map-estruct f (car elem))
-                    (map-estruct f (cdr elem))))))
+(define (map-estruct f lista)
+  (cond ((null? lista) '())
+        ((hoja? lista) (f lista))
+        (else (cons (map-estruct f (car lista))
+                    (map-estruct f (cdr lista))))))
 ```
 	
 Solución con `map`:
