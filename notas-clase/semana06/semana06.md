@@ -273,7 +273,7 @@ siguiente lista estructurada?:
 ### Funciones recursivas sobre listas estructuradas
 
 - `(num-hojas lista)`: número de hojas de una lista estructurada
-- `(altura lista)`: nivel mayor de una lista estructurada
+- `(aplana lista)`: nivel mayor de una lista estructurada
 
 - Como hemos dicho antes, la cuestión clave en este tipo de listas es
   que el `car` puede ser a su vez otra lista.
