@@ -450,7 +450,7 @@ estructura jerárquica de las listas estructuradas.
   estructurada.
 - `(nivel-lista dato lista)`: devuelve el nivel en el que se encuentra
   un dato en una lista
-- `(cuadrado-lista lista)`: eleva todas las hojas al cuadrado
+- `(cuadrado-estruct lista)`: eleva todas las hojas al cuadrado
   (suponemos que la lista estructurada contiene números)
 - `(map-estruct f lista)`: similar a map, aplica una función a todas las
   hojas de la lista estructurada y devuelve el resultado (otra lista
@@ -590,23 +590,23 @@ nivel mayor.
                              
 ----
 
-### `(cuadrado-lista lista)`
+### `(cuadrado-estruct lista)`
 
 - Devuelve una lista estructurada con la misma estructura y sus
 números elevados al cuadrado.
 
     ```racket
-    (cuadrado-lista '(2 3 (4 (5)))) ⇒ (4 9 (16 (25))
+    (cuadrado-estruct '(2 3 (4 (5)))) ⇒ (4 9 (16 (25))
     ```
 
 - Solución recursiva:
 
     ```racket
-    (define (cuadrado-lista lista)
+    (define (cuadrado-estruct lista)
       (cond ((null? lista) '())
             ((hoja? lista) (* lista lista))
-            (else (cons (cuadrado-lista (car lista))
-                        (cuadrado-lista (cdr lista))))))
+            (else (cons (cuadrado-estruct (car lista))
+                        (cuadrado-estruct (cdr lista))))))
     ```
 
 

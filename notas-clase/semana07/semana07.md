@@ -193,8 +193,13 @@ trabajando y usar la barrera de abstracción adecuada en cada caso:
 - La función `dato-arbol` devuelve un dato de árbol, del tipo que
   guardemos en el árbol.
 
-> USO CORRECTO DE LAS BARRERAS DE ABSTRACCIÓN  
-> Usaremos `car` y `cdr` cuando trabajemos con listas y `dato-arbol` y `hijos-arbol` cuando lo hagamos con árboles
+!!! Warning "¡Cuidado!"
+    Para remarcar el uso correcto de la barrera de abstracción
+    usaremos siempre `car` y `cdr` cuando trabajemos con listas y
+    `dato-arbol` y `hijos-arbol` cuando lo hagamos con árboles. Aunque
+    la implementación de las funciones sea la misma, el hecho de
+    darles nombres distintos nos permite entender mejor sobre qué tipo
+    de datos estamos trabajando, una lista o un árbol.
 
 - Ejemplo: ¿cómo obtendríamos el número 2 del `arbol1`?
 
