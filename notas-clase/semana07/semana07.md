@@ -31,24 +31,16 @@ Notas de clase de la semana 7 de LPP.
 
 Un ejemplo de árbol:
 
-<img src="imagenes/arbol-sencillo.png" width="250px"/>
+<img src="imagenes/arbol-sencillo.png" width="600px"/>
 
-- ¿Cuál es el dato de su raíz? 
-- ¿Cuáles son sus hijos? 
-- ¿Qué datos tienen sus hijos? 
-- ¿Cuáles son los árboles hoja?
+El árbol anterior tiene como dato raíz el número 30 y tiene 3 árboles
+hijos:
 
-<p style="margin-bottom:4cm;"/>
-
-- El árbol anterior tiene como dato de la raíz es el símbolo `+` y
-  tiene 3 árboles hijos:
-
-<img src="imagenes/arboles-hijos.png" width="300px"/>
-
-- El primer hijo es un árbol hoja, con valor 5 y sin hijos
-- El segundo hijo es un árbol con valor `*` y dos hijos hoja, el 2 y
-  el 3
-- El tercer hijo es otro árbol hoja, con valor 10
+- El primer hijo es un árbol con raíz 15 y con dos hijos hoja, el 10 y
+  el 12
+- El segundo hijo es un árbol hoja, con valor 18
+- El tercer hijo es un árbol con raíz 25 y con tres hijos hoja, el 19,
+  21 y 22.
 
 ---
 
@@ -66,46 +58,53 @@ Un ejemplo de árbol:
     - el primer elemento la lista será el dato de la raíz
     - el resto serán los árboles hijos
 
-> Árbol: '(dato hijo-1 hijo-2 ... hijo-n)
+```text
+arbol -> (dato hijo-1 hijo-2 ... hijo-n)
+```
 
 - Los nodos hoja (datos al final del árbol que no tienen ningún hijo)
 son también árboles. Al no tener hijos se representan como listas con un único
 elemento, el propio dato:
     
 
-> Nodo hoja: '(dato)
+```text
+Nodo hoja -> (dato)
+```
 
 - ¿Cómo representaríamos de esta forma el árbol anterior?
 
-<img src="imagenes/arbol-sencillo.png" width="250px"/>
+<img src="imagenes/arbol-sencillo2.png" width="400px"/>
 
 <p style="margin-bottom:4cm;"/>
 
 ```racket
-'(+ (5) (* (2) (3)) (10))
+(30 (15 (10) (12)) (18) (25 (19) (21) (22)))
 ```
+
+<img src="imagenes/lista-arbol.png" width="600px"/>
 
 Los elementos de esta lista son:
 
-- El primer elemento es el símbolo `+`, el dato valor de la raíz del
+- El primer elemento es el número `30`, el dato valor de la raíz del
   árbol
-- El segundo elemento es la lista `'(5)`, que representa el árbol hoja
-  formado por un 5
-- El tercer elemento es la lista `'(* (2) (3))`, que representa el
-  árbol con un dato `*` y dos hijos
-- El cuarto elemento es la lista `'(10)`, que representa el árbol hoja
-  formado por un 10
+- El segundo elemento es la lista `(15 (10) (12))`, que representa el
+  árbol con dato `15` y dos hijos
+- El tercer elemento es la lista `(18)` que representa el árbol hoja
+  formado por un 18
+- El tercer elemento es la lista `(15 (19) (21) (22))`, que representa el
+  árbol con un dato `15` y tres hijos
 
 Podríamos definir el árbol con la siguiente sentencia:
 
 ```racket
-(define arbol1 '(+ (5) (* (2) (3)) (10)))
+(define arbol1 '(30 (15 (10) (12)) (18) (25 (19) (21) (22))))
 ```
+
 <p style="margin-bottom:3cm;"/>
 
 Otro ejemplo más. ¿Cómo se implementa en Scheme el árbol de la siguiente figura?
 
-<img src="imagenes/binario-2.png" width="300px"/>
+<img src="imagenes/arbol2.png" width="300px"/>
 
 <p style="margin-bottom:4cm;"/>
 
@@ -164,18 +163,15 @@ Es importante tener claro los tipos devueltos por las dos primeras funciones:
 
 Por ejemplo, si usamos el árbol `arbol1` 
 
-<img src="imagenes/arbol-sencillo.png" width="200px"/>
+<img src="imagenes/arbol-sencillo2.png" width="400px"/>
+
+Las funciones anteriores devuelven los siguientes valores:
 
 ```racket
-(define arbol1 '(+ (5) (* (2) (3)) (10)))
-```
-
-las funciones anteriores devuelven los siguientes valores:
-
-```racket
-(dato-arbol arbol1) ; ⇒ +
-(hijos-arbol arbol1) ; ⇒ ((5) (* (2) (3)) (10))
-(hoja-arbol? (car (hijos-arbol arbol1))) ; ⇒ #t
+(dato-arbol arbol1) ; ⇒ 30
+(hijos-arbol arbol1) ; ⇒ ((15 (10) (12)) (18) (25 (19) (21) (22)))
+(hoja-arbol? (car (hijos-arbol arbol1))) ; ⇒ #f
+(hoja-arbol? (cadr (hijos-arbol arbol1))) ; ⇒ #t
 ```
 
 ---
@@ -201,13 +197,15 @@ trabajando y usar la barrera de abstracción adecuada en cada caso:
     darles nombres distintos nos permite entender mejor sobre qué tipo
     de datos estamos trabajando, una lista o un árbol.
 
-- Ejemplo: ¿cómo obtendríamos el número 2 del `arbol1`?
+- Ejemplo: ¿cómo obtendríamos el número 12 del `arbol1`?
 
 <p style="margin-bottom:4cm;"/>
 
 ```racket
-(dato-arbol (car (hijos-arbol (cadr (hijos-arbol arbol1))))) ; ⇒ 2
+(dato-arbol (cadr (hijos-arbol (car (hijos-arbol arbol1)))))
+; ⇒ 12
 ```
+
 
 ----
 
@@ -262,15 +260,19 @@ Y para definir un árbol con 3 hijos:
 
 El `arbol1`
 
-<img src="imagenes/arbol-sencillo.png" width="200px"/>
+<img src="imagenes/arbol-sencillo2.png" width="400px"/>
 
 Se puede construir con las siguientes llamadas a los constructores:
 
 ```racket
-(construye-arbol '+ (construye-arbol 5 '())
-                    (construye-arbol '* (list (construye-arbol 2 '())
-                                              (construye-arbol 3 '())))
-                    (construye-arbol 10 '()))
+(define arbol-15 (nuevo-arbol 15 (list (nuevo-arbol 10 '())
+                                       (nuevo-arbol 12 '()))))
+(define arbol-18 (nuevo-arbol 18 '()))                                             
+(define arbol-25 (nuevo-arbol 25 (list (nuevo-arbol 19 '())
+                                       (nuevo-arbol 21 '())
+                                       (nuevo-arbol 22 '()))))
+(define arbol1b (nuevo-arbol 30 (list arbol-15 arbol-18 arbol-25)))
+arbol1b ; ⇒ (30 (15 (10) (12)) (18) (25 (19) (21) (22)))
 ```
 
 ----
@@ -335,6 +337,12 @@ Ejemplo:
        (+ (suma-datos-arbol (car bosque)) (suma-datos-bosque (cdr bosque)))))
 ```
 
+<p style="margin-bottom:4cm;"/>
+
+
+<img src="imagenes/suma-datos-bosque.png" width="600px"/>
+
+
 - Tenemos una recursión mutua: para sumar los datos de una lista de
   árboles llamamos a la suma de un árbol individual que a su vez llama
   a la suma de sus hijos, etc. La recursión termina cuando calculamos
@@ -355,10 +363,11 @@ Ejemplo:
         (map suma-datos-arbol-fos (hijos-arbol arbol))))
 ```	
 
-- La función `map` aplica la propia función que estamos definiendo a
-  cada uno de los árboles de `(hijos-arbol arbol)`, devolviendo una
-  lista de números. Esta lista de número la sumamos haciendo un
-  `fold-right + 0`. Una traza de su funcionamiento sería la siguiente:
+<p style="margin-bottom:4cm;"/>
+
+<img src="imagenes/suma-datos-bosque-fos.png" width="500px"/>
+
+- Una traza de su funcionamiento sería la siguiente:
 
 ```racket
 (suma-datos-arbol-fos '(1 (2 (3) (4)) (5) (6 (7)))) ;⇒
@@ -368,6 +377,7 @@ Ejemplo:
 (fold-right + 1 '(9 5 13)) ;⇒
 28
 ```
+
 
 ----
 
@@ -581,6 +591,7 @@ Otro ejemplo, el árbol de la figura anterior:
 	     ()))
 ```
 
+<img src="imagenes/binario-3.png" width="350px"/>
 
 ----
 
@@ -669,6 +680,8 @@ Veamos las siguientes funciones recursivas sobre árboles binarios:
 
 (suma-datos-arbolb arbolb2) ; ⇒ 212
 ```
+
+<img src="imagenes/suma-datos-binario.png" width="500px"/>
 
 
 
