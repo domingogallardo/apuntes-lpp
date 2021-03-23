@@ -710,23 +710,6 @@ Solución con `map`:
              (map-estruct-fos f elem)) lista)))
 ```
 
-<!--
-
-***Comentario
-
-Tenemos que plantearnos si cambiamos a una versión en la que la
-comprobación de hoja se hace antes de hacer el map.
-
-(define (num-hojas-fos lista)
-   (if (hoja? lista)
-        1
-        (foldr + 0 (map num-hojas-fos lista))))
-
-Igual en las FOS sobre árboles.
-
-***Fin del comentario
-
-
 ## Árboles
 
 ### Definición de árboles en Scheme
@@ -1059,17 +1042,6 @@ lista vacía y ésta devolverá 0.
 
 **Versión alternativa con funciones de orden superior**
 
-#****comentario
-#Hacer más énfasis en qué pasa cuando se llega a las hojas:
-#el map se aplicará a la lista de hijos, que será una lista
-#vacía. Y map de una lista vacía es otra lista vacía.
-
-#Esta es la base de la recursión.
-
-#Por eso aquí no hacemos como en las listas estructuradas
-#en donde se hace un if que comprueba si el dato es una hoja.
-#***fin comentario
-
 Al igual que hacíamos con las listas estructuradas, es posible
 conseguir una versión más concisa y elegante utilizando funciones de
 orden superior:
@@ -1078,8 +1050,7 @@ orden superior:
 (define (suma-datos-arbol-fos arbol)
    (foldr + 
           (dato-arbol arbol) 
-          (map (lambda (subarbol)
-                   (suma-datos-arbol-fos subarbol)) (hijos-arbol arbol))))
+          (map suma-datos-arbol-fos (hijos-arbol arbol))))
 ```	
 
 La función `map` aplica la propia función que estamos definiendo
@@ -1092,16 +1063,12 @@ de los nodos de todos los árboles hijos.
 La función `foldr` suma todos esos números de la lista y el
 número de la raíz.
 
-La expresión lambda de `map` no es necesaria, ya que la función
-`suma-datos-arbol-fos` tiene un único argumento que va a ser cada uno
-de los árboles hijos:
-
-```racket
-(define (suma-datos-arbol-fos arbol)
-   (foldr + 
-          (dato-arbol arbol) 
-          (map suma-datos-arbol-fos (hijos-arbol arbol))))
-```	
+!!! Note "Nota"
+    Puede parecer que a la función anterior le falta un caso
+    base. ¿Cuándo termina la recursión? La respuesta está en el
+    funcionamiento de `map`, que cuando recibe una lista vacía
+    devuelve también una lista vacía. Para comprobarlo, puedes pensar en
+    qué pasaría si le pasas a la función un árbol hoja.
 
 Un ejemplo de su funcionamiento sería el siguiente:
 
@@ -1248,17 +1215,6 @@ Con `map`:
 
 
 #### Función `altura-arbol`
-
-#*****comentario
-Definiciones: (https://courses.cs.washington.edu/courses/cse373/06sp/handouts/lecture06.pdf)
-
-longitud de camino: número de aristas
-profundidad de un nodo: longitud del camino de la raíz al nodo
-altura nodo: longitud del camino más largo del nodo a una hoja
-profundidad de un árbol: profundidad del nodo más profundo
-altura de un árbol: altura de la raíz
-nivel de un nodo: número de predecesores(https://www.quora.com/What-is-the-difference-between-the-height-and-level-of-a-full-binary-tree)
-#****fin comentario
 
 Vamos por último a definir una función que devuelve la altura de un
 árbol. 
@@ -1524,7 +1480,6 @@ constructor `nuevo-arbolb`.
 ```
 
 
--->
 ## Bibliografía - SICP
 
 En este tema explicamos conceptos de los siguientes capítulos del libro *Structure and Intepretation of Computer Programs*:
