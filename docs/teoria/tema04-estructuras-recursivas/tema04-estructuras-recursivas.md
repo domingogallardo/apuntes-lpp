@@ -1257,16 +1257,15 @@ Ejemplos:
 (altura-arbol '(4 (9 (16) (25)) (36))) ; ⇒ 2
 ```
 
-La solución con funciones de orden superior es algo distinta de la
+La solución con funciones de orden superior es similar a la
 que vimos con listas estructuradas:
 
 ```racket
 (define (altura-arbol-fos arbol)
-   (if (hoja-arbol? arbol)
-       0
-      (+ 1  (foldr max 
-                   0
-                   (map altura-arbol-fos (hijos-arbol arbol))))))
+  (if (hoja-arbol? arbol)
+      0
+      (+ 1 (foldr max 0
+                  (map altura-arbol-fos (hijos-arbol arbol))))))
 ```
 	
 La función `map` mapea sobre los árboles hijos la propia función, que

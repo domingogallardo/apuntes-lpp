@@ -542,11 +542,10 @@ vimos con listas estructuradas:
 
 ```racket
 (define (altura-arbol-fos arbol)
-  (+ 1 (foldr max 0
-              (map (lambda (x)
-                     (if (hoja-arbol? x)
-                         0
-                         (altura-arbol-fos x))) (hijos-arbol arbol)))))
+  (if (hoja-arbol? arbol)
+      0
+      (+ 1 (foldr max 0
+                  (map altura-arbol-fos (hijos-arbol arbol))))))
 ```
 	
 ----

@@ -610,11 +610,10 @@ pasa la función a aplicar a los elementos del árbol.</p>
 <p>La implementación con funciones de orden superior es similar a la que
 vimos con listas estructuradas:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">altura-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">foldr</span> <span class="nb">max</span> <span class="mi">0</span>
-              <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
-                     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja-arbol?</span> <span class="n">x</span><span class="p">)</span>
-                         <span class="mi">0</span>
-                         <span class="p">(</span><span class="n">altura-arbol-fos</span> <span class="n">x</span><span class="p">)))</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">)))))</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja-arbol?</span> <span class="n">arbol</span><span class="p">)</span>
+      <span class="mi">0</span>
+      <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">foldr</span> <span class="nb">max</span> <span class="mi">0</span>
+                  <span class="p">(</span><span class="nb">map</span> <span class="n">altura-arbol-fos</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))))</span>
 </code></pre></div>
 <hr />
 <h3>Árboles binarios</h3>
