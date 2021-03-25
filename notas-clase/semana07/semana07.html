@@ -397,13 +397,13 @@ de datos estamos trabajando, una lista o un árbol.</p>
 <p>El <code>arbol1</code></p>
 <p><img src="imagenes/arbol-sencillo2.png" width="400px"/></p>
 <p>Se puede construir con las siguientes llamadas a los constructores:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">arbol-15</span> <span class="p">(</span><span class="n">nuevo-arbol</span> <span class="mi">15</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="n">nuevo-arbol</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">())</span>
-                                       <span class="p">(</span><span class="n">nuevo-arbol</span> <span class="mi">12</span> <span class="o">&#39;</span><span class="p">()))))</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">arbol-18</span> <span class="p">(</span><span class="n">nuevo-arbol</span> <span class="mi">18</span> <span class="o">&#39;</span><span class="p">()))</span>                                             
-<span class="p">(</span><span class="k">define</span> <span class="n">arbol-25</span> <span class="p">(</span><span class="n">nuevo-arbol</span> <span class="mi">25</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="n">nuevo-arbol</span> <span class="mi">19</span> <span class="o">&#39;</span><span class="p">())</span>
-                                       <span class="p">(</span><span class="n">nuevo-arbol</span> <span class="mi">21</span> <span class="o">&#39;</span><span class="p">())</span>
-                                       <span class="p">(</span><span class="n">nuevo-arbol</span> <span class="mi">22</span> <span class="o">&#39;</span><span class="p">()))))</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">arbol1b</span> <span class="p">(</span><span class="n">nuevo-arbol</span> <span class="mi">30</span> <span class="p">(</span><span class="nb">list</span> <span class="n">arbol-15</span> <span class="n">arbol-18</span> <span class="n">arbol-25</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">arbol-15</span> <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">15</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">())</span>
+                                           <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">12</span> <span class="o">&#39;</span><span class="p">()))))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">arbol-18</span> <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">18</span> <span class="o">&#39;</span><span class="p">()))</span>                                             
+<span class="p">(</span><span class="k">define</span> <span class="n">arbol-25</span> <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">25</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">19</span> <span class="o">&#39;</span><span class="p">())</span>
+                                           <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">21</span> <span class="o">&#39;</span><span class="p">())</span>
+                                           <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">22</span> <span class="o">&#39;</span><span class="p">()))))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">arbol1b</span> <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">30</span> <span class="p">(</span><span class="nb">list</span> <span class="n">arbol-15</span> <span class="n">arbol-18</span> <span class="n">arbol-25</span><span class="p">)))</span>
 <span class="n">arbol1b</span> <span class="c1">; ⇒ (30 (15 (10) (12)) (18) (25 (19) (21) (22)))</span>
 </code></pre></div>
 <hr />
@@ -479,7 +479,7 @@ llamada recursiva que suma el resto de árboles:</p>
   orden superior:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-datos-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">fold-right</span> <span class="nb">+</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span> 
+    <span class="p">(</span><span class="nb">foldr</span> <span class="nb">+</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span> 
         <span class="p">(</span><span class="nb">map</span> <span class="n">suma-datos-arbol-fos</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>
 </code></pre></div>
 <p style="margin-bottom:4cm;"/>
@@ -489,10 +489,10 @@ llamada recursiva que suma el resto de árboles:</p>
 <li>Una traza de su funcionamiento sería la siguiente:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-datos-arbol-fos</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="mi">6</span> <span class="p">(</span><span class="mi">7</span><span class="p">))))</span> <span class="c1">;⇒</span>
-<span class="p">(</span><span class="n">fold-right</span> <span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">map</span> <span class="n">suma-datos-arbol-fos</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span><span class="p">))</span> 
+<span class="p">(</span><span class="nb">foldr</span> <span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">map</span> <span class="n">suma-datos-arbol-fos</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span><span class="p">))</span> 
                                                 <span class="p">(</span><span class="mi">5</span><span class="p">)</span>
                                                 <span class="p">(</span><span class="mi">6</span> <span class="p">(</span><span class="mi">7</span><span class="p">)))))</span> <span class="c1">; ⇒</span>
-<span class="p">(</span><span class="n">fold-right</span> <span class="nb">+</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">9</span> <span class="mi">5</span> <span class="mi">13</span><span class="p">))</span> <span class="c1">;⇒</span>
+<span class="p">(</span><span class="nb">foldr</span> <span class="nb">+</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">9</span> <span class="mi">5</span> <span class="mi">13</span><span class="p">))</span> <span class="c1">;⇒</span>
 <span class="mi">28</span>
 </code></pre></div>
 <hr />
@@ -523,7 +523,7 @@ llamada recursiva que suma el resto de árboles:</p>
 <p>Una definición alternativa usando funciones de orden superior:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">to-list-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span>
-          <span class="p">(</span><span class="n">fold-right</span> <span class="nb">append</span> <span class="o">&#39;</span><span class="p">()</span> 
+          <span class="p">(</span><span class="nb">foldr</span> <span class="nb">append</span> <span class="o">&#39;</span><span class="p">()</span> 
                <span class="p">(</span><span class="nb">map</span> <span class="n">to-list-arbol-fos</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">)))))</span>
 </code></pre></div>
 <hr />
@@ -610,7 +610,7 @@ pasa la función a aplicar a los elementos del árbol.</p>
 <p>La implementación con funciones de orden superior es similar a la que
 vimos con listas estructuradas:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">altura-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">fold-right</span> <span class="nb">max</span> <span class="mi">0</span>
+  <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">foldr</span> <span class="nb">max</span> <span class="mi">0</span>
               <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
                      <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja-arbol?</span> <span class="n">x</span><span class="p">)</span>
                          <span class="mi">0</span>
