@@ -1586,14 +1586,13 @@ camino de la raíz al hijo.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">altura-arbol</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1">;  ⇒ 0</span>
 <span class="p">(</span><span class="n">altura-arbol</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">9</span> <span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="p">(</span><span class="mi">25</span><span class="p">))</span> <span class="p">(</span><span class="mi">36</span><span class="p">)))</span> <span class="c1">; ⇒ 2</span>
 </code></pre></div>
-<p>La solución con funciones de orden superior es algo distinta de la
+<p>La solución con funciones de orden superior es similar a la
 que vimos con listas estructuradas:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">altura-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja-arbol?</span> <span class="n">arbol</span><span class="p">)</span>
-       <span class="mi">0</span>
-      <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span>  <span class="p">(</span><span class="nb">foldr</span> <span class="nb">max</span> 
-                   <span class="mi">0</span>
-                   <span class="p">(</span><span class="nb">map</span> <span class="n">altura-arbol-fos</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))))</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja-arbol?</span> <span class="n">arbol</span><span class="p">)</span>
+      <span class="mi">0</span>
+      <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">foldr</span> <span class="nb">max</span> <span class="mi">0</span>
+                  <span class="p">(</span><span class="nb">map</span> <span class="n">altura-arbol-fos</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))))</span>
 </code></pre></div>
 <p>La función <code>map</code> mapea sobre los árboles hijos la propia función, que
 calcula la altura de cada hijo (será uno menos que la altura del padre, 0
