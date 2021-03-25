@@ -265,13 +265,13 @@ El `arbol1`
 Se puede construir con las siguientes llamadas a los constructores:
 
 ```racket
-(define arbol-15 (nuevo-arbol 15 (list (nuevo-arbol 10 '())
-                                       (nuevo-arbol 12 '()))))
-(define arbol-18 (nuevo-arbol 18 '()))                                             
-(define arbol-25 (nuevo-arbol 25 (list (nuevo-arbol 19 '())
-                                       (nuevo-arbol 21 '())
-                                       (nuevo-arbol 22 '()))))
-(define arbol1b (nuevo-arbol 30 (list arbol-15 arbol-18 arbol-25)))
+(define arbol-15 (construye-arbol 15 (list (construye-arbol 10 '())
+                                           (construye-arbol 12 '()))))
+(define arbol-18 (construye-arbol 18 '()))                                             
+(define arbol-25 (construye-arbol 25 (list (construye-arbol 19 '())
+                                           (construye-arbol 21 '())
+                                           (construye-arbol 22 '()))))
+(define arbol1b (construye-arbol 30 (list arbol-15 arbol-18 arbol-25)))
 arbol1b ; ⇒ (30 (15 (10) (12)) (18) (25 (19) (21) (22)))
 ```
 
@@ -334,7 +334,8 @@ Ejemplo:
 (define (suma-datos-bosque bosque)
    (if (null? bosque)
        0
-       (+ (suma-datos-arbol (car bosque)) (suma-datos-bosque (cdr bosque)))))
+       (+ (suma-datos-arbol (car bosque)) 
+          (suma-datos-bosque (cdr bosque)))))
 ```
 
 <p style="margin-bottom:4cm;"/>
@@ -359,7 +360,7 @@ Ejemplo:
 
 ```racket
 (define (suma-datos-arbol-fos arbol)
-    (fold-right + (dato-arbol arbol) 
+    (foldr + (dato-arbol arbol) 
         (map suma-datos-arbol-fos (hijos-arbol arbol))))
 ```	
 
@@ -371,10 +372,10 @@ Ejemplo:
 
 ```racket
 (suma-datos-arbol-fos '(1 (2 (3) (4)) (5) (6 (7)))) ;⇒
-(fold-right + 1 (map suma-datos-arbol-fos '((2 (3) (4)) 
+(foldr + 1 (map suma-datos-arbol-fos '((2 (3) (4)) 
                                                 (5)
                                                 (6 (7))))) ; ⇒
-(fold-right + 1 '(9 5 13)) ;⇒
+(foldr + 1 '(9 5 13)) ;⇒
 28
 ```
 
@@ -418,7 +419,8 @@ Una definición alternativa usando funciones de orden superior:
 ```racket
 (define (to-list-arbol-fos arbol)
     (cons (dato-arbol arbol)
-          (fold-right append '() (map to-list-arbol-fos (hijos-arbol arbol)))))
+          (foldr append '() 
+               (map to-list-arbol-fos (hijos-arbol arbol)))))
 ```
 
 ----
@@ -540,7 +542,7 @@ vimos con listas estructuradas:
 
 ```racket
 (define (altura-arbol-fos arbol)
-  (+ 1 (fold-right max 0
+  (+ 1 (foldr max 0
               (map (lambda (x)
                      (if (hoja-arbol? x)
                          0

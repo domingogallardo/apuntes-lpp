@@ -902,26 +902,26 @@ necesitamos un dato y una lista de árboles hijos. Si la lista de
 árboles hijos es vacía, tendremos un nodo hoja.
 
 ```racket
-(define (nuevo-arbol dato lista-arboles)
+(define (construye-arbol dato lista-arboles)
    (cons dato lista-arboles))
 ```
 
-Llamaremos a la función `nuevo-arbol` pasando su dato
+Llamaremos a la función `construye-arbol` pasando su dato
 (obligatorio) y la lista de arboles hijos. Si se pasa una lista vacía
 como parámetro estaremos definiendo un nodo hoja.
 
 Por ejemplo, para definir un nodo hoja con el dato 2:
 
 ```racket
-(define arbol3 (nuevo-arbol 2 '()))
+(define arbol3 (construye-arbol 2 '()))
 ```
 
 Y para definir un árbol con 3 hijos:
 
 ```racket
-(define arbol4 (nuevo-arbol 10 (list (nuevo-arbol 2 '())
-                                     (nuevo-arbol 5 '()) 
-                                     (nuevo-arbol 9 '())))
+(define arbol4 (construye-arbol 10 (list (construye-arbol 2 '())
+                                         (construye-arbol 5 '()) 
+                                         (construye-arbol 9 '())))
 ```
 
 
@@ -930,13 +930,13 @@ constructor. Guardamos los árboles hijos en variables auxiliares para
 hacer más entendible la expresión:
 
 ```racket
-(define arbol-15 (nuevo-arbol 15 (list (nuevo-arbol 10 '())
-                                       (nuevo-arbol 12 '()))))
-(define arbol-18 (nuevo-arbol 18 '()))                                             
-(define arbol-25 (nuevo-arbol 25 (list (nuevo-arbol 19 '())
-                                       (nuevo-arbol 21 '())
-                                       (nuevo-arbol 22 '()))))
-(define arbol1b (nuevo-arbol 30 (list arbol-15 arbol-18 arbol-25)))
+(define arbol-15 (construye-arbol 15 (list (construye-arbol 10 '())
+                                           (construye-arbol 12 '()))))
+(define arbol-18 (construye-arbol 18 '()))                                             
+(define arbol-25 (construye-arbol 25 (list (construye-arbol 19 '())
+                                           (construye-arbol 21 '())
+                                           (construye-arbol 22 '()))))
+(define arbol1b (construye-arbol 30 (list arbol-15 arbol-18 arbol-25)))
 arbol1b ; ⇒ (30 (15 (10) (12)) (18) (25 (19) (21) (22)))
 ```
 
@@ -1152,8 +1152,8 @@ elevados al cuadrado:
 
 ```racket
 (define (cuadrado-arbol arbol)
-   (nuevo-arbol (cuadrado (dato-arbol arbol))
-                (cuadrado-bosque (hijos-arbol arbol))))
+   (construye-arbol (cuadrado (dato-arbol arbol))
+                    (cuadrado-bosque (hijos-arbol arbol))))
 
 (define (cuadrado-bosque bosque)
    (if (null? bosque)
@@ -1173,8 +1173,8 @@ Versión 2, con la función de orden superior `map`:
 
 ```racket
 (define (cuadrado-arbol-fos arbol)
-   (nuevo-arbol (cuadrado (dato-arbol arbol))
-   	            (map cuadrado-arbol-fos (hijos-arbol arbol))))
+   (construye-arbol (cuadrado (dato-arbol arbol))
+   	                (map cuadrado-arbol-fos (hijos-arbol arbol))))
 ```
 
 #### Función `map-arbol`
@@ -1185,8 +1185,8 @@ pasa la función a aplicar a los elementos del árbol.
 
 ```racket
 (define (map-arbol f arbol)
-   (nuevo-arbol (f (dato-arbol arbol))
-                (map-bosque f (hijos-arbol arbol))))  
+   (construye-arbol (f (dato-arbol arbol))
+                    (map-bosque f (hijos-arbol arbol))))  
 
 (define (map-bosque f bosque)
    (if (null? bosque)
@@ -1208,7 +1208,7 @@ Con `map`:
 
 ```racket
 (define (map-arbol-fos f arbol)
-  (nuevo-arbol (f (dato-arbol arbol))
+  (construye-arbol (f (dato-arbol arbol))
                (map (lambda (x)
                        (map-arbol-fos f x)) (hijos-arbol arbol))))
 ```
@@ -1361,7 +1361,7 @@ Como parte de la barrera de abstracción definimos la constante
 **Constructor**
 
 ```racket
-(define (nuevo-arbolb dato hijo-izq hijo-der)
+(define (construye-arbolb dato hijo-izq hijo-der)
     (list dato hijo-izq hijo-der))
 ```
 
@@ -1371,8 +1371,8 @@ de abstracción:
 
 ```racket
 (define arbolb1
-   (nuevo-arbolb 10 (nuevo-arbolb 8 arbolb-vacio arbolb-vacio)
-                    (nuevo-arbolb 15 arbolb-vacio arbolb-vacio)))
+   (construye-arbolb 10 (construye-arbolb 8 arbolb-vacio arbolb-vacio)
+                        (construye-arbolb 15 arbolb-vacio arbolb-vacio)))
 ```
 
 Otro ejemplo, el árbol binario de la figura anterior utilizando el
@@ -1380,16 +1380,16 @@ constructor de la barrera de abstracción:
 
 ```racket
 (define arbolb2
-   (nuevo-arbolb 40 
-                 (nuevo-arbolb 18
-                               (nuevo-arbolb 3 arbolb-vacio arbolb-vacio)
-                               (nuevo-arbolb 23 
+   (construye-arbolb 40 
+                 (construye-arbolb 18
+                               (construye-arbolb 3 arbolb-vacio arbolb-vacio)
+                               (construye-arbolb 23 
                                              arbolb-vacio
-                                             (nuevo-arbolb 29 
+                                             (construye-arbolb 29 
                                                            arbolb-vacio
                                                            arbolb-vacio)))
-                 (nuevo-arbolb 52
-                               (nuevo-arbolb 47 arbolb-vacio arbolb-vacio)
+                 (construye-arbolb 52
+                               (construye-arbolb 47 arbolb-vacio arbolb-vacio)
                                arbolb-vacio)))
 ```
 
@@ -1466,15 +1466,15 @@ serán dos listas que tenemos que concatenar con `append`. Y por
 Por último, la función `cuadrado-arbolb` construye un nuevo árbol
 binario elevando al cuadrado el dato de la raíz, su hijo izquierdo y
 su hijo derecho. Para construir el árbol binario llamamos al
-constructor `nuevo-arbolb`.
+constructor `construye-arbolb`.
 
 ```racket
 (define (cuadrado-arbolb arbol)
    (if (vacio-arbolb? arbol)
       arbolb-vacio
-      (nuevo-arbolb (cuadrado (dato-arbolb arbol))
-                    (cuadrado-arbolb (hijo-izq-arbolb arbol))
-                    (cuadrado-arbolb (hijo-der-arbolb arbol)))))
+      (construye-arbolb (cuadrado (dato-arbolb arbol))
+                        (cuadrado-arbolb (hijo-izq-arbolb arbol))
+                        (cuadrado-arbolb (hijo-der-arbolb arbol)))))
 
 (cuadrado-arbolb arbolb1) ; ⇒ (100 (64 () ()) (225 () ()))
 ```

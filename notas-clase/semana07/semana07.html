@@ -458,7 +458,8 @@ llamada recursiva que suma el resto de árboles:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-datos-bosque</span> <span class="n">bosque</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">bosque</span><span class="p">)</span>
        <span class="mi">0</span>
-       <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">suma-datos-arbol</span> <span class="p">(</span><span class="nb">car</span> <span class="n">bosque</span><span class="p">))</span> <span class="p">(</span><span class="n">suma-datos-bosque</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">bosque</span><span class="p">)))))</span>
+       <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">suma-datos-arbol</span> <span class="p">(</span><span class="nb">car</span> <span class="n">bosque</span><span class="p">))</span> 
+          <span class="p">(</span><span class="n">suma-datos-bosque</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">bosque</span><span class="p">)))))</span>
 </code></pre></div>
 <p style="margin-bottom:4cm;"/>
 
@@ -522,7 +523,8 @@ llamada recursiva que suma el resto de árboles:</p>
 <p>Una definición alternativa usando funciones de orden superior:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">to-list-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span>
-          <span class="p">(</span><span class="n">fold-right</span> <span class="nb">append</span> <span class="o">&#39;</span><span class="p">()</span> <span class="p">(</span><span class="nb">map</span> <span class="n">to-list-arbol-fos</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">)))))</span>
+          <span class="p">(</span><span class="n">fold-right</span> <span class="nb">append</span> <span class="o">&#39;</span><span class="p">()</span> 
+               <span class="p">(</span><span class="nb">map</span> <span class="n">to-list-arbol-fos</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">)))))</span>
 </code></pre></div>
 <hr />
 <h3>Función <code>(cuadrado-arbol arbol)</code></h3>
