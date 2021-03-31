@@ -61,18 +61,15 @@ d) Para entender el funcionamiento de las funciones de orden superior
 que trabajan sobre listas estructuradas es muy importante entender qué
 devuelve la expresión `map` que se aplica a la lista.
 
-Dada la definición de `(nivel-hoja-fos dato lista)` vista en teoría,
-indica qué devuelve la siguiente expresión (es la expresión `map` que
-hay en su cuerpo). La lista `lista-b2` es la definida en el apartado
-anterior. Utiliza el dibujo que has hecho en el ejercicio anterior
-para entender el funcionamiento de la expresión.
+La siguiente función utiliza la función `(nivel-hoja-fos dato lista)`
+vista en teoría. Indica qué devuelve la siguiente expresión.  La lista
+`lista-b2` es la definida en el apartado anterior. Utiliza el dibujo
+que has hecho en el ejercicio anterior para entender el funcionamiento
+de la expresión.
 
 ```racket
 (map (lambda (elem)
-        (if (hoja? elem)
-              (if (equal? elem 'a) 0 -1)
-            (nivel-hoja-fos 'a elem)))
-        lista-b2)
+         (nivel-hoja-fos 'a elem)) lista-b2)
 ```
 
 ### Ejercicio 2  ###
