@@ -223,9 +223,9 @@ anterior:
 
 
 ```racket
-(es-camino? '(a b a) arbol) ⇒ #t
-(es-camino? '(a b) arbol) ⇒ #f
-(es-camino? '(a b a b) arbol) ⇒ #f
+(es-camino? '(a b a) arbol) ; ⇒ #t
+(es-camino? '(a b) arbol) ; ⇒ #f
+(es-camino? '(a b a b) arbol) ; ⇒ #f
 ```
 
 
@@ -238,13 +238,70 @@ encuentran en ese nivel.
 Ejemplos, suponiendo que `arbol` es el árbol definido por la figura anterior:
 
 ```racket
-(nodos-nivel 0 arbol) ⇒ '(1)
-(nodos-nivel 1 arbol) ⇒ '(2 6)
-(nodos-nivel 2 arbol) ⇒ '(3 5 7)
-(nodos-nivel 3 arbol) ⇒ '(4 2)
+(nodos-nivel 0 arbol) ; ⇒ '(1)
+(nodos-nivel 1 arbol) ; ⇒ '(2 6)
+(nodos-nivel 2 arbol) ; ⇒ '(3 5 7)
+(nodos-nivel 3 arbol) ; ⇒ '(4 2)
 ```
 
 ### Ejercicio 6 ###
+
+a) Define la función `(ordenado-entre? arbolb min max)` que comprueba si
+un árbol binario está ordenado y sus datos está entre `min` y
+`max`. 
+
+Un árbol binario está ordenado cuando sus hijos izquierdos y derecho
+están ordenados y cuando la raíz es mayor o igual que todos los
+números del hijo izquierdo y menor o igual que todos los números del
+hijo derecho.
+
+Por ejemplo, en la siguiente figura, el árbol binario de la izquierda
+(`arbolb1`) está ordenado, pero el de la derecha (`arbolb2`) no lo está.
+
+<img src="imagenes/ordenado-arbolb.png" width="600px" />
+
+Ejemplo:
+
+```racket
+(define arbolb1 '(20 (13 (2 () ())
+                         (18 () ()))
+                     (40 (25 () () )
+                         (43 () ()))))
+(define arbolb2 '(20 (13 (2 () ())
+                         (22 () ()))
+                     (40 (25 () () )
+                         (43 () ()))))
+
+(ordenado-entre? arbolb1 0 50) ; ⇒ #t
+(ordenado-entre? arbolb2 0 50) ; ⇒ #f
+(ordenado-entre? arbolb1 0 30) ; ⇒ #f
+```
+
+b) Utilizando la función anterior, define las funciones
+`(ordenado-menor? arbolb max)` y `(ordenado-mayor? arbolb min)` que
+comprueban si un árbol binario está ordenado y sus datos son menores
+o iguales o mayores o iguales que el argumento.
+
+Ejemplos:
+
+```racket
+(ordenado-menor? arbolb1 50) ; ⇒ #t
+(ordenado-menor? arbolb1 40) ; ⇒ #f
+(ordenado-menor? arbolb2 50) ; ⇒ #f
+(ordenado-mayor? arbolb1 0)  ; ⇒ #t
+(ordenado-mayor? arbolb1 20) ; ⇒ #f
+(ordenado-mayor? arbolb2 0) ; ⇒ #f
+```
+
+c) Utilizando las funciones anteriores, define la función `(ordenado?
+arbolb)` que comprueba si un árbol binario está ordenado.
+
+```racket
+(ordenado? arbolb1) ; ⇒ #t
+(ordenado? arbolb2) ; ⇒ #f
+```
+
+### Ejercicio 7 ###
 
 Dado un árbol binario y un camino definido como una lista de símbolos:
 `'(< > = > > =)` en el que:
@@ -259,8 +316,8 @@ lista con los datos recogidos por el camino.
 <img src="imagenes/arbol-binario2.png" width="250px"/>
 
 ```racket
-(camino-b-tree b-tree '(= < < = > =)) ⇒ '(9 3 4)
-(camino-b-tree b-tree '(> = < < =)) ⇒ '(15 10)
+(camino-b-tree b-tree '(= < < = > =)) ; ⇒ '(9 3 4)
+(camino-b-tree b-tree '(> = < < =)) ; ⇒ '(15 10)
 ```
 
 ----
