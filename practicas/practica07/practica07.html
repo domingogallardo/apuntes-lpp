@@ -502,6 +502,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ejercicio-7" class="md-nav__link">
+    Ejercicio 7
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -596,6 +603,13 @@
           <li class="md-nav__item">
   <a href="#ejercicio-6" class="md-nav__link">
     Ejercicio 6
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-7" class="md-nav__link">
+    Ejercicio 7
   </a>
   
 </li>
@@ -776,21 +790,63 @@ pero la lista <code>(a b)</code> no.</p>
 <p><img src="imagenes/es-camino.png" width="300px"/></p>
 <p>Ejemplos: suponiendo que <code>arbol</code> es el árbol definido por la figura
 anterior:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">es-camino?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">a</span><span class="p">)</span> <span class="n">arbol</span><span class="p">)</span> <span class="n">⇒</span> <span class="no">#t</span>
-<span class="p">(</span><span class="n">es-camino?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span><span class="p">)</span> <span class="n">arbol</span><span class="p">)</span> <span class="n">⇒</span> <span class="no">#f</span>
-<span class="p">(</span><span class="n">es-camino?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">a</span> <span class="ss">b</span><span class="p">)</span> <span class="n">arbol</span><span class="p">)</span> <span class="n">⇒</span> <span class="no">#f</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">es-camino?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">a</span><span class="p">)</span> <span class="n">arbol</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">es-camino?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span><span class="p">)</span> <span class="n">arbol</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">es-camino?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">a</span> <span class="ss">b</span><span class="p">)</span> <span class="n">arbol</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
 </code></pre></div>
 <p>b) Escribe la función <code>(nodos-nivel nivel arbol)</code> que reciba un nivel
 y un árbol genérico y devuelva una lista con todos los nodos que se
 encuentran en ese nivel.</p>
 <p><img src="imagenes/nodos-nivel.png" width="250px"/></p>
 <p>Ejemplos, suponiendo que <code>arbol</code> es el árbol definido por la figura anterior:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">nodos-nivel</span> <span class="mi">0</span> <span class="n">arbol</span><span class="p">)</span> <span class="n">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="p">(</span><span class="n">nodos-nivel</span> <span class="mi">1</span> <span class="n">arbol</span><span class="p">)</span> <span class="n">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">6</span><span class="p">)</span>
-<span class="p">(</span><span class="n">nodos-nivel</span> <span class="mi">2</span> <span class="n">arbol</span><span class="p">)</span> <span class="n">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="mi">5</span> <span class="mi">7</span><span class="p">)</span>
-<span class="p">(</span><span class="n">nodos-nivel</span> <span class="mi">3</span> <span class="n">arbol</span><span class="p">)</span> <span class="n">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">nodos-nivel</span> <span class="mi">0</span> <span class="n">arbol</span><span class="p">)</span> <span class="c1">; ⇒ &#39;(1)</span>
+<span class="p">(</span><span class="n">nodos-nivel</span> <span class="mi">1</span> <span class="n">arbol</span><span class="p">)</span> <span class="c1">; ⇒ &#39;(2 6)</span>
+<span class="p">(</span><span class="n">nodos-nivel</span> <span class="mi">2</span> <span class="n">arbol</span><span class="p">)</span> <span class="c1">; ⇒ &#39;(3 5 7)</span>
+<span class="p">(</span><span class="n">nodos-nivel</span> <span class="mi">3</span> <span class="n">arbol</span><span class="p">)</span> <span class="c1">; ⇒ &#39;(4 2)</span>
 </code></pre></div>
 <h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
+<p>a) Define la función <code>(ordenado-entre? arbolb min max)</code> que comprueba si
+un árbol binario está ordenado y sus datos está entre <code>min</code> y
+<code>max</code>. </p>
+<p>Un árbol binario está ordenado cuando sus hijos izquierdos y derecho
+están ordenados y cuando la raíz es mayor o igual que todos los
+números del hijo izquierdo y menor o igual que todos los números del
+hijo derecho.</p>
+<p>Por ejemplo, en la siguiente figura, el árbol binario de la izquierda
+(<code>arbolb1</code>) está ordenado, pero el de la derecha (<code>arbolb2</code>) no lo está.</p>
+<p><img src="imagenes/ordenado-arbolb.png" width="600px" /></p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">arbolb1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">20</span> <span class="p">(</span><span class="mi">13</span> <span class="p">(</span><span class="mi">2</span> <span class="p">()</span> <span class="p">())</span>
+                         <span class="p">(</span><span class="mi">18</span> <span class="p">()</span> <span class="p">()))</span>
+                     <span class="p">(</span><span class="mi">40</span> <span class="p">(</span><span class="mi">25</span> <span class="p">()</span> <span class="p">()</span> <span class="p">)</span>
+                         <span class="p">(</span><span class="mi">43</span> <span class="p">()</span> <span class="p">()))))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">arbolb2</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">20</span> <span class="p">(</span><span class="mi">13</span> <span class="p">(</span><span class="mi">2</span> <span class="p">()</span> <span class="p">())</span>
+                         <span class="p">(</span><span class="mi">22</span> <span class="p">()</span> <span class="p">()))</span>
+                     <span class="p">(</span><span class="mi">40</span> <span class="p">(</span><span class="mi">25</span> <span class="p">()</span> <span class="p">()</span> <span class="p">)</span>
+                         <span class="p">(</span><span class="mi">43</span> <span class="p">()</span> <span class="p">()))))</span>
+
+<span class="p">(</span><span class="n">ordenado-entre?</span> <span class="n">arbolb1</span> <span class="mi">0</span> <span class="mi">50</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">ordenado-entre?</span> <span class="n">arbolb2</span> <span class="mi">0</span> <span class="mi">50</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">ordenado-entre?</span> <span class="n">arbolb1</span> <span class="mi">0</span> <span class="mi">30</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
+</code></pre></div>
+<p>b) Utilizando la función anterior, define las funciones
+<code>(ordenado-menor? arbolb max)</code> y <code>(ordenado-mayor? arbolb min)</code> que
+comprueban si un árbol binario está ordenado y sus datos son menores
+o iguales o mayores o iguales que el argumento.</p>
+<p>Ejemplos:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">ordenado-menor?</span> <span class="n">arbolb1</span> <span class="mi">50</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">ordenado-menor?</span> <span class="n">arbolb1</span> <span class="mi">40</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">ordenado-menor?</span> <span class="n">arbolb2</span> <span class="mi">50</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">ordenado-mayor?</span> <span class="n">arbolb1</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">ordenado-mayor?</span> <span class="n">arbolb1</span> <span class="mi">20</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">ordenado-mayor?</span> <span class="n">arbolb2</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
+</code></pre></div>
+<p>c) Utilizando las funciones anteriores, define la función <code>(ordenado?
+arbolb)</code> que comprueba si un árbol binario está ordenado.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">ordenado?</span> <span class="n">arbolb1</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">ordenado?</span> <span class="n">arbolb2</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
+</code></pre></div>
+<h3 id="ejercicio-7">Ejercicio 7<a class="headerlink" href="#ejercicio-7" title="Permanent link">&para;</a></h3>
 <p>Dado un árbol binario y un camino definido como una lista de símbolos:
 <code>'(&lt; &gt; = &gt; &gt; =)</code> en el que:</p>
 <ul>
@@ -801,8 +857,8 @@ encuentran en ese nivel.</p>
 <p>Implementa la función <code>(camino-b-tree b-tree camino)</code> que devuelva una
 lista con los datos recogidos por el camino.</p>
 <p><img src="imagenes/arbol-binario2.png" width="250px"/></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">camino-b-tree</span> <span class="n">b-tree</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">=</span> <span class="ss">&lt;</span> <span class="ss">&lt;</span> <span class="ss">=</span> <span class="ss">&gt;</span> <span class="ss">=</span><span class="p">))</span> <span class="n">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">9</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span>
-<span class="p">(</span><span class="n">camino-b-tree</span> <span class="n">b-tree</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">&gt;</span> <span class="ss">=</span> <span class="ss">&lt;</span> <span class="ss">&lt;</span> <span class="ss">=</span><span class="p">))</span> <span class="n">⇒</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">15</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">camino-b-tree</span> <span class="n">b-tree</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">=</span> <span class="ss">&lt;</span> <span class="ss">&lt;</span> <span class="ss">=</span> <span class="ss">&gt;</span> <span class="ss">=</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(9 3 4)</span>
+<span class="p">(</span><span class="n">camino-b-tree</span> <span class="n">b-tree</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">&gt;</span> <span class="ss">=</span> <span class="ss">&lt;</span> <span class="ss">&lt;</span> <span class="ss">=</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(15 10)</span>
 </code></pre></div>
 <hr />
 <p>Lenguajes y Paradigmas de Programación, curso 2020-21<br />
