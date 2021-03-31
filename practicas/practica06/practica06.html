@@ -651,16 +651,13 @@ las llamadas recursivas marcadas con <code>1</code> y <code>2</code>.</li>
 <p>d) Para entender el funcionamiento de las funciones de orden superior
 que trabajan sobre listas estructuradas es muy importante entender qué
 devuelve la expresión <code>map</code> que se aplica a la lista.</p>
-<p>Dada la definición de <code>(nivel-hoja-fos dato lista)</code> vista en teoría,
-indica qué devuelve la siguiente expresión (es la expresión <code>map</code> que
-hay en su cuerpo). La lista <code>lista-b2</code> es la definida en el apartado
-anterior. Utiliza el dibujo que has hecho en el ejercicio anterior
-para entender el funcionamiento de la expresión.</p>
+<p>La siguiente función utiliza la función <code>(nivel-hoja-fos dato lista)</code>
+vista en teoría. Indica qué devuelve la siguiente expresión.  La lista
+<code>lista-b2</code> es la definida en el apartado anterior. Utiliza el dibujo
+que has hecho en el ejercicio anterior para entender el funcionamiento
+de la expresión.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-        <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span>
-              <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">equal?</span> <span class="n">elem</span> <span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span> <span class="mi">0</span> <span class="mi">-1</span><span class="p">)</span>
-            <span class="p">(</span><span class="n">nivel-hoja-fos</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="n">elem</span><span class="p">)))</span>
-        <span class="n">lista-b2</span><span class="p">)</span>
+         <span class="p">(</span><span class="n">nivel-hoja-fos</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="n">elem</span><span class="p">))</span> <span class="n">lista-b2</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
 <p>a) Implementa la función recursiva <code>(cuenta-pares lista)</code> que recibe una
