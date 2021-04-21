@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<style type="text/css">
+
+/* Admonition */
+
+.admonition {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.admonition.note { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.admonition.quote { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #cecece;
+    border-color: #cccccc;
+}
+
+.admonition.warning { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #FCC8BE;
+    border-color: #FCC8BE;
+}
+
+.admonition.hint { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #E9F9F6;
+    border-color: #AFEEEE;
+}
+
+.admonition.danger { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #F7B2A4;
+    border-color: #F7B2A4;
+}
+
+.admonition-title {
+    font-weight: bold;
+    text-align: left;
+}
+
+
+/* Codehilite */
+
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mb { color: #666666 } /* Literal.Number.Bin */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #0000FF } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
+/* Estilo LPP */
+
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: white;
+  padding: 60px;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+</style>
+
+</head>
+
+<body>
+<h2>Tema 6: Programación Funcional con Swift</h2>
+<h3>Contenidos</h3>
+<ul>
+<li><strong>1 Introducción</strong></li>
+<li><strong>2 Funciones</strong></li>
+<li><strong>3 Tipos función</strong></li>
+<li><strong>4 Recursión</strong></li>
+<li><strong>5 Tipos</strong></li>
+<li><strong>6 Opcionales</strong></li>
+<li>7 Inmutabilidad</li>
+<li>8 Clausuras</li>
+<li>9 Funciones de orden superior</li>
+<li>10 Genéricos</li>
+</ul>
+<hr />
+<h3>Bibliografía</h3>
+<ul>
+<li><a href="https://github.com/domingogallardo/apuntes-lpp/blob/master/seminarios/seminario2-swift/seminario2-swift.md">Seminario de Swift</a></li>
+<li>Swift Language Guide<ul>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309">The Basics</a></li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/CollectionTypes.html#//apple_ref/doc/uid/TP40014097-CH8-ID105">Collection Types</a></li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html#//apple_ref/doc/uid/TP40014097-CH10-ID158">Functions</a></li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html#//apple_ref/doc/uid/TP40014097-CH11-ID94">Closures</a></li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Enumerations.html#//apple_ref/doc/uid/TP40014097-CH12-ID145">Enumerations</a></li>
+</ul>
+</li>
+<li><a href="https://developer.apple.com/library/ios/documentation/General/Reference/SwiftStandardLibraryReference/">Biblioteca estándar de Swift</a></li>
+</ul>
+<hr />
+<h3>1. Introducción</h3>
+<hr />
+<h3>Swift</h3>
+<p>Swift es un lenguaje principalmente imperativo, pero en su diseño se
+han introducido conceptos modernos de programación funcional,
+extraídos de lenguajes como Rust o Haskell. </p>
+<p>Como dice su creador <a href="http://nondot.org/sabre/">Chris Lattner</a>:</p>
+<blockquote>
+<p>El lenguaje Swift es el resultado de un esfuerzo incansable de un
+equipo de expertos en lenguajes, gurús de documentación, ninjas de
+optimización de compiladores [..]. Por supuesto, también se
+benefició enormemente de las experiencias ganadas en muchos otros
+lenguajes, tomando ideas de Objective-C, Rust, Haskell, Ruby,
+Python, C#, CLU, y demasiados otros para ser enumerados.</p>
+</blockquote>
+<p>Vamos a repasar en este tema cómo se implementan en Swift conceptos
+principalmente funcionales como:</p>
+<ul>
+<li>Valores inmutables</li>
+<li>Funciones como objetos de primera clase y clasuras</li>
+<li>Funciones de orden superior</li>
+</ul>
+<hr />
+<h3>Ejecución de programas Swift</h3>
+<ul>
+<li>Consultar en el seminario de Swift la forma de instalar el
+  compilador de Swift: usando un contenedor Docker, usando el terminal
+  (Mac) o en Linux.</li>
+</ul>
+<p>Visual Code Studio con un terminal y con el comando docker para
+ejecutar Swift:</p>
+<p><img src="imagenes/vcode.png" width="700px"/></p>
+<hr />
+<h3>Swift es fuertemente tipeado</h3>
+<ul>
+<li>Swift es un lenguaje fuertemente tipeado, pero es posible no
+  escribir el nombre del tipo en aquellos casos en los que el
+  compilador pueda <strong>inferirlo</strong>.</li>
+<li>Por ejemplo, cuando se hace una asignación.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="c1">// x: Int = 10</span>
+<span class="kd">var</span> <span class="nv">cadena</span> <span class="p">=</span> <span class="s">&quot;Hola&quot;</span>
+<span class="c1">// cadena: String = &quot;Hola&quot;</span>
+<span class="kd">var</span> <span class="nv">p</span> <span class="p">=</span> <span class="kc">true</span>
+<span class="c1">// p: Bool = true</span>
+</code></pre></div>
+<hr />
+<h3>Repaso algunos conceptos PF</h3>
+<ul>
+<li>Programación Funcional:</li>
+</ul>
+<blockquote>
+<p>La Programación Funcional es un paradigma de programación que trata
+la computación como la evaluación de funciones matemáticas y que
+evita cambios de estado y datos mutables.</p>
+</blockquote>
+<ul>
+<li>Funciones matemáticas o puras</li>
+</ul>
+<blockquote>
+<p>Las funciones matemáticas tienen la característica de que cuando las
+invocas con el mismo argumento siempre te devolverán el mismo
+resultado.</p>
+</blockquote>
+<ul>
+<li>Funciones como objetos de primera clase:</li>
+</ul>
+<blockquote>
+<p>En programación funcional, las funciones son objetos de primera
+clase del lenguaje, similares a enteros o <em>strings</em>. Podemos pasar
+funciones como argumentos en las denominadas <em>funciones de orden
+superior</em> o devolver funciones creadas en tiempo de ejecución
+(clausuras).</p>
+</blockquote>
+<hr />
+<h3>2. Funciones</h3>
+<hr />
+<h3>Definición de una función en Swift</h3>
+<ul>
+<li>Para definir una función en Swift se debe usar la palabra <code>func</code>,
+definir el nombre de la función, sus parámetros y el tipo de vuelto.</li>
+<li>El valor devuelto por la función se debe devolver usando la palabra
+<code>return</code>.</li>
+</ul>
+<p>Ejemplo función <code>saluda(nombre:)</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">saludo</span> <span class="p">=</span> <span class="s">&quot;Hola, &quot;</span> <span class="o">+</span> <span class="n">nombre</span> <span class="o">+</span> <span class="s">&quot;!&quot;</span>
+    <span class="k">return</span> <span class="n">saludo</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Invocación a la función <code>saluda(nombre:)</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="n">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span><span class="s">&quot;Ana&quot;</span><span class="p">))</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span><span class="s">&quot;Pedro&quot;</span><span class="p">))</span>
+<span class="c1">// Imprime &quot;Hola, Ana!&quot;</span>
+<span class="c1">// Imprime &quot;Hola, Pedro!&quot;</span>
+</code></pre></div>
+<hr />
+<h3>Etiquetas de argumentos y nombres de parámetros</h3>
+<ul>
+<li>Cada parámetro de una función tiene una <strong>etiqueta del argumento</strong> y
+un <strong>nombre de parámetro</strong>.</li>
+<li>Por defecto, los parámetros usan su nombre de parámetro como etiqueta
+del argumento</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">unaFuncion</span><span class="p">(</span><span class="n">primerNombreParametro</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">segundoNombreParametro</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// En el cuerpo de la función, primerNombreParametro y</span>
+    <span class="c1">// segundoNombreParametro se refieren a los valores de los</span>
+    <span class="c1">// argumentos del primer y el segundo parámetro</span>
+<span class="p">}</span>
+<span class="n">unaFuncion</span><span class="p">(</span><span class="n">primerNombreParametro</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">segundoNombreParametro</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>Es posible hacer distintos la etiqueta del argumento del nombre del
+parámetro:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">de</span> <span class="n">ciudad</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;Hola </span><span class="si">\(</span><span class="n">nombre</span><span class="si">)</span><span class="s">! Me alegro de que hayas podido visitarnos desde </span><span class="si">\(</span><span class="n">ciudad</span><span class="si">)</span><span class="s">.&quot;</span>
+<span class="p">}</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Bill&quot;</span><span class="p">,</span> <span class="n">de</span><span class="p">:</span> <span class="s">&quot;Cupertino&quot;</span><span class="p">))</span>
+<span class="c1">// Imprime &quot;Hola Bill! Me alegro de que hayas podido visitarnos desde Cupertino.&quot;</span>
+</code></pre></div>
+<ul>
+<li>Otro ejemplo, la siguiente función <code>concatena(palabra:con:)</code>: </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">concatena</span><span class="p">(</span><span class="n">palabra</span> <span class="n">str1</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">con</span> <span class="n">str2</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">str1</span><span class="o">+</span><span class="n">str2</span>
+<span class="p">}</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">concatena</span><span class="p">(</span><span class="n">palabra</span><span class="p">:</span><span class="s">&quot;Hola&quot;</span><span class="p">,</span> <span class="n">con</span><span class="p">:</span><span class="s">&quot;adios&quot;</span><span class="p">))</span>
+</code></pre></div>
+<ul>
+<li>Si no se quiere una etiqueta del argumento para un parámetro, se puede
+escribir un subrayado (<code>_</code>) en lugar de una etiqueta del argumento
+explícita para ese parámetro:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">max</span><span class="p">(</span><span class="kc">_</span> <span class="n">x</span><span class="p">:</span><span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">y</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">x</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">y</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="bp">max</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="kd">func</span> <span class="nf">divide</span><span class="p">(</span><span class="kc">_</span> <span class="n">x</span><span class="p">:</span><span class="nb">Double</span><span class="p">,</span> <span class="n">entre</span> <span class="n">y</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Double</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
+<span class="p">}</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">divide</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">entre</span><span class="p">:</span><span class="mi">4</span><span class="p">))</span>
+</code></pre></div>
+<ul>
+<li>El perfil de la función está formado por el nombre de la función,
+las etiquetas de los argumentos y el tipo devuelto por la función. En
+la documentación de las funciones usaremos las etiquetas separadas por
+dos puntos. Por ejemplo, las funciones anteriores son <code>max(_:_:)</code> y
+<code>divide(_:entre:)</code>.</li>
+</ul>
+<hr />
+<h3>Parámetros y valores devueltos</h3>
+<ul>
+<li>Es posible definir funciones sin parámetros:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">diHolaMundo</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;hola, mundo&quot;</span>
+<span class="p">}</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">diHolaMundo</span><span class="p">())</span>
+<span class="c1">// Imprime &quot;hola, mundo&quot;</span>
+</code></pre></div>
+<ul>
+<li>Podemos definir funciones sin valor devuelto. Por ejemplo, la
+  siguiente función <code>diAdios(nombre:)</code>. No hay que escribir flecha con
+  el tipo devuelto. Cuidado, no sería propiamente programación
+  funcional.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">diAdios</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Adiós, </span><span class="si">\(</span><span class="n">nombre</span><span class="si">)</span><span class="s">!&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">diAdios</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span><span class="s">&quot;Dave&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime &quot;Adiós, Dave!&quot;</span>
+</code></pre></div>
+<ul>
+<li>Es posible devolver múltiples valores, construyendo una tupla. Por
+  ejemplo, la siguiente función <code>minMax(array:)</code> busca el número más
+  pequeño y más grande de un array de enteros.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">minMax</span><span class="p">(</span><span class="n">array</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="bp">min</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="bp">max</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">minActual</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="kd">var</span> <span class="nv">maxActual</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">valor</span> <span class="k">in</span> <span class="n">array</span><span class="p">[</span><span class="mf">1.</span><span class="p">.&lt;</span><span class="n">array</span><span class="p">.</span><span class="bp">count</span><span class="p">]</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">valor</span> <span class="o">&lt;</span> <span class="n">minActual</span> <span class="p">{</span>
+            <span class="n">minActual</span> <span class="p">=</span> <span class="n">valor</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">valor</span> <span class="o">&gt;</span> <span class="n">maxActual</span> <span class="p">{</span>
+            <span class="n">maxActual</span> <span class="p">=</span> <span class="n">valor</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">minActual</span><span class="p">,</span> <span class="n">maxActual</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Los valores de la tupla devuelta se etiquetan y se puede acceder por
+  esos nombres cuando se consulta el valor devuelto por la función:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">limites</span> <span class="p">=</span> <span class="n">minMax</span><span class="p">(</span><span class="n">array</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">71</span><span class="p">])</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;min es </span><span class="si">\(</span><span class="n">limites</span><span class="p">.</span><span class="bp">min</span><span class="si">)</span><span class="s"> y max es </span><span class="si">\(</span><span class="n">limites</span><span class="p">.</span><span class="bp">max</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime &quot;min es -6 y max es 109&quot;</span>
+</code></pre></div>
+<hr />
+<h3>3. Tipos función</h3>
+<hr />
+<h3>Funciones como objetos de primera clase</h3>
+<ul>
+<li>
+<p>En Swift las funciones son objetos de primera clase y podemos
+  asignarlas a variables, pasarlas como parámetro o devolverlas como
+  resultado de otra función. Al ser un lenguaje fuertemente tipado,
+  las variables, parámetros o resultados deben ser objetos de tipo
+  función.</p>
+</li>
+<li>
+<p>Cada función tiene un tipo específico, definido por el tipo de sus
+parámetros y el tipo del valor devuelto.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">sumaDosInts</span><span class="p">(</span><span class="kc">_</span> <span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">multiplicaDosInts</span><span class="p">(</span><span class="kc">_</span> <span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>
+<p>El tipo de estas funciones es <code>(Int, Int) -&gt; Int</code></p>
+</li>
+<li>
+<p>En Swift se puede usar un tipo función de la misma forma que
+  cualquier otro tipo:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">funcionMatematica</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">=</span> <span class="n">sumaDosInts</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Resultado: </span><span class="si">\(</span><span class="n">funcionMatematica</span><span class="si">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">funcionMatematica</span> <span class="p">=</span> <span class="n">multiplicaDosInts</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Resultado: </span><span class="si">\(</span><span class="n">funcionMatematica</span><span class="si">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h3>Funciones que reciben otras funciones</h3>
+<ul>
+<li>Podemos usar un tipo función en parámetros de otras funciones:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">printResultado</span><span class="p">(</span><span class="n">funcion</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Resultado: </span><span class="si">\(</span><span class="n">funcion</span><span class="si">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">printResultado</span><span class="p">(</span><span class="n">funcion</span><span class="p">:</span> <span class="n">sumaDosInts</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="c1">// Prints &quot;Resultado: 8&quot;</span>
+</code></pre></div>
+<ul>
+<li>Veamos otro ejemplo, que ya vimos en Scheme. Supongamos que queremos
+  calcular el sumatorio desde <code>a</code> hasta <code>b</code> en el que aplicamos una
+  función <code>f</code> a cada número que sumamos:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>sumatorio(a, b, f) = f(a) + f(a+1) + f(a+2) + ... + f(b)
+</code></pre></div>
+<ul>
+<li>Recordamos que se resuelve con la siguiente recursión:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>sumatorio(a, b, f) = f(a) + sumatorio(a+1, b, f)
+sumatorio(a, b, f) = 0 si a &gt; b
+</code></pre></div>
+<ul>
+<li>Implementación en Swift: </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">sumatorio</span><span class="p">(</span><span class="n">desde</span> <span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">hasta</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="kd">func</span> <span class="nf">f</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="p">{</span> 
+      <span class="k">return</span> <span class="mi">0</span> 
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">sumatorio</span><span class="p">(</span><span class="n">desde</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">hasta</span><span class="p">:</span> <span class="n">b</span><span class="p">,</span> <span class="kd">func</span><span class="p">:</span> <span class="n">f</span><span class="p">)</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">identidad</span><span class="p">(</span><span class="kc">_</span> <span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="n">x</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">doble</span><span class="p">(</span><span class="kc">_</span> <span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">cuadrado</span><span class="p">(</span><span class="kc">_</span> <span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+<span class="p">}</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">sumatorio</span><span class="p">(</span><span class="n">desde</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hasta</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="kd">func</span><span class="p">:</span> <span class="n">identidad</span><span class="p">))</span> <span class="c1">// Imprime 55</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">sumatorio</span><span class="p">(</span><span class="n">desde</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hasta</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="kd">func</span><span class="p">:</span> <span class="n">doble</span><span class="p">))</span> <span class="c1">// Imprime 110</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">sumatorio</span><span class="p">(</span><span class="n">desde</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hasta</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="kd">func</span><span class="p">:</span> <span class="n">cuadrado</span><span class="p">))</span> <span class="c1">// Imprime 385</span>
+</code></pre></div>
+<hr />
+<h3>Funciones en estructuras de datos</h3>
+<ul>
+<li>Las funciones pueden también incluirse en estructuras de datos
+  compuestas, como arrays:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">funciones</span> <span class="p">=</span> <span class="p">[</span><span class="n">identidad</span><span class="p">,</span> <span class="n">doble</span><span class="p">,</span> <span class="n">cuadrado</span><span class="p">]</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">funciones</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="mi">10</span><span class="p">))</span> <span class="c1">// 10</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">funciones</span><span class="p">[</span><span class="mi">1</span><span class="p">](</span><span class="mi">10</span><span class="p">))</span> <span class="c1">// 20 </span>
+<span class="bp">print</span><span class="p">(</span><span class="n">funciones</span><span class="p">[</span><span class="mi">2</span><span class="p">](</span><span class="mi">10</span><span class="p">))</span> <span class="c1">// 100</span>
+</code></pre></div>
+<hr />
+<h3>Funciones que devuelven otras funciones</h3>
+<ul>
+<li>Por último, veamos un ejemplo de funciones que devuelven otras
+  funciones.</li>
+<li>Empecemos por un ejemplo sencillo de una función que devuelve otra
+que suma 10:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">makeSumador10</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+  <span class="kd">func</span> <span class="nf">suma10</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span><span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="mi">10</span><span class="p">}</span>
+  <span class="k">return</span> <span class="n">suma10</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">f</span> <span class="p">=</span> <span class="n">makeSumador10</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<span class="c1">// Imprime 30</span>
+</code></pre></div>
+<ul>
+<li>Hay que hacer notar la declaración de la función <code>makeSumador10</code>. Es
+una función que no recibe argumentos y que devuelve otra función del
+tipo <code>(Int) -&gt; Int</code>, esto es, una función que recibe un entero y
+devuelve otro entero.</li>
+</ul>
+<hr />
+<h3>Otro ejemplo un poco más complicado</h3>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">eligeFuncionPaso</span><span class="p">(</span><span class="n">menorQueCero</span><span class="p">:</span> <span class="nb">Bool</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">pasoAdelante</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span> <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">pasoAtras</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span> <span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">}</span>
+    <span class="k">return</span> <span class="n">menorQueCero</span> <span class="p">?</span> <span class="n">pasoAdelante</span> <span class="p">:</span> <span class="n">pasoAtras</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">valorActual</span> <span class="p">=</span> <span class="o">-</span><span class="mi">4</span>
+<span class="kd">let</span> <span class="nv">acercarseACero</span> <span class="p">=</span> <span class="n">eligeFuncionPaso</span><span class="p">(</span><span class="n">menorQueCero</span><span class="p">:</span> <span class="n">valorActual</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1">// acercarseACero ahora se refiere a la función anidada pasoAdelante</span>
+<span class="k">while</span> <span class="n">valorActual</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">\(</span><span class="n">valorActual</span><span class="si">)</span><span class="s">... &quot;</span><span class="p">)</span>
+    <span class="n">valorActual</span> <span class="p">=</span> <span class="n">acercarseACero</span><span class="p">(</span><span class="n">valorActual</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;cero!&quot;</span><span class="p">)</span>
+<span class="c1">// -4...</span>
+<span class="c1">// -3...</span>
+<span class="c1">// -2...</span>
+<span class="c1">// -1...</span>
+<span class="c1">// cero!</span>
+</code></pre></div>
+<hr />
+<h3>4. Recursión</h3>
+<hr />
+<h3>Ejemplos de funciones recursivas en Swift</h3>
+<ul>
+<li>Recursión pura:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">suma</span><span class="p">(</span><span class="n">hasta</span> <span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="n">x</span> <span class="p">==</span> <span class="mi">0</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">0</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">suma</span><span class="p">(</span><span class="n">hasta</span><span class="p">:</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">suma</span><span class="p">(</span><span class="n">hasta</span><span class="p">:</span> <span class="mi">5</span><span class="p">))</span>
+</code></pre></div>
+<hr />
+<h3>Funciones recursivas sobre Arrays</h3>
+<ul>
+<li>Los arrays en Swift no funcionan exactamente como las listas de
+Scheme (no son listas de parejas), pero podríamos obtener el primer
+elemento y el resto de la siguiente forma.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">a</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span>
+<span class="kd">let</span> <span class="nv">primero</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="bp">first</span><span class="p">!</span>
+<span class="kd">let</span> <span class="nv">resto</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="bp">dropFirst</span><span class="p">()</span>
+</code></pre></div>
+<ul>
+<li>
+<p>En <code>primero</code> se guarda el número 10. El símbolo <code>!</code> sirve para
+<em>desenvolver el opcional</em> que devuelve <code>first</code> (veremos después este concepto).</p>
+</li>
+<li>
+<p>En <code>resto</code> se guarda un <code>ArraySlice</code> del 20 al 60. Es una vista de un rango de
+elementos del array, en este caso el que va desde la posición 1 hasta
+la 5 (la posición inicial de un array es la 0).</p>
+</li>
+<li>
+<p>Podemos convertir un <code>ArraySlice</code> en un <code>Array</code>:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">resto</span> <span class="p">=</span> <span class="nb">Array</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="bp">dropFirst</span><span class="p">())</span>
+</code></pre></div>
+<ul>
+<li>La función recursiva que suma los valores de un array se puede
+  entonces implementar entonces de la siguiente forma:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">sumaValores</span><span class="p">(</span><span class="kc">_</span> <span class="n">valores</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="kd">let</span> <span class="nv">primero</span> <span class="p">=</span> <span class="n">valores</span><span class="p">.</span><span class="bp">first</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nv">resto</span> <span class="p">=</span> <span class="nb">Array</span><span class="p">(</span><span class="n">valores</span><span class="p">.</span><span class="bp">dropFirst</span><span class="p">())</span>
+      <span class="k">return</span> <span class="n">primero</span> <span class="o">+</span> <span class="n">sumaValores</span><span class="p">(</span><span class="n">resto</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="mi">0</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">sumaValores</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]))</span> <span class="c1">// 36</span>
+</code></pre></div>
+<ul>
+<li>
+<p>La construcción <code>if let</code> comprueba si <code>valores.first</code> es distinto de
+  <code>nil</code>. En ese caso, se guarda el número en la variable <code>primero</code>. Lo
+  veremos más despacio cuando hablemos de los opcionales.</p>
+</li>
+<li>
+<p>Veremos que las colecciones en Swift implementan funciones de orden
+  superior como <code>map</code>, <code>filter</code>, <code>reduce</code>, etc.</p>
+</li>
+</ul>
+<hr />
+<h3>5. Tipos</h3>
+<hr />
+<h3>Swift es fuertemente tipeado</h3>
+<ul>
+<li>Swift es un lenguaje fuertemente tipeado, a diferencia de
+  Scheme. </li>
+<li>Entre las ventajas del uso de tipos está la detección de errores en
+  los programas en tiempo de compilación o las ayudas del entorno de
+  desarrollo para autocompletar código. </li>
+<li>Entre los inconvenientes se encuentra la necesidad de ser más
+  estrictos a la hora de definir los parámetros y los valores
+  devueltos por las funciones, lo que impide la flexibilidad de
+  Scheme.</li>
+<li>
+<p>Se utilizan tipos para definir los posibles valores de:</p>
+<ul>
+<li>variables</li>
+<li>parámetros de funciones</li>
+<li>valores devueltos por funciones</li>
+</ul>
+</li>
+<li>
+<p>Las definiciones de tipos van precedidas de dos puntos en las
+  variables y parámetros, o de una flecha (<code>-&gt;</code>) en la definición de
+  los tipos de los valores devueltos por una función:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">valorDouble</span> <span class="p">:</span> <span class="nb">Double</span> <span class="p">=</span> <span class="mf">3.0</span>
+<span class="kd">let</span> <span class="nv">unaCadena</span><span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;Hola&quot;</span>
+
+<span class="kd">func</span> <span class="nf">calculaEstadisticas</span><span class="p">(</span><span class="n">valores</span><span class="p">:</span> <span class="nb">Array</span><span class="p">&lt;</span><span class="nb">Int</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="bp">min</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="bp">max</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">media</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+   <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>En Swift existen dos clases de tipos: <strong>tipos con nombre</strong> y <strong>tipos
+  compuestos</strong>.</li>
+</ul>
+<hr />
+<h3>Tipos con nombre</h3>
+<ul>
+<li>Un tipo con nombre es un tipo al que se le puede dar un nombre
+  determinado cuando se define:<ul>
+<li>nombres de clases</li>
+<li>nombres de estructuras</li>
+<li>nombres de enumeraciones</li>
+<li>nombres de protocolos </li>
+</ul>
+</li>
+</ul>
+<hr />
+<h4>Tipos compuestos</h4>
+<ul>
+<li>Los tipos compuestos son tipos sin nombre. </li>
+<li>En Swift se definen dos: <strong>tuplas</strong> y <strong>tipos función</strong> (ya los
+  hemos visto). </li>
+</ul>
+<p>Ejemplo tuplas:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">tupla</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">,</span> <span class="nb">String</span><span class="p">)</span> <span class="p">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&quot;Hola&quot;</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">otraTupla</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">,</span> <span class="nb">String</span><span class="p">)</span> <span class="p">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s">&quot;Adios&quot;</span><span class="p">)</span>
+
+<span class="kd">func</span> <span class="nf">sumaTupla</span><span class="p">(</span><span class="n">tupla</span> <span class="n">t1</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">),</span> <span class="n">con</span> <span class="n">t2</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">))</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">t1</span><span class="p">.</span><span class="mi">0</span> <span class="o">+</span> <span class="n">t2</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">t1</span><span class="p">.</span><span class="mi">1</span> <span class="o">+</span> <span class="n">t2</span><span class="p">.</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">sumaTupla</span><span class="p">(</span><span class="n">tupla</span><span class="p">:</span> <span class="p">(</span><span class="n">tupla</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">tupla</span><span class="p">.</span><span class="mi">1</span><span class="p">),</span>
+                <span class="n">con</span><span class="p">:</span> <span class="p">(</span><span class="n">otraTupla</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">otraTupla</span><span class="p">.</span><span class="mi">1</span><span class="p">)))</span>
+
+<span class="c1">// Imprime (7, 11)</span>
+</code></pre></div>
+<hr />
+<h3>Enumeraciones</h3>
+<ul>
+<li>Las enumeraciones definen un tipo con un valor restringido de
+  posibles valores:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Direccion</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">norte</span>
+    <span class="k">case</span> <span class="n">sur</span>
+    <span class="k">case</span> <span class="n">este</span>
+    <span class="k">case</span> <span class="n">oeste</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Ejemplo de uso:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">hemosGirado</span> <span class="p">=</span> <span class="kc">true</span>
+<span class="kd">var</span> <span class="nv">direccionActual</span> <span class="p">=</span> <span class="n">Direccion</span><span class="p">.</span><span class="n">norte</span>
+<span class="k">if</span> <span class="n">hemosGirado</span> <span class="p">{</span>
+   <span class="n">direccionActual</span> <span class="p">=</span> <span class="p">.</span><span class="n">sur</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>En sentencias switch:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">direccionAIr</span> <span class="p">=</span> <span class="n">Direccion</span><span class="p">.</span><span class="n">sur</span>
+<span class="k">switch</span> <span class="n">direccionAIr</span> <span class="p">{</span>
+<span class="k">case</span> <span class="p">.</span><span class="n">norte</span><span class="p">:</span>
+   <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Nos vamos al norte&quot;</span><span class="p">)</span>
+<span class="k">case</span> <span class="p">.</span><span class="n">sur</span><span class="p">:</span>
+   <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Cuidado con los pinguinos&quot;</span><span class="p">)</span>
+<span class="k">case</span> <span class="p">.</span><span class="n">este</span><span class="p">:</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Donde nace el sol&quot;</span><span class="p">)</span>
+<span class="k">case</span> <span class="p">.</span><span class="n">oeste</span><span class="p">:</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Donde el cielo es azul&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Imprime &quot;Cuidado con los pinguinos&quot;</span>
+</code></pre></div>
+<p>Otro ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Planeta</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">mercurio</span><span class="p">,</span> <span class="n">venus</span><span class="p">,</span> <span class="n">tierra</span><span class="p">,</span> <span class="n">marte</span><span class="p">,</span> <span class="n">jupiter</span><span class="p">,</span> <span class="n">saturno</span><span class="p">,</span> <span class="n">urano</span><span class="p">,</span> <span class="n">neptuno</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3>Valores brutos de enumeraciones</h3>
+<ul>
+<li>Es posible asignar a las constantes del enumerado un valor concreto
+  de un tipo subyacente:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">CaracterControlASCII</span><span class="p">:</span> <span class="nb">Character</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">tab</span> <span class="p">=</span> <span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span>
+    <span class="k">case</span> <span class="n">lineFeed</span> <span class="p">=</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+    <span class="k">case</span> <span class="n">carriageReturn</span> <span class="p">=</span> <span class="s">&quot;</span><span class="se">\r</span><span class="s">&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Se puede devolver el valor bruto de la siguiente forma:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>let nuevaLinea = CaracterControlASCII.lineFeed.rawValue
+</code></pre></div>
+<ul>
+<li>También se puede hacer de forma implícita cuando el tipo subyacente
+  es <code>Int</code>, dando un valor a la primera constante:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Planeta</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">mercurio</span><span class="p">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">venus</span><span class="p">,</span> <span class="n">tierra</span><span class="p">,</span> <span class="n">marte</span><span class="p">,</span> <span class="n">jupiter</span><span class="p">,</span> <span class="n">saturno</span><span class="p">,</span> <span class="n">urano</span><span class="p">,</span> <span class="n">neptuno</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">posicionTierra</span> <span class="p">=</span> <span class="n">Planeta</span><span class="p">.</span><span class="n">tierra</span><span class="p">.</span><span class="n">rawValue</span>
+<span class="c1">// posicionTierra es 3</span>
+</code></pre></div>
+<ul>
+<li>Por último, se puede definir como tipo subyacente <code>String</code> y los
+  valores brutos de las constantes serán sus nombres convertidos a
+  cadenas:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Direccion</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">norte</span><span class="p">,</span> <span class="n">sur</span><span class="p">,</span> <span class="n">este</span><span class="p">,</span> <span class="n">oeste</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">direccionAtardecer</span> <span class="p">=</span> <span class="n">Direccion</span><span class="p">.</span><span class="n">oeste</span><span class="p">.</span><span class="n">rawValue</span>
+<span class="c1">// direccionAtardecer es &quot;oeste&quot;</span>
+</code></pre></div>
+<ul>
+<li>Cuando se definen valores brutos es posible inicializar el enumerado
+  de una forma similar a una estructura o una clase pasando el valor
+  bruto. Devuelve el valor enumerado correspondiente o <code>nil</code> (un
+  opcional):</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">posiblePlaneta</span> <span class="p">=</span> <span class="n">Planeta</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="mi">7</span><span class="p">)</span>
+<span class="c1">// posiblePlaneta es de tipo Planeta? y es igual a Planeta.urano</span>
+</code></pre></div>
+<hr />
+<h3>Valores asociados a instancias de enumeraciones</h3>
+<ul>
+<li>En otros lenguajes de programación se llaman <em>uniones etiquetadas</em> o
+  <em>variantes</em>. Permiten asociar valores de otro tipo a las opciones
+  del enumerado.</li>
+<li>Una instancia de un <strong>caso de enumeración</strong> (<em>enum case</em>) puede
+  tener valores asociados con la instancia. Instancias del mismo caso
+  de enumeración pueden tener asociados valores diferentes. </li>
+<li>Se proporciona el valor asociado cuando se crea la instancia. </li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">CodigoBarras</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">upc</span><span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span>
+    <span class="k">case</span> <span class="n">qrCode</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Creación de las instancias:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">codigoBarrasProducto</span> <span class="p">=</span> <span class="n">CodigoBarras</span><span class="p">.</span><span class="n">upc</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">85909</span><span class="p">,</span> <span class="mi">51226</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">codigoBarrasProducto</span> <span class="p">=</span> <span class="p">.</span><span class="n">qrCode</span><span class="p">(</span><span class="s">&quot;ABCDEFGHIJKLMNOP&quot;</span><span class="p">)</span>
+
+<span class="k">switch</span> <span class="n">codigoBarrasProducto</span> <span class="p">{</span>
+<span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">upc</span><span class="p">(</span><span class="n">sistemaNumeracion</span><span class="p">,</span> <span class="n">fabricante</span><span class="p">,</span> <span class="n">producto</span><span class="p">,</span> <span class="n">control</span><span class="p">):</span>
+   <span class="bp">print</span><span class="p">(</span><span class="s">&quot;UPC: </span><span class="si">\(</span><span class="n">sistemaNumeracion</span><span class="si">)</span><span class="s">, </span><span class="si">\(</span><span class="n">fabricante</span><span class="si">)</span><span class="s">, </span><span class="si">\(</span><span class="n">producto</span><span class="si">)</span><span class="s">, </span><span class="si">\(</span><span class="n">control</span><span class="si">)</span><span class="s">.&quot;</span><span class="p">)</span>
+<span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">qrCode</span><span class="p">(</span><span class="n">codigoProducto</span><span class="p">):</span>
+   <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Código QR: </span><span class="si">\(</span><span class="n">codigoProducto</span><span class="si">)</span><span class="s">.&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Imprime  &quot;Código QR : ABCDEFGHIJKLMNOP.&quot;</span>
+</code></pre></div>
+<hr />
+<h3>Enumeraciones recursivas</h3>
+<ul>
+<li>Es posible combinar las características de las enumeraciones con
+valor con la recursión para crear enumeraciones recursivas. Hay que
+preceder la palabra clave <code>enum</code> con <code>indirect</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kr">indirect</span> <span class="kd">enum</span> <span class="nc">ExpresionAritmetica</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">numero</span><span class="p">(</span><span class="nb">Int</span><span class="p">)</span>
+    <span class="k">case</span> <span class="n">suma</span><span class="p">(</span><span class="n">ExpresionAritmetica</span><span class="p">,</span> <span class="n">ExpresionAritmetica</span><span class="p">)</span>
+    <span class="k">case</span> <span class="n">multiplicacion</span><span class="p">(</span><span class="n">ExpresionAritmetica</span><span class="p">,</span> <span class="n">ExpresionAritmetica</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">cinco</span> <span class="p">=</span> <span class="n">ExpresionAritmetica</span><span class="p">.</span><span class="n">numero</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">cuatro</span> <span class="p">=</span> <span class="n">ExpresionAritmetica</span><span class="p">.</span><span class="n">numero</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">suma</span> <span class="p">=</span> <span class="n">ExpresionAritmetica</span><span class="p">.</span><span class="n">suma</span><span class="p">(</span><span class="n">cinco</span><span class="p">,</span> <span class="n">cuatro</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">producto</span> <span class="p">=</span> <span class="n">ExpresionAritmetica</span><span class="p">.</span><span class="n">multiplicacion</span><span class="p">(</span><span class="n">suma</span><span class="p">,</span> <span class="n">ExpresionAritmetica</span><span class="p">.</span><span class="n">numero</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<ul>
+<li>Es muy cómodo manejar enumeraciones recursivas de forma recursiva:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">evalua</span><span class="p">(</span><span class="n">expresion</span><span class="p">:</span> <span class="n">ExpresionAritmetica</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="n">expresion</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">numero</span><span class="p">(</span><span class="n">valor</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">valor</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">suma</span><span class="p">(</span><span class="n">izquierda</span><span class="p">,</span> <span class="n">derecha</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">evalua</span><span class="p">(</span><span class="n">expresion</span><span class="p">:</span> <span class="n">izquierda</span><span class="p">)</span> <span class="o">+</span> <span class="n">evalua</span><span class="p">(</span><span class="n">expresion</span><span class="p">:</span> <span class="n">derecha</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">multiplicacion</span><span class="p">(</span><span class="n">izquierda</span><span class="p">,</span> <span class="n">derecha</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">evalua</span><span class="p">(</span><span class="n">expresion</span><span class="p">:</span> <span class="n">izquierda</span><span class="p">)</span> <span class="o">*</span> <span class="n">evalua</span><span class="p">(</span><span class="n">expresion</span><span class="p">:</span> <span class="n">derecha</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">evalua</span><span class="p">(</span><span class="n">expresion</span><span class="p">:</span> <span class="n">producto</span><span class="p">))</span>
+<span class="c1">// Imprime 18</span>
+</code></pre></div>
+<ul>
+<li>Otro ejemplo de enums recursivos, para definir un tipo de datos
+<code>Lista</code> basado en parejas (similar a Scheme):</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kr">indirect</span> <span class="kd">enum</span> <span class="nc">Lista</span><span class="p">{</span>
+ <span class="k">case</span> <span class="n">vacia</span>
+ <span class="k">case</span> <span class="n">cons</span><span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="n">Lista</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">suma</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">Lista</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+   <span class="k">switch</span> <span class="n">lista</span> <span class="p">{</span>
+   <span class="k">case</span>  <span class="p">.</span><span class="n">vacia</span><span class="p">:</span>
+     <span class="k">return</span> <span class="mi">0</span>
+   <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">cons</span><span class="p">(</span><span class="n">car</span><span class="p">,</span> <span class="n">cdr</span><span class="p">):</span>
+     <span class="k">return</span> <span class="n">car</span> <span class="o">+</span> <span class="n">suma</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">cdr</span><span class="p">)</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">z</span><span class="p">:</span> <span class="n">Lista</span> <span class="p">=</span> <span class="p">.</span><span class="n">cons</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="p">.</span><span class="n">cons</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">.</span><span class="n">vacia</span><span class="p">))</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">suma</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">z</span><span class="p">))</span>
+<span class="c1">// Imprime 30</span>
+</code></pre></div>
+<ul>
+<li>Podemos definir también una función recursiva <code>make(lista:[Int])</code>
+que devuelve una lista a partir de una array de enteros:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>func make(lista: [Int]) -&gt; Lista {
+    if let primero = lista.first {
+        let resto = Array(lista.dropFirst())
+        return Lista.cons(primero, make(lista: resto))
+    } else {
+        return Lista.vacia
+    }
+}
+
+let lista = make(lista: [1,2,3,4,5])
+
+print(suma(lista: lista))
+// Imprime 15
+</code></pre></div>
+<hr />
+<h3>Typealias</h3>
+<ul>
+<li>En Swift se define la palabra clave <code>typealias</code> para darle un nombre
+  asignado a cualquier otro tipo. Ambos tipos son iguales a todos los
+  efectos (es únicamente azúcar sintáctico).</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">typealias</span> <span class="n">Resultado</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span>
+
+<span class="kd">enum</span> <span class="nc">Quiniela</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">uno</span><span class="p">,</span> <span class="n">equis</span><span class="p">,</span> <span class="n">dos</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">quiniela</span><span class="p">(</span><span class="n">resultado</span><span class="p">:</span> <span class="n">Resultado</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Quiniela</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="n">resultado</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="p">(</span><span class="n">goles1</span><span class="p">,</span> <span class="n">goles2</span><span class="p">)</span> <span class="k">where</span> <span class="n">goles1</span> <span class="o">&lt;</span> <span class="n">goles2</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">.</span><span class="n">dos</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="p">(</span><span class="n">goles1</span><span class="p">,</span> <span class="n">goles2</span><span class="p">)</span> <span class="k">where</span> <span class="n">goles1</span> <span class="o">&gt;</span> <span class="n">goles2</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">.</span><span class="n">uno</span>
+    <span class="k">default</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">.</span><span class="n">equis</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">quiniela</span><span class="p">(</span><span class="n">resultado</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
+<span class="c1">// Imprime Dos</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">quiniela</span><span class="p">(</span><span class="n">resultado</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+<span class="c1">// Imprime Equis</span>
+</code></pre></div>
+<hr />
+<h3>6. Opcionales</h3>
+<hr />
+<ul>
+<li>En Swift el valor nulo se representa con <code>nil</code> (equivalente a <code>null</code>
+  en Java). </li>
+<li>No podemos asignar <code>nil</code> a una variable de un tipo dado:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// La siguiente línea daría un error en tiempo de compilación</span>
+<span class="c1">// let cadena: String = nil</span>
+</code></pre></div>
+<ul>
+<li>Los tipos opcionales de Swift permiten asignar a variables o bien un
+  valor propio del tipo o bien <code>nil</code></li>
+<li>Podemos definir como opcional variables, parámetros o valores
+  devueltos por funciones.</li>
+<li>Ejemplo: inicializador del tipo <code>Int</code> de Swift. Debido a que el
+  inicializador puede fallar, devuelve un <code>Int</code> <em>opcional</em>, en lugar
+  de un <code>Int</code>. Un <code>Int</code> opcional se escribe como <code>Int?</code>.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">posibleNumero</span> <span class="p">=</span> <span class="s">&quot;123&quot;</span>
+<span class="kd">let</span> <span class="nv">numeroConvertido</span> <span class="p">=</span> <span class="nb">Int</span><span class="p">(</span><span class="n">posibleNumero</span><span class="p">)</span>
+<span class="n">posibleNumero</span> <span class="p">=</span> <span class="s">&quot;Hola mundo&quot;</span>
+<span class="kd">let</span> <span class="nv">conversionErronea</span> <span class="p">=</span> <span class="nb">Int</span><span class="p">(</span><span class="n">posibleNumero</span><span class="p">)</span>
+<span class="c1">// numeroConvertido y conversionErronea son de tipo &quot;Int?&quot;, o &quot;Int opcional&quot;</span>
+<span class="c1">// El primero contiene un número y el segundo nil</span>
+</code></pre></div>
+- Para definir una variable como sin valor debemos asignarle el valor
+especial <code>nil</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">codigoRespuestaServidor</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="mi">404</span>
+<span class="c1">// codigoRespuestaServidor contine un valor Int de 404</span>
+<span class="n">codigoRespuestaServidor</span> <span class="p">=</span> <span class="kc">nil</span>
+<span class="c1">// codigoRespuestaServidor ahora no contiene ningún valor</span>
+</code></pre></div>
+<ul>
+<li>Una variable opcional sin asignar ningún valor se inicializa
+  automáticamente a <code>nil</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">respuestaEncuesta</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
+<span class="c1">// respuestaEncuesta es inicializado automáticamente a nil</span>
+</code></pre></div>
+<hr />
+<h3>Sentencias <code>if</code> y <em>desenvoltura forzosa</em></h3>
+<ul>
+<li>No se puede usar un opcional en expresiones en las que se espera un
+  tipo básico.</li>
+<li>Se puede usar un <code>if</code> para comprobar si un valor opcional es
+  distinto de <code>nil</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">numeroConvertido</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;numeroConvertido contiene algún valor entero.&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Imprime &quot;numeroConvertido contiene algún valor entero.&quot;</span>
+</code></pre></div>
+<ul>
+<li>Si estamos seguros de que el opcional contiene un valor, podemos
+  acceder a él usando un signo de exclamación (<code>!</code>). Esto se conoce
+  como <em>desenvoltura forzosa</em> (<em>forced unwrapping</em>) del valor
+  opcional:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">numeroConvertido</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">numero</span> <span class="p">=</span> <span class="n">numeroConvertido</span><span class="p">!</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;numeroConvertido tiene un valor entero de </span><span class="si">\(</span><span class="n">numero</span><span class="si">)</span><span class="s">.&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Imprime &quot;numeroConvertido tiene un valor entero de 123.&quot;</span>
+</code></pre></div>
+<ul>
+<li>Si se desenvuelve un opcional que contiene un <code>nil</code> se causa un error
+en tiempo de ejecución:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">x</span> <span class="p">=</span> <span class="nb">Int</span><span class="p">(</span><span class="s">&quot;Hola&quot;</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">y</span> <span class="p">=</span> <span class="n">x</span><span class="p">!</span> <span class="o">+</span> <span class="mi">100</span>
+<span class="c1">// La sentencia anterior provoca un error en tiempo de ejecución</span>
+</code></pre></div>
+<hr />
+<h3>Ligado opcional</h3>
+<ul>
+<li>Es posible comprobar si un opcional tiene valor y asignar su valor a
+  otra variable al mismo tiempo con una construcción llamada <em>ligado
+  opcional</em> (<em>optional binding</em>):</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="kd">let</span> <span class="nv">numeroVerdadero</span> <span class="p">=</span> <span class="nb">Int</span><span class="p">(</span><span class="n">posibleNumero</span><span class="p">)</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\&quot;</span><span class="si">\(</span><span class="n">posibleNumero</span><span class="si">)</span><span class="se">\&quot;</span><span class="s"> tiene un valor entero de </span><span class="si">\(</span><span class="n">numeroVerdadero</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\&quot;</span><span class="si">\(</span><span class="n">posibleNumero</span><span class="si">)</span><span class="se">\&quot;</span><span class="s"> no ha podido convertirse en un entero&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Imprime &quot;&quot;123&quot; tiene un valor entero de 123&quot;</span>
+</code></pre></div>
+<hr />
+<h3>Ejemplo de <code>minMax</code> con opcional</h3>
+<ul>
+<li>Como ejemplo de uso de opcionales adaptamos el ejemplo anterior de la
+función <code>minMax</code> para que pueda recibir un array vacío, en cuyo caso
+devolverá <code>nil</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">minMax</span><span class="p">(</span><span class="n">array</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="bp">min</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="bp">max</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)?</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">array</span><span class="p">.</span><span class="bp">isEmpty</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">nil</span> <span class="p">}</span>
+    <span class="kd">var</span> <span class="nv">minActual</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="kd">var</span> <span class="nv">maxActual</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">valor</span> <span class="k">in</span> <span class="n">array</span><span class="p">[</span><span class="mf">1.</span><span class="p">.&lt;</span><span class="n">array</span><span class="p">.</span><span class="bp">count</span><span class="p">]</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">valor</span> <span class="o">&lt;</span> <span class="n">minActual</span> <span class="p">{</span>
+            <span class="n">minActual</span> <span class="p">=</span> <span class="n">valor</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">valor</span> <span class="o">&gt;</span> <span class="n">maxActual</span> <span class="p">{</span>
+            <span class="n">maxActual</span> <span class="p">=</span> <span class="n">valor</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">minActual</span><span class="p">,</span> <span class="n">maxActual</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Tendremos entonces que llamar a la función comprobando si el valor
+  devuelto es distinto de <code>nil</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="kd">let</span> <span class="nv">limites</span> <span class="p">=</span> <span class="n">minMax</span><span class="p">(</span><span class="n">array</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">71</span><span class="p">])</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;min es </span><span class="si">\(</span><span class="n">limites</span><span class="p">.</span><span class="bp">min</span><span class="si">)</span><span class="s"> y max es </span><span class="si">\(</span><span class="n">limites</span><span class="p">.</span><span class="bp">max</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Imprime &quot;min es -6 y max es 109&quot;</span>
+</code></pre></div>
+<ul>
+<li>En el caso anterior sabemos que <code>limites</code> va a devolver un valor
+(porque llamamos a <code>minMax</code> con un array con elementos), por lo que
+podemos desenvolverlo sin temor de provocar un error. </li>
+<li>Sin embargo, en el ejemplo siguiente no es recomendable hacer una
+desenvoltura forzosa, porque no sabemos si <code>minMax</code> va a devolver
+<code>nil</code> o no. Hacemos un ligado opcional :</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">valores</span> <span class="p">=</span> <span class="n">pedirNums</span><span class="p">()</span> <span class="c1">// La función pedirNums() pide una lista de </span>
+                          <span class="c1">// números por la entrada estándar y</span>
+                          <span class="c1">// devuelve un [Int] (que puede estar vacío)</span>
+<span class="k">if</span> <span class="kd">let</span> <span class="nv">limites</span> <span class="p">=</span> <span class="n">minMax</span><span class="p">(</span><span class="n">valores</span><span class="p">)</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;min es </span><span class="si">\(</span><span class="n">limites</span><span class="p">.</span><span class="bp">min</span><span class="si">)</span><span class="s"> y max es </span><span class="si">\(</span><span class="n">limites</span><span class="p">.</span><span class="bp">max</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;No hay números&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3>Ejemplo de <code>Lista</code> con opcional</h3>
+<p>Otra versión del enum <code>Lista</code> usando esta vez un opcional:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">indirect</span> <span class="kd">enum</span> <span class="nc">Lista</span><span class="p">{</span>
+    <span class="k">case</span> <span class="n">cons</span><span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="n">Lista</span><span class="p">?)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">suma</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">Lista</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="n">lista</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">cons</span><span class="p">(</span><span class="n">car</span><span class="p">,</span> <span class="n">cdr</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">cdr</span> <span class="p">==</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">car</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">car</span> <span class="o">+</span> <span class="n">suma</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">cdr</span><span class="p">!)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">z</span><span class="p">:</span> <span class="n">Lista</span> <span class="p">=</span> <span class="p">.</span><span class="n">cons</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="p">.</span><span class="n">cons</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="kc">nil</span><span class="p">))</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">suma</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">z</span><span class="p">))</span>
+</code></pre></div></body>
+
+</html>
