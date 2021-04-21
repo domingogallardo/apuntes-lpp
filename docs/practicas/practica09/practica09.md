@@ -1,9 +1,9 @@
-# Práctica 9: Programación funcional en Swift: clausuras y funciones de orden superior
+# Práctica 8: Programación funcional en Swift (1)
 
 ## Entrega de la práctica
 
 Para entregar la práctica debes subir a Moodle el fichero
-`practica09.swift` con una cabecera inicial con tu nombre y apellidos,
+`practica08.swift` con una cabecera inicial con tu nombre y apellidos,
 y las soluciones de cada ejercicio separadas por comentarios. Cada
 solución debe incluir:
 
@@ -11,288 +11,244 @@ solución debe incluir:
 - Una visualización por pantalla de todos los ejemplos incluidos en el
   enunciado que **demuestren qué hace la función**.
 
+!!! Warning "Importante" 
+    Antes de proceder a realizar los ejercicios de la
+    práctica te recomendamos que realices y pruebes los ejemplos
+    presentados en el [seminario de
+    Swift](https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario2-swift/seminario2-swift.html)
+    y los [apuntes de
+    teoría](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html)
+    de la primera parte del tema de Programación Funcional en Swift.
+    
+
 ## Ejercicios
 
-!!! Warning "Importante"
-    Antes de empezar la práctica debes estudiar los apartados de
-    teoría del tema de Programación Funcional en Swift:
-    
-    - [Opcionales](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#opcionales)
-    - [Clausuras](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#clausuras)
-    - [Funciones de orden superior](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#funciones-de-orden-superior)
-    - [Genéricos](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#genericos)
-    
 ### Ejercicio 1 ###
 
-a) Indica qué devuelven las siguientes expresiones:
-
-a.1)
-```swift
-let nums = [1,2,3,4,5,6,7,8,9,10]
-nums.filter{$0 % 3 == 0}.count
-```
-
-a.2)
-```swift
-let nums2 = [1,2,3,4,5,6,7,8,9,10]
-nums2.map{$0+100}.filter{$0 % 5 == 0}.reduce(0,+)
-```
-
-a.3)
-```swift
-let cadenas = ["En", "un", "lugar", "de", "La", "Mancha"]
-cadenas.sorted{$0.count < $1.count}.map{$0.count}
-```
-
-
-a.4)
-```swift
-let cadenas2 = ["En", "un", "lugar", "de", "La", "Mancha"]
-cadenas2.reduce([]) {
-    (res: [(String, Int)], c: String) -> [(String, Int)] in
-        res + [(c, c.count)]}.sorted(by: {$0.1 < $1.1})
-```
-
-
-b) Explica qué hacen las siguientes funciones y pon un ejemplo de su funcionamiento:
-
-b.1)
-```swift
-func f(nums: [Int], n: Int) -> Int {
-    return nums.filter{$0 == n}.count
-}
-```
-
-
-b.2)
-```swift
-func g(nums: [Int]) -> [Int] {
-    return nums.reduce([], {
-        (res: [Int], n: Int) -> [Int] in
-            if !res.contains(n) {
-                return res + [n]
-            } else {
-                return res
-            }
-    })
-}
-```
-
-
-b.3)
-```swift
-func h(nums: [Int], n: Int) -> ([Int], [Int]) {
-   return nums.reduce(([],[]), {
-       (res: ([Int],[Int]), num: Int ) -> ([Int],[Int]) in
-           if (num >= n) {
-               return (res.0, res.1 + [num])
-           } else {
-               return ((res.0 + [num], res.1))
-           }
-   })
-}
-```
-
-c) Implementa las siguientes funciones con funciones de orden superior.
-
-c.1) Función `suma(palabras:contienen:)`:
-
-```swift
-suma(palabras: [String], contienen: Character) -> Int
-```
-
-que recibe una array de cadenas y devuelve la suma de las longitudes
-de las cadenas que contiene el carácter que se pasa como parámetro.
-
-
-c.2) Función `sumaMenoresMayores(nums:pivote:)`:
-
-```swift
-sumaMenoresMayores(nums: [Int], pivote: Int) -> (Int, Int)
-```
-
-que recibe un array de números y un número pivote y
-devuelve una tupla con la suma de los números menores y mayores o
-iguales que el pivote.
-
-
-### Ejercicio 2
-
-
-Define un tipo enumerado con un árbol genérico, tal y como hicimos en
-el último ejercicio de la práctica anterior, que tenga como genérico
-el tipo de dato que contiene.
-
-En el siguiente ejemplo vemos cómo debería poderse definir con el
-mismo tipo genérico un árbol de enteros y un árbol de cadenas:
-
-```swift
-let arbolInt: Arbol = .nodo(53, 
-                            [.nodo(13, []), 
-                             .nodo(32, []), 
-                             .nodo(41, 
-                                   [.nodo(36, []), 
-                                    .nodo(39, [])
-                                   ])
-                            ])
-let arbolString: Arbol = .nodo("Zamora", 
-                               [.nodo("Buendía", 
-                                      [.nodo("Albeza", []), 
-                                       .nodo("Berenguer", []), 
-                                       .nodo("Bolardo", [])
-                                      ]), 
-                                .nodo("Galván", [])
-                               ])
-```
-
-
-Define las funciones genéricas `toArray` y `toArrayFOS` que devuelvan un array con todos
-los componentes del árbol usando un recorrido _preorden_ (primero la
-raíz y después los hijos). La primera la debes implementar con
-recursión mutua y la segunda usando funciones de orden superior.
+a) Implementa en Swift la función recursiva
+`prefijos(prefijo:palabras:)` que recibe una cadena y un array de
+palabras. Devuelve un array de `Bool` con los booleanos resultantes de
+comprobar si la cadena es prefijo de cada una de las palabras de la
+lista.
 
 Ejemplo:
 
 ```swift
-print(toArray(arbol: arbolInt))
-// Imprime: [53, 13, 32, 41, 36, 39]
-print(toArrayFOS(arbol: arbolString))
-// Imprime: ["Zamora", "Buendía", "Albeza", "Berenguer", "Bolardo", "Galván"]
+let array = ["anterior", "antígona", "antena"]
+let prefijo = "ante"
+print("prefijos(prefijo: \(prefijo), palabras: \(array))")
+print(prefijos(prefijo: prefijo, palabras: array))
+// Imprime:
+// prefijos(prefijo: ante, palabras: ["anterior", "antígona", "antena"])
+// [true, false, true]
+```
+
+b) Implementa en Swift la función recursiva `parejaMayorParImpar(numeros:)` que
+recibe un array de enteros positivos y devuelve una pareja con dos
+enteros: el primero es el mayor número impar y el segundo el mayor
+número par. Si no hay ningún número par o impar se devolverá un 0.
+
+```swift
+let numeros = [10, 201, 12, 103, 204, 2]
+print("parejaMayorParImpar(numeros: \(numeros))")
+print(parejaMayorParImpar(numeros: numeros))
+// Imprime:
+// parejaMayorParImpar(numeros: [10, 201, 12, 103, 204, 2])
+// (201, 204)
 ```
 
 
-### Ejercicio 3
+### Ejercicio 2 ###
 
-Implementa en Swift la función `imprimirListadosNotas(alumnos:)` que
-recibe un array de tuplas, en donde cada tupla contiene información de
-la evaluación de un alumno de LPP (nombreAlumno, notaParcial1,
-notaParcial2, notaParcial3, añosMatriculacion) y que debe imprimir por pantalla los
-siguientes listados: 
+a) Implementa en Swift la **función recursiva**
+`compruebaParejas(_:funcion:)` con el siguiente perfil:
 
-- listado 1: array ordenado por nombre del alumno (orden alfabético
-creciente) 
-- listado 2: array ordenado por la nota del parcial 1 (orden
-decreciente de nota) 
-- listado 3: array ordenado por la nota del parcial 2 (orden creciente
-de nota) 
-- listado 4: array ordenado por año de matriculación y nota del
-  parcial 3 (orden decreciente de año y nota) 
-- listado 5: array ordenado por nota final (media de los tres
-parciales, ponderados en: 0,34, 0,33, 0,33) (orden decreciente de nota final)
- 
-Las ordenaciones hay que realizarlas usando la función `sorted`.
+```
+([Int], (Int) -> Int) -> [(Int, Int)]
+```
 
-!!! Note "Nota"
-    Para que los listados se muestren formateados con espacios, puedes usar la siguiente
-    función (para ello también debes incluir el import que se indica)
- 
-    ```swift
+La función recibe dos parámetros: un `Array` de enteros y una función
+que recibe un entero y devuelve un entero. La función devolverá un
+array de tuplas que contiene las tuplas formadas por aquellos números
+contiguos del primer array que cumplan que el número es el resultado
+de aplicar la función al número situado en la posición anterior.
 
-    import Foundation
-
-    func imprimirListadoAlumnos(_ alumnos: [(String, Double, Double, Double, Int)]) {
-        print("Alumno   Parcial1   Parcial2   Parcial3  Años")
-        for alu in alumnos {
-            alu.0.withCString {
-                print(String(format:"%-10s %5.2f      %5.2f    %5.2f  %3d", $0, alu.1,alu.2,alu.3,alu.4))
-            }
-        }
-    }
-    ```
-
- 
 Ejemplo:
 
 ```swift
-let listaAlumnos = [("Pepe", 8.45, 3.75, 6.05, 1), 
-                    ("Maria", 9.1, 7.5, 8.18, 1), 
-                    ("Jose", 8.0, 6.65, 7.96, 1),
-                    ("Carmen", 6.25, 1.2, 5.41, 2), 
-                    ("Felipe", 5.65, 0.25, 3.16, 3), 
-                    ("Carla", 6.25, 1.25, 4.23, 2), 
-                    ("Luis", 6.75, 0.25, 4.63, 2), 
-                    ("Loli", 3.0, 1.25, 2.19, 3)]
-imprimirListadosNotas(listaAlumnos)
+func cuadrado(x: Int) -> Int {
+   return x * x
+}
+print(compruebaParejas([2, 4, 16, 5, 10, 100, 105], funcion: cuadrado))
+// Imprime [(2,4), (4,16), (10,100)]
 ```
- 
-Algunos de los listados que se deben mostrar serían los siguientes:
 
-```txt
-LISTADO ORIGINAL
-Alumno   Parcial1   Parcial2   Parcial3  Años
-Pepe        8.45       3.75     6.05    1
-Maria       9.10       7.50     8.18    1
-Jose        8.00       6.65     7.96    1
-Carmen      6.25       1.20     5.41    2
-Felipe      5.65       0.25     3.16    3
-Carla       6.25       1.25     4.23    2
-Luis        6.75       0.25     4.63    2
-Loli        3.00       1.25     2.19    3
+b) Implementa en Swift la **función recursiva**
+`coinciden(parejas: [(Int,Int)], funcion: (Int)->Int)` que devuelve
+un array de booleanos que indica si el resultado de aplicar la función
+al primer número de cada pareja coincide con el segundo.
 
-LISTADO ORDENADO por Parcial1 (decreciente)
-Alumno   Parcial1   Parcial2   Parcial3  Años
-Loli        3.00       1.25     2.19    3
-Felipe      5.65       0.25     3.16    3
-Carmen      6.25       1.20     5.41    2
-Carla       6.25       1.25     4.23    2
-Luis        6.75       0.25     4.63    2
-Jose        8.00       6.65     7.96    1
-Pepe        8.45       3.75     6.05    1
-Maria       9.10       7.50     8.18    1
+    
+```swift
+let array = [(2,4), (4,14), (4,16), (5,25), (10,100)]
+func cuadrado(x: Int) -> Int {
+   return x * x
+}
+print("Resultado coinciden:  \(coinciden(parejas: array, funcion: cuadrado))\n")
+// Imprime: Resultado coinciden:  [true, false, true, true, true]
 ```
 
 
-### Ejercicio 4
+### Ejercicio 3 ###
 
-Dado el array `listaAlumnos` del ejercicio anterior, utiliza funciones
-de orden superior para obtener los datos requeridos en cada caso.
+Supongamos que estamos escribiendo un programa que debe tratar
+movimientos de cuentas bancarias. Define un enumerado `Movimiento `
+con valores asociados con el que podamos representar:
 
-A) Número de alumnos que han aprobado primer parcial y suspendido el segundo
+- Depósito (valor asociado: `(Double)`)
+- Cargo de un recibo (valor asociado: `(String, Double)`)
+- Cajero (valor asociado: `(Double)`)
+
+Y define la función `aplica(movimientos:[Movimiento])` que reciba un
+array de movimientos y devuelva una pareja con el dinero resultante de acumular todos
+los movimientos y un array de Strings con todos los cargos realizados.
+
+Ejemplo:
+
 
 ```swift
-print(listaAlumnos. ________________________________ )
-// Resultado: 5
+let movimientos: [Movimiento] = [.deposito(830.0), .cargoRecibo("Gimnasio", 45.0), .deposito(400.0), .cajero(100.0), .cargoRecibo("Fnac", 38.70)]
+print(aplica(movimientos: movimientos))
+//Imprime (1046.3, ["Gimnasio", "Fnac"])
 ```
 
-B) Alumnos que han aprobado la asignatura (tienen una nota final >= 5)
+
+### Ejercicio 4 ###
+
+Implementa en Swift un tipo enumerado recursivo que permita construir
+árboles binarios de enteros. El enumerado debe tener 
+
+- un caso en el que guardar tres valores: un `Int` y dos árboles
+binarios (el hijo izquierdo y el hijo derecho)
+- otro caso constante: un árbol binario vacío 
+
+Llamaremos al tipo `ArbolBinario` y a los casos `nodo` y `vacio`.
+
+Impleméntalo de forma que el siguiente ejemplo funcione correctamente:
 
 ```swift
-print(listaAlumnos._______________________________ )
-
-// Resultado: ["Pepe", "Maria", "Jose"]
+let arbol: ArbolBinario = .nodo(8, .nodo(2, .vacio, .vacio), .nodo(12, .vacio, .vacio))
 ```
 
-C) Nota media de todos los alumnos en forma de tupla `(media_p1, media_p2, media_p3)`
+Implementa también la función `suma(arbolb:)` que reciba una instancia de
+árbol binario y devuelva la suma de todos sus nodos:
 
 ```swift
-var tupla = listaAlumnos._____________________________________ )
-tupla = (tupla.0 / Double(listaAlumnos.count), tupla.1 / Double(listaAlumnos.count), tupla.2 / Double(listaAlumnos.count))
-print(tupla)
-// Resultado: (6.6812499999999995, 2.7624999999999997, 5.2262500000000003)
+print(suma(arbolb: arbol))
+// Imprime: 22
 ```
+
 
 ### Ejercicio 5 ###
 
+Implementa en Swift un tipo enumerado recursivo que permita construir
+árboles de enteros usando el mismo enfoque que en Scheme: un nodo está
+formado por un dato (un `Int`) y una colección de árboles
+hijos. Llamaremos al tipo `Arbol`.
 
-Implementa la función `construye` con el siguiente perfil:
+Impleméntalo de forma que el siguiente ejemplo funcione correctamente:
 
 ```swift
-func construye(operador: Character) -> (Int, Int) -> Int
+
+/*
+Definimos el árbol
+
+    10
+   / | \
+  3  5  8
+  |
+  1
+
+*/
+
+let arbol1 = Arbol.nodo(1, [])
+let arbol3 = Arbol.nodo(3, [arbol1])
+let arbol5 = Arbol.nodo(5, [])
+let arbol8 = Arbol.nodo(8, [])
+let arbol10 = Arbol.nodo(10, [arbol3, arbol5, arbol8])
 ```
 
-La función recibe un operador que puede ser uno de los siguientes
-caracteres: `+`, `-`, `*`, `/` y debe devolver una clausura que reciba
-dos argumentos y realice la operación indicada sobre ellos.
+Implementa también la función `suma(arbol:cumplen:)` que reciba una instancia de
+árbol y una función `(Int) -> Bool` que comprueba una
+condición sobre el nodo. La función debe devolver la suma de todos los
+nodos del árbol que cumplan la condición. 
+
+Implementa la función usando la misma estrategia que ya utilizamos en
+Scheme de definir una función auxiliar `suma(bosque:cumplen:)` y una recursión
+mutua.
+
+
+```swift
+func esPar(x: Int) -> Bool {
+    return x % 2 == 0
+}
+
+print("La suma del árbol es: \(suma(arbol: arbol10, cumplen: esPar))")
+// Imprime: La suma del árbol genérico es: 18
+```
+
+### Ejercicio 6 ###
+
+a) Define la función `maxOpt(_ x: Int?, _ y: Int?) -> Int?` que
+devuelve el máximo de dos enteros opcionales. En el caso en que ambos
+sean `nil` se devolverá `nil`. En el caso en que uno sea `nil` y el
+otro no se devolverá el entero que no es `nil`. En el caso en que
+ningún parámetro sea `nil` se devolverá el mayor.
 
 Ejemplo:
 
 ```swift
-var f = construye(operador: "+")
-print(f(2,3))
-// Imprime 5
-f = construye(operador: "-")
-print(f(2,3))
-// Imprime -1
+let res1 = maxOpt(nil, nil) 
+let res2 = maxOpt(10, nil)
+let res3 = maxOpt(-10, 30)
+print("res1 = \(String(describing: res1))")
+print("res2 = \(String(describing: res2))")
+print("res3 = \(String(describing: res3))")
+// Imprime:
+// res1 = nil
+// res2 = Optional(10)
+// res3 = Optional(30)
+
+```
+
+b1) Escribe una nueva versión del ejercicio 1b) que permita recibir
+números negativos y que devuelva una pareja de `(Int?, Int?)` con
+`nil` en la parte izquierda y/o derecha si no hay número impares o
+pares. 
+
+Ejemplo:
+
+```swift
+let numeros2 = [-10, 202, 12, 100, 204, 2]
+print("parejaMayorParImpar2(numeros: \(numeros2))")
+print(parejaMayorParImpar2(numeros: numeros2))
+// Imprime:
+// parejaMayorParImpar2(numeros: [-10, 202, 12, 100, 204, 2])
+// (nil, Optional(204))
+```
+
+b2) Escribe la función `sumaMaxParesImpares(numeros: [Int]) -> Int`
+que llama a la función anterior y devuelve la suma del máximo de los
+pares y el máximo de los impares. El array de números tendrá como
+mínimo un elemento, por lo que el valor devuelto por la función será
+un `Int` (no será `Int?`).
+
+```swift
+print("sumaMaxParesImpares(numeros: \(numeros2))")
+print(sumaMaxParesImpares(numeros: numeros2))
+// Imprime:
+// sumaMaxParesImpares(numeros: [-10, 202, 12, 100, 204, 2])
+// 204
 ```
 
 ----

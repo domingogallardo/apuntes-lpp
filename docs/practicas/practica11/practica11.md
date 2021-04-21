@@ -1,17 +1,97 @@
-
-# Práctica 11: Programación Orientada a Objetos en Swift (2)
+# Práctica 10: Programación Orientada a Objetos en Swift
 
 ## Entrega de la práctica
 
 Para entregar la práctica debes subir a Moodle el fichero
-`practica11.swift` con una cabecera inicial con tu nombre y apellidos,
+`practica10.swift` con una cabecera inicial con tu nombre y apellidos,
 y las soluciones de cada ejercicio separadas por comentarios.
 
-## Ejercicios
 
-### Ejercicio 1 ###
+### Ejercicio 1 (repaso de clausuras)###
 
-a) Escribe un ejemplo de código en el que definas una relación de
+Un ejercicio de repaso del apartado de clausuras del tema anterior. En
+este caso, se hace énfasis en las clausuras con estado local mutable.
+
+a) ¿Qué se imprime al ejecutar el siguiente programa? Reflexiona sobre el
+funcionamiento del código, compruébalo con el compilador y experimenta
+haciendo cambios y comprobando el resultado.
+
+
+```swift
+var x = 0
+
+func construye() -> () -> Int {
+  var x = 10
+  return {
+    x = x + 5
+    return x
+  }
+}
+
+
+func usa(funcion: () -> Int) {
+  var x = 20
+  print(funcion())
+}
+
+let g = construye()
+usa(funcion: g)
+usa(funcion: g)
+```
+
+b) Completa el siguiente código para que compile y funcione
+correctamente e imprima lo indicado. El hueco puede contener más de
+una línea de código.
+
+```swift
+var array : [() -> Int] = []
+ 
+func foo() -> Void {
+   var x = 0
+   array.append ___________
+}
+ 
+foo()
+foo()
+print(array[0]()) // Imprime 10
+print(array[0]()) // Imprime 20
+print(array[1]()) // Imprime 10
+```
+
+
+### Ejercicio 2 ###
+
+a) El siguiente código usa observadores de propiedades y una variable
+del tipo (estática). 
+
+¿Qué se imprime al final de su ejecución? Reflexiona sobre el
+funcionamiento del código, compruébalo con el compilador y experimenta
+haciendo cambios y comprobando el resultado.
+
+```swift
+struct Valor {
+    var valor: Int = 0 {
+        willSet {
+            Valor.z += newValue
+        }        
+        didSet {
+            if valor > 10 {
+                valor = 10
+            }
+        }
+    }
+    static var z = 0
+}
+
+var c1 = Valor()
+var c2 = Valor()
+c1.valor = 20
+c2.valor = 8
+print(c1.valor + c2.valor + Valor.z)
+```
+
+
+b) Escribe un ejemplo de código en el que definas una relación de
 herencia entre una clase base y una clase derivada. Comprueba en el
 código que un objeto de la clase derivada hereda las propiedades y
 métodos de la clase base.
@@ -29,353 +109,160 @@ calculada?
   base en una sobreescritura de ese mismo método en la clase derivada?
 
 
-b) El siguiente código tiene errores. Intenta descubrir cuáles son sin
-utilizar el compilador. Prueba distintas formas de arreglar el código
-cambiando lo mínimo posible de lo ya definido (por ejemplo, no debes
-añadir nuevas propiedades en `MiStruct`). Compruébalo con el compilador.
+### Ejercicio 3 ###
 
-```swift
-protocol A {
-    var a: String {get set}
-    func foo(a: Int, b: Int) -> Int?
-}
+Tenemos que escribir un programa que permita definir resultados de
+partidos de fútbol y calcular la puntuación de un conjunto de equipos
+una vez que se han jugado esos partidos.
 
-protocol B {
-    mutating func bar()
-}
+Escribe código en Swift que permita resolver el problema, **utilizando structs**.
 
-struct MiStruct: A, B {
-    let a = 10
-    func foo(valor1 a: Int, valor2 b: Int) -> Int {
-        let res = a > 10 ? a: b
-        return res
-    }
-}
-```
-
-c) Repasa el protocolo `GeneradorNumerosAleatorios` visto en
-teoría. Define otra implementación del protocol llamada
-`GeneradorFake` en la que siempre se devuelva el número `0.1`. Cambia
-el ejemplo del dado para que utilice este generador y comprueba que
-siempre devuelve el número 1.
-
-c) Supongamos la estructura `Equipo` que aparece a continuación que
-representa un equipo en una competición deportiva: 
-
-```swift
-struct Equipo {
-    let puntos: Int
-    let nombre: String
-}
-```
-
-Debes hacer que la estructura se ajuste al protocolo `Comparable` para
-poder comparar dos equipos . Consulta el protocolo en [documentación
-de
-Swift](https://developer.apple.com/documentation/swift/comparable). Un
-equipo será menor que otro cuando tenga menos puntos. En el caso en
-que ambos tengan los mismos puntos, será menor el que tenga menor
-nombre en orden alfabético.
-
-Una vez definidos los operadores necesarios comprueba que funcionan
-correctamente creando varios equipos, insertándolos en un array y
-llamando al método `sorted`.
-
-
-### Ejercicio 2
-
-En este ejercicio deberás implementar un conjunto de clases con las
-que podamos "simular" una carrera de coches.
-
-#### Función `random`
-
-Utilizaremos la función del sistema `random()` que devuelve un número
-aleatorio. Hay que importar la librería `Glibc` (en Linux) y
-`Foundation` (en iOS) para usarla.
-
-A continuación puedes ver un ejemplo de su utilización en un método de
-tipo del enumerado `MarcaCoche` para devolver una marca aleatoria de
-coche:
-
-
-```swift
-import Glibc
-
-func rand(n: Int) -> Int {
-    return random() % n
-}
-
-enum MarcaCoche: Int {
-    case Mercedes=0, Ferrari, RedBull, McLaren
-    
-    static func random() -> MarcaCoche {
-        let maxValue = McLaren.rawValue
-        
-        let r = rand(maxValue+1)
-        return MarcaCoche(rawValue: r)!
-    }
-
-}
-```
-
-#### Enumerados y clases que gestionan los vehículos
-
-Deberás implementar los siguientes enumerados y clases, con las propiedades indicadas.
-
-**Enumerado `MarcaCoche`** 
-
-- Posibles valores: `Mercedes`, `Ferrari`, `RedBull` y `McLaren`
-- Método del tipo `random()` que devuelva aleatoriamente uno de los
-  valores (consultar el código anterior).
-
-**Enumerado `TipoCambio`**
-
-- Posibles valores: `Automatico` o `Manual`
-- Método del tipo `random()` que devuelve uno de esos valores.
-
-**Clase base `Coche`**
-
-- Propiedades de instancia almacenadas: `velocidadActual` (`Double`),
-  `marcha` (`Int`), `distanciaRecorrida` (`Double`) y `marca`
-  (`MarcaCoche`).
-- Propiedad de instancia calculada: `descripcion` (`String`), que
-  devuelve la marca del coche.
-- Propiedades del tipo: Constantes `velocidadMaxima` (`Double`) y
-  `marchaMaxima` (`Int`) inicializadas a 150.0 y 6
-
-**Subclase `CocheAutomatico`**
-
-- Hereda de `Coche` y sobreescribe la descripción, añadiendo la cadena
-  "Automático".
-
-**Subclase `CocheManual`**
-
-- Hereda de `Coche` y sobreescribe la descripción, añadiendo la cadena
-  "Manual".
-
-**Observadores de propiedades en las subclases**
-
-La velocidad de un coche manual se modifica cambiando su propiedad
-`marcha` y la de un coche automático cambiando su propiedad
-`velocidadActual`. En cada caso hay que definir observadores de
-propiedades que modifiquen la otra propiedad.
-
-La velocidad se calcula a partir de la marcha según la siguiente expresión:
-
-```swift
-velocidadActual = 25.0 * marcha
-```
-
-Y la marcha se calcula a partir de la velocidad con la expresión que
-puedes encontrar en los apuntes de teoría, en la definición de la
-clase `CocheAutomatico`.
-
-
-**Distancia recorrida e información en pantalla**
-
-Suponemos que se cambia la velocidad del coche cada hora y que en cada
-cambio de velocidad se actualiza la propiedad `distanciaRecorrida`,
-que irá acumulando la distancia recorrida por el coche desde su
-inicialización. Cada vez que se cambia la velocidad también se
-imprimirá la velocidad actual y la marca del coche en pantalla (ver el
-ejemplo al final del ejercicio). Esto se puede implementar también en
-los observadores.
-
-#### Clase Carrera
-
-Debes implementar las clases anteriores y una clase `Carrera` con la
-que simular una carrera de `n` coches que conducen durante `k` horas.
-
-Un ejemplo de uso de la clase `Carrera`:
-
-```swift
-let carrera = Carrera(numCoches: 2, horas: 3)
-print("\nDescripción de la carrera:")
-carrera.descripcion()
-print("\n!!! Comienza la carrera !!!")
-carrera.empezar()
-print("\n!!! Clasificación !!!")
-carrera.clasificacion()
-```
-
-Y su correspondiente salida por pantalla:
+Un ejemplo de ejecución del código debería ser cómo sigue:
 
 ```text
-Descripción de la carrera:
-2 coches con una duración de 3 horas
- McLaren Automatico
- Mercedes Manual
-
-!!! Comienza la carrera !!!
-
-Horas transcurridas 1
-McLaren Automatico viajando a 141.0 kilómetros por hora con la marcha 6
-Mercedes Manual viajando a 25.0 kilómetros por hora con la marcha 1
-
-Horas transcurridas 2
-McLaren Automatico viajando a 114.0 kilómetros por hora con la marcha 5
-Mercedes Manual viajando a 25.0 kilómetros por hora con la marcha 1
-
-Horas transcurridas 3
-McLaren Automatico viajando a 105.0 kilómetros por hora con la marcha 5
-Mercedes Manual viajando a 100.0 kilómetros por hora con la marcha 4
-
-!!! Clasificación !!!
-1. McLaren Automatico (360.0 kilómetros recorridos)
-2. Mercedes Manual (150.0 kilómetros recorridos)
+--------------
+Puntuación antes de los partidos:
+Real Madrid: 0 puntos
+Barcelona: 0 puntos
+Atlético Madrid: 0 puntos
+Valencia: 0 puntos
+Athlétic Bilbao: 0 puntos
+Sevilla: 0 puntos
+--------------
+Resultados:
+Real Madrid 0 - Barcelona 3
+Sevilla 1 - Athlétic Bilbao 1
+Valencia 2 - Atlético Madrid 1
+--------------
+Puntuación después de los partidos:
+Real Madrid: 0 puntos
+Barcelona: 3 puntos
+Atlético Madrid: 0 puntos
+Valencia: 3 puntos
+Athlétic Bilbao: 1 puntos
+Sevilla: 1 puntos
 ```
 
-
-
-### Ejercicio 3 ##
-
-
-a) Completa el bucle con el código que comprueba el tipo de la variable
-`i` e imprime su propiedad `x` y su propiedad `b` o `c`, dependiendo
-de su tipo.
-
-```swift
-protocol X {
-   var x: Int { get }
-}
-class Xb: A {
-   var x = 0
-   var b = 0
-}
-class Xc: A {
-   var x = 1
-   var c = 0
-}
-
-var array: [X] = [Xb(), Xc()]
-for i in array {
-   //
-   // Código a completar
-   //
-}
-
-// debe imprimir:
-// x: 0, b: 0
-// x: 1, c: 0
-```
-
-b) Completa el código que hay a continuación para que compile
-correctamente y aparezca en pantalla el resultado que se muestra.
-
-Resultado:
-
-```swift
-0.0
-300.0
-```
-
-Código:
-
-```swift
-
-protocol TieneVelocidad {
-    func velocidadActual () -> Double
-}
-
-class Vehiculo {
-    var velocidad = 0.0
-    func velocidadActual() -> Double {
-        return velocidad
-    }
-}
-
-class Tren {
-    static let velocidadEnMarcha = 300.0
-    var pasajeros = 0
-    var enMarcha = false
-}
-
-//
-// Código a completar
-//
-
-var vehiculo1 = Vehiculo()
-var tren1 = Tren()
-tren1.enMarcha = true
-
-let transportes: [TieneVelocidad] = [vehiculo1, tren1]
-
-for i in transportes {
-    print(i.velocidadActual())
-}
-```
-
-c) Define una extensión del enum `Arbol` del ejercicio 2 de la
-práctica 9 en la que se implemente el método `min` que devuelva el
-menor elemento del árbol. En la extensión debes especificar que el
-tipo de los elementos del árbol deben cumplir el protocolo
-`Comparable`, para poder realizar la comparación y obtener el mínimo.
-
-Haz una prueba con un árbol de equipos, objetos de la estructura `Equipo`
-definida en el apartado anterior.
+----
 
 
 ### Ejercicio 4
 
-Continuamos con el ejercicio de las figuras geométricas de la
-práctica anterior.
+En este ejercicio vamos a trabajar con figuras geométricas usando estructuras y clases. 
 
-Comienza incluyendo en la práctica el código de todas las definiciones
-de las estructuras y clases geométricas: `Punto`, `Tamaño`,
-`Rectangulo` y `Circulo`.
+En el ejercicio deberás usar la función para calcular la raíz
+cuadrada y el valor de la constante matemática _pi_.
 
-Una vez incluido debes realizar lo siguiente.
+- Para usar la función `sqrt` debes importar la librería `Foundation`:
 
-
-#### Protocolo figura
-
-Define el protocolo `Figura` que contiene:
-
-- Propiedad de lectura y escritura `centro` (`Punto`), que define el
-  centro de la figura.
-- Propiedades de sólo lectura `area` (`Double`) y `tamaño` (`Tamaño`)
-  que devuelven el tamaño (alto y ancho) de la figura.
-
-
-#### Extensiones
-
-- Define las extensiones necesarias para que las clases `Rectangulo`,
-y `Circulo` se ajusten al protocolo `Figura`, añadiendo el
-código de implementación necesario.
-
-- Añade mediante una extensión al protocolo `Figura` la propiedad
-  calculada `descripcion` que devuelva un `String` con el centro y el
-  área de la figura.
-
-#### Clase `AlmacenFiguras`
-
-- Reescribe la clase `AlmacenFiguras` y define en ella **una única
-propiedad** `figuras` que contenga todas las figuras que se vayan
-creando. Reescribe también la implementación de `areaTotal`. Modifica
-los inicializadores en las clases geométricas para que se incluya la
-figura recién creada en esta propiedad.
-
-- Escribe el método de clase `cuentaTipos() -> (Int, Int)`
-que recorra el array de figuras y devuelva una tupla con dos enteros:
-número de rectángulos y número de círculos. La
-función debe imprimir por cada figura del array, su descripción
-por defecto proporcionada por el protocolo y el tipo de figura y sus
-características específicas.
-
-Por ejemplo:
-
-```
-- Descripción de la figura: Una figura con centro Punto(x: 7.0, y: 3.5) y área 50.0
-  Rectangulo con origen Punto(x: 2.0, y: 1.0) y tamaño Tamaño(ancho: 10.0, alto: 5.0)
-- Descripción de la figura: Una figura con centro Punto(x: 0.0, y: 2.0) y área 78.5398163397448
-  Circulo con centro Punto(x: 0.0, y: 2.0) y radio 5.0
+```swift
+import Foundation
 ```
 
+- El valor de la constante matemática _pi_ lo puedes obtener con la
+  propiedad `Double.pi`.
 
+Suponemos que estamos trabajando con coordenadas
+de pantalla, en las que la coordenada (0,0) representa la coordenada
+de la esquina superior izquierda de la pantalla. La coordenada Y crece
+hacia abajo y la coordenada X crece hacia la derecha. Las coordenadas
+se definirán con números decimales (`Double`).
+
+Vamos a definir las siguientes estructuras y clases:
+
+- Estructuras: `Punto`, `Tamaño`
+- Clases: `Figura` (clase padre), `Cuadrilátero` y `Circulo` (clases
+derivadas). 
+
+<img src="imagenes/figuras.png" width="500px"/>
+
+Vamos a definir propiedades almacenadas y propiedades calculadas para
+todas las figuras geométricas.
+
+**Estructuras `Punto` y `Tamaño`**
+
+Las debes declarar tal y como aparecen en los apuntes.
+
+**Clase padre `Figura`**:
+
+- Constructor:
+    - `Figura(origen: Punto, tamaño: Tamaño)`
+- Propiedades de instancia almacenadas:
+    - `origen` (`Punto`) que define las coordenadas de la esquina
+      superior izquierda del rectángulo que define la figura
+    - `tamaño` (`Tamaño`) que define el alto y el ancho del rectángulo
+      que define la figura.
+- Propiedades de instancia calculadas:
+    - `area` (`Double`, solo lectura) que devuelve el área del
+      rectángulo que engloba la figura.
+    - `centro` (`Punto`, propiedad de lectura y escritura). Es el
+      centro del rectángulo que define la figura. Si modificamos el
+      centro se modifica la posición del origen de la figura.
+
+**Clase derivada `Cuadrilatero`**
+
+Un cuadrilátero se define por cuatro puntos. La figura padre representa el
+rectángulo que engloba los cuatro puntos del cuadrilátero (ver imagen arriba).
+
+- Constructor:
+    - `Cuadrilatero(p1: Punto, p2: Punto, p3: Punto, p4: Punto)`. Los
+      puntos se dan en el orden definido por el sentido de las agujas
+      del reloj, aunque no siempre se empezará por el punto que está
+      situado más a la derecha. Al crear el cuadrilátero deberemos
+      actualizar las propiedades `origen` y `tamaño` de la
+      figura. Para calcular estas propiedades deberás obtener las
+      coordenadas x e y mínimas y máximas de todos los puntos.
+- Propiedades de instancia almacenadas propias:
+    - Los puntos del cuadrilátero `p1`, `p2`, `p3` y `p4`.
+- Propiedades de instancia calculadas:
+    - `centro` (`Punto`, de lectura y escritura), heredada de la clase
+      padre. El `setter` modifica la posición de los
+      puntos del cuadrilátero y del origen de la figura,
+      desplazándolos los mismos incrementos en los que ha sido
+      desplazado el centro de la figura.
+    - `area` (`Double`, sólo lectura ) que devuelve el [área del
+      cuadrilátero](https://www.cuemath.com/coordinate-geometry/area-of-a-quadrilateral/).
+
+**Clase derivada `Circulo`**
+
+Un círculo se define por un centro y un radio. La figura padre
+representa el cuadrado más pequeño en el que está inscrito el círculo
+(ver imagen arriba).
+
+- Constructor:
+    - `Circulo(centro: Punto, radio: Double)`. Al crear el círculo
+      deberemos actualizar las propiedades `origen` y `tamaño` de la
+      figura.
+- Propiedades de instancia almacenadas:
+    - `radio` (`Double`) que contiene la longitud del radio.
+- Propiedades de instancia calculadas:
+    - `centro` (`Punto`, de lectura y escritura), heredada de la clase
+      padre. 
+    - `area` (`Double`, de lectura y escritura) que devuelve el área
+      del círculo. El `setter` modifica el tamaño del círculo (su
+      radio), manteniendo el centro en la misma posición.
+
+**Estructura `AlmacenFiguras`**
+
+- Propiedades almacenadas:
+    - `figuras`: array de figuras.
+- Propiedades calculadas:
+    - `numFiguras` (`Int`) que devuelve el número total de figuras añadidas.
+    - `areaTotal` (`Double`) que devuelve la suma total de las áreas
+      de todas las figuras añadidas.
+- Método:
+    - `añade(figura:)` que añade una figura al array.
+    - `desplaza(incX: Double, incY: Double)`: desplaza todas las
+      figuras las dimensiones especificadas `incX` (incremento en la
+      coordenada X) e `incY` (incremento en la coordenada Y). Se
+      deberán mover los centros de todas las figuras en estas magnitudes.
+
+Implementa las estructuras anteriores y escribe algún ejemplo de
+código en el que se creen al menos un cuadrilátero y un círculo, se
+prueben sus propiedades, se añadan al almacén de figuras y se prueben
+sus métodos.
 
 ----
-
 Lenguajes y Paradigmas de Programación, curso 2020-21  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
-

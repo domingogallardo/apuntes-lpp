@@ -361,17 +361,29 @@ Existe una distribución oficial de Swift para Ubuntu de 64 bits
 (distribuciones 14.04, 16.04 y 16.10).
 
 Puedes encontrar la información completa en la
-[web oficial de Apple](https://swift.org/download/).
+[web oficial de Apple](https://swift.org/download/#using-downloads).
 
 Brevemente, los pasos son los siguientes:
 
-```
-$ sudo apt-get install clang libicu-dev
-// Descargar la versión y plataforma deseada (fichero swift-<VERSION>-<PLATFORM>.tar.gz)
-$ tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
-// Esto crea el directorio usr/ en la localización del archivo
-// Actualizar el PATH o mover usr/bin/swift al directorio /usr/bin
-```
+1. Instalar las dependencias que encontrarás en la página anterior
+usando `apt-get`.
+
+2. Descargar la versión y plataforma deseada (fichero
+`swift-<VERSION>-<PLATFORM>.tar.gz`).
+
+3. Extaer el archivo:
+
+    ```
+    $ tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
+    ```
+
+    Esto crea el directorio `usr/` en la localización del archivo.
+
+4. Actualizar el PATH o mover `usr/bin/swift` al directorio `/usr/bin`.
+
+    ```
+    $ export PATH=/path/to/usr/bin:"${PATH}"
+    ```
 
 ### Visual Studio Code ###
 
@@ -456,16 +468,12 @@ Por defecto, en otras carpetas podrás tener el terminal que elijas.
     asignatura profundizaremos en aspectos como funciones, genéricos,
     clases o protocolos.
 
-Te recomendamos que crees un fichero llamado `seminario.swift` y que
-vayas copiando y probando en él todos los ejemplos que aparecen a
-continuación. 
-
 La tradición sugiere que el primer programa en un nuevo lenguaje
-debería imprimir las palabras "Hello, world!" en la pantalla. En
+debería imprimir las palabras "Hola, mundo!" en la pantalla. En
 Swift, esto puede hacerse con una única línea:
 
 ```swift
-print("Hello, world!")
+print("Hola, mundo!")
 ```
 
 Si has escrito código en C o en Objective-C, esta sintaxis te parecerá
@@ -474,13 +482,24 @@ necesitas importar una biblioteca separada para funcionaliades como
 entrada/salida o manejo de cadenas. El código escrito en el ámbito
 global se usa como el punto de entrada del programa, por lo que no
 necesitas una función `main()`. Tampoco tienes que escribir puntos y
-comas al final de cada sentencia.
+comas al final de cada sentencia. Puedes comentar líneas de código
+de la misma forma que en C.
+
+```swift
+//
+// Esto es un comentario
+//
+
+/*
+   Y esto también es un comentario
+*/
+```
 
 Este tour te da información suficiente para empezar a escribir código
 in Swift enseñándote cómo conseguir una variedad de tareas de
-programación. No te preocupes si no entiendes algo, todo lo que se
-introduce en este tour se explica en detalle en la
-[Guía de Swift](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html)
+programación. La información completa sobre todos los elementos del
+lenguaje de programación Swift se encuentra en la [Guía de
+Swift](https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html).
 
 #### Valores simples
 
@@ -515,10 +534,10 @@ let explicitoDouble: Double = 70
 
 !!! Note "Nota"
     A lo largo del seminario se plantean pequeños ejercicios que 
-    puedes hacer tu mismo, para practicar un poco más con el
+    debes hacer tu mismo, para practicar un poco más con el
     lenguaje. Los verás en los bloques encabezados con "Experimento".
 
-!!! Example "Experimento"
+!!! Example "Experimento 1"
     Crea una constante con el tipo explícito de `Float` y un valor de 4.
 
 Los valores nunca se convierten implícitamente a otro tipo. Si
@@ -531,8 +550,9 @@ let ancho = 94
 let anchoEtiqueta = etiqueta + String(ancho)
 ```
 
-!!! Example "Experimento"  
-    Intenta eliminar la conversión a `String` en la última línea. ¿Qué error obtienes?
+!!! Example "Experimento 2"  
+    Intenta eliminar la conversión a `String` en la última línea. ¿Qué
+    error obtienes? Inclúyelo traducido en el código usando un comentario.
 
 Hay una forma aún más sencilla de incluir valores en cadenas: escribe
 el valor entre paréntesis, y escribe una barra invertida (`\`) antes
@@ -545,9 +565,10 @@ let resumenManzanas = "Tengo \(manzanas) manzanas."
 let resumenFrutas = "Tengo \(manzanas + naranjas) frutas."
 ```
 
-!!! Example "Experimento"  
-    Usa `\()` para incluir un cálculo en punto flotante en una cadena y
-    para incluir el nombre de alguien en un saludo.
+!!! Example "Experimento 3"  
+    Usa `\()` para imprimir una cadena con un cálculo con punto
+    flotante y, en otra sentencia, para imprimir una cadena que
+    incluiya el nombre de alguien en un saludo.
 
 Crea arrays y diccionarios utilizando corchetes (`[]`), y accede a sus
 elementos escribiendo el índice o la clave en los corchetes. Se
@@ -580,6 +601,11 @@ función.
 listaCompra = []
 trabajos = [:]
 ```
+
+Puedes encontrar más información sobre cómo trabajar con arrays en el
+apartado correspondiente de la [Guía de
+Swift](https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html).
+
 
 #### Tuplas
 
@@ -644,15 +670,16 @@ var saludo = "Hola!"
 if let nombre = nombreOpcional {
     saludo = "Hola, \(nombre)"
 }
+print(saludo)
 ```
 
-!!! Example "Experimento"  
+!!! Example "Experimento 4"  
     Cambia `nombreOpcional` a `nil`. ¿Qué saludo obtienes? Añade una
     cláusula `else` que establezca un saludo diferente si
     `nombreOpcional` es `nil`.
 
 Si el valor opcional es `nil`, el condicional es `false` y el código
-en las llaves se salta. En otro caso, el valor opcional se desenvuelve
+en las llaves se salta. En otro caso, el valor opcional se _desenvuelve_
 y se asigna a la constante después del `let`, lo que hace que el valor
 desenvuelto esté disponible dentro del bloque de código.
 
@@ -682,7 +709,7 @@ switch verdura {
 }
 ```
 
-!!! Example "Experimento"  
+!!! Example "Experimento 5"
     Intenta eliminar el caso por defecto. ¿Qué error obtienes?
 
 Después de ejecutar el código dentro del caso que se empareja, el
@@ -712,7 +739,7 @@ for (clase, numeros) in numerosInteresantes {
 print(mayor)
 ```
 
-!!! Example "Experimento"  
+!!! Example "Experimento 6"
     Añade otra variable para seguir qué clase de número es el mayor.
 
 Usa `while` para repetir un bloque de código hasta que una condición
@@ -761,7 +788,7 @@ func saluda(nombre: String, dia: String) -> String {
 print(saluda(nombre: "Bob", dia: "Martes"))
 ```
 
-!!! Example "Experimento"  
+!!! Example "Experimento 7"
     Elimina el parámetro día. Añade un parámetro para incluir la comida
     de hoy en el saludo.
 
@@ -817,7 +844,7 @@ print(suma())
 print(suma(numeros: 42, 597, 12))
 ```
 
-!!! Example "Experimento"  
+!!! Example "Experimento 8"
     Escribe una función que calcule la media de sus argumentos.
 
 Las funciones pueden anidarse. Las funciones pueden acceder variables
@@ -904,7 +931,7 @@ numeros.map({
 })
 ```
 
-!!! Example "Experimento"  
+!!! Example "Experimento 9"
     Reescribe la clausura para que devuelva cero para todos los números
     impares.
 
@@ -948,7 +975,7 @@ class Figura {
 }
 ```
 
-!!! Example "Experimento"  
+!!! Example "Experimento 10"
     Añade una propiedad constante con `let`, y añade otro método que
     tome un argumento.
 
@@ -1022,7 +1049,7 @@ print(test.area())
 print(test.descripcionSencilla())
 ```
 
-!!! Example "Experimento"  
+!!! Example "Experimento 11"
     Construye otra subclase de `FiguraConNombre` llamada `Circulo` que
     tome un radio y un nombre como argumentos de su
     inicializador. Implementa un método `area()` y
@@ -1148,7 +1175,7 @@ let carta = Valor.uno
 let valorBrutoCarta = carta.rawValue
 ```
 
-!!! Example "Experimento"  
+!!! Example "Experimento 12"
     Escribe una función que compare dos valores `Valor` a través de una
     comparación de sus valores brutos.
 
@@ -1196,7 +1223,7 @@ let copas = Palo.copas
 let descripcionCopas = copas.descripcionSencilla()
 ```
 
-!!! Example "Experimento"  
+!!! Example "Experimento 13"
     Añade un método `color()` a `Palo` que devuelva "agresivo" para
     *bastos* y *espadas* y devuelva "reflexivo" para *oros* y *copas*.
 
@@ -1239,7 +1266,7 @@ switch exito {
 }
 ```
 
-!!! Example "Experimento"  
+!!! Example "Experimento 14"
     Añade un tercer caso al `ServerResponse` y al switch.
 
 Date cuenta de cómo la hora de salir el sol y de ponerse el sol se
@@ -1265,7 +1292,7 @@ let tresDeEspadas = Carta(valor: .tres, palo: .espadas)
 let descripcionTresDeEspadas = tresDeEspadas.descripcionSencilla()
 ```
 
-!!! Example "Experimento"  
+!!! Example "Experimento 15"
     Añade un método a `Carta` que cree un mazo completo de cartas, con
     una carta de cada combinación de valor y palo.
 
@@ -1307,7 +1334,7 @@ b.ajustar()
 let descripcionB = b.descripcionSencilla
 ```
 
-!!! Example "Experimento"  
+!!! Example "Experimento 16"
     Escribe una enumeración que cumpla el protocolo.
 
 Date cuenta del uso de la palabra clave `mutating` en la declaración
@@ -1348,7 +1375,7 @@ extension Int {
 10.repetir {print("Hola")}
 ```
 
-!!! Example "Experimento"
+!!! Example "Experimento 17"
     Escribe una extensión para el tipo `Double` que añada una propiedad
     `absoluteValue`.
 
