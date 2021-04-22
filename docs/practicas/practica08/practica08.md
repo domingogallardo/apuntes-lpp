@@ -18,7 +18,7 @@ hasta el apartado _Funciones y clausuras_ (incluido).
 
     - **Windows, linux y Mac sin Xcode**: Sigue los pasos indicados en _Ejecución en una máquina Docker_.
     - **Mac con Xcode**: Sigue los pasos indicados en _Ejecución con MacOS_.
-    - En **Ubuntu** y **Windows** hay la posibilidad de realizar una
+    - En **linux** y **Windows** hay la posibilidad de realizar una
     instalación nativa, pero no la hemos comprobado. Puedes probar con
     los pasos indicados en la web [swift.org](https://swift.org/getting-started/).
 
