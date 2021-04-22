@@ -762,19 +762,6 @@ comando <code>swift</code> necesario para compilar y ejecutar aplicaciones Swift
 <p>Debes instalar la versión de Docker Desckto correspondiente a tu sistema operativo. Descárgalo <a href="https://www.docker.com/products/docker-desktop">desde esta
 página</a> y sigue las
 instrucciones correspondientes a tu sistema operativo.</p>
-<div class="admonition warning">
-<p class="admonition-title">Cuidado</p>
-<p>Si tienes Windows 10, la instalación nativa de Docker es
-incompatible con la de Virtual Box. Puedes instalar <a href="https://docs.docker.com/toolbox/overview/">Docker
-Toolbox</a>, que utiliza
-una máquina Virtual Box para lanzar Docker. Si ya tienes instalada
-una versión de Virtual Box no lo reinstales con Docker
-Toolbox. Cuando la instalación te lo pida deschequéalo.</p>
-<p>Una vez instalado Docker Toolbox debes abrir un <em>Docker Quickstart
-Terminal</em> que contiene un entorno <em>bash</em> similar al de
-Linux. Desde ese terminal puedes continuar la instalación de la
-imagen Swift tal y como se explica a continuación.</p>
-</div>
 <h4 id="instalacion-y-ejecucion-de-la-imagen-swift">Instalación y ejecución de la imagen Swift<a class="headerlink" href="#instalacion-y-ejecucion-de-la-imagen-swift" title="Permanent link">&para;</a></h4>
 <p>Una vez instalado Docker, abre un terminal y lanza el siguiente
 comando:</p>
@@ -946,9 +933,12 @@ terminal.</p>
 <p><img src="imagenes/vcode.png" width="700px"/></p>
 <p>Puedes consultar los conceptos básicos de Visual Studio Code y el
 manual completo en <a href="https://code.visualstudio.com/docs">este enlace</a>.</p>
-<h4 id="integracion-del-docker-quickstart-terminal-en-visual-studio-code-windows">Integración del Docker Quickstart Terminal en Visual Studio Code (Windows)<a class="headerlink" href="#integracion-del-docker-quickstart-terminal-en-visual-studio-code-windows" title="Permanent link">&para;</a></h4>
-<p>Abre un <em>Docker Quickstart Terminal</em>, ejecuta el siguiente comando y
-anota los valores de las variables de entorno:</p>
+<!--
+#### Integración del Docker Quickstart Terminal en Visual Studio Code (Windows) ####
+
+Abre un _Docker Quickstart Terminal_, ejecuta el siguiente comando y
+anota los valores de las variables de entorno:
+
 <div class="highlight"><pre><span></span><code>$ set | grep DOCKER_
 DOCKER_CERT_PATH=&#39;C:\Users\&lt;usuario&gt;\.docker\machine\machines\default&#39;
 DOCKER_HOST=tcp://192.168.99.100:2376
@@ -956,20 +946,25 @@ DOCKER_MACHINE_NAME=default
 DOCKER_TLS_VERIFY=1
 DOCKER_TOOLBOX_INSTALL_PATH=&#39;C:\Program Files\Docker Toolbox&#39;
 </code></pre></div>
-<p>Abre la carpeta de trabajo como área de trabajo: <em>Archivo -&gt; Abrir área de trabajo...</em>.</p>
-<p>Abre el Terminal integrado (Crtl+ñ). Te dá a elegir entre tres shells
+
+Abre la carpeta de trabajo como área de trabajo: _Archivo -> Abrir área de trabajo..._.
+
+Abre el Terminal integrado (Crtl+ñ). Te dá a elegir entre tres shells
 (PowerShell, CMD, o Git bash). Elige el que mejor te venga por
 defecto, ya que en cualquier caso, para trabajar con el Swift de
-Docker hay que ajustar la configuración.</p>
-<p>Abre la configuración (<em>Crl+</em>, o <em>Archivo-&gt;Preferencias-&gt;Configuración</em>).</p>
-<p>Fíjate que son tres los ficheros de configuración posibles:</p>
-<ul>
-<li>Configuración predeterminada</li>
-<li>Configuración de usuario</li>
-<li>Configuración de área de trabajo</li>
-</ul>
-<p>En la Configuración de usuario o en la de área de trabajo, dependiendo de en
-cuál te convenga más, pon entre las <code>{}</code> los siguientes valores de configuración:</p>
+Docker hay que ajustar la configuración.
+
+Abre la configuración (_Crl+_, o _Archivo->Preferencias->Configuración_).
+
+Fíjate que son tres los ficheros de configuración posibles:
+
+- Configuración predeterminada
+- Configuración de usuario
+- Configuración de área de trabajo
+
+En la Configuración de usuario o en la de área de trabajo, dependiendo de en
+cuál te convenga más, pon entre las `{}` los siguientes valores de configuración:
+
 <div class="highlight"><pre><span></span><code>{
 &quot;terminal.integrated.shell.windows&quot;: &quot;C:\\Program Files\\Git\\bin\\bash.exe&quot;,
 &quot;terminal.integrated.env.windows&quot;: {
@@ -982,12 +977,17 @@ cuál te convenga más, pon entre las <code>{}</code> los siguientes valores de 
 &quot;terminal.integrated.shellArgs.windows&quot;: [&quot;--login&quot;, &quot;-i&quot;, &quot;C:\\Program Files\\Docker Toolbox\\start.sh&quot;]
 }
 </code></pre></div>
-<p>Fíjate que el valor de <code>terminal.integrated.env.windows</code> depende de los valores que
-obtuvistes en el Docker Quickstart Terminal cuando probamos las Docker Tools.</p>
-<p>Si eliges cambiar la Configuración de área de trabajo, en lugar de la de Usuario,
-la configuración se guarda en una subcarpeta <code>".vscode"</code> de la carpeta de trabajo,
+
+Fíjate que el valor de `terminal.integrated.env.windows` depende de los valores que
+obtuvistes en el Docker Quickstart Terminal cuando probamos las Docker Tools.
+
+Si eliges cambiar la Configuración de área de trabajo, en lugar de la de Usuario,
+la configuración se guarda en una subcarpeta `".vscode"` de la carpeta de trabajo,
 y este tipo de Terminal interactivo se abrirá solo cuando trabajes en esa carpeta.
-Por defecto, en otras carpetas podrás tener el terminal que elijas.</p>
+Por defecto, en otras carpetas podrás tener el terminal que elijas.
+
+-->
+
 <h2 id="un-tour-de-swift">Un tour de Swift<a class="headerlink" href="#un-tour-de-swift" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
