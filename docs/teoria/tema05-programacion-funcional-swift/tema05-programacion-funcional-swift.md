@@ -1288,6 +1288,7 @@ let lista2 = construye(lista: [1,2,3,4,5])
 print(suma(lista: lista2))
 // Imprime 15
 ```
+<!--
 
 ## Opcionales
 
@@ -2341,7 +2342,7 @@ print(car(cdr(lista)!)!) // Imprime 30
 print(car(cdr(cdr(lista)!)!)!) // Imprime 40
 print(vacia(cdr(cdr(cdr(lista)!)!)!)) // Imprime true
 ```
-
+-->
 
 ## Bibliografía
 

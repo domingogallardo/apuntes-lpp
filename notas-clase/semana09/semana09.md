@@ -1,18 +1,20 @@
 
-## Tema 6: Programación Funcional con Swift
+## Tema 6: Programación Funcional con Swift (semana 2)
 
 ### Contenidos
 
-- Introducción
-- Funciones
-- Tipos función
-- Recursión
-- Tipos
-- **Opcionales**
-- **Inmutabilidad**
-- **Clausuras**
-- **Funciones de orden superior**
-- **Genéricos**
+- 1. Introducción
+- 2. Inmutabilidad
+- 3. Funciones
+- 4. Recursión
+- 5. Tipos función
+- 6. Tipos
+- 7. Enumeraciones
+- 8. Enumeraciones instanciables
+- **9. Opcionales**
+- **10. Clausuras**
+- **11. Funciones de orden superior**
+- **12. Genéricos**
 
 ----
 
@@ -27,194 +29,185 @@
 
 
 ----
-### Repaso de opcionales
+### 6. Opcionales
 ----
 
-Un tipo opcional permite asignar `nil`:
+- En Swift el valor nulo se representa con `nil` (equivalente a `null`
+  en Java). 
+- No podemos asignar `nil` a una variable de un tipo dado:
 
 ```swift
-var intOpcional: Int? = 10
-intOpcional = nil
+// La siguiente línea daría un error en tiempo de compilación
+// let cadena: String = nil
 ```
 
-Un opcional no se puede usar como el tipo original, hay que
-desenvolverlo (_unwrap_):
+- Los tipos opcionales de Swift permiten asignar a variables o bien un
+  valor propio del tipo o bien `nil`
+- Podemos definir como opcional variables, parámetros o valores
+  devueltos por funciones.
+- Ejemplo: inicializador del tipo `Int` de Swift. Debido a que el
+  inicializador puede fallar, devuelve un `Int` _opcional_, en lugar
+  de un `Int`. Un `Int` opcional se escribe como `Int?`.
 
 ```swift
-// error let x = intOpcional + 20
-let x = intOpcional! + 20
+var posibleNumero = "123"
+let numeroConvertido = Int(posibleNumero)
+posibleNumero = "Hola mundo"
+let conversionErronea = Int(posibleNumero)
+// numeroConvertido y conversionErronea son de tipo "Int?", o "Int opcional"
+// El primero contiene un número y el segundo nil
+```
+- Para definir una variable como sin valor debemos asignarle el valor
+especial `nil`:
+
+```swift
+var codigoRespuestaServidor: Int? = 404
+// codigoRespuestaServidor contine un valor Int de 404
+codigoRespuestaServidor = nil
+// codigoRespuestaServidor ahora no contiene ningún valor
 ```
 
-Antes de desenvolver un opcional siempre hay que comprobar si el valor
-que contiene no es `nil`:
+- Una variable opcional sin asignar ningún valor se inicializa
+  automáticamente a `nil`:
 
 ```swift
-if (intOpcional != nil) {
-   print(intOpcional! + 20)
-}
-else {
-   // intOpcional es nil
-}
-```
-
-Una forma más sencilla de hacer lo anterior es el llamado _ligado
-opcional_ (_optional binding_) la construcción `if
-let`:
-
-```swift
-if let x = intOpcional {
-   print(x + 20)
-}
-else {
-   // intOpcional es nil
-}
-
-```
-
-### Operador _nil-coalescing_ ###
-
-El operador _nil-coalescing_ (`??`) permite asignar un valor por defecto si
-un opcional es nil:
-
-```swift
-let a: Int? = nil
-let b: Int? = 10
-let x = a ?? -1
-let y = b ?? -1
-print("Resultado: \(x), \(y)")
-// Imprime Resultado: -1, 10
-```
-
-### Encadenamiento de opcionales ###
-
-El encadenamiento de opcionales (_optional chaining_) permite llamar a
-un método de una variable que contiene un opcional. Si la variable no
-es `nil`, se ejecuta el método y se devuelve su valor. Si la variable
-es `nil` se devuelve `nil`.
-
-```swift
-let nombre1: String? = "Pedro"
-let nombre2: String? = nil
-
-// Error: let str1 = nombre1.lowercased()
-// No podemos llamar al método lowercased() del String
-// porque nombre es opcional y puede tener nil
-
-let str1 = nombre1?.lowercased()
-let str2 = nombre2?.lowercased()
-// str1: String? = "pedro"
-// str2: String? = nil
+var respuestaEncuesta: String?
+// respuestaEncuesta es inicializado automáticamente a nil
 ```
 
 ----
-### Inmutabilidad
----
 
-Una de las características funcionales importantes de Swift es el
-énfasis en la inmutabilidad para reforzar la seguridad del
-lenguaje. Veamos algunas características relacionadas con esto.
+### Sentencias `if` y _desenvoltura forzosa_
 
----
-
-### Palabra clave let
-
-- La palabra clave `let` permite definir constantes. Si se intenta
-  modificar el valor el compilador da un error.
-- El valor asignado puede no conocerse en tiempo de compilación:
+- No se puede usar un opcional en expresiones en las que se espera un
+  tipo básico.
+- Se puede usar un `if` para comprobar si un valor opcional es
+  distinto de `nil`:
 
 ```swift
-let maximoNumeroDeIntentosDeLogin = 10
-let respuesta: String = respuestaUsuario.respuesta()
+if numeroConvertido != nil {
+    print("numeroConvertido contiene algún valor entero.")
+}
+// Imprime "numeroConvertido contiene algún valor entero."
 ```
 
-- Si una variable no se modifica es conveniente declararla como
-  `let`. El compilador de Swift da una aviso para ello.
-
----
-
-### Semántica de copia en estructuras
-
-- Una forma de evitar los efectos laterales es definir una semántica
-  de copia en la asignación.
-- En Swift la semántica de una asignación depende del tipo de objeto.
-- Las estructuras (_structs_) tienen **semántica de copia**. Veremos
-  más adelante que las clases tienen una **semántica de referencia**.
-- La mayor parte de tipos definidos el la
-[biblioteca estándar de Swift](https://developer.apple.com/library/ios/documentation/General/Reference/SwiftStandardLibraryReference/index.html#//apple_ref/doc/uid/TP40014608)
-son estructuras. Tipos como `Int`, `Double`, `Bool`, `String`,
-`Array`, `Dictionary`, etc. son todos ellos estructuras y, por tanto,
-tienen semántica de copia.
+- Si estamos seguros de que el opcional contiene un valor, podemos
+  acceder a él usando un signo de exclamación (`!`). Esto se conoce
+  como _desenvoltura forzosa_ (_forced unwrapping_) del valor
+  opcional:
 
 ```swift
-var str1 = "Hola"
-var str2 = str1
-str1.append("Adios")
-print(str1) // Imprime "HolaAdios"
-print(str2) // Imprime "Hola"
+if numeroConvertido != nil {
+    let numero = numeroConvertido!
+    print("numeroConvertido tiene un valor entero de \(numero).")
+}
+// Imprime "numeroConvertido tiene un valor entero de 123."
 ```
 
-- Los arrays también son estructuras y, por tanto, también tienen
-  semántica de copia:
+- Si se desenvuelve un opcional que contiene un `nil` se causa un error
+en tiempo de ejecución:
 
 ```swift
-var array1 = [1, 2, 3, 4]
-var array2 = array1
-array1[0] = 10
-print(array1) // [10, 2, 3, 4]
-print(array2) // [1, 2, 3, 4]
+let x = Int("Hola")
+let y = x! + 100
+// La sentencia anterior provoca un error en tiempo de ejecución
 ```
 
-- A diferencia de otros lenguajes como Java, los parámetros de una
-  función siempre son inmutables y se pasan por copia. Por ejemplo, el
-  siguiente código sería un error:
+----
 
+### Ligado opcional
+
+- Es posible comprobar si un opcional tiene valor y asignar su valor a
+  otra variable al mismo tiempo con una construcción llamada _ligado
+  opcional_ (_optional binding_):
+
+```swift
+if let numeroVerdadero = Int(posibleNumero) {
+    print("\"\(posibleNumero)\" tiene un valor entero de \(numeroVerdadero)")
+} else {
+    print("\"\(posibleNumero)\" no ha podido convertirse en un entero")
+}
+// Imprime ""123" tiene un valor entero de 123"
 ```
-func concat(_ str1: String, con str2: String) -> String {
-  // str1.append(str2) -> error
-  return str1
+
+----
+
+### Ejemplo de `minMax` con opcional
+
+- Como ejemplo de uso de opcionales adaptamos el ejemplo anterior de la
+función `minMax` para que pueda recibir un array vacío, en cuyo caso
+devolverá `nil`.
+
+
+```swift
+func minMax(array: [Int]) -> (min: Int, max: Int)? {
+    if array.isEmpty { return nil }
+    var minActual = array[0]
+    var maxActual = array[0]
+    for valor in array[1..<array.count] {
+        if valor < minActual {
+            minActual = valor
+        } else if valor > maxActual {
+            maxActual = valor
+        }
+    }
+    return (minActual, maxActual)
 }
 ```
 
----
-
-### Estructuras mutables y `let`
-
-- Si definimos un valor de una estructura con un `let` ese valor será
-  inmutable y no podrá modificarse, a pesar de que el `Struct` tenga
-  métodos que mutan sus valores.
-- Por ejemplo, hemos visto que el método `append(_:)` de un `String`
-  modifica la propia cadena. Si definimos una cadena con `let` no
-  podremos modificarla:
+- Tendremos entonces que llamar a la función comprobando si el valor
+  devuelto es distinto de `nil`:
 
 ```swift
-var cadenaMutable = "Hola"
-let cadenaInmutable = "Adios"
-cadenaMutable.append(cadenaInmutable) // cadenaMutable es "HolaAdios"
-// cadenaInmutable.append("Adios")
-// La sentencia anterior genera un error:
-// "cannot use mutating member on immutable value: 'cadenaInmutable' is a 'let' constant"
+if let limites = minMax(array: [8, -6, 2, 109, 3, 71]) {
+    print("min es \(limites.min) y max es \(limites.max)")
+}
+// Imprime "min es -6 y max es 109"
 ```
 
----
+- En el caso anterior sabemos que `limites` va a devolver un valor
+(porque llamamos a `minMax` con un array con elementos), por lo que
+podemos desenvolverlo sin temor de provocar un error. 
+- Sin embargo, en el ejemplo siguiente no es recomendable hacer una
+desenvoltura forzosa, porque no sabemos si `minMax` va a devolver
+`nil` o no. Hacemos un ligado opcional :
 
-### Tipos valor y tipos referencia
+```swift
+let valores = pedirNums() // La función pedirNums() pide una lista de 
+                          // números por la entrada estándar y
+                          // devuelve un [Int] (que puede estar vacío)
+if let limites = minMax(valores) {
+    print("min es \(limites.min) y max es \(limites.max)")
+} else {
+    print("No hay números")
+}
+```
 
-- Un **tipo valor** es un tipo que tiene semántica de copia en las
-  asignaciones y cuando se pasan como parámetro en llamadas a
-  funciones.
-- Un **tipo de referencia** es aquel en los que los valores se asignan
-  a variables con una semántica de referencia. Cuando se realizan
-  varias asignaciones de una misma instancia a distintas variables
-  todas ellas guardan una referencia a la misma instancia.
-- En Java los tipos simples (`int`, `double`, etc.) son tipos valor y
-  las clases son tipos de referencia.
-- En Swift las estructuras son tipos valor y las clases tipos de
-  referencia. Comentaremos más diferencias en el tema de programación
-  orientada a objetos.
-- Los tipos valor son muy útiles porque evitan los efectos laterales
-  en los programas y simplifican el comportamiento del compilador en
-  la gestión de memoria. 
+----
 
+### Ejemplo de `Lista` con opcional
+
+Otra versión del enum `Lista` usando esta vez un opcional:
+
+```swift
+indirect enum Lista{
+	case cons(Int, Lista?)
+}
+
+func suma(lista: Lista) -> Int {
+	switch lista {
+		case let .cons(car, cdr):
+		if (cdr == nil) {
+			return car
+		} else {
+			return car + suma(lista: cdr!)
+		}
+	}
+}
+
+let z: Lista = .cons(20, .cons(10, nil))
+print(suma(lista: z))
+```
 
 ---
 ### Clausuras
