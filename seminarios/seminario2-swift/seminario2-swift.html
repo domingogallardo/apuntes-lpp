@@ -519,6 +519,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicas/practica08/practica08.html" class="md-nav__link">
+        Práctica 8
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -899,14 +911,29 @@ script anterior en el terminal Docker.</p>
 <p>Existe una distribución oficial de Swift para Ubuntu de 64 bits
 (distribuciones 14.04, 16.04 y 16.10).</p>
 <p>Puedes encontrar la información completa en la
-<a href="https://swift.org/download/">web oficial de Apple</a>.</p>
+<a href="https://swift.org/download/#using-downloads">web oficial de Apple</a>.</p>
 <p>Brevemente, los pasos son los siguientes:</p>
-<div class="highlight"><pre><span></span><code>$ sudo apt-get install clang libicu-dev
-// Descargar la versión y plataforma deseada (fichero swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz)
-$ tar xzf swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz
-// Esto crea el directorio usr/ en la localización del archivo
-// Actualizar el PATH o mover usr/bin/swift al directorio /usr/bin
+<ol>
+<li>
+<p>Instalar las dependencias que encontrarás en la página anterior
+usando <code>apt-get</code>.</p>
+</li>
+<li>
+<p>Descargar la versión y plataforma deseada (fichero
+<code>swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz</code>).</p>
+</li>
+<li>
+<p>Extaer el archivo:</p>
+<div class="highlight"><pre><span></span><code>$ tar xzf swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz
 </code></pre></div>
+<p>Esto crea el directorio <code>usr/</code> en la localización del archivo.</p>
+</li>
+<li>
+<p>Actualizar el PATH o mover <code>usr/bin/swift</code> al directorio <code>/usr/bin</code>.</p>
+<div class="highlight"><pre><span></span><code>$ export PATH=/path/to/usr/bin:&quot;${PATH}&quot;
+</code></pre></div>
+</li>
+</ol>
 <h3 id="visual-studio-code">Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permanent link">&para;</a></h3>
 <p>Para editar código Swift puedes usar cualquier editor orientado a
 programación como Visual Studio Code o Atom. Aconsejamos <a href="https://code.visualstudio.com">Visual Studio
@@ -972,13 +999,10 @@ fundamentales del lenguaje. En los temas siguientes de la
 asignatura profundizaremos en aspectos como funciones, genéricos,
 clases o protocolos.</p>
 </div>
-<p>Te recomendamos que crees un fichero llamado <code>seminario.swift</code> y que
-vayas copiando y probando en él todos los ejemplos que aparecen a
-continuación. </p>
 <p>La tradición sugiere que el primer programa en un nuevo lenguaje
-debería imprimir las palabras "Hello, world!" en la pantalla. En
+debería imprimir las palabras "Hola, mundo!" en la pantalla. En
 Swift, esto puede hacerse con una única línea:</p>
-<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hola, mundo!&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Si has escrito código en C o en Objective-C, esta sintaxis te parecerá
 familiar. En Swift, esta línea de código es un programa completo. No
@@ -986,12 +1010,21 @@ necesitas importar una biblioteca separada para funcionaliades como
 entrada/salida o manejo de cadenas. El código escrito en el ámbito
 global se usa como el punto de entrada del programa, por lo que no
 necesitas una función <code>main()</code>. Tampoco tienes que escribir puntos y
-comas al final de cada sentencia.</p>
+comas al final de cada sentencia. Puedes comentar líneas de código
+de la misma forma que en C.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//</span>
+<span class="c1">// Esto es un comentario</span>
+<span class="c1">//</span>
+
+<span class="cm">/*</span>
+<span class="cm">   Y esto también es un comentario</span>
+<span class="cm">*/</span>
+</code></pre></div>
 <p>Este tour te da información suficiente para empezar a escribir código
 in Swift enseñándote cómo conseguir una variedad de tareas de
-programación. No te preocupes si no entiendes algo, todo lo que se
-introduce en este tour se explica en detalle en la
-<a href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html">Guía de Swift</a></p>
+programación. La información completa sobre todos los elementos del
+lenguaje de programación Swift se encuentra en la <a href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html">Guía de
+Swift</a>.</p>
 <h4 id="valores-simples">Valores simples<a class="headerlink" href="#valores-simples" title="Permanent link">&para;</a></h4>
 <p>Usa <code>let</code> para crear una constante y <code>var</code> para crear una variable. No
 es necesario que se conozca en tiempo de compilación el valor de una
@@ -1018,11 +1051,11 @@ variable, separándolo por dos puntos.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>A lo largo del seminario se plantean pequeños ejercicios que 
-puedes hacer tu mismo, para practicar un poco más con el
+debes hacer tu mismo, para practicar un poco más con el
 lenguaje. Los verás en los bloques encabezados con "Experimento".</p>
 </div>
 <div class="admonition example">
-<p class="admonition-title">Experimento</p>
+<p class="admonition-title">Experimento 1</p>
 <p>Crea una constante con el tipo explícito de <code>Float</code> y un valor de 4.</p>
 </div>
 <p>Los valores nunca se convierten implícitamente a otro tipo. Si
@@ -1033,8 +1066,9 @@ explícitamente una instancia del tipo deseado.</p>
 <span class="kd">let</span> <span class="nv">anchoEtiqueta</span> <span class="p">=</span> <span class="n">etiqueta</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="n">ancho</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition example">
-<p class="admonition-title">Experimento</p>
-<p>Intenta eliminar la conversión a <code>String</code> en la última línea. ¿Qué error obtienes?</p>
+<p class="admonition-title">Experimento 2</p>
+<p>Intenta eliminar la conversión a <code>String</code> en la última línea. ¿Qué
+error obtienes? Inclúyelo traducido en el código usando un comentario.</p>
 </div>
 <p>Hay una forma aún más sencilla de incluir valores en cadenas: escribe
 el valor entre paréntesis, y escribe una barra invertida (<code>\</code>) antes
@@ -1045,9 +1079,10 @@ de los paréntesis. Por ejemplo:</p>
 <span class="kd">let</span> <span class="nv">resumenFrutas</span> <span class="p">=</span> <span class="s">&quot;Tengo </span><span class="si">\(</span><span class="n">manzanas</span> <span class="o">+</span> <span class="n">naranjas</span><span class="si">)</span><span class="s"> frutas.&quot;</span>
 </code></pre></div>
 <div class="admonition example">
-<p class="admonition-title">Experimento</p>
-<p>Usa <code>\()</code> para incluir un cálculo en punto flotante en una cadena y
-para incluir el nombre de alguien en un saludo.</p>
+<p class="admonition-title">Experimento 3</p>
+<p>Usa <code>\()</code> para imprimir una cadena con un cálculo con punto
+flotante y, en otra sentencia, para imprimir una cadena que
+incluiya el nombre de alguien en un saludo.</p>
 </div>
 <p>Crea arrays y diccionarios utilizando corchetes (<code>[]</code>), y accede a sus
 elementos escribiendo el índice o la clave en los corchetes. Se
@@ -1072,6 +1107,9 @@ función.</p>
 <div class="highlight"><pre><span></span><code><span class="n">listaCompra</span> <span class="p">=</span> <span class="p">[]</span>
 <span class="n">trabajos</span> <span class="p">=</span> <span class="p">[:]</span>
 </code></pre></div>
+<p>Puedes encontrar más información sobre cómo trabajar con arrays en el
+apartado correspondiente de la <a href="https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html">Guía de
+Swift</a>.</p>
 <h4 id="tuplas">Tuplas<a class="headerlink" href="#tuplas" title="Permanent link">&para;</a></h4>
 <p>Una tupla agrupa varios valores en un único valor compuesto.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">http404Error</span> <span class="p">=</span> <span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="s">&quot;Not Found&quot;</span><span class="p">)</span>
@@ -1117,15 +1155,16 @@ valor para marcar el valor como opcional.</p>
 <span class="k">if</span> <span class="kd">let</span> <span class="nv">nombre</span> <span class="p">=</span> <span class="n">nombreOpcional</span> <span class="p">{</span>
     <span class="n">saludo</span> <span class="p">=</span> <span class="s">&quot;Hola, </span><span class="si">\(</span><span class="n">nombre</span><span class="si">)</span><span class="s">&quot;</span>
 <span class="p">}</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">saludo</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition example">
-<p class="admonition-title">Experimento</p>
+<p class="admonition-title">Experimento 4</p>
 <p>Cambia <code>nombreOpcional</code> a <code>nil</code>. ¿Qué saludo obtienes? Añade una
 cláusula <code>else</code> que establezca un saludo diferente si
 <code>nombreOpcional</code> es <code>nil</code>.</p>
 </div>
 <p>Si el valor opcional es <code>nil</code>, el condicional es <code>false</code> y el código
-en las llaves se salta. En otro caso, el valor opcional se desenvuelve
+en las llaves se salta. En otro caso, el valor opcional se <em>desenvuelve</em>
 y se asigna a la constante después del <code>let</code>, lo que hace que el valor
 desenvuelto esté disponible dentro del bloque de código.</p>
 <p>Otra forma de manejar valores opcionales es proporcionar un valor por
@@ -1149,7 +1188,7 @@ pruebas de igualdad.</p>
 <span class="p">}</span>
 </code></pre></div>
 <div class="admonition example">
-<p class="admonition-title">Experimento</p>
+<p class="admonition-title">Experimento 5</p>
 <p>Intenta eliminar el caso por defecto. ¿Qué error obtienes?</p>
 </div>
 <p>Después de ejecutar el código dentro del caso que se empareja, el
@@ -1176,7 +1215,7 @@ sus claves y valores se iteran en un orden arbitrario.</p>
 <span class="bp">print</span><span class="p">(</span><span class="n">mayor</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition example">
-<p class="admonition-title">Experimento</p>
+<p class="admonition-title">Experimento 6</p>
 <p>Añade otra variable para seguir qué clase de número es el mayor.</p>
 </div>
 <p>Usa <code>while</code> para repetir un bloque de código hasta que una condición
@@ -1214,7 +1253,7 @@ función.</p>
 <span class="bp">print</span><span class="p">(</span><span class="n">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="n">dia</span><span class="p">:</span> <span class="s">&quot;Martes&quot;</span><span class="p">))</span>
 </code></pre></div>
 <div class="admonition example">
-<p class="admonition-title">Experimento</p>
+<p class="admonition-title">Experimento 7</p>
 <p>Elimina el parámetro día. Añade un parámetro para incluir la comida
 de hoy en el saludo.</p>
 </div>
@@ -1262,7 +1301,7 @@ agrupándose todos ellos en un array.</p>
 <span class="bp">print</span><span class="p">(</span><span class="n">suma</span><span class="p">(</span><span class="n">numeros</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">597</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
 </code></pre></div>
 <div class="admonition example">
-<p class="admonition-title">Experimento</p>
+<p class="admonition-title">Experimento 8</p>
 <p>Escribe una función que calcule la media de sus argumentos.</p>
 </div>
 <p>Las funciones pueden anidarse. Las funciones pueden acceder variables
@@ -1335,7 +1374,7 @@ anidadas. Puedes escribir una clausura rodeando el código con llaves
 <span class="p">})</span>
 </code></pre></div>
 <div class="admonition example">
-<p class="admonition-title">Experimento</p>
+<p class="admonition-title">Experimento 9</p>
 <p>Reescribe la clausura para que devuelva cero para todos los números
 impares.</p>
 </div>
@@ -1370,7 +1409,7 @@ funciones.</p>
 <span class="p">}</span>
 </code></pre></div>
 <div class="admonition example">
-<p class="admonition-title">Experimento</p>
+<p class="admonition-title">Experimento 10</p>
 <p>Añade una propiedad constante con <code>let</code>, y añade otro método que
 tome un argumento.</p>
 </div>
@@ -1434,7 +1473,7 @@ realmente no sobreescriben ningún método de la superclase.</p>
 <span class="bp">print</span><span class="p">(</span><span class="n">test</span><span class="p">.</span><span class="n">descripcionSencilla</span><span class="p">())</span>
 </code></pre></div>
 <div class="admonition example">
-<p class="admonition-title">Experimento</p>
+<p class="admonition-title">Experimento 11</p>
 <p>Construye otra subclase de <code>FiguraConNombre</code> llamada <code>Circulo</code> que
 tome un radio y un nombre como argumentos de su
 inicializador. Implementa un método <code>area()</code> y
@@ -1551,7 +1590,7 @@ con nombre, las enumeraciones pueden tener métodos asociados.</p>
 <span class="kd">let</span> <span class="nv">valorBrutoCarta</span> <span class="p">=</span> <span class="n">carta</span><span class="p">.</span><span class="n">rawValue</span>
 </code></pre></div>
 <div class="admonition example">
-<p class="admonition-title">Experimento</p>
+<p class="admonition-title">Experimento 12</p>
 <p>Escribe una función que compare dos valores <code>Valor</code> a través de una
 comparación de sus valores brutos.</p>
 </div>
@@ -1593,7 +1632,7 @@ proporcionar uno.</p>
 <span class="kd">let</span> <span class="nv">descripcionCopas</span> <span class="p">=</span> <span class="n">copas</span><span class="p">.</span><span class="n">descripcionSencilla</span><span class="p">()</span>
 </code></pre></div>
 <div class="admonition example">
-<p class="admonition-title">Experimento</p>
+<p class="admonition-title">Experimento 13</p>
 <p>Añade un método <code>color()</code> a <code>Palo</code> que devuelva "agresivo" para
 <em>bastos</em> y <em>espadas</em> y devuelva "reflexivo" para <em>oros</em> y <em>copas</em>.</p>
 </div>
@@ -1632,7 +1671,7 @@ error.</p>
 <span class="p">}</span>
 </code></pre></div>
 <div class="admonition example">
-<p class="admonition-title">Experimento</p>
+<p class="admonition-title">Experimento 14</p>
 <p>Añade un tercer caso al <code>ServerResponse</code> y al switch.</p>
 </div>
 <p>Date cuenta de cómo la hora de salir el sol y de ponerse el sol se
@@ -1655,7 +1694,7 @@ referencia.</p>
 <span class="kd">let</span> <span class="nv">descripcionTresDeEspadas</span> <span class="p">=</span> <span class="n">tresDeEspadas</span><span class="p">.</span><span class="n">descripcionSencilla</span><span class="p">()</span>
 </code></pre></div>
 <div class="admonition example">
-<p class="admonition-title">Experimento</p>
+<p class="admonition-title">Experimento 15</p>
 <p>Añade un método a <code>Carta</code> que cree un mazo completo de cartas, con
 una carta de cada combinación de valor y palo.</p>
 </div>
@@ -1695,7 +1734,7 @@ Clases, enumeraciones y estructuras pueden todas adoptar protocolos.
 <span class="kd">let</span> <span class="nv">descripcionB</span> <span class="p">=</span> <span class="n">b</span><span class="p">.</span><span class="n">descripcionSencilla</span>
 </code></pre></div>
 
-!!! Example "Experimento"  
+!!! Example "Experimento 16"
     Escribe una enumeración que cumpla el protocolo.
 
 Date cuenta del uso de la palabra clave `mutating` en la declaración
@@ -1734,7 +1773,7 @@ Otro ejemplo usando una función:
 <span class="mf">10.</span><span class="n">repetir</span> <span class="p">{</span><span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hola&quot;</span><span class="p">)}</span>
 </code></pre></div>
 
-!!! Example "Experimento"
+!!! Example "Experimento 17"
     Escribe una extensión para el tipo `Double` que añada una propiedad
     `absoluteValue`.
 

@@ -1,0 +1,876 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.2">
+    
+    
+      
+        <title>Práctica 11: Programación Orientada a Objetos en Swift (2) - LPP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f955dcd.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-11-programacion-orientada-a-objetos-en-swift-2" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="LPP" class="md-header__button md-logo" aria-label="LPP" data-md-component="logo">
+      
+  <img src="../../imagenes/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LPP
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Práctica 11: Programación Orientada a Objetos en Swift (2)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="LPP" class="md-nav__button md-logo" aria-label="LPP" data-md-component="logo">
+      
+  <img src="../../imagenes/logo.png" alt="logo">
+
+    </a>
+    LPP
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      <label class="md-nav__link" for="__nav_1">
+        Teoría
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Teoría" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Teoría
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teoria/tema00-descripcion-asignatura/tema00-descripcion-asignatura.html" class="md-nav__link">
+        Descripción de la asignatura
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teoria/tema01-historia-lenguajes-programacion/tema01-historia-lenguajes-programacion.html" class="md-nav__link">
+        Tema 1: Historia de los lenguajes de programación
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teoria/tema02-programacion-funcional/tema02-programacion-funcional.html" class="md-nav__link">
+        Tema 2: Programación funcional
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html" class="md-nav__link">
+        Tema 3: Procedimientos recursivos
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teoria/tema04-estructuras-recursivas/tema04-estructuras-recursivas.html" class="md-nav__link">
+        Tema 4: Estructuras recursivas
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Seminarios
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Seminarios" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Seminarios
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../seminarios/seminario1-scheme/seminario1-scheme.html" class="md-nav__link">
+        Seminario de Scheme
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../seminarios/seminario2-swift/seminario2-swift.html" class="md-nav__link">
+        Seminario de Swift
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Prácticas
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Prácticas" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Prácticas
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica01/practica01.html" class="md-nav__link">
+        Práctica 1
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica02/practica02.html" class="md-nav__link">
+        Práctica 2
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica03/practica03.html" class="md-nav__link">
+        Práctica 3
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica04/practica04.html" class="md-nav__link">
+        Práctica 4
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica05/practica05.html" class="md-nav__link">
+        Práctica 5
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica06/practica06.html" class="md-nav__link">
+        Práctica 6
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica07/practica07.html" class="md-nav__link">
+        Práctica 7
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica08/practica08.html" class="md-nav__link">
+        Práctica 8
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    Ejercicios
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" class="md-nav__link">
+    Ejercicio 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="practica-11-programacion-orientada-a-objetos-en-swift-2">Práctica 11: Programación Orientada a Objetos en Swift (2)<a class="headerlink" href="#practica-11-programacion-orientada-a-objetos-en-swift-2" title="Permanent link">&para;</a></h1>
+<h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
+<p>Para entregar la práctica debes subir a Moodle el fichero
+<code>practica11.swift</code> con una cabecera inicial con tu nombre y apellidos,
+y las soluciones de cada ejercicio separadas por comentarios.</p>
+<h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
+<h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
+<p>a) Escribe un ejemplo de código en el que definas una relación de
+herencia entre una clase base y una clase derivada. Comprueba en el
+código que un objeto de la clase derivada hereda las propiedades y
+métodos de la clase base.</p>
+<p>Investiga sobre el funcionamiento de la herencia en Swift. Escribe
+ejemplos en donde compruebes este funcionamiento. Algunos ejemplos de
+preguntas que puedes investigar (puedes añadir tú más preguntas):</p>
+<ul>
+<li>¿Se puede sobreescribir el valor de una propiedad almacenada? ¿Y
+calculada? </li>
+<li>¿Se puede añadir un observador a una propiedad de la clase base en
+  una clase derivada?</li>
+<li>¿Hereda la clase derivada propiedades y métodos estáticos de la clase base?</li>
+<li>¿Cómo se puede llamar a la implementación de un método de la clase
+  base en una sobreescritura de ese mismo método en la clase derivada?</li>
+</ul>
+<p>b) El siguiente código tiene errores. Intenta descubrir cuáles son sin
+utilizar el compilador. Prueba distintas formas de arreglar el código
+cambiando lo mínimo posible de lo ya definido (por ejemplo, no debes
+añadir nuevas propiedades en <code>MiStruct</code>). Compruébalo con el compilador.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">A</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">a</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span><span class="kr">get</span> <span class="kr">set</span><span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">?</span>
+<span class="p">}</span>
+
+<span class="kd">protocol</span> <span class="nc">B</span> <span class="p">{</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">bar</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="nc">MiStruct</span><span class="p">:</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">a</span> <span class="p">=</span> <span class="mi">10</span>
+    <span class="kd">func</span> <span class="nf">foo</span><span class="p">(</span><span class="n">valor1</span> <span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">valor2</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">res</span> <span class="p">=</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="p">?</span> <span class="n">a</span><span class="p">:</span> <span class="n">b</span>
+        <span class="k">return</span> <span class="n">res</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>c) Repasa el protocolo <code>GeneradorNumerosAleatorios</code> visto en
+teoría. Define otra implementación del protocol llamada
+<code>GeneradorFake</code> en la que siempre se devuelva el número <code>0.1</code>. Cambia
+el ejemplo del dado para que utilice este generador y comprueba que
+siempre devuelve el número 1.</p>
+<p>c) Supongamos la estructura <code>Equipo</code> que aparece a continuación que
+representa un equipo en una competición deportiva: </p>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Equipo</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">puntos</span><span class="p">:</span> <span class="nb">Int</span>
+    <span class="kd">let</span> <span class="nv">nombre</span><span class="p">:</span> <span class="nb">String</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Debes hacer que la estructura se ajuste al protocolo <code>Comparable</code> para
+poder comparar dos equipos . Consulta el protocolo en <a href="https://developer.apple.com/documentation/swift/comparable">documentación
+de
+Swift</a>. Un
+equipo será menor que otro cuando tenga menos puntos. En el caso en
+que ambos tengan los mismos puntos, será menor el que tenga menor
+nombre en orden alfabético.</p>
+<p>Una vez definidos los operadores necesarios comprueba que funcionan
+correctamente creando varios equipos, insertándolos en un array y
+llamando al método <code>sorted</code>.</p>
+<h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
+<p>En este ejercicio deberás implementar un conjunto de clases con las
+que podamos "simular" una carrera de coches.</p>
+<h4 id="funcion-random">Función <code>random</code><a class="headerlink" href="#funcion-random" title="Permanent link">&para;</a></h4>
+<p>Utilizaremos la función del sistema <code>random()</code> que devuelve un número
+aleatorio. Hay que importar la librería <code>Glibc</code> (en Linux) y
+<code>Foundation</code> (en iOS) para usarla.</p>
+<p>A continuación puedes ver un ejemplo de su utilización en un método de
+tipo del enumerado <code>MarcaCoche</code> para devolver una marca aleatoria de
+coche:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">import</span> <span class="nc">Glibc</span>
+
+<span class="kd">func</span> <span class="nf">rand</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">random</span><span class="p">()</span> <span class="o">%</span> <span class="n">n</span>
+<span class="p">}</span>
+
+<span class="kd">enum</span> <span class="nc">MarcaCoche</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">Mercedes</span><span class="p">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Ferrari</span><span class="p">,</span> <span class="n">RedBull</span><span class="p">,</span> <span class="n">McLaren</span>
+
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">random</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="n">MarcaCoche</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">maxValue</span> <span class="p">=</span> <span class="n">McLaren</span><span class="p">.</span><span class="n">rawValue</span>
+
+        <span class="kd">let</span> <span class="nv">r</span> <span class="p">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">maxValue</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">MarcaCoche</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="n">r</span><span class="p">)</span><span class="o">!</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="enumerados-y-clases-que-gestionan-los-vehiculos">Enumerados y clases que gestionan los vehículos<a class="headerlink" href="#enumerados-y-clases-que-gestionan-los-vehiculos" title="Permanent link">&para;</a></h4>
+<p>Deberás implementar los siguientes enumerados y clases, con las propiedades indicadas.</p>
+<p><strong>Enumerado <code>MarcaCoche</code></strong> </p>
+<ul>
+<li>Posibles valores: <code>Mercedes</code>, <code>Ferrari</code>, <code>RedBull</code> y <code>McLaren</code></li>
+<li>Método del tipo <code>random()</code> que devuelva aleatoriamente uno de los
+  valores (consultar el código anterior).</li>
+</ul>
+<p><strong>Enumerado <code>TipoCambio</code></strong></p>
+<ul>
+<li>Posibles valores: <code>Automatico</code> o <code>Manual</code></li>
+<li>Método del tipo <code>random()</code> que devuelve uno de esos valores.</li>
+</ul>
+<p><strong>Clase base <code>Coche</code></strong></p>
+<ul>
+<li>Propiedades de instancia almacenadas: <code>velocidadActual</code> (<code>Double</code>),
+  <code>marcha</code> (<code>Int</code>), <code>distanciaRecorrida</code> (<code>Double</code>) y <code>marca</code>
+  (<code>MarcaCoche</code>).</li>
+<li>Propiedad de instancia calculada: <code>descripcion</code> (<code>String</code>), que
+  devuelve la marca del coche.</li>
+<li>Propiedades del tipo: Constantes <code>velocidadMaxima</code> (<code>Double</code>) y
+  <code>marchaMaxima</code> (<code>Int</code>) inicializadas a 150.0 y 6</li>
+</ul>
+<p><strong>Subclase <code>CocheAutomatico</code></strong></p>
+<ul>
+<li>Hereda de <code>Coche</code> y sobreescribe la descripción, añadiendo la cadena
+  "Automático".</li>
+</ul>
+<p><strong>Subclase <code>CocheManual</code></strong></p>
+<ul>
+<li>Hereda de <code>Coche</code> y sobreescribe la descripción, añadiendo la cadena
+  "Manual".</li>
+</ul>
+<p><strong>Observadores de propiedades en las subclases</strong></p>
+<p>La velocidad de un coche manual se modifica cambiando su propiedad
+<code>marcha</code> y la de un coche automático cambiando su propiedad
+<code>velocidadActual</code>. En cada caso hay que definir observadores de
+propiedades que modifiquen la otra propiedad.</p>
+<p>La velocidad se calcula a partir de la marcha según la siguiente expresión:</p>
+<div class="highlight"><pre><span></span><code><span class="n">velocidadActual</span> <span class="p">=</span> <span class="mf">25.0</span> <span class="o">*</span> <span class="n">marcha</span>
+</code></pre></div>
+<p>Y la marcha se calcula a partir de la velocidad con la expresión que
+puedes encontrar en los apuntes de teoría, en la definición de la
+clase <code>CocheAutomatico</code>.</p>
+<p><strong>Distancia recorrida e información en pantalla</strong></p>
+<p>Suponemos que se cambia la velocidad del coche cada hora y que en cada
+cambio de velocidad se actualiza la propiedad <code>distanciaRecorrida</code>,
+que irá acumulando la distancia recorrida por el coche desde su
+inicialización. Cada vez que se cambia la velocidad también se
+imprimirá la velocidad actual y la marca del coche en pantalla (ver el
+ejemplo al final del ejercicio). Esto se puede implementar también en
+los observadores.</p>
+<h4 id="clase-carrera">Clase Carrera<a class="headerlink" href="#clase-carrera" title="Permanent link">&para;</a></h4>
+<p>Debes implementar las clases anteriores y una clase <code>Carrera</code> con la
+que simular una carrera de <code>n</code> coches que conducen durante <code>k</code> horas.</p>
+<p>Un ejemplo de uso de la clase <code>Carrera</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">carrera</span> <span class="p">=</span> <span class="n">Carrera</span><span class="p">(</span><span class="n">numCoches</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">horas</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Descripción de la carrera:&quot;</span><span class="p">)</span>
+<span class="n">carrera</span><span class="p">.</span><span class="n">descripcion</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">!!! Comienza la carrera !!!&quot;</span><span class="p">)</span>
+<span class="n">carrera</span><span class="p">.</span><span class="n">empezar</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">!!! Clasificación !!!&quot;</span><span class="p">)</span>
+<span class="n">carrera</span><span class="p">.</span><span class="n">clasificacion</span><span class="p">()</span>
+</code></pre></div>
+<p>Y su correspondiente salida por pantalla:</p>
+<div class="highlight"><pre><span></span><code>Descripción de la carrera:
+2 coches con una duración de 3 horas
+ McLaren Automatico
+ Mercedes Manual
+
+!!! Comienza la carrera !!!
+
+Horas transcurridas 1
+McLaren Automatico viajando a 141.0 kilómetros por hora con la marcha 6
+Mercedes Manual viajando a 25.0 kilómetros por hora con la marcha 1
+
+Horas transcurridas 2
+McLaren Automatico viajando a 114.0 kilómetros por hora con la marcha 5
+Mercedes Manual viajando a 25.0 kilómetros por hora con la marcha 1
+
+Horas transcurridas 3
+McLaren Automatico viajando a 105.0 kilómetros por hora con la marcha 5
+Mercedes Manual viajando a 100.0 kilómetros por hora con la marcha 4
+
+!!! Clasificación !!!
+1. McLaren Automatico (360.0 kilómetros recorridos)
+2. Mercedes Manual (150.0 kilómetros recorridos)
+</code></pre></div>
+<h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
+<p>a) Completa el bucle con el código que comprueba el tipo de la variable
+<code>i</code> e imprime su propiedad <code>x</code> y su propiedad <code>b</code> o <code>c</code>, dependiendo
+de su tipo.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">X</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nv">x</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Xb</span><span class="p">:</span> <span class="n">A</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">0</span>
+   <span class="kd">var</span> <span class="nv">b</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Xc</span><span class="p">:</span> <span class="n">A</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">1</span>
+   <span class="kd">var</span> <span class="nv">c</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="n">X</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="n">Xb</span><span class="p">(),</span> <span class="n">Xc</span><span class="p">()]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">array</span> <span class="p">{</span>
+   <span class="c1">//</span>
+   <span class="c1">// Código a completar</span>
+   <span class="c1">//</span>
+<span class="p">}</span>
+
+<span class="c1">// debe imprimir:</span>
+<span class="c1">// x: 0, b: 0</span>
+<span class="c1">// x: 1, c: 0</span>
+</code></pre></div>
+<p>b) Completa el código que hay a continuación para que compile
+correctamente y aparezca en pantalla el resultado que se muestra.</p>
+<p>Resultado:</p>
+<div class="highlight"><pre><span></span><code><span class="mf">0.0</span>
+<span class="mf">300.0</span>
+</code></pre></div>
+<p>Código:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">TieneVelocidad</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">velocidadActual</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Double</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Vehiculo</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">velocidad</span> <span class="p">=</span> <span class="mf">0.0</span>
+    <span class="kd">func</span> <span class="nf">velocidadActual</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Double</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">velocidad</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Tren</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="kd">let</span> <span class="nv">velocidadEnMarcha</span> <span class="p">=</span> <span class="mf">300.0</span>
+    <span class="kd">var</span> <span class="nv">pasajeros</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="kd">var</span> <span class="nv">enMarcha</span> <span class="p">=</span> <span class="kc">false</span>
+<span class="p">}</span>
+
+<span class="c1">//</span>
+<span class="c1">// Código a completar</span>
+<span class="c1">//</span>
+
+<span class="kd">var</span> <span class="nv">vehiculo1</span> <span class="p">=</span> <span class="n">Vehiculo</span><span class="p">()</span>
+<span class="kd">var</span> <span class="nv">tren1</span> <span class="p">=</span> <span class="n">Tren</span><span class="p">()</span>
+<span class="n">tren1</span><span class="p">.</span><span class="n">enMarcha</span> <span class="p">=</span> <span class="kc">true</span>
+
+<span class="kd">let</span> <span class="nv">transportes</span><span class="p">:</span> <span class="p">[</span><span class="n">TieneVelocidad</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="n">vehiculo1</span><span class="p">,</span> <span class="n">tren1</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">transportes</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">velocidadActual</span><span class="p">())</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>c) Define una extensión del enum <code>Arbol</code> del ejercicio 2 de la
+práctica 9 en la que se implemente el método <code>min</code> que devuelva el
+menor elemento del árbol. En la extensión debes especificar que el
+tipo de los elementos del árbol deben cumplir el protocolo
+<code>Comparable</code>, para poder realizar la comparación y obtener el mínimo.</p>
+<p>Haz una prueba con un árbol de equipos, objetos de la estructura <code>Equipo</code>
+definida en el apartado anterior.</p>
+<h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
+<p>Continuamos con el ejercicio de las figuras geométricas de la
+práctica anterior.</p>
+<p>Comienza incluyendo en la práctica el código de todas las definiciones
+de las estructuras y clases geométricas: <code>Punto</code>, <code>Tamaño</code>,
+<code>Rectangulo</code> y <code>Circulo</code>.</p>
+<p>Una vez incluido debes realizar lo siguiente.</p>
+<h4 id="protocolo-figura">Protocolo figura<a class="headerlink" href="#protocolo-figura" title="Permanent link">&para;</a></h4>
+<p>Define el protocolo <code>Figura</code> que contiene:</p>
+<ul>
+<li>Propiedad de lectura y escritura <code>centro</code> (<code>Punto</code>), que define el
+  centro de la figura.</li>
+<li>Propiedades de sólo lectura <code>area</code> (<code>Double</code>) y <code>tamaño</code> (<code>Tamaño</code>)
+  que devuelven el tamaño (alto y ancho) de la figura.</li>
+</ul>
+<h4 id="extensiones">Extensiones<a class="headerlink" href="#extensiones" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>Define las extensiones necesarias para que las clases <code>Rectangulo</code>,
+y <code>Circulo</code> se ajusten al protocolo <code>Figura</code>, añadiendo el
+código de implementación necesario.</p>
+</li>
+<li>
+<p>Añade mediante una extensión al protocolo <code>Figura</code> la propiedad
+  calculada <code>descripcion</code> que devuelva un <code>String</code> con el centro y el
+  área de la figura.</p>
+</li>
+</ul>
+<h4 id="clase-almacenfiguras">Clase <code>AlmacenFiguras</code><a class="headerlink" href="#clase-almacenfiguras" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>Reescribe la clase <code>AlmacenFiguras</code> y define en ella <strong>una única
+propiedad</strong> <code>figuras</code> que contenga todas las figuras que se vayan
+creando. Reescribe también la implementación de <code>areaTotal</code>. Modifica
+los inicializadores en las clases geométricas para que se incluya la
+figura recién creada en esta propiedad.</p>
+</li>
+<li>
+<p>Escribe el método de clase <code>cuentaTipos() -&gt; (Int, Int)</code>
+que recorra el array de figuras y devuelva una tupla con dos enteros:
+número de rectángulos y número de círculos. La
+función debe imprimir por cada figura del array, su descripción
+por defecto proporcionada por el protocolo y el tipo de figura y sus
+características específicas.</p>
+</li>
+</ul>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code>- Descripción de la figura: Una figura con centro Punto(x: 7.0, y: 3.5) y área 50.0
+  Rectangulo con origen Punto(x: 2.0, y: 1.0) y tamaño Tamaño(ancho: 10.0, alto: 5.0)
+- Descripción de la figura: Una figura con centro Punto(x: 0.0, y: 2.0) y área 78.5398163397448
+  Circulo con centro Punto(x: 0.0, y: 2.0) y radio 5.0
+</code></pre></div>
+<hr />
+<p>Lenguajes y Paradigmas de Programación, curso 2020-21<br />
+© Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
+Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
