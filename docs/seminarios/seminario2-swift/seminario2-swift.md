@@ -166,19 +166,6 @@ Debes instalar la versión de Docker Desckto correspondiente a tu sistema operat
 página](https://www.docker.com/products/docker-desktop) y sigue las
 instrucciones correspondientes a tu sistema operativo.
 
-!!! Warning "Cuidado"
-    Si tienes Windows 10, la instalación nativa de Docker es
-    incompatible con la de Virtual Box. Puedes instalar [Docker
-    Toolbox](https://docs.docker.com/toolbox/overview/), que utiliza
-    una máquina Virtual Box para lanzar Docker. Si ya tienes instalada
-    una versión de Virtual Box no lo reinstales con Docker
-    Toolbox. Cuando la instalación te lo pida deschequéalo.
-    
-    Una vez instalado Docker Toolbox debes abrir un _Docker Quickstart
-    Terminal_ que contiene un entorno _bash_ similar al de
-    Linux. Desde ese terminal puedes continuar la instalación de la
-    imagen Swift tal y como se explica a continuación.
-
 #### Instalación y ejecución de la imagen Swift ####
 
 Una vez instalado Docker, abre un terminal y lanza el siguiente
@@ -403,6 +390,7 @@ terminal.
 Puedes consultar los conceptos básicos de Visual Studio Code y el
 manual completo en [este enlace](https://code.visualstudio.com/docs).
 
+<!--
 #### Integración del Docker Quickstart Terminal en Visual Studio Code (Windows) ####
 
 Abre un _Docker Quickstart Terminal_, ejecuta el siguiente comando y
@@ -456,6 +444,8 @@ Si eliges cambiar la Configuración de área de trabajo, en lugar de la de Usuar
 la configuración se guarda en una subcarpeta `".vscode"` de la carpeta de trabajo,
 y este tipo de Terminal interactivo se abrirá solo cuando trabajes en esa carpeta.
 Por defecto, en otras carpetas podrás tener el terminal que elijas.
+
+-->
 
 ## Un tour de Swift
 

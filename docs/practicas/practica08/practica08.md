@@ -16,10 +16,11 @@ hasta el apartado _Funciones y clausuras_ (incluido).
    instrucciones del seminario. Dependiendo de tu sistema operativo
    debes realizar una instalación distinta:
 
-    - **Windows**: Sigue los pasos indicados en _Ejecución en una máquina Docker_.
+    - **Windows, linux y Mac sin Xcode**: Sigue los pasos indicados en _Ejecución en una máquina Docker_.
     - **Mac con Xcode**: Sigue los pasos indicados en _Ejecución con MacOS_.
-    - **Ubuntu**: Sigue los pasos indicados en _Instalación en Linux Ubuntu_.
-    - **Mac sin Xcode** y cualquier **linux**: Sigue los pasos indicados en _Ejecución en una máquina Docker_.
+    - En **Ubuntu** y **Windows** hay la posibilidad de realizar una
+    instalación nativa, pero no la hemos comprobado. Puedes probar con
+    los pasos indicados en la web [swift.org](https://swift.org/getting-started/).
 
 2. Tal y como se indica en el seminario, puedes ejecutar también
    programas Swift usando un entorno on-line. Esta opción tiene
