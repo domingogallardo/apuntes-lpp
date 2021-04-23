@@ -19,16 +19,16 @@ hasta el apartado _Funciones y clausuras_ (incluido).
     - **Windows, linux y Mac sin Xcode**: Sigue los pasos indicados en _Ejecución en una máquina Docker_.
     - **Mac con Xcode**: Sigue los pasos indicados en _Ejecución con MacOS_.
     - En **linux** y **Windows** hay la posibilidad de realizar una
-    instalación nativa, pero no la hemos comprobado. Puedes probar con
+    instalación nativa, pero no la hemos probado. Puedes hacerlo tú siguiendo
     los pasos indicados en la web [swift.org](https://swift.org/getting-started/).
 
 2. Tal y como se indica en el seminario, puedes ejecutar también
-   programas Swift usando un entorno on-line. Esta opción tiene
+   programas Swift usando el entorno on-line
+   [http://online.swiftplayground.run](http://online.swiftplayground.run). 
+   Pero debes tener en cuenta que esta opción tiene
    algunos problemas: se requiere conexión a Internet, el editor es
    muy limitado y es posible que en alguna ocasión el servidor esté
    caído.
-
-    Te recomendamos siempre que sea posible instalar Swift en tu ordenador.
 
 3. Crea el fichero `practica08.swift` con una instrucción _Hola mundo_
    que imprima esa cadena. Ejecútalo en el entorno que hayas instalado
