@@ -205,7 +205,7 @@ print(miArray)
 // [10, -1, 3, 80, 100]
 ```
 
-!!! Important "Importante"
+!!! Note "Importante"
     Cuando estemos escribiendo código con estilo
     funcional deberemos utilizar los métodos que no modifican las
     estructuras. Así evitaremos los efectos laterales y nuestro código
