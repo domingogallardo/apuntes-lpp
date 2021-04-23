@@ -53,6 +53,7 @@ Vamos a repasar en este tema cómo se implementan en Swift conceptos
 principalmente funcionales como:
 
 - Valores inmutables
+- Tipos de datos recursivos
 - Funciones como objetos de primera clase y clasuras
 - Funciones de orden superior
 
@@ -73,44 +74,27 @@ ejecutar Swift:
 
 ### Swift es fuertemente tipeado
 
-- Swift es un lenguaje fuertemente tipeado, pero es posible no
-  escribir el nombre del tipo en aquellos casos en los que el
-  compilador pueda **inferirlo**.
-- Por ejemplo, cuando se hace una asignación.
+- Swift es un lenguaje fuertemente tipeado
 
 ```swift
-var x = 10
-// x: Int = 10
-var cadena = "Hola"
-// cadena: String = "Hola"
-var p = true
-// p: Bool = true
+let n: Int = 10
+let str: String = "Hola"
+let array: [Int] = [1,2,3,4,5]
 ```
 
-----
+- Es posible no escribir el nombre del tipo en aquellos casos en los
+  que el compilador pueda **inferirlo**.
 
-### Repaso algunos conceptos PF
+```swift
+let n = 10
+let str = "Hola"
+let array = [1,2,3,4,5]
+```
 
-- Programación Funcional:
+### Swift es multi-paradigma
 
-> La Programación Funcional es un paradigma de programación que trata
-> la computación como la evaluación de funciones matemáticas y que
-> evita cambios de estado y datos mutables.
-
-- Funciones matemáticas o puras
-
-> Las funciones matemáticas tienen la característica de que cuando las
-> invocas con el mismo argumento siempre te devolverán el mismo
-> resultado.
-
-- Funciones como objetos de primera clase:
-
-> En programación funcional, las funciones son objetos de primera
-> clase del lenguaje, similares a enteros o _strings_. Podemos pasar
-> funciones como argumentos en las denominadas _funciones de orden
-> superior_ o devolver funciones creadas en tiempo de ejecución
-> (clausuras).
-
+- Swift incorpora características funcionales, de programación
+  imperativa y de programación orientada a objetos.
 
 
 ----
@@ -125,82 +109,108 @@ lenguaje. Veamos algunas características relacionadas con esto.
 
 ### Palabra clave let
 
-- La palabra clave `let` permite definir constantes. Si se intenta
+- La palabra clave `let` permite definir variables inmutables. Si se intenta
   modificar el valor el compilador da un error.
+  
+```swift
+var x = 10
+x = 20 // x es mutable
+let y = 10
+y = 20 // error: y es inmutable
+```
+  
 - El valor asignado puede no conocerse en tiempo de compilación:
 
 ```swift
-let maximoNumeroDeIntentosDeLogin = 10
 let respuesta: String = respuestaUsuario.respuesta()
 ```
 
 - Si una variable no se modifica es conveniente declararla como
   `let`. El compilador de Swift da una aviso para ello.
 
----
-
-### Semántica de copia en estructuras
-
-- Una forma de evitar los efectos laterales es definir una semántica
-  de copia en la asignación.
-- En Swift la semántica de una asignación depende del tipo de objeto.
-- Las estructuras (_structs_) tienen **semántica de copia**. Veremos
-  más adelante que las clases tienen una **semántica de referencia**.
-- La mayor parte de tipos definidos el la
-[biblioteca estándar de Swift](https://developer.apple.com/library/ios/documentation/General/Reference/SwiftStandardLibraryReference/index.html#//apple_ref/doc/uid/TP40014608)
-son estructuras. Tipos como `Int`, `Double`, `Bool`, `String`,
-`Array`, `Dictionary`, etc. son todos ellos estructuras y, por tanto,
-tienen semántica de copia.
-
 ```swift
-var str1 = "Hola"
-var str2 = str1
-str1.append("Adios")
-print(str1) // Imprime "HolaAdios"
-print(str2) // Imprime "Hola"
-```
-
-- Los arrays también son estructuras y, por tanto, también tienen
-  semántica de copia:
-
-```swift
-var array1 = [1, 2, 3, 4]
-var array2 = array1
-array1[0] = 10
-print(array1) // [10, 2, 3, 4]
-print(array2) // [1, 2, 3, 4]
-```
-
-- A diferencia de otros lenguajes como Java, los parámetros de una
-  función siempre son inmutables y se pasan por copia. Por ejemplo, el
-  siguiente código sería un error:
-
-```
-func concat(_ str1: String, con str2: String) -> String {
-  // str1.append(str2) -> error
-  return str1
+func saluda(nombre: String) -> String {
+    var saludo = "Hola " + nombre + "!"
+    return saludo
 }
+//warning: variable 'saludo' was never mutated; consider changing to 'let' constant
+//    var saludo = "Hola " + nombre
+//    ~~~ ^
+//    let
 ```
 
 ---
 
-### Estructuras mutables y `let`
+### Creación de nuevas estructuras y mutación
 
-- Si definimos un valor de una estructura con un `let` ese valor será
-  inmutable y no podrá modificarse, a pesar de que el `Struct` tenga
-  métodos que mutan sus valores.
-- Por ejemplo, hemos visto que el método `append(_:)` de un `String`
-  modifica la propia cadena. Si definimos una cadena con `let` no
-  podremos modificarla:
+- En la [biblioteca estándar de
+Swift](https://developer.apple.com/documentation/swift/swift_standard_library)
+existen una gran cantidad de estructuras (como `Int`, `Double`,
+`Bool`, `String`, `Array`, `Dictionary`, etc.) que tienen dos tipos de
+métodos: métodos que mutan la estructura y métodos que devuelven una
+nueva estructura. 
+
+- Por ejemplo, en el struct `Array` se define el método `sort` y el
+método `sorted`. El primero ordena el array con mutación y el segundo
+devuelve una copia ordenada, sin modificar el array original. 
 
 ```swift
-var cadenaMutable = "Hola"
-let cadenaInmutable = "Adios"
-cadenaMutable.append(cadenaInmutable) // cadenaMutable es "HolaAdios"
-// cadenaInmutable.append("Adios")
-// La sentencia anterior genera un error:
-// "cannot use mutating member on immutable value: 'cadenaInmutable' is a 'let' constant"
+// Código recomendable en programación funcional
+// porque utiliza el método sorted que devuelve una
+// copia del array original
+let miArray = [10, -1, 3, 80]
+let arrayOrdenado = miArray.sorted()
+print(miArray)
+print(arrayOrdenado)
+// Imprime:
+// [10, -1, 3, 80]
+// [-1, 3, 10, 80]
 ```
+
+- Sin embargo, el siguiente código es imperativo y utiliza la mutación
+  del array original: 
+
+```swift
+// Código no recomendable en programación funcional
+// porque utiliza el método sort que muta el array original
+var miArray = [10, -1, 3, 80]
+miArray.sort()
+print(miArray)
+// Imprime:
+// [-1, 3, 10, 80]
+```
+
+- Otro ejemplo es en la forma de añadir elementos a un array. Podemos
+hacerlo con un enfoque funcional, usando el operador `+` que construye
+un array nuevo:
+
+```swift
+// Código recomendable en programación funcional
+let miArray = [10, -1, 3, 80]
+let array2 = miArray + [100]
+print(array2)
+// Imprime:
+// [10, -1, 3, 80, 100]
+```
+
+- Y podemos hacerlo usando un enfoque imperativo, con el método
+`append`:
+
+```swift
+// Código no recomendable en programación funcional
+var miArray = [10, -1, 3, 80]
+miArray.append(100)
+print(miArray)
+// Imprime:
+// [10, -1, 3, 80, 100]
+```
+
+!!! Important "Importante"
+    Cuando estemos escribiendo código con estilo
+    funcional deberemos utilizar los métodos que no modifican las
+    estructuras. Así evitaremos los efectos laterales y nuestro código
+    funcionará correctamente en entornos multi-hilo.
+
 
 ----
 ### 3. Funciones
@@ -298,6 +308,26 @@ la documentación de las funciones usaremos las etiquetas separadas por
 dos puntos. Por ejemplo, las funciones anteriores son `max(_:_:)` y
 `divide(_:entre:)`.
 
+- Las etiquetas de los argumentos son parte del nombre de la
+función. Es posible definir funciones distintas con
+sólo distintos nombres de argumentos, como las siguientes funciones
+`mitad(par:)` y `mitad(impar:)`:
+
+```swift
+func mitad(par: Int) -> Int{
+    return par/2
+}
+
+func mitad(impar: Int) -> Int{
+    return (impar+1)/2
+}
+
+print(mitad(par: 8))
+// Imprime 4
+print(mitad(impar: 9))
+// Imprime 5
+```
+
 ----
 
 ### Parámetros y valores devueltos
@@ -327,31 +357,36 @@ diAdios(nombre:"Dave")
 ```
 
 - Es posible devolver múltiples valores, construyendo una tupla. Por
-  ejemplo, la siguiente función `minMax(array:)` busca el número más
-  pequeño y más grande de un array de enteros.
+ejemplo, la siguiente función `ecuacion(a:b:c:)` calcula las dos
+soluciones de una ecuación de segundo grado:
 
 ```swift
-func minMax(array: [Int]) -> (min: Int, max: Int) {
-    var minActual = array[0]
-    var maxActual = array[0]
-    for valor in array[1..<array.count] {
-        if valor < minActual {
-            minActual = valor
-        } else if valor > maxActual {
-            maxActual = valor
-        }
-    }
-    return (minActual, maxActual)
+func ecuacion(a: Double, b: Double, c: Double) -> (pos: Double, neg: Double) {
+    let discriminante = b*b-4*a*c
+    let raizPositiva = (-b + discriminante.squareRoot()) / 2*a
+    let raizNegativa = (-b - discriminante.squareRoot()) / 2*a
+    return (raizPositiva, raizNegativa)
 }
 ```
 
-- Los valores de la tupla devuelta se etiquetan y se puede acceder por
-  esos nombres cuando se consulta el valor devuelto por la función:
+- Recordemos (consultar el seminario de Swift) que podemos acceder a los
+valores de la tupla por posición:
 
 ```swift
-let limites = minMax(array: [8, -6, 2, 109, 3, 71])
-print("min es \(limites.min) y max es \(limites.max)")
-// Imprime "min es -6 y max es 109"
+let resultado = ecuacion(a: 1, b: -5, c: 6)
+print("Las raíces de la ecuación son \(resultado.0) y \(resultado.1)")
+//Imprime "Las raíces de la ecuación son 3.0 y 2.0"
+```
+
+- En este caso en la definición del tipo devuelto por la función estamos
+etiquetando esos valores con las etiquetas `pos` y `neg`. De esta
+forma podemos acceder a los componentes de la tupla usando esas
+etiquetas definidas:
+
+```swift
+let resultado = ecuacion(a: 1, b: -5, c: 6)
+print("Las raíces de la ecuación son \(resultado.pos) y \(resultado.neg)")
+//Imprime "Las raíces de la ecuación son 3.0 y 2.0"
 ```
 
 ----
@@ -385,46 +420,68 @@ elemento y el resto de la siguiente forma.
 
 ```swift
 let a = [10, 20, 30, 40, 50, 60]
-let primero = a.first!
-let resto = a.dropFirst()
-```
-
-- En `primero` se guarda el número 10. El símbolo `!` sirve para
-_desenvolver el opcional_ que devuelve `first` (veremos después este concepto).
-
-- En `resto` se guarda un `ArraySlice` del 20 al 60. Es una vista de un rango de
-elementos del array, en este caso el que va desde la posición 1 hasta
-la 5 (la posición inicial de un array es la 0).
-
-- Podemos convertir un `ArraySlice` en un `Array`:
-
-```swift
+let primero = a[0]
 let resto = Array(a.dropFirst())
 ```
 
-- La función recursiva que suma los valores de un array se puede
-  entonces implementar entonces de la siguiente forma:
+- En `primero` se guarda el número 10. En `resto` se guarda el `Array`
+del 20 al 60.
 
+- El método `dropFirst` devuelve una `ArraySlice`, que es
+una vista de un rango de elementos del array, en este caso el que va
+desde la posición 1 hasta la 5 (la posición inicial de un array es la
+0). Es necesario el constructor `Array` para convertir ese
+`ArraySlice` en un `Array`.
+
+- Usando las instrucciones anteriores podemos definir la función
+recursiva que suma los valores de un Array de la siguiente forma
+similar a cómo lo hacíamos en Scheme:
 
 ```swift
 func sumaValores(_ valores: [Int]) -> Int {
-  if let primero = valores.first {
-      let resto = Array(valores.dropFirst())
-      return primero + sumaValores(resto)
-  } else {
-      return 0
-  }
+    if (valores.isEmpty) {
+        return 0
+    } else {
+        let primero = valores[0]
+        let resto = Array(valores.dropFirst())
+        return primero + sumaValores(resto)
+    }
 }
 
-print(sumaValores([1,2,3,4,5,6,7,8])) // 36
+print(sumaValores([1,2,3,4,5,6,7,8])) 
+// Imprime "36"
 ```
 
-- La construcción `if let` comprueba si `valores.first` es distinto de
-  `nil`. En ese caso, se guarda el número en la variable `primero`. Lo
-  veremos más despacio cuando hablemos de los opcionales.
+- Un último ejemplo es la siguiente función `minMax(array:)` que
+devuelve el número más pequeño y más grande de un array de enteros:
 
-- Veremos que las colecciones en Swift implementan funciones de orden
-  superior como `map`, `filter`, `reduce`, etc.
+```swift
+func minMax(array: [Int]) -> (min: Int, max: Int) {
+    if (array.count == 1) {
+        return (array[0], array[0])
+    } else {
+        let primero = array[0]
+        let resto = Array(array.dropFirst())
+
+        // Llamada recursiva que devuelve el mínimo y el máximo del
+        // resto del array
+        let minMaxResto = minMax(array: resto)
+
+        let minimo = min(primero, minMaxResto.min)
+        let maximo = max(primero, minMaxResto.max)
+        return (minimo, maximo)
+    }
+}
+
+let limites = minMax(array: [8, -6, 2, 100, 3, 71])
+print("El mínimo es \(limites.min) y el máximo es \(limites.max)")
+// Imprime "El mímimo es -6 y el máximo es 100"
+```
+
+- En este ejemplo nos apartamos un poco de la solución vista en Scheme
+porque permitimos pasos de ejecución que inicializan variables. Pero
+no nos salimos del paradigma funcional, porque todas son variables
+inmutables definidas con `let`.
 
 
 ----
@@ -457,11 +514,30 @@ func multiplicaDosInts(_ a: Int, _ b: Int) -> Int {
   cualquier otro tipo:
 
 ```swift
-var funcionMatematica: (Int, Int) -> Int = sumaDosInts
-print("Resultado: \(funcionMatematica(2, 3))")
-funcionMatematica = multiplicaDosInts
-print("Resultado: \(funcionMatematica(2, 3))")
+var f = sumaDosInts
+print(f(2,3))
+// Imprime "5"
+f = multiplicaDosInts
+print(f(2,3))
+// Imprime "6"
 ```
+- La variable `f` es una variable de tipo `(Int, Int) -> Int`, o sea,
+una variable que contiene funciones de dos argumentos `Int` que
+devuelven un `Int`.
+
+!!! Note "Nota"
+    Habrás notado que al invocar a `f` no se ponen etiquetas en los
+    argumentos. De hecho, si las pusiéramos el compilador de Swift se
+    quejaría:
+    
+    ```swift
+    print(f(a:2, b:3))
+    //error: extraneous argument labels 'a:b:' in call
+    ```
+
+    Esto es debido a que al ser `f` una variable se le puede asignar
+    cualquier función que tenga el perfil `(Int, Int) -> Int` sin
+    tener en cuenta las etiquetas de los argumentos.
 
 ----
 
@@ -534,6 +610,23 @@ print(funciones[1](10)) // 20
 print(funciones[2](10)) // 100
 ```
 
+- El tipo de la variable `funciones` sería `[(Int) -> Int]`. 
+
+- Al ser Swift fuertemente tipeado, no podríamos hacer un array con
+distintos tipos de funciones. Por ejemplo el siguiente código daría un
+error:
+
+```swift
+func suma(_ x: Int, _ y: Int) -> Int {
+   return x + y
+}
+// La siguiente línea genera un error
+var misFunciones = [doble, cuadrado, suma]
+// error: heterogenous collection literal could only be inferred to
+// '[Any]'; add explicit type annotation if this is intentional
+
+```
+
 ----
 
 
@@ -541,67 +634,66 @@ print(funciones[2](10)) // 100
 
 - Por último, veamos un ejemplo de funciones que devuelven otras
   funciones.
+
 - Empecemos por un ejemplo sencillo de una función que devuelve otra
 que suma 10:
 
 ```swift
-func makeSumador10() -> (Int) -> Int {
+func construyeSumador10() -> (Int) -> Int {
   func suma10(x: Int) -> Int {return x+10}
   return suma10
 }
 
-var f = makeSumador10()
-print(f(20))
+var g = construyeSumador10()
+print(g(20))
 // Imprime 30
 ```
 
-- Hay que hacer notar la declaración de la función `makeSumador10`. Es
-una función que no recibe argumentos y que devuelve otra función del
-tipo `(Int) -> Int`, esto es, una función que recibe un entero y
-devuelve otro entero.
+- La función devuelta por `construyeSumador10()` es una función con el tipo
+`(Int) -> Int` (recibe un parámetro entero y devuelve un entero). 
 
-----
+- Estas funciones devueltas se denominan **clausuras**. Más adelante
+hablaremos algo más de ellas. Veremos también más adelante que es
+posible usar **expresiones de clausura** que construyen clausuras
+anónimas.
 
-### Otro ejemplo un poco más complicado
+- Podemos modificar el ejemplo anterior, haciendo que la función
+`construyeSumador` reciba el número a sumar como parámetro:
 
 ```swift
-func eligeFuncionPaso(menorQueCero: Bool) -> (Int) -> Int {
-    func pasoAdelante(x: Int) -> Int { return x + 1 }
-    func pasoAtras(x: Int) -> Int { return x - 1 }
-    return menorQueCero ? pasoAdelante : pasoAtras
+func construyeSumador(inc: Int) -> (Int) -> Int {
+  func suma(x: Int) -> Int {return x+inc}
+  return suma
 }
 
-var valorActual = -4
-let acercarseACero = eligeFuncionPaso(menorQueCero: valorActual < 0)
-// acercarseACero ahora se refiere a la función anidada pasoAdelante
-while valorActual != 0 {
-    print("\(valorActual)... ")
-    valorActual = acercarseACero(valorActual)
-}
-print("cero!")
-// -4...
-// -3...
-// -2...
-// -1...
-// cero!
+var f2 = construyeSumador(inc: 10)
+var f3 = construyeSumador(inc: 100)
+print(f2(20))
+// Imprime "30"
+print(f3(20))
+// Imprime "120"
 ```
-
 
 ----
 ### 6. Tipos
 ----
 
+
+
 ### Swift es fuertemente tipeado
 
 - Swift es un lenguaje fuertemente tipeado, a diferencia de
   Scheme. 
+
 - Entre las ventajas del uso de tipos está la detección de errores en
   los programas en tiempo de compilación o las ayudas del entorno de
   desarrollo para autocompletar código. 
+
 - Entre los inconvenientes se encuentra la necesidad de ser más
   estrictos a la hora de definir los parámetros y los valores
   devueltos por las funciones, lo que impide la flexibilidad de
   Scheme.
+
 - Se utilizan tipos para definir los posibles valores de:
     - variables
     - parámetros de funciones
@@ -623,7 +715,6 @@ func calculaEstadisticas(valores: Array<Int>) -> (min: Int, max: Int, media: Int
 - En Swift existen dos clases de tipos: **tipos con nombre** y **tipos
   compuestos**.
 
-
 ----
 
 ### Tipos con nombre
@@ -634,6 +725,19 @@ func calculaEstadisticas(valores: Array<Int>) -> (min: Int, max: Int, media: Int
     - nombres de estructuras
     - nombres de enumeraciones
     - nombres de protocolos 
+
+- Por ejemplo, instancias de una clase definida por el usuario llamada
+`MiClase` tienen el tipo `MiClase`. 
+
+- Además de los tipos definidos por el usuario, la biblioteca estándar
+de Swift tiene un gran número de tipos predefinidos. A diferencia de
+otros lenguajes, estos tipos no son parte del propio lenguaje sino que
+se definen en su mayoría como estructuras implementadas en esta
+biblioteca estándar. Por ejemplo, arrays, diccionarios o incluso los
+tipos más básicos como `String` o `Int` están construidos en esa
+biblioteca. La implementación de estos elementos está disponible en
+abierto en el [sitio GitHub de
+Swift](https://github.com/apple/swift/tree/master/stdlib/public/core). 
 
 
 ----
@@ -693,6 +797,86 @@ print(quiniela(resultado: (2,2)))
 // Imprime Equis
 ```
 
+### Tipos valor y tipos referencia
+
+- En Swift existen dos tipos de construcciones que forman la base de la
+programación orientada a objetos: las estructuras (_structs_) y las
+clases. En el tema siguiente hablaremos sobre ello.
+
+- En la [biblioteca estándar de
+Swift](https://developer.apple.com/documentation/swift/swift_standard_library)
+la mayor parte de los tipos definidos (como `Int`, `Double`, `Bool`,
+`String`, `Array`, `Dictionary`, etc.) son estructuras, no clases.
+
+- Una de las diferencias más importantes entre estructuras y clases es
+su comportamiento en una asignación: las estructuras tienen una
+**semántica de copia** (son tipos valor) y las clases tienen una
+**semántica de referencia** (son tipos referencia).
+
+#### Tipo valor ####
+
+- Un _tipo valor_ es un tipo que tiene semántica de copia en las
+asignaciones y cuando se pasan como parámetro en llamadas a funciones.
+
+- Los tipos valor son muy útiles porque evitan los efectos laterales
+en los programas y simplifican el comportamiento del compilador en la
+gestión de memoria. 
+
+- Veamos ahora algunos ejemplos de copia por valor en estructuras. Por
+  ejemplo, si asignamos una cadena a otra, se realiza una copia:
+
+```swift
+var str1 = "Hola"
+var str2 = str1
+str1.append("Adios")
+print(str1) // Imprime "HolaAdios"
+print(str2) // Imprime "Hola"
+```
+
+- Los arrays también son estructuras y, por tanto, también tienen
+  semántica de copia:
+
+```swift
+var array1 = [1, 2, 3, 4]
+var array2 = array1
+array1[0] = 10
+print(array1) // [10, 2, 3, 4]
+print(array2) // [1, 2, 3, 4]
+```
+
+- A diferencia de otros lenguajes como Java, los parámetros de una
+función siempre son inmutables y se pasan por copia, para reforzar el
+carácter funcional de las funciones. Por ejemplo, es incorrecto
+escribir lo siguiente:
+
+```
+func ponCero(array: [Int], pos: Int) {
+    array[pos] = 0
+// error: cannot assign through subscript: 'array' is a 'let' constant
+}
+```
+
+- Se podría pensar que es muy costoso copiar un array entero, pero no
+es así. El compilador de Swift optimiza estas sentencias y sólo
+realiza la copia en el momento en que hay una modificación de una de
+las variables que comparten el array. Es lo que se llama _copy on
+write_.
+
+
+#### Tipo referencia ####
+
+- Frente a un tipo valor, un tipo de referencia es aquel en los que
+los valores se asignan a variables con una semántica de
+referencia. 
+
+- Cuando se realizan varias asignaciones de una misma
+instancia a distintas variables todas ellas guardan una referencia a
+la misma instancia. Si la instancia se modifica, todas las variables
+reflejarán el nuevo valor. 
+
+- Cuando veamos las clases en el próximo tema veremos algunos
+ejemplos.
+
 ----
 ### 7. Enumeraciones
 ----
@@ -744,11 +928,6 @@ enum Planeta {
     case mercurio, venus, tierra, marte, jupiter, saturno, urano, neptuno
 }
 ```
-
-----
-8. Enumeraciones instanciables
-----
-
 
 ### Valores brutos de enumeraciones
 
@@ -802,40 +981,99 @@ let posiblePlaneta = Planeta(rawValue: 7)
 // posiblePlaneta es de tipo Planeta? y es igual a Planeta.urano
 ```
 
+
 ----
+8. Enumeraciones instanciables
+----
+
+- Una característica singular de las enumeraciones en Swift es que
+permiten definir valores variables asociados a cada caso de la
+enumeración, creando algo muy parecido a una instancia de la
+enumeración.
+
 
 ### Valores asociados a instancias de enumeraciones
 
-- En otros lenguajes de programación se llaman _uniones etiquetadas_ o
-  _variantes_. Permiten asociar valores de otro tipo a las opciones
-  del enumerado.
-- Una instancia de un **caso de enumeración** (_enum case_) puede
-  tener valores asociados con la instancia. Instancias del mismo caso
-  de enumeración pueden tener asociados valores diferentes. 
-- Se proporciona el valor asociado cuando se crea la instancia. 
-
-Ejemplo:
+- Veamos un ejemplo inicial muy sencillo, con una enumeración con un
+único caso, en el que se define una variable de tipo `Int`:
 
 ```swift
-enum CodigoBarras {
-    case upc(Int, Int, Int, Int)
-    case qrCode(String)
+enum Prueba {
+    case num(Int)
 }
 ```
 
-Creación de las instancias:
+- Esta notación obliga a definir un valor concreto del `Int` asociado
+al caso `num` en el momento de creación del enumerado:
 
 ```swift
-var codigoBarrasProducto = CodigoBarras.upc(8, 85909, 51226, 3)
-codigoBarrasProducto = .qrCode("ABCDEFGHIJKLMNOP")
+let valor1 = Prueba.num(10)
+let valor2 = Prueba.num(40)
+```
 
-switch codigoBarrasProducto {
-case let .upc(sistemaNumeracion, fabricante, producto, control):
-   print("UPC: \(sistemaNumeracion), \(fabricante), \(producto), \(control).")
-case let .qrCode(codigoProducto):
-   print("Código QR: \(codigoProducto).")
+- Las variables `valor1` y `valor2` son de tipo `Prueba` y tiene como
+valor el caso `num`, y el entero asociado a ese caso (`10` y `40` en
+cada instancia). Son parecidas a instancias de una clase.
+
+- Para obtener el valor asociado debemos usar una expresión `case let`
+en una sentencia `switch` con una variable a la que se asigna el
+valor. Por ejemplo, en el siguiente código el valor del enumerado se
+asigna a la variable `x`:
+
+```swift
+switch valor1 {
+case let .num(x):
+    print("Valor asociado al caso num: \(x)")
 }
-// Imprime  "Código QR : ABCDEFGHIJKLMNOP."
+// Imprime "Valor asociado al caso num: 10
+```
+
+!!! Note "Nota"
+    No hay que confundir un valor asociado a un caso y un valor bruto:
+    el valor bruto de un caso de enumeración es el mismo para todas las
+    instancias, mientras que el valor asociado es distinto y se
+    proporciona cuando se define el valor concreto de la enumeración.
+
+- Cuando unimos a la característica del valor asociado la posibilidad
+de los enumerados de tener más de un caso tenemos lo que en otros
+lenguajes de programación se llaman _uniones etiquetadas_ o
+_variantes_.
+
+- Por ejemplo, podemos definir un enumerado que permita guardar un
+`Int` o un `String`:
+
+```swift
+enum Multiple {
+    case num(Int)
+    case str(String)
+}
+```
+
+- De esta forma, podemos crear valores de tipo `Multiple` que contienen
+un `Int` (instanciando el caso `num`) o un `String` (instanciando el
+caso `str`):
+
+```swift
+let valor3 = Multiple.num(10)
+let valor4 = Multiple.str("Hola")
+```
+
+- Y podemos definir una función que reciba instancias de tipo `Multiple`
+y use un `switch` para comprobar qué caso tienen instanciado:
+
+```swift
+func imprime(multiple: Multiple) {
+    switch multiple {
+    case let .num(x):
+        print("Multiple tiene un Int: \(x)")
+    case let .str(s):
+        print("Multiple tiene un String: \(s)")
+    }
+}
+imprime(multiple: valor3)
+// Imprime "Multiple tiene un Int: 10"
+imprime(multiple: valor4)
+// Imprime "Multiple tiene un String: Hola
 ```
 
 ----
@@ -878,47 +1116,74 @@ print(evalua(expresion: producto))
 ```
 
 - Otro ejemplo de enums recursivos, para definir un tipo de datos
-`Lista` basado en parejas (similar a Scheme):
-
+`Lista` similar al que vimos en Scheme. La lista puede ser una lista
+vacía o puede contener dos elementos: un valor `Int` y otra lista:
 
 ```swift
-indirect enum Lista{
- case vacia
- case cons(Int, Lista)
+indirect enum Lista {
+    case vacia
+    case nodo(Int, Lista)
 }
+```
 
+- Para crear una lista de tipo `nodo` deberemos dar un valor entero (el
+valor de la cabeza de la lista) y otra lista (el resto de la
+lista). También podemos crear una lista vacía.
+
+- Por ejemplo, podemos crear la lista `(10, 20, 30)` de la siguiente
+manera:
+
+```swift
+let lista1 = Lista.nodo(30, Lista.vacia)
+let lista2 = Lista.nodo(20, lista1)
+let lista3 = Lista.nodo(10, lista2)
+```
+
+- Podríamos crear esta misma lista de una forma más abreviada:
+
+```swift
+let lista: Lista = .nodo(10, .nodo(20, .nodo(30, .vacia)))
+```
+
+- Una vez definido el tipo enumerado, podemos definir funciones que
+trabajen con él. La siguiente función, por ejemplo, es una función
+recursiva que recibe una lista y devuelve la suma de sus
+elementos. Funciona de una forma muy similar a la definición que
+hicimos en Scheme:
+
+```swift
 func suma(lista: Lista) -> Int {
-   switch lista {
-   case  .vacia:
-     return 0
-   case let .cons(car, cdr):
-     return car + suma(lista: cdr)
-   }
+    switch lista {
+    case  .vacia:
+        return 0
+    case let .nodo(car, cdr):
+        return car + suma(lista: cdr)
+    }
 }
 
-let z: Lista = .cons(20, .cons(10, .vacia))
+let z: Lista = .nodo(20, .nodo(10, .vacia))
 
 print(suma(lista: z))
 // Imprime 30
 ```
 
-- Podemos definir también una función recursiva `make(lista:[Int])`
+- Podemos también definir una función recursiva `construye(lista:[Int])`
 que devuelve una lista a partir de una array de enteros:
 
-```
-func make(lista: [Int]) -> Lista {
-    if let primero = lista.first {
-        let resto = Array(lista.dropFirst())
-        return Lista.cons(primero, make(lista: resto))
-    } else {
+```swift
+func construye(lista: [Int]) -> Lista {
+    if (lista.isEmpty) {
         return Lista.vacia
-    }
+    } else {
+        let primero = lista[0]
+        let resto = Array(lista.dropFirst())
+        return Lista.nodo(primero, construye(lista: resto))
+    } 
 }
 
-let lista = make(lista: [1,2,3,4,5])
+let lista2 = construye(lista: [1,2,3,4,5])
 
-print(suma(lista: lista))
+print(suma(lista: lista2))
 // Imprime 15
 ```
-
 

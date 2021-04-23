@@ -16,6 +16,7 @@ Vamos a repasar en este tema cómo se implementan en Swift conceptos
 principalmente funcionales como:
 
 - Valores inmutables
+- Tipos de datos recursivos
 - Funciones como objetos de primera clase y clasuras
 - Funciones de orden superior
 
