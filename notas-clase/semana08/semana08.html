@@ -252,9 +252,9 @@ principalmente funcionales como:</p>
 ejecutar Swift:</p>
 <p><img src="imagenes/vcode.png" width="700px"/></p>
 <hr />
-<h3>Swift es fuertemente tipeado</h3>
+<h3>Swift es fuertemente tipado</h3>
 <ul>
-<li>Swift es un lenguaje fuertemente tipeado</li>
+<li>Swift es un lenguaje fuertemente tipado</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">n</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">10</span>
 <span class="kd">let</span> <span class="nv">str</span><span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;Hola&quot;</span>
@@ -748,7 +748,7 @@ sumatorio(a, b, f) = 0 si a &gt; b
 <p>El tipo de la variable <code>funciones</code> sería <code>[(Int) -&gt; Int]</code>. </p>
 </li>
 <li>
-<p>Al ser Swift fuertemente tipeado, no podríamos hacer un array con
+<p>Al ser Swift fuertemente tipado, no podríamos hacer un array con
 distintos tipos de funciones. Por ejemplo el siguiente código daría un
 error:</p>
 </li>
@@ -813,10 +813,10 @@ anónimas.</p>
 <hr />
 <h3>6. Tipos</h3>
 <hr />
-<h3>Swift es fuertemente tipeado</h3>
+<h3>Swift es fuertemente tipado</h3>
 <ul>
 <li>
-<p>Swift es un lenguaje fuertemente tipeado, a diferencia de
+<p>Swift es un lenguaje fuertemente tipado, a diferencia de
   Scheme. </p>
 </li>
 <li>
@@ -933,6 +933,14 @@ Swift</a>. </p>
 <span class="bp">print</span><span class="p">(</span><span class="n">quiniela</span><span class="p">(</span><span class="n">resultado</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
 <span class="c1">// Imprime Equis</span>
 </code></pre></div>
+<ul>
+<li>En el ejemplo se usa una sentencia <code>switch</code> que recibe el resultado
+del partido. Este resultado es una tupla de dos enteros. En el <code>case
+let</code> se instancia los valores de esa tupla en las variables <code>goles1</code> y
+<code>goles2</code> y después se define una condición para entrar en el caso. En
+el primer caso, que <code>goles1</code> sea menor que <code>goles2</code> y en el segundo
+que <code>goles1</code> sea mayor que <code>goles2</code>.</li>
+</ul>
 <h3>Tipos valor y tipos referencia</h3>
 <ul>
 <li>
@@ -1063,23 +1071,27 @@ ejemplos.</p>
 </code></pre></div>
 <h3>Valores brutos de enumeraciones</h3>
 <ul>
-<li>Es posible asignar a las constantes del enumerado un valor concreto
-  de un tipo subyacente:</li>
+<li>Es posible asignar a las constantes del enumerado un valor concreto de
+un tipo subyacente, por ejemplo enteros:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">CaracterControlASCII</span><span class="p">:</span> <span class="nb">Character</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">tab</span> <span class="p">=</span> <span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span>
-    <span class="k">case</span> <span class="n">lineFeed</span> <span class="p">=</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
-    <span class="k">case</span> <span class="n">carriageReturn</span> <span class="p">=</span> <span class="s">&quot;</span><span class="se">\r</span><span class="s">&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Quiniela</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">uno</span><span class="p">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">equis</span><span class="p">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dos</span><span class="p">=</span><span class="mi">2</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>Se puede devolver el valor bruto de la siguiente forma:</li>
+<li>Se puede obtener el valor bruto a partir del propio tipo o de una
+variable del tipo, usando <code>rawValue</code>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>let nuevaLinea = CaracterControlASCII.lineFeed.rawValue
+<div class="highlight"><pre><span></span><code><span class="c1">// Obtenemos el valor bruto a partir del tipo</span>
+<span class="kd">let</span> <span class="nv">valorEquis</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="n">Quiniela</span><span class="p">.</span><span class="n">equis</span><span class="p">.</span><span class="n">rawValue</span>
+
+<span class="c1">// Obtenemos el valor bruto a partir de una variable</span>
+<span class="kd">let</span> <span class="nv">res</span> <span class="p">=</span> <span class="n">Quiniela</span><span class="p">.</span><span class="n">equis</span>
+<span class="kd">let</span> <span class="nv">valorEquis</span> <span class="p">=</span> <span class="n">res</span><span class="p">.</span><span class="n">rawValue</span>
 </code></pre></div>
 <ul>
-<li>También se puede hacer de forma implícita cuando el tipo subyacente
-  es <code>Int</code>, dando un valor a la primera constante:</li>
+<li>También se puede asignar los valores de forma implícita, dando un
+valor a la primera constante. Las siguientes tienen el valor consecutivo:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Planeta</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
     <span class="k">case</span> <span class="n">mercurio</span><span class="p">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">venus</span><span class="p">,</span> <span class="n">tierra</span><span class="p">,</span> <span class="n">marte</span><span class="p">,</span> <span class="n">jupiter</span><span class="p">,</span> <span class="n">saturno</span><span class="p">,</span> <span class="n">urano</span><span class="p">,</span> <span class="n">neptuno</span>
@@ -1088,9 +1100,18 @@ ejemplos.</p>
 <span class="c1">// posicionTierra es 3</span>
 </code></pre></div>
 <ul>
-<li>Por último, se puede definir como tipo subyacente <code>String</code> y los
-  valores brutos de las constantes serán sus nombres convertidos a
-  cadenas:</li>
+<li>Podemos escoger cualquier tipo subyacente. Por ejemplo el tipo <code>Character</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">CaracterControlASCII</span><span class="p">:</span> <span class="nb">Character</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">tab</span> <span class="p">=</span> <span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span>
+    <span class="k">case</span> <span class="n">lineFeed</span> <span class="p">=</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+    <span class="k">case</span> <span class="n">carriageReturn</span> <span class="p">=</span> <span class="s">&quot;</span><span class="se">\r</span><span class="s">&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Y por último, se puede definir como tipo subyacente <code>String</code> y los
+valores brutos de las constantes serán sus nombres convertidos a
+cadenas:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Direccion</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
     <span class="k">case</span> <span class="n">norte</span><span class="p">,</span> <span class="n">sur</span><span class="p">,</span> <span class="n">este</span><span class="p">,</span> <span class="n">oeste</span>
@@ -1100,9 +1121,9 @@ ejemplos.</p>
 </code></pre></div>
 <ul>
 <li>Cuando se definen valores brutos es posible inicializar el enumerado
-  de una forma similar a una estructura o una clase pasando el valor
-  bruto. Devuelve el valor enumerado correspondiente o <code>nil</code> (un
-  opcional):</li>
+de una forma similar a una estructura o una clase pasando el valor
+bruto. Devuelve el valor enumerado correspondiente o <code>nil</code> (un
+opcional, lo veremos más adelante):</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">posiblePlaneta</span> <span class="p">=</span> <span class="n">Planeta</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="mi">7</span><span class="p">)</span>
 <span class="c1">// posiblePlaneta es de tipo Planeta? y es igual a Planeta.urano</span>
