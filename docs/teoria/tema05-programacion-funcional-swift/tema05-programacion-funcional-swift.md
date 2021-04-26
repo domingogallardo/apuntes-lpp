@@ -663,7 +663,7 @@ print(funciones[2](10)) // 100
 
 El tipo de la variable `funciones` sería `[(Int) -> Int]`. 
 
-Al ser Swift fuertemente tipeado, no podríamos hacer un array con
+Al ser Swift fuertemente tipado, no podríamos hacer un array con
 distintos tipos de funciones. Por ejemplo el siguiente código daría un
 error:
 
@@ -842,6 +842,12 @@ print(quiniela(partido: (2,2)))
 // Imprime "Equis"
 ```
 
+En el ejemplo se usa una sentencia `switch` que recibe el resultado
+del partido. Este resultado es una tupla de dos enteros. En el `case
+let` se instancia los valores de esa tupla en las variables `goles1` y
+`goles2` y después se define una condición para entrar en el caso. En
+el primer caso, que `goles1` sea menor que `goles2` y en el segundo
+que `goles1` sea mayor que `goles2`.
 
 ### Tipos valor y tipos referencia
 

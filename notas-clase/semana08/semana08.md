@@ -72,9 +72,9 @@ ejecutar Swift:
 
 ----
 
-### Swift es fuertemente tipeado
+### Swift es fuertemente tipado
 
-- Swift es un lenguaje fuertemente tipeado
+- Swift es un lenguaje fuertemente tipado
 
 ```swift
 let n: Int = 10
@@ -612,7 +612,7 @@ print(funciones[2](10)) // 100
 
 - El tipo de la variable `funciones` sería `[(Int) -> Int]`. 
 
-- Al ser Swift fuertemente tipeado, no podríamos hacer un array con
+- Al ser Swift fuertemente tipado, no podríamos hacer un array con
 distintos tipos de funciones. Por ejemplo el siguiente código daría un
 error:
 
@@ -680,9 +680,9 @@ print(f3(20))
 
 
 
-### Swift es fuertemente tipeado
+### Swift es fuertemente tipado
 
-- Swift es un lenguaje fuertemente tipeado, a diferencia de
+- Swift es un lenguaje fuertemente tipado, a diferencia de
   Scheme. 
 
 - Entre las ventajas del uso de tipos está la detección de errores en
@@ -796,6 +796,14 @@ print(quiniela(resultado: (1,3)))
 print(quiniela(resultado: (2,2)))
 // Imprime Equis
 ```
+
+- En el ejemplo se usa una sentencia `switch` que recibe el resultado
+del partido. Este resultado es una tupla de dos enteros. En el `case
+let` se instancia los valores de esa tupla en las variables `goles1` y
+`goles2` y después se define una condición para entrar en el caso. En
+el primer caso, que `goles1` sea menor que `goles2` y en el segundo
+que `goles1` sea mayor que `goles2`.
+
 
 ### Tipos valor y tipos referencia
 
@@ -931,25 +939,29 @@ enum Planeta {
 
 ### Valores brutos de enumeraciones
 
-- Es posible asignar a las constantes del enumerado un valor concreto
-  de un tipo subyacente:
+- Es posible asignar a las constantes del enumerado un valor concreto de
+un tipo subyacente, por ejemplo enteros:
 
 ```swift
-enum CaracterControlASCII: Character {
-    case tab = "\t"
-    case lineFeed = "\n"
-    case carriageReturn = "\r"
+enum Quiniela: Int {
+    case uno=1, equis=0, dos=2
 }
 ```
 
-- Se puede devolver el valor bruto de la siguiente forma:
+- Se puede obtener el valor bruto a partir del propio tipo o de una
+variable del tipo, usando `rawValue`:
 
-```
-let nuevaLinea = CaracterControlASCII.lineFeed.rawValue
+```swift
+// Obtenemos el valor bruto a partir del tipo
+let valorEquis: Int = Quiniela.equis.rawValue
+
+// Obtenemos el valor bruto a partir de una variable
+let res = Quiniela.equis
+let valorEquis = res.rawValue
 ```
 
-- También se puede hacer de forma implícita cuando el tipo subyacente
-  es `Int`, dando un valor a la primera constante:
+- También se puede asignar los valores de forma implícita, dando un
+valor a la primera constante. Las siguientes tienen el valor consecutivo:
 
 ```swift
 enum Planeta: Int {
@@ -959,9 +971,19 @@ let posicionTierra = Planeta.tierra.rawValue
 // posicionTierra es 3
 ```
 
-- Por último, se puede definir como tipo subyacente `String` y los
-  valores brutos de las constantes serán sus nombres convertidos a
-  cadenas:
+- Podemos escoger cualquier tipo subyacente. Por ejemplo el tipo `Character`:
+
+```swift
+enum CaracterControlASCII: Character {
+    case tab = "\t"
+    case lineFeed = "\n"
+    case carriageReturn = "\r"
+}
+```
+
+- Y por último, se puede definir como tipo subyacente `String` y los
+valores brutos de las constantes serán sus nombres convertidos a
+cadenas:
 
 ```swift
 enum Direccion: String {
@@ -972,15 +994,14 @@ let direccionAtardecer = Direccion.oeste.rawValue
 ```
 
 - Cuando se definen valores brutos es posible inicializar el enumerado
-  de una forma similar a una estructura o una clase pasando el valor
-  bruto. Devuelve el valor enumerado correspondiente o `nil` (un
-  opcional):
+de una forma similar a una estructura o una clase pasando el valor
+bruto. Devuelve el valor enumerado correspondiente o `nil` (un
+opcional, lo veremos más adelante):
 
 ```swift
 let posiblePlaneta = Planeta(rawValue: 7)
 // posiblePlaneta es de tipo Planeta? y es igual a Planeta.urano
 ```
-
 
 ----
 8. Enumeraciones instanciables
