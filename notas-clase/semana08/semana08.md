@@ -993,6 +993,20 @@ let direccionAtardecer = Direccion.oeste.rawValue
 // direccionAtardecer es "oeste"
 ```
 
+- En este caso, también se puede inicializar el valor bruto con una
+  asignación explícita y no usar el propio nombre:
+
+```swift
+enum Direccion: String {
+    case norte = "north"
+    case sur = "south"
+    case este = "east"
+    case oeste = "west"
+}
+let direccionAtardecer = Direccion.oeste.rawValue
+// direccionAtardecer es "west"
+```
+
 - Cuando se definen valores brutos es posible inicializar el enumerado
 de una forma similar a una estructura o una clase pasando el valor
 bruto. Devuelve el valor enumerado correspondiente o `nil` (un

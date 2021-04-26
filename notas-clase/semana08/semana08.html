@@ -1120,6 +1120,19 @@ cadenas:</li>
 <span class="c1">// direccionAtardecer es &quot;oeste&quot;</span>
 </code></pre></div>
 <ul>
+<li>En este caso, también se puede inicializar el valor bruto con una
+  asignación explícita y no usar el propio nombre:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Direccion</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">norte</span> <span class="p">=</span> <span class="s">&quot;north&quot;</span>
+    <span class="k">case</span> <span class="n">sur</span> <span class="p">=</span> <span class="s">&quot;south&quot;</span>
+    <span class="k">case</span> <span class="n">este</span> <span class="p">=</span> <span class="s">&quot;east&quot;</span>
+    <span class="k">case</span> <span class="n">oeste</span> <span class="p">=</span> <span class="s">&quot;west&quot;</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">direccionAtardecer</span> <span class="p">=</span> <span class="n">Direccion</span><span class="p">.</span><span class="n">oeste</span><span class="p">.</span><span class="n">rawValue</span>
+<span class="c1">// direccionAtardecer es &quot;west&quot;</span>
+</code></pre></div>
+<ul>
 <li>Cuando se definen valores brutos es posible inicializar el enumerado
 de una forma similar a una estructura o una clase pasando el valor
 bruto. Devuelve el valor enumerado correspondiente o <code>nil</code> (un
