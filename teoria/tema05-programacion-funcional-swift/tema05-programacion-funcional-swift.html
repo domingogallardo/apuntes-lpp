@@ -951,6 +951,7 @@ programas en este lenguaje:</p>
 principalmente funcionales como:</p>
 <ul>
 <li>Valores inmutables</li>
+<li>Tipos de datos recursivos</li>
 <li>Funciones como objetos de primera clase y clasuras</li>
 <li>Funciones de orden superior</li>
 </ul>
@@ -1448,7 +1449,7 @@ sumatorio(a, b, f) = 0 si a &gt; b
 <span class="bp">print</span><span class="p">(</span><span class="n">funciones</span><span class="p">[</span><span class="mi">2</span><span class="p">](</span><span class="mi">10</span><span class="p">))</span> <span class="c1">// 100</span>
 </code></pre></div>
 <p>El tipo de la variable <code>funciones</code> sería <code>[(Int) -&gt; Int]</code>. </p>
-<p>Al ser Swift fuertemente tipeado, no podríamos hacer un array con
+<p>Al ser Swift fuertemente tipado, no podríamos hacer un array con
 distintos tipos de funciones. Por ejemplo el siguiente código daría un
 error:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">suma</span><span class="p">(</span><span class="kc">_</span> <span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">y</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
@@ -1591,6 +1592,12 @@ correspondiente al resultado de la quiniela de un partido:</p>
 <span class="bp">print</span><span class="p">(</span><span class="n">quiniela</span><span class="p">(</span><span class="n">partido</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
 <span class="c1">// Imprime &quot;Equis&quot;</span>
 </code></pre></div>
+<p>En el ejemplo se usa una sentencia <code>switch</code> que recibe el resultado
+del partido. Este resultado es una tupla de dos enteros. En el <code>case
+let</code> se instancia los valores de esa tupla en las variables <code>goles1</code> y
+<code>goles2</code> y después se define una condición para entrar en el caso. En
+el primer caso, que <code>goles1</code> sea menor que <code>goles2</code> y en el segundo
+que <code>goles1</code> sea mayor que <code>goles2</code>.</p>
 <h3 id="tipos-valor-y-tipos-referencia">Tipos valor y tipos referencia<a class="headerlink" href="#tipos-valor-y-tipos-referencia" title="Permanent link">&para;</a></h3>
 <p>En Swift existen dos tipos de construcciones que forman la base de la
 programación orientada a objetos: las estructuras (<em>structs</em>) y las
