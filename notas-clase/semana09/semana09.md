@@ -32,171 +32,262 @@
 ### 6. Opcionales
 ----
 
+### Swift es un lenguaje seguro ###
+
 - En Swift el valor nulo se representa con `nil` (equivalente a `null`
   en Java). 
-- No podemos asignar `nil` a una variable de un tipo dado:
+- El concepto de _null_ es un concepto peligroso, como lo saben bien los
+desarrolladores Java. En Java, si intentamos usar una variable que
+contiene _null_ se produce la típica excepción _null pointer
+exception_ y la aplicación se rompe. 
+- En Swift, para evitar estos problemas, No podemos asignar `nil` a
+  una variable de un tipo dado:
 
 ```swift
 // La siguiente línea daría un error en tiempo de compilación
 // let cadena: String = nil
 ```
-
-- Los tipos opcionales de Swift permiten asignar a variables o bien un
-  valor propio del tipo o bien `nil`
-- Podemos definir como opcional variables, parámetros o valores
-  devueltos por funciones.
-- Ejemplo: inicializador del tipo `Int` de Swift. Debido a que el
-  inicializador puede fallar, devuelve un `Int` _opcional_, en lugar
-  de un `Int`. Un `Int` opcional se escribe como `Int?`.
+- Si queremos utilizar `nil` debemos declarar la variable usando lo que
+se denomina **tipo opcional**:
 
 ```swift
-var posibleNumero = "123"
-let numeroConvertido = Int(posibleNumero)
-posibleNumero = "Hola mundo"
-let conversionErronea = Int(posibleNumero)
-// numeroConvertido y conversionErronea son de tipo "Int?", o "Int opcional"
-// El primero contiene un número y el segundo nil
+var cadena: String? = "Hola"
+cadena = nil
 ```
-- Para definir una variable como sin valor debemos asignarle el valor
-especial `nil`:
+
+---
+
+### ¿Cuándo usar opcionales? ###
+
+- El uso de opcionales es necesario en situaciones en las que podemos
+obtener un valor desconocido. 
+
+- Por ejemplo, en estructuras de datos en las que hacemos búsquedas
+que pueden no devolver ningún valor, como en un diccionario:
 
 ```swift
-var codigoRespuestaServidor: Int? = 404
-// codigoRespuestaServidor contine un valor Int de 404
-codigoRespuestaServidor = nil
-// codigoRespuestaServidor ahora no contiene ningún valor
+var edades = [
+    "Raquel": 30,
+    "Pedro": 22,
+]
+let edad1 = edades["Raquel"]
+let edad2 = edades["Ana"] // devuelve nil
 ```
+- La variable `edad2` será de tipo `Int?` (`Int` opcional) y contendrá
+un `nil`.
+
+---
+
+### Cómo usar valores opcionales ###
+
+- Un valor opcional no puede ser usado directamente. Primero debemos
+comprobar si el valor es distinto de `nil` y sólo después podremos
+usarlo.
+
+- Por ejemplo, el siguiente código produce un error de compilación
+porque intentamos usar un opcional sin desenvolverlo:
+
+```swift
+var x: Int? = 10
+let y = x + 10 
+// error: value of optional type 'Int?' must be unwrapped to a value of type 'Int'
+```
+
+- Swift _esconde_ o _envuelve_ (_wrap_) el valor real del opcional y
+obliga a llamar al operador `!` para _desenvolverlo_ (_unwrap_) y
+usarlo. Este operador se denomina de **desenvoltura forzosa** (_forced
+unwrapping_).
+
+```swift
+var x: Int? = 10
+let y = x! + 10 
+print(y)
+// Imprime "20"
+```
+
+---
+
+### Funciones que devuelven un opcional ###
+
+- Podemos definir como opcional variables, parámetros
+o valores devueltos por funciones de cualquier tipo, añadiéndoles la
+interrogación al final.
+
+```swift
+func max(array:[Int]) -> Int? {
+    if (array.isEmpty) {
+        return nil
+    } else if (array.count == 1) {
+        return array[0]
+    } else {
+        let primero = array[0]
+        let resto = Array(array.dropFirst())
+        return max(primero, max(array:resto)!)
+    }
+}
+
+let maximo = max(array:[10,200,-100,2])
+print(maximo!)
+// Imprime "200"
+```
+
+---
+
+### Inicialización de opcional ###
 
 - Una variable opcional sin asignar ningún valor se inicializa
-  automáticamente a `nil`:
+automáticamente a `nil`:
 
 ```swift
 var respuestaEncuesta: String?
 // respuestaEncuesta es inicializado automáticamente a nil
 ```
 
-----
+---
 
-### Sentencias `if` y _desenvoltura forzosa_
+### Error fatal al desenvolver un nil ###
 
-- No se puede usar un opcional en expresiones en las que se espera un
-  tipo básico.
-- Se puede usar un `if` para comprobar si un valor opcional es
-  distinto de `nil`:
+- Si se aplica el operador `!` a un valor `nil` se produce un error en
+tiempo de ejecución y la aplicación se rompe:
 
 ```swift
-if numeroConvertido != nil {
-    print("numeroConvertido contiene algún valor entero.")
-}
-// Imprime "numeroConvertido contiene algún valor entero."
-```
-
-- Si estamos seguros de que el opcional contiene un valor, podemos
-  acceder a él usando un signo de exclamación (`!`). Esto se conoce
-  como _desenvoltura forzosa_ (_forced unwrapping_) del valor
-  opcional:
-
-```swift
-if numeroConvertido != nil {
-    let numero = numeroConvertido!
-    print("numeroConvertido tiene un valor entero de \(numero).")
-}
-// Imprime "numeroConvertido tiene un valor entero de 123."
-```
-
-- Si se desenvuelve un opcional que contiene un `nil` se causa un error
-en tiempo de ejecución:
-
-```swift
-let x = Int("Hola")
-let y = x! + 100
-// La sentencia anterior provoca un error en tiempo de ejecución
+var respuestaEncuesta: String?
+print(respuestaEncuesta!)
+// Fatal error: Unexpectedly found nil while unwrapping an Optional value
 ```
 
 ----
 
 ### Ligado opcional
 
-- Es posible comprobar si un opcional tiene valor y asignar su valor a
-  otra variable al mismo tiempo con una construcción llamada _ligado
-  opcional_ (_optional binding_):
+- Para comprobar si un valor opcional es `nil` podemos usar un
+`if`. Es obligado hacerlo si desconocemos el valor que nos llega. Por
+ejemplo, supongamos que la función `leerRespuesta()` lee una respuesta
+del usuario y devuelve un `String?`. Para usar esta función deberíamos
+comprobar si el valor devuelto es distinto de `nil`:
 
 ```swift
-if let numeroVerdadero = Int(posibleNumero) {
-    print("\"\(posibleNumero)\" tiene un valor entero de \(numeroVerdadero)")
-} else {
-    print("\"\(posibleNumero)\" no ha podido convertirse en un entero")
+let respuestaEncuesta = leerRespuesta()
+if respuestaEncuesta != nil {
+    let respuesta = respuestaEncuesta!
+    print("Respuesta: " + respuesta)
 }
-// Imprime ""123" tiene un valor entero de 123"
 ```
 
-----
-
-### Ejemplo de `minMax` con opcional
-
-- Como ejemplo de uso de opcionales adaptamos el ejemplo anterior de la
-función `minMax` para que pueda recibir un array vacío, en cuyo caso
-devolverá `nil`.
-
+- Como es muy habitual hacer lo anterior, en Swift es posible comprobar
+si un opcional tiene valor y asignar su valor a otra variable al mismo
+tiempo con una construcción llamada _ligado opcional_ (_optional
+binding_):
 
 ```swift
-func minMax(array: [Int]) -> (min: Int, max: Int)? {
-    if array.isEmpty { return nil }
-    var minActual = array[0]
-    var maxActual = array[0]
-    for valor in array[1..<array.count] {
-        if valor < minActual {
-            minActual = valor
-        } else if valor > maxActual {
-            maxActual = valor
-        }
+let respuestaEncuesta = leerRespuesta()
+if let respuesta = respuestaEncuesta {
+    print ("Respuesta: " + respuesta)
+}
+```
+
+---
+
+### Ejemplo de `sumaValores` con opcional ###
+
+- Otro ejemplo, el método `first` de un array devuelve un opcional que
+contiene `nil` si el array está vacío o el primer elemento del array
+en el caso en que exista. El siguiente código utiliza un ligado
+opcional para implementar otra versión de la función que suma los
+valores de un array:
+
+```swift
+func sumaValores(_ valores: [Int]) -> Int {
+    if let primero = valores.first {
+        let resto = Array(valores.dropFirst())
+        return primero + sumaValores(resto)
+    } else {
+        return 0
     }
-    return (minActual, maxActual)
 }
+
+print(sumaValores([1,2,3,4,5,6,7,8])) 
+// Imprime "36"
 ```
 
-- Tendremos entonces que llamar a la función comprobando si el valor
-  devuelto es distinto de `nil`:
+---
+
+### If let con múltiples variables ###
+
+- Si tenemos varios opcionales es posible comprobar que todos ellos son
+distintos de `nil` usando varios `let` en el mismo `if`:
 
 ```swift
-if let limites = minMax(array: [8, -6, 2, 109, 3, 71]) {
-    print("min es \(limites.min) y max es \(limites.max)")
-}
-// Imprime "min es -6 y max es 109"
-```
-
-- En el caso anterior sabemos que `limites` va a devolver un valor
-(porque llamamos a `minMax` con un array con elementos), por lo que
-podemos desenvolverlo sin temor de provocar un error. 
-- Sin embargo, en el ejemplo siguiente no es recomendable hacer una
-desenvoltura forzosa, porque no sabemos si `minMax` va a devolver
-`nil` o no. Hacemos un ligado opcional :
-
-```swift
-let valores = pedirNums() // La función pedirNums() pide una lista de 
-                          // números por la entrada estándar y
-                          // devuelve un [Int] (que puede estar vacío)
-if let limites = minMax(valores) {
-    print("min es \(limites.min) y max es \(limites.max)")
+var x1: Int? = pedirNumUsuario()
+var x2: Int? = pedirNumUsuario()
+var x3: Int? = pedirNumUsuario()
+if let dato1 = x1, let dato2 = x2, let dato3 = x3 {
+   let suma = dato1+dato2+dato3
+   print("Ningún nil y la suma de todos los datos es: \(suma)")
 } else {
-    print("No hay números")
+   print("Algún dato del usuario es nil")
 }
 ```
 
 ----
+
+### Operador _nil-coalescing_ ###
+
+- El operador _nil-coalescing_ (`??`) permite definir un valor por
+defecto en una asignación si un opcional es nil.
+
+```swift
+let a: Int? = nil
+let b: Int? = 10
+let x = a ?? -1
+let y = b ?? -1
+print("Resultado: \(x), \(y)")
+// Imprime Resultado: -1, 10
+```
+
+---
+
+### Encadenamiento de opcionales ###
+
+El encadenamiento de opcionales (_optional chaining_) permite llamar a
+un método de una variable que contiene un opcional. Si la variable no
+es `nil`, se ejecuta el método y se devuelve su valor como un
+opcional. Si la variable es `nil` se devuelve `nil`.
+
+```swift
+let nombre1: String? = "Pedro"
+let nombre2: String? = nil
+
+// Error: let str1 = nombre1.lowercased()
+// No podemos llamar al método lowercased() del String
+// porque nombre es opcional y puede tener nil
+
+let str1 = nombre1?.lowercased()
+let str2 = nombre2?.lowercased()
+// str1: String? = "pedro"
+// str2: String? = nil
+```
+
+---
 
 ### Ejemplo de `Lista` con opcional
 
-Otra versión del enum `Lista` usando esta vez un opcional:
+- Veamos como último ejemplo una segunda versión del enum `Lista`, en el que
+utilizamos un único `case`, pero dando la posibilidad de que el resto
+de la lista sea `nil` haciéndolo opcional.
 
 ```swift
 indirect enum Lista{
-	case cons(Int, Lista?)
+	case nodo(Int, Lista?)
 }
+```
 
+- La función `suma(lista:)` quedaría así:
+
+```
 func suma(lista: Lista) -> Int {
 	switch lista {
-		case let .cons(car, cdr):
+		case let .nodo(car, cdr):
 		if (cdr == nil) {
 			return car
 		} else {
@@ -205,8 +296,9 @@ func suma(lista: Lista) -> Int {
 	}
 }
 
-let z: Lista = .cons(20, .cons(10, nil))
+let z: Lista = .nodo(20, .nodo(10, nil))
 print(suma(lista: z))
+/// Devuelve 30
 ```
 
 ---
@@ -399,6 +491,14 @@ let alreves = estudiantes.sorted { $0 > $1 }
 
 ### Valores capturados
 
+!!! Note "Cuidado"
+    Los ejemplos que vamos a ver a continuación no usan programación
+    funcional, porque la variable capturada por la clausura es una
+    variable **mutable** (se ha definido con `var` y no con `let`). Por
+    eso las funciones resultantes no son funciones puras, sino que
+    devuelven un valor distinto cada vez que son invocadas. Son 
+    funciones con estado local mutable.
+
 - Igual que en Scheme, una clausura puede capturar constantes y
   variables del contexto en el que se define.
 - La clausura puede referirse y modificar esos valores dentro de su
@@ -465,7 +565,6 @@ incrementaDiez()
 - Si creamos un segundo incrementador, tendrá sus propias referencias
   a un variable `totalAcumulado` nueva, distinta de la anterior:
 
-
 ```swift
 let incrementaSiete = construyeIncrementador(incremento: 7)
 incrementaSiete()
@@ -484,46 +583,113 @@ incrementaDiez()
 
 ---
 
-### Mutación de variables capturadas ###
+### Clausuras con expresiones de clausura ###
 
-- Las clausuras también pueden modificar el valor de las variables capturadas.
+- En el ejemplo anterior hemos usado una definición interna de una
+función para definir la clausura que se devuelve. Lo hemos hecho por
+claridad, pero no es necesario. Es posible escribir un código más
+compacto usando expresiones de clausura.
+
+- Por ejemplo, la función que vimos la semana pasada `construyeSumador()` 
 
 ```swift
+func construyeSumador10() -> (Int) -> Int {
+  func suma10(x: Int) -> Int {return x+10}
+  return suma10
+}
+```
 
-var x = 1
+- Una versión de esta misma función usando una expresión de clausura es
+la siguiente:
 
-func construyeFunc() -> (Int) -> Int {
-    var x = 10
+```swift
+func construyeSumador10() -> (Int) -> Int {
+    return {$0 + 10}
+}
 
-    func prueba(_ a: Int) -> Int {
-        x = a + x
-        return x
+var f = construyeSumador10()
+print(f(20))
+// Imprime "30"
+```
+
+Y lo mismo con la función `constryeIncrementador(incremento:)`:
+
+```swift
+func construyeIncrementador(incremento cantidad: Int) -> () -> Int {
+    var totalAcumulado = 0
+    func incrementador() -> Int {
+        totalAcumulado += cantidad
+        return totalAcumulado
     }
-    return prueba
+    return incrementador
+}
+```
+
+La versión con una expresión de clausura:
+
+```swift
+func construyeIncrementador(incremento cantidad: Int) -> () -> Int {
+    var totalAcumulado = 0
+    return {totalAcumulado += cantidad
+            return totalAcumulado}
+}
+
+let incrementaDiez = construyeIncrementador(incremento: 10)
+print(incrementaDiez())
+// Imprime "10"
+print(incrementaDiez())
+// Imprime "20"
+```
+
+---
+
+### Valores capturados y valores del ámbito local de ejecución ###
+
+- Las clasuras usan los valores capturados y no los valores declarados
+en el ámbito local de ejecución. Vamos a explicarlo con un ejemplo.
+
+```swift
+func construyeFunc() -> () -> Int {
+   var x = 0
+   return {
+      x = x + 1
+      return x
+   }
 }
 
 let f = construyeFunc()
-print(f(10)) // Imprime 20
-print(f(10)) // Imprime 30
-let g = construyeFunc()
-print(g(10)) // Imprime 20
-print(x) // Imprime 1
+print(f()) // -> 1
+print(f()) // -> 2
+
+func usaFunc(_ f: () -> Int) -> Int {
+     var x = 10
+     return f()
+}
+
+print(usaFunc(f)) // -> 3
 ```
 
-- La clausura `prueba` **captura la variable `x` definida en el ámbito
-  de `construyeFunc`** y la utiliza en su cuerpo.
-- La variable capturada queda ligada a la clausura y es utilizada cada
-  vez que la clausura se invoca.
-- En la primera invocación a la clausura se pasa como parámetro `a` el
-  valor 10, que se suma a la variable capturada. De esta forma la
-  variable capturada pasa a valer 20.
-- En la segunda invocación a la clausura el valor de `x` será 20, por
-  lo que devolverá 30.
-- La segunda vez que llamamos a `construyeFunc` se crea un nuevo
-  ámbito local con una nueva variable `x` que se inicializa
-  a 10. Esa nueva variable es el que captura la nueva clausura que se
-  devuelve. Por eso al invocarla (en la llamada `g(10)`) se devuelve 20.
+- La función `usaFunc` definida en la línea 13 recibe una función `f`
+sin parámetros que devuelve un entero. En el ámbito local de `usaFunc`
+se define una variable local `x` que tiene el valor `10` antes de
+invocar a la función `f` recibida.
 
+- La función recibida ha capturado una variable que también se llama
+`x`. Esta es la variable que va a usar el código de la clausura y no
+la otra `x`. 
+
+- Si ejecutamos el código veremos que la expresión devuelve 3. O sea
+que las clausuras usan siempre los valores capturados.
+
+- Podemos comprobarlo también en el siguiente ejemplo, en el que la
+clausura que se pasa es una expresión de clausura que captura la
+variable `x` definida en la línea anterior. Por eso cuando se ejecuta
+la sentencia se imprime el valor `110` y no el valor `20`.
+
+```swift
+var x = 100
+print(usaFunc {return x + 10}) // -> 110
+```
 
 ---
 
@@ -541,11 +707,9 @@ tambienIncrementaDiez()
 // devuelve 50
 ```
 
-
 ---
 ### Funciones de orden superior
 ---
-
 
 - Una de las características funcionales que más hemos usado para
   trabajar con listas en Scheme son las funciones de orden superior
@@ -561,8 +725,15 @@ tambienIncrementaDiez()
 
 - El método `map` se define en el protocolo
   [`CollectionType`](https://developer.apple.com/library/ios/documentation/Swift/Reference/Swift_CollectionType_Protocol/index.html#//apple_ref/swift/intfm/CollectionType/s:FEsPs14CollectionType3mapurFzFzWx9Generator7Element_qd__GSaqd___)
-  y es adoptado por múltiples estructuras como `Array`, `Dictionary`,
-  `Set` o `String.CharacterView`.
+  y es adoptado por múltiples estructuras como `Array`, `Dictionary` o
+  `Set`.
+
+- El perfil del método `map` es el siguiente:
+
+```swift
+func map<T>(_ transform: (Element) -> T) -> [T]
+```
+
 - Recibe como parámetro una función unaria `transform` del tipo de los
   elementos de la colección y que devuelve otro elemento (puede ser
   del mismo o de distinto tipo que los elementos de la
@@ -619,12 +790,17 @@ incrementa(valores: [10, 20, 30], con: 5)
 
 ### Filter
 
-- La función `filter` recibe una clausura de un argumento que devuelve
-  un booleano.
-- La función devuelve una colección con los elementos de la colección
-  para los que la clausura devuelve _true_.
-  
-Ejemplo:
+- La función es igual que la de Scheme: devuelve una colección con los
+  elementos de la colección para los que la clausura que se pasa
+  devuelve _true_.
+
+- Su perfil:
+
+```swift
+func filter(_ isIncluded: (Element) -> Bool) -> [Element]
+```
+
+- Ejemplo:
 
 ```swift
 let numeros = [Int](0...10)
@@ -636,19 +812,28 @@ numeros.filter {$0 % 2 == 0}
 
 ### Reduce 
 
-- Similar al _fold_ de Scheme:
+- Similar al _fold_ de Scheme.
+
+- Su perfil:
+
+```swift
+func reduce<Result>(_ initialResult: Result, 
+                    _ nextPartialResult: (Result, Element) -> Result) -> Result
+```
+
+- La función que se le pasa `nextPartialResult` es la función de
+  plegado que combina los elementos de la colección. Recibe dos
+  parámetros: el primero es el resultado de la combinación y el
+  segundo se coge de la colección.
+
+- Ejemplo:
 
 ```swift
 let numeros = [Int](0...10)
 numeros.reduce(0, +)
 ```
 
-- La clausura que se pasa combina los elementos de la colección. 
-- Recibe dos parámetros: el primero es el resultado de la combinación
-  y el segundo se coge de la colección. 
-  
-Ejemplo:
-
+- Otro ejemplo:
 
 ```swift
 let cadenas = ["Patatas", "Arroz", "Huevos"]
@@ -674,6 +859,32 @@ cadenas.reduce(0) {$1.count + $0}
 let cadenas = ["Patatas", "Arroz", "Huevos"]
 cadenas.reduce("", +)
 // devuelve "PatatasArrozHuevos"
+```
+
+---
+
+### Combinación de funciones de orden superior
+
+- Cuando el resultado de aplicar una función de orden superior a una
+colección es otra colección es posible aplicar otra función de
+orden superior a este resultado.
+
+- Por ejemplo, la siguiente sentencia devuelve todos los números pares
+del array inicial elevados al cuadrado:
+
+
+```swift
+let numeros = [1,2,3,4,5,6,7,8,9,10]
+numeros.filter{$0 % 2 == 0}.map{$0*$0}
+// Devuelve el array [4,16,36,64,100]
+```
+
+- Y la siguiente devuelve la suma números mayores de 100:
+
+```swift
+let numeros = [103, 2, 330, 42, 532, 6, 125]
+numeros.filter{$0 >= 100}.reduce(0,+)
+// Devuelve 1090
 ```
 
 ---
@@ -772,12 +983,12 @@ intercambia(tupla3)
 ```swift
 indirect enum Lista<T> {
      case vacia
-     case cons(T, Lista<T>)
+     case nodo(T, Lista<T>)
 }
 
 func car<T>(_ lista: Lista<T>) -> T? {
    switch lista {
-      case let .cons(primero, _):
+      case let .nodo(primero, _):
          return primero
       case .vacia:
          return nil
@@ -786,7 +997,7 @@ func car<T>(_ lista: Lista<T>) -> T? {
 
 func cdr<T>(_ lista: Lista<T>) -> Lista<T>? {
    switch lista {
-      case let .cons(_, resto):
+      case let .nodo(_, resto):
          return resto
       case .vacia:
          return nil
@@ -802,7 +1013,7 @@ func vacia<T>(_ lista: Lista<T>) -> Bool {
    }
 }
 
-let lista : Lista = .cons(20, .cons(30, .cons(40, .vacia)))
+let lista : Lista = .nodo(20, .nodo(30, .nodo(40, .vacia)))
 
 print(car(lista)!) // Imprime 20
 print(car(cdr(lista)!)!) // Imprime 30

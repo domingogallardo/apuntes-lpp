@@ -1309,7 +1309,6 @@ let lista2 = construye(lista: [1,2,3,4,5])
 print(suma(lista: lista2))
 // Imprime 15
 ```
-<!--
 
 ## Opcionales
 
@@ -1377,15 +1376,17 @@ var edades = [
     "Pedro": 22,
 ]
 let edad1 = edades["Raquel"]
-let edad2 = edades["Ana"]
+let edad2 = edades["Ana"] // devuelve nil
 ```
 
 En el código anterior definimos un diccionario `edades` con claves de
 tipo `String` y valores `Int`. Después buscamos en el diccionario por
 la clave `"Raquel"` y se devuelve el valor `30`, que se guarda en la
 variable `edad1`. Cuando se busca por la clave `"Ana"` se devuelve un
-`nil` porque no está definida. Por ello, la variable `edad2` será de
-tipo `Int?` (`Int` opcional) y contendrá un `nil`.
+`nil` porque no está definida. 
+
+Por ello, la variable `edad2` será de tipo `Int?` (`Int` opcional) y
+contendrá un `nil`.
 
 Un valor opcional no puede ser usado directamente. Primero debemos
 comprobar si el valor es distinto de `nil` y sólo después podremos
@@ -1492,9 +1493,10 @@ opcional `respuestaEncuesta` contiene un valor, define
 la constante `respuesta` con el valor contenido en el opcional".
 
 Otro ejemplo, el método `first` de un array devuelve un opcional que
-contiene `nil` si el array está vacío o el primer elemento del
-array en el caso en que exista. El siguiente código utiliza un ligado opcional para implementar
-otra versión de la función `sumaValores`:
+contiene `nil` si el array está vacío o el primer elemento del array
+en el caso en que exista. El siguiente código utiliza un ligado
+opcional para implementar otra versión de la función que suma los
+valores de un array:
 
 ```swift
 func sumaValores(_ valores: [Int]) -> Int {
@@ -1754,7 +1756,8 @@ argumentos de las clausuras _inline_ que pueden usarse para referirse
 a los valores de los argumentos de la clausura usando los nombres
 `$0`, `$1`, `$2`, etc.
 
-Si se usa estos argumentos abreviados, se puede omitir la definición de la lista de los argumentos:
+Si se usa estos argumentos abreviados, se puede omitir la definición
+de la lista de los argumentos:
 
 ```swift
 let alreves = estudiantes.sorted(by: { $0 > $1 } )
@@ -1799,7 +1802,6 @@ let alreves = estudiantes.sorted { $0 > $1 }
 ### Valores capturados
 
 !!! Danger "Cuidado"
-
     Los ejemplos que vamos a ver a continuación no usan programación
     funcional, porque la variable capturada por la clausura es una
     variable **mutable** (se ha definido con `var` y no con `let`). Por
@@ -1891,7 +1893,6 @@ incrementaDiez()
 
 Si creamos un segundo incrementador, tendrá sus propias referencias a
 un variable `totalAcumulado` nueva, distinta de la anterior:
-
 
 ```swift
 let incrementaSiete = construyeIncrementador(incremento: 7)
@@ -2025,7 +2026,7 @@ el ámbito de ejecución (línea 14, 10)?
 Si ejecutamos el código veremos que la expresión devuelve 3. O sea que
 las clausuras usan siempre los valores capturados.
 
-Podemos compprobarlo también en la invocación de la línea 21. Ahí la
+Podemos comprobarlo también en la invocación de la línea 21. Ahí la
 clausura que se pasa es una expresión de clausura que captura la
 variable `x` definida en la línea anterior. Por eso cuando se ejecuta
 la sentencia se imprime el valor `110` y no el valor `20`.
@@ -2069,7 +2070,7 @@ argumento.
 El método `map` se define en el protocolo
 [`CollectionType`](https://developer.apple.com/library/ios/documentation/Swift/Reference/Swift_CollectionType_Protocol/index.html#//apple_ref/swift/intfm/CollectionType/s:FEsPs14CollectionType3mapurFzFzWx9Generator7Element_qd__GSaqd___)
 y es adoptado por múltiples estructuras como `Array`, `Dictionary`,
-`Set` o `String.CharacterView`.
+`Set`.
 
 El perfil del método `map` es el siguiente:
 
@@ -2159,7 +2160,8 @@ Similar al _fold_ de Scheme. Su perfil es el siguiente:
 
 
 ```swift
-func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, Element) -> Result) -> Result
+func reduce<Result>(_ initialResult: Result, 
+                    _ nextPartialResult: (Result, Element) -> Result) -> Result
 ```
 
 Es una función genérica que devuelve un valor de un tipo genérico (el
@@ -2363,7 +2365,7 @@ print(car(cdr(lista)!)!) // Imprime 30
 print(car(cdr(cdr(lista)!)!)!) // Imprime 40
 print(vacia(cdr(cdr(cdr(lista)!)!)!)) // Imprime true
 ```
--->
+
 
 ## Bibliografía
 

@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<style type="text/css">
+
+/* Admonition */
+
+.admonition {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.admonition.note { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.admonition.quote { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #cecece;
+    border-color: #cccccc;
+}
+
+.admonition.warning { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #FCC8BE;
+    border-color: #FCC8BE;
+}
+
+.admonition.hint { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #E9F9F6;
+    border-color: #AFEEEE;
+}
+
+.admonition.danger { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #F7B2A4;
+    border-color: #F7B2A4;
+}
+
+.admonition-title {
+    font-weight: bold;
+    text-align: left;
+}
+
+
+/* Codehilite */
+
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mb { color: #666666 } /* Literal.Number.Bin */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #0000FF } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
+/* Estilo LPP */
+
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: white;
+  padding: 60px;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+</style>
+
+</head>
+
+<body>
+<h2>Tema 6: Programación Funcional con Swift (semana 2)</h2>
+<h3>Contenidos</h3>
+<ul>
+<li>
+<ol>
+<li>Introducción</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Inmutabilidad</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Funciones</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>Recursión</li>
+</ol>
+</li>
+<li>
+<ol start="5">
+<li>Tipos función</li>
+</ol>
+</li>
+<li>
+<ol start="6">
+<li>Tipos</li>
+</ol>
+</li>
+<li>
+<ol start="7">
+<li>Enumeraciones</li>
+</ol>
+</li>
+<li>
+<ol start="8">
+<li>Enumeraciones instanciables</li>
+</ol>
+</li>
+<li><strong>9. Opcionales</strong></li>
+<li><strong>10. Clausuras</strong></li>
+<li><strong>11. Funciones de orden superior</strong></li>
+<li><strong>12. Genéricos</strong></li>
+</ul>
+<hr />
+<h3>Bibliografía</h3>
+<ul>
+<li><a href="https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario2-swift/seminario2-swift.html">Seminario de Swift</a></li>
+<li><a href="https://developer.apple.com/library/ios/documentation/General/Reference/SwiftStandardLibraryReference/">Biblioteca estándar de Swift</a></li>
+<li>Swift Language Guide<ul>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309">The Basics</a></li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html#//apple_ref/doc/uid/TP40014097-CH11-ID94">Closures</a></li>
+<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-ID179">Generics</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>6. Opcionales</h3>
+<hr />
+<h3>Swift es un lenguaje seguro</h3>
+<ul>
+<li>En Swift el valor nulo se representa con <code>nil</code> (equivalente a <code>null</code>
+  en Java). </li>
+<li>El concepto de <em>null</em> es un concepto peligroso, como lo saben bien los
+desarrolladores Java. En Java, si intentamos usar una variable que
+contiene <em>null</em> se produce la típica excepción <em>null pointer
+exception</em> y la aplicación se rompe. </li>
+<li>En Swift, para evitar estos problemas, No podemos asignar <code>nil</code> a
+  una variable de un tipo dado:</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="c1">// La siguiente línea daría un error en tiempo de compilación</span>
+<span class="c1">// let cadena: String = nil</span>
+</code></pre></div>
+- Si queremos utilizar <code>nil</code> debemos declarar la variable usando lo que
+se denomina <strong>tipo opcional</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">cadena</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="s">&quot;Hola&quot;</span>
+<span class="n">cadena</span> <span class="p">=</span> <span class="kc">nil</span>
+</code></pre></div>
+<hr />
+<h3>¿Cuándo usar opcionales?</h3>
+<ul>
+<li>
+<p>El uso de opcionales es necesario en situaciones en las que podemos
+obtener un valor desconocido. </p>
+</li>
+<li>
+<p>Por ejemplo, en estructuras de datos en las que hacemos búsquedas
+que pueden no devolver ningún valor, como en un diccionario:</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">edades</span> <span class="p">=</span> <span class="p">[</span>
+    <span class="s">&quot;Raquel&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="s">&quot;Pedro&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="kd">let</span> <span class="nv">edad1</span> <span class="p">=</span> <span class="n">edades</span><span class="p">[</span><span class="s">&quot;Raquel&quot;</span><span class="p">]</span>
+<span class="kd">let</span> <span class="nv">edad2</span> <span class="p">=</span> <span class="n">edades</span><span class="p">[</span><span class="s">&quot;Ana&quot;</span><span class="p">]</span> <span class="c1">// devuelve nil</span>
+</code></pre></div>
+- La variable <code>edad2</code> será de tipo <code>Int?</code> (<code>Int</code> opcional) y contendrá
+un <code>nil</code>.</p>
+<hr />
+<h3>Cómo usar valores opcionales</h3>
+<ul>
+<li>
+<p>Un valor opcional no puede ser usado directamente. Primero debemos
+comprobar si el valor es distinto de <code>nil</code> y sólo después podremos
+usarlo.</p>
+</li>
+<li>
+<p>Por ejemplo, el siguiente código produce un error de compilación
+porque intentamos usar un opcional sin desenvolverlo:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="kd">let</span> <span class="nv">y</span> <span class="p">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span> 
+<span class="c1">// error: value of optional type &#39;Int?&#39; must be unwrapped to a value of type &#39;Int&#39;</span>
+</code></pre></div>
+<ul>
+<li>Swift <em>esconde</em> o <em>envuelve</em> (<em>wrap</em>) el valor real del opcional y
+obliga a llamar al operador <code>!</code> para <em>desenvolverlo</em> (<em>unwrap</em>) y
+usarlo. Este operador se denomina de <strong>desenvoltura forzosa</strong> (<em>forced
+unwrapping</em>).</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="kd">let</span> <span class="nv">y</span> <span class="p">=</span> <span class="n">x</span><span class="p">!</span> <span class="o">+</span> <span class="mi">10</span> 
+<span class="bp">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="c1">// Imprime &quot;20&quot;</span>
+</code></pre></div>
+<hr />
+<h3>Funciones que devuelven un opcional</h3>
+<ul>
+<li>Podemos definir como opcional variables, parámetros
+o valores devueltos por funciones de cualquier tipo, añadiéndoles la
+interrogación al final.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">max</span><span class="p">(</span><span class="n">array</span><span class="p">:[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">array</span><span class="p">.</span><span class="bp">isEmpty</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">nil</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">array</span><span class="p">.</span><span class="bp">count</span> <span class="p">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">primero</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="kd">let</span> <span class="nv">resto</span> <span class="p">=</span> <span class="nb">Array</span><span class="p">(</span><span class="n">array</span><span class="p">.</span><span class="bp">dropFirst</span><span class="p">())</span>
+        <span class="k">return</span> <span class="bp">max</span><span class="p">(</span><span class="n">primero</span><span class="p">,</span> <span class="bp">max</span><span class="p">(</span><span class="n">array</span><span class="p">:</span><span class="n">resto</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">maximo</span> <span class="p">=</span> <span class="bp">max</span><span class="p">(</span><span class="n">array</span><span class="p">:[</span><span class="mi">10</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">maximo</span><span class="p">!)</span>
+<span class="c1">// Imprime &quot;200&quot;</span>
+</code></pre></div>
+<hr />
+<h3>Inicialización de opcional</h3>
+<ul>
+<li>Una variable opcional sin asignar ningún valor se inicializa
+automáticamente a <code>nil</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">respuestaEncuesta</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
+<span class="c1">// respuestaEncuesta es inicializado automáticamente a nil</span>
+</code></pre></div>
+<hr />
+<h3>Error fatal al desenvolver un nil</h3>
+<ul>
+<li>Si se aplica el operador <code>!</code> a un valor <code>nil</code> se produce un error en
+tiempo de ejecución y la aplicación se rompe:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">respuestaEncuesta</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">respuestaEncuesta</span><span class="p">!)</span>
+<span class="c1">// Fatal error: Unexpectedly found nil while unwrapping an Optional value</span>
+</code></pre></div>
+<hr />
+<h3>Ligado opcional</h3>
+<ul>
+<li>Para comprobar si un valor opcional es <code>nil</code> podemos usar un
+<code>if</code>. Es obligado hacerlo si desconocemos el valor que nos llega. Por
+ejemplo, supongamos que la función <code>leerRespuesta()</code> lee una respuesta
+del usuario y devuelve un <code>String?</code>. Para usar esta función deberíamos
+comprobar si el valor devuelto es distinto de <code>nil</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">respuestaEncuesta</span> <span class="p">=</span> <span class="n">leerRespuesta</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">respuestaEncuesta</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">respuesta</span> <span class="p">=</span> <span class="n">respuestaEncuesta</span><span class="p">!</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Respuesta: &quot;</span> <span class="o">+</span> <span class="n">respuesta</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Como es muy habitual hacer lo anterior, en Swift es posible comprobar
+si un opcional tiene valor y asignar su valor a otra variable al mismo
+tiempo con una construcción llamada <em>ligado opcional</em> (<em>optional
+binding</em>):</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">respuestaEncuesta</span> <span class="p">=</span> <span class="n">leerRespuesta</span><span class="p">()</span>
+<span class="k">if</span> <span class="kd">let</span> <span class="nv">respuesta</span> <span class="p">=</span> <span class="n">respuestaEncuesta</span> <span class="p">{</span>
+    <span class="bp">print</span> <span class="p">(</span><span class="s">&quot;Respuesta: &quot;</span> <span class="o">+</span> <span class="n">respuesta</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3>Ejemplo de <code>sumaValores</code> con opcional</h3>
+<ul>
+<li>Otro ejemplo, el método <code>first</code> de un array devuelve un opcional que
+contiene <code>nil</code> si el array está vacío o el primer elemento del array
+en el caso en que exista. El siguiente código utiliza un ligado
+opcional para implementar otra versión de la función que suma los
+valores de un array:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">sumaValores</span><span class="p">(</span><span class="kc">_</span> <span class="n">valores</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="kd">let</span> <span class="nv">primero</span> <span class="p">=</span> <span class="n">valores</span><span class="p">.</span><span class="bp">first</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">resto</span> <span class="p">=</span> <span class="nb">Array</span><span class="p">(</span><span class="n">valores</span><span class="p">.</span><span class="bp">dropFirst</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">primero</span> <span class="o">+</span> <span class="n">sumaValores</span><span class="p">(</span><span class="n">resto</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">sumaValores</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]))</span> 
+<span class="c1">// Imprime &quot;36&quot;</span>
+</code></pre></div>
+<hr />
+<h3>If let con múltiples variables</h3>
+<ul>
+<li>Si tenemos varios opcionales es posible comprobar que todos ellos son
+distintos de <code>nil</code> usando varios <code>let</code> en el mismo <code>if</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">x1</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="n">pedirNumUsuario</span><span class="p">()</span>
+<span class="kd">var</span> <span class="nv">x2</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="n">pedirNumUsuario</span><span class="p">()</span>
+<span class="kd">var</span> <span class="nv">x3</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="n">pedirNumUsuario</span><span class="p">()</span>
+<span class="k">if</span> <span class="kd">let</span> <span class="nv">dato1</span> <span class="p">=</span> <span class="n">x1</span><span class="p">,</span> <span class="kd">let</span> <span class="nv">dato2</span> <span class="p">=</span> <span class="n">x2</span><span class="p">,</span> <span class="kd">let</span> <span class="nv">dato3</span> <span class="p">=</span> <span class="n">x3</span> <span class="p">{</span>
+   <span class="kd">let</span> <span class="nv">suma</span> <span class="p">=</span> <span class="n">dato1</span><span class="o">+</span><span class="n">dato2</span><span class="o">+</span><span class="n">dato3</span>
+   <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Ningún nil y la suma de todos los datos es: </span><span class="si">\(</span><span class="n">suma</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+   <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Algún dato del usuario es nil&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3>Operador <em>nil-coalescing</em></h3>
+<ul>
+<li>El operador <em>nil-coalescing</em> (<code>??</code>) permite definir un valor por
+defecto en una asignación si un opcional es nil.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span>
+<span class="kd">let</span> <span class="nv">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="kd">let</span> <span class="nv">x</span> <span class="p">=</span> <span class="n">a</span> <span class="p">??</span> <span class="o">-</span><span class="mi">1</span>
+<span class="kd">let</span> <span class="nv">y</span> <span class="p">=</span> <span class="n">b</span> <span class="p">??</span> <span class="o">-</span><span class="mi">1</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Resultado: </span><span class="si">\(</span><span class="n">x</span><span class="si">)</span><span class="s">, </span><span class="si">\(</span><span class="n">y</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime Resultado: -1, 10</span>
+</code></pre></div>
+<hr />
+<h3>Encadenamiento de opcionales</h3>
+<p>El encadenamiento de opcionales (<em>optional chaining</em>) permite llamar a
+un método de una variable que contiene un opcional. Si la variable no
+es <code>nil</code>, se ejecuta el método y se devuelve su valor como un
+opcional. Si la variable es <code>nil</code> se devuelve <code>nil</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">nombre1</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="s">&quot;Pedro&quot;</span>
+<span class="kd">let</span> <span class="nv">nombre2</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span>
+
+<span class="c1">// Error: let str1 = nombre1.lowercased()</span>
+<span class="c1">// No podemos llamar al método lowercased() del String</span>
+<span class="c1">// porque nombre es opcional y puede tener nil</span>
+
+<span class="kd">let</span> <span class="nv">str1</span> <span class="p">=</span> <span class="n">nombre1</span><span class="p">?.</span><span class="n">lowercased</span><span class="p">()</span>
+<span class="kd">let</span> <span class="nv">str2</span> <span class="p">=</span> <span class="n">nombre2</span><span class="p">?.</span><span class="n">lowercased</span><span class="p">()</span>
+<span class="c1">// str1: String? = &quot;pedro&quot;</span>
+<span class="c1">// str2: String? = nil</span>
+</code></pre></div>
+<hr />
+<h3>Ejemplo de <code>Lista</code> con opcional</h3>
+<ul>
+<li>Veamos como último ejemplo una segunda versión del enum <code>Lista</code>, en el que
+utilizamos un único <code>case</code>, pero dando la posibilidad de que el resto
+de la lista sea <code>nil</code> haciéndolo opcional.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kr">indirect</span> <span class="kd">enum</span> <span class="nc">Lista</span><span class="p">{</span>
+    <span class="k">case</span> <span class="n">nodo</span><span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="n">Lista</span><span class="p">?)</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>La función <code>suma(lista:)</code> quedaría así:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>func suma(lista: Lista) -&gt; Int {
+    switch lista {
+        case let .nodo(car, cdr):
+        if (cdr == nil) {
+            return car
+        } else {
+            return car + suma(lista: cdr!)
+        }
+    }
+}
+
+let z: Lista = .nodo(20, .nodo(10, nil))
+print(suma(lista: z))
+/// Devuelve 30
+</code></pre></div>
+<hr />
+<h3>Clausuras</h3>
+<hr />
+<ul>
+<li>Veremos dos puntos principales:</li>
+<li>Se puede definir funciones que se pasan como parámetro de forma
+     compacta usando <em>expresiones de clausuras</em>.</li>
+<li>Las clausuras capturan las variables definidas en el ámbito de la
+     función principal que las crea.</li>
+</ul>
+<hr />
+<h3>Expresiones de clausura</h3>
+<ul>
+<li>Swift permite definir expresiones compactas con las que construir
+  funciones anónimas que se pasan como parámetro de otras funciones. </li>
+<li>Similares a las <strong><em>expresiones lambda</em></strong> en Scheme. En Swift se
+  denominan <strong><em>expresiones de clausura</em></strong> (<em>closure expressions</em>).</li>
+</ul>
+<hr />
+<h3>El método <code>sorted(by:)</code></h3>
+<ul>
+<li>La biblioteca stándar de Swift define un método <code>sorted()</code> que
+  devuelve los elementos ordenados de un
+  <a href="https://developer.apple.com/reference/swift/array">Array</a>. </li>
+<li>El array original no se modifica. </li>
+<li>La comparación entre los elementos se realiza usando el comparador
+  <code>&lt;</code>.</li>
+<li>El array original no se modifica, sino que la ordenación construye
+un nuevo array (existe una función alternativa mutable que se denomina
+<code>sort()</code>).</li>
+</ul>
+<div class="highlight"><pre><span></span><code>let estudiantes = [&quot;Kofi&quot;, &quot;Abena&quot;, &quot;Peter&quot;, &quot;Kweku&quot;, &quot;Akosua&quot;]
+let ordenados = estudiantes.sorted()
+print(ordenados)
+// Imprime &quot;[&quot;Abena&quot;, &quot;Akosua&quot;, &quot;Kofi&quot;, &quot;Kweku&quot;, &quot;Peter&quot;]&quot;
+</code></pre></div>
+<ul>
+<li>Lo interesante relacionado con las clausuras está en la función
+  <code>sorted(by:)</code>. </li>
+<li>En esta función se utiliza una clausura como parámetro para
+  modificar la comparación entre elementos y resultar en una
+  ordenación distinta. </li>
+</ul>
+<div class="highlight"><pre><span></span><code>func sorted(by areInIncreasingOrder: (Element, Element) -&gt; Bool)
+</code></pre></div>
+<ul>
+<li>Por ejemplo, podríamos ordenar un array de cadenas en orden
+  alfabético inverso.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">primeroMayor</span><span class="p">(</span><span class="n">s1</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">s2</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="n">primeroMayor</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">alreves</span><span class="p">)</span>
+<span class="c1">// Imprime [&quot;Peter&quot;, &quot;Kweku&quot;, &quot;Kofi&quot;, &quot;Akosua&quot;, &quot;Abena&quot;]</span>
+</code></pre></div>
+<ul>
+<li>Sería mucho más expresivo definir la función de ordenación <em>inline</em>,
+  sin necesidad de crear una función auxiliar como <code>primeroMayor</code>.</li>
+<li>Se puede hacer usando una expresión de clausura.</li>
+</ul>
+<hr />
+<h3>Sintaxis de las expresiones de clausura</h3>
+<ul>
+<li>La sintaxis de las expresiones de clausura tiene la siguiente forma
+general:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>{ ( &lt;parametros&gt;) -&gt; &lt;tipo devuelto&gt; in
+   &lt;sentencias&gt;
+}
+</code></pre></div>
+<ul>
+<li>Si aplicamos esta sintaxis al ejemplo anterior:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">s1</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">s2</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="k">in</span>
+    <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span>
+<span class="p">})</span>
+</code></pre></div>
+<ul>
+<li>Hay que hacer notar que la declaración de los parámetros y el tipo
+  devuelto por esta clausura <em>inline</em> es idéntica a la declaración de
+  la función <code>primeroMayor(s1:s2:)</code>. En ambos casos, se escribe como
+  <code>(s1: String, s2: String) -&gt; Bool</code>. Sin embargo, en la expresión de
+  clausura los parámetros y el tipo devuelto se escribe dentro de las
+  llaves, no fuera.</li>
+<li>El comienzo del cuerpo de la clausura se introduce por la palabra
+  clave <code>in</code>. </li>
+<li>Como el cuerpo de la clausura es corto, podemos incluso escribirlo
+  en una única línea:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">s1</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">s2</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="k">in</span> <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span> <span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>Veamos ahora que es posible aplicar bastantes simplificaciones y
+  hacer mucho más compacta la expresión de clausura.</li>
+</ul>
+<hr />
+<h3>Inferencia del tipo por el contexto</h3>
+<ul>
+<li>Swift puede inferir los tipos de sus parámetros y el tipo del valor
+  que devuelve a partir de la declaración del argumento de la función
+  <code>sorted(by:)</code>.</li>
+<li>Debido a que todos los tipos pueden ser inferidos, la flecha del
+  tipo devuelto y los paréntesis alrededor de los nombres de los
+  parámetros también pueden omitirse:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span> <span class="p">)</span>
+</code></pre></div>
+<hr />
+<h3>Devoluciones implícitas en clausuras con una única expresión</h3>
+<ul>
+<li>En clausuras con una única expresión podemos omitir también la
+  palabra clave <code>return</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span> <span class="p">)</span>
+</code></pre></div>
+<hr />
+<h3>Abreviaturas en los nombres de los argumentos</h3>
+<ul>
+<li>Swift proporciona automáticamente abreviaturas para los nombres de
+  argumentos de las clausuras <em>inline</em> que pueden usarse para
+  referirse a los valores de los argumentos de la clausura usando los
+  nombres <code>$0</code>, <code>$1</code>, <code>$2</code>, etc.</li>
+<li>Si se usa estos argumentos abreviados, se puede omitir la definición
+  de la lista de los argumentos:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">}</span> <span class="p">)</span>
+</code></pre></div>
+<hr />
+<h3>Funciones operadoras</h3>
+<ul>
+<li>Swift define una implementación específica de cadenas del operador
+  mayor-que (<code>&gt;</code>) como una función que tiene dos parámetros de tipo
+  <code>String</code> y devuelve un <code>Bool</code>. </li>
+<li>Esto es exactamente lo que necesita el método <code>sorted(by:)</code>. </li>
+</ul>
+<h2><div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="o">&gt;</span><span class="p">)</span>
+</code></pre></div></h2>
+<h3>Clausuras al final</h3>
+<ul>
+<li>Si la clausura se pasa como último argumento, se puede escribir como
+  una clausura al final (<em>trailing closure</em>). </li>
+<li>Una clausura al final es una expresión de clausura que se escribe
+  fuera de (y después de) los paréntesis de la función a la que se le
+  pasa como parámetro.</li>
+<li>No es necesario el nombre del parámetro.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span><span class="p">()</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Cuando se proporciona una expresión de clausura como único argumento
+  de una función o método y se pasa como una clausura al final, no es
+  necesario escribir los paréntesis tras el nombre de la función.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Las clausuras al final son útiles sobre todo cuando la clausura es
+  suficientemente larga que no es posible escribirla <em>inline</em> en una
+  única línea. </li>
+</ul>
+<hr />
+<h3>Valores capturados</h3>
+<div class="admonition note">
+<p class="admonition-title">Cuidado</p>
+<p>Los ejemplos que vamos a ver a continuación no usan programación
+funcional, porque la variable capturada por la clausura es una
+variable <strong>mutable</strong> (se ha definido con <code>var</code> y no con <code>let</code>). Por
+eso las funciones resultantes no son funciones puras, sino que
+devuelven un valor distinto cada vez que son invocadas. Son 
+funciones con estado local mutable.</p>
+</div>
+<ul>
+<li>Igual que en Scheme, una clausura puede capturar constantes y
+  variables del contexto en el que se define.</li>
+<li>La clausura puede referirse y modificar esos valores dentro de su
+  cuerpo, incluso si ya no existe el ámbito (<em>scope</em>) original en el
+  que se definieron estas constantes y variables.</li>
+<li>
+<p>En Swift, la forma más sencilla de una clausura que captura valores
+  es una función anidada (<em>nested function</em>) escrita en el cuerpo de
+  otra función. Una función anidada puede capturar cualquiera de los
+  argumentos de su función exterior y también puede capturar cualquier
+  constante y variable definida dentro de la función exterior.</p>
+</li>
+<li>
+<p>Veamos un ejemplo similar al que vimos en Scheme. </p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeIncrementador</span><span class="p">(</span><span class="n">incremento</span> <span class="n">cantidad</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">totalAcumulado</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="kd">func</span> <span class="nf">incrementador</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="n">totalAcumulado</span> <span class="o">+=</span> <span class="n">cantidad</span>
+        <span class="k">return</span> <span class="n">totalAcumulado</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">incrementador</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>La función <code>construyeIncrementador</code> contiene una función anidada
+  llamada <code>incrementador</code>. Esta función captura dos valores de su
+  contexto: <code>totalAcumulado</code> y <code>cantidad</code>. </li>
+<li>Después de capturar estos valores, <code>incrementador</code> es devuelto por
+  <code>construyeIncrementador</code> como una clausura que incrementa
+  <code>totalAcumulado</code> en <code>cantidad</code> cada vez que se llama.</li>
+<li>El tipo devuelto de <code>construyeIncrementador</code> es <code>() -&gt; Int</code>. Esto
+  significa que devuelve una función que no tiene parámetros y que
+  devuelve un <code>Int</code> cada vez que es llamada.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">incrementador</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="n">totalAcumulado</span> <span class="o">+=</span> <span class="n">cantidad</span>
+    <span class="k">return</span> <span class="n">totalAcumulado</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Si consideramos aislada la función anidada <code>incrementador()</code>, vemos
+  que función no tiene ningún parámetro, y que utiliza en su cuerpo
+  las variables <code>totalAcumulado</code> y <code>cantidad</code> en su cuerpo.</li>
+<li>Lo puede hacer porque ha capturado una referencia a estas variables
+  de la función de alrededor. Al capturar estas referencias las
+  variables no desaparecen cuando termina la llamada a
+  <code>construyeIncrementador</code>; estarán disponibles la próxima vez que se
+  llame la función <code>incrementador</code>.</li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">incrementaDiez</span> <span class="p">=</span> <span class="n">construyeIncrementador</span><span class="p">(</span><span class="n">incremento</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">incrementaDiez</span><span class="p">()</span>
+<span class="c1">// devuelve 10</span>
+<span class="n">incrementaDiez</span><span class="p">()</span>
+<span class="c1">// devuelve 20</span>
+<span class="n">incrementaDiez</span><span class="p">()</span>
+<span class="c1">// devuelve 30</span>
+</code></pre></div>
+<ul>
+<li>Si creamos un segundo incrementador, tendrá sus propias referencias
+  a un variable <code>totalAcumulado</code> nueva, distinta de la anterior:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">incrementaSiete</span> <span class="p">=</span> <span class="n">construyeIncrementador</span><span class="p">(</span><span class="n">incremento</span><span class="p">:</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">incrementaSiete</span><span class="p">()</span>
+<span class="c1">// devuelve 7</span>
+</code></pre></div>
+<ul>
+<li>Si llamamos a la función <code>incrementador</code> original (<code>incrementaDiez</code>)
+  vemos que sigue incrementando su propia variable <code>totalAcumulado</code> y
+  que no se ve afectada por la variable capturada por
+  <code>incrementaSiete</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">incrementaDiez</span><span class="p">()</span>
+<span class="c1">// devuelve 40</span>
+</code></pre></div>
+<hr />
+<h3>Clausuras con expresiones de clausura</h3>
+<ul>
+<li>
+<p>En el ejemplo anterior hemos usado una definición interna de una
+función para definir la clausura que se devuelve. Lo hemos hecho por
+claridad, pero no es necesario. Es posible escribir un código más
+compacto usando expresiones de clausura.</p>
+</li>
+<li>
+<p>Por ejemplo, la función que vimos la semana pasada <code>construyeSumador()</code> </p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeSumador10</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+  <span class="kd">func</span> <span class="nf">suma10</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span><span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="mi">10</span><span class="p">}</span>
+  <span class="k">return</span> <span class="n">suma10</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Una versión de esta misma función usando una expresión de clausura es
+la siguiente:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeSumador10</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">+</span> <span class="mi">10</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">f</span> <span class="p">=</span> <span class="n">construyeSumador10</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<span class="c1">// Imprime &quot;30&quot;</span>
+</code></pre></div>
+<p>Y lo mismo con la función <code>constryeIncrementador(incremento:)</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeIncrementador</span><span class="p">(</span><span class="n">incremento</span> <span class="n">cantidad</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">totalAcumulado</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="kd">func</span> <span class="nf">incrementador</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="n">totalAcumulado</span> <span class="o">+=</span> <span class="n">cantidad</span>
+        <span class="k">return</span> <span class="n">totalAcumulado</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">incrementador</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>La versión con una expresión de clausura:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeIncrementador</span><span class="p">(</span><span class="n">incremento</span> <span class="n">cantidad</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">totalAcumulado</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">totalAcumulado</span> <span class="o">+=</span> <span class="n">cantidad</span>
+            <span class="k">return</span> <span class="n">totalAcumulado</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">incrementaDiez</span> <span class="p">=</span> <span class="n">construyeIncrementador</span><span class="p">(</span><span class="n">incremento</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">incrementaDiez</span><span class="p">())</span>
+<span class="c1">// Imprime &quot;10&quot;</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">incrementaDiez</span><span class="p">())</span>
+<span class="c1">// Imprime &quot;20&quot;</span>
+</code></pre></div>
+<hr />
+<h3>Valores capturados y valores del ámbito local de ejecución</h3>
+<ul>
+<li>Las clasuras usan los valores capturados y no los valores declarados
+en el ámbito local de ejecución. Vamos a explicarlo con un ejemplo.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeFunc</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">0</span>
+   <span class="k">return</span> <span class="p">{</span>
+      <span class="n">x</span> <span class="p">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="k">return</span> <span class="n">x</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">f</span> <span class="p">=</span> <span class="n">construyeFunc</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">())</span> <span class="c1">// -&gt; 1</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">())</span> <span class="c1">// -&gt; 2</span>
+
+<span class="kd">func</span> <span class="nf">usaFunc</span><span class="p">(</span><span class="kc">_</span> <span class="n">f</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+     <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">10</span>
+     <span class="k">return</span> <span class="n">f</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">usaFunc</span><span class="p">(</span><span class="n">f</span><span class="p">))</span> <span class="c1">// -&gt; 3</span>
+</code></pre></div>
+<ul>
+<li>
+<p>La función <code>usaFunc</code> definida en la línea 13 recibe una función <code>f</code>
+sin parámetros que devuelve un entero. En el ámbito local de <code>usaFunc</code>
+se define una variable local <code>x</code> que tiene el valor <code>10</code> antes de
+invocar a la función <code>f</code> recibida.</p>
+</li>
+<li>
+<p>La función recibida ha capturado una variable que también se llama
+<code>x</code>. Esta es la variable que va a usar el código de la clausura y no
+la otra <code>x</code>. </p>
+</li>
+<li>
+<p>Si ejecutamos el código veremos que la expresión devuelve 3. O sea
+que las clausuras usan siempre los valores capturados.</p>
+</li>
+<li>
+<p>Podemos comprobarlo también en el siguiente ejemplo, en el que la
+clausura que se pasa es una expresión de clausura que captura la
+variable <code>x</code> definida en la línea anterior. Por eso cuando se ejecuta
+la sentencia se imprime el valor <code>110</code> y no el valor <code>20</code>.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">100</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">usaFunc</span> <span class="p">{</span><span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span><span class="p">})</span> <span class="c1">// -&gt; 110</span>
+</code></pre></div>
+<hr />
+<h3>Las clausuras son tipos de referencia</h3>
+<ul>
+<li>Siempre que asignamos una función o una clausura a una constante o
+  una variable, estamos realmente estableciendo que la constante o
+  variable es una referencia a la función o la clausura. </li>
+<li>Si asignamos una clausura a dos constantes o variables distintas,
+  ambas constantes o variables se referirán a la misma clausura:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">tambienIncrementaDiez</span> <span class="p">=</span> <span class="n">incrementaDiez</span>
+<span class="n">tambienIncrementaDiez</span><span class="p">()</span>
+<span class="c1">// devuelve 50</span>
+</code></pre></div>
+<hr />
+<h3>Funciones de orden superior</h3>
+<hr />
+<ul>
+<li>Una de las características funcionales que más hemos usado para
+  trabajar con listas en Scheme son las funciones de orden superior
+  como <code>map</code>, <code>filter</code> o <code>fold-right</code>. </li>
+<li>Swift tiene definidas funciones equivalentes para trabajar con
+  colecciones. </li>
+<li>Se denominan <code>map</code>, <code>filter</code> y <code>reduce</code>. Todas ellas aceptan
+  expresiones de clausura como argumento.</li>
+</ul>
+<hr />
+<h3>Map</h3>
+<ul>
+<li>
+<p>El método <code>map</code> se define en el protocolo
+  <a href="https://developer.apple.com/library/ios/documentation/Swift/Reference/Swift_CollectionType_Protocol/index.html#//apple_ref/swift/intfm/CollectionType/s:FEsPs14CollectionType3mapurFzFzWx9Generator7Element_qd__GSaqd___"><code>CollectionType</code></a>
+  y es adoptado por múltiples estructuras como <code>Array</code>, <code>Dictionary</code> o
+  <code>Set</code>.</p>
+</li>
+<li>
+<p>El perfil del método <code>map</code> es el siguiente:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">map</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">transform</span><span class="p">:</span> <span class="p">(</span><span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">T</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="n">T</span><span class="p">]</span>
+</code></pre></div>
+<ul>
+<li>Recibe como parámetro una función unaria <code>transform</code> del tipo de los
+  elementos de la colección y que devuelve otro elemento (puede ser
+  del mismo o de distinto tipo que los elementos de la
+  colección). </li>
+<li>Devuelve un array que contiene el resultado de aplicar <code>transform</code> a
+  cada elemento del array original.</li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">numeros</span> <span class="p">=</span> <span class="p">[</span><span class="nb">Int</span><span class="p">](</span><span class="mf">0.</span><span class="p">..</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">numeros</span><span class="p">.</span><span class="bp">map</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">*</span> <span class="nv">$0</span><span class="p">}</span>
+<span class="c1">// devuelve [0, 1, 4, 9, 16, 25]</span>
+</code></pre></div>
+<ul>
+<li>
+<p>Estamos usando la notación de <em>clausura al final</em>.</p>
+</li>
+<li>
+<p>Otro ejemplo, en el que usamos <code>map</code> para implementar la función
+  <code>sumaParejas(parejas: [(Int, Int)]) -&gt; [Int]</code>:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">suma</span><span class="p">(</span><span class="n">parejas</span><span class="p">:</span> <span class="p">[(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)])</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="n">parejas</span><span class="p">.</span><span class="bp">map</span><span class="p">({(</span><span class="n">pareja</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">))</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span>
+                        <span class="k">return</span> <span class="n">pareja</span><span class="p">.</span><span class="mi">0</span> <span class="o">+</span> <span class="n">pareja</span><span class="p">.</span><span class="mi">1</span><span class="p">})</span>
+<span class="p">}</span>
+<span class="n">suma</span><span class="p">(</span><span class="n">parejas</span><span class="p">:[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)])</span>
+<span class="c1">// devuelve [2, 4, 6, 8]</span>
+</code></pre></div>
+<ul>
+<li>Podemos usar en el cuerpo de la expresión de clausura de <code>map</code> una
+  variable capturada. Por ejemplo en la siguiente función
+  <code>incrementaValores(_:con:)</code> que suma <code>con</code> a todos los números de un
+  array que se le pasa por parámetro:</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">incrementa</span><span class="p">(</span><span class="n">valores</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">],</span> <span class="n">con</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="n">valores</span><span class="p">.</span><span class="bp">map</span><span class="p">({(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span>
+                        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">con</span><span class="p">})</span>
+<span class="p">}</span>
+<span class="n">incrementa</span><span class="p">(</span><span class="n">valores</span><span class="p">:[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">con</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+<span class="c1">// devuelve [15, 25, 35]</span>
+</code></pre></div>
+- La versión abreviada de la expresión de clausura es:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">incrementa</span><span class="p">(</span><span class="n">valores</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">],</span> <span class="n">con</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="n">valores</span><span class="p">.</span><span class="bp">map</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">+</span> <span class="n">con</span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">incrementa</span><span class="p">(</span><span class="n">valores</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">con</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+<span class="c1">// devuelve [15, 25, 35]</span>
+</code></pre></div>
+<hr />
+<h3>Filter</h3>
+<ul>
+<li>
+<p>La función es igual que la de Scheme: devuelve una colección con los
+  elementos de la colección para los que la clausura que se pasa
+  devuelve <em>true</em>.</p>
+</li>
+<li>
+<p>Su perfil:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">filter</span><span class="p">(</span><span class="kc">_</span> <span class="n">isIncluded</span><span class="p">:</span> <span class="p">(</span><span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="n">Element</span><span class="p">]</span>
+</code></pre></div>
+<ul>
+<li>Ejemplo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">numeros</span> <span class="p">=</span> <span class="p">[</span><span class="nb">Int</span><span class="p">](</span><span class="mf">0.</span><span class="p">..</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">numeros</span><span class="p">.</span><span class="bp">filter</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">%</span> <span class="mi">2</span> <span class="p">==</span> <span class="mi">0</span><span class="p">}</span>
+<span class="c1">// devuelve [0, 2, 4, 6, 8, 10]</span>
+</code></pre></div>
+<hr />
+<h3>Reduce</h3>
+<ul>
+<li>
+<p>Similar al <em>fold</em> de Scheme.</p>
+</li>
+<li>
+<p>Su perfil:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">reduce</span><span class="p">&lt;</span><span class="n">Result</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">initialResult</span><span class="p">:</span> <span class="n">Result</span><span class="p">,</span> 
+                    <span class="kc">_</span> <span class="n">nextPartialResult</span><span class="p">:</span> <span class="p">(</span><span class="n">Result</span><span class="p">,</span> <span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Result</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Result</span>
+</code></pre></div>
+<ul>
+<li>
+<p>La función que se le pasa <code>nextPartialResult</code> es la función de
+  plegado que combina los elementos de la colección. Recibe dos
+  parámetros: el primero es el resultado de la combinación y el
+  segundo se coge de la colección.</p>
+</li>
+<li>
+<p>Ejemplo:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">numeros</span> <span class="p">=</span> <span class="p">[</span><span class="nb">Int</span><span class="p">](</span><span class="mf">0.</span><span class="p">..</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">numeros</span><span class="p">.</span><span class="bp">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>Otro ejemplo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">cadenas</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Patatas&quot;</span><span class="p">,</span> <span class="s">&quot;Arroz&quot;</span><span class="p">,</span> <span class="s">&quot;Huevos&quot;</span><span class="p">]</span>
+<span class="n">cadenas</span><span class="p">.</span><span class="bp">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">{(</span><span class="n">i</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span> <span class="n">c</span><span class="p">.</span><span class="bp">count</span> <span class="o">+</span> <span class="n">i</span> <span class="p">})</span>
+<span class="c1">// devuelve 18</span>
+</code></pre></div>
+<ul>
+<li>En versión más compacta:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">cadenas</span><span class="p">.</span><span class="bp">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">{</span><span class="nv">$1</span><span class="p">.</span><span class="bp">count</span> <span class="o">+</span> <span class="nv">$0</span><span class="p">})</span>
+</code></pre></div>
+<ul>
+<li>También se puede utilizar la notación de clausura al final:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">cadenas</span><span class="p">.</span><span class="bp">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span><span class="nv">$1</span><span class="p">.</span><span class="bp">count</span> <span class="o">+</span> <span class="nv">$0</span><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>La combinación se hace de izquierda a derecha:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">cadenas</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Patatas&quot;</span><span class="p">,</span> <span class="s">&quot;Arroz&quot;</span><span class="p">,</span> <span class="s">&quot;Huevos&quot;</span><span class="p">]</span>
+<span class="n">cadenas</span><span class="p">.</span><span class="bp">reduce</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="o">+</span><span class="p">)</span>
+<span class="c1">// devuelve &quot;PatatasArrozHuevos&quot;</span>
+</code></pre></div>
+<hr />
+<h3>Combinación de funciones de orden superior</h3>
+<ul>
+<li>
+<p>Cuando el resultado de aplicar una función de orden superior a una
+colección es otra colección es posible aplicar otra función de
+orden superior a este resultado.</p>
+</li>
+<li>
+<p>Por ejemplo, la siguiente sentencia devuelve todos los números pares
+del array inicial elevados al cuadrado:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">numeros</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">numeros</span><span class="p">.</span><span class="bp">filter</span><span class="p">{</span><span class="nv">$0</span> <span class="o">%</span> <span class="mi">2</span> <span class="p">==</span> <span class="mi">0</span><span class="p">}.</span><span class="bp">map</span><span class="p">{</span><span class="nv">$0</span><span class="o">*</span><span class="nv">$0</span><span class="p">}</span>
+<span class="c1">// Devuelve el array [4,16,36,64,100]</span>
+</code></pre></div>
+<ul>
+<li>Y la siguiente devuelve la suma números mayores de 100:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">numeros</span> <span class="p">=</span> <span class="p">[</span><span class="mi">103</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">532</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">125</span><span class="p">]</span>
+<span class="n">numeros</span><span class="p">.</span><span class="bp">filter</span><span class="p">{</span><span class="nv">$0</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">}.</span><span class="bp">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">+</span><span class="p">)</span>
+<span class="c1">// Devuelve 1090</span>
+</code></pre></div>
+<hr />
+<h3>Genéricos</h3>
+<hr />
+<h3>Ejemplo inicial: función <code>intercambia</code> (no genérica)</h3>
+<ul>
+<li>Empecemos con un ejemplo sencillo. </li>
+<li>Supongamos la siguiente función <code>intercambia(_:)</code> que recibe una
+  tupla <code>(Int, String)</code> y devuelve una tupla <code>(String, Int)</code> con los
+  valores intercambiados.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">intercambia</span><span class="p">(</span><span class="kc">_</span> <span class="n">tupla</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">String</span><span class="p">))</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kd">let</span> <span class="nv">tuplaNueva</span> <span class="p">=</span> <span class="p">(</span><span class="n">tupla</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">tupla</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+   <span class="k">return</span> <span class="n">tuplaNueva</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">tupla</span> <span class="p">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s">&quot;Hola&quot;</span><span class="p">)</span>
+<span class="n">intercambia</span><span class="p">(</span><span class="n">tupla</span><span class="p">)</span>
+<span class="c1">// devuelve (&quot;Hola&quot;, 10)</span>
+</code></pre></div>
+<ul>
+<li>Supongamos que queremos hacer la misma función para intercambiar
+  elementos de una tupla <code>(Int, Int)</code>. Tendríamos que usar el mismo
+  código, pero cambiando los tipos:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">intercambia</span><span class="p">(</span><span class="kc">_</span> <span class="n">tupla</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">))</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kd">let</span> <span class="nv">tuplaNueva</span> <span class="p">=</span> <span class="p">(</span><span class="n">tupla</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">tupla</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+   <span class="k">return</span> <span class="n">tuplaNueva</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">tupla2</span> <span class="p">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">intercambia</span><span class="p">(</span><span class="n">tupla2</span><span class="p">)</span>
+<span class="c1">// devuelve (20, 10)</span>
+</code></pre></div>
+<ul>
+<li>El código es el mismo, lo único distinto son los tipos. </li>
+<li>¿Podríamos <strong>generalizar</strong> las funciones anteriores para hacer que
+  el código pueda trabajar con cualquier tipo? </li>
+</ul>
+<hr />
+<h3>Función <code>intercambia</code> genérica</h3>
+<ul>
+<li>La respuesta es sí, usando <strong>función genérica</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">intercambia</span><span class="p">&lt;</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">tupla</span><span class="p">:</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">))</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kd">let</span> <span class="nv">tuplaNueva</span> <span class="p">=</span> <span class="p">(</span><span class="n">tupla</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">tupla</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
+   <span class="k">return</span> <span class="n">tuplaNueva</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>La sintaxis es similar a Java.</li>
+<li>En la versión genérica se usan <em>placeholders</em> (los símbolos <code>A</code> y
+  <code>B</code>) en lugar de tipos concretos. Son tipos genéricos, que se
+  definen usando un identificador entre símbolos de <code>&lt;</code> y <code>&gt;</code>. </li>
+<li>Los tipos reales que se van a usar en la función se determinan en
+  cada invocación a la función, dependiendo del tipo del parámetro que
+  se utiliza en la llamada:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">tupla</span> <span class="p">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s">&quot;Hola&quot;</span><span class="p">)</span>
+<span class="n">intercambia</span><span class="p">(</span><span class="n">tupla</span><span class="p">)</span>
+<span class="c1">// devuelve (&quot;Hola&quot;, 10)</span>
+<span class="kd">let</span> <span class="nv">tupla2</span> <span class="p">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">intercambia</span><span class="p">(</span><span class="n">tupla2</span><span class="p">)</span>
+<span class="c1">// devuelve (10, 20)</span>
+<span class="kd">let</span> <span class="nv">tupla3</span> <span class="p">=</span> <span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">)</span>
+<span class="n">intercambia</span><span class="p">(</span><span class="n">tupla3</span><span class="p">)</span>
+<span class="c1">// devuelve (10.5, true)</span>
+</code></pre></div>
+<ul>
+<li>
+<p>En el primer ejemplo, los tipos <code>A</code> y <code>B</code> se infieren como <code>Int</code> y
+  <code>String</code>. En el segundo ejemplo como <code>Int</code> e <code>Int</code>. Y en el tercero
+  como <code>Bool</code> y <code>Double</code>.</p>
+</li>
+<li>
+<p>Los tipos genéricos se pueden usar en la definición de todos los
+  elementos de Swift: funciones, enums, estructuras, clases,
+  protocolos o extensiones. </p>
+</li>
+</ul>
+<hr />
+<h3>Ejemplo final: lista genérica</h3>
+<ul>
+<li>Terminamos con un ejemplo en el que incluimos muchos conceptos
+  vistos en este tema. </li>
+<li>Se trata de la implementación en Swift de listas al estilo Scheme,
+  con las funciones <code>car</code>, <code>cdr</code> y <code>vacia</code> usando un enum recursivo
+  con un tipo genérico que permite generalizar el tipo de elementos de
+  la lista.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kr">indirect</span> <span class="kd">enum</span> <span class="nc">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="p">{</span>
+     <span class="k">case</span> <span class="n">vacia</span>
+     <span class="k">case</span> <span class="n">nodo</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">car</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">lista</span><span class="p">:</span> <span class="n">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="n">T</span><span class="p">?</span> <span class="p">{</span>
+   <span class="k">switch</span> <span class="n">lista</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="n">primero</span><span class="p">,</span> <span class="kc">_</span><span class="p">):</span>
+         <span class="k">return</span> <span class="n">primero</span>
+      <span class="k">case</span> <span class="p">.</span><span class="n">vacia</span><span class="p">:</span>
+         <span class="k">return</span> <span class="kc">nil</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">cdr</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">lista</span><span class="p">:</span> <span class="n">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="n">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;?</span> <span class="p">{</span>
+   <span class="k">switch</span> <span class="n">lista</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="kc">_</span><span class="p">,</span> <span class="n">resto</span><span class="p">):</span>
+         <span class="k">return</span> <span class="n">resto</span>
+      <span class="k">case</span> <span class="p">.</span><span class="n">vacia</span><span class="p">:</span>
+         <span class="k">return</span> <span class="kc">nil</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">vacia</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">lista</span><span class="p">:</span> <span class="n">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+   <span class="k">switch</span> <span class="n">lista</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="p">.</span><span class="n">vacia</span><span class="p">:</span>
+         <span class="k">return</span> <span class="kc">true</span>
+      <span class="k">default</span><span class="p">:</span>
+         <span class="k">return</span> <span class="kc">false</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">lista</span> <span class="p">:</span> <span class="n">Lista</span> <span class="p">=</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="p">.</span><span class="n">vacia</span><span class="p">)))</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">car</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="c1">// Imprime 20</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">car</span><span class="p">(</span><span class="n">cdr</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="c1">// Imprime 30</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">car</span><span class="p">(</span><span class="n">cdr</span><span class="p">(</span><span class="n">cdr</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="c1">// Imprime 40</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">vacia</span><span class="p">(</span><span class="n">cdr</span><span class="p">(</span><span class="n">cdr</span><span class="p">(</span><span class="n">cdr</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="o">!</span><span class="p">))</span> <span class="c1">// Imprime true</span>
+</code></pre></div></body>
+
+</html>
