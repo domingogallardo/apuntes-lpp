@@ -1,25 +1,19 @@
-# Práctica 8: Programación funcional en Swift (1)
+# Práctica 9: Programación funcional en Swift (1)
 
 ## Entrega de la práctica
 
 Para entregar la práctica debes subir a Moodle el fichero
-`practica08.swift` con una cabecera inicial con tu nombre y apellidos,
+`practica09.swift` con una cabecera inicial con tu nombre y apellidos,
 y las soluciones de cada ejercicio separadas por comentarios. Cada
 solución debe incluir:
 
 - La **definición de las funciones** que resuelven el ejercicio.
-- Una visualización por pantalla de todos los ejemplos incluidos en el
-  enunciado que **demuestren qué hace la función**.
+- Una visualización por pantalla con ejemplos distintos de los
+  presentados en el enunciado que **demuestren qué hace la función**.
 
 !!! Warning "Importante" 
-    Antes de proceder a realizar los ejercicios de la
-    práctica te recomendamos que realices y pruebes los ejemplos
-    presentados en el [seminario de
-    Swift](https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario2-swift/seminario2-swift.html)
-    y los [apuntes de
-    teoría](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html)
-    de la primera parte del tema de Programación Funcional en Swift.
-    
+    Los ejemplos que muestres en pantalla **deben ser distintos** de los
+    incluidos en el enunciado.
 
 ## Ejercicios
 
@@ -36,11 +30,9 @@ Ejemplo:
 ```swift
 let array = ["anterior", "antígona", "antena"]
 let prefijo = "ante"
-print("prefijos(prefijo: \(prefijo), palabras: \(array))")
+print("\n******\n1a) Función prefijos(prefijo:palabras:)\n******")
 print(prefijos(prefijo: prefijo, palabras: array))
-// Imprime:
-// prefijos(prefijo: ante, palabras: ["anterior", "antígona", "antena"])
-// [true, false, true]
+// Imprime: [true, false, true]
 ```
 
 b) Implementa en Swift la función recursiva `parejaMayorParImpar(numeros:)` que
@@ -50,13 +42,10 @@ número par. Si no hay ningún número par o impar se devolverá un 0.
 
 ```swift
 let numeros = [10, 201, 12, 103, 204, 2]
-print("parejaMayorParImpar(numeros: \(numeros))")
+print("\n******\n1b) Función parejaMayorParImpar(numeros:)\n******")
 print(parejaMayorParImpar(numeros: numeros))
-// Imprime:
-// parejaMayorParImpar(numeros: [10, 201, 12, 103, 204, 2])
-// (201, 204)
+// Imprime: (201, 204)
 ```
-
 
 ### Ejercicio 2 ###
 
@@ -94,8 +83,8 @@ let array = [(2,4), (4,14), (4,16), (5,25), (10,100)]
 func cuadrado(x: Int) -> Int {
    return x * x
 }
-print("Resultado coinciden:  \(coinciden(parejas: array, funcion: cuadrado))\n")
-// Imprime: Resultado coinciden:  [true, false, true, true, true]
+print(coinciden(parejas: array, funcion: cuadrado)")
+// Imprime: [true, false, true, true, true]
 ```
 
 
@@ -187,7 +176,6 @@ Implementa la función usando la misma estrategia que ya utilizamos en
 Scheme de definir una función auxiliar `suma(bosque:cumplen:)` y una recursión
 mutua.
 
-
 ```swift
 func esPar(x: Int) -> Bool {
     return x % 2 == 0
@@ -195,60 +183,6 @@ func esPar(x: Int) -> Bool {
 
 print("La suma del árbol es: \(suma(arbol: arbol10, cumplen: esPar))")
 // Imprime: La suma del árbol genérico es: 18
-```
-
-### Ejercicio 6 ###
-
-a) Define la función `maxOpt(_ x: Int?, _ y: Int?) -> Int?` que
-devuelve el máximo de dos enteros opcionales. En el caso en que ambos
-sean `nil` se devolverá `nil`. En el caso en que uno sea `nil` y el
-otro no se devolverá el entero que no es `nil`. En el caso en que
-ningún parámetro sea `nil` se devolverá el mayor.
-
-Ejemplo:
-
-```swift
-let res1 = maxOpt(nil, nil) 
-let res2 = maxOpt(10, nil)
-let res3 = maxOpt(-10, 30)
-print("res1 = \(String(describing: res1))")
-print("res2 = \(String(describing: res2))")
-print("res3 = \(String(describing: res3))")
-// Imprime:
-// res1 = nil
-// res2 = Optional(10)
-// res3 = Optional(30)
-
-```
-
-b1) Escribe una nueva versión del ejercicio 1b) que permita recibir
-números negativos y que devuelva una pareja de `(Int?, Int?)` con
-`nil` en la parte izquierda y/o derecha si no hay número impares o
-pares. 
-
-Ejemplo:
-
-```swift
-let numeros2 = [-10, 202, 12, 100, 204, 2]
-print("parejaMayorParImpar2(numeros: \(numeros2))")
-print(parejaMayorParImpar2(numeros: numeros2))
-// Imprime:
-// parejaMayorParImpar2(numeros: [-10, 202, 12, 100, 204, 2])
-// (nil, Optional(204))
-```
-
-b2) Escribe la función `sumaMaxParesImpares(numeros: [Int]) -> Int`
-que llama a la función anterior y devuelve la suma del máximo de los
-pares y el máximo de los impares. El array de números tendrá como
-mínimo un elemento, por lo que el valor devuelto por la función será
-un `Int` (no será `Int?`).
-
-```swift
-print("sumaMaxParesImpares(numeros: \(numeros2))")
-print(sumaMaxParesImpares(numeros: numeros2))
-// Imprime:
-// sumaMaxParesImpares(numeros: [-10, 202, 12, 100, 204, 2])
-// 204
 ```
 
 ----
