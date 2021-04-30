@@ -126,7 +126,9 @@ Llamaremos al tipo `ArbolBinario` y a los casos `nodo` y `vacio`.
 Impleméntalo de forma que el siguiente ejemplo funcione correctamente:
 
 ```swift
-let arbol: ArbolBinario = .nodo(8, .nodo(2, .vacio, .vacio), .nodo(12, .vacio, .vacio))
+let arbol: ArbolBinario = .nodo(8, 
+                                .nodo(2, .vacio, .vacio), 
+                                .nodo(12, .vacio, .vacio))
 ```
 
 Implementa también la función `suma(arbolb:)` que reciba una instancia de
