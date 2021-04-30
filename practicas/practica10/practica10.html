@@ -439,6 +439,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica09/practica09.html" class="md-nav__link">
+        Práctica 9
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -484,6 +496,13 @@
   
     <nav class="md-nav" aria-label="Ejercicios">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" class="md-nav__link">
+    Ejercicio 6
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#ejercicio-1" class="md-nav__link">
@@ -561,6 +580,49 @@ teoría del tema de Programación Funcional en Swift:</p>
 <li><a href="https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#genericos">Genéricos</a></li>
 </ul>
 </div>
+<!-- ejercicio de opcionales de la práctica anterior del año pasado -->
+
+<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
+<p>a) Define la función <code>maxOpt(_ x: Int?, _ y: Int?) -&gt; Int?</code> que
+devuelve el máximo de dos enteros opcionales. En el caso en que ambos
+sean <code>nil</code> se devolverá <code>nil</code>. En el caso en que uno sea <code>nil</code> y el
+otro no se devolverá el entero que no es <code>nil</code>. En el caso en que
+ningún parámetro sea <code>nil</code> se devolverá el mayor.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">res1</span> <span class="p">=</span> <span class="n">maxOpt</span><span class="p">(</span><span class="kc">nil</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span> 
+<span class="kd">let</span> <span class="nv">res2</span> <span class="p">=</span> <span class="n">maxOpt</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">res3</span> <span class="p">=</span> <span class="n">maxOpt</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;res1 = </span><span class="si">\(</span><span class="nb">String</span><span class="si">(</span><span class="n">describing</span><span class="p">:</span> <span class="n">res1</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;res2 = </span><span class="si">\(</span><span class="nb">String</span><span class="si">(</span><span class="n">describing</span><span class="p">:</span> <span class="n">res2</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;res3 = </span><span class="si">\(</span><span class="nb">String</span><span class="si">(</span><span class="n">describing</span><span class="p">:</span> <span class="n">res3</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime:</span>
+<span class="c1">// res1 = nil</span>
+<span class="c1">// res2 = Optional(10)</span>
+<span class="c1">// res3 = Optional(30)</span>
+</code></pre></div>
+<p>b1) Escribe una nueva versión del ejercicio 1b) que permita recibir
+números negativos y que devuelva una pareja de <code>(Int?, Int?)</code> con
+<code>nil</code> en la parte izquierda y/o derecha si no hay número impares o
+pares. </p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">numeros2</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">202</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">204</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;parejaMayorParImpar2(numeros: </span><span class="si">\(</span><span class="n">numeros2</span><span class="si">)</span><span class="s">)&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">parejaMayorParImpar2</span><span class="p">(</span><span class="n">numeros</span><span class="p">:</span> <span class="n">numeros2</span><span class="p">))</span>
+<span class="c1">// Imprime:</span>
+<span class="c1">// parejaMayorParImpar2(numeros: [-10, 202, 12, 100, 204, 2])</span>
+<span class="c1">// (nil, Optional(204))</span>
+</code></pre></div>
+<p>b2) Escribe la función <code>sumaMaxParesImpares(numeros: [Int]) -&gt; Int</code>
+que llama a la función anterior y devuelve la suma del máximo de los
+pares y el máximo de los impares. El array de números tendrá como
+mínimo un elemento, por lo que el valor devuelto por la función será
+un <code>Int</code> (no será <code>Int?</code>).</p>
+<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="s">&quot;sumaMaxParesImpares(numeros: </span><span class="si">\(</span><span class="n">numeros2</span><span class="si">)</span><span class="s">)&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">sumaMaxParesImpares</span><span class="p">(</span><span class="n">numeros</span><span class="p">:</span> <span class="n">numeros2</span><span class="p">))</span>
+<span class="c1">// Imprime:</span>
+<span class="c1">// sumaMaxParesImpares(numeros: [-10, 202, 12, 100, 204, 2])</span>
+<span class="c1">// 204</span>
+</code></pre></div>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
 <p>a) Indica qué devuelven las siguientes expresiones:</p>
 <p>a.1)
