@@ -29,7 +29,7 @@
 
 
 ----
-### 6. Opcionales
+### 9. Opcionales
 ----
 
 ### Swift es un lenguaje seguro ###
@@ -302,7 +302,7 @@ print(suma(lista: z))
 ```
 
 ---
-### Clausuras
+### 10. Clausuras
 ---
 
 - Veremos dos puntos principales:
@@ -708,7 +708,7 @@ tambienIncrementaDiez()
 ```
 
 ---
-### Funciones de orden superior
+### 11. Funciones de orden superior
 ---
 
 - Una de las características funcionales que más hemos usado para
@@ -888,7 +888,7 @@ numeros.filter{$0 >= 100}.reduce(0,+)
 ```
 
 ---
-### Genéricos
+### 12. Genéricos
 ---
 
 ### Ejemplo inicial: función `intercambia` (no genérica)
