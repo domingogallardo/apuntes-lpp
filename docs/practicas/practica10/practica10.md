@@ -1,30 +1,23 @@
-# Práctica 9: Programación funcional en Swift: clausuras y funciones de orden superior
+# Práctica 10: Programación funcional en Swift (2): clausuras y funciones de orden superior
 
 ## Entrega de la práctica
 
 Para entregar la práctica debes subir a Moodle el fichero
-`practica09.swift` con una cabecera inicial con tu nombre y apellidos,
+`practica10.swift` con una cabecera inicial con tu nombre y apellidos,
 y las soluciones de cada ejercicio separadas por comentarios. Cada
 solución debe incluir:
 
 - La **definición de las funciones** que resuelven el ejercicio.
-- Una visualización por pantalla de todos los ejemplos incluidos en el
-  enunciado que **demuestren qué hace la función**.
+- Una visualización por pantalla con ejemplos distintos de los
+  presentados en el enunciado que **demuestren qué hace la función**.
+
+!!! Warning "Importante" 
+    Los ejemplos que muestres en pantalla **deben ser distintos** de los
+    incluidos en el enunciado.
 
 ## Ejercicios
 
-!!! Warning "Importante"
-    Antes de empezar la práctica debes estudiar los apartados de
-    teoría del tema de Programación Funcional en Swift:
-    
-    - [Opcionales](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#opcionales)
-    - [Clausuras](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#clausuras)
-    - [Funciones de orden superior](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#funciones-de-orden-superior)
-    - [Genéricos](https://domingogallardo.github.io/apuntes-lpp/teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#genericos)
-
-<!-- ejercicio de opcionales de la práctica anterior del año pasado -->
-
-### Ejercicio 6 ###
+### Ejercicio 1 ###
 
 a) Define la función `maxOpt(_ x: Int?, _ y: Int?) -> Int?` que
 devuelve el máximo de dos enteros opcionales. En el caso en que ambos
@@ -78,8 +71,7 @@ print(sumaMaxParesImpares(numeros: numeros2))
 // 204
 ```
 
-
-### Ejercicio 1 ###
+### Ejercicio 2 ###
 
 a) Indica qué devuelven las siguientes expresiones:
 
@@ -173,7 +165,7 @@ devuelve una tupla con la suma de los números menores y mayores o
 iguales que el pivote.
 
 
-### Ejercicio 2
+### Ejercicio 3
 
 
 Define un tipo enumerado con un árbol genérico, tal y como hicimos en
@@ -218,7 +210,7 @@ print(toArrayFOS(arbol: arbolString))
 ```
 
 
-### Ejercicio 3
+### Ejercicio 4
 
 Implementa en Swift la función `imprimirListadosNotas(alumnos:)` que
 recibe un array de tuplas, en donde cada tupla contiene información de
@@ -299,7 +291,7 @@ Maria       9.10       7.50     8.18    1
 ```
 
 
-### Ejercicio 4
+### Ejercicio 5
 
 Dado el array `listaAlumnos` del ejercicio anterior, utiliza funciones
 de orden superior para obtener los datos requeridos en cada caso.
@@ -328,7 +320,7 @@ print(tupla)
 // Resultado: (6.6812499999999995, 2.7624999999999997, 5.2262500000000003)
 ```
 
-### Ejercicio 5 ###
+### Ejercicio 6 ###
 
 
 Implementa la función `construye` con el siguiente perfil:
