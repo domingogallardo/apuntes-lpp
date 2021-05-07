@@ -2826,9 +2826,29 @@ en el apartado anterior:</p>
 <h3 id="valores-capturados-y-valores-del-ambito-local-de-ejecucion">Valores capturados y valores del ámbito local de ejecución<a class="headerlink" href="#valores-capturados-y-valores-del-ambito-local-de-ejecucion" title="Permanent link">&para;</a></h3>
 <p>Las clasuras usan los valores capturados y no los valores declarados
 en el ámbito local de ejecución. Vamos a explicarlo con un ejemplo.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeFunc</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-   <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">0</span>
-   <span class="k">return</span> <span class="p">{</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeFunc</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+<span class="hll">   <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">0</span>
+</span>   <span class="k">return</span> <span class="p">{</span>
       <span class="n">x</span> <span class="p">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
       <span class="k">return</span> <span class="n">x</span>
    <span class="p">}</span>
@@ -2839,18 +2859,25 @@ en el ámbito local de ejecución. Vamos a explicarlo con un ejemplo.</p>
 <span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">())</span> <span class="c1">// -&gt; 2</span>
 
 <span class="kd">func</span> <span class="nf">usaFunc</span><span class="p">(</span><span class="kc">_</span> <span class="n">f</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-     <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">10</span>
-     <span class="k">return</span> <span class="n">f</span><span class="p">()</span>
+<span class="hll">     <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">10</span>
+</span>     <span class="k">return</span> <span class="n">f</span><span class="p">()</span>
 <span class="p">}</span>
 
 <span class="bp">print</span><span class="p">(</span><span class="n">usaFunc</span><span class="p">(</span><span class="n">f</span><span class="p">))</span> <span class="c1">// -&gt; 3</span>
 
-<span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">100</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">usaFunc</span> <span class="p">{</span><span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span><span class="p">})</span> <span class="c1">// -&gt; 110</span>
+<span class="hll"><span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">100</span>
+</span><span class="bp">print</span><span class="p">(</span><span class="n">usaFunc</span> <span class="p">{</span><span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span><span class="p">})</span> <span class="c1">// -&gt; 110</span>
 </code></pre></div>
+</td></tr></table>
+<p>En el código anterior se resaltan las tres declaraciones de variables
+<code>x</code>. Es muy importante comprobar el ámbito en el que se realizan esas
+declaraciones. La primera declaración se realiza dentro de la función
+<code>construyeFunc()</code>, la segunda dentro de la función <code>usaFunc()</code> y la
+tercera en el ámbito global. En cada caso, la variable se inicializará
+cuando se ejecute esa línea de código. </p>
 <p>La función <code>usaFunc</code> definida en la línea 13 recibe una función <code>f</code>
 sin parámetros que devuelve un entero. En el ámbito local de <code>usaFunc</code>
-se define una variable local <code>x</code> que tiene el valor <code>10</code> antes de
+se define la variable local <code>x</code> que tiene el valor <code>10</code> antes de
 invocar a la función <code>f</code> recibida.</p>
 <p>¿Qué pasa si la función recibida es una clausura que ha capturado una
 variable que también se llama <code>x</code>? En el caso de la invocación a
