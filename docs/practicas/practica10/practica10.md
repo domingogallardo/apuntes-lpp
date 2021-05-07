@@ -41,10 +41,10 @@ print("res3 = \(String(describing: res3))")
 
 ```
 
-b1) Escribe una nueva versión del ejercicio 1b) que permita recibir
-números negativos y que devuelva una pareja de `(Int?, Int?)` con
-`nil` en la parte izquierda y/o derecha si no hay número impares o
-pares. 
+b1) Escribe una nueva versión del ejercicio 1b) de la práctica 9 que
+permita recibir números negativos y que devuelva una pareja de `(Int?,
+Int?)` con `nil` en la parte izquierda y/o derecha si no hay número
+impares o pares.
 
 Ejemplo:
 
