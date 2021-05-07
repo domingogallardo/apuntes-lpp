@@ -49,9 +49,9 @@ impares o pares.
 Ejemplo:
 
 ```swift
-let numeros2 = [-10, 202, 12, 100, 204, 2]
-print("parejaMayorParImpar2(numeros: \(numeros2))")
-print(parejaMayorParImpar2(numeros: numeros2))
+let numeros = [-10, 202, 12, 100, 204, 2]
+print("\n******\n1b1) Función parejaMayorParImpar2(numeros:)\n******")
+print(parejaMayorParImpar2(numeros: numeros))
 // Imprime:
 // parejaMayorParImpar2(numeros: [-10, 202, 12, 100, 204, 2])
 // (nil, Optional(204))
@@ -59,9 +59,8 @@ print(parejaMayorParImpar2(numeros: numeros2))
 
 b2) Escribe la función `sumaMaxParesImpares(numeros: [Int]) -> Int`
 que llama a la función anterior y devuelve la suma del máximo de los
-pares y el máximo de los impares. El array de números tendrá como
-mínimo un elemento, por lo que el valor devuelto por la función será
-un `Int` (no será `Int?`).
+pares y el máximo de los impares. En el caso en que se pase un array
+vacío deberá devolver un 0.
 
 ```swift
 print("sumaMaxParesImpares(numeros: \(numeros2))")
@@ -70,6 +69,12 @@ print(sumaMaxParesImpares(numeros: numeros2))
 // sumaMaxParesImpares(numeros: [-10, 202, 12, 100, 204, 2])
 // 204
 ```
+
+b3) Escribe una nueva versión de la función del ejercicio b1) en la que se devuelva
+`nil` en el caso en que se le pase como parámetro un array
+vacío. ¿Cómo se debería cambiar la declaración de la función? Escribe
+también una nueva versión de la función del ejercicio b2) en la que se
+llame a la función anterior.
 
 ### Ejercicio 2 ###
 
