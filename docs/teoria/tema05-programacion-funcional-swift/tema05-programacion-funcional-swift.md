@@ -1976,7 +1976,7 @@ print(incrementaDiez())
 Las clasuras usan los valores capturados y no los valores declarados
 en el ámbito local de ejecución. Vamos a explicarlo con un ejemplo.
 
-```swift
+```swift linenums="1" hl_lines="2 14 20"
 func construyeFunc() -> () -> Int {
    var x = 0
    return {
@@ -2000,9 +2000,16 @@ var x = 100
 print(usaFunc {return x + 10}) // -> 110
 ```
 
+En el código anterior se resaltan las tres declaraciones de variables
+`x`. Es muy importante comprobar el ámbito en el que se realizan esas
+declaraciones. La primera declaración se realiza dentro de la función
+`construyeFunc()`, la segunda dentro de la función `usaFunc()` y la
+tercera en el ámbito global. En cada caso, la variable se inicializará
+cuando se ejecute esa línea de código. 
+
 La función `usaFunc` definida en la línea 13 recibe una función `f`
 sin parámetros que devuelve un entero. En el ámbito local de `usaFunc`
-se define una variable local `x` que tiene el valor `10` antes de
+se define la variable local `x` que tiene el valor `10` antes de
 invocar a la función `f` recibida.
 
 ¿Qué pasa si la función recibida es una clausura que ha capturado una
