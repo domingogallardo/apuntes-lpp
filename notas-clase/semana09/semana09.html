@@ -629,7 +629,7 @@ general:</li>
   única línea. </li>
 </ul>
 <hr />
-<h3>Valores capturados</h3>
+<h3>Variables capturadas</h3>
 <div class="admonition note">
 <p class="admonition-title">Cuidado</p>
 <p>Los ejemplos que vamos a ver a continuación no usan programación
@@ -646,7 +646,7 @@ funciones con estado local mutable.</p>
   cuerpo, incluso si ya no existe el ámbito (<em>scope</em>) original en el
   que se definieron estas constantes y variables.</li>
 <li>
-<p>En Swift, la forma más sencilla de una clausura que captura valores
+<p>En Swift, la forma más sencilla de una clausura que captura variables
   es una función anidada (<em>nested function</em>) escrita en el cuerpo de
   otra función. Una función anidada puede capturar cualquiera de los
   argumentos de su función exterior y también puede capturar cualquier
@@ -667,9 +667,9 @@ funciones con estado local mutable.</p>
 </code></pre></div>
 <ul>
 <li>La función <code>construyeIncrementador</code> contiene una función anidada
-  llamada <code>incrementador</code>. Esta función captura dos valores de su
+  llamada <code>incrementador</code>. Esta función captura dos variables de su
   contexto: <code>totalAcumulado</code> y <code>cantidad</code>. </li>
-<li>Después de capturar estos valores, <code>incrementador</code> es devuelto por
+<li>Después de capturar estas variables <code>incrementador</code> es devuelto por
   <code>construyeIncrementador</code> como una clausura que incrementa
   <code>totalAcumulado</code> en <code>cantidad</code> cada vez que se llama.</li>
 <li>El tipo devuelto de <code>construyeIncrementador</code> es <code>() -&gt; Int</code>. Esto
@@ -771,10 +771,10 @@ la siguiente:</li>
 <span class="c1">// Imprime &quot;20&quot;</span>
 </code></pre></div>
 <hr />
-<h3>Valores capturados y valores del ámbito local de ejecución</h3>
+<h3>Variables capturadas por clausuras y variables del ámbito de invocación</h3>
 <ul>
 <li>Las clasuras usan los valores capturados y no los valores declarados
-en el ámbito local de ejecución. Vamos a explicarlo con un ejemplo.</li>
+en el ámbito en el que se invoca a la clausura. Vamos a explicarlo con un ejemplo.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeFunc</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
    <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">0</span>
@@ -809,7 +809,7 @@ la otra <code>x</code>. </p>
 </li>
 <li>
 <p>Si ejecutamos el código veremos que la expresión devuelve 3. O sea
-que las clausuras usan siempre los valores capturados.</p>
+que las clausuras usan siempre las variables capturadas.</p>
 </li>
 <li>
 <p>Podemos comprobarlo también en el siguiente ejemplo, en el que la
