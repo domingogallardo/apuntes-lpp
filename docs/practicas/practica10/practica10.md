@@ -170,6 +170,29 @@ devuelve una tupla con la suma de los números menores y mayores o
 iguales que el pivote.
 
 
+d) (Ejercicio sobre variables capturadas por clausuras) Reflexiona
+sobre el siguiente código y completa el hueco para obtener el
+resultado esperado.
+
+```swift
+func bar(f: (Int) -> Int) {
+  print(f(__________))
+}
+
+func foo() -> (Int) -> Int {
+  var x = 3
+  return {
+    x += $0 + 2
+    return x
+  }
+}
+
+var x = 5
+let g = foo()
+bar(f: g)   // => 9
+bar(f: g)   // => 15
+```
+
 ### Ejercicio 3
 
 
