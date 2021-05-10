@@ -7,8 +7,8 @@
 - **Clases y estructuras**
 - **Propiedades**
 - **Métodos**
-- **Herencia**
 - **Inicialización**
+- **Herencia**
 - Protocolos
 - Casting de tipos
 - Extensiones
@@ -238,10 +238,91 @@ if ventana1 === ventana2 {
   "equivalentes" en su valor. Es responsabilidad del diseñador de la
   clase definir la implementación de estos operadores.
 
+
+---
+
+### Paso como parámetro
+
+- En Swift los parámetros de las funciones son constantes, se definen
+usando el operador `let`. Esto hace que sea muy distinto el
+comportamiento de un parámetro dependiendo de si es una estructura o
+una clase.
+
+- Si la instancia que se pasa como parámetro a una función es una
+estructura su contenido no se podrá modificar. Sin embargo, si lo que
+se pasa es una instancia de una clase, podremos modificar su
+contenido.
+
+- Un ejemplo típico de programación imperativa o procedural, en la que
+  se modifica el contenido del parámetro pasado. Podemos hacerlo
+  porque `ventana` es una clase.
+
+```swift
+func mueve(ventana: Ventana, incX: Int, incY: Int) {
+    var nuevaPos = CoordsPantalla()
+    nuevaPos.posX = ventana.esquina.posX + incX
+    nuevaPos.posY = ventana.esquina.posY + incY
+    ventana.esquina = nuevaPos
+}
+
+var ventana1 = Ventana()
+mueve(ventana: ventana1, incX: 500, incY: 500)
+print(ventana1.esquina)
+// Imprime: CoordsPantalla(posX: 500, posY: 500)
+```
+
+- Sin embargo, si pasamos como parámetro una instancia de una
+estructura, ésta será inmutable. El siguiente código genera un error
+en el compilador que indica que el parámetro `coordsPantalla` es una
+constante y no puede ser modificado:
+
+```swift
+// ¡¡CÓDIGO ERRÓNEO!!
+func mueve(coordsPantalla: CoordsPantalla, incX: Int, incY: Int) {
+    coordsPantalla.posX = coordsPantalla.posX + incX
+    coordsPantalla.posY = coordsPantalla.posY + incY
+}
+// error: cannot assign to property: 'coordsPantalla' is a 'let' constant
+```
+
+- Si necesitamos hacer una función con la que se obtenga un valor
+modificado de una estructura, podemos usar el enfoque funcional de
+crear una nueva estructura y devolverla como resultado:
+
+```swift
+func mueve(coordsPantalla: CoordsPantalla, incX: Int, incY: Int) -> CoordsPantalla {
+    var nuevaCoord = CoordsPantalla()
+    nuevaCoord.posX = coordsPantalla.posX + incX
+    nuevaCoord.posY = coordsPantalla.posY + incY
+    return nuevaCoord
+}
+
+var coord1 = CoordsPantalla()
+coord1 = mueve(coordsPantalla: coord1, incX: 100, incY: 100)
+print(coord1)
+// Imprime CoordsPantalla(posX: 100, posY: 100)
+```
+
+- Usando esta última función podríamos reescribir el código de la
+función que mueve una ventana de la siguiente forma:
+
+```swift
+func mueve(ventana: Ventana, incX: Int, incY: Int) {
+    ventana.esquina = mueve(coordsPantalla: ventana.esquina, incX: incX, incY: incY)
+}
+```
+
+!!! Note "Nota"
+    Igual que en C, en Swift hay una forma de pasar como referencia una
+    estructura. Hay que utilizar el operador `inout` precediendo el
+    nombre del parámetro. Puedes encontrar más información en la
+        documentación oficial de Swift. Busca el apartado _In-Out
+    paremeters_ en la página sobre
+    [Funciones](https://docs.swift.org/swift-book/LanguageGuide/Functions.html). 
+
 ---
 
 ### Criterios para usar estructuras y clases
-
 
 - En general es preferible utilizar estructuras, por su facilidad de
   manejo y la ausencia de efectos laterales.
@@ -532,7 +613,7 @@ print("Suma de los cambios de valores: \(Valor.sumaValores)")
 ```
 
 ---
-### <a name="4"></a> 4. Métodos
+### Métodos
 ---
 
 - Los _métodos_ son funciones que están asociadas a un tipo
@@ -777,7 +858,223 @@ print("Se han registrado \(Ventana.ventanas.count) ventanas")
 ```
 
 ---
-### <a name="5"></a> 5. Herencia
+### Inicialización
+---
+
+- _Inicialización_ es el proceso de preparar para su uso una instancia
+  de una clase, estructura o enumeración. 
+- Este proceso incluye la asignación de un valor inicial para cada
+  propiedad almacenada y la ejecución de cualquier otra operación de
+  inicialización que se necesite para que la nueva instancia esté
+  lista para usarse.
+- Para implementar este proceso de inicialización hay que definir
+  _inicializadores_, métodos especiales que pueden
+  llamarse para crear una nueva instancia de un tipo particular. 
+- Los inicializadores en Swift no devuelven un valor.
+
+---
+
+### Inicializadores por defecto y _memberwise_ ###
+
+- Ya hemos visto que es posible inicializar clases y estructuras
+definiendo valores por defecto a todas sus propiedades (con la posible
+excepción de las que tienen un tipo opcional). 
+
+```swift
+struct Punto2D {
+    var x = 0.0
+    var y = 0.0
+}
+class Segmento {
+    var p1 = Punto2D()
+    var p2 = Punto2D()
+}
+
+var s = Segmento()
+```
+
+- También es posible en las estructuras utilizar el inicializador
+_memberwise_, en el que especificamos todos los valores de las
+propiedades:
+
+
+```swift
+var p = Punto2D(x: 10.0, y: 10.0)
+```
+
+- Los inicializadores por defecto y _memberwise_ desaparecen en el
+momento en que definimos algún inicializador con la palabra
+`init`. Veamos cómo definir inicializadores.
+
+---
+
+### Inicialización de propiedades almacenadas
+
+- Las clases y estructuras deben definir todas sus propiedades
+  almacenadas a un valor inicial en el tiempo en la instancia se crea.
+- Las propiedades almacenadas no pueden dejarse en un estado
+  indeterminado (a no ser que se declaren como opcionales, en cuyo
+  caso si no se inicializan su valor será `nil`)
+- Podemos definir el valor inicial para una propiedad en un
+  inicializador o asignándole un valor por defecto como parte de la
+  definición de la propiedad.
+
+Un _inicializador_, en su forma más simple, es como un método de la
+instancia sin parámetros, escrito con la palabra clave `init`:
+
+
+```swift
+init() {
+    // realizar alguna inicialización aquí
+}
+```
+
+Ejemplo:
+
+```swift
+struct Fahrenheit {
+    var temperatura: Double
+    init() {
+        temperatura = 32.0
+    }
+}
+var f = Fahrenheit()
+print("La temperatura por defecto es \(f.temperatura) Fahrenheit")
+// Imprime "La temperatura por defecto es 32.0° Fahrenheit"
+```
+
+- También es posible inicializar la variable `temperatura`
+  directamente en la propiedad. Es equivalente a lo anterior y es
+  preferible por ser más claro:
+
+```swift
+struct Fahrenheit {
+    var temperatura = 32.0
+}
+```
+
+---
+
+### Inicializadores personalizados
+
+- Podemos proporcionar parámetros de inicialización como parte de la
+definición de un inicializador, para definir los tipos y los nombres
+de los valores que personalizan el proceso de inicialización. 
+- Los parámetros de inicialización tienen las mismas capacidades y
+sintaxis que los parámetros de funciones y métodos.
+
+```swift
+struct Celsius {
+    var temperaturaEnCelsius: Double
+    init(desdeFahrenheit fahrenheit: Double) {
+        temperaturaEnCelsius = (fahrenheit - 32.0) / 1.8
+    }
+    init(desdeKelvin kelvin: Double) {
+        temperaturaEnCelsius = kelvin - 273.15
+    }
+}
+
+let puntoDeEbullicionDelAgua = Celsius(desdeFahrenheit: 212.0)
+// puntoDeEbullicionDelAgua.temperaturaEnCelsius es 100.0
+let puntoDeCongelacionDelAgua = Celsius(desdeKelvin: 273.15)
+// puntoDeCongelacionDelAgua.temperaturaEnCelsius is 0.0
+```
+
+- En los inicializadores es obligatorio proporcionar los nombres de
+todos los parámetros:
+
+```swift
+struct Color {
+    let rojo, verde, azul: Double
+    init(rojo: Double, verde: Double, azul: Double) {
+        self.rojo   = rojo
+        self.verde = verde
+        self.azul  = azul
+    }
+    init(blanco: Double) {
+        rojo  = blanco
+        verde = blanco
+        azul  = blanco
+    }
+}
+let magenta = Color(rojo: 1.0, verde: 0.0, azul: 1.0)
+let medioGris = Color(blanco: 0.5)
+```
+
+- Podemos evitar proporcionar nombres externos usando un
+  subrayado. Ejemplo:
+
+```swift
+struct Celsius {
+   var temperaturaEnCelsius: Double
+   init(desdeFahrenheit fahrenheit: Double) {
+      temperaturaEnCelsius = (fahrenheit - 32.0) / 1.8
+   }
+   init(desdeKelvin kelvin: Double) {
+      temperaturaEnCelsius = kelvin - 273.15
+   }
+   init(_ celsius: Double) {
+      temperaturaEnCelsius = celsius
+   }
+}
+
+let temperaturaCuerpo = Celsius(37.0)
+// temperaturaCuerpo.temperaturaEnCelsius es 37.0
+```
+
+- Es posible dejar sin inicializar propiedades opcionales, el valor
+  que toma es `nil`. 
+
+Ejemplo:
+
+```swift
+class PreguntaEncuesta {
+    let texto: String
+    var respuesta: String?
+    init(texto: String) {
+        self.texto = texto
+    }
+    func pregunta() {
+        print(texto)
+    }
+}
+let preguntaQueso = PreguntaEncuesta(texto: "¿Te gusta el queso?")
+preguntaQueso.pregunta()
+// Imprime "¿Te gusta el queso?
+preguntaQueso.respuesta = "Sí, me gusta el queso."
+```
+
+- Por último, es posible definir valores por defecto a los
+  inicializadores que sean sobreescritos por otros inicializadores,
+  así como invocar a otros inicializadores más básicos en otros:
+
+```swift
+struct Rectangulo {
+    var origen = Punto()
+    var tamaño = Tamaño()
+    init() {}
+    init(origen: Punto, tamaño: Tamaño) {
+        self.origen = origen
+        self.tamaño = tamaño
+    }
+    init(centro: Punto, tamaño: Tamaño) {
+        let origenX = centro.x - (tamaño.ancho / 2)
+        let origenY = centro.y - (tamaño.ancho / 2)
+        self.init(origen: Punto(x: origenX, y: origenY), tamaño: tamaño)
+    }
+}
+let basicRectangulo = Rectangulo()
+// el origen de basicRectangulo es (0.0, 0.0) y su tamaño (0.0, 0.0)
+let origenRectangulo = Rectangulo(origen: Punto(x: 2.0, y: 2.0),
+                        tamaño: Tamaño(ancho: 5.0, alto: 5.0))
+// el origne de origenRectangulo es (2.0, 2.0) y su tamaño (5.0, 5.0)
+let centroRectangulo = Rectangulo(centro: Punto(x: 4.0, y: 4.0),
+                        tamaño: Tamaño(ancho: 3.0, alto: 3.0))
+// el origen de centroRectangulo es (2.5, 2.5) y su tamaño (3.0, 3.0)
+```
+
+---
+### Herencia
 ---
 
 - Una clase puede _heredar_ métodos, propiedades y otras
@@ -1006,186 +1303,4 @@ print("CocheAutomatico: \(automatico.descripcion)")
   `final var`, `final func` o `final class`). 
 - También es posible marcar la clase completa como final, escribiendo
   el modificador antes de `class` (`final class`).
-
----
-### <a name="6"></a> 6. Inicialización
----
-
-- _Inicialización_ es el proceso de preparar para su uso una instancia
-  de una clase, estructura o enumeración. 
-- Este proceso incluye la asignación de un valor inicial para cada
-  propiedad almacenada y la ejecución de cualquier otra operación de
-  inicialización que se necesite para que la nueva instancia esté
-  lista para usarse.
-- Para implementar este proceso de inicialización hay que definir
-  _inicializadores_, métodos especiales que pueden
-  llamarse para crear una nueva instancia de un tipo particular. 
-- Los inicializadores en Swift no devuelven un valor.
-
-
----
-
-### Inicialización de propiedades almacenadas
-
-- Las clases y estructuras deben definir todas sus propiedades
-  almacenadas a un valor inicial en el tiempo en la instancia se crea.
-- Las propiedades almacenadas no pueden dejarse en un estado
-  indeterminado (a no ser que se declaren como opcionales, en cuyo
-  caso si no se inicializan su valor será `nil`)
-- Podemos definir el valor inicial para una propiedad en un
-  inicializador o asignándole un valor por defecto como parte de la
-  definición de la propiedad.
-
-Un _inicializador_, en su forma más simple, es como un método de la
-instancia sin parámetros, escrito con la palabra clave `init`:
-
-
-```swift
-init() {
-    // realizar alguna inicialización aquí
-}
-```
-
-Ejemplo:
-
-```swift
-struct Fahrenheit {
-    var temperatura: Double
-    init() {
-        temperatura = 32.0
-    }
-}
-var f = Fahrenheit()
-print("La temperatura por defecto es \(f.temperatura) Fahrenheit")
-// Imprime "La temperatura por defecto es 32.0° Fahrenheit"
-```
-
-- También es posible inicializar la variable `temperatura`
-  directamente en la propiedad. Es equivalente a lo anterior y es
-  preferible por ser más claro:
-
-```swift
-struct Fahrenheit {
-    var temperatura = 32.0
-}
-```
-
----
-
-### Customización de la inicialización
-
-- Es posible _customizar_ el proceso de inicialización con parámetros
-  de entrada y tipos opcionales, o asignando propiedades constantes
-  durante la inicialización.
-- Dependiendo del nombre de parámetro proporcionado se escoge un
-  inicializador u otro.
-
-```swift
-struct Celsius {
-    var temperaturaEnCelsius: Double
-    init(desdeFahrenheit fahrenheit: Double) {
-        temperaturaEnCelsius = (fahrenheit - 32.0) / 1.8
-    }
-    init(desdeKelvin kelvin: Double) {
-        temperaturaEnCelsius = kelvin - 273.15
-    }
-}
-
-let puntoDeEbullicionDelAgua = Celsius(desdeFahrenheit: 212.0)
-// puntoDeEbullicionDelAgua.temperaturaEnCelsius es 100.0
-let puntoDeCongelacionDelAgua = Celsius(desdeKelvin: 273.15)
-// puntoDeCongelacionDelAgua.temperaturaEnCelsius is 0.0
-```
-
-- En los inicializadores es obligatorio proporcionar los nombres de
-todos los parámetros:
-
-```swift
-struct Color {
-    let rojo, verde, azul: Double
-    init(rojo: Double, verde: Double, azul: Double) {
-        self.rojo   = rojo
-        self.verde = verde
-        self.azul  = azul
-    }
-    init(blanco: Double) {
-        rojo  = blanco
-        verde = blanco
-        azul  = blanco
-    }
-}
-let magenta = Color(rojo: 1.0, verde: 0.0, azul: 1.0)
-let medioGris = Color(blanco: 0.5)
-```
-
-- Podemos evitar proporcionar nombres externos usando un
-  subrayado. Ejemplo:
-
-```swift
-struct Celsius {
-   var temperaturaEnCelsius: Double
-   init(desdeFahrenheit fahrenheit: Double) {
-      temperaturaEnCelsius = (fahrenheit - 32.0) / 1.8
-   }
-   init(desdeKelvin kelvin: Double) {
-      temperaturaEnCelsius = kelvin - 273.15
-   }
-   init(_ celsius: Double) {
-      temperaturaEnCelsius = celsius
-   }
-}
-
-let temperaturaCuerpo = Celsius(37.0)
-// temperaturaCuerpo.temperaturaEnCelsius es 37.0
-```
-
-- Es posible dejar sin inicializar propiedades opcionales, el valor que toma es `nil`.
-
-Ejemplo:
-
-```swift
-class PreguntaEncuesta {
-    let texto: String
-    var respuesta: String?
-    init(texto: String) {
-        self.texto = texto
-    }
-    func pregunta() {
-        print(texto)
-    }
-}
-let preguntaQueso = PreguntaEncuesta(texto: "¿Te gusta el queso?")
-preguntaQueso.pregunta()
-// Imprime "¿Te gusta el queso?
-preguntaQueso.respuesta = "Sí, me gusta el queso."
-```
-
-- Por último, es posible definir valores por defecto a los
-  inicializadores que sean sobreescritos por otros inicializadores,
-  así como invocar a otros inicializadores más básicos en otros:
-
-```swift
-struct Rectangulo {
-    var origen = Punto()
-    var tamaño = Tamaño()
-    init() {}
-    init(origen: Punto, tamaño: Tamaño) {
-        self.origen = origen
-        self.tamaño = tamaño
-    }
-    init(centro: Punto, tamaño: Tamaño) {
-        let origenX = centro.x - (tamaño.ancho / 2)
-        let origenY = centro.y - (tamaño.ancho / 2)
-        self.init(origen: Punto(x: origenX, y: origenY), tamaño: tamaño)
-    }
-}
-let basicRectangulo = Rectangulo()
-// el origen de basicRectangulo es (0.0, 0.0) y su tamaño (0.0, 0.0)
-let origenRectangulo = Rectangulo(origen: Punto(x: 2.0, y: 2.0),
-                        tamaño: Tamaño(ancho: 5.0, alto: 5.0))
-// el origne de origenRectangulo es (2.0, 2.0) y su tamaño (5.0, 5.0)
-let centroRectangulo = Rectangulo(centro: Punto(x: 4.0, y: 4.0),
-                        tamaño: Tamaño(ancho: 3.0, alto: 3.0))
-// el origen de centroRectangulo es (2.5, 2.5) y su tamaño (3.0, 3.0)
-```
 

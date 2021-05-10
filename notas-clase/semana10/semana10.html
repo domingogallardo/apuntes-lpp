@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<style type="text/css">
+
+/* Admonition */
+
+.admonition {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.admonition.note { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.admonition.quote { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #cecece;
+    border-color: #cccccc;
+}
+
+.admonition.warning { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #FCC8BE;
+    border-color: #FCC8BE;
+}
+
+.admonition.hint { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #E9F9F6;
+    border-color: #AFEEEE;
+}
+
+.admonition.danger { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #F7B2A4;
+    border-color: #F7B2A4;
+}
+
+.admonition-title {
+    font-weight: bold;
+    text-align: left;
+}
+
+
+/* Codehilite */
+
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mb { color: #666666 } /* Literal.Number.Bin */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #0000FF } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
+/* Estilo LPP */
+
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: white;
+  padding: 60px;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+</style>
+
+</head>
+
+<body>
+<h2>Tema 7: Programación Orientada a Objetos con Swift</h2>
+<h3>Contenidos</h3>
+<ul>
+<li><strong>Introducción, historia y características</strong></li>
+<li><strong>Clases y estructuras</strong></li>
+<li><strong>Propiedades</strong></li>
+<li><strong>Métodos</strong></li>
+<li><strong>Inicialización</strong></li>
+<li><strong>Herencia</strong></li>
+<li>Protocolos</li>
+<li>Casting de tipos</li>
+<li>Extensiones</li>
+<li>Funciones operador</li>
+<li>Genericos</li>
+</ul>
+<hr />
+<h3>Bibliografía</h3>
+<ul>
+<li>Swift Language Guide<ul>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-ID82">Classes and Structures</a></li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Properties.html#//apple_ref/doc/uid/TP40014097-CH14-ID254">Properties</a></li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Methods.html#//apple_ref/doc/uid/TP40014097-CH15-ID234">Methods</a></li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Inheritance.html#//apple_ref/doc/uid/TP40014097-CH17-ID193=">Inheritance</a></li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203">Initialization</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>1. Introducción, historia y características de la Programación Orientada a Objetos</h3>
+<hr />
+<ul>
+<li>Debéis estudiar la historia y las características generales de la
+  POO que se explica en los apuntes.</li>
+<li>Suponemos conocidos los conceptos básicos de POO (por ejemplo, en
+  Java): clase, objeto o instancia, atributos, método, herencia,
+  interfaz, etc.</li>
+</ul>
+<hr />
+<h3>POO en Swift</h3>
+<hr />
+<ul>
+<li>Vamos a detallar a continuación las <strong>características de Programación
+Orientada a Objetos de Swift</strong>. </li>
+<li>Para una introducción rápida leer los últimos apartados del <a href="https://github.com/domingogallardo/apuntes-lpp/blob/master/seminarios/seminario2-swift/seminario2-swift.md">seminario de
+Swift</a>
+(los apartados <strong>Objetos, clases y estructuras</strong>, <strong>Protocolos y
+extensiones</strong> y <strong>Genéricos</strong>).</li>
+</ul>
+<hr />
+<h3>2. Clases y estructuras en Swift</h3>
+<hr />
+<ul>
+<li>Clases y estructuras son los elementos de Swift con los que se
+  implementan las características de POO</li>
+<li>En Swift se suele hablar de <em>instancias</em> (un término más general) en
+  lugar de <em>objetos</em>. Una instancia es un valor concreto de una clase
+  o una estructura.</li>
+</ul>
+<p>Las clases y las estructuras en Swift tienen muchas <strong>cosas en
+común</strong>. Ambos pueden:</p>
+<ul>
+<li>Definir <strong>propiedades</strong> y almacenar valores.</li>
+<li>Definir <strong>métodos</strong> para proporcionar funcionalidad.</li>
+<li>Definir inicializadores para configurar el estado inicial.</li>
+<li>Ser extendidas para expandir su funcionalidad más allá de una
+  implementación por defecto.</li>
+<li>Ajustarse a un protocolo.</li>
+</ul>
+<p>Las clases tienen <strong>características adicionales</strong> que no tienen las
+estructuras:</p>
+<ul>
+<li>Mediante la <strong>herencia</strong> una clase puede heredar las características de
+  otra</li>
+<li>El casting de tipos permite comprobar e interpretar el tipo de una
+  instancia de una clase en tiempo de ejecución.</li>
+<li>Se permite que exista más de una referencia a una instancia de una clase.</li>
+</ul>
+<hr />
+<h3>Sintaxis</h3>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">UnaClase</span> <span class="p">{</span>
+    <span class="c1">// definición de clase</span>
+<span class="p">}</span>
+<span class="kd">struct</span> <span class="nc">UnaEstructura</span> <span class="p">{</span>
+    <span class="c1">// definición de una estructura</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3>Ejemplo</h3>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">CoordsPantalla</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">posX</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="kd">var</span> <span class="nv">posY</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Ventana</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">esquina</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nv">altura</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="kd">var</span> <span class="nv">anchura</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="kd">var</span> <span class="nv">visible</span> <span class="p">=</span> <span class="kc">true</span>
+    <span class="kd">var</span> <span class="nv">etiqueta</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Las propiedades son constantes o variables que se almacenan en
+la instancia de la clase o de la estructura. </li>
+</ul>
+<hr />
+<h3>Instancias de clases y estructuras</h3>
+<ul>
+<li>Creación de una instancia:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">unasCoordsPantalla</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">()</span>
+<span class="kd">let</span> <span class="nv">unaVentana</span> <span class="p">=</span> <span class="n">Ventana</span><span class="p">()</span>
+</code></pre></div>
+<ul>
+<li>Todas las propiedades de una instancia deben estar definidas después
+de haberse inicializado, a no ser que la propiedad se un opcional.</li>
+</ul>
+<hr />
+<h3>Acceso a propiedades</h3>
+<ul>
+<li>Se puede acceder y modificar las propiedades usando la <em>sintaxis de
+punto</em>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="s">&quot;La posición x de unasCoordsPantalla es </span><span class="si">\(</span><span class="n">unasCoordsPantalla</span><span class="p">.</span><span class="n">posX</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime &quot;La posición x de unasCoordsPantalla es 0&quot;</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La posición y de la esquina de la venana es </span><span class="si">\(</span><span class="n">unaVentana</span><span class="p">.</span><span class="n">esquina</span><span class="p">.</span><span class="n">posY</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime &quot;La posición y de la esquina de la venana es 0&quot;)</span>
+<span class="n">unaVentana</span><span class="p">.</span><span class="n">esquina</span><span class="p">.</span><span class="n">posY</span> <span class="p">=</span> <span class="mi">900</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La posición y de la esquina de la venana es ahora </span><span class="si">\(</span><span class="n">unaVentana</span><span class="p">.</span><span class="n">esquina</span><span class="p">.</span><span class="n">posY</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime &quot;La posición y de la esquina de la venana es ahora 900&quot;)</span>
+</code></pre></div>
+<hr />
+<h3>Inicialización de las estructuras por sus propiedades</h3>
+<ul>
+<li>Podemos inicializar las estructuras (no las clases) usando el
+<strong>inicializador por defecto</strong> en el que damos valor a todas sus
+propiedades</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">coords</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">(</span><span class="n">posX</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="n">posY</span><span class="p">:</span> <span class="mi">400</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h3>Estructuras y enumeraciones son tipos valor</h3>
+<ul>
+<li>Las instancias de estructuras y enumeraciones se copian cuando se
+asignan a una variable o constante, o cuando se pasan a una función.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">coords1</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">(</span><span class="n">posX</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span> <span class="n">posY</span><span class="p">:</span> <span class="mi">600</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nv">coords2</span> <span class="p">=</span> <span class="n">coords1</span>
+<span class="n">coords2</span><span class="p">.</span><span class="n">posX</span> <span class="p">=</span> <span class="mi">1000</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;coords2 tiene ahora como posición x: </span><span class="si">\(</span><span class="n">coords2</span><span class="p">.</span><span class="n">posX</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// imprime: &quot;coords2 tiene ahora como posición x: 1000&quot;</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;coords1 tiene todavía la posición x: </span><span class="si">\(</span><span class="n">coords1</span><span class="p">.</span><span class="n">posX</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// imprime: &quot;coords1 tiene todavía la posición x: 600&quot;</span>
+</code></pre></div>
+<ul>
+<li>
+<p>Al ser estructuras, <code>cine</code> y <code>hd</code> tienen el mismo <code>ancho</code> y <code>alto</code>,
+pero dos instancias completamente distintas.</p>
+</li>
+<li>
+<p>Podemos comprobar que la propiedad <code>cine</code> se modifica, pero que el
+valor del ancho en <code>hd</code> sigue siendo el mismo.</p>
+</li>
+</ul>
+<hr />
+<h3>Las clases son tipos referencia</h3>
+<ul>
+<li>Los tipos de referencias no se copian cuando se asignan o se pasan a
+funciones, sino que se crean referencias a la misma instancia
+existente.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">ventana1</span> <span class="p">=</span> <span class="n">Ventana</span><span class="p">()</span>
+<span class="n">ventana1</span><span class="p">.</span><span class="n">esquina</span> <span class="p">=</span> <span class="n">coords1</span>
+<span class="n">ventana1</span><span class="p">.</span><span class="n">altura</span> <span class="p">=</span> <span class="mi">800</span>
+<span class="n">ventana1</span><span class="p">.</span><span class="n">anchura</span> <span class="p">=</span> <span class="mi">800</span>
+<span class="n">ventana1</span><span class="p">.</span><span class="n">etiqueta</span> <span class="p">=</span> <span class="s">&quot;Finder&quot;</span>
+<span class="kd">let</span> <span class="nv">ventana2</span> <span class="p">=</span> <span class="n">ventana1</span>
+<span class="n">ventana2</span><span class="p">.</span><span class="n">anchura</span> <span class="p">=</span> <span class="mi">1000</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La propiedad anchura de ventana1 es ahora </span><span class="si">\(</span><span class="n">ventana1</span><span class="p">.</span><span class="n">anchura</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// imprime &quot;La propiedad anchura de ventana1 es ahora 1000&quot;</span>
+</code></pre></div>
+<ul>
+<li>
+<p>Debido a que son tipos de referencia, <code>ventana1</code> y
+<code>ventan2</code> se refieren a la misma instancia de
+<code>Ventana</code>.</p>
+</li>
+<li>
+<p>Hay que hacer notar que <code>ventana1</code> y <code>ventana2</code> se
+declaran con <code>let</code> como constantes. Sin embargo, podemos modificar sus
+propiedades. </p>
+</li>
+<li>
+<p>En una instancia de una clase, el <code>let</code> obliga a mantener constante
+la referencia a la que apunta la variable, pero es posible modificar
+sus propiedades.</p>
+</li>
+<li>
+<p>A diferencia de las clases, una instancia de un <code>struct</code> definida
+con un <code>let</code> define como constantes todas sus propiedades. Por
+ejemplo, el siguiente código generaría un error:</p>
+</li>
+</ul>
+<h2><div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">coords3</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">(</span><span class="n">posX</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span> <span class="n">posY</span><span class="p">:</span> <span class="mi">400</span><span class="p">)</span>
+<span class="n">coords3</span><span class="p">.</span><span class="n">posX</span> <span class="p">=</span> <span class="mi">800</span>
+<span class="c1">// error: cannot assign to property: &#39;coords3&#39; is a &#39;let&#39; constant</span>
+</code></pre></div></h2>
+<h3>Operadores de identidad</h3>
+<ul>
+<li>Idéntico a (<code>===</code>) </li>
+<li>No idéntico a (<code>!==</code>)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">ventana1</span> <span class="p">===</span> <span class="n">ventana2</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;ventana1 y ventana2 se refierena a la misma instancia de ventana.&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Imprime &quot;ventana1 y ventana2 se refierena a la misma instancia de ventana.&quot;</span>
+</code></pre></div>
+<ul>
+<li>"Idéntico a" significa que dos constantes o variables de una clase
+  se refieren exactamente a la misma instancia de la clase.</li>
+<li>"Igual a" significa que dos instancias se consideran "iguales" o
+  "equivalentes" en su valor. Es responsabilidad del diseñador de la
+  clase definir la implementación de estos operadores.</li>
+</ul>
+<hr />
+<h3>Paso como parámetro</h3>
+<ul>
+<li>
+<p>En Swift los parámetros de las funciones son constantes, se definen
+usando el operador <code>let</code>. Esto hace que sea muy distinto el
+comportamiento de un parámetro dependiendo de si es una estructura o
+una clase.</p>
+</li>
+<li>
+<p>Si la instancia que se pasa como parámetro a una función es una
+estructura su contenido no se podrá modificar. Sin embargo, si lo que
+se pasa es una instancia de una clase, podremos modificar su
+contenido.</p>
+</li>
+<li>
+<p>Un ejemplo típico de programación imperativa o procedural, en la que
+  se modifica el contenido del parámetro pasado. Podemos hacerlo
+  porque <code>ventana</code> es una clase.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">mueve</span><span class="p">(</span><span class="n">ventana</span><span class="p">:</span> <span class="n">Ventana</span><span class="p">,</span> <span class="n">incX</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">nuevaPos</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">()</span>
+    <span class="n">nuevaPos</span><span class="p">.</span><span class="n">posX</span> <span class="p">=</span> <span class="n">ventana</span><span class="p">.</span><span class="n">esquina</span><span class="p">.</span><span class="n">posX</span> <span class="o">+</span> <span class="n">incX</span>
+    <span class="n">nuevaPos</span><span class="p">.</span><span class="n">posY</span> <span class="p">=</span> <span class="n">ventana</span><span class="p">.</span><span class="n">esquina</span><span class="p">.</span><span class="n">posY</span> <span class="o">+</span> <span class="n">incY</span>
+    <span class="n">ventana</span><span class="p">.</span><span class="n">esquina</span> <span class="p">=</span> <span class="n">nuevaPos</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">ventana1</span> <span class="p">=</span> <span class="n">Ventana</span><span class="p">()</span>
+<span class="n">mueve</span><span class="p">(</span><span class="n">ventana</span><span class="p">:</span> <span class="n">ventana1</span><span class="p">,</span> <span class="n">incX</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="mi">500</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">ventana1</span><span class="p">.</span><span class="n">esquina</span><span class="p">)</span>
+<span class="c1">// Imprime: CoordsPantalla(posX: 500, posY: 500)</span>
+</code></pre></div>
+<ul>
+<li>Sin embargo, si pasamos como parámetro una instancia de una
+estructura, ésta será inmutable. El siguiente código genera un error
+en el compilador que indica que el parámetro <code>coordsPantalla</code> es una
+constante y no puede ser modificado:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// ¡¡CÓDIGO ERRÓNEO!!</span>
+<span class="kd">func</span> <span class="nf">mueve</span><span class="p">(</span><span class="n">coordsPantalla</span><span class="p">:</span> <span class="n">CoordsPantalla</span><span class="p">,</span> <span class="n">incX</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">coordsPantalla</span><span class="p">.</span><span class="n">posX</span> <span class="p">=</span> <span class="n">coordsPantalla</span><span class="p">.</span><span class="n">posX</span> <span class="o">+</span> <span class="n">incX</span>
+    <span class="n">coordsPantalla</span><span class="p">.</span><span class="n">posY</span> <span class="p">=</span> <span class="n">coordsPantalla</span><span class="p">.</span><span class="n">posY</span> <span class="o">+</span> <span class="n">incY</span>
+<span class="p">}</span>
+<span class="c1">// error: cannot assign to property: &#39;coordsPantalla&#39; is a &#39;let&#39; constant</span>
+</code></pre></div>
+<ul>
+<li>Si necesitamos hacer una función con la que se obtenga un valor
+modificado de una estructura, podemos usar el enfoque funcional de
+crear una nueva estructura y devolverla como resultado:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">mueve</span><span class="p">(</span><span class="n">coordsPantalla</span><span class="p">:</span> <span class="n">CoordsPantalla</span><span class="p">,</span> <span class="n">incX</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">CoordsPantalla</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">nuevaCoord</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">()</span>
+    <span class="n">nuevaCoord</span><span class="p">.</span><span class="n">posX</span> <span class="p">=</span> <span class="n">coordsPantalla</span><span class="p">.</span><span class="n">posX</span> <span class="o">+</span> <span class="n">incX</span>
+    <span class="n">nuevaCoord</span><span class="p">.</span><span class="n">posY</span> <span class="p">=</span> <span class="n">coordsPantalla</span><span class="p">.</span><span class="n">posY</span> <span class="o">+</span> <span class="n">incY</span>
+    <span class="k">return</span> <span class="n">nuevaCoord</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">coord1</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">()</span>
+<span class="n">coord1</span> <span class="p">=</span> <span class="n">mueve</span><span class="p">(</span><span class="n">coordsPantalla</span><span class="p">:</span> <span class="n">coord1</span><span class="p">,</span> <span class="n">incX</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">coord1</span><span class="p">)</span>
+<span class="c1">// Imprime CoordsPantalla(posX: 100, posY: 100)</span>
+</code></pre></div>
+<ul>
+<li>Usando esta última función podríamos reescribir el código de la
+función que mueve una ventana de la siguiente forma:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">mueve</span><span class="p">(</span><span class="n">ventana</span><span class="p">:</span> <span class="n">Ventana</span><span class="p">,</span> <span class="n">incX</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ventana</span><span class="p">.</span><span class="n">esquina</span> <span class="p">=</span> <span class="n">mueve</span><span class="p">(</span><span class="n">coordsPantalla</span><span class="p">:</span> <span class="n">ventana</span><span class="p">.</span><span class="n">esquina</span><span class="p">,</span> <span class="n">incX</span><span class="p">:</span> <span class="n">incX</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="n">incY</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Igual que en C, en Swift hay una forma de pasar como referencia una
+estructura. Hay que utilizar el operador <code>inout</code> precediendo el
+nombre del parámetro. Puedes encontrar más información en la
+    documentación oficial de Swift. Busca el apartado <em>In-Out
+paremeters</em> en la página sobre
+<a href="https://docs.swift.org/swift-book/LanguageGuide/Functions.html">Funciones</a>. </p>
+</div>
+<hr />
+<h3>Criterios para usar estructuras y clases</h3>
+<ul>
+<li>En general es preferible utilizar estructuras, por su facilidad de
+  manejo y la ausencia de efectos laterales.</li>
+<li>Utilizaremos clases si necesitamos tener instancias compartidas o si
+  necesitamos definir relaciones de herencia.</li>
+</ul>
+<hr />
+<h3>3. Propiedades</h3>
+<hr />
+<ul>
+<li>Propiedades almacenadas y calculadas.<ul>
+<li>Las propiedades almacenadas (<em>stored properties</em>) almacenan
+  valores constantes y variables como parte de una instancia</li>
+<li>Las popiedades calculadas (<em>computed properties</em>) calculan (en
+  lugar de almacenar) un valor.</li>
+</ul>
+</li>
+<li>Las enumeraciones, clases y estructuras pueden contener propiedades:<ul>
+<li>Enumeraciones: pueden contener sólo propiedades calculadas.</li>
+<li>Clases y estructuras: pueden contener propiedades almacenadas y
+  calculadas.</li>
+</ul>
+</li>
+<li>Propiedades de instancias o del tipo.</li>
+<li>Observadores de propiedades, que monitorizan cambios en los valores
+  de una propiedad.</li>
+</ul>
+<hr />
+<h3>Propiedades almacenadas</h3>
+<ul>
+<li>Pueden ser variables y constantes:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">RangoLongitudFija</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">primerValor</span><span class="p">:</span> <span class="nb">Int</span>
+    <span class="kd">let</span> <span class="nv">longitud</span><span class="p">:</span> <span class="nb">Int</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nv">rangoDeTresItemss</span> <span class="p">=</span> <span class="n">RangoLongitudFija</span><span class="p">(</span><span class="n">primerValor</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">longitud</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1">// el rango representa ahora valores enteros the range represents integer values 0, 1, and 2</span>
+<span class="n">rangoDeTresItemss</span><span class="p">.</span><span class="n">primerValor</span> <span class="p">=</span> <span class="mi">6</span>
+<span class="c1">// el rango representa ahora valores enteros 6, 7 y 8</span>
+</code></pre></div>
+<ul>
+<li>Si creamos una instancia de una estructura en una variable definida
+con un <code>let</code>, no podremos modificar las propiedades de la instancia,
+incluso si han sido declaradas como propiedades variables:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">rangoDeCuatroItems</span> <span class="p">=</span> <span class="n">RangoLongitudFija</span><span class="p">(</span><span class="n">primerValor</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">longitud</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
+<span class="c1">// este rango representa valores enteros 0, 1, 2 y 3</span>
+<span class="n">rangoDeCuatroItems</span><span class="p">.</span><span class="n">primerValor</span> <span class="p">=</span> <span class="mi">6</span>
+<span class="c1">// esto producirá un error, incluso aun siendo primerValor una propiedad variable</span>
+</code></pre></div>
+<ul>
+<li>Esto no sucede así con las clases, que son <em>tipos referencia</em>. </li>
+</ul>
+<hr />
+<h3>Propiedades calculadas</h3>
+<ul>
+<li>Son propiedades que no almacenan realmente un valor, sino que
+  proporcionan un <em>getter</em> y un opcional <em>setter</em> que devuelven y
+  modifican otras propiedades y valores de forma indirecta.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Punto</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="p">=</span> <span class="mf">0.0</span>
+<span class="p">}</span>
+<span class="kd">struct</span> <span class="nc">Tamaño</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">ancho</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">alto</span> <span class="p">=</span> <span class="mf">0.0</span>
+<span class="p">}</span>
+<span class="kd">struct</span> <span class="nc">Rectangulo</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">origen</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nv">tamaño</span> <span class="p">=</span> <span class="n">Tamaño</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nv">centro</span><span class="p">:</span> <span class="n">Punto</span> <span class="p">{</span>
+        <span class="kr">get</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nv">centroX</span> <span class="p">=</span> <span class="n">origen</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">tamaño</span><span class="p">.</span><span class="n">ancho</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="kd">let</span> <span class="nv">centroY</span> <span class="p">=</span> <span class="n">origen</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="p">(</span><span class="n">tamaño</span><span class="p">.</span><span class="n">alto</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">centroX</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">centroY</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="kr">set</span><span class="p">(</span><span class="n">centroNuevo</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">origen</span><span class="p">.</span><span class="n">x</span> <span class="p">=</span> <span class="n">centroNuevo</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">tamaño</span><span class="p">.</span><span class="n">ancho</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">origen</span><span class="p">.</span><span class="n">y</span> <span class="p">=</span> <span class="n">centroNuevo</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">tamaño</span><span class="p">.</span><span class="n">alto</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nv">cuadrado</span> <span class="p">=</span> <span class="n">Rectangulo</span><span class="p">(</span><span class="n">origen</span><span class="p">:</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">),</span>
+                  <span class="n">tamaño</span><span class="p">:</span> <span class="n">Tamaño</span><span class="p">(</span><span class="n">ancho</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">alto</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">))</span>
+<span class="kd">let</span> <span class="nv">centroCuadradoInicial</span> <span class="p">=</span> <span class="n">cuadrado</span><span class="p">.</span><span class="n">centro</span>
+<span class="n">cuadrado</span><span class="p">.</span><span class="n">centro</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;cuadrado.origen está ahora en (</span><span class="si">\(</span><span class="n">cuadrado</span><span class="p">.</span><span class="n">origen</span><span class="p">.</span><span class="n">x</span><span class="si">)</span><span class="s">, </span><span class="si">\(</span><span class="n">cuadrado</span><span class="p">.</span><span class="n">origen</span><span class="p">.</span><span class="n">y</span><span class="si">)</span><span class="s">)&quot;</span><span class="p">)</span>
+<span class="c1">// Prints &quot;cuadrado.origen está ahora en (10.0, 10.0)&quot;</span>
+</code></pre></div>
+<ul>
+<li>Cuando se modifica la propiedad calculada <code>centro</code> se ejecuta el
+código del <code>set</code> y se actualizan las propiedades <code>x</code> e <code>y</code> con valores
+calculados a partir del nuevo centro que se pasa como parámetro (<code>centroNuevo</code>).</li>
+</ul>
+<p><img src="imagenes/computedProperties.png" width="300px"/></p>
+<ul>
+<li>Se puede definir una versión acortada del <em>setter</em> usando la variable
+por defecto <code>newValue</code> que contiene el nuevo valor asignado en el
+<em>setter</em>:</li>
+</ul>
+<h2><div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Rectangulo</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">origen</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nv">tamaño</span> <span class="p">=</span> <span class="n">Tamaño</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nv">centro</span><span class="p">:</span> <span class="n">Punto</span> <span class="p">{</span>
+        <span class="kr">get</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nv">centroX</span> <span class="p">=</span> <span class="n">origen</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">tamaño</span><span class="p">.</span><span class="n">ancho</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="kd">let</span> <span class="nv">centroY</span> <span class="p">=</span> <span class="n">origen</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="p">(</span><span class="n">tamaño</span><span class="p">.</span><span class="n">alto</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">centroX</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">centroY</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="kr">set</span> <span class="p">{</span>
+            <span class="n">origen</span><span class="p">.</span><span class="n">x</span> <span class="p">=</span> <span class="n">newValue</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">tamaño</span><span class="p">.</span><span class="n">ancho</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">origen</span><span class="p">.</span><span class="n">y</span> <span class="p">=</span> <span class="n">newValue</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">tamaño</span><span class="p">.</span><span class="n">alto</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></h2>
+<h3>Propiedades solo-lectura</h3>
+<ul>
+<li>Una propiedad calculada con un <em>getter</em> y sin <em>setter</em> se conoce como
+una propiedad calculada de solo-lectura. </li>
+<li>Es posible simplificar la declaración de una propiedad calculada de
+solo-lectura eliminando la palabra clave <code>get</code> y sus llaves:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Cuboide</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">ancho</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">alto</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">profundo</span> <span class="p">=</span> <span class="mf">0.0</span>
+    <span class="kd">var</span> <span class="nv">volumen</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">ancho</span> <span class="o">*</span> <span class="n">alto</span> <span class="o">*</span> <span class="n">profundo</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">cuatroPorCincoPorDos</span> <span class="p">=</span> <span class="n">Cuboide</span><span class="p">(</span><span class="n">ancho</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="n">alto</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">profundo</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;el volumen de cuatroPorCincoPorDos es </span><span class="si">\(</span><span class="n">cuatroPorCincoPorDos</span><span class="p">.</span><span class="n">volumen</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime &quot;el volumen de cuatroPorCincoPorDos es 40.0&quot;</span>
+</code></pre></div>
+<hr />
+<h3>Observadores de propiedades</h3>
+<ul>
+<li>Los observadores de propiedades (<em>property observers</em>) observan y
+responden a cambios en el valor de una propiedad. </li>
+<li>Se llaman cada vez que el valor de una propiedad es actualizado,
+incluso si el nuevo valor es el mismo que el valor actual de la
+propiedad.</li>
+</ul>
+<p>Observadores:</p>
+<ul>
+<li><code>willSet</code> es llamado justo antes de que el nuevo valor se almacena
+  en la propiedad.</li>
+<li><code>didSet</code> es llamado inmediatamente después de que el nuevo valor es
+  almacenado en la propiedad.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">ContadorPasos</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">totalPasos</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="kr">willSet</span><span class="p">(</span><span class="n">nuevoTotalPasos</span><span class="p">)</span> <span class="p">{</span>
+            <span class="bp">print</span><span class="p">(</span><span class="s">&quot;A punto de actualizar totoalPasos a </span><span class="si">\(</span><span class="n">nuevoTotalPasos</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="kr">didSet</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">totalPasos</span> <span class="o">&gt;</span> <span class="n">oldValue</span>  <span class="p">{</span>
+                <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Añadidos </span><span class="si">\(</span><span class="n">totalPasos</span> <span class="o">-</span> <span class="n">oldValue</span><span class="si">)</span><span class="s"> pasos&quot;</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">contadorPasos</span> <span class="p">=</span> <span class="n">ContadorPasos</span><span class="p">()</span>
+<span class="n">contadorPasos</span><span class="p">.</span><span class="n">totalPasos</span> <span class="p">=</span> <span class="mi">200</span>
+<span class="c1">// Imprime: &quot;A punto de actualizar totalPasos a 200&quot;</span>
+<span class="c1">// Imprime: &quot;Añadidos 200 pasos&quot;</span>
+<span class="n">contadorPasos</span><span class="p">.</span><span class="n">totalPasos</span> <span class="p">=</span> <span class="mi">360</span>
+<span class="c1">// Imprime: &quot;A punto de actualizar totalPasos a 360&quot;</span>
+<span class="c1">// Imprime: &quot;Añadidos 160 pasos&quot;</span>
+<span class="n">contadorPasos</span><span class="p">.</span><span class="n">totalPasos</span> <span class="p">=</span> <span class="mi">896</span>
+<span class="c1">// Imprime: &quot;A punto de actualizar totalPasos a 896&quot;</span>
+<span class="c1">// Imprime: &quot;Añadidos 536 pasos&quot;</span>
+</code></pre></div>
+<hr />
+<h3>Variables locales y globales</h3>
+<ul>
+<li>Las capacidades anteriores de propiedades calculadas y de observadores
+también están disponibles para variables globales y locales.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">10</span>  <span class="p">{</span>
+   <span class="kr">didSet</span> <span class="p">{</span>
+      <span class="bp">print</span><span class="p">(</span><span class="s">&quot;El nuevo valor: </span><span class="si">\(</span><span class="n">x</span><span class="si">)</span><span class="s"> y el valor antiguo: </span><span class="si">\(</span><span class="n">oldValue</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nv">y</span> <span class="p">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
+<span class="kd">var</span> <span class="nv">z</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+   <span class="kr">get</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+   <span class="p">}</span>
+   <span class="kr">set</span> <span class="p">{</span>
+      <span class="n">x</span> <span class="p">=</span> <span class="n">newValue</span> <span class="o">/</span> <span class="mi">2</span>
+      <span class="n">y</span> <span class="p">=</span> <span class="n">newValue</span> <span class="o">/</span> <span class="mi">2</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="n">z</span> <span class="p">=</span> <span class="mi">100</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h3>Propiedades del tipo</h3>
+<ul>
+<li>Las propiedades de las instancias son propiedades que pertenecen a
+  una instancia de un tipo particular.</li>
+<li>Podemos definir también propiedades que pertenecen al tipo
+  propiamente dicho, no a ninguna de las instancias de ese tipo.</li>
+<li>Sólo habrá una copia de estas propiedades, sea cual sea el número de
+  instancias de ese tipo que creemos.</li>
+<li>Estos tipos de propiedades se llaman propiedades del tipo (<em>type
+  propierties</em>).</li>
+<li>Se pueden definir en tanto en estructuras, clases como en
+  enumeraciones.</li>
+<li>Se definen con la palabra clave <code>static</code>. </li>
+<li>Las propiedades del tipo pueden ser también constantes (<code>let</code>) o
+  variables (<code>var</code>).</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">UnaEstructura</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">propiedadTipoAlmacenada</span> <span class="p">=</span> <span class="s">&quot;Algún valor.&quot;</span>
+    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">propiedadTipoCalculada</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">enum</span> <span class="nc">UnaEnumeracion</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">propiedadTipoAlmacenada</span> <span class="p">=</span> <span class="s">&quot;Algún valor.&quot;</span>
+    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">propiedadTipoCalculada</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">6</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">UnaClase</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">propiedadTipoAlmacenada</span> <span class="p">=</span> <span class="s">&quot;Algún valor.&quot;</span>
+    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">propiedadTipoCalculada</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">27</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Las propiedades del tipo se consultan y actualizan usando también la
+sintaxis de punto, pero sobre <em>el tipo</em>, no sobre una instancia:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="n">UnaEstructura</span><span class="p">.</span><span class="n">propiedadTipoAlmacenada</span><span class="p">)</span>
+<span class="c1">// Imprime &quot;Algún valor.&quot;</span>
+<span class="n">UnaEstructura</span><span class="p">.</span><span class="n">propiedadTipoAlmacenada</span> <span class="p">=</span> <span class="s">&quot;Otro valor.&quot;</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">UnaEstructura</span><span class="p">.</span><span class="n">propiedadTipoAlmacenada</span><span class="p">)</span>
+<span class="c1">// Imprime &quot;Otro valor.&quot;</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">UnaEnumeracion</span><span class="p">.</span><span class="n">propiedadTipoCalculada</span><span class="p">)</span>
+<span class="c1">// Imprime &quot;6&quot;</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">UnaClase</span><span class="p">.</span><span class="n">propiedadTipoCalculada</span><span class="p">)</span>
+<span class="c1">// Imprime &quot;27&quot;</span>
+</code></pre></div>
+<p>Otro ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Valor</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nv">valor</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">0</span> <span class="p">{</span>
+      <span class="kr">didSet</span> <span class="p">{</span>
+         <span class="n">Valor</span><span class="p">.</span><span class="n">sumaValores</span> <span class="o">+=</span> <span class="n">valor</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+   <span class="kd">static</span> <span class="kd">var</span> <span class="nv">sumaValores</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">c1</span> <span class="p">=</span> <span class="n">Valor</span><span class="p">()</span>
+<span class="kd">var</span> <span class="nv">c2</span> <span class="p">=</span> <span class="n">Valor</span><span class="p">()</span>
+<span class="kd">var</span> <span class="nv">c3</span> <span class="p">=</span> <span class="n">Valor</span><span class="p">()</span>
+<span class="n">c1</span><span class="p">.</span><span class="n">valor</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="n">c2</span><span class="p">.</span><span class="n">valor</span> <span class="p">=</span> <span class="mi">20</span>
+<span class="n">c3</span><span class="p">.</span><span class="n">valor</span> <span class="p">=</span> <span class="mi">30</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Suma de los cambios de valores: </span><span class="si">\(</span><span class="n">Valor</span><span class="p">.</span><span class="n">sumaValores</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime 60</span>
+</code></pre></div>
+<hr />
+<h3>Métodos</h3>
+<hr />
+<ul>
+<li>Los <em>métodos</em> son funciones que están asociadas a un tipo
+  particular.</li>
+<li>Las clases, estructuras y enumeraciones pueden definir todas ellas
+  métodos de instancia.</li>
+<li>También es posible definir métodos del tipo, asociados al propio
+  tipo, no a una instancia concreta.</li>
+</ul>
+<hr />
+<h3>Métodos de instancia</h3>
+<ul>
+<li>Los métodos de instancia son funciones que pertenecen a instancias de
+  una clase, estructura o enumeración. </li>
+</ul>
+<p>Un ejemplo de definición:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Contador</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">veces</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="kd">func</span> <span class="nf">incrementa</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">veces</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">incrementa</span><span class="p">(</span><span class="n">en</span> <span class="n">cantidad</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">veces</span> <span class="o">+=</span> <span class="n">cantidad</span>
+    <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">reset</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">veces</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Y un ejemplo de uso:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">contador</span> <span class="p">=</span> <span class="n">Contador</span><span class="p">()</span>
+<span class="c1">// el valor inicial del contador es 0</span>
+<span class="n">contador</span><span class="p">.</span><span class="n">incrementa</span><span class="p">()</span>
+<span class="c1">// el valor del contador es ahora 1</span>
+<span class="n">contador</span><span class="p">.</span><span class="n">incrementa</span><span class="p">(</span><span class="n">en</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+<span class="c1">// el valor del contador es ahora 6</span>
+<span class="n">contador</span><span class="p">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="c1">// el valor del contador es ahora 0</span>
+</code></pre></div>
+<hr />
+<h3>Nombres locales y externos de parámetros</h3>
+<ul>
+<li>El funcionamiento de los nombres locales y externos de los
+  parámetros es igual en los métodos que en las funciones.</li>
+<li>Los nombres de los métodos en Swift se refieren normalmente al primer
+  parámetro usando una preposición como <code>con</code>, <code>en</code>, <code>a</code> o <code>por</code>, como
+  hemos visto en el ejemplo anterior <code>incrementa(en:)</code>. </li>
+<li>El uso de la preposición permite que el método se lea como una
+  frase.</li>
+</ul>
+<p>Un ejemplo con nombre externo e interno:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Contador</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">valor</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="kd">func</span> <span class="nf">incrementa</span><span class="p">(</span><span class="n">en</span> <span class="n">cantidad</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">numeroDeVeces</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">valor</span> <span class="o">+=</span> <span class="n">cantidad</span> <span class="o">*</span> <span class="n">numeroDeVeces</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Se debe llamar al método de la siguiente forma:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">contador</span> <span class="p">=</span> <span class="n">Contador</span><span class="p">()</span>
+<span class="n">contador</span><span class="p">.</span><span class="n">incrementa</span><span class="p">(</span><span class="n">en</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">numeroDeVeces</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1">// el valor del contador es ahora 15</span>
+</code></pre></div>
+<ul>
+<li>Al igual que en las funciones, podemos definir explícitamente los
+  nombres externos de los parámetros y usar el subrayado (<code>_</code>) para
+  indicar que ese parámetro no tendrá nombre externo.</li>
+</ul>
+<hr />
+<h3>La propiedad <code>self</code></h3>
+<ul>
+<li>Toda instancia de un tipo tiene una propiedad implícita llamada
+  <code>self</code>, que es exactamente equivalente a la instancia misma. </li>
+<li>Podemos usar la propiedad <code>self</code> para referirnos a la instancia actual
+  dentro de sus propios métodos de instancia.</li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">incrementa</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">veces</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Es obligado usarlo cuando el nombre de la propiedad coincide con el
+  nombre de un parámetro:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Punto</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="p">=</span> <span class="mf">0.0</span>
+    <span class="kd">func</span> <span class="nf">estaAlaDerecha</span><span class="p">(</span><span class="n">de</span> <span class="n">x</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">self</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">x</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">unPunto</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">unPunto</span><span class="p">.</span><span class="n">estaAlaDerecha</span><span class="p">(</span><span class="n">de</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Este punto está a la derecha de la línea donde x == 1.0&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Imprime &quot;Este punto está a la derecha de la línea donde x == 1.0&quot;</span>
+</code></pre></div>
+<hr />
+<h3>Modificación de tipos valor desde dentro de la instancia</h3>
+<ul>
+<li>Las estructuras y las enumeraciones son tipos valor. Por defecto,
+  las propiedades de un tipo valor no pueden ser modificadas desde
+  dentro de los métodos de instancia.</li>
+<li>Pero si usamos la palabra clave <code>mutating</code> en un método particular,
+  podemos conseguir una conducta <em>mutadora</em> para ese método.</li>
+<li>El método puede mutar las propiedades desde dentro del método.</li>
+<li>Incluso es posible asignar (copiando) una instancia completamente
+  nueva a su propiedad implícita <code>self</code>, con lo que esta nueva
+  instancia reemplazará la existente cuando el método termine.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Punto</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="p">=</span> <span class="mf">0.0</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">incrementa</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="n">incX</span>
+        <span class="n">y</span> <span class="o">+=</span> <span class="n">incY</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nv">unPunto</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">unPunto</span><span class="p">.</span><span class="n">incrementa</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;El punto está ahora en (</span><span class="si">\(</span><span class="n">unPunto</span><span class="p">.</span><span class="n">x</span><span class="si">)</span><span class="s">, </span><span class="si">\(</span><span class="n">unPunto</span><span class="p">.</span><span class="n">y</span><span class="si">)</span><span class="s">)&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime &quot;El punto está ahora en (3.0, 4.0)&quot;</span>
+</code></pre></div>
+<ul>
+<li>Un <code>let</code> hace constante toda la estructura y los métodos <code>mutating</code>
+  provocarán un error:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">puntoFijo</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="n">puntoFijo</span><span class="p">.</span><span class="n">incrementa</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="c1">// esto provocará un error</span>
+</code></pre></div>
+<hr />
+<h3>Asignación a <code>self</code> en un método mutador</h3>
+<ul>
+<li>Los métodos mutadores pueden asignar una nueva instancia
+  completamente nueva a la propiedad <code>self</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Punto</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="p">=</span> <span class="mf">0.0</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">incrementa</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">incX</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">y</span> <span class="o">+</span> <span class="n">incY</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>
+<p>El resutado final de llamar a esta versión alternativa será
+  exactamente el mismo que llamar a la versión anterior (aunque con
+  una pequeña penalización de eficiencia por tener que crear una
+  nueva instancia.</p>
+</li>
+<li>
+<p>Podemos definir un método mutador en una enumeración y usar <code>self</code>
+  para modificar la propia constante de la instancia:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">InterruptorTriEstado</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">apagado</span><span class="p">,</span> <span class="n">medio</span><span class="p">,</span> <span class="n">alto</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">siguiente</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="kc">self</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="p">.</span><span class="n">apagado</span><span class="p">:</span>
+            <span class="kc">self</span> <span class="p">=</span> <span class="p">.</span><span class="n">medio</span>
+        <span class="k">case</span> <span class="p">.</span><span class="n">medio</span><span class="p">:</span>
+            <span class="kc">self</span> <span class="p">=</span> <span class="p">.</span><span class="n">alto</span>
+        <span class="k">case</span> <span class="p">.</span><span class="n">alto</span><span class="p">:</span>
+            <span class="kc">self</span> <span class="p">=</span> <span class="p">.</span><span class="n">apagado</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nv">luzHorno</span> <span class="p">=</span> <span class="n">InterruptorTriEstado</span><span class="p">.</span><span class="n">medio</span>
+<span class="n">luzHorno</span><span class="p">.</span><span class="n">siguiente</span><span class="p">()</span>
+<span class="c1">// luzHorno es ahora .alto</span>
+<span class="n">luzHorno</span><span class="p">.</span><span class="n">siguiente</span><span class="p">()</span>
+<span class="c1">// luzHorno es ahora .apagado</span>
+</code></pre></div>
+<hr />
+<h3>Métodos del tipo</h3>
+<ul>
+<li>Es posible también definir métodos que se llaman en el propio tipo,
+  llamados <em>métodos del tipo</em>.</li>
+<li>Se define escribiendo la palabra clave <code>static</code> antes de la palabra
+  clave <code>func</code> del método. </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">NuevaClase</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">unMetodoDelTipo</span><span class="p">()</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hola desde el tipo&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">NuevaClase</span><span class="p">.</span><span class="n">unMetodoDelTipo</span><span class="p">()</span>
+</code></pre></div>
+<ul>
+<li>Podemos añadir a la clase <code>Ventana</code> una propiedad
+y método de clase con la que almacenar instancias de ventanas. Inicialmente
+guardamos un array vacío.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Ventana</span> <span class="p">{</span>
+
+    <span class="c1">// Propiedades</span>
+
+
+    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">ventanas</span><span class="p">:</span> <span class="p">[</span><span class="n">Ventana</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">registrar</span><span class="p">(</span><span class="n">ventana</span><span class="p">:</span> <span class="n">Ventana</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ventanas</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">ventana</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Cada vez que creamos una ventana podemos llamar al método <code>registrar</code>
+de la clase para añadirlo a la colección de ventanas de la clase:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">v1</span> <span class="p">=</span> <span class="n">Ventana</span><span class="p">()</span>
+<span class="n">Ventana</span><span class="p">.</span><span class="n">registrar</span><span class="p">(</span><span class="n">ventana</span><span class="p">:</span> <span class="n">v1</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Se han registrado </span><span class="si">\(</span><span class="n">Ventana</span><span class="p">.</span><span class="n">ventanas</span><span class="p">.</span><span class="bp">count</span><span class="si">)</span><span class="s"> ventanas&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime &quot;Se han registrado 1 ventanas&quot;</span>
+</code></pre></div>
+<hr />
+<h3>Inicialización</h3>
+<hr />
+<ul>
+<li><em>Inicialización</em> es el proceso de preparar para su uso una instancia
+  de una clase, estructura o enumeración. </li>
+<li>Este proceso incluye la asignación de un valor inicial para cada
+  propiedad almacenada y la ejecución de cualquier otra operación de
+  inicialización que se necesite para que la nueva instancia esté
+  lista para usarse.</li>
+<li>Para implementar este proceso de inicialización hay que definir
+  <em>inicializadores</em>, métodos especiales que pueden
+  llamarse para crear una nueva instancia de un tipo particular. </li>
+<li>Los inicializadores en Swift no devuelven un valor.</li>
+</ul>
+<hr />
+<h3>Inicializadores por defecto y <em>memberwise</em></h3>
+<ul>
+<li>Ya hemos visto que es posible inicializar clases y estructuras
+definiendo valores por defecto a todas sus propiedades (con la posible
+excepción de las que tienen un tipo opcional). </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Punto2D</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mf">0.0</span>
+    <span class="kd">var</span> <span class="nv">y</span> <span class="p">=</span> <span class="mf">0.0</span>
+<span class="p">}</span>
+<span class="kd">class</span> <span class="nc">Segmento</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">p1</span> <span class="p">=</span> <span class="n">Punto2D</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nv">p2</span> <span class="p">=</span> <span class="n">Punto2D</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">s</span> <span class="p">=</span> <span class="n">Segmento</span><span class="p">()</span>
+</code></pre></div>
+<ul>
+<li>También es posible en las estructuras utilizar el inicializador
+<em>memberwise</em>, en el que especificamos todos los valores de las
+propiedades:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">p</span> <span class="p">=</span> <span class="n">Punto2D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>Los inicializadores por defecto y <em>memberwise</em> desaparecen en el
+momento en que definimos algún inicializador con la palabra
+<code>init</code>. Veamos cómo definir inicializadores.</li>
+</ul>
+<hr />
+<h3>Inicialización de propiedades almacenadas</h3>
+<ul>
+<li>Las clases y estructuras deben definir todas sus propiedades
+  almacenadas a un valor inicial en el tiempo en la instancia se crea.</li>
+<li>Las propiedades almacenadas no pueden dejarse en un estado
+  indeterminado (a no ser que se declaren como opcionales, en cuyo
+  caso si no se inicializan su valor será <code>nil</code>)</li>
+<li>Podemos definir el valor inicial para una propiedad en un
+  inicializador o asignándole un valor por defecto como parte de la
+  definición de la propiedad.</li>
+</ul>
+<p>Un <em>inicializador</em>, en su forma más simple, es como un método de la
+instancia sin parámetros, escrito con la palabra clave <code>init</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// realizar alguna inicialización aquí</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Fahrenheit</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">temperatura</span><span class="p">:</span> <span class="nb">Double</span>
+    <span class="kd">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">temperatura</span> <span class="p">=</span> <span class="mf">32.0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nv">f</span> <span class="p">=</span> <span class="n">Fahrenheit</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La temperatura por defecto es </span><span class="si">\(</span><span class="n">f</span><span class="p">.</span><span class="n">temperatura</span><span class="si">)</span><span class="s"> Fahrenheit&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime &quot;La temperatura por defecto es 32.0° Fahrenheit&quot;</span>
+</code></pre></div>
+<ul>
+<li>También es posible inicializar la variable <code>temperatura</code>
+  directamente en la propiedad. Es equivalente a lo anterior y es
+  preferible por ser más claro:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Fahrenheit</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">temperatura</span> <span class="p">=</span> <span class="mf">32.0</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3>Inicializadores personalizados</h3>
+<ul>
+<li>Podemos proporcionar parámetros de inicialización como parte de la
+definición de un inicializador, para definir los tipos y los nombres
+de los valores que personalizan el proceso de inicialización. </li>
+<li>Los parámetros de inicialización tienen las mismas capacidades y
+sintaxis que los parámetros de funciones y métodos.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Celsius</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">temperaturaEnCelsius</span><span class="p">:</span> <span class="nb">Double</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">desdeFahrenheit</span> <span class="n">fahrenheit</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">temperaturaEnCelsius</span> <span class="p">=</span> <span class="p">(</span><span class="n">fahrenheit</span> <span class="o">-</span> <span class="mf">32.0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1.8</span>
+    <span class="p">}</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">desdeKelvin</span> <span class="n">kelvin</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">temperaturaEnCelsius</span> <span class="p">=</span> <span class="n">kelvin</span> <span class="o">-</span> <span class="mf">273.15</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">puntoDeEbullicionDelAgua</span> <span class="p">=</span> <span class="n">Celsius</span><span class="p">(</span><span class="n">desdeFahrenheit</span><span class="p">:</span> <span class="mf">212.0</span><span class="p">)</span>
+<span class="c1">// puntoDeEbullicionDelAgua.temperaturaEnCelsius es 100.0</span>
+<span class="kd">let</span> <span class="nv">puntoDeCongelacionDelAgua</span> <span class="p">=</span> <span class="n">Celsius</span><span class="p">(</span><span class="n">desdeKelvin</span><span class="p">:</span> <span class="mf">273.15</span><span class="p">)</span>
+<span class="c1">// puntoDeCongelacionDelAgua.temperaturaEnCelsius is 0.0</span>
+</code></pre></div>
+<ul>
+<li>En los inicializadores es obligatorio proporcionar los nombres de
+todos los parámetros:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Color</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">rojo</span><span class="p">,</span> <span class="n">verde</span><span class="p">,</span> <span class="n">azul</span><span class="p">:</span> <span class="nb">Double</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">rojo</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">verde</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">azul</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">rojo</span>   <span class="p">=</span> <span class="n">rojo</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">verde</span> <span class="p">=</span> <span class="n">verde</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">azul</span>  <span class="p">=</span> <span class="n">azul</span>
+    <span class="p">}</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">blanco</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">rojo</span>  <span class="p">=</span> <span class="n">blanco</span>
+        <span class="n">verde</span> <span class="p">=</span> <span class="n">blanco</span>
+        <span class="n">azul</span>  <span class="p">=</span> <span class="n">blanco</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">magenta</span> <span class="p">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">rojo</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">verde</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">azul</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">medioGris</span> <span class="p">=</span> <span class="n">Color</span><span class="p">(</span><span class="n">blanco</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>Podemos evitar proporcionar nombres externos usando un
+  subrayado. Ejemplo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Celsius</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nv">temperaturaEnCelsius</span><span class="p">:</span> <span class="nb">Double</span>
+   <span class="kd">init</span><span class="p">(</span><span class="n">desdeFahrenheit</span> <span class="n">fahrenheit</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">temperaturaEnCelsius</span> <span class="p">=</span> <span class="p">(</span><span class="n">fahrenheit</span> <span class="o">-</span> <span class="mf">32.0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1.8</span>
+   <span class="p">}</span>
+   <span class="kd">init</span><span class="p">(</span><span class="n">desdeKelvin</span> <span class="n">kelvin</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">temperaturaEnCelsius</span> <span class="p">=</span> <span class="n">kelvin</span> <span class="o">-</span> <span class="mf">273.15</span>
+   <span class="p">}</span>
+   <span class="kd">init</span><span class="p">(</span><span class="kc">_</span> <span class="n">celsius</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">temperaturaEnCelsius</span> <span class="p">=</span> <span class="n">celsius</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">temperaturaCuerpo</span> <span class="p">=</span> <span class="n">Celsius</span><span class="p">(</span><span class="mf">37.0</span><span class="p">)</span>
+<span class="c1">// temperaturaCuerpo.temperaturaEnCelsius es 37.0</span>
+</code></pre></div>
+<ul>
+<li>Es posible dejar sin inicializar propiedades opcionales, el valor
+  que toma es <code>nil</code>. </li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">PreguntaEncuesta</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">texto</span><span class="p">:</span> <span class="nb">String</span>
+    <span class="kd">var</span> <span class="nv">respuesta</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">texto</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">texto</span> <span class="p">=</span> <span class="n">texto</span>
+    <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">pregunta</span><span class="p">()</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">preguntaQueso</span> <span class="p">=</span> <span class="n">PreguntaEncuesta</span><span class="p">(</span><span class="n">texto</span><span class="p">:</span> <span class="s">&quot;¿Te gusta el queso?&quot;</span><span class="p">)</span>
+<span class="n">preguntaQueso</span><span class="p">.</span><span class="n">pregunta</span><span class="p">()</span>
+<span class="c1">// Imprime &quot;¿Te gusta el queso?</span>
+<span class="n">preguntaQueso</span><span class="p">.</span><span class="n">respuesta</span> <span class="p">=</span> <span class="s">&quot;Sí, me gusta el queso.&quot;</span>
+</code></pre></div>
+<ul>
+<li>Por último, es posible definir valores por defecto a los
+  inicializadores que sean sobreescritos por otros inicializadores,
+  así como invocar a otros inicializadores más básicos en otros:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Rectangulo</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">origen</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nv">tamaño</span> <span class="p">=</span> <span class="n">Tamaño</span><span class="p">()</span>
+    <span class="kd">init</span><span class="p">()</span> <span class="p">{}</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">origen</span><span class="p">:</span> <span class="n">Punto</span><span class="p">,</span> <span class="n">tamaño</span><span class="p">:</span> <span class="n">Tamaño</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">origen</span> <span class="p">=</span> <span class="n">origen</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">tamaño</span> <span class="p">=</span> <span class="n">tamaño</span>
+    <span class="p">}</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">centro</span><span class="p">:</span> <span class="n">Punto</span><span class="p">,</span> <span class="n">tamaño</span><span class="p">:</span> <span class="n">Tamaño</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">origenX</span> <span class="p">=</span> <span class="n">centro</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">tamaño</span><span class="p">.</span><span class="n">ancho</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="kd">let</span> <span class="nv">origenY</span> <span class="p">=</span> <span class="n">centro</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">tamaño</span><span class="p">.</span><span class="n">ancho</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="kc">self</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">origen</span><span class="p">:</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">origenX</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">origenY</span><span class="p">),</span> <span class="n">tamaño</span><span class="p">:</span> <span class="n">tamaño</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">basicRectangulo</span> <span class="p">=</span> <span class="n">Rectangulo</span><span class="p">()</span>
+<span class="c1">// el origen de basicRectangulo es (0.0, 0.0) y su tamaño (0.0, 0.0)</span>
+<span class="kd">let</span> <span class="nv">origenRectangulo</span> <span class="p">=</span> <span class="n">Rectangulo</span><span class="p">(</span><span class="n">origen</span><span class="p">:</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">),</span>
+                        <span class="n">tamaño</span><span class="p">:</span> <span class="n">Tamaño</span><span class="p">(</span><span class="n">ancho</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">alto</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">))</span>
+<span class="c1">// el origne de origenRectangulo es (2.0, 2.0) y su tamaño (5.0, 5.0)</span>
+<span class="kd">let</span> <span class="nv">centroRectangulo</span> <span class="p">=</span> <span class="n">Rectangulo</span><span class="p">(</span><span class="n">centro</span><span class="p">:</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">),</span>
+                        <span class="n">tamaño</span><span class="p">:</span> <span class="n">Tamaño</span><span class="p">(</span><span class="n">ancho</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">alto</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">))</span>
+<span class="c1">// el origen de centroRectangulo es (2.5, 2.5) y su tamaño (3.0, 3.0)</span>
+</code></pre></div>
+<hr />
+<h3>Herencia</h3>
+<hr />
+<ul>
+<li>Una clase puede <em>heredar</em> métodos, propiedades y otras
+  características de otra clase. </li>
+<li>Cuando una clase hereda de otra, la clase que hereda se denomina
+  <em>subclase</em>, y la clase de la que se hereda se denomina su
+  <em>superclase</em>.</li>
+<li>Las clases en Swift pueden llamar y acceder a métodos y propiedades
+  que pertenecen a su superclase y pueden proporcionar sus propias
+  versiones que sobreescriben esos métodos y propiedades. </li>
+<li>Para sobreescribir un método o una propiedad es necesario cumplir
+  con la definición proporcionada por la superclase.</li>
+<li>Las clases también pueden añadir observadores (veremos después) a
+  las propiedades heredadas para ser notificadas cuando cambia el
+  valor de una propiedad. </li>
+</ul>
+<hr />
+<h3>Definición de una clase base</h3>
+<ul>
+<li>Una clase que no hereda de ninguna otra se denomina una <em>clase base</em>
+  (<em>base class</em>). A diferencia de otros lenguajes orientados a
+  objetos, <strong>las clases en Swift no heredan de una clase base universal</strong>.</li>
+<li>También a diferencia de otros lenguajes orientados a objetos <strong>Swift
+  no permite definir clases <em>abstractas</em></strong> que no permiten crear
+  instancias. Cualquier clase en Swift puede ser instanciada.</li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Vehiculo</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">velocidadActual</span> <span class="p">=</span> <span class="mf">0.0</span>
+    <span class="kd">var</span> <span class="nv">descripcion</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;viajando a </span><span class="si">\(</span><span class="n">velocidadActual</span><span class="si">)</span><span class="s"> kilómetros por hora&quot;</span>
+    <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">hazRuido</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// no hace nada - un vehículo arbitrario no hace ruido necesariamente</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Creamos una instancia nueva de <code>Vehiculo</code> y accedemos a su
+  descripción:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">unVehiculo</span> <span class="p">=</span> <span class="n">Vehiculo</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Vehículo: </span><span class="si">\(</span><span class="n">unVehiculo</span><span class="p">.</span><span class="n">descripcion</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Vehículo: viajando a 0.0 kilómetros por hora</span>
+</code></pre></div>
+<ul>
+<li>La clase <code>Vehiculo</code> define características comunes para un vehículo
+  arbitrario, pero no es de mucha utilidad por si misma. </li>
+<li>Para hacerla más útil, tenemos que <strong>refinarla</strong> para describir
+  tipos de vehículos más específicos.</li>
+</ul>
+<hr />
+<h3>Construcción de subclases</h3>
+<ul>
+<li>La construcción de una subclase (<em>subclassing</em>) es la acción de
+  basar una nueva clase en una clase existente. </li>
+<li>La subclase hereda características de la clase existente, que
+  después podemos refinar. </li>
+<li>También podemos añadir nuevas características a la subclase.</li>
+</ul>
+<p>Sintaxis:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">UnaSubclase</span><span class="p">:</span> <span class="n">UnaSuperClase</span> <span class="p">{</span>
+    <span class="c1">// definición de la subclase</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Por ejemplo podemos definir una subclase <code>Bicicleta</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Bicicleta</span><span class="p">:</span> <span class="n">Vehiculo</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">tieneCesta</span> <span class="p">=</span> <span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Por defecto, cualquier instancia nueva de <code>Bicicleta</code> no tendrá una
+  cesta. </li>
+<li>Podemos establecer la propiedad <code>tieneCesta</code> a <code>true</code> para una
+  instancia particular de <code>Bicicleta</code> después de crearla:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">bicicleta</span> <span class="p">=</span> <span class="n">Bicicleta</span><span class="p">()</span>
+<span class="n">bicicleta</span><span class="p">.</span><span class="n">tieneCesta</span> <span class="p">=</span> <span class="kc">true</span>
+</code></pre></div>
+<ul>
+<li>Podemos también modificar la propiedad heredada <code>velocidadActual</code> y
+  preguntar por la propiedad <code>descripcion</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">bicicleta</span><span class="p">.</span><span class="n">velocidadActual</span> <span class="p">=</span> <span class="mf">10.0</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Bicicleta: </span><span class="si">\(</span><span class="n">bicicleta</span><span class="p">.</span><span class="n">descripcion</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Bicicleta: viajando a 10.0 kilómetros por hora</span>
+</code></pre></div>
+<ul>
+<li>Podemos construir subclases a partir de otras subclases. </li>
+<li>Por ejemplo creamos una subclase de <code>Bicicleta</code> que representa una
+  bicicleta de dos sillines (un "tandem"):</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Tandem</span><span class="p">:</span> <span class="n">Bicicleta</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">numeroActualDePasajeros</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>Tandem</code> hereda todas las propiedades y métodos de <code>Bicicleta</code>, que
+  a su vez hereda todas sus propiedades y métodos de <code>Vehiculo</code>. </li>
+<li>La subclase <code>Tandem</code> también añade una nueva propiedad almacenada
+  llamada <code>numeroActualDePasajeros</code>, con un valor por defecto de 0.</li>
+<li>Si creamos una instancia de <code>Tandem</code> podremos trabajar con
+  cualquiera de sus propiedades nuevas y heredadas, y preguntar a la
+  descripción de solo lectura que hereda de <code>Vehiculo</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">tandem</span> <span class="p">=</span> <span class="n">Tandem</span><span class="p">()</span>
+<span class="n">tandem</span><span class="p">.</span><span class="n">tieneCesta</span> <span class="p">=</span> <span class="kc">true</span>
+<span class="n">tandem</span><span class="p">.</span><span class="n">numeroActualDePasajeros</span> <span class="p">=</span> <span class="mi">2</span>
+<span class="n">tandem</span><span class="p">.</span><span class="n">velocidadActual</span> <span class="p">=</span> <span class="mf">18.0</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Tandem: </span><span class="si">\(</span><span class="n">tandem</span><span class="p">.</span><span class="n">descripcion</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Tandem: viajando a 18.0 kilómetros por hora</span>
+</code></pre></div>
+<hr />
+<h3>Sobreescritura</h3>
+<ul>
+<li>Una subclase puede proporcionar su propia implementación de un
+  método de la instancia, método del tipo, propiedad de la instancia o
+  propiedad del tipo que hereda de su superclase. Esto se conoce como
+  <em>sobreescritura</em> (<em>overriding</em>).</li>
+<li>Para sobreescribir una característica que sería de otra forma heredada
+  debemos usar el prefijo <code>override</code>.</li>
+<li>Cuando proporcionamos una sobreescritura puede ser útil acceder a
+  los valores proporcionados por la clase padre. Para acceder a ellos
+  podemos usar el prefijo <code>super</code>.</li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Tren</span><span class="p">:</span> <span class="n">Vehiculo</span> <span class="p">{</span>
+    <span class="kr">override</span> <span class="kd">func</span> <span class="nf">hazRuido</span><span class="p">()</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Chuu Chuu&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Si creamos una nueva instancia de <code>Tren</code> y llamamos al método
+  <code>hazRuido</code> podemos comprobar que se llama a la versión del método de
+  la subclase:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">tren</span> <span class="p">=</span> <span class="n">Tren</span><span class="p">()</span>
+<span class="n">tren</span><span class="p">.</span><span class="n">hazRuido</span><span class="p">()</span>
+<span class="c1">// Imprime &quot;Chuu Chuu&quot;</span>
+</code></pre></div>
+<ul>
+<li>Podemos sobreescribir cualquier propiedad heredada del tipo o de la
+  instancia y proporcionar nuestros propios <em>getters</em> y <em>setters</em> para
+  esa propiedad.</li>
+<li>Podemos proporcionar un <em>getter</em> (o <em>setter</em>, si es apropiado) para
+  sobreescribir cualquier propiedad heredada, independientemente de si
+  se trata de una propiedad almacenada o calculada.</li>
+</ul>
+<p>Por ejemplo, podemos definir un coche con marchas:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Coche</span><span class="p">:</span> <span class="n">Vehiculo</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">marcha</span> <span class="p">=</span> <span class="mi">1</span>
+    <span class="kr">override</span> <span class="kd">var</span> <span class="nv">descripcion</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">super</span><span class="p">.</span><span class="n">descripcion</span> <span class="o">+</span> <span class="s">&quot; con la marcha </span><span class="si">\(</span><span class="n">marcha</span><span class="si">)</span><span class="s">&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Podemos ver el funcionamiento en el siguiente ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">coche</span> <span class="p">=</span> <span class="n">Coche</span><span class="p">()</span>
+<span class="n">coche</span><span class="p">.</span><span class="n">velocidadActual</span> <span class="p">=</span> <span class="mf">50.0</span>
+<span class="n">coche</span><span class="p">.</span><span class="n">marcha</span> <span class="p">=</span> <span class="mi">3</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Coche: </span><span class="si">\(</span><span class="n">coche</span><span class="p">.</span><span class="n">descripcion</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Coche: viajando a 50.0 kilómetros por hora con la marcha 3</span>
+</code></pre></div>
+<ul>
+<li>Por último, podemos añadir observadores a propiedades heredadas. </li>
+<li>Esto nos permite ser notificados cuando el valor de una propiedad
+  heredada cambia, independientemente de si esa propiedad se ha
+  implementado en la subclase o en la superclase.</li>
+</ul>
+<p>Por ejemplo, la clase <code>CocheAutomatico</code> representa un coche con una
+caja de cambios automática, que selecciona automáticamente la marcha
+basándose en la velocidad actual:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">CocheAutomatico</span><span class="p">:</span> <span class="n">Coche</span> <span class="p">{</span>
+    <span class="kr">override</span> <span class="kd">var</span> <span class="nv">velocidadActual</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span>
+        <span class="kr">didSet</span> <span class="p">{</span>
+            <span class="n">marcha</span> <span class="p">=</span> <span class="bp">min</span><span class="p">(</span><span class="nb">Int</span><span class="p">(</span><span class="n">velocidadActual</span> <span class="o">/</span> <span class="mf">25.0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>En cualquier momento que se modifica la propiedad <code>velocidadActual</code>
+  de una instancia de <code>CocheAutomatico</code>, el observador <code>didSet</code>
+  establece la propiedad <code>marcha</code> a un valor apropiado para la nueva
+  velocidad. </li>
+<li>Un ejemplo de ejecución:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">automatico</span> <span class="p">=</span> <span class="n">CocheAutomatico</span><span class="p">()</span>
+<span class="n">automatico</span><span class="p">.</span><span class="n">velocidadActual</span> <span class="p">=</span> <span class="mf">100.0</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;CocheAutomatico: </span><span class="si">\(</span><span class="n">automatico</span><span class="p">.</span><span class="n">descripcion</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// CocheAutomatico: viajando a 100.0 kilómetros por hora con la marcha 5</span>
+</code></pre></div>
+<ul>
+<li>Por último, es posible prevenir un método o propiedad de ser
+  sobreescrito declarándolo como <em>final</em>. </li>
+<li>Para ello, hay que escribir el modificador <code>final</code> antes del nombre
+  de la palabra clave que introduce el método o la propiedad (como
+  <code>final var</code>, <code>final func</code> o <code>final class</code>). </li>
+<li>También es posible marcar la clase completa como final, escribiendo
+  el modificador antes de <code>class</code> (<code>final class</code>).</li>
+</ul></body>
+
+</html>

@@ -577,9 +577,9 @@ func mueve(coordsPantalla: CoordsPantalla, incX: Int, incY: Int) {
 // error: cannot assign to property: 'coordsPantalla' is a 'let' constant
 ```
 
-Si hacer una función con la que se obtenga un valor modificado de una
-estructura, podemos usar el enfoque funcional de crear una nueva
-estructura y devolverla como resultado:
+Si necesitamos hacer una función con la que se obtenga un valor
+modificado de una estructura, podemos usar el enfoque funcional de
+crear una nueva estructura y devolverla como resultado:
 
 ```swift
 func mueve(coordsPantalla: CoordsPantalla, incX: Int, incY: Int) -> CoordsPantalla {
