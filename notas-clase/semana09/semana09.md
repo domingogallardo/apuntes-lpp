@@ -489,7 +489,7 @@ let alreves = estudiantes.sorted { $0 > $1 }
 
 ---
 
-### Valores capturados
+### Variables capturadas
 
 !!! Note "Cuidado"
     Los ejemplos que vamos a ver a continuación no usan programación
@@ -504,7 +504,7 @@ let alreves = estudiantes.sorted { $0 > $1 }
 - La clausura puede referirse y modificar esos valores dentro de su
   cuerpo, incluso si ya no existe el ámbito (_scope_) original en el
   que se definieron estas constantes y variables.
-- En Swift, la forma más sencilla de una clausura que captura valores
+- En Swift, la forma más sencilla de una clausura que captura variables
   es una función anidada (_nested function_) escrita en el cuerpo de
   otra función. Una función anidada puede capturar cualquiera de los
   argumentos de su función exterior y también puede capturar cualquier
@@ -524,9 +524,9 @@ func construyeIncrementador(incremento cantidad: Int) -> () -> Int {
 ```
 
 - La función `construyeIncrementador` contiene una función anidada
-  llamada `incrementador`. Esta función captura dos valores de su
+  llamada `incrementador`. Esta función captura dos variables de su
   contexto: `totalAcumulado` y `cantidad`. 
-- Después de capturar estos valores, `incrementador` es devuelto por
+- Después de capturar estas variables `incrementador` es devuelto por
   `construyeIncrementador` como una clausura que incrementa
   `totalAcumulado` en `cantidad` cada vez que se llama.
 - El tipo devuelto de `construyeIncrementador` es `() -> Int`. Esto
@@ -643,10 +643,10 @@ print(incrementaDiez())
 
 ---
 
-### Valores capturados y valores del ámbito local de ejecución ###
+### Variables capturadas por clausuras y variables del ámbito de invocación ###
 
 - Las clasuras usan los valores capturados y no los valores declarados
-en el ámbito local de ejecución. Vamos a explicarlo con un ejemplo.
+en el ámbito en el que se invoca a la clausura. Vamos a explicarlo con un ejemplo.
 
 ```swift
 func construyeFunc() -> () -> Int {
@@ -679,7 +679,7 @@ invocar a la función `f` recibida.
 la otra `x`. 
 
 - Si ejecutamos el código veremos que la expresión devuelve 3. O sea
-que las clausuras usan siempre los valores capturados.
+que las clausuras usan siempre las variables capturadas.
 
 - Podemos comprobarlo también en el siguiente ejemplo, en el que la
 clausura que se pasa es una expresión de clausura que captura la

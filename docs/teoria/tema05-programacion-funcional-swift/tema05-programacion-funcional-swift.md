@@ -1799,7 +1799,7 @@ let alreves = estudiantes.sorted { $0 > $1 }
 ```
 
 
-### Valores capturados
+### Variables capturadas
 
 !!! Danger "Cuidado"
     Los ejemplos que vamos a ver a continuación no usan programación
@@ -1814,7 +1814,7 @@ que se define. La clausura puede referirse y modificar esos valores
 dentro de su cuerpo, incluso si ya no existe el ámbito (_scope_)
 original en el que se definieron estas constantes y variables.
 
-En Swift, la forma más sencilla de una clausura que captura valores es
+En Swift, la forma más sencilla de una clausura que captura variables es
 una función anidada (_nested function_) escrita en el cuerpo de otra
 función. Una función anidada puede capturar cualquiera de los
 argumentos de su función exterior y también puede capturar cualquier
@@ -1822,8 +1822,8 @@ constante y variable definida dentro de la función exterior.
 
 Veamos un ejemplo similar al que vimos en Scheme. La función
 `construyeIncrementador` contiene una función anidada llamada
-`incrementador`. Esta función captura dos valores de su contexto:
-`totalAcumulado` y `cantidad`. Después de capturar estos valores,
+`incrementador`. Esta función captura dos variables de su contexto:
+`totalAcumulado` y `cantidad`. Después de capturar estas variables,
 `incrementador` es devuelto por `construyeIncrementador` como una
 clausura que incrementa `totalAcumulado` en `cantidad` cada vez que se
 llama.
@@ -1971,10 +1971,10 @@ print(incrementaDiez())
 ```
 
 
-### Valores capturados y valores del ámbito local de ejecución ###
+### Variables capturadas por clausuras y variables del ámbito de invocación ###
 
-Las clasuras usan los valores capturados y no los valores declarados
-en el ámbito local de ejecución. Vamos a explicarlo con un ejemplo.
+Las clasuras usan las variables capturadas y no las variables declaradas
+en el ámbito en el que se invoca a la clausura. Vamos a explicarlo con un ejemplo.
 
 ```swift linenums="1" hl_lines="2 14 20"
 func construyeFunc() -> () -> Int {
@@ -2027,11 +2027,12 @@ return x
 }
 ```
 
-¿Qué valor va a tomar esa `x`? ¿El valor capturado (2)? ¿O el valor en
-el ámbito de ejecución (línea 14, 10)?
+¿A qué variable `x` se refiere ese código? ¿A la variable capturada que
+tiene un valor de 2? ¿O a la variable en el ámbito de ejecución (línea
+14) que tiene un valor de 10?
 
 Si ejecutamos el código veremos que la expresión devuelve 3. O sea que
-las clausuras usan siempre los valores capturados.
+las clausuras usan siempre las variables capturadas.
 
 Podemos comprobarlo también en la invocación de la línea 21. Ahí la
 clausura que se pasa es una expresión de clausura que captura la
