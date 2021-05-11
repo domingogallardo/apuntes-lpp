@@ -2420,6 +2420,12 @@ operador <code>!</code>:</p>
 <span class="bp">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="c1">// Imprime &quot;20&quot;</span>
 </code></pre></div>
+<p>Si se aplica el operador <code>!</code> a un valor <code>nil</code> se produce un error en
+tiempo de ejecución y la aplicación se rompe:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">respuestaEncuesta</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">respuestaEncuesta</span><span class="p">!)</span>
+<span class="c1">// Fatal error: Unexpectedly found nil while unwrapping an Optional value</span>
+</code></pre></div>
 <p>Podemos definir como opcional variables, parámetros
 o valores devueltos por funciones de cualquier tipo, añadiéndoles la
 interrogación al final.</p>
@@ -2447,12 +2453,6 @@ cuando queramos usarlo como <code>Int</code> (por ejemplo, en la llamada recursi
 automáticamente a <code>nil</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">respuestaEncuesta</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
 <span class="c1">// respuestaEncuesta es inicializado automáticamente a nil</span>
-</code></pre></div>
-<p>Si se aplica el operador <code>!</code> a un valor <code>nil</code> se produce un error en
-tiempo de ejecución y la aplicación se rompe:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">respuestaEncuesta</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">respuestaEncuesta</span><span class="p">!)</span>
-<span class="c1">// Fatal error: Unexpectedly found nil while unwrapping an Optional value</span>
 </code></pre></div>
 <h3 id="ligado-opcional">Ligado opcional<a class="headerlink" href="#ligado-opcional" title="Permanent link">&para;</a></h3>
 <p>Para comprobar si un valor opcional es <code>nil</code> podemos usar un <code>if</code>. Es
@@ -2932,7 +2932,7 @@ misma clausura:</p>
 <h2 id="funciones-de-orden-superior">Funciones de orden superior<a class="headerlink" href="#funciones-de-orden-superior" title="Permanent link">&para;</a></h2>
 <p>Una de las características funcionales que más hemos usado para
 trabajar con listas en Scheme son las funciones de orden superior como
-<code>map</code>, <code>filter</code> o <code>fold-right</code>. Swift tiene definidas funciones
+<code>map</code>, <code>filter</code> o <code>foldr</code>. Swift tiene definidas funciones
 equivalentes para trabajar con colecciones. Se denominan <code>map</code>,
 <code>filter</code> y <code>reduce</code>. Todas ellas aceptan expresiones de clausura como
 argumento.</p>
@@ -2998,7 +2998,7 @@ colección para los que la clausura devuelve <em>true</em>. </p>
 <span class="c1">// devuelve [0, 2, 4, 6, 8, 10]</span>
 </code></pre></div>
 <h3 id="reduce">Reduce<a class="headerlink" href="#reduce" title="Permanent link">&para;</a></h3>
-<p>Similar al <em>fold</em> de Scheme. Su perfil es el siguiente:</p>
+<p>Similar al <em>foldr</em> de Scheme. Su perfil es el siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">reduce</span><span class="p">&lt;</span><span class="n">Result</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">initialResult</span><span class="p">:</span> <span class="n">Result</span><span class="p">,</span> 
                     <span class="kc">_</span> <span class="n">nextPartialResult</span><span class="p">:</span> <span class="p">(</span><span class="n">Result</span><span class="p">,</span> <span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Result</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Result</span>
 </code></pre></div>

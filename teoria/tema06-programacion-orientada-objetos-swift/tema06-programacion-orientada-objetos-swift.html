@@ -1267,9 +1267,9 @@ constante y no puede ser modificado:</p>
 <span class="p">}</span>
 <span class="c1">// error: cannot assign to property: &#39;coordsPantalla&#39; is a &#39;let&#39; constant</span>
 </code></pre></div>
-<p>Si hacer una función con la que se obtenga un valor modificado de una
-estructura, podemos usar el enfoque funcional de crear una nueva
-estructura y devolverla como resultado:</p>
+<p>Si necesitamos hacer una función con la que se obtenga un valor
+modificado de una estructura, podemos usar el enfoque funcional de
+crear una nueva estructura y devolverla como resultado:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">mueve</span><span class="p">(</span><span class="n">coordsPantalla</span><span class="p">:</span> <span class="n">CoordsPantalla</span><span class="p">,</span> <span class="n">incX</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">CoordsPantalla</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">nuevaCoord</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">()</span>
     <span class="n">nuevaCoord</span><span class="p">.</span><span class="n">posX</span> <span class="p">=</span> <span class="n">coordsPantalla</span><span class="p">.</span><span class="n">posX</span> <span class="o">+</span> <span class="n">incX</span>
