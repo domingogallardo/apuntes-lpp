@@ -3,17 +3,17 @@
 
 ### Contenidos
 
-- **Introducción, historia y características**
-- **Clases y estructuras**
-- **Propiedades**
-- **Métodos**
-- **Inicialización**
-- **Herencia**
-- Protocolos
-- Casting de tipos
-- Extensiones
-- Funciones operador
-- Genericos
+- **1. Introducción, historia y características**
+- **2. Clases y estructuras**
+- **3. Propiedades**
+- **4. Métodos**
+- **5. Inicialización**
+- **6. Herencia**
+- 7. Protocolos
+- 8. Casting de tipos
+- 9. Extensiones
+- 10. Funciones operador
+- 11. Genericos
 
 
 ----
@@ -119,8 +119,29 @@ la instancia de la clase o de la estructura.
 - Creación de una instancia:
 
 ```swift
-let unasCoordsPantalla = CoordsPantalla()
-let unaVentana = Ventana()
+var unasCoordsPantalla = CoordsPantalla()
+var unaVentana = Ventana()
+```
+- Swift proporciona este **inicializador por defecto** para clases y
+estructuras, siempre que no se defina algún inicializador
+explícito. 
+
+- En el caso de la instancia `unasCoordsPantalla` los valores a los
+que se han inicializado sus propiedades son:
+
+```swift
+unasCoordsPantalla.posX // 0
+unasCoordsPantalla.posY // 0
+```
+
+- Las propiedades de la instancia `unaVentana` son:
+
+```swift
+unaVentana.esquina // CoordsPantalla con posX = 0 y posY = 0
+unaVentana.altura // 0
+unaVentana.anchura // 0
+unaVentana.visible // true
+unaVentana.etiqueta // nil
 ```
 
 - Todas las propiedades de una instancia deben estar definidas después
@@ -134,25 +155,37 @@ de haberse inicializado, a no ser que la propiedad se un opcional.
 punto_:
 
 ```swift
-print("La posición x de unasCoordsPantalla es \(unasCoordsPantalla.posX)")
-// Imprime "La posición x de unasCoordsPantalla es 0"
-print("La posición y de la esquina de la venana es \(unaVentana.esquina.posY)")
-// Imprime "La posición y de la esquina de la venana es 0")
-unaVentana.esquina.posY = 900
-print("La posición y de la esquina de la venana es ahora \(unaVentana.esquina.posY)")
-// Imprime "La posición y de la esquina de la venana es ahora 900")
+// Accedemos a la propiedad
+unasCoordsPantalla.posX // Devuelve 0
+// Actualizamos la propiedad
+unasCoordsPantalla.posX = 100
+unaVentana.esquina.posY = 100
 ```
 
 ---
 
 ### Inicialización de las estructuras por sus propiedades
 
-- Podemos inicializar las estructuras (no las clases) usando el
-**inicializador por defecto** en el que damos valor a todas sus
-propiedades
+- Si en las estructuras no se se definen inicializadores explícitos
+(veremos más adelante cómo hacerlo) podemos utilizar un
+**inicializador _memberwise_** en el que podemos proporcionar valores
+de sus propiedades.
+
+- En las clases no existen los inicializadores _memberwise_, sólo en
+las estructuras.
 
 ```swift
 let coords = CoordsPantalla(posX: 200, posY: 400)
+```
+
+- Cuando se llama al inicializador _memberwise_ podemos omitir valores
+de cualquier propiedad que tenga un valor por defecto, o que sea un
+opcional. 
+
+```swift
+let coords1 = CoordsPantalla(posX: 200)
+print(coords1.posX, coords1.posY)
+// Imprime 200 0
 ```
 
 ---
@@ -163,20 +196,11 @@ let coords = CoordsPantalla(posX: 200, posY: 400)
 asignan a una variable o constante, o cuando se pasan a una función.
 
 ```swift
-let coords1 = CoordsPantalla(posX: 600, posY: 600)
+var coords1 = CoordsPantalla(posX: 600, posY: 600)
 var coords2 = coords1
 coords2.posX = 1000
-print("coords2 tiene ahora como posición x: \(coords2.posX)")
-// imprime: "coords2 tiene ahora como posición x: 1000"
-print("coords1 tiene todavía la posición x: \(coords1.posX)")
-// imprime: "coords1 tiene todavía la posición x: 600"
+coords1.poxX // devuelve 600
 ```
-
-- Al ser estructuras, `cine` y `hd` tienen el mismo `ancho` y `alto`,
-pero dos instancias completamente distintas.
-
-- Podemos comprobar que la propiedad `cine` se modifica, pero que el
-valor del ancho en `hd` sigue siendo el mismo.
 
 ---
 
@@ -187,37 +211,59 @@ funciones, sino que se crean referencias a la misma instancia
 existente.
 
 ```swift
-let ventana1 = Ventana()
+var ventana1 = Ventana()
 ventana1.esquina = coords1
 ventana1.altura = 800
 ventana1.anchura = 800
 ventana1.etiqueta = "Finder"
-let ventana2 = ventana1
+var ventana2 = ventana1
 ventana2.anchura = 1000
-print("La propiedad anchura de ventana1 es ahora \(ventana1.anchura)")
-// imprime "La propiedad anchura de ventana1 es ahora 1000"
+ventana1.anchura // devuelve 1000
 ```
 
 - Debido a que son tipos de referencia, `ventana1` y
 `ventan2` se refieren a la misma instancia de
 `Ventana`.
 
-- Hay que hacer notar que `ventana1` y `ventana2` se
-declaran con `let` como constantes. Sin embargo, podemos modificar sus
-propiedades. 
-- En una instancia de una clase, el `let` obliga a mantener constante
-la referencia a la que apunta la variable, pero es posible modificar
-sus propiedades.
+- Una constante o variable en Swift que se refiere a una instancia de
+un tipo referencia es similar a un puntero en C, pero no es un puntero
+que apunta a una dirección de memoria y no requiere que se escriba un
+asterisco (*) para indicar que estas creando una referencia. En su
+lugar, estas referencias se definen como cualquier otra constante o
+variable en Swift.
 
-- A diferencia de las clases, una instancia de un `struct` definida
-con un `let` define como constantes todas sus propiedades. Por
-ejemplo, el siguiente código generaría un error:
+---
+
+### Declaración de instancias con `let`
+
+- Las estructuras y clases también tienen comportamientos distintos
+cuando se declaran las variables con `let`.
+
+- Si definimos con `let` una instancia de una estructura estamos
+declarando constante la variable y todas las propiedades de la
+instancia. No podremos modificar ninguna:
 
 ```swift
 let coords3 = CoordsPantalla(posX: 400, posY: 400)
 coords3.posX = 800
 // error: cannot assign to property: 'coords3' is a 'let' constant
 ```
+
+- Si definimos con un `let` una instancia de una clase sólo estamos
+declarando constante la variable. No podremos reasignarla, pero sí que
+podremos modificar las propiedades de la instancia referenciada por la
+variable:
+
+```swift
+let ventana3 = Ventana()
+// Sí que podemos modificar una propiedad de la instancia:
+ventana3.etiqueta = "Listado"
+// Pero no podemos reasignar la variable:
+ventana3 = ventana1
+// error: cannot assign to value: 'ventana3' is a 'let' constant
+```
+
+
 ---
 
 ### Operadores de identidad
@@ -226,10 +272,8 @@ coords3.posX = 800
 - No idéntico a (`!==`)
 
 ```swift
-if ventana1 === ventana2 {
-    print("ventana1 y ventana2 se refierena a la misma instancia de ventana.")
-}
-// Imprime "ventana1 y ventana2 se refierena a la misma instancia de ventana."
+ventana1 === ventana2 // devuelve true
+ventana1 === ventana3 // devuelve false
 ```
 
 - "Idéntico a" significa que dos constantes o variables de una clase
@@ -579,18 +623,19 @@ class UnaClase {
 sintaxis de punto, pero sobre _el tipo_, no sobre una instancia:
 
 ```swift
-print(UnaEstructura.propiedadTipoAlmacenada)
-// Imprime "Algún valor."
-UnaEstructura.propiedadTipoAlmacenada = "Otro valor."
-print(UnaEstructura.propiedadTipoAlmacenada)
-// Imprime "Otro valor."
-print(UnaEnumeracion.propiedadTipoCalculada)
-// Imprime "6"
-print(UnaClase.propiedadTipoCalculada)
-// Imprime "27"
+UnaEstructura.almacenada // devuelve "A"
+UnaEstructura.almacenada = "B" 
+UnaClase.calculada // devuelve 1
 ```
 
-Otro ejemplo:
+- No es posible acceder a la variable del tipo a través de una instancia:
+
+```swift
+let a = UnaEstructura()
+a.almacenada // error
+```
+
+- Otro ejemplo:
 
 ```swift
 struct Valor {
@@ -731,38 +776,61 @@ if unPunto.estaAlaDerecha(de: 1.0) {
 
 ---
 
-### Modificación de tipos valor desde dentro de la instancia
+### Operaciones con instancias de tipo valor
 
-- Las estructuras y las enumeraciones son tipos valor. Por defecto,
-  las propiedades de un tipo valor no pueden ser modificadas desde
-  dentro de los métodos de instancia.
-- Pero si usamos la palabra clave `mutating` en un método particular,
-  podemos conseguir una conducta _mutadora_ para ese método.
-- El método puede mutar las propiedades desde dentro del método.
-- Incluso es posible asignar (copiando) una instancia completamente
-  nueva a su propiedad implícita `self`, con lo que esta nueva
-  instancia reemplazará la existente cuando el método termine.
+- Las estructuras y las enumeraciones son **tipos valor**. Por defecto,
+las propiedades de un tipo valor no pueden ser modificadas desde
+dentro de los métodos de instancia.
+
+- Si queremos modificar una propiedad de un tipo valor la forma más
+natural de hacerlo es creando una instancia nueva, usando el estilo de 
+programación funcional:
+  
+```swift
+struct Punto {
+    var x = 0.0, y = 0.0
+    func incrementa(incX: Double, incY: Double) -> Punto {
+        return Punto(x: x+incX, y: y+incY)
+    }
+}
+let unPunto = Punto(x: 1.0, y: 1.0)
+var puntoMovido = unPunto.incrementa(incX: 2.0, incY: 3.0)
+print("Hemos movido el punto a (\(puntoMovido.x), \(puntoMovido.y))")
+// Imprime "Hemos movido el punto a (3.0, 4.0)"
+```
+
+---
+
+### Modificación de tipos valor desde dentro de la instancia ###
+
+- Hay ocasiones en las que necesitamos modificar las
+propiedades de nuestra estructura o enumeración dentro de un método
+particular. 
+
+- Necesitamos conseguir una conducta _mutadora_ para ese
+método. Podemos conseguirlo colocando la palabra clave
+`mutating` antes de la palabra `func` del método:
 
 ```swift
 struct Punto {
     var x = 0.0, y = 0.0
-    mutating func incrementa(incX: Double, incY: Double) {
+    mutating func incrementado(incX: Double, incY: Double) {
         x += incX
         y += incY
     }
 }
 var unPunto = Punto(x: 1.0, y: 1.0)
-unPunto.incrementa(incX: 2.0, incY: 3.0)
+unPunto.incrementado(incX: 2.0, incY: 3.0)
 print("El punto está ahora en (\(unPunto.x), \(unPunto.y))")
 // Imprime "El punto está ahora en (3.0, 4.0)"
 ```
 
-- Un `let` hace constante toda la estructura y los métodos `mutating`
-  provocarán un error:
+- Hay que hacer notar que no es posible llamar a un método mutador
+sobre una constante de un tipo estructura:
 
 ```swift
 let puntoFijo = Punto(x: 3.0, y: 3.0)
-puntoFijo.incrementa(incX: 2.0, incY: 3.0)
+puntoFijo.incrementado(incX: 2.0, incY: 3.0)
 // esto provocará un error
 ```
 
@@ -776,7 +844,7 @@ puntoFijo.incrementa(incX: 2.0, incY: 3.0)
 ```swift
 struct Punto {
     var x = 0.0, y = 0.0
-    mutating func incrementa(incX: Double, incY: Double) {
+    mutating func incrementado(incX: Double, incY: Double) {
         self = Punto(x: x + incX, y: y + incY)
     }
 }

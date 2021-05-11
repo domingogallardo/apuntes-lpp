@@ -1037,7 +1037,7 @@ UnaEstructura.almacenada = "B"
 UnaClase.calculada // devuelve 1
 ```
 
-- No es posible acceder a la variable del tipo a través de una instancia:
+No es posible acceder a la variable del tipo a través de una instancia:
 
 ```swift
 let a = UnaEstructura()
@@ -1317,15 +1317,15 @@ escrito de la siguiente forma:
 ```swift
 struct Punto {
     var x = 0.0, y = 0.0
-    mutating func incrementa(incX: Double, incY: Double) {
+    mutating func incrementado(incX: Double, incY: Double) {
         self = Punto(x: x + incX, y: y + incY)
     }
 }
 ```
 
-Esta versión del método mutador `incrementa(incX:incY:)` crea una
+Esta versión del método mutador `incrementado(incX:incY:)` crea una
 estructura nueva cuyos valores `x` e `y` se inicializan a los valores
-desados. El resutado final de llamar a esta versión alternativa será
+deseados. El resutado final de llamar a esta versión alternativa será
 exactamente el mismo que llamar a la versión anterior (aunque con una
 pequeña penalización de eficiencia: este método es 1,3 veces más lento
 que el anterior en la versión 2.2 del compilador de Swift).
