@@ -105,6 +105,19 @@ print(y)
 // Imprime "20"
 ```
 
+----
+
+### Error fatal al desenvolver un nil ###
+
+- Si se aplica el operador `!` a un valor `nil` se produce un error en
+tiempo de ejecución y la aplicación se rompe:
+
+```swift
+var respuestaEncuesta: String?
+print(respuestaEncuesta!)
+// Fatal error: Unexpectedly found nil while unwrapping an Optional value
+```
+
 ---
 
 ### Funciones que devuelven un opcional ###
@@ -145,18 +158,6 @@ var respuestaEncuesta: String?
 
 ---
 
-### Error fatal al desenvolver un nil ###
-
-- Si se aplica el operador `!` a un valor `nil` se produce un error en
-tiempo de ejecución y la aplicación se rompe:
-
-```swift
-var respuestaEncuesta: String?
-print(respuestaEncuesta!)
-// Fatal error: Unexpectedly found nil while unwrapping an Optional value
-```
-
-----
 
 ### Ligado opcional
 
@@ -713,7 +714,7 @@ tambienIncrementaDiez()
 
 - Una de las características funcionales que más hemos usado para
   trabajar con listas en Scheme son las funciones de orden superior
-  como `map`, `filter` o `fold-right`. 
+  como `map`, `filter` o `foldr`. 
 - Swift tiene definidas funciones equivalentes para trabajar con
   colecciones. 
 - Se denominan `map`, `filter` y `reduce`. Todas ellas aceptan
@@ -812,7 +813,7 @@ numeros.filter {$0 % 2 == 0}
 
 ### Reduce 
 
-- Similar al _fold_ de Scheme.
+- Similar al _foldr_ de Scheme.
 
 - Su perfil:
 

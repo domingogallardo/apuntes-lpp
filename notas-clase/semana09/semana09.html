@@ -303,6 +303,16 @@ unwrapping</em>).</li>
 <span class="c1">// Imprime &quot;20&quot;</span>
 </code></pre></div>
 <hr />
+<h3>Error fatal al desenvolver un nil</h3>
+<ul>
+<li>Si se aplica el operador <code>!</code> a un valor <code>nil</code> se produce un error en
+tiempo de ejecución y la aplicación se rompe:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">respuestaEncuesta</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">respuestaEncuesta</span><span class="p">!)</span>
+<span class="c1">// Fatal error: Unexpectedly found nil while unwrapping an Optional value</span>
+</code></pre></div>
+<hr />
 <h3>Funciones que devuelven un opcional</h3>
 <ul>
 <li>Podemos definir como opcional variables, parámetros
@@ -333,16 +343,6 @@ automáticamente a <code>nil</code>:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">respuestaEncuesta</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
 <span class="c1">// respuestaEncuesta es inicializado automáticamente a nil</span>
-</code></pre></div>
-<hr />
-<h3>Error fatal al desenvolver un nil</h3>
-<ul>
-<li>Si se aplica el operador <code>!</code> a un valor <code>nil</code> se produce un error en
-tiempo de ejecución y la aplicación se rompe:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">respuestaEncuesta</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">respuestaEncuesta</span><span class="p">!)</span>
-<span class="c1">// Fatal error: Unexpectedly found nil while unwrapping an Optional value</span>
 </code></pre></div>
 <hr />
 <h3>Ligado opcional</h3>
@@ -840,7 +840,7 @@ la sentencia se imprime el valor <code>110</code> y no el valor <code>20</code>.
 <ul>
 <li>Una de las características funcionales que más hemos usado para
   trabajar con listas en Scheme son las funciones de orden superior
-  como <code>map</code>, <code>filter</code> o <code>fold-right</code>. </li>
+  como <code>map</code>, <code>filter</code> o <code>foldr</code>. </li>
 <li>Swift tiene definidas funciones equivalentes para trabajar con
   colecciones. </li>
 <li>Se denominan <code>map</code>, <code>filter</code> y <code>reduce</code>. Todas ellas aceptan
@@ -935,7 +935,7 @@ la sentencia se imprime el valor <code>110</code> y no el valor <code>20</code>.
 <h3>Reduce</h3>
 <ul>
 <li>
-<p>Similar al <em>fold</em> de Scheme.</p>
+<p>Similar al <em>foldr</em> de Scheme.</p>
 </li>
 <li>
 <p>Su perfil:</p>
