@@ -199,7 +199,7 @@ asignan a una variable o constante, o cuando se pasan a una función.
 var coords1 = CoordsPantalla(posX: 600, posY: 600)
 var coords2 = coords1
 coords2.posX = 1000
-coords1.poxX // devuelve 600
+coords1.posX // devuelve 600
 ```
 
 ---
@@ -341,9 +341,9 @@ func mueve(coordsPantalla: CoordsPantalla, incX: Int, incY: Int) -> CoordsPantal
     return nuevaCoord
 }
 
-var coord1 = CoordsPantalla()
-coord1 = mueve(coordsPantalla: coord1, incX: 100, incY: 100)
-print(coord1)
+let coord1 = CoordsPantalla()
+let coord2 = mueve(coordsPantalla: coord1, incX: 100, incY: 100)
+print(coord2)
 // Imprime CoordsPantalla(posX: 100, posY: 100)
 ```
 
@@ -352,7 +352,8 @@ función que mueve una ventana de la siguiente forma:
 
 ```swift
 func mueve(ventana: Ventana, incX: Int, incY: Int) {
-    ventana.esquina = mueve(coordsPantalla: ventana.esquina, incX: incX, incY: incY)
+    ventana.esquina = mueve(coordsPantalla: ventana.esquina, 
+                            incX: incX, incY: incY)
 }
 ```
 
@@ -401,25 +402,12 @@ struct RangoLongitudFija {
     var primerValor: Int
     let longitud: Int
 }
-var rangoDeTresItemss = RangoLongitudFija(primerValor: 0, longitud: 3)
-// el rango representa ahora valores enteros the range represents integer values 0, 1, and 2
-rangoDeTresItemss.primerValor = 6
-// el rango representa ahora valores enteros 6, 7 y 8
+var rangoTresItems = RangoLongitudFija(primerValor: 0, 
+                                       longitud: 3)
+// el rango representa ahora 0, 1, 2
+rangoTresItems.primerValor = 6
+// el rango representa ahora 6, 7, 8
 ```
-
-- Si creamos una instancia de una estructura en una variable definida
-con un `let`, no podremos modificar las propiedades de la instancia,
-incluso si han sido declaradas como propiedades variables:
-
-```swift
-let rangoDeCuatroItems = RangoLongitudFija(primerValor: 0, longitud: 4)
-// este rango representa valores enteros 0, 1, 2 y 3
-rangoDeCuatroItems.primerValor = 6
-// esto producirá un error, incluso aun siendo primerValor una propiedad variable
-```
-
-- Esto no sucede así con las clases, que son _tipos referencia_. 
-
 ---
 
 ### Propiedades calculadas
@@ -455,7 +443,7 @@ var cuadrado = Rectangulo(origen: Punto(x: 0.0, y: 0.0),
 let centroCuadradoInicial = cuadrado.centro
 cuadrado.centro = Punto(x: 15.0, y: 15.0)
 print("cuadrado.origen está ahora en (\(cuadrado.origen.x), \(cuadrado.origen.y))")
-// Prints "cuadrado.origen está ahora en (10.0, 10.0)"
+// Imprime "cuadrado.origen está ahora en (10.0, 10.0)"
 ```
 
 - Cuando se modifica la propiedad calculada `centro` se ejecuta el
@@ -501,7 +489,8 @@ struct Cuboide {
         return ancho * alto * profundo
     }
 }
-let cuatroPorCincoPorDos = Cuboide(ancho: 4.0, alto: 5.0, profundo: 2.0)
+let cuatroPorCincoPorDos = Cuboide(ancho: 4.0, alto: 5.0, 
+                                   profundo: 2.0)
 print("el volumen de cuatroPorCincoPorDos es \(cuatroPorCincoPorDos.volumen)")
 // Imprime "el volumen de cuatroPorCincoPorDos es 40.0"
 ```
@@ -528,7 +517,7 @@ Observadores:
 class ContadorPasos {
     var totalPasos: Int = 0 {
         willSet(nuevoTotalPasos) {
-            print("A punto de actualizar totoalPasos a \(nuevoTotalPasos)")
+            print("Voy a actualizar totalPasos a \(nuevoTotalPasos)")
         }
         didSet {
             if totalPasos > oldValue  {
@@ -598,23 +587,22 @@ print(x)
   variables (`var`).
 
 ```swift
-
 struct UnaEstructura {
-    static var propiedadTipoAlmacenada = "Algún valor."
-    static var propiedadTipoCalculada : Int {
+    static var almacenada = "A"
+    static var calculada : Int {
         return 1
     }
 }
 enum UnaEnumeracion {
-    static var propiedadTipoAlmacenada = "Algún valor."
-    static var propiedadTipoCalculada: Int {
-        return 6
+    static var almacenada = "A"
+    static var calculada: Int {
+        return 1
     }
 }
 class UnaClase {
-    static var propiedadTipoAlmacenada = "Algún valor."
-    static var propiedadTipoCalculada: Int {
-        return 27
+    static var almacenada = "A"
+    static var calculada: Int {
+        return 1
     }
 }
 ```
@@ -721,7 +709,7 @@ Un ejemplo con nombre externo e interno:
 
 ```swift
 class Contador {
-    var valor: Int = 0
+    var veces = 0
     func incrementa(en cantidad: Int, numeroDeVeces: Int) {
         valor += cantidad * numeroDeVeces
     }
@@ -752,8 +740,11 @@ contador.incrementa(en: 5, numeroDeVeces: 3)
 Ejemplo:
 
 ```swift
-func incrementa() {
-    self.veces += 1
+class Contador {
+    var veces = 0
+    func incrementa() {
+        self.veces += 1
+    }
 }
 ```
 

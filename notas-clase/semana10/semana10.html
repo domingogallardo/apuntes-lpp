@@ -373,7 +373,7 @@ asignan a una variable o constante, o cuando se pasan a una función.</li>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">coords1</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">(</span><span class="n">posX</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span> <span class="n">posY</span><span class="p">:</span> <span class="mi">600</span><span class="p">)</span>
 <span class="kd">var</span> <span class="nv">coords2</span> <span class="p">=</span> <span class="n">coords1</span>
 <span class="n">coords2</span><span class="p">.</span><span class="n">posX</span> <span class="p">=</span> <span class="mi">1000</span>
-<span class="n">coords1</span><span class="p">.</span><span class="n">poxX</span> <span class="c1">// devuelve 600</span>
+<span class="n">coords1</span><span class="p">.</span><span class="n">posX</span> <span class="c1">// devuelve 600</span>
 </code></pre></div>
 <hr />
 <h3>Las clases son tipos referencia</h3>
@@ -510,9 +510,9 @@ crear una nueva estructura y devolverla como resultado:</li>
     <span class="k">return</span> <span class="n">nuevaCoord</span>
 <span class="p">}</span>
 
-<span class="kd">var</span> <span class="nv">coord1</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">()</span>
-<span class="n">coord1</span> <span class="p">=</span> <span class="n">mueve</span><span class="p">(</span><span class="n">coordsPantalla</span><span class="p">:</span> <span class="n">coord1</span><span class="p">,</span> <span class="n">incX</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">coord1</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">coord1</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">()</span>
+<span class="kd">let</span> <span class="nv">coord2</span> <span class="p">=</span> <span class="n">mueve</span><span class="p">(</span><span class="n">coordsPantalla</span><span class="p">:</span> <span class="n">coord1</span><span class="p">,</span> <span class="n">incX</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">coord2</span><span class="p">)</span>
 <span class="c1">// Imprime CoordsPantalla(posX: 100, posY: 100)</span>
 </code></pre></div>
 <ul>
@@ -520,7 +520,8 @@ crear una nueva estructura y devolverla como resultado:</li>
 función que mueve una ventana de la siguiente forma:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">mueve</span><span class="p">(</span><span class="n">ventana</span><span class="p">:</span> <span class="n">Ventana</span><span class="p">,</span> <span class="n">incX</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">ventana</span><span class="p">.</span><span class="n">esquina</span> <span class="p">=</span> <span class="n">mueve</span><span class="p">(</span><span class="n">coordsPantalla</span><span class="p">:</span> <span class="n">ventana</span><span class="p">.</span><span class="n">esquina</span><span class="p">,</span> <span class="n">incX</span><span class="p">:</span> <span class="n">incX</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="n">incY</span><span class="p">)</span>
+    <span class="n">ventana</span><span class="p">.</span><span class="n">esquina</span> <span class="p">=</span> <span class="n">mueve</span><span class="p">(</span><span class="n">coordsPantalla</span><span class="p">:</span> <span class="n">ventana</span><span class="p">.</span><span class="n">esquina</span><span class="p">,</span> 
+                            <span class="n">incX</span><span class="p">:</span> <span class="n">incX</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="n">incY</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <div class="admonition note">
@@ -566,29 +567,16 @@ paremeters</em> en la página sobre
 <ul>
 <li>Pueden ser variables y constantes:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">RangoLongitudFija</span> <span class="p">{</span>
+<h2><div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">RangoLongitudFija</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">primerValor</span><span class="p">:</span> <span class="nb">Int</span>
     <span class="kd">let</span> <span class="nv">longitud</span><span class="p">:</span> <span class="nb">Int</span>
 <span class="p">}</span>
-<span class="kd">var</span> <span class="nv">rangoDeTresItemss</span> <span class="p">=</span> <span class="n">RangoLongitudFija</span><span class="p">(</span><span class="n">primerValor</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">longitud</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
-<span class="c1">// el rango representa ahora valores enteros the range represents integer values 0, 1, and 2</span>
-<span class="n">rangoDeTresItemss</span><span class="p">.</span><span class="n">primerValor</span> <span class="p">=</span> <span class="mi">6</span>
-<span class="c1">// el rango representa ahora valores enteros 6, 7 y 8</span>
-</code></pre></div>
-<ul>
-<li>Si creamos una instancia de una estructura en una variable definida
-con un <code>let</code>, no podremos modificar las propiedades de la instancia,
-incluso si han sido declaradas como propiedades variables:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">rangoDeCuatroItems</span> <span class="p">=</span> <span class="n">RangoLongitudFija</span><span class="p">(</span><span class="n">primerValor</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">longitud</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
-<span class="c1">// este rango representa valores enteros 0, 1, 2 y 3</span>
-<span class="n">rangoDeCuatroItems</span><span class="p">.</span><span class="n">primerValor</span> <span class="p">=</span> <span class="mi">6</span>
-<span class="c1">// esto producirá un error, incluso aun siendo primerValor una propiedad variable</span>
-</code></pre></div>
-<ul>
-<li>Esto no sucede así con las clases, que son <em>tipos referencia</em>. </li>
-</ul>
-<hr />
+<span class="kd">var</span> <span class="nv">rangoTresItems</span> <span class="p">=</span> <span class="n">RangoLongitudFija</span><span class="p">(</span><span class="n">primerValor</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> 
+                                       <span class="n">longitud</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+<span class="c1">// el rango representa ahora 0, 1, 2</span>
+<span class="n">rangoTresItems</span><span class="p">.</span><span class="n">primerValor</span> <span class="p">=</span> <span class="mi">6</span>
+<span class="c1">// el rango representa ahora 6, 7, 8</span>
+</code></pre></div></h2>
 <h3>Propiedades calculadas</h3>
 <ul>
 <li>Son propiedades que no almacenan realmente un valor, sino que
@@ -621,7 +609,7 @@ incluso si han sido declaradas como propiedades variables:</li>
 <span class="kd">let</span> <span class="nv">centroCuadradoInicial</span> <span class="p">=</span> <span class="n">cuadrado</span><span class="p">.</span><span class="n">centro</span>
 <span class="n">cuadrado</span><span class="p">.</span><span class="n">centro</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">)</span>
 <span class="bp">print</span><span class="p">(</span><span class="s">&quot;cuadrado.origen está ahora en (</span><span class="si">\(</span><span class="n">cuadrado</span><span class="p">.</span><span class="n">origen</span><span class="p">.</span><span class="n">x</span><span class="si">)</span><span class="s">, </span><span class="si">\(</span><span class="n">cuadrado</span><span class="p">.</span><span class="n">origen</span><span class="p">.</span><span class="n">y</span><span class="si">)</span><span class="s">)&quot;</span><span class="p">)</span>
-<span class="c1">// Prints &quot;cuadrado.origen está ahora en (10.0, 10.0)&quot;</span>
+<span class="c1">// Imprime &quot;cuadrado.origen está ahora en (10.0, 10.0)&quot;</span>
 </code></pre></div>
 <ul>
 <li>Cuando se modifica la propiedad calculada <code>centro</code> se ejecuta el
@@ -663,7 +651,8 @@ solo-lectura eliminando la palabra clave <code>get</code> y sus llaves:</li>
         <span class="k">return</span> <span class="n">ancho</span> <span class="o">*</span> <span class="n">alto</span> <span class="o">*</span> <span class="n">profundo</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">let</span> <span class="nv">cuatroPorCincoPorDos</span> <span class="p">=</span> <span class="n">Cuboide</span><span class="p">(</span><span class="n">ancho</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="n">alto</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">profundo</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">cuatroPorCincoPorDos</span> <span class="p">=</span> <span class="n">Cuboide</span><span class="p">(</span><span class="n">ancho</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="n">alto</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> 
+                                   <span class="n">profundo</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">)</span>
 <span class="bp">print</span><span class="p">(</span><span class="s">&quot;el volumen de cuatroPorCincoPorDos es </span><span class="si">\(</span><span class="n">cuatroPorCincoPorDos</span><span class="p">.</span><span class="n">volumen</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="c1">// Imprime &quot;el volumen de cuatroPorCincoPorDos es 40.0&quot;</span>
 </code></pre></div>
@@ -686,7 +675,7 @@ propiedad.</li>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">ContadorPasos</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">totalPasos</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">0</span> <span class="p">{</span>
         <span class="kr">willSet</span><span class="p">(</span><span class="n">nuevoTotalPasos</span><span class="p">)</span> <span class="p">{</span>
-            <span class="bp">print</span><span class="p">(</span><span class="s">&quot;A punto de actualizar totoalPasos a </span><span class="si">\(</span><span class="n">nuevoTotalPasos</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+            <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Voy a actualizar totalPasos a </span><span class="si">\(</span><span class="n">nuevoTotalPasos</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
         <span class="p">}</span>
         <span class="kr">didSet</span> <span class="p">{</span>
             <span class="k">if</span> <span class="n">totalPasos</span> <span class="o">&gt;</span> <span class="n">oldValue</span>  <span class="p">{</span>
@@ -750,21 +739,21 @@ también están disponibles para variables globales y locales.</li>
   variables (<code>var</code>).</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">UnaEstructura</span> <span class="p">{</span>
-    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">propiedadTipoAlmacenada</span> <span class="p">=</span> <span class="s">&quot;Algún valor.&quot;</span>
-    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">propiedadTipoCalculada</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">almacenada</span> <span class="p">=</span> <span class="s">&quot;A&quot;</span>
+    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">calculada</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
         <span class="k">return</span> <span class="mi">1</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">enum</span> <span class="nc">UnaEnumeracion</span> <span class="p">{</span>
-    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">propiedadTipoAlmacenada</span> <span class="p">=</span> <span class="s">&quot;Algún valor.&quot;</span>
-    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">propiedadTipoCalculada</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="mi">6</span>
+    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">almacenada</span> <span class="p">=</span> <span class="s">&quot;A&quot;</span>
+    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">calculada</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">1</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">class</span> <span class="nc">UnaClase</span> <span class="p">{</span>
-    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">propiedadTipoAlmacenada</span> <span class="p">=</span> <span class="s">&quot;Algún valor.&quot;</span>
-    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">propiedadTipoCalculada</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="mi">27</span>
+    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">almacenada</span> <span class="p">=</span> <span class="s">&quot;A&quot;</span>
+    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">calculada</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">1</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -857,7 +846,7 @@ sintaxis de punto, pero sobre <em>el tipo</em>, no sobre una instancia:</li>
 </ul>
 <p>Un ejemplo con nombre externo e interno:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Contador</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">valor</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="kd">var</span> <span class="nv">veces</span> <span class="p">=</span> <span class="mi">0</span>
     <span class="kd">func</span> <span class="nf">incrementa</span><span class="p">(</span><span class="n">en</span> <span class="n">cantidad</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">numeroDeVeces</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">valor</span> <span class="o">+=</span> <span class="n">cantidad</span> <span class="o">*</span> <span class="n">numeroDeVeces</span>
     <span class="p">}</span>
@@ -882,8 +871,11 @@ sintaxis de punto, pero sobre <em>el tipo</em>, no sobre una instancia:</li>
   dentro de sus propios métodos de instancia.</li>
 </ul>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">incrementa</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kc">self</span><span class="p">.</span><span class="n">veces</span> <span class="o">+=</span> <span class="mi">1</span>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Contador</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">veces</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="kd">func</span> <span class="nf">incrementa</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">veces</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>

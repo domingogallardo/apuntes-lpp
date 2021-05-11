@@ -417,7 +417,7 @@ Swift.
 var coords1 = CoordsPantalla(posX: 600, posY: 600)
 var coords2 = coords1
 coords2.posX = 1000
-coords1.poxX // devuelve 600
+coords1.posX // devuelve 600
 ```
 
 En el ejemplo se declara una constante llamada `coords1` y se asigna a una
@@ -589,8 +589,8 @@ func mueve(coordsPantalla: CoordsPantalla, incX: Int, incY: Int) -> CoordsPantal
     return nuevaCoord
 }
 
-var coord1 = CoordsPantalla()
-coord1 = mueve(coordsPantalla: coord1, incX: 100, incY: 100)
+let coord1 = CoordsPantalla()
+let coord2 = mueve(coordsPantalla: coord1, incX: 100, incY: 100)
 print(coord1)
 // Imprime CoordsPantalla(posX: 100, posY: 100)
 ```
@@ -604,7 +604,8 @@ función que mueve una ventana de la siguiente forma:
 
 ```swift
 func mueve(ventana: Ventana, incX: Int, incY: Int) {
-    ventana.esquina = mueve(coordsPantalla: ventana.esquina, incX: incX, incY: incY)
+    ventana.esquina = mueve(coordsPantalla: ventana.esquina, 
+                            incX: incX, incY: incY)
 }
 ```
 
@@ -702,10 +703,11 @@ struct RangoLongitudFija {
     var primerValor: Int
     let longitud: Int
 }
-var rangoDeTresItemss = RangoLongitudFija(primerValor: 0, longitud: 3)
-// el rango representa ahora valores enteros the range represents integer values 0, 1, and 2
-rangoDeTresItemss.primerValor = 6
-// el rango representa ahora valores enteros 6, 7 y 8
+var rangoTresItems = RangoLongitudFija(primerValor: 0, 
+                                       longitud: 3)
+// el rango representa ahora 0, 1, 2
+rangoTresItems.primerValor = 6
+// el rango representa ahora 6, 7, 8
 ```
 
 Las instancias de `RangoLongitudFija` tienen una propiedad almacenada
@@ -750,7 +752,7 @@ var cuadrado = Rectangulo(origen: Punto(x: 0.0, y: 0.0),
 let centroCuadradoInicial = cuadrado.centro
 cuadrado.centro = Punto(x: 15.0, y: 15.0)
 print("cuadrado.origen está ahora en (\(cuadrado.origen.x), \(cuadrado.origen.y))")
-// Prints "cuadrado.origen está ahora en (10.0, 10.0)"
+// Imprime "cuadrado.origen está ahora en (10.0, 10.0)"
 ```
 
 Este ejemplo define tres estructuras para trabajar con formas
@@ -831,7 +833,8 @@ struct Cuboide {
         return ancho * alto * profundo
     }
 }
-let cuatroPorCincoPorDos = Cuboide(ancho: 4.0, alto: 5.0, profundo: 2.0)
+let cuatroPorCincoPorDos = Cuboide(ancho: 4.0, alto: 5.0, 
+                                   profundo: 2.0)
 print("el volumen de cuatroPorCincoPorDos es \(cuatroPorCincoPorDos.volumen)")
 // Imprime "el volumen de cuatroPorCincoPorDos es 40.0"
 ```
@@ -892,7 +895,7 @@ persona durante su rutina diaria.
 class ContadorPasos {
     var totalPasos: Int = 0 {
         willSet(nuevoTotalPasos) {
-            print("A punto de actualizar totoalPasos a \(nuevoTotalPasos)")
+            print("Voy a actualizar totalPasos a \(nuevoTotalPasos)")
         }
         didSet {
             if totalPasos > oldValue  {
@@ -1177,9 +1180,9 @@ Consideremos por ejemplo esta versión alternativa de la clase
 
 ```swift
 class Contador {
-    var valor: Int = 0
+    var veces = 0
     func incrementa(en cantidad: Int, numeroDeVeces: Int) {
-        valor += cantidad * numeroDeVeces
+        veces += cantidad * numeroDeVeces
     }
 }
 ```
@@ -1212,8 +1215,11 @@ El método `incrementa()` en el ejemplo anterior podría haberse escrito
 de esta forma:
 
 ```swift
-func incrementa() {
-    self.veces += 1
+class Contador {
+    var veces = 0
+    func incrementa() {
+        self.veces += 1
+    }
 }
 ```
 
