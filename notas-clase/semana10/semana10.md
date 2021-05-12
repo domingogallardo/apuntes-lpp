@@ -711,7 +711,7 @@ Un ejemplo con nombre externo e interno:
 class Contador {
     var veces = 0
     func incrementa(en cantidad: Int, numeroDeVeces: Int) {
-        valor += cantidad * numeroDeVeces
+        veces += cantidad * numeroDeVeces
     }
 }
 ```
