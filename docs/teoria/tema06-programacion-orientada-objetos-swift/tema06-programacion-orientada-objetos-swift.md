@@ -1259,15 +1259,22 @@ programación funcional:
 ```swift
 struct Punto {
     var x = 0.0, y = 0.0
-    func incrementa(incX: Double, incY: Double) -> Punto {
+    func incrementado(incX: Double, incY: Double) -> Punto {
         return Punto(x: x+incX, y: y+incY)
     }
 }
 let unPunto = Punto(x: 1.0, y: 1.0)
-var puntoMovido = unPunto.incrementa(incX: 2.0, incY: 3.0)
+var puntoMovido = unPunto.incrementado(incX: 2.0, incY: 3.0)
 print("Hemos movido el punto a (\(puntoMovido.x), \(puntoMovido.y))")
 // Imprime "Hemos movido el punto a (3.0, 4.0)"
 ```
+
+!!! Note "Nota"
+    En la biblioteca estándar de Swift se utiliza el convenio de nombrar los
+    métodos no mutadores (que devuelven un objeto nuevo) con el verbo
+    en pasado (`array.sorted()`) y los métodos mutadores (que
+    modifican la propia estructura y no devuelven nada) con el verbo
+    en presente (`array.sort()`).
 
 ### Modificación de tipos valor desde dentro de la instancia ###
 
@@ -1287,19 +1294,19 @@ antes de la palabra `func` del método:
 ```swift
 struct Punto {
     var x = 0.0, y = 0.0
-    mutating func incrementado(incX: Double, incY: Double) {
+    mutating func incrementa(incX: Double, incY: Double) {
         x += incX
         y += incY
     }
 }
 var unPunto = Punto(x: 1.0, y: 1.0)
-unPunto.incrementado(incX: 2.0, incY: 3.0)
+unPunto.incrementa(incX: 2.0, incY: 3.0)
 print("El punto está ahora en (\(unPunto.x), \(unPunto.y))")
 // Imprime "El punto está ahora en (3.0, 4.0)"
 ```
 
 La estructura `Punto` anterior define un método mutador
-`incrementado(incX:incY:)` que mueve una instancia de `Punto` una cierta
+`incrementa(incX:incY:)` que mueve una instancia de `Punto` una cierta
 cantidad. En lugar de devolver un nuevo punto, el método modifica
 realmente el punto en el que es llamado. La palabra clave `mutating`
 se añade a su definición para permitirle modificar sus propiedades.
@@ -1310,7 +1317,7 @@ pueden cambiar, incluso aunque sean propiedades variables:
 
 ```swift
 let puntoFijo = Punto(x: 3.0, y: 3.0)
-puntoFijo.incrementado(incX: 2.0, incY: 3.0)
+puntoFijo.incrementa(incX: 2.0, incY: 3.0)
 // esto provocará un error
 ```
 
@@ -1323,13 +1330,13 @@ escrito de la siguiente forma:
 ```swift
 struct Punto {
     var x = 0.0, y = 0.0
-    mutating func incrementado(incX: Double, incY: Double) {
+    mutating func incrementa(incX: Double, incY: Double) {
         self = Punto(x: x + incX, y: y + incY)
     }
 }
 ```
 
-Esta versión del método mutador `incrementado(incX:incY:)` crea una
+Esta versión del método mutador `incrementa(incX:incY:)` crea una
 estructura nueva cuyos valores `x` e `y` se inicializan a los valores
 deseados. El resutado final de llamar a esta versión alternativa será
 exactamente el mismo que llamar a la versión anterior (aunque con una

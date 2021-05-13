@@ -910,12 +910,12 @@ programación funcional:</p>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Punto</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="p">=</span> <span class="mf">0.0</span>
-    <span class="kd">func</span> <span class="nf">incrementa</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Punto</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">incrementado</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Punto</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">incX</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">y</span><span class="o">+</span><span class="n">incY</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">let</span> <span class="nv">unPunto</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
-<span class="kd">var</span> <span class="nv">puntoMovido</span> <span class="p">=</span> <span class="n">unPunto</span><span class="p">.</span><span class="n">incrementa</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nv">puntoMovido</span> <span class="p">=</span> <span class="n">unPunto</span><span class="p">.</span><span class="n">incrementado</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
 <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hemos movido el punto a (</span><span class="si">\(</span><span class="n">puntoMovido</span><span class="p">.</span><span class="n">x</span><span class="si">)</span><span class="s">, </span><span class="si">\(</span><span class="n">puntoMovido</span><span class="p">.</span><span class="n">y</span><span class="si">)</span><span class="s">)&quot;</span><span class="p">)</span>
 <span class="c1">// Imprime &quot;Hemos movido el punto a (3.0, 4.0)&quot;</span>
 </code></pre></div>
@@ -935,13 +935,13 @@ método. Podemos conseguirlo colocando la palabra clave
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Punto</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="p">=</span> <span class="mf">0.0</span>
-    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">incrementado</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">incrementa</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">x</span> <span class="o">+=</span> <span class="n">incX</span>
         <span class="n">y</span> <span class="o">+=</span> <span class="n">incY</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">var</span> <span class="nv">unPunto</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
-<span class="n">unPunto</span><span class="p">.</span><span class="n">incrementado</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="n">unPunto</span><span class="p">.</span><span class="n">incrementa</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
 <span class="bp">print</span><span class="p">(</span><span class="s">&quot;El punto está ahora en (</span><span class="si">\(</span><span class="n">unPunto</span><span class="p">.</span><span class="n">x</span><span class="si">)</span><span class="s">, </span><span class="si">\(</span><span class="n">unPunto</span><span class="p">.</span><span class="n">y</span><span class="si">)</span><span class="s">)&quot;</span><span class="p">)</span>
 <span class="c1">// Imprime &quot;El punto está ahora en (3.0, 4.0)&quot;</span>
 </code></pre></div>
@@ -950,7 +950,7 @@ método. Podemos conseguirlo colocando la palabra clave
 sobre una constante de un tipo estructura:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">puntoFijo</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
-<span class="n">puntoFijo</span><span class="p">.</span><span class="n">incrementado</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="n">puntoFijo</span><span class="p">.</span><span class="n">incrementa</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
 <span class="c1">// esto provocará un error</span>
 </code></pre></div>
 <hr />
@@ -961,7 +961,7 @@ sobre una constante de un tipo estructura:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Punto</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="p">=</span> <span class="mf">0.0</span>
-    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">incrementado</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">incrementa</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
         <span class="kc">self</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">incX</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">y</span> <span class="o">+</span> <span class="n">incY</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>

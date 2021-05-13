@@ -780,12 +780,12 @@ programación funcional:
 ```swift
 struct Punto {
     var x = 0.0, y = 0.0
-    func incrementa(incX: Double, incY: Double) -> Punto {
+    func incrementado(incX: Double, incY: Double) -> Punto {
         return Punto(x: x+incX, y: y+incY)
     }
 }
 let unPunto = Punto(x: 1.0, y: 1.0)
-var puntoMovido = unPunto.incrementa(incX: 2.0, incY: 3.0)
+var puntoMovido = unPunto.incrementado(incX: 2.0, incY: 3.0)
 print("Hemos movido el punto a (\(puntoMovido.x), \(puntoMovido.y))")
 // Imprime "Hemos movido el punto a (3.0, 4.0)"
 ```
@@ -805,13 +805,13 @@ método. Podemos conseguirlo colocando la palabra clave
 ```swift
 struct Punto {
     var x = 0.0, y = 0.0
-    mutating func incrementado(incX: Double, incY: Double) {
+    mutating func incrementa(incX: Double, incY: Double) {
         x += incX
         y += incY
     }
 }
 var unPunto = Punto(x: 1.0, y: 1.0)
-unPunto.incrementado(incX: 2.0, incY: 3.0)
+unPunto.incrementa(incX: 2.0, incY: 3.0)
 print("El punto está ahora en (\(unPunto.x), \(unPunto.y))")
 // Imprime "El punto está ahora en (3.0, 4.0)"
 ```
@@ -821,7 +821,7 @@ sobre una constante de un tipo estructura:
 
 ```swift
 let puntoFijo = Punto(x: 3.0, y: 3.0)
-puntoFijo.incrementado(incX: 2.0, incY: 3.0)
+puntoFijo.incrementa(incX: 2.0, incY: 3.0)
 // esto provocará un error
 ```
 
@@ -835,7 +835,7 @@ puntoFijo.incrementado(incX: 2.0, incY: 3.0)
 ```swift
 struct Punto {
     var x = 0.0, y = 0.0
-    mutating func incrementado(incX: Double, incY: Double) {
+    mutating func incrementa(incX: Double, incY: Double) {
         self = Punto(x: x + incX, y: y + incY)
     }
 }
