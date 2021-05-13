@@ -14,7 +14,7 @@
     
     
       
-        <title>Práctica 10: Programación Orientada a Objetos en Swift - LPP</title>
+        <title>Práctica 11: Programación Orientada a Objetos en Swift (1) - LPP</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practica-10-programacion-orientada-a-objetos-en-swift" class="md-skip">
+        <a href="#practica-11-programacion-orientada-a-objetos-en-swift-1" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -92,7 +92,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Práctica 10: Programación Orientada a Objetos en Swift
+              Práctica 11: Programación Orientada a Objetos en Swift (1)
             
           </span>
         </div>
@@ -515,8 +515,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ejercicio-1-repaso-de-clausuras" class="md-nav__link">
-    Ejercicio 1 (repaso de clausuras)
+  <a href="#ejercicio-1" class="md-nav__link">
+    Ejercicio 1
   </a>
   
 </li>
@@ -560,52 +560,104 @@
               
                 
                 
-                <h1 id="practica-10-programacion-orientada-a-objetos-en-swift">Práctica 10: Programación Orientada a Objetos en Swift<a class="headerlink" href="#practica-10-programacion-orientada-a-objetos-en-swift" title="Permanent link">&para;</a></h1>
+                <h1 id="practica-11-programacion-orientada-a-objetos-en-swift-1">Práctica 11: Programación Orientada a Objetos en Swift (1)<a class="headerlink" href="#practica-11-programacion-orientada-a-objetos-en-swift-1" title="Permanent link">&para;</a></h1>
 <h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
 <p>Para entregar la práctica debes subir a Moodle el fichero
-<code>practica10.swift</code> con una cabecera inicial con tu nombre y apellidos,
+<code>practica11.swift</code> con una cabecera inicial con tu nombre y apellidos,
 y las soluciones de cada ejercicio separadas por comentarios.</p>
-<h3 id="ejercicio-1-repaso-de-clausuras">Ejercicio 1 (repaso de clausuras)<a class="headerlink" href="#ejercicio-1-repaso-de-clausuras" title="Permanent link">&para;</a></h3>
-<p>Un ejercicio de repaso del apartado de clausuras del tema anterior. En
-este caso, se hace énfasis en las clausuras con estado local mutable.</p>
-<p>a) ¿Qué se imprime al ejecutar el siguiente programa? Reflexiona sobre el
-funcionamiento del código, compruébalo con el compilador y experimenta
-haciendo cambios y comprobando el resultado.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">0</span>
-
-<span class="kd">func</span> <span class="nf">construye</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">10</span>
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="n">x</span> <span class="p">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5</span>
-    <span class="k">return</span> <span class="n">x</span>
-  <span class="p">}</span>
+<h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
+<p>Contesta los siguientes apartados sin usar el compilador de
+Swift. Una vez los hayas terminado, comprueba si la solución que
+habías indicado era correcta.</p>
+<p>a) Examina el siguiente código. ¿Qué error o errores tiene? Una vez que
+arregles el código, indica qué se va a imprimir por pantalla.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">MiEstructura</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">0</span>
 <span class="p">}</span>
 
-
-<span class="kd">func</span> <span class="nf">usa</span><span class="p">(</span><span class="n">funcion</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">20</span>
-  <span class="bp">print</span><span class="p">(</span><span class="n">funcion</span><span class="p">())</span>
+<span class="kd">class</span> <span class="nc">MiClase</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">0</span>
 <span class="p">}</span>
 
-<span class="kd">let</span> <span class="nv">g</span> <span class="p">=</span> <span class="n">construye</span><span class="p">()</span>
-<span class="n">usa</span><span class="p">(</span><span class="n">funcion</span><span class="p">:</span> <span class="n">g</span><span class="p">)</span>
-<span class="n">usa</span><span class="p">(</span><span class="n">funcion</span><span class="p">:</span> <span class="n">g</span><span class="p">)</span>
+<span class="kd">func</span> <span class="nf">foo</span><span class="p">(</span><span class="kc">_</span> <span class="n">c</span><span class="p">:</span> <span class="n">MiClase</span><span class="p">,</span> <span class="kc">_</span> <span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">c</span><span class="p">.</span><span class="n">x</span> <span class="p">=</span> <span class="n">x</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">s1</span> <span class="p">=</span> <span class="n">MiEstructura</span><span class="p">()</span>
+<span class="kd">var</span> <span class="nv">s2</span> <span class="p">=</span> <span class="n">s1</span>
+<span class="kd">let</span> <span class="nv">c1</span> <span class="p">=</span> <span class="n">MiClase</span><span class="p">()</span>
+<span class="kd">var</span> <span class="nv">c2</span> <span class="p">=</span> <span class="n">c1</span>
+
+<span class="n">s1</span><span class="p">.</span><span class="n">x</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="n">c1</span><span class="p">.</span><span class="n">x</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="bp">print</span> <span class="p">(</span><span class="s">&quot;s2.x: </span><span class="si">\(</span><span class="n">s2</span><span class="p">.</span><span class="n">x</span><span class="si">)</span><span class="s">, c2.x: </span><span class="si">\(</span><span class="n">c2</span><span class="p">.</span><span class="n">x</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+
+<span class="n">foo</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;c1.x, después de llamar a la función: </span><span class="si">\(</span><span class="n">c1</span><span class="p">.</span><span class="n">x</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>b) Completa el siguiente código para que compile y funcione
-correctamente e imprima lo indicado. El hueco puede contener más de
-una línea de código.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">array</span> <span class="p">:</span> <span class="p">[()</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>
+<p>b) Examina el código a continuación y añade en la estructura <code>Cuadrado</code>
+dos versiones de un método <code>movido</code> que reciba un incremento x y un
+incremento y y devuelva un nuevo cuadrado resultante de haber movido
+su esquina. Llama a la primera versión del método <code>movido1</code> y usa en
+ella el método <code>movida</code> de la clase <code>Coord</code>. Llama a la segundo
+versión del método <code>movido2</code> y usa en ella el método <code>mueve</code> de la
+clase <code>Coord</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Coord</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">x</span><span class="p">:</span> <span class="nb">Double</span>
+    <span class="kd">var</span> <span class="nv">y</span><span class="p">:</span> <span class="nb">Double</span>
 
-<span class="kd">func</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Void</span> <span class="p">{</span>
-   <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">0</span>
-   <span class="n">array</span><span class="p">.</span><span class="n">append</span> <span class="n">___________</span>
+    <span class="kd">func</span> <span class="nf">movida</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Coord</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Coord</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">incX</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">y</span><span class="o">+</span><span class="n">incY</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">mueve</span><span class="p">(</span><span class="n">incX</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">incY</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="p">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">incX</span>
+        <span class="n">y</span> <span class="p">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">incY</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">foo</span><span class="p">()</span>
-<span class="n">foo</span><span class="p">()</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]())</span> <span class="c1">// Imprime 10</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]())</span> <span class="c1">// Imprime 20</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">]())</span> <span class="c1">// Imprime 10</span>
+<span class="kd">struct</span> <span class="nc">Cuadrado</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">esquina</span> <span class="p">=</span> <span class="n">Coord</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="kd">var</span> <span class="nv">lado</span><span class="p">:</span> <span class="nb">Double</span>
+
+    <span class="kd">func</span> <span class="nf">movido1</span> <span class="p">...</span> <span class="p">{</span>
+        <span class="p">...</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">movido2</span> <span class="p">...</span> <span class="p">{</span>
+        <span class="p">...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>c) Indica qué muestra por pantalla la función print:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">foo</span><span class="p">(</span><span class="n">palabra</span> <span class="n">pal</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">lon</span> <span class="p">=</span> <span class="n">pal</span><span class="p">.</span><span class="bp">count</span>
+    <span class="k">if</span> <span class="n">lon</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">pal</span> 
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">start</span> <span class="p">=</span> <span class="n">pal</span><span class="p">.</span><span class="n">startIndex</span>
+        <span class="kd">let</span> <span class="nv">end</span> <span class="p">=</span>  <span class="n">pal</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">offsetBy</span><span class="p">:</span> <span class="n">lon</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">String</span><span class="p">(</span><span class="n">pal</span><span class="p">[</span><span class="n">end</span><span class="p">])</span>
+    <span class="p">}</span> 
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">MisPalabras</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">guardadas</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>
+    <span class="kd">func</span> <span class="nf">guarda</span><span class="p">(</span><span class="n">palabra</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">guardadas</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">palabra</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="kd">var</span> <span class="nv">x</span> <span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="p">{</span>
+        <span class="kr">get</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">guardadas</span><span class="p">.</span><span class="bp">map</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span> 
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">palabras</span> <span class="p">=</span> <span class="n">MisPalabras</span><span class="p">()</span>
+<span class="n">palabras</span><span class="p">.</span><span class="n">guarda</span><span class="p">(</span><span class="n">palabra</span><span class="p">:</span> <span class="s">&quot;sal&quot;</span><span class="p">)</span>
+<span class="n">palabras</span><span class="p">.</span><span class="n">guarda</span><span class="p">(</span><span class="n">palabra</span><span class="p">:</span> <span class="s">&quot;limon&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">palabras</span><span class="p">.</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
 <p>a) El siguiente código usa observadores de propiedades y una variable
@@ -653,7 +705,6 @@ calculada? </li>
 <p>Tenemos que escribir un programa que permita definir resultados de
 partidos de fútbol y calcular la puntuación de un conjunto de equipos
 una vez que se han jugado esos partidos.</p>
-<p>Escribe código en Swift que permita resolver el problema, <strong>utilizando structs</strong>.</p>
 <p>Un ejemplo de ejecución del código debería ser cómo sigue:</p>
 <div class="highlight"><pre><span></span><code>--------------
 Puntuación antes de los partidos:
@@ -677,7 +728,18 @@ Valencia: 3 puntos
 Athlétic Bilbao: 1 puntos
 Sevilla: 1 puntos
 </code></pre></div>
-<hr />
+<p>Escribe código en Swift que permita resolver el problema, <strong>utilizando
+structs</strong>. </p>
+<p>El ejercicio se puede resolver de varias formas. Te proponemos una
+solución con tres estructuras:</p>
+<ul>
+<li><code>Equipo</code>: Contiene el nombre y los puntos de un equipo y un método
+  para actualizar las puntaciones</li>
+<li><code>Partido</code>: Nombres y goles del partido</li>
+<li><code>Liga</code>: Contiene array de equipos y partidos jugados, así como los
+  métodos para actualizar una jornada</li>
+</ul>
+<p>Puedes usar esta propuesta, o proponer tú alguna solución alternativa.</p>
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
 <p>En este ejercicio vamos a trabajar con figuras geométricas usando estructuras y clases. </p>
 <p>En el ejercicio deberás usar la función para calcular la raíz
