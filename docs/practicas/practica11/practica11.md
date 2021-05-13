@@ -1,62 +1,118 @@
-# Práctica 10: Programación Orientada a Objetos en Swift
+# Práctica 11: Programación Orientada a Objetos en Swift (1)
 
 ## Entrega de la práctica
 
 Para entregar la práctica debes subir a Moodle el fichero
-`practica10.swift` con una cabecera inicial con tu nombre y apellidos,
+`practica11.swift` con una cabecera inicial con tu nombre y apellidos,
 y las soluciones de cada ejercicio separadas por comentarios.
 
 
-### Ejercicio 1 (repaso de clausuras)###
+### Ejercicio 1 ###
 
-Un ejercicio de repaso del apartado de clausuras del tema anterior. En
-este caso, se hace énfasis en las clausuras con estado local mutable.
+Contesta los siguientes apartados sin usar el compilador de
+Swift. Una vez los hayas terminado, comprueba si la solución que
+habías indicado era correcta.
 
-a) ¿Qué se imprime al ejecutar el siguiente programa? Reflexiona sobre el
-funcionamiento del código, compruébalo con el compilador y experimenta
-haciendo cambios y comprobando el resultado.
-
-
-```swift
-var x = 0
-
-func construye() -> () -> Int {
-  var x = 10
-  return {
-    x = x + 5
-    return x
-  }
-}
-
-
-func usa(funcion: () -> Int) {
-  var x = 20
-  print(funcion())
-}
-
-let g = construye()
-usa(funcion: g)
-usa(funcion: g)
-```
-
-b) Completa el siguiente código para que compile y funcione
-correctamente e imprima lo indicado. El hueco puede contener más de
-una línea de código.
+a) Examina el siguiente código. ¿Qué error o errores tiene? Una vez que
+arregles el código, indica qué se va a imprimir por pantalla.
 
 ```swift
-var array : [() -> Int] = []
- 
-func foo() -> Void {
-   var x = 0
-   array.append ___________
+struct MiEstructura {
+    var x = 0
 }
- 
-foo()
-foo()
-print(array[0]()) // Imprime 10
-print(array[0]()) // Imprime 20
-print(array[1]()) // Imprime 10
+
+class MiClase {
+    var x = 0
+}
+
+func foo(_ c: MiClase, _ x: Int) {
+    c.x = x
+}
+
+let s1 = MiEstructura()
+var s2 = s1
+let c1 = MiClase()
+var c2 = c1
+
+s1.x = 10
+c1.x = 10
+print ("s2.x: \(s2.x), c2.x: \(c2.x)")
+
+foo(c1, 20)
+print("c1.x, después de llamar a la función: \(c1.x)")
 ```
+
+b) Examina el código a continuación y añade en la estructura `Cuadrado`
+dos versiones de un método `movido` que reciba un incremento x y un
+incremento y y devuelva un nuevo cuadrado resultante de haber movido
+su esquina. Llama a la primera versión del método `movido1` y usa en
+ella el método `movida` de la clase `Coord`. Llama a la segundo
+versión del método `movido2` y usa en ella el método `mueve` de la
+clase `Coord`.
+
+```swift
+struct Coord {
+    var x: Double
+    var y: Double
+
+    func movida(incX: Double, incY: Double) -> Coord {
+        return Coord(x: x+incX, y: y+incY)
+    }
+
+    mutating func mueve(incX: Double, incY: Double) {
+        x = x + incX
+        y = y + incY
+    }
+}
+
+struct Cuadrado {
+    var esquina = Coord(x: 0.0, y: 0.0)
+    var lado: Double
+
+    func movido1 ... {
+        ...
+    }
+
+    func movido2 ... {
+        ...
+    }
+}
+```
+
+
+c) Indica qué muestra por pantalla la función print:
+
+```swift
+func foo(palabra pal: String) -> String {
+    let lon = pal.count
+    if lon < 2 {
+        return pal 
+    }
+    else {
+        let start = pal.startIndex
+        let end =  pal.index(start, offsetBy: lon/2)
+        return String(pal[end])
+    } 
+}
+
+class MisPalabras {
+    var guardadas: [String] = []
+    func guarda(palabra: String) {
+        guardadas.append(palabra)
+    }
+    var x : [String] {
+        get {
+            return guardadas.map(foo)
+        }
+    } 
+}
+
+let palabras = MisPalabras()
+palabras.guarda(palabra: "sal")
+palabras.guarda(palabra: "limon")
+print(palabras.x)
+```
+
 
 
 ### Ejercicio 2 ###
@@ -115,8 +171,6 @@ Tenemos que escribir un programa que permita definir resultados de
 partidos de fútbol y calcular la puntuación de un conjunto de equipos
 una vez que se han jugado esos partidos.
 
-Escribe código en Swift que permita resolver el problema, **utilizando structs**.
-
 Un ejemplo de ejecución del código debería ser cómo sigue:
 
 ```text
@@ -143,7 +197,19 @@ Athlétic Bilbao: 1 puntos
 Sevilla: 1 puntos
 ```
 
-----
+Escribe código en Swift que permita resolver el problema, **utilizando
+structs**. 
+
+El ejercicio se puede resolver de varias formas. Te proponemos una
+solución con tres estructuras:
+
+- `Equipo`: Contiene el nombre y los puntos de un equipo y un método
+  para actualizar las puntaciones
+- `Partido`: Nombres y goles del partido
+- `Liga`: Contiene array de equipos y partidos jugados, así como los
+  métodos para actualizar una jornada
+
+Puedes usar esta propuesta, o proponer tú alguna solución alternativa.
 
 
 ### Ejercicio 4
