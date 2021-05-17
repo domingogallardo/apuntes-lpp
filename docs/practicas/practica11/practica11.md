@@ -46,7 +46,7 @@ b) Examina el código a continuación y añade en la estructura `Cuadrado`
 dos versiones de un método `movido` que reciba un incremento x y un
 incremento y y devuelva un nuevo cuadrado resultante de haber movido
 su esquina. Llama a la primera versión del método `movido1` y usa en
-ella el método `movida` de la clase `Coord`. Llama a la segundo
+ella el método `movida` de la clase `Coord`. Llama a la segunda
 versión del método `movido2` y usa en ella el método `mueve` de la
 clase `Coord`.
 
@@ -205,7 +205,7 @@ solución con tres estructuras:
 
 - `Equipo`: Contiene el nombre y los puntos de un equipo y un método
   para actualizar las puntaciones
-- `Partido`: Nombres y goles del partido
+- `Partido`: Nombres de los equipos y goles del partido
 - `Liga`: Contiene array de equipos y partidos jugados, así como los
   métodos para actualizar una jornada
 
