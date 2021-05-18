@@ -1402,7 +1402,7 @@ describe una ventana en una pantalla. Esta clase tiene cinco
 propiedades variables. La primera, <code>esquina</code>, se inicializa con una
 instancia nueva de una estructura <code>CoorsPantalla</code> y se infiere que es
 de tipo <code>CoordsPantalla</code>. Representa la posición superior izquierda de
-la pantalla. Las propiedades <code>altura</code> y <code>anchura</code> representan el
+la ventana. Las propiedades <code>altura</code> y <code>anchura</code> representan el
 número de píxeles de las dimensiones de la pantalla. Se inicializan
 a 0. La propiedad <code>visible</code> es un <code>Bool</code> que indica si la ventana es
 visible en pantalla. Por ejemplo, una ventana que esté minimizada no
@@ -1440,7 +1440,7 @@ se han inicializado sus propiedades son:</p>
 <span class="n">unaVentana</span><span class="p">.</span><span class="n">etiqueta</span> <span class="c1">// nil</span>
 </code></pre></div>
 <p>Todas las propiedades de una instancia deben estar definidas después
-de haberse inicializado, a no ser que la propiedad se un opcional.</p>
+de haberse inicializado, a no ser que la propiedad sea un opcional.</p>
 <h3 id="acceso-a-propiedades">Acceso a propiedades<a class="headerlink" href="#acceso-a-propiedades" title="Permanent link">&para;</a></h3>
 <p>Se puede acceder y modificar las propiedades usando la <em>sintaxis de
 punto</em>:</p>
@@ -1500,7 +1500,14 @@ cuando se asignan o se pasan a funciones. En su lugar se usa una
 referencia a la misma instancia existente.</p>
 <p>En Swift las clases son tipos referencias. Veamos, por ejemplo, una
 instancia de la clase <code>Ventana</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">ventana1</span> <span class="p">=</span> <span class="n">Ventana</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">ventana1</span> <span class="p">=</span> <span class="n">Ventana</span><span class="p">()</span>
 <span class="n">ventana1</span><span class="p">.</span><span class="n">esquina</span> <span class="p">=</span> <span class="n">coords1</span>
 <span class="n">ventana1</span><span class="p">.</span><span class="n">altura</span> <span class="p">=</span> <span class="mi">800</span>
 <span class="n">ventana1</span><span class="p">.</span><span class="n">anchura</span> <span class="p">=</span> <span class="mi">800</span>
@@ -1509,6 +1516,7 @@ instancia de la clase <code>Ventana</code>:</p>
 <span class="n">ventana2</span><span class="p">.</span><span class="n">anchura</span> <span class="p">=</span> <span class="mi">1000</span>
 <span class="n">ventana1</span><span class="p">.</span><span class="n">anchura</span> <span class="c1">// devuelve 1000</span>
 </code></pre></div>
+</td></tr></table>
 <p>Declaramos una variable llamada <code>ventana1</code> inicializada con una
 instancia nueva de la clase <code>Ventana</code>. Le asignamos a la propiedad
 <code>esquina</code> una copia de la resolución anterior <code>coords1</code>. Después
@@ -1890,13 +1898,13 @@ persona durante su rutina diaria.</p>
 <span class="p">}</span>
 <span class="kd">let</span> <span class="nv">contadorPasos</span> <span class="p">=</span> <span class="n">ContadorPasos</span><span class="p">()</span>
 <span class="n">contadorPasos</span><span class="p">.</span><span class="n">totalPasos</span> <span class="p">=</span> <span class="mi">200</span>
-<span class="c1">// Imprime: &quot;A punto de actualizar totalPasos a 200&quot;</span>
+<span class="c1">// Imprime: &quot;Voy a actualizar totalPasos a 200&quot;</span>
 <span class="c1">// Imprime: &quot;Añadidos 200 pasos&quot;</span>
 <span class="n">contadorPasos</span><span class="p">.</span><span class="n">totalPasos</span> <span class="p">=</span> <span class="mi">360</span>
-<span class="c1">// Imprime: &quot;A punto de actualizar totalPasos a 360&quot;</span>
+<span class="c1">// Imprime: &quot;Voy a actualizar totalPasos a 360&quot;</span>
 <span class="c1">// Imprime: &quot;Añadidos 160 pasos&quot;</span>
 <span class="n">contadorPasos</span><span class="p">.</span><span class="n">totalPasos</span> <span class="p">=</span> <span class="mi">896</span>
-<span class="c1">// Imprime: &quot;A punto de actualizar totalPasos a 896&quot;</span>
+<span class="c1">// Imprime: &quot;Voy a actualizar totalPasos a 896&quot;</span>
 <span class="c1">// Imprime: &quot;Añadidos 536 pasos&quot;</span>
 </code></pre></div>
 <p>La clase <code>CuentaPasos</code> declara la propiedad <code>totalPasos</code> de tipo
