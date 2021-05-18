@@ -305,7 +305,7 @@ describe una ventana en una pantalla. Esta clase tiene cinco
 propiedades variables. La primera, `esquina`, se inicializa con una
 instancia nueva de una estructura `CoorsPantalla` y se infiere que es
 de tipo `CoordsPantalla`. Representa la posición superior izquierda de
-la pantalla. Las propiedades `altura` y `anchura` representan el
+la ventana. Las propiedades `altura` y `anchura` representan el
 número de píxeles de las dimensiones de la pantalla. Se inicializan
 a 0. La propiedad `visible` es un `Bool` que indica si la ventana es
 visible en pantalla. Por ejemplo, una ventana que esté minimizada no
@@ -356,7 +356,7 @@ unaVentana.etiqueta // nil
 ```
 
 Todas las propiedades de una instancia deben estar definidas después
-de haberse inicializado, a no ser que la propiedad se un opcional.
+de haberse inicializado, a no ser que la propiedad sea un opcional.
 
 
 ### Acceso a propiedades
@@ -441,7 +441,7 @@ referencia a la misma instancia existente.
 En Swift las clases son tipos referencias. Veamos, por ejemplo, una
 instancia de la clase `Ventana`:
 
-```swift
+```swift linenums="1"
 var ventana1 = Ventana()
 ventana1.esquina = coords1
 ventana1.altura = 800
@@ -906,13 +906,13 @@ class ContadorPasos {
 }
 let contadorPasos = ContadorPasos()
 contadorPasos.totalPasos = 200
-// Imprime: "A punto de actualizar totalPasos a 200"
+// Imprime: "Voy a actualizar totalPasos a 200"
 // Imprime: "Añadidos 200 pasos"
 contadorPasos.totalPasos = 360
-// Imprime: "A punto de actualizar totalPasos a 360"
+// Imprime: "Voy a actualizar totalPasos a 360"
 // Imprime: "Añadidos 160 pasos"
 contadorPasos.totalPasos = 896
-// Imprime: "A punto de actualizar totalPasos a 896"
+// Imprime: "Voy a actualizar totalPasos a 896"
 // Imprime: "Añadidos 536 pasos"
 ```
 
