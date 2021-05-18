@@ -1479,11 +1479,15 @@ variable o constante, o cuando se pasa a una función.</p>
 cadenas, arrays y diccionarios- son tipos valor y se implementan como
 estructuras. Las estructuras y las enumeraciones son tipos valor en
 Swift.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">coords1</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">(</span><span class="n">posX</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span> <span class="n">posY</span><span class="p">:</span> <span class="mi">600</span><span class="p">)</span>
-<span class="kd">var</span> <span class="nv">coords2</span> <span class="p">=</span> <span class="n">coords1</span>
-<span class="n">coords2</span><span class="p">.</span><span class="n">posX</span> <span class="p">=</span> <span class="mi">1000</span>
-<span class="n">coords1</span><span class="p">.</span><span class="n">posX</span> <span class="c1">// devuelve 600</span>
-</code></pre></div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">coords1</span> <span class="p">=</span> <span class="n">CoordsPantalla</span><span class="p">(</span><span class="n">posX</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span> <span class="n">posY</span><span class="p">:</span> <span class="mi">600</span><span class="p">)</span>
+<span class="hll"><span class="kd">var</span> <span class="nv">coords2</span> <span class="p">=</span> <span class="n">coords1</span>
+</span><span class="hll"><span class="n">coords2</span><span class="p">.</span><span class="n">posX</span> <span class="p">=</span> <span class="mi">1000</span>
+</span><span class="hll"><span class="n">coords1</span><span class="p">.</span><span class="n">posX</span> <span class="c1">// devuelve 600</span>
+</span></code></pre></div>
+</td></tr></table>
 <p>En el ejemplo se declara una constante llamada <code>coords1</code> y se asigna a una
 instancia de <code>CoordsPantalla</code> inicializada con la posición x de 600 y
 la posición y de 600. Después se declara una variable llamada
@@ -1512,10 +1516,10 @@ instancia de la clase <code>Ventana</code>:</p>
 <span class="n">ventana1</span><span class="p">.</span><span class="n">altura</span> <span class="p">=</span> <span class="mi">800</span>
 <span class="n">ventana1</span><span class="p">.</span><span class="n">anchura</span> <span class="p">=</span> <span class="mi">800</span>
 <span class="n">ventana1</span><span class="p">.</span><span class="n">etiqueta</span> <span class="p">=</span> <span class="s">&quot;Finder&quot;</span>
-<span class="kd">var</span> <span class="nv">ventana2</span> <span class="p">=</span> <span class="n">ventana1</span>
-<span class="n">ventana2</span><span class="p">.</span><span class="n">anchura</span> <span class="p">=</span> <span class="mi">1000</span>
-<span class="n">ventana1</span><span class="p">.</span><span class="n">anchura</span> <span class="c1">// devuelve 1000</span>
-</code></pre></div>
+<span class="hll"><span class="kd">var</span> <span class="nv">ventana2</span> <span class="p">=</span> <span class="n">ventana1</span>
+</span><span class="hll"><span class="n">ventana2</span><span class="p">.</span><span class="n">anchura</span> <span class="p">=</span> <span class="mi">1000</span>
+</span><span class="hll"><span class="n">ventana1</span><span class="p">.</span><span class="n">anchura</span> <span class="c1">// devuelve 1000</span>
+</span></code></pre></div>
 </td></tr></table>
 <p>Declaramos una variable llamada <code>ventana1</code> inicializada con una
 instancia nueva de la clase <code>Ventana</code>. Le asignamos a la propiedad
