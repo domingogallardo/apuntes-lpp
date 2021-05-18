@@ -413,7 +413,7 @@ cadenas, arrays y diccionarios- son tipos valor y se implementan como
 estructuras. Las estructuras y las enumeraciones son tipos valor en
 Swift.
 
-```swift
+```swift linenums="1" hl_lines="2 3 4"
 var coords1 = CoordsPantalla(posX: 600, posY: 600)
 var coords2 = coords1
 coords2.posX = 1000
@@ -441,7 +441,7 @@ referencia a la misma instancia existente.
 En Swift las clases son tipos referencias. Veamos, por ejemplo, una
 instancia de la clase `Ventana`:
 
-```swift linenums="1"
+```swift linenums="1" hl_lines="6 7 8"
 var ventana1 = Ventana()
 ventana1.esquina = coords1
 ventana1.altura = 800
