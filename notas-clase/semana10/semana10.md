@@ -1169,7 +1169,7 @@ class Vehiculo {
     var descripcion: String {
         return "viajando a \(velocidadActual) kilómetros por hora"
     }
-    func hazRuido() {
+    func hazRuido() -> String {
         // no hace nada - un vehículo arbitrario no hace ruido necesariamente
     }
 }
@@ -1279,8 +1279,8 @@ Ejemplo:
 
 ```swift
 class Tren: Vehiculo {
-    override func hazRuido() {
-        print("Chuu Chuu")
+    override func hazRuido() -> String {
+        return "Chuu Chuu"
     }
 }
 ```
@@ -1291,7 +1291,7 @@ class Tren: Vehiculo {
 
 ```swift
 let tren = Tren()
-tren.hazRuido()
+print(tren.hazRuido())
 // Imprime "Chuu Chuu"
 ```
 

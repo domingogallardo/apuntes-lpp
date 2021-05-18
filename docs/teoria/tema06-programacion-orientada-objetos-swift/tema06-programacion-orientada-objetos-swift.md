@@ -1712,8 +1712,10 @@ class Vehiculo {
     var descripcion: String {
         return "viajando a \(velocidadActual) kilómetros por hora"
     }
-    func hazRuido() {
-        // no hace nada - un vehículo arbitrario no hace ruido necesariamente
+    func hazRuido() -> String {
+        // Devuelve una cadena vacía - un vehículo arbitrario no hace
+        // ruido necesariamente
+        return ""
     }
 }
 ```
@@ -1842,8 +1844,8 @@ El siguiente ejemplo define una nueva subclase de `Vehiculo` llamada
 
 ```swift
 class Tren: Vehiculo {
-    override func hazRuido() {
-        print("Chuu Chuu")
+    override func hazRuido() -> String {
+        return "Chuu Chuu"
     }
 }
 ```
@@ -1854,7 +1856,7 @@ la subclase:
 
 ```swift
 let tren = Tren()
-tren.hazRuido()
+print(tren.hazRuido())
 // Imprime "Chuu Chuu"
 ```
 
@@ -1929,6 +1931,53 @@ print("CocheAutomatico: \(automatico.descripcion)")
 // CocheAutomatico: viajando a 100.0 kilómetros por hora con la marcha 5
 ```
 
+<!-- Para el curso que viene
+
+###  Enlace dinámico ###
+
+Al igual que en Java y en otros lenguajes orientados a objetos, es
+posible que una relación de herencia haga imposible conocer en
+tiempo de compilación el código a ejecutar en una llamada a un método
+o una propiedad.
+
+Por ejemplo, supongamos que creamos otra subclase derivada de
+`Vehículo` que haga un ruido distinto a la que hace el tren:
+
+```swift
+class Barco: Vehiculo {
+    override func hazRuido() -> String {
+        return "Buuuuuuuu"
+    }
+}
+```
+
+Supongamos que definimos una función que recibe un `Vehículo` y que
+imprime el resultado a la llamada al método `hazRuido`:
+
+```swift
+func imprimeRuido(vehiculo: Vehiculo) {
+    print(vehiculo.hazRuido())
+}
+```
+
+En tiempo de compilación no se puede saber qué tipo de vehículo va a
+pasarse como parámetro a la función, por lo que no se puede generar el
+código que va a ejecutarse en la llamada al método `hazRuido()`. El
+código sólo se conocerá en tiempo de ejecución, dependiendo del tipo
+real de la instancia que se pasa como parámetro. Es lo que se denomina
+_enlace dinámico_.
+
+```swift
+let barco = Barco()
+let tren = Tren()
+imprimeRuido(vehiculo: barco) // Imprime "Buuuuuuuu"
+imprimeRuido(vehiculo: tren) // Imprime "Chu chu"
+```
+
+-->
+
+### Modificador `final` ###
+
 Por último, es posible prevenir un método o propiedad de ser
 sobreescrito declarándolo como _final_. Para ello, hay que escribir el
 modificador `final` antes del nombre de la palabra clave que introduce
@@ -1937,7 +1986,6 @@ el método o la propiedad (como `final var`, `final func`).
 También es posible marcar la clase completa como final, escribiendo el
 modificador antes de `class` (`final class`).
 
-<!--
 
 ## Protocolos
 
@@ -1947,7 +1995,8 @@ funcionalidad. El protocolo puede luego ser _adoptado_ (_adopted_) por
 una clase, estructura o enumarción para proporcionar una
 implementación real de esos requisitos. Cualquier tipo que satisface
 los requerimientos de un protocolo se dice que _se ajusta_ o _cumple_
-(_conform_) ese protocolo.
+(_conform_) ese protocolo. Podemos considerar los protocolos como una
+construcción de Swift que amplía la idea de las _interfaces_ de Java.
 
 Además de especificar los requisitos de los tipos que cumplen el
 protocolo, también se puede **extender un protocolo** (lo veremos más
@@ -2180,6 +2229,7 @@ interruptorLampara.conmutar()
 ### Protocolos como tipos
 
 Los protocolos no implementan realmente ninguna funcionalidad por
+
 ellos mismos. Sin embargo, cualquier protocolo que definamos se
 convierte automáticamente en un tipo con todas sus propiedades que
 podemos usar en nuestro código.
