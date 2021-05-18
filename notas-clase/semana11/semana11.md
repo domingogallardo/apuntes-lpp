@@ -16,17 +16,17 @@ tiempo en esta sesión):
 
 ### Contenidos
 
-- Introducción, historia y características
-- Clases y estructuras
-- Propiedades
-- Métodos
-- Herencia
-- Inicialización
-- **Protocolos**
-- **Casting de tipos**
-- **Extensiones**
-- **Funciones operador**
-- **Genericos**
+- 1. Introducción, historia y características
+- 2. Clases y estructuras
+- 3. Propiedades
+- 4. Métodos
+- 5. Herencia
+- 6. Inicialización
+- **7. Protocolos**
+- **8. Casting de tipos**
+- **9. Extensiones**
+- **10. Funciones operador**
+- **11. Genericos**
 
 
 ----
@@ -51,6 +51,8 @@ tiempo en esta sesión):
   esos requisitos. 
 - Cualquier tipo que satisface los requerimientos de un protocolo se
   dice que _se ajusta_ o cumple (_conform_) ese protocolo.
+- Podemos considerar los protocolos como una construcción de Swift que
+  amplía la idea de las _interfaces_ de Java. 
 - Además de especificar los requisitos de los tipos que cumplen el
   protocolo, también se puede **extender un protocolo** (lo veremos
   más adelante, cuando hablemos de **extensiones**) para **proporcionar
@@ -161,6 +163,13 @@ var ncc1701 = NaveEstelar(nombre: "Enterprise", prefijo: "USS")
 
 - Los protocolos pueden requerir que los tipos que se ajusten a ellos
   implementen métodos de instancia y de tipos específicos. 
+
+```swift
+protocol UnProtocolo {
+    func unMetodo() -> Int
+}
+```
+
 - Los métodos del tipo en el protocolo deben indicarse con la palabra
   clave `static`:
 
@@ -266,7 +275,7 @@ class Dado {
 }
 ```
 
-- La propiedad generador es del tipo
+- La propiedad `generador` es del tipo
   `GeneradorNumerosAleatorios`. Podemos asignarle una instancia de
   **cualquier tipo** que adopte el protocolo `GeneradorNumerosAleatorios`.
 - El inicializador tiene un parámetro llamado `generador`, que también
@@ -323,7 +332,7 @@ for cosa in cosasConNombre {
 
 ---
 
-### Protocolos de la biblioteca estándar de Swift
+### Protocolo `Equatable`
 
 - En la [biblioteca estándar de Swift](https://developer.apple.com/documentation/swift) se definen distintos protocolos
   como `Collection` y `Equatable` que describen abstracciones
@@ -364,11 +373,36 @@ print(p1 != p2)
 // Imprime false
 ```
 
-- El operador == se define en la propia estructura. Se utiliza la
+- El operador `==` se define en la propia estructura. Se utiliza la
   palabra static para indicar que se trata de un operador que estamos
   sobrecargando (hablaremos más adelante de los operadores).
-- El operador != que se usa en la última instrucción se define en una
+- El operador `!=` que se usa en la última instrucción se define en una
   implementación por defecto.
+
+- En **Swift 5** el compilador define una **implementación automática
+del operador `==` en las estructuras y enumeraciones** al añadir el
+protocolo `Equatable`, siempre que las propiedades almacenadas y los
+valores asociados cumplan ese protocolo.
+  
+- Por ejemplo, si en lugar de una clase definimos un `struct Punto3D`
+el código quedaría como sigue (no es necesario definir ni el
+inicializador por defecto ni el operador `==`):
+
+```swift
+struct Punto3D: Equatable {
+    let x, y, z: Double
+}
+
+let p1 = Punto3D(x: 0.0, y: 0.0, z: 0.0)
+let p2 = Punto3D(x: 0.0, y: 0.0, z: 0.0)
+
+print(p1 == p2)
+// Imprime true
+print(p1 != p2)
+// Imprime false
+```
+
+
 
 ---
 ### 8. Casting de tipos
@@ -521,7 +555,7 @@ for item in biblioteca {
 
 ---
 
-### _Casting_ para `Any` 
+### El tipo `Any`
 
 - El tipo `Any` puede representar una instancia de cualquier tipo,
 incluyendo tipos función:
@@ -763,8 +797,8 @@ print("Tres pies son \(tresPies) metros")
 // Tres pies son 0.914399970739201 metros
 ```
 
-- Por ejemplo, cuando se escribe 11.km se pide el valor de la
-  propiedad calculada km de la instancia 11. La propiedad calculada
+- Por ejemplo, cuando se escribe `11.km` se pide el valor de la
+  propiedad calculada `km` de la instancia 11. La propiedad calculada
   devuelve el resultado de multiplicar 11 por 1000, esto es, los
   metros correspondientes a 11 kilómetros.
 
@@ -1086,8 +1120,6 @@ print(numerosIguales.allEqual())
 // Prints "true"
 print(numerosDiferentes.allEqual())
 // Prints "false"
-
-
 ```
 
 - En una colección de una clase que no cumple el protocolo `Equatable`
@@ -1177,22 +1209,35 @@ let tambienPositivo = -negativo
 
 ### Operadores de equivalencia
 
-- Como ya hemos visto, las clases y estructuras construidas no tienen
-  una implementación por defecto de los operadores "igual a" (`==`) y
-  "no igual a" (`!=`).
-- Para poder usar los operadores de igualdad en nuestros propios
-  tipos, debemos proporcionar una implementación de la misma forma que
-  para otros operadores infijos.
-- Lo hacemos definiendo una extensión que cumple el protocolo
-  `Equatable`. De esta forma, como ya hemos visto anteriormente,
-  conseguimos la implementación por defecto del operador `!=`:
+- Como ya hemos visto, las clases no tienen una implementación por
+defecto de los operadores "igual a" (`==`) y "no igual a" (`!=`), pero
+las estructuras sí (a partir de Swift 5). Para comparar dos instancias
+de una clase debemos proporcionar una implementación del operador `==`.
+
+- A partir de Swift 5 si declaramos que una estructura cumple el
+protocolo `Equatable` el compilador de Swift implementará una
+comparación por defecto, siempre que todas las propiedades de la
+estructura sean a su vez `Equatable`.
+
+- En Swift 4 para implementar la igualdad en la estructura `Vector2D`
+tenemos que definir una extensión que cumple el protocolo
+`Equatable`:
 
 ```swift
+// Swift 4
 extension Vector2D: Equatable {
    static func == (izquierdo: Vector2D, derecho: Vector2D) -> Bool {
        return (izquierdo.x == derecho.x) && (izquierdo.y == derecho.y)
    }
 }
+```
+
+- En Swift 5 basta con declarar con la extensión que el `Vector2D`
+cumple el protocolo:
+
+```swift
+// Swift 5
+extension Vector2D: Equatable {}
 ```
 
 - Ahora podemos usar estos operadores para chequear si dos instancias de

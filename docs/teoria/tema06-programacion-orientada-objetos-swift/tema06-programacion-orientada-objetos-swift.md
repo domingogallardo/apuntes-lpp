@@ -3133,6 +3133,80 @@ print("Y un booleano aleatorio: \(generator.randomBool())")
 El tipo que se ajusta al protocolo puede proporcionar su propia
 implementación, que se usará en lugar de la proporcionada por la extensión.
 
+
+### Restricción en las extensiones de un protocolo ####
+
+En una extensión de un protocolo es posible definir una restricción
+indicando una condición que se debe cumplir para que la extensión se
+pueda aplicar. Los métodos y propiedades de la extensión sólo estarán
+disponibles en aquellos tipos que se ajusten al protocolo y cumplan el
+requisito.
+
+El requisito se definen usando una cláusula genérica `where` en la que
+se indica una condición sobre algún _tipo asociado_ definido en el
+protocolo.
+
+!!!Note "Nota"
+    No hemos visto el concepto de [_tipo
+    asociado_](https://docs.swift.org/swift-book/LanguageGuide/Generics.html#ID189)
+    en un protocolo. Es una especie de tipo genérico que se define en el
+    protocolo y que se convierte en un tipo concreto en la clase que se
+    ajusta al protocolo.
+
+Por ejemplo, podemos definir una extensión al protocolo `Collection`
+que se aplique a cualquier colección cuyos elementos cumplen el
+protocolo `Equatable`. De esta forma nos aseguramos de que los
+operadores `==` y `!=` están definidos y podemos usarlos en la
+extensión:
+
+```swift
+extension Collection where Element: Equatable {
+    func allEqual() -> Bool {
+        for element in self {
+            if element != self.first {
+                return false
+            }
+        }
+        return true
+    }
+}
+```
+
+El nombre `Element` es un nombre definido en el protocolo `Collection`
+que se refiere al tipo de los elementos de la colección. Es un _tipo
+asociado_.
+
+El método `allEqual()` devuelve `true` si y sólo si todos los
+elementos en la colección son iguales.
+
+Un ejemplo:
+
+```swift
+let numerosIguales = [100, 100, 100, 100, 100]
+let numerosDiferentes = [100, 100, 200, 100, 200]
+```
+
+Dado que ambos arrays cumplen el protocolo `Collection` y los enteros
+cumplen el protocolo `Equatable` podemos usar el método `allEqual()`:
+
+```
+print(numerosIguales.allEqual())
+// Prints "true"
+print(numerosDiferentes.allEqual())
+// Prints "false"
+```
+
+En una colección cuyos elementos no cumplen el protocolo `Equatable`
+no se puede utilizar el método de la extensión:
+
+```swift
+let tormenta = Persona(edad: 32, nombreCompleto: "Ororo Munroe")
+let superHeroes = [tormenta, peterParker, reedRichards]
+print(superHeroes.allEqual())
+//error: type 'Persona' does not conform to protocol 'Equatable'
+```
+
+
 ## Funciones operadoras
 
 Las clases y las estructuras pueden proporcionar sus propias
@@ -3373,77 +3447,6 @@ if let topItem = stackOfStrings.topItem {
 // Imprime "El ítem en el tope de la pila es tres."
 ```
 
-### Restricción en las extensiones de un protocolo ####
-
-En una extensión de un protocolo es posible definir una restricción
-indicando una condición que se debe cumplir para que la extensión se
-pueda aplicar. Los métodos y propiedades de la extensión sólo estarán
-disponibles en aquellos tipos que se ajusten al protocolo y cumplan el
-requisito.
-
-El requisito se definen usando una cláusula genérica `where` en la que
-se indica una condición sobre algún _tipo asociado_ definido en el
-protocolo.
-
-!!!Note "Nota"
-    No hemos visto el concepto de [_tipo
-    asociado_](https://docs.swift.org/swift-book/LanguageGuide/Generics.html#ID189)
-    en un protocolo. Es una especie de tipo genérico que se define en el
-    protocolo y que se convierte en un tipo concreto en la clase que se
-    ajusta al protocolo.
-
-Por ejemplo, podemos definir una extensión al protocolo `Collection`
-que se aplique a cualquier colección cuyos elementos cumplen el
-protocolo `Equatable`. De esta forma nos aseguramos de que los
-operadores `==` y `!=` están definidos y podemos usarlos en la
-extensión:
-
-```swift
-extension Collection where Element: Equatable {
-    func allEqual() -> Bool {
-        for element in self {
-            if element != self.first {
-                return false
-            }
-        }
-        return true
-    }
-}
-```
-
-El nombre `Element` es un nombre definido en el protocolo `Collection`
-que se refiere al tipo de los elementos de la colección. Es un _tipo
-asociado_.
-
-El método `allEqual()` devuelve `true` si y sólo si todos los
-elementos en la colección son iguales.
-
-Un ejemplo:
-
-```swift
-let numerosIguales = [100, 100, 100, 100, 100]
-let numerosDiferentes = [100, 100, 200, 100, 200]
-```
-
-Dado que ambos arrays cumplen el protocolo `Collection` y los enteros
-cumplen el protocolo `Equatable` podemos usar el método `allEqual()`:
-
-```
-print(numerosIguales.allEqual())
-// Prints "true"
-print(numerosDiferentes.allEqual())
-// Prints "false"
-```
-
-En una colección cuyos elementos no cumplen el protocolo `Equatable`
-no se puede utilizar el método de la extensión:
-
-```swift
-let tormenta = Persona(edad: 32, nombreCompleto: "Ororo Munroe")
-let superHeroes = [tormenta, peterParker, reedRichards]
-print(superHeroes.allEqual())
-//error: type 'Persona' does not conform to protocol 'Equatable'
-```
 
 -->
 

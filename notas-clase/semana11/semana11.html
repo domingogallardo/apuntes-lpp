@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<style type="text/css">
+
+/* Admonition */
+
+.admonition {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.admonition.note { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.admonition.quote { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #cecece;
+    border-color: #cccccc;
+}
+
+.admonition.warning { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #FCC8BE;
+    border-color: #FCC8BE;
+}
+
+.admonition.hint { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #E9F9F6;
+    border-color: #AFEEEE;
+}
+
+.admonition.danger { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #F7B2A4;
+    border-color: #F7B2A4;
+}
+
+.admonition-title {
+    font-weight: bold;
+    text-align: left;
+}
+
+
+/* Codehilite */
+
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mb { color: #666666 } /* Literal.Number.Bin */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #0000FF } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
+/* Estilo LPP */
+
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: white;
+  padding: 60px;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+</style>
+
+</head>
+
+<body>
+<!--
+
+Cosas importantes que no contamos, que habría que contar (si hubiera 
+tiempo en esta sesión):
+
+- Un protocolo puede extender otro protocolo (o más de uno)
+  https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-ID280
+
+- Ampliar el tema de genéricos con type constraints y cláusula where
+  (ya está añadido en las extensiones)
+
+-->
+
+<h2>Tema 7: Programación Orientada a Objetos con Swift</h2>
+<h3>Contenidos</h3>
+<ul>
+<li>
+<ol>
+<li>Introducción, historia y características</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Clases y estructuras</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Propiedades</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>Métodos</li>
+</ol>
+</li>
+<li>
+<ol start="5">
+<li>Herencia</li>
+</ol>
+</li>
+<li>
+<ol start="6">
+<li>Inicialización</li>
+</ol>
+</li>
+<li><strong>7. Protocolos</strong></li>
+<li><strong>8. Casting de tipos</strong></li>
+<li><strong>9. Extensiones</strong></li>
+<li><strong>10. Funciones operador</strong></li>
+<li><strong>11. Genericos</strong></li>
+</ul>
+<hr />
+<h3>Bibliografía</h3>
+<ul>
+<li>Swift Language Guide<ul>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-ID267">Protocolos</a></li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TypeCasting.html#//apple_ref/doc/uid/TP40014097-CH22-ID338">Casting de tipos</a></li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html#//apple_ref/doc/uid/TP40014097-CH24-ID151">Extensiones</a></li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-ID28">Funciones operador</a></li>
+<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-ID179">Genéricos</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>7. Protocolos</h3>
+<hr />
+<ul>
+<li>Un <em>protocolo</em> (<em>protocol</em>) define un esquema de métodos,
+  propiedades y otros requisitos (sin implementación).</li>
+<li>El protocolo puede luego ser <em>adoptado</em> (<em>adopted</em>) por una clase,
+  estructura o enumarción para proporcionar una implementación real de
+  esos requisitos. </li>
+<li>Cualquier tipo que satisface los requerimientos de un protocolo se
+  dice que <em>se ajusta</em> o cumple (<em>conform</em>) ese protocolo.</li>
+<li>Podemos considerar los protocolos como una construcción de Swift que
+  amplía la idea de las <em>interfaces</em> de Java. </li>
+<li>Además de especificar los requisitos de los tipos que cumplen el
+  protocolo, también se puede <strong>extender un protocolo</strong> (lo veremos
+  más adelante, cuando hablemos de <strong>extensiones</strong>) para <strong>proporcionar
+  una implementación</strong> de algunos de los métodos requeridos por el
+  protocolo.</li>
+</ul>
+<hr />
+<h3>Sintaxis</h3>
+<ul>
+<li>Similar a las clases, estructuras y enumeraciones:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">UnProtocolo</span> <span class="p">{</span>
+    <span class="c1">// definición del protocolo</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Una estructura que se ajusta a dos protocolos:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">UnStruct</span><span class="p">:</span> <span class="n">PrimerProtocolo</span><span class="p">,</span> <span class="n">OtroProtocolo</span> <span class="p">{</span>
+    <span class="c1">// definición del struct</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Una clase que hereda de una superclase y se ajusta a dos protocolos:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">UnaClase</span><span class="p">:</span> <span class="n">UnaSuperClase</span><span class="p">,</span> <span class="n">PrimerProtocolo</span><span class="p">,</span> <span class="n">OtroProto</span> <span class="p">{</span>
+    <span class="c1">// definición de la clase</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3>Requisitos relacionados con las propiedades</h3>
+<ul>
+<li>Un protocolo puede requerir que se proporcione una propiedad de
+  instancia o de tipo con un nombre y tipo particular, sin especificar
+  si es una propiedad calculada o almacenada,
+  sólo especifica el nombre y el tipo de la propiedad requerida. </li>
+<li>También especifica si la propiedad debe ser de lectura y
+  escritura o sólo de lectura.</li>
+<li>Si el protocolo sólo requiere que la propiedad sea de lectura, el
+  requisito puede ser satisfecho por cualquier tipo de propiedad, y es
+  válido que la propiedad sea también de escritura si es útil para
+  nuestro propio código (el requisito de ser de lectura se cumpliría).</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">UnProtocolo</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">debeSerEscribible</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="kr">set</span> <span class="p">}</span>
+    <span class="kd">var</span> <span class="nv">noTienePorQueSerEscribible</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Para definir una propiedad de tipo hay que precederla en el
+  protocolo con la palabra clave <code>static</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">OtroProtocolo</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="kd">var</span> <span class="nv">unaPropiedadDeTipo</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="kr">set</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">TieneNombre</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">nombreCompleto</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Un ejemplo de una sencilla estructura que adopta el protocolo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Persona</span><span class="p">:</span> <span class="n">TieneNombre</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">edad</span><span class="p">:</span> <span class="nb">Int</span>
+    <span class="kd">var</span> <span class="nv">nombreCompleto</span><span class="p">:</span> <span class="nb">String</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">john</span> <span class="p">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">edad</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span> <span class="n">nombreCompleto</span><span class="p">:</span> <span class="s">&quot;John Appleseed&quot;</span><span class="p">)</span>
+<span class="c1">// john.nombreCompleto es &quot;John Appleseed&quot;</span>
+</code></pre></div>
+<ul>
+<li>Otro ejemplo de una clase más compleja, que también adopta el
+  protocolo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">NaveEstelar</span><span class="p">:</span> <span class="n">TieneNombre</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">prefijo</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
+    <span class="kd">var</span> <span class="nv">nombre</span><span class="p">:</span> <span class="nb">String</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">prefijo</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">nombre</span> <span class="p">=</span> <span class="n">nombre</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">prefijo</span> <span class="p">=</span> <span class="n">prefijo</span>
+    <span class="p">}</span>
+    <span class="kd">var</span> <span class="nv">nombreCompleto</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">prefijo</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">?</span> <span class="n">prefijo</span><span class="p">!</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">nombre</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nv">ncc1701</span> <span class="p">=</span> <span class="n">NaveEstelar</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Enterprise&quot;</span><span class="p">,</span> <span class="n">prefijo</span><span class="p">:</span> <span class="s">&quot;USS&quot;</span><span class="p">)</span>
+<span class="c1">// ncc1701.nombreCompleto es &quot;USS Enterprise&quot;</span>
+</code></pre></div>
+<hr />
+<h3>Requisitos de métodos</h3>
+<ul>
+<li>Los protocolos pueden requerir que los tipos que se ajusten a ellos
+  implementen métodos de instancia y de tipos específicos. </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">UnProtocolo</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">unMetodo</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Los métodos del tipo en el protocolo deben indicarse con la palabra
+  clave <code>static</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">UnProtocolo</span> <span class="p">{</span>
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">unMetodoDelTipo</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">GeneradorNumerosAleatorios</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">random</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Double</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Una implementación de una clase que adopta el protocolo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">GeneradorLinealCongruente</span><span class="p">:</span> <span class="n">GeneradorNumerosAleatorios</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">ultimoRandom</span> <span class="p">=</span> <span class="mf">42.0</span>
+    <span class="kd">let</span> <span class="nv">m</span> <span class="p">=</span> <span class="mf">139968.0</span>
+    <span class="kd">let</span> <span class="nv">a</span> <span class="p">=</span> <span class="mf">3877.0</span>
+    <span class="kd">let</span> <span class="nv">c</span> <span class="p">=</span> <span class="mf">29573.0</span>
+    <span class="kd">func</span> <span class="nf">random</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Double</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">number</span> <span class="p">=</span> <span class="n">ultimoRandom</span> <span class="o">*</span> <span class="n">a</span> <span class="o">+</span> <span class="n">c</span>
+        <span class="n">ultimoRandom</span> <span class="p">=</span> <span class="n">number</span><span class="p">.</span><span class="n">truncatingRemainder</span><span class="p">(</span><span class="n">dividingBy</span><span class="p">:</span> <span class="n">m</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ultimoRandom</span> <span class="o">/</span> <span class="n">m</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">generador</span> <span class="p">=</span> <span class="n">GeneradorLinealCongruente</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Un número aleatorio: </span><span class="si">\(</span><span class="n">generador</span><span class="p">.</span><span class="n">random</span><span class="si">())</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime &quot;Un número aleatorio: 0.37464991998171&quot;</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Y otro: </span><span class="si">\(</span><span class="n">generador</span><span class="p">.</span><span class="n">random</span><span class="si">())</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime &quot;Y otro: 0.729023776863283&quot;</span>
+</code></pre></div>
+<hr />
+<h3>Requisito de método <code>mutating</code></h3>
+<ul>
+<li>Si definimos un protocolo con un requisito de método de instancia
+  que pretenda mutar las instancias del tipo que adopte el protocolo,
+  se debe marcar el método con la palabra <code>mutating</code>. </li>
+<li>Esto permite a las estructuras y enumeraciones que adopten el
+  protocolo definir ese método como <code>mutating</code>. </li>
+<li>No es necesario hacerlo con las clases, porque la palabra <code>mutating</code>
+  solo es necesaria en estructuras y enumeraciones.</li>
+</ul>
+<p>Un ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">Conmutable</span> <span class="p">{</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">conmutar</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">enum</span> <span class="nc">Interruptor</span><span class="p">:</span> <span class="n">Conmutable</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">apagado</span><span class="p">,</span> <span class="n">encendido</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">conmutar</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="kc">self</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="p">.</span><span class="n">apagado</span><span class="p">:</span>
+            <span class="kc">self</span> <span class="p">=</span> <span class="p">.</span><span class="n">encendido</span>
+        <span class="k">case</span> <span class="p">.</span><span class="n">encendido</span><span class="p">:</span>
+            <span class="kc">self</span> <span class="p">=</span> <span class="p">.</span><span class="n">apagado</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">interruptorLampara</span> <span class="p">=</span> <span class="n">Interruptor</span><span class="p">.</span><span class="n">apagado</span>
+<span class="n">interruptorLampara</span><span class="p">.</span><span class="n">conmutar</span><span class="p">()</span>
+<span class="c1">// interruptorLampara es ahora igual a .encendido</span>
+</code></pre></div>
+<hr />
+<h3>Protocolos como tipos</h3>
+<ul>
+<li>Los protocolos no implementan realmente ninguna funcionalidad por
+  ellos mismos. </li>
+<li>Sin embargo, cualquier protocolo que definamos se convierte
+  automáticamente en un tipo con todas sus propiedades que podemos
+  usar en nuestro código. Podemos entonces usar el protocolo en
+  cualquier sitio donde permitamos otros tipos, incluyendo:<ul>
+<li>El tipo de un parámetro de una función, método o inicializador o
+  de sus valores devueltos.</li>
+<li>El tipo de una constante, variable o propiedad</li>
+<li>El tipo de los ítems de un array, diccionario u otro contenedor</li>
+</ul>
+</li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Dado</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">caras</span><span class="p">:</span> <span class="nb">Int</span>
+    <span class="kd">let</span> <span class="nv">generador</span><span class="p">:</span> <span class="n">GeneradorNumerosAleatorios</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">caras</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">generador</span><span class="p">:</span> <span class="n">GeneradorNumerosAleatorios</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">caras</span> <span class="p">=</span> <span class="n">caras</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">generador</span> <span class="p">=</span> <span class="n">generador</span>
+    <span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">tirar</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">Int</span><span class="p">(</span><span class="n">generador</span><span class="p">.</span><span class="n">random</span><span class="p">()</span> <span class="o">*</span> <span class="nb">Double</span><span class="p">(</span><span class="n">caras</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>La propiedad <code>generador</code> es del tipo
+  <code>GeneradorNumerosAleatorios</code>. Podemos asignarle una instancia de
+  <strong>cualquier tipo</strong> que adopte el protocolo <code>GeneradorNumerosAleatorios</code>.</li>
+<li>El inicializador tiene un parámetro llamado <code>generador</code>, que también
+  es del tipo <code>GeneradorNumerosAleatorios</code>. Podemos pasarle un valor
+  de cualquier instancia que se ajuste a este tipo. </li>
+<li>El método <code>tirar</code> llama al método <code>random()</code> del generador para
+  crear un nuevo número aleatorio. Debido a que sabemos que el
+  generador se ajusta al protocolo <code>GeneradorNumerosAleatorios</code>
+  tenemos la garantía de que va a existir un método <code>random()</code> al que
+  llamar.</li>
+</ul>
+<p>Un ejemplo de uso del código:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">d6</span> <span class="p">=</span> <span class="n">Dado</span><span class="p">(</span><span class="n">caras</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="n">generador</span><span class="p">:</span> <span class="n">GeneradorLinealCongruente</span><span class="p">())</span>
+<span class="k">for</span> <span class="kc">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">5</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;La tirada del dado es </span><span class="si">\(</span><span class="n">d6</span><span class="p">.</span><span class="n">tirar</span><span class="si">())</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// La tirada del dado es 3</span>
+<span class="c1">// La tirada del dado es 5</span>
+<span class="c1">// La tirada del dado es 4</span>
+<span class="c1">// La tirada del dado es 5</span>
+<span class="c1">// La tirada del dado es 4</span>
+</code></pre></div>
+<hr />
+<h3>Colecciones de tipos protocolo</h3>
+<ul>
+<li>Un protocolo puede usarse como el tipo que se almacena un una
+  colección (array, diccionario, etc.)</li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">peterParker</span> <span class="p">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">edad</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span> <span class="n">nombreCompleto</span><span class="p">:</span> <span class="s">&quot;Peter Parker&quot;</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nv">ncc1701</span> <span class="p">=</span> <span class="n">NaveEstelar</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Enterprise&quot;</span><span class="p">,</span> <span class="n">prefijo</span><span class="p">:</span> <span class="s">&quot;USS&quot;</span><span class="p">)</span>
+
+<span class="kd">let</span> <span class="nv">cosasConNombre</span><span class="p">:</span> <span class="p">[</span><span class="n">TieneNombre</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="n">peterParker</span><span class="p">,</span> <span class="n">ncc1701</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">cosa</span> <span class="k">in</span> <span class="n">cosasConNombre</span> <span class="p">{</span>
+   <span class="bp">print</span><span class="p">(</span><span class="n">cosa</span><span class="p">.</span><span class="n">nombreCompleto</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Peter Parker</span>
+<span class="c1">// USS Enterprise</span>
+</code></pre></div>
+<ul>
+<li>La constante <code>cosa</code> que itera sobre los elementos del array es de
+  tipo <code>TieneNombre</code>], no es de tipo <code>Persona</code> ni de tipo <code>NaveEstelar</code>,
+  incluso aunque las instancias que hay tras de escena son do esos
+  tipos. </li>
+<li>Por ser del tipo <code>TieneNombre</code> sabemos que tiene una propiedad
+  <code>nombreCompleto</code> que podemos usar sobre la variable iteradora.</li>
+</ul>
+<hr />
+<h3>Protocolo <code>Equatable</code></h3>
+<ul>
+<li>En la <a href="https://developer.apple.com/documentation/swift">biblioteca estándar de Swift</a> se definen distintos protocolos
+  como <code>Collection</code> y <code>Equatable</code> que describen abstracciones
+  comunes. </li>
+<li>Muchos de estos protocolos incorporan implementaciones por defecto
+  de algunos de sus métodos mediante extensiones definidas en la
+  propia biblioteca estándar.</li>
+<li>Ejemplo del protocolo
+  <a href="https://developer.apple.com/documentation/swift/equatable"><code>Equatable</code></a>
+  en el que se define las operaciones igual <code>==</code> y distinto <code>!=</code>. La
+  primera debemos implementarla nosotros. La segunda ya tiene una
+  implementación por defecto.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Punto3D</span><span class="p">:</span> <span class="nb">Equatable</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="nb">Double</span>
+
+    <span class="kd">init</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">x</span> <span class="p">=</span> <span class="n">x</span> 
+        <span class="kc">self</span><span class="p">.</span><span class="n">y</span> <span class="p">=</span> <span class="n">y</span> 
+        <span class="kc">self</span><span class="p">.</span><span class="n">z</span> <span class="p">=</span> <span class="n">z</span> 
+    <span class="p">}</span>
+
+    <span class="kd">static</span> <span class="kd">func</span> <span class="p">==</span> <span class="p">(</span><span class="n">izquierda</span><span class="p">:</span> <span class="n">Punto3D</span><span class="p">,</span> <span class="n">derecha</span><span class="p">:</span> <span class="n">Punto3D</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+        <span class="k">return</span>
+            <span class="n">izquierda</span><span class="p">.</span><span class="n">x</span> <span class="p">==</span> <span class="n">derecha</span><span class="p">.</span><span class="n">x</span> <span class="o">&amp;&amp;</span>
+            <span class="n">izquierda</span><span class="p">.</span><span class="n">y</span> <span class="p">==</span> <span class="n">derecha</span><span class="p">.</span><span class="n">y</span> <span class="o">&amp;&amp;</span>
+            <span class="n">izquierda</span><span class="p">.</span><span class="n">z</span> <span class="p">==</span> <span class="n">derecha</span><span class="p">.</span><span class="n">z</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">p1</span> <span class="p">=</span> <span class="n">Punto3D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">p2</span> <span class="p">=</span> <span class="n">Punto3D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">p1</span> <span class="p">==</span> <span class="n">p2</span><span class="p">)</span>
+<span class="c1">// Imprime true</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">p1</span> <span class="o">!=</span> <span class="n">p2</span><span class="p">)</span>
+<span class="c1">// Imprime false</span>
+</code></pre></div>
+<ul>
+<li>El operador <code>==</code> se define en la propia estructura. Se utiliza la
+  palabra static para indicar que se trata de un operador que estamos
+  sobrecargando (hablaremos más adelante de los operadores).</li>
+<li>
+<p>El operador <code>!=</code> que se usa en la última instrucción se define en una
+  implementación por defecto.</p>
+</li>
+<li>
+<p>En <strong>Swift 5</strong> el compilador define una <strong>implementación automática
+del operador <code>==</code> en las estructuras y enumeraciones</strong> al añadir el
+protocolo <code>Equatable</code>, siempre que las propiedades almacenadas y los
+valores asociados cumplan ese protocolo.</p>
+</li>
+<li>
+<p>Por ejemplo, si en lugar de una clase definimos un <code>struct Punto3D</code>
+el código quedaría como sigue (no es necesario definir ni el
+inicializador por defecto ni el operador <code>==</code>):</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Punto3D</span><span class="p">:</span> <span class="nb">Equatable</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="nb">Double</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">p1</span> <span class="p">=</span> <span class="n">Punto3D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">p2</span> <span class="p">=</span> <span class="n">Punto3D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">p1</span> <span class="p">==</span> <span class="n">p2</span><span class="p">)</span>
+<span class="c1">// Imprime true</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">p1</span> <span class="o">!=</span> <span class="n">p2</span><span class="p">)</span>
+<span class="c1">// Imprime false</span>
+</code></pre></div>
+<hr />
+<h3>8. Casting de tipos</h3>
+<hr />
+<ul>
+<li>El <em>casting</em> de tipos es una forma de comprobar el tipo de una
+  instancia o de tratar esa instancia como de una superclase distinta.</li>
+<li>La forma de implementarlo es utilizando los operadores <code>is</code> y <code>as</code>.</li>
+<li>También se puede usar el <em>casting</em> de tipos para comprobar si un
+  tipo se ajusta a un protocolo.</li>
+</ul>
+<hr />
+<h3>Una jerarquía de clases para el casting de tipos</h3>
+<ul>
+<li>Vamos a construir una jerarquía de clases y subclases con las que
+  trabajar.</li>
+<li>Utilizaremos el <em>casting</em> de tipos para comprobar el tipo de una
+  instancia particular de una clase y para convertir esa instancia en
+  otra clase dentro de la misma jerarquía.</li>
+</ul>
+<p>Por ejemplo, supongamos que estamos diseñando un programa para
+trabajar con una biblioteca de medios digitales (libros, películas,
+música, etc.).</p>
+<ul>
+<li>La clase <code>MediaItem</code> proporciona la funcionalidad básica de
+cualquier tipo de ítem que aparece en una biblioteca de medios
+digitales. </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">MediaItem</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">nombre</span><span class="p">:</span> <span class="nb">String</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">nombre</span> <span class="p">=</span> <span class="n">nombre</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Las siguientes clases definen dos subclases de <code>MediaItem</code>:
+<code>Pelicula</code> y <code>Cancion</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Pelicula</span><span class="p">:</span> <span class="n">MediaItem</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">director</span><span class="p">:</span> <span class="nb">String</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">director</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">director</span> <span class="p">=</span> <span class="n">director</span>
+        <span class="kc">super</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="n">nombre</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Cancion</span><span class="p">:</span> <span class="n">MediaItem</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">artista</span><span class="p">:</span> <span class="nb">String</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">artista</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">artista</span> <span class="p">=</span> <span class="n">artista</span>
+        <span class="kc">super</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="n">nombre</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Por último, creamos un array constante llamado <code>biblioteca</code>, que
+contienen dos instancias de <code>Pelicula</code> y tres instancias de
+<code>Cancion</code>. </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">biblioteca</span><span class="p">[</span><span class="n">MediaItem</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span>
+    <span class="n">Pelicula</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;El Señor de los Anillos&quot;</span><span class="p">,</span> <span class="n">director</span><span class="p">:</span> <span class="s">&quot;Peter Jackson&quot;</span><span class="p">),</span>
+    <span class="n">Cancion</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Child in Time&quot;</span><span class="p">,</span> <span class="n">artista</span><span class="p">:</span> <span class="s">&quot;Deep Purple&quot;</span><span class="p">),</span>
+    <span class="n">Pelicula</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;El Puente de los Espías&quot;</span><span class="p">,</span> <span class="n">director</span><span class="p">:</span> <span class="s">&quot;Steven Spielberg&quot;</span><span class="p">),</span>
+    <span class="n">Cancion</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;I Wish You Were Here&quot;</span><span class="p">,</span> <span class="n">artista</span><span class="p">:</span> <span class="s">&quot;Pink Floyd&quot;</span><span class="p">),</span>
+    <span class="n">Cancion</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Yellow&quot;</span><span class="p">,</span> <span class="n">artista</span><span class="p">:</span> <span class="s">&quot;Coldplay&quot;</span><span class="p">)</span>
+<span class="p">]</span>
+</code></pre></div>
+<ul>
+<li>Los ítems almacenados en la biblioteca son todavía instancias de
+  <code>Pelicula</code> y <code>Cancion</code>. </li>
+<li>Sin embargo, el array es del tipo <code>[MediaItem]</code>. Si iteramos sobre
+  los contenidos de este array, los ítems que recibiremos tendrán el
+  tipo <code>MediaItem</code>.</li>
+<li>Para trabajar con ellos como su tipo nativo, debemos chequear su
+  tipo, y hacer un <em>downcast</em> a su tipo concreto.</li>
+</ul>
+<p>En el ejemplo anterior se puede dejar que el compilador infiera el
+tipo del array:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">biblioteca</span> <span class="p">=</span> <span class="p">[</span>
+    <span class="n">Pelicula</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;El Señor de los Anillos&quot;</span><span class="p">,</span> <span class="n">director</span><span class="p">:</span> <span class="s">&quot;Peter Jackson&quot;</span><span class="p">),</span>
+    <span class="n">Cancion</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Yellow&quot;</span><span class="p">,</span> <span class="n">artista</span><span class="p">:</span> <span class="s">&quot;Coldplay&quot;</span><span class="p">)</span>
+<span class="p">]</span>
+</code></pre></div>
+<hr />
+<h3>Comprobación del tipo</h3>
+<ul>
+<li>El <em>operador de comprobación</em> (<em>check operator</em>) <code>is</code> permite
+  comprobar si una instancia es de un cierto tipo subclase.</li>
+<li>Devuelve <code>true</code> si la instancia es del tipo de la subclase y <code>false</code>
+  si no.</li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">contadorPeliculas</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="kd">var</span> <span class="nv">contadorCanciones</span> <span class="p">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">biblioteca</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">item</span> <span class="k">is</span> <span class="n">Pelicula</span> <span class="p">{</span>
+        <span class="n">contadorPeliculas</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">item</span> <span class="k">is</span> <span class="n">Cancion</span> <span class="p">{</span>
+        <span class="n">contadorCanciones</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La biblioteca contiene </span><span class="si">\(</span><span class="n">contadorCanciones</span><span class="si">)</span><span class="s"> películas y </span><span class="si">\(</span><span class="n">contadorPeliculas</span><span class="si">)</span><span class="s"> canciones&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime &quot;La biblioteca contiene 3 películas y 2 canciones&quot;</span>
+</code></pre></div>
+<hr />
+<h3>Downcasting</h3>
+<ul>
+<li>Una constante o variable de un cierto tipo de clase puede referirse
+  (contener) a una instancia de una subclase. </li>
+<li>Podemos entonces hacer un <em>downcast</em> al tipo de la subclase con
+  un operador de <em>cast</em> (<code>as?</code> o <code>as!</code>). </li>
+<li>Como el <em>downcast</em> puede fallar, la versión condicional, <code>as?</code>,
+  devuelve un valor opcional del tipo al que estamos intentando hacer
+  el <em>downcasting</em>. La versión forzosa, <code>as!</code>, intenta el <em>downcast</em> y
+  fuerza la desenvoltura del resultado.</li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">biblioteca</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="kd">let</span> <span class="nv">pelicula</span> <span class="p">=</span> <span class="n">item</span> <span class="k">as</span><span class="p">?</span> <span class="n">Pelicula</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Película: </span><span class="si">\(</span><span class="n">pelicula</span><span class="p">.</span><span class="n">nombre</span><span class="si">)</span><span class="s">, dir. </span><span class="si">\(</span><span class="n">pelicula</span><span class="p">.</span><span class="n">director</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="kd">let</span> <span class="nv">cancion</span> <span class="p">=</span> <span class="n">item</span> <span class="k">as</span><span class="p">?</span> <span class="n">Cancion</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Cancion: </span><span class="si">\(</span><span class="n">cancion</span><span class="p">.</span><span class="n">nombre</span><span class="si">)</span><span class="s">, de </span><span class="si">\(</span><span class="n">cancion</span><span class="p">.</span><span class="n">artista</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Película: El Señor de los Anillos, dir. Peter Jackson</span>
+<span class="c1">// Cancion: Child in Time, de Deep Purple</span>
+<span class="c1">// Película: El Puente de los Espías, dir. Steven Spielberg</span>
+<span class="c1">// Cancion: I Wish You Were Here, de Pink Floyd</span>
+<span class="c1">// Cancion: Yellow, de Coldplay</span>
+</code></pre></div>
+<hr />
+<h3>El tipo <code>Any</code></h3>
+<ul>
+<li>El tipo <code>Any</code> puede representar una instancia de cualquier tipo,
+incluyendo tipos función:</li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">array</span> <span class="p">=</span> <span class="p">[</span><span class="nb">Any</span><span class="p">]()</span>
+
+<span class="n">array</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">array</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">array</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">array</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">)</span>
+<span class="n">array</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;hola&quot;</span><span class="p">)</span>
+<span class="n">array</span><span class="p">.</span><span class="n">append</span><span class="p">((</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">))</span>
+<span class="n">array</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">Pelicula</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Ghostbusters&quot;</span><span class="p">,</span> <span class="n">director</span><span class="p">:</span> <span class="s">&quot;Ivan Reitman&quot;</span><span class="p">))</span>
+<span class="n">array</span><span class="p">.</span><span class="n">append</span><span class="p">({</span> <span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="k">in</span> <span class="s">&quot;Hola, </span><span class="si">\(</span><span class="n">name</span><span class="si">)</span><span class="s">&quot;</span> <span class="p">})</span>
+</code></pre></div>
+<ul>
+<li>El array contiene dos valores <code>Int</code>, dos valores <code>Double</code>, un valor
+  <code>String</code>, una tupla del tipo <code>(Double, Double)</code>, la película
+  "Ghostbusters", y una clausura que toma un <code>String</code> y devuelve otro
+  <code>String</code>.</li>
+<li>Podemos usar los operadores <code>is</code> y <code>as</code> en una sentencia <code>switch</code>
+  para descubrir en tiempo de ejecución el tipo específico de una
+  constante o variable de la que sólo se sabe que es de tipo <code>Any</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">array</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="n">item</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">0</span> <span class="k">as</span> <span class="nb">Int</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;cero como un Int&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="mi">0</span> <span class="k">as</span> <span class="nb">Double</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;cero como un Double&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="nv">someInt</span> <span class="k">as</span> <span class="nb">Int</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;un valor entero de </span><span class="si">\(</span><span class="n">someInt</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="nv">unDouble</span> <span class="k">as</span> <span class="nb">Double</span> <span class="k">where</span> <span class="n">unDouble</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;a valor positivo de </span><span class="si">\(</span><span class="n">unDouble</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="k">is</span> <span class="nb">Double</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;algún otro valor double que no quier imprimir&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="nv">someString</span> <span class="k">as</span> <span class="nb">String</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;una cadena con valor de </span><span class="se">\&quot;</span><span class="si">\(</span><span class="n">someString</span><span class="si">)</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">as</span> <span class="p">(</span><span class="nb">Double</span><span class="p">,</span> <span class="nb">Double</span><span class="p">):</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;un punto (x, y) en </span><span class="si">\(</span><span class="n">x</span><span class="si">)</span><span class="s">, </span><span class="si">\(</span><span class="n">y</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="nv">pelicula</span> <span class="k">as</span> <span class="n">Pelicula</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;una película: </span><span class="si">\(</span><span class="n">pelicula</span><span class="p">.</span><span class="n">nombre</span><span class="si">)</span><span class="s">, dir. </span><span class="si">\(</span><span class="n">pelicula</span><span class="p">.</span><span class="n">director</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="nv">stringConverter</span> <span class="k">as</span> <span class="p">(</span><span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="n">stringConverter</span><span class="p">(</span><span class="s">&quot;Michael&quot;</span><span class="p">))</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;alguna otra cosa&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// cero como un Int</span>
+<span class="c1">// cero como un Double</span>
+<span class="c1">// un valor entero de 42</span>
+<span class="c1">// a valor positivo de 3.14159</span>
+<span class="c1">// una cadena con valor de &quot;hola&quot;</span>
+<span class="c1">// un punto (x, y) en 3.0, 5.0</span>
+<span class="c1">// una película: Ghostbusters, dir. Ivan Reitman</span>
+<span class="c1">// Hola, Michael</span>
+</code></pre></div>
+<hr />
+<h3>Comprobación de ajustarse a un protocolo</h3>
+<ul>
+<li>Podemos usar también los operadores anteriores <code>is</code> y <code>as</code> (y <code>as?</code>
+  y <code>as!</code>) para comprobar si una instancia se ajusta a un protocolo y
+  para hacer un <em>cast</em> a un protocolo específico.</li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">TieneArea</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">area</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Definimos dos clases <code>Circulo</code> y <code>Pais</code> que se ajustan ambos al protocolo: </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Circulo</span><span class="p">:</span> <span class="n">TieneArea</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">pi</span> <span class="p">=</span> <span class="mf">3.1415927</span>
+    <span class="kd">var</span> <span class="nv">radio</span><span class="p">:</span> <span class="nb">Double</span>
+    <span class="kd">var</span> <span class="nv">area</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">radio</span> <span class="o">*</span> <span class="n">radio</span> <span class="p">}</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">radio</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span> <span class="kc">self</span><span class="p">.</span><span class="n">radio</span> <span class="p">=</span> <span class="n">radio</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Pais</span><span class="p">:</span> <span class="n">TieneArea</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">area</span><span class="p">:</span> <span class="nb">Double</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">area</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span> <span class="kc">self</span><span class="p">.</span><span class="n">area</span> <span class="p">=</span> <span class="n">area</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>La clase <code>Circulo</code> implementa el requisito como una propiedad
+  calculada, basada en la propiedad almacenada <code>radio</code>. </li>
+<li>La clase <code>Pais</code> implementa el requisito directamente como una
+  propiedad almacenada. </li>
+<li>Ambas clases se ajustan correctamente al
+  protocolo <code>TieneArea</code>.</li>
+</ul>
+<p>Definimos una clase <code>Animal</code> que no se ajusta al protocolo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Animal</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">patas</span><span class="p">:</span> <span class="nb">Int</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">patas</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span> <span class="kc">self</span><span class="p">.</span><span class="n">patas</span> <span class="p">=</span> <span class="n">patas</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Las clases <code>Circulo</code>, <code>Pais</code> y <code>Animal</code> no tienen ninguna clase base
+  compartida. Sin embargo, todas son clases, por lo que las instancias
+  de los tres tipos pueden usarse para inicializar un array que
+  almacena valores de tipo <code>Any</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">objetos</span><span class="p">:</span> <span class="p">[</span><span class="nb">Any</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span>
+    <span class="n">Circulo</span><span class="p">(</span><span class="n">radio</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">),</span>
+    <span class="n">Pais</span><span class="p">(</span><span class="n">area</span><span class="p">:</span> <span class="mi">243_610</span><span class="p">),</span>
+    <span class="n">Animal</span><span class="p">(</span><span class="n">patas</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">]</span>
+</code></pre></div>
+<ul>
+<li>Y ahora podemos iterar sobre el array de objetos, comprobando para
+  cada ítem si la instancia se ajusta al protocolo <code>TieneArea</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">objecto</span> <span class="k">in</span> <span class="n">objetos</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="kd">let</span> <span class="nv">objetoConArea</span> <span class="p">=</span> <span class="n">objecto</span> <span class="k">as</span><span class="p">?</span> <span class="n">TieneArea</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;El área es </span><span class="si">\(</span><span class="n">objetoConArea</span><span class="p">.</span><span class="n">area</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Algo que no tiene un área&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// El área es 12.5663708</span>
+<span class="c1">// El área es 243610.0</span>
+<span class="c1">// Algo que no tiene un área</span>
+</code></pre></div>
+<ul>
+<li>Cuando un objeto en el array se ajusta al protocolo <code>TieneArea</code>, el
+  valor opcional devuelto por el operador <code>as?</code> se desenvuelve con un
+  ligado opcional en una constante llamada <code>objetoConArea</code>. </li>
+<li>Esta constante tiene el tipo <code>TieneArea</code>, por lo que su propiedad
+  <code>area</code> podrá ser accedida e impresa.</li>
+</ul>
+<hr />
+<h3>9. Extensiones</h3>
+<hr />
+<ul>
+<li>Las <em>extensiones</em> añaden nueva funcionalidad a una clase,
+  estructura, enumeración o protocolo. </li>
+<li>Esto incluye la posibilidad de extender tipos para los que no
+  tenemos acceso al código fuente original (esto se conoce como
+  <em>modelado retroactivo</em>).</li>
+<li>Es posible incluso extender clases de las librerías estándar de
+  Swift, como Int, Double, Array, etc.</li>
+</ul>
+<p>Entre otras cosas, las extensiones pueden: </p>
+<ul>
+<li>Añadir propiedades calculadas de instancia y de tipo</li>
+<li>Definir métodos de instancia y de tipo</li>
+<li>Proporcionar nuevos inicializadores</li>
+<li>Hacer que un tipo existente se ajuste a un protocolo</li>
+</ul>
+<hr />
+<h3>Sintaxis</h3>
+<ul>
+<li>Para declarar una extensión hay que usar la palabra clave
+  <code>extension</code></li>
+<li>El tipo <code>UnTipo</code> sobre el que se realiza la extensión debe existir previamente.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">UnTipo</span> <span class="p">{</span>
+    <span class="c1">// nueva funcionalidad para añadir a UnTipo</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3>Propiedades calculadas</h3>
+<ul>
+<li>Las extensiones pueden añadir propiedades calculadas de instancias y
+  de tipos. </li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Persona</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nv">mayorEdad</span><span class="p">:</span> <span class="nb">Bool</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">edad</span> <span class="o">&gt;=</span> <span class="mi">18</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Una vez definida esta extensión, hemos ampliado la clase con esta
+  nueva propiedad, sin tocar el código de la clase.</li>
+<li>Podemos preguntar si una persona es mayor de edad:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">p</span> <span class="p">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">edad</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="n">nombreCompleto</span><span class="p">:</span> <span class="s">&quot;Lucía&quot;</span><span class="p">)</span>
+<span class="n">p</span><span class="p">.</span><span class="n">mayorEdad</span> <span class="c1">// false</span>
+</code></pre></div>
+<p>Otro ejemplo:</p>
+<ul>
+<li>Añadimos cinco propiedades de instancia calculadas al tipo de Swift
+  Double, para proporcionar un soporte básico para trabajar con
+  unidades de distancia.</li>
+<li>Cuando se accede a estas propiedades se devuelve el valor en metros,
+  suponiendo que el valor que contiene la variable está en la unidad
+  de distancia correspondiente.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Double</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">km</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">self</span> <span class="o">*</span> <span class="mf">1_000.0</span> <span class="p">}</span>
+    <span class="kd">var</span> <span class="nv">m</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">self</span> <span class="p">}</span>
+    <span class="kd">var</span> <span class="nv">cm</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">self</span> <span class="o">/</span> <span class="mf">100.0</span> <span class="p">}</span>
+    <span class="kd">var</span> <span class="nv">mm</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">self</span> <span class="o">/</span> <span class="mf">1_000.0</span> <span class="p">}</span>
+    <span class="kd">var</span> <span class="nv">ft</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">self</span> <span class="o">/</span> <span class="mf">3.28084</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Una vez definida la extensión, podemos usarla en cualquier variable
+  <code>Double</code>. Incluso la podemos usar en literales:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">distancia</span> <span class="p">=</span> <span class="mf">11.</span><span class="n">km</span>
+<span class="c1">// En distancia tendremos 11.000 metros</span>
+<span class="kd">let</span> <span class="nv">unaPulgada</span> <span class="p">=</span> <span class="mf">25.4</span><span class="p">.</span><span class="n">mm</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Una pulgada es </span><span class="si">\(</span><span class="n">unaPulgada</span><span class="si">)</span><span class="s"> metros&quot;</span><span class="p">)</span>
+<span class="c1">// Una pulgada es 0.0254 metros</span>
+<span class="kd">let</span> <span class="nv">tresPies</span> <span class="p">=</span> <span class="mf">3.</span><span class="n">ft</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Tres pies son </span><span class="si">\(</span><span class="n">tresPies</span><span class="si">)</span><span class="s"> metros&quot;</span><span class="p">)</span>
+<span class="c1">// Tres pies son 0.914399970739201 metros</span>
+</code></pre></div>
+<ul>
+<li>
+<p>Por ejemplo, cuando se escribe <code>11.km</code> se pide el valor de la
+  propiedad calculada <code>km</code> de la instancia 11. La propiedad calculada
+  devuelve el resultado de multiplicar 11 por 1000, esto es, los
+  metros correspondientes a 11 kilómetros.</p>
+</li>
+<li>
+<p>Estas propiedades son propiedades calculadas de solo lectura, por lo
+  que se expresan sin la palabra clave <code>get</code>, por brevedad. Sus
+  valores devueltos son de tipo <code>Double</code>, y pueden usarse en cálculos
+  matemáticos en cualquier sitio que se acepte un <code>Double</code>:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">unMaraton</span> <span class="p">=</span> <span class="mf">42.</span><span class="n">km</span> <span class="o">+</span> <span class="mf">195.</span><span class="n">m</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Un maratón tiene una longitud de </span><span class="si">\(</span><span class="n">unMaraton</span><span class="si">)</span><span class="s"> metros&quot;</span><span class="p">)</span>
+<span class="c1">// Un maratón tiene una longitud de 42195.0 metros</span>
+</code></pre></div>
+<hr />
+<h3>Inicializadores</h3>
+<ul>
+<li>Las extensiones pueden añadir nuevos inicializadores a tipos
+  existentes. </li>
+<li>Esto nos permite extender otros tipos para aceptar nuestros propios
+  tipos como parámetros de la inicialización, o para proporcionar
+  opciones adicionales que no estaban incluidos en la implementación
+  original del tipo.</li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Tamaño</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">ancho</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">alto</span> <span class="p">=</span> <span class="mf">0.0</span>
+<span class="p">}</span>
+<span class="kd">struct</span> <span class="nc">Punto</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="p">=</span> <span class="mf">0.0</span>
+<span class="p">}</span>
+<span class="kd">struct</span> <span class="nc">Rectangulo</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">origen</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nv">tamaño</span> <span class="p">=</span> <span class="n">Tamaño</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Debido a que la estructura <code>Rectangulo</code> proporciona valores por
+  defecto para todas sus propiedades, tiene un inicializador por
+  defecto que puede utilizarse para crear nuevas instancias.</li>
+<li>También podemos inicializarlo asignando todas sus propieades:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">rectanguloPorDefecto</span> <span class="p">=</span> <span class="n">Rectangulo</span><span class="p">()</span>
+<span class="kd">let</span> <span class="nv">rectanguloInicializado</span> <span class="p">=</span> <span class="n">Rectangulo</span><span class="p">(</span><span class="n">origen</span><span class="p">:</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">),</span>
+                                <span class="n">tamaño</span><span class="p">:</span> <span class="n">Tamaño</span><span class="p">(</span><span class="n">ancho</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">alto</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">))</span>
+</code></pre></div>
+<ul>
+<li>Podemos extender la estructura <code>Rectangulo</code> para proporcionar un
+  inicializador adicional que toma un punto específico del centro y un
+  tamaño:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Rectangulo</span> <span class="p">{</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">centro</span><span class="p">:</span> <span class="n">Punto</span><span class="p">,</span> <span class="n">tamaño</span><span class="p">:</span> <span class="n">Tamaño</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">origenX</span> <span class="p">=</span> <span class="n">centro</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">tamaño</span><span class="p">.</span><span class="n">ancho</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="kd">let</span> <span class="nv">origenY</span> <span class="p">=</span> <span class="n">centro</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">tamaño</span><span class="p">.</span><span class="n">alto</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="kc">self</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">origen</span><span class="p">:</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">origenX</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">origenY</span><span class="p">),</span> <span class="n">tamaño</span><span class="p">:</span> <span class="n">tamaño</span><span class="p">)</span>
+    <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Ahora podemos inicializar un rectángulo a partir de su punto central
+y de un tamaño:</li>
+</ul>
+<div class="highlight"><pre><span></span><code> <span class="kd">let</span> <span class="nv">rectanguloCentro</span> <span class="p">=</span> <span class="n">Rectangulo</span><span class="p">(</span><span class="n">centro</span><span class="p">:</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">),</span>
+                           <span class="n">tamaño</span><span class="p">:</span> <span class="n">Tamaño</span><span class="p">(</span><span class="n">ancho</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">alto</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">))</span>
+ <span class="c1">// el origen del rectanguloCentro es is (2.5, 2.5) y su tamaño es (3.0, 3.0)</span>
+</code></pre></div>
+<hr />
+<h3>Métodos</h3>
+<ul>
+<li>
+<p>Las extensiones pueden añadir también nuevos métodos de instancia y
+nuevos métodos del tipo. </p>
+</li>
+<li>
+<p>Por ejemplo, podemos añadir el método <code>descripcion()</code> a la
+  estructura <code>Persona</code>:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Persona</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">descripcion</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;Me llamo </span><span class="si">\(</span><span class="n">nombreCompleto</span><span class="si">)</span><span class="s"> y tengo </span><span class="si">\(</span><span class="n">edad</span><span class="si">)</span><span class="s"> años&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">reedRichards</span> <span class="p">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">edad</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="n">nombreCompleto</span><span class="p">:</span> <span class="s">&quot;Reed Richards&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">reedRichards</span><span class="p">.</span><span class="n">descripcion</span><span class="p">())</span>
+</code></pre></div>
+<p>Ejemplo, en el que se añade un nuevo método de instancia llamado
+<code>repeticiones</code> al tipo <code>Int</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Int</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">repeticiones</span><span class="p">(</span><span class="kc">_</span> <span class="n">tarea</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="kc">_</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.&lt;</span><span class="kc">self</span> <span class="p">{</span>
+            <span class="n">tarea</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>El método <code>repeticiones(_:)</code> toma un único argumento de tipo <code>() -&gt;
+  Void</code> (una función que no tiene parámetros y no devuelve ningún
+  valor)</li>
+<li>Ahora podemos llamar al método <code>repeticiones(_:)</code> en cualquier
+  número entero para ejecutar una tarea un cierto número de veces:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="mf">3.</span><span class="n">repeticiones</span><span class="p">({</span>
+   <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Hola!&quot;</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="c1">// Hola!</span>
+<span class="c1">// Hola!</span>
+<span class="c1">// Hola!</span>
+</code></pre></div>
+<ul>
+<li>Usando clausuras por la cola podemos hacer la llamada más concisa:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="mf">3.</span><span class="n">repeticiones</span> <span class="p">{</span>
+   <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Adios!&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Adios!</span>
+<span class="c1">// Adios!</span>
+<span class="c1">// Adios!</span>
+</code></pre></div>
+<hr />
+<h3>Métodos de instancia mutadores</h3>
+<ul>
+<li>Los métodos de instancia añadidos con una extensión también pueden
+  modificar (o mutar) la propia instancia.</li>
+<li>Los métodos de las estructuras y los enumerados que modifican <code>self</code>
+  o sus propiedades deben marcarse como <code>mutating</code>.</li>
+</ul>
+<p>Ejemplo: </p>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Int</span> <span class="p">{</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">cuadrado</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kc">self</span> <span class="p">=</span> <span class="kc">self</span> <span class="o">*</span> <span class="kc">self</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nv">unInt</span> <span class="p">=</span> <span class="mi">3</span>
+<span class="n">unInt</span><span class="p">.</span><span class="n">cuadrado</span><span class="p">()</span>
+<span class="c1">// unInt es ahora 9</span>
+</code></pre></div>
+<hr />
+<h3>Ajustar un tipo a un protocolo mediante una extensión</h3>
+<ul>
+<li>Una extensión puede extender un tipo existente para hacer que se
+  ajuste a uno o más protocolos.</li>
+</ul>
+<p>Sintaxis:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">UnTipo</span><span class="p">:</span> <span class="n">UnProtocolo</span><span class="p">,</span> <span class="n">OtroProtocolo</span> <span class="p">{</span>
+    <span class="c1">// implementación de los requisitos del protocolo</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Las instancias del tipo adoptarán automáticamente el protocolo y se
+  ajustarán al protocolo con las propiedades y métodos añadidos por la
+  extensión.</li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">RepresentableComoTexto</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">descripcionTextual</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>La clase <code>Dado</code> que vimos anteriormente puede extenderse para ajustarse al protocolo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Dado</span><span class="p">:</span> <span class="n">RepresentableComoTexto</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">descripcionTextual</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;Un dado de </span><span class="si">\(</span><span class="n">caras</span><span class="si">)</span><span class="s"> caras&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Esta extensión adopta el nuevo protocolo exactamente como si el
+  <code>Dado</code> lo hubiera proporcionado en su implementación original.</li>
+<li>Cualquier instancia de un dado se puede tratar ahora como
+  <code>RepresentableComoTexto</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">d12</span> <span class="p">=</span> <span class="n">Dado</span><span class="p">(</span><span class="n">caras</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="n">generador</span><span class="p">:</span> <span class="n">GeneradorLinealCongruente</span><span class="p">())</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">d12</span><span class="p">.</span><span class="n">descripcionTextual</span><span class="p">)</span>
+<span class="c1">// Un dado de 12 caras</span>
+</code></pre></div>
+<ul>
+<li>De forma similar, un <code>Rectangulo</code> también puede extenderse para
+  adoptar y ajustarse al protocolo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Rectangulo</span><span class="p">:</span> <span class="n">RepresentableComoTexto</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nv">descripcionTextual</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="s">&quot;Un rectángulo situado en (</span><span class="si">\(</span><span class="n">origen</span><span class="p">.</span><span class="n">x</span><span class="si">)</span><span class="s">, </span><span class="si">\(</span><span class="n">origen</span><span class="p">.</span><span class="n">y</span><span class="si">)</span><span class="s">)&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">rectanguloInicializado</span> <span class="p">=</span> <span class="n">Rectangulo</span><span class="p">(</span><span class="n">origen</span><span class="p">:</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">),</span>
+                                <span class="n">tamaño</span><span class="p">:</span> <span class="n">Tamaño</span><span class="p">(</span><span class="n">ancho</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">alto</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">))</span>
+
+<span class="bp">print</span><span class="p">(</span><span class="n">rectanguloInicializado</span><span class="p">.</span><span class="n">descripcionTextual</span><span class="p">)</span>
+<span class="c1">// Un rectángulo situado en (2.0, 2.0)</span>
+</code></pre></div>
+<hr />
+<h3>Declaración de la adopción de un protocolo con una extensión</h3>
+<ul>
+<li>Si un tipo ya se ajusta a todos los requisitos de un protocolo, pero
+  todavía no se ha declarado que se ajusta al protocolo, podemos hacer
+  que lo adopte con una extensión vacía:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Hamster</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">nombre</span><span class="p">:</span> <span class="nb">String</span>
+    <span class="kd">var</span> <span class="nv">descripcionTextual</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;Un hamster llamado </span><span class="si">\(</span><span class="n">nombre</span><span class="si">)</span><span class="s">&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">extension</span> <span class="nc">Hamster</span><span class="p">:</span> <span class="n">RepresentableComoTexto</span> <span class="p">{}</span>
+</code></pre></div>
+<ul>
+<li>Las instancias de <code>Hamster</code> pueden ahora usarse en cualquier sitio
+  que se requiera un tipo <code>RepresentableComoTexto</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">simonElHamster</span> <span class="p">=</span> <span class="n">Hamster</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Simon&quot;</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">algoRepresentableComoTexto</span><span class="p">:</span> <span class="n">RepresentableComoTexto</span> <span class="p">=</span> <span class="n">simonElHamster</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">algoRepresentableComoTexto</span><span class="p">.</span><span class="n">descripcionTextual</span><span class="p">)</span>
+<span class="c1">// Un hamster llamado Simon</span>
+</code></pre></div>
+<hr />
+<h3>Implementación de métodos de un protocolo</h3>
+<ul>
+<li>Podemos definir extensiones en los protocolos para proporcionar
+  implementaciones de métodos y propiedades a todos los tipos que se
+  ajustan a él. </li>
+<li>Esto permite definir conductas en los propios protocolos, más que en
+  cada tipo individual o en una función global.</li>
+</ul>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">GeneradorNumerosAleatorios</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">randomBool</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">random</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.5</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Al crear una extensión en el protocolo, todos los tipos que se
+  ajustan a él adquieren automáticamente esta implementación sin
+  ninguna modificación adicional.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>let generator = GeneradorLinealCongruente()
+print(&quot;Un número aleatorio: \(generator.random())&quot;)
+// Imprime &quot;Un número aleatorio: 0.37464991998171&quot;
+print(&quot;Y un booleano aleatorio: \(generator.randomBool())&quot;)
+// Imprime &quot;Un booleano aleatorio: true&quot;
+</code></pre></div>
+<ul>
+<li>El tipo que se ajusta al protocolo puede proporcionar su propia
+  implementación, que se usará en lugar de la proporcionada por la
+  extensión.</li>
+</ul>
+<hr />
+<h3>Restricción en las extensiones de un protocolo</h3>
+<ul>
+<li>En la definición de una extensión de un protocolo es posible definir
+  restricciones que deben cumplir los tipos que lo cumplen. Los
+  métodos y propiedades de la extensión sólo estarán disponibles en
+  aquellos tipos que cumplan estos requisitos.</li>
+<li>Los requisitos se definen usando una cláusula genérica <code>where</code>.</li>
+<li>Por ejemplo, podemos definir una extensión al protocolo <code>Collection</code>
+  que se aplique a cualquier colección cuyos elementos cumplen el
+  protocolo <code>Equatable</code>. De esta forma nos aseguramos de que los
+  operadores <code>==</code> y <code>!=</code> están definidos y podemos usarlos en la
+  extensión:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Collection</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">allEqual</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="k">in</span> <span class="kc">self</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">element</span> <span class="o">!=</span> <span class="kc">self</span><span class="p">.</span><span class="bp">first</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">false</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">numerosIguales</span> <span class="p">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="kd">let</span> <span class="nv">numerosDiferentes</span> <span class="p">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">numerosIguales</span><span class="p">.</span><span class="n">allEqual</span><span class="p">())</span>
+<span class="c1">// Prints &quot;true&quot;</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">numerosDiferentes</span><span class="p">.</span><span class="n">allEqual</span><span class="p">())</span>
+<span class="c1">// Prints &quot;false&quot;</span>
+</code></pre></div>
+<ul>
+<li>En una colección de una clase que no cumple el protocolo <code>Equatable</code>
+  no se puede utilizar el método de la extensión:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">tormenta</span> <span class="p">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">edad</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span> <span class="n">nombreCompleto</span><span class="p">:</span> <span class="s">&quot;Ororo Munroe&quot;</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">superHeroes</span> <span class="p">=</span> <span class="p">[</span><span class="n">tormenta</span><span class="p">,</span> <span class="n">peterParker</span><span class="p">,</span> <span class="n">reedRichards</span><span class="p">]</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">superHeroes</span><span class="p">.</span><span class="n">allEqual</span><span class="p">())</span>
+<span class="c1">//error: type &#39;Persona&#39; does not conform to protocol &#39;Equatable&#39;</span>
+</code></pre></div>
+<hr />
+<h3>10. Funciones operadoras</h3>
+<hr />
+<ul>
+<li>Las clases y las estructuras pueden proporcionar sus propias
+  implementaciones de operadores existentes. Esto se conoce como
+  <em>sobrecarga</em> de los operadores existentes.</li>
+</ul>
+<p>Por ejemplo, podemos implementar el operador de suma (<code>+</code>) para una
+estructura <code>Vector2D</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Vector2D</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="p">=</span> <span class="mf">0.0</span>
+    <span class="kd">static</span> <span class="kd">func</span> <span class="o">+</span> <span class="p">(</span><span class="n">izquierdo</span><span class="p">:</span> <span class="n">Vector2D</span><span class="p">,</span> <span class="n">derecho</span><span class="p">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Vector2D</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">izquierdo</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">derecho</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">izquierdo</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">derecho</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>La función operador se define como una función estática con un un nombre
+  de función que empareja con el operador a sobrecargar (<code>+</code>). </li>
+<li>La función toma dos parámetros de entrada de tipo <code>Vector2D</code> y
+  devuelve un único valor de salida, también de tipo <code>Vector2D</code>.</li>
+<li>La función se define globalmente, más que como un método en la
+  estructura <code>Vector2D</code>, para que pueda usarse como un operador infijo
+  entre instancias existentes de <code>Vector2D</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">vector</span> <span class="p">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">otroVector</span> <span class="p">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">vectorSuma</span> <span class="p">=</span> <span class="n">vector</span> <span class="o">+</span> <span class="n">otroVector</span>
+<span class="c1">// vectorSuma es una instancia de Vector2D con valores de (5.0, 5.0)</span>
+</code></pre></div>
+<hr />
+<h3>Operadores prefijos y postfijos</h3>
+<ul>
+<li>Las clases y las estructuras pueden también proporcionar
+  implementaciones de los operadores unarios estándar. </li>
+<li>Los operadores unarios operan sobre un único objetivo. Son prefijos
+  se preceden el objetivo (como <code>-a</code>) y postfijos si siguen su
+  objetivo (como en <code>b!</code>).</li>
+<li>Para implementar un operador unario prefijo o postfijo se debe
+  escribir el modificador <code>prefix</code> o <code>postfix</code> antes de la palabra
+  clave <code>func</code> en la declaración de la función operador:</li>
+</ul>
+<p>Por ejemplo, implementamos el operador unario negación (<code>-a</code>) para
+instancias de <code>Vector2D</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Vector2D</span> <span class="p">{</span>
+   <span class="p">...</span>
+   <span class="kd">static</span> <span class="kr">prefix</span> <span class="kd">func</span> <span class="o">-</span> <span class="p">(</span><span class="n">vector</span><span class="p">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Vector2D</span> <span class="p">{</span>
+       <span class="k">return</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">vector</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="o">-</span><span class="n">vector</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Ejemplo de uso:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">positivo</span> <span class="p">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">negativo</span> <span class="p">=</span> <span class="o">-</span><span class="n">positivo</span>
+<span class="c1">// negativo es una instancia de Vector2D con valores de (-3.0, -4.0)</span>
+<span class="kd">let</span> <span class="nv">tambienPositivo</span> <span class="p">=</span> <span class="o">-</span><span class="n">negativo</span>
+<span class="c1">// tambienPositivo es una instancia de Vector2D con valores de (3.0, 4.0)</span>
+</code></pre></div>
+<hr />
+<h3>Operadores de equivalencia</h3>
+<ul>
+<li>
+<p>Como ya hemos visto, las clases no tienen una implementación por
+defecto de los operadores "igual a" (<code>==</code>) y "no igual a" (<code>!=</code>), pero
+las estructuras sí (a partir de Swift 5). Para comparar dos instancias
+de una clase debemos proporcionar una implementación del operador <code>==</code>.</p>
+</li>
+<li>
+<p>A partir de Swift 5 si declaramos que una estructura cumple el
+protocolo <code>Equatable</code> el compilador de Swift implementará una
+comparación por defecto, siempre que todas las propiedades de la
+estructura sean a su vez <code>Equatable</code>.</p>
+</li>
+<li>
+<p>En Swift 4 para implementar la igualdad en la estructura <code>Vector2D</code>
+tenemos que definir una extensión que cumple el protocolo
+<code>Equatable</code>:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// Swift 4</span>
+<span class="kd">extension</span> <span class="nc">Vector2D</span><span class="p">:</span> <span class="nb">Equatable</span> <span class="p">{</span>
+   <span class="kd">static</span> <span class="kd">func</span> <span class="p">==</span> <span class="p">(</span><span class="n">izquierdo</span><span class="p">:</span> <span class="n">Vector2D</span><span class="p">,</span> <span class="n">derecho</span><span class="p">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+       <span class="k">return</span> <span class="p">(</span><span class="n">izquierdo</span><span class="p">.</span><span class="n">x</span> <span class="p">==</span> <span class="n">derecho</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">izquierdo</span><span class="p">.</span><span class="n">y</span> <span class="p">==</span> <span class="n">derecho</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>En Swift 5 basta con declarar con la extensión que el <code>Vector2D</code>
+cumple el protocolo:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// Swift 5</span>
+<span class="kd">extension</span> <span class="nc">Vector2D</span><span class="p">:</span> <span class="nb">Equatable</span> <span class="p">{}</span>
+</code></pre></div>
+<ul>
+<li>Ahora podemos usar estos operadores para chequear si dos instancias de
+<code>Vector2D</code> son equivalentes:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">dosTres</span> <span class="p">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">otroDosTres</span> <span class="p">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">unoDos</span> <span class="p">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">dosTres</span> <span class="p">==</span> <span class="n">otroDosTres</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Los vectores </span><span class="si">\(</span><span class="n">dosTres</span><span class="si">)</span><span class="s"> y </span><span class="si">\(</span><span class="n">otroDosTres</span><span class="si">)</span><span class="s"> son equivalentes.&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">unoDos</span> <span class="o">!=</span> <span class="n">dosTres</span><span class="p">)</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Los vectores </span><span class="si">\(</span><span class="n">unoDos</span><span class="si">)</span><span class="s"> y </span><span class="si">\(</span><span class="n">dosTres</span><span class="si">)</span><span class="s"> son distintos.&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h3>11. Genéricos</h3>
+<hr />
+<ul>
+<li>Veamos cómo podemos utilizar los genéricos con clases y estructuras.</li>
+<li>Vamos a utilizar como ejemplo un tipo de dato muy sencillo: una pila
+  (<em>stack</em>) en la que se podrán añadir (<em>push</em>) y retirar (<em>pop</em>)
+  elementos.</li>
+</ul>
+<p>Versión no genérica: </p>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">IntStack</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">items</span> <span class="p">=</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]()</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">push</span><span class="p">(</span><span class="kc">_</span> <span class="n">item</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">items</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">pop</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">items</span><span class="p">.</span><span class="bp">removeLast</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Versión usando genéricos:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Stack</span><span class="p">&lt;</span><span class="n">Element</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">items</span> <span class="p">=</span> <span class="p">[</span><span class="n">Element</span><span class="p">]()</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">push</span><span class="p">(</span><span class="kc">_</span> <span class="n">item</span><span class="p">:</span> <span class="n">Element</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">items</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">pop</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="n">Element</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">items</span><span class="p">.</span><span class="bp">removeLast</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>El parámetro del tipo <code>Element</code> define un tipo genérico que se utiliza
+  como <em>placeholder</em> del tipo real del que se declare la
+  estructura. </li>
+<li>Se utiliza en la definición de los distintos elementos de la
+  estructura. Por ejemplo, el array de ítems es un array de
+  <code>Element</code>s. Y los ítems añadidos y retirados de la pila son también
+  objetos de tipo <code>Element</code>.</li>
+</ul>
+<p>Por ejemplo, podemos crear una pila de cadenas:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">stackOfStrings</span> <span class="p">=</span> <span class="n">Stack</span><span class="p">&lt;</span><span class="nb">String</span><span class="p">&gt;()</span>
+<span class="n">stackOfStrings</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">&quot;uno&quot;</span><span class="p">)</span>
+<span class="n">stackOfStrings</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">&quot;dos&quot;</span><span class="p">)</span>
+<span class="n">stackOfStrings</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">&quot;tres&quot;</span><span class="p">)</span>
+<span class="n">stackOfStrings</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s">&quot;cuatro&quot;</span><span class="p">)</span>
+<span class="c1">// la pila contiene ahora 4 cadenas</span>
+</code></pre></div>
+<p>Y podemos retirar la última cadena de la pila:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">fromTheTop</span> <span class="p">=</span> <span class="n">stackOfStrings</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+</code></pre></div>
+<hr />
+<h3>Extensión de un tipo genérico</h3>
+<ul>
+<li>Cuando se extiende un tipo genérico, no hace falta añadir el
+  parámetro del tipo entre <code>&lt;&gt;</code>. El tipo genérico está disponible a
+  partir de la definición original y se puede usar tal cual en el
+  cuerpo de la extensión.</li>
+</ul>
+<p>Ejemplo, con una extensión del tipo genérico <code>Stack</code> para añadir una
+propiedad computable de sólo lectura que devuelva el tope de la pila:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Stack</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">topItem</span><span class="p">:</span> <span class="n">Element</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">items</span><span class="p">.</span><span class="bp">isEmpty</span> <span class="p">?</span> <span class="kc">nil</span> <span class="p">:</span> <span class="n">items</span><span class="p">[</span><span class="n">items</span><span class="p">.</span><span class="bp">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>En la extensión se utiliza el nombre genérico <code>Element</code> sin tener que
+declararlo después de <code>Stack</code>, porque está definido en la estructura
+original.</li>
+</ul>
+<p>Ahora ya se puede acceder al tope de la pila sin retirar el elemento:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="kd">let</span> <span class="nv">topItem</span> <span class="p">=</span> <span class="n">stackOfStrings</span><span class="p">.</span><span class="n">topItem</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;El ítem en el tope de la pila es </span><span class="si">\(</span><span class="n">topItem</span><span class="si">)</span><span class="s">.&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Imprime &quot;El ítem en el tope de la pila es tres.&quot;</span>
+</code></pre></div></body>
+
+</html>
