@@ -316,7 +316,7 @@ representa el cuadrado más pequeño en el que está inscrito el círculo
     - `numFiguras` (`Int`) que devuelve el número total de figuras añadidas.
     - `areaTotal` (`Double`) que devuelve la suma total de las áreas
       de todas las figuras añadidas.
-- Método:
+- Métodos:
     - `añade(figura:)` que añade una figura al array.
     - `desplaza(incX: Double, incY: Double)`: desplaza todas las
       figuras las dimensiones especificadas `incX` (incremento en la
