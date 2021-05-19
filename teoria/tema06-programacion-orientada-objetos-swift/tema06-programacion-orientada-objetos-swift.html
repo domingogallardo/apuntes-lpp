@@ -781,13 +781,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#operadores-de-equivalencia" class="md-nav__link">
-    Operadores de equivalencia
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1554,13 +1547,6 @@
           <li class="md-nav__item">
   <a href="#operadores-prefijos-y-postfijos" class="md-nav__link">
     Operadores prefijos y postfijos
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#operadores-de-equivalencia" class="md-nav__link">
-    Operadores de equivalencia
   </a>
   
 </li>
@@ -4254,48 +4240,6 @@ instancias de <code>Vector2D</code>.</p>
 <span class="c1">// negativo es una instancia de Vector2D con valores de (-3.0, -4.0)</span>
 <span class="kd">let</span> <span class="nv">tambienPositivo</span> <span class="p">=</span> <span class="o">-</span><span class="n">negativo</span>
 <span class="c1">// tambienPositivo es una instancia de Vector2D con valores de (3.0, 4.0)</span>
-</code></pre></div>
-<h3 id="operadores-de-equivalencia">Operadores de equivalencia<a class="headerlink" href="#operadores-de-equivalencia" title="Permanent link">&para;</a></h3>
-<p>Como ya hemos visto, las clases no tienen una implementación por
-defecto de los operadores "igual a" (<code>==</code>) y "no igual a" (<code>!=</code>), pero
-las estructuras sí (a partir de Swift 5). Para comparar dos instancias
-de una clase debemos proporcionar una implementación del operador <code>==</code>.</p>
-<p>A partir de Swift 5 si declaramos que una estructura cumple el
-protocolo <code>Equatable</code> el compilador de Swift implementará una
-comparación por defecto, siempre que todas las propiedades de la
-estructura sean a su vez <code>Equatable</code>.</p>
-<p>En Swift 4 para implementar la igualdad en la estructura <code>Vector2D</code>
-tenemos que definir una extensión que cumple el protocolo
-<code>Equatable</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Swift 4</span>
-<span class="kd">extension</span> <span class="nc">Vector2D</span><span class="p">:</span> <span class="nb">Equatable</span> <span class="p">{</span>
-   <span class="kd">static</span> <span class="kd">func</span> <span class="p">==</span> <span class="p">(</span><span class="n">izquierdo</span><span class="p">:</span> <span class="n">Vector2D</span><span class="p">,</span> <span class="n">derecho</span><span class="p">:</span> <span class="n">Vector2D</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
-       <span class="k">return</span> <span class="p">(</span><span class="n">izquierdo</span><span class="p">.</span><span class="n">x</span> <span class="p">==</span> <span class="n">derecho</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">izquierdo</span><span class="p">.</span><span class="n">y</span> <span class="p">==</span> <span class="n">derecho</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
-   <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>En el ejemplo anterior se implementa un operador "igual a" (<code>==</code>) que
-comprueba si dos instancias de <code>Vector2D</code> tienen valores
-equivalentes. En el contexto del <code>Vector2D</code> tiene sentido considerar
-"igual" como "ambas instancias tienen los mismos valores x e y", por
-lo que esta es la lógica usada por la implementación. </p>
-<p>La implementación del operador "no igual a" (<code>!=</code>) se realiza por
-defecto como una negación del anterior.</p>
-<p>En Swift 5 basta con declarar con la extensión que el <code>Vector2D</code>
-cumple el protocolo:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// Swift 5</span>
-<span class="kd">extension</span> <span class="nc">Vector2D</span><span class="p">:</span> <span class="nb">Equatable</span> <span class="p">{}</span>
-</code></pre></div>
-<p>Una vez definido el operador <code>==</code> podemos comparar dos instancias de <code>Vector2D</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">dosTres</span> <span class="p">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nv">otroDosTres</span> <span class="p">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nv">unoDos</span> <span class="p">=</span> <span class="n">Vector2D</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">dosTres</span> <span class="p">==</span> <span class="n">otroDosTres</span> <span class="p">{</span>
-    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Los vectores </span><span class="si">\(</span><span class="n">dosTres</span><span class="si">)</span><span class="s"> y </span><span class="si">\(</span><span class="n">otroDosTres</span><span class="si">)</span><span class="s"> son equivalentes.&quot;</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">unoDos</span> <span class="o">!=</span> <span class="n">dosTres</span><span class="p">)</span> <span class="p">{</span>
-    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Los vectores </span><span class="si">\(</span><span class="n">unoDos</span><span class="si">)</span><span class="s"> y </span><span class="si">\(</span><span class="n">dosTres</span><span class="si">)</span><span class="s"> son distintos.&quot;</span><span class="p">)</span>
-<span class="p">}</span>
 </code></pre></div>
 <h2 id="genericos">Genéricos<a class="headerlink" href="#genericos" title="Permanent link">&para;</a></h2>
 <p>Veamos cómo podemos utilizar los genéricos con clases y estructuras.</p>
