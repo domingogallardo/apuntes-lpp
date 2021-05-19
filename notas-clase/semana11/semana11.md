@@ -47,7 +47,7 @@ tiempo en esta sesión):
 - Un _protocolo_ (_protocol_) define un esquema de métodos,
   propiedades y otros requisitos (sin implementación).
 - El protocolo puede luego ser _adoptado_ (_adopted_) por una clase,
-  estructura o enumarción para proporcionar una implementación real de
+  estructura o enumeración para proporcionar una implementación real de
   esos requisitos. 
 - Cualquier tipo que satisface los requerimientos de un protocolo se
   dice que _se ajusta_ o cumple (_conform_) ese protocolo.
@@ -373,8 +373,8 @@ print(p1 != p2)
 // Imprime false
 ```
 
-- El operador `==` se define en la propia estructura. Se utiliza la
-  palabra static para indicar que se trata de un operador que estamos
+- El operador `==` se define en la propia clase. Se utiliza la
+  palabra `static` para indicar que se trata de un operador que estamos
   sobrecargando (hablaremos más adelante de los operadores).
 - El operador `!=` que se usa en la última instrucción se define en una
   implementación por defecto.
