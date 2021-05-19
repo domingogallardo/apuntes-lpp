@@ -754,6 +754,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#restriccion-en-las-extensiones-de-un-protocolo" class="md-nav__link">
+    Restricción en las extensiones de un protocolo
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -797,13 +804,6 @@
           <li class="md-nav__item">
   <a href="#extension-de-un-tipo-generico" class="md-nav__link">
     Extensión de un tipo genérico
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#restriccion-en-las-extensiones-de-un-protocolo" class="md-nav__link">
-    Restricción en las extensiones de un protocolo
   </a>
   
 </li>
@@ -1531,6 +1531,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#restriccion-en-las-extensiones-de-un-protocolo" class="md-nav__link">
+    Restricción en las extensiones de un protocolo
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1574,13 +1581,6 @@
           <li class="md-nav__item">
   <a href="#extension-de-un-tipo-generico" class="md-nav__link">
     Extensión de un tipo genérico
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#restriccion-en-las-extensiones-de-un-protocolo" class="md-nav__link">
-    Restricción en las extensiones de un protocolo
   </a>
   
 </li>
@@ -4135,6 +4135,62 @@ print(&quot;Y un booleano aleatorio: \(generator.randomBool())&quot;)
 </code></pre></div>
 <p>El tipo que se ajusta al protocolo puede proporcionar su propia
 implementación, que se usará en lugar de la proporcionada por la extensión.</p>
+<h3 id="restriccion-en-las-extensiones-de-un-protocolo">Restricción en las extensiones de un protocolo<a class="headerlink" href="#restriccion-en-las-extensiones-de-un-protocolo" title="Permanent link">&para;</a></h3>
+<p>En una extensión de un protocolo es posible definir una restricción
+indicando una condición que se debe cumplir para que la extensión se
+pueda aplicar. Los métodos y propiedades de la extensión sólo estarán
+disponibles en aquellos tipos que se ajusten al protocolo y cumplan el
+requisito.</p>
+<p>El requisito se definen usando una cláusula genérica <code>where</code> en la que
+se indica una condición sobre algún <em>tipo asociado</em> definido en el
+protocolo.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>No hemos visto el concepto de <a href="https://docs.swift.org/swift-book/LanguageGuide/Generics.html#ID189"><em>tipo
+asociado</em></a>
+en un protocolo. Es una especie de tipo genérico que se define en el
+protocolo y que se convierte en un tipo concreto en la clase que se
+ajusta al protocolo.</p>
+</div>
+<p>Por ejemplo, podemos definir una extensión al protocolo <code>Collection</code>
+que se aplique a cualquier colección cuyos elementos cumplen el
+protocolo <code>Equatable</code>. De esta forma nos aseguramos de que los
+operadores <code>==</code> y <code>!=</code> están definidos y podemos usarlos en la
+extensión:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Collection</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">allEqual</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="k">in</span> <span class="kc">self</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">element</span> <span class="o">!=</span> <span class="kc">self</span><span class="p">.</span><span class="bp">first</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">false</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>El nombre <code>Element</code> es un nombre definido en el protocolo <code>Collection</code>
+que se refiere al tipo de los elementos de la colección. Es un <em>tipo
+asociado</em>.</p>
+<p>El método <code>allEqual()</code> devuelve <code>true</code> si y sólo si todos los
+elementos en la colección son iguales.</p>
+<p>Un ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">numerosIguales</span> <span class="p">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="kd">let</span> <span class="nv">numerosDiferentes</span> <span class="p">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>
+</code></pre></div>
+<p>Dado que ambos arrays cumplen el protocolo <code>Collection</code> y los enteros
+cumplen el protocolo <code>Equatable</code> podemos usar el método <code>allEqual()</code>:</p>
+<div class="highlight"><pre><span></span><code>print(numerosIguales.allEqual())
+// Prints &quot;true&quot;
+print(numerosDiferentes.allEqual())
+// Prints &quot;false&quot;
+</code></pre></div>
+<p>En una colección cuyos elementos no cumplen el protocolo <code>Equatable</code>
+no se puede utilizar el método de la extensión:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">tormenta</span> <span class="p">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">edad</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span> <span class="n">nombreCompleto</span><span class="p">:</span> <span class="s">&quot;Ororo Munroe&quot;</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">superHeroes</span> <span class="p">=</span> <span class="p">[</span><span class="n">tormenta</span><span class="p">,</span> <span class="n">peterParker</span><span class="p">,</span> <span class="n">reedRichards</span><span class="p">]</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">superHeroes</span><span class="p">.</span><span class="n">allEqual</span><span class="p">())</span>
+<span class="c1">//error: type &#39;Persona&#39; does not conform to protocol &#39;Equatable&#39;</span>
+</code></pre></div>
 <h2 id="funciones-operadoras">Funciones operadoras<a class="headerlink" href="#funciones-operadoras" title="Permanent link">&para;</a></h2>
 <p>Las clases y las estructuras pueden proporcionar sus propias
 implementaciones de operadores existentes. Esto se conoce como
@@ -4312,63 +4368,6 @@ original.</p>
 <span class="p">}</span>
 <span class="c1">// Imprime &quot;El ítem en el tope de la pila es tres.&quot;</span>
 </code></pre></div>
-<h3 id="restriccion-en-las-extensiones-de-un-protocolo">Restricción en las extensiones de un protocolo<a class="headerlink" href="#restriccion-en-las-extensiones-de-un-protocolo" title="Permanent link">&para;</a></h3>
-<p>En una extensión de un protocolo es posible definir una restricción
-indicando una condición que se debe cumplir para que la extensión se
-pueda aplicar. Los métodos y propiedades de la extensión sólo estarán
-disponibles en aquellos tipos que se ajusten al protocolo y cumplan el
-requisito.</p>
-<p>El requisito se definen usando una cláusula genérica <code>where</code> en la que
-se indica una condición sobre algún <em>tipo asociado</em> definido en el
-protocolo.</p>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>No hemos visto el concepto de <a href="https://docs.swift.org/swift-book/LanguageGuide/Generics.html#ID189"><em>tipo
-asociado</em></a>
-en un protocolo. Es una especie de tipo genérico que se define en el
-protocolo y que se convierte en un tipo concreto en la clase que se
-ajusta al protocolo.</p>
-</div>
-<p>Por ejemplo, podemos definir una extensión al protocolo <code>Collection</code>
-que se aplique a cualquier colección cuyos elementos cumplen el
-protocolo <code>Equatable</code>. De esta forma nos aseguramos de que los
-operadores <code>==</code> y <code>!=</code> están definidos y podemos usarlos en la
-extensión:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Collection</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span> <span class="p">{</span>
-    <span class="kd">func</span> <span class="nf">allEqual</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="n">element</span> <span class="k">in</span> <span class="kc">self</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="n">element</span> <span class="o">!=</span> <span class="kc">self</span><span class="p">.</span><span class="bp">first</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="kc">false</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="kc">true</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>El nombre <code>Element</code> es un nombre definido en el protocolo <code>Collection</code>
-que se refiere al tipo de los elementos de la colección. Es un <em>tipo
-asociado</em>.</p>
-<p>El método <code>allEqual()</code> devuelve <code>true</code> si y sólo si todos los
-elementos en la colección son iguales.</p>
-<p>Un ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">numerosIguales</span> <span class="p">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
-<span class="kd">let</span> <span class="nv">numerosDiferentes</span> <span class="p">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>
-</code></pre></div>
-<p>Dado que ambos arrays cumplen el protocolo <code>Collection</code> y los enteros
-cumplen el protocolo <code>Equatable</code> podemos usar el método <code>allEqual()</code>:</p>
-<div class="highlight"><pre><span></span><code>print(numerosIguales.allEqual())
-// Prints &quot;true&quot;
-print(numerosDiferentes.allEqual())
-// Prints &quot;false&quot;
-</code></pre></div>
-<p>En una colección cuyos elementos no cumplen el protocolo <code>Equatable</code>
-no se puede utilizar el método de la extensión:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">tormenta</span> <span class="p">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">edad</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span> <span class="n">nombreCompleto</span><span class="p">:</span> <span class="s">&quot;Ororo Munroe&quot;</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nv">superHeroes</span> <span class="p">=</span> <span class="p">[</span><span class="n">tormenta</span><span class="p">,</span> <span class="n">peterParker</span><span class="p">,</span> <span class="n">reedRichards</span><span class="p">]</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">superHeroes</span><span class="p">.</span><span class="n">allEqual</span><span class="p">())</span>
-<span class="c1">//error: type &#39;Persona&#39; does not conform to protocol &#39;Equatable&#39;</span>
-</code></pre></div>
-<p>--&gt;</p>
 <h2 id="bibliografia">Bibliografía<a class="headerlink" href="#bibliografia" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Swift Language Guide<ul>
@@ -4377,17 +4376,14 @@ no se puede utilizar el método de la extensión:</p>
 <li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Methods.html#//apple_ref/doc/uid/TP40014097-CH15-ID234">Methods</a></li>
 <li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Inheritance.html#//apple_ref/doc/uid/TP40014097-CH17-ID193=">Inheritance</a></li>
 <li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203">Initialization</a></li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-ID267">Protocolos</a></li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TypeCasting.html#//apple_ref/doc/uid/TP40014097-CH22-ID338">Casting de tipos</a></li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html#//apple_ref/doc/uid/TP40014097-CH24-ID151">Extensiones</a></li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-ID28">Funciones operador</a></li>
+<li><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-ID179">Genéricos</a></li>
 </ul>
 </li>
 </ul>
-<!--
-- [Protocolos](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-ID267)
-    - [Casting de tipos](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TypeCasting.html#//apple_ref/doc/uid/TP40014097-CH22-ID338)
-    - [Extensiones](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Extensions.html#//apple_ref/doc/uid/TP40014097-CH24-ID151)
-    - [Funciones operador](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-ID28)
-    - [Genéricos](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-ID179)
-
--->
 <hr />
 <p>Lenguajes y Paradigmas de Programación, curso 2020–21<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
