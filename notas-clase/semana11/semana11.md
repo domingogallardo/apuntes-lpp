@@ -347,7 +347,7 @@ for cosa in cosasConNombre {
   implementación por defecto.
   
 ```swift
-struct Punto3D: Equatable {
+class Punto3D: Equatable {
     let x, y, z: Double
 
     init(x: Double, y: Double, z: Double) {
@@ -1203,56 +1203,6 @@ let negativo = -positivo
 // negativo es una instancia de Vector2D con valores de (-3.0, -4.0)
 let tambienPositivo = -negativo
 // tambienPositivo es una instancia de Vector2D con valores de (3.0, 4.0)
-```
-
----
-
-### Operadores de equivalencia
-
-- Como ya hemos visto, las clases no tienen una implementación por
-defecto de los operadores "igual a" (`==`) y "no igual a" (`!=`), pero
-las estructuras sí (a partir de Swift 5). Para comparar dos instancias
-de una clase debemos proporcionar una implementación del operador `==`.
-
-- A partir de Swift 5 si declaramos que una estructura cumple el
-protocolo `Equatable` el compilador de Swift implementará una
-comparación por defecto, siempre que todas las propiedades de la
-estructura sean a su vez `Equatable`.
-
-- En Swift 4 para implementar la igualdad en la estructura `Vector2D`
-tenemos que definir una extensión que cumple el protocolo
-`Equatable`:
-
-```swift
-// Swift 4
-extension Vector2D: Equatable {
-   static func == (izquierdo: Vector2D, derecho: Vector2D) -> Bool {
-       return (izquierdo.x == derecho.x) && (izquierdo.y == derecho.y)
-   }
-}
-```
-
-- En Swift 5 basta con declarar con la extensión que el `Vector2D`
-cumple el protocolo:
-
-```swift
-// Swift 5
-extension Vector2D: Equatable {}
-```
-
-- Ahora podemos usar estos operadores para chequear si dos instancias de
-`Vector2D` son equivalentes:
-
-```swift
-let dosTres = Vector2D(x: 2.0, y: 3.0)
-let otroDosTres = Vector2D(x: 2.0, y: 3.0)
-let unoDos = Vector2D(x: 1.0, y: 2.0)
-if dosTres == otroDosTres {
-    print("Los vectores \(dosTres) y \(otroDosTres) son equivalentes.")
-}
-if (unoDos != dosTres) {
-    print("Los vectores \(unoDos) y \(dosTres) son distintos.")
-}
 ```
 
 ---

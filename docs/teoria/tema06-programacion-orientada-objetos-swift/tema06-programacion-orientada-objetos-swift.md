@@ -3293,62 +3293,6 @@ let tambienPositivo = -negativo
 // tambienPositivo es una instancia de Vector2D con valores de (3.0, 4.0)
 ```
 
-### Operadores de equivalencia
-
-Como ya hemos visto, las clases no tienen una implementación por
-defecto de los operadores "igual a" (`==`) y "no igual a" (`!=`), pero
-las estructuras sí (a partir de Swift 5). Para comparar dos instancias
-de una clase debemos proporcionar una implementación del operador `==`.
-
-A partir de Swift 5 si declaramos que una estructura cumple el
-protocolo `Equatable` el compilador de Swift implementará una
-comparación por defecto, siempre que todas las propiedades de la
-estructura sean a su vez `Equatable`.
-
-En Swift 4 para implementar la igualdad en la estructura `Vector2D`
-tenemos que definir una extensión que cumple el protocolo
-`Equatable`:
-
-```swift
-// Swift 4
-extension Vector2D: Equatable {
-   static func == (izquierdo: Vector2D, derecho: Vector2D) -> Bool {
-       return (izquierdo.x == derecho.x) && (izquierdo.y == derecho.y)
-   }
-}
-```
-
-En el ejemplo anterior se implementa un operador "igual a" (`==`) que
-comprueba si dos instancias de `Vector2D` tienen valores
-equivalentes. En el contexto del `Vector2D` tiene sentido considerar
-"igual" como "ambas instancias tienen los mismos valores x e y", por
-lo que esta es la lógica usada por la implementación. 
-
-La implementación del operador "no igual a" (`!=`) se realiza por
-defecto como una negación del anterior.
-
-En Swift 5 basta con declarar con la extensión que el `Vector2D`
-cumple el protocolo:
-
-```swift
-// Swift 5
-extension Vector2D: Equatable {}
-```
-
-Una vez definido el operador `==` podemos comparar dos instancias de `Vector2D`:
-
-```swift
-let dosTres = Vector2D(x: 2.0, y: 3.0)
-let otroDosTres = Vector2D(x: 2.0, y: 3.0)
-let unoDos = Vector2D(x: 1.0, y: 2.0)
-if dosTres == otroDosTres {
-    print("Los vectores \(dosTres) y \(otroDosTres) son equivalentes.")
-}
-if (unoDos != dosTres) {
-    print("Los vectores \(unoDos) y \(dosTres) son distintos.")
-}
-```
-
 ## Genéricos
 
 Veamos cómo podemos utilizar los genéricos con clases y estructuras.
