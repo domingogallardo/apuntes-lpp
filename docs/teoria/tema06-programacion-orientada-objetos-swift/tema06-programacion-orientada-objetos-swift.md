@@ -1992,7 +1992,7 @@ modificador antes de `class` (`final class`).
 Un _protocolo_ (_protocol_) define un esquema de métodos, propiedades
 y otros requisitos que encajan en una tarea particular o un trozo de
 funcionalidad. El protocolo puede luego ser _adoptado_ (_adopted_) por
-una clase, estructura o enumarción para proporcionar una
+una clase, estructura o enumeración para proporcionar una
 implementación real de esos requisitos. Cualquier tipo que satisface
 los requerimientos de un protocolo se dice que _se ajusta_ o _cumple_
 (_conform_) ese protocolo. Podemos considerar los protocolos como una
@@ -2365,7 +2365,7 @@ print(p1 != p2)
 // Imprime false
 ```
 
-El operador `==` se define en la propia estructura. Se utiliza la
+El operador `==` se define en la propia clase. Se utiliza la
 palabra `static` para indicar que se trata de un operador que estamos
 sobrecargando (hablaremos más adelante de los operadores).
 
