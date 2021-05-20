@@ -12,7 +12,7 @@ tiempo en esta sesión):
 
 -->
 
-## Tema 7: Programación Orientada a Objetos con Swift
+## Tema 7: Programación Orientada a Objetos con Swift (2)
 
 ### Contenidos
 
