@@ -467,7 +467,7 @@ contienen dos instancias de `Pelicula` y tres instancias de
 `Cancion`. 
 
 ```swift
-let biblioteca[MediaItem] = [
+let biblioteca: [MediaItem] = [
     Pelicula(nombre: "El Señor de los Anillos", director: "Peter Jackson"),
     Cancion(nombre: "Child in Time", artista: "Deep Purple"),
     Pelicula(nombre: "El Puente de los Espías", director: "Steven Spielberg"),
