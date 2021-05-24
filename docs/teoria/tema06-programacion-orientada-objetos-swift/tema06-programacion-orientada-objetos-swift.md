@@ -1165,7 +1165,7 @@ parámetro usando una preposición como `con`, `en`, `a` o `por`, como
 hemos visto en el ejemplo anterior `incrementa(en:)`. El uso de la
 preposición permite que el método se lea como una frase.
 
-El nombre de una parámetro se utiliza también como etiqueta del
+El nombre de un parámetro se utiliza también como etiqueta del
 argumento (nombre externo). Al igual que en las funciones, es posible
 definir dos nombres del parámetro, uno externo y otro interno. Y el
 nombre externo puede ser un `_` para indicar que no es necesario usar
@@ -1272,9 +1272,9 @@ print("Hemos movido el punto a (\(puntoMovido.x), \(puntoMovido.y))")
 !!! Note "Nota"
     En la biblioteca estándar de Swift se utiliza el convenio de nombrar los
     métodos no mutadores (que devuelven un objeto nuevo) con el verbo
-    en pasado (`array.sorted()`) y los métodos mutadores (que
+    en participio (`array.sorted()`) y los métodos mutadores (que
     modifican la propia estructura y no devuelven nada) con el verbo
-    en presente (`array.sort()`).
+    en imperativo (`array.sort()`).
 
 ### Modificación de tipos valor desde dentro de la instancia ###
 
@@ -1391,10 +1391,10 @@ NuevaClase.unMetodoDelTipo()
 ```
 
 Dentro del cuerpo del método, la propiedad implícita `self` se refiere
-al propio tipo, más que a una instancia de ese tipo. Para estructuras
-y enumeraciones, esto significa que puedes usar `self` para
-desambiguar entre propiedades del tipo y los parámetros del método, de
-la misma forma que se hace en los métodos de instancias.
+al propio tipo, más que a una instancia de ese tipo. Para clases,
+estructuras y enumeraciones, esto significa que puedes usar `self`
+para desambiguar entre propiedades del tipo y los parámetros del
+método, de la misma forma que se hace en los métodos de instancias.
 
 Cualquier nombre de método o propiedad que se utilice en el cuerpo de
 un método del tipo se referirá a otras propiedades o métodos de nivel
@@ -1495,7 +1495,7 @@ momento en que definimos algún inicializador con la palabra
 ### Inicialización de propiedades almacenadas
 
 Como hemos dicho, las clases y estructuras deben definir todas sus
-propiedades almacenadas a un valor inicial en el tiempo en la
+propiedades almacenadas a un valor inicial en el momento en que la
 instancia se crea, a no ser que éstas sean opcionales, en cuyo caso
 quedarían inicializadas a `nil`.
 
@@ -1681,9 +1681,9 @@ definición proporcionada por la superclase.
 
 Las clases también pueden añadir observadores a las propiedades
 heredadas para ser notificadas cuando cambia el valor de una
-propiedad. A cualquier propiedad se le puede añadir un observador de
-propiedad, independientemente de si es originalmente una propiedad
-almacenada o calculada.
+propiedad. A cualquier propiedad heredada se le puede añadir un
+observador de propiedad, independientemente de si es originalmente una
+propiedad almacenada o calculada.
 
 ### Definición de una clase base
 
@@ -2489,7 +2489,8 @@ Los ítems almacenados en la biblioteca son todavía instancias de
 de este array, los ítems que recibiremos tendrán el tipo `MediaItem` y
 no `Pelicula` o `Cancion`. Para trabajar con ellos como su tipo
 nativo, debemos chequear su tipo, y hacer un _downcast_ a su tipo
-concreto.
+concreto. Lo veremos más adelante.
+
 
 ### Comprobación del tipo
 
