@@ -6,3 +6,14 @@ Materiales de la asignatura Lenguajes y Paradigmas de Programación en formato M
 - [Plataforma docente Moodle](https://moodle2020-21.ua.es/moodle/course/view.php?id=8242)
 - [Apuntes en GitHub Pages](https://domingogallardo.github.io/apuntes-lpp/)
 
+
+## Compilación con _Material for MkDocs_
+
+Se puede generar una web a partir del repositorio (la misma que está
+desplegada en GitHub Pages) instalando [Material for
+MkDocks](https://squidfunk.github.io/mkdocs-material/) y lanzando el
+siguiente comando estando en el directorio raíz:
+
+```
+$ mkdocs build
+```
