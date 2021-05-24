@@ -14,7 +14,7 @@
     
     
       
-        <title>Práctica 11: Programación Orientada a Objetos en Swift (2) - LPP</title>
+        <title>Práctica 12: Programación Orientada a Objetos en Swift (2) - LPP</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practica-11-programacion-orientada-a-objetos-en-swift-2" class="md-skip">
+        <a href="#practica-12-programacion-orientada-a-objetos-en-swift-2" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -92,7 +92,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Práctica 11: Programación Orientada a Objetos en Swift (2)
+              Práctica 12: Programación Orientada a Objetos en Swift (2)
             
           </span>
         </div>
@@ -561,6 +561,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" class="md-nav__link">
+    Ejercicio 5
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -579,29 +586,27 @@
               
                 
                 
-                <h1 id="practica-11-programacion-orientada-a-objetos-en-swift-2">Práctica 11: Programación Orientada a Objetos en Swift (2)<a class="headerlink" href="#practica-11-programacion-orientada-a-objetos-en-swift-2" title="Permanent link">&para;</a></h1>
+                <h1 id="practica-12-programacion-orientada-a-objetos-en-swift-2">Práctica 12: Programación Orientada a Objetos en Swift (2)<a class="headerlink" href="#practica-12-programacion-orientada-a-objetos-en-swift-2" title="Permanent link">&para;</a></h1>
 <h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
 <p>Para entregar la práctica debes subir a Moodle el fichero
-<code>practica11.swift</code> con una cabecera inicial con tu nombre y apellidos,
+<code>practica12.swift</code> con una cabecera inicial con tu nombre y apellidos,
 y las soluciones de cada ejercicio separadas por comentarios.</p>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
-<p>a) Escribe un ejemplo de código en el que definas una relación de
-herencia entre una clase base y una clase derivada. Comprueba en el
-código que un objeto de la clase derivada hereda las propiedades y
-métodos de la clase base.</p>
-<p>Investiga sobre el funcionamiento de la herencia en Swift. Escribe
-ejemplos en donde compruebes este funcionamiento. Algunos ejemplos de
-preguntas que puedes investigar (puedes añadir tú más preguntas):</p>
-<ul>
-<li>¿Se puede sobreescribir el valor de una propiedad almacenada? ¿Y
-calculada? </li>
-<li>¿Se puede añadir un observador a una propiedad de la clase base en
-  una clase derivada?</li>
-<li>¿Hereda la clase derivada propiedades y métodos estáticos de la clase base?</li>
-<li>¿Cómo se puede llamar a la implementación de un método de la clase
-  base en una sobreescritura de ese mismo método en la clase derivada?</li>
-</ul>
+<p>a) Completa el código de la estructura ​<code>MiStruct</code>​ para que compile
+correctamente. Hazlo primero en papel y después pruébalo en el
+compilador.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">A</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">a</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span><span class="kr">get</span><span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span><span class="p">?</span>
+<span class="p">}</span>
+<span class="kd">protocol</span> <span class="nc">B</span> <span class="p">{</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">bar</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="kd">struct</span> <span class="nc">MiStruct</span><span class="p">:</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="p">{</span>
+    <span class="c1">// Completa el código</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>b) El siguiente código tiene errores. Intenta descubrir cuáles son sin
 utilizar el compilador. Prueba distintas formas de arreglar el código
 cambiando lo mínimo posible de lo ya definido (por ejemplo, no debes
@@ -623,11 +628,6 @@ añadir nuevas propiedades en <code>MiStruct</code>). Compruébalo con el compil
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>c) Repasa el protocolo <code>GeneradorNumerosAleatorios</code> visto en
-teoría. Define otra implementación del protocol llamada
-<code>GeneradorFake</code> en la que siempre se devuelva el número <code>0.1</code>. Cambia
-el ejemplo del dado para que utilice este generador y comprueba que
-siempre devuelve el número 1.</p>
 <p>c) Supongamos la estructura <code>Equipo</code> que aparece a continuación que
 representa un equipo en una competición deportiva: </p>
 <div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Equipo</span> <span class="p">{</span>
@@ -635,39 +635,49 @@ representa un equipo en una competición deportiva: </p>
     <span class="kd">let</span> <span class="nv">nombre</span><span class="p">:</span> <span class="nb">String</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Debes hacer que la estructura se ajuste al protocolo <code>Comparable</code> para
-poder comparar dos equipos . Consulta el protocolo en <a href="https://developer.apple.com/documentation/swift/comparable">documentación
-de
+<p>Modifica la definición para poder comprobar la igualdad de dos equipos y
+que el siguiente código funcione correctamente:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">equipo1</span> <span class="p">=</span> <span class="n">Equipo</span><span class="p">(</span><span class="n">puntos</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Hércules&quot;</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">equipo2</span> <span class="p">=</span> <span class="n">Equipo</span><span class="p">(</span><span class="n">puntos</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Villareal&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">equipo1</span> <span class="p">==</span> <span class="n">equipo2</span><span class="p">)</span> <span class="c1">// imprime false</span>
+</code></pre></div>
+<p>Después, modifica el código otra vez para que la estructura se ajuste
+también al protocolo <code>Comparable</code> para poder comparar dos equipos
+. Consulta el protocolo en <a href="https://developer.apple.com/documentation/swift/comparable">documentación de
 Swift</a>. Un
 equipo será menor que otro cuando tenga menos puntos. En el caso en
 que ambos tengan los mismos puntos, será menor el que tenga menor
 nombre en orden alfabético.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="n">equipo1</span> <span class="o">&gt;</span> <span class="n">equipo2</span><span class="p">)</span> <span class="c1">// imprime true</span>
+</code></pre></div>
 <p>Una vez definidos los operadores necesarios comprueba que funcionan
 correctamente creando varios equipos, insertándolos en un array y
 llamando al método <code>sorted</code>.</p>
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
 <p>En este ejercicio deberás implementar un conjunto de clases con las
 que podamos "simular" una carrera de coches.</p>
-<h4 id="funcion-random">Función <code>random</code><a class="headerlink" href="#funcion-random" title="Permanent link">&para;</a></h4>
-<p>Utilizaremos la función del sistema <code>random()</code> que devuelve un número
-aleatorio. Hay que importar la librería <code>Glibc</code> (en Linux) y
-<code>Foundation</code> (en iOS) para usarla.</p>
+<h4 id="funcion-intrandomin">Función <code>Int.random(in:)</code><a class="headerlink" href="#funcion-intrandomin" title="Permanent link">&para;</a></h4>
+<p>Utilizaremos la función del sistema
+<a href="https://developer.apple.com/documentation/swift/int/2995648-random"><code>Int.random(in:)</code></a>
+que devuelve un número aleatorio entero en un rango. Por ejemplo, el
+siguiente código devuelve un número aleatorio entre 1 y 99</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="kc">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">3</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="nb">Int</span><span class="p">.</span><span class="n">random</span><span class="p">(</span><span class="k">in</span><span class="p">:</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">99</span><span class="p">))</span>
+<span class="p">}</span>
+<span class="c1">// Prints &quot;53&quot;</span>
+<span class="c1">// Prints &quot;64&quot;</span>
+<span class="c1">// Prints &quot;5&quot;</span>
+</code></pre></div>
 <p>A continuación puedes ver un ejemplo de su utilización en un método de
 tipo del enumerado <code>MarcaCoche</code> para devolver una marca aleatoria de
 coche:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">import</span> <span class="nc">Glibc</span>
-
-<span class="kd">func</span> <span class="nf">rand</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">random</span><span class="p">()</span> <span class="o">%</span> <span class="n">n</span>
-<span class="p">}</span>
-
-<span class="kd">enum</span> <span class="nc">MarcaCoche</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">MarcaCoche</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
     <span class="k">case</span> <span class="n">Mercedes</span><span class="p">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Ferrari</span><span class="p">,</span> <span class="n">RedBull</span><span class="p">,</span> <span class="n">McLaren</span>
 
     <span class="kd">static</span> <span class="kd">func</span> <span class="nf">random</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="n">MarcaCoche</span> <span class="p">{</span>
         <span class="kd">let</span> <span class="nv">maxValue</span> <span class="p">=</span> <span class="n">McLaren</span><span class="p">.</span><span class="n">rawValue</span>
 
-        <span class="kd">let</span> <span class="nv">r</span> <span class="p">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">maxValue</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="kd">let</span> <span class="nv">r</span> <span class="p">=</span> <span class="nb">Int</span><span class="p">.</span><span class="n">randon</span><span class="p">(</span><span class="k">in</span><span class="p">:</span> <span class="mf">0.</span><span class="p">..</span><span class="n">maxValue</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">MarcaCoche</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="n">r</span><span class="p">)</span><span class="o">!</span>
     <span class="p">}</span>
 
@@ -763,30 +773,31 @@ Mercedes Manual viajando a 100.0 kilómetros por hora con la marcha 4
 </code></pre></div>
 <h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
 <p>a) Completa el bucle con el código que comprueba el tipo de la variable
-<code>i</code> e imprime su propiedad <code>x</code> y su propiedad <code>b</code> o <code>c</code>, dependiendo
+<code>i</code> e imprime su propiedad <code>p</code> y su propiedad <code>a1</code> o <code>a2</code>, dependiendo
 de su tipo.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">X</span> <span class="p">{</span>
-   <span class="kd">var</span> <span class="nv">x</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">P</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nv">p</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">class</span> <span class="nc">Xb</span><span class="p">:</span> <span class="n">A</span> <span class="p">{</span>
-   <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">0</span>
-   <span class="kd">var</span> <span class="nv">b</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="kd">class</span> <span class="nc">A1</span><span class="p">:</span> <span class="n">P</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nv">p</span> <span class="p">=</span> <span class="mi">0</span>
+   <span class="kd">var</span> <span class="nv">a1</span> <span class="p">=</span> <span class="mi">0</span>
 <span class="p">}</span>
-<span class="kd">class</span> <span class="nc">Xc</span><span class="p">:</span> <span class="n">A</span> <span class="p">{</span>
-   <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">1</span>
-   <span class="kd">var</span> <span class="nv">c</span> <span class="p">=</span> <span class="mi">0</span>
+<span class="kd">class</span> <span class="nc">A2</span><span class="p">:</span> <span class="n">P</span> <span class="p">{</span>
+   <span class="kd">var</span> <span class="nv">p</span> <span class="p">=</span> <span class="mi">1</span>
+   <span class="kd">var</span> <span class="nv">a2</span> <span class="p">=</span> <span class="mi">0</span>
 <span class="p">}</span>
 
-<span class="kd">var</span> <span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="n">X</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="n">Xb</span><span class="p">(),</span> <span class="n">Xc</span><span class="p">()]</span>
+<span class="kd">var</span> <span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="n">P</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="n">A1</span><span class="p">(),</span> <span class="n">A2</span><span class="p">()]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">array</span> <span class="p">{</span>
-   <span class="c1">//</span>
+
    <span class="c1">// Código a completar</span>
    <span class="c1">//</span>
 <span class="p">}</span>
 
 <span class="c1">// debe imprimir:</span>
-<span class="c1">// x: 0, b: 0</span>
-<span class="c1">// x: 1, c: 0</span>
+<span class="c1">// debe imprimir:</span>
+<span class="c1">// p: 0, a1: 0</span>
+<span class="c1">// p: 1, a2: 0</span>
 </code></pre></div>
 <p>b) Completa el código que hay a continuación para que compile
 correctamente y aparezca en pantalla el resultado que se muestra.</p>
@@ -826,19 +837,74 @@ correctamente y aparezca en pantalla el resultado que se muestra.</p>
     <span class="bp">print</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">velocidadActual</span><span class="p">())</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>c) Define una extensión del enum <code>Arbol</code> del ejercicio 2 de la
-práctica 9 en la que se implemente el método <code>min</code> que devuelva el
-menor elemento del árbol. En la extensión debes especificar que el
-tipo de los elementos del árbol deben cumplir el protocolo
-<code>Comparable</code>, para poder realizar la comparación y obtener el mínimo.</p>
-<p>Haz una prueba con un árbol de equipos, objetos de la estructura <code>Equipo</code>
-definida en el apartado anterior.</p>
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
-<p>Continuamos con el ejercicio de las figuras geométricas de la
-práctica anterior.</p>
-<p>Comienza incluyendo en la práctica el código de todas las definiciones
-de las estructuras y clases geométricas: <code>Punto</code>, <code>Tamaño</code>,
-<code>Rectangulo</code> y <code>Circulo</code>.</p>
+<p>Define una estructura <code>Timer</code> con la que podamos ejecutar el siguiente
+código sin errores. El temporizador se inicializa con un número
+determinado de segundos y define un método de instancia <code>paso()</code> que
+descuenta un segundo. Fíjate en el código y verás que es posible sumar
+temporizadores. Por último, el atributo del tipo <code>pasosTotales</code> guarda
+el número de pasos que se han realizado en todas las instancias.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">t1</span> <span class="p">=</span> <span class="n">Timer</span><span class="p">(</span><span class="n">segundos</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nv">t2</span> <span class="p">=</span> <span class="n">Timer</span><span class="p">(</span><span class="n">segundos</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">for</span> <span class="kc">_</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">..</span><span class="mi">4</span> <span class="p">{</span>
+    <span class="n">t1</span><span class="p">.</span><span class="n">paso</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="k">for</span> <span class="kc">_</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">..</span><span class="mi">2</span> <span class="p">{</span>
+    <span class="n">t2</span><span class="p">.</span><span class="n">paso</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nv">t3</span> <span class="p">=</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span>
+<span class="n">t3</span><span class="p">.</span><span class="n">paso</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Segundos del temporizador 1: </span><span class="si">\(</span><span class="n">t1</span><span class="p">.</span><span class="n">segundosHastaCero</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Segundos del temporizador 2: </span><span class="si">\(</span><span class="n">t2</span><span class="p">.</span><span class="n">segundosHastaCero</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Segundos del temporizador 3: </span><span class="si">\(</span><span class="n">t3</span><span class="p">.</span><span class="n">segundosHastaCero</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Pasos totales: </span><span class="si">\(</span><span class="n">Timer</span><span class="p">.</span><span class="n">pasosTotales</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime:</span>
+<span class="c1">// Segundos del temporizador 1: 5</span>
+<span class="c1">// Segundos del temporizador 2: 2</span>
+<span class="c1">// Segundos del temporizador 3: 6</span>
+<span class="c1">// Pasos totales: 9</span>
+</code></pre></div>
+<h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
+<p>Vamos, por último, con un ejercicio en el que veremos otra forma de
+trabajar con figuras geométricas.</p>
+<p>Comienza incluyendo en la práctica el código de las definiciones
+de las estructuras geométricas: <code>Punto</code>, <code>Tamaño</code>, <code>Rectangulo</code> y
+<code>Circulo</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Punto</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="p">=</span> <span class="mf">0.0</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="nc">Tamaño</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">ancho</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">alto</span> <span class="p">=</span> <span class="mf">0.0</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="nc">Circulo</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">centro</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nv">radio</span> <span class="p">=</span> <span class="mf">0.0</span>
+
+    <span class="kd">var</span> <span class="nv">area</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span>
+        <span class="c1">// Propiedad calculada que devuelve el </span>
+        <span class="c1">// área del círculo y modifica el radio</span>
+        <span class="c1">// cuando se actualiza</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="nc">Rectangulo</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">origen</span> <span class="p">=</span> <span class="n">Punto</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nv">tamaño</span> <span class="p">=</span> <span class="n">Tamaño</span><span class="p">()</span>
+
+    <span class="kd">var</span> <span class="nv">centro</span><span class="p">:</span> <span class="n">Punto</span> <span class="p">{</span>
+        <span class="c1">// Propiedad calculada que devuelve el </span>
+        <span class="c1">// centro del rectángulo y traslada su</span>
+        <span class="c1">// origen cuando se modifica</span>
+    <span class="p">}</span>
+
+    <span class="kd">var</span> <span class="nv">area</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span>
+        <span class="c1">// Propiedad calculada que devuelve el</span>
+        <span class="c1">// área del rectángulo</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Una vez incluido debes realizar lo siguiente.</p>
 <h4 id="protocolo-figura">Protocolo figura<a class="headerlink" href="#protocolo-figura" title="Permanent link">&para;</a></h4>
 <p>Define el protocolo <code>Figura</code> que contiene:</p>
@@ -861,22 +927,20 @@ código de implementación necesario.</p>
   área de la figura.</p>
 </li>
 </ul>
-<h4 id="clase-almacenfiguras">Clase <code>AlmacenFiguras</code><a class="headerlink" href="#clase-almacenfiguras" title="Permanent link">&para;</a></h4>
+<h4 id="estructura-almacenfiguras">Estructura <code>AlmacenFiguras</code><a class="headerlink" href="#estructura-almacenfiguras" title="Permanent link">&para;</a></h4>
 <ul>
 <li>
-<p>Reescribe la clase <code>AlmacenFiguras</code> y define en ella <strong>una única
-propiedad</strong> <code>figuras</code> que contenga todas las figuras que se vayan
-creando. Reescribe también la implementación de <code>areaTotal</code>. Modifica
-los inicializadores en las clases geométricas para que se incluya la
-figura recién creada en esta propiedad.</p>
+<p>Implementa una estructura <code>AlmacenFiguras</code> con una única
+propiedad <code>figuras</code> que contenga una lista de figuras. Como en la
+práctica anterior, define en ella el método <code>añade(figura:)</code> y las
+propiedades calculadas <code>numFiguras</code> (<code>Int</code>) y <code>areaTotal</code> (<code>Double</code>).</p>
 </li>
 <li>
-<p>Escribe el método de clase <code>cuentaTipos() -&gt; (Int, Int)</code>
-que recorra el array de figuras y devuelva una tupla con dos enteros:
-número de rectángulos y número de círculos. La
-función debe imprimir por cada figura del array, su descripción
-por defecto proporcionada por el protocolo y el tipo de figura y sus
-características específicas.</p>
+<p>Escribe el método <code>cuentaTipos() -&gt; (Int, Int)</code> que recorra el array
+de figuras y devuelva una tupla con dos enteros: número de rectángulos
+y número de círculos. La función debe imprimir por cada figura del
+array, su descripción por defecto proporcionada por el protocolo y el
+tipo de figura y sus características específicas.</p>
 </li>
 </ul>
 <p>Por ejemplo:</p>
