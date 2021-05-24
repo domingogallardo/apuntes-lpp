@@ -11,7 +11,7 @@ Se puede generar una web a partir del repositorio (la misma que está
 desplegada en [GitHub
 Pages](https://domingogallardo.github.io/apuntes-lpp/)) instalando
 [Material for MkDocks](https://squidfunk.github.io/mkdocs-material/) y
-lanzando el siguiente comando estando en el directorio raíz:
+lanzando el siguiente comando desde el directorio raíz:
 
 ```
 $ mkdocs build
