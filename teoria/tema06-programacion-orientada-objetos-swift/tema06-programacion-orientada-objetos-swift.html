@@ -3630,11 +3630,29 @@ de este array, los ítems que recibiremos tendrán el tipo <code>MediaItem</code
 no <code>Pelicula</code> o <code>Cancion</code>. Para trabajar con ellos como su tipo
 nativo, debemos chequear su tipo, y hacer un <em>downcast</em> a su tipo
 concreto. Lo veremos más adelante.</p>
+<p>Sucede igual en el ejemplo visto anteriormente en el que se
+guardan en un array de tipo <code>TieneNombre</code> (un protocolo) dos
+instancias de estructuras distinas (una <code>Persona</code> y una <code>NaveEstelar</code>)
+que cumplen el protocolo.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">peterParker</span> <span class="p">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">edad</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span> <span class="n">nombreCompleto</span><span class="p">:</span> <span class="s">&quot;Peter Parker&quot;</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nv">ncc1701</span> <span class="p">=</span> <span class="n">NaveEstelar</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Enterprise&quot;</span><span class="p">,</span> <span class="n">prefijo</span><span class="p">:</span> <span class="s">&quot;USS&quot;</span><span class="p">)</span>
+
+<span class="kd">let</span> <span class="nv">cosasConNombre</span><span class="p">:</span> <span class="p">[</span><span class="n">TieneNombre</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="n">peterParker</span><span class="p">,</span> <span class="n">ncc1701</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">cosa</span> <span class="k">in</span> <span class="n">cosasConNombre</span> <span class="p">{</span>
+   <span class="bp">print</span><span class="p">(</span><span class="n">cosa</span><span class="p">.</span><span class="n">nombreCompleto</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Peter Parker</span>
+<span class="c1">// USS Enterprise</span>
+</code></pre></div>
+<p>También podemos aplicar los operadores de comprobación de tipo y de
+<em>downcasting</em> que veremos a continuación a este caso en el que
+instancias concretas están en variables del tipo del protocolo.</p>
 <h3 id="comprobacion-del-tipo">Comprobación del tipo<a class="headerlink" href="#comprobacion-del-tipo" title="Permanent link">&para;</a></h3>
 <p>Podemos usar el <em>operador de comprobación</em> (<em>check operator</em>) <code>is</code>
-para comprobar si una instancia es de un cierto tipo subclase. El
-operador de comprobación devuelve <code>true</code> si la instancia es del tipo
-de la subclase y <code>false</code> si no.</p>
+para comprobar si una instancia es de un cierto tipo. El operador de
+comprobación devuelve <code>true</code> si la instancia es del tipo y <code>false</code> si
+no.</p>
 <p>Lo podemos comprobar en el siguiente ejemplo, en el que contamos las
 instancias de películas y canciones en el array <code>biblioteca</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">contadorPeliculas</span> <span class="p">=</span> <span class="mi">0</span>
@@ -3660,15 +3678,20 @@ similar, <code>item is Cancion</code> comprueba si el ítem es una instancia de
 <code>Cancion</code>. Al final del bucle <code>for-in</code>, los valores de
 <code>contadorPeliculas</code> y <code>contadorCanciones</code> contendrán una cuenta de
 cuantas instancias <code>MediaItem</code> de cada tipo se han encontrado.</p>
+<p>La misma comprobación se puede hacer en el array <code>cosasConNombre</code> para
+contar el número de ítems que son de tipo <code>Persona</code> y <code>NaveEspacial</code>.</p>
 <h3 id="downcasting">Downcasting<a class="headerlink" href="#downcasting" title="Permanent link">&para;</a></h3>
 <p>Una constante o variable de un cierto tipo de clase puede referirse
-(contener) a una instancia de una subclase. Cuando creemos que sucede
-esto, podemos intentar hacer un <em>downcast</em> al tipo de la subclase con
-un operador de <em>cast</em> (<code>as?</code> o <code>as!</code>). Como el <em>downcast</em> puede
-fallar, la versión condicional, <code>as?</code>, devuelve un valor opcional del
-tipo al que estamos intentando hacer el <em>downcasting</em>. La versión
-forzosa, <code>as!</code>, intenta el <em>downcast</em> y fuerza la desenvoltura del
-resultado en un única acción compuesta.</p>
+(contener) a una instancia de una subclase. También, una variable
+declarada con el tipo de un protocolo contiene una instancia de un
+tipo concreto, que cumple el protocolo.</p>
+<p>Cuando sucede esto, podemos hacer un <em>downcast</em> al tipo de la subclase
+o del tipo que cumple el protocolo con un operador de <em>cast</em> (<code>as?</code> o
+<code>as!</code>). Como el <em>downcast</em> puede fallar, la versión condicional,
+<code>as?</code>, devuelve un valor opcional del tipo al que estamos intentando
+hacer el <em>downcasting</em>. La versión forzosa, <code>as!</code>, intenta el
+<em>downcast</em> y fuerza la desenvoltura del resultado en un única acción
+compuesta.</p>
 <p>Debemos usar la versión condicional (<code>as?</code>) cuando no estamos seguros
 si el <em>downcast</em> tendrá éxito. Se devolverá un valor opcional y el
 valor será <code>nil</code> si no es posible hacer el <em>downcast</em>. Esto permitirá
@@ -3711,6 +3734,9 @@ como vimos en el apartado de opcionales. Si tiene éxito el
 <em>downcasting</em>, las propiedades de la película se pueden usar para
 imprimir una descripción de la película llamando a los
 correspondientes métodos de la clase <code>Pelicula</code>. Igual con <code>Cancion</code>.</p>
+<p>El mismo ejemplo se puede aplicar al array <code>cosasConNombre</code>. Prueba a
+adaptar el código anterior a este array, recorriéndolo y haciendo el
+<em>downcasting</em> a los tipos <code>Persona</code> y <code>NaveEspacial</code>.</p>
 <h3 id="el-tipo-any">El tipo <code>Any</code><a class="headerlink" href="#el-tipo-any" title="Permanent link">&para;</a></h3>
 <p>El tipo <code>Any</code> puede representar una instancia de cualquier tipo,
 incluyendo tipos función:</p>
