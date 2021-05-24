@@ -2578,7 +2578,7 @@ los métodos no son más que funciones asociadas con un tipo.</p>
 parámetro usando una preposición como <code>con</code>, <code>en</code>, <code>a</code> o <code>por</code>, como
 hemos visto en el ejemplo anterior <code>incrementa(en:)</code>. El uso de la
 preposición permite que el método se lea como una frase.</p>
-<p>El nombre de una parámetro se utiliza también como etiqueta del
+<p>El nombre de un parámetro se utiliza también como etiqueta del
 argumento (nombre externo). Al igual que en las funciones, es posible
 definir dos nombres del parámetro, uno externo y otro interno. Y el
 nombre externo puede ser un <code>_</code> para indicar que no es necesario usar
@@ -2663,9 +2663,9 @@ programación funcional:</p>
 <p class="admonition-title">Nota</p>
 <p>En la biblioteca estándar de Swift se utiliza el convenio de nombrar los
 métodos no mutadores (que devuelven un objeto nuevo) con el verbo
-en pasado (<code>array.sorted()</code>) y los métodos mutadores (que
+en participio (<code>array.sorted()</code>) y los métodos mutadores (que
 modifican la propia estructura y no devuelven nada) con el verbo
-en presente (<code>array.sort()</code>).</p>
+en imperativo (<code>array.sort()</code>).</p>
 </div>
 <h3 id="modificacion-de-tipos-valor-desde-dentro-de-la-instancia">Modificación de tipos valor desde dentro de la instancia<a class="headerlink" href="#modificacion-de-tipos-valor-desde-dentro-de-la-instancia" title="Permanent link">&para;</a></h3>
 <p>Sin embargo, hay ocasiones en las que necesitamos modificar las
@@ -2759,10 +2759,10 @@ escribiendo el nombre del tipo. Por ejemplo:</p>
 <span class="n">NuevaClase</span><span class="p">.</span><span class="n">unMetodoDelTipo</span><span class="p">()</span>
 </code></pre></div>
 <p>Dentro del cuerpo del método, la propiedad implícita <code>self</code> se refiere
-al propio tipo, más que a una instancia de ese tipo. Para estructuras
-y enumeraciones, esto significa que puedes usar <code>self</code> para
-desambiguar entre propiedades del tipo y los parámetros del método, de
-la misma forma que se hace en los métodos de instancias.</p>
+al propio tipo, más que a una instancia de ese tipo. Para clases,
+estructuras y enumeraciones, esto significa que puedes usar <code>self</code>
+para desambiguar entre propiedades del tipo y los parámetros del
+método, de la misma forma que se hace en los métodos de instancias.</p>
 <p>Cualquier nombre de método o propiedad que se utilice en el cuerpo de
 un método del tipo se referirá a otras propiedades o métodos de nivel
 del tipo. Se puede utilizar estos nombres sin necesidad de añadir el
@@ -2836,7 +2836,7 @@ momento en que definimos algún inicializador con la palabra
 <code>init</code>. Veamos cómo definir inicializadores.</p>
 <h3 id="inicializacion-de-propiedades-almacenadas">Inicialización de propiedades almacenadas<a class="headerlink" href="#inicializacion-de-propiedades-almacenadas" title="Permanent link">&para;</a></h3>
 <p>Como hemos dicho, las clases y estructuras deben definir todas sus
-propiedades almacenadas a un valor inicial en el tiempo en la
+propiedades almacenadas a un valor inicial en el momento en que la
 instancia se crea, a no ser que éstas sean opcionales, en cuyo caso
 quedarían inicializadas a <code>nil</code>.</p>
 <p>Podemos definir el valor inicial para una propiedad en un
@@ -2990,9 +2990,9 @@ sobreescribir un método o una propiedad es necesario cumplir con la
 definición proporcionada por la superclase.</p>
 <p>Las clases también pueden añadir observadores a las propiedades
 heredadas para ser notificadas cuando cambia el valor de una
-propiedad. A cualquier propiedad se le puede añadir un observador de
-propiedad, independientemente de si es originalmente una propiedad
-almacenada o calculada.</p>
+propiedad. A cualquier propiedad heredada se le puede añadir un
+observador de propiedad, independientemente de si es originalmente una
+propiedad almacenada o calculada.</p>
 <h3 id="definicion-de-una-clase-base">Definición de una clase base<a class="headerlink" href="#definicion-de-una-clase-base" title="Permanent link">&para;</a></h3>
 <p>Una clase que no hereda de ninguna otra se denomina una <em>clase base</em>
 (<em>base class</em>). A diferencia de otros lenguajes orientados a objetos,
@@ -3629,7 +3629,7 @@ array es <code>[MediaItem]</code></strong>:</p>
 de este array, los ítems que recibiremos tendrán el tipo <code>MediaItem</code> y
 no <code>Pelicula</code> o <code>Cancion</code>. Para trabajar con ellos como su tipo
 nativo, debemos chequear su tipo, y hacer un <em>downcast</em> a su tipo
-concreto.</p>
+concreto. Lo veremos más adelante.</p>
 <h3 id="comprobacion-del-tipo">Comprobación del tipo<a class="headerlink" href="#comprobacion-del-tipo" title="Permanent link">&para;</a></h3>
 <p>Podemos usar el <em>operador de comprobación</em> (<em>check operator</em>) <code>is</code>
 para comprobar si una instancia es de un cierto tipo subclase. El
