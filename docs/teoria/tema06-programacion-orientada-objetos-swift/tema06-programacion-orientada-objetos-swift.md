@@ -2491,13 +2491,34 @@ no `Pelicula` o `Cancion`. Para trabajar con ellos como su tipo
 nativo, debemos chequear su tipo, y hacer un _downcast_ a su tipo
 concreto. Lo veremos más adelante.
 
+Sucede igual en el ejemplo visto anteriormente en el que se
+guardan en un array de tipo `TieneNombre` (un protocolo) dos
+instancias de estructuras distinas (una `Persona` y una `NaveEstelar`)
+que cumplen el protocolo.
+
+```swift
+var peterParker = Persona(edad: 24, nombreCompleto: "Peter Parker")
+var ncc1701 = NaveEstelar(nombre: "Enterprise", prefijo: "USS")
+
+let cosasConNombre: [TieneNombre] = [peterParker, ncc1701]
+
+for cosa in cosasConNombre {
+   print(cosa.nombreCompleto)
+}
+// Peter Parker
+// USS Enterprise
+```
+
+También podemos aplicar los operadores de comprobación de tipo y de
+_downcasting_ que veremos a continuación a este caso en el que
+instancias concretas están en variables del tipo del protocolo.
 
 ### Comprobación del tipo
 
 Podemos usar el _operador de comprobación_ (_check operator_) `is`
-para comprobar si una instancia es de un cierto tipo subclase. El
-operador de comprobación devuelve `true` si la instancia es del tipo
-de la subclase y `false` si no.
+para comprobar si una instancia es de un cierto tipo. El operador de
+comprobación devuelve `true` si la instancia es del tipo y `false` si
+no.
 
 Lo podemos comprobar en el siguiente ejemplo, en el que contamos las
 instancias de películas y canciones en el array `biblioteca`:
@@ -2529,17 +2550,23 @@ similar, `item is Cancion` comprueba si el ítem es una instancia de
 `contadorPeliculas` y `contadorCanciones` contendrán una cuenta de
 cuantas instancias `MediaItem` de cada tipo se han encontrado.
 
+La misma comprobación se puede hacer en el array `cosasConNombre` para
+contar el número de ítems que son de tipo `Persona` y `NaveEspacial`.
 
 ### Downcasting
 
 Una constante o variable de un cierto tipo de clase puede referirse
-(contener) a una instancia de una subclase. Cuando creemos que sucede
-esto, podemos intentar hacer un _downcast_ al tipo de la subclase con
-un operador de _cast_ (`as?` o `as!`). Como el _downcast_ puede
-fallar, la versión condicional, `as?`, devuelve un valor opcional del
-tipo al que estamos intentando hacer el _downcasting_. La versión
-forzosa, `as!`, intenta el _downcast_ y fuerza la desenvoltura del
-resultado en un única acción compuesta.
+(contener) a una instancia de una subclase. También, una variable
+declarada con el tipo de un protocolo contiene una instancia de un
+tipo concreto, que cumple el protocolo.
+
+Cuando sucede esto, podemos hacer un _downcast_ al tipo de la subclase
+o del tipo que cumple el protocolo con un operador de _cast_ (`as?` o
+`as!`). Como el _downcast_ puede fallar, la versión condicional,
+`as?`, devuelve un valor opcional del tipo al que estamos intentando
+hacer el _downcasting_. La versión forzosa, `as!`, intenta el
+_downcast_ y fuerza la desenvoltura del resultado en un única acción
+compuesta.
 
 Debemos usar la versión condicional (`as?`) cuando no estamos seguros
 si el _downcast_ tendrá éxito. Se devolverá un valor opcional y el
@@ -2589,6 +2616,10 @@ como vimos en el apartado de opcionales. Si tiene éxito el
 _downcasting_, las propiedades de la película se pueden usar para
 imprimir una descripción de la película llamando a los
 correspondientes métodos de la clase `Pelicula`. Igual con `Cancion`.
+
+El mismo ejemplo se puede aplicar al array `cosasConNombre`. Prueba a
+adaptar el código anterior a este array, recorriéndolo y haciendo el
+_downcasting_ a los tipos `Persona` y `NaveEspacial`.
 
 
 ### El tipo `Any` 

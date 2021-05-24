@@ -484,7 +484,7 @@ let biblioteca: [MediaItem] = [
 - Para trabajar con ellos como su tipo nativo, debemos chequear su
   tipo, y hacer un _downcast_ a su tipo concreto.
 
-En el ejemplo anterior se puede dejar que el compilador infiera el
+- En el ejemplo anterior se puede dejar que el compilador infiera el
 tipo del array:
 
 ```swift
@@ -493,6 +493,27 @@ let biblioteca = [
     Cancion(nombre: "Yellow", artista: "Coldplay")
 ]
 ```
+
+- Sucede igual en el ejemplo visto anteriormente en el que se guardan
+en un array de tipo `TieneNombre` (un protocolo) dos instancias de
+estructuras distinas (una `Persona` y una `NaveEstelar`) que cumplen
+el protocolo.
+
+```swift
+var peterParker = Persona(edad: 24, nombreCompleto: "Peter Parker")
+var ncc1701 = NaveEstelar(nombre: "Enterprise", prefijo: "USS")
+
+let cosasConNombre: [TieneNombre] = [peterParker, ncc1701]
+
+for cosa in cosasConNombre {
+   print(cosa.nombreCompleto)
+}
+// Peter Parker
+// USS Enterprise
+```
+
+- También podemos aplicar los operadores de comprobación de tipo y de
+_downcasting_ que veremos a continuación a este caso.
 
 
 ---
