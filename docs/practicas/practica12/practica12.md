@@ -1,33 +1,32 @@
 
-# Práctica 11: Programación Orientada a Objetos en Swift (2)
+# Práctica 12: Programación Orientada a Objetos en Swift (2)
 
 ## Entrega de la práctica
 
 Para entregar la práctica debes subir a Moodle el fichero
-`practica11.swift` con una cabecera inicial con tu nombre y apellidos,
+`practica12.swift` con una cabecera inicial con tu nombre y apellidos,
 y las soluciones de cada ejercicio separadas por comentarios.
 
 ## Ejercicios
 
 ### Ejercicio 1 ###
 
-a) Escribe un ejemplo de código en el que definas una relación de
-herencia entre una clase base y una clase derivada. Comprueba en el
-código que un objeto de la clase derivada hereda las propiedades y
-métodos de la clase base.
+a) Completa el código de la estructura ​`MiStruct`​ para que compile
+correctamente. Hazlo primero en papel y después pruébalo en el
+compilador.
 
-Investiga sobre el funcionamiento de la herencia en Swift. Escribe
-ejemplos en donde compruebes este funcionamiento. Algunos ejemplos de
-preguntas que puedes investigar (puedes añadir tú más preguntas):
-
-- ¿Se puede sobreescribir el valor de una propiedad almacenada? ¿Y
-calculada? 
-- ¿Se puede añadir un observador a una propiedad de la clase base en
-  una clase derivada?
-- ¿Hereda la clase derivada propiedades y métodos estáticos de la clase base?
-- ¿Cómo se puede llamar a la implementación de un método de la clase
-  base en una sobreescritura de ese mismo método en la clase derivada?
-
+```swift
+protocol A {
+    var a: String {get}
+    func foo(a: String) -> String?
+}
+protocol B {
+    mutating func bar()
+}
+struct MiStruct: A, B {
+    // Completa el código
+}
+```
 
 b) El siguiente código tiene errores. Intenta descubrir cuáles son sin
 utilizar el compilador. Prueba distintas formas de arreglar el código
@@ -53,12 +52,6 @@ struct MiStruct: A, B {
 }
 ```
 
-c) Repasa el protocolo `GeneradorNumerosAleatorios` visto en
-teoría. Define otra implementación del protocol llamada
-`GeneradorFake` en la que siempre se devuelva el número `0.1`. Cambia
-el ejemplo del dado para que utilice este generador y comprueba que
-siempre devuelve el número 1.
-
 c) Supongamos la estructura `Equipo` que aparece a continuación que
 representa un equipo en una competición deportiva: 
 
@@ -69,13 +62,26 @@ struct Equipo {
 }
 ```
 
-Debes hacer que la estructura se ajuste al protocolo `Comparable` para
-poder comparar dos equipos . Consulta el protocolo en [documentación
-de
+Modifica la definición para poder comprobar la igualdad de dos equipos y
+que el siguiente código funcione correctamente:
+
+```swift
+let equipo1 = Equipo(puntos: 10, nombre: "Hércules")
+let equipo2 = Equipo(puntos: 8, nombre: "Villareal")
+print(equipo1 == equipo2) // imprime false
+```
+
+Después, modifica el código otra vez para que la estructura se ajuste
+también al protocolo `Comparable` para poder comparar dos equipos
+. Consulta el protocolo en [documentación de
 Swift](https://developer.apple.com/documentation/swift/comparable). Un
 equipo será menor que otro cuando tenga menos puntos. En el caso en
 que ambos tengan los mismos puntos, será menor el que tenga menor
 nombre en orden alfabético.
+
+```swift
+print(equipo1 > equipo2) // imprime true
+```
 
 Una vez definidos los operadores necesarios comprueba que funcionan
 correctamente creando varios equipos, insertándolos en un array y
@@ -87,11 +93,21 @@ llamando al método `sorted`.
 En este ejercicio deberás implementar un conjunto de clases con las
 que podamos "simular" una carrera de coches.
 
-#### Función `random`
+#### Función `Int.random(in:)`
 
-Utilizaremos la función del sistema `random()` que devuelve un número
-aleatorio. Hay que importar la librería `Glibc` (en Linux) y
-`Foundation` (en iOS) para usarla.
+Utilizaremos la función del sistema
+[`Int.random(in:)`](https://developer.apple.com/documentation/swift/int/2995648-random)
+que devuelve un número aleatorio entero en un rango. Por ejemplo, el
+siguiente código devuelve un número aleatorio entre 1 y 99
+
+```swift
+for _ in 1...3 {
+    print(Int.random(in: 1...99))
+}
+// Prints "53"
+// Prints "64"
+// Prints "5"
+```
 
 A continuación puedes ver un ejemplo de su utilización en un método de
 tipo del enumerado `MarcaCoche` para devolver una marca aleatoria de
@@ -99,19 +115,13 @@ coche:
 
 
 ```swift
-import Glibc
-
-func rand(n: Int) -> Int {
-    return random() % n
-}
-
 enum MarcaCoche: Int {
     case Mercedes=0, Ferrari, RedBull, McLaren
     
     static func random() -> MarcaCoche {
         let maxValue = McLaren.rawValue
         
-        let r = rand(maxValue+1)
+        let r = Int.randon(in: 0...maxValue)
         return MarcaCoche(rawValue: r)!
     }
 
@@ -231,32 +241,33 @@ Mercedes Manual viajando a 100.0 kilómetros por hora con la marcha 4
 
 
 a) Completa el bucle con el código que comprueba el tipo de la variable
-`i` e imprime su propiedad `x` y su propiedad `b` o `c`, dependiendo
+`i` e imprime su propiedad `p` y su propiedad `a1` o `a2`, dependiendo
 de su tipo.
 
 ```swift
-protocol X {
-   var x: Int { get }
+protocol P {
+   var p: Int { get }
 }
-class Xb: A {
-   var x = 0
-   var b = 0
+class A1: P {
+   var p = 0
+   var a1 = 0
 }
-class Xc: A {
-   var x = 1
-   var c = 0
+class A2: P {
+   var p = 1
+   var a2 = 0
 }
 
-var array: [X] = [Xb(), Xc()]
+var array: [P] = [A1(), A2()]
 for i in array {
-   //
+
    // Código a completar
    //
 }
 
 // debe imprimir:
-// x: 0, b: 0
-// x: 1, c: 0
+// debe imprimir:
+// p: 0, a1: 0
+// p: 1, a2: 0
 ```
 
 b) Completa el código que hay a continuación para que compile
@@ -305,27 +316,84 @@ for i in transportes {
 }
 ```
 
-c) Define una extensión del enum `Arbol` del ejercicio 2 de la
-práctica 9 en la que se implemente el método `min` que devuelva el
-menor elemento del árbol. En la extensión debes especificar que el
-tipo de los elementos del árbol deben cumplir el protocolo
-`Comparable`, para poder realizar la comparación y obtener el mínimo.
+### Ejercicio 4 ###
 
-Haz una prueba con un árbol de equipos, objetos de la estructura `Equipo`
-definida en el apartado anterior.
+Define una estructura `Timer` con la que podamos ejecutar el siguiente
+código sin errores. El temporizador se inicializa con un número
+determinado de segundos y define un método de instancia `paso()` que
+descuenta un segundo. Fíjate en el código y verás que es posible sumar
+temporizadores. Por último, el atributo del tipo `pasosTotales` guarda
+el número de pasos que se han realizado en todas las instancias.
 
+```swift
+var t1 = Timer(segundos: 10)
+var t2 = Timer(segundos: 5)
+for _ in 0...4 {
+    t1.paso()
+}
+for _ in 0...2 {
+    t2.paso()
+}
+var t3 = t1 + t2
+t3.paso()
+print("Segundos del temporizador 1: \(t1.segundosHastaCero)")
+print("Segundos del temporizador 2: \(t2.segundosHastaCero)")
+print("Segundos del temporizador 3: \(t3.segundosHastaCero)")
+print("Pasos totales: \(Timer.pasosTotales)")
+// Imprime:
+// Segundos del temporizador 1: 5
+// Segundos del temporizador 2: 2
+// Segundos del temporizador 3: 6
+// Pasos totales: 9
+```
 
-### Ejercicio 4
+### Ejercicio 5
 
-Continuamos con el ejercicio de las figuras geométricas de la
-práctica anterior.
+Vamos, por último, con un ejercicio en el que veremos otra forma de
+trabajar con figuras geométricas.
 
-Comienza incluyendo en la práctica el código de todas las definiciones
-de las estructuras y clases geométricas: `Punto`, `Tamaño`,
-`Rectangulo` y `Circulo`.
+Comienza incluyendo en la práctica el código de las definiciones
+de las estructuras geométricas: `Punto`, `Tamaño`, `Rectangulo` y
+`Circulo`:
+
+```swift
+struct Punto {
+    var x = 0.0, y = 0.0
+}
+
+struct Tamaño {
+    var ancho = 0.0, alto = 0.0
+}
+
+struct Circulo {
+    var centro = Punto()
+    var radio = 0.0
+    
+    var area: Double {
+        // Propiedad calculada que devuelve el 
+        // área del círculo y modifica el radio
+        // cuando se actualiza
+    }
+}
+
+struct Rectangulo {
+    var origen = Punto()
+    var tamaño = Tamaño()
+
+    var centro: Punto {
+        // Propiedad calculada que devuelve el 
+        // centro del rectángulo y traslada su
+        // origen cuando se modifica
+    }
+
+    var area: Double {
+        // Propiedad calculada que devuelve el
+        // área del rectángulo
+    }
+}
+```
 
 Una vez incluido debes realizar lo siguiente.
-
 
 #### Protocolo figura
 
@@ -347,20 +415,18 @@ código de implementación necesario.
   calculada `descripcion` que devuelva un `String` con el centro y el
   área de la figura.
 
-#### Clase `AlmacenFiguras`
+#### Estructura `AlmacenFiguras`
 
-- Reescribe la clase `AlmacenFiguras` y define en ella **una única
-propiedad** `figuras` que contenga todas las figuras que se vayan
-creando. Reescribe también la implementación de `areaTotal`. Modifica
-los inicializadores en las clases geométricas para que se incluya la
-figura recién creada en esta propiedad.
+- Implementa una estructura `AlmacenFiguras` con una única
+propiedad `figuras` que contenga una lista de figuras. Como en la
+práctica anterior, define en ella el método `añade(figura:)` y las
+propiedades calculadas `numFiguras` (`Int`) y `areaTotal` (`Double`).
 
-- Escribe el método de clase `cuentaTipos() -> (Int, Int)`
-que recorra el array de figuras y devuelva una tupla con dos enteros:
-número de rectángulos y número de círculos. La
-función debe imprimir por cada figura del array, su descripción
-por defecto proporcionada por el protocolo y el tipo de figura y sus
-características específicas.
+- Escribe el método `cuentaTipos() -> (Int, Int)` que recorra el array
+de figuras y devuelva una tupla con dos enteros: número de rectángulos
+y número de círculos. La función debe imprimir por cada figura del
+array, su descripción por defecto proporcionada por el protocolo y el
+tipo de figura y sus características específicas.
 
 Por ejemplo:
 
