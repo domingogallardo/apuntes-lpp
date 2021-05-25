@@ -3251,6 +3251,15 @@ construcción de Swift que amplía la idea de las <em>interfaces</em> de Java.</
 protocolo, también se puede <strong>extender un protocolo</strong> (lo veremos más
 adelante, cuando hablemos de <strong>extensiones</strong>) para proporcionar una
 implementación de algunos de los métodos requeridos por el protocolo.</p>
+<p>La utilización de protocolos permite un estilo de programación muy
+flexible que puede ser usado para definir bibliotecas muy flexibles.
+En la charla de la conferencia de desarrolladores de Apple de 2015
+(WWDC15) <a href="https://developer.apple.com/videos/play/wwdc2015/408/">Protocol Oriented
+Programming</a>
+Dave Abrahams, uno de los responsables del diseño de la biblioteca
+estándar de Swift, propone la utilización de protocolos en un nuevo
+estilo de programación que contrapone al estilo tradicional de la
+programación orientada a objetos que usa herencia y clases abstractas.</p>
 <h3 id="sintaxis">Sintaxis<a class="headerlink" href="#sintaxis" title="Permanent link">&para;</a></h3>
 <p>Los protocolos se definen de forma similar a las clases, estructuras y
 enumeraciones:</p>
@@ -3921,6 +3930,10 @@ la clase. </p>
 </code></pre></div>
 <p>Es posible incluso extender clases de las librerías estándar de
 Swift, como <code>Int</code>, <code>Double</code>, <code>Array</code>, etc.</p>
+<!--
+Ejemplo bastante lioso... ¿lo quitamos?
+-->
+
 <p>Por ejemplo, podemos añadir propiedades calculadas a la clase Double
 para trabajar con unidades de distancia. Las siguientes propiedades
 convierten una cantidad en las unidades correspondientes a su
@@ -4350,6 +4363,39 @@ original.</p>
 <span class="p">}</span>
 <span class="c1">// Imprime &quot;El ítem en el tope de la pila es tres.&quot;</span>
 </code></pre></div>
+<!-- 
+
+Para el curso que viene (y quitar el apartado
+"Restricción en las extensiones de un protocolo"
+
+### Restricción en los tipos genéricos ###
+
+Es posible definir una restricción en el tipo genérico, indicando que
+debe cumplir un protocolo. 
+
+Por ejemplo, la siguiente función `findIndex`, busca un elemento de un
+array de tipo genérico y devuelve un opcional con la posición en la
+que se encuentra. 
+
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">findIndex</span><span class="p">&lt;</span><span class="n">T</span><span class="p">:</span> <span class="nb">Equatable</span><span class="p">&gt;(</span><span class="n">of</span> <span class="n">valueToFind</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="k">in</span> <span class="n">array</span><span class="p">:[</span><span class="n">T</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">array</span><span class="p">.</span><span class="n">enumerated</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="p">==</span> <span class="n">valueToFind</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">index</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+
+Para asegurarnos que se puede realizar la comparación `==` en la
+búsqueda del valor se obliga a que el tipo genérico `T` cumpla el
+protocolo `Equatable`. Si se intenta llamar a la función `findIndex`
+con, por ejemplo, un array de `Persona`s (estructura en la que no se
+ha adoptado el protocolo `Equatable`) se obtendrá un error en tiempo
+de compilación.
+
+-->
+
 <h2 id="bibliografia">Bibliografía<a class="headerlink" href="#bibliografia" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Swift Language Guide<ul>
