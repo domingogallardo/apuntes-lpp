@@ -2004,9 +2004,9 @@ adelante, cuando hablemos de **extensiones**) para proporcionar una
 implementación de algunos de los métodos requeridos por el protocolo.
 
 La utilización de protocolos permite un estilo de programación muy
-flexible que puede ser usado para definir bibliotecas muy flexibles.
-En la charla de la conferencia de desarrolladores de Apple de 2015
-(WWDC15) [Protocol Oriented
+flexible que puede ser usado para definir bibliotecas que se adaptan
+fácilmente a nuevos requisitos. En la charla de la conferencia de
+desarrolladores de Apple de 2015 (WWDC15) [Protocol Oriented
 Programming](https://developer.apple.com/videos/play/wwdc2015/408/)
 Dave Abrahams, uno de los responsables del diseño de la biblioteca
 estándar de Swift, propone la utilización de protocolos en un nuevo
