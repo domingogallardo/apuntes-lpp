@@ -2842,6 +2842,10 @@ p.mayorEdad // false
 Es posible incluso extender clases de las librerías estándar de
 Swift, como `Int`, `Double`, `Array`, etc.
 
+<!--
+Ejemplo bastante lioso... ¿lo quitamos?
+-->
+
 Por ejemplo, podemos añadir propiedades calculadas a la clase Double
 para trabajar con unidades de distancia. Las siguientes propiedades
 convierten una cantidad en las unidades correspondientes a su
@@ -3422,6 +3426,40 @@ if let topItem = stackOfStrings.topItem {
 }
 // Imprime "El ítem en el tope de la pila es tres."
 ```
+
+<!-- 
+
+Para el curso que viene (y quitar el apartado
+"Restricción en las extensiones de un protocolo"
+
+### Restricción en los tipos genéricos ###
+
+Es posible definir una restricción en el tipo genérico, indicando que
+debe cumplir un protocolo. 
+
+Por ejemplo, la siguiente función `findIndex`, busca un elemento de un
+array de tipo genérico y devuelve un opcional con la posición en la
+que se encuentra. 
+
+```swift
+func findIndex<T: Equatable>(of valueToFind: T, in array:[T]) -> Int? {
+    for (index, value) in array.enumerated() {
+        if value == valueToFind {
+            return index
+        }
+    }
+    return nil
+}
+```
+
+Para asegurarnos que se puede realizar la comparación `==` en la
+búsqueda del valor se obliga a que el tipo genérico `T` cumpla el
+protocolo `Equatable`. Si se intenta llamar a la función `findIndex`
+con, por ejemplo, un array de `Persona`s (estructura en la que no se
+ha adoptado el protocolo `Equatable`) se obtendrá un error en tiempo
+de compilación.
+
+-->
 
 
 
