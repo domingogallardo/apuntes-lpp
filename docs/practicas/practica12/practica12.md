@@ -425,7 +425,7 @@ código de implementación necesario.
 
 Por último, implementa una estructura `AlmacenFiguras`.
 
-- Debe tener una única propiedad `figuras` que contenga una lista de
+- Debe tener una única propiedad `figuras` que contenga un array de
 figuras. Como en la práctica anterior, define en ella el método
 `añade(figura:)` y las propiedades calculadas `numFiguras` (`Int`) y
 `areaTotal` (`Double`).
@@ -445,7 +445,7 @@ Por ejemplo:
   Circulo con centro Punto(x: 0.0, y: 2.0) y radio 5.0
 ```
 
-- Escribe un ejemplo de código en el que se almacenen varias figuras
+- Escribe un ejemplo de código en el que se guarden varias figuras
 en un almacén de figuras y se llame a sus métodos.
 
 ----
