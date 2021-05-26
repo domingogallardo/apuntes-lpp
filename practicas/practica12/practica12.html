@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.2">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
     
     
       
@@ -18,7 +18,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6f955dcd.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bde7dde4.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
@@ -969,9 +969,11 @@ el número de pasos que se han realizado en todas las instancias.</p>
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
 <p>Vamos, por último, con un ejercicio en el que veremos otra forma de
 trabajar con figuras geométricas.</p>
+<h4 id="1-completa-el-codigo-inicial">1. Completa el código inicial<a class="headerlink" href="#1-completa-el-codigo-inicial" title="Permanent link">&para;</a></h4>
 <p>Comienza incluyendo en la práctica el código de las definiciones
 de las estructuras geométricas: <code>Punto</code>, <code>Tamaño</code>, <code>Rectangulo</code> y
-<code>Circulo</code>:</p>
+<code>Circulo</code>. Debes completar el código para que haga lo indicado en los
+comentarios. :</p>
 <div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Punto</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="p">=</span> <span class="mf">0.0</span>
 <span class="p">}</span>
@@ -1007,8 +1009,9 @@ de las estructuras geométricas: <code>Punto</code>, <code>Tamaño</code>, <code
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Una vez incluido debes realizar lo siguiente.</p>
-<h4 id="protocolo-figura">Protocolo figura<a class="headerlink" href="#protocolo-figura" title="Permanent link">&para;</a></h4>
+<p>Prueba las clases escribiendo algún código en el que se creen algunas
+instancias y se actualicen sus propiedades.</p>
+<h4 id="2-define-el-protocolo-figura">2. Define el protocolo figura<a class="headerlink" href="#2-define-el-protocolo-figura" title="Permanent link">&para;</a></h4>
 <p>Define el protocolo <code>Figura</code> que contiene:</p>
 <ul>
 <li>Propiedad de lectura y escritura <code>centro</code> (<code>Punto</code>), que define el
@@ -1016,7 +1019,7 @@ de las estructuras geométricas: <code>Punto</code>, <code>Tamaño</code>, <code
 <li>Propiedades de sólo lectura <code>area</code> (<code>Double</code>) y <code>tamaño</code> (<code>Tamaño</code>)
   que devuelven el tamaño (alto y ancho) de la figura.</li>
 </ul>
-<h4 id="extensiones">Extensiones<a class="headerlink" href="#extensiones" title="Permanent link">&para;</a></h4>
+<h4 id="3-define-extensiones">3. Define extensiones<a class="headerlink" href="#3-define-extensiones" title="Permanent link">&para;</a></h4>
 <ul>
 <li>
 <p>Define las extensiones necesarias para que las clases <code>Rectangulo</code>,
@@ -1028,14 +1031,19 @@ código de implementación necesario.</p>
   calculada <code>descripcion</code> que devuelva un <code>String</code> con el centro y el
   área de la figura.</p>
 </li>
+<li>
+<p>Prueba el código escrito hasta ahora, creando un array del tipo
+  <code>Figura</code> (el protocolo) y añadiendo en él círculos y rectángulos.</p>
+</li>
 </ul>
-<h4 id="estructura-almacenfiguras">Estructura <code>AlmacenFiguras</code><a class="headerlink" href="#estructura-almacenfiguras" title="Permanent link">&para;</a></h4>
+<h4 id="4-estructura-almacenfiguras">4. Estructura <code>AlmacenFiguras</code><a class="headerlink" href="#4-estructura-almacenfiguras" title="Permanent link">&para;</a></h4>
+<p>Por último, implementa una estructura <code>AlmacenFiguras</code>.</p>
 <ul>
 <li>
-<p>Implementa una estructura <code>AlmacenFiguras</code> con una única
-propiedad <code>figuras</code> que contenga una lista de figuras. Como en la
-práctica anterior, define en ella el método <code>añade(figura:)</code> y las
-propiedades calculadas <code>numFiguras</code> (<code>Int</code>) y <code>areaTotal</code> (<code>Double</code>).</p>
+<p>Debe tener una única propiedad <code>figuras</code> que contenga una lista de
+figuras. Como en la práctica anterior, define en ella el método
+<code>añade(figura:)</code> y las propiedades calculadas <code>numFiguras</code> (<code>Int</code>) y
+<code>areaTotal</code> (<code>Double</code>).</p>
 </li>
 <li>
 <p>Escribe el método <code>cuentaTipos() -&gt; (Int, Int)</code> que recorra el array
@@ -1051,6 +1059,10 @@ tipo de figura y sus características específicas.</p>
 - Descripción de la figura: Una figura con centro Punto(x: 0.0, y: 2.0) y área 78.5398163397448
   Circulo con centro Punto(x: 0.0, y: 2.0) y radio 5.0
 </code></pre></div>
+<ul>
+<li>Escribe un ejemplo de código en el que se almacenen varias figuras
+en un almacén de figuras y se llame a sus métodos.</li>
+</ul>
 <hr />
 <p>Lenguajes y Paradigmas de Programación, curso 2020-21<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
@@ -1109,10 +1121,10 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta"}, "search": "../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a1609d9a.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
