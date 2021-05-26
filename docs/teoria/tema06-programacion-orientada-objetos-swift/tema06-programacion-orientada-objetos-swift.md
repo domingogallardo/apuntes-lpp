@@ -1931,7 +1931,12 @@ print("CocheAutomatico: \(automatico.descripcion)")
 // CocheAutomatico: viajando a 100.0 kilómetros por hora con la marcha 5
 ```
 
-<!-- Para el curso que viene
+<!--- Para el curso que viene
+
+### Inicialización de la clase padre ###
+
+Habría que explicar también cómo inicializar la clase padre cuando 
+inicializamos la clase derivada, llamando al inicializador con super.init
 
 ###  Enlace dinámico ###
 

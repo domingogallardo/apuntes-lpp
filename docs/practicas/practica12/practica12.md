@@ -352,9 +352,12 @@ print("Pasos totales: \(Timer.pasosTotales)")
 Vamos, por último, con un ejercicio en el que veremos otra forma de
 trabajar con figuras geométricas.
 
+#### 1. Completa el código inicial ####
+
 Comienza incluyendo en la práctica el código de las definiciones
 de las estructuras geométricas: `Punto`, `Tamaño`, `Rectangulo` y
-`Circulo`:
+`Circulo`. Debes completar el código para que haga lo indicado en los
+comentarios. :
 
 ```swift
 struct Punto {
@@ -393,9 +396,10 @@ struct Rectangulo {
 }
 ```
 
-Una vez incluido debes realizar lo siguiente.
+Prueba las clases escribiendo algún código en el que se creen algunas
+instancias y se actualicen sus propiedades.
 
-#### Protocolo figura
+#### 2. Define el protocolo figura
 
 Define el protocolo `Figura` que contiene:
 
@@ -404,8 +408,7 @@ Define el protocolo `Figura` que contiene:
 - Propiedades de sólo lectura `area` (`Double`) y `tamaño` (`Tamaño`)
   que devuelven el tamaño (alto y ancho) de la figura.
 
-
-#### Extensiones
+#### 3. Define extensiones
 
 - Define las extensiones necesarias para que las clases `Rectangulo`,
 y `Circulo` se ajusten al protocolo `Figura`, añadiendo el
@@ -415,12 +418,17 @@ código de implementación necesario.
   calculada `descripcion` que devuelva un `String` con el centro y el
   área de la figura.
 
-#### Estructura `AlmacenFiguras`
+- Prueba el código escrito hasta ahora, creando un array del tipo
+  `Figura` (el protocolo) y añadiendo en él círculos y rectángulos.
 
-- Implementa una estructura `AlmacenFiguras` con una única
-propiedad `figuras` que contenga una lista de figuras. Como en la
-práctica anterior, define en ella el método `añade(figura:)` y las
-propiedades calculadas `numFiguras` (`Int`) y `areaTotal` (`Double`).
+#### 4. Estructura `AlmacenFiguras`
+
+Por último, implementa una estructura `AlmacenFiguras`.
+
+- Debe tener una única propiedad `figuras` que contenga una lista de
+figuras. Como en la práctica anterior, define en ella el método
+`añade(figura:)` y las propiedades calculadas `numFiguras` (`Int`) y
+`areaTotal` (`Double`).
 
 - Escribe el método `cuentaTipos() -> (Int, Int)` que recorra el array
 de figuras y devuelva una tupla con dos enteros: número de rectángulos
@@ -437,7 +445,8 @@ Por ejemplo:
   Circulo con centro Punto(x: 0.0, y: 2.0) y radio 5.0
 ```
 
-
+- Escribe un ejemplo de código en el que se almacenen varias figuras
+en un almacén de figuras y se llame a sus métodos.
 
 ----
 
