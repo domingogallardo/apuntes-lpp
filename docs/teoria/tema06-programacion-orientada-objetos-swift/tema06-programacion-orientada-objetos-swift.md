@@ -3,112 +3,32 @@
 
 Para el curso que viene:
 
-Cosas importantes que no contamos, que habría que contar (si hubiera 
-tiempo en la última sesión):
-
 - Un protocolo puede extender otro protocolo (o más de uno)
 https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-ID280
 
-- Ampliar el tema de genéricos con type constraints y cláusula where
+Un ejemplo es el Comparable y Equatable. En el ejercicio 1c de la
+práctica 12 no es necesario ajustarse al protocolo `Equatable` porque
+`Comparable` hereda de él.
+
+struct Equipo: Equatable, Comparable {
+    let puntos: Int
+    let nombre: String
+
+    static func < (primero: Equipo, segundo: Equipo) -> Bool {
+        return
+            primero.puntos < segundo.puntos ||
+            (primero.puntos == segundo.puntos && primero.nombre < segundo.nombre)
+    }
+}
+
+Ver en el código:
+
+- Inicialización de la clase padre
+- Enlace dinámico
 
 -->
 
 # Tema 6: Programación Orientada a Objetos con Swift
-
-<!--
-
-## Más conceptos sobre clausuras ##
-
-### Clausuras escapadas
-
-Se dice que una clausura escapa de una función cuando la función
-recibe una función o clausura como parámetro que se llama después de
-que la función finalice su ejecución.
-
-Por ejemplo, definimos un array global de tipo función:
-
-```swift
-var array : [() -> Int] = []
-```
-
-Definimos una función que recibe una clausura como parámetro, pero no
-se llama dentro de la función que la recibe, sólo la almacena en el
-array. Al no ser llamada dentro de la función, hay que ponerle el
-atributo `@escaping` delante del tipo del parámetro para que Swift
-permita que sea llamada posteriormente fuera de la función que la
-recibe. Si no lo ponemos, el compilador da un error:
-
-```swift
-func usaClausura(_ f: @escaping () -> Int) -> Void {
-   array.append(f)
-}
-
-usaClausura {return 4}
-```
-
-Se llama posteriormente, fuera de la función:
-
-```swift
-array[0]() //-> 4
-```
- 
-
-### Autoclausuras
-
-Una autoclausura permite crear automáticamente una función en tiempo
-de ejecución sin necesidad de utilizar la sintaxis de las expresiones
-de clausura.
-
-Se puede ver la autoclausura como una forma de retardar la evaluación,
-porque esa expresión no se evaluará hasta que se llame a la
-clausura. Retardar la evaluación es útil con trozos de código que
-provocan efectos laterales o son costosos computacionalmente, ya que
-nos permiten controlar el momento de su evaluación.
-
-Por ejemplo, podemos modificar la función anterior `usaFunc` añadiendo
-la anotación `@autoclosure` antes del tipo del parámetro clausura:
-
-```swift
-func usaFunc(_ f: @autoclosure () -> Int) -> Int {
-     var x = 4
-     return f()
-}
-```
-
-
-Al declararlo de esta forma, se puede llamar a `usaFunc` escribiendo
-como parámetro una sentencia que el compilador convierte a clausura:
-
-```swift
-var x = 100
-usaFunc(x + 10)
-```
-
-La expresión `x + 10` se considera _retardada_: se construye una
-clausura con ella y su evaluación se realiza dentro de `usaFunc`.
-
-Otro ejemplo en el que podemos comprobar el orden de evaluación:
-
-```swift
-func printTest2(_ result: @autoclosure () -> Void) {
-    print("Antes")
-    result()
-    print("Después")
-}
-
-printTest2(print("Hola"))
-
-// Imprime: 
-//     Antes
-//     Hola
-//     Después
-```
-
-La sentencia `print("Hola")` se pasa como una autoclausura, por lo que
-el compilador crea automáticamente una clausura con ella sin tener
-nosotros que escribir la expresión de clausura.
-
--->
 
 ## Introducción a la Programación Orientada a Objetos
 
@@ -2857,7 +2777,7 @@ Es posible incluso extender clases de las librerías estándar de
 Swift, como `Int`, `Double`, `Array`, etc.
 
 <!--
-Ejemplo bastante lioso... ¿lo quitamos?
+El ejemplo siguiente es bastante lioso... ¿lo quitamos?
 -->
 
 Por ejemplo, podemos añadir propiedades calculadas a la clase Double
