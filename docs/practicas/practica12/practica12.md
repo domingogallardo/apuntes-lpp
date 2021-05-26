@@ -357,7 +357,7 @@ trabajar con figuras geométricas.
 Comienza incluyendo en la práctica el código de las definiciones
 de las estructuras geométricas: `Punto`, `Tamaño`, `Rectangulo` y
 `Circulo`. Debes completar el código para que haga lo indicado en los
-comentarios. :
+comentarios.
 
 ```swift
 struct Punto {
