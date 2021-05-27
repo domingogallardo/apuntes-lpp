@@ -1856,7 +1856,10 @@ print("CocheAutomatico: \(automatico.descripcion)")
 ### Inicialización de la clase padre ###
 
 Habría que explicar también cómo inicializar la clase padre cuando 
-inicializamos la clase derivada, llamando al inicializador con super.init
+inicializamos la clase derivada, llamando al inicializador con
+super.init, como hacemos en la solución del último ejercicio de 
+la práctica 11 (figuras geométricas).
+
 
 ###  Enlace dinámico ###
 
