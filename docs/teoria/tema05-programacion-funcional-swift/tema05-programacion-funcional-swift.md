@@ -1492,6 +1492,29 @@ Podemos leer el código anterior de la siguiente forma: "Si el
 opcional `respuestaEncuesta` contiene un valor, define
 la constante `respuesta` con el valor contenido en el opcional".
 
+Una forma aún mejor de escribir el código anterior sería la siguiente,
+en la que sólo usamos una variable:
+
+```swift
+// Mejor este código que el anterior
+if let respuesta = leerRespuesta() {
+    print ("Respuesta: " + respuesta)
+}
+```
+
+!!! Note "Nota"
+    Para no tener que buscar un nuevo nombre de variable, Swift permite 
+    usar el mismo nombre de variable en la sentencia `if let`:
+
+    ```swift
+    var x: Int? = 0
+    if let x = x {
+        print(x)
+    }
+    ```
+    La variable `x` creada por el `if let` es de tipo no opcional y sólo tiene valor 
+    en el ámbito del `if`.
+
 Otro ejemplo, el método `first` de un array devuelve un opcional que
 contiene `nil` si el array está vacío o el primer elemento del array
 en el caso en que exista. El siguiente código utiliza un ligado
