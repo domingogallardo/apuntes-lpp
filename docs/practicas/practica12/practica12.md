@@ -336,9 +336,9 @@ for _ in 0...2 {
 }
 var t3 = t1 + t2
 t3.paso()
-print("Segundos del temporizador 1: \(t1.segundosHastaCero)")
-print("Segundos del temporizador 2: \(t2.segundosHastaCero)")
-print("Segundos del temporizador 3: \(t3.segundosHastaCero)")
+print("Segundos del temporizador 1: \(t1.segundos)")
+print("Segundos del temporizador 2: \(t2.segundos)")
+print("Segundos del temporizador 3: \(t3.segundos)")
 print("Pasos totales: \(Timer.pasosTotales)")
 // Imprime:
 // Segundos del temporizador 1: 5
