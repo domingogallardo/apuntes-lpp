@@ -121,7 +121,7 @@ enum MarcaCoche: Int {
     static func random() -> MarcaCoche {
         let maxValue = McLaren.rawValue
         
-        let r = Int.randon(in: 0...maxValue)
+        let r = Int.random(in: 0...maxValue)
         return MarcaCoche(rawValue: r)!
     }
 
