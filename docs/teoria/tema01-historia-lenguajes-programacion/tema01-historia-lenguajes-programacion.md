@@ -740,15 +740,17 @@ Lenguajes: Lisp, Scheme, Haskell, Scala, Clojure.
 
 Ejemplo de código (Lisp):
 
-	(define (factorial x)
-	   (if (= x 0)
-	      1
-	      (* x (factorial (- x 1)))))
+```scheme
+(define (factorial x)
+   (if (= x 0)
+      1
+      (* x (factorial (- x 1)))))
 
-	(factorial 8)
-	40320
-	(factorial 30)
-	265252859812191058636308480000000
+>(factorial 8)
+40320
+>(factorial 30)
+265252859812191058636308480000000
+```
 
 ### Paradigma lógico
 
@@ -762,28 +764,29 @@ Lenguajes: Prolog, Mercury, Oz.
 
 Ejemplo de código (Prolog):
 
-	padrede('juan', 'maria'). % juan es padre de maria
-	padrede('pablo', 'juan'). % pablo es padre de juan
-	padrede('pablo', 'marcela').
-	padrede('carlos', 'debora').
+```prolog
+padrede('juan', 'maria'). % juan es padre de maria
+padrede('pablo', 'juan'). % pablo es padre de juan
+padrede('pablo', 'marcela').
+padrede('carlos', 'debora').
 
-	hijode(A,B) :- padrede(B,A).
-	abuelode(A,B) :-  padrede(A,C), padrede(C,B).
-	hermanode(A,B) :- padrede(C,A) , padrede(C,B), A \== B.        
+hijode(A,B) :- padrede(B,A).
+abuelode(A,B) :-  padrede(A,C), padrede(C,B).
+hermanode(A,B) :- padrede(C,A) , padrede(C,B), A \== B.        
 
-	familiarde(A,B) :- padrede(A,B).
-	familiarde(A,B) :- hijode(A,B).
-	familiarde(A,B) :- hermanode(A,B).
+familiarde(A,B) :- padrede(A,B).
+familiarde(A,B) :- hijode(A,B).
+familiarde(A,B) :- hermanode(A,B).
 
-	?- hermanode('juan', 'marcela').
-	yes
-	?- hermanode('carlos', 'juan').
-	no
-	?- abuelode('pablo', 'maria').
-	yes
-	?- abuelode('maria', 'pablo').
-	no
-
+?- hermanode('juan', 'marcela').
+yes
+?- hermanode('carlos', 'juan').
+no
+?- abuelode('pablo', 'maria').
+yes
+?- abuelode('maria', 'pablo').
+no
+```
 
 ### Paradigma imperativo
 
@@ -803,26 +806,28 @@ Características:
 
 Ejemplo (Pascal):
 
-	type
-	   tDimension = 1..100;
-	   eMatriz(f,c: tDimension) = array [1..f,1..c] of real;
+```pascal
+type
+   tDimension = 1..100;
+   eMatriz(f,c: tDimension) = array [1..f,1..c] of real;
 
-	   tRango = record
-	      f,c: tDimension value 1;
-	   end;
+   tRango = record
+      f,c: tDimension value 1;
+   end;
 
-	   tpMatriz = ^eMatriz;
+   tpMatriz = ^eMatriz;
 
-	procedure EscribirMatriz(var m: tpMatriz);
-	var filas,col : integer;
-	begin
-	   for filas := 1 to m^.f do begin
-	      for col := 1 to m^.c do
-	         write(m^[filas,col]:7:2);
-	      writeln(resultado);
-	      writeln(resultado)
-	     end;    
-	end;
+procedure EscribirMatriz(var m: tpMatriz);
+var filas,col : integer;
+begin
+   for filas := 1 to m^.f do begin
+      for col := 1 to m^.c do
+         write(m^[filas,col]:7:2);
+      writeln(resultado);
+      writeln(resultado)
+     end;    
+end;
+```
 
 ### Paradigma orientado a objetos
 
@@ -834,52 +839,53 @@ Características:
 
 Ejemplo (Java):
 
-	public class Bicicleta {
-	    public int marcha;
-	    public int velocidad;
+```java
+public class Bicicleta {
+    public int marcha;
+    public int velocidad;
 
-	    public Bicicleta(int velocidadInicial, int marchaInicial) {
-	        marcha = marchaInicial;
-	        velocidad = velocidadInicial;
-	    }
+    public Bicicleta(int velocidadInicial, int marchaInicial) {
+        marcha = marchaInicial;
+        velocidad = velocidadInicial;
+    }
 
-	    public void setMarcha(int nuevoValor) {
-	        marcha = nuevoValor;
-	    }
+    public void setMarcha(int nuevoValor) {
+        marcha = nuevoValor;
+    }
 
-	    public void frenar(int decremento) {
-	        velocidad -= decremento;
-	    }
+    public void frenar(int decremento) {
+        velocidad -= decremento;
+    }
 
-	    public void acelerar(int incremento) {
-	        velocidad += incremento;
-	    }
-	}
+    public void acelerar(int incremento) {
+        velocidad += incremento;
+    }
+}
 
-	public class MountainBike extends Bicicleta {
-	    public int alturaSillin;
+public class MountainBike extends Bicicleta {
+    public int alturaSillin;
 
-	    public MountainBike(int alturaInicial,
-	                        int velocidadInicial,
-	                        int marchaInicial) {
-	        super(velocidadInicial, marchaInicial);
-	        alturaSillin = alturaInicial;
-	    }   
+    public MountainBike(int alturaInicial,
+                        int velocidadInicial,
+                        int marchaInicial) {
+        super(velocidadInicial, marchaInicial);
+        alturaSillin = alturaInicial;
+    }   
 
-	    public void setAltura(int nuevoValor) {
-	        alturaSillin = nuevoValor;
-	    }   
-	}
+    public void setAltura(int nuevoValor) {
+        alturaSillin = nuevoValor;
+    }   
+}
 
-	public class Excursion {
-        public static void main(String[] args) {
-           MountainBike miBicicleta = new MoutainBike(10,10,3);
-           miBicicleta.acelerar(10);
-           miBicicleta.setMarcha(4);
-           miBicicleta.frenar(10);
-        }
-	}
-
+public class Excursion {
+    public static void main(String[] args) {
+        MountainBike miBicicleta = new MoutainBike(10,10,3);
+        miBicicleta.acelerar(10);
+        miBicicleta.setMarcha(4);
+        miBicicleta.frenar(10);
+    }
+}
+```
 
 ## Compiladores e intérpretes
 
