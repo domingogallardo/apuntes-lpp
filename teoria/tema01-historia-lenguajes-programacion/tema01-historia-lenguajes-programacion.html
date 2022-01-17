@@ -1567,25 +1567,16 @@ forma coherente de expresión.</p>
 </ul>
 <p>Lenguajes: Lisp, Scheme, Haskell, Scala, Clojure.</p>
 <p>Ejemplo de código (Lisp):</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ss">(</span><span class="nv">define</span> <span class="ss">(</span><span class="nv">factorial</span> <span class="nv">x</span><span class="ss">)</span>
-   <span class="ss">(</span><span class="k">if</span> <span class="ss">(</span><span class="o">=</span> <span class="nv">x</span> <span class="mi">0</span><span class="ss">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">factorial</span> <span class="nv">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="nv">x</span> <span class="mi">0</span><span class="p">)</span>
       <span class="mi">1</span>
-      <span class="ss">(</span><span class="o">*</span> <span class="nv">x</span> <span class="ss">(</span><span class="nv">factorial</span> <span class="ss">(</span><span class="o">-</span> <span class="nv">x</span> <span class="mi">1</span><span class="ss">)))))</span>
+      <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="p">(</span><span class="nf">factorial</span> <span class="p">(</span><span class="nb">- </span><span class="nv">x</span> <span class="mi">1</span><span class="p">)))))</span>
 
-<span class="ss">(</span><span class="nv">factorial</span> <span class="mi">8</span><span class="ss">)</span>
+<span class="nv">&gt;</span><span class="p">(</span><span class="nf">factorial</span> <span class="mi">8</span><span class="p">)</span>
 <span class="mi">40320</span>
-<span class="ss">(</span><span class="nv">factorial</span> <span class="mi">30</span><span class="ss">)</span>
+<span class="nv">&gt;</span><span class="p">(</span><span class="nf">factorial</span> <span class="mi">30</span><span class="p">)</span>
 <span class="mi">265252859812191058636308480000000</span>
 </code></pre></div>
-</td></tr></table>
 <h3 id="paradigma-logico">Paradigma lógico<a class="headerlink" href="#paradigma-logico" title="Permanent link">&para;</a></h3>
 <p>Características:</p>
 <ul>
@@ -1595,34 +1586,14 @@ forma coherente de expresión.</p>
 </ul>
 <p>Lenguajes: Prolog, Mercury, Oz.</p>
 <p>Ejemplo de código (Prolog):</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="nf">padrede</span><span class="p">(</span><span class="s s-Atom">&#39;juan&#39;</span><span class="p">,</span> <span class="s s-Atom">&#39;maria&#39;</span><span class="p">).</span> <span class="c1">% juan es padre de maria</span>
+<div class="highlight"><pre><span></span><code><span class="nf">padrede</span><span class="p">(</span><span class="s s-Atom">&#39;juan&#39;</span><span class="p">,</span> <span class="s s-Atom">&#39;maria&#39;</span><span class="p">).</span> <span class="c1">% juan es padre de maria</span>
 <span class="nf">padrede</span><span class="p">(</span><span class="s s-Atom">&#39;pablo&#39;</span><span class="p">,</span> <span class="s s-Atom">&#39;juan&#39;</span><span class="p">).</span> <span class="c1">% pablo es padre de juan</span>
 <span class="nf">padrede</span><span class="p">(</span><span class="s s-Atom">&#39;pablo&#39;</span><span class="p">,</span> <span class="s s-Atom">&#39;marcela&#39;</span><span class="p">).</span>
 <span class="nf">padrede</span><span class="p">(</span><span class="s s-Atom">&#39;carlos&#39;</span><span class="p">,</span> <span class="s s-Atom">&#39;debora&#39;</span><span class="p">).</span>
 
 <span class="nf">hijode</span><span class="p">(</span><span class="nv">A</span><span class="p">,</span><span class="nv">B</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">padrede</span><span class="p">(</span><span class="nv">B</span><span class="p">,</span><span class="nv">A</span><span class="p">).</span>
 <span class="nf">abuelode</span><span class="p">(</span><span class="nv">A</span><span class="p">,</span><span class="nv">B</span><span class="p">)</span> <span class="p">:-</span>  <span class="nf">padrede</span><span class="p">(</span><span class="nv">A</span><span class="p">,</span><span class="nv">C</span><span class="p">),</span> <span class="nf">padrede</span><span class="p">(</span><span class="nv">C</span><span class="p">,</span><span class="nv">B</span><span class="p">).</span>
-<span class="nf">hermanode</span><span class="p">(</span><span class="nv">A</span><span class="p">,</span><span class="nv">B</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">padrede</span><span class="p">(</span><span class="nv">C</span><span class="p">,</span><span class="nv">A</span><span class="p">)</span> <span class="p">,</span> <span class="nf">padrede</span><span class="p">(</span><span class="nv">C</span><span class="p">,</span><span class="nv">B</span><span class="p">),</span> <span class="nv">A</span> <span class="s s-Atom">\==</span> <span class="nv">B</span><span class="p">.</span>
+<span class="nf">hermanode</span><span class="p">(</span><span class="nv">A</span><span class="p">,</span><span class="nv">B</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">padrede</span><span class="p">(</span><span class="nv">C</span><span class="p">,</span><span class="nv">A</span><span class="p">)</span> <span class="p">,</span> <span class="nf">padrede</span><span class="p">(</span><span class="nv">C</span><span class="p">,</span><span class="nv">B</span><span class="p">),</span> <span class="nv">A</span> <span class="s s-Atom">\==</span> <span class="nv">B</span><span class="p">.</span>        
 
 <span class="nf">familiarde</span><span class="p">(</span><span class="nv">A</span><span class="p">,</span><span class="nv">B</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">padrede</span><span class="p">(</span><span class="nv">A</span><span class="p">,</span><span class="nv">B</span><span class="p">).</span>
 <span class="nf">familiarde</span><span class="p">(</span><span class="nv">A</span><span class="p">,</span><span class="nv">B</span><span class="p">)</span> <span class="p">:-</span> <span class="nf">hijode</span><span class="p">(</span><span class="nv">A</span><span class="p">,</span><span class="nv">B</span><span class="p">).</span>
@@ -1637,7 +1608,6 @@ forma coherente de expresión.</p>
 <span class="s s-Atom">?-</span> <span class="nf">abuelode</span><span class="p">(</span><span class="s s-Atom">&#39;maria&#39;</span><span class="p">,</span> <span class="s s-Atom">&#39;pablo&#39;</span><span class="p">).</span>
 <span class="s s-Atom">no</span>
 </code></pre></div>
-</td></tr></table>
 <h3 id="paradigma-imperativo">Paradigma imperativo<a class="headerlink" href="#paradigma-imperativo" title="Permanent link">&para;</a></h3>
 <p>Los lenguajes de programación que cumplen el paradigma imperativo se
 caracterizan por tener un estado implícito que es modificado mediante
@@ -1653,47 +1623,27 @@ control preciso y determinista del estado.</p>
 <li>Pasos de ejecución de un proceso</li>
 </ul>
 <p>Ejemplo (Pascal):</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="n">type</span>
-   <span class="n">tDimension</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">.</span><span class="mi">100</span><span class="p">;</span>
-   <span class="n">eMatriz</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">c</span><span class="p">:</span> <span class="n">tDimension</span><span class="p">)</span> <span class="o">=</span> <span class="n">array</span> <span class="p">[</span><span class="mf">1.</span><span class="o">.</span><span class="n">f</span><span class="p">,</span><span class="mf">1.</span><span class="o">.</span><span class="n">c</span><span class="p">]</span> <span class="n">of</span> <span class="n">real</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">type</span>
+   <span class="n">tDimension</span> <span class="o">=</span> <span class="mi">1</span><span class="o">..</span><span class="mi">100</span><span class="o">;</span>
+   <span class="n">eMatriz</span><span class="p">(</span><span class="n">f</span><span class="o">,</span><span class="n">c</span><span class="o">:</span> <span class="n">tDimension</span><span class="p">)</span> <span class="o">=</span> <span class="k">array</span> <span class="p">[</span><span class="mi">1</span><span class="o">..</span><span class="n">f</span><span class="o">,</span><span class="mi">1</span><span class="o">..</span><span class="n">c</span><span class="p">]</span> <span class="k">of</span> <span class="kt">real</span><span class="o">;</span>
 
-   <span class="n">tRango</span> <span class="o">=</span> <span class="n">record</span>
-      <span class="n">f</span><span class="p">,</span><span class="n">c</span><span class="p">:</span> <span class="n">tDimension</span> <span class="n">value</span> <span class="mi">1</span><span class="p">;</span>
-   <span class="n">end</span><span class="p">;</span>
+   <span class="n">tRango</span> <span class="o">=</span> <span class="k">record</span>
+      <span class="n">f</span><span class="o">,</span><span class="n">c</span><span class="o">:</span> <span class="n">tDimension</span> <span class="n">value</span> <span class="mi">1</span><span class="o">;</span>
+   <span class="k">end</span><span class="o">;</span>
 
-   <span class="n">tpMatriz</span> <span class="o">=</span> <span class="o">^</span><span class="n">eMatriz</span><span class="p">;</span>
+   <span class="n">tpMatriz</span> <span class="o">=</span> <span class="o">^</span><span class="n">eMatriz</span><span class="o">;</span>
 
-<span class="n">procedure</span> <span class="n">EscribirMatriz</span><span class="p">(</span><span class="k">var</span> <span class="n">m</span><span class="p">:</span> <span class="n">tpMatriz</span><span class="p">);</span>
-<span class="k">var</span> <span class="n">filas</span><span class="p">,</span><span class="n">col</span> <span class="p">:</span> <span class="n">integer</span><span class="p">;</span>
-<span class="n">begin</span>
-   <span class="k">for</span> <span class="n">filas</span> <span class="p">:</span><span class="o">=</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">m</span><span class="o">^.</span><span class="n">f</span> <span class="n">do</span> <span class="n">begin</span>
-      <span class="k">for</span> <span class="n">col</span> <span class="p">:</span><span class="o">=</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">m</span><span class="o">^.</span><span class="n">c</span> <span class="n">do</span>
-         <span class="n">write</span><span class="p">(</span><span class="n">m</span><span class="o">^</span><span class="p">[</span><span class="n">filas</span><span class="p">,</span><span class="n">col</span><span class="p">]:</span><span class="mi">7</span><span class="p">:</span><span class="mi">2</span><span class="p">);</span>
-      <span class="n">writeln</span><span class="p">(</span><span class="n">resultado</span><span class="p">);</span>
-      <span class="n">writeln</span><span class="p">(</span><span class="n">resultado</span><span class="p">)</span>
-     <span class="n">end</span><span class="p">;</span>    
-<span class="n">end</span><span class="p">;</span>
+<span class="k">procedure</span> <span class="nf">EscribirMatriz</span><span class="p">(</span><span class="k">var</span> <span class="n">m</span><span class="o">:</span> <span class="n">tpMatriz</span><span class="p">)</span><span class="o">;</span>
+<span class="k">var</span> <span class="n">filas</span><span class="o">,</span><span class="n">col</span> <span class="o">:</span> <span class="kt">integer</span><span class="o">;</span>
+<span class="k">begin</span>
+   <span class="k">for</span> <span class="n">filas</span> <span class="o">:=</span> <span class="mi">1</span> <span class="k">to</span> <span class="n">m</span><span class="o">^.</span><span class="n">f</span> <span class="k">do</span> <span class="k">begin</span>
+      <span class="k">for</span> <span class="n">col</span> <span class="o">:=</span> <span class="mi">1</span> <span class="k">to</span> <span class="n">m</span><span class="o">^.</span><span class="n">c</span> <span class="k">do</span>
+         <span class="nb">write</span><span class="p">(</span><span class="n">m</span><span class="o">^</span><span class="p">[</span><span class="n">filas</span><span class="o">,</span><span class="n">col</span><span class="p">]</span><span class="o">:</span><span class="mi">7</span><span class="o">:</span><span class="mi">2</span><span class="p">)</span><span class="o">;</span>
+      <span class="nb">writeln</span><span class="p">(</span><span class="n">resultado</span><span class="p">)</span><span class="o">;</span>
+      <span class="nb">writeln</span><span class="p">(</span><span class="n">resultado</span><span class="p">)</span>
+     <span class="k">end</span><span class="o">;</span>    
+<span class="k">end</span><span class="o">;</span>
 </code></pre></div>
-</td></tr></table>
 <h3 id="paradigma-orientado-a-objetos">Paradigma orientado a objetos<a class="headerlink" href="#paradigma-orientado-a-objetos" title="Permanent link">&para;</a></h3>
 <p>Características:</p>
 <ul>
@@ -1702,97 +1652,52 @@ control preciso y determinista del estado.</p>
 <li>Polimorfismo y chequeo de tipos en tiempo de ejecución</li>
 </ul>
 <p>Ejemplo (Java):</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="n">public</span> <span class="k">class</span> <span class="n">Bicicleta</span> <span class="p">{</span>
-    <span class="n">public</span> <span class="nb nb-Type">int</span> <span class="n">marcha</span><span class="p">;</span>
-    <span class="n">public</span> <span class="nb nb-Type">int</span> <span class="n">velocidad</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Bicicleta</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">marcha</span><span class="p">;</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">velocidad</span><span class="p">;</span>
 
-    <span class="n">public</span> <span class="n">Bicicleta</span><span class="p">(</span><span class="nb nb-Type">int</span> <span class="n">velocidadInicial</span><span class="p">,</span> <span class="nb nb-Type">int</span> <span class="n">marchaInicial</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="nf">Bicicleta</span><span class="p">(</span><span class="kt">int</span> <span class="n">velocidadInicial</span><span class="p">,</span> <span class="kt">int</span> <span class="n">marchaInicial</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">marcha</span> <span class="o">=</span> <span class="n">marchaInicial</span><span class="p">;</span>
         <span class="n">velocidad</span> <span class="o">=</span> <span class="n">velocidadInicial</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="n">public</span> <span class="n">void</span> <span class="n">setMarcha</span><span class="p">(</span><span class="nb nb-Type">int</span> <span class="n">nuevoValor</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMarcha</span><span class="p">(</span><span class="kt">int</span> <span class="n">nuevoValor</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">marcha</span> <span class="o">=</span> <span class="n">nuevoValor</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="n">public</span> <span class="n">void</span> <span class="n">frenar</span><span class="p">(</span><span class="nb nb-Type">int</span> <span class="n">decremento</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">frenar</span><span class="p">(</span><span class="kt">int</span> <span class="n">decremento</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">velocidad</span> <span class="o">-=</span> <span class="n">decremento</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="n">public</span> <span class="n">void</span> <span class="n">acelerar</span><span class="p">(</span><span class="nb nb-Type">int</span> <span class="n">incremento</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">acelerar</span><span class="p">(</span><span class="kt">int</span> <span class="n">incremento</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">velocidad</span> <span class="o">+=</span> <span class="n">incremento</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">public</span> <span class="k">class</span> <span class="n">MountainBike</span> <span class="k">extends</span> <span class="n">Bicicleta</span> <span class="p">{</span>
-    <span class="n">public</span> <span class="nb nb-Type">int</span> <span class="n">alturaSillin</span><span class="p">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MountainBike</span> <span class="kd">extends</span> <span class="n">Bicicleta</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">alturaSillin</span><span class="p">;</span>
 
-    <span class="n">public</span> <span class="n">MountainBike</span><span class="p">(</span><span class="nb nb-Type">int</span> <span class="n">alturaInicial</span><span class="p">,</span>
-                        <span class="nb nb-Type">int</span> <span class="n">velocidadInicial</span><span class="p">,</span>
-                        <span class="nb nb-Type">int</span> <span class="n">marchaInicial</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">super</span><span class="p">(</span><span class="n">velocidadInicial</span><span class="p">,</span> <span class="n">marchaInicial</span><span class="p">);</span>
+    <span class="kd">public</span> <span class="nf">MountainBike</span><span class="p">(</span><span class="kt">int</span> <span class="n">alturaInicial</span><span class="p">,</span>
+                        <span class="kt">int</span> <span class="n">velocidadInicial</span><span class="p">,</span>
+                        <span class="kt">int</span> <span class="n">marchaInicial</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">(</span><span class="n">velocidadInicial</span><span class="p">,</span> <span class="n">marchaInicial</span><span class="p">);</span>
         <span class="n">alturaSillin</span> <span class="o">=</span> <span class="n">alturaInicial</span><span class="p">;</span>
-    <span class="p">}</span>
+    <span class="p">}</span>   
 
-    <span class="n">public</span> <span class="n">void</span> <span class="n">setAltura</span><span class="p">(</span><span class="nb nb-Type">int</span> <span class="n">nuevoValor</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAltura</span><span class="p">(</span><span class="kt">int</span> <span class="n">nuevoValor</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">alturaSillin</span> <span class="o">=</span> <span class="n">nuevoValor</span><span class="p">;</span>
     <span class="p">}</span>   
 <span class="p">}</span>
 
-<span class="n">public</span> <span class="k">class</span> <span class="n">Excursion</span> <span class="p">{</span>
-    <span class="n">public</span> <span class="k">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="nb nb-Type">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-       <span class="n">MountainBike</span> <span class="n">miBicicleta</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MoutainBike</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
-       <span class="n">miBicicleta</span><span class="o">.</span><span class="n">acelerar</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-       <span class="n">miBicicleta</span><span class="o">.</span><span class="n">setMarcha</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-       <span class="n">miBicicleta</span><span class="o">.</span><span class="n">frenar</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Excursion</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">MountainBike</span> <span class="n">miBicicleta</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MoutainBike</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+        <span class="n">miBicicleta</span><span class="p">.</span><span class="na">acelerar</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+        <span class="n">miBicicleta</span><span class="p">.</span><span class="na">setMarcha</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+        <span class="n">miBicicleta</span><span class="p">.</span><span class="na">frenar</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-</td></tr></table>
 <h2 id="compiladores-e-interpretes">Compiladores e intérpretes<a class="headerlink" href="#compiladores-e-interpretes" title="Permanent link">&para;</a></h2>
 <p>En el nivel de abstracción más bajo, la ejecución de un programa en un
 computador consiste en la ejecución de un conjunto de instrucciones
