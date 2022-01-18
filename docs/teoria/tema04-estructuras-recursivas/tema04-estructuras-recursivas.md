@@ -1,7 +1,7 @@
 
 # Tema 4: Estructuras de datos recursivas
 
-## Listas estructuradas
+## 1. Listas estructuradas
 
 Hemos visto que las listas en Scheme se implementan como un estructura
 de datos recursiva, formada por una pareja que enlaza en su parte
@@ -30,7 +30,7 @@ que la función `car lista` puede devolver dos tipos de elementos:
 - Un elemento de la lista (del tipo de elementos que hay en la lista)
 - Otra lista (formada por el tipo de elementos de la lista)
 
-### Definición y ejemplos
+### 1.1. Definición y ejemplos
 
 Las listas en Scheme pueden tener cualquier tipo de elementos,
 incluido otras listas.
@@ -73,12 +73,12 @@ que no contiene ninguna sublista. Por ejemplo, la lista
 
 es una lista plana de tres elementos (hojas) que son parejas.
 
-#### Definiciones en Scheme
+#### 1.1.1. Definiciones en Scheme
 
 Vamos a escribir las definiciones anteriores de `hoja`, `plana` y
 `estructurada` usando código de Scheme.
 
-##### Función `(hoja? dato)`
+##### 1.1.1.1. Función `(hoja? dato)`
 
 Definimos una hoja como aquellos elementos de una lista estructurada
 que no son listas:
@@ -114,7 +114,7 @@ La lista vacía no es una hoja
 (hoja? '()) ; ⇒ #f
 ```
 
-##### Función `(plana? lista)`
+##### 1.1.1.2. Función `(plana? lista)`
 
 Como hemos dicho antes, una lista es plana cuando todos sus elementos
 son hojas. Queremos implementar la función `(plana? lista)` que lo
@@ -171,7 +171,7 @@ lista cumplen una propiedad. En esta caso, ser hoja.
     ```
 
 
-##### Función `(estructurada? lista)`
+##### 1.1.1.3. Función `(estructurada? lista)`
 
 Una lista es estructurada cuando alguno de sus elementos es otra
 lista. Como caso base, una lista vacía no es estructurada.
@@ -223,7 +223,7 @@ escribir la otra como la negación de la primera:
    (not (plana? lista)))
 ```
 
-#### Ejemplos de listas estructuradas
+#### 1.1.2. Ejemplos de listas estructuradas
 
 Las listas estructuradas son muy útiles para representar información
 jerárquica en donde queremos representar elementos que contienen otros
@@ -256,7 +256,7 @@ también se puede representar con una lista estructurada:
 ```
 
 
-#### *Pseudo árboles* con niveles
+#### 1.1.3. *Pseudo árboles* con niveles
 
 Las listas estructuradas definen una estructura de niveles, donde la
 lista inicial representa el primer nivel, y cada sublista representa
@@ -299,9 +299,9 @@ lista estructurada?:
 
 <img src="imagenes/expresion-e-2.png" width="500px"/>
 
-### Funciones recursivas sobre listas estructuradas
+### 1.2. Funciones recursivas sobre listas estructuradas
 
-#### Número de hojas
+#### 1.2.1. Número de hojas
 
 Veamos como primer ejemplo la función `(num-hojas lista)` que cuenta
 el número de hojas de una lista estructurada.
@@ -388,7 +388,7 @@ La definición completa de la función queda de la siguiente forma:
     de la lista, independientemente de si es un dato u otra lista.
 
 
-##### Versión con funciones de orden superior
+##### 1.2.1.1. Versión con funciones de orden superior
 
 Podemos usar también las funciones de orden superior `map` y
 `foldr` para obtener una versión más concisa.
@@ -433,7 +433,7 @@ de la lista devuelta por el `map`:
     `apply`) porque hay lenguajes de programación en los que la función
     `apply` no está definida. Por ejemplo, Swift.
 
-#### Aplanar lista ####
+#### 1.2.2. Aplanar lista ####
 
 Veamos otro ejemplo. La función `(aplana lista) ` que devuelve una
 lista plana con todas las hojas de la lista. 
@@ -476,7 +476,7 @@ Usando `apply`:
 ```
 
 
-#### Otras funciones recursivas
+#### 1.2.3. Otras funciones recursivas
 
 Vamos a diseñar otras funciones recursivas que trabajan con la
 estructura jerárquica de las listas estructuradas.
@@ -493,7 +493,7 @@ estructura jerárquica de las listas estructuradas.
   hojas de la lista estructurada y devuelve el resultado (otra lista
   estructurada).
 
-##### `(pertenece-lista? dato lista)`
+##### 1.2.3.1. `(pertenece-lista? dato lista)`
 
 Comprueba si el `dato` aparece en la lista estructurada. 
 
@@ -523,7 +523,7 @@ Con funciones de orden superior:
                (pertenece-fos? dato elem)) lista)))
 ```
 
-##### `(altura lista)` #####
+##### 1.2.3.2. `(altura lista)` #####
 
 La *altura* de una lista estructurada viene dada por su número de
 niveles: una lista plana tiene una altura de 1, la lista `((1 2 3) 4
@@ -555,7 +555,7 @@ Por ejemplo:
 (altura '(1 (2 (3)) 3)) ; ⇒ 3
 ```
 
-###### Versión con funciones de orden superior ######
+###### 1.2.3.2.1. Versión con funciones de orden superior ######
 
 Y la segunda versión, usando las funciones de orden superior `map`
 para obtener la altura de sus elementos del primer nivel (puedes ser
@@ -579,7 +579,7 @@ Podríamos hacerlo también sustituyendo el `foldr` por un `apply`:
        (+ 1 (apply max (map altura-fos lista)))))
 ```
 
-##### `(nivel-hoja dato lista)` #####
+##### 1.2.3.3. `(nivel-hoja dato lista)` #####
 
 Veamos una última función `(nivel-hoja dato lista)` que recorre una
 lista estructurada buscando el dato y devuelve el nivel en que se
@@ -629,7 +629,7 @@ Con funciones de orden superior:
                            (nivel-hoja-fos dato elem)) lista)))))
 ```
 
-##### `(cuadrado-estruct lista)` #####
+##### 1.2.3.4. `(cuadrado-estruct lista)` #####
 
 Vamos ahora a ver un tipo de función distinta. Una que construye una
 lista estructurada y la devuelve. 
@@ -676,7 +676,7 @@ sublistas podemos aplicar `map` para que devuelva la lista resultante
 de transformar la original con la función que le pasamos como
 parámetro.
 
-##### `(map-estruct f lista)` #####
+##### 1.2.3.5. `(map-estruct f lista)` #####
 
 Podemos generalizar la función anterior y definir la función de orden
 superior sobre listas estructuradas `(map-estructurada f lista)` que
@@ -710,11 +710,11 @@ Solución con `map`:
              (map-estruct-fos f elem)) lista)))
 ```
 
-## Árboles
+## 2. Árboles
 
-### Definición de árboles en Scheme
+### 2.1. Definición de árboles en Scheme
 
-#### Definición de árbol
+#### 2.1.1. Definición de árbol
 
 Un **árbol** es una estructura de datos definida por un valor raíz,
 que es el padre de toda la estructura, del que salen otros subárboles
@@ -741,7 +741,7 @@ hijos:
 - El tercer hijo es un árbol con raíz 25 y con tres hijos hoja, el 19,
   21 y 22.
 
-#### Representación de árboles con listas
+#### 2.1.2. Representación de árboles con listas
 
 En Scheme la lista es la estructura de datos principal. ¿Cómo
 podemos construir un árbol usando listas?
@@ -807,7 +807,7 @@ Se haría con la lista de la siguiente sentencia:
 (define arbol2 '(40 (18 (3) (23 (29))) (52 (47))))
 ```
 
-#### Barrera de abstracción
+#### 2.1.3. Barrera de abstracción
 
 Una vez definida la forma de representar árboles, vamos a definir las
 funciones básicas para manejarlos. Veremos las funciones para obtener el dato
@@ -940,7 +940,7 @@ hacer más entendible la expresión:
 arbol1b ; ⇒ (30 (15 (10) (12)) (18) (25 (19) (21) (22)))
 ```
 
-#### Barreras de abstracción de árboles y listas estructuradas
+#### 2.1.4. Barreras de abstracción de árboles y listas estructuradas
 
 Es importante diferenciar la barrera de abstracción de los árboles de
 la de las listas estructuradas. Aunque un árbol se implementa en
@@ -975,7 +975,7 @@ la barrera de abstracción de listas y árboles:
     trabajan con árboles, como las que veremos a continuación,
     funcionarán correctamente.
 
-### Funciones recursivas sobre árboles
+### 2.2. Funciones recursivas sobre árboles
 
 Vamos a diseñar las siguientes funciones recursivas:
 
@@ -989,7 +989,7 @@ Vamos a diseñar las siguientes funciones recursivas:
 
 Todas comparten un patrón similar de recursión mutua.
 
-#### Función suma-datos-arbol
+#### 2.2.1. Función suma-datos-arbol
 
 Vamos a implementar una función recursiva que sume todos los datos de
 un árbol.
@@ -1094,7 +1094,7 @@ siguiente figura:
 
 <img src="imagenes/suma-datos-bosque-fos.png" width="500px"/>
 
-#### Función to-list-arbol
+#### 2.2.2. Función to-list-arbol
 
 Queremos diseñar una función `(to-list-arbol arbol)` que devuelva una
 lista con los datos del árbol en un recorrido *preorden* (primero el
@@ -1144,7 +1144,7 @@ una lista de árboles podemos aplicar a sus elementos cualquier función
 definida sobre árboles. Incluso la propia función que estamos
 definiendo (¡confía en la recursión!).
 
-#### Función cuadrado-arbol
+#### 2.2.3. Función cuadrado-arbol
 
 Veamos ahora la función `(cuadrado-arbol arbol)` que toma un árbol de
 números y devuelve un árbol con la misma estructura y sus datos
@@ -1177,7 +1177,7 @@ Versión 2, con la función de orden superior `map`:
    	                (map cuadrado-arbol-fos (hijos-arbol arbol))))
 ```
 
-#### Función `map-arbol`
+#### 2.2.4. Función `map-arbol`
 
 La función `map-arbol` es una función de orden superior que generaliza
 la función anterior. Definimos un parámetro adicional en el que se
@@ -1214,7 +1214,7 @@ Con `map`:
 ```
 
 
-#### Función `altura-arbol`
+#### 2.2.5. Función `altura-arbol`
 
 Vamos por último a definir una función que devuelve la altura de un
 árbol. 
@@ -1278,9 +1278,9 @@ la que obtenemos el máximo plegando la lista con la función `max`.
 Por último sumamos 1 para devolver la altura del árbol completo (un
 nivel más que el nivel máximo de los hijos).
 
-## Arboles binarios
+## 3. Arboles binarios
 
-### Definición de árboles binarios en Scheme
+### 3.1. Definición de árboles binarios en Scheme
 
 Los árboles binarios son árboles cuyos nodos tienen 0, 1 o 2
 hijos. Por ejemplo, el árbol mostrado en la siguiente figura es un
@@ -1323,7 +1323,7 @@ una lista vacía.
 
 <img src="imagenes/binario-3.png" width="350px"/>
 
-#### Barrera de abstracción ####
+#### 3.1.1. Barrera de abstracción ####
 
 Definimos la siguiente barrera de abstracción para los árboles
 binarios. Terminamos todos los nombres de las funciones con el sufijo
@@ -1392,7 +1392,7 @@ constructor de la barrera de abstracción:
                                arbolb-vacio)))
 ```
 
-### Funciones recursivas sobre árboles binarios
+### 3.2. Funciones recursivas sobre árboles binarios
 
 Veamos las siguientes funciones recursivas sobre árboles binarios:
 
@@ -1479,7 +1479,7 @@ constructor `construye-arbolb`.
 ```
 
 
-## Bibliografía - SICP
+## 4. Bibliografía - SICP
 
 En este tema explicamos conceptos de los siguientes capítulos del libro *Structure and Intepretation of Computer Programs*:
 
@@ -1487,7 +1487,7 @@ En este tema explicamos conceptos de los siguientes capítulos del libro *Struct
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2020-21  
+Lenguajes y Paradigmas de Programación, curso 2021-22  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
 

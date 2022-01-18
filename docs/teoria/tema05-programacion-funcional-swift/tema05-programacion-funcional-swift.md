@@ -1,7 +1,7 @@
 
 # Tema 5: Programación Funcional con Swift
 
-## Introducción
+## 1. Introducción
 
 Te recomendamos que leas el seminario de Swift
 en el que se introduce el lenguaje y se explica cómo ejecutar
@@ -10,7 +10,7 @@ programas en este lenguaje:
 - [Seminario de Swift](https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario2-swift/seminario2-swift.html)
 
 
-### Conceptos fundamentales de Programación Funcional ###
+### 1.2. Conceptos fundamentales de Programación Funcional ###
 
 Vamos a repasar en este tema cómo se implementan en Swift conceptos
 principalmente funcionales como:
@@ -43,7 +43,7 @@ Funciones como objetos de primera clase:
 > superior_ o devolver funciones creadas en tiempo de ejecución
 > (clausuras).
 
-### Características básicas de Swift ###
+### 1.3. Características básicas de Swift ###
 
 Swift es un lenguaje principalmente imperativo, pero en su diseño se
 han introducido conceptos modernos de programación funcional,
@@ -60,7 +60,7 @@ Como dice su creador [Chris Lattner](http://nondot.org/sabre/):
 > lenguajes, tomando ideas de Objective-C, Rust, Haskell, Ruby,
 > Python, C#, CLU, y demasiados otros para ser enumerados.
 
-#### Lenguaje fuertemente tipado ####
+#### 1.3.1. Lenguaje fuertemente tipado ####
 
 A diferencia de Scheme, Swift es un lenguaje **fuertemente tipado** en el
 que hay que definir los tipos de variables, parámetros y
@@ -104,7 +104,7 @@ El compilador indica el error e incluso sugiere una posible solución
 del mismo. En este caso llamar al constructor `Int()` pasándole un
 `Double` como parámetro.
 
-#### Lenguaje multi-paradigma ####
+#### 1.3.2. Lenguaje multi-paradigma ####
 
 Swift permite combinar características funcionales con características
 imperativas y de programación orientada a objetos. Veremos en este
@@ -140,7 +140,7 @@ func saluda(nombre: String) -> String {
 ```
 
 
-## Inmutabilidad
+## 2. Inmutabilidad
 
 Una de las características funcionales importantes de Swift es el
 énfasis en la inmutabilidad para reforzar la seguridad del
@@ -164,7 +164,7 @@ de la inmutabilidad es que garantiza que el código que escribimos no
 tiene efectos laterales y puede ser ejecutado sin problemas en
 entornos multi-procesador o multi-hilo.
 
-### Creación de nuevas estructuras y mutación
+### 2.1. Creación de nuevas estructuras y mutación
 
 En la [biblioteca estándar de
 Swift](https://developer.apple.com/documentation/swift/swift_standard_library)
@@ -265,10 +265,10 @@ cadenaInmutable.append("Adios")
 ```
 
 
-## Funciones
+## 3. Funciones
 
 
-### Definición de una función en Swift
+### 3.1. Definición de una función en Swift
 
 Para definir una función en Swift se debe usar la palabra `func`,
 definir el nombre de la función, sus parámetros y el tipo de
@@ -293,7 +293,7 @@ print(saluda(nombre:"Pedro"))
 // Imprime "Hola, Pedro!"
 ```
 
-### Etiquetas de argumentos y nombres de parámetros
+### 3.2. Etiquetas de argumentos y nombres de parámetros
 
 Cada parámetro de una función tiene una etiqueta del argumento y un
 nombre de parámetro. La etiqueta del argumento se usa cuando se llama a
@@ -387,7 +387,7 @@ print(mitad(impar: 9))
 
 
 
-### Parámetros y valores devueltos
+### 3.3. Parámetros y valores devueltos
 
 Es posible definir funciones sin parámetros:
 
@@ -444,7 +444,7 @@ print("Las raíces de la ecuación son \(resultado.pos) y \(resultado.neg)")
 //Imprime "Las raíces de la ecuación son 3.0 y 2.0"
 ```
 
-## Recursión
+## 4. Recursión
 
 Veamos algunos ejemplos de funciones recursivas en Swift.
 
@@ -534,7 +534,7 @@ no nos salimos del paradigma funcional, porque todas son variables
 inmutables definidas con `let`.
 
 
-## Tipos función 
+## 5. Tipos función 
 
 En Swift las funciones son objetos de primera clase y podemos
 asignarlas a variables, pasarlas como parámetro o devolverlas como
@@ -588,7 +588,7 @@ devuelven un `Int`.
     cualquier función que tenga el perfil `(Int, Int) -> Int` sin
     tener en cuenta las etiquetas de los argumentos.
 
-### Funciones que reciben otras funciones
+### 5.1. Funciones que reciben otras funciones
 
 Podemos usar un tipo función en parámetros de otras funciones:
 
@@ -649,7 +649,7 @@ print(sumatorio(desde: 0, hasta: 10, func: cuadrado)) // Imprime 385
 ```
 
 
-### Funciones en estructuras
+### 5.2. Funciones en estructuras
 
 Como cualquier otro tipo Las funciones pueden también incluirse en
   estructuras de datos compuestas, como arrays:
@@ -678,7 +678,7 @@ var misFunciones = [doble, cuadrado, suma]
 
 ```
 
-### Funciones que devuelven otras funciones
+### 5.3 Funciones que devuelven otras funciones
 
 Por último, veamos un ejemplo de funciones que devuelven otras
 funciones. 
@@ -728,7 +728,7 @@ Invocamos dos veces a `construyeSumador(inc:)` y guardamos las
 clausuras construidas en las variables `f2` y `f3`. En `f2` se guarda una
 función que suma `10` a su argumento y en `f3` otra que suma `100`.
 
-## Tipos
+## 6. Tipos
 
 Entre las ventajas del uso de tipos está la detección de errores en
 los programas en tiempo de compilación o las ayudas del entorno de
@@ -759,7 +759,7 @@ func calculaEstadisticas(valores: Array<Int>) -> (min: Int, max: Int, media: Int
 
 En Swift existen dos clases de tipos: tipos con nombre y tipos compuestos. 
 
-### Tipos con nombre
+### 6.1. Tipos con nombre
 
 Un tipo con nombre es un tipo al que podemos dar un nombre determinado
 cuando se define. Por ejemplo, al definir un nombre de una clase o de
@@ -785,7 +785,7 @@ biblioteca. La implementación de estos elementos está disponible en
 abierto en el [sitio GitHub de
 Swift](https://github.com/apple/swift/tree/master/stdlib/public/core). 
 
-### Tipos compuestos
+### 6.2. Tipos compuestos
 
 Los tipos compuestos son tipos sin nombre. En Swift se definen dos:
 tuplas y tipos función. Un tipo compuesto puede tener tipos con nombre
@@ -809,7 +809,7 @@ print(sumaTupla(tupla: (tupla.0, tupla.1),
 // Imprime (7, 11)
 ```
 
-#### Typealias ####
+#### 6.2.1. Typealias ####
 
 En Swift se define la palabra clave `typealias` para darle un nombre
 asignado a cualquier otro tipo. Ambos tipos son iguales a todos los
@@ -849,7 +849,7 @@ let` se instancia los valores de esa tupla en las variables `goles1` y
 el primer caso, que `goles1` sea menor que `goles2` y en el segundo
 que `goles1` sea mayor que `goles2`.
 
-### Tipos valor y tipos referencia
+### 6.3. Tipos valor y tipos referencia
 
 En Swift existen dos tipos de construcciones que forman la base de la
 programación orientada a objetos: las estructuras (_structs_) y las
@@ -926,7 +926,7 @@ modificación de una de las variables que comparten el array. Es lo que
 se llama _copy on write_.
 
 
-## Enumeraciones ##
+## 7. Enumeraciones ##
 
 Las enumeraciones definen un tipo con un valor restringido de posibles
 valores:
@@ -987,7 +987,7 @@ enum Quiniela {
 }
 ```
 
-### Valores brutos de enumeraciones ###
+### 7.1. Valores brutos de enumeraciones ###
 
 Es posible asignar a las constantes del enumerado un valor concreto de
 un tipo subyacente, por ejemplo enteros:
@@ -1074,14 +1074,14 @@ let posiblePlaneta = Planeta(rawValue: 7)
 // posiblePlaneta es de tipo Planeta? y es igual a Planeta.urano
 ```
 
-## Enumeraciones instanciables ##
+## 8. Enumeraciones instanciables ##
 
 Una característica singular de las enumeraciones en Swift es que
 permiten definir valores variables asociados a cada caso de la
 enumeración, creando algo muy parecido a una instancia de la
 enumeración.
 
-### Valores asociados a instancias de enumeraciones ###
+### 8.1. Valores asociados a instancias de enumeraciones ###
 
 Veamos un ejemplo inicial muy sencillo, con una enumeración con un
 único caso, en el que se define una variable de tipo `Int`:
@@ -1201,7 +1201,7 @@ case let .qrCode(codigoProducto):
 // Imprime  "Código QR : ABCDEFGHIJKLMNOP."
 ```
 
-### Enumeraciones recursivas ###
+### 8.2. Enumeraciones recursivas ###
 
 Es posible combinar las características de las enumeraciones con valor
 con la recursión para crear enumeraciones recursivas. Hay que preceder
@@ -1310,7 +1310,7 @@ print(suma(lista: lista2))
 // Imprime 15
 ```
 
-## Opcionales
+## 9. Opcionales
 
 Una de las características principales que Swift intenta promover es
 la seguridad y la robustez. Debe ser difícil que el desarrollador
@@ -1460,7 +1460,7 @@ var respuestaEncuesta: String?
 // respuestaEncuesta es inicializado automáticamente a nil
 ```
 
-### Ligado opcional
+### 9.1 Ligado opcional
 
 Para comprobar si un valor opcional es `nil` podemos usar un `if`. Es
 obligado hacerlo si desconocemos el valor que nos llega. Por ejemplo,
@@ -1550,7 +1550,7 @@ if let dato1 = x1, let dato2 = x2, let dato3 = x3 {
 }
 ```
 
-### Operador _nil-coalescing_ ###
+### 9.2. Operador _nil-coalescing_ ###
 
 El operador _nil-coalescing_ (`??`) permite definir un valor por
 defecto en una asignación si un opcional es nil.
@@ -1567,7 +1567,7 @@ print("Resultado: \(x), \(y)")
 En el ejemplo anterior, en la variable `x` se guardará el valor `-1` y
 en la variable `y` el valor `10`.
 
-### Encadenamiento de opcionales ###
+### 9.3. Encadenamiento de opcionales ###
 
 El encadenamiento de opcionales (_optional chaining_) permite llamar a
 un método de una variable que contiene un opcional. Si la variable no
@@ -1590,7 +1590,7 @@ let str2 = nombre2?.lowercased()
 ```
 
 
-### Definición de `Lista` con opcionales
+### 9.4. Definición de `Lista` con opcionales
 
 Veamos como último ejemplo una segunda versión del enum `Lista`, en el que
 utilizamos un único `case`, pero dando la posibilidad de que el resto
@@ -1620,7 +1620,7 @@ print(suma(lista: z))
 ```
 
 
-## Clausuras
+## 10. Clausuras
 
 Ya hemos visto previamente que en Swift las funciones son objetos de
 primera clase del lenguaje y que es posible definir funciones y
@@ -1635,7 +1635,7 @@ después veremos cómo las clausuras definidas en el interior de otras
 funciones capturan las variables definidas en el ámbito de la función principal.
 
 
-### Expresiones de clausuras
+### 10.1. Expresiones de clausuras
 
 Swift permite definir expresiones compactas con las que construir
 estas funciones que se pasan como parámetro de otras funciones. Se
@@ -1644,7 +1644,7 @@ expresiones proporcionan optimizaciones de sintaxis para escribir
 clausuras de forma concisa y clara. Vamos a ver las distintas
 optimizaciones utilizando como ejemplo el método `sorted(by:)`.
 
-### El método `sorted(by:)`
+### 10.2. El método `sorted(by:)`
 
 Tal y como hemos visto anteriormente la biblioteca stándar de Swift
 define un método `sorted()` que devuelve los elementos ordenados de un
@@ -1709,7 +1709,7 @@ lo que básicamente es una función de una única expresión (`a > b`). En
 este ejemplo, sería preferible escribir la clausura de ordenación
 _inline_, utilizando la sintaxis de expresiones de clausuras.
 
-### Sintaxis de las expresiones de clausura
+### 10.3. Sintaxis de las expresiones de clausura
 
 La sintaxis de las expresiones de clausura tiene la siguiente forma
 general:
@@ -1747,7 +1747,7 @@ una única línea:
 let alreves = estudiantes.sorted(by: { (s1: String, s2: String) -> Bool in return s1 > s2 } )
 ```
 
-### Inferencia del tipo por el contexto
+### 10.4. Inferencia del tipo por el contexto
 
 Como la clausura de ordenación se pasa como argumento de un método,
 Swift puede inferir los tipos de sus parámetros y el tipo del valor
@@ -1763,7 +1763,7 @@ los nombres de los parámetros también pueden omitirse:
 let alreves = estudiantes.sorted(by: { s1, s2 in return s1 > s2 } )
 ```
 
-### Devoluciones implícitas en clausuras con una única expresión
+### 10.5. Devoluciones implícitas en clausuras con una única expresión
 
 En clausuras con una única expresión podemos omitir también la palabra
 clave `return`:
@@ -1772,7 +1772,7 @@ clave `return`:
 let alreves = estudiantes.sorted(by: { s1, s2 in s1 > s2 } )
 ```
 
-### Abreviaturas en los nombres de los argumentos
+### 10.6. Abreviaturas en los nombres de los argumentos
 
 Swift proporciona automáticamente abreviaturas para los nombres de
 argumentos de las clausuras _inline_ que pueden usarse para referirse
@@ -1786,7 +1786,7 @@ de la lista de los argumentos:
 let alreves = estudiantes.sorted(by: { $0 > $1 } )
 ```
 
-### Funciones operadoras
+### 10.7. Funciones operadoras
 
 Incluso hay una forma aun más corta de escribir la expresión de
 clausura anterior.  Swift define una implementación específica de
@@ -1800,7 +1800,7 @@ usar el específico de cadenas:
 let alreves = estudiantes.sorted(by: >)
 ```
 
-### Clausuras al final
+### 10.8. Clausuras al final
 
 Si necesitamos pasar una expresión de clausura a una función como el
 argumento final de la clausura y la expresión es larga, puede ser útil
@@ -1822,7 +1822,7 @@ let alreves = estudiantes.sorted { $0 > $1 }
 ```
 
 
-### Variables capturadas
+### 10.9. Variables capturadas
 
 !!! Danger "Cuidado"
     Los ejemplos que vamos a ver a continuación no usan programación
@@ -1933,7 +1933,7 @@ incrementaDiez()
 ```
 
 
-### Clausuras con expresiones de clausura ###
+### 10.10. Clausuras con expresiones de clausura ###
 
 En el ejemplo anterior hemos usado una definición interna de una
 función para definir la clausura que se devuelve. Lo hemos hecho por
@@ -1994,7 +1994,7 @@ print(incrementaDiez())
 ```
 
 
-### Variables capturadas por clausuras y variables del ámbito de invocación ###
+### 10.11. Variables capturadas por clausuras y variables del ámbito de invocación ###
 
 Las clasuras usan las variables capturadas y no las variables declaradas
 en el ámbito en el que se invoca a la clausura. Vamos a explicarlo con un ejemplo.
@@ -2063,7 +2063,7 @@ variable `x` definida en la línea anterior. Por eso cuando se ejecuta
 la sentencia se imprime el valor `110` y no el valor `20`.
 
 
-### Las clausuras son tipos de referencia
+### 10.12. Las clausuras son tipos de referencia
 
 En el ejemplo anterior, `incrementaSiete` e `incrementaDiez` son
 constantes, pero las clausuras a las que estas constantes se refieren
@@ -2087,7 +2087,7 @@ tambienIncrementaDiez()
 ```
 
 
-## Funciones de orden superior
+## 11. Funciones de orden superior
 
 Una de las características funcionales que más hemos usado para
 trabajar con listas en Scheme son las funciones de orden superior como
@@ -2096,7 +2096,7 @@ equivalentes para trabajar con colecciones. Se denominan `map`,
 `filter` y `reduce`. Todas ellas aceptan expresiones de clausura como
 argumento.
 
-### Map
+### 11.1 Map
 
 El método `map` se define en el protocolo
 [`CollectionType`](https://developer.apple.com/library/ios/documentation/Swift/Reference/Swift_CollectionType_Protocol/index.html#//apple_ref/swift/intfm/CollectionType/s:FEsPs14CollectionType3mapurFzFzWx9Generator7Element_qd__GSaqd___)
@@ -2162,7 +2162,7 @@ incrementa(valores: [10, 20, 30], con: 5)
 ```
 
 
-### Filter
+### 11.2. Filter
 
 
 La función `filter` es también igual que la definida en Scheme. Su
@@ -2185,7 +2185,7 @@ numeros.filter {$0 % 2 == 0}
 ```
 
 
-### Reduce 
+### 11.3. Reduce 
 
 Similar al _foldr_ de Scheme. Su perfil es el siguiente:
 
@@ -2252,7 +2252,7 @@ anterior (empieza por `"*"`) y el segundo argumento (`$1`) se coge del
 array de cadenas.
 
 
-### Combinación de funciones de orden superior
+### 11.4. Combinación de funciones de orden superior
 
 Cuando el resultado de aplicar una función de orden superior a una
 colección es otra colección es posible aplicar otra función de
@@ -2277,7 +2277,7 @@ numeros.filter{$0 >= 100}.reduce(0,+)
 ```
 
 
-## Genéricos
+## 12. Genéricos
 
 
 Empecemos con un ejemplo sencillo. Supongamos la siguiente función
@@ -2398,7 +2398,7 @@ print(vacia(cdr(cdr(cdr(lista)!)!)!)) // Imprime true
 ```
 
 
-## Bibliografía
+## 13. Bibliografía
 
 - Swift Language Guide
     - [The Basics](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-ID309)
@@ -2411,6 +2411,6 @@ print(vacia(cdr(cdr(cdr(lista)!)!)!)) // Imprime true
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2020–21  
+Lenguajes y Paradigmas de Programación, curso 2021–22  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

@@ -1,7 +1,7 @@
 
 # Lenguajes y Paradigmas de Programación
 
-## Datos académicos de la asignatura
+## 1. Datos académicos de la asignatura
 
 **Departamento de Ciencia de la Computación e Inteligencia Artificial**  
 **6 créditos ECTS**: 1 clase de teoría de 2 h. y 1 clase de 
@@ -18,7 +18,7 @@ prácticas de 2 h. a la semana
 * Cristina Pomares ([e-mail](mailto:cpomares@ua.es)): Grupos de
   teoría: 1 y 2. Grupos de prácticas: 1, 3 y 7.
 
-## Recursos de la asignatura
+## 2. Recursos de la asignatura
 
 * [Ficha de la asignatura](https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wCodEst=C203&wcodasi=34017&wlengua=es&scaca=2020-21)
 * [Apuntes de la asignatura (teoría, seminarios y prácticas)](https://domingogallardo.github.io/apuntes-lpp/)
@@ -28,7 +28,7 @@ prácticas de 2 h. a la semana
 * [Foro de consultas y anuncios](https://moodle2020-21.ua.es/moodle/mod/forum/view.php?id=80350)
   en el sitio Moodle (sólo accesible a estudiantes)
 
-## Objetivos y competencias
+## 3. Objetivos y competencias
 
 **Objetivos**:
 
@@ -72,9 +72,9 @@ dominios concretos.
   utilicen sus características de programación orientada a objetos,
   genéricos y protocolos.
 
-## Temario
+## 4. Temario
 
-### Bloques temáticos ###
+### 4.1. Bloques temáticos ###
 
 La asignatura se divide en 3 bloques temáticos, todos ellos de igual
 duración, en los que se utilizará el lenguaje de programación que
@@ -97,7 +97,7 @@ impartidos en las clases de prácticas.
   arrays y colecciones. Recorriendo colecciones. Valores mutables e
   inmutables. Inicialización. Tipos de referencia y valor en Swift.
 
-### Temas ###
+### 4.2. Temas ###
 
 * Tema 1. **Lenguajes de programación**: Historia de los lenguajes de
   programación. Elementos de los lenguajes de
@@ -134,7 +134,7 @@ siguiente figura.
 <img src="imagenes/planificacion.png" width="800px"/>
 
 
-## Prácticas
+## 5. Prácticas
 
 Las prácticas son fundamentales en la asignatura y sirven para
 comprender, trabajar y profundizar los conceptos y competencias
@@ -173,7 +173,7 @@ los profesores. Es preferible el foro, porque de esta forma las
 contestaciones y aclaraciones serán compartidas con el resto de
 compañeros.
 
-### Uso del software iTALC ###
+### 5.1 Uso del software iTALC ###
 
 Durante el desarrollo de las sesiones prácticas es obligatorio usar el
 ordenador del aula y no el portátil personal. El profesor de prácticas
@@ -181,7 +181,7 @@ abrirá el programa iTALC, con el que podrá comprobar cómo estáis
 desarrollando los ejercicios y podrá haceros recomendaciones cuando lo
 considere oportuno. 
 
-## Horarios
+## 6. Horarios
 
 La distribución de grupos del curso 2020-21 es la siguiente:
 
@@ -201,9 +201,9 @@ siguientes:
 En los turnos de prácticas se debe asistir al grupo al que se ha
 asignado. El cambio de turno deberá solicitarse en la Secretaría de la EPS.
 
-## Evaluación
+## 7. Evaluación
 
-### Convocatoria ordinaria C3 (evaluación continua)
+### 7.1. Convocatoria ordinaria C3 (evaluación continua)
 
 La asignatura se divide en 3 bloques temáticos, todos ellos de igual
 duración, en los que se utilizará el lenguaje de programación que
@@ -234,13 +234,13 @@ asignatura.
     cumplir alguna esta norma, la prueba queda invalidada con
     calificación de 0. 
     
-### Convocatoria extraordinaria C4
+### 7.2. Convocatoria extraordinaria C4
 
 En la convocatoria extraordinaria se realizará un examen final sobre
 todos los bloques temáticos cuya calificación representará el 100% de
 la nota de la asignatura.
 
-## Consejos para aprender con éxito los contenidos de la asignatura
+## 8. Consejos para aprender con éxito los contenidos de la asignatura
 
 El consejo fundamental para aprobar la asignatura es **trabajar todas
 las semanas e intentar seguir el ritmo de la asignatura**. Los
@@ -320,7 +320,7 @@ han aprobado la asignatura.
     superarla simplemente tienes que hacer ejercicios y también
     plantearte tú mismo nuevos ejercicios.
 
-## Bibliografía
+## 9. Bibliografía
 
 En Moodle se publican los apuntes de la asignatura, con ejercicios,
 explicaciones y ejemplos de todos los conceptos estudiados, tanto en
@@ -338,6 +338,6 @@ Para ampliar algunos conceptos se recomiendan las siguientes referencias:
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2020-21  
+Lenguajes y Paradigmas de Programación, curso 2021-22  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

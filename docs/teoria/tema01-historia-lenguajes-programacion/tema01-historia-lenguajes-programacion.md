@@ -2,9 +2,9 @@
 
 # Tema 1: Historia y conceptos de los lenguajes de programación
 
-## Historia de los lenguajes de programación
+## 1. Historia de los lenguajes de programación
 
-### De las máquinas de calcular a los computadores programables ###
+### 1.1. De las máquinas de calcular a los computadores programables ###
 
 <table>
   <tr>
@@ -136,7 +136,7 @@ el manual de programación del Ferranti que Turing acababa de
 escribir. Turing participó también en el desarrollo de otros programas
 de IA, como un jugador de ajedrez basado en heurísticas.
 
-### Los primeros lenguajes de programación
+### 1.2. Los primeros lenguajes de programación
 
 Los primeros computadores electrónicos se programaban directamente
 usando el conjunto de instrucciones del procesador, en código máquina,
@@ -172,7 +172,7 @@ ACM Computing Surveys (CSUR) Surveys, Volume 2 Issue 4, Dec. 1970,
 Pages 247-260)
 
 
-### El nacimiento de los computadores comerciales
+### 1.3. El nacimiento de los computadores comerciales
 
 **UNIVAC**
 
@@ -205,7 +205,7 @@ para este computador.
 *Foto IBM 704*
 
 
-#### Programando los primeros computadores
+#### 1.3.1. Programando los primeros computadores
 
 > El UNIVAC I era una máquina interesante para programar, con su
 > almacenamiento basado en líneas de retardo de mercurio y su
@@ -226,7 +226,7 @@ para este computador.
 > George Sadowsky,
 > [My Second Computer was a UNIVAC I](http://www.georgesadowsky.com/papers/Univac-I.pdf)
 
-### Los primeros lenguajes de alto nivel
+### 1.4. Los primeros lenguajes de alto nivel
 
 Los primeros lenguajes de alto nivel se desarrollaron a finales de la
 década de los 50:
@@ -249,7 +249,7 @@ principio:
 	* Lenguaje funcional: funciones, recursión, listas, símbolos
 	* Lenguaje interpretado
 
-#### FORTRAN
+#### 1.4.1. FORTRAN
 
 Desarrollado por IBM para programar el IBM 704. Algunos datos:
 
@@ -276,7 +276,7 @@ Cita de John Backus ([Wikipedia sobre FORTRAN](http://en.wikipedia.org/wiki/Fort
 Tomado del
 [manual de FORTRAN del IBM 704](http://archive.computerhistory.org/resources/text/Fortran/102665486.05.01.acc.pdf)
 
-#### Lisp
+#### 1.4.2. Lisp
 
 El otro lenguaje de alto nivel desarrollado en esa época es el
 Lisp. Desarrollado a finales de los 50 en el MIT por John McCarthy.
@@ -321,7 +321,7 @@ Tomado de
 MIT Press, 1964
 
 
-### La explosión de los lenguajes de programación
+### 1.5. La explosión de los lenguajes de programación
 
 Desde 1954 hasta la actualidad se han documentado más de 2.500
 (consultar en [The Language List]).  Entre 1952 y 1972 alrededor de
@@ -330,7 +330,7 @@ influencia en el desarrollo de lenguajes posteriores.
 
 [The Language List]: http://people.ku.edu/~nkinners/LangList/Extras/langlist.htm
 
-#### Genealogía de los lenguajes de programación
+#### 1.5.1. Genealogía de los lenguajes de programación
 
 <img src="imagenes/genealogia-de-los-lp.png" width="600px"/>
 
@@ -361,7 +361,7 @@ Algunas notas sobre la genealogía:
   Objective-C en la que se enfatiza más aspectos dinámicos como el
   paso de mensajes o la modificación de clases en tiempo de ejecución.
 
-#### Algunos lenguajes importantes y su fecha de creación
+#### 1.5.2. Algunos lenguajes importantes y su fecha de creación
 
 | 1950-1960  | 1970  | 1980 | 1990 | 2000 |
 | :---------: | :---: | :---: | :---: | :---: |
@@ -375,7 +375,7 @@ Algunas notas sobre la genealogía:
 
 
 
-#### Los creadores de los LPs
+#### 1.5.3. Los creadores de los LPs
 
 Si comprobamos la historia de los lenguajes de programación, podemos
 clasificar a sus creadores en tres grandes categorías:
@@ -392,7 +392,7 @@ clasificar a sus creadores en tres grandes categorías:
   [Matsumoto](http://en.wikipedia.org/wiki/Yukihiro_Matsumoto)/Ruby)
 
 
-### Lenguajes de programación en la actualidad
+### 1.6. Lenguajes de programación en la actualidad
 
 El índice
 [TIOBE](http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html)
@@ -417,7 +417,7 @@ más populares en los últimos 10 años.
 
 *Evolución TIOBE*
 
-#### La evolución no se detiene
+#### 1.6.1. La evolución no se detiene
 
 Es interesante comprobar que cada vez es más fácil desarrollar nuevos
 lenguajes de programación. Las técnicas y herramientas de
@@ -491,9 +491,9 @@ multiparadigma.
 * Lenguaje moderno, multiparadigma (programación orientada a objetos y
   funcional) fuertemente tipeado y compilado.
 
-## Elementos de los lenguajes de programación
+## 2. Elementos de los lenguajes de programación
 
-### Definición de la Encyclopedia of Computer Science
+### 2.1. Definición de la Encyclopedia of Computer Science
 
 Un lenguaje de programación es un conjunto de caracteres, reglas para
 combinarlos y reglas para especificar sus efectos cuando sean
@@ -507,7 +507,7 @@ características:
 4. Utiliza una notación que es más cercana al problema específico que
    se está resolviendo que al código máquina.
 
-### Definición de Abelson y Sussman
+### 2.2. Definición de Abelson y Sussman
 
 > Vamos a estudiar la idea de un **proceso computacional**. Los
 > procesos computacionales son seres abstractos que habitan los
@@ -524,7 +524,7 @@ Y otra idea fundamental
 > prestar atención particular a los medios que proporciona el lenguaje
 > para combinar ideas simples para formar ideas más complejas.
 
-### Características de un LP
+### 2.3. Características de un LP
 
 1. Define un proceso que se ejecuta en un computador
 2. Es de alto nivel, cercano a los problemas que se quieren resolver
@@ -532,7 +532,7 @@ Y otra idea fundamental
 3. Permite construir nuevas abstracciones que se adapten al dominio
    que se programa
 
-### Elementos de un LP
+### 2.4. Elementos de un LP
 
 Para Abelson y Sussman, todos los lenguajes de progamación permiten
 combinar ideas simples en ideas más complejas mediante los siguientes
@@ -545,7 +545,7 @@ tres mecanismos
 * **Mecanismos de abstracción** con los que dar nombre a los elementos
   compuestos y manipularlos como unidades
 
-### Sintaxis y semántica
+### 2.5. Sintaxis y semántica
 
 *Sintaxis*: conjunto de reglas que definen qué expresiones de texto
  son correctas. Por ejemplo, en C todas las sentencias deben terminar
@@ -554,7 +554,7 @@ tres mecanismos
 *Semántica*: conjunto de reglas que define cuál será el resultado de la
 ejecución de un programa en el computador.
 
-### Los lenguajes son para las personas
+### 2.6. Los lenguajes son para las personas
 
 Los lenguajes de programación deben ser precisos, deben poder
 traducirse sin ambigüedad en lenguaje máquina para que sean ejecutados
@@ -565,7 +565,7 @@ La programación es una actividad colaborativa y debe basarse en la
 comunicación.
 
 
-### Importancia del aprendizaje de técnicas de LPs
+### 2.7. Importancia del aprendizaje de técnicas de LPs
 
 Es importante conocer cómo funciona "por dentro" un lenguaje de
 programación y sus características comparadas.
@@ -577,7 +577,7 @@ programación y sus características comparadas.
 * Facilita el aprendizaje de un nuevo lenguaje de programación
 * Facilita el diseño de nuevos lenguajes de programación
 
-## Abstracción
+## 3. Abstracción
 
 Una misión fundamental de los lenguajes de programación es
 proporcionar herramientas que sirvan para construir abstracciones. Por
@@ -590,7 +590,7 @@ nuestro programas es fundamental para conseguir un código legible y
 reutilizable.
 
 
-### Modelar como una actividad fundamental
+### 3.1. Modelar como una actividad fundamental
 
 * Para escribir un programa que preste unos servicios es fundamental
   modelar el dominio sobre el que va a trabajar
@@ -610,7 +610,7 @@ reutilizable.
 *Casos de uso biblioteca*
 
 
-### Abstracciones computacionales
+### 3.2. Abstracciones computacionales
 
 Existen abstracciones propias de la informática (*computer science*),
 que se utilizan en múltiples dominios. Por ejemplo, abstracciones de
@@ -628,7 +628,7 @@ y ordenadores externos:
 * Raster gráfico
 * Protocolo TCP/IP
 
-### Construcción de abstracciones
+### 3.3. Construcción de abstracciones
 
 Uno de los trabajos principales de un informático es la construcción
 de abstracciones que permitan ahorrar tiempo y esfuerzo a la hora de
@@ -649,7 +649,7 @@ Cita de Joel Spolsky en su blog
 > posiciones, sino en su lugar, un sistema jerárquico de
 > carpetas-dentro-de-carpetas que contiene ficheros individuales.
 
-### Distintos aspectos de los lenguajes de programación
+### 3.4. Distintos aspectos de los lenguajes de programación
 
 La programación es una disciplina compleja, que tiene que tener en
 cuenta múltiples aspectos de los lenguajes de programación y las API:
@@ -677,9 +677,9 @@ cuenta múltiples aspectos de los lenguajes de programación y las API:
     Github, Bitbucket), de gestión incidencias (Jira) , tests que
     evitan errores de regresión, ...
 
-## Paradigmas de programación
+## 4. Paradigmas de programación
 
-### ¿Qué es un paradigma de programación?
+### 4.1. ¿Qué es un paradigma de programación?
 
 Un paradigma define un conjunto de características, patrones y estilos
 de programación basados en alguna idea fundamental. Por ejemplo el
@@ -725,7 +725,7 @@ Los paradigmas más importantes son:
 * Paradigma orientado a objetos
 
 
-### Paradigma funcional
+### 4.2. Paradigma funcional
 
 Resumen de las características principales:
 
@@ -752,7 +752,7 @@ Ejemplo de código (Lisp):
 265252859812191058636308480000000
 ```
 
-### Paradigma lógico
+### 4.3. Paradigma lógico
 
 Características:
 
@@ -788,7 +788,7 @@ yes
 no
 ```
 
-### Paradigma imperativo
+### 4.4. Paradigma imperativo
 
 Los lenguajes de programación que cumplen el paradigma imperativo se
 caracterizan por tener un estado implícito que es modificado mediante
@@ -829,7 +829,7 @@ begin
 end;
 ```
 
-### Paradigma orientado a objetos
+### 4.5. Paradigma orientado a objetos
 
 Características:
 
@@ -887,7 +887,7 @@ public class Excursion {
 }
 ```
 
-## Compiladores e intérpretes
+## 5. Compiladores e intérpretes
 
 En el nivel de abstracción más bajo, la ejecución de un programa en un
 computador consiste en la ejecución de un conjunto de instrucciones
@@ -910,7 +910,7 @@ será:
 * el código de un programa (intérprete) que realiza la interpretación
   del programa original (en el caso de un lenguaje interpretado)
 
-### Compilación
+### 5.1. Compilación
 
 La siguiente figura (tomada, como las demás de este apartado del
 *Programming Language Pragmatics*) muestra el proceso de generación y
@@ -933,7 +933,7 @@ Intel no puede ejecutarse en un procesador ARM, como los
   y tiempo de ejecución
 - Mayor eficiencia
 
-### Interpretación
+### 5.2. Interpretación
 
 <img src="imagenes/interpretacion.png" width="500px"/>
 
@@ -952,7 +952,7 @@ círculos de programación funcional un *REPL* (*Read*, *Eval*, *Print*,
 Lisp. El uso del *REPL* promueve una programación interactiva en la
 que continuamente evaluamos y comprobamos el código que desarrollamos.
 
-### Enfoques mixtos
+### 5.3. Enfoques mixtos
 
 Existen también enfoques mixtos, como el usado por el lenguaje de
 programación Java, en el que se realizan ambos procesos.
@@ -974,7 +974,7 @@ por ejemplo VirtualBox).
 
 - Ejemplos: Java, Scala
 
-## Bibliografía
+## 6. Bibliografía
 
 
 * Introducción y capítulo 1 del Structure and Interpretation of Computer Programs: *Building Abstractions with
@@ -994,6 +994,6 @@ por ejemplo VirtualBox).
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2020-21  
+Lenguajes y Paradigmas de Programación, curso 2021-22  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

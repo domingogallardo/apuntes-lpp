@@ -30,7 +30,7 @@ Ver en el código:
 
 # Tema 6: Programación Orientada a Objetos con Swift
 
-## Introducción a la Programación Orientada a Objetos
+## 1. Introducción a la Programación Orientada a Objetos
 
 La Programación Orientada a Objetos (POO) es un paradigma de programación
 que explota en los 80 pero nace a partir de ideas a finales de los 
@@ -146,7 +146,7 @@ eficiente. Son lenguajes fuertemente tipados como C++ o Swift.
 Vamos a detallar a continuación las características más importantes de
 Programación Orientada a Objetos de Swift.
 
-## Clases y estructuras
+## 2. Clases y estructuras
 
 En el caso de Swift, las clases y las estructuras son muchas más
 cercanas en funcionalidad que en otros lenguajes, como C o C++, y
@@ -186,7 +186,7 @@ estructuras:
 - Los deinicializadores permiten a una instancia de una clase liberar
   los recursos que ha asignado
 
-### Definición
+### 2.1. Definición
 
 ```swift
 class UnaClase {
@@ -233,7 +233,7 @@ será visible. Por último, `etiqueta` representa el nombre que aparece
 en la parte superior de la ventana. Es un `String` opcional que se
 inicializa a `nil` porque no se le asigna un valor inicial.
 
-### Instancias de clases y estructuras
+### 2.2. Instancias de clases y estructuras
 
 La definición de las estructuras y las clases únicamente definen sus
 aspectos generales. Para describir una configuración específica (una
@@ -279,7 +279,7 @@ Todas las propiedades de una instancia deben estar definidas después
 de haberse inicializado, a no ser que la propiedad sea un opcional.
 
 
-### Acceso a propiedades
+### 2.3. Acceso a propiedades
 
 Se puede acceder y modificar las propiedades usando la _sintaxis de
 punto_:
@@ -292,7 +292,7 @@ unasCoordsPantalla.posX = 100
 unaVentana.esquina.posY = 100
 ```
 
-### Inicialización de las estructuras por sus propiedades
+### 2.4. Inicialización de las estructuras por sus propiedades
 
 Si en las estructuras no se se definen inicializadores explícitos
 (veremos más adelante cómo hacerlo) podemos utilizar un
@@ -323,7 +323,7 @@ print(coords1.posX, coords1.posY)
 // Imprime 200 0
 ```
 
-### Estructuras y enumeraciones son tipos valor
+### 2.5. Estructuras y enumeraciones son tipos valor
 
 Un _tipo valor_ es un tipo cuyo valor se copia cuando se asigna a una
 variable o constante, o cuando se pasa a una función.
@@ -352,7 +352,7 @@ distintas. Después, la propiedad `posX` de `coords2` se actualiza a 1000.
 Podemos comprobar que la propiedad se modifica, pero que el valor de
 `posX` en `coords1` sigue siendo el mismo.
 
-### Las clases son tipos referencia
+### 2.6. Las clases son tipos referencia
 
 A diferencia de los tipos valor, los tipos de referencias no se copian
 cuando se asignan o se pasan a funciones. En su lugar se usa una
@@ -396,7 +396,7 @@ se escriba un asterisco (*) para indicar que estas creando una
 referencia. En su lugar, estas referencias se definen como cualquier
 otra constante o variable en Swift.
 
-### Declaración de instancias con `let`
+### 2.7. Declaración de instancias con `let`
 
 Las estructuras y clases también tienen comportamientos distintos
 cuando se declaran las variables con `let`.
@@ -426,7 +426,7 @@ ventana3 = ventana1
 ```
 
 
-### Operadores de identidad
+### 2.8. Operadores de identidad
 
 A veces puede ser útil descubrir si dos constantes o variables se
 refieren exactamente a la misma instancia de una clase. Para permitir
@@ -450,7 +450,7 @@ Estos operadores "idéntico a" no son los mismos que los de "igual a"
   clase definir la implementación de estos operadores.
 
 
-### Paso como parámetro
+### 2.9. Paso como parámetro
 
 En Swift los parámetros de las funciones son constantes, se definen
 usando el operador `let`. Esto hace que sea muy distinto el
@@ -537,7 +537,7 @@ func mueve(ventana: Ventana, incX: Int, incY: Int) {
     paremeters_ en la página sobre
     [Funciones](https://docs.swift.org/swift-book/LanguageGuide/Functions.html). 
 
-### Criterios para usar estructuras y clases
+### 2.10. Criterios para usar estructuras y clases
 
 Podemos usar tanto clases como estructuras para definir nuestros tipos
 de datos y utilizarlos como bloques de construcción del código de
@@ -578,7 +578,7 @@ construiremos en nuestros programas serán clases, no
 estructuras. Aunque usaremos muchas de las estructuras estándar de
 Swift.
 
-## Propiedades
+## 3. Propiedades
 
 Las _propiedades_ asocian valores con una clase, estructura o
 enumeración particular. Las propiedades almacenadas (_stored
@@ -603,7 +603,7 @@ responder con acciones programadas. Los observadores de propiedades
 pueden añadirse tanto a propiedades almacenadas definidas por nosotros
 como a propiedades heredadas de la superclase.
 
-### Propiedades almacenadas
+### 3.1. Propiedades almacenadas
 
 En su forma más simple, una propiedad almacenada es una constante o
 variable que está almacenada como parte de una instancia de una clase
@@ -637,7 +637,7 @@ crea el nuevo rango y no puede ser cambiada en el futuro, por ser una
 propiedad constante.
 
 
-### Propiedades calculadas
+### 3.2. Propiedades calculadas
 
 Además de las propiedades almacenadas, las clases, estructuras y
 enumeraciones pueden definir _propiedades calculadas_, que no
@@ -735,7 +735,7 @@ struct Rectangulo {
 }
 ```
 
-### Propiedades solo-lectura
+### 3.3. Propiedades solo-lectura
 
 Una propiedad calculada con un _getter_ y sin _setter_ se conoce como
 una propiedad calculada de solo-lectura. Una propiedad calculada de
@@ -768,7 +768,7 @@ ambiguo determinar qué valores concretos de ancho, alto y profundo
 deberían usarse para un valor particular del volumen.
 
 
-### Observadores de propiedades
+### 3.4. Observadores de propiedades
 
 Los observadores de propiedades (_property observers_) observan y
 responden a cambios en el valor de una propiedad. Los observadores de
@@ -855,7 +855,7 @@ se imprime un mensaje indicando cuántos pasos se han tomado. El
 observador `didSet` no proporciona un parámetro definido por nosotros
 para el valor antiguo, sino que usa el nombre por defecto `oldValue`.
 
-### Variables locales y globales
+### 3.5. Variables locales y globales
 
 Las capacidades anteriores de propiedades calculadas y de observadores
 también están disponibles para variables globales y locales.
@@ -885,7 +885,7 @@ z = 100
 print(x)
 ```
 
-### Propiedades del tipo
+### 3.6. Propiedades del tipo
 
 Las propiedades de las instancias son propiedades que pertenecen a una
 instancia de un tipo particular. Cada vez que creamos una nueva
@@ -990,7 +990,7 @@ print("Suma de los cambios de valores: \(Valor.sumaValores)")
 // Imprime 60
 ```
 
-## Métodos
+## 4. Métodos
 
 Los _métodos_ son funciones que están asociadas a un tipo
 particular. Las clases, estructuras y enumeraciones pueden definir
@@ -1003,7 +1003,7 @@ del tipo son similares a los métodos de clase en Java.
 El hecho de que las estructuras y las enumeraciones puedan definir
 métodos en Swift es una diferencia importante con C y Objective-C.
 
-### Métodos de instancia
+### 4.1. Métodos de instancia
 
 Los métodos de instancia son funciones que pertenecen a instancias de
 una clase, estructura o enumeración. Proporcionan la funcionalidad de
@@ -1074,7 +1074,7 @@ class Contador {
 ```
 
 
-### Nombres locales y externos de parámetros
+### 4.2. Nombres locales y externos de parámetros
 
 Ya vimos que los parámetros de las funciones pueden tener un nombre
 interno y un nombre externo. Lo mismo sucede con los métodos, porque
@@ -1124,7 +1124,7 @@ Al igual que en las funciones, podemos definir explícitamente los
 nombres externos de los parámetros y usar el subrayado (`_`) para
 indicar que ese parámetro no tendrá nombre externo.
 
-### La propiedad `self`
+### 4.3. La propiedad `self`
 
 Toda instancia de un tipo tiene una propiedad implícita llamada
 `self`, que es exactamente equivalente a la instancia misma. Podemos
@@ -1166,7 +1166,7 @@ if unPunto.estaAlaDerecha(de: 1.0) {
 // Imprime "Este punto está a la derecha de la línea donde x == 1.0"
 ```
 
-### Operaciones con instancias de tipo valor
+### 4.4. Operaciones con instancias de tipo valor
 
 Las estructuras y las enumeraciones son **tipos valor**. Por defecto,
 las propiedades de un tipo valor no pueden ser modificadas desde
@@ -1196,7 +1196,7 @@ print("Hemos movido el punto a (\(puntoMovido.x), \(puntoMovido.y))")
     modifican la propia estructura y no devuelven nada) con el verbo
     en imperativo (`array.sort()`).
 
-### Modificación de tipos valor desde dentro de la instancia ###
+### 4.5. Modificación de tipos valor desde dentro de la instancia ###
 
 Sin embargo, hay ocasiones en las que necesitamos modificar las
 propiedades de nuestra estructura o enumeración dentro de un método
@@ -1241,7 +1241,7 @@ puntoFijo.incrementa(incX: 2.0, incY: 3.0)
 // esto provocará un error
 ```
 
-### Asignación a `self` en un método mutador
+### 4.6. Asignación a `self` en un método mutador
 
 Los métodos mutadores pueden asignar una nueva instancia completamente
 nueva a la propiedad `self`. El anterior ejemplo `Punto` podría habers
@@ -1288,7 +1288,7 @@ luzHorno.siguiente()
 // luzHorno es ahora .apagado
 ```
 
-### Métodos del tipo
+### 4.7. Métodos del tipo
 
 Los métodos de instancia, como los descritos antes, se llaman en
 instancias de un tipo particular. Es posible también definir métodos
@@ -1349,7 +1349,7 @@ print("Se han registrado \(Ventana.ventanas.count) ventanas")
 ```
 
 
-## Inicialización
+## 5. Inicialización
 
 _Inicialización_ es el proceso de preparar para su uso una instancia
 de una clase, estructura o enumeración. Este proceso incluye la
@@ -1376,7 +1376,7 @@ explicar todo el proceso completo. Recomendamos consultar la
 [documentación original de Swift](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html#//apple_ref/doc/uid/TP40014097-CH18-ID203).
 
 
-### Inicializadores por defecto y _memberwise_ ###
+### 5.1. Inicializadores por defecto y _memberwise_ ###
 
 Ya hemos visto que es posible inicializar clases y estructuras
 definiendo valores por defecto a todas sus propiedades (con la posible
@@ -1412,7 +1412,7 @@ momento en que definimos algún inicializador con la palabra
 `init`. Veamos cómo definir inicializadores.
 
 
-### Inicialización de propiedades almacenadas
+### 5.2. Inicialización de propiedades almacenadas
 
 Como hemos dicho, las clases y estructuras deben definir todas sus
 propiedades almacenadas a un valor inicial en el momento en que la
@@ -1458,7 +1458,7 @@ struct Fahrenheit {
 }
 ```
 
-### Inicializadores personalizados
+### 5.3. Inicializadores personalizados
 
 Podemos proporcionar parámetros de inicialización como parte de la
 definición de un inicializador, para definir los tipos y los nombres
@@ -1585,7 +1585,7 @@ funcionalidad que el inicializador por defecto, que tal y como hemos
 comentado, no se crea en una estructura o clase en la que definimos
 sus propios inicializadores.
 
-## Herencia
+## 6. Herencia
 
 Una clase puede _heredar_ métodos, propiedades y otras características
 de otra clase. Cuando una clase hereda de otra, la clase que hereda se
@@ -1605,7 +1605,7 @@ propiedad. A cualquier propiedad heredada se le puede añadir un
 observador de propiedad, independientemente de si es originalmente una
 propiedad almacenada o calculada.
 
-### Definición de una clase base
+### 6.1. Definición de una clase base
 
 Una clase que no hereda de ninguna otra se denomina una _clase base_
 (_base class_). A diferencia de otros lenguajes orientados a objetos,
@@ -1661,7 +1661,7 @@ arbitrario, pero no es de mucha utilidad por si misma. Para hacerla
 más útil, tenemos que refinarla para describir tipos de vehículos más
 específicos.
 
-### Construcción de subclases
+### 6.2. Construcción de subclases
 
 La construcción de una subclase (_subclassing_) es la acción de basar
 una nueva clase en una clase existente. La subclase hereda
@@ -1741,7 +1741,7 @@ print("Tandem: \(tandem.descripcion)")
 // Tandem: viajando a 18.0 kilómetros por hora
 ```
 
-### Sobreescritura
+### 6.3. Sobreescritura
 
 Una subclase puede proporcionar su propia implementación de un método
 de la instancia, método del tipo, propiedad de la instancia o
@@ -1853,7 +1853,7 @@ print("CocheAutomatico: \(automatico.descripcion)")
 
 <!--- Para el curso que viene
 
-### Inicialización de la clase padre ###
+### 6.4. Inicialización de la clase padre ###
 
 Habría que explicar también cómo inicializar la clase padre cuando 
 inicializamos la clase derivada, llamando al inicializador con
@@ -1861,7 +1861,7 @@ super.init, como hacemos en la solución del último ejercicio de
 la práctica 11 (figuras geométricas).
 
 
-###  Enlace dinámico ###
+### 6.5. Enlace dinámico ###
 
 Al igual que en Java y en otros lenguajes orientados a objetos, es
 posible que una relación de herencia haga imposible conocer en
@@ -1904,7 +1904,7 @@ imprimeRuido(vehiculo: tren) // Imprime "Chu chu"
 
 -->
 
-### Modificador `final` ###
+### 6.6. Modificador `final` ###
 
 Por último, es posible prevenir un método o propiedad de ser
 sobreescrito declarándolo como _final_. Para ello, hay que escribir el
@@ -1915,7 +1915,7 @@ También es posible marcar la clase completa como final, escribiendo el
 modificador antes de `class` (`final class`).
 
 
-## Protocolos
+## 7. Protocolos
 
 Un _protocolo_ (_protocol_) define un esquema de métodos, propiedades
 y otros requisitos que encajan en una tarea particular o un trozo de
@@ -1941,7 +1941,7 @@ estándar de Swift, propone la utilización de protocolos en un nuevo
 estilo de programación que contrapone al estilo tradicional de la
 programación orientada a objetos que usa herencia y clases abstractas.
 
-### Sintaxis
+### 7.1. Sintaxis
 
 Los protocolos se definen de forma similar a las clases, estructuras y
 enumeraciones:
@@ -1972,7 +1972,7 @@ class UnaClase: UnaSuperClase, PrimerProtocolo, OtroProto {
 }
 ```
 
-### Requisitos de propiedades
+### 7.2. Requisitos de propiedades
 
 Un protocolo puede requerir a cualquier tipo que se ajuste a él que
 proporcione una propiedad de instancia o de tipo con un nombre y tipo
@@ -2069,7 +2069,7 @@ obligatorio y un prefijo opcional. La propiedad `nombreCompleto` usa
 el valor del prefijo si existe, y la añade al comienzo del nombre para
 crear un nombre completo de la nave estelar.
 
-### Requisitos de métodos
+### 7.3. Requisitos de métodos
 
 Los protocolos pueden requerir que los tipos que se ajusten a ellos
 implementen métodos de instancia y de tipos específicos. Estos métodos
@@ -2129,7 +2129,7 @@ print("Y otro: \(generador.random())")
 // Imprime "Y otro: 0.729023776863283"
 ```
 
-### Requisito de método `mutating`
+### 7.4. Requisito de método `mutating`
 
 Si definimos un protocolo con un requisito de método de instancia que
 pretenda mutar las instancias del tipo que adopte el protocolo, se
@@ -2163,7 +2163,7 @@ interruptorLampara.conmutar()
 // interruptorLampara es ahora igual a .encendido
 ```
 
-### Protocolos como tipos
+### 7.5. Protocolos como tipos
 
 Los protocolos no implementan realmente ninguna funcionalidad por
 
@@ -2231,7 +2231,7 @@ for _ in 1...5 {
 // La tirada del dado es 4
 ```
 
-### Colecciones de tipos protocolo
+### 7.6. Colecciones de tipos protocolo
 
 Como hemos comentado anteriormente, un protocolo puede usarse como el
 tipo que se almacena un una colección (array, diccionario,
@@ -2257,7 +2257,7 @@ de escena son do esos tipos. Por ser del tipo `TieneNombre` sabemos
 que tiene una propiedad `nombreCompleto` que podemos usar sobre la
 variable iteradora.
 
-### Protocolo `Equatable`
+### 7.7. Protocolo `Equatable`
 
 En la [biblioteca estándar de
 Swift](https://developer.apple.com/documentation/swift) se definen
@@ -2333,7 +2333,7 @@ print(p1 != p2)
 ```
 
 
-## Casting de tipos
+## 8. Casting de tipos
 
 El _casting_ de tipos es una forma de comprobar el tipo de una
 instancia o de tratar esa instancia como de una superclase distinta o
@@ -2344,7 +2344,7 @@ comprobar el tipo de un valor o transformar un valor en uno de otro
 tipo. También se puede usar el _casting_ de tipos para comprobar si un
 tipo se ajusta a un protocolo.
 
-### Una jerarquía de clases para el casting de tipos
+### 8.1. Una jerarquía de clases para el casting de tipos
 
 Vamos a comenzar construyendo una jerarquía de clases y subclases con
 las que trabajar. Utilizaremos el _casting_ de tipos para comprobar el
@@ -2450,7 +2450,7 @@ También podemos aplicar los operadores de comprobación de tipo y de
 _downcasting_ que veremos a continuación a este caso en el que
 instancias concretas están en variables del tipo del protocolo.
 
-### Comprobación del tipo
+### 8.2. Comprobación del tipo
 
 Podemos usar el _operador de comprobación_ (_check operator_) `is`
 para comprobar si una instancia es de un cierto tipo. El operador de
@@ -2490,7 +2490,7 @@ cuantas instancias `MediaItem` de cada tipo se han encontrado.
 La misma comprobación se puede hacer en el array `cosasConNombre` para
 contar el número de ítems que son de tipo `Persona` y `NaveEspacial`.
 
-### Downcasting
+### 8.3. Downcasting
 
 Una constante o variable de un cierto tipo de clase puede referirse
 (contener) a una instancia de una subclase. También, una variable
@@ -2559,7 +2559,7 @@ adaptar el código anterior a este array, recorriéndolo y haciendo el
 _downcasting_ a los tipos `Persona` y `NaveEspacial`.
 
 
-### El tipo `Any` 
+### 8.4. El tipo `Any` 
 
 El tipo `Any` puede representar una instancia de cualquier tipo,
 incluyendo tipos función:
@@ -2622,7 +2622,7 @@ for item in array {
 // Hola, Michael
 ```
 
-### Comprobación de ajustarse a un protocolo
+### 8.5. Comprobación de ajustarse a un protocolo
 
 Podemos usar también los operadores anteriores `is` y `as` (y `as?` y
 `as!`) para comprobar si una instancia se ajusta a un protocolo y para
@@ -2711,7 +2711,7 @@ embargo, en el momento en se almacenan en la constante
 sólo podremos acceder a su propiedad `area`.
 
 
-## Extensiones
+## 9. Extensiones
 
 Las _extensiones_ añaden nueva funcionalidad a una clase, estructura,
 enumeración o protocolo. Esto incluye la posibilidad de extender tipos
@@ -2726,7 +2726,7 @@ Entre otras cosas, las extensiones pueden:
 - Hacer que un tipo existente se ajuste a un protocolo
 
 
-### Sintaxis
+### 9.1. Sintaxis
 
 Para declarar una extensión hay que usar la palabra clave `extension`,
 indicando después el tipo que se quiere extender (enumeración, clase,
@@ -2738,7 +2738,7 @@ extension UnTipoExistente {
 }
 ```
 
-### Propiedades calculadas
+### 9.2. Propiedades calculadas
 
 Las extensiones pueden añadir propiedades calculadas de instancias y
 de tipos. Como primer ejemplo, recordemos el tipo `Persona`:
@@ -2834,7 +2834,7 @@ print("Un maratón tiene una longitud de \(unMaraton) metros")
 ```
 
 
-### Inicializadores
+### 9.3. Inicializadores
 
 Las extensiones pueden añadir nuevos inicializadores a tipos
 existentes. Esto nos permite extender otros tipos para aceptar
@@ -2895,7 +2895,7 @@ propiedades:
  // el origen del rectanguloCentro es is (2.5, 2.5) y su tamaño es (3.0, 3.0)
 ```
 
-### Métodos
+### 9.4. Métodos
 
 Las extensiones pueden añadir nuevos métodos de instancia y nuevos
 métodos del tipo.
@@ -2956,7 +2956,7 @@ Usando clausuras por la cola podemos hacer la llamada más concisa:
 // Adios!
 ```
 
-### Métodos de instancia mutadores
+### 9.5. Métodos de instancia mutadores
 
 Los métodos de instancia añadidos con una extensión también pueden
 modificar (o mutar) la propia instancia. Los métodos de las
@@ -2977,7 +2977,7 @@ unInt.cuadrado()
 ```
 
 
-### Ajustar un tipo a un protocolo mediante una extensión
+### 9.6. Ajustar un tipo a un protocolo mediante una extensión
 
 
 Una extensión puede extender un tipo existente para hacer que se
@@ -3046,7 +3046,7 @@ print(rectanguloInicializado.descripcionTextual)
 // Un rectángulo situado en (2.0, 2.0)
 ```
 
-### Declaración de la adopción de un protocolo con una extensión
+### 9.7. Declaración de la adopción de un protocolo con una extensión
 
 Si un tipo ya se ajusta a todos los requisitos de un protocolo, pero
 todavía no se ha declarado que se ajusta al protocolo, podemos hacer
@@ -3072,7 +3072,7 @@ print(algoRepresentableComoTexto.descripcionTextual)
 // Un hamster llamado Simon
 ```
 
-### Implementación de métodos de un protocolo
+### 9.8. Implementación de métodos de un protocolo
 
 Podemos definir extensiones en los protocolos para proporcionar
 implementaciones de métodos y propiedades a todos los tipos que se
@@ -3107,7 +3107,7 @@ El tipo que se ajusta al protocolo puede proporcionar su propia
 implementación, que se usará en lugar de la proporcionada por la extensión.
 
 
-### Restricción en las extensiones de un protocolo ####
+### 9.9. Restricción en las extensiones de un protocolo ####
 
 En una extensión de un protocolo es posible definir una restricción
 indicando una condición que se debe cumplir para que la extensión se
@@ -3180,7 +3180,7 @@ print(superHeroes.allEqual())
 ```
 
 
-## Funciones operadoras
+## 10. Funciones operadoras
 
 Las clases y las estructuras pueden proporcionar sus propias
 implementaciones de operadores existentes. Esto se conoce como
@@ -3231,7 +3231,7 @@ let vectorSuma = vector + otroVector
 // vectorSuma es una instancia de Vector2D con valores de (5.0, 5.0)
 ```
 
-### Operadores prefijos y postfijos
+### 10.1. Operadores prefijos y postfijos
 
 El ejemplo anterior demuestra una implementación propia de un operador
 binario infijo. Las clases y las estructuras pueden también
@@ -3266,7 +3266,7 @@ let tambienPositivo = -negativo
 // tambienPositivo es una instancia de Vector2D con valores de (3.0, 4.0)
 ```
 
-## Genéricos
+## 11. Genéricos
 
 Veamos cómo podemos utilizar los genéricos con clases y estructuras.
 
@@ -3333,7 +3333,7 @@ Y podemos retirar la última cadena de la pila:
 let fromTheTop = stackOfStrings.pop()
 ```
 
-### Extensión de un tipo genérico
+### 11.1. Extensión de un tipo genérico
 
 Cuando se extiende un tipo genérico, no hace falta añadir el parámetro
 del tipo entre `<>`. El tipo genérico está disponible a partir de la
@@ -3369,7 +3369,7 @@ if let topItem = stackOfStrings.topItem {
 Para el curso que viene (y quitar el apartado
 "Restricción en las extensiones de un protocolo"
 
-### Restricción en los tipos genéricos ###
+### 11.2. Restricción en los tipos genéricos ###
 
 Es posible definir una restricción en el tipo genérico, indicando que
 debe cumplir un protocolo. 
@@ -3400,7 +3400,7 @@ de compilación.
 
 
 
-## Bibliografía
+## 12. Bibliografía
 
 - Swift Language Guide
     - [Classes and Structures](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-ID82)
@@ -3416,6 +3416,6 @@ de compilación.
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2020–21  
+Lenguajes y Paradigmas de Programación, curso 2021–22  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
