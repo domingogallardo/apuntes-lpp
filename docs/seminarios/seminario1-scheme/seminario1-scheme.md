@@ -1026,7 +1026,7 @@ definición de _ecuacion_ 'FALLA', es decir, que el resultado que
 devuelve _(-1 . 2)_ no coincide con el resultado esperado _(3 . 2)_.
 
 
-## Bibliografía
+## 7. Bibliografía
 
 Este **seminario** está basado en los siguientes materiales. Os
 recomendamos que les echéis un vistazo y, si os interesa y os queda

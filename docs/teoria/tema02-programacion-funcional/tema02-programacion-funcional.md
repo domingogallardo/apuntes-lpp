@@ -972,7 +972,7 @@ apartados explicaremos más estas características.
 * Pasos de ejecución
 
 
-### 1.3. Modelo de computación de sustitución
+### 1.4. Modelo de computación de sustitución
 
 Un modelo computacional es un formalismo (conjunto de reglas) que
 definen el funcionamiento de un programa. En el caso de los lenguajes
@@ -1063,7 +1063,7 @@ evalúa entonces.
 Ambas formas de evaluación darán el mismo resultado en programación
 funcional. Scheme utiliza el orden aplicativo.
 
-#### 1.3.1. Ejemplo 1
+#### 1.4.1. Ejemplo 1
 
 Vamos a empezar con un ejemplo sencillo para comprobar cómo se evalúa
 una misma expresión utilizando ambos modelos de
@@ -1124,7 +1124,7 @@ Las sustituciones se hacen de izquierda a derecha (de fuera a dentro
 de los paréntesis). Primero se sustituye `doble` por su cuerpo y
 después `cuadrado`.
 
-#### 1.3.2. Ejemplo 2
+#### 1.4.2. Ejemplo 2
 
 Veamos la evaluación del ejemplo algo más complicado que hemos
 planteado al comienzo:
