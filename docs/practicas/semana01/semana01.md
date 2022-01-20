@@ -25,7 +25,7 @@ Esta semana, además de asistir a clase de teoría, tendrás que:
 
 1. Instala en tu ordenador el DrRacket, tal y como se comenta al
    comienzo del [seminario de
-   Scheme](../../seminarios/seminario1-scheme/seminario1-scheme.html)
+   Scheme](../../seminarios/seminario1-scheme/seminario1-scheme.md)
    y crea un fichero `semana1.rkt`. Escribe en comentarios
    (comenzando por punto y coma `;`) tu nombre y apellidos. Incluye en
    el fichero todo el código que escribas esta semana. Usa también
