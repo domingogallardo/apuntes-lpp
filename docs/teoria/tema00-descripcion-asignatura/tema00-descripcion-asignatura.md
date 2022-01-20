@@ -9,23 +9,23 @@ prácticas de 2 h. a la semana
 **Profesores**:  
 
 * Antonio Botía ([e-mail](mailto:abotia@dccia.ua.es)): Grupos de
-  prácticas: 2, 9 y 402
+  prácticas: 2, 9 y 40
 * Domingo Gallardo ([e-mail](mailto:domingo.gallardo@ua.es)): Profesor
   coordinador de la asignatura. Grupos de teoría: 3, 4 y 40. Grupos de
-  prácticas: 401
+  prácticas: 6
 * Francisco Martínez ([e-mail](mailto:fmartine@ua.es)): Grupos de
-  prácticas: 4, 5, 6 y 8
+  prácticas: 4, 5 y 8
 * Cristina Pomares ([e-mail](mailto:cpomares@ua.es)): Grupos de
   teoría: 1 y 2. Grupos de prácticas: 1, 3 y 7.
 
 ## 2. Recursos de la asignatura
 
-* [Ficha de la asignatura](https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wCodEst=C203&wcodasi=34017&wlengua=es&scaca=2020-21)
+* [Ficha de la asignatura](https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wCodEst=C203&wcodasi=34017&wlengua=es&scaca=2021-22)
 * [Apuntes de la asignatura (teoría, seminarios y prácticas)](https://domingogallardo.github.io/apuntes-lpp/)
-* [Sitio Moodle](https://moodle2020-21.ua.es/moodle/course/view.php?id=8242)
+* [Sitio Moodle](https://moodle2021-22.ua.es/moodle/course/view.php?id=1505)
   abierto y accesible a toda la comunidad educativa, contiene los
   apuntes, transparencias, prácticas y otros materiales docentes
-* [Foro de consultas y anuncios](https://moodle2020-21.ua.es/moodle/mod/forum/view.php?id=80350)
+* [Foro de consultas y anuncios](https://moodle2021-22.ua.es/moodle/mod/forum/view.php?id=41853)
   en el sitio Moodle (sólo accesible a estudiantes)
 
 ## 3. Objetivos y competencias
@@ -149,23 +149,20 @@ lenguajes de programación y entornos de desarrollo:
   Apple, con conceptos modernos de programación funcional y
   programación orientada a objetos)
 
-Cada práctica consistirá en la resolución de una **hoja de ejercicios**
-con 5 o 6 pequeños problemas de programación relacionados con la
-teoría vista durante la semana.
+Cada semana tendrás que realizar una **hoja de ejercicios** en la que
+se incluirá un repaso de la teoría vista la semana anterior y 5 o 6
+pequeños problemas de programación relacionados con esa teoría.
 
-Se realizarán 12 sesiones de ejercicios de prácticas de una semana de
-duración y 2 seminarios sobre los anteriores lenguajes de programación.
+La hoja de ejercicios estará disponible al comienzo de la semana y
+tendrás toda la semana para su realización. Una vez terminada la
+semana se publicará una solución de los ejercicios propuestos que
+deberás comparar con tus soluciones.
 
-La hoja de ejercicios estará disponible al comienzo de la semana y se
-dispondrá de toda la semana siguiente para su realización y su entrega
-en Moodle. La entrega se cerrará el último día de la semana. Al día
-siguiente se publicará la solución.
-
-En la clase de prácticas resolverán dudas sobre la solución de
+En la clase de prácticas se resolverán dudas sobre la solución de
 la práctica anterior y se trabajará en la hoja de ejercicios publicada
 esa semana. Durante la sesión de prácticas el profesor estará
 disponible para resolver dudas y dar pistas sobre cómo atacar los
-problemas. 
+problemas.
 
 También durante la semana se podrán consultar las dudas que
 puedan surgir en el foro de la asignatura (en Moodle) y con tutorías a
@@ -183,20 +180,12 @@ considere oportuno.
 
 ## 6. Horarios
 
-La distribución de grupos del curso 2020-21 es la siguiente:
+La distribución de grupos del curso 2021-22 es la siguiente:
 
 <img src="imagenes/horario.png" width="800px"/>
 
 En los turnos de teoría es posible, de forma excepcional, asistir a un
-grupo distinto del asignado. Los enlaces a las aulas online en las que se impartirán las clases son los
-siguientes:
-
-- [Grupo 1](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331683&ts=1611139908) (jueves de 9:00 a 11:00 h.)
-- [Grupo 2](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331684&ts=1611139908) (lunes de 9:00 a 11:00 h.)
-- [Grupo 3](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331685&ts=1611141615) (lunes de 15:00 a 17:00 h.)
-- [Grupo 4](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=331686&ts=1611141615) (jueves de 17:00 a 19:00 h.)
-- [Grupo I2ADE](https://cvnet.cpd.ua.es/Docenciadual/AulaVirtual?eje=382&vac=113472&gac=1221840&ts=1611141615)
-  (lunes de 13:00 a 15:00 h.)
+grupo distinto del asignado.
 
 En los turnos de prácticas se debe asistir al grupo al que se ha
 asignado. El cambio de turno deberá solicitarse en la Secretaría de la EPS.
