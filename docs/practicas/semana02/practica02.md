@@ -1,6 +1,8 @@
 # Práctica 2: Programación funcional en Scheme
 
 
+## Repaso de teoría ##
+
 Los ejercicios que hay a continuación están basados en los conceptos
 de teoría vistos la semana pasada. Antes de intentar resolverlos debes
 repasar todos los conceptos y probar en el intérprete de Scheme todos
