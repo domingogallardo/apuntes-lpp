@@ -1,71 +1,34 @@
 # Práctica 2: Programación funcional en Scheme
 
-## Entrega de la práctica
 
-Para entregar la práctica debes subir a Moodle el fichero
-`practica01.rkt` con una cabecera inicial con tu nombre y apellidos, y
-las soluciones de cada ejercicio separadas por comentarios. Cada
-solución debe incluir:
-
-- La **definición de las funciones** que resuelven el ejercicio.
-- Un conjunto de **pruebas** que comprueben su funcionamiento, y el de
-  funciones auxiliares que hayamos definido, utilizando el API RackUnit.
-
-Por ejemplo, supongamos que el primer ejercicio de la práctica 1 sea
-implementar la función `suma-cuadrados` que recibe dos números y
-devuelve la suma de sus cuadrados y se proponen en el enunciado los
-siguientes ejemplos:
-
-```racket
-(suma-cuadrados 10 10) ; ⇒ 200
-(suma-cuadrados -2 9) ; ⇒  85
-```
-
-La solución se debería entregar de la siguiente forma:
-
-**`practica01.rkt`**:
-
-```racket
-;; José Fernandez Muñoz
-
-#lang racket
-(require rackunit)
-
-;;
-;; Ejercicio 1: suma-cuadrados
-;;
-
-;; Función auxiliar cuadrado
-
-(define (cuadrado x)
-    (* x x))
-    
-(check-equal? (cuadrado 2) 4)
-(check-equal? (cuadrado 10) 100)
-(check-equal? (cuadrado -2) 4)
-
-;; Función principal suma-cuadrados
-
-(define (suma-cuadrados x y)
-    (+ (cuadrado x) (cuadrado y)))
-
-(check-equal?  (suma-cuadrados 10 10)  200)
-(check-equal?  (suma-cuadrados -2 9)  85)
-
-;;
-;; Ejercicio 2:
-;;
-
-...
-
-```
-
-Para los casos de prueba puedes incluir algunos de los ejemplos del
-enunciado del ejercicio, pero debes construir algunos casos nuevos,
-con ejemplos creados por ti..
+Los ejercicios que hay a continuación están basados en los conceptos
+de teoría vistos la semana pasada. Antes de intentar resolverlos debes
+repasar todos los conceptos y probar en el intérprete de Scheme todos
+los ejemplos del tema 2 [_Programación Funcional_]
+(https://domingogallardo.github.io/apuntes-lpp/teoria/tema02-programacion-funcional/tema02-programacion-funcional.html)
+hasta el apartado 2.6 _Listas_ incluido.
 
 ## Ejercicios
 
+Abre el DrRacket y crea el fichero `practica2.rkt` en el que deberás
+escribir todos los ejemplos y soluciones de los ejercicios que
+hagas. Escribe en comentarios tu nombre y apellidos. Usa también
+comentarios para separar secciones y realizar anotaciones.  Incluye en
+el fichero todo el código, ejemplos y resolución de ejercicios, que
+hagas esta semana.
+
+También debes añadir casos de prueba al código de todas las funciones
+que implementes, tal y como vimos al final del seminario de
+Scheme. Puedes usar algunos de los ejemplos de los enunciados, pero
+debes también construir algunos casos nuevos, con ejemplos creados por
+ti.
+   
+!!! Note "Siempre debes incluir casos de prueba"
+    Los casos de prueba son un componente importante del código, ya
+    que permiten guardar en el propio código una demostración de que
+    éste funciona correctamente, así como unos ejemplos de cómo llamar
+    a las funciones definidas.
+   
 ### Ejercicio 1
 
 a) Implementa la función `(binario-a-decimal b3 b2 b1 b0)` que reciba
@@ -291,6 +254,53 @@ Ejemplos:
         (< (abs (- x y)) epsilon))
     ```
 
+
+
+## Entrega de la práctica
+
+Sube el fichero `semana2.rkt` a Moodle, en la entrega denominada
+_Semana 2_, para que tu profesor de prácticas lo pueda revisar. 
+
+Tal y como hemos comentado al comienzo de la práctica, es
+recomendable incluir casos de prueba en todo el código que
+escribas. 
+
+Un ejemplo del formato que podría tener la entrega es el siguiente:
+
+**`practica02.rkt`**:
+
+```racket
+;; José Fernandez Muñoz
+
+#lang racket
+(require rackunit)
+
+;;
+;; Ejercicio 1: suma-cuadrados
+;;
+
+;; Función auxiliar cuadrado
+
+(define (cuadrado x)
+    (* x x))
+    
+(check-equal? (cuadrado 2) 4)
+(check-equal? (cuadrado 10) 100)
+(check-equal? (cuadrado -2) 4)
+
+;; Función principal suma-cuadrados
+
+(define (suma-cuadrados x y)
+    (+ (cuadrado x) (cuadrado y)))
+
+(check-equal?  (suma-cuadrados 10 10)  200)
+(check-equal?  (suma-cuadrados -2 9)  85)
+
+;;
+;; Ejercicio 2:
+;;
+
+...
 
 ----
 Lenguajes y Paradigmas de Programación, curso 2021-22  
