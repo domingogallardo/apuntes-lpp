@@ -303,6 +303,8 @@ Un ejemplo del formato que podría tener la entrega es el siguiente:
 ;;
 
 ...
+```
+
 
 ----
 Lenguajes y Paradigmas de Programación, curso 2021-22  
