@@ -4,8 +4,8 @@
 Los ejercicios que hay a continuación están basados en los conceptos
 de teoría vistos la semana pasada. Antes de intentar resolverlos debes
 repasar todos los conceptos y probar en el intérprete de Scheme todos
-los ejemplos del tema 2 [_Programación Funcional_]
-(https://domingogallardo.github.io/apuntes-lpp/teoria/tema02-programacion-funcional/tema02-programacion-funcional.html)
+los ejemplos del tema 2 [_Programación
+Funcional_](../../teoria/tema02-programacion-funcional/tema02-programacion-funcional.md)
 hasta el apartado 2.6 _Listas_ incluido.
 
 ## Ejercicios
