@@ -803,28 +803,38 @@ recomendable incluir casos de prueba en todo el código que
 escribas. </p>
 <p>Un ejemplo del formato que podría tener la entrega es el siguiente:</p>
 <p><strong><code>practica02.rkt</code></strong>:</p>
-<p>```racket
-;; José Fernandez Muñoz</p>
-<h1 id="lang-racket">lang racket<a class="headerlink" href="#lang-racket" title="Permanent link">&para;</a></h1>
-<p>(require rackunit)</p>
-<p>;;
-;; Ejercicio 1: suma-cuadrados
-;;</p>
-<p>;; Función auxiliar cuadrado</p>
-<p>(define (cuadrado x)
-    (* x x))</p>
-<p>(check-equal? (cuadrado 2) 4)
-(check-equal? (cuadrado 10) 100)
-(check-equal? (cuadrado -2) 4)</p>
-<p>;; Función principal suma-cuadrados</p>
-<p>(define (suma-cuadrados x y)
-    (+ (cuadrado x) (cuadrado y)))</p>
-<p>(check-equal?  (suma-cuadrados 10 10)  200)
-(check-equal?  (suma-cuadrados -2 9)  85)</p>
-<p>;;
-;; Ejercicio 2:
-;;</p>
-<p>...</p>
+<div class="highlight"><pre><span></span><code><span class="c1">;; José Fernandez Muñoz</span>
+
+<span class="kn">#lang </span><span class="nn">racket</span>
+<span class="p">(</span><span class="k">require</span> <span class="n">rackunit</span><span class="p">)</span>
+
+<span class="c1">;;</span>
+<span class="c1">;; Ejercicio 1: suma-cuadrados</span>
+<span class="c1">;;</span>
+
+<span class="c1">;; Función auxiliar cuadrado</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
+
+<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="mi">10</span><span class="p">)</span> <span class="mi">100</span><span class="p">)</span>
+<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="mi">-2</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c1">;; Función principal suma-cuadrados</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">y</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="n">check-equal?</span>  <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">10</span> <span class="mi">10</span><span class="p">)</span>  <span class="mi">200</span><span class="p">)</span>
+<span class="p">(</span><span class="n">check-equal?</span>  <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">-2</span> <span class="mi">9</span><span class="p">)</span>  <span class="mi">85</span><span class="p">)</span>
+
+<span class="c1">;;</span>
+<span class="c1">;; Ejercicio 2:</span>
+<span class="c1">;;</span>
+
+<span class="k">...</span>
+</code></pre></div>
 <hr />
 <p>Lenguajes y Paradigmas de Programación, curso 2021-22<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
