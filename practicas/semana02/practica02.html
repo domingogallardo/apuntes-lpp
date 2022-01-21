@@ -419,13 +419,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#entrega-de-la-practica" class="md-nav__link">
-    Entrega de la práctica
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#ejercicios" class="md-nav__link">
     Ejercicios
   </a>
@@ -477,6 +470,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
   
 </li>
       
@@ -520,13 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#entrega-de-la-practica" class="md-nav__link">
-    Entrega de la práctica
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#ejercicios" class="md-nav__link">
     Ejercicios
   </a>
@@ -581,6 +574,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -595,61 +595,31 @@
                 
                 
                 <h1 id="practica-2-programacion-funcional-en-scheme">Práctica 2: Programación funcional en Scheme<a class="headerlink" href="#practica-2-programacion-funcional-en-scheme" title="Permanent link">&para;</a></h1>
-<h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
-<p>Para entregar la práctica debes subir a Moodle el fichero
-<code>practica01.rkt</code> con una cabecera inicial con tu nombre y apellidos, y
-las soluciones de cada ejercicio separadas por comentarios. Cada
-solución debe incluir:</p>
-<ul>
-<li>La <strong>definición de las funciones</strong> que resuelven el ejercicio.</li>
-<li>Un conjunto de <strong>pruebas</strong> que comprueben su funcionamiento, y el de
-  funciones auxiliares que hayamos definido, utilizando el API RackUnit.</li>
-</ul>
-<p>Por ejemplo, supongamos que el primer ejercicio de la práctica 1 sea
-implementar la función <code>suma-cuadrados</code> que recibe dos números y
-devuelve la suma de sus cuadrados y se proponen en el enunciado los
-siguientes ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">10</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 200</span>
-<span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">-2</span> <span class="mi">9</span><span class="p">)</span> <span class="c1">; ⇒  85</span>
-</code></pre></div>
-<p>La solución se debería entregar de la siguiente forma:</p>
-<p><strong><code>practica01.rkt</code></strong>:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">;; José Fernandez Muñoz</span>
-
-<span class="kn">#lang </span><span class="nn">racket</span>
-<span class="p">(</span><span class="k">require</span> <span class="n">rackunit</span><span class="p">)</span>
-
-<span class="c1">;;</span>
-<span class="c1">;; Ejercicio 1: suma-cuadrados</span>
-<span class="c1">;;</span>
-
-<span class="c1">;; Función auxiliar cuadrado</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
-
-<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span>
-<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="mi">10</span><span class="p">)</span> <span class="mi">100</span><span class="p">)</span>
-<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="mi">-2</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span>
-
-<span class="c1">;; Función principal suma-cuadrados</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">y</span><span class="p">)))</span>
-
-<span class="p">(</span><span class="n">check-equal?</span>  <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">10</span> <span class="mi">10</span><span class="p">)</span>  <span class="mi">200</span><span class="p">)</span>
-<span class="p">(</span><span class="n">check-equal?</span>  <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="mi">-2</span> <span class="mi">9</span><span class="p">)</span>  <span class="mi">85</span><span class="p">)</span>
-
-<span class="c1">;;</span>
-<span class="c1">;; Ejercicio 2:</span>
-<span class="c1">;;</span>
-
-<span class="k">...</span>
-</code></pre></div>
-<p>Para los casos de prueba puedes incluir algunos de los ejemplos del
-enunciado del ejercicio, pero debes construir algunos casos nuevos,
-con ejemplos creados por ti..</p>
+<p>Los ejercicios que hay a continuación están basados en los conceptos
+de teoría vistos la semana pasada. Antes de intentar resolverlos debes
+repasar todos los conceptos y probar en el intérprete de Scheme todos
+los ejemplos del tema 2 [<em>Programación Funcional</em>]
+(https://domingogallardo.github.io/apuntes-lpp/teoria/tema02-programacion-funcional/tema02-programacion-funcional.html)
+hasta el apartado 2.6 <em>Listas</em> incluido.</p>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
+<p>Abre el DrRacket y crea el fichero <code>practica2.rkt</code> en el que deberás
+escribir todos los ejemplos y soluciones de los ejercicios que
+hagas. Escribe en comentarios tu nombre y apellidos. Usa también
+comentarios para separar secciones y realizar anotaciones.  Incluye en
+el fichero todo el código, ejemplos y resolución de ejercicios, que
+hagas esta semana.</p>
+<p>También debes añadir casos de prueba al código de todas las funciones
+que implementes, tal y como vimos al final del seminario de
+Scheme. Puedes usar algunos de los ejemplos de los enunciados, pero
+debes también construir algunos casos nuevos, con ejemplos creados por
+ti.</p>
+<div class="admonition note">
+<p class="admonition-title">Siempre debes incluir casos de prueba</p>
+<p>Los casos de prueba son un componente importante del código, ya
+que permiten guardar en el propio código una demostración de que
+éste funciona correctamente, así como unos ejemplos de cómo llamar
+a las funciones definidas.</p>
+</div>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
 <p>a) Implementa la función <code>(binario-a-decimal b3 b2 b1 b0)</code> que reciba
 4 bits que representan un número en binario y devuelva el número
@@ -810,6 +780,36 @@ definido. Por ejemplo, <code>epsilon</code> puede valer 0.0001.</p>
     <span class="p">(</span><span class="nb">&lt;</span> <span class="p">(</span><span class="nb">abs</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span> <span class="n">epsilon</span><span class="p">))</span>
 </code></pre></div>
 </div>
+<h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
+<p>Sube el fichero <code>semana2.rkt</code> a Moodle, en la entrega denominada
+<em>Semana 2</em>, para que tu profesor de prácticas lo pueda revisar. </p>
+<p>Tal y como hemos comentado al comienzo de la práctica, es
+recomendable incluir casos de prueba en todo el código que
+escribas. </p>
+<p>Un ejemplo del formato que podría tener la entrega es el siguiente:</p>
+<p><strong><code>practica02.rkt</code></strong>:</p>
+<p>```racket
+;; José Fernandez Muñoz</p>
+<h1 id="lang-racket">lang racket<a class="headerlink" href="#lang-racket" title="Permanent link">&para;</a></h1>
+<p>(require rackunit)</p>
+<p>;;
+;; Ejercicio 1: suma-cuadrados
+;;</p>
+<p>;; Función auxiliar cuadrado</p>
+<p>(define (cuadrado x)
+    (* x x))</p>
+<p>(check-equal? (cuadrado 2) 4)
+(check-equal? (cuadrado 10) 100)
+(check-equal? (cuadrado -2) 4)</p>
+<p>;; Función principal suma-cuadrados</p>
+<p>(define (suma-cuadrados x y)
+    (+ (cuadrado x) (cuadrado y)))</p>
+<p>(check-equal?  (suma-cuadrados 10 10)  200)
+(check-equal?  (suma-cuadrados -2 9)  85)</p>
+<p>;;
+;; Ejercicio 2:
+;;</p>
+<p>...</p>
 <hr />
 <p>Lenguajes y Paradigmas de Programación, curso 2021-22<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
