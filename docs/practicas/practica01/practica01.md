@@ -16,7 +16,7 @@
     A la vez que lees el texto o ves el vídeo debes probar en el
     intérprete de Racket todos los ejemplos que aparecen. Pruébalos de
     forma interactiva en el panel de interpretación del DrRacket y
-    guarda las definiciones en el panel de edición del fichero `semana1.rkt`.
+    guarda las definiciones en el panel de edición del fichero `practica1.rkt`.
 
 3. Haz el siguiente ejercicio.
 
