@@ -1,32 +1,9 @@
-# Semana 1
-
-En este enunciado vas a encontrar una planificación de todo lo
-que tienes que hacer durante esta primera semana para llevar al día la
-asignatura.
-
-Cada semana publicaremos un documento similar a este, con todas las
-tareas a realizar tanto en clase de prácticas como en casa.
-
-!!! Importante "Trabajo en clase y en casa"
-    Deberás hacer todas estas actividades en clase de prácticas y en casa. El
-    tiempo estimado de trabajo semanal es de unas 5 horas: 2 horas en
-    clase y alrededor de 3 horas en casa.
-
-## Resumen  ##
-
-Esta semana, además de asistir a clase de teoría, tendrás que:
-
-1. Estudiar el **seminario de Scheme**, leyendo los apuntes, viendo los
-   vídeos que hemos subido a Moodle y probando los ejemplos de código en el DrRacket.
-2. Hacer los ejercicios de sobre el seminario que encontrarás más adelante en
-   este enunciado.
-
-## Seminario de Scheme y ejercicios ##
+# Práctica 1: Seminario de Scheme
 
 1. Instala en tu ordenador el DrRacket, tal y como se comenta al
    comienzo del [seminario de
    Scheme](../../seminarios/seminario1-scheme/seminario1-scheme.md)
-   y crea un fichero `semana1.rkt`. Escribe en comentarios
+   y crea un fichero `practica1.rkt`. Escribe en comentarios
    (comenzando por punto y coma `;`) tu nombre y apellidos. Incluye en
    el fichero todo el código que escribas esta semana. Usa también
    comentarios para separar secciones y realizar anotaciones.
@@ -199,8 +176,8 @@ Esta semana, además de asistir a clase de teoría, tendrás que:
 
 ## Sube el trabajo a Moodle
 
-Sube el fichero `semana1.rkt` a Moodle, en la entrega denominada
-_Semana 1_, para que tu profesor de prácticas lo pueda revisar. 
+Sube el fichero `practica1.rkt` a Moodle, en la entrega denominada
+_Práctica 1_, para que tu profesor de prácticas lo pueda revisar. 
 
 Puedes hacer preguntas a tu profesor de prácticas sobre cualquier duda
 que te haya surgido tanto en clase de prácticas como usando las
