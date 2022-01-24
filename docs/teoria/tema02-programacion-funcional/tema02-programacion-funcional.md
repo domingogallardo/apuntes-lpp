@@ -1726,22 +1726,22 @@ con símbolos en sus primeras posiciones:
 '(1 (/ 2 3) (+ 2 3)) ; ⇒ (1 (/ 2 3) (+ 2 3))
 ```
 
-#### 2.6.2. Selección de elementos de una lista: `car` y `cdr`
+#### 2.6.2. Selección de elementos de una lista: `first` y `rest`
 
 En el seminario vimos también cómo obtener los elementos de una lista.
 
-- Primer elemento: función `car`
-- Resto de elementos: función `cdr` (los devuelve en forma de lista)
+- Primer elemento: función `first`
+- Resto de elementos: función `rest` (los devuelve en forma de lista)
 
 Ejemplos:
 
 ```racket
 (define lista1 '(1 2 3 4))
-(car lista1) ; ⇒ 1
-(cdr lista1) ; ⇒ (2 3 4)
+(first lista1) ; ⇒ 1
+(rest lista1) ; ⇒ (2 3 4)
 (define lista2 '((1 2) 3 4))
-(car lista2) ⇒ (1 2)
-(cdr lista2) ⇒ (3 4)
+(first lista2) ⇒ (1 2)
+(rest lista2) ⇒ (3 4)
 ```
 
 #### 2.6.3. Composición de listas: `cons` y `append`
@@ -1768,7 +1768,6 @@ concatenar dos o más listas
 (define list2 '(hola como estás))
 (append list1 list2) ; ⇒ (1 2 3 4 hola como estás)
 ```
-
 
 ### 2.7. Recursión
 

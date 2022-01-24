@@ -1056,20 +1056,20 @@ La última lista tiene 3 elementos:
 
 <p style="margin-bottom:2cm;"></p>
 
-### Selección de elementos de una lista: `car` y `cdr`
+### Selección de elementos de una lista: `first` y `rest`
 
-- Primer elemento: función `car`
-- Resto de elementos: función `cdr`
+- Primer elemento: función `first`
+- Resto de elementos: función `rest`
 
 Ejemplos:
 
 ```racket
 (define lista1 '(1 2 3 4))
-(car lista1) ; ⇒ 1
-(cdr lista1) ; ⇒ (2 3 4)
+(first lista1) ; ⇒ 1
+(rest lista1) ; ⇒ (2 3 4)
 (define lista2 '((1 2) 3 4))
-(car lista2) ; ⇒ (1 2)
-(cdr lista2) ; ⇒ (3 4)
+(first lista2) ; ⇒ (1 2)
+(rest lista2) ; ⇒ (3 4)
 ```
 
 <p style="margin-bottom:2cm;"></p>
