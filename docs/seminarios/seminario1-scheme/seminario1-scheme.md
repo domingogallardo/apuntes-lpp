@@ -600,7 +600,7 @@ el primer elemento de la lista y la función `cdr` el resto:
 ```racket
 (define l3 (list 10 20 30 40)) ; 
 (car l3)  ; ⇒ 10
-(rest l3)  ; ⇒ (20 30 40)
+(cdr l3)  ; ⇒ (20 30 40)
 ```
 
 Otra forma de definir una lista es usando el `quote`, una comilla
