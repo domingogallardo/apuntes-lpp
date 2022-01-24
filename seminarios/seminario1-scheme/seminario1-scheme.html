@@ -1191,26 +1191,35 @@ definir, crear, recorrer y concatenar listas:</p>
 <p>Las listas se representan entre paréntesis:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">;  ⇒ (1 2 3 4)</span>
 </code></pre></div>
-<p>La forma más básica de trabajar con una lista es usando las funciones
-<code>car</code> para obtener su primer elemento y <code>cdr</code> para obtener el resto de
-la lista. Son las mismas funciones de las parejas, pero ahora se
-aplican a listas. También veremos más adelante por qué estas funciones
-pueden trabajar tanto sobre parejas como sobre listas.</p>
+<p>La forma más sencilla de trabajar con una lista es usando las
+funciones <code>first</code> para obtener su primer elemento y <code>rest</code> para
+obtener el resto de la lista.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">l1</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; se crea la lista (1 2 3 4) y se guarda en l1</span>
-<span class="p">(</span><span class="nb">car</span> <span class="n">l1</span><span class="p">)</span>  <span class="c1">; ⇒ 1 (primer elemento de l1)</span>
-<span class="p">(</span><span class="nb">cdr</span> <span class="n">l1</span><span class="p">)</span>  <span class="c1">; ⇒ (2 3 4) (resto de la lista, resultado de quitar a la</span>
+<span class="p">(</span><span class="nb">first</span> <span class="n">l1</span><span class="p">)</span>  <span class="c1">; ⇒ 1 (primer elemento de l1)</span>
+<span class="p">(</span><span class="nb">rest</span> <span class="n">l1</span><span class="p">)</span>  <span class="c1">; ⇒ (2 3 4) (resto de la lista, resultado de quitar a la</span>
           <span class="c1">;           lista su primer elemento)</span>
 </code></pre></div>
 <p>Las operaciones sobre listas construyen listas nuevas y no modifican
 la lista que se pasa como argumento. En el ejemplo anterior, la lista
 <code>l1</code> sigue conteniendo la lista original <code>(1 2 3 4)</code>.</p>
-<p>El <code>cdr</code> de una lista siempre devuelve otra lista. El <code>cdr</code> de una
+<p>El <code>rest</code> de una lista siempre devuelve otra lista. El <code>rest</code> de una
 lista de un elemento es la <em>lista vacía</em>, que en Scheme se representa
 con <code>()</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">l2</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
-<span class="p">(</span><span class="nb">cdr</span> <span class="n">l2</span><span class="p">)</span> <span class="c1">; ⇒ (2 3) </span>
-<span class="p">(</span><span class="nb">cdr</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">l2</span><span class="p">))</span> <span class="c1">; ⇒ (3) </span>
-<span class="p">(</span><span class="nb">cdr</span> <span class="p">(</span><span class="nb">cdr</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">l2</span><span class="p">)))</span> <span class="c1">; ⇒ () lista vacía</span>
+<span class="p">(</span><span class="nb">rest</span> <span class="n">l2</span><span class="p">)</span> <span class="c1">; ⇒ (2 3) </span>
+<span class="p">(</span><span class="nb">rest</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">l2</span><span class="p">))</span> <span class="c1">; ⇒ (3) </span>
+<span class="p">(</span><span class="nb">rest</span> <span class="p">(</span><span class="nb">rest</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">l2</span><span class="p">)))</span> <span class="c1">; ⇒ () lista vacía</span>
+</code></pre></div>
+<p>En Scheme las listas se implementan con parejas. Una lista es, o bien
+una lista vacía <code>()</code> o bien una pareja cuyo primer elemento es el
+primer elemento de la lista y su segundo elemento es el resto de la
+lista. Veremos esto con más detalle más adelante.</p>
+<p>Dado que una lista se implementa con una pareja, las funciones <code>car</code> y
+<code>cdr</code> también se pueden usar con listas. La función <code>car</code> nos devuelve
+el primer elemento de la lista y la función <code>cdr</code> el resto:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">l3</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">10</span> <span class="mi">20</span> <span class="mi">30</span> <span class="mi">40</span><span class="p">))</span> <span class="c1">; </span>
+<span class="p">(</span><span class="nb">car</span> <span class="n">l3</span><span class="p">)</span>  <span class="c1">; ⇒ 10</span>
+<span class="p">(</span><span class="nb">rest</span> <span class="n">l3</span><span class="p">)</span>  <span class="c1">; ⇒ (20 30 40)</span>
 </code></pre></div>
 <p>Otra forma de definir una lista es usando el <code>quote</code>, una comilla
 colocada al comienzo de la lista. Veremos en teoría una explicación
@@ -1218,7 +1227,7 @@ más detallada de cómo funciona este <code>quote</code>.</p>
 <p>Por ejemplo, podemos definir listas usando las las siguientes
 expresiones:</p>
 <div class="highlight"><pre><span></span><code><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ Construye la lista (1 2 3)</span>
-<span class="p">(</span><span class="nb">cdr</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ (2 3)</span>
+<span class="p">(</span><span class="nb">rest</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ (2 3)</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">l3</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; Construye la lista (1 2 3) y la guarda en l3</span>
 </code></pre></div>
 <p>Durante el seminario usaremos tanto la función <code>list</code> como el <code>quote</code>
@@ -1235,8 +1244,7 @@ de funciones recursivas que recorren listas.</p>
 </code></pre></div>
 <p>También podemos construir una nueva lista añadiendo un elemento a la
 cabeza de una lista existente, usando la función <code>cons</code> (la misma
-función sobre pareja, ya explicaremos también por qué) usando como
-parámetro un elemento y una lista:</p>
+función sobre pareja) usando como parámetro un elemento y una lista:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">cons</span> <span class="n">elemento</span> <span class="n">lista</span><span class="p">)</span> 
 </code></pre></div>
 <p>Por ejemplo:</p>
