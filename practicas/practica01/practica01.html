@@ -600,32 +600,32 @@ predicción era correcta. Si no lo era, intenta comprender por qué.</p>
 <td><code>(cons 3 '(1 2 3))</code></td>
 </tr>
 <tr>
-<td><code>(cdr (list 1 2 3 4))</code></td>
-<td><code>(cdr (cons #t (cons "Hola" (list 1))))</code></td>
+<td><code>(rest (list 1 2 3 4))</code></td>
+<td><code>(rest (cons #t (cons "Hola" (list 1))))</code></td>
 </tr>
 <tr>
-<td><code>(car '(1 2 3 4))</code></td>
-<td><code>(car (list (list 1 2) 1 2 3 4))</code></td>
+<td><code>(first '(1 2 3 4))</code></td>
+<td><code>(first (list (list 1 2) 1 2 3 4))</code></td>
 </tr>
 <tr>
-<td><code>(car (list #t 1 "Hola"))</code></td>
-<td><code>(car (cdr '((1 2) 1 2)))</code></td>
+<td><code>(first (list #t 1 "Hola"))</code></td>
+<td><code>(first (rest '((1 2) 1 2)))</code></td>
 </tr>
 <tr>
-<td><code>(car (cdr (list 1 2 3 4)))</code></td>
+<td><code>(first (rest (list 1 2 3 4)))</code></td>
 <td><code>(cons '(1 2 3) '(4 5 6))</code></td>
 </tr>
 <tr>
-<td><code>(cdr (cdr '(1 2 3 4)))</code></td>
-<td><code>(car (cdr (list 1 2 3 4)))</code></td>
+<td><code>(rest (rest '(1 2 3 4)))</code></td>
+<td><code>(first (rest (list 1 2 3 4)))</code></td>
 </tr>
 <tr>
-<td><code>(car (cdr (cdr (list 1 2 3 4))))</code></td>
-<td><code>(cdr (cdr (list 1 2 3 4)))</code></td>
+<td><code>(first (rest (rest (list 1 2 3 4))))</code></td>
+<td><code>(rest (rest (list 1 2 3 4)))</code></td>
 </tr>
 <tr>
 <td><code>(list (* 2 2) (+ 1 2) (/ 4 2))</code></td>
-<td><code>(car (cdr (cdr (cdr '(1 2 3 4)))))</code></td>
+<td><code>(first (rest (rest (rest '(1 2 3 4)))))</code></td>
 </tr>
 <tr>
 <td><code>(list (+ 2 3) (- 3 4) (string-ref "hola" 3))</code></td>
@@ -648,10 +648,10 @@ Scheme devuelva 5.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)</span>
 </code></pre></div>
 <p>d) Dada la siguiente expresión, ¿qué devuelve Scheme?</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">car</span> <span class="p">(</span><span class="nb">cdr</span> <span class="p">(</span><span class="nb">cdr</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)</span> <span class="mi">6</span><span class="p">))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">first</span> <span class="p">(</span><span class="nb">rest</span> <span class="p">(</span><span class="nb">rest</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)</span> <span class="mi">6</span><span class="p">))))</span>
 </code></pre></div>
 <p>e) Dada la siguiente expresión, ¿qué devuelve Scheme?</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">cdr</span> <span class="p">(</span><span class="nb">cdr</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">rest</span> <span class="p">(</span><span class="nb">rest</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)))</span>
 </code></pre></div>
 </li>
 <li>
