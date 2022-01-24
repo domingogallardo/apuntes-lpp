@@ -73,13 +73,13 @@
     | Instrucción                                    | Instrucción                              |
     |------------------------------------------------|------------------------------------------|
     | `(list 1 2 3 4)`                               | `(cons 3 '(1 2 3))`                      |
-    | `(cdr (list 1 2 3 4))`                         | `(cdr (cons #t (cons "Hola" (list 1))))` |
-    | `(car '(1 2 3 4))`                             | `(car (list (list 1 2) 1 2 3 4))`        |
-    | `(car (list #t 1 "Hola"))`                     | `(car (cdr '((1 2) 1 2)))`               |
-    | `(car (cdr (list 1 2 3 4)))`                   | `(cons '(1 2 3) '(4 5 6))`               |
-    | `(cdr (cdr '(1 2 3 4)))`                       | `(car (cdr (list 1 2 3 4)))`             |
-    | `(car (cdr (cdr (list 1 2 3 4))))`             | `(cdr (cdr (list 1 2 3 4)))`             |
-    | `(list (* 2 2) (+ 1 2) (/ 4 2))`               | `(car (cdr (cdr (cdr '(1 2 3 4)))))`     |
+    | `(rest (list 1 2 3 4))`                         | `(rest (cons #t (cons "Hola" (list 1))))` |
+    | `(first '(1 2 3 4))`                             | `(first (list (list 1 2) 1 2 3 4))`        |
+    | `(first (list #t 1 "Hola"))`                     | `(first (rest '((1 2) 1 2)))`               |
+    | `(first (rest (list 1 2 3 4)))`                   | `(cons '(1 2 3) '(4 5 6))`               |
+    | `(rest (rest '(1 2 3 4)))`                       | `(first (rest (list 1 2 3 4)))`             |
+    | `(first (rest (rest (list 1 2 3 4))))`             | `(rest (rest (list 1 2 3 4)))`             |
+    | `(list (* 2 2) (+ 1 2) (/ 4 2))`               | `(first (rest (rest (rest '(1 2 3 4)))))`     |
     | `(list (+ 2 3) (- 3 4) (string-ref "hola" 3))` |                                          |
 
 
@@ -110,13 +110,13 @@
     d) Dada la siguiente expresión, ¿qué devuelve Scheme?
 
     ```racket
-    (car (cdr (cdr (list 1 (list 2 3) (list 4 5) 6))))
+    (first (rest (rest (list 1 (list 2 3) (list 4 5) 6))))
     ```
 
     e) Dada la siguiente expresión, ¿qué devuelve Scheme?
 
     ```racket
-    (cdr (cdr '(1 (2 3) 4 5)))
+    (rest (rest '(1 (2 3) 4 5)))
     ```
 
 6. Lee el apartado 3 (_Estructuras de
