@@ -561,17 +561,15 @@ Las listas se representan entre paréntesis:
 ```racket
 (list 1 2 3 4) ;  ⇒ (1 2 3 4)
 ```
-    
-La forma más básica de trabajar con una lista es usando las funciones
-`car` para obtener su primer elemento y `cdr` para obtener el resto de
-la lista. Son las mismas funciones de las parejas, pero ahora se
-aplican a listas. También veremos más adelante por qué estas funciones
-pueden trabajar tanto sobre parejas como sobre listas.
+
+La forma más sencilla de trabajar con una lista es usando las
+funciones `first` para obtener su primer elemento y `rest` para
+obtener el resto de la lista.
 
 ```racket
 (define l1 (list 1 2 3 4)) ; se crea la lista (1 2 3 4) y se guarda en l1
-(car l1)  ; ⇒ 1 (primer elemento de l1)
-(cdr l1)  ; ⇒ (2 3 4) (resto de la lista, resultado de quitar a la
+(first l1)  ; ⇒ 1 (primer elemento de l1)
+(rest l1)  ; ⇒ (2 3 4) (resto de la lista, resultado de quitar a la
           ;           lista su primer elemento)
 ```
 
@@ -579,15 +577,30 @@ Las operaciones sobre listas construyen listas nuevas y no modifican
 la lista que se pasa como argumento. En el ejemplo anterior, la lista
 `l1` sigue conteniendo la lista original `(1 2 3 4)`.
 
-El `cdr` de una lista siempre devuelve otra lista. El `cdr` de una
+El `rest` de una lista siempre devuelve otra lista. El `rest` de una
 lista de un elemento es la _lista vacía_, que en Scheme se representa
 con `()`:
 
 ```racket
 (define l2 (list 1 2 3))
-(cdr l2) ; ⇒ (2 3) 
-(cdr (cdr l2)) ; ⇒ (3) 
-(cdr (cdr (cdr l2))) ; ⇒ () lista vacía
+(rest l2) ; ⇒ (2 3) 
+(rest (rest l2)) ; ⇒ (3) 
+(rest (rest (rest l2))) ; ⇒ () lista vacía
+```
+
+En Scheme las listas se implementan con parejas. Una lista es, o bien
+una lista vacía `()` o bien una pareja cuyo primer elemento es el
+primer elemento de la lista y su segundo elemento es el resto de la
+lista. Veremos esto con más detalle más adelante.
+
+Dado que una lista se implementa con una pareja, las funciones `car` y
+`cdr` también se pueden usar con listas. La función `car` nos devuelve
+el primer elemento de la lista y la función `cdr` el resto:
+
+```racket
+(define l3 (list 10 20 30 40)) ; 
+(car l3)  ; ⇒ 10
+(rest l3)  ; ⇒ (20 30 40)
 ```
 
 Otra forma de definir una lista es usando el `quote`, una comilla
@@ -599,7 +612,7 @@ expresiones:
 
 ```racket
 '(1 2 3) ; ⇒ Construye la lista (1 2 3)
-(cdr '(1 2 3)) ; ⇒ (2 3)
+(rest '(1 2 3)) ; ⇒ (2 3)
 (define l3 '(1 2 3)) ; Construye la lista (1 2 3) y la guarda en l3
 ```
 
@@ -622,8 +635,7 @@ de funciones recursivas que recorren listas.
 
 También podemos construir una nueva lista añadiendo un elemento a la
 cabeza de una lista existente, usando la función `cons` (la misma
-función sobre pareja, ya explicaremos también por qué) usando como
-parámetro un elemento y una lista:
+función sobre pareja) usando como parámetro un elemento y una lista:
 
 ```racket
 (cons elemento lista) 
