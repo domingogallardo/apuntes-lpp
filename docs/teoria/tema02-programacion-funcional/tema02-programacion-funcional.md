@@ -1769,6 +1769,7 @@ concatenar dos o más listas
 (append list1 list2) ; ⇒ (1 2 3 4 hola como estás)
 ```
 
+<!--
 ### 2.7. Recursión
 
 Otra característica fundamental de la programación funcional es la no
@@ -4731,7 +4732,7 @@ Entonces la función `(divisores n)` se implementaría de la siguiente forma:
             (divisor? x n)) (numeros-hasta n)))
 ```
 
-
+-->
 ----
 
 Lenguajes y Paradigmas de Programación, curso 2022-23  
