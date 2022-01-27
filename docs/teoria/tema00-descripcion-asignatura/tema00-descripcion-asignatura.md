@@ -155,8 +155,13 @@ pequeños problemas de programación relacionados con esa teoría.
 
 La hoja de ejercicios estará disponible al comienzo de la semana y
 tendrás toda la semana para su realización. Una vez entregada la
-práctica podrás acceder a su solución. Deberás comparar esta solución
-con la que tu has entregado
+práctica podrás acceder a su solución. 
+
+!!! Danger "Revisa la solución"
+    Es muy importante que revises la solución de la práctica y la
+    compares con la solución que has obtenido. Pregunta a tu profesor
+    de prácticas en caso de que tengas dudas si tu solución es
+    correcta.
 
 En la clase de prácticas se resolverán dudas sobre la solución de
 la práctica anterior y se trabajará en la hoja de ejercicios publicada

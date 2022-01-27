@@ -173,16 +173,6 @@
     | `p1:(0 0) p2:(10 10)` | `14.142135623730951`     |
 
 
-
-## Sube el trabajo a Moodle
-
-Sube el fichero `practica1.rkt` a Moodle, en la entrega denominada
-_Práctica 1_, para que tu profesor de prácticas lo pueda revisar. 
-
-Puedes hacer preguntas a tu profesor de prácticas sobre cualquier duda
-que te haya surgido tanto en clase de prácticas como usando las
-tutorías de UACloud.
-
 ----
 Lenguajes y Paradigmas de Programación, curso 2021-22  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
