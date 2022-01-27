@@ -154,9 +154,9 @@ se incluirá un repaso de la teoría vista la semana anterior y 5 o 6
 pequeños problemas de programación relacionados con esa teoría.
 
 La hoja de ejercicios estará disponible al comienzo de la semana y
-tendrás toda la semana para su realización. Una vez terminada la
-semana se publicará una solución de los ejercicios propuestos que
-deberás comparar con tus soluciones.
+tendrás toda la semana para su realización. Una vez entregada la
+práctica podrás acceder a su solución. Deberás comparar esta solución
+con la que tu has entregado
 
 En la clase de prácticas se resolverán dudas sobre la solución de
 la práctica anterior y se trabajará en la hoja de ejercicios publicada
@@ -169,14 +169,6 @@ puedan surgir en el foro de la asignatura (en Moodle) y con tutorías a
 los profesores. Es preferible el foro, porque de esta forma las
 contestaciones y aclaraciones serán compartidas con el resto de
 compañeros.
-
-### 5.1 Uso del software iTALC ###
-
-Durante el desarrollo de las sesiones prácticas es obligatorio usar el
-ordenador del aula y no el portátil personal. El profesor de prácticas
-abrirá el programa iTALC, con el que podrá comprobar cómo estáis
-desarrollando los ejercicios y podrá haceros recomendaciones cuando lo
-considere oportuno. 
 
 ## 6. Horarios
 
