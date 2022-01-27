@@ -157,10 +157,10 @@ La hoja de ejercicios estará disponible al comienzo de la semana y
 tendrás toda la semana para su realización. Una vez entregada la
 práctica podrás acceder a su solución. 
 
-!!! Danger "Revisa la solución"
+!!! Danger "Revisa la solución de la práctica"
     Es muy importante que revises la solución de la práctica y la
     compares con la solución que has obtenido. Pregunta a tu profesor
-    de prácticas en caso de que tengas dudas si tu solución es
+    de prácticas en caso de que tengas dudas sobre si tu solución es
     correcta.
 
 En la clase de prácticas se resolverán dudas sobre la solución de
