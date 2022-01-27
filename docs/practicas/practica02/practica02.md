@@ -1,10 +1,10 @@
 # Práctica 2: Programación funcional en Scheme
 
 
-## Repaso de teoría ##
+## Antes de la clase de prácticas ##
 
-Los ejercicios que hay a continuación están basados en los conceptos
-de teoría vistos la semana pasada. Antes de intentar resolverlos debes
+- Los ejercicios que hay a continuación están basados en los conceptos
+de teoría vistos la semana pasada. Antes de la clase de prácticas debes
 repasar todos los conceptos y **probar en el DrRacket** todos los
 ejemplos del tema 2 [_Programación
 Funcional_](../../teoria/tema02-programacion-funcional/tema02-programacion-funcional.md)
