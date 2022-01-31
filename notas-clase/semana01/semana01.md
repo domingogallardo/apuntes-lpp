@@ -879,7 +879,7 @@ Ejemplos de funciones Scheme con símbolos:
 ; pero sí en los comentarios
 (symbol? "hola") ; #f
 (symbol?  #f) ; #f
-(symbol? (car '(hola cómo estás))) ; #t
+(symbol? (first '(hola cómo estás))) ; #t
 (equal? 'hola 'hola)
 (equal? 'hola "hola")
 ```
