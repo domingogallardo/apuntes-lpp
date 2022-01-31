@@ -260,51 +260,16 @@ Ejemplos:
 
 ## Entrega de la práctica
 
-Sube el fichero `semana2.rkt` a Moodle, en la entrega denominada
-_Semana 2_, para que tu profesor de prácticas lo pueda revisar. 
+Sube la solución de los ejercicios a Moodle para poder acceder a la
+solución.
 
 Tal y como hemos comentado al comienzo de la práctica, es
 recomendable incluir casos de prueba en todo el código que
 escribas. 
 
-Un ejemplo del formato que podría tener la entrega es el siguiente:
-
-**`practica02.rkt`**:
-
-```racket
-;; José Fernandez Muñoz
-
-#lang racket
-(require rackunit)
-
-;;
-;; Ejercicio 1: suma-cuadrados
-;;
-
-;; Función auxiliar cuadrado
-
-(define (cuadrado x)
-    (* x x))
-    
-(check-equal? (cuadrado 2) 4)
-(check-equal? (cuadrado 10) 100)
-(check-equal? (cuadrado -2) 4)
-
-;; Función principal suma-cuadrados
-
-(define (suma-cuadrados x y)
-    (+ (cuadrado x) (cuadrado y)))
-
-(check-equal?  (suma-cuadrados 10 10)  200)
-(check-equal?  (suma-cuadrados -2 9)  85)
-
-;;
-;; Ejercicio 2:
-;;
-
-...
-```
-
+Corrige la entrega, comparando la solución proporcionada por
+nosotros con la tuya. Puedes consultar cualquier duda con tu profesor
+de prácticas en la clase de prácticas de la semana que viene.
 
 ----
 Lenguajes y Paradigmas de Programación, curso 2021-22  
