@@ -342,22 +342,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-lenguaje-debilmente-tipado" class="md-nav__link">
-    2.2. Lenguaje débilmente tipado
+  <a href="#23-lenguaje-debilmente-tipado" class="md-nav__link">
+    2.3. Lenguaje débilmente tipado
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#23-tipos-de-datos-simples" class="md-nav__link">
-    2.3. Tipos de datos simples
+  <a href="#24-tipos-de-datos-simples" class="md-nav__link">
+    2.4. Tipos de datos simples
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#24-tipos-de-datos-compuestos" class="md-nav__link">
-    2.4. Tipos de datos compuestos
+  <a href="#25-tipos-de-datos-compuestos" class="md-nav__link">
+    2.5. Tipos de datos compuestos
   </a>
   
 </li>
@@ -586,22 +586,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-lenguaje-debilmente-tipado" class="md-nav__link">
-    2.2. Lenguaje débilmente tipado
+  <a href="#23-lenguaje-debilmente-tipado" class="md-nav__link">
+    2.3. Lenguaje débilmente tipado
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#23-tipos-de-datos-simples" class="md-nav__link">
-    2.3. Tipos de datos simples
+  <a href="#24-tipos-de-datos-simples" class="md-nav__link">
+    2.4. Tipos de datos simples
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#24-tipos-de-datos-compuestos" class="md-nav__link">
-    2.4. Tipos de datos compuestos
+  <a href="#25-tipos-de-datos-compuestos" class="md-nav__link">
+    2.5. Tipos de datos compuestos
   </a>
   
 </li>
@@ -903,7 +903,7 @@ devuelve un valor. Las funciones se definen con una única
 expresión y el resultado calculado en esa expresión es el que
 siempre se devuelve.</p>
 </div>
-<h3 id="22-lenguaje-debilmente-tipado">2.2. Lenguaje débilmente tipado<a class="headerlink" href="#22-lenguaje-debilmente-tipado" title="Permanent link">&para;</a></h3>
+<h3 id="23-lenguaje-debilmente-tipado">2.3. Lenguaje débilmente tipado<a class="headerlink" href="#23-lenguaje-debilmente-tipado" title="Permanent link">&para;</a></h3>
 <p>Vamos a comprobar una característica muy importante de Scheme: ser un
 <strong>lenguaje débilmente tipado</strong>. Por esto entendemos, entre otras
 cosas, que las variables, funciones y argumentos no tienen un tipo
@@ -943,7 +943,7 @@ definida va a funcionar bien para todos ello. </p>
 números fracionales, el intérprete de Scheme entiende esa notación:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-cuadrados</span> <span class="m">2/3</span> <span class="m">3/5</span><span class="p">)</span> <span class="c1">; ⇒ 181/225</span>
 </code></pre></div>
-<h3 id="23-tipos-de-datos-simples">2.3. Tipos de datos simples<a class="headerlink" href="#23-tipos-de-datos-simples" title="Permanent link">&para;</a></h3>
+<h3 id="24-tipos-de-datos-simples">2.4. Tipos de datos simples<a class="headerlink" href="#24-tipos-de-datos-simples" title="Permanent link">&para;</a></h3>
 <p>Las primitivas de Scheme consisten en un conjunto de tipos de datos,
 formas especiales y funciones incluidas en el lenguaje. A lo largo del
 curso iremos introduciendo estas primitivas. </p>
@@ -954,7 +954,7 @@ algunas funciones primitivas para trabajar con valores de esos tipos.</p>
 <li>Números</li>
 <li>Caracteres</li>
 </ul>
-<h4 id="231-booleanos">2.3.1. Booleanos<a class="headerlink" href="#231-booleanos" title="Permanent link">&para;</a></h4>
+<h4 id="241-booleanos">2.4.1. Booleanos<a class="headerlink" href="#241-booleanos" title="Permanent link">&para;</a></h4>
 <p>Un booleano es un valor de verdad, que puede ser verdadero o falso. En
 Scheme, tenemos los símbolos <code>#t</code> y <code>#f</code> para expresar verdadero y falso
 respectivamente, pero en muchas operaciones se considera que cualquier
@@ -970,19 +970,19 @@ valor distinto de <code>#f</code> es verdadero. Ejemplos:</p>
 <span class="p">(</span><span class="nb">not</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ #f (permite cualquier argumento; </span>
         <span class="c1">;       sólo devuelve #t cuando el argumento es #f)</span>
 </code></pre></div>
-<h4 id="232-numeros">2.3.2. Números<a class="headerlink" href="#232-numeros" title="Permanent link">&para;</a></h4>
+<h4 id="242-numeros">2.4.2. Números<a class="headerlink" href="#242-numeros" title="Permanent link">&para;</a></h4>
 <p>La cantidad de tipos numéricos que soporta Scheme es grande,
 incluyendo enteros de diferente precisión, números racionales,
 complejos e inexactos. Por ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">/</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ Devuelve la fracción 1/3</span>
 <span class="p">(</span><span class="nb">+</span> <span class="m">1/3</span> <span class="m">1/3</span><span class="p">)</span> <span class="c1">; ⇒ 2/3</span>
-<span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ 11 (la función + admite un número variable de argumentos)</span>
+<span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ 11 (la función + admite un número variable de argumentos)</span>
 <span class="p">(</span><span class="nb">+</span> <span class="m">1/3</span> <span class="mf">0.0</span><span class="p">)</span> <span class="c1">; número real con infinita precisión ⇒ 0.3333333333333333 </span>
 <span class="p">(</span><span class="nb">*</span> <span class="p">(</span><span class="nb">+</span> <span class="m">1/3</span> <span class="mf">0.0</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 1</span>
 <span class="p">(</span><span class="nb">sqrt</span> <span class="mi">-1</span><span class="p">)</span> <span class="c1">; ⇒ 0+1i (número imaginario)</span>
 <span class="p">(</span><span class="nb">+</span> <span class="m">3+2i</span> <span class="m">2-i</span><span class="p">)</span> <span class="c1">; ⇒ 5+1i (operaciones con números imaginarios)</span>
 </code></pre></div>
-<h5 id="2321-algunas-primitivas-sobre-numeros">2.3.2.1. Algunas primitivas sobre números<a class="headerlink" href="#2321-algunas-primitivas-sobre-numeros" title="Permanent link">&para;</a></h5>
+<h5 id="2421-algunas-primitivas-sobre-numeros">2.4.2.1. Algunas primitivas sobre números<a class="headerlink" href="#2421-algunas-primitivas-sobre-numeros" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">&lt;=</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ #t (los argumentos están en orden creciente)</span>
 <span class="p">(</span><span class="nb">max</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">10</span> <span class="mi">1000</span><span class="p">)</span> <span class="c1">; ⇒ #1000</span>
 <span class="p">(</span><span class="nb">/</span> <span class="mi">22</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1">; Devuelve una fracción</span>
@@ -993,7 +993,7 @@ complejos e inexactos. Por ejemplo:</p>
 <span class="p">(</span><span class="nb">abs</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">3</span> <span class="mi">-2</span><span class="p">))</span> <span class="c1">; ⇒ 6 (valor absoluto)</span>
 <span class="p">(</span><span class="nb">sin</span> <span class="mf">2.2</span><span class="p">)</span> <span class="c1">; relacionados: cos, tan, asin, acos, ata</span>
 </code></pre></div>
-<h5 id="2322-funciones-de-redondeo">2.3.2.2. Funciones de redondeo<a class="headerlink" href="#2322-funciones-de-redondeo" title="Permanent link">&para;</a></h5>
+<h5 id="2422-funciones-de-redondeo">2.4.2.2. Funciones de redondeo<a class="headerlink" href="#2422-funciones-de-redondeo" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="c1">; (floor x) devuelve el entero más grande no mayor que x</span>
 <span class="c1">; (ceiling x) devuelve el entero más pequeño no menor que x</span>
 <span class="c1">; (truncate x) devuelve el entero más cercano a x cuyo valor absoluto </span>
@@ -1008,7 +1008,7 @@ complejos e inexactos. Por ejemplo:</p>
 <span class="p">(</span><span class="nb">round</span> <span class="mf">-4.3</span><span class="p">)</span>    <span class="c1">; ⇒ -4.0</span>
 <span class="p">(</span><span class="nb">round</span> <span class="mf">3.5</span><span class="p">)</span>     <span class="c1">; ⇒ 4.0</span>
 </code></pre></div>
-<h5 id="2323-predicados-sobre-numeros">2.3.2.3. Predicados sobre números<a class="headerlink" href="#2323-predicados-sobre-numeros" title="Permanent link">&para;</a></h5>
+<h5 id="2423-predicados-sobre-numeros">2.4.2.3. Predicados sobre números<a class="headerlink" href="#2423-predicados-sobre-numeros" title="Permanent link">&para;</a></h5>
 <p>Se denominan <em>predicados</em> a funciones que devuelven un booleano. </p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">positive?</span> <span class="mi">-4</span><span class="p">)</span> <span class="c1">; ⇒ #f (-4 no es positivo)</span>
 <span class="p">(</span><span class="nb">negative?</span> <span class="mi">-4</span><span class="p">)</span> <span class="c1">; ⇒ #t (-4 es negativo)</span>
@@ -1024,7 +1024,7 @@ parámetro. En el caso de los números, el tipo de número:</p>
                <span class="c1">;        al número 4)</span>
 <span class="p">(</span><span class="nb">real?</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
 </code></pre></div>
-<h4 id="233-caracteres">2.3.3. Caracteres<a class="headerlink" href="#233-caracteres" title="Permanent link">&para;</a></h4>
+<h4 id="243-caracteres">2.4.3. Caracteres<a class="headerlink" href="#243-caracteres" title="Permanent link">&para;</a></h4>
 <p>Se soportan caracteres internacionales y se codifican en UTF-8.</p>
 <div class="highlight"><pre><span></span><code><span class="sc">#\a</span>
 <span class="sc">#\A</span>
@@ -1032,7 +1032,7 @@ parámetro. En el caso de los números, el tipo de número:</p>
 <span class="sc">#\ñ</span>
 <span class="sc">#\á</span>
 </code></pre></div>
-<h5 id="2331-operaciones-sobre-caracteres">2.3.3.1. Operaciones sobre caracteres<a class="headerlink" href="#2331-operaciones-sobre-caracteres" title="Permanent link">&para;</a></h5>
+<h5 id="2431-operaciones-sobre-caracteres">2.4.3.1. Operaciones sobre caracteres<a class="headerlink" href="#2431-operaciones-sobre-caracteres" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">char&lt;?</span> <span class="sc">#\a</span> <span class="sc">#\b</span><span class="p">)</span> <span class="c1">; ⇒ #t (el carácter #\a es anterior al #\b)</span>
 <span class="p">(</span><span class="nb">char-numeric?</span> <span class="sc">#\1</span><span class="p">)</span> <span class="c1">; ⇒ #t (el carácter #\1 es un número)</span>
 <span class="p">(</span><span class="nb">char-alphabetic?</span> <span class="sc">#\3</span><span class="p">)</span> <span class="c1">; ⇒ #f (el carácter #\3 es un número)</span>
@@ -1047,7 +1047,7 @@ parámetro. En el caso de los números, el tipo de número:</p>
 <span class="p">(</span><span class="nb">integer-&gt;char</span> <span class="mi">32</span><span class="p">)</span> <span class="c1">; ⇒ #\space (igual que antes pero a la inversa)</span>
 <span class="p">(</span><span class="nb">char-&gt;integer</span> <span class="p">(</span><span class="nb">integer-&gt;char</span> <span class="mi">5000</span><span class="p">))</span> <span class="c1">; ⇒ 5000 </span>
 </code></pre></div>
-<h3 id="24-tipos-de-datos-compuestos">2.4. Tipos de datos compuestos<a class="headerlink" href="#24-tipos-de-datos-compuestos" title="Permanent link">&para;</a></h3>
+<h3 id="25-tipos-de-datos-compuestos">2.5. Tipos de datos compuestos<a class="headerlink" href="#25-tipos-de-datos-compuestos" title="Permanent link">&para;</a></h3>
 <p>Scheme tiene también un conjunto de tipos de datos compuestos,
 que permiten aglutinar elementos simples de los tipos de datos vistos anteriormente.</p>
 <ul>
@@ -1056,18 +1056,18 @@ que permiten aglutinar elementos simples de los tipos de datos vistos anteriorme
 <li>Listas</li>
 </ul>
 <p>Estos dos últimos los veremos en detalle en futuras clases de teoría.</p>
-<h4 id="241-cadenas">2.4.1. Cadenas<a class="headerlink" href="#241-cadenas" title="Permanent link">&para;</a></h4>
+<h4 id="251-cadenas">2.5.1. Cadenas<a class="headerlink" href="#251-cadenas" title="Permanent link">&para;</a></h4>
 <p>Las cadenas son secuencias finitas de caracteres.</p>
 <div class="highlight"><pre><span></span><code><span class="s2">&quot;hola&quot;</span>
 <span class="s2">&quot;La palabra </span><span class="se">\&quot;</span><span class="s2">hola</span><span class="se">\&quot;</span><span class="s2"> tiene 4 letras&quot;</span>
 </code></pre></div>
-<h5 id="242-constructores-de-cadenas">2.4.2. Constructores de cadenas<a class="headerlink" href="#242-constructores-de-cadenas" title="Permanent link">&para;</a></h5>
+<h5 id="252-constructores-de-cadenas">2.5.2. Constructores de cadenas<a class="headerlink" href="#252-constructores-de-cadenas" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">make-string</span> <span class="mi">5</span> <span class="sc">#\o</span><span class="p">)</span> <span class="c1">; ⇒ &quot;ooooo&quot; (función constructora que recibe un</span>
                     <span class="c1">;            entero y un carácter) </span>
 <span class="p">(</span><span class="nb">string</span> <span class="sc">#\h</span> <span class="sc">#\o</span> <span class="sc">#\l</span> <span class="sc">#\a</span><span class="p">)</span> <span class="c1">; ⇒ &quot;hola&quot; (función constructora que recibe</span>
                          <span class="c1">;           un número variable de caracteres) </span>
 </code></pre></div>
-<h5 id="243-operaciones-con-cadenas">2.4.3. Operaciones con cadenas<a class="headerlink" href="#243-operaciones-con-cadenas" title="Permanent link">&para;</a></h5>
+<h5 id="253-operaciones-con-cadenas">2.5.3. Operaciones con cadenas<a class="headerlink" href="#253-operaciones-con-cadenas" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">substring</span> <span class="s2">&quot;Hola que tal&quot;</span> <span class="mi">2</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ &quot;la&quot; (subcadena que va de la</span>
                                <span class="c1">;      posición 2 a la 4, sin llegar a ella) </span>
 <span class="p">(</span><span class="nb">string?</span> <span class="s2">&quot;hola&quot;</span><span class="p">)</span> <span class="c1">; ⇒ #t (predicado que comprueba que el argumento es</span>
@@ -1078,13 +1078,13 @@ que permiten aglutinar elementos simples de los tipos de datos vistos anteriorme
 <span class="p">(</span><span class="nb">string-ref</span> <span class="s2">&quot;hola&quot;</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">; ⇒ #\h (carácter en la posición 0)</span>
 <span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ &quot;holaadios&quot; (concatenación de cadenas) </span>
 </code></pre></div>
-<h5 id="244-comparadores-de-cadenas">2.4.4. Comparadores de cadenas<a class="headerlink" href="#244-comparadores-de-cadenas" title="Permanent link">&para;</a></h5>
+<h5 id="254-comparadores-de-cadenas">2.5.4. Comparadores de cadenas<a class="headerlink" href="#254-comparadores-de-cadenas" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">string=?</span> <span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;hola&quot;</span><span class="p">)</span> <span class="c1">; ⇒ #f </span>
 <span class="p">(</span><span class="nb">string=?</span> <span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;hola&quot;</span><span class="p">)</span> <span class="c1">; ⇒ #t </span>
 <span class="p">(</span><span class="nb">string&lt;?</span> <span class="s2">&quot;aab&quot;</span> <span class="s2">&quot;cde&quot;</span><span class="p">)</span> <span class="c1">; ⇒ #t (se compara usando el orden lexicográfico)</span>
 <span class="p">(</span><span class="nb">string&gt;=?</span> <span class="s2">&quot;www&quot;</span> <span class="s2">&quot;qqq&quot;</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
 </code></pre></div>
-<h4 id="25-parejas">2.5. Parejas<a class="headerlink" href="#25-parejas" title="Permanent link">&para;</a></h4>
+<h4 id="26-parejas">2.6. Parejas<a class="headerlink" href="#26-parejas" title="Permanent link">&para;</a></h4>
 <p>Elemento fundamental de Scheme. Es un tipo compuesto formado por dos
 elementos (no necesariamente del mismo tipo).</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ (1 . 2) (cons crea una pareja)</span>
@@ -1120,7 +1120,7 @@ esperamos:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ (1 2 . 3)</span>
 </code></pre></div>
 <p>Más adelante explicaremos por qué.</p>
-<h4 id="26-listas">2.6. Listas<a class="headerlink" href="#26-listas" title="Permanent link">&para;</a></h4>
+<h4 id="27-listas">2.7. Listas<a class="headerlink" href="#27-listas" title="Permanent link">&para;</a></h4>
 <p>Uno de los elementos fundamentales de Scheme, y de Lisp, son las
 listas. Es un tipo compuesto formado por un conjunto finito de
 elementos (no necesariamente del mismo tipo). Vamos a ver cómo
@@ -1144,11 +1144,16 @@ la lista que se pasa como argumento. En el ejemplo anterior, la lista
 <code>l1</code> sigue conteniendo la lista original <code>(1 2 3 4)</code>.</p>
 <p>El <code>rest</code> de una lista siempre devuelve otra lista. El <code>rest</code> de una
 lista de un elemento es la <em>lista vacía</em>, que en Scheme se representa
-con <code>()</code>:</p>
+con <code>()</code>. </p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">l2</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
 <span class="p">(</span><span class="nb">rest</span> <span class="n">l2</span><span class="p">)</span> <span class="c1">; ⇒ (2 3) </span>
 <span class="p">(</span><span class="nb">rest</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">l2</span><span class="p">))</span> <span class="c1">; ⇒ (3) </span>
 <span class="p">(</span><span class="nb">rest</span> <span class="p">(</span><span class="nb">rest</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">l2</span><span class="p">)))</span> <span class="c1">; ⇒ () lista vacía</span>
+<span class="nb">null</span> <span class="c1">; ⇒ () lista vacía</span>
+</code></pre></div>
+<p>En Racket se define también el identificador <code>null</code> que tiene como
+valor la lista vacía:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">null</span> <span class="c1">; ⇒ () lista vacía</span>
 </code></pre></div>
 <p>En Scheme las listas se implementan con parejas. Una lista es, o bien
 una lista vacía <code>()</code> o bien una pareja cuyo primer elemento es el
