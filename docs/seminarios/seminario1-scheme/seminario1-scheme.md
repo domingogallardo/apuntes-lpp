@@ -243,7 +243,7 @@ función devuelve el número 13:
     siempre se devuelve.
 
 
-### 2.2. Lenguaje débilmente tipado ###
+### 2.3. Lenguaje débilmente tipado ###
 
 Vamos a comprobar una característica muy importante de Scheme: ser un
 **lenguaje débilmente tipado**. Por esto entendemos, entre otras
@@ -299,7 +299,7 @@ números fracionales, el intérprete de Scheme entiende esa notación:
 (suma-cuadrados 2/3 3/5) ; ⇒ 181/225
 ```
 
-### 2.3. Tipos de datos simples
+### 2.4. Tipos de datos simples
 
 Las primitivas de Scheme consisten en un conjunto de tipos de datos,
 formas especiales y funciones incluidas en el lenguaje. A lo largo del
@@ -312,7 +312,7 @@ algunas funciones primitivas para trabajar con valores de esos tipos.
 * Números
 * Caracteres
 
-#### 2.3.1. Booleanos
+#### 2.4.1. Booleanos
 
 Un booleano es un valor de verdad, que puede ser verdadero o falso. En
 Scheme, tenemos los símbolos `#t` y `#f` para expresar verdadero y falso
@@ -332,7 +332,7 @@ valor distinto de `#f` es verdadero. Ejemplos:
         ;       sólo devuelve #t cuando el argumento es #f)
 ```
 
-#### 2.3.2. Números
+#### 2.4.2. Números
 
 La cantidad de tipos numéricos que soporta Scheme es grande,
 incluyendo enteros de diferente precisión, números racionales,
@@ -341,15 +341,14 @@ complejos e inexactos. Por ejemplo:
 ```racket
 (/ 1 3) ; ⇒ Devuelve la fracción 1/3
 (+ 1/3 1/3) ; ⇒ 2/3
-(+ 2 3 4) ; ⇒ 11 (la función + admite un número variable de argumentos)
+(+ 2 3 4 2) ; ⇒ 11 (la función + admite un número variable de argumentos)
 (+ 1/3 0.0) ; número real con infinita precisión ⇒ 0.3333333333333333 
 (* (+ 1/3 0.0) 3) ; ⇒ 1
 (sqrt -1) ; ⇒ 0+1i (número imaginario)
 (+ 3+2i 2-i) ; ⇒ 5+1i (operaciones con números imaginarios)
 ```
 
-
-##### 2.3.2.1. Algunas primitivas sobre números
+##### 2.4.2.1. Algunas primitivas sobre números
 
 ```racket
 (<= 2 3 3 4 5) ; ⇒ #t (los argumentos están en orden creciente)
@@ -363,7 +362,7 @@ complejos e inexactos. Por ejemplo:
 (sin 2.2) ; relacionados: cos, tan, asin, acos, ata
 ```
 
-##### 2.3.2.2. Funciones de redondeo
+##### 2.4.2.2. Funciones de redondeo
 
 ```racket
 ; (floor x) devuelve el entero más grande no mayor que x
@@ -381,7 +380,7 @@ complejos e inexactos. Por ejemplo:
 (round 3.5)     ; ⇒ 4.0
 ```
 
-##### 2.3.2.3. Predicados sobre números
+##### 2.4.2.3. Predicados sobre números
 
 Se denominan _predicados_ a funciones que devuelven un booleano. 
 
@@ -404,7 +403,7 @@ parámetro. En el caso de los números, el tipo de número:
 (real? 1) ; ⇒ #t
 ```
 
-#### 2.3.3. Caracteres
+#### 2.4.3. Caracteres
 
 Se soportan caracteres internacionales y se codifican en UTF-8.
 
@@ -416,7 +415,7 @@ Se soportan caracteres internacionales y se codifican en UTF-8.
 #\á
 ```
 
-##### 2.3.3.1. Operaciones sobre caracteres
+##### 2.4.3.1. Operaciones sobre caracteres
 
 ```racket
 (char<? #\a #\b) ; ⇒ #t (el carácter #\a es anterior al #\b)
@@ -434,7 +433,7 @@ Se soportan caracteres internacionales y se codifican en UTF-8.
 (char->integer (integer->char 5000)) ; ⇒ 5000 
 ```
 
-### 2.4. Tipos de datos compuestos
+### 2.5. Tipos de datos compuestos
 
 Scheme tiene también un conjunto de tipos de datos compuestos,
 que permiten aglutinar elementos simples de los tipos de datos vistos anteriormente.
@@ -445,7 +444,7 @@ que permiten aglutinar elementos simples de los tipos de datos vistos anteriorme
 
 Estos dos últimos los veremos en detalle en futuras clases de teoría.
 
-#### 2.4.1. Cadenas
+#### 2.5.1. Cadenas
 
 Las cadenas son secuencias finitas de caracteres.
 
@@ -454,7 +453,7 @@ Las cadenas son secuencias finitas de caracteres.
 "La palabra \"hola\" tiene 4 letras"
 ```
 
-##### 2.4.2. Constructores de cadenas
+##### 2.5.2. Constructores de cadenas
 
 ```racket
 (make-string 5 #\o) ; ⇒ "ooooo" (función constructora que recibe un
@@ -463,7 +462,7 @@ Las cadenas son secuencias finitas de caracteres.
                          ;           un número variable de caracteres) 
 ```
 
-##### 2.4.3. Operaciones con cadenas
+##### 2.5.3. Operaciones con cadenas
 
 ```racket
 (substring "Hola que tal" 2 4) ; ⇒ "la" (subcadena que va de la
@@ -477,7 +476,7 @@ Las cadenas son secuencias finitas de caracteres.
 (string-append "hola" "adios") ; ⇒ "holaadios" (concatenación de cadenas) 
 ```
 
-##### 2.4.4. Comparadores de cadenas
+##### 2.5.4. Comparadores de cadenas
 
 ```racket
 (string=? "Hola" "hola") ; ⇒ #f 
@@ -486,7 +485,7 @@ Las cadenas son secuencias finitas de caracteres.
 (string>=? "www" "qqq") ; ⇒ #t
 ```
 
-#### 2.5. Parejas
+#### 2.6. Parejas
 
 Elemento fundamental de Scheme. Es un tipo compuesto formado por dos
 elementos (no necesariamente del mismo tipo).
@@ -543,7 +542,7 @@ esperamos:
 Más adelante explicaremos por qué.
 
 
-#### 2.6. Listas
+#### 2.7. Listas
 
 Uno de los elementos fundamentales de Scheme, y de Lisp, son las
 listas. Es un tipo compuesto formado por un conjunto finito de
@@ -579,13 +578,21 @@ la lista que se pasa como argumento. En el ejemplo anterior, la lista
 
 El `rest` de una lista siempre devuelve otra lista. El `rest` de una
 lista de un elemento es la _lista vacía_, que en Scheme se representa
-con `()`:
+con `()`. 
 
 ```racket
 (define l2 (list 1 2 3))
 (rest l2) ; ⇒ (2 3) 
 (rest (rest l2)) ; ⇒ (3) 
 (rest (rest (rest l2))) ; ⇒ () lista vacía
+null ; ⇒ () lista vacía
+```
+
+En Racket se define también el identificador `null` que tiene como
+valor la lista vacía:
+
+```racket
+null ; ⇒ () lista vacía
 ```
 
 En Scheme las listas se implementan con parejas. Una lista es, o bien
