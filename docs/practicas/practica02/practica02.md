@@ -260,8 +260,9 @@ Ejemplos:
 
 ## Entrega de la práctica
 
-Sube la solución de los ejercicios a Moodle para poder acceder a la
-solución.
+Sube la solución de los ejercicios a Moodle en el cuestionario
+_Entrega práctica 2_. Una vez finalizado el plazo de entrega podrás
+revisar el cuestionario y visualizar la solución.
 
 Tal y como hemos comentado al comienzo de la práctica, es
 recomendable incluir casos de prueba en todo el código que

@@ -1,5 +1,7 @@
 # Práctica 1: Seminario de Scheme
 
+## Realización de la práctica ##
+
 1. Instala en tu ordenador el DrRacket, tal y como se comenta al
    comienzo del [seminario de
    Scheme](../../seminarios/seminario1-scheme/seminario1-scheme.md)
@@ -172,6 +174,17 @@
     | `p1:(0 0) p2:(10 0)`  | `10`     |
     | `p1:(0 0) p2:(10 10)` | `14.142135623730951`     |
 
+
+## Entrega de la práctica
+
+Sube la solución de los ejercicios a Moodle en el cuestionario
+_Entrega práctica 1_ hasta el domingo 6 a las 21:00 h. Una vez
+finalizado el plazo de entrega podrás revisar el cuestionario y
+visualizar la solución del ejercicio 6.
+
+Una vez esté disponible la solución debes compararla con la
+tuya. Puedes consultar cualquier duda con tu profesor de prácticas en
+la clase de prácticas de la semana que viene.
 
 ----
 Lenguajes y Paradigmas de Programación, curso 2021-22  
