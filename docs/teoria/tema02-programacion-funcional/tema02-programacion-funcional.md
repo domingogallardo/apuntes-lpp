@@ -2808,7 +2808,7 @@ resto).
 
 ```racket
 (first '(a b c d)) ; ⇒ a
-(rest '(a b c d)) ; ⇒ '(b c d)
+(rest '(a b c d)) ; ⇒ (b c d)
 ```
 
 Existen otras funciones de alto nivel que trabajan sobre
