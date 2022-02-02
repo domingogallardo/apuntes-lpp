@@ -1769,7 +1769,6 @@ concatenar dos o más listas
 (append list1 list2) ; ⇒ (1 2 3 4 hola como estás)
 ```
 
-<!--
 ### 2.7. Recursión
 
 Otra característica fundamental de la programación funcional es la no
@@ -2029,7 +2028,7 @@ Podemos generalizar este ejemplo y expresarlo en Scheme de la siguiente forma:
 
 ```racket
 (define (suma-lista lista)
-    (+ (car lista) (suma-lista (cdr lista))))
+    (+ (first lista) (suma-lista (rest lista))))
 ```
 
 Falta el caso base. ¿Cuál es la lista más sencilla con la que podemos
@@ -2044,7 +2043,7 @@ Con todo junto, la recursión quedaría como sigue:
 (define (suma-lista lista)
    (if (null? lista)
        0
-	   (+ (car lista) (suma-lista (cdr lista)))))
+	   (+ (first lista) (suma-lista (rest lista)))))
 ```
 
 #### 2.8.2. Función recursiva `longitud`
@@ -2069,7 +2068,7 @@ elemento, cuando llamemos a la recursión nos va a devolver la longitud
 original menos uno. En este caso:
 
 ```racket
-(longitud (cdr '(a b c d e))) ; ⇒
+(longitud (rest '(a b c d e))) ; ⇒
 (longitud '(b c d e )) ⇒ (confiamos en la recursión) 4
 ```
 
@@ -2082,7 +2081,7 @@ Si expresamos en Scheme este caso general:
 ```racket
 ; Sólo se define el caso general, falta el caso base
 (define (longitud lista)
-    (+ (longitud (cdr lista)) 1))
+    (+ (longitud (rest lista)) 1))
 ```
 
 Para definir el caso base debemos preguntarnos cuál es el caso más
@@ -2097,7 +2096,7 @@ De esta forma completamos la definición de la función:
 (define (longitud lista)
     (if (null? lista)
         0
-        (+ (longitud (cdr lista)) 1)))
+        (+ (longitud (rest lista)) 1)))
 ```
 
 
@@ -2153,13 +2152,13 @@ Por tanto, la versión correcto del código anterior sería la siguiente:
 ; Versión correcta para comprobar si una lista tiene
 ; un único elemento
 (define (foo lista)
-   (if (null? (cdr lista))
+   (if (null? (rest lista))
        ; devuelve caso base
        ; caso general
        ))
 ```
 
-El coste de la comprobación `(null? (cdr lista))` es constante. No
+El coste de la comprobación `(null? (rest lista))` es constante. No
 depende de la longitud de la lista.
 
 #### 2.8.4. Función recursiva `veces`
@@ -2188,9 +2187,9 @@ identificador.
 En Scheme hay que definir este caso general en una única expresión:
 
 ```racket
-(if (equal? (car lista) id)
-    (+ 1 (veces (cdr lista) id))
-    (veces (cdr lista) id))
+(if (equal? (first lista) id)
+    (+ 1 (veces (rest lista) id))
+    (veces (rest lista) id))
 ```
 
 Como caso base, si la lista es vacía devolvemos 0.
@@ -2201,8 +2200,8 @@ La versión completa:
 (define (veces lista id)
   (cond
     ((null? lista) 0)
-    ((equal? (car lista) id) (+ 1 (veces (cdr lista) id)))
-    (else (veces (cdr lista) id))))
+    ((equal? (first lista) id) (+ 1 (veces (rest lista) id)))
+    (else (veces (rest lista) id))))
 
 (veces '(a b a a b b) 'a) ; ⇒ 3 
 ```
@@ -2537,14 +2536,14 @@ Hay definidas 2^4 funciones de este tipo: `caaaar`, `caaadr`, …,
 Recordemos que Scheme permite manejar listas como un tipo de datos
 básico. Hemos visto funciones para crear, añadir y recorrer listas.
 
-Como repaso, podemos ver las siguientes expresiones. Fijaros que las
-funciones `car`, `cdr` y `cons` son exactamente las mismas funciones
-que las vistas anteriormente.
+En Scheme las listas se implementan usando parejas, por lo que las
+funciones `car` y `cdr` también funcionan sobre listas.
 
-¿Por qué? ¿Qué relación hay entre las parejas y las listas?
+¿Qué devuelven cuando se aplican a una lista? ¿Cómo se implementan las
+listas con parejas? Vamos a investigarlo haciendo unas pruebas.
 
-Hagamos algunas pruebas, probando si los resultados son listas o
-parejas usando las funciones `list?` y `pair?`.
+En primer lugar, vamos a usar las funciones `list?` y `pair?` para
+comprobar si algo es una lista y/o una pareja.
 
 Por ejemplo, una pareja formada por dos números es una pareja, pero no
 es una lista:
@@ -2564,13 +2563,13 @@ de que sí. Una lista es una lista (evidentemente) pero también es una pareja:
 (pair? lista); ⇒ #t
 ```
 
-Si una lista es también una pareja, acabamos de descubrir por qué las
-funciones `car` y `cdr` funcionan también con las listas:
+Si una lista es también una pareja también podemos aplicar las
+funciones `car` y `cdr` con ellas. ¿Qué devuelven? Vamos a verlo:
 
 ```racket
 (define lista '(1 2 3))
 (car lista) ; ⇒  1
-(cdr lista) ; ⇒  2
+(cdr lista) ; ⇒  (2 3)
 ```
 
 Resulta que en la pareja que representa la lista, en la parte
@@ -2601,11 +2600,13 @@ listas y parejas en Scheme (y Lisp). Vamos a explicarlo.
 
 #### 4.1.1. Definición de listas con parejas
 
-Una lista es (definición recursiva):
+Una lista es:
 
 * Una pareja que contiene en su parte izquierda el primer elemento de
   la lista y en su parte derecha el resto de la lista
 * Un símbolo especial `'()` que denota la lista vacía
+
+Hay que notar que la definición anterior es una definición recursiva.
 
 Por ejemplo, una lista muy sencilla con un solo elemento, `(1)`, se
 define con la siguiente pareja:
@@ -2655,7 +2656,8 @@ La primera pareja cumple las condiciones de ser una lista:
 
 Al comprobar la implementación de las listas en Scheme, entendemos por
 qué las funciones `car` y `cdr` nos devuelven el primer elemento y el
-resto de la lista.
+resto de la lista. De hecho, las funciones `first` y `rest` se
+implementan usando las funciones `car` y `cdr`.
 
 #### 4.1.2. Lista vacía
 
@@ -2678,6 +2680,13 @@ Para saber si un objeto es la lista vacía, podemos utilizar la función
 ```racket
 (null? '()) ; ⇒ #t
 ```	
+
+En Racket está predefinido el símbolo `null` que tiene como valor la
+lista vacía:
+
+```racket
+null ; ⇒ ()
+```
 
 ### 4.2. Listas con elementos compuestos
 
@@ -2789,8 +2798,21 @@ siguiente:
 
 Es importante conocer cómo se implementan las listas usando parejas y
 su representación con diagramas caja y puntero para definir funciones
-de alto nivel. Algunas de estas funciones ya las conocemos, otras las
-vemos por primera vez en los siguientes ejemplos:
+de alto nivel. 
+
+Una vez conocidos los detalles de implementación, podemos volver a
+usar las funciones que tienen un nivel de abstracción mayor como
+`first` y `rest`. Son funciones que tienen un nombre entendible y que
+comunican perfectamente lo que hacen (devolver el primer elemento y el
+resto).
+
+```racket
+(first '(a b c d)) ; ⇒ a
+(rest '(a b c d)) ; ⇒ '(b c d)
+```
+
+Existen otras funciones de alto nivel que trabajan sobre
+listas. Algunas ya las conocemos, pero otras no:
 
 ```racket
 (append '(a (b) c) '((d) e f)) ; ⇒ (a (b) c (d) e f)
@@ -2801,6 +2823,8 @@ vemos por primera vez en los siguientes ejemplos:
 ```
 
 En los siguientes apartados veremos cómo están implementadas.
+
+<!--
 
 ### 4.3. Funciones recursivas que construyen listas
 
