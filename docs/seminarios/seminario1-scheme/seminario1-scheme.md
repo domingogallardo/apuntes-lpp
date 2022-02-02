@@ -1038,13 +1038,8 @@ la parte izquierda de la pareja resultante.
 	(cons (raiz-pos b a c) (raiz-neg a b c)))
 ```
 
-Con esta nueva definición, si definimos la siguiente prueba:
-
-```racket
-(check-equal? (ecuacion 1 -5 6) (cons 3 2))
-```
-
-el resultado será:
+Con esta nueva definición, cuando ejecutemos el programa (pulsando el
+botón Run) aparecerá el siguiente mensaje:
 
 ```text
 --------------------
