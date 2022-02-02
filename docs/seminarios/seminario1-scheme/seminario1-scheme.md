@@ -1000,16 +1000,33 @@ que esperamos, dado por el argumento _resultado-esperado_.
 
 ### 6.1. Ejemplo de pruebas de la función `ecuacion` definida anteriormente
 
-Las siguientes pruebas no mostrarán ningún mensaje de error, lo que
+Supongamos la función completa `ecuacion`, con pruebas incluidas:
+
+```racket
+#lang racket
+(require rackunit)
+
+(define (discriminante a b c)
+	(- (* b b) (* 4 a c)))
+
+(define (raiz-pos a b c)
+	(/ (+ (* b -1) (sqrt (discriminante a b c))) (* 2 a)))
+
+(define (raiz-neg a b c)
+	(/ (- (* b -1) (sqrt (discriminante a b c))) (* 2 a)))
+
+(define (ecuacion a b c)
+	(cons (raiz-pos a b c) (raiz-neg a b c)))
+
+(check-equal? (ecuacion 1 -5 6) '(3 . 2))
+(check-equal? (ecuacion 2 -7 3) '(3 . 1/2))
+(check-equal? (ecuacion -1 7 -10) '(2 . 5))
+```
+
+Las pruebas anteriores no mostrarán ningún mensaje de error, lo que
 significa que nuestra función _ecuacion_ es 'CORRECTA' para estas
 pruebas, es decir, que con los valores de entrada utilizados, su
 resultado se corresponde con el esperado.
-
-```racket
-(check-equal? (ecuacion 1 -5 6) (cons 3 2))
-(check-equal? (ecuacion 2 -7 3) (cons 3 (/ 1 2)))
-(check-equal? (ecuacion -1 7 -10) (cons 2 5))
-```
 
 Ahora vamos a suponer que nos hemos equivocado en la definición de la
 función _ecuacion_, por ejemplo en el orden de los argumentos al
@@ -1021,7 +1038,7 @@ la parte izquierda de la pareja resultante.
 	(cons (raiz-pos b a c) (raiz-neg a b c)))
 ```
 
-Con esta nueva definición, si ejecutamos la siguiente prueba:
+Con esta nueva definición, si definimos la siguiente prueba:
 
 ```racket
 (check-equal? (ecuacion 1 -5 6) (cons 3 2))
