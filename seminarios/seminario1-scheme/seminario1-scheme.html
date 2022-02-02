@@ -1474,14 +1474,30 @@ invocación a la función con unos determinados valores de entrada,
 representado por el argumento <em>resultado-real</em>, es igual al resultado
 que esperamos, dado por el argumento <em>resultado-esperado</em>.</p>
 <h3 id="61-ejemplo-de-pruebas-de-la-funcion-ecuacion-definida-anteriormente">6.1. Ejemplo de pruebas de la función <code>ecuacion</code> definida anteriormente<a class="headerlink" href="#61-ejemplo-de-pruebas-de-la-funcion-ecuacion-definida-anteriormente" title="Permanent link">&para;</a></h3>
-<p>Las siguientes pruebas no mostrarán ningún mensaje de error, lo que
+<p>Supongamos la función completa <code>ecuacion</code>, con pruebas incluidas:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
+<span class="p">(</span><span class="k">require</span> <span class="n">rackunit</span><span class="p">)</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">discriminante</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">-</span> <span class="p">(</span><span class="nb">*</span> <span class="n">b</span> <span class="n">b</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">4</span> <span class="n">a</span> <span class="n">c</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">raiz-pos</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">/</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="n">b</span> <span class="mi">-1</span><span class="p">)</span> <span class="p">(</span><span class="nb">sqrt</span> <span class="p">(</span><span class="n">discriminante</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span><span class="p">)))</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="n">a</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">raiz-neg</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">/</span> <span class="p">(</span><span class="nb">-</span> <span class="p">(</span><span class="nb">*</span> <span class="n">b</span> <span class="mi">-1</span><span class="p">)</span> <span class="p">(</span><span class="nb">sqrt</span> <span class="p">(</span><span class="n">discriminante</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span><span class="p">)))</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="n">a</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">ecuacion</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">raiz-pos</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span><span class="p">)</span> <span class="p">(</span><span class="n">raiz-neg</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">ecuacion</span> <span class="mi">1</span> <span class="mi">-5</span> <span class="mi">6</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">ecuacion</span> <span class="mi">2</span> <span class="mi">-7</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="m">1/2</span><span class="p">))</span>
+<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">ecuacion</span> <span class="mi">-1</span> <span class="mi">7</span> <span class="mi">-10</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">5</span><span class="p">))</span>
+</code></pre></div>
+<p>Las pruebas anteriores no mostrarán ningún mensaje de error, lo que
 significa que nuestra función <em>ecuacion</em> es 'CORRECTA' para estas
 pruebas, es decir, que con los valores de entrada utilizados, su
 resultado se corresponde con el esperado.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">ecuacion</span> <span class="mi">1</span> <span class="mi">-5</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">))</span>
-<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">ecuacion</span> <span class="mi">2</span> <span class="mi">-7</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)))</span>
-<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">ecuacion</span> <span class="mi">-1</span> <span class="mi">7</span> <span class="mi">-10</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">2</span> <span class="mi">5</span><span class="p">))</span>
-</code></pre></div>
 <p>Ahora vamos a suponer que nos hemos equivocado en la definición de la
 función <em>ecuacion</em>, por ejemplo en el orden de los argumentos al
 invocar a la función auxiliar <em>raiz-pos</em>, en la llamada que se hace en
@@ -1489,7 +1505,7 @@ la parte izquierda de la pareja resultante.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">ecuacion</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">raiz-pos</span> <span class="n">b</span> <span class="n">a</span> <span class="n">c</span><span class="p">)</span> <span class="p">(</span><span class="n">raiz-neg</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span><span class="p">)))</span>
 </code></pre></div>
-<p>Con esta nueva definición, si ejecutamos la siguiente prueba:</p>
+<p>Con esta nueva definición, si definimos la siguiente prueba:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">ecuacion</span> <span class="mi">1</span> <span class="mi">-5</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span> <span class="mi">2</span><span class="p">))</span>
 </code></pre></div>
 <p>el resultado será:</p>

@@ -1954,6 +1954,7 @@ concatenar dos o más listas</p>
 <span class="p">(</span><span class="nb">append</span> <span class="n">list1</span> <span class="n">list2</span><span class="p">)</span> <span class="c1">; ⇒ (1 2 3 4 hola como estás)</span>
 </code></pre></div>
 <!--
+
 ### 2.7. Recursión
 
 Otra característica fundamental de la programación funcional es la no
@@ -2199,7 +2200,7 @@ siguiente dibujo:
 Podemos generalizar este ejemplo y expresarlo en Scheme de la siguiente forma:
 
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="n">lista</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))</span>
+    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))))</span>
 </code></pre></div>
 
 Falta el caso base. ¿Cuál es la lista más sencilla con la que podemos
@@ -2213,7 +2214,7 @@ Con todo junto, la recursión quedaría como sigue:
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="n">lista</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
        <span class="mi">0</span>
-       <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+       <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 
 #### 2.8.2. Función recursiva `longitud`
@@ -2236,7 +2237,7 @@ En este caso es bastante sencillo. Si a la lista le quitamos un
 elemento, cuando llamemos a la recursión nos va a devolver la longitud
 original menos uno. En este caso:
 
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">longitud</span> <span class="p">(</span><span class="nb">cdr</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">e</span><span class="p">)))</span> <span class="c1">; ⇒</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">longitud</span> <span class="p">(</span><span class="nb">rest</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">e</span><span class="p">)))</span> <span class="c1">; ⇒</span>
 <span class="p">(</span><span class="n">longitud</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">e</span> <span class="p">))</span> <span class="n">⇒</span> <span class="p">(</span><span class="n">confiamos</span> <span class="n">en</span> <span class="n">la</span> <span class="n">recursión</span><span class="p">)</span> <span class="mi">4</span>
 </code></pre></div>
 
@@ -2248,7 +2249,7 @@ Si expresamos en Scheme este caso general:
 
 <div class="highlight"><pre><span></span><code><span class="c1">; Sólo se define el caso general, falta el caso base</span>
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">longitud</span> <span class="n">lista</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">longitud</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">longitud</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))</span> <span class="mi">1</span><span class="p">))</span>
 </code></pre></div>
 
 Para definir el caso base debemos preguntarnos cuál es el caso más
@@ -2262,7 +2263,7 @@ De esta forma completamos la definición de la función:
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">longitud</span> <span class="n">lista</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
         <span class="mi">0</span>
-        <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">longitud</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">longitud</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))</span> <span class="mi">1</span><span class="p">)))</span>
 </code></pre></div>
 
 
@@ -2315,13 +2316,13 @@ Por tanto, la versión correcto del código anterior sería la siguiente:
 <div class="highlight"><pre><span></span><code><span class="c1">; Versión correcta para comprobar si una lista tiene</span>
 <span class="c1">; un único elemento</span>
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">foo</span> <span class="n">lista</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))</span>
        <span class="c1">; devuelve caso base</span>
        <span class="c1">; caso general</span>
        <span class="p">))</span>
 </code></pre></div>
 
-El coste de la comprobación `(null? (cdr lista))` es constante. No
+El coste de la comprobación `(null? (rest lista))` es constante. No
 depende de la longitud de la lista.
 
 #### 2.8.4. Función recursiva `veces`
@@ -2347,9 +2348,9 @@ identificador.
 
 En Scheme hay que definir este caso general en una única expresión:
 
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">equal?</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">))</span>
-    <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">equal?</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">))</span>
+    <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">))</span>
 </code></pre></div>
 
 Como caso base, si la lista es vacía devolvemos 0.
@@ -2359,8 +2360,8 @@ La versión completa:
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">veces</span> <span class="n">lista</span> <span class="n">id</span><span class="p">)</span>
   <span class="p">(</span><span class="k">cond</span>
     <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="p">((</span><span class="nb">equal?</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)))</span>
-    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">))))</span>
+    <span class="p">((</span><span class="nb">equal?</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)))</span>
+    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">))))</span>
 
 <span class="p">(</span><span class="n">veces</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">b</span> <span class="ss">b</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span> <span class="c1">; ⇒ 3 </span>
 </code></pre></div>
@@ -2677,14 +2678,14 @@ Hay definidas 2^4 funciones de este tipo: `caaaar`, `caaadr`, …,
 Recordemos que Scheme permite manejar listas como un tipo de datos
 básico. Hemos visto funciones para crear, añadir y recorrer listas.
 
-Como repaso, podemos ver las siguientes expresiones. Fijaros que las
-funciones `car`, `cdr` y `cons` son exactamente las mismas funciones
-que las vistas anteriormente.
+En Scheme las listas se implementan usando parejas, por lo que las
+funciones `car` y `cdr` también funcionan sobre listas.
 
-¿Por qué? ¿Qué relación hay entre las parejas y las listas?
+¿Qué devuelven cuando se aplican a una lista? ¿Cómo se implementan las
+listas con parejas? Vamos a investigarlo haciendo unas pruebas.
 
-Hagamos algunas pruebas, probando si los resultados son listas o
-parejas usando las funciones `list?` y `pair?`.
+En primer lugar, vamos a usar las funciones `list?` y `pair?` para
+comprobar si algo es una lista y/o una pareja.
 
 Por ejemplo, una pareja formada por dos números es una pareja, pero no
 es una lista:
@@ -2702,12 +2703,12 @@ de que sí. Una lista es una lista (evidentemente) pero también es una pareja:
 <span class="p">(</span><span class="nb">pair?</span> <span class="n">lista</span><span class="p">)</span><span class="c1">; ⇒ #t</span>
 </code></pre></div>
 
-Si una lista es también una pareja, acabamos de descubrir por qué las
-funciones `car` y `cdr` funcionan también con las listas:
+Si una lista es también una pareja también podemos aplicar las
+funciones `car` y `cdr` con ellas. ¿Qué devuelven? Vamos a verlo:
 
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
 <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="c1">; ⇒  1</span>
-<span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="c1">; ⇒  2</span>
+<span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="c1">; ⇒  (2 3)</span>
 </code></pre></div>
 
 Resulta que en la pareja que representa la lista, en la parte
@@ -2736,11 +2737,13 @@ listas y parejas en Scheme (y Lisp). Vamos a explicarlo.
 
 #### 4.1.1. Definición de listas con parejas
 
-Una lista es (definición recursiva):
+Una lista es:
 
 * Una pareja que contiene en su parte izquierda el primer elemento de
   la lista y en su parte derecha el resto de la lista
 * Un símbolo especial `'()` que denota la lista vacía
+
+Hay que notar que la definición anterior es una definición recursiva.
 
 Por ejemplo, una lista muy sencilla con un solo elemento, `(1)`, se
 define con la siguiente pareja:
@@ -2787,7 +2790,8 @@ La primera pareja cumple las condiciones de ser una lista:
 
 Al comprobar la implementación de las listas en Scheme, entendemos por
 qué las funciones `car` y `cdr` nos devuelven el primer elemento y el
-resto de la lista.
+resto de la lista. De hecho, las funciones `first` y `rest` se
+implementan usando las funciones `car` y `cdr`.
 
 #### 4.1.2. Lista vacía
 
@@ -2806,6 +2810,12 @@ Para saber si un objeto es la lista vacía, podemos utilizar la función
 `null?`:
 
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">null?</span> <span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ #t</span>
+</code></pre></div>
+
+En Racket está predefinido el símbolo `null` que tiene como valor la
+lista vacía:
+
+<div class="highlight"><pre><span></span><code><span class="nb">null</span> <span class="c1">; ⇒ ()</span>
 </code></pre></div>
 
 ### 4.2. Listas con elementos compuestos
@@ -2909,8 +2919,20 @@ siguiente:
 
 Es importante conocer cómo se implementan las listas usando parejas y
 su representación con diagramas caja y puntero para definir funciones
-de alto nivel. Algunas de estas funciones ya las conocemos, otras las
-vemos por primera vez en los siguientes ejemplos:
+de alto nivel. 
+
+Una vez conocidos los detalles de implementación, podemos volver a
+usar las funciones que tienen un nivel de abstracción mayor como
+`first` y `rest`. Son funciones que tienen un nombre entendible y que
+comunican perfectamente lo que hacen (devolver el primer elemento y el
+resto).
+
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">first</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span><span class="p">))</span> <span class="c1">; ⇒ a</span>
+<span class="p">(</span><span class="nb">rest</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span><span class="p">))</span> <span class="c1">; ⇒ (b c d)</span>
+</code></pre></div>
+
+Existen otras funciones de alto nivel que trabajan sobre
+listas. Algunas ya las conocemos, pero otras no:
 
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">append</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span><span class="p">)</span> <span class="ss">c</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">((</span><span class="ss">d</span><span class="p">)</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">))</span> <span class="c1">; ⇒ (a (b) c (d) e f)</span>
 <span class="p">(</span><span class="nb">list-ref</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span><span class="p">)</span> <span class="ss">c</span> <span class="ss">d</span><span class="p">)</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ c</span>
@@ -2920,6 +2942,7 @@ vemos por primera vez en los siguientes ejemplos:
 </code></pre></div>
 
 En los siguientes apartados veremos cómo están implementadas.
+
 
 ### 4.3. Funciones recursivas que construyen listas
 
