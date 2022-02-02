@@ -30,8 +30,8 @@
 
 .admonition.warning { /* csslint allow: adjoining-classes */
     color: black;
-    background-color: #fcf8e3;
-    border-color: #fbeed5;
+    background-color: #FCC8BE;
+    border-color: #FCC8BE;
 }
 
 .admonition.hint { /* csslint allow: adjoining-classes */
@@ -42,8 +42,8 @@
 
 .admonition.danger { /* csslint allow: adjoining-classes */
     color: black;
-    background-color: #f2dede;
-    border-color: #eed3d7;
+    background-color: #F7B2A4;
+    border-color: #F7B2A4;
 }
 
 .admonition-title {
@@ -321,16 +321,16 @@ cadena "a".</p>
 </code></pre></div>
 <h3>Repaso: Selección de elementos de una lista: <code>car</code> y <code>cdr</code></h3>
 <ul>
-<li>Primer elemento: función <code>car</code></li>
-<li>Resto de elementos: función <code>cdr</code></li>
+<li>Primer elemento: función <code>first</code></li>
+<li>Resto de elementos: función <code>rest</code></li>
 </ul>
 <p>Ejemplos:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
-<span class="p">(</span><span class="nb">car</span> <span class="n">lista1</span><span class="p">)</span> <span class="n">⇒</span> <span class="mi">1</span>
-<span class="p">(</span><span class="nb">cdr</span> <span class="n">lista1</span><span class="p">)</span> <span class="n">⇒</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">first</span> <span class="n">lista1</span><span class="p">)</span> <span class="n">⇒</span> <span class="mi">1</span>
+<span class="p">(</span><span class="nb">rest</span> <span class="n">lista1</span><span class="p">)</span> <span class="n">⇒</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">lista2</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
-<span class="p">(</span><span class="nb">car</span> <span class="n">lista2</span><span class="p">)</span> <span class="n">⇒</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">cdr</span> <span class="n">lista2</span><span class="p">)</span> <span class="n">⇒</span> <span class="p">(</span><span class="mi">3</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">first</span> <span class="n">lista2</span><span class="p">)</span> <span class="n">⇒</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">rest</span> <span class="n">lista2</span><span class="p">)</span> <span class="n">⇒</span> <span class="p">(</span><span class="mi">3</span> <span class="mi">4</span><span class="p">)</span>
 </code></pre></div>
 <h3>Recursión y listas: Función <code>(suma-lista lista-nums)</code></h3>
 <p>Supongamos que queremos definir una función <code>suma-lista</code> que reciba
@@ -356,7 +356,7 @@ lista. Lo podemos representar en el siguiente dibujo:</p>
 <li>Podemos generalizar este ejemplo y expresarlo en Scheme de la siguiente forma:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="n">lista</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))</span>
+    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))))</span>
 </code></pre></div>
 <ul>
 <li>Falta el caso base, que es el caso más sencillo en que podemos
@@ -368,7 +368,7 @@ que devolver 0.</li>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="n">lista</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
        <span class="mi">0</span>
-       <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+       <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 <h3>Función recursiva <code>veces</code></h3>
 <p>Como último ejemplo vamos a definir la función <code>(veces lista id)</code> que
@@ -381,17 +381,17 @@ al valor devuelto 1 si el primer elemento de la lista coincide con el
 identificador.</li>
 </ul>
 <p>El caso general en Scheme:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">equal?</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">))</span>
-    <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">equal?</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">))</span>
+    <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">))</span>
 </code></pre></div>
 <p>Como caso base, si la lista es vacía devolvemos 0.</p>
 <p>La versión completa:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">veces</span> <span class="n">lista</span> <span class="n">id</span><span class="p">)</span>
   <span class="p">(</span><span class="k">cond</span>
     <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="p">((</span><span class="nb">equal?</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)))</span>
-    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">))))</span>
+    <span class="p">((</span><span class="nb">equal?</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)))</span>
+    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">))))</span>
 
 <span class="p">(</span><span class="n">veces</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">b</span> <span class="ss">b</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span> 
 <span class="n">⇒</span> <span class="mi">3</span> 
@@ -535,9 +535,10 @@ identificador.</li>
 </ul>
 <h3>Listas en Scheme</h3>
 <ul>
-<li>Hemos comprobado que las listas y las parejas tienen las mismas
-  funciones: <code>car</code>, <code>cdr</code> y <code>cons</code>. ¿Por qué? ¿Qué relación hay entre
-  las parejas y las listas?</li>
+<li>Las listas se implementan en Scheme usando parejas.</li>
+<li>Hemos usado las funciones <code>first</code> y <code>rest</code> para trabajar con
+  listas. Pero como una lista es una pareja, también podemos usar las
+  funciones <code>car</code> y <code>cdr</code>. ¿Qué devolverían esas funciones?</li>
 </ul>
 <h3>Repaso: función cons con listas</h3>
 <ul>
@@ -568,16 +569,16 @@ Lo probamos ...</p>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
-<p>Si una lista es una pareja, acabamos de descubrir por qué las
-funciones <code>car</code> y <code>cdr</code> funcionan también con las listas.</p>
+<p>Como hemos dicho, una lista es una pareja. ¿Qué devuelven las
+funciones <code>car</code> y <code>cdr</code> aplicadas sobre una lista?</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
 <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">?</span>
 <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">?</span>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
-<p>Y también por qué la llamada a <code>cons</code> con un dato y una lista
-construye otra lista:</p>
+<p>Y el resultado de construir una nueva pareja con un dato y otra lista
+también es otra lista:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">p1</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="n">lista</span><span class="p">))</span>
 <span class="p">(</span><span class="nb">list?</span> <span class="n">p1</span><span class="p">)</span>
@@ -656,6 +657,9 @@ explicarlo.</p>
 <p>Función <code>null?</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">null?</span> <span class="o">&#39;</span><span class="p">())</span>
 </code></pre></div>
+<p>El símbolo <code>null</code> está definido en Racket y contiene la lista vacía:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">null</span> <span class="c1">; ⇒ &#39;()</span>
+</code></pre></div>
 <h3>Listas con elementos compuestos</h3>
 <ul>
 <li><em>Lista de asociación</em>, listas cuyos elementos son parejas (<em>clave</em>, <em>valor</em>):</li>
@@ -715,10 +719,12 @@ siguiente:</p>
 </code></pre></div>
 <h3>Distintos niveles de abstracción</h3>
 <ul>
-<li>Una vez que conocemos la implementación de listas con parejas, no va a a ser necesario casi nunca <em>bajar</em> a este nivel de implementación</li>
-<li>Podemos volver a la <em>abstracción</em> inicial en la que las funciones <code>car</code> y <code>cdr</code> trabajan sobre listas:<ul>
-<li><code>(car lista)</code>: devuelve el primer elemento de la lista</li>
-<li><code>(cdr lista)</code>: devuelve el resto de la lista</li>
+<li>Una vez que conocemos la implementación de listas con parejas, no va
+  a a ser necesario casi nunca <em>bajar</em> a este nivel de implementación
+  ni usar las funciones <code>car</code> y <code>cdr</code> para trabajar con ellas.</li>
+<li>Podemos volver a la <em>abstracción</em> inicial en la usamos las funciones <code>first</code> y <code>rest</code>:<ul>
+<li><code>(first lista)</code>: devuelve el primer elemento de la lista</li>
+<li><code>(rest lista)</code>: devuelve el resto de la lista</li>
 <li><code>(list-ref lista n)</code>: devuelve la posición <code>n</code> de la lista</li>
 <li><code>(cons dato lista)</code>: devuelve una nueva lista con <code>dato</code> en su primera posición y <code>lista</code> como su resto</li>
 </ul>

@@ -186,18 +186,18 @@ Solución final:
 
 ### Repaso: Selección de elementos de una lista: `car` y `cdr`
 
-- Primer elemento: función `car`
-- Resto de elementos: función `cdr`
+- Primer elemento: función `first`
+- Resto de elementos: función `rest`
 
 Ejemplos:
 
 ```racket
 (define lista1 '(1 2 3 4))
-(car lista1) ⇒ 1
-(cdr lista1) ⇒ (2 3 4)
+(first lista1) ⇒ 1
+(rest lista1) ⇒ (2 3 4)
 (define lista2 '((1 2) 3 4))
-(car lista2) ⇒ (1 2)
-(cdr lista2) ⇒ (3 4)
+(first lista2) ⇒ (1 2)
+(rest lista2) ⇒ (3 4)
 ```
 
 
@@ -228,7 +228,7 @@ lista. Lo podemos representar en el siguiente dibujo:
 
 ```racket
 (define (suma-lista lista)
-    (+ (car lista) (suma-lista (cdr lista))))
+    (+ (first lista) (suma-lista (rest lista))))
 ```
 
 - Falta el caso base, que es el caso más sencillo en que podemos
@@ -242,7 +242,7 @@ Con todo junto, quedaría la recursión como sigue
 (define (suma-lista lista)
    (if (null? lista)
        0
-	   (+ (car lista) (suma-lista (cdr lista)))))
+	   (+ (first lista) (suma-lista (rest lista)))))
 ```
    
 ### Función recursiva `veces`
@@ -259,9 +259,9 @@ identificador.
 El caso general en Scheme:
 
 ```racket
-(if (equal? (car lista) id)
-    (+ 1 (veces (cdr lista) id))
-    (veces (cdr lista) id))
+(if (equal? (first lista) id)
+    (+ 1 (veces (rest lista) id))
+    (veces (rest lista) id))
 ```
 
 Como caso base, si la lista es vacía devolvemos 0.
@@ -272,8 +272,8 @@ La versión completa:
 (define (veces lista id)
   (cond
     ((null? lista) 0)
-    ((equal? (car lista) id) (+ 1 (veces (cdr lista) id)))
-    (else (veces (cdr lista) id))))
+    ((equal? (first lista) id) (+ 1 (veces (rest lista) id)))
+    (else (veces (rest lista) id))))
 
 (veces '(a b a a b b) 'a) 
 ⇒ 3 
@@ -473,10 +473,10 @@ Diagramas *caja-y-puntero* (*box-and-pointer* en inglés):
 
 ### Listas en Scheme 
 
-- Hemos comprobado que las listas y las parejas tienen las mismas
-  funciones: `car`, `cdr` y `cons`. ¿Por qué? ¿Qué relación hay entre
-  las parejas y las listas?
-
+- Las listas se implementan en Scheme usando parejas.
+- Hemos usado las funciones `first` y `rest` para trabajar con
+  listas. Pero como una lista es una pareja, también podemos usar las
+  funciones `car` y `cdr`. ¿Qué devolverían esas funciones?
 
 ### Repaso: función cons con listas
 
@@ -488,7 +488,6 @@ al comienzo de la lista:
 (cons 'hola '(como estás)) ⇒ (hola como estás)
 (cons '(1 2) '(1 2 3 4))  ⇒ ((1 2) 1 2 3 4)
 ```
-
 
 ### Relación entre listas y parejas en Lisp y Scheme
 
@@ -516,8 +515,8 @@ Lo probamos ...
 
 <p style="margin-bottom:2cm;"></p>
 
-Si una lista es una pareja, acabamos de descubrir por qué las
-funciones `car` y `cdr` funcionan también con las listas.
+Como hemos dicho, una lista es una pareja. ¿Qué devuelven las
+funciones `car` y `cdr` aplicadas sobre una lista?
 
 ```racket
 (define lista '(1 2 3))
@@ -527,8 +526,8 @@ funciones `car` y `cdr` funcionan también con las listas.
 
 <p style="margin-bottom:2cm;"></p>
 
-Y también por qué la llamada a `cons` con un dato y una lista
-construye otra lista:
+Y el resultado de construir una nueva pareja con un dato y otra lista
+también es otra lista:
 
 ```racket
 (define lista '(1 2 3))
@@ -635,6 +634,12 @@ Función `null?`:
 (null? '())
 ```	
 
+El símbolo `null` está definido en Racket y contiene la lista vacía:
+
+```racket
+null ; ⇒ '()
+```
+
 ### Listas con elementos compuestos
 
 - *Lista de asociación*, listas cuyos elementos son parejas (*clave*, *valor*):
@@ -729,10 +734,12 @@ siguiente:
 
 ### Distintos niveles de abstracción
 
-- Una vez que conocemos la implementación de listas con parejas, no va a a ser necesario casi nunca *bajar* a este nivel de implementación
-- Podemos volver a la *abstracción* inicial en la que las funciones `car` y `cdr` trabajan sobre listas:
-    - `(car lista)`: devuelve el primer elemento de la lista
-    - `(cdr lista)`: devuelve el resto de la lista
+- Una vez que conocemos la implementación de listas con parejas, no va
+  a a ser necesario casi nunca *bajar* a este nivel de implementación
+  ni usar las funciones `car` y `cdr` para trabajar con ellas.
+- Podemos volver a la *abstracción* inicial en la usamos las funciones `first` y `rest`:
+    - `(first lista)`: devuelve el primer elemento de la lista
+    - `(rest lista)`: devuelve el resto de la lista
     - `(list-ref lista n)`: devuelve la posición `n` de la lista
     - `(cons dato lista)`: devuelve una nueva lista con `dato` en su primera posición y `lista` como su resto
 
