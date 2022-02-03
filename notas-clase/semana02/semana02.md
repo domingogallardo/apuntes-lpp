@@ -184,7 +184,7 @@ Solución final:
 ```
 
 
-### Repaso: Selección de elementos de una lista: `car` y `cdr`
+### Repaso: Selección de elementos de una lista: `first` y `rest`
 
 - Primer elemento: función `first`
 - Resto de elementos: función `rest`
