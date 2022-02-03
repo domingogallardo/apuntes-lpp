@@ -264,17 +264,16 @@ Ejemplos:
 
 ## Entrega de la práctica
 
-Sube la solución de los ejercicios a Moodle en el cuestionario
-_Entrega práctica 2_. Una vez finalizado el plazo de entrega podrás
-revisar el cuestionario y visualizar la solución.
+Sube la solución de los ejercicios a Moodle al cuestionario _Entrega
+práctica 2_ hasta el domingo 13 de febrero a las 21:00 h. 
 
-Tal y como hemos comentado al comienzo de la práctica, es
-recomendable incluir casos de prueba en todo el código que
-escribas. 
+Tal y como hemos comentado al comienzo de la práctica, debes incluir
+casos de prueba en todo el código que escribas.
 
-Corrige la entrega, comparando la solución proporcionada por
-nosotros con la tuya. Puedes consultar cualquier duda con tu profesor
-de prácticas en la clase de prácticas de la semana que viene.
+Una vez finalizado el plazo de entrega podrás revisar el cuestionario
+y visualizar la solución. Corrige la entrega, comparando la solución
+con la tuya. Puedes consultar cualquier duda con tu profesor en la
+clase de prácticas de la semana que viene.
 
 ----
 Lenguajes y Paradigmas de Programación, curso 2021-22  
