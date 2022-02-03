@@ -10,7 +10,7 @@
    el fichero todo el código que escribas esta semana. Usa también
    comentarios para separar secciones y realizar anotaciones.
 
-2. Lee el seminario de Scheme hasta el apartado 2.3. (_Tipos de datos
+2. Lee el seminario de Scheme hasta el apartado 2.4. (_Tipos de datos
    simples_) incluido. Puedes
    ver el **vídeo 1** que hemos subido a
    [Moodle](https://moodle2021-22.ua.es/moodle/mod/page/view.php?id=41861).
@@ -43,7 +43,7 @@
     |`"hola"`         | `(remainder (+ 6 2) (+ 1 1))`                  |
 
 
-4. Lee el apartado 2.4. (_Tipos de datos compuestos_) del seminario de
+4. Lee el apartado 2.5. (_Tipos de datos compuestos_) del seminario de
    Scheme, en el que se explica cómo se trabaja con cadenas, parejas y
    listas en Racket. Puedes ver el **vídeo 2** que hemos subido a
    [Moodle](https://moodle2021-22.ua.es/moodle/mod/page/view.php?id=41861).
