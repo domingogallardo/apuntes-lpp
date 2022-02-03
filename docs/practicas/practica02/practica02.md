@@ -3,12 +3,16 @@
 
 ## Antes de la clase de prácticas ##
 
-- Los ejercicios que hay a continuación están basados en los conceptos
-de teoría vistos la semana pasada. Antes de la clase de prácticas debes
-repasar todos los conceptos y **probar en el DrRacket** todos los
-ejemplos del tema 2 [_Programación
+- Antes de empezar esta práctica es importante que revises la solución
+  de la práctica 1. Puedes preguntar las dudas al profesor de prácticas.
+
+- Los siguientes ejercicios están basados en los conceptos de teoría
+vistos la semana pasada. Antes de la clase de prácticas debes repasar
+todos los conceptos y **probar en el DrRacket** todos los ejemplos del
+tema 2 [_Programación
 Funcional_](../../teoria/tema02-programacion-funcional/tema02-programacion-funcional.md)
 hasta el apartado 2.6 _Listas_ incluido.
+
 
 ## Ejercicios
 
