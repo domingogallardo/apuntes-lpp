@@ -264,8 +264,8 @@ Ejemplos:
 
 ## Entrega de la práctica
 
-Sube la solución de los ejercicios a Moodle al cuestionario _Entrega
-práctica 2_ hasta el domingo 13 de febrero a las 21:00 h. 
+Sube la solución de los ejercicios al cuestionario de Moodle _Entrega
+práctica 2_ hasta el domingo 13 de febrero a las 21:00 h.
 
 Tal y como hemos comentado al comienzo de la práctica, debes incluir
 casos de prueba en todo el código que escribas.
