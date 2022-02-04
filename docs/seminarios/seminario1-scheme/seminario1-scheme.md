@@ -41,11 +41,9 @@ proporciona DrRacket. Puedes encontrar más información en la
 #### 1.2.1. Descarga de DrRacket ####
 
 DrRacket es multiplataforma y puede ejecutarse en Linux, MacOS o
-Windows. En los laboratorios vamos a usar la versión 7.5. Esta versión
-ha dado algún problema de instalación en Mac que se soluciona con la
-versión 7.6.
+Windows. Puedes descargarte la última versión en el siguiente enlace:
 
-[Descarga de DrRacket](https://download.racket-lang.org/racket-v7.6.html)
+[Descarga de DrRacket](https://download.racket-lang.org/)
 
 
 #### 1.2.2. Configuración de DrRacket
