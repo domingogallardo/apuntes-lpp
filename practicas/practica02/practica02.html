@@ -14,7 +14,7 @@
     
     
       
-        <title>Práctica 2: Programación funcional en Scheme - LPP</title>
+        <title>Práctica 2 - LPP</title>
       
     
     
@@ -92,7 +92,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Práctica 2: Programación funcional en Scheme
+              Práctica 2
             
           </span>
         </div>
@@ -277,12 +277,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       <label class="md-nav__link" for="__nav_3">
         Prácticas
@@ -303,6 +305,120 @@
       <a href="../practica01/practica01.html" class="md-nav__link">
         Práctica 1
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Práctica 2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="practica02.html" class="md-nav__link md-nav__link--active">
+        Práctica 2
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#antes-de-la-clase-de-practicas" class="md-nav__link">
+    Antes de la clase de prácticas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    Ejercicios
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" class="md-nav__link">
+    Ejercicio 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" class="md-nav__link">
+    Ejercicio 5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" class="md-nav__link">
+    Ejercicio 6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -538,17 +654,13 @@ de la siguiente expresión</p>
 aplicativo</strong> y como el <strong>orden normal</strong>. Y escribe la solución entre
 comentarios en el propio fichero <code>.rkt</code> de la práctica.</p>
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
-<p>Implementa la función <code>(tirada-ganadora t1 t2)</code> que reciba 2 parejas
-como argumento, donde cada pareja representa una tirada con 2 dados
-(contiene dos números). La función debe determinar qué tirada es la
-ganadora, teniendo en cuenta que será aquella cuya suma de sus 2 dados
-esté más próxima al número 7. La función devolverá 1 si <code>t1</code> es la
-ganadora, 2 si <code>t2</code> es la ganadora o bien 0 si hay un empate. Este
-último caso se producirá cuando la diferencia con 7 de ambas tiradas
-es la misma.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">tirada-ganadora</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ 2</span>
-<span class="p">(</span><span class="n">tirada-ganadora</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">2</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">; ⇒ 1</span>
-<span class="p">(</span><span class="n">tirada-ganadora</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">6</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ 0</span>
+<p>Implementa la función <code>(cadenas-mayores lista1 lista2)</code> que recibe 2
+listas con 3 cadenas y devuelve otra lista con las 3 cadenas de mayor
+longitud, comparando las cadenas de cada de cada posición de la
+lista. En el caso en que las cadenas tengan la misma longitud, se
+devuelve la cadena de la primera lista.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cadenas-mayores</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;que&quot;</span> <span class="s2">&quot;tal&quot;</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;meme&quot;</span> <span class="s2">&quot;y&quot;</span> <span class="s2">&quot;adios&quot;</span><span class="p">))</span> <span class="c1">; ⇒ (&quot;hola&quot; &quot;que&quot; &quot;adios&quot;)</span>
+<span class="p">(</span><span class="n">cadenas-mayores</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;esto&quot;</span> <span class="s2">&quot;es&quot;</span> <span class="s2">&quot;lpp&quot;</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hoy&quot;</span> <span class="s2">&quot;hay&quot;</span> <span class="s2">&quot;clase&quot;</span><span class="p">))</span> <span class="c1">; ⇒ (&quot;esto&quot; &quot;hay&quot; &quot;clase&quot;)</span>
 </code></pre></div>
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
 <p>Supongamos que queremos programar un juego de cartas. Lo primero que
@@ -591,30 +703,17 @@ símbolo en una cadena y <code>(string-ref cadena pos)</code> que devuelve el
 carácter de una cadena situado en una determinada posición.</p>
 </div>
 <h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
-<p>Define la función <code>tipo-triangulo</code> que recibe como parámetro las
-coordenadas en el plano de los vértices de un triángulo representados
-con parejas. La función devuelve una cadena con el tipo de triángulo
-correspondiente: equilátero, isósceles o escaleno.</p>
-<p>Recuerda que un triángulo equilátero es aquel cuyos tres lados tienen
-la misma longitud, el isósceles el que tiene dos lados iguales y el
-escaleno el que todos sus lados son diferentes.</p>
+<p>Implementa la función <code>(palos-mano-cartas carta1 carta2 carta3)</code> que recibe 3 cartas de la
+baraja española y devuelve una cadena indicando la cantidad de palos repetidos:
+"todas del mismo palo", "palos distintos" o "dos cartas con el mismo
+palo".</p>
+<p>Para obtener los palos de las cartas debes usar las funciones
+definidas en el ejercicio anterior.</p>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">tipo-triangulo</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span>  <span class="mi">1</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">6</span> <span class="mi">1</span><span class="p">))</span> <span class="c1">; ⇒ &quot;isósceles&quot;</span>
-<span class="p">(</span><span class="n">tipo-triangulo</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">-2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span>  <span class="mi">2</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">5</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ &quot;escaleno&quot;</span>
-<span class="p">(</span><span class="n">tipo-triangulo</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">-3</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span>  <span class="mi">3</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">0</span> <span class="mf">5.1961</span><span class="p">))</span> <span class="c1">;  ⇒ &quot;equilatero&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">palos-mano-cartas</span> <span class="o">&#39;</span><span class="ss">3O</span> <span class="o">&#39;</span><span class="ss">7O</span> <span class="o">&#39;</span><span class="ss">2O</span><span class="p">)</span> <span class="c1">; ⇒ &quot;todas del mismo palo&quot;</span>
+<span class="p">(</span><span class="n">palos-mano-cartas</span> <span class="o">&#39;</span><span class="ss">3O</span> <span class="o">&#39;</span><span class="ss">7C</span> <span class="o">&#39;</span><span class="ss">2E</span><span class="p">)</span> <span class="c1">; ⇒ &quot;palos distintos&quot;</span>
+<span class="p">(</span><span class="n">palos-mano-cartas</span> <span class="o">&#39;</span><span class="ss">3O</span> <span class="o">&#39;</span><span class="ss">7O</span> <span class="o">&#39;</span><span class="ss">2E</span><span class="p">)</span> <span class="c1">; ⇒ &quot;dos cartas con el mismo palo&quot;</span>
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Para comparar dos números reales debemos comprobar si la
-resta entre ambos es menor que una constante <code>epsilon</code> que hemos
-definido. Por ejemplo, <code>epsilon</code> puede valer 0.0001.</p>
-<p>Puedes usar la siguiente función auxiliar:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">epsilon</span> <span class="mf">0.0001</span><span class="p">)</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">iguales-reales?</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">&lt;</span> <span class="p">(</span><span class="nb">abs</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span> <span class="n">epsilon</span><span class="p">))</span>
-</code></pre></div>
-</div>
 <h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
 <p>Sube la solución de los ejercicios al cuestionario de Moodle <em>Entrega
 práctica 2</em> hasta el domingo 13 de febrero a las 21:00 h.</p>
@@ -643,6 +742,25 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        <a href="../practica01/practica01.html" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Práctica 1
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
