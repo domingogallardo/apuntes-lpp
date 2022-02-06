@@ -157,19 +157,15 @@ comentarios en el propio fichero `.rkt` de la práctica.
 
 ### Ejercicio 4
 
-Implementa la función `(tirada-ganadora t1 t2)` que reciba 2 parejas
-como argumento, donde cada pareja representa una tirada con 2 dados
-(contiene dos números). La función debe determinar qué tirada es la
-ganadora, teniendo en cuenta que será aquella cuya suma de sus 2 dados
-esté más próxima al número 7. La función devolverá 1 si `t1` es la
-ganadora, 2 si `t2` es la ganadora o bien 0 si hay un empate. Este
-último caso se producirá cuando la diferencia con 7 de ambas tiradas
-es la misma.
+Implementa la función `(cadenas-mayores lista1 lista2)` que recibe 2
+listas con 3 cadenas y devuelve otra lista con las 3 cadenas de mayor
+longitud, comparando las cadenas de cada de cada posición de la
+lista. En el caso en que las cadenas tengan la misma longitud, se
+devuelve la cadena de la primera lista.
 
 ```racket
-(tirada-ganadora (cons 1 3) (cons 1 6)) ; ⇒ 2
-(tirada-ganadora (cons 1 5) (cons 2 2)) ; ⇒ 1
-(tirada-ganadora (cons 6 2) (cons 3 3)) ; ⇒ 0
+(cadenas-mayores '("hola" "que" "tal") '("meme" "y" "adios")) ; ⇒ ("hola" "que" "adios")
+(cadenas-mayores '("esto" "es" "lpp") '("hoy" "hay" "clase")) ; ⇒ ("esto" "hay" "clase")
 ```
 
 ### Ejercicio 5
@@ -229,38 +225,21 @@ estas dos funciones.
 
 ### Ejercicio 6
 
-Define la función `tipo-triangulo` que recibe como parámetro las
-coordenadas en el plano de los vértices de un triángulo representados
-con parejas. La función devuelve una cadena con el tipo de triángulo
-correspondiente: equilátero, isósceles o escaleno.
+Implementa la función `(palos-mano-cartas carta1 carta2 carta3)` que recibe 3 cartas de la
+baraja española y devuelve una cadena indicando la cantidad de palos repetidos:
+"todas del mismo palo", "palos distintos" o "dos cartas con el mismo
+palo".
 
-Recuerda que un triángulo equilátero es aquel cuyos tres lados tienen
-la misma longitud, el isósceles el que tiene dos lados iguales y el
-escaleno el que todos sus lados son diferentes.
+Para obtener los palos de las cartas debes usar las funciones
+definidas en el ejercicio anterior.
 
 Ejemplos:
 
 ```racket
-(tipo-triangulo (cons 1 1) (cons  1 6) (cons 6 1)) ; ⇒ "isósceles"
-(tipo-triangulo (cons -2 3) (cons  2 6) (cons 5 3)) ; ⇒ "escaleno"
-(tipo-triangulo (cons -3 0) (cons  3 0) (cons 0 5.1961)) ;  ⇒ "equilatero"
+(palos-mano-cartas '3O '7O '2O) ; ⇒ "todas del mismo palo"
+(palos-mano-cartas '3O '7C '2E) ; ⇒ "palos distintos"
+(palos-mano-cartas '3O '7O '2E) ; ⇒ "dos cartas con el mismo palo"
 ```
-
-!!! Note "Nota"
-    Para comparar dos números reales debemos comprobar si la
-    resta entre ambos es menor que una constante `epsilon` que hemos
-    definido. Por ejemplo, `epsilon` puede valer 0.0001.
-
-    Puedes usar la siguiente función auxiliar:
-
-    ```racket
-    (define epsilon 0.0001)
-    
-    (define (iguales-reales? x y)
-        (< (abs (- x y)) epsilon))
-    ```
-
-
 
 ## Entrega de la práctica
 
