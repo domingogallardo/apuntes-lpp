@@ -159,7 +159,7 @@ comentarios en el propio fichero `.rkt` de la práctica.
 
 Implementa la función `(cadenas-mayores lista1 lista2)` que recibe 2
 listas con 3 cadenas y devuelve otra lista con las 3 cadenas de mayor
-longitud, comparando las cadenas de cada de cada posición de la
+longitud, comparando las cadenas de cada posición de la
 lista. En el caso en que las cadenas tengan la misma longitud, se
 devuelve la cadena de la primera lista.
 
