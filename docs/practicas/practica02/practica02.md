@@ -95,7 +95,8 @@ No debes utilizar la función `min`.
 Implementa dos versiones de la función: 
 
 - versión 1: usando la forma especial `if` 
-- versión 2 (llámala `menor-de-tres-v2`): definiendo una función auxiliar `(menor x y)` que
+- versión 2 (llámala `menor-de-tres-v2`): sin usar la forma especial
+  `if`, sino definiendo una función auxiliar `(menor x y)` que
   devuelva el menor de dos números (deberás usar también la forma
   especial `if` para implementarla) y construyendo la función
   `menor-de-tres-v2` como una composición de llamadas a esta función

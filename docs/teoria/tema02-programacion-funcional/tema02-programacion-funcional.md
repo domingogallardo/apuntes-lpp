@@ -766,7 +766,7 @@ posiciones de memoria que puede ser modificada.
 
 Por ejemplo, la forma especial `define` en Scheme crea un nuevo
 identificador y le da el valor definido de forma permanente. Si
-escribimos el siguiente código en un programa en Scheme R6RS:
+escribimos el siguiente código en un programa en Scheme:
 
 ```racket
 #lang racket
