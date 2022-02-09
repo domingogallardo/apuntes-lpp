@@ -358,13 +358,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#entrega-de-la-practica" class="md-nav__link">
-    Entrega de la práctica
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#ejercicios" class="md-nav__link">
     Ejercicios
   </a>
@@ -419,6 +412,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -442,23 +442,52 @@
 <li>
 <p>Los siguientes ejercicios están basados en los conceptos de teoría
 vistos la semana pasada. Antes de la clase de prácticas debes repasar
-todos los conceptos y <strong>probar en el DrRacket</strong> todos los ejemplos del
-tema 2 <a href="../../teoria/tema02-programacion-funcional/tema02-programacion-funcional.html"><em>Programación
-Funcional</em></a>
-hasta el apartado 2.6 <em>Listas</em> incluido.</p>
+todos los conceptos y <strong>probar en el DrRacket</strong> todos los ejemplos de
+los siguientes apartados del tema 2 <a href="../../teoria/tema02-programacion-funcional/tema02-programacion-funcional.html##27-recursion"><em>Programación
+Funcional</em></a>:</p>
+<ul>
+<li>2.7 <em>Recursión</em></li>
+<li>2.8 <em>Recursión y listas</em> </li>
+<li>3 <em>Tipos de datos compuestos en Scheme</em> </li>
+<li>4 <em>Listas en Scheme</em></li>
+</ul>
 </li>
 </ul>
-<h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
-<p>Para entregar la práctica debes subir a Moodle el fichero
-<code>practica02.rkt</code> con una cabecera inicial con tu nombre y apellidos, y
-las soluciones de cada ejercicio separadas por comentarios. Cada
-solución debe incluir:</p>
-<ul>
-<li>La <strong>definición de las funciones</strong> que resuelven el ejercicio.</li>
-<li>Un conjunto de <strong>pruebas</strong> que comprueben su funcionamiento
-  utilizando el API <code>RackUnit</code>.</li>
-</ul>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
+<p>Abre el DrRacket y crea el fichero <code>practica3.rkt</code> en el que deberás
+escribir todos los ejemplos y soluciones de los ejercicios que
+hagas.</p>
+<p>Descarga el fichero <code>lpp.rkt</code> y guárdalo en la misma carpeta en la que
+tengas el fichero <code>practica3.rkt</code>. Contiene la definición de una
+función auxiliar <code>(caja-puntero dato)</code> que te permite crear diagramas
+caja y puntero de estructuras de parejas.</p>
+<p>El siguiente programa muestra un ejemplo del uso de esta función:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
+<span class="p">(</span><span class="k">require</span> <span class="s2">&quot;lpp.rkt&quot;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">caja-puntero</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">(</span><span class="n">caja-puntero</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">4</span><span class="p">))))</span>
+<span class="p">(</span><span class="n">caja-puntero</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<span class="p">(</span><span class="n">caja-puntero</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="o">.</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<p>La siguiente imagen muestra la ejecución del programa en el DrRacket.</p>
+<p><img src="imagenes/programa-caja-puntero.png" width="400px"/></p>
+<p>Puedes mirar el código fuente del fichero <code>lpp.rkt</code> para curiosear
+cómo está implementada la función <code>caja-puntero</code>. Se utiliza la
+<a href="https://docs.racket-lang.org/teachpack/2htdpimage.html">librería de imágenes de
+Racket</a> <code>2htdp/image</code>.</p>
+<p>Para usar la librería hay que incluir la siguiente línea en nuestro
+programa:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
+<span class="p">(</span><span class="k">require</span> <span class="n">2htdp/image</span><span class="p">)</span>
+</code></pre></div>
+<p>Una cosa muy interesante de esta librería es que define las imágenes
+como objetos de primera clase del lenguaje, que pueden asignarse a
+variables o pasarse como parámetro para construir otras imágenes. Lo
+podemos ver en el siguiente ejemplo:</p>
+<p><img src="imagenes/libreria-imagenes.png" width="400px" /></p>
+<p>Incluso podemos incluir imágenes en listas:</p>
+<p><img src="imagenes/lista-imagenes.png" width="370px" /></p>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
 <p>a.1) Implementa la función recursiva <code>(minimo lista)</code> que recibe una lista
 con números como argumento y devuelve el menor número de la
@@ -614,6 +643,15 @@ cadena vacía y un 0 (la longitud de la cadena vacía).</p>
 <span class="p">(</span><span class="n">cadena-mayor</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;prueba&quot;</span> <span class="s2">&quot;con&quot;</span> <span class="s2">&quot;maximo&quot;</span> <span class="s2">&quot;igual&quot;</span><span class="p">))</span> <span class="c1">; ⇒ (&quot;maximo&quot; . 6)</span>
 <span class="p">(</span><span class="n">cadena-mayor</span> <span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ (&quot;&quot; . 0)</span>
 </code></pre></div>
+<h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
+<p>Sube la solución de los ejercicios al cuestionario de Moodle Entrega
+práctica 2 hasta el domingo 20 de febrero a las 21:00 h.</p>
+<p>Tal y como hemos comentado al comienzo de la práctica, debes incluir
+casos de prueba en todo el código que escribas.</p>
+<p>Una vez finalizado el plazo de entrega podrás revisar el cuestionario
+y visualizar la solución. Corrige la entrega, comparando la solución
+con la tuya. Puedes consultar cualquier duda con tu profesor en la
+clase de prácticas de la semana que viene.</p>
 <hr />
 <p>Lenguajes y Paradigmas de Programación, curso 2020-21<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
