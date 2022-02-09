@@ -1,18 +1,73 @@
 
 # Práctica 2: Recursión, parejas y diagramas box-and-pointer
 
-## Entrega de la práctica
+## Antes de la clase de prácticas ##
 
-Para entregar la práctica debes subir a Moodle el fichero
-`practica02.rkt` con una cabecera inicial con tu nombre y apellidos, y
-las soluciones de cada ejercicio separadas por comentarios. Cada
-solución debe incluir:
+- Antes de empezar esta práctica es importante que revises la solución
+  de la práctica 2. Puedes preguntar las dudas al profesor de prácticas.
 
-- La **definición de las funciones** que resuelven el ejercicio.
-- Un conjunto de **pruebas** que comprueben su funcionamiento
-  utilizando el API `RackUnit`.
+- Los siguientes ejercicios están basados en los conceptos de teoría
+vistos la semana pasada. Antes de la clase de prácticas debes repasar
+todos los conceptos y **probar en el DrRacket** todos los ejemplos de
+los siguientes apartados del tema 2 [_Programación
+Funcional_](../../teoria/tema02-programacion-funcional/tema02-programacion-funcional.md##27-recursion):
+
+    - 2.7 _Recursión_
+    - 2.8 _Recursión y listas_ 
+    - 3 _Tipos de datos compuestos en Scheme_ 
+    - 4 _Listas en Scheme_
+
 
 ## Ejercicios
+
+Abre el DrRacket y crea el fichero `practica3.rkt` en el que deberás
+escribir todos los ejemplos y soluciones de los ejercicios que
+hagas.
+
+Descarga el fichero `lpp.rkt` y guárdalo en la misma carpeta en la que
+tengas el fichero `practica3.rkt`. Contiene la definición de una
+función auxiliar `(caja-puntero dato)` que te permite crear diagramas
+caja y puntero de estructuras de parejas.
+
+El siguiente programa muestra un ejemplo del uso de esta función:
+
+```racket
+#lang racket
+(require "lpp.rkt")
+
+(caja-puntero '(1 . 2))
+(caja-puntero '(1 . (2 . (3 . 4))))
+(caja-puntero '(1 2 3))
+(caja-puntero '((1 2) . 2))
+```
+
+La siguiente imagen muestra la ejecución del programa en el DrRacket.
+
+<img src="imagenes/programa-caja-puntero.png" width="400px"/>
+
+Puedes mirar el código fuente del fichero `lpp.rkt` para curiosear
+cómo está implementada la función `caja-puntero`. Se utiliza la
+[librería de imágenes de
+Racket](https://docs.racket-lang.org/teachpack/2htdpimage.html) `2htdp/image`.
+
+Para usar la librería hay que incluir la siguiente línea en nuestro
+programa:
+
+```racket
+#lang racket
+(require 2htdp/image)
+```
+
+Una cosa muy interesante de esta librería es que define las imágenes
+como objetos de primera clase del lenguaje, que pueden asignarse a
+variables o pasarse como parámetro para construir otras imágenes. Lo
+podemos ver en el siguiente ejemplo:
+
+<img src="imagenes/libreria-imagenes.png" width="400px" />
+
+Incluso podemos incluir imágenes en listas:
+
+<img src="imagenes/lista-imagenes.png" width="370px" />
 
 
 ### Ejercicio 1 ###
@@ -232,6 +287,18 @@ cadena vacía y un 0 (la longitud de la cadena vacía).
 (cadena-mayor '()) ; ⇒ ("" . 0)
 ```
 
+## Entrega de la práctica
+
+Sube la solución de los ejercicios al cuestionario de Moodle Entrega
+práctica 2 hasta el domingo 20 de febrero a las 21:00 h.
+
+Tal y como hemos comentado al comienzo de la práctica, debes incluir
+casos de prueba en todo el código que escribas.
+
+Una vez finalizado el plazo de entrega podrás revisar el cuestionario
+y visualizar la solución. Corrige la entrega, comparando la solución
+con la tuya. Puedes consultar cualquier duda con tu profesor en la
+clase de prácticas de la semana que viene.
 
 ----
 
