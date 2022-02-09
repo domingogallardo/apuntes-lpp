@@ -2824,7 +2824,6 @@ listas. Algunas ya las conocemos, pero otras no:
 
 En los siguientes apartados veremos cómo están implementadas.
 
-<!--
 
 ### 4.3. Funciones recursivas que construyen listas
 
@@ -2875,7 +2874,7 @@ caso concreto:
 
 ```text
 Para devolver el elemento 2 de la lista (a b c d e f g):
-   Hacemos el cdr de la lista (obtenemos (b c d e f g)) 
+   Obtenemos el resto de la lista (b c d e f g)
    y devolvemos su elemento 1. Será el valor c (empezamos 
    a contar por 0).
 ```
@@ -2886,7 +2885,7 @@ Generalizamos el ejemplo anterior, para cualquier `n` y cualquier lista:
 
 ```text
 Para devolver el elemento que está en la posición `n` de una lista,
-devuelvo el elemento n-1 de su cdr.
+devuelvo el elemento n-1 de su resto.
 ```
 
 Y, por último, formulamos el caso base de la recursión, el problema
@@ -2895,7 +2894,7 @@ recursiva:
 
 ```text
 Para devolver el elemento que está en la posición 0 de una lista,
-devuelvo el `car` de la lista.
+devuelvo el `first` de la lista.
 ```
 
 La implementación de todo esto en Scheme sería la siguiente:
@@ -2903,8 +2902,8 @@ La implementación de todo esto en Scheme sería la siguiente:
 ```racket
 (define (mi-list-ref lista n)
    (if (= n 0) 
-      (car lista)
-      (mi-list-ref (cdr lista) (- n 1))))
+      (first lista)
+      (mi-list-ref (rest lista) (- n 1))))
 ```
 
 #### 4.3.2. Función `mi-list-tail`
@@ -2924,7 +2923,7 @@ se ha llegado a ella:
 (define (mi-list-tail lista n)
    (if (= n 0) 
        lista
-       (mi-list-tail (cdr lista) (- n 1))))
+       (mi-list-tail (rest lista) (- n 1))))
 ```
 
 #### 4.3.3. Función `mi-append` 
@@ -2945,12 +2944,12 @@ terminar de arreglar el resultado devuelto por la recursión.
 
 En este caso, podemos pasarle a la recursión un problema más sencillo
 quitando el primer elemento de la primera lista (con la función
-`cdr`) y llamando a la recursión para que concatene esta lista más pequeña
+`rest`) y llamando a la recursión para que concatene esta lista más pequeña
 con la segunda. Confiamos en que la recursión funciona correctamente y
 nos devuelve la concatenación de ambas listas
 
 ```text
-(mi-append (cdr '(a b c)) '(d e f)) => (b c d e f)
+(mi-append (rest '(a b c)) '(d e f)) => (b c d e f)
 ```
 
 Y añadiremos el primer elemento a la lista resultante usando un `cons`:
@@ -2966,7 +2965,7 @@ En general:
 
 ```racket
 (define (mi-append lista1 lista2) 
-   (cons (car lista1) (mi-append (cdr lista1) lista2)))
+   (cons (first lista1) (mi-append (rest lista1) lista2)))
 ```
 
 El caso base, el caso en el que la función puede devolver un valor
@@ -2983,8 +2982,8 @@ La formulación recursiva completa queda como sigue:
 (define (mi-append l1 l2)
     (if (null? l1)
         l2
-        (cons (car l1)
-              (mi-append (cdr l1) l2))))
+        (cons (first l1)
+              (mi-append (rest l1) l2))))
 ```
 
 #### 4.3.4. Función `mi-reverse`
@@ -2997,7 +2996,7 @@ invierte una lista
 ```
 
 La idea es sencilla: llamamos a la recursión para hacer la inversa del
-`cdr` de la lista y añadimos el primer elemento a la lista resultante
+`rest` de la lista y añadimos el primer elemento a la lista resultante
 que devuelve ya invertida la llamada recursiva.
 
 Podemos definir una función auxiliar `(añade-al-final dato lista)` que
@@ -3016,7 +3015,7 @@ La función `mi-reverse` quedaría entonces como sigue:
 ```racket
 (define (mi-reverse lista)
     (if (null? lista) '()
-    (añade-al-final (car lista) (mi-reverse (cdr lista)))))
+    (añade-al-final (first lista) (mi-reverse (rest lista)))))
 ```
 
 #### 4.3.5. Función `cuadrados-hasta`
@@ -3061,13 +3060,14 @@ con los números pares de la lista que le pasamos como parámetro:
 (define (filtra-pares lista)
    (cond
       ((null? lista) '())
-	  ((even? (car lista)) (cons (car lista)
-       (filtra-pares (cdr lista))))
-      (else (filtra-pares (cdr lista)))))
+	  ((even? (first lista)) 
+       (cons (first lista)
+          (filtra-pares (rest lista))))
+      (else (filtra-pares (rest lista)))))
 ```
 
 En el caso general, llamamos de forma recursiva a la función para que
-filtre el `cdr` de la lista. Y le añadimos el primer elemento si es
+filtre el `rest` de la lista. Y le añadimos el primer elemento si es
 par.
 
 Cada vez llamaremos a la recursión con una lista más pequeña, por lo
@@ -3153,9 +3153,10 @@ devuelve una lista con los números de `lista` que son divisores de
 (define (filtra-divisores lista x)
    (cond
       ((null? lista) '())
-      ((divisor? (car lista) x) (cons (car lista)
-                                      (filtra-divisores (cdr lista) x)))
-      (else (filtra-divisores (cdr lista) x))))
+      ((divisor? (first lista) x) 
+       (cons (first lista)
+             (filtra-divisores (rest lista) x)))
+      (else (filtra-divisores (rest lista) x))))
 ```
 
 Ya podemos implementar la función que devuelve los divisores de un
@@ -3631,7 +3632,7 @@ la pareja resultante con la primera pareja de la lista:
 (define (suma-parejas . parejas)
   (if (null? parejas)
       '(0 . 0)
-      (suma-pareja (car parejas) (apply suma-parejas (cdr parejas)))))
+      (suma-pareja (first parejas) (apply suma-parejas (rest parejas)))))
 ```
 
 Se trata de una llamada recursiva indirecta, porque se invoca a la
@@ -3649,6 +3650,7 @@ funcionamiento de la recursión:
 
 <img src="imagenes/suma-parejas-apply.png" width="600px"/>
 
+<!--
 
 ### 5.4. Generalización ###
 

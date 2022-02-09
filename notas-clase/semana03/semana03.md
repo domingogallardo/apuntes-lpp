@@ -75,7 +75,7 @@ Vamos a ver cómo se implementan de forma recursiva:
 
     ```text
     Para devolver el elemento 2 de la lista (a b c d e f g):
-        Hacemos el cdr de la lista (obtenemos (b c d e f g)) 
+        Obtenemos el resto de la lista (b c d e f g)
         y devolvemos su elemento 1. Será el valor c (empezamos 
         a contar por 0).
     ```
@@ -84,7 +84,7 @@ Vamos a ver cómo se implementan de forma recursiva:
 
     ```text
     Para devolver el elemento que está en la posición `n` de una lista,
-    devuelvo el elemento n-1 de su cdr.
+    devuelvo el elemento n-1 de su resto.
     ```
 
 - Por último, formulamos el caso base de la recursión, el problema más
@@ -93,7 +93,7 @@ Vamos a ver cómo se implementan de forma recursiva:
 
     ```text
     Para devolver el elemento que está en la posición 0 de una lista,
-    devuelvo el `car` de la lista.
+    devuelvo el `first` de la lista.
     ```
 
 - Implementación en Scheme:
@@ -101,8 +101,8 @@ Vamos a ver cómo se implementan de forma recursiva:
     ```racket
     (define (mi-list-ref lista n)
         (if (= n 0) 
-            (car lista)
-            (mi-list-ref (cdr lista) (- n 1))))
+            (first lista)
+            (mi-list-ref (rest lista) (- n 1))))
     ```
 
 
@@ -127,7 +127,7 @@ Vamos a ver cómo se implementan de forma recursiva:
 
     ```racket
     (define (mi-append lista1 lista2) 
-        (cons (car lista1) (mi-append (cdr lista1) lista2)))
+        (cons (first lista1) (mi-append (rest lista1) lista2)))
     ```
 
 - El caso base es aquel en el que `lista1` es `null?`. En ese caso
@@ -143,8 +143,8 @@ Vamos a ver cómo se implementan de forma recursiva:
     (define (mi-append l1 l2)
         (if (null? l1)
             l2
-            (cons (car l1)
-                  (mi-append (cdr l1) l2))))
+            (cons (first l1)
+                  (mi-append (rest l1) l2))))
     ```
 
 
@@ -157,7 +157,7 @@ Vamos a ver cómo se implementan de forma recursiva:
     ```
 
 - La idea es sencilla: llamamos a la recursión para hacer la inversa
-  del `cdr` de la lista y añadimos el primer elemento a la lista
+  del `rest` de la lista y añadimos el primer elemento a la lista
   resultante.
 
 - Podemos definir una función auxiliar `(añade-al-final dato lista)`
@@ -173,7 +173,7 @@ Vamos a ver cómo se implementan de forma recursiva:
     ```racket
     (define (mi-reverse lista)
         (if (null? lista) '()
-            (añade-al-final (car lista) (mi-reverse (cdr lista)))))
+            (añade-al-final (first lista) (mi-reverse (rest lista)))))
     ```
 
 
@@ -245,9 +245,9 @@ Vamos a ver cómo se implementan de forma recursiva:
     (define (filtra-pares lista)
         (cond
             ((null? lista) '())
-            ((even? (car lista))
-                (cons (car lista) (filtra-pares (cdr lista))))
-            (else (filtra-pares (cdr lista)))))
+            ((even? (first lista))
+                (cons (first lista) (filtra-pares (rest lista))))
+            (else (filtra-pares (rest lista)))))
     ```
 
 
@@ -292,10 +292,10 @@ Vamos a ver cómo se implementan de forma recursiva:
     (define (filtra-divisores lista x)
        (cond
           ((null? lista) '())
-          ((divisor? (car lista) x)
-             (cons (car lista)
-                   (filtra-divisores (cdr lista) x)))
-          (else (filtra-divisores (cdr lista) x))))
+          ((divisor? (first lista) x)
+             (cons (first lista)
+                   (filtra-divisores (rest lista) x)))
+          (else (filtra-divisores (rest lista) x))))
     ```
 
 
@@ -739,7 +739,7 @@ Solución:
 (define (suma-parejas . parejas)
   (if (null? parejas)
       '(0 . 0)
-      (suma-pareja (car parejas) (apply suma-parejas (cdr parejas)))))
+      (suma-pareja (first parejas) (apply suma-parejas (rest parejas)))))
 ```
 
 Una representación gráfica de cómo funciona la recursión:
