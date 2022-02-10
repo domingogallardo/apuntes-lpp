@@ -481,7 +481,7 @@ Con funciones:
   invocamos a una función:
 
     ```racket
-    (cuadrado 3) ; ⇒ 9
+    (f 3) ; ⇒ 9
     ```
 
 
