@@ -24,6 +24,8 @@ Abre el DrRacket y crea el fichero `practica3.rkt` en el que deberás
 escribir todos los ejemplos y soluciones de los ejercicios que
 hagas.
 
+### Función auxiliar para dibujar diagramas caja y puntero ###
+
 Descarga el [fichero `lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt),
 pulsando el botón derecho del ratón y seleccionando la opción _Guardar
 como_ `lpp.rkt`. Guárdalo en la misma carpeta en la que tengas el
