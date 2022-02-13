@@ -185,7 +185,7 @@ a.2) Escribe las expresiones que devuelven 2 y 4 a partir de `p1`.
 b.1) Dado el siguiente diagrama caja y puntero, escribe la expresión en
 Scheme que define `p2` usando el mínimo número de llamadas a `list` y `cons`.
 
-<img src="imagenes/box-and-pointer2.png" width="500px"/>
+<img src="imagenes/box-and-pointer2.png" width="400px"/>
 
 b.2) Escribe las expresiones que devuelven 9 y 2 a partir de `p2`.
 
@@ -240,7 +240,7 @@ las fichas están colocadas de forma correcta.
 
 b) Implementa la función `(juega? mano partida)` que recibe una mano
 (una lista de fichas) y otra lista de fichas colocadas en la partida y
-devuelve #t si existe alguna ficha de la mano que se puede colocar en
+devuelve `#t` si existe alguna ficha de la mano que se puede colocar en
 la partida.
 
 ```
