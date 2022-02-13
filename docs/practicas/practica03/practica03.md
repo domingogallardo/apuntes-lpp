@@ -1,5 +1,5 @@
 
-# Práctica 2: Recursión, parejas y diagramas box-and-pointer
+# Práctica 3: Recursión, parejas y diagramas box-and-pointer
 
 ## Antes de la clase de prácticas ##
 
@@ -33,12 +33,14 @@ El siguiente programa muestra un ejemplo del uso de esta función:
 
 ```racket
 #lang racket
+(require rackunit)
 (require "lpp.rkt")
 
 (caja-puntero '(1 . 2))
-(caja-puntero '(1 . (2 . (3 . 4))))
-(caja-puntero '(1 2 3))
+(caja-puntero (cons 1 (cons 2 (cons 3 4))))
+(caja-puntero (list 1 2 3))
 (caja-puntero '((1 2) . 2))
+(caja-puntero '(1 (2 3) 4))
 ```
 
 La siguiente imagen muestra la ejecución del programa en el DrRacket.
@@ -169,7 +171,8 @@ caso contrario. Suponemos listas de 1 o más elementos.
 
 a.1) Dado el siguiente _box & pointer_, escribe la expresión en Scheme
 que define `p1` usando el mínimo número de llamadas a `list` y
-`cons`. No debes utilizar expresiones con `quote`.
+`cons`. No debes utilizar expresiones con `quote`. Puedes usar la
+función gráfica `caja-puntero` para comprobar si tu solución es correcta.
 
 <img src="imagenes/box-and-pointer.png" width="400px"/>
 
@@ -184,60 +187,67 @@ b.2) Escribe las expresiones que devuelven 9 y 2 a partir de `p2`.
 
 ### Ejercicio 4 ###
 
-Vamos a programar una versión simplificada del _blackjack_
-o 21. Dos jugadores juegan un número de cartas y suman todos sus
-valores. Gana el que se acerque más al 21 sin pasarse.
+Implementa la función `(contar-datos-iguales lista-parejas)` que recibe una lista de parejas
+y devuelve el número de parejas que tienen sus dos datos iguales.
 
-Representaremos las cartas como en la práctica 1, y podemos usar las
-funciones allí definidas para obtener su valor. Suponemos que el valor
-es el propio de la carta (no seguiremos la regla del juego original en
-el que las figuras valen 10).
-
-Cada jugador tendrá una lista de cartas y deberá indicar un número `n`
-que representa el número de cartas de esa lista con las que se queda.
-
-Tendremos que implementar la función `(blackjack cartas1 n1 cartas2 n2)`
-que recibe la lista de cartas del jugador 1, el número de cartas que
-se queda el jugador 1, la lista de cartas del jugador 2 y el número de cartas
-del jugador 2.
-
-Por ejemplo, supongamos las siguientes cartas del jugador 1 y del
-jugador 2:
 
 ```racket
-(define cartas1 '(3O 5E AC 2B 5O 5C 4B))
-(define cartas2 '(CE AO 3B AC 2E SC 4C))
+(contar-datos-iguales '((2 . 3) ("hola" . "hola") (\#a . \#a) (true . false))) ; ⇒ 2
+(contar-datos-iguales '((2 . "hola") ("hola" . 3) (\#a . true) (\#b . false))) ; ⇒ 0
 ```
-
-Supongamos que el jugador 1 se queda con 5 cartas de su lista y el
-jugador 2 con 3. Las primeras 5 cartas del jugador 1 suman 16 y las 3
-primeras cartas del jugador 2 suman 15. Ganaría el jugador 1.
-
-```racket
-(blackjack cartas1 5 cartas2 3) ; ⇒ 1
-```
-
-La función `blackjack` devolverá 1 si gana el jugador 1, 2 si gana el
-jugador 2, 0 si empatan y -1 si los dos jugadores se pasan de 21.
-
-Debes implementar la función `blackjack` y una función auxiliar
-recursiva que sea la que sume los valores de las `n` primeras cartas
-de una lista. Si `n` es mayor que el número de cartas, devolverá la
-suma de todas las cartas de la lista.
-
-Puedes definir cualquier otra función auxiliar que necesites.
-
-Otros ejemplos:
-
-```racket
-(blackjack cartas1 5 cartas2 4) ; ⇒ 0
-(blackjack cartas1 5 cartas2 3) ; ⇒ 1
-(blackjack cartas1 3 cartas2 4) ; ⇒ 2
-(blackjack cartas1 7 cartas2 6) ; ⇒ -1
-```
-
 
 ### Ejercicio 5 ###
+
+Vamos a jugar al dominó. 
+
+En el juego del dominó las fichas tienen una pareja de
+valores. Podemos colocar una ficha en la partida cuando uno de los
+valores de la ficha coincide con el primer valor de la lista de fichas
+ya colocadas o con el último.
+
+Por ejemplo, supongamos que la partida ha formado la siguiente lista de fichas:
+
+```racket
+((1 . 3) (3 . 0) (0 . 0) (0 . 4) (4 . 2))
+```
+
+Esta es una lista correcta, porque coinciden los valores de las fichas
+que la forman (el valor derecho de una ficha con el izquierdo de la
+siguiente).
+
+Si tuviéramos en nuestra mano de fichas las fichas:
+
+```racket
+((5 . 5) (3 . 2) (4 . 6) (6 . 6))
+```
+
+podríamos colocar la ficha `(3 . 2)` al final de la lista de la partida (girándola).
+
+a) Implementa la función `(domino-correcto? fichas)` que recibe una lista
+de fichas resultantes de una partida de dominó y comprueba si
+las fichas están colocadas de forma correcta.
+
+```racket
+(define partida '((1 . 3) (3 . 0) (0 . 0) (0 . 4) (4 . 2)))
+(domino-correcto? partida) ; ⇒ #t
+(domino-correcto? '((1 . 3))) ; ⇒ #t
+(domino-correcto? '((1 . 4) (2 . 1))) ; ⇒ #f
+```
+
+b) Implementa la función `(juega? mano partida)` que recibe una mano
+(una lista de fichas) y otra lista de fichas colocadas en la partida y
+devuelve #t si existe alguna ficha de la mano que se puede colocar en
+la partida.
+
+```
+(define mano '((5 . 5) (3 . 2) (4 . 6) (6 . 6)))
+(juega? mano partida) ; ⇒ #t - podría poner la ficha (3 . 2)
+(juega? mano '((0 . 0))) ; ⇒ #f
+(juega? mano '((0 . 0) (0 . 1))) ; ⇒ #f
+```
+
+
+### Ejercicio 6 ###
 
 a) Implementa las funciones `(suma-izq pareja n)` y `(suma-der pareja n)`
 definidas de la siguiente forma:
@@ -268,7 +278,22 @@ Ejemplos:
 (suma-impares-pares '(3 1 5))           ; ⇒ (9 . 0)
 ```
 
-### Ejercicio 6 ###
+c) Recuerda la función `(veces lista id)` que vimos en teoría:
+
+```racket
+(define (veces lista id)
+  (cond
+    ((null? lista) 0)
+    ((equal? (first lista) id) (+ 1 (veces (rest lista) id)))
+    (else (veces (rest lista) id))))
+
+(veces '(a b a a b b) 'a) ; ⇒ 3 
+```
+
+Reescribe la función `(veces lista id)` para que solo aparezca una
+llamada recursiva en su código.
+
+### Ejercicio 7 ###
 
 Implementa la función recursiva `(cadena-mayor lista)` que recibe un
 lista de cadenas y devuelve una pareja con la cadena de mayor longitud
@@ -290,7 +315,7 @@ cadena vacía y un 0 (la longitud de la cadena vacía).
 ## Entrega de la práctica
 
 Sube la solución de los ejercicios al cuestionario de Moodle Entrega
-práctica 2 hasta el domingo 20 de febrero a las 21:00 h.
+práctica 3 hasta el domingo 20 de febrero a las 21:00 h.
 
 Tal y como hemos comentado al comienzo de la práctica, debes incluir
 casos de prueba en todo el código que escribas.
