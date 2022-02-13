@@ -14,7 +14,7 @@
     
     
       
-        <title>Práctica 2: Recursión, parejas y diagramas box-and-pointer - LPP</title>
+        <title>Práctica 3 - LPP</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practica-2-recursion-parejas-y-diagramas-box-and-pointer" class="md-skip">
+        <a href="#practica-3-recursion-parejas-y-diagramas-box-and-pointer" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -92,7 +92,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Práctica 2: Recursión, parejas y diagramas box-and-pointer
+              Práctica 3
             
           </span>
         </div>
@@ -277,12 +277,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       <label class="md-nav__link" for="__nav_3">
         Prácticas
@@ -315,6 +317,127 @@
       <a href="../practica02/practica02.html" class="md-nav__link">
         Práctica 2
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Práctica 3
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="practica03.html" class="md-nav__link md-nav__link--active">
+        Práctica 3
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#antes-de-la-clase-de-practicas" class="md-nav__link">
+    Antes de la clase de prácticas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    Ejercicios
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" class="md-nav__link">
+    Ejercicio 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" class="md-nav__link">
+    Ejercicio 5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" class="md-nav__link">
+    Ejercicio 6
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-7" class="md-nav__link">
+    Ejercicio 7
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -407,6 +530,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ejercicio-7" class="md-nav__link">
+    Ejercicio 7
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -432,7 +562,7 @@
               
                 
                 
-                <h1 id="practica-2-recursion-parejas-y-diagramas-box-and-pointer">Práctica 2: Recursión, parejas y diagramas box-and-pointer<a class="headerlink" href="#practica-2-recursion-parejas-y-diagramas-box-and-pointer" title="Permanent link">&para;</a></h1>
+                <h1 id="practica-3-recursion-parejas-y-diagramas-box-and-pointer">Práctica 3: Recursión, parejas y diagramas box-and-pointer<a class="headerlink" href="#practica-3-recursion-parejas-y-diagramas-box-and-pointer" title="Permanent link">&para;</a></h1>
 <h2 id="antes-de-la-clase-de-practicas">Antes de la clase de prácticas<a class="headerlink" href="#antes-de-la-clase-de-practicas" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
@@ -463,12 +593,14 @@ función auxiliar <code>(caja-puntero dato)</code> que te permite crear diagrama
 caja y puntero de estructuras de parejas.</p>
 <p>El siguiente programa muestra un ejemplo del uso de esta función:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
+<span class="p">(</span><span class="k">require</span> <span class="n">rackunit</span><span class="p">)</span>
 <span class="p">(</span><span class="k">require</span> <span class="s2">&quot;lpp.rkt&quot;</span><span class="p">)</span>
 
 <span class="p">(</span><span class="n">caja-puntero</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">))</span>
-<span class="p">(</span><span class="n">caja-puntero</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">4</span><span class="p">))))</span>
-<span class="p">(</span><span class="n">caja-puntero</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
+<span class="p">(</span><span class="n">caja-puntero</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">2</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))))</span>
+<span class="p">(</span><span class="n">caja-puntero</span> <span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
 <span class="p">(</span><span class="n">caja-puntero</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="o">.</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">(</span><span class="n">caja-puntero</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span><span class="p">))</span>
 </code></pre></div>
 <p>La siguiente imagen muestra la ejecución del programa en el DrRacket.</p>
 <p><img src="imagenes/programa-caja-puntero.png" width="400px"/></p>
@@ -563,7 +695,8 @@ caso contrario. Suponemos listas de 1 o más elementos.</p>
 <h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
 <p>a.1) Dado el siguiente <em>box &amp; pointer</em>, escribe la expresión en Scheme
 que define <code>p1</code> usando el mínimo número de llamadas a <code>list</code> y
-<code>cons</code>. No debes utilizar expresiones con <code>quote</code>.</p>
+<code>cons</code>. No debes utilizar expresiones con <code>quote</code>. Puedes usar la
+función gráfica <code>caja-puntero</code> para comprobar si tu solución es correcta.</p>
 <p><img src="imagenes/box-and-pointer.png" width="400px"/></p>
 <p>a.2) Escribe las expresiones que devuelven 2 y 4 a partir de <code>p1</code>.</p>
 <p>b.1) Dado el siguiente diagrama caja y puntero, escribe la expresión en
@@ -571,43 +704,45 @@ Scheme que define <code>p2</code> usando el mínimo número de llamadas a <code>
 <p><img src="imagenes/box-and-pointer2.png" width="500px"/></p>
 <p>b.2) Escribe las expresiones que devuelven 9 y 2 a partir de <code>p2</code>.</p>
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
-<p>Vamos a programar una versión simplificada del <em>blackjack</em>
-o 21. Dos jugadores juegan un número de cartas y suman todos sus
-valores. Gana el que se acerque más al 21 sin pasarse.</p>
-<p>Representaremos las cartas como en la práctica 1, y podemos usar las
-funciones allí definidas para obtener su valor. Suponemos que el valor
-es el propio de la carta (no seguiremos la regla del juego original en
-el que las figuras valen 10).</p>
-<p>Cada jugador tendrá una lista de cartas y deberá indicar un número <code>n</code>
-que representa el número de cartas de esa lista con las que se queda.</p>
-<p>Tendremos que implementar la función <code>(blackjack cartas1 n1 cartas2 n2)</code>
-que recibe la lista de cartas del jugador 1, el número de cartas que
-se queda el jugador 1, la lista de cartas del jugador 2 y el número de cartas
-del jugador 2.</p>
-<p>Por ejemplo, supongamos las siguientes cartas del jugador 1 y del
-jugador 2:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">cartas1</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">3O</span> <span class="ss">5E</span> <span class="ss">AC</span> <span class="ss">2B</span> <span class="ss">5O</span> <span class="ss">5C</span> <span class="ss">4B</span><span class="p">))</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">cartas2</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">CE</span> <span class="ss">AO</span> <span class="ss">3B</span> <span class="ss">AC</span> <span class="ss">2E</span> <span class="ss">SC</span> <span class="ss">4C</span><span class="p">))</span>
-</code></pre></div>
-<p>Supongamos que el jugador 1 se queda con 5 cartas de su lista y el
-jugador 2 con 3. Las primeras 5 cartas del jugador 1 suman 16 y las 3
-primeras cartas del jugador 2 suman 15. Ganaría el jugador 1.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">blackjack</span> <span class="n">cartas1</span> <span class="mi">5</span> <span class="n">cartas2</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 1</span>
-</code></pre></div>
-<p>La función <code>blackjack</code> devolverá 1 si gana el jugador 1, 2 si gana el
-jugador 2, 0 si empatan y -1 si los dos jugadores se pasan de 21.</p>
-<p>Debes implementar la función <code>blackjack</code> y una función auxiliar
-recursiva que sea la que sume los valores de las <code>n</code> primeras cartas
-de una lista. Si <code>n</code> es mayor que el número de cartas, devolverá la
-suma de todas las cartas de la lista.</p>
-<p>Puedes definir cualquier otra función auxiliar que necesites.</p>
-<p>Otros ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">blackjack</span> <span class="n">cartas1</span> <span class="mi">5</span> <span class="n">cartas2</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ 0</span>
-<span class="p">(</span><span class="n">blackjack</span> <span class="n">cartas1</span> <span class="mi">5</span> <span class="n">cartas2</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 1</span>
-<span class="p">(</span><span class="n">blackjack</span> <span class="n">cartas1</span> <span class="mi">3</span> <span class="n">cartas2</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ 2</span>
-<span class="p">(</span><span class="n">blackjack</span> <span class="n">cartas1</span> <span class="mi">7</span> <span class="n">cartas2</span> <span class="mi">6</span><span class="p">)</span> <span class="c1">; ⇒ -1</span>
+<p>Implementa la función <code>(contar-datos-iguales lista-parejas)</code> que recibe una lista de parejas
+y devuelve el número de parejas que tienen sus dos datos iguales.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">contar-datos-iguales</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="s2">&quot;hola&quot;</span> <span class="o">.</span> <span class="s2">&quot;hola&quot;</span><span class="p">)</span> <span class="p">(</span><span class="ss">\#a</span> <span class="o">.</span> <span class="ss">\#a</span><span class="p">)</span> <span class="p">(</span><span class="ss">true</span> <span class="o">.</span> <span class="ss">false</span><span class="p">)))</span> <span class="c1">; ⇒ 2</span>
+<span class="p">(</span><span class="n">contar-datos-iguales</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="s2">&quot;hola&quot;</span><span class="p">)</span> <span class="p">(</span><span class="s2">&quot;hola&quot;</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="ss">\#a</span> <span class="o">.</span> <span class="ss">true</span><span class="p">)</span> <span class="p">(</span><span class="ss">\#b</span> <span class="o">.</span> <span class="ss">false</span><span class="p">)))</span> <span class="c1">; ⇒ 0</span>
 </code></pre></div>
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
+<p>Vamos a jugar al dominó. </p>
+<p>En el juego del dominó las fichas tienen una pareja de
+valores. Podemos colocar una ficha en la partida cuando uno de los
+valores de la ficha coincide con el primer valor de la lista de fichas
+ya colocadas o con el último.</p>
+<p>Por ejemplo, supongamos que la partida ha formado la siguiente lista de fichas:</p>
+<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<p>Esta es una lista correcta, porque coinciden los valores de las fichas
+que la forman (el valor derecho de una ficha con el izquierdo de la
+siguiente).</p>
+<p>Si tuviéramos en nuestra mano de fichas las fichas:</p>
+<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="mi">6</span> <span class="o">.</span> <span class="mi">6</span><span class="p">))</span>
+</code></pre></div>
+<p>podríamos colocar la ficha <code>(3 . 2)</code> al final de la lista de la partida (girándola).</p>
+<p>a) Implementa la función <code>(domino-correcto? fichas)</code> que recibe una lista
+de fichas resultantes de una partida de dominó y comprueba si
+las fichas están colocadas de forma correcta.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">partida</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="p">(</span><span class="n">domino-correcto?</span> <span class="n">partida</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">domino-correcto?</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">domino-correcto?</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">1</span><span class="p">)))</span> <span class="c1">; ⇒ #f</span>
+</code></pre></div>
+<p>b) Implementa la función <code>(juega? mano partida)</code> que recibe una mano
+(una lista de fichas) y otra lista de fichas colocadas en la partida y
+devuelve #t si existe alguna ficha de la mano que se puede colocar en
+la partida.</p>
+<div class="highlight"><pre><span></span><code>(define mano &#39;((5 . 5) (3 . 2) (4 . 6) (6 . 6)))
+(juega? mano partida) ; ⇒ #t - podría poner la ficha (3 . 2)
+(juega? mano &#39;((0 . 0))) ; ⇒ #f
+(juega? mano &#39;((0 . 0) (0 . 1))) ; ⇒ #f
+</code></pre></div>
+<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
 <p>a) Implementa las funciones <code>(suma-izq pareja n)</code> y <code>(suma-der pareja n)</code>
 definidas de la siguiente forma:</p>
 <ul>
@@ -630,7 +765,18 @@ apartado anterior. También puedes utilizar las funciones predefinidas
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-impares-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">8</span> <span class="mi">7</span> <span class="mi">6</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ (16 . 20)</span>
 <span class="p">(</span><span class="n">suma-impares-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="mi">1</span> <span class="mi">5</span><span class="p">))</span>           <span class="c1">; ⇒ (9 . 0)</span>
 </code></pre></div>
-<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
+<p>c) Recuerda la función <code>(veces lista id)</code> que vimos en teoría:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">veces</span> <span class="n">lista</span> <span class="n">id</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">cond</span>
+    <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">((</span><span class="nb">equal?</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)))</span>
+    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="n">veces</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">b</span> <span class="ss">b</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span> <span class="c1">; ⇒ 3 </span>
+</code></pre></div>
+<p>Reescribe la función <code>(veces lista id)</code> para que solo aparezca una
+llamada recursiva en su código.</p>
+<h3 id="ejercicio-7">Ejercicio 7<a class="headerlink" href="#ejercicio-7" title="Permanent link">&para;</a></h3>
 <p>Implementa la función recursiva <code>(cadena-mayor lista)</code> que recibe un
 lista de cadenas y devuelve una pareja con la cadena de mayor longitud
 y dicha longitud.  En el caso de que haya más de una cadena con la
@@ -645,7 +791,7 @@ cadena vacía y un 0 (la longitud de la cadena vacía).</p>
 </code></pre></div>
 <h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
 <p>Sube la solución de los ejercicios al cuestionario de Moodle Entrega
-práctica 2 hasta el domingo 20 de febrero a las 21:00 h.</p>
+práctica 3 hasta el domingo 20 de febrero a las 21:00 h.</p>
 <p>Tal y como hemos comentado al comienzo de la práctica, debes incluir
 casos de prueba en todo el código que escribas.</p>
 <p>Una vez finalizado el plazo de entrega podrás revisar el cuestionario
@@ -671,6 +817,25 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        <a href="../practica02/practica02.html" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Práctica 2
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
