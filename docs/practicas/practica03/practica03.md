@@ -24,10 +24,13 @@ Abre el DrRacket y crea el fichero `practica3.rkt` en el que deberás
 escribir todos los ejemplos y soluciones de los ejercicios que
 hagas.
 
-Descarga el fichero `lpp.rkt` y guárdalo en la misma carpeta en la que
-tengas el fichero `practica3.rkt`. Contiene la definición de una
-función auxiliar `(caja-puntero dato)` que te permite crear diagramas
-caja y puntero de estructuras de parejas.
+Descarga el fichero
+[`lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt),
+pulsando el botón derecho del ratón y seleccionando la opción _Guardar
+como_ `lpp.rkt`. Guárdalo en la misma carpeta en la que tengas el
+fichero `practica3.rkt`. Contiene la definición de una función
+auxiliar `(caja-puntero dato)` que te permite crear diagramas caja y
+puntero de estructuras de parejas.
 
 El siguiente programa muestra un ejemplo del uso de esta función:
 
