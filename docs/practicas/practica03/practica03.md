@@ -180,19 +180,25 @@ función gráfica `caja-puntero` para comprobar si tu solución es correcta.
 
 <img src="imagenes/box-and-pointer.png" width="400px"/>
 
-a.2) Escribe las expresiones que devuelven 2 y 4 a partir de `p1`.
+a.2) Escribe las expresiones que devuelven 2 y 4 a partir de
+`p1`. Debes usar las funciones `first` y `rest` si el argumento es una
+lista y `car` y `cdr` si es una pareja que no forma parte de una lista.
 
 b.1) Dado el siguiente diagrama caja y puntero, escribe la expresión en
 Scheme que define `p2` usando el mínimo número de llamadas a `list` y `cons`.
 
 <img src="imagenes/box-and-pointer2.png" width="400px"/>
 
-b.2) Escribe las expresiones que devuelven 9 y 2 a partir de `p2`.
+b.2) Escribe las expresiones que devuelven 9 y 2 a partir de
+`p2`. Debes usar las funciones `first` y `rest` si el argumento es una
+lista y `car` y `cdr` si es una pareja que no forma parte de una
+lista.
 
 ### Ejercicio 4 ###
 
-Implementa la función `(contar-datos-iguales lista-parejas)` que recibe una lista de parejas
-y devuelve el número de parejas que tienen sus dos datos iguales.
+Implementa la función recursiva `(contar-datos-iguales lista-parejas)`
+que recibe una lista de parejas y devuelve el número de parejas que
+tienen sus dos datos iguales.
 
 
 ```racket
@@ -227,9 +233,9 @@ Si tuviéramos en nuestra mano de fichas las fichas:
 
 podríamos colocar la ficha `(3 . 2)` al final de la lista de la partida (girándola).
 
-a) Implementa la función `(domino-correcto? fichas)` que recibe una lista
-de fichas resultantes de una partida de dominó y comprueba si
-las fichas están colocadas de forma correcta.
+a) Implementa la función recursiva `(domino-correcto? fichas)` que
+recibe una lista de fichas resultantes de una partida de dominó y
+comprueba si las fichas están colocadas de forma correcta.
 
 ```racket
 (define partida '((1 . 3) (3 . 0) (0 . 0) (0 . 4) (4 . 2)))
@@ -238,10 +244,10 @@ las fichas están colocadas de forma correcta.
 (domino-correcto? '((1 . 4) (2 . 1))) ; ⇒ #f
 ```
 
-b) Implementa la función `(juega? mano partida)` que recibe una mano
-(una lista de fichas) y otra lista de fichas colocadas en la partida y
-devuelve `#t` si existe alguna ficha de la mano que se puede colocar en
-la partida.
+b) Implementa la función recursiva `(juega? mano partida)` que recibe
+una mano (una lista de fichas) y otra lista de fichas colocadas en la
+partida y devuelve `#t` si existe alguna ficha de la mano que se puede
+colocar en la partida.
 
 ```
 (define mano '((5 . 5) (3 . 2) (4 . 6) (6 . 6)))
@@ -282,7 +288,8 @@ Ejemplos:
 (suma-impares-pares '(3 1 5))           ; ⇒ (9 . 0)
 ```
 
-c) Recuerda la función `(veces lista id)` que vimos en teoría:
+c) Recuerda la función recursiva `(veces lista id)` que vimos en
+teoría:
 
 ```racket
 (define (veces lista id)
