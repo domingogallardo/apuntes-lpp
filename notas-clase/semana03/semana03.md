@@ -496,7 +496,7 @@ Con funciones:
 izquierda lo invoca con el parámetro 3:
 
     ```racket
-    ((lambda (x) (* x x)) 3) => (#<procedure> 3) ; ⇒ 9
+    ((lambda (x) (* x x)) 3) ; => (#<procedure> 3) ⇒ 9
     ```
 
 - Es importante remarcar que con `lambda` estamos creando una función
