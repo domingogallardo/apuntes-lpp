@@ -760,6 +760,9 @@ comprueba si las fichas están colocadas de forma correcta.</p>
 una mano (una lista de fichas) y otra lista de fichas colocadas en la
 partida y devuelve <code>#t</code> si existe alguna ficha de la mano que se puede
 colocar en la partida.</p>
+<p>Para obtener la última ficha de la partida debes usar e implementar
+la función <code>(ultimo lista)</code> que devuelva el último elemento de una
+lista. Hazla también recursiva.</p>
 <div class="highlight"><pre><span></span><code>(define mano &#39;((5 . 5) (3 . 2) (4 . 6) (6 . 6)))
 (juega? mano partida) ; ⇒ #t - podría poner la ficha (3 . 2)
 (juega? mano &#39;((0 . 0))) ; ⇒ #f
