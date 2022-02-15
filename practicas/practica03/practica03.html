@@ -715,14 +715,20 @@ que define <code>p1</code> usando el mínimo número de llamadas a <code>list</c
 <code>cons</code>. No debes utilizar expresiones con <code>quote</code>. Puedes usar la
 función gráfica <code>caja-puntero</code> para comprobar si tu solución es correcta.</p>
 <p><img src="imagenes/box-and-pointer.png" width="400px"/></p>
-<p>a.2) Escribe las expresiones que devuelven 2 y 4 a partir de <code>p1</code>.</p>
+<p>a.2) Escribe las expresiones que devuelven 2 y 4 a partir de
+<code>p1</code>. Debes usar las funciones <code>first</code> y <code>rest</code> si el argumento es una
+lista y <code>car</code> y <code>cdr</code> si es una pareja que no forma parte de una lista.</p>
 <p>b.1) Dado el siguiente diagrama caja y puntero, escribe la expresión en
 Scheme que define <code>p2</code> usando el mínimo número de llamadas a <code>list</code> y <code>cons</code>.</p>
 <p><img src="imagenes/box-and-pointer2.png" width="400px"/></p>
-<p>b.2) Escribe las expresiones que devuelven 9 y 2 a partir de <code>p2</code>.</p>
+<p>b.2) Escribe las expresiones que devuelven 9 y 2 a partir de
+<code>p2</code>. Debes usar las funciones <code>first</code> y <code>rest</code> si el argumento es una
+lista y <code>car</code> y <code>cdr</code> si es una pareja que no forma parte de una
+lista.</p>
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
-<p>Implementa la función <code>(contar-datos-iguales lista-parejas)</code> que recibe una lista de parejas
-y devuelve el número de parejas que tienen sus dos datos iguales.</p>
+<p>Implementa la función recursiva <code>(contar-datos-iguales lista-parejas)</code>
+que recibe una lista de parejas y devuelve el número de parejas que
+tienen sus dos datos iguales.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">contar-datos-iguales</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="s2">&quot;hola&quot;</span> <span class="o">.</span> <span class="s2">&quot;hola&quot;</span><span class="p">)</span> <span class="p">(</span><span class="ss">\#a</span> <span class="o">.</span> <span class="ss">\#a</span><span class="p">)</span> <span class="p">(</span><span class="ss">true</span> <span class="o">.</span> <span class="ss">false</span><span class="p">)))</span> <span class="c1">; ⇒ 2</span>
 <span class="p">(</span><span class="n">contar-datos-iguales</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="s2">&quot;hola&quot;</span><span class="p">)</span> <span class="p">(</span><span class="s2">&quot;hola&quot;</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="ss">\#a</span> <span class="o">.</span> <span class="ss">true</span><span class="p">)</span> <span class="p">(</span><span class="ss">\#b</span> <span class="o">.</span> <span class="ss">false</span><span class="p">)))</span> <span class="c1">; ⇒ 0</span>
 </code></pre></div>
@@ -742,18 +748,18 @@ siguiente).</p>
 <div class="highlight"><pre><span></span><code><span class="p">((</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="mi">6</span> <span class="o">.</span> <span class="mi">6</span><span class="p">))</span>
 </code></pre></div>
 <p>podríamos colocar la ficha <code>(3 . 2)</code> al final de la lista de la partida (girándola).</p>
-<p>a) Implementa la función <code>(domino-correcto? fichas)</code> que recibe una lista
-de fichas resultantes de una partida de dominó y comprueba si
-las fichas están colocadas de forma correcta.</p>
+<p>a) Implementa la función recursiva <code>(domino-correcto? fichas)</code> que
+recibe una lista de fichas resultantes de una partida de dominó y
+comprueba si las fichas están colocadas de forma correcta.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">partida</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)))</span>
 <span class="p">(</span><span class="n">domino-correcto?</span> <span class="n">partida</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="n">domino-correcto?</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)))</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="n">domino-correcto?</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">1</span><span class="p">)))</span> <span class="c1">; ⇒ #f</span>
 </code></pre></div>
-<p>b) Implementa la función <code>(juega? mano partida)</code> que recibe una mano
-(una lista de fichas) y otra lista de fichas colocadas en la partida y
-devuelve <code>#t</code> si existe alguna ficha de la mano que se puede colocar en
-la partida.</p>
+<p>b) Implementa la función recursiva <code>(juega? mano partida)</code> que recibe
+una mano (una lista de fichas) y otra lista de fichas colocadas en la
+partida y devuelve <code>#t</code> si existe alguna ficha de la mano que se puede
+colocar en la partida.</p>
 <div class="highlight"><pre><span></span><code>(define mano &#39;((5 . 5) (3 . 2) (4 . 6) (6 . 6)))
 (juega? mano partida) ; ⇒ #t - podría poner la ficha (3 . 2)
 (juega? mano &#39;((0 . 0))) ; ⇒ #f
@@ -782,7 +788,8 @@ apartado anterior. También puedes utilizar las funciones predefinidas
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-impares-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">8</span> <span class="mi">7</span> <span class="mi">6</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ (16 . 20)</span>
 <span class="p">(</span><span class="n">suma-impares-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="mi">1</span> <span class="mi">5</span><span class="p">))</span>           <span class="c1">; ⇒ (9 . 0)</span>
 </code></pre></div>
-<p>c) Recuerda la función <code>(veces lista id)</code> que vimos en teoría:</p>
+<p>c) Recuerda la función recursiva <code>(veces lista id)</code> que vimos en
+teoría:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">veces</span> <span class="n">lista</span> <span class="n">id</span><span class="p">)</span>
   <span class="p">(</span><span class="k">cond</span>
     <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
