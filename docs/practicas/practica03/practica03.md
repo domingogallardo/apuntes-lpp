@@ -249,6 +249,10 @@ una mano (una lista de fichas) y otra lista de fichas colocadas en la
 partida y devuelve `#t` si existe alguna ficha de la mano que se puede
 colocar en la partida.
 
+Para obtener la última ficha de la partida debes usar e implementar
+la función `(ultimo lista)` que devuelva el último elemento de una
+lista. Hazla también recursiva.
+
 ```
 (define mano '((5 . 5) (3 . 2) (4 . 6) (6 . 6)))
 (juega? mano partida) ; ⇒ #t - podría poner la ficha (3 . 2)
