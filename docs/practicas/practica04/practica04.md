@@ -1,18 +1,25 @@
+# Práctica 4: Funciones recursivas con listas
 
-# Práctica 3: Funciones recursivas sobre listas
+## Antes de la clase de prácticas ##
 
-## Entrega de la práctica
+- Antes de empezar esta práctica es importante que revises la solución
+  de la práctica 3. Puedes preguntar las dudas al profesor de prácticas.
 
-Para entregar la práctica debes subir a Moodle el fichero
-`practica03.rkt` con una cabecera inicial con tu nombre y apellidos, y
-las soluciones de cada ejercicio separadas por comentarios. Cada
-solución debe incluir:
+- Los siguientes ejercicios están basados en los conceptos de teoría
+vistos la semana pasada. Antes de la clase de prácticas debes repasar
+todos los conceptos y **probar en el DrRacket** todos los ejemplos de
+los siguientes apartados del tema 2 [_Programación
+Funcional_](../../teoria/tema02-programacion-funcional/tema02-programacion-funcional.html#43-funciones-recursivas-que-construyen-listas):
 
-- La **definición de las funciones** que resuelven el ejercicio.
-- Un conjunto de **pruebas** que comprueben su funcionamiento
-  utilizando el API `RackUnit`.
+    - 4.3. _Funciones recursivas que construyen listas_
+    - 4.4. _Funciones con número variable de argumentos_
+    - 5 _Funciones como tipos de datos de primera clase_ (incluido hasta el
+      apartado 5.3. _Función apply_)
 
-## Ejercicio 1
+
+## Ejercicios
+
+### Ejercicio 1
 
 a) Implementa la función recursiva `(contiene-prefijo prefijo
 lista-pal)` que recibe una cadena y una lista de palabras. Devuelve
@@ -319,8 +326,21 @@ Ejemplo:
 ; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))
 ```
 
+## Entrega de la práctica
+
+Sube la solución de los ejercicios al cuestionario de Moodle Entrega
+práctica 4 hasta el domingo 27 de febrero a las 21:00 h.
+
+Tal y como hemos comentado al comienzo de la práctica, debes incluir
+casos de prueba en todo el código que escribas.
+
+Una vez finalizado el plazo de entrega podrás revisar el cuestionario
+y visualizar la solución. Corrige la entrega, comparando la solución
+con la tuya. Puedes consultar cualquier duda con tu profesor en la
+clase de prácticas de la semana que viene.
+
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2020-21  
+Lenguajes y Paradigmas de Programación, curso 2021-22  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
