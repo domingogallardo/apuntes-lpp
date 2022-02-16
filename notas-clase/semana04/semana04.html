@@ -30,8 +30,8 @@
 
 .admonition.warning { /* csslint allow: adjoining-classes */
     color: black;
-    background-color: #fcf8e3;
-    border-color: #fbeed5;
+    background-color: #FCC8BE;
+    border-color: #FCC8BE;
 }
 
 .admonition.hint { /* csslint allow: adjoining-classes */
@@ -42,8 +42,8 @@
 
 .admonition.danger { /* csslint allow: adjoining-classes */
     color: black;
-    background-color: #f2dede;
-    border-color: #eed3d7;
+    background-color: #F7B2A4;
+    border-color: #F7B2A4;
 }
 
 .admonition-title {
@@ -407,7 +407,7 @@ las funciones como parámetros</p>
 </li>
 <li>
 <p>Por ejemplo, para invocar a la primera función de <code>lista2</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="nb">car</span> <span class="n">lista2</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 15</span>
+<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="nb">first</span> <span class="n">lista2</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 15</span>
 </code></pre></div>
 </li>
 </ul>
@@ -434,8 +434,8 @@ las funciones como parámetros</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">aplica-funcs</span> <span class="n">lista-funcs</span> <span class="n">x</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista-funcs</span><span class="p">)</span>
         <span class="n">x</span>
-        <span class="p">((</span><span class="nb">car</span> <span class="n">lista-funcs</span><span class="p">)</span>
-            <span class="p">(</span><span class="n">aplica-funcs</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista-funcs</span><span class="p">)</span> <span class="n">x</span><span class="p">))))</span>
+        <span class="p">((</span><span class="nb">first</span> <span class="n">lista-funcs</span><span class="p">)</span>
+            <span class="p">(</span><span class="n">aplica-funcs</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista-funcs</span><span class="p">)</span> <span class="n">x</span><span class="p">))))</span>
 </code></pre></div>
 </li>
 <li>
@@ -528,8 +528,8 @@ que permite hacer código muy conciso y expresivo.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-map</span> <span class="n">f</span> <span class="n">lista</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
         <span class="o">&#39;</span><span class="p">()</span>
-        <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-              <span class="p">(</span><span class="n">mi-map</span> <span class="n">f</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+        <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+              <span class="p">(</span><span class="n">mi-map</span> <span class="n">f</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 </li>
 <li>
@@ -605,9 +605,9 @@ de <em>n</em> elementos transformados.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-filter</span> <span class="n">pred</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="k">cond</span>
     <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">())</span>
-    <span class="p">((</span><span class="n">pred</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span>
-                              <span class="p">(</span><span class="n">mi-filter</span> <span class="n">pred</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))</span>
-    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">mi-filter</span> <span class="n">pred</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+    <span class="p">((</span><span class="n">pred</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span>
+                              <span class="p">(</span><span class="n">mi-filter</span> <span class="n">pred</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))))</span>
+    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">mi-filter</span> <span class="n">pred</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 </li>
 </ul>
@@ -638,8 +638,8 @@ elementos originales filtrados por la condición.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">exists?</span> <span class="n">predicado</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
       <span class="no">#f</span>
-      <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-          <span class="p">(</span><span class="n">exists?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+      <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+          <span class="p">(</span><span class="n">exists?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 </li>
 <li>
@@ -663,8 +663,8 @@ elementos originales filtrados por la condición.</p>
 <p>Implementación:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">for-all?</span> <span class="n">predicado</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-           <span class="p">(</span><span class="n">for-all?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+      <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+           <span class="p">(</span><span class="n">for-all?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 </li>
 <li>
@@ -760,7 +760,7 @@ elementos originales filtrados por la condición.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-foldr</span> <span class="n">combina</span> <span class="n">base</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
       <span class="n">base</span>
-      <span class="p">(</span><span class="n">combina</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">mi-foldr</span> <span class="n">combina</span> <span class="n">base</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+      <span class="p">(</span><span class="n">combina</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">mi-foldr</span> <span class="n">combina</span> <span class="n">base</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 </li>
 </ul>
@@ -837,8 +837,8 @@ las características más potentes de la programación funcional.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-n</span> <span class="n">n</span> <span class="n">lista</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
         <span class="o">&#39;</span><span class="p">()</span>
-        <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="n">n</span><span class="p">)</span>
-              <span class="p">(</span><span class="n">suma-n</span> <span class="n">n</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+        <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="n">n</span><span class="p">)</span>
+              <span class="p">(</span><span class="n">suma-n</span> <span class="n">n</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 </li>
 <li>

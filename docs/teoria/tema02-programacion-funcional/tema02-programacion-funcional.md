@@ -3650,7 +3650,6 @@ funcionamiento de la recursión:
 
 <img src="imagenes/suma-parejas-apply.png" width="600px"/>
 
-<!--
 
 ### 5.4. Generalización ###
 
@@ -4019,12 +4018,12 @@ lista2
 Una vez creada una lista con funciones, ¿cómo podemos invocar a alguna
 de ellas?. Debemos tratarlas de la misma forma que tratamos cualquier
 otro dato guardado en la lista, las recuperamos con las funciones
-`car` o `list-ref` y las invocamos. 
+`first` o `list-ref` y las invocamos. 
 
 Por ejemplo, para invocar a la primera función de `lista2`:
 
 ```racket
-((car lista2) 10) ; ⇒ 15
+((first lista2) 10) ; ⇒ 15
 ```
 
 O a la tercera:
@@ -4071,7 +4070,7 @@ entonces como:
 ```racket
 (define (aplica-funcs lista-funcs x)
     ; falta el caso base
-    ((car lista-funcs) (aplica-funcs (cdr lista-funcs) x)))
+    ((first lista-funcs) (aplica-funcs (rest lista-funcs) x)))
 ```
 
 El caso base sería en el que la lista de funciones es vacía, en cuyo
@@ -4089,8 +4088,8 @@ La implementación completa es:
 (define (aplica-funcs lista-funcs x)
     (if (null? lista-funcs)
         x
-        ((car lista-funcs)
-            (aplica-funcs (cdr lista-funcs) x))))
+        ((first lista-funcs)
+            (aplica-funcs (rest lista-funcs) x))))
 ```
 
 Un ejemplo de uso:
@@ -4211,8 +4210,8 @@ Definimos la función `mi-map`. La implementación es la siguiente:
 (define (mi-map f lista)
     (if (null? lista)
         '()
-        (cons (f (car lista))
-              (mi-map f (cdr lista)))))
+        (cons (f (first lista))
+              (mi-map f (rest lista)))))
 ```
 
 
@@ -4321,9 +4320,9 @@ Podemos implementar la función `filter` de forma recursiva:
 (define (mi-filter pred lista)
   (cond
     ((null? lista) '())
-    ((pred (car lista)) (cons (car lista)
-                              (mi-filter pred (cdr lista))))
-    (else (mi-filter pred (cdr lista)))))
+    ((pred (first lista)) (cons (first lista)
+                              (mi-filter pred (rest lista))))
+    (else (mi-filter pred (rest lista)))))
 ```
 
 #### 5.7.3. Función `exists?` 
@@ -4360,8 +4359,8 @@ La implementación recursiva de `exists?` es la siguiente:
 (define (exists? predicado lista)
   (if (null? lista)
       #f
-      (or (predicado (car lista))
-          (exists? predicado (cdr lista)))))
+      (or (predicado (first lista))
+          (exists? predicado (rest lista)))))
 ```
 
 
@@ -4386,8 +4385,8 @@ La implementación recursiva de `for-all?` es la siguiente:
 ```racket
 (define (for-all? predicado lista)
   (or (null? lista)
-      (and (predicado (car lista))
-           (for-all? predicado (cdr lista)))))
+      (and (predicado (first lista))
+           (for-all? predicado (rest lista)))))
 ```
 
 La llamada recursiva comprueba que todos los elementos del resto de la
@@ -4497,7 +4496,7 @@ Podemos implementar de forma recursiva la función `foldr`:
 (define (mi-foldr func base lista)
   (if (null? lista)
       base
-      (func (car lista) (mi-foldr func base (cdr lista)))))
+      (func (first lista) (mi-foldr func base (rest lista)))))
 ```
 
 
@@ -4597,8 +4596,8 @@ Podemos hacerlo de forma recursiva:
 (define (suma-n n lista)
     (if (null? lista)
         '()
-        (cons (+ (car lista) n)
-              (suma-n n (cdr lista)))))
+        (cons (+ (first lista) n)
+              (suma-n n (rest lista)))))
 ```
 
 Funciona de la siguiente manera:
@@ -4758,7 +4757,6 @@ Entonces la función `(divisores n)` se implementaría de la siguiente forma:
             (divisor? x n)) (numeros-hasta n)))
 ```
 
--->
 ----
 
 Lenguajes y Paradigmas de Programación, curso 2021-22  

@@ -242,7 +242,7 @@ las funciones como parámetros
 - Por ejemplo, para invocar a la primera función de `lista2`:
 
     ```racket
-    ((car lista2) 10) ; ⇒ 15
+    ((first lista2) 10) ; ⇒ 15
     ```
 
 ----
@@ -273,8 +273,8 @@ las funciones como parámetros
     (define (aplica-funcs lista-funcs x)
         (if (null? lista-funcs)
             x
-            ((car lista-funcs)
-                (aplica-funcs (cdr lista-funcs) x))))
+            ((first lista-funcs)
+                (aplica-funcs (rest lista-funcs) x))))
     ```
 
 - Un ejemplo de uso:
@@ -365,8 +365,8 @@ que permite hacer código muy conciso y expresivo.
     (define (mi-map f lista)
         (if (null? lista)
             '()
-            (cons (f (car lista))
-                  (mi-map f (cdr lista)))))
+            (cons (f (first lista))
+                  (mi-map f (rest lista)))))
     ```
 
 - La función `map` puede recibir un número variable de listas, todas
@@ -448,9 +448,9 @@ que permite hacer código muy conciso y expresivo.
     (define (mi-filter pred lista)
       (cond
         ((null? lista) '())
-        ((pred (car lista)) (cons (car lista)
-                                  (mi-filter pred (cdr lista))))
-        (else (mi-filter pred (cdr lista)))))
+        ((pred (first lista)) (cons (first lista)
+                                  (mi-filter pred (rest lista))))
+        (else (mi-filter pred (rest lista)))))
     ```
 
 
@@ -484,8 +484,8 @@ que permite hacer código muy conciso y expresivo.
     (define (exists? predicado lista)
       (if (null? lista)
           #f
-          (or (predicado (car lista))
-              (exists? predicado (cdr lista)))))
+          (or (predicado (first lista))
+              (exists? predicado (rest lista)))))
     ```
 
 - Ejemplos:
@@ -510,8 +510,8 @@ que permite hacer código muy conciso y expresivo.
     ```racket
     (define (for-all? predicado lista)
       (or (null? lista)
-          (and (predicado (car lista))
-               (for-all? predicado (cdr lista)))))
+          (and (predicado (first lista))
+               (for-all? predicado (rest lista)))))
     ```
 
 - Ejemplos:
@@ -614,7 +614,7 @@ que permite hacer código muy conciso y expresivo.
     (define (mi-foldr combina base lista)
       (if (null? lista)
           base
-          (combina (car lista) (mi-foldr combina base (cdr lista)))))
+          (combina (first lista) (mi-foldr combina base (rest lista)))))
     ```
 
 
@@ -690,8 +690,8 @@ derecha a izquierda.
     (define (suma-n n lista)
         (if (null? lista)
             '()
-            (cons (+ (car lista) n)
-                  (suma-n n (cdr lista)))))
+            (cons (+ (first lista) n)
+                  (suma-n n (rest lista)))))
     ```
 
 - Funciona de la siguiente manera:
