@@ -42,8 +42,28 @@ Ejemplos:
 ; ⇒ (#t #f #t #f)
 ```
 
+b) Vamos a generalizar la solución del ejercicio 4 de la práctica 2 e
+implementar la función recursiva `(cadenas-mayores lista1 lista2)`
+teniendo en cuenta que las listas que recibe tienen un número
+indeterminado de cadenas. En el caso en que una de las listas sea
+mayor que la otra, se deberán añadir todas sus cadenas a la lista
+resultante.
 
-b) Implementa la función recursiva `(inserta-pos dato pos lista)` que
+Ejemplos:
+
+```racket
+(cadenas-mayores '("hola" "que" "tal") '("adios")) 
+; ⇒ ("adios" "que" "tal")
+(cadenas-mayores '("hola" "que" "tal") '("meme" "y" "adios"))
+; ⇒
+("hola" "que" "adios")
+(cadenas-mayores '("la" "primera" "práctica" "de" "recursión")
+                 '("confiar" "en" "la" "recursión" "facilita" "su" "resolución"))
+; ⇒
+("confiar" "primera" "práctica" "recursión" "recursión" "su" "resolución")
+```
+
+c) Implementa la función recursiva `(inserta-pos dato pos lista)` que
 recibe un dato, una posición y una lista e inserta el dato en la
 posición indicada de la lista. Si la posición es 0, el dato se inserta
 en cabeza. Suponemos que la posición siempre será positiva y menor o
@@ -56,7 +76,7 @@ Ejemplos:
 (inserta-pos 'b 0 '(a a a a)) ; ⇒ '(b a a a a)
 ```
 
-c) Implementa la función recursiva `(inserta-ordenada n
+d) Implementa la función recursiva `(inserta-ordenada n
 lista-ordenada)` que recibe un número y una lista de números ordenados
 de menor a mayor y devuelve la lista resultante de insertar el número
 `n` en la posición correcta para que la lista siga estando ordenada.
@@ -127,47 +147,21 @@ Como en los anteriores ejercicios, te recomendamos implementar alguna
 función auxiliar.
 
 
-
 ### Ejercicio 3 ###
 
-a) En matemáticas, el conjunto potencia de un conjunto es el conjunto
-formado por todos los subconjuntos del conjunto original. Vamos a
-representar este concepto con listas y diseñar una función recursiva
-que lo implemente.
-
-Dada una lista de elementos, podemos representar su conjunto potencia
-como la lista de todas las sublistas posibles formadas con elementos
-de la lista original. 
+a) Implementa la función recursiva `(mueve-al-principio lista dato)` que recibe una lista y un 
+dato que está contenido en la lista. La función debe devolver la lista resultante de
+mover la primera aparición del dato al comienzo de la lista, dejando el resto de la lista
+sin modificar. Suponemos que el dato que se pasa como parámetro está contenido en la lista.
 
 Ejemplo:
 
 ```racket
-(conjunto-potencia '(1 2 3)) 
-; ⇒ ((1 2 3) (1 2) (1 3) (1) (2 3) (2) (3) ())
+(mueve-al-principio '(a b e c d e f) 'e) ; ⇒ (e a b c d e f)
+(mueve-al-principio '(a b c d e f g) 'a) ; ⇒ (a b c d e f g))
 ```
 
-Implementa la función recursiva `(conjunto-potencia lista)` que
-devuelva el conjunto potencia de la lista original.
 
-Algunas pistas:
-
-- El conjunto potencia de una lista vacía es una lista con la lista
-  vacía como único elemento.
-- El conjunto potencia de una lista se puede construir como se muestra
-  en el siguiente ejemplo: 
-  
-  
-   ```text
-   (conjunto-potencia '(1 2 3)) = ((1 2 3) (1 2) (1 3) (1)) + 
-                                  ((2 3) (2) (3) ())
-   ```
-
-    Calculamos con una llamada recursiva el conjunto potencia de la
-    lista sin el primer elemento: `((2 3) (2) (3) ())` y unimos a la
-    cabeza de esta lista la lista resultante de añadir el primer
-    elemento de la lista original (el `1`) a todas las sublistas de
-    esta lista potencia: `((1 2 3) (1 2) (1 3) (1))`.
-    
 b) Implementa la función recursiva `(producto-cartesiano lista1
 lista2)` que devuelva una lista con todas las parejas resultantes de
 combinar todos los elementos de la lista 1 con todos los elementos de
@@ -251,66 +245,31 @@ respuesta era correcta.
 (bar + number? "Hola" 5) ; ⇒ ?
 ```
 
-
-
 ### Ejercicio 5 ###
 
-a) Implementa la función recursiva `(crea-baraja lista-parejas)` que
-recibe una lista de parejas con un palo y un valor (ambos caracteres)
-y devuelve una lista de cartas tal y como se representaban en la
-práctica anterior.
+Seguimos con el juego del dominó. 
 
-Por ejemplo:
+Implementa la función `(quitar-ficha mano puntos)` que recibe una
+lista de fichas de dominó y unos puntos (los puntos del inicio o final
+de la partida de fichas sobre la mesa). 
 
-```racket
-(crea-baraja '((#\u2660 . #\A) (#\u2663 . #\2) 
-               (#\u2665 . #\3) (#\u2666 . #\R)))
-; ⇒ (A♠ 2♣ 3♥ R♦)
-```
-
-b) Vamos a trabajar con cartas de póker. Los valores posibles son 2,
-3, ..., 8, 9, 0, J, Q, K, A (representamos el número 10 con el carácter y
-el símbolo 0). Y los palos son los símbolos correspondientes a los
-caracteres UTF #\u2660, #\u2663, #\u2665 y #\u2666: ♠, ♣, ♥ y ♦.
+La función debe buscar la ficha que vamos a poner sobre la mesa y
+quitarla de la mano. Esto es, devolver una lista de la que se ha
+quitado la primera ficha que contiene esos puntos (ya sea en su parte
+izquierda o en su parte derecha).
 
 ```racket
-(define palos '(#\u2660 #\u2663 #\u2665 #\u2666))
-(define valores '(#\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9 #\0 #\J #\Q #\K #\A))
+(quitar-ficha '((2 . 3) (4 . 4) (1 . 6) (4 . 5)) 4)
+; ⇒ ((2 . 3) (1 . 6) (4 . 5))
+(quitar-ficha '((2 . 3) (4 . 4) (1 . 6) (4 . 5)) 5) 
+; ⇒ ((2 . 3) (4 . 4) (1 . 6)))
+(quitar-ficha '((2 . 3) (4 . 4) (1 . 6) (4 . 5)) 0) 
+; ⇒ ((2 . 3) (4 . 4) (1 . 6) (4 . 5))
 ```
-
-Implementa la función `(baraja-poker)` que devuelve una lista con
-todas las cartas de una baraja de póker. No es una función
-recursiva. Debes usar la función anterior `crea-baraja` y la función
-`producto-cartesiano` definida en el ejercicio 3.
-
-```racket
-(baraja-poker) 
-; ⇒ (2♠ 3♠ ... K♠ A♠ 2♣ ... K♣ A♣ 2♥ ... K♥ A♥ 2♦ ... K♦ A♦)
-```
-
-No hace falta que hagas ninguna prueba de la función. Basta con que
-dejes en el código la llamada a la función y al ejecutar el programa
-verás por pantalla que la baraja es correcta.
-
-c) Implementa la función recursiva `(mezcla lista)` que recibe una lista
-y la devuelve mezclada (sus elementos se han intercambiando en
-posiciones aleatorias).
-
-```racket
-(mezcla '(1 2 3 4 5 6)) ; ⇒ (2 1 6 4 5 3)
-```
-
-Llama a la función con la baraja de póker para devuelva la baraja
-mezclada y la muestre por pantalla.
-
-!!! Hint "Pista"
-    Puedes usar la función `inserta-pos` definida anteriormente y la
-    función `(random inicial final)` que devuelve un número aleatorio
-    entre el valor inicial (incluido) y el valor final (sin incluir).
 
 ### Ejercicio 6 ###
 
-Implementa una función recursiva `(filtra-simbolos lista-simbolos
+a) Implementa una función recursiva `(comprueba-simbolos lista-simbolos
 lista-num)` que recibe una lista de símbolos y una lista de números
 enteros (ambas de la misma longitud) y devuelve una lista de
 parejas. Cada pareja está formada por el símbolo de la i-ésima
@@ -322,8 +281,37 @@ funciones predefinidas `string-length` y `symbol->string`.
 Ejemplo:
 
 ```racket
-(filtra-simbolos '(este es un ejercicio de examen) '(2 1 2 9 1 6))
+(comprueba-simbolos '(este es un ejercicio de examen) '(2 1 2 9 1 6))
 ; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))
+```
+
+b) Generalizamos la función anterior `(comprueba-simbolos)` y la llamamos
+`(comprueba pred lista lista-num)` pasándole como parámetro un predicado
+de comparación. La función ahora podrá procesar cualquier tipo de
+listas (de símbolos, de cadenas, de listas, etc.). La función pasada
+como parámetro se encarga de hacer la comparación apropiada al tipo de
+dato de la lista.
+
+Ejemplo:
+
+```racket
+(comprueba (lambda (x y)
+             (= (string-length (symbol->string x)) y))
+           '(este es un ejercicio de examen) 
+           '(2 1 2 9 1 6))
+; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))
+
+(comprueba (lambda (x y)
+              (= (length x) y))
+           '((1 2 3) (a) (a b) (a a) (c) (a b c d)) 
+           '(2 1 2 9 1 4))
+; ⇒ (((a) . 1) ((a b) . 2) ((c) . 1) ((a b c d) . 4))
+
+(comprueba (lambda (x y)
+              (= (string-length x) y))
+           '("aui" "a" "ae" "aa" "c" "aeiou") 
+           '(2 1 2 9 1 5))
+; ⇒ (("a" . 1) ("ae" . 2) ("c" . 1) ("aeiou" . 5))
 ```
 
 ## Entrega de la práctica
