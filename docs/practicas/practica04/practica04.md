@@ -55,12 +55,10 @@ Ejemplos:
 (cadenas-mayores '("hola" "que" "tal") '("adios")) 
 ; ⇒ ("adios" "que" "tal")
 (cadenas-mayores '("hola" "que" "tal") '("meme" "y" "adios"))
-; ⇒
-("hola" "que" "adios")
+; ⇒ ("hola" "que" "adios")
 (cadenas-mayores '("la" "primera" "práctica" "de" "recursión")
                  '("confiar" "en" "la" "recursión" "facilita" "su" "resolución"))
-; ⇒
-("confiar" "primera" "práctica" "recursión" "recursión" "su" "resolución")
+; ⇒ ("confiar" "primera" "práctica" "recursión" "recursión" "su" "resolución")
 ```
 
 c) Implementa la función recursiva `(inserta-pos dato pos lista)` que
