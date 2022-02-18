@@ -247,14 +247,16 @@ respuesta era correcta.
 
 Seguimos con el juego del dominó. 
 
-Implementa la función `(quitar-ficha mano puntos)` que recibe una
-lista de fichas de dominó y unos puntos (los puntos del inicio o final
-de la partida de fichas sobre la mesa). 
+Implementa la función recursiva `(quitar-ficha mano puntos)` que
+recibe una lista de fichas de dominó (parejas, como ya vimos en la
+práctica anterior) y unos puntos (los puntos del inicio o final de la
+partida de fichas sobre la mesa).
 
-La función debe buscar la ficha que vamos a poner sobre la mesa y
-quitarla de la mano. Esto es, devolver una lista de la que se ha
-quitado la primera ficha que contiene esos puntos (ya sea en su parte
-izquierda o en su parte derecha).
+La función debe buscar en la mano alguna ficha que contenga esos
+puntos, esto es, la ficha que vamos a poner sobre la mesa. Y debe
+quitarla de la mano. O sea, la función devolverá una lista de la que
+se ha quitado la primera ficha que contiene esos puntos, ya sea en su
+parte izquierda o en su parte derecha.
 
 ```racket
 (quitar-ficha '((2 . 3) (4 . 4) (1 . 6) (4 . 5)) 4)
