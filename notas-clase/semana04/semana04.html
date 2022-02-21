@@ -402,7 +402,7 @@ las funciones como parámetros</p>
   alguna de ellas?.</li>
 <li>
 <p>Debemos tratarlas de la misma forma que tratamos cualquier otro dato
-  guardado en la lista, las recuperamos con las funciones <code>car</code> o
+  guardado en la lista, las recuperamos con las funciones <code>first</code> o
   <code>list-ref</code> y las invocamos.</p>
 </li>
 <li>
@@ -862,15 +862,16 @@ las características más potentes de la programación funcional.</p>
 </code></pre></div>
 </li>
 <li>
-<p>Otro ejemplo: Función <code>suma-parejas</code></p>
-<h2><div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-parejas</span> <span class="n">lista-parejas</span><span class="p">)</span>
+<p>Otro ejemplo, la función <code>suma-parejas</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-parejas</span> <span class="n">lista-parejas</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">foldr</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">pareja</span> <span class="n">resultado</span><span class="p">)</span>
                <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">pareja</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">pareja</span><span class="p">)</span> <span class="n">resultado</span><span class="p">))</span> <span class="mi">0</span> <span class="n">lista-parejas</span><span class="p">))</span>
 
 <span class="p">(</span><span class="n">suma-parejas</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">2</span> <span class="mi">9</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">-1</span> <span class="mi">8</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">9</span> <span class="mi">3</span><span class="p">)))</span> <span class="c1">; ⇒ 39</span>
-</code></pre></div></h2>
+</code></pre></div>
 </li>
 </ul>
+<hr />
 <h3>Composición de funciones de orden superior</h3>
 <ul>
 <li>

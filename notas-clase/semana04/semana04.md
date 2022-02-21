@@ -236,7 +236,7 @@ las funciones como parámetros
 - Una vez creada una lista con funciones, ¿cómo podemos invocar a
   alguna de ellas?.
 - Debemos tratarlas de la misma forma que tratamos cualquier otro dato
-  guardado en la lista, las recuperamos con las funciones `car` o
+  guardado en la lista, las recuperamos con las funciones `first` o
   `list-ref` y las invocamos.
 
 - Por ejemplo, para invocar a la primera función de `lista2`:
@@ -713,7 +713,7 @@ derecha a izquierda.
         (map (lambda (x) (+ x n)) lista))
     ```
 
-- Otro ejemplo: Función `suma-parejas`
+- Otro ejemplo, la función `suma-parejas`:
 
     ```racket
     (define (suma-parejas lista-parejas)
@@ -722,6 +722,7 @@ derecha a izquierda.
 
     (suma-parejas (list (cons 3 6) (cons 2 9) (cons -1 8) (cons 9 3))) ; ⇒ 39
     ```
+
 ----
 
 
