@@ -464,6 +464,34 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#54-generalizacion" class="md-nav__link">
+    5.4. Generalización
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-funciones-que-devuelven-funciones" class="md-nav__link">
+    5.5. Funciones que devuelven funciones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-funciones-en-estructuras-de-datos" class="md-nav__link">
+    5.6. Funciones en estructuras de datos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-funciones-de-orden-superior" class="md-nav__link">
+    5.7. Funciones de orden superior
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -580,6 +608,18 @@
     <li class="md-nav__item">
       <a href="../../practicas/practica03/practica03.html" class="md-nav__link">
         Práctica 3
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicas/practica04/practica04.html" class="md-nav__link">
+        Práctica 4
       </a>
     </li>
   
@@ -826,6 +866,34 @@
           <li class="md-nav__item">
   <a href="#53-funcion-apply" class="md-nav__link">
     5.3. Función apply
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-generalizacion" class="md-nav__link">
+    5.4. Generalización
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-funciones-que-devuelven-funciones" class="md-nav__link">
+    5.5. Funciones que devuelven funciones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-funciones-en-estructuras-de-datos" class="md-nav__link">
+    5.6. Funciones en estructuras de datos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-funciones-de-orden-superior" class="md-nav__link">
+    5.7. Funciones de orden superior
   </a>
   
 </li>
@@ -3493,17 +3561,12 @@ de argumentos). Eso lo conseguimos hacer con <code>apply</code>.</p>
 <p>La siguiente imagen muestra una representación gráfica del
 funcionamiento de la recursión:</p>
 <p><img src="imagenes/suma-parejas-apply.png" width="600px"/></p>
-<!--
-
-### 5.4. Generalización ###
-
-La posibilidad de pasar funciones como parámetros de otras es una
+<h3 id="54-generalizacion">5.4. Generalización<a class="headerlink" href="#54-generalizacion" title="Permanent link">&para;</a></h3>
+<p>La posibilidad de pasar funciones como parámetros de otras es una
 poderosa herramienta de abstracción. Nos va a permitir diseñar
-funciones más genéricas. 
-
-Veamos un ejemplo. Supongamos que queremos calcular el sumatorio de
-`a` hasta `b`:
-
+funciones más genéricas. </p>
+<p>Veamos un ejemplo. Supongamos que queremos calcular el sumatorio de
+<code>a</code> hasta <code>b</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">sum-x</span> <span class="n">a</span> <span class="n">b</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">a</span> <span class="n">b</span><span class="p">)</span>
         <span class="mi">0</span>
@@ -3511,10 +3574,8 @@ Veamos un ejemplo. Supongamos que queremos calcular el sumatorio de
 
 <span class="p">(</span><span class="n">sum-x</span> <span class="mi">1</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 55</span>
 </code></pre></div>
-
-Supongamos ahora que queremos calcular el sumatorio de `a` hasta `b`
-sumando los números al cuadrado:
-
+<p>Supongamos ahora que queremos calcular el sumatorio de <code>a</code> hasta <code>b</code>
+sumando los números al cuadrado:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">sum-cuadrado-x</span> <span class="n">a</span> <span class="n">b</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">a</span> <span class="n">b</span><span class="p">)</span>
         <span class="mi">0</span>
@@ -3522,9 +3583,7 @@ sumando los números al cuadrado:
 
 <span class="p">(</span><span class="n">sum-cuadrado-x</span> <span class="mi">1</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 385</span>
 </code></pre></div>
-
-Y el sumatorio de `a` hasta `b` sumando los cubos:
-
+<p>Y el sumatorio de <code>a</code> hasta <code>b</code> sumando los cubos:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">sum-cubo-x</span> <span class="n">a</span> <span class="n">b</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">a</span> <span class="n">b</span><span class="p">)</span>
         <span class="mi">0</span>
@@ -3532,292 +3591,222 @@ Y el sumatorio de `a` hasta `b` sumando los cubos:
 
 <span class="p">(</span><span class="n">sum-cubo-x</span> <span class="mi">1</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 3025</span>
 </code></pre></div>
-
-Vemos que el código de las tres funciones anteriores es muy similar,
-cada función la podemos obtener haciendo un *copy-paste* de otra
+<p>Vemos que el código de las tres funciones anteriores es muy similar,
+cada función la podemos obtener haciendo un <em>copy-paste</em> de otra
 previa. Lo único que cambia es la función a aplicar a cada número de
-la serie.
-
-Siempre que hagamos *copy-paste* al programar tenemos que empezar a
+la serie.</p>
+<p>Siempre que hagamos <em>copy-paste</em> al programar tenemos que empezar a
 sospechar que no estamos generalizando suficientemente el código. Un
-*copy-paste* arrastra también *bugs* y obliga a realizar múltiples
+<em>copy-paste</em> arrastra también <em>bugs</em> y obliga a realizar múltiples
 modificaciones del código cuando en el futuro tengamos que cambiar
-cosas.
-
-La posibilidad de pasar una función como parámetro viene a nuestra
+cosas.</p>
+<p>La posibilidad de pasar una función como parámetro viene a nuestra
 ayuda para generalizar el código anterior. En este caso, lo único que
 cambia en las tres funciones anteriores es la función a aplicar a los
 números de la serie. En primer caso no se hace nada, en el segundo se
-eleva al cuadrado y en el tercer caso al cubo.
-
-Podemos tomar esa función como un parámetro adicional y definir una
-función genérica `sum-f-x` que generaliza las tres funciones
-anteriores. Tendríamos el sumatorio desde `a` hasta `b` de `f(x)`:
-
+eleva al cuadrado y en el tercer caso al cubo.</p>
+<p>Podemos tomar esa función como un parámetro adicional y definir una
+función genérica <code>sum-f-x</code> que generaliza las tres funciones
+anteriores. Tendríamos el sumatorio desde <code>a</code> hasta <code>b</code> de <code>f(x)</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">sum-f-x</span> <span class="n">f</span> <span class="n">a</span> <span class="n">b</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">a</span> <span class="n">b</span><span class="p">)</span>
         <span class="mi">0</span>
         <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">f</span> <span class="n">a</span><span class="p">)</span> <span class="p">(</span><span class="n">sum-f-x</span> <span class="n">f</span> <span class="p">(</span><span class="nb">+</span> <span class="n">a</span> <span class="mi">1</span><span class="p">)</span> <span class="n">b</span><span class="p">))))</span>
 </code></pre></div>
-
-Las funciones anteriores son casos particulares de esta función que
+<p>Las funciones anteriores son casos particulares de esta función que
 las generaliza. Por ejemplo, para calcular el sumatorio desde 1 hasta
-10 de `x` al cubo:
-
+10 de <code>x</code> al cubo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cubo</span> <span class="n">x</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
 
 <span class="p">(</span><span class="n">sum-f-x</span> <span class="n">cubo</span> <span class="mi">1</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 3025</span>
 </code></pre></div>
-
-
-También podemos utilizar una expresión lambda en la invocación a
-`sum-f` que construya la función que queremos aplicar a cada
+<p>También podemos utilizar una expresión lambda en la invocación a
+<code>sum-f</code> que construya la función que queremos aplicar a cada
 número. Por ejemplo, podemos sumar la expresión (n/(n-1)) para todos
-los números del 2 al 100:
-
+los números del 2 al 100:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">sum-f-x</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">(</span><span class="nb">/</span> <span class="n">n</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)))</span> <span class="mi">2</span> <span class="mi">100</span><span class="p">)</span>
 </code></pre></div>
-
-Veremos más adelante muchos más ejemplos de funciones pasadas como
+<p>Veremos más adelante muchos más ejemplos de funciones pasadas como
 parámetros y de la generalidad que permite este patrón, cuando
-estudiemos las funciones de orden superior.
-
-### 5.5. Funciones que devuelven funciones
-
-Cualquier objeto de primera clase puede ser devuelto por una
+estudiemos las funciones de orden superior.</p>
+<h3 id="55-funciones-que-devuelven-funciones">5.5. Funciones que devuelven funciones<a class="headerlink" href="#55-funciones-que-devuelven-funciones" title="Permanent link">&para;</a></h3>
+<p>Cualquier objeto de primera clase puede ser devuelto por una
 función; enteros, booleanos, parejas, etc. son objetos primitivos y
-podemos definir funciones que los devuelven.
-
-En el paradigma funcional lo mismo sucede con las funciones. Podemos
+podemos definir funciones que los devuelven.</p>
+<p>En el paradigma funcional lo mismo sucede con las funciones. Podemos
 definir una función que cuando se invoque construya otra función y la
-devuelva como resultado. 
-
-Esta es una de la características más importantes que diferencia los
+devuelva como resultado. </p>
+<p>Esta es una de la características más importantes que diferencia los
 lenguajes de programación funcionales de otros que no lo
 son. En lenguajes como C, C++ o Java (antes de Java 8) no es posible
-hacer esto.
-
-Para devolver una función en Scheme debemos usar la forma especial
-`lambda` en el cuerpo de una función. Así, cuando se invoca a esta
-función se evalúa `lambda` y se devuelve la función resultante. Es una
+hacer esto.</p>
+<p>Para devolver una función en Scheme debemos usar la forma especial
+<code>lambda</code> en el cuerpo de una función. Así, cuando se invoca a esta
+función se evalúa <code>lambda</code> y se devuelve la función resultante. Es una
 función que creamos en tiempo de ejecución, durante la evaluación de
-la función principal.
-
-La función que se devuelve se denomina **clausura**
-([Wikipedia](https://es.wikipedia.org/wiki/Clausura_(informática))). Y
-decimos que la función que ha construido la clausura es una **función
-constructora**.
-
-
-#### 5.5.1. Función `sumador`
-
-Vamos a empezar con un ejemplo muy sencillo. Definimos una función
+la función principal.</p>
+<p>La función que se devuelve se denomina <strong>clausura</strong>
+(<a href="https://es.wikipedia.org/wiki/Clausura_(informática)">Wikipedia</a>). Y
+decimos que la función que ha construido la clausura es una <strong>función
+constructora</strong>.</p>
+<h4 id="551-funcion-sumador">5.5.1. Función <code>sumador</code><a class="headerlink" href="#551-funcion-sumador" title="Permanent link">&para;</a></h4>
+<p>Vamos a empezar con un ejemplo muy sencillo. Definimos una función
 constructora que crea en su ejecución una función que suma
-`k` a un número:
-
+<code>k</code> a un número:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">construye-sumador</span> <span class="n">k</span><span class="p">)</span>
    <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
        <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="n">k</span><span class="p">)))</span>
 </code></pre></div>
-
-El cuerpo de la función `(construye-sumador k)` está formado por una
-expresión lambda. Cuando se invoca a `construye-sumador` se evalúa
-esta expresión lambda y se devuelve el procedimiento creado. 
-
-En este caso se construye otra función de 1 argumento que suma `k` al
-argumento. 
-
-Por ejemplo, podemos invocar a `construye-sumador` pasando 10 como parámetro:
-
+<p>El cuerpo de la función <code>(construye-sumador k)</code> está formado por una
+expresión lambda. Cuando se invoca a <code>construye-sumador</code> se evalúa
+esta expresión lambda y se devuelve el procedimiento creado. </p>
+<p>En este caso se construye otra función de 1 argumento que suma <code>k</code> al
+argumento. </p>
+<p>Por ejemplo, podemos invocar a <code>construye-sumador</code> pasando 10 como parámetro:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">construye-sumador</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ #&lt;procedure&gt;</span>
 </code></pre></div>
-
-Como hemos dicho, se devuelve un procedimiento, una función. Esta
+<p>Como hemos dicho, se devuelve un procedimiento, una función. Esta
 función devuelta debe invocarse con un argumento y devolverá el
-resultado de sumar 10 a ese argumento:
-
+resultado de sumar 10 a ese argumento:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">f</span> <span class="p">(</span><span class="n">construye-sumador</span> <span class="mi">10</span><span class="p">))</span>
 <span class="p">(</span><span class="n">f</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 13</span>
 </code></pre></div>
-
-También podemos invocar directamente a la función que devuelve la
-función constructora, sin guardarla en una variable:
-
+<p>También podemos invocar directamente a la función que devuelve la
+función constructora, sin guardarla en una variable:</p>
 <div class="highlight"><pre><span></span><code><span class="p">((</span><span class="n">construye-sumador</span> <span class="mi">10</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 13</span>
 </code></pre></div>
-
-Dependiendo del parámetro que le pasemos a la función constructora
+<p>Dependiendo del parámetro que le pasemos a la función constructora
 obtendremos una función sumadora que sume un número u otro. Por
-ejemplo para obtener una función sumadora que suma 100:
-
+ejemplo para obtener una función sumadora que suma 100:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">g</span> <span class="p">(</span><span class="n">construye-sumador</span> <span class="mi">100</span><span class="p">))</span>
 <span class="p">(</span><span class="n">g</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 103</span>
 </code></pre></div>
-
-¿Cómo funciona la clausura? ¿Por qué la invocación a `(g 3)`
-devuelve 103?.
-
-Aquí hay que apartarse bastante del modelo de evaluación de
+<p>¿Cómo funciona la clausura? ¿Por qué la invocación a <code>(g 3)</code>
+devuelve 103?.</p>
+<p>Aquí hay que apartarse bastante del modelo de evaluación de
 sustitución que hemos visto y utilizar un nuevo modelo en el que se
-tiene en cuenta los ámbitos de las variables.
-
-No vamos a explicar en detalle este modelo, pero sí dar unas breves
-pinceladas.
-
-Recordemos la definición de `construye-sumador`:
-
+tiene en cuenta los ámbitos de las variables.</p>
+<p>No vamos a explicar en detalle este modelo, pero sí dar unas breves
+pinceladas.</p>
+<p>Recordemos la definición de <code>construye-sumador</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">construye-sumador</span> <span class="n">k</span><span class="p">)</span>
    <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
        <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="n">k</span><span class="p">)))</span>
 </code></pre></div>
-
-Y supongamos que realizamos las siguientes invocaciones:
-
+<p>Y supongamos que realizamos las siguientes invocaciones:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">g</span> <span class="p">(</span><span class="n">construye-sumador</span> <span class="mi">100</span><span class="p">))</span>
 <span class="p">(</span><span class="n">g</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 103</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">f</span> <span class="p">(</span><span class="n">construye-sumador</span> <span class="mi">50</span><span class="p">))</span>
 <span class="p">(</span><span class="n">f</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 53</span>
 </code></pre></div>
-
-Podemos explicar lo que sucede en la evaluación de estas funciones de
-la siguiente forma:
-
-- Cuando invocamos a `construye-sumador` con un valor concreto para
-  `k` (por  ejemplo 100), queda vinculado el valor de 100 al parámetro
-  `k` en el ámbito local de la función.
-- En este ámbito local la expresión lambda crea una función. Esta
-  función creada en el ámbito local **captura** este ámbito local, con
-  sus variables y sus valores (en este caso la variable `k` y su valor
-  100).
-- Cuando se invoca a la función desde fuera (cuando llamamos a `g` en
-  el ejemplo) se ejecuta el cuerpo de la función `(+ x k)` con `x`
-  valiendo el parámetro (3) y el valor de `k` se obtiene del ámbito
-  capturado (100).
-- En el caso de la segunda invocación a `construye-sumador` el valor
-  del parámetro es 50 y se crea otro ámbito local en el que `k`
+<p>Podemos explicar lo que sucede en la evaluación de estas funciones de
+la siguiente forma:</p>
+<ul>
+<li>Cuando invocamos a <code>construye-sumador</code> con un valor concreto para
+  <code>k</code> (por  ejemplo 100), queda vinculado el valor de 100 al parámetro
+  <code>k</code> en el ámbito local de la función.</li>
+<li>En este ámbito local la expresión lambda crea una función. Esta
+  función creada en el ámbito local <strong>captura</strong> este ámbito local, con
+  sus variables y sus valores (en este caso la variable <code>k</code> y su valor
+  100).</li>
+<li>Cuando se invoca a la función desde fuera (cuando llamamos a <code>g</code> en
+  el ejemplo) se ejecuta el cuerpo de la función <code>(+ x k)</code> con <code>x</code>
+  valiendo el parámetro (3) y el valor de <code>k</code> se obtiene del ámbito
+  capturado (100).</li>
+<li>En el caso de la segunda invocación a <code>construye-sumador</code> el valor
+  del parámetro es 50 y se crea otro ámbito local en el que <code>k</code>
   vale 50. Ese valor es el capturado por la nueva clausura que crea la
   expresión lambda, que es devuelta por la función y guardada en la
-  variable `f`.
-
-La siguiente imagen muestra gráficamente la explicación anterior. Se
+  variable <code>f</code>.</li>
+</ul>
+<p>La siguiente imagen muestra gráficamente la explicación anterior. Se
 ve a la izquierda la ejecución del código y a la derecha el efecto que
 esta ejecución tiene en la memoria, incluyendo los valores asociados a
 las variables y los ámbitos locales creados en las distintas
-invocaciones a las funciones.
-
-<img src="imagenes/clausuras.png" width="700px"/>
-
-El hecho de que función creada en el ámbito local capture este ámbito
-es lo que hace que se denomine una **clausura** (del inglés
-**closure**). La función _se cierra_ sobre el ámbito capturado y puede
-utilizar sus variables.
-
-
-#### 5.5.2. Función `composicion` 
-
-Otro ejemplo de una función que devuelve otra función es la función
-siguiente `(composicion f g)` que recibe dos funciones de un argumento
-y devuelve otra función que realiza la composición de ambas:
-
+invocaciones a las funciones.</p>
+<p><img src="imagenes/clausuras.png" width="700px"/></p>
+<p>El hecho de que función creada en el ámbito local capture este ámbito
+es lo que hace que se denomine una <strong>clausura</strong> (del inglés
+<strong>closure</strong>). La función <em>se cierra</em> sobre el ámbito capturado y puede
+utilizar sus variables.</p>
+<h4 id="552-funcion-composicion">5.5.2. Función <code>composicion</code><a class="headerlink" href="#552-funcion-composicion" title="Permanent link">&para;</a></h4>
+<p>Otro ejemplo de una función que devuelve otra función es la función
+siguiente <code>(composicion f g)</code> que recibe dos funciones de un argumento
+y devuelve otra función que realiza la composición de ambas:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">composicion</span> <span class="n">f</span> <span class="n">g</span><span class="p">)</span>
     <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="n">g</span> <span class="n">x</span><span class="p">))))</span>
 </code></pre></div>
-
-La función devuelta invoca primero a `g` y el resultado se lo pasa a
-`f`. Veamos un ejemplo. Supongamos que tenemos definidas la función
-`cuadrado` y `doble` que calculan el cuadrado y el doble de un número
-respectivamente. Podremos entonces llamar a `composicion` con esas dos
+<p>La función devuelta invoca primero a <code>g</code> y el resultado se lo pasa a
+<code>f</code>. Veamos un ejemplo. Supongamos que tenemos definidas la función
+<code>cuadrado</code> y <code>doble</code> que calculan el cuadrado y el doble de un número
+respectivamente. Podremos entonces llamar a <code>composicion</code> con esas dos
 funciones para construir otra función que primero calcule el cuadrado y
-después el doble de una número:
-
+después el doble de una número:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">h</span> <span class="p">(</span><span class="n">composicion</span> <span class="n">doble</span> <span class="n">cuadrado</span><span class="p">))</span>
 </code></pre></div>
-
-La variable `h` contiene la función devuelta por `composicion`. Una
+<p>La variable <code>h</code> contiene la función devuelta por <code>composicion</code>. Una
 función de un argumento que devuelve el doble del cuadrado de un
-número:
-
+número:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">h</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ 32</span>
 </code></pre></div>
-
-
-#### 5.5.3. Función `construye-segura`
-
-Vamos a ver un último ejemplo en el que definimos una función
-constructora que extiende funciones ya existentes.
-
-Recordemos la función `lista-desde`:
-
+<h4 id="553-funcion-construye-segura">5.5.3. Función <code>construye-segura</code><a class="headerlink" href="#553-funcion-construye-segura" title="Permanent link">&para;</a></h4>
+<p>Vamos a ver un último ejemplo en el que definimos una función
+constructora que extiende funciones ya existentes.</p>
+<p>Recordemos la función <code>lista-desde</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">lista-desde</span> <span class="n">x</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">)</span>
       <span class="o">&#39;</span><span class="p">()</span>
       <span class="p">(</span><span class="nb">cons</span> <span class="n">x</span> <span class="p">(</span><span class="n">lista-desde</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))))</span>
 </code></pre></div>
-
-Un problema de la función anterior es que si le pasamos un
-número negativo entra en un bucle infinito.
-
-Definimos la función `(construye-segura condicion f) ` que recibe dos
+<p>Un problema de la función anterior es que si le pasamos un
+número negativo entra en un bucle infinito.</p>
+<p>Definimos la función <code>(construye-segura condicion f)</code> que recibe dos
 funciones: un predicado y otra función, ambos de 1 argumento. Devuelve
-otra función en la que sólo se llamará a `f` si el argumento cumple la
-`condicion`.
-
+otra función en la que sólo se llamará a <code>f</code> si el argumento cumple la
+<code>condicion</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">construye-segura</span> <span class="n">condicion</span> <span class="n">f</span><span class="p">)</span>
   <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">condicion</span> <span class="n">x</span><span class="p">)</span>
         <span class="p">(</span><span class="n">f</span> <span class="n">x</span><span class="p">)</span>
         <span class="o">&#39;</span><span class="ss">error</span><span class="p">)))</span>
 </code></pre></div>
-
-La función construye una función anónima de un argumento `x` (igual
-que `f`) en cuyo cuerpo se comprueba si el argumento cumple la
-condición y sólo en ese caso se llama a `f`.
-
-Podemos entonces construir una función segura a partir de la función
-`lista-desde` en la que se devuelva `error` si el argumento es un
-número negativo:
-
+<p>La función construye una función anónima de un argumento <code>x</code> (igual
+que <code>f</code>) en cuyo cuerpo se comprueba si el argumento cumple la
+condición y sólo en ese caso se llama a <code>f</code>.</p>
+<p>Podemos entonces construir una función segura a partir de la función
+<code>lista-desde</code> en la que se devuelva <code>error</code> si el argumento es un
+número negativo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista-desde-segura</span>
    <span class="p">(</span><span class="n">construye-segura</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">&gt;=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">))</span> <span class="n">lista-desde</span><span class="p">))</span>
 <span class="p">(</span><span class="n">lista-desde-segura</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">; ⇒ (8 7 6 5 4 3 2 1)</span>
 <span class="p">(</span><span class="n">lista-desde-segura</span> <span class="mi">-1</span><span class="p">)</span> <span class="c1">; ⇒ error</span>
 </code></pre></div>
-
-Podríamos usar `construye-segura` con cualquier función de 1 argumento
-que queramos hacer segura. Por ejemplo, la función `sqrt`:
-
+<p>Podríamos usar <code>construye-segura</code> con cualquier función de 1 argumento
+que queramos hacer segura. Por ejemplo, la función <code>sqrt</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">sqrt-segura</span> <span class="p">(</span><span class="n">construye-segura</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">&gt;=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">)</span> <span class="nb">sqrt</span><span class="p">))</span>
 <span class="p">(</span><span class="n">sqrt-segura</span> <span class="mi">100</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
 <span class="p">(</span><span class="n">sqrt-segura</span> <span class="mi">-100</span><span class="p">)</span> <span class="c1">; ⇒ error</span>
 </code></pre></div>
-
-La potencia de las funciones constructoras viene del hecho de que es
+<p>La potencia de las funciones constructoras viene del hecho de que es
 posible crear nuevas funciones en tiempo de ejecución. No es necesario
 conocer las condiciones y las características de estas nuevas
 funciones a priori, cuando estamos compilando nuestro programa. Sino
 que pueden depender de datos obtenidos del usuario o de otros módulos
-del programa en tiempo de ejecución.
-
-Por ejemplo, la condición de `construye-segura` podría contener
+del programa en tiempo de ejecución.</p>
+<p>Por ejemplo, la condición de <code>construye-segura</code> podría contener
 valores obtenidos en tiempo de ejecución, de forma que solo se llamara
 a la función que queremos hacer segura si el número está en un rango
-definido esos valores:
-
+definido esos valores:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">construye-segura</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="nb">&gt;=</span> <span class="n">x</span> <span class="n">limite-inf</span><span class="p">)</span>
                                    <span class="p">(</span><span class="nb">&lt;=</span> <span class="n">x</span> <span class="n">limite-sup</span><span class="p">)))</span> <span class="n">f</span><span class="p">)</span><span class="err">)</span>
 </code></pre></div>
-
-
-### 5.6. Funciones en estructuras de datos
-
-La última característica de los tipos de primera clase es que pueden
-formar parte de tipos de datos compuestos, como listas.
-
-Para construir una lista de funciones debemos llamar a `list` con las
-funciones:
-
+<h3 id="56-funciones-en-estructuras-de-datos">5.6. Funciones en estructuras de datos<a class="headerlink" href="#56-funciones-en-estructuras-de-datos" title="Permanent link">&para;</a></h3>
+<p>La última característica de los tipos de primera clase es que pueden
+formar parte de tipos de datos compuestos, como listas.</p>
+<p>Para construir una lista de funciones debemos llamar a <code>list</code> con las
+funciones:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-1</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">1</span><span class="p">))</span>
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">doble</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="mi">2</span><span class="p">))</span>
@@ -3826,220 +3815,158 @@ funciones:
 <span class="n">lista</span> 
 <span class="c1">; ⇒ (#&lt;procedure:cuadrado&gt;  #&lt;procedure:suma-1&gt;  #&lt;procedure:doble&gt;)</span>
 </code></pre></div>
-
-También podemos definir las funciones con expresiones lambda. Por
-ejemplo, podemos añadir a la lista una función que suma 5 a un número:
-
-
+<p>También podemos definir las funciones con expresiones lambda. Por
+ejemplo, podemos añadir a la lista una función que suma 5 a un número:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista2</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">5</span><span class="p">))</span> <span class="n">lista</span><span class="p">))</span>
 <span class="n">lista2</span> 
 <span class="c1">; ⇒ (#&lt;procedure&gt; #&lt;procedure:cuadrado&gt; #&lt;procedure:suma-1&gt; #&lt;procedure:doble&gt;)</span>
 </code></pre></div>
-
-Una vez creada una lista con funciones, ¿cómo podemos invocar a alguna
+<p>Una vez creada una lista con funciones, ¿cómo podemos invocar a alguna
 de ellas?. Debemos tratarlas de la misma forma que tratamos cualquier
 otro dato guardado en la lista, las recuperamos con las funciones
-`car` o `list-ref` y las invocamos. 
-
-Por ejemplo, para invocar a la primera función de `lista2`:
-
-<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="nb">car</span> <span class="n">lista2</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 15</span>
+<code>first</code> o <code>list-ref</code> y las invocamos. </p>
+<p>Por ejemplo, para invocar a la primera función de <code>lista2</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="nb">first</span> <span class="n">lista2</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 15</span>
 </code></pre></div>
-
-O a la tercera:
-
+<p>O a la tercera:</p>
 <div class="highlight"><pre><span></span><code><span class="p">((</span><span class="nb">list-ref</span> <span class="n">lista2</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 11</span>
 </code></pre></div>
-
-#### 5.6.1. Funciones que trabajan con listas de funciones
-
-Veamos un ejemplo de una función `(aplica-funcs lista-funcs x)` que
-recibe una lista de funciones en el parámetro `lista-funcs` y las
-aplica todas **de derecha a izquierda** al número que pasamos en el
-parámetro `x`.
-
-Por ejemplo, supongamos la lista anterior, que contiene las funciones
-`cuadrado`, `cubo` y `suma-1`:
-
+<h4 id="561-funciones-que-trabajan-con-listas-de-funciones">5.6.1. Funciones que trabajan con listas de funciones<a class="headerlink" href="#561-funciones-que-trabajan-con-listas-de-funciones" title="Permanent link">&para;</a></h4>
+<p>Veamos un ejemplo de una función <code>(aplica-funcs lista-funcs x)</code> que
+recibe una lista de funciones en el parámetro <code>lista-funcs</code> y las
+aplica todas <strong>de derecha a izquierda</strong> al número que pasamos en el
+parámetro <code>x</code>.</p>
+<p>Por ejemplo, supongamos la lista anterior, que contiene las funciones
+<code>cuadrado</code>, <code>cubo</code> y <code>suma-1</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="p">(</span><span class="nb">list</span> <span class="n">cuadrado</span> <span class="n">cubo</span> <span class="n">suma-1</span><span class="p">))</span>
 </code></pre></div>
-
-la llamada a `(aplica-funcs lista 5)` debería devolver el resultado de
-aplicar primero `suma-1` a 5, después `cubo` al resultado y después
-`cuadrado`:
-
+<p>la llamada a <code>(aplica-funcs lista 5)</code> debería devolver el resultado de
+aplicar primero <code>suma-1</code> a 5, después <code>cubo</code> al resultado y después
+<code>cuadrado</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="n">cubo</span> <span class="p">(</span><span class="n">suma-1</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ 46656</span>
 </code></pre></div>
-
-Para implementar `aplica-funcs` tenemos que usar una recursión. Si
+<p>Para implementar <code>aplica-funcs</code> tenemos que usar una recursión. Si
 vemos el ejemplo, podemos comprobar que es sencillo definir el caso
-general:
-
+general:</p>
 <div class="highlight"><pre><span></span><code>(aplica-funcs (cuadrado cubo suma-1) 5) = 
 (cuadrado (aplica-funcs (cubo suma-1) 5)) =
 (cuadrado 216) = 46656
 </code></pre></div>
-
-El caso general de la recursión de la función `aplica-funcs` se define
-entonces como:
-
+<p>El caso general de la recursión de la función <code>aplica-funcs</code> se define
+entonces como:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">aplica-funcs</span> <span class="n">lista-funcs</span> <span class="n">x</span><span class="p">)</span>
     <span class="c1">; falta el caso base</span>
-    <span class="p">((</span><span class="nb">car</span> <span class="n">lista-funcs</span><span class="p">)</span> <span class="p">(</span><span class="n">aplica-funcs</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista-funcs</span><span class="p">)</span> <span class="n">x</span><span class="p">)))</span>
+    <span class="p">((</span><span class="nb">first</span> <span class="n">lista-funcs</span><span class="p">)</span> <span class="p">(</span><span class="n">aplica-funcs</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista-funcs</span><span class="p">)</span> <span class="n">x</span><span class="p">)))</span>
 </code></pre></div>
-
-El caso base sería en el que la lista de funciones es vacía, en cuyo
-caso se devuelve el propio número:
-
+<p>El caso base sería en el que la lista de funciones es vacía, en cuyo
+caso se devuelve el propio número:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista-funcs</span><span class="p">)</span> <span class="c1">; la lista de funciones está vacía</span>
     <span class="n">x</span> <span class="c1">; devolvemos el propio número</span>
     <span class="k">...</span>
 </code></pre></div>
-
-La implementación completa es:
-
+<p>La implementación completa es:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">aplica-funcs</span> <span class="n">lista-funcs</span> <span class="n">x</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista-funcs</span><span class="p">)</span>
         <span class="n">x</span>
-        <span class="p">((</span><span class="nb">car</span> <span class="n">lista-funcs</span><span class="p">)</span>
-            <span class="p">(</span><span class="n">aplica-funcs</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista-funcs</span><span class="p">)</span> <span class="n">x</span><span class="p">))))</span>
+        <span class="p">((</span><span class="nb">first</span> <span class="n">lista-funcs</span><span class="p">)</span>
+            <span class="p">(</span><span class="n">aplica-funcs</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista-funcs</span><span class="p">)</span> <span class="n">x</span><span class="p">))))</span>
 </code></pre></div>
-
-Un ejemplo de uso:
-
+<p>Un ejemplo de uso:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista-funcs</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
                           <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
                           <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">1</span><span class="p">))))</span>
 <span class="p">(</span><span class="n">aplica-funcs</span> <span class="n">lista-funcs</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ 46656</span>
 </code></pre></div>
-
-
-### 5.7. Funciones de orden superior
-
-Llamamos funciones de orden superior (*higher order functions* en
+<h3 id="57-funciones-de-orden-superior">5.7. Funciones de orden superior<a class="headerlink" href="#57-funciones-de-orden-superior" title="Permanent link">&para;</a></h3>
+<p>Llamamos funciones de orden superior (<em>higher order functions</em> en
 inglés) a las funciones que toman otras como parámetro o devuelven
 otra función. Permiten generalizar soluciones con un alto grado de
-abstracción.
-
-Ya hemos visto algunas funciones de orden superior, unas construidas
-por nostros y otras propias de Scheme, como `apply`.
-
-Además de `apply`, los lenguajes de programación funcional como
+abstracción.</p>
+<p>Ya hemos visto algunas funciones de orden superior, unas construidas
+por nostros y otras propias de Scheme, como <code>apply</code>.</p>
+<p>Además de <code>apply</code>, los lenguajes de programación funcional como
 Scheme, Scala o Java 8 tienen ya predefinidas algunas otras funciones
 de orden superior que trabajan con listas. Estas funciones permiten
 definir operaciones sobre las listas de una forma muy concisa y
 compacta. Son muy usadas, porque también se pueden utilizar sobre
-_streams_ de datos obtenidos en operaciones de entrada/salida (por
-ejemplo, datos JSON resultantes de una petición HTTP).
-
-Vamos a ver las funciones más importantes, su uso y su implementación.
-
-- `map`
-- `filter`
-- `exists?` 
-- `for-all?` 
-- `foldr` y `foldl`
-
-Después de explicar estas funciones terminaremos con un ejemplo de su
+<em>streams</em> de datos obtenidos en operaciones de entrada/salida (por
+ejemplo, datos JSON resultantes de una petición HTTP).</p>
+<p>Vamos a ver las funciones más importantes, su uso y su implementación.</p>
+<ul>
+<li><code>map</code></li>
+<li><code>filter</code></li>
+<li><code>exists?</code> </li>
+<li><code>for-all?</code> </li>
+<li><code>foldr</code> y <code>foldl</code></li>
+</ul>
+<p>Después de explicar estas funciones terminaremos con un ejemplo de su
 aplicación en el que comprobaremos cómo la utilización de funciones de
 orden superior es una excelente herramienta de la programación
-funcional que permite hacer código muy conciso y expresivo.
-
-La combinación de funciones de nivel superior con listas es una de las
-características más potentes de la programación funcional.
-
-#### 5.7.1. Función `map`
-
-Comenzamos con la función `map`. La palabra `map` viene del inglés
-`mapping` o transformación. Se trata de una función que **transforma**
+funcional que permite hacer código muy conciso y expresivo.</p>
+<p>La combinación de funciones de nivel superior con listas es una de las
+características más potentes de la programación funcional.</p>
+<h4 id="571-funcion-map">5.7.1. Función <code>map</code><a class="headerlink" href="#571-funcion-map" title="Permanent link">&para;</a></h4>
+<p>Comenzamos con la función <code>map</code>. La palabra <code>map</code> viene del inglés
+<code>mapping</code> o transformación. Se trata de una función que <strong>transforma</strong>
 una lista aplicando a todos sus elementos una función de
-transformación que se pasa como parámetro.
-
-En concreto, la función recibe otra función y una lista:
-
+transformación que se pasa como parámetro.</p>
+<p>En concreto, la función recibe otra función y una lista:</p>
 <div class="highlight"><pre><span></span><code>(map transforma lista) -&gt; lista
 </code></pre></div>
-
-Y devuelve la lista resultante de aplicar la función a todos los
-elementos de la lista.
-
-La función de transformación recibe como argumentos elementos de la
-lista y devuelve el resultado de transformar ese elemento.
-
+<p>Y devuelve la lista resultante de aplicar la función a todos los
+elementos de la lista.</p>
+<p>La función de transformación recibe como argumentos elementos de la
+lista y devuelve el resultado de transformar ese elemento.</p>
 <div class="highlight"><pre><span></span><code>(transforma elemento) -&gt; elemento
 </code></pre></div>
-
-
-Por ejemplo:
-
+<p>Por ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">map</span> <span class="n">cuadrado</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ (1 4 9 16 25)</span>
 </code></pre></div>
-
-La lista resultante es el resultado de construir una lista nueva
-aplicando la función `cuadrado` a todos los elementos de la lista
-original.
-
-La función de transformación debe ser compatible con los elementos de
+<p>La lista resultante es el resultado de construir una lista nueva
+aplicando la función <code>cuadrado</code> a todos los elementos de la lista
+original.</p>
+<p>La función de transformación debe ser compatible con los elementos de
 la lista original. Por ejemplo, si la lista es una lista de parejas,
 la función de transformación debe recibir una pareja. Veamos un
 ejemplo de este caso, en el que a partir de una lista de parejas
-obtenemos una lista con las sumas de cada pareja:
-
+obtenemos una lista con las sumas de cada pareja:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-pareja</span> <span class="n">pareja</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">pareja</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">pareja</span><span class="p">)))</span>
 
 <span class="p">(</span><span class="nb">map</span> <span class="n">suma-pareja</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)))</span> <span class="c1">; ⇒ (6 9 8)</span>
 </code></pre></div>
-
-También podríamos hacerlo con una expresión lambda:
-
+<p>También podríamos hacerlo con una expresión lambda:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">pareja</span><span class="p">)</span>
          <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">pareja</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">pareja</span><span class="p">)))</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)))</span> 
 <span class="c1">; ⇒ (6 9 8)</span>
 </code></pre></div>
-
-
-Un último ejemplo, en el que usamos `map` para transformar una lista
-de símbolos en una lista con sus longitudes:
-
+<p>Un último ejemplo, en el que usamos <code>map</code> para transformar una lista
+de símbolos en una lista con sus longitudes:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">s</span><span class="p">)</span> 
         <span class="p">(</span><span class="nb">string-length</span> <span class="p">(</span><span class="nb">symbol-&gt;string</span> <span class="n">s</span><span class="p">)))</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">Esta</span> <span class="ss">es</span> <span class="ss">una</span> <span class="ss">lista</span> <span class="ss">de</span> <span class="ss">símbolos</span><span class="p">))</span>
 <span class="c1">; ⇒ (4 2 3 5 2 8)</span>
 </code></pre></div>
-
-##### 5.7.1.1. Implementación de `map`
-
-¿Cómo se podría implementar `map` de forma recursiva?
-Definimos la función `mi-map`. La implementación es la siguiente:
-
+<h5 id="5711-implementacion-de-map">5.7.1.1. Implementación de <code>map</code><a class="headerlink" href="#5711-implementacion-de-map" title="Permanent link">&para;</a></h5>
+<p>¿Cómo se podría implementar <code>map</code> de forma recursiva?
+Definimos la función <code>mi-map</code>. La implementación es la siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-map</span> <span class="n">f</span> <span class="n">lista</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
         <span class="o">&#39;</span><span class="p">()</span>
-        <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-              <span class="p">(</span><span class="n">mi-map</span> <span class="n">f</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+        <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+              <span class="p">(</span><span class="n">mi-map</span> <span class="n">f</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
-
-
-##### 5.7.1.2. Función `map` con más de una lista
-
-
-La función `map` puede recibir un número variable de listas, todas
-ellas de la misma longitud:
-
+<h5 id="5712-funcion-map-con-mas-de-una-lista">5.7.1.2. Función <code>map</code> con más de una lista<a class="headerlink" href="#5712-funcion-map-con-mas-de-una-lista" title="Permanent link">&para;</a></h5>
+<p>La función <code>map</code> puede recibir un número variable de listas, todas
+ellas de la misma longitud:</p>
 <div class="highlight"><pre><span></span><code>(map transforma lista_1 ... lista_n) -&gt; lista
 </code></pre></div>
-
-En este caso la función de transforma debe recibir tantos argumentos
-como listas recibe `map`:
-
+<p>En este caso la función de transforma debe recibir tantos argumentos
+como listas recibe <code>map</code>:</p>
 <div class="highlight"><pre><span></span><code>(transforma dato_1 ... dato_n) -&gt; dato
 </code></pre></div>
-
-La función `map` aplica `transforma` a los elementos cogidos de las n
-listas y construye así la lista resultante.
-
-Ejemplos:
-
+<p>La función <code>map</code> aplica <code>transforma</code> a los elementos cogidos de las n
+listas y construye así la lista resultante.</p>
+<p>Ejemplos:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">map</span> <span class="nb">+</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span> <span class="mi">20</span> <span class="mi">30</span><span class="p">))</span> <span class="c1">; ⇒ (11 22 33)</span>
 <span class="p">(</span><span class="nb">map</span> <span class="nb">cons</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span> <span class="mi">20</span> <span class="mi">30</span><span class="p">))</span> <span class="c1">; ⇒ ((1 . 10) (2 . 20) (3 . 30))</span>
 <span class="p">(</span><span class="nb">map</span> <span class="nb">&gt;</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span> <span class="mi">3</span> <span class="mi">40</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">20</span> <span class="mi">0</span> <span class="mi">10</span><span class="p">))</span> <span class="c1">; ⇒ (#f #t #t)</span>
@@ -4053,451 +3980,321 @@ Ejemplos:
                    <span class="o">&#39;</span><span class="p">(</span><span class="mi">100</span> <span class="mi">-10</span> <span class="mi">23</span> <span class="mi">45</span> <span class="mi">8</span><span class="p">))</span>
 <span class="c1">; ⇒ (100 3 23 89 34)</span>
 </code></pre></div>
-
-!!! Tip "Consejo"
-    La función `map` recibe una lista de *n* elementos y devuelve otra
-    de *n* elementos transformados.
-
-
-#### 5.7.2. Función `filter`
-
-Veamos otra función de orden superior que trabaja sobre listas.
-
-La función `(filter predicado lista)` toma como parámetro un predicado
+<div class="admonition tip">
+<p class="admonition-title">Consejo</p>
+<p>La función <code>map</code> recibe una lista de <em>n</em> elementos y devuelve otra
+de <em>n</em> elementos transformados.</p>
+</div>
+<h4 id="572-funcion-filter">5.7.2. Función <code>filter</code><a class="headerlink" href="#572-funcion-filter" title="Permanent link">&para;</a></h4>
+<p>Veamos otra función de orden superior que trabaja sobre listas.</p>
+<p>La función <code>(filter predicado lista)</code> toma como parámetro un predicado
 y una lista y devuelve como resultado los elementos de la lista que
-cumplen el predicado.
-
+cumplen el predicado.</p>
 <div class="highlight"><pre><span></span><code>(filter predicado lista) -&gt; lista
 </code></pre></div>
-
-La función `(predicado elem)` que usa `filter` recibe elementos de
-la lista y devuelve `#t` o `#f`.
-
+<p>La función <code>(predicado elem)</code> que usa <code>filter</code> recibe elementos de
+la lista y devuelve <code>#t</code> o <code>#f</code>.</p>
 <div class="highlight"><pre><span></span><code>(predicado elem) -&gt; boolean
 </code></pre></div>
-
-Un ejemplo de uso:
-
+<p>Un ejemplo de uso:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">filter</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ (2 4 6 8)</span>
 </code></pre></div>
-
-Otro ejemplo: supongamos que queremos filtrar una lista de parejas de
+<p>Otro ejemplo: supongamos que queremos filtrar una lista de parejas de
 números, devolviendo aquellas que parejas que cumplen que su parte
 izquierda es mayor o igual que la derecha. Lo podríamos hacer con la
-siguiente expresión:
-
+siguiente expresión:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">filter</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">pareja</span><span class="p">)</span>
             <span class="p">(</span><span class="nb">&gt;=</span> <span class="p">(</span><span class="nb">car</span> <span class="n">pareja</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">pareja</span><span class="p">)))</span> 
         <span class="o">&#39;</span><span class="p">((</span><span class="mi">10</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">8</span> <span class="o">.</span> <span class="mi">8</span><span class="p">)</span> <span class="p">(</span><span class="mi">10</span> <span class="o">.</span> <span class="mi">20</span><span class="p">)))</span>
 <span class="c1">; ⇒ ((10 . 4) (8 . 8))</span>
 </code></pre></div>
-
-Y un último ejemplo: filtramos todos los símbolos con longitud menor
-de 4.
-
+<p>Y un último ejemplo: filtramos todos los símbolos con longitud menor
+de 4.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">filter</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">s</span><span class="p">)</span> 
            <span class="p">(</span><span class="nb">&gt;=</span> <span class="p">(</span><span class="nb">string-length</span> <span class="p">(</span><span class="nb">symbol-&gt;string</span> <span class="n">s</span><span class="p">))</span> <span class="mi">4</span><span class="p">))</span>
            <span class="o">&#39;</span><span class="p">(</span><span class="ss">Esta</span> <span class="ss">es</span> <span class="ss">una</span> <span class="ss">lista</span> <span class="ss">de</span> <span class="ss">símbolos</span><span class="p">))</span>
 <span class="c1">; ⇒ (Esta lista símbolos)</span>
 </code></pre></div>
-
-
-!!! Tip "Consejo"
-    La función `filter` recibe una lista de *n* elementos y devuelve
-    otra de con *n* o menos elementos originales filtrados por una
-    condición.
-
-
-##### 5.7.2.1. Implementación de `filter`
-
-Podemos implementar la función `filter` de forma recursiva:
-
+<div class="admonition tip">
+<p class="admonition-title">Consejo</p>
+<p>La función <code>filter</code> recibe una lista de <em>n</em> elementos y devuelve
+otra de con <em>n</em> o menos elementos originales filtrados por una
+condición.</p>
+</div>
+<h5 id="5721-implementacion-de-filter">5.7.2.1. Implementación de <code>filter</code><a class="headerlink" href="#5721-implementacion-de-filter" title="Permanent link">&para;</a></h5>
+<p>Podemos implementar la función <code>filter</code> de forma recursiva:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-filter</span> <span class="n">pred</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="k">cond</span>
     <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">())</span>
-    <span class="p">((</span><span class="n">pred</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span>
-                              <span class="p">(</span><span class="n">mi-filter</span> <span class="n">pred</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))</span>
-    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">mi-filter</span> <span class="n">pred</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+    <span class="p">((</span><span class="n">pred</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span>
+                              <span class="p">(</span><span class="n">mi-filter</span> <span class="n">pred</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))))</span>
+    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">mi-filter</span> <span class="n">pred</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
-
-#### 5.7.3. Función `exists?` 
-
-La función de orden superior `exists` recibe un predicado y una lista
-y comprueba si algún elemento de la lista cumple ese predicado.
-
+<h4 id="573-funcion-exists">5.7.3. Función <code>exists?</code><a class="headerlink" href="#573-funcion-exists" title="Permanent link">&para;</a></h4>
+<p>La función de orden superior <code>exists</code> recibe un predicado y una lista
+y comprueba si algún elemento de la lista cumple ese predicado.</p>
 <div class="highlight"><pre><span></span><code>(exists? predicado lista) -&gt; boolean
 </code></pre></div>
-
-Igual que en `filter` el `predicado` recibe elementos de la lista y
-devuelve `#t` o `#f`.
-
+<p>Igual que en <code>filter</code> el <code>predicado</code> recibe elementos de la lista y
+devuelve <code>#t</code> o <code>#f</code>.</p>
 <div class="highlight"><pre><span></span><code>(predicado elem) -&gt; boolean
 </code></pre></div>
-
-La función `exists` no está definida con este nombre en Racket, aunque
-sí en Scheme. En Racket se llama `ormap`.
-
-Ejemplo de uso:
-
+<p>La función <code>exists</code> no está definida con este nombre en Racket, aunque
+sí en Scheme. En Racket se llama <code>ormap</code>.</p>
+<p>Ejemplo de uso:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">ormap</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="nb">ormap</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
              <span class="p">(</span><span class="nb">&gt;</span> <span class="n">x</span> <span class="mi">10</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
 </code></pre></div>
-
-La implementación recursiva de `exists?` es la siguiente:
-
-
+<p>La implementación recursiva de <code>exists?</code> es la siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">exists?</span> <span class="n">predicado</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
       <span class="no">#f</span>
-      <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-          <span class="p">(</span><span class="n">exists?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+      <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+          <span class="p">(</span><span class="n">exists?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
-
-
-#### 5.7.4. Función `for-all?`
-
-La función de orden superior `for-all?` recibe un predicado y una lista
-y comprueba que todos los elementos de la lista cumplen ese predicado.
-
-La función tampoco está definida con este nombre en Racket, aunque
-sí en Scheme. En Racket existe una función equivalente que se llama `andmap`.
-
-Ejemplo de uso:
-
+<h4 id="574-funcion-for-all">5.7.4. Función <code>for-all?</code><a class="headerlink" href="#574-funcion-for-all" title="Permanent link">&para;</a></h4>
+<p>La función de orden superior <code>for-all?</code> recibe un predicado y una lista
+y comprueba que todos los elementos de la lista cumplen ese predicado.</p>
+<p>La función tampoco está definida con este nombre en Racket, aunque
+sí en Scheme. En Racket existe una función equivalente que se llama <code>andmap</code>.</p>
+<p>Ejemplo de uso:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">andmap</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="nb">andmap</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
              <span class="p">(</span><span class="nb">&gt;</span> <span class="n">x</span> <span class="mi">10</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span> <span class="mi">30</span> <span class="mi">50</span> <span class="mi">80</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 </code></pre></div>
-
-La implementación recursiva de `for-all?` es la siguiente:
-
+<p>La implementación recursiva de <code>for-all?</code> es la siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">for-all?</span> <span class="n">predicado</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-           <span class="p">(</span><span class="n">for-all?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+      <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+           <span class="p">(</span><span class="n">for-all?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
-
-La llamada recursiva comprueba que todos los elementos del resto de la
+<p>La llamada recursiva comprueba que todos los elementos del resto de la
 lista cumplen el predicado y también lo debe cumplir el primer
-elemento. Una lista vacía cumple siempre devuelve `#t` (al no tener
-elementos, podemos decir que todos sus elementos cumplen el predicado).
-
-
-#### 5.7.5. Función `foldr`
-
-Veamos ahora la función `(foldr combina base lista)` que permite
+elemento. Una lista vacía cumple siempre devuelve <code>#t</code> (al no tener
+elementos, podemos decir que todos sus elementos cumplen el predicado).</p>
+<h4 id="575-funcion-foldr">5.7.5. Función <code>foldr</code><a class="headerlink" href="#575-funcion-foldr" title="Permanent link">&para;</a></h4>
+<p>Veamos ahora la función <code>(foldr combina base lista)</code> que permite
 recorrer una lista aplicando una función binaria de forma acumulativa
-a sus elementos y devolviendo un único valor como resultado.
-
+a sus elementos y devolviendo un único valor como resultado.</p>
 <div class="highlight"><pre><span></span><code>(foldr combina base lista) -&gt; valor
 </code></pre></div>
-
-El nombre `fold` significa *plegado*, indicando que la lista a la que
+<p>El nombre <code>fold</code> significa <em>plegado</em>, indicando que la lista a la que
 se aplica se va "plegando" y al final se devuelve un único
-resultado. El plegado lo realiza la **función de plegado** `(combina
-dato resultado)`, que recibe un dato de la lista y lo acumula con el
-otro parámetro `resultado` (al que debemos dar un valor inicial y es
-el parámetro `base` de la función `foldr`).
-
+resultado. El plegado lo realiza la <strong>función de plegado</strong> <code>(combina
+dato resultado)</code>, que recibe un dato de la lista y lo acumula con el
+otro parámetro <code>resultado</code> (al que debemos dar un valor inicial y es
+el parámetro <code>base</code> de la función <code>foldr</code>).</p>
 <div class="highlight"><pre><span></span><code>(combina dato resultado) -&gt; resultado
 </code></pre></div>
-
-La función `combina` se aplica a los elementos de la lista **de
-derecha a izquierda**, empezando por el último elemento de la lista y
-el valor inicial `base` y aplicándose sucesivamente a los resultados
-que se van obteniendo.
-
-Veamos un ejemplo. Supongamos que la función de plegado es una función
-que suma el dato que viene de la lista con el valor acumulado:
-
-
+<p>La función <code>combina</code> se aplica a los elementos de la lista <strong>de
+derecha a izquierda</strong>, empezando por el último elemento de la lista y
+el valor inicial <code>base</code> y aplicándose sucesivamente a los resultados
+que se van obteniendo.</p>
+<p>Veamos un ejemplo. Supongamos que la función de plegado es una función
+que suma el dato que viene de la lista con el valor acumulado:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma</span> <span class="n">dato</span> <span class="n">resultado</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">+</span> <span class="n">dato</span> <span class="n">resultado</span><span class="p">))</span>
 </code></pre></div>
-
-Llamamos a los parámetros `dato` y `resultado` para remarcar que el
+<p>Llamamos a los parámetros <code>dato</code> y <code>resultado</code> para remarcar que el
 primer parámetro se va a coger de la lista y el segundo del resultado
-calculado.
-
-Veamos qué pasa cuando hacemos un `foldr` con esta función suma y
-la lista '(1 2 3) y con el número 0 como base:
-
+calculado.</p>
+<p>Veamos qué pasa cuando hacemos un <code>foldr</code> con esta función suma y
+la lista '(1 2 3) y con el número 0 como base:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">foldr</span> <span class="n">suma</span> <span class="mi">0</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ 6</span>
 </code></pre></div>
-
-La función `suma` se va a ir aplicando a todos los elementos de la
-lista de **derecha a izquierda**, empezando por el valor base (0) y el
+<p>La función <code>suma</code> se va a ir aplicando a todos los elementos de la
+lista de <strong>derecha a izquierda</strong>, empezando por el valor base (0) y el
 último elemento de la lista (3) y cogiendo el resultado obtenido y
-utilizándolo como nuevo parámetro `resultado` en la siguiente llamada.
-
-En concreto, la secuencia de llamadas a la función `suma` serán las
-siguientes:
-
+utilizándolo como nuevo parámetro <code>resultado</code> en la siguiente llamada.</p>
+<p>En concreto, la secuencia de llamadas a la función <code>suma</code> serán las
+siguientes:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma</span> <span class="mi">3</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">; ⇒ 3</span>
 <span class="p">(</span><span class="n">suma</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 5</span>
 <span class="p">(</span><span class="n">suma</span> <span class="mi">1</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ 6</span>
 </code></pre></div>
-
-Otro ejemplo de uso:
-
+<p>Otro ejemplo de uso:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">foldr</span> <span class="nb">string-append</span> <span class="s2">&quot;****&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;que&quot;</span> <span class="s2">&quot;tal&quot;</span><span class="p">))</span> <span class="c1">; ⇒ &quot;holaquetal****&quot;</span>
 </code></pre></div>
-
-En este caso la secuencia de llamadas a `string-append` que se van a
-producir son:
-
+<p>En este caso la secuencia de llamadas a <code>string-append</code> que se van a
+producir son:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;tal&quot;</span> <span class="s2">&quot;****&quot;</span><span class="p">)</span> <span class="c1">; ⇒ &quot;tal****&quot;</span>
 <span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;que&quot;</span> <span class="s2">&quot;tal****&quot;</span><span class="p">)</span> <span class="c1">; ⇒ &quot;quetal****&quot;</span>
 <span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;quetal****&quot;</span><span class="p">)</span> <span class="c1">; ⇒ &quot;holaquetal****&quot;</span>
 </code></pre></div>
-
-Otros ejemplos:
-
+<p>Otros ejemplos:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">foldr</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ 40320</span>
 <span class="p">(</span><span class="nb">foldr</span> <span class="nb">cons</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ (1 2 3 4)</span>
 </code></pre></div>
-
-Un último ejemplo:
-
+<p>Un último ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-parejas</span> <span class="n">lista-parejas</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">foldr</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">pareja</span> <span class="n">resultado</span><span class="p">)</span>
                    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">pareja</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">pareja</span><span class="p">)</span> <span class="n">resultado</span><span class="p">))</span> <span class="mi">0</span> <span class="n">lista-parejas</span><span class="p">))</span>
 
 <span class="p">(</span><span class="n">suma-parejas</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">2</span> <span class="mi">9</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">-1</span> <span class="mi">8</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">9</span> <span class="mi">3</span><span class="p">)))</span> <span class="c1">; ⇒ 39</span>
 </code></pre></div>
-
-
-##### 5.7.5.1. Implementación de `foldr` 
-
-Podemos implementar de forma recursiva la función `foldr`:
-
+<h5 id="5751-implementacion-de-foldr">5.7.5.1. Implementación de <code>foldr</code><a class="headerlink" href="#5751-implementacion-de-foldr" title="Permanent link">&para;</a></h5>
+<p>Podemos implementar de forma recursiva la función <code>foldr</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-foldr</span> <span class="n">func</span> <span class="n">base</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
       <span class="n">base</span>
-      <span class="p">(</span><span class="n">func</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">mi-foldr</span> <span class="n">func</span> <span class="n">base</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+      <span class="p">(</span><span class="n">func</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">mi-foldr</span> <span class="n">func</span> <span class="n">base</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
-
-
-#### 5.7.6. Función `foldl` ####
-
-La función `(foldl combina base lista)` (_fold left_) es similar a
-`foldr` con la diferencia de que la secuencia de aplicaciones de la
-función de plegado se hace **de izquierda a derecha** en lugar de
-derecha a izquierda.
-
-El perfil de la función de plegado es el mismo que en `foldr`:
-
+<h4 id="576-funcion-foldl">5.7.6. Función <code>foldl</code><a class="headerlink" href="#576-funcion-foldl" title="Permanent link">&para;</a></h4>
+<p>La función <code>(foldl combina base lista)</code> (<em>fold left</em>) es similar a
+<code>foldr</code> con la diferencia de que la secuencia de aplicaciones de la
+función de plegado se hace <strong>de izquierda a derecha</strong> en lugar de
+derecha a izquierda.</p>
+<p>El perfil de la función de plegado es el mismo que en <code>foldr</code>:</p>
 <div class="highlight"><pre><span></span><code>(func dato resultado) -&gt; resultado
 </code></pre></div>
-
-Por ejemplo, si la función de combinación es `string-append`:
-
+<p>Por ejemplo, si la función de combinación es <code>string-append</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">foldl</span> <span class="nb">string-append</span> <span class="s2">&quot;****&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;que&quot;</span> <span class="s2">&quot;tal&quot;</span><span class="p">))</span> 
 <span class="c1">; ⇒ &quot;talquehola****&quot;</span>
 </code></pre></div>
-
-La secuencia de llamadas a `string-append` es:
-
+<p>La secuencia de llamadas a <code>string-append</code> es:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;****&quot;</span><span class="p">)</span> <span class="c1">; ⇒ &quot;hola****&quot;</span>
 <span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;que&quot;</span> <span class="s2">&quot;hola****&quot;</span><span class="p">)</span> <span class="c1">; ⇒ &quot;quehola****&quot;</span>
 <span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;tal&quot;</span> <span class="s2">&quot;quehola****&quot;</span><span class="p">)</span> <span class="c1">; ⇒ &quot;talquehola****&quot;</span>
 </code></pre></div>
-
-Otro ejemplo:
-
+<p>Otro ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">foldl</span> <span class="nb">cons</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ (4 3 2 1)</span>
 </code></pre></div>
-
-La implementación de `foldl` la veremos cuando hablemos de
-recursión por la cola (_tail recursion_) en el próximo tema.
-
-
-!!! Tip "Consejo" 
-    Las funciones `foldr` o `foldl` reciben una lista de
-    datos y devuelven un único resultado.
-
-
-#### 5.7.7. Uso de `and` y `or` con FOS ####
-
-Hemos visto que las primitivas `and` y `or` no son funciones, sino
+<p>La implementación de <code>foldl</code> la veremos cuando hablemos de
+recursión por la cola (<em>tail recursion</em>) en el próximo tema.</p>
+<div class="admonition tip">
+<p class="admonition-title">Consejo</p>
+<p>Las funciones <code>foldr</code> o <code>foldl</code> reciben una lista de
+datos y devuelven un único resultado.</p>
+</div>
+<h4 id="577-uso-de-and-y-or-con-fos">5.7.7. Uso de <code>and</code> y <code>or</code> con FOS<a class="headerlink" href="#577-uso-de-and-y-or-con-fos" title="Permanent link">&para;</a></h4>
+<p>Hemos visto que las primitivas <code>and</code> y <code>or</code> no son funciones, sino
 formas especiales. Debido a esto, no podemos usarlas como funciones
-que se pasan a otra función de orden superior.
-
-Por ejemplo, la siguiente expresión es incorrecta:
-
+que se pasan a otra función de orden superior.</p>
+<p>Por ejemplo, la siguiente expresión es incorrecta:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">foldr</span> <span class="k">and</span> <span class="no">#t</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#t</span> <span class="no">#f</span> <span class="no">#f</span><span class="p">))</span>
 <span class="c1">; and: bad syntax in: and</span>
 </code></pre></div>
-
-Para comprobar expresiones booleanas en una lista podemos
-usar `foldr` con una expresión lambda:
-
+<p>Para comprobar expresiones booleanas en una lista podemos
+usar <code>foldr</code> con una expresión lambda:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">foldr</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">dato</span> <span class="n">result</span><span class="p">)</span>
            <span class="p">(</span><span class="k">and</span> <span class="n">dato</span> <span class="n">result</span><span class="p">))</span> <span class="no">#t</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#t</span> <span class="no">#f</span> <span class="no">#f</span><span class="p">))</span>
 <span class="c1">; ⇒ #f</span>
 </code></pre></div>
-
-O, mejor aún, es posible usar `for-all?` o `exists?` (o las funciones
-equivalentes de Racket `andmap` o `ormap`).
-
-Por ejemplo, para comprobar si algún booleano de una lista es `#t`
-podríamos hacer:
-
+<p>O, mejor aún, es posible usar <code>for-all?</code> o <code>exists?</code> (o las funciones
+equivalentes de Racket <code>andmap</code> o <code>ormap</code>).</p>
+<p>Por ejemplo, para comprobar si algún booleano de una lista es <code>#t</code>
+podríamos hacer:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">exists?</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">x</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#f</span> <span class="no">#f</span> <span class="no">#t</span> <span class="no">#f</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="nb">ormap</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">x</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#f</span> <span class="no">#f</span> <span class="no">#t</span> <span class="no">#f</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 </code></pre></div>
-
-
-#### 5.7.8. Funciones con FOS y expresiones lambda
-
-El uso de funciones de orden superior (FOS) y expresiones lambda
+<h4 id="578-funciones-con-fos-y-expresiones-lambda">5.7.8. Funciones con FOS y expresiones lambda<a class="headerlink" href="#578-funciones-con-fos-y-expresiones-lambda" title="Permanent link">&para;</a></h4>
+<p>El uso de funciones de orden superior (FOS) y expresiones lambda
 proporciona muchísima expresividad en un lenguaje de programación. Es
 posible escribir código muy conciso y construir funciones iterativas
-que recorren listas y operan sobre sus elementos sin usar la recursividad. 
-
-##### 5.7.8.1. Función `(suma-n n lista)`
-
-Supongamos que queremos definir una función `(suma-n n lista)` que
-devuelve la lista resultante el resultado de sumar un número `n` a
-todos los elementos de una lista.
-
-Podemos hacerlo de forma recursiva:
-
+que recorren listas y operan sobre sus elementos sin usar la recursividad. </p>
+<h5 id="5781-funcion-suma-n-n-lista">5.7.8.1. Función <code>(suma-n n lista)</code><a class="headerlink" href="#5781-funcion-suma-n-n-lista" title="Permanent link">&para;</a></h5>
+<p>Supongamos que queremos definir una función <code>(suma-n n lista)</code> que
+devuelve la lista resultante el resultado de sumar un número <code>n</code> a
+todos los elementos de una lista.</p>
+<p>Podemos hacerlo de forma recursiva:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-n</span> <span class="n">n</span> <span class="n">lista</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
         <span class="o">&#39;</span><span class="p">()</span>
-        <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="n">n</span><span class="p">)</span>
-              <span class="p">(</span><span class="n">suma-n</span> <span class="n">n</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+        <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="n">n</span><span class="p">)</span>
+              <span class="p">(</span><span class="n">suma-n</span> <span class="n">n</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
-
-Funciona de la siguiente manera:
-
+<p>Funciona de la siguiente manera:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-n</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ (11 12 13 14)</span>
 </code></pre></div>
-
-**Implementacion con `map`**
-
-Pero si utilizamos funciones de orden superior, podemos implementar la
-misma función de una forma mucho más concisa y expresiva. 
-
-Lo podemos hacer utilizando la función de orden superior `map` y una
-expresión lambda que sume el número `n` a los elementos de la lista:
-
+<p><strong>Implementacion con <code>map</code></strong></p>
+<p>Pero si utilizamos funciones de orden superior, podemos implementar la
+misma función de una forma mucho más concisa y expresiva. </p>
+<p>Lo podemos hacer utilizando la función de orden superior <code>map</code> y una
+expresión lambda que sume el número <code>n</code> a los elementos de la lista:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-n</span> <span class="n">n</span> <span class="n">lista</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="n">n</span><span class="p">))</span> <span class="n">lista</span><span class="p">))</span>
 </code></pre></div>
-
-Vemos que utilizamos el parámetro `n` en el cuerpo de la expresión
+<p>Vemos que utilizamos el parámetro <code>n</code> en el cuerpo de la expresión
 lambda. De esta forma la función que se aplica a los elementos de la
 lista es una función que suma este número a cada elemento. La variable
-`x` en el parámetro de la expresión lambda es la que va tomando el
-valor de los elementos de la lista.
-
+<code>x</code> en el parámetro de la expresión lambda es la que va tomando el
+valor de los elementos de la lista.</p>
 <div class="highlight"><pre><span></span><code>(suma-n 10 &#39;(1 2 3 4) 10) =&gt; 
 (map #&lt;prodedure-que-suma-10-a-x&gt; (1 2 3 4)) =  (11 12 13 14)
 </code></pre></div>
-
-##### 5.7.8.2. Composición de funciones de orden superior
-
-Dado que muchas de las anteriores funciones de orden superior
+<h5 id="5782-composicion-de-funciones-de-orden-superior">5.7.8.2. Composición de funciones de orden superior<a class="headerlink" href="#5782-composicion-de-funciones-de-orden-superior" title="Permanent link">&para;</a></h5>
+<p>Dado que muchas de las anteriores funciones de orden superior
 devuelven listas, es muy común componer las llamadas, de forma que la
-salida de función se utilice como entrada de otra.
-
-Por ejemplo, podemos implementar una función que sume un número
-`n` a todos los elementos de una lista (igual que la anterior) y
-después que sume todos los elementos resultantes.
-
-Lo podríamos hacer reutilizando el código del ejemplo anterior, y
-añadiendo una llamada a `foldr` para que haga la suma:
-
+salida de función se utilice como entrada de otra.</p>
+<p>Por ejemplo, podemos implementar una función que sume un número
+<code>n</code> a todos los elementos de una lista (igual que la anterior) y
+después que sume todos los elementos resultantes.</p>
+<p>Lo podríamos hacer reutilizando el código del ejemplo anterior, y
+añadiendo una llamada a <code>foldr</code> para que haga la suma:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-n-total</span> <span class="n">n</span> <span class="n">lista</span><span class="p">)</span>
    <span class="p">(</span><span class="nb">foldr</span> <span class="nb">+</span> <span class="mi">0</span>
        <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="n">n</span><span class="p">))</span> <span class="n">lista</span><span class="p">)))</span>
 </code></pre></div>
-
-Funcionaría de la siguiente forma:
-
+<p>Funcionaría de la siguiente forma:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-n-total</span> <span class="mi">100</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ 410</span>
 </code></pre></div>
-
-Otro ejemplo. Supongamos que tenemos una lista de parejas de números y
+<p>Otro ejemplo. Supongamos que tenemos una lista de parejas de números y
 queremos contar aquellas parejas cuya suma de ambos números es mayor
-que un umbral (por ejemplo, 10).
-
+que un umbral (por ejemplo, 10).</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista-parejas</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> 
                             <span class="p">(</span><span class="nb">cons</span> <span class="mi">3</span> <span class="mi">8</span><span class="p">)</span> 
                             <span class="p">(</span><span class="nb">cons</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> 
                             <span class="p">(</span><span class="nb">cons</span> <span class="mi">9</span> <span class="mi">6</span><span class="p">)))</span>
 <span class="p">(</span><span class="n">cuenta-mayores-que</span> <span class="mi">10</span> <span class="n">lista-parejas</span><span class="p">)</span> <span class="c1">; ⇒ 2</span>
 </code></pre></div>
-
-Se podría implementar de una forma muy concisa componiendo una llamada
-a `map` para realizar la suma de cada pareja junto con una llamada a
-`filter` que compruebe que el resultado sea mayor de `n`. Y al final
-llamamos a `length` para contar la longitud de la lista resultante:
-
+<p>Se podría implementar de una forma muy concisa componiendo una llamada
+a <code>map</code> para realizar la suma de cada pareja junto con una llamada a
+<code>filter</code> que compruebe que el resultado sea mayor de <code>n</code>. Y al final
+llamamos a <code>length</code> para contar la longitud de la lista resultante:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuenta-mayores-que</span> <span class="n">n</span> <span class="n">lista-parejas</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">length</span>
    <span class="p">(</span><span class="nb">filter</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
              <span class="p">(</span><span class="nb">&gt;</span> <span class="n">x</span> <span class="n">n</span><span class="p">))</span> <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">pareja</span><span class="p">)</span>
                              <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">pareja</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">pareja</span><span class="p">)))</span> <span class="n">lista-parejas</span><span class="p">))))</span>
 </code></pre></div>
-
-
-##### 5.7.8.3. Función `(contienen-letra caracter lista-pal)`
-
-Veamos otro ejemplo. Supongamos que queremos definir la función
-`(contienen-letra caracter lista-pal)` que devuelve las palabras de
-una lista que contienen un determinado carácter.
-
-Por ejemplo:
-
+<h5 id="5783-funcion-contienen-letra-caracter-lista-pal">5.7.8.3. Función <code>(contienen-letra caracter lista-pal)</code><a class="headerlink" href="#5783-funcion-contienen-letra-caracter-lista-pal" title="Permanent link">&para;</a></h5>
+<p>Veamos otro ejemplo. Supongamos que queremos definir la función
+<code>(contienen-letra caracter lista-pal)</code> que devuelve las palabras de
+una lista que contienen un determinado carácter.</p>
+<p>Por ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">contienen-letra</span> <span class="sc">#\a</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;En&quot;</span> <span class="s2">&quot;un&quot;</span> <span class="s2">&quot;lugar&quot;</span> <span class="s2">&quot;de&quot;</span> <span class="s2">&quot;la&quot;</span> <span class="s2">&quot;Mancha&quot;</span><span class="p">))</span>
 <span class="c1">; ⇒ (&quot;lugar&quot; &quot;la&quot; &quot;Mancha&quot;)</span>
 </code></pre></div>
-
-Podemos implementar `contienen-letra` usando la función de orden
-superior `filter`, con una expresión lambda que se aplicará a cada una
+<p>Podemos implementar <code>contienen-letra</code> usando la función de orden
+superior <code>filter</code>, con una expresión lambda que se aplicará a cada una
 de las palabras de la lista para comprobar si la palabra contiene el
-carácter:
-
+carácter:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">contienen-letra</span> <span class="n">caracter</span> <span class="n">lista-pal</span><span class="p">)</span>
    <span class="p">(</span><span class="nb">filter</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">pal</span><span class="p">)</span>
               <span class="p">(</span><span class="n">letra-en-pal?</span> <span class="n">caracter</span> <span class="n">pal</span><span class="p">))</span> <span class="n">lista-pal</span><span class="p">))</span>
 </code></pre></div>
-
-El parámetro `pal` de la expresión lambda irá cogiendo el valor de
-todas las palabras de `lista-pal` y la función `(letra-en-pal?
-caracter pal)` comprobará si la cadena contiene el carácter.
-
-La función `(letra-en-pal? caracter pal)` es una función auxiliar que
-tenemos que implementar.
-
-Por ejemplo:
-
+<p>El parámetro <code>pal</code> de la expresión lambda irá cogiendo el valor de
+todas las palabras de <code>lista-pal</code> y la función <code>(letra-en-pal?
+caracter pal)</code> comprobará si la cadena contiene el carácter.</p>
+<p>La función <code>(letra-en-pal? caracter pal)</code> es una función auxiliar que
+tenemos que implementar.</p>
+<p>Por ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">letra-en-pal?</span> <span class="sc">#\a</span> <span class="s2">&quot;Hola&quot;</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="n">letra-en-pal?</span> <span class="sc">#\a</span> <span class="s2">&quot;Pepe&quot;</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
 </code></pre></div>
-
-La podemos implementar de una forma muy elegante obteniendo una lista
+<p>La podemos implementar de una forma muy elegante obteniendo una lista
 de caracteres a partir de la cadena y usando la función de orden
-superior `exists?`:
-
+superior <code>exists?</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">letra-en-pal?</span> <span class="n">caracter</span> <span class="n">palabra</span><span class="p">)</span>
   <span class="p">(</span><span class="n">exists?</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span>
             <span class="p">(</span><span class="nb">equal?</span> <span class="n">c</span> <span class="n">caracter</span><span class="p">))</span> <span class="p">(</span><span class="nb">string-&gt;list</span> <span class="n">palabra</span><span class="p">)))</span>
 </code></pre></div>
-
-
-##### 5.7.8.4. Función divisores #####
-
-Un último ejemplo en el que implementamos la función `(divisores n)`
-utilizando una función de orden superior.
-
-Suponemos que tenemos definidas las funciones `(numeros-hasta n)` y
-`(divisor? x n)`:
-
+<h5 id="5784-funcion-divisores">5.7.8.4. Función divisores<a class="headerlink" href="#5784-funcion-divisores" title="Permanent link">&para;</a></h5>
+<p>Un último ejemplo en el que implementamos la función <code>(divisores n)</code>
+utilizando una función de orden superior.</p>
+<p>Suponemos que tenemos definidas las funciones <code>(numeros-hasta n)</code> y
+<code>(divisor? x n)</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">numeros-hasta</span> <span class="n">n</span><span class="p">)</span>
   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="mi">0</span> <span class="n">n</span><span class="p">)</span>
       <span class="o">&#39;</span><span class="p">()</span>
@@ -4506,16 +4303,11 @@ Suponemos que tenemos definidas las funciones `(numeros-hasta n)` y
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">divisor?</span> <span class="n">x</span> <span class="n">n</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">=</span> <span class="mi">0</span> <span class="p">(</span><span class="n">mod</span> <span class="n">n</span> <span class="n">x</span><span class="p">)))</span>
 </code></pre></div>
-
-Entonces la función `(divisores n)` se implementaría de la siguiente forma:
-
-
+<p>Entonces la función <code>(divisores n)</code> se implementaría de la siguiente forma:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">divisores</span> <span class="n">n</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">filter</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
             <span class="p">(</span><span class="n">divisor?</span> <span class="n">x</span> <span class="n">n</span><span class="p">))</span> <span class="p">(</span><span class="n">numeros-hasta</span> <span class="n">n</span><span class="p">)))</span>
 </code></pre></div>
-
--->
 <hr />
 <p>Lenguajes y Paradigmas de Programación, curso 2021-22<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
