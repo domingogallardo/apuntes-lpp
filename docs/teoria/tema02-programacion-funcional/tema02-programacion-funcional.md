@@ -4761,7 +4761,7 @@ Entonces la función `(divisores n)` se implementaría de la siguiente forma:
 
 Capítulos del libro *Structure and Intepretation of Computer Programs*:
 
-- [1.1  The Elements of Programming](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-11.html#%_sec_1.2)
+- [1.1  The Elements of Programming](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html#%_sec_1.1)
 - [1.3  Formulating Abstractions with Higher-Order Procedures](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-12.html#%_sec_1.3)
 - [2.2.1  Representing Sequences](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.1)
 
