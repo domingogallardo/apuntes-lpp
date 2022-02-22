@@ -430,24 +430,6 @@ calcular el valor de números como Pascal(40, 20):
 ; ⇒ 137846528820
 ```
 
-<!--
-
-Otro posible ejemplo es la función prefijo con el 'or' y el 'and'. 
-
-(define (prefijo-lista? lista1 lista2)
-    (or (null? lista1)
-        (and (equal? (car lista1) (car lista2))
-        (prefijo-lista? (cdr lista1) (cdr lista2)))))
-
-Sirve también para explicar el funcionamiento de and y or como 
-formas especiales.
-
-Podríamos también hacer alguna prueba de carga en la que se vea
-que con una recursión se genera un error de 'ran out of memory' y 
-con la recursión por la cola termina correctamente.
-
--->
-
 ## 3. Soluciones al coste de la recursión: memoization
 
 Una alternativa que mantiene la elegancia de los procesos recursivos y
@@ -553,92 +535,225 @@ imposible de utilizar.
 ⇒ 280571172992510140037611932413038677189525
 ```
 
-## 4. Recursión y gráficos de tortuga
+## 4. Figuras recursivas
 
 Vamos a terminar el apartado sobre procedimientos recursivos con un
 último ejemplo algo distinto de los vistos hasta ahora. Usaremos la
-recursión para dibujar figuras fractales usando los denominados
-*gráficos de tortuga*. Para dibujar las figuras tendremos que utilizar
-un estilo de programación no funcional, dibujando los distintos trazos
-de las figuras con pasos de ejecución secuenciales. Para ello usaremos
-una primitiva imperativa de Scheme: la forma especial `begin` que
-permite realizar un grupo de pasos de ejecución de forma secuencial.
+recursión para dibujar figuras fractales usando la [librería de imágenes de
+Racket](https://docs.racket-lang.org/teachpack/2htdpimage.html)
+`2htdp/image`.
 
-!!! Warning "Aviso"
-    Ten cuidado con la forma especial `begin`, es una forma especial
-    imperativa. No debes usarla en la implementación de ninguna función
-    cuando estemos usando el paradigma funcional.
+### 4.1. Librería de imágenes de Racket
 
-### 4.1. Gráficos de tortuga en Racket
+Racket incluye una librería de imágenes en la que se proporcionan
+funciones para construir imágenes. Con esta librería se pueden crear
+imágenes sencillas como rectas, círculos, triángulos u otras figuras
+geométricas. También se pueden modificar las imágenes creadas,
+rotándolas o escalándolas, y formar otras imágenes mediante la
+combinación de imagenes básicas.
 
-Se pueden utilizar los
-[gráficos de tortuga](http://en.wikipedia.org/wiki/Turtle_graphics) en
-Racket cargando la librería `(graphics turtles)`:
 
-```racket
-#lang racket
-(require graphics/turtles)
-```
+#### Construcción de imágenes básicas ####
 
-Los comandos más importantes de esta librería son:
+Veamos algunos ejemplos de las primitivas de la librería para
+construir imágenes básicas.
 
-* `(turtles #t)`: abre una ventana y coloca la tortuga en el centro,
-  mirando hacia el eje X (derecha)
-* `(clear)`: borra la ventana y coloca la tortuga en el centro
-* `(draw d)`: avanza la tortuga dibujando *d* píxeles 
-* `(move d)`: mueve la tortuga *d* píxeles hacia adelante (sin dibujar)
-* `(turn g)`: gira la tortuga *g* grados (positivos: en el sentido
-  contrario a las agujas del reloj)
-
-Prueba a realizar algunas figuras con los comandos de tortuga, antes
-de escribir el algoritmo en Scheme del triángulo de Sierpinski.
-
-Por ejemplo, podemos definir una función que dibuja un triángulo
-rectángulo con catetos de longitud `x`:
+Podemos obtener un círculo, un cuadrado, un rectángulo y un triángulo
+equilátero de la siguiente forma:
 
 ```racket
-(define (hipot x)
-	(* x (sqrt 2)))
-
-(define (triangulo-rectangulo x)
-   (begin
-      (draw x)
-      (turn 90)
-      (draw x)
-      (turn 135)
-      (draw (hipot x))
-      (turn 135)))
-
-(triangulo-rectangulo 100)
+(circle 30 "solid" "blue")
+(square 30 "outline" "black")
+(rectangle 80 40 "solid" "gray")
+(triangle 40 "solid" "red")
 ```
 
-La función `(hipot x)` devuelve la longitud de la hipotenusa de un
-triángulo rectángulo con dos lados de longitud `x`. O sea, la
-expresión:
+Cada instrucción construye la imagen correspondiente. Si lo ejecutamos
+en el intérprete obtendremos lo siguiente:
 
-$$hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}$$
+<img src="imagenes/imagenes-basicas.png" width="100px"/>
 
-Como puedes comprobar, el código es imperativo. La forma especial
-`begin` permite realizar una serie de pasos de ejecución que modifican
-el estado (posición y orientación) de la *tortuga* y dibujan los
-trazos de la figura.
+Las imágenes son mapas de bits y su tamaño se expresa en píxeles. En
+el caso del círculo se trata del radio, para el cuadrado indicamos su
+lado, para el rectángulo la base y la altura y para el triángulo
+equilátero su lado.
 
-El siguiente código es una variante del anterior que dibuja un
-triángulo rectángulo de base `w` y lados `w/2`. Va a ser la figura
-base del triángulo de Sierpinski.
+Debemos indicar también si queremos que la imagen se rellene de
+forma sólida o se dibuje solo el borde. Y también su color, mediante
+una cadena escogida de una [lista de colores permitidos](https://docs.racket-lang.org/draw/color-database___.html).
+
+Podemos también construir un triángulo isósceles indicando la longitud
+de sus lados iguales y el ángulo entre ellos:
 
 ```racket
-(define (triangle w)
-   (begin
-      (draw w)
-      (turn 135)
-      (draw (hipot (/ w 2)))
-      (turn 90)
-      (draw (hipot (/ w 2)))
-      (turn 135)))
+ (isosceles-triangle 60 30 "outline" "black") 
 ```
+
+<img src="imagenes/image-isosceles.png" width="360px"/>
+
+Por último, otra primitiva que vamos a utilizar más adelante es un
+trazo de una línea:
+
+```racket
+(line 30 30 "black")
+```
+
+<img src="imagenes/image-line.png" width="30"/>
+
+Construye una imagen con una línea hasta la posición (30,30) (la
+coordenada _x_ crece hacia la derecha y la _y_ hacia abajo).
+
+Las imágenes son objetos de primera clase del lenguaje. Pueden
+guardarse en variables y listas. Por ejemplo, podemos ejecutar las
+siguientes instrucciones en el intérprete:
+
+```racket
+(define triangulo (triangle 15 "solid" "red"))
+(define circulo (circle 7 "solid" "green"))
+(define cuadrado (square 13 "solid" "blue"))
+(define poligono-regular (regular-polygon 9 5 "solid" "orange"))
+(define poligono-estrella (star-polygon 7 7 2 "solid" "brown"))
+```
+
+Una vez definidas las imágenes, podemos guardarlas en una lista y
+recuperar alguna:
+
+```racket
+(define lista 
+   (list triangulo circulo cuadrado poligono-regular poligono-estrella))
+lista ; ⇒ evalua la lista de figuras y la muestra
+(first (rest lista)) ; ⇒ devuelve el círculo verde
+```
+
+<img src="imagenes/image-lista.png" width="600px"/>
+
+Prueba a construir algunas imágenes usando los comandos anteriores y
+cambiando sus parámetros.
+
+
+#### Operaciones y combinaciones de imágenes ####
+
+En la librería de imágenes se definen también funciones que permiten
+transformar y combinar imágenes. Vamos a ver algunos de ellos.
+
+Podemos rotar una imagen un ángulo, expresado en grados sexagesimales
+en el sentido contrario de las agujas del reloj.
+
+Por ejemplo, podemos rotar el triángulo isósceles anterior:
+
+```racket
+(define triangulo (isosceles-triangle 60 30 "outline" "black"))
+(rotate 90 triangulo) 
+; ⇒ imagen rotada 90 grados en sentido contrario a las agujas del reloj
+(rotate -90 triangulo)
+; ⇒ imagen rotada 90 grados en sentido de las agujas del reloj
+```
+
+<img src="imagenes/imagen-rotada.png" width="500px"/>
+
+Podemos también combinar imágenes, agrupándolas con las funciones
+`above` y `besides`. Las dos funciones reciben un número variable de
+argumentos y devuelven una nueva imagen en la que las imágenes se han
+colocado unas sobre otras o unas al lado de otras.
+
+Por ejemplo:
+
+```racket
+(above (ellipse 70 20 "solid" "gray")
+       (ellipse 50 20 "solid" "darkgray")
+       (ellipse 30 20 "solid" "dimgray")
+       (ellipse 10 20 "solid" "black"))
+```
+
+La llamada anterior devuelve la siguiente imagen:
+
+<img src="imagenes/image-above.png" width="340px"/>
+
+Otro ejemplo:
+
+```racket
+(beside (ellipse 20 70 "solid" "gray")
+        (ellipse 20 50 "solid" "darkgray")
+        (ellipse 20 30 "solid" "dimgray")
+        (ellipse 20 10 "solid" "black"))
+```
+
+Que produce:
+
+<img src="imagenes/image-beside.png" width="340px"/>
+
+En los dos ejemplos anteriores las imágenes agrupadas se alinean en el
+centro. Si queremos otra alineación podemos especificarla usando las
+funciones `above/align` y `beside/align`. 
+
+En el caso de `above`, que acumula las imágenes unas sobre otras,
+podremos especificar si queremos alinearlas a la izquierda o a la
+derecha:
+
+```racket
+(above/align "left"
+               (ellipse 70 20 "solid" "yellowgreen")
+               (ellipse 50 20 "solid" "olivedrab")
+               (ellipse 30 20 "solid" "darkolivegreen")
+               (ellipse 10 20 "solid" "darkgreen"))
+```
+
+<img src="imagenes/image-above-left.png" width="100px"/>
+
+```racket
+(above/align "right"
+               (ellipse 70 20 "solid" "gold")
+               (ellipse 50 20 "solid" "goldenrod")
+               (ellipse 30 20 "solid" "darkgoldenrod")
+               (ellipse 10 20 "solid" "sienna"))
+```
+
+<img src="imagenes/image-above-right.png" width="100px"/>
+
+En el caso de `beside`, que acumula las imágenes unas junto a otras,
+podemos especificar si queremos alinearla arriba o abajo:
+
+```racket
+(beside/align "top"
+                (ellipse 20 70 "solid" "mediumorchid")
+                (ellipse 20 50 "solid" "darkorchid")
+                (ellipse 20 30 "solid" "purple")
+                (ellipse 20 10 "solid" "indigo"))
+```
+
+<img src="imagenes/image-beside-top.png" width="100px"/>
+
+```racket
+(beside/align "bottom"
+                (ellipse 20 70 "solid" "lightsteelblue")
+                (ellipse 20 50 "solid" "mediumslateblue")
+                (ellipse 20 30 "solid" "slateblue")
+                (ellipse 20 10 "solid" "navy"))
+```
+
+<img src="imagenes/image-beside-bottom.png" width="100px"/>
+
+Podemos combinar todas las funciones anteriores para construir figuras
+complejas. Por ejemplo:
+
+```racket
+(rotate 45
+        (above (triangle 40 "solid" "orange")
+               (beside (rectangle 40 30 "solid" "black")
+                       (rectangle 40 30 "solid" "olivedrab"))))
+```
+
+<img src="imagenes/imagen-compleja.png" width="100px"/>
+
+
+Prueba a realizar algunas figuras combinando figuras básicas con las
+funciones anteriores.
 
 ### 4.2. Triángulo de Sierpinski
+
+Vamos a utilizar las funciones anteriores que construyen imágenes para
+construir una figura fractal, el denominado riángulo de Sierpinski,
+usando la recursión.
 
 <img src="imagenes/sierpinski.png" width="400px"/>
 
@@ -646,7 +761,8 @@ base del triángulo de Sierpinski.
 
 - ¿Ves alguna recursión en la figura?
 - ¿Cuál podría ser el parámetro de la función que la dibujara? 
-- ¿Se te ocurre un algoritmo recursivo que la dibuje?
+- ¿Se te ocurre un algoritmo recursivo que la dibuje, usando las
+  funciones de combinación de imágenes vistas?
 
 La figura es *autosimilar* (una característica de las figuras
 fractales). Una parte de la figura es idéntica a la figura total, pero
@@ -654,266 +770,184 @@ reducida de escala. Esto nos da una pista de que es posible dibujar la
 figura con un algoritmo recursivo.
 
 Para intentar encontrar una forma de enfocar el problema, vamos a
-pensarlo de la siguiente forma: supongamos que tenemos un triángulo de
-Sierpinski de anchura *h* y altura *h/2* con su esquina inferior
-izquierda en la posición 0,0. ¿Cómo podríamos construir **el
-siguiente** triángulo de Sierpinski?.
+pensarlo de la siguiente forma: supongamos que tenemos tres triángulos
+de Sierpinski de anchura _x_. ¿Cómo podríamos construir el triángulo
+de Sierpinski de anchura _2*x_?
 
-Podríamos construir un triángulo de Sierpinski más grande dibujando 3
-veces el mismo triángulo, pero en distintas posiciones:
+Lo podríamos hacer combinando las tres imágenes de la siguiente forma:
 
-1. Triángulo 1 en la posición (0,0)
-2. Triángulo 2 en la posición (h/2,h/2)
-3. Triángulo 3 en la posición (h,0)
+1. Juntamos 2 triángulos uno junto a otro.
+2. Sobre la figura resultante colocamos (alineada en el centro) el
+   triángulo restante.
 
-El algoritmo recursivo se basa en la misma idea, pero *hacia
-atrás*. Debemos intentar dibujar un triángulo de altura *h* situado en
-la posición *x*, *y* basándonos en 3 llamadas recursivas a triángulos
-más pequeños. En el caso base, cuando *h* sea menor que un umbral,
-dibujaremos un triángulo de lado *h* y altura *h/2*:
+En la siguiente figura se muestra el esquema de esta combinación. Cada
+rectángulo representa la imagen de sierpinski de anchura _x_ y la
+combinación representa la imagen de anchura _2*x_.
 
-O sea, que para dibujar un triángulo de Sierpinski de base *h* y
-altura *h/2* debemos:
+<img src="imagenes/image-esquema-sierpinski.png" width="300px"/>
 
-* Dibujar tres triángulos de Sierpinsky de la mitad del tamaño del
-  original (*h/2*) situadas en las posiciones *(x,y)*, *(x+h/4,
-  y+h/4)* y *(x+h/2,y)*
-* En el caso base de la recursión, en el que *h* es menor que una
-  constante, se dibuja un triángulo de base *h* y altura *h/2*.
+El algoritmo recursivo se basa en la misma idea, pero **hacia
+atrás**. Debemos intentar dibujar un triángulo de anchura _x_
+basándonos en 3 llamadas recursivas a triángulos más pequeños (de
+anchura _x/2_). 
 
-Una versión del algoritmo en *pseudocódigo*:
+En el caso base, cuando _x_ sea menor que un umbral _h_, dibujaremos un
+triángulo elemental de base _h_.
 
-```text
-Sierpinsky (x, y, h):
-   if (h > MIN) {
-      Sierpinsky (x, y, h/2)
-      Sierpinsky (x+h/4, y+h/4, h/2)
-      Sierpinsky (x+h/2, y, h/2)
-   } else dibujaTriangulo (x, y, h)
-```		
+Veamos cómo hacerlo con la librería de imágenes de Racket.
 
+#### Caso base de la recursión ####
 
-### 4.3. Sierpinski en Racket
+Para construir la imagen elemental del triángulo de Sierpinski
+necesitamos un triángulo isósceles de ángulo 90 y base _h_. Podemos
+calcular 
 
-La siguiente es una versión imperativa del algoritmo que dibuja el
-triángulo de Sierpinski. No es funcional porque se realizan *pasos de
-ejecución*, usando la forma especial `begin` o múltiples instrucciones
-en una misma función (por ejemplo la función `triangle`).
+<img src="imagenes/image-sierpinski-elemental.png" width="400px"/>
+
+La función `(hipot x)` devuelve la longitud de la hipotenusa de un
+triángulo rectángulo con dos lados de longitud `x`. O sea, la
+expresión:
+
+$$hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}$$
+
+Lo podemos expresar en Racket:
 
 ```racket
-#lang racket
-(require graphics/turtles)
+(define (hipotenusa x)
+  (* x (sqrt 2)))
 
-(turtles #t)
-
-(define (hipot x)
-	(* x (sqrt 2)))
-
-(define (triangle w)
-   (begin
-      (draw w)
-      (turn 135)
-      (draw (hipot (/ w 2)))
-      (turn 90)
-      (draw (hipot (/ w 2)))
-      (turn 135)))
-      
-(define (sierpinski w)
-   (if (> w 20)
-      (begin
-         (sierpinski (/ w 2))
-         (move (/ w 4)) (turn 90) (move (/ w 4)) (turn -90)
-         (sierpinski (/ w 2))
-         (turn -90) (move (/ w 4)) (turn 90) (move (/ w 4))
-         (sierpinski (/ w 2))
-         (turn 180) (move (/ w 2)) (turn -180)) ;; volvemos a la posición original
-      (triangle w)))
+(define (sierpinski-elem base)
+  (isosceles-triangle (hipotenusa (/ base 2)) 90 "outline" "black"))
 ```
 
-La llamada a
+Por ejemplo, la llamada a 
 
 ```racket
-(sierpinski 40)
+(sierpinski-elem 40)
 ```
 
-produce la siguiente figura:
+produce la siguiente imagen:
 
-<img src="imagenes/sierpinski-40.png"/>
+<img src="imagenes/image-sierpinski-elem.png" width="180px"/>
 
-La llamada a
+
+#### Caso general de la recursión ####
+
+El caso general de la recursión para dibujar el triángulo de
+Sierpinski de ancho _x_ se construye llamando a la recursión para que
+construya el triángulo de ancho _x/2_ y componiendo la imagen
+resultante con el patrón visto anteriormente.
+
+El código de la función completa es el siguiente:
 
 ```racket
-(sierpinski 700)
+(define (sierpinski ancho)
+  (if (< ancho 10)
+      (sierpinski-elem ancho)
+      (above (sierpinski (/ ancho 2))
+             (beside (sierpinski (/ ancho 2))
+                     (sierpinski (/ ancho 2))))))
 ```
 
-Produce la figura que vimos al principio del apartado:
+- Si el ancho es menor que un umbral (10) se dibuja el triángulo elemental.
+- Si el ancho es mayor o igual a 10 se hacen tres llamadas recursivas a
+  `sierpienski` con el _ancho / 2_. Cada llamada recursiva devolverá
+  la imagen con el triángulo de sierpinski más pequeño.
+- La llamada a `beside` juntará las dos imágenes inferiores.
+- La llamada a `above` colocará el tercer triángulo sobre la composición
+  anterior, centrado en el centro.
 
-<img src="imagenes/sierpinski.png" width="400px"/>
+Un ejemplo de la ejecución:
 
-Para ocupar la venta completa debemos desplazar la tortuga hacia atrás
-antes de invocar a `sierpinski`:
+<img src="imagenes/image-sierpinski.png" width="600px"/>
 
-```racket
-(clear)
-(move -350)
-(sierpinski 700)
-```
 
-### 4.4. Recursión mutua
-
-En la recursión mutua definimos una función en base a una segunda, que
-a su vez se define en base a la primera.
-
-También debe haber un caso base que termine la recursión
-
-Por ejemplo:
-
-- x es par si x-1 es impar
-- x es impar si x-1 es par
-- 0 es par
-
-Programas en Scheme:
-
-```racket
-(define (par? x)
-   (if (= 0 x)
-      #t
-      (impar? (- x 1))))
-
-(define (impar? x)
-   (if (= 0 x)
-      #f
-      (par? (- x 1))))
-```
-
-### 4.5. Ejemplo avanzado: curvas de Hilbert
+### 4.3. Curva de Hilbert ###
 
 La curva de Hilbert es una curva fractal que tiene la propiedad de
-rellenar completamente el espacio
+rellenar completamente el plano.
 
 Su dibujo tiene una formulación recursiva:
 
 <img src="imagenes/hilbert.png" width="600px"/>
 
-La curva H3 se puede construir a partir de la curva H2. El algoritmo
-recursivo se formula dibujando la curva i-ésima a partir de la curva
-i-1.
+La imagen H2 se puede componer a partir de cuatro imágenes H1
+siguiendo un patrón. Es el mismo patrón con el que se puede componer
+la imagen H3 a partir de cuatro imágenes H2.
 
-Para dibujar una curva de Hilbert de orden i a la *derecha* de la tortuga:
-
-	1. Gira la tortuga -90
-	2. Dibuja una curva de orden i-1 a la izquierda
-	3. Avanza long dibujando
-	4. Gira 90
-	5. Dibuja una curva de orden i-1 a la derecha
-	6. Avanza long dibujando
-	7. Dibuja una curva de orden i-1 a la derecha
-	8. Gira 90
-	9. Avanza long dibujando
-	10. Dibuja una curva de orden i-1 a la izquierda
-	11. Gira -90
-
-El algoritmo para dibujar a la izquierda es simétrico.
-
-Como en la curva de Sierpinsky, utilizamos la librería
-`graphics/turtles`, que permite usar la tortuga de Logo con los
-comandos de Logo `draw` y `turn`. Definimos dos funciones simétricas,
-la función `(h-der i long)` que dibuja una curva de Hilbert de orden
-`i` con una longitud de trazo `long` a la *derecha* de la tortuga y la
-función `(h-izq i w)` que dibuja una curva de Hilbert de orden `i` con
-una longitud de trazo `long` a la *izquierda* de la tortuga.
-
-El algoritmo en Scheme:
+El patrón se muestra en la siguiente función `(componer imagen)`: 
 
 ```racket
-#lang racket
-(require graphics/turtles)
+(define trazo-horizontal (line 16 0 "black"))
+(define trazo-vertical (rotate 90 trazo-horizontal))
 
-(define (h-izq i long)
-   (if (> i 0)
-     (begin
-      (turn 90)
-      (h-der (- i 1) long)
-      (draw  long)
-      (turn -90)
-      (h-izq (- i 1) long)
-      (draw long)
-      (h-izq (- i 1) long)
-      (turn -90)
-      (draw long)
-      (h-der (- i 1) long)
-      (turn 90))
-     (move 0)))
-
-(define (h-der i long)
-   (if (> i 0)
-      (begin
-        (turn -90)
-        (h-izq (- i 1) long)
-        (draw  long)
-        (turn 90)
-        (h-der (- i 1) long)
-        (draw long)
-        (h-der (- i 1) long)
-        (turn 90)
-        (draw long)
-        (h-izq (- i 1) long)
-        (turn -90))
-      (move 0)))
+(define (componer imagen)
+  (beside (above/align "left"
+                       (beside/align "bottom" imagen trazo-horizontal)
+                       trazo-vertical
+                       (rotate -90 imagen))
+          (above/align "right"
+                       imagen
+                       trazo-vertical
+                       (rotate 90 imagen))))
 ```
 
-Podemos probarlo con distintos parámetros de grado de curva y longitud
-de trazo.
+- La primera llamada a `above/align` compone una imagen juntando la
+  imagen original con un trazo horizontal y apilando (con una
+  alineación a la izquierda) la imagen resultante sobre un trazo
+  girado y sobre la imagen original girada 90 grados en el sentido de
+  las agujas del reloj.
+- La segunda llamada a `above/align` construye otra imagen apilando
+  (con una alineación a la derecha) la imagen original, un trazo
+  vertical y la imagen rotada 90 grados en sentido contrario a las
+  agujas del reloj.
+- Por último la llamada a `beside` junta las dos imágenes anteriores.
 
-Curva de Hilbert de nivel 3 con trazo de longitud 20:
+Podemos ver un ejemplo del funcionamiento de esta composición usando
+una imagen base formada por un cuadrado con un triángulo dentro.
 
 ```racket
-(clear)
-(h-izq 3 30)
+(overlay (triangle 20 "solid" "green")
+         (rectangle 20 20 "solid" "black")))
 ```
 
-Para entender mejor el algoritmo podemos dibujar paso a paso esta
-figura usando los siguientes comandos:
+<img src="imagenes/imagen-ejemplo-componer.png" width="30px"/>
+
+Si llamamos a `componer` con la imagen anterior podemos ver que se
+construye el patrón básico de la curva de Hilbert, el que construye la
+imagen H2 a partir de H1.
 
 ```racket
-(clear)
-(turn 90)
-(h-der 2 30)
-(draw  30)
-(turn -90)
-(h-izq 2 30)
-(draw 30)
-(h-izq 2 30)
-(turn -90)
-(draw 30)
-(h-der 2 30)
-(turn 90)
+(define imagen (overlay (triangle 20 "solid" "green")
+                        (rectangle 20 20 "solid" "black")))
+imagen 
+(componer imagen)
 ```
 
-Curva de Hilbert de nivel 6 con trazo de longitud 10:
+<img src="imagenes/imagen-componer.png" width="500px"/>
+
+El algoritmo recursivo es el siguiente:
 
 ```racket
-(clear)
-(move -350)
-(turn -90)
-(move 350)
-(turn 90)
-(h-izq 6 10)
+(define (hilbert nivel)
+  (if (= 1 nivel)
+      (beside/align "top"
+                    trazo-vertical
+                    trazo-horizontal
+                    trazo-vertical)
+      (componer (hilbert (- nivel 1)))))
+
 ```
 
-Curva de Hilbert de nivel 7 con trazo de longitud 5:
+- El caso base es el nivel 1, en el que se construye el trazo básico
+  de la curva de Hilbert.
+- Para cualquier nivel _n_  mayor que 1, se llama a la recursión para
+  formar la curva de Hilbert de nivel _n-1_ y, con la imagen
+  resultante, se llama a la función `componer`.
+  
+En la siguiente imagen se muestran distintas llamadas a la función `hilbert`:
 
-```racket
-(clear)
-(move -350)
-(turn -90)
-(move 350)
-(turn 90)
-(h-izq 7 5)
-```
-
-<img src="imagenes/hilbert-scheme.png"/>
-
+<img src="imagenes/image-hilbert.png" width="250px"/>
 
 ## 5. Bibliografía - SICP
 
