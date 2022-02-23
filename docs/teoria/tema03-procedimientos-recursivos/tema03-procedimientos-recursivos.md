@@ -471,36 +471,9 @@ de datos que pasamos como parámetro. Para implementarlos tenemos que
 salirnos del paradigma funcional, usando las funciones de Racket que
 permiten mutar las parejas.
 
-La implementación de estas funciones están incluidas en el fichero
-`lpp.rkt`. 
-
-
-```racket
-(define (crea-diccionario)
-  (mcons '*diccionario* '()))
-
-(define (busca key dic)
-  (cond
-    ((null? dic) #f)
-    ((equal? key (mcar (mcar dic)))
-     (mcar dic))
-    (else (busca key (mcdr dic)))))
-
-(define (get key dic)
-  (define record (busca key (mcdr dic)))
-  (if (not record)
-      #f
-      (mcdr record)))
-
-(define (put key value dic)
-  (define record (busca key (mcdr dic)))
-  (if (not record)
-      (set-mcdr! dic
-                (mcons (mcons key value)
-                      (mcdr dic)))
-      (set-mcdr! record value))
-  value)
-```
+La implementación de estas funciones está incluidas en el fichero
+[fichero
+`lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt).
 
 La función `fib-memo` realiza el cálculo de la serie de Fibonacci
 utilizando exactamente la misma definición recursiva original, pero
