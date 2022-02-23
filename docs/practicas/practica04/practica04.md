@@ -98,14 +98,28 @@ Ejemplo:
 
 ### Ejercicio 2 ###
 
-a) Escribe la función `(expande-parejas pareja1 pareja2 ... pareja_n)`
-que recibe un número variable de argumentos y devuelve una lista donde
-se han "expandido" las parejas, creando una lista con tantos elementos
-como el número que indique cada pareja.
+Vamos a implementar distintas versiones de funciones que expanden
+una lista original. 
 
-Debes implementar y utilizar una función auxiliar recursiva
-`(expande-pareja pareja)` que recibe una pareja y devuelve la lista
-expandida resultante de expandir sólo esa pareja.
+En el primer apartado definiremos una función auxiliar que se deberá
+usar en todos los demás apartados.
+
+a) Escribe la función recursiva `(expande-pareja pareja)` que recibe
+una pareja formada por un dato y un número _n_ y devuelve la lista
+formada por _n_ repeticiones del dato.
+
+Ejemplo:
+
+```racket
+(expande-pareja '(hola . 3)) ; ⇒ (hola hola hola)
+(expande-pareja '(#t . 5)) ; ⇒ (#t #t #t #t #t)
+```
+
+b) Vamos a implementar dos versiones de la función `(expande-parejas
+pareja1 pareja2 ... pareja_n)` que recibe un número variable de
+argumentos y devuelve una lista donde se han "expandido" las parejas,
+creando una lista con tantos elementos como el número que indique cada
+pareja.
 
 Ejemplo:
 
@@ -114,14 +128,14 @@ Ejemplo:
 ; ⇒ (#t #t #t "LPP" "LPP" b b b b)
 ```
 
-a.1) Escribe una solución en la que la función `expande-parejas`
+b.1) Escribe una solución en la que la función `expande-parejas`
 llame a una función recursiva `(expande-lista lista-parejas)`
 que trabaje sobre una lista de parejas.
 
-a.2) Escribe una solución en la que la propia función
+b.2) Escribe una solución en la que la propia función
 `expande-parejas` sea recursiva.
 
-b) Implementa la función recursiva `(expande2 lista)`. Recibe una
+c) Implementa la función recursiva `(expande2 lista)`. Recibe una
 lista en la que hay intercalados algunos números enteros
 positivos. Devuelve la lista original en la que se han expandido los
 elementos siguientes a los números, tantas veces como indica el
