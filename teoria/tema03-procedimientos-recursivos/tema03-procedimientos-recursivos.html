@@ -889,33 +889,9 @@ una clave. En el caso en que no exista ningún valor se devuelve <code>#f</code>
 de datos que pasamos como parámetro. Para implementarlos tenemos que
 salirnos del paradigma funcional, usando las funciones de Racket que
 permiten mutar las parejas.</p>
-<p>La implementación de estas funciones están incluidas en el fichero
-<code>lpp.rkt</code>. </p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">crea-diccionario</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">mcons</span> <span class="o">&#39;</span><span class="ss">*diccionario*</span> <span class="o">&#39;</span><span class="p">()))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">busca</span> <span class="n">key</span> <span class="n">dic</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">cond</span>
-    <span class="p">((</span><span class="nb">null?</span> <span class="n">dic</span><span class="p">)</span> <span class="no">#f</span><span class="p">)</span>
-    <span class="p">((</span><span class="nb">equal?</span> <span class="n">key</span> <span class="p">(</span><span class="nb">mcar</span> <span class="p">(</span><span class="nb">mcar</span> <span class="n">dic</span><span class="p">)))</span>
-     <span class="p">(</span><span class="nb">mcar</span> <span class="n">dic</span><span class="p">))</span>
-    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">busca</span> <span class="n">key</span> <span class="p">(</span><span class="nb">mcdr</span> <span class="n">dic</span><span class="p">)))))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">get</span> <span class="n">key</span> <span class="n">dic</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">define</span> <span class="n">record</span> <span class="p">(</span><span class="n">busca</span> <span class="n">key</span> <span class="p">(</span><span class="nb">mcdr</span> <span class="n">dic</span><span class="p">)))</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">not</span> <span class="n">record</span><span class="p">)</span>
-      <span class="no">#f</span>
-      <span class="p">(</span><span class="nb">mcdr</span> <span class="n">record</span><span class="p">)))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">put</span> <span class="n">key</span> <span class="n">value</span> <span class="n">dic</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">define</span> <span class="n">record</span> <span class="p">(</span><span class="n">busca</span> <span class="n">key</span> <span class="p">(</span><span class="nb">mcdr</span> <span class="n">dic</span><span class="p">)))</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">not</span> <span class="n">record</span><span class="p">)</span>
-      <span class="p">(</span><span class="nb">set-mcdr!</span> <span class="n">dic</span>
-                <span class="p">(</span><span class="nb">mcons</span> <span class="p">(</span><span class="nb">mcons</span> <span class="n">key</span> <span class="n">value</span><span class="p">)</span>
-                      <span class="p">(</span><span class="nb">mcdr</span> <span class="n">dic</span><span class="p">)))</span>
-      <span class="p">(</span><span class="nb">set-mcdr!</span> <span class="n">record</span> <span class="n">value</span><span class="p">))</span>
-  <span class="n">value</span><span class="p">)</span>
-</code></pre></div>
+<p>La implementación de estas funciones está incluidas en el fichero
+<a href="https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt">fichero
+<code>lpp.rkt</code></a>.</p>
 <p>La función <code>fib-memo</code> realiza el cálculo de la serie de Fibonacci
 utilizando exactamente la misma definición recursiva original, pero
 añadiendo la técnica de <em>memoization</em>: lo primero que hacemos para
