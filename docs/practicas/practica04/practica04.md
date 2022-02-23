@@ -103,9 +103,9 @@ que recibe un número variable de argumentos y devuelve una lista donde
 se han "expandido" las parejas, creando una lista con tantos elementos
 como el número que indique cada pareja.
 
-Debes implementar y utilizar una función auxiliar `(expande-pareja
-pareja)` que recibe una pareja y devuelve la lista expandida
-resultante de expandir sólo esa pareja.
+Debes implementar y utilizar una función auxiliar también recursiva
+`(expande-pareja pareja)` que recibe una pareja y devuelve la lista
+expandida resultante de expandir sólo esa pareja.
 
 Ejemplo:
 
@@ -127,6 +127,9 @@ positivos. Devuelve la lista original en la que se han expandido los
 elementos siguientes a los números, tantas veces como indica el
 número. La lista nunca va a contener dos números consecutivos y
 siempre va a haber un elemento después de un número.
+
+Debes usar también para su implementación la función `(expande-pareja
+pareja)` definida en el apartado a).
 
 Ejemplo:
 
