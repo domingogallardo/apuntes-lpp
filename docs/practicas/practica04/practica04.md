@@ -103,6 +103,10 @@ que recibe un número variable de argumentos y devuelve una lista donde
 se han "expandido" las parejas, creando una lista con tantos elementos
 como el número que indique cada pareja.
 
+Debes implementar y utilizar una función auxiliar `(expande-pareja
+pareja)` que recibe una pareja y devuelve la lista expandida
+resultante de expandir sólo esa pareja.
+
 Ejemplo:
 
 ```racket
@@ -116,12 +120,6 @@ que trabaje sobre una lista de parejas.
 
 a.2) Escribe una solución en la que la propia función
 `expande-parejas` sea recursiva.
-
-!!! Hint "Pista"
-    Puedes definir una función auxiliar `(expande-pareja pareja)` que
-    recibe una pareja y devuelve la lista expandida resultante de expandir
-    sólo esa pareja.
-
 
 b) Implementa la función recursiva `(expande2 lista)`. Recibe una
 lista en la que hay intercalados algunos números enteros
