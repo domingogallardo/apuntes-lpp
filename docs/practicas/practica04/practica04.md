@@ -133,7 +133,10 @@ llame a una función recursiva `(expande-lista lista-parejas)`
 que trabaje sobre una lista de parejas.
 
 b.2) Escribe una solución en la que la propia función
-`expande-parejas` sea recursiva.
+`expande-parejas` sea recursiva. 
+
+!!! Hint "Pista"
+    Repasa el apartado 5.3.1 de teoría.
 
 c) Implementa la función recursiva `(expande2 lista)`. Recibe una
 lista en la que hay intercalados algunos números enteros
