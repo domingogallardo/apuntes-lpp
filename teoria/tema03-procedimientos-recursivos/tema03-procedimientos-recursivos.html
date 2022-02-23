@@ -484,16 +484,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-recursion-y-graficos-de-tortuga" class="md-nav__link">
-    4. Recursión y gráficos de tortuga
+  <a href="#4-figuras-recursivas" class="md-nav__link">
+    4. Figuras recursivas
   </a>
   
-    <nav class="md-nav" aria-label="4. Recursión y gráficos de tortuga">
+    <nav class="md-nav" aria-label="4. Figuras recursivas">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-graficos-de-tortuga-en-racket" class="md-nav__link">
-    4.1. Gráficos de tortuga en Racket
+  <a href="#41-libreria-de-imagenes-de-racket" class="md-nav__link">
+    4.1. Librería de imágenes de Racket
   </a>
   
 </li>
@@ -506,22 +506,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#43-sierpinski-en-racket" class="md-nav__link">
-    4.3. Sierpinski en Racket
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#44-recursion-mutua" class="md-nav__link">
-    4.4. Recursión mutua
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#45-ejemplo-avanzado-curvas-de-hilbert" class="md-nav__link">
-    4.5. Ejemplo avanzado: curvas de Hilbert
+  <a href="#43-curva-de-hilbert" class="md-nav__link">
+    4.3. Curva de Hilbert
   </a>
   
 </li>
@@ -871,24 +857,6 @@ calcular el valor de números como Pascal(40, 20):</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">pascal</span> <span class="mi">40</span> <span class="mi">20</span><span class="p">)</span>
 <span class="c1">; ⇒ 137846528820</span>
 </code></pre></div>
-<!--
-
-Otro posible ejemplo es la función prefijo con el 'or' y el 'and'. 
-
-(define (prefijo-lista? lista1 lista2)
-    (or (null? lista1)
-        (and (equal? (car lista1) (car lista2))
-        (prefijo-lista? (cdr lista1) (cdr lista2)))))
-
-Sirve también para explicar el funcionamiento de and y or como 
-formas especiales.
-
-Podríamos también hacer alguna prueba de carga en la que se vea
-que con una recursión se genera un error de 'ran out of memory' y 
-con la recursión por la cola termina correctamente.
-
--->
-
 <h2 id="3-soluciones-al-coste-de-la-recursion-memoization">3. Soluciones al coste de la recursión: memoization<a class="headerlink" href="#3-soluciones-al-coste-de-la-recursion-memoization" title="Permanent link">&para;</a></h2>
 <p>Una alternativa que mantiene la elegancia de los procesos recursivos y
 la eficiencia de los iterativos es la
@@ -975,309 +943,292 @@ imposible de utilizar.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">fib-memo</span> <span class="mi">200</span> <span class="n">lista</span><span class="p">)</span>
 <span class="n">⇒</span> <span class="mi">280571172992510140037611932413038677189525</span>
 </code></pre></div>
-<h2 id="4-recursion-y-graficos-de-tortuga">4. Recursión y gráficos de tortuga<a class="headerlink" href="#4-recursion-y-graficos-de-tortuga" title="Permanent link">&para;</a></h2>
+<h2 id="4-figuras-recursivas">4. Figuras recursivas<a class="headerlink" href="#4-figuras-recursivas" title="Permanent link">&para;</a></h2>
 <p>Vamos a terminar el apartado sobre procedimientos recursivos con un
 último ejemplo algo distinto de los vistos hasta ahora. Usaremos la
-recursión para dibujar figuras fractales usando los denominados
-<em>gráficos de tortuga</em>. Para dibujar las figuras tendremos que utilizar
-un estilo de programación no funcional, dibujando los distintos trazos
-de las figuras con pasos de ejecución secuenciales. Para ello usaremos
-una primitiva imperativa de Scheme: la forma especial <code>begin</code> que
-permite realizar un grupo de pasos de ejecución de forma secuencial.</p>
-<div class="admonition warning">
-<p class="admonition-title">Aviso</p>
-<p>Ten cuidado con la forma especial <code>begin</code>, es una forma especial
-imperativa. No debes usarla en la implementación de ninguna función
-cuando estemos usando el paradigma funcional.</p>
-</div>
-<h3 id="41-graficos-de-tortuga-en-racket">4.1. Gráficos de tortuga en Racket<a class="headerlink" href="#41-graficos-de-tortuga-en-racket" title="Permanent link">&para;</a></h3>
-<p>Se pueden utilizar los
-<a href="http://en.wikipedia.org/wiki/Turtle_graphics">gráficos de tortuga</a> en
-Racket cargando la librería <code>(graphics turtles)</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
-<span class="p">(</span><span class="k">require</span> <span class="n">graphics/turtles</span><span class="p">)</span>
+recursión para dibujar figuras fractales usando la <a href="https://docs.racket-lang.org/teachpack/2htdpimage.html">librería de imágenes de
+Racket</a>
+<code>2htdp/image</code>.</p>
+<h3 id="41-libreria-de-imagenes-de-racket">4.1. Librería de imágenes de Racket<a class="headerlink" href="#41-libreria-de-imagenes-de-racket" title="Permanent link">&para;</a></h3>
+<p>Racket incluye una librería de imágenes en la que se proporcionan
+funciones para construir imágenes. Con esta librería se pueden crear
+imágenes sencillas como rectas, círculos, triángulos u otras figuras
+geométricas. También se pueden modificar las imágenes creadas,
+rotándolas o escalándolas, y formar otras imágenes mediante la
+combinación de imagenes básicas.</p>
+<h4 id="construccion-de-imagenes-basicas">Construcción de imágenes básicas<a class="headerlink" href="#construccion-de-imagenes-basicas" title="Permanent link">&para;</a></h4>
+<p>Veamos algunos ejemplos de las primitivas de la librería para
+construir imágenes básicas.</p>
+<p>Podemos obtener un círculo, un cuadrado, un rectángulo y un triángulo
+equilátero de la siguiente forma:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">circle</span> <span class="mi">30</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">square</span> <span class="mi">30</span> <span class="s2">&quot;outline&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">rectangle</span> <span class="mi">80</span> <span class="mi">40</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">triangle</span> <span class="mi">40</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>Los comandos más importantes de esta librería son:</p>
-<ul>
-<li><code>(turtles #t)</code>: abre una ventana y coloca la tortuga en el centro,
-  mirando hacia el eje X (derecha)</li>
-<li><code>(clear)</code>: borra la ventana y coloca la tortuga en el centro</li>
-<li><code>(draw d)</code>: avanza la tortuga dibujando <em>d</em> píxeles </li>
-<li><code>(move d)</code>: mueve la tortuga <em>d</em> píxeles hacia adelante (sin dibujar)</li>
-<li><code>(turn g)</code>: gira la tortuga <em>g</em> grados (positivos: en el sentido
-  contrario a las agujas del reloj)</li>
-</ul>
-<p>Prueba a realizar algunas figuras con los comandos de tortuga, antes
-de escribir el algoritmo en Scheme del triángulo de Sierpinski.</p>
-<p>Por ejemplo, podemos definir una función que dibuja un triángulo
-rectángulo con catetos de longitud <code>x</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hipot</span> <span class="n">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">sqrt</span> <span class="mi">2</span><span class="p">)))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">triangulo-rectangulo</span> <span class="n">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">begin</span>
-      <span class="p">(</span><span class="n">draw</span> <span class="n">x</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">draw</span> <span class="n">x</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">draw</span> <span class="p">(</span><span class="n">hipot</span> <span class="n">x</span><span class="p">))</span>
-      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)))</span>
-
-<span class="p">(</span><span class="n">triangulo-rectangulo</span> <span class="mi">100</span><span class="p">)</span>
+<p>Cada instrucción construye la imagen correspondiente. Si lo ejecutamos
+en el intérprete obtendremos lo siguiente:</p>
+<p><img src="imagenes/imagenes-basicas.png" width="100px"/></p>
+<p>Las imágenes son mapas de bits y su tamaño se expresa en píxeles. En
+el caso del círculo se trata del radio, para el cuadrado indicamos su
+lado, para el rectángulo la base y la altura y para el triángulo
+equilátero su lado.</p>
+<p>Debemos indicar también si queremos que la imagen se rellene de
+forma sólida o se dibuje solo el borde. Y también su color, mediante
+una cadena escogida de una <a href="https://docs.racket-lang.org/draw/color-database___.html">lista de colores permitidos</a>.</p>
+<p>Podemos también construir un triángulo isósceles indicando la longitud
+de sus lados iguales y el ángulo entre ellos:</p>
+<div class="highlight"><pre><span></span><code> <span class="p">(</span><span class="n">isosceles-triangle</span> <span class="mi">60</span> <span class="mi">30</span> <span class="s2">&quot;outline&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span> 
 </code></pre></div>
-<p>La función <code>(hipot x)</code> devuelve la longitud de la hipotenusa de un
-triángulo rectángulo con dos lados de longitud <code>x</code>. O sea, la
-expresión:</p>
-<div>
-<div class="MathJax_Preview">hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}</div>
-<script type="math/tex; mode=display">hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}</script>
-</div>
-<p>Como puedes comprobar, el código es imperativo. La forma especial
-<code>begin</code> permite realizar una serie de pasos de ejecución que modifican
-el estado (posición y orientación) de la <em>tortuga</em> y dibujan los
-trazos de la figura.</p>
-<p>El siguiente código es una variante del anterior que dibuja un
-triángulo rectángulo de base <code>w</code> y lados <code>w/2</code>. Va a ser la figura
-base del triángulo de Sierpinski.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">triangle</span> <span class="n">w</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">begin</span>
-      <span class="p">(</span><span class="n">draw</span> <span class="n">w</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">draw</span> <span class="p">(</span><span class="n">hipot</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">)))</span>
-      <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">draw</span> <span class="p">(</span><span class="n">hipot</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">)))</span>
-      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)))</span>
+<p><img src="imagenes/image-isosceles.png" width="360px"/></p>
+<p>Por último, otra primitiva que vamos a utilizar más adelante es un
+trazo de una línea:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">line</span> <span class="mi">30</span> <span class="mi">30</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
 </code></pre></div>
+<p><img src="imagenes/image-line.png" width="30"/></p>
+<p>Esta función construye una imagen con una línea hasta la posición
+(30,30) (la coordenada <em>x</em> crece hacia la derecha y la <em>y</em> hacia
+abajo).</p>
+<p>Prueba a construir algunas imágenes usando los comandos anteriores y
+cambiando sus parámetros.</p>
+<h4 id="operaciones-y-combinaciones-de-imagenes">Operaciones y combinaciones de imágenes<a class="headerlink" href="#operaciones-y-combinaciones-de-imagenes" title="Permanent link">&para;</a></h4>
+<p>En la librería de imágenes se definen también funciones que permiten
+transformar y combinar imágenes. Vamos a ver algunos de ellas.</p>
+<p>Podemos rotar una imagen un ángulo, expresado en grados sexagesimales
+en el sentido contrario de las agujas del reloj.</p>
+<p>Por ejemplo, podemos rotar el triángulo isósceles anterior:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">triangulo</span> <span class="p">(</span><span class="n">isosceles-triangle</span> <span class="mi">60</span> <span class="mi">30</span> <span class="s2">&quot;outline&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">))</span>
+<span class="p">(</span><span class="n">rotate</span> <span class="mi">90</span> <span class="n">triangulo</span><span class="p">)</span> 
+<span class="c1">; ⇒ imagen rotada 90 grados en sentido contrario a las agujas del reloj</span>
+<span class="p">(</span><span class="n">rotate</span> <span class="mi">-90</span> <span class="n">triangulo</span><span class="p">)</span>
+<span class="c1">; ⇒ imagen rotada 90 grados en sentido de las agujas del reloj</span>
+</code></pre></div>
+<p><img src="imagenes/imagen-rotada.png" width="500px"/></p>
+<p>Podemos también combinar imágenes, agrupándolas con las funciones
+<code>above</code> y <code>beside</code>. Las dos funciones reciben un número variable de
+argumentos y devuelven una nueva imagen en la que las imágenes se han
+colocado unas sobre otras o unas al lado de otras.</p>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">above</span> <span class="p">(</span><span class="n">ellipse</span> <span class="mi">70</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+       <span class="p">(</span><span class="n">ellipse</span> <span class="mi">50</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;darkgray&quot;</span><span class="p">)</span>
+       <span class="p">(</span><span class="n">ellipse</span> <span class="mi">30</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;dimgray&quot;</span><span class="p">)</span>
+       <span class="p">(</span><span class="n">ellipse</span> <span class="mi">10</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p>La llamada anterior devuelve la siguiente imagen:</p>
+<p><img src="imagenes/image-above.png" width="340px"/></p>
+<p>Otro ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">beside</span> <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">70</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">50</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;darkgray&quot;</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">30</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;dimgray&quot;</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">10</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p>Que produce:</p>
+<p><img src="imagenes/image-beside.png" width="340px"/></p>
+<p>En los dos ejemplos anteriores las imágenes agrupadas se alinean en el
+centro. Si queremos otra alineación podemos especificarla usando las
+funciones <code>above/align</code> y <code>beside/align</code>. </p>
+<p>En el caso de <code>above</code>, que acumula las imágenes unas sobre otras,
+podremos especificar si queremos alinearlas a la izquierda o a la
+derecha:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">above/align</span> <span class="s2">&quot;left&quot;</span>
+               <span class="p">(</span><span class="n">ellipse</span> <span class="mi">70</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;yellowgreen&quot;</span><span class="p">)</span>
+               <span class="p">(</span><span class="n">ellipse</span> <span class="mi">50</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;olivedrab&quot;</span><span class="p">)</span>
+               <span class="p">(</span><span class="n">ellipse</span> <span class="mi">30</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;darkolivegreen&quot;</span><span class="p">)</span>
+               <span class="p">(</span><span class="n">ellipse</span> <span class="mi">10</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;darkgreen&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p><img src="imagenes/image-above-left.png" width="100px"/></p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">above/align</span> <span class="s2">&quot;right&quot;</span>
+               <span class="p">(</span><span class="n">ellipse</span> <span class="mi">70</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;gold&quot;</span><span class="p">)</span>
+               <span class="p">(</span><span class="n">ellipse</span> <span class="mi">50</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;goldenrod&quot;</span><span class="p">)</span>
+               <span class="p">(</span><span class="n">ellipse</span> <span class="mi">30</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;darkgoldenrod&quot;</span><span class="p">)</span>
+               <span class="p">(</span><span class="n">ellipse</span> <span class="mi">10</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;sienna&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p><img src="imagenes/image-above-right.png" width="100px"/></p>
+<p>En el caso de <code>beside</code>, que acumula las imágenes unas junto a otras,
+podemos especificar si queremos alinearla arriba o abajo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">beside/align</span> <span class="s2">&quot;top&quot;</span>
+                <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">70</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;mediumorchid&quot;</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">50</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;darkorchid&quot;</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">30</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;purple&quot;</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">10</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;indigo&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p><img src="imagenes/image-beside-top.png" width="100px"/></p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">beside/align</span> <span class="s2">&quot;bottom&quot;</span>
+                <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">70</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;lightsteelblue&quot;</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">50</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;mediumslateblue&quot;</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">30</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;slateblue&quot;</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">10</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;navy&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p><img src="imagenes/image-beside-bottom.png" width="100px"/></p>
+<p>Podemos combinar todas las funciones anteriores para construir figuras
+complejas. Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">rotate</span> <span class="mi">45</span>
+        <span class="p">(</span><span class="n">above</span> <span class="p">(</span><span class="n">triangle</span> <span class="mi">40</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+               <span class="p">(</span><span class="n">beside</span> <span class="p">(</span><span class="n">rectangle</span> <span class="mi">40</span> <span class="mi">30</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+                       <span class="p">(</span><span class="n">rectangle</span> <span class="mi">40</span> <span class="mi">30</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;olivedrab&quot;</span><span class="p">))))</span>
+</code></pre></div>
+<p><img src="imagenes/imagen-compleja.png" width="100px"/></p>
+<p>Prueba a realizar algunas figuras combinando figuras básicas con las
+funciones anteriores.</p>
 <h3 id="42-triangulo-de-sierpinski">4.2. Triángulo de Sierpinski<a class="headerlink" href="#42-triangulo-de-sierpinski" title="Permanent link">&para;</a></h3>
+<p>Vamos a utilizar las funciones anteriores que construyen imágenes para
+construir una figura fractal, el denominado riángulo de Sierpinski,
+usando la recursión.</p>
 <p><img src="imagenes/sierpinski.png" width="400px"/></p>
 <p><em>Triángulo de Sierpinski</em></p>
 <ul>
 <li>¿Ves alguna recursión en la figura?</li>
 <li>¿Cuál podría ser el parámetro de la función que la dibujara? </li>
-<li>¿Se te ocurre un algoritmo recursivo que la dibuje?</li>
+<li>¿Se te ocurre un algoritmo recursivo que la dibuje, usando las
+  funciones de combinación de imágenes vistas?</li>
 </ul>
 <p>La figura es <em>autosimilar</em> (una característica de las figuras
 fractales). Una parte de la figura es idéntica a la figura total, pero
 reducida de escala. Esto nos da una pista de que es posible dibujar la
 figura con un algoritmo recursivo.</p>
 <p>Para intentar encontrar una forma de enfocar el problema, vamos a
-pensarlo de la siguiente forma: supongamos que tenemos un triángulo de
-Sierpinski de anchura <em>h</em> y altura <em>h/2</em> con su esquina inferior
-izquierda en la posición 0,0. ¿Cómo podríamos construir <strong>el
-siguiente</strong> triángulo de Sierpinski?.</p>
-<p>Podríamos construir un triángulo de Sierpinski más grande dibujando 3
-veces el mismo triángulo, pero en distintas posiciones:</p>
+pensarlo de la siguiente forma: supongamos que tenemos tres triángulos
+de Sierpinski de anchura <em>x</em>. ¿Cómo podríamos construir el triángulo
+de Sierpinski de anchura <em>2*x</em>?</p>
+<p>Lo podríamos hacer combinando las tres imágenes de la siguiente forma:</p>
 <ol>
-<li>Triángulo 1 en la posición (0,0)</li>
-<li>Triángulo 2 en la posición (h/2,h/2)</li>
-<li>Triángulo 3 en la posición (h,0)</li>
+<li>Juntamos 2 triángulos uno junto a otro.</li>
+<li>Sobre la figura resultante colocamos (alineada en el centro) el
+   triángulo restante.</li>
 </ol>
-<p>El algoritmo recursivo se basa en la misma idea, pero <em>hacia
-atrás</em>. Debemos intentar dibujar un triángulo de altura <em>h</em> situado en
-la posición <em>x</em>, <em>y</em> basándonos en 3 llamadas recursivas a triángulos
-más pequeños. En el caso base, cuando <em>h</em> sea menor que un umbral,
-dibujaremos un triángulo de lado <em>h</em> y altura <em>h/2</em>:</p>
-<p>O sea, que para dibujar un triángulo de Sierpinski de base <em>h</em> y
-altura <em>h/2</em> debemos:</p>
+<p>En la siguiente figura se muestra el esquema de esta combinación. Cada
+rectángulo representa la imagen de sierpinski de anchura <em>x</em> y la
+combinación representa la imagen de anchura <em>2*x</em>.</p>
+<p><img src="imagenes/image-esquema-sierpinski.png" width="300px"/></p>
+<p>El algoritmo recursivo se basa en la misma idea, pero <strong>hacia
+atrás</strong>. Dibujamos un triángulo de anchura <em>x</em> basándonos en 3
+llamadas recursivas a triángulos más pequeños (de anchura <em>x/2</em>).</p>
+<p>En el caso base, cuando <em>x</em> sea menor que un umbral <em>h</em>, dibujaremos un
+triángulo elemental de base <em>h</em>.</p>
+<p>Veamos cómo hacerlo con la librería de imágenes de Racket.</p>
+<h4 id="caso-base-de-la-recursion">Caso base de la recursión<a class="headerlink" href="#caso-base-de-la-recursion" title="Permanent link">&para;</a></h4>
+<p>Para construir la imagen elemental del triángulo de Sierpinski
+necesitamos un triángulo isósceles de ángulo 90 y base <em>h</em>. </p>
+<p>Tal y como muestra la siguiente figura, podemos dividir este triángulo
+en dos mitades. Si el ángulo superior es 90 grados, su mitad será de
+45 grados, por lo que los dos subtriángulos serán triángulos
+rectángulos cuyos catetos medirán <em>h/2</em>. La hipotenusa de esos
+triángulos son los lados del triángulo isósceles original. La altura
+del triángulo isósceles original será también <em>h/2</em>.</p>
+<p><img src="imagenes/image-sierpinski-elemental.png" width="400px"/></p>
+<p>La hipotenusa de un triángulo rectángulo con dos catetos de longitud
+<em>x</em> se calcula con la siguiente expresión:</p>
+<div>
+<div class="MathJax_Preview">hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}</div>
+<script type="math/tex; mode=display">hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}</script>
+</div>
+<p>Lo podemos expresar en Racket:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hipotenusa</span> <span class="n">x</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">sqrt</span> <span class="mi">2</span><span class="p">)))</span>
+</code></pre></div>
+<p>Una vez definida la función <code>hipotenusa</code> podemos dibujar el triángulo
+de Sierpinski elemental de base <code>h</code>. Será un triángulo isósceles de
+ángulo 90 grados y de longitud de lado <code>hipotenusa(h/2)</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">sierpinski-elem</span> <span class="n">base</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">isosceles-triangle</span> <span class="p">(</span><span class="n">hipotenusa</span> <span class="p">(</span><span class="nb">/</span> <span class="n">base</span> <span class="mi">2</span><span class="p">))</span> <span class="mi">90</span> <span class="s2">&quot;outline&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p>Por ejemplo, la llamada a </p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">sierpinski-elem</span> <span class="mi">40</span><span class="p">)</span>
+</code></pre></div>
+<p>produce la siguiente imagen:</p>
+<p><img src="imagenes/image-sierpinski-elem.png" width="180px"/></p>
+<h4 id="caso-general-de-la-recursion">Caso general de la recursión<a class="headerlink" href="#caso-general-de-la-recursion" title="Permanent link">&para;</a></h4>
+<p>El caso general de la recursión para dibujar el triángulo de
+Sierpinski de ancho <em>x</em> se construye llamando a la recursión para que
+construya el triángulo de ancho <em>x/2</em> y componiendo la imagen
+resultante con el patrón visto anteriormente.</p>
+<p>El código de la función completa es el siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">sierpinski</span> <span class="n">ancho</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&lt;</span> <span class="n">ancho</span> <span class="mi">10</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">sierpinski-elem</span> <span class="n">ancho</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">above</span> <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">ancho</span> <span class="mi">2</span><span class="p">))</span>
+             <span class="p">(</span><span class="n">beside</span> <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">ancho</span> <span class="mi">2</span><span class="p">))</span>
+                     <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">ancho</span> <span class="mi">2</span><span class="p">))))))</span>
+</code></pre></div>
 <ul>
-<li>Dibujar tres triángulos de Sierpinsky de la mitad del tamaño del
-  original (<em>h/2</em>) situadas en las posiciones <em>(x,y)</em>, <em>(x+h/4,
-  y+h/4)</em> y <em>(x+h/2,y)</em></li>
-<li>En el caso base de la recursión, en el que <em>h</em> es menor que una
-  constante, se dibuja un triángulo de base <em>h</em> y altura <em>h/2</em>.</li>
+<li>Si el ancho es menor que un umbral (10) se dibuja el triángulo elemental.</li>
+<li>Si el ancho es mayor o igual a 10 se hacen tres llamadas recursivas a
+  <code>sierpienski</code> con el <em>ancho / 2</em>. Cada llamada recursiva devolverá
+  la imagen con el triángulo de sierpinski más pequeño.</li>
+<li>La llamada a <code>beside</code> juntará las dos imágenes inferiores.</li>
+<li>La llamada a <code>above</code> colocará el tercer triángulo sobre la composición
+  anterior, centrado en el centro.</li>
 </ul>
-<p>Una versión del algoritmo en <em>pseudocódigo</em>:</p>
-<div class="highlight"><pre><span></span><code>Sierpinsky (x, y, h):
-   if (h &gt; MIN) {
-      Sierpinsky (x, y, h/2)
-      Sierpinsky (x+h/4, y+h/4, h/2)
-      Sierpinsky (x+h/2, y, h/2)
-   } else dibujaTriangulo (x, y, h)
-</code></pre></div>
-<h3 id="43-sierpinski-en-racket">4.3. Sierpinski en Racket<a class="headerlink" href="#43-sierpinski-en-racket" title="Permanent link">&para;</a></h3>
-<p>La siguiente es una versión imperativa del algoritmo que dibuja el
-triángulo de Sierpinski. No es funcional porque se realizan <em>pasos de
-ejecución</em>, usando la forma especial <code>begin</code> o múltiples instrucciones
-en una misma función (por ejemplo la función <code>triangle</code>).</p>
-<div class="highlight"><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
-<span class="p">(</span><span class="k">require</span> <span class="n">graphics/turtles</span><span class="p">)</span>
-
-<span class="p">(</span><span class="n">turtles</span> <span class="no">#t</span><span class="p">)</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hipot</span> <span class="n">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">sqrt</span> <span class="mi">2</span><span class="p">)))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">triangle</span> <span class="n">w</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">begin</span>
-      <span class="p">(</span><span class="n">draw</span> <span class="n">w</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">draw</span> <span class="p">(</span><span class="n">hipot</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">)))</span>
-      <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">draw</span> <span class="p">(</span><span class="n">hipot</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">)))</span>
-      <span class="p">(</span><span class="n">turn</span> <span class="mi">135</span><span class="p">)))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">sierpinski</span> <span class="n">w</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">w</span> <span class="mi">20</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">begin</span>
-         <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">))</span>
-         <span class="p">(</span><span class="n">move</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span> <span class="p">(</span><span class="n">move</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
-         <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">))</span>
-         <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span> <span class="p">(</span><span class="n">move</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span> <span class="p">(</span><span class="n">move</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">4</span><span class="p">))</span>
-         <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">))</span>
-         <span class="p">(</span><span class="n">turn</span> <span class="mi">180</span><span class="p">)</span> <span class="p">(</span><span class="n">move</span> <span class="p">(</span><span class="nb">/</span> <span class="n">w</span> <span class="mi">2</span><span class="p">))</span> <span class="p">(</span><span class="n">turn</span> <span class="mi">-180</span><span class="p">))</span> <span class="c1">;; volvemos a la posición original</span>
-      <span class="p">(</span><span class="n">triangle</span> <span class="n">w</span><span class="p">)))</span>
-</code></pre></div>
-<p>La llamada a</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">sierpinski</span> <span class="mi">40</span><span class="p">)</span>
-</code></pre></div>
-<p>produce la siguiente figura:</p>
-<p><img src="imagenes/sierpinski-40.png"/></p>
-<p>La llamada a</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">sierpinski</span> <span class="mi">700</span><span class="p">)</span>
-</code></pre></div>
-<p>Produce la figura que vimos al principio del apartado:</p>
-<p><img src="imagenes/sierpinski.png" width="400px"/></p>
-<p>Para ocupar la venta completa debemos desplazar la tortuga hacia atrás
-antes de invocar a <code>sierpinski</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">clear</span><span class="p">)</span>
-<span class="p">(</span><span class="n">move</span> <span class="mi">-350</span><span class="p">)</span>
-<span class="p">(</span><span class="n">sierpinski</span> <span class="mi">700</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="44-recursion-mutua">4.4. Recursión mutua<a class="headerlink" href="#44-recursion-mutua" title="Permanent link">&para;</a></h3>
-<p>En la recursión mutua definimos una función en base a una segunda, que
-a su vez se define en base a la primera.</p>
-<p>También debe haber un caso base que termine la recursión</p>
-<p>Por ejemplo:</p>
-<ul>
-<li>x es par si x-1 es impar</li>
-<li>x es impar si x-1 es par</li>
-<li>0 es par</li>
-</ul>
-<p>Programas en Scheme:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">par?</span> <span class="n">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="mi">0</span> <span class="n">x</span><span class="p">)</span>
-      <span class="no">#t</span>
-      <span class="p">(</span><span class="n">impar?</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">))))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">impar?</span> <span class="n">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="mi">0</span> <span class="n">x</span><span class="p">)</span>
-      <span class="no">#f</span>
-      <span class="p">(</span><span class="n">par?</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">))))</span>
-</code></pre></div>
-<h3 id="45-ejemplo-avanzado-curvas-de-hilbert">4.5. Ejemplo avanzado: curvas de Hilbert<a class="headerlink" href="#45-ejemplo-avanzado-curvas-de-hilbert" title="Permanent link">&para;</a></h3>
+<p>Un ejemplo de la ejecución:</p>
+<p><img src="imagenes/image-sierpinski.png" width="600px"/></p>
+<h3 id="43-curva-de-hilbert">4.3. Curva de Hilbert<a class="headerlink" href="#43-curva-de-hilbert" title="Permanent link">&para;</a></h3>
 <p>La curva de Hilbert es una curva fractal que tiene la propiedad de
-rellenar completamente el espacio</p>
+rellenar completamente el plano.</p>
 <p>Su dibujo tiene una formulación recursiva:</p>
 <p><img src="imagenes/hilbert.png" width="600px"/></p>
-<p>La curva H3 se puede construir a partir de la curva H2. El algoritmo
-recursivo se formula dibujando la curva i-ésima a partir de la curva
-i-1.</p>
-<p>Para dibujar una curva de Hilbert de orden i a la <em>derecha</em> de la tortuga:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="mf">1.</span> <span class="n">Gira</span> <span class="n">la</span> <span class="kr">to</span><span class="n">rtuga</span> <span class="o">-</span><span class="mf">90</span>
-<span class="mf">2.</span> <span class="n">Dibuja</span> <span class="n">una</span> <span class="n">curva</span> <span class="n">de</span> <span class="ow">or</span><span class="n">den</span> <span class="n">i</span><span class="o">-</span><span class="mf">1</span> <span class="n">a</span> <span class="n">la</span> <span class="n">izquierda</span>
-<span class="mf">3.</span> <span class="n">Avanza</span> <span class="n">long</span> <span class="n">dibujando</span>
-<span class="mf">4.</span> <span class="n">Gira</span> <span class="mf">90</span>
-<span class="mf">5.</span> <span class="n">Dibuja</span> <span class="n">una</span> <span class="n">curva</span> <span class="n">de</span> <span class="ow">or</span><span class="n">den</span> <span class="n">i</span><span class="o">-</span><span class="mf">1</span> <span class="n">a</span> <span class="n">la</span> <span class="n">derecha</span>
-<span class="mf">6.</span> <span class="n">Avanza</span> <span class="n">long</span> <span class="n">dibujando</span>
-<span class="mf">7.</span> <span class="n">Dibuja</span> <span class="n">una</span> <span class="n">curva</span> <span class="n">de</span> <span class="ow">or</span><span class="n">den</span> <span class="n">i</span><span class="o">-</span><span class="mf">1</span> <span class="n">a</span> <span class="n">la</span> <span class="n">derecha</span>
-<span class="mf">8.</span> <span class="n">Gira</span> <span class="mf">90</span>
-<span class="mf">9.</span> <span class="n">Avanza</span> <span class="n">long</span> <span class="n">dibujando</span>
-<span class="mf">10.</span> <span class="n">Dibuja</span> <span class="n">una</span> <span class="n">curva</span> <span class="n">de</span> <span class="ow">or</span><span class="n">den</span> <span class="n">i</span><span class="o">-</span><span class="mf">1</span> <span class="n">a</span> <span class="n">la</span> <span class="n">izquierda</span>
-<span class="mf">11.</span> <span class="n">Gira</span> <span class="o">-</span><span class="mf">90</span>
-</code></pre></div>
-</td></tr></table>
-<p>El algoritmo para dibujar a la izquierda es simétrico.</p>
-<p>Como en la curva de Sierpinsky, utilizamos la librería
-<code>graphics/turtles</code>, que permite usar la tortuga de Logo con los
-comandos de Logo <code>draw</code> y <code>turn</code>. Definimos dos funciones simétricas,
-la función <code>(h-der i long)</code> que dibuja una curva de Hilbert de orden
-<code>i</code> con una longitud de trazo <code>long</code> a la <em>derecha</em> de la tortuga y la
-función <code>(h-izq i w)</code> que dibuja una curva de Hilbert de orden <code>i</code> con
-una longitud de trazo <code>long</code> a la <em>izquierda</em> de la tortuga.</p>
-<p>El algoritmo en Scheme:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
-<span class="p">(</span><span class="k">require</span> <span class="n">graphics/turtles</span><span class="p">)</span>
+<p>La imagen H2 se puede componer a partir de cuatro imágenes H1
+siguiendo un patrón. Es el mismo patrón con el que se puede componer
+la imagen H3 a partir de cuatro imágenes H2.</p>
+<p>El patrón se muestra en la siguiente función <code>(componer imagen)</code>: </p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">trazo-horizontal</span> <span class="p">(</span><span class="n">line</span> <span class="mi">16</span> <span class="mi">0</span> <span class="s2">&quot;black&quot;</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">trazo-vertical</span> <span class="p">(</span><span class="n">rotate</span> <span class="mi">90</span> <span class="n">trazo-horizontal</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">h-izq</span> <span class="n">i</span> <span class="n">long</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">i</span> <span class="mi">0</span><span class="p">)</span>
-     <span class="p">(</span><span class="k">begin</span>
-      <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">h-der</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">draw</span>  <span class="n">long</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">h-izq</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">draw</span> <span class="n">long</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">h-izq</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">draw</span> <span class="n">long</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">h-der</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">))</span>
-     <span class="p">(</span><span class="n">move</span> <span class="mi">0</span><span class="p">)))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">h-der</span> <span class="n">i</span> <span class="n">long</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">i</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">begin</span>
-        <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">h-izq</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">draw</span>  <span class="n">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">h-der</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">draw</span> <span class="n">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">h-der</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">draw</span> <span class="n">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">h-izq</span> <span class="p">(</span><span class="nb">-</span> <span class="n">i</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">))</span>
-      <span class="p">(</span><span class="n">move</span> <span class="mi">0</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">componer</span> <span class="n">imagen</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">beside</span> <span class="p">(</span><span class="n">above/align</span> <span class="s2">&quot;left&quot;</span>
+                       <span class="p">(</span><span class="n">beside/align</span> <span class="s2">&quot;bottom&quot;</span> <span class="n">imagen</span> <span class="n">trazo-horizontal</span><span class="p">)</span>
+                       <span class="n">trazo-vertical</span>
+                       <span class="p">(</span><span class="n">rotate</span> <span class="mi">-90</span> <span class="n">imagen</span><span class="p">))</span>
+          <span class="p">(</span><span class="n">above/align</span> <span class="s2">&quot;right&quot;</span>
+                       <span class="n">imagen</span>
+                       <span class="n">trazo-vertical</span>
+                       <span class="p">(</span><span class="n">rotate</span> <span class="mi">90</span> <span class="n">imagen</span><span class="p">))))</span>
 </code></pre></div>
-<p>Podemos probarlo con distintos parámetros de grado de curva y longitud
-de trazo.</p>
-<p>Curva de Hilbert de nivel 3 con trazo de longitud 20:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">clear</span><span class="p">)</span>
-<span class="p">(</span><span class="n">h-izq</span> <span class="mi">3</span> <span class="mi">30</span><span class="p">)</span>
+<ul>
+<li>La primera llamada a <code>above/align</code> compone una imagen juntando la
+  imagen original con un trazo horizontal y apilando (con una
+  alineación a la izquierda) esta imagen sobre un trazo vertical
+  y sobre la imagen original girada 90 grados en el sentido de
+  las agujas del reloj.</li>
+<li>La segunda llamada a <code>above/align</code> construye otra imagen apilando
+  (con una alineación a la derecha) la imagen original, un trazo
+  vertical y la imagen rotada 90 grados en sentido contrario a las
+  agujas del reloj.</li>
+<li>Por último la llamada a <code>beside</code> junta las dos imágenes anteriores.</li>
+</ul>
+<p>Podemos ver un ejemplo del funcionamiento de esta composición usando
+una imagen base formada por un cuadrado con un triángulo dentro.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">overlay</span> <span class="p">(</span><span class="n">triangle</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;green&quot;</span><span class="p">)</span>
+         <span class="p">(</span><span class="n">rectangle</span> <span class="mi">20</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">))</span><span class="err">)</span>
 </code></pre></div>
-<p>Para entender mejor el algoritmo podemos dibujar paso a paso esta
-figura usando los siguientes comandos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">clear</span><span class="p">)</span>
-<span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
-<span class="p">(</span><span class="n">h-der</span> <span class="mi">2</span> <span class="mi">30</span><span class="p">)</span>
-<span class="p">(</span><span class="n">draw</span>  <span class="mi">30</span><span class="p">)</span>
-<span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
-<span class="p">(</span><span class="n">h-izq</span> <span class="mi">2</span> <span class="mi">30</span><span class="p">)</span>
-<span class="p">(</span><span class="n">draw</span> <span class="mi">30</span><span class="p">)</span>
-<span class="p">(</span><span class="n">h-izq</span> <span class="mi">2</span> <span class="mi">30</span><span class="p">)</span>
-<span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
-<span class="p">(</span><span class="n">draw</span> <span class="mi">30</span><span class="p">)</span>
-<span class="p">(</span><span class="n">h-der</span> <span class="mi">2</span> <span class="mi">30</span><span class="p">)</span>
-<span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
+<p><img src="imagenes/imagen-ejemplo-componer.png" width="30px"/></p>
+<p>Si llamamos a <code>componer</code> con la imagen anterior podemos ver que se
+construye el patrón básico de la curva de Hilbert, el que construye la
+imagen H2 a partir de H1.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">imagen</span> <span class="p">(</span><span class="n">overlay</span> <span class="p">(</span><span class="n">triangle</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;green&quot;</span><span class="p">)</span>
+                        <span class="p">(</span><span class="n">rectangle</span> <span class="mi">20</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">)))</span>
+<span class="n">imagen</span> 
+<span class="p">(</span><span class="n">componer</span> <span class="n">imagen</span><span class="p">)</span>
 </code></pre></div>
-<p>Curva de Hilbert de nivel 6 con trazo de longitud 10:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">clear</span><span class="p">)</span>
-<span class="p">(</span><span class="n">move</span> <span class="mi">-350</span><span class="p">)</span>
-<span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
-<span class="p">(</span><span class="n">move</span> <span class="mi">350</span><span class="p">)</span>
-<span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
-<span class="p">(</span><span class="n">h-izq</span> <span class="mi">6</span> <span class="mi">10</span><span class="p">)</span>
+<p><img src="imagenes/imagen-componer.png" width="500px"/></p>
+<p>Una vez entendido este patrón de composición, podemos ya formular el
+algoritmo recursivo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hilbert</span> <span class="n">nivel</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="mi">1</span> <span class="n">nivel</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">beside/align</span> <span class="s2">&quot;top&quot;</span>
+                    <span class="n">trazo-vertical</span>
+                    <span class="n">trazo-horizontal</span>
+                    <span class="n">trazo-vertical</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">componer</span> <span class="p">(</span><span class="n">hilbert</span> <span class="p">(</span><span class="nb">-</span> <span class="n">nivel</span> <span class="mi">1</span><span class="p">)))))</span>
 </code></pre></div>
-<p>Curva de Hilbert de nivel 7 con trazo de longitud 5:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">clear</span><span class="p">)</span>
-<span class="p">(</span><span class="n">move</span> <span class="mi">-350</span><span class="p">)</span>
-<span class="p">(</span><span class="n">turn</span> <span class="mi">-90</span><span class="p">)</span>
-<span class="p">(</span><span class="n">move</span> <span class="mi">350</span><span class="p">)</span>
-<span class="p">(</span><span class="n">turn</span> <span class="mi">90</span><span class="p">)</span>
-<span class="p">(</span><span class="n">h-izq</span> <span class="mi">7</span> <span class="mi">5</span><span class="p">)</span>
-</code></pre></div>
-<p><img src="imagenes/hilbert-scheme.png"/></p>
+<ul>
+<li>El caso base es el nivel 1, en el que se construye el trazo básico
+  de la curva de Hilbert.</li>
+<li>Para cualquier nivel <em>n</em>  mayor que 1, se llama a la recursión para
+  formar la curva de Hilbert de nivel <em>n-1</em> y, con la imagen
+  resultante, se llama a la función <code>componer</code>.</li>
+</ul>
+<p>En la siguiente imagen se muestran distintas llamadas a la función <code>hilbert</code>:</p>
+<p><img src="imagenes/image-hilbert.png" width="250px"/></p>
 <h2 id="5-bibliografia-sicp">5. Bibliografía - SICP<a class="headerlink" href="#5-bibliografia-sicp" title="Permanent link">&para;</a></h2>
 <p>En este tema explicamos conceptos de los siguientes capítulos del libro <em>Structure and Intepretation of Computer Programs</em>:</p>
 <ul>
