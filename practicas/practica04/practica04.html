@@ -638,23 +638,32 @@ ordenada.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">ordena</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">-1</span> <span class="mi">100</span> <span class="mi">4</span> <span class="mi">-6</span><span class="p">))</span> <span class="c1">; ⇒ (-6 -1 2 4 100)</span>
 </code></pre></div>
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
-<p>a) Escribe la función <code>(expande-parejas pareja1 pareja2 ... pareja_n)</code>
-que recibe un número variable de argumentos y devuelve una lista donde
-se han "expandido" las parejas, creando una lista con tantos elementos
-como el número que indique cada pareja.</p>
-<p>Debes implementar y utilizar una función auxiliar recursiva
-<code>(expande-pareja pareja)</code> que recibe una pareja y devuelve la lista
-expandida resultante de expandir sólo esa pareja.</p>
+<p>Vamos a implementar distintas versiones de funciones que expanden
+una lista original. </p>
+<p>En el primer apartado definiremos una función auxiliar que se deberá
+usar en todos los demás apartados.</p>
+<p>a) Escribe la función recursiva <code>(expande-pareja pareja)</code> que recibe
+una pareja formada por un dato y un número <em>n</em> y devuelve la lista
+formada por <em>n</em> repeticiones del dato.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">expande-pareja</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">hola</span> <span class="o">.</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ (hola hola hola)</span>
+<span class="p">(</span><span class="n">expande-pareja</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#t</span> <span class="o">.</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ (#t #t #t #t #t)</span>
+</code></pre></div>
+<p>b) Vamos a implementar dos versiones de la función <code>(expande-parejas
+pareja1 pareja2 ... pareja_n)</code> que recibe un número variable de
+argumentos y devuelve una lista donde se han "expandido" las parejas,
+creando una lista con tantos elementos como el número que indique cada
+pareja.</p>
 <p>Ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">expande-parejas</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#t</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;LPP&quot;</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="o">.</span> <span class="mi">4</span><span class="p">))</span> 
 <span class="c1">; ⇒ (#t #t #t &quot;LPP&quot; &quot;LPP&quot; b b b b)</span>
 </code></pre></div>
-<p>a.1) Escribe una solución en la que la función <code>expande-parejas</code>
+<p>b.1) Escribe una solución en la que la función <code>expande-parejas</code>
 llame a una función recursiva <code>(expande-lista lista-parejas)</code>
 que trabaje sobre una lista de parejas.</p>
-<p>a.2) Escribe una solución en la que la propia función
+<p>b.2) Escribe una solución en la que la propia función
 <code>expande-parejas</code> sea recursiva.</p>
-<p>b) Implementa la función recursiva <code>(expande2 lista)</code>. Recibe una
+<p>c) Implementa la función recursiva <code>(expande2 lista)</code>. Recibe una
 lista en la que hay intercalados algunos números enteros
 positivos. Devuelve la lista original en la que se han expandido los
 elementos siguientes a los números, tantas veces como indica el
