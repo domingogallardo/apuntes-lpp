@@ -119,7 +119,8 @@ b) Vamos a implementar dos versiones de la función `(expande-parejas
 pareja1 pareja2 ... pareja_n)` que recibe un número variable de
 argumentos y devuelve una lista donde se han "expandido" las parejas,
 creando una lista con tantos elementos como el número que indique cada
-pareja.
+pareja. Todos los argumentos son opcionales; si no hay argumentos se
+devolverá la lista vacía.
 
 Ejemplo:
 
