@@ -642,9 +642,9 @@ ordenada.</p>
 que recibe un número variable de argumentos y devuelve una lista donde
 se han "expandido" las parejas, creando una lista con tantos elementos
 como el número que indique cada pareja.</p>
-<p>Debes implementar y utilizar una función auxiliar <code>(expande-pareja
-pareja)</code> que recibe una pareja y devuelve la lista expandida
-resultante de expandir sólo esa pareja.</p>
+<p>Debes implementar y utilizar una función auxiliar también recursiva
+<code>(expande-pareja pareja)</code> que recibe una pareja y devuelve la lista
+expandida resultante de expandir sólo esa pareja.</p>
 <p>Ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">expande-parejas</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#t</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;LPP&quot;</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="o">.</span> <span class="mi">4</span><span class="p">))</span> 
 <span class="c1">; ⇒ (#t #t #t &quot;LPP&quot; &quot;LPP&quot; b b b b)</span>
@@ -660,6 +660,8 @@ positivos. Devuelve la lista original en la que se han expandido los
 elementos siguientes a los números, tantas veces como indica el
 número. La lista nunca va a contener dos números consecutivos y
 siempre va a haber un elemento después de un número.</p>
+<p>Debes usar también para su implementación la función <code>(expande-pareja
+pareja)</code> definida en el apartado a).</p>
 <p>Ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">expande2</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="ss">clase</span> <span class="ss">ua</span> <span class="mi">3</span> <span class="ss">lpp</span> <span class="ss">aulario</span><span class="p">))</span> 
 <span class="c1">; ⇒ (clase clase clase clase ua lpp lpp lpp aulario))</span>
