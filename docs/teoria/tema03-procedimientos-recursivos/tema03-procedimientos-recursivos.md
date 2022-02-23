@@ -249,7 +249,7 @@ recursiva acumulando el primer elemento de la lista:
 ```
 
 
-### 2.4. Procesos iterativos
+### 2.4. Características de los procesos iterativos
 
 Un resumen de las características de los procesos iterativos
 resultantes de hacer una recursión por la cola:
@@ -471,8 +471,9 @@ de datos que pasamos como parámetro. Para implementarlos tenemos que
 salirnos del paradigma funcional, usando las funciones de Racket que
 permiten mutar las parejas.
 
-No es importante la implementación, la dejamos aquí como referencia y
-para poder probar la _memoization_. 
+La implementación de estas funciones están incluidas en el fichero
+`lpp.rkt`. 
+
 
 ```racket
 (define (crea-diccionario)
@@ -600,32 +601,9 @@ trazo de una línea:
 
 <img src="imagenes/image-line.png" width="30"/>
 
-Construye una imagen con una línea hasta la posición (30,30) (la
-coordenada _x_ crece hacia la derecha y la _y_ hacia abajo).
-
-Las imágenes son objetos de primera clase del lenguaje. Pueden
-guardarse en variables y listas. Por ejemplo, podemos ejecutar las
-siguientes instrucciones en el intérprete:
-
-```racket
-(define triangulo (triangle 15 "solid" "red"))
-(define circulo (circle 7 "solid" "green"))
-(define cuadrado (square 13 "solid" "blue"))
-(define poligono-regular (regular-polygon 9 5 "solid" "orange"))
-(define poligono-estrella (star-polygon 7 7 2 "solid" "brown"))
-```
-
-Una vez definidas las imágenes, podemos guardarlas en una lista y
-recuperar alguna:
-
-```racket
-(define lista 
-   (list triangulo circulo cuadrado poligono-regular poligono-estrella))
-lista ; ⇒ evalua la lista de figuras y la muestra
-(first (rest lista)) ; ⇒ devuelve el círculo verde
-```
-
-<img src="imagenes/image-lista.png" width="600px"/>
+Esta función construye una imagen con una línea hasta la posición
+(30,30) (la coordenada _x_ crece hacia la derecha y la _y_ hacia
+abajo).
 
 Prueba a construir algunas imágenes usando los comandos anteriores y
 cambiando sus parámetros.
@@ -634,7 +612,7 @@ cambiando sus parámetros.
 #### Operaciones y combinaciones de imágenes ####
 
 En la librería de imágenes se definen también funciones que permiten
-transformar y combinar imágenes. Vamos a ver algunos de ellos.
+transformar y combinar imágenes. Vamos a ver algunos de ellas.
 
 Podemos rotar una imagen un ángulo, expresado en grados sexagesimales
 en el sentido contrario de las agujas del reloj.
@@ -652,7 +630,7 @@ Por ejemplo, podemos rotar el triángulo isósceles anterior:
 <img src="imagenes/imagen-rotada.png" width="500px"/>
 
 Podemos también combinar imágenes, agrupándolas con las funciones
-`above` y `besides`. Las dos funciones reciben un número variable de
+`above` y `beside`. Las dos funciones reciben un número variable de
 argumentos y devuelven una nueva imagen en la que las imágenes se han
 colocado unas sobre otras o unas al lado de otras.
 
@@ -787,9 +765,8 @@ combinación representa la imagen de anchura _2*x_.
 <img src="imagenes/image-esquema-sierpinski.png" width="300px"/>
 
 El algoritmo recursivo se basa en la misma idea, pero **hacia
-atrás**. Debemos intentar dibujar un triángulo de anchura _x_
-basándonos en 3 llamadas recursivas a triángulos más pequeños (de
-anchura _x/2_). 
+atrás**. Dibujamos un triángulo de anchura _x_ basándonos en 3
+llamadas recursivas a triángulos más pequeños (de anchura _x/2_).
 
 En el caso base, cuando _x_ sea menor que un umbral _h_, dibujaremos un
 triángulo elemental de base _h_.
@@ -799,14 +776,20 @@ Veamos cómo hacerlo con la librería de imágenes de Racket.
 #### Caso base de la recursión ####
 
 Para construir la imagen elemental del triángulo de Sierpinski
-necesitamos un triángulo isósceles de ángulo 90 y base _h_. Podemos
-calcular 
+necesitamos un triángulo isósceles de ángulo 90 y base _h_. 
+
+Tal y como muestra la siguiente figura, podemos dividir este triángulo
+en dos mitades. Si el ángulo superior es 90 grados, su mitad será de
+45 grados, por lo que los dos subtriángulos serán triángulos
+rectángulos cuyos catetos medirán _h/2_. La hipotenusa de esos
+triángulos son los lados del triángulo isósceles original. La altura
+del triángulo isósceles original será también _h/2_.
 
 <img src="imagenes/image-sierpinski-elemental.png" width="400px"/>
 
-La función `(hipot x)` devuelve la longitud de la hipotenusa de un
-triángulo rectángulo con dos lados de longitud `x`. O sea, la
-expresión:
+
+La hipotenusa de un triángulo rectángulo con dos catetos de longitud
+_x_ se calcula con la siguiente expresión:
 
 $$hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}$$
 
@@ -815,7 +798,13 @@ Lo podemos expresar en Racket:
 ```racket
 (define (hipotenusa x)
   (* x (sqrt 2)))
+```
 
+Una vez definida la función `hipotenusa` podemos dibujar el triángulo
+de Sierpinski elemental de base `h`. Será un triángulo isósceles de
+ángulo 90 grados y de longitud de lado `hipotenusa(h/2)`:
+
+```racket
 (define (sierpinski-elem base)
   (isosceles-triangle (hipotenusa (/ base 2)) 90 "outline" "black"))
 ```
@@ -894,8 +883,8 @@ El patrón se muestra en la siguiente función `(componer imagen)`:
 
 - La primera llamada a `above/align` compone una imagen juntando la
   imagen original con un trazo horizontal y apilando (con una
-  alineación a la izquierda) la imagen resultante sobre un trazo
-  girado y sobre la imagen original girada 90 grados en el sentido de
+  alineación a la izquierda) esta imagen sobre un trazo vertical
+  y sobre la imagen original girada 90 grados en el sentido de
   las agujas del reloj.
 - La segunda llamada a `above/align` construye otra imagen apilando
   (con una alineación a la derecha) la imagen original, un trazo
@@ -926,7 +915,8 @@ imagen
 
 <img src="imagenes/imagen-componer.png" width="500px"/>
 
-El algoritmo recursivo es el siguiente:
+Una vez entendido este patrón de composición, podemos ya formular el
+algoritmo recursivo:
 
 ```racket
 (define (hilbert nivel)
