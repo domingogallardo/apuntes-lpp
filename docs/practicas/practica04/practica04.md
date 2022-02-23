@@ -103,7 +103,7 @@ que recibe un número variable de argumentos y devuelve una lista donde
 se han "expandido" las parejas, creando una lista con tantos elementos
 como el número que indique cada pareja.
 
-Debes implementar y utilizar una función auxiliar también recursiva
+Debes implementar y utilizar una función auxiliar recursiva
 `(expande-pareja pareja)` que recibe una pareja y devuelve la lista
 expandida resultante de expandir sólo esa pareja.
 
