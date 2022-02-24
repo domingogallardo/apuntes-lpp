@@ -329,8 +329,8 @@ Ejemplos:
 (get 2 mi-dic) ; ⇒ #f
 ```
 
-- La implementación no es importante. Está incluida en el fichero
-  `lpp.rkt` para poder usar las funciones.
+- La implementación utiliza funciones de mutación de parejas. Está
+  incluida en el [fichero `lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt).
 
 - La función `fib-memo` realiza el cálculo de la serie de Fibonacci
   utilizando el proceso recursivo visto anteriormente y la técnica de
