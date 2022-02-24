@@ -329,7 +329,7 @@ Ejemplos:
 (get 2 mi-dic) ; ⇒ #f
 ```
 
-- La implementación utiliza funciones de mutación de parejas. Está
+- La implementación utiliza parejas mutables. Está
   incluida en el [fichero `lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt).
 
 - La función `fib-memo` realiza el cálculo de la serie de Fibonacci
