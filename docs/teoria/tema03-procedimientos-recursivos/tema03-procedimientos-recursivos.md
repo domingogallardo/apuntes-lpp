@@ -919,6 +919,12 @@ Capítulos del libro *Structure and Intepretation of Computer Programs*:
 - [1.2.1 - Linear Recursion and Iteration](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-11.html#%_sec_1.2.1)
 - [1.2.2 - Tree Recursion](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-11.html#%_sec_1.2.2)
 
+Manual de Racket:
+
+- [Librería
+  image.rkt](https://docs.racket-lang.org/teachpack/2htdpimage.html)
+- [Image Guide](https://docs.racket-lang.org/teachpack/2htdpimage-guide.html)
+
 ----
 
 Lenguajes y Paradigmas de Programación, curso 2021-22  
