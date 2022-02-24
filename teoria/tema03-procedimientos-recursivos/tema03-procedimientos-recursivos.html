@@ -886,12 +886,9 @@ una clave. En el caso en que no exista ningún valor se devuelve <code>#f</code>
 <span class="p">(</span><span class="n">get</span> <span class="mi">2</span> <span class="n">mi-dic</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
 </code></pre></div>
 <p>Estos métodos son imperativos porque modifican (mutan) la estructura
-de datos que pasamos como parámetro. Para implementarlos tenemos que
-salirnos del paradigma funcional, usando las funciones de Racket que
-permiten mutar las parejas.</p>
-<p>La implementación de estas funciones está incluidas en el fichero
+de datos que pasamos como parámetro. La implementación de estas funciones está incluidas en el
 <a href="https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt">fichero
-<code>lpp.rkt</code></a>.</p>
+<code>lpp.rkt</code></a>. </p>
 <p>La función <code>fib-memo</code> realiza el cálculo de la serie de Fibonacci
 utilizando exactamente la misma definición recursiva original, pero
 añadiendo la técnica de <em>memoization</em>: lo primero que hacemos para

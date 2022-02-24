@@ -4045,7 +4045,7 @@ condición.</p>
     <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">mi-filter</span> <span class="n">pred</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 <h4 id="573-funcion-exists">5.7.3. Función <code>exists?</code><a class="headerlink" href="#573-funcion-exists" title="Permanent link">&para;</a></h4>
-<p>La función de orden superior <code>exists</code> recibe un predicado y una lista
+<p>La función de orden superior <code>exists?</code> recibe un predicado y una lista
 y comprueba si algún elemento de la lista cumple ese predicado.</p>
 <div class="highlight"><pre><span></span><code>(exists? predicado lista) -&gt; boolean
 </code></pre></div>
@@ -4053,11 +4053,14 @@ y comprueba si algún elemento de la lista cumple ese predicado.</p>
 devuelve <code>#t</code> o <code>#f</code>.</p>
 <div class="highlight"><pre><span></span><code>(predicado elem) -&gt; boolean
 </code></pre></div>
-<p>La función <code>exists</code> no está definida con este nombre en Racket, aunque
-sí en Scheme. En Racket se llama <code>ormap</code>.</p>
+<p>La función <code>exists?</code> no está definida con este nombre en Racket,
+aunque sí en Scheme. En Racket se llama <code>ormap</code>. Incorporamos su
+definición al <a href="https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt">fichero
+<code>lpp.rkt</code></a>
+para poder usarla en las prácticas.</p>
 <p>Ejemplo de uso:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">ormap</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="nb">ormap</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">exits?</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">exits?</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
              <span class="p">(</span><span class="nb">&gt;</span> <span class="n">x</span> <span class="mi">10</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">5</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
 </code></pre></div>
 <p>La implementación recursiva de <code>exists?</code> es la siguiente:</p>
@@ -4071,10 +4074,12 @@ sí en Scheme. En Racket se llama <code>ormap</code>.</p>
 <p>La función de orden superior <code>for-all?</code> recibe un predicado y una lista
 y comprueba que todos los elementos de la lista cumplen ese predicado.</p>
 <p>La función tampoco está definida con este nombre en Racket, aunque
-sí en Scheme. En Racket existe una función equivalente que se llama <code>andmap</code>.</p>
+sí en Scheme. Al igual que <code>exits?</code>, incluimos su definición en el
+<a href="https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt">fichero <code>lpp.rkt</code></a>.</p>
+<p>En Racket existe una función equivalente que se llama <code>andmap</code>.</p>
 <p>Ejemplo de uso:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">andmap</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="nb">andmap</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">for-all?</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">4</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">for-all?</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
              <span class="p">(</span><span class="nb">&gt;</span> <span class="n">x</span> <span class="mi">10</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span> <span class="mi">30</span> <span class="mi">50</span> <span class="mi">80</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 </code></pre></div>
 <p>La implementación recursiva de <code>for-all?</code> es la siguiente:</p>
