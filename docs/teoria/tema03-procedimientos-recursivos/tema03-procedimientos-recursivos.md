@@ -510,8 +510,7 @@ imposible de utilizar.
 Vamos a terminar el apartado sobre procedimientos recursivos con un
 último ejemplo algo distinto de los vistos hasta ahora. Usaremos la
 recursión para dibujar figuras fractales usando la [librería de imágenes de
-Racket](https://docs.racket-lang.org/teachpack/2htdpimage.html)
-`2htdp/image`.
+Racket `2htdp/image`](https://docs.racket-lang.org/teachpack/2htdpimage.html).
 
 ### 4.1. Librería de imágenes de Racket
 
@@ -532,6 +531,9 @@ Podemos obtener un círculo, un cuadrado, un rectángulo y un triángulo
 equilátero de la siguiente forma:
 
 ```racket
+#lang racket
+(require 2htdp/image)
+
 (circle 30 "solid" "blue")
 (square 30 "outline" "black")
 (rectangle 80 40 "solid" "gray")
@@ -742,7 +744,7 @@ triángulo elemental de base _h_.
 
 Veamos cómo hacerlo con la librería de imágenes de Racket.
 
-#### Caso base de la recursión ####
+#### 4.2.1. Caso base de la recursión ####
 
 Para construir la imagen elemental del triángulo de Sierpinski
 necesitamos un triángulo isósceles de ángulo 90 y base _h_. 
@@ -754,8 +756,7 @@ rectángulos cuyos catetos medirán _h/2_. La hipotenusa de esos
 triángulos son los lados del triángulo isósceles original. La altura
 del triángulo isósceles original será también _h/2_.
 
-<img src="imagenes/image-sierpinski-elemental.png" width="400px"/>
-
+<img src="imagenes/image-sierpinski-elemental.png" width="350px"/>
 
 La hipotenusa de un triángulo rectángulo con dos catetos de longitud
 _x_ se calcula con la siguiente expresión:
@@ -789,7 +790,7 @@ produce la siguiente imagen:
 <img src="imagenes/image-sierpinski-elem.png" width="180px"/>
 
 
-#### Caso general de la recursión ####
+#### 4.2.2. Caso general de la recursión ####
 
 El caso general de la recursión para dibujar el triángulo de
 Sierpinski de ancho _x_ se construye llamando a la recursión para que
@@ -824,6 +825,8 @@ Un ejemplo de la ejecución:
 
 La curva de Hilbert es una curva fractal que tiene la propiedad de
 rellenar completamente el plano.
+
+<img src="imagenes/hilbert-scheme.png" width="300px"/>
 
 Su dibujo tiene una formulación recursiva:
 
