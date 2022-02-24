@@ -1,10 +1,43 @@
 #lang racket
 (require 2htdp/image)
 
+(provide crea-diccionario)
+(provide get)
+(provide put)
+
 (provide exists?)
 (provide for-all?)
 
 (provide caja-puntero)
+
+;; ------------
+;; Diccionario
+;;-------------
+
+(define (crea-diccionario)
+  (mcons '*diccionario* '()))
+
+(define (busca key dic)
+  (cond
+    ((null? dic) #f)
+    ((equal? key (mcar (mcar dic)))
+     (mcar dic))
+    (else (busca key (mcdr dic)))))
+
+(define (get key dic)
+  (define record (busca key (mcdr dic)))
+  (if (not record)
+      #f
+      (mcdr record)))
+
+(define (put key value dic)
+  (define record (busca key (mcdr dic)))
+  (if (not record)
+      (set-mcdr! dic
+                (mcons (mcons key value)
+                      (mcdr dic)))
+      (set-mcdr! record value))
+  value)
 
 ;;----------------------------
 ;; Funciones de orden superior

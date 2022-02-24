@@ -467,13 +467,9 @@ Ejemplos:
 ```
 
 Estos métodos son imperativos porque modifican (mutan) la estructura
-de datos que pasamos como parámetro. Para implementarlos tenemos que
-salirnos del paradigma funcional, usando las funciones de Racket que
-permiten mutar las parejas.
-
-La implementación de estas funciones está incluidas en el fichero
+de datos que pasamos como parámetro. La implementación de estas funciones está incluidas en el
 [fichero
-`lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt).
+`lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt). 
 
 La función `fib-memo` realiza el cálculo de la serie de Fibonacci
 utilizando exactamente la misma definición recursiva original, pero
