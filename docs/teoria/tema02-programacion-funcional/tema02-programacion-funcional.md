@@ -4327,7 +4327,7 @@ Podemos implementar la función `filter` de forma recursiva:
 
 #### 5.7.3. Función `exists?` 
 
-La función de orden superior `exists` recibe un predicado y una lista
+La función de orden superior `exists?` recibe un predicado y una lista
 y comprueba si algún elemento de la lista cumple ese predicado.
 
 ```text
@@ -4341,19 +4341,21 @@ devuelve `#t` o `#f`.
 (predicado elem) -> boolean
 ```
 
-La función `exists` no está definida con este nombre en Racket, aunque
-sí en Scheme. En Racket se llama `ormap`.
+La función `exists?` no está definida con este nombre en Racket,
+aunque sí en Scheme. En Racket se llama `ormap`. Incorporamos su
+definición al [fichero
+`lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt)
+para poder usarla en las prácticas.
 
 Ejemplo de uso:
 
 ```racket
-(ormap even? '(1 2 3 4 5 6)) ; ⇒ #t
-(ormap (lambda (x)
+(exits? even? '(1 2 3 4 5 6)) ; ⇒ #t
+(exits? (lambda (x)
              (> x 10)) '(1 3 5 8)) ; ⇒ #f
 ```
 
 La implementación recursiva de `exists?` es la siguiente:
-
 
 ```racket
 (define (exists? predicado lista)
@@ -4363,20 +4365,22 @@ La implementación recursiva de `exists?` es la siguiente:
           (exists? predicado (rest lista)))))
 ```
 
-
 #### 5.7.4. Función `for-all?`
 
 La función de orden superior `for-all?` recibe un predicado y una lista
 y comprueba que todos los elementos de la lista cumplen ese predicado.
 
 La función tampoco está definida con este nombre en Racket, aunque
-sí en Scheme. En Racket existe una función equivalente que se llama `andmap`.
+sí en Scheme. Al igual que `exits?`, incluimos su definición en el
+[fichero `lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt).
+
+En Racket existe una función equivalente que se llama `andmap`.
 
 Ejemplo de uso:
 
 ```racket
-(andmap even? '(2 4 6)) ; ⇒ #t
-(andmap (lambda (x)
+(for-all? even? '(2 4 6)) ; ⇒ #t
+(for-all? (lambda (x)
              (> x 10)) '(12 30 50 80)) ; ⇒ #t
 ```
 

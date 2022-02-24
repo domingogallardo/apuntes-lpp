@@ -1,40 +1,27 @@
 #lang racket
 (require 2htdp/image)
 
-(provide crea-diccionario)
-(provide busca)
-(provide get)
-(provide put)
+(provide exists?)
+(provide for-all?)
+
 (provide caja-puntero)
 
-;; ------------
-;; Diccionario
-;;-------------
+;;----------------------------
+;; Funciones de orden superior
+;;-----------------------------
 
-(define (crea-diccionario)
-  (mcons '*diccionario* '()))
-
-(define (busca key dic)
-  (cond
-    ((null? dic) #f)
-    ((equal? key (mcar (mcar dic)))
-     (mcar dic))
-    (else (busca key (mcdr dic)))))
-
-(define (get key dic)
-  (define record (busca key (mcdr dic)))
-  (if (not record)
+(define (exists? predicado lista)
+  (if (null? lista)
       #f
-      (mcdr record)))
+      (or (predicado (first lista))
+          (exists? predicado (rest lista)))))
 
-(define (put key value dic)
-  (define record (busca key (mcdr dic)))
-  (if (not record)
-      (set-mcdr! dic
-                (mcons (mcons key value)
-                      (mcdr dic)))
-      (set-mcdr! record value))
-  value)
+
+(define (for-all? predicado lista)
+  (or (null? lista)
+      (and (predicado (first lista))
+           (for-all? predicado (rest lista)))))
+
 
 ;; ----------------------------------
 ;; Dibujo de diagramas caja y puntero
