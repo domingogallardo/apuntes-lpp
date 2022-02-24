@@ -911,9 +911,9 @@ En la siguiente imagen se muestran distintas llamadas a la función `hilbert`:
 
 <img src="imagenes/image-hilbert.png" width="250px"/>
 
-## 5. Bibliografía - SICP
+## 5. Bibliografía
 
-En este tema explicamos conceptos de los siguientes capítulos del libro *Structure and Intepretation of Computer Programs*:
+Capítulos del libro *Structure and Intepretation of Computer Programs*:
 
 - [1.2 - Procedures and the Processes They Generate](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-11.html#%_sec_1.2)
 - [1.2.1 - Linear Recursion and Iteration](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-11.html#%_sec_1.2.1)
