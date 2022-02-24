@@ -309,40 +309,10 @@ El código completo:
 
 ### Fibonacci con memoization
 
-- Usamos los métodos procedurales `put` y `get` que implementan un
-  diccionario *clave-valor*.
-- No te preocupes de cómo se implementa el siguiente código, es un
-  código no funcional en el que se define una estructura de datos
-  mutable (un diccionario). Para que funcione
-  hay que usar las funciones de Racket que permiten mutar las
-  parejas:
+- Usamos un diccionario con los métodos `put` y `get` que actualizan
+  su información con mutación.
 
-```racket
-(define (crea-diccionario)
-  (mcons '*diccionario* '()))
-
-(define (busca key dic)
-  (cond
-    ((null? dic) #f)
-    ((equal? key (mcar (mcar dic)))
-     (mcar dic))
-    (else (busca key (mcdr dic)))))
-
-(define (get key dic)
-  (define record (busca key (mcdr dic)))
-  (if (not record)
-      #f
-      (mcdr record)))
-
-(define (put key value dic)
-  (define record (busca key (mcdr dic)))
-  (if (not record)
-      (set-mcdr! dic
-                (mcons (mcons key value)
-                      (mcdr dic)))
-      (set-mcdr! record value))
-  value)
-```
+- La función `(crea-diccionario)` devuelve un diccionario vacío.
 
 - La función `(put key value dic)` asocia un valor a una clave, la
  guarda en el diccionario (con mutación) y devuelve el valor.
@@ -359,12 +329,17 @@ Ejemplos:
 (get 2 mi-dic) ; ⇒ #f
 ```
 
+- La implementación no es importante. Está incluida en el fichero
+  `lpp.rkt` para poder usar las funciones.
+
 - La función `fib-memo` realiza el cálculo de la serie de Fibonacci
   utilizando el proceso recursivo visto anteriormente y la técnica de
   memoización, en la que se consulta el valor de Fibonacci en el diccionario
   antes de realizar la llamada recursiva:
 
 ```racket
+(require "lpp.rkt")
+
 (define (fib-memo n dic)
   (cond ((= n 0) 0)
         ((= n 1) 1)

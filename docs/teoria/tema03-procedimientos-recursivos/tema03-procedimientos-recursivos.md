@@ -449,9 +449,10 @@ siguientes veces.
 
 ### 3.1. Fibonacci con memoization
 
-Para implementar la _memoization_ necesitamos odos métodos imperativos 
-`put` y `get` que implementan un diccionario *clave-valor*.
+Para implementar la _memoization_ necesitamos usar un diccionario con
+los métodos `put` y `get` que actualizan su información con mutación.
 
+- La función `(crea-diccionario)` devuelve un diccionario vacío.
 - La función `(put key value dic)` asocia un valor a una clave, la
 guarda en el diccionario (con mutación) y devuelve el valor.
 - La función `(get key dic)` devuelve el valor del diccionario asociado a
