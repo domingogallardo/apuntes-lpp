@@ -452,40 +452,13 @@ fila 4 = (1 4 6 4 1)
 <hr />
 <h3>Fibonacci con memoization</h3>
 <ul>
-<li>Usamos los métodos procedurales <code>put</code> y <code>get</code> que implementan un
-  diccionario <em>clave-valor</em>.</li>
-<li>No te preocupes de cómo se implementa el siguiente código, es un
-  código no funcional en el que se define una estructura de datos
-  mutable (un diccionario). Para que funcione
-  hay que usar las funciones de Racket que permiten mutar las
-  parejas:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">crea-diccionario</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">mcons</span> <span class="o">&#39;</span><span class="ss">*diccionario*</span> <span class="o">&#39;</span><span class="p">()))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">busca</span> <span class="n">key</span> <span class="n">dic</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">cond</span>
-    <span class="p">((</span><span class="nb">null?</span> <span class="n">dic</span><span class="p">)</span> <span class="no">#f</span><span class="p">)</span>
-    <span class="p">((</span><span class="nb">equal?</span> <span class="n">key</span> <span class="p">(</span><span class="nb">mcar</span> <span class="p">(</span><span class="nb">mcar</span> <span class="n">dic</span><span class="p">)))</span>
-     <span class="p">(</span><span class="nb">mcar</span> <span class="n">dic</span><span class="p">))</span>
-    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">busca</span> <span class="n">key</span> <span class="p">(</span><span class="nb">mcdr</span> <span class="n">dic</span><span class="p">)))))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">get</span> <span class="n">key</span> <span class="n">dic</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">define</span> <span class="n">record</span> <span class="p">(</span><span class="n">busca</span> <span class="n">key</span> <span class="p">(</span><span class="nb">mcdr</span> <span class="n">dic</span><span class="p">)))</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">not</span> <span class="n">record</span><span class="p">)</span>
-      <span class="no">#f</span>
-      <span class="p">(</span><span class="nb">mcdr</span> <span class="n">record</span><span class="p">)))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">put</span> <span class="n">key</span> <span class="n">value</span> <span class="n">dic</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">define</span> <span class="n">record</span> <span class="p">(</span><span class="n">busca</span> <span class="n">key</span> <span class="p">(</span><span class="nb">mcdr</span> <span class="n">dic</span><span class="p">)))</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">not</span> <span class="n">record</span><span class="p">)</span>
-      <span class="p">(</span><span class="nb">set-mcdr!</span> <span class="n">dic</span>
-                <span class="p">(</span><span class="nb">mcons</span> <span class="p">(</span><span class="nb">mcons</span> <span class="n">key</span> <span class="n">value</span><span class="p">)</span>
-                      <span class="p">(</span><span class="nb">mcdr</span> <span class="n">dic</span><span class="p">)))</span>
-      <span class="p">(</span><span class="nb">set-mcdr!</span> <span class="n">record</span> <span class="n">value</span><span class="p">))</span>
-  <span class="n">value</span><span class="p">)</span>
-</code></pre></div>
-<ul>
+<li>
+<p>Usamos un diccionario con los métodos <code>put</code> y <code>get</code> que actualizan
+  su información con mutación.</p>
+</li>
+<li>
+<p>La función <code>(crea-diccionario)</code> devuelve un diccionario vacío.</p>
+</li>
 <li>
 <p>La función <code>(put key value dic)</code> asocia un valor a una clave, la
  guarda en el diccionario (con mutación) y devuelve el valor.</p>
@@ -502,12 +475,20 @@ fila 4 = (1 4 6 4 1)
 <span class="p">(</span><span class="n">get</span> <span class="mi">2</span> <span class="n">mi-dic</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
 </code></pre></div>
 <ul>
-<li>La función <code>fib-memo</code> realiza el cálculo de la serie de Fibonacci
+<li>
+<p>La implementación no es importante. Está incluida en el fichero
+  <code>lpp.rkt</code> para poder usar las funciones.</p>
+</li>
+<li>
+<p>La función <code>fib-memo</code> realiza el cálculo de la serie de Fibonacci
   utilizando el proceso recursivo visto anteriormente y la técnica de
   memoización, en la que se consulta el valor de Fibonacci en el diccionario
-  antes de realizar la llamada recursiva:</li>
+  antes de realizar la llamada recursiva:</p>
+</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fib-memo</span> <span class="n">n</span> <span class="n">dic</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">require</span> <span class="s2">&quot;lpp.rkt&quot;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fib-memo</span> <span class="n">n</span> <span class="n">dic</span><span class="p">)</span>
   <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">0</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
         <span class="p">((</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
         <span class="p">((</span><span class="nb">not</span> <span class="p">(</span><span class="nb">equal?</span> <span class="p">(</span><span class="n">get</span> <span class="n">n</span> <span class="n">dic</span><span class="p">)</span> <span class="no">#f</span><span class="p">))</span>
