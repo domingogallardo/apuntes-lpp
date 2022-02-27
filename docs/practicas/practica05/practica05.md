@@ -1,19 +1,71 @@
-# Práctica 4: Funciones como datos de primera clase y funciones de orden superior
+# Práctica 5: Funciones como datos de primera clase y funciones de orden superior
 
-## Entrega de la práctica
+## Antes de la clase de prácticas ##
 
-Para entregar la práctica debes subir a Moodle el fichero
-`practica04.rkt` con una cabecera inicial con tu nombre y apellidos, y
-las soluciones de cada ejercicio separadas por comentarios. Cada
-solución debe incluir:
+- Antes de empezar esta práctica es importante que revises la solución
+  de la práctica 4. Puedes preguntar las dudas al profesor de prácticas.
 
-- La **definición de las funciones** que resuelven el ejercicio.
-- Un conjunto de **pruebas** que comprueben su funcionamiento
-  utilizando el API `RackUnit`.
+- Los siguientes ejercicios están basados en los conceptos de teoría
+vistos la semana pasada. Antes de la clase de prácticas debes repasar
+todos los conceptos y **probar en el DrRacket** todos los ejemplos de
+los siguientes apartados del tema 2 [_Programación
+Funcional_](../../teoria/tema02-programacion-funcional/tema02-programacion-funcional.md#54-generalizacion):
+
+    - 5.4. Generalización. 
+    - 5.5. Funciones que devuelven otras funciones. 
+    - 5.6. Funciones en estructuras de datos. 
+    - 5.7. Funciones de orden superior.
 
 ## Ejercicios
 
+Descarga el [fichero `lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt),
+pulsando el botón derecho del ratón y seleccionando la opción _Guardar
+como_ `lpp.rkt`. Guárdalo en la misma carpeta en la que tengas el
+fichero `practica4.rkt`.
+
+El fichero contiene la definición de las funciones de orden superior `exists?` y `for-all?`.
+
+
 ### Ejercicio 1 ###
+
+a) Define la función `(aplica-veces f1 f2 n x)` que aplica `n` veces
+las funciones `f2` y `f1` al número `x`. 
+
+Por ejemplo, `(aplica-veces doble suma-2 3 5)` deberá devolver el
+resultado de sumarle 2 a 5, después calcular su doble, después sumarle
+otra vez 2 al resultado, volver a calcular su doble y, por último,
+sumarle 2 al resultado y calcular su doble. Esto es, aplica 3 veces
+las funciones `suma-2` y `doble` al número inicial 5. El resultado
+será 68.
+
+Ejemplos:
+
+```racket
+(aplica-veces (lambda (x) (+ x 1)) (lambda (x) (+ x 2)) 2 10) ; ⇒ 16
+(aplica-veces (lambda (x) (* x x)) (lambda (x) (+ x 1)) 4 3) ; ⇒ 7072978201
+```
+
+b) Implementa la función recursiva `(mueve-al-principio-condicion pred
+lista)` que recibe un predicado y una lista. La función es una
+generalización de la función de la práctica anterior y debe devolver
+la lista resultante de mover la primera aparición del dato que cumpla
+el predicado al comienzo de la lista, dejando el resto de la lista sin
+modificar.  
+
+A diferencia de la práctica anterior, en la lista puede no haber
+ningún elemento que cumpla el predicado. En ese caso se devolverá la
+lista original.
+
+Ejemplos:
+
+```racket
+(mueve-al-principio-condicion number? '(a b c 1 d 1 e) ; ⇒ (1 a b c d 1 e)
+(mueve-al-principio-cond number? '(1 a b 1 c)) ; ⇒ (1 a b 1 c)
+(mueve-al-principio-cond number? '(a b c d)) ; ⇒ '(a b c d)
+```
+
+
+### Ejercicio 2 ###
 
 a) Indica qué devuelven las siguientes expresiones, sin utilizar el
 intérprete. Comprueba después si has acertado.
@@ -28,6 +80,10 @@ intérprete. Comprueba después si has acertado.
          
 (filter (lambda (x) 
             (equal? (string-ref (symbol->string x) 1) #\a)) '(alicante barcelona madrid almería)) ; ⇒ ?
+
+(foldr (lambda (dato resultado)
+          (string-append dato "*" resultado)) "" 
+          '("Hola" "que" "tal")) ; ⇒ ?
 
 (foldr append '() '((1 2) (3 4 5) (6 7) (8))) ; ⇒ ?
 
@@ -105,23 +161,51 @@ _____________
 (check-equal? _____________________  '(3 . 4))
 ```
 
-### Ejercicio 2 ###
+### Ejercicio 3 ###
 
-Implementa utilizando funciones de orden superior las funciones
-`(crea-baraja lista-parejas)` y `(expande-lista lista-parejas)` de la
-práctica 3. Para la implementación de `expande-lista` debes utilizar
-la función `expande-pareja` usada también en la práctica 3.
+a) Implementa, utilizando funciones de orden superior, la función
+Implementa utilizando funciones de orden superior la función
+`(contar-datos-iguales-fos lista-parejas)` que recibe una lista de
+parejas y devuelve el número de parejas que tienen sus dos datos
+iguales.
 
 ```racket
-(crea-baraja '((#\u2660 . #\A) (#\u2663 . #\2) 
-               (#\u2665 . #\3) (#\u2666 . #\R)))
-; ⇒ (A♠ 2♣ 3♥ R♦)
+(contar-datos-iguales-fos 
+   '((2 . 3) ("hola" . "hola") (\#a . \#a) (true . false))) 
+; ⇒ 2
+(contar-datos-iguales-fos 
+   '((2 . "hola") ("hola" . 3) (\#a . true) (\#b . false))) 
+; ⇒ 0
+```
 
-(expande-lista '((#t . 3) ("LPP" . 2) (b . 4))) 
+b) Implementa, utilizando funciones de orden superior, la función
+`(expande-lista-fos lista-parejas)`, que hace lo mismo que la función
+`(expande-lista lista-parejas)` de la práctica anterior. Igual que en
+la práctica anterior debes usar la función `expande-pareja`.
+
+```
+(expande-lista-fos '((#t . 3) ("LPP" . 2) (b . 4))) 
 ; ⇒ '(#t #t #t "LPP" "LPP" b b b b))
 ```
 
-### Ejercicio 3 ###
+c) Implementa, utilizando funciones de orden superior, la función
+`(filtra-simbolos-fos lista-simbolos lista-num)` que recibe una lista de
+símbolos y una lista de números enteros (ambas de la misma longitud) y
+devuelve una lista de parejas. Cada pareja está formada por el símbolo
+de la i-ésima posición de lista-simbolos y el número entero situado
+esa posición de lista-num, siempre y cuando dicho número se
+corresponda con la longitud de la cadena correspondiente al
+símbolo. Puedes utilizar las funciones predefinidas `string-length` y
+`symbol->string`.
+
+Ejemplo:
+
+```
+(filtra-simbolos-fos '(este es un ejercicio de examen) '(2 1 2 9 1 6))
+; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))
+```
+
+### Ejercicio 4 ###
 
 a) Implementa usando funciones de orden superior la función `(suma-n-izq n
 lista-parejas)` que recibe una lista de parejas y devuelve otra lista
@@ -153,66 +237,18 @@ Ejemplo:
 ```
 
 
-c) Implementa la función `(filtra-simbolos lista-simbolos lista-num)` de
-de la práctica 3, usando una composición de funciones en las que se
-use `map`.
+### Ejercicio 5 ###
 
-
-### Ejercicio 4 ###
-
-a) La función de Racket `(index-of lista dato)` devuelve la posición
-de un dato en una lista o `#f` si el dato no está en la lista. Si el
-dato está repetido en la lista devuelve la posición de su primera
-aparición.
-
-La siguiente es una implementación incompleta de una función
-`mi-index-of` que hace lo mismo que `index-of`, usando la función de
-orden superior `foldl` para recorrer la lista de izquierda a derecha
-buscando el dato. Como resultado del `foldl` se construye una pareja
-en cuya parte derecha se va calculando la posición y en la parte
-izquierda se introduce un booleano que indica si hemos encontrado o no
-el dato. También se usa una función auxiliar.
-
-Debes completar las definiciones para que todo funcione
-correctamente. 
-
-```racket
-
-; Función auxiliar que devuelve la parte derecha
-; de una pareja si la parte izquierda es #t. Sino
-; devuelve #f
-
-(define (devuelve-si-existe pareja)
-   _____________)
-
-(define (mi-index-of lista dato)
-  (devuelve-si-existe 
-   (foldl (lambda (elemento resultado)
-            (cond
-              ((car resultado) resultado) ; el car es #t: hemos encontrado el dato
-                                          ; y no modificamos el resultado
-              ((equal? dato elemento) (cons ____________________)) ; encontramos el dato: construimos
-                                                                    ; la pareja con #t y la posición actual
-              (else (cons ________________________)))) ; no es el dato: construimos la pareja con
-                                                       ; #f e incrementamos el resultado
-          (cons #f 0)  ; resultado inicial: pareja con #f (no encontrado) y 0 (posición inicial)
-          lista)))
-```
-
-    
-Ejemplos:
-
-```racket
-(mi-index-of '(a b c d c) 'c) ; ⇒ 2
-(mi-index-of '(1 2 3 4 5) 10) ; ⇒ #f
-```
-
-
-b) Completa la definición de la siguiente función de orden superior
-`(busca-mayor mayor?  lista)` que busca el mayor elemento de una
+a) Completa la definición de la siguiente función de orden superior
+`(busca-mayor mayor? lista)` que busca el mayor elemento de una
 lista. Recibe un predicado `mayor?` que compara dos elementos de la
 lista y devuelve `#t` o `#f` dependiendo de si el primero es mayor que
 el segundo. 
+
+Al usar un predicado como argumento, podremos generalizar y usar esta
+función para obtener el mayor elemento de listas de números, de
+cadenas, de parejas, etc. Para ello deberemos cambiar la función de
+comparación `mayor?` en cada caso.
 
 ```racket
 (define (busca-mayor mayor? lista)
@@ -228,73 +264,25 @@ el segundo.
 Escribe algunos `check-equal?` en los que compruebes el funcionamiento
 de `busca-mayor`, utilizando funciones `mayor?` distintas.
 
-c) Define la función `(posicion-mayor mayor? lista)` que devuelva la
-posición del mayor elemento de la lista utilizando las dos funciones
-anteriores.
+b) Implementa, usando la función de orden superior `for-all?`, la función
+`(todos-menores? lista n)` que recibe una lista con sublistas de
+números y un número `n` y comprueba si todos los números en las
+sublistas son menores que `n`. 
 
-### Ejercicio 5 ###
+Debes implementar dos versiones. Una usando la función `mayor?`
+definida en el apartado anterior y otra usando la función de orden
+superior `exists?`.
 
-Supongamos que vamos a representar una mano de cartas como una
-lista de cartas. Podemos entonces representar un juego de _n_
-manos como una lista de _n_ listas.
-
-Por ejemplo, la siguiente lista representaría un juego con 3 manos de
-5 cartas:
-
-```text
-((K♦ J♥ 2♥ 2♠ 8♥) (A♥ 3♠ 5♦ 3♣ J♦) (3♦ Q♥ 0♠ 2♣ 9♦))
-```
-
-La siguiente función devuelve el valor de una carta:
+Ejemplo:
 
 ```racket
-(define (valor-carta carta orden)
-  (+ 1 (index-of orden (string-ref (symbol->string carta) 0))))
-```
-
-El parámetro `orden` es una lista de todos los caracteres que
-representan los posibles valores de una carta, ordenados de menor a
-mayor.
-
-Por ejemplo:
-
-```racket
-(define orden '(#\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9 #\0 #\J #\Q #\K #\A))
-(valor-carta 'A♠ orden) ; ⇒ 13
-(valor-carta 'J♥ orden) ; ⇒ 10
-(valor-carta '2♦ orden) ; ⇒ 1
-```
-
-Implementa, utilizando funciones de orden superior y funciones
-definidas anteriormente en esta práctica, la función `(mano-ganadora
-lista-manos)` que recibe una lista de manos y devuelve la posición de
-la mano ganadora utilizando la valoración del póker. 
-
-Consideramos mano ganadora aquella que tiene la carta más alta. 
-
-Si hay empate, deberás devolver la posición de la primera mano que
-participa en el empate.
-
-!!! Note "Pista"
-    Puedes definir una función de un único parámetro
-    que devuelve el valor de una carta usando el orden definido por el
-    póker usando la siguiente expresión lambda:
-    
-    ```racket
-    (lambda (carta)
-          (valor-carta carta
-               '(#\2 #\3 #\4 #\5 #\6 #\7 #\8 #\9 #\0 #\J #\Q #\K #\A)))
-    ```
-
-Puedes usar cualquier función definida anteriormente en la práctica.
-
-```racket
-(define lista-manos '((9♦ 2♦ K♥ 0♦ 7♥) (6♦ 4♠ 7♣ 5♥ 4♦) (0♣ 4♣ 5♠ 3♥ J♥)))
-(mano-ganadora lista-manos) ; ⇒ 0
+(todos-menores? '((10 30 20) (1 50 30) (30 40 90)) 100) ; ⇒ #t
+(todos-menores? '((10 30 20) (1 50 30) (30 40 90)) 90) ; ⇒ #f
+(todos-menores? '((10 30 20) (1 50 30) (30 40 90)) 55) ; ⇒ #f
 ```
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2020-21  
+Lenguajes y Paradigmas de Programación, curso 2021-22  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

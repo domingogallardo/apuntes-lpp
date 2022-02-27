@@ -9,7 +9,7 @@
 vistos la semana pasada. Antes de la clase de prácticas debes repasar
 todos los conceptos y **probar en el DrRacket** todos los ejemplos de
 los siguientes apartados del tema 2 [_Programación
-Funcional_](../../teoria/tema02-programacion-funcional/tema02-programacion-funcional.html#43-funciones-recursivas-que-construyen-listas):
+Funcional_](../../teoria/tema02-programacion-funcional/tema02-programacion-funcional.md#43-funciones-recursivas-que-construyen-listas):
 
     - 4.3. _Funciones recursivas que construyen listas_
     - 4.4. _Funciones con número variable de argumentos_
