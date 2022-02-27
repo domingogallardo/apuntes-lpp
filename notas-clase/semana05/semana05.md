@@ -167,7 +167,6 @@ Secuencia de llamadas:
 4
 ```
 
-
 ----
 
 ### Procesos iterativos
@@ -178,6 +177,47 @@ Secuencia de llamadas:
 - La última llamada a la recursión devuelve el valor acumulado
 - El proceso resultante de la recursión es iterativo en el sentido de
   que no deja llamadas en espera ni incurre en coste espacial
+
+---
+
+### Ejemplo de función iterativa - max ###
+
+- ¿Cómo definiríamos de forma iterativa la función `(max lista)`
+que devuelve el máximo de una lista de números?
+
+<p style="margin-bottom:2cm;"></p>
+
+```racket
+(define (max lista)
+    (max-iter (rest lista) (first lista)))
+    
+(define (max-iter lista result)
+    (if (null? lista)
+        result
+        (max-iter (rest lista) (if (> result (first lista))
+                                   result
+                                   (first lista)))))
+```
+
+
+---
+
+### Ejemplo de función iterativa - mi-reverse ###
+
+- ¿Cómo definiríamos de forma iterativa la función `(mi-reverse lista)`
+que devuelve el máximo de una lista de números?
+
+<p style="margin-bottom:2cm;"></p>
+
+```racket
+(define (mi-reverse lista)
+    (reverse-iter lista '()))
+    
+ (define (reverse-iter lista result)
+    (if (null? lista)
+        result
+        (reverse-iter (rest lista) (cons (first lista) result))))
+```
 
 ---
 

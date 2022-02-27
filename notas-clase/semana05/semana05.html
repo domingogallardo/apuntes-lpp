@@ -346,6 +346,40 @@ Fibonacci(1) = 1
   que no deja llamadas en espera ni incurre en coste espacial</li>
 </ul>
 <hr />
+<h3>Ejemplo de función iterativa - max</h3>
+<ul>
+<li>¿Cómo definiríamos de forma iterativa la función <code>(max lista)</code>
+que devuelve el máximo de una lista de números?</li>
+</ul>
+<p style="margin-bottom:2cm;"></p>
+
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="nb">max</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">max-iter</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">max-iter</span> <span class="n">lista</span> <span class="n">result</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
+        <span class="n">result</span>
+        <span class="p">(</span><span class="n">max-iter</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">result</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+                                   <span class="n">result</span>
+                                   <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)))))</span>
+</code></pre></div>
+<hr />
+<h3>Ejemplo de función iterativa - mi-reverse</h3>
+<ul>
+<li>¿Cómo definiríamos de forma iterativa la función <code>(mi-reverse lista)</code>
+que devuelve el máximo de una lista de números?</li>
+</ul>
+<p style="margin-bottom:2cm;"></p>
+
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-reverse</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">reverse-iter</span> <span class="n">lista</span> <span class="o">&#39;</span><span class="p">()))</span>
+
+ <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">reverse-iter</span> <span class="n">lista</span> <span class="n">result</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
+        <span class="n">result</span>
+        <span class="p">(</span><span class="n">reverse-iter</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="n">result</span><span class="p">))))</span>
+</code></pre></div>
+<hr />
 <h3>Fibonacci iterativo</h3>
 <ul>
 <li>Cualquier programa recursivo se puede transformar en otro que genera
