@@ -32,11 +32,11 @@ a) Define la función `(aplica-veces f1 f2 n x)` que aplica `n` veces
 las funciones `f2` y `f1` al número `x`. 
 
 Por ejemplo, `(aplica-veces doble suma-2 3 5)` deberá devolver el
-resultado de sumarle 2 a 5, después calcular su doble, después sumarle
-otra vez 2 al resultado, volver a calcular su doble y, por último,
-sumarle 2 al resultado y calcular su doble. Esto es, aplica 3 veces
-las funciones `suma-2` y `doble` al número inicial 5. El resultado
-será 68.
+resultado de sumarle 2 a 5 (7), después calcular el doble (14),
+después sumarle otra vez 2 al resultado (16), volver a calcular su
+doble (32) y, por último, sumarle 2 al resultado (34) y calcular su
+doble. Esto es, aplica 3 veces las funciones `suma-2` y `doble`
+tomando como número inicial el 5. El resultado será 68.
 
 Ejemplos:
 
@@ -50,7 +50,7 @@ lista)` que recibe un predicado y una lista. La función es una
 generalización de la función de la práctica anterior y debe devolver
 la lista resultante de mover la primera aparición del dato que cumpla
 el predicado al comienzo de la lista, dejando el resto de la lista sin
-modificar.  
+modificar.
 
 A diferencia de la práctica anterior, en la lista puede no haber
 ningún elemento que cumpla el predicado. En ese caso se devolverá la
@@ -60,8 +60,8 @@ Ejemplos:
 
 ```racket
 (mueve-al-principio-condicion number? '(a b c 1 d 1 e) ; ⇒ (1 a b c d 1 e)
-(mueve-al-principio-cond number? '(1 a b 1 c)) ; ⇒ (1 a b 1 c)
-(mueve-al-principio-cond number? '(a b c d)) ; ⇒ '(a b c d)
+(mueve-al-principio-condicion number? '(1 a b 1 c)) ; ⇒ (1 a b 1 c)
+(mueve-al-principio-condicion number? '(a b c d)) ; ⇒ '(a b c d)
 ```
 
 
@@ -79,7 +79,8 @@ intérprete. Comprueba después si has acertado.
             (else "desconocido"))) '(1 #t hola #f (1 . 2))) ; ⇒ ?
          
 (filter (lambda (x) 
-            (equal? (string-ref (symbol->string x) 1) #\a)) '(alicante barcelona madrid almería)) ; ⇒ ?
+            (equal? (string-ref (symbol->string x) 1) #\a)) 
+    '(alicante barcelona madrid almería)) ; ⇒ ?
 
 (foldr (lambda (dato resultado)
           (string-append dato "*" resultado)) "" 
@@ -141,7 +142,7 @@ comprobar si has acertado.
 ```
 
 c) Rellena los siguientes huecos **con una única expresión** en la que
-se utilice alguna función previamente definida. Comprueba
+se utilice alguna función previamente definida (`f` o `g`). Comprueba
 con el intérprete si lo has hecho correctamente.
 
 
@@ -163,8 +164,7 @@ _____________
 
 ### Ejercicio 3 ###
 
-a) Implementa, utilizando funciones de orden superior, la función
-Implementa utilizando funciones de orden superior la función
+a) Implementa utilizando funciones de orden superior la función
 `(contar-datos-iguales-fos lista-parejas)` que recibe una lista de
 parejas y devuelve el número de parejas que tienen sus dos datos
 iguales.
@@ -192,8 +192,8 @@ c) Implementa, utilizando funciones de orden superior, la función
 `(filtra-simbolos-fos lista-simbolos lista-num)` que recibe una lista de
 símbolos y una lista de números enteros (ambas de la misma longitud) y
 devuelve una lista de parejas. Cada pareja está formada por el símbolo
-de la i-ésima posición de lista-simbolos y el número entero situado
-esa posición de lista-num, siempre y cuando dicho número se
+de la i-ésima posición de `lista-simbolos` y el número entero situado
+esa posición de `lista-num`, siempre y cuando dicho número se
 corresponda con la longitud de la cadena correspondiente al
 símbolo. Puedes utilizar las funciones predefinidas `string-length` y
 `symbol->string`.
@@ -245,10 +245,10 @@ lista. Recibe un predicado `mayor?` que compara dos elementos de la
 lista y devuelve `#t` o `#f` dependiendo de si el primero es mayor que
 el segundo. 
 
-Al usar un predicado como argumento, podremos generalizar y usar esta
-función para obtener el mayor elemento de listas de números, de
-cadenas, de parejas, etc. Para ello deberemos cambiar la función de
-comparación `mayor?` en cada caso.
+Al usar un predicado como argumento, estamos definiendo una función
+genérica que podemos usar para obtener el mayor elemento de listas de
+números, de cadenas, de parejas, etc. En cada caso deberemos pasar
+como parámetro `mayor?` la función de comparación apropiada.
 
 ```racket
 (define (busca-mayor mayor? lista)
