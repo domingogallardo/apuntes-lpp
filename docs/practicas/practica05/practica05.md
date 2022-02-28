@@ -259,14 +259,14 @@ como parámetro `mayor?` la función de comparación apropiada.
 Escribe algunos `check-equal?` en los que compruebes el funcionamiento
 de `busca-mayor`, utilizando funciones `mayor?` distintas.
 
-b) Implementa, usando la función de orden superior `for-all?`, la función
-`(todos-menores? lista n)` que recibe una lista con sublistas de
-números y un número `n` y comprueba si todos los números en las
-sublistas son menores que `n`. 
+b) Implementa, usando el predicado de orden superior `for-all?` dos
+versiones de la función `(todos-menores? lista n)` que recibe una
+lista con sublistas de números y un número `n` y comprueba si todos
+los números en las sublistas son menores que `n`.
 
-Debes implementar dos versiones. Una usando la función `mayor?`
-definida en el apartado anterior y otra usando la función de orden
-superior `exists?`.
+La primera versión la debes implementar usando `for-all?` y la
+función `busca-mayor?` definida en el apartado anterior y la segunda
+usando `for-all?` y la función de orden superior `exists?`.
 
 Ejemplo:
 
