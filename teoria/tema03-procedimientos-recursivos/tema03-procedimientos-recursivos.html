@@ -779,7 +779,7 @@ una función recursiva. Supongamos la función
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-length</span> <span class="n">items</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">items</span><span class="p">)</span>
       <span class="mi">0</span>
-      <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">mi-length</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">items</span><span class="p">)))))</span>
+      <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">mi-length</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">items</span><span class="p">)))))</span>
 </code></pre></div>
 <p>Examinamos cómo se evalúan las llamadas recursivas:</p>
 <div class="highlight"><pre><span></span><code>(mi-length &#39;(a b c d))
@@ -908,7 +908,7 @@ inicializar este resultado a 0.</p>
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-length-iter</span> <span class="n">lista</span> <span class="n">result</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
       <span class="n">result</span>
-      <span class="p">(</span><span class="n">mi-length-iter</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">result</span> <span class="mi">1</span><span class="p">))))</span>
+      <span class="p">(</span><span class="n">mi-length-iter</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">result</span> <span class="mi">1</span><span class="p">))))</span>
 </code></pre></div>
 <p>Fijaros que, al igual que en la versión iterativa de factorial, no hay
 ninguna llamada a ningúna función que recoja el resultado de la
@@ -926,7 +926,7 @@ recursiva acumulando el primer elemento de la lista:</p>
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-lista-iter</span> <span class="n">lista</span> <span class="n">result</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
       <span class="n">result</span>
-      <span class="p">(</span><span class="n">suma-lista-iter</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">result</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)))))</span>
+      <span class="p">(</span><span class="n">suma-lista-iter</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">result</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 <h3 id="24-caracteristicas-de-los-procesos-iterativos">2.4. Características de los procesos iterativos<a class="headerlink" href="#24-caracteristicas-de-los-procesos-iterativos" title="Permanent link">&para;</a></h3>
 <p>Un resumen de las características de los procesos iterativos
@@ -1056,10 +1056,10 @@ exponencial.</p>
            <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span> <span class="n">lista-fila</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista-fila</span><span class="p">))</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista-fila</span><span class="p">))</span>
       <span class="o">&#39;</span><span class="p">()</span>
-      <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista-fila</span><span class="p">)</span> <span class="p">(</span><span class="nb">car</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista-fila</span><span class="p">)))</span>
-            <span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista-fila</span><span class="p">)))))</span>
+      <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista-fila</span><span class="p">)</span> <span class="p">(</span><span class="nb">first</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista-fila</span><span class="p">)))</span>
+            <span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista-fila</span><span class="p">)))))</span>
 </code></pre></div>
 <p>Con esta implementación ya no se tiene un coste exponencial y se puede
 calcular el valor de números como Pascal(40, 20):</p>
