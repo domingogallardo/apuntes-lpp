@@ -753,10 +753,10 @@ función a los elementos izquierdo y derecho de cada pareja.</p>
 lista. Recibe un predicado <code>mayor?</code> que compara dos elementos de la
 lista y devuelve <code>#t</code> o <code>#f</code> dependiendo de si el primero es mayor que
 el segundo. </p>
-<p>Al usar un predicado como argumento, podremos generalizar y usar esta
-función para obtener el mayor elemento de listas de números, de
-cadenas, de parejas, etc. Para ello deberemos cambiar la función de
-comparación <code>mayor?</code> en cada caso.</p>
+<p>Al usar un predicado como argumento, estamos definiendo una función
+genérica que podemos usar para obtener el mayor elemento de listas de
+números, de cadenas, de parejas, etc. En cada caso deberemos pasar
+como parámetro <code>mayor?</code> la función de comparación apropiada.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">busca-mayor</span> <span class="n">mayor?</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="nb">foldl</span> <span class="n">__________</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))</span>
 </code></pre></div>
