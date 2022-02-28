@@ -265,7 +265,7 @@ lista con sublistas de números y un número `n` y comprueba si todos
 los números en las sublistas son menores que `n`.
 
 La primera versión la debes implementar usando `for-all?` y la
-función `busca-mayor?` definida en el apartado anterior y la segunda
+función `busca-mayor` definida en el apartado anterior y la segunda
 usando `for-all?` y la función de orden superior `exists?`.
 
 Ejemplo:
