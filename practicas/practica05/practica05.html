@@ -621,7 +621,8 @@ intérprete. Comprueba después si has acertado.</p>
             <span class="p">(</span><span class="k">else</span> <span class="s2">&quot;desconocido&quot;</span><span class="p">)))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="no">#t</span> <span class="ss">hola</span> <span class="no">#f</span> <span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)))</span> <span class="c1">; ⇒ ?</span>
 
 <span class="p">(</span><span class="nb">filter</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> 
-            <span class="p">(</span><span class="nb">equal?</span> <span class="p">(</span><span class="nb">string-ref</span> <span class="p">(</span><span class="nb">symbol-&gt;string</span> <span class="n">x</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span> <span class="sc">#\a</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">alicante</span> <span class="ss">barcelona</span> <span class="ss">madrid</span> <span class="ss">almería</span><span class="p">))</span> <span class="c1">; ⇒ ?</span>
+            <span class="p">(</span><span class="nb">equal?</span> <span class="p">(</span><span class="nb">string-ref</span> <span class="p">(</span><span class="nb">symbol-&gt;string</span> <span class="n">x</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span> <span class="sc">#\a</span><span class="p">))</span> 
+    <span class="o">&#39;</span><span class="p">(</span><span class="ss">alicante</span> <span class="ss">barcelona</span> <span class="ss">madrid</span> <span class="ss">almería</span><span class="p">))</span> <span class="c1">; ⇒ ?</span>
 
 <span class="p">(</span><span class="nb">foldr</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">dato</span> <span class="n">resultado</span><span class="p">)</span>
           <span class="p">(</span><span class="nb">string-append</span> <span class="n">dato</span> <span class="s2">&quot;*&quot;</span> <span class="n">resultado</span><span class="p">))</span> <span class="s2">&quot;&quot;</span> 
@@ -677,7 +678,7 @@ comprobar si has acertado.</p>
 <span class="c1">; ⇒ (3 10 5)</span>
 </code></pre></div>
 <p>c) Rellena los siguientes huecos <strong>con una única expresión</strong> en la que
-se utilice alguna función previamente definida. Comprueba
+se utilice alguna función previamente definida (<code>f</code> o <code>g</code>). Comprueba
 con el intérprete si lo has hecho correctamente.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">f</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">y</span> <span class="n">z</span><span class="p">)</span> <span class="p">(</span><span class="nb">string-append</span> <span class="n">y</span> <span class="n">z</span> <span class="n">x</span><span class="p">)))</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">g</span> <span class="p">(</span><span class="n">f</span> <span class="s2">&quot;a&quot;</span><span class="p">))</span>
@@ -694,8 +695,7 @@ con el intérprete si lo has hecho correctamente.</p>
 <span class="p">(</span><span class="n">check-equal?</span> <span class="n">_____________________</span>  <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">4</span><span class="p">))</span>
 </code></pre></div>
 <h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
-<p>a) Implementa, utilizando funciones de orden superior, la función
-Implementa utilizando funciones de orden superior la función
+<p>a) Implementa utilizando funciones de orden superior la función
 <code>(contar-datos-iguales-fos lista-parejas)</code> que recibe una lista de
 parejas y devuelve el número de parejas que tienen sus dos datos
 iguales.</p>
