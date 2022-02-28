@@ -590,8 +590,8 @@ las funciones <code>f2</code> y <code>f1</code> al número <code>x</code>. </p>
 resultado de sumarle 2 a 5 (7), después calcular el doble (14),
 después sumarle otra vez 2 al resultado (16), volver a calcular su
 doble (32) y, por último, sumarle 2 al resultado (34) y calcular su
-doble. Esto es, aplica 3 veces las funciones <code>suma-2</code> y <code>doble</code> al
-número inicial 5. El resultado será 68.</p>
+doble. Esto es, aplica 3 veces las funciones <code>suma-2</code> y <code>doble</code>
+tomando como número inicial el 5. El resultado será 68.</p>
 <p>Ejemplos:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">aplica-veces</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">1</span><span class="p">))</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">2</span><span class="p">))</span> <span class="mi">2</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 16</span>
 <span class="p">(</span><span class="n">aplica-veces</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">1</span><span class="p">))</span> <span class="mi">4</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 7072978201</span>
@@ -601,7 +601,7 @@ lista)</code> que recibe un predicado y una lista. La función es una
 generalización de la función de la práctica anterior y debe devolver
 la lista resultante de mover la primera aparición del dato que cumpla
 el predicado al comienzo de la lista, dejando el resto de la lista sin
-modificar.  </p>
+modificar.</p>
 <p>A diferencia de la práctica anterior, en la lista puede no haber
 ningún elemento que cumpla el predicado. En ese caso se devolverá la
 lista original.</p>
