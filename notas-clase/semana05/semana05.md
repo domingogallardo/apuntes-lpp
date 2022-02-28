@@ -32,7 +32,7 @@ Notas de clase de la semana 5 de LPP.
 (define (mi-length items)
     (if (null? items)
         0
-        (+ 1 (mi-length (cdr items)))))
+        (+ 1 (mi-length (rest items)))))
 ```
 
 - ¿Cómo podemos representar las llamadas y el resultado de `(mi-length
@@ -152,7 +152,7 @@ Fibonacci(1) = 1
 (define (mi-length-iter lista result)
    (if (null? lista)
       result
-      (mi-length-iter (cdr lista) (+ result 1))))
+      (mi-length-iter (rest lista) (+ result 1))))
 ```
 
 Secuencia de llamadas:
@@ -321,10 +321,10 @@ El código completo:
            '(1)))
 
 (define (pascal-suma-dos-a-dos lista-fila)
-   (if (null? (cdr lista-fila))
+   (if (null? (rest lista-fila))
       '()
-      (cons (+ (car lista-fila) (car (cdr lista-fila)))
-            (pascal-suma-dos-a-dos (cdr lista-fila)))))
+      (cons (+ (first lista-fila) (first (rest lista-fila)))
+            (pascal-suma-dos-a-dos (rest lista-fila)))))
 ```
 
 ----
@@ -486,7 +486,7 @@ Podemos también combinar imágenes, agrupándolas con las funciones
 <img src="imagenes/image-beside.png" width="340px"/>
 
 En los dos ejemplos anteriores las imágenes agrupadas se alinean en el
-centro. Si queremos otra alineación podemos especificarla usando las
+centro. Si queremos otra alineación podemos especificara usando las
 funciones `above/align` y `beside/align`.
 
 ```racket

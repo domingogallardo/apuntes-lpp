@@ -199,7 +199,7 @@ table {
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-length</span> <span class="n">items</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">items</span><span class="p">)</span>
         <span class="mi">0</span>
-        <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">mi-length</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">items</span><span class="p">)))))</span>
+        <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">mi-length</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">items</span><span class="p">)))))</span>
 </code></pre></div>
 <ul>
 <li>¿Cómo podemos representar las llamadas y el resultado de <code>(mi-length
@@ -324,7 +324,7 @@ Fibonacci(1) = 1
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-length-iter</span> <span class="n">lista</span> <span class="n">result</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
       <span class="n">result</span>
-      <span class="p">(</span><span class="n">mi-length-iter</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">result</span> <span class="mi">1</span><span class="p">))))</span>
+      <span class="p">(</span><span class="n">mi-length-iter</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">result</span> <span class="mi">1</span><span class="p">))))</span>
 </code></pre></div>
 <p>Secuencia de llamadas:</p>
 <div class="highlight"><pre><span></span><code>(mi-length &#39;(a b c d)) =&gt;
@@ -457,10 +457,10 @@ fila 4 = (1 4 6 4 1)
            <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span> <span class="n">lista-fila</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista-fila</span><span class="p">))</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista-fila</span><span class="p">))</span>
       <span class="o">&#39;</span><span class="p">()</span>
-      <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista-fila</span><span class="p">)</span> <span class="p">(</span><span class="nb">car</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista-fila</span><span class="p">)))</span>
-            <span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista-fila</span><span class="p">)))))</span>
+      <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista-fila</span><span class="p">)</span> <span class="p">(</span><span class="nb">first</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista-fila</span><span class="p">)))</span>
+            <span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista-fila</span><span class="p">)))))</span>
 </code></pre></div>
 <hr />
 <h3>Soluciones al coste de la recursión: memoization</h3>
@@ -598,7 +598,7 @@ rotar el triángulo isósceles anterior:</p>
 </code></pre></div>
 <p><img src="imagenes/image-beside.png" width="340px"/></p>
 <p>En los dos ejemplos anteriores las imágenes agrupadas se alinean en el
-centro. Si queremos otra alineación podemos especificarla usando las
+centro. Si queremos otra alineación podemos especificara usando las
 funciones <code>above/align</code> y <code>beside/align</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">above/align</span> <span class="s2">&quot;left&quot;</span>
                <span class="p">(</span><span class="n">ellipse</span> <span class="mi">70</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;yellowgreen&quot;</span><span class="p">)</span>

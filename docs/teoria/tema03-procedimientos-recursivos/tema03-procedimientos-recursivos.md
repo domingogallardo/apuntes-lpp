@@ -41,7 +41,7 @@ una función recursiva. Supongamos la función
 (define (mi-length items)
    (if (null? items)
       0
-      (+ 1 (mi-length (cdr items)))))
+      (+ 1 (mi-length (rest items)))))
 ```
 
 Examinamos cómo se evalúan las llamadas recursivas:
@@ -221,7 +221,7 @@ La solución es la siguiente:
 (define (mi-length-iter lista result)
    (if (null? lista)
       result
-      (mi-length-iter (cdr lista) (+ result 1))))
+      (mi-length-iter (rest lista) (+ result 1))))
 ```
 
 Fijaros que, al igual que en la versión iterativa de factorial, no hay
@@ -245,7 +245,7 @@ recursiva acumulando el primer elemento de la lista:
 (define (suma-lista-iter lista result)
    (if (null? lista)
       result
-      (suma-lista-iter (cdr lista) (+ result (car lista)))))
+      (suma-lista-iter (rest lista) (+ result (first lista)))))
 ```
 
 
@@ -413,10 +413,10 @@ El código completo es el siguiente:
            '(1)))
 
 (define (pascal-suma-dos-a-dos lista-fila)
-   (if (null? (cdr lista-fila))
+   (if (null? (rest lista-fila))
       '()
-      (cons (+ (car lista-fila) (car (cdr lista-fila)))
-            (pascal-suma-dos-a-dos (cdr lista-fila)))))
+      (cons (+ (first lista-fila) (first (rest lista-fila)))
+            (pascal-suma-dos-a-dos (rest lista-fila)))))
 			
 ```
 
