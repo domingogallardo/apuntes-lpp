@@ -758,7 +758,7 @@ genérica que podemos usar para obtener el mayor elemento de listas de
 números, de cadenas, de parejas, etc. En cada caso deberemos pasar
 como parámetro <code>mayor?</code> la función de comparación apropiada.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">busca-mayor</span> <span class="n">mayor?</span> <span class="n">lista</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">foldl</span> <span class="n">__________</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))</span>
+  <span class="p">(</span><span class="nb">foldl</span> <span class="n">__________</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))</span>
 </code></pre></div>
 <div class="admonition hint">
 <p class="admonition-title">Pista</p>
