@@ -189,19 +189,14 @@ la práctica anterior debes usar la función `expande-pareja`.
 ```
 
 c) Implementa, utilizando funciones de orden superior, la función
-`(filtra-simbolos-fos lista-simbolos lista-num)` que recibe una lista de
-símbolos y una lista de números enteros (ambas de la misma longitud) y
-devuelve una lista de parejas. Cada pareja está formada por el símbolo
-de la i-ésima posición de `lista-simbolos` y el número entero situado
-esa posición de `lista-num`, siempre y cuando dicho número se
-corresponda con la longitud de la cadena correspondiente al
-símbolo. Puedes utilizar las funciones predefinidas `string-length` y
-`symbol->string`.
+`(comprueba-simbolos-fos lista-simbolos lista-num)` que hace lo mismo
+que la función `comprueba-simbolos` del ejercicio 6a) de la práctica
+pasada.
 
 Ejemplo:
 
 ```
-(filtra-simbolos-fos '(este es un ejercicio de examen) '(2 1 2 9 1 6))
+(comprueba-simbolos-fos '(este es un ejercicio de examen) '(2 1 2 9 1 6))
 ; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))
 ```
 
@@ -252,7 +247,7 @@ como parámetro `mayor?` la función de comparación apropiada.
 
 ```racket
 (define (busca-mayor mayor? lista)
-  (foldl __________ (car lista) (cdr lista)))
+  (foldl __________ (first lista) (rest lista)))
 ```  
 
 
