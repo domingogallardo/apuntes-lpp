@@ -205,7 +205,7 @@ que devuelve el máximo de una lista de números?
 ### Ejemplo de función iterativa - mi-reverse ###
 
 - ¿Cómo definiríamos de forma iterativa la función `(mi-reverse lista)`
-que devuelve el máximo de una lista de números?
+que devuelve una lista invertida?
 
 <p style="margin-bottom:2cm;"></p>
 
