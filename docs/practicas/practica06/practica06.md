@@ -1,18 +1,29 @@
 # Práctica 5: Procedimientos recursivos e iterativos
 
-## Entrega de la práctica
+## Antes de la clase de prácticas
 
-Para entregar la práctica debes subir a Moodle el fichero
-`practica05.rkt` con una cabecera inicial con tu nombre y apellidos, y
-las soluciones de cada ejercicio separadas por comentarios. Cada
-solución debe incluir:
+- Los siguientes ejercicios están basados en los conceptos de teoría
+vistos la semana pasada. Antes de la clase de prácticas debes repasar
+todos los conceptos y **probar en el DrRacket** todos los ejemplos de
+los siguientes apartados del tema 3 [_Procedimientos recursivos_](../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.md)
 
-- La **definición de las funciones** que resuelven el ejercicio.
-- Un conjunto de **pruebas** que comprueben su funcionamiento
-  utilizando el API `RackUnit`.
-
+    - 1. El coste de la recursión
+    - 2. Procesos iterativos
+    - 3. Memoization
+    - 4. Figuras recursivas
 
 ## Ejercicios
+
+Descarga el [fichero
+`lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt),
+pulsando el botón derecho del ratón y seleccionando la opción _Guardar
+como_ `lpp.rkt`. Guárdalo en la misma carpeta en la que tengas el
+fichero `practica5.rkt`.
+
+El fichero contiene la definición de las funciones
+`(crea-diccionario)`, `(put key value dic)` y `(get key dic)`,
+necesarias para realizar una implementación de un algoritmo recursivo
+con _memoization_.
 
 ### Ejercicio 1  ###
 
@@ -72,7 +83,7 @@ Ejemplo:
 ```
 
 
-### Ejercicio 3
+### Ejercicio 3 ###
 
 a) Implementa utilizando recursión por la cola la función
 `mi-foldl` que haga lo mismo que la función de orden superior
@@ -101,9 +112,9 @@ Ejemplos:
 ### Ejercicio 4 ###
 
 Realiza una implementación que utilice la [técnica de la
-_memoization_](https://domingogallardo.github.io/apuntes-lpp/teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html#soluciones-al-coste-de-la-recursion-memoization)
+_memoization_](../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.md#soluciones-al-coste-de-la-recursion-memoization)
 del algoritmo que devuelve la [serie de
-Pascal](https://domingogallardo.github.io/apuntes-lpp/teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html#triangulo-de-pascal).
+Pascal](../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.md#triangulo-de-pascal).
 
 ```racket
 (define diccionario (crea-diccionario))
@@ -113,25 +124,27 @@ Pascal](https://domingogallardo.github.io/apuntes-lpp/teoria/tema03-procedimient
 
 ### Ejercicio 5 ###
 
-a) Usando gráficos de tortuga implementa la figura recursiva conocida
-como _curva de Koch_. Debes definir una función recursiva `(koch nivel
-trazo)` que dibuje una curva de Koch de nivel `nivel` y de longitud
-`trazo`. 
+a) Usando la librería de imágenes de Racket `2htdp/image` implementa
+la figura recursiva conocida como _curva de Koch_. Debes definir una
+función recursiva `(koch nivel trazo)` que dibuje una curva de Koch de
+nivel `nivel` y de longitud `trazo`.
 
-Como pista, para dibujar una curva de Koch de nivel n y longitud l, se
-deberán dibujar 4 curvas de Koch de nivel n-1 y longitud l/3. En estas
-4 curvas consecutivas, el ángulo de inclinación de la segunda curva
-con respecto a la primera es de 60 grados.
+Como pista, fíjate en el dibujo. Para construir una imagen de una
+curva de Koch de nivel n y longitud l, se deberán juntar 4 curvas de
+Koch de nivel n-1 y longitud l/3. La primera y la última imagen son la
+curva original y la segunda y tercera están rotadas 60 grados. Fíjate
+también en la alineación de las imágenes.
 
 Puedes ver ejemplos de las curvas de nivel 1, 2 y 3 en las siguientes
 figuras: 
 
 <img src="imagenes/koch.png" width="700px"/>
 
-b) Implementa la función `(copo-nieve nivel trazo)` que, usando la
-función anterior, dibuje el [_copo de nieve de
-Koch_](https://en.wikipedia.org/wiki/Koch_snowflake)
-que puedes ver en los siguientes ejemplos.
+b) Usando la función anterior, implementa la función `(copo-nieve
+nivel trazo)` que dibuje el [_copo de nieve de
+Koch_](https://en.wikipedia.org/wiki/Koch_snowflake) que puedes ver en
+los siguientes ejemplos. Esta función no es recursiva, se construye
+combinando tres veces la curva de Koch.
 
 <img src="imagenes/copo-nieve.png" width="700px"/>
 
@@ -139,9 +152,8 @@ que puedes ver en los siguientes ejemplos.
 ### Ejercicio 6 ###
 
 Define la función `(alfombra-sierpinski tam)` que construya la
-Alfombra de Sierpinski (una variante del Triágulo de Sierpinski que
-hemos visto en teoría) de lado `tam` píxeles utilizando gráficos de
-tortuga. 
+alfombra de Sierpinski (una variante del triángulo de Sierpinski que
+hemos visto en teoría) de lado `tam` píxeles.
 
 Por ejemplo, la llamada a `(alfombra-sierpinski 500)` debe dibujar la
 siguiente figura:
@@ -151,6 +163,6 @@ siguiente figura:
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2020-21  
+Lenguajes y Paradigmas de Programación, curso 2021-22  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
