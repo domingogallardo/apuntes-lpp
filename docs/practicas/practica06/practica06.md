@@ -1,11 +1,11 @@
-# Práctica 5: Procedimientos recursivos e iterativos
+# Práctica 6: Procedimientos recursivos e iterativos
 
 ## Antes de la clase de prácticas
 
 - Los siguientes ejercicios están basados en los conceptos de teoría
 vistos la semana pasada. Antes de la clase de prácticas debes repasar
 todos los conceptos y **probar en el DrRacket** todos los ejemplos de
-los siguientes apartados del tema 3 [_Procedimientos recursivos_](../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.md)
+los siguientes apartados del tema 3 [_Procedimientos recursivos_](../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.md):
 
     - 1. El coste de la recursión
     - 2. Procesos iterativos
@@ -18,12 +18,12 @@ Descarga el [fichero
 `lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt),
 pulsando el botón derecho del ratón y seleccionando la opción _Guardar
 como_ `lpp.rkt`. Guárdalo en la misma carpeta en la que tengas el
-fichero `practica5.rkt`.
+fichero `practica6.rkt`.
 
 El fichero contiene la definición de las funciones
 `(crea-diccionario)`, `(put key value dic)` y `(get key dic)`,
 necesarias para realizar una implementación de un algoritmo recursivo
-con _memoization_.
+con _memoization_ y que necesitarás en el ejercicio 4.
 
 ### Ejercicio 1  ###
 
@@ -144,7 +144,7 @@ b) Usando la función anterior, implementa la función `(copo-nieve
 nivel trazo)` que dibuje el [_copo de nieve de
 Koch_](https://en.wikipedia.org/wiki/Koch_snowflake) que puedes ver en
 los siguientes ejemplos. Esta función no es recursiva, se construye
-combinando tres veces la curva de Koch.
+combinando tres veces la curva de Koch anterior.
 
 <img src="imagenes/copo-nieve.png" width="700px"/>
 
