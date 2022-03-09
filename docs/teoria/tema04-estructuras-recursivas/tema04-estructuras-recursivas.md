@@ -710,6 +710,8 @@ Solución con `map`:
              (map-estruct-fos f elem)) lista)))
 ```
 
+<!--
+
 ## 2. Árboles
 
 ### 2.1. Definición de árboles en Scheme
@@ -1478,6 +1480,7 @@ constructor `construye-arbolb`.
 (cuadrado-arbolb arbolb1) ; ⇒ (100 (64 () ()) (225 () ()))
 ```
 
+-->
 
 ## 4. Bibliografía - SICP
 
