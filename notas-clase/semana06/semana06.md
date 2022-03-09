@@ -22,8 +22,8 @@ Notas de clase de la semana 6 de LPP.
 
 - Funciones para trabajar con listas:
 
-    - `(car lista)` para obtener el primer elemento de una lista
-    - `(cdr lista)` para obtener el resto de la lista
+    - `(first lista)` para obtener el primer elemento de una lista
+    - `(rest lista)` para obtener el resto de la lista
     - `(cons dato lista)` para construir una nueva lista con el dato
       como primer elemento
 
@@ -31,7 +31,7 @@ Notas de clase de la semana 6 de LPP.
   contienen otras listas*. Los elementos de las listas pueden ser
   elementos atómicos u otras listas.
   
-- La función `(car lista)` puede devolver un elemento u otra lista.
+- La función `(first lista)` puede devolver un elemento u otra lista.
 
 ----
 
@@ -92,10 +92,10 @@ Notas de clase de la semana 6 de LPP.
 
     ```racket
     (define lista '((1 2) 3 4 (5 6)))
-    (hoja? (car lista)) ; ⇒ #f
-    (hoja? (cadr lista)) ; ⇒ #t
-    (hoja? (caddr lista)) ; ⇒ #t
-    (hoja? (cadddr lista)) ; ⇒ #f
+    (hoja? (first lista)) ; ⇒ #f
+    (hoja? (second lista)) ; ⇒ #t
+    (hoja? (third lista)) ; ⇒ #t
+    (hoja? (fourth lista)) ; ⇒ #f
     ```
 
 - La lista vacía no es una hoja
@@ -132,8 +132,8 @@ Notas de clase de la semana 6 de LPP.
     ```racket
     (define (plana? lista)
        (or (null? lista)
-           (and (hoja? (car lista))
-                (plana? (cdr lista)))))
+           (and (hoja? (first lista))
+                (plana? (rest lista)))))
     ```
 
 
@@ -150,8 +150,8 @@ Notas de clase de la semana 6 de LPP.
 ```racket
 (define (for-all? predicado lista)
   (or (null? lista)
-      (and (predicado (car lista))
-           (for-all? predicado (cdr lista)))))
+      (and (predicado (first lista))
+           (for-all? predicado (rest lista)))))
 ```
 
 ----
@@ -173,8 +173,8 @@ Notas de clase de la semana 6 de LPP.
     ```racket
     (define (estructurada? lista)
        (and (not (null? lista))
-            (or (list? (car lista))
-                (estructurada? (cdr lista)))))
+            (or (list? (first lista))
+                (estructurada? (rest lista)))))
     ```
 
 
@@ -192,8 +192,8 @@ Notas de clase de la semana 6 de LPP.
 (define (exists? predicado lista)
   (if (null? lista)
       #f
-      (or (predicado (car lista))
-          (exists? predicado (cdr lista)))))
+      (or (predicado (first lista))
+          (exists? predicado (rest lista)))))
 ```
 
 - Realmente bastaría con haber hecho una de las dos definiciones y
@@ -276,7 +276,7 @@ siguiente lista estructurada?:
 - `(aplana lista)`: nivel mayor de una lista estructurada
 
 - Como hemos dicho antes, la cuestión clave en este tipo de listas es
-  que el `car` puede ser a su vez otra lista.
+  que el `first` puede ser a su vez otra lista.
 
 ----
 
@@ -309,8 +309,8 @@ siguiente lista estructurada?:
     ;Caso general num-hojas
     (define (num-hojas lista)
       ; Falta caso base
-      (+ (num-hojas (car lista))
-         (num-hojas (cdr lista))))
+      (+ (num-hojas (first lista))
+         (num-hojas (rest lista))))
     ```
 
 !!! Warning "No hay coste exponencial"
@@ -342,8 +342,8 @@ siguiente lista estructurada?:
        (cond
           ((null? lista) 0)
           ((hoja? lista) 1)
-          (else (+ (num-hojas (car lista))
-                   (num-hojas (cdr lista))))))
+          (else (+ (num-hojas (first lista))
+                   (num-hojas (rest lista))))))
     ```
 
 !!! Warning "Importante"
@@ -357,7 +357,7 @@ siguiente lista estructurada?:
     de llamar a la recursión habría que comprobar si el elemento es un
     dato o es otra lista. En el caso de Scheme, podemos aprovecharnos
     de su característica de ser débilmente tipado y podemos hacer el
-    código más conciso, llamando siempre a la recursión con el `car`
+    código más conciso, llamando siempre a la recursión con el `first`
     de la lista, independientemente de si es un dato u otra lista.
 
 
@@ -414,8 +414,8 @@ de la lista devuelta por el `map`:
         ((null? lista) '())
         ((hoja? lista) (list lista))
         (else 
-         (append (aplana (car lista))
-                 (aplana (cdr lista))))))
+         (append (aplana (first lista))
+                 (aplana (rest lista))))))
     ```
 
 - Solución con funciones de orden superior:
@@ -474,8 +474,8 @@ estructura jerárquica de las listas estructuradas.
       (cond 
         ((null? lista) #f)
         ((hoja? lista) (equal? dato lista))
-        (else (or (pertenece? dato (car lista))
-                  (pertenece? dato (cdr lista))))))
+        (else (or (pertenece? dato (first lista))
+                  (pertenece? dato (rest lista))))))
     ```
 
 
@@ -522,8 +522,8 @@ estructura jerárquica de las listas estructuradas.
        (cond 
           ((null? lista) 0)
           ((hoja? lista) 0)
-          (else (max (+ 1 (altura (car lista)))
-                     (altura (cdr lista))))))
+          (else (max (+ 1 (altura (first lista)))
+                     (altura (rest lista))))))
     ```
 
 ----
@@ -563,8 +563,8 @@ nivel mayor.
         ((null? lista) -1)
         ((hoja? lista) (if (equal? lista dato) 0 -1))
         (else (max (suma-1-si-mayor-igual-que-0 
-                        (nivel-hoja dato (car lista)))
-                   (nivel-hoja dato (cdr lista))))))
+                        (nivel-hoja dato (first lista)))
+                   (nivel-hoja dato (rest lista))))))
     ```
 
 - La función auxiliar se define de la siguiente forma:
@@ -605,8 +605,8 @@ números elevados al cuadrado.
     (define (cuadrado-estruct lista)
       (cond ((null? lista) '())
             ((hoja? lista) (* lista lista))
-            (else (cons (cuadrado-estruct (car lista))
-                        (cuadrado-estruct (cdr lista))))))
+            (else (cons (cuadrado-estruct (first lista))
+                        (cuadrado-estruct (rest lista))))))
     ```
 
 
@@ -637,8 +637,8 @@ resultado de aplicar a cada uno de sus hojas la función `f`
     (define (map-estruct f lista)
       (cond ((null? lista) '())
             ((hoja? lista) (f lista))
-            (else (cons (map-estruct f (car lista))
-                        (map-estruct f (cdr lista))))))
+            (else (cons (map-estruct f (first lista))
+                        (map-estruct f (rest lista))))))
     ```
 	
 

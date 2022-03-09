@@ -11,8 +11,8 @@ que hay una lista vacía.
 En este apartado vamos a volver a estudiar las listas desde un nivel
 de abstracción alto, usando las funciones:
 
-- `(car lista)` para obtener el primer elemento de una lista
-- `(cdr lista)` para obtener el resto de la lista
+- `(first lista)` para obtener el primer elemento de una lista
+- `(rest lista)` para obtener el resto de la lista
 - `(cons dato lista)` para construir una nueva lista con el dato como
   primer elemento
 
@@ -25,7 +25,7 @@ trabajar con *listas que contienen otras listas*.
 
 Veremos que esto cambia fundamentalmente la estructura de las listas y
 de las funciones que van a operar con ellas. El cambio fundamental es
-que la función `car lista` puede devolver dos tipos de elementos: 
+que la función `first lista` puede devolver dos tipos de elementos: 
 
 - Un elemento de la lista (del tipo de elementos que hay en la lista)
 - Otra lista (formada por el tipo de elementos de la lista)
@@ -102,7 +102,7 @@ no hojas sus elementos:
 
 ```racket
 (define lista '((1 2) 3 4 (5 6)))
-(hoja? (car lista)) ; ⇒ #f
+(hoja? (first lista)) ; ⇒ #f
 (hoja? (cadr lista)) ; ⇒ #t
 (hoja? (caddr lista)) ; ⇒ #t
 (hoja? (cadddr lista)) ; ⇒ #f
@@ -144,8 +144,8 @@ función `(plana? lista)` que comprueba si una lista es plana:
 ```racket
 (define (plana? lista)
    (or (null? lista)
-       (and (hoja? (car lista))
-            (plana? (cdr lista)))))
+       (and (hoja? (first lista))
+            (plana? (rest lista)))))
 ```
 
 
@@ -166,8 +166,8 @@ lista cumplen una propiedad. En esta caso, ser hoja.
     ```racket
     (define (for-all? predicado lista)
       (or (null? lista)
-          (and (predicado (car lista))
-               (for-all? predicado (cdr lista)))))
+          (and (predicado (first lista))
+               (for-all? predicado (rest lista)))))
     ```
 
 
@@ -189,8 +189,8 @@ si una lista es estructurada.
 ```racket
 (define (estructurada? lista)
    (and (not (null? lista))
-        (or (list? (car lista))
-            (estructurada? (cdr lista)))))
+        (or (list? (first lista))
+            (estructurada? (rest lista)))))
 ```
 
 
@@ -211,8 +211,8 @@ lista.
     (define (exists? predicado lista)
       (if (null? lista)
           #f
-          (or (predicado (car lista))
-              (exists? predicado (cdr lista)))))
+          (or (predicado (first lista))
+              (exists? predicado (rest lista)))))
     ```
 
 Realmente bastaría con haber hecho una de las dos definiciones y
@@ -313,7 +313,7 @@ Por ejemplo:
 ```
 
 Como hemos comentado antes, una cuestión clave en las funciones que
-vamos a construir sobre listas estructuradas es que el `car` de una
+vamos a construir sobre listas estructuradas es que el `first` de una
 lista estructurada puede ser a su vez otra lista.
 
 Para calcular el número de hojas de una lista podemos obtener el
@@ -338,8 +338,8 @@ lista.
 ;Caso general num-hojas
 (define (num-hojas lista)
   ; Falta caso base
-  (+ (num-hojas (car lista))
-     (num-hojas (cdr lista))))
+  (+ (num-hojas (first lista))
+     (num-hojas (rest lista))))
 ```
           
 
@@ -369,8 +369,8 @@ La definición completa de la función queda de la siguiente forma:
    (cond
       ((null? lista) 0)
       ((hoja? lista) 1)
-      (else (+ (num-hojas (car lista))
-               (num-hojas (cdr lista))))))
+      (else (+ (num-hojas (first lista))
+               (num-hojas (rest lista))))))
 ```
 
 !!! Warning "Importante"
@@ -384,7 +384,7 @@ La definición completa de la función queda de la siguiente forma:
     de llamar a la recursión habría que comprobar si el elemento es un
     dato o es otra lista. En el caso de Scheme, podemos aprovecharnos
     de su característica de ser débilmente tipado y podemos hacer el
-    código más conciso, llamando siempre a la recursión con el `car`
+    código más conciso, llamando siempre a la recursión con el `first`
     de la lista, independientemente de si es un dato u otra lista.
 
 
@@ -453,8 +453,8 @@ La solución recursiva es:
     ((null? lista) '())
     ((hoja? lista) (list lista))
     (else 
-     (append (aplana (car lista))
-             (aplana (cdr lista))))))
+     (append (aplana (first lista))
+             (aplana (rest lista))))))
 ```
 
 Con funciones de orden superior:
@@ -509,8 +509,8 @@ Solución recursiva:
   (cond 
     ((null? lista) #f)
     ((hoja? lista) (equal? dato lista))
-    (else (or (pertenece? dato (car lista))
-              (pertenece? dato (cdr lista))))))
+    (else (or (pertenece? dato (first lista))
+              (pertenece? dato (rest lista))))))
 ```
 
 Con funciones de orden superior:
@@ -545,8 +545,8 @@ En Scheme:
    (cond 
       ((null? lista) 0)
       ((hoja? lista) 0)
-      (else (max (+ 1 (altura (car lista)))
-                 (altura (cdr lista))))))
+      (else (max (+ 1 (altura (first lista)))
+                 (altura (rest lista))))))
 ```
 Por ejemplo:
 
@@ -604,8 +604,8 @@ Solución recursiva:
     ((null? lista) -1)
     ((hoja? lista) (if (equal? lista dato) 0 -1))
     (else (max (suma-1-si-mayor-igual-que-0 
-                    (nivel-hoja dato (car lista)))
-               (nivel-hoja dato (cdr lista))))))
+                    (nivel-hoja dato (first lista)))
+               (nivel-hoja dato (rest lista))))))
 ```
 
 La función auxiliar se define de la siguiente forma:
@@ -650,16 +650,16 @@ La solución recursiva es:
 (define (cuadrado-estruct lista)
   (cond ((null? elem) '())
         ((hoja? elem) (* lista lista ))
-        (else (cons (cuadrado-estruct (car lista))
-                    (cuadrado-estruct (cdr lista))))))
+        (else (cons (cuadrado-estruct (first lista))
+                    (cuadrado-estruct (rest lista))))))
 ```
 
-Se llama a la recursión con el `car` y con el `cdr` de la lista
+Se llama a la recursión con el `first` y con el `rest` de la lista
 original. El resultado de ambas llamadas serán las correspondientes
 listas estructuradas con sus elementos elevados al cuadrado. Y se
 devuelve la lista resultante de insertar la lista devuelta en la
-llamada recursiva con el `car` en la primera posición de la lista
-devuelta en la llamada recursiva con el `cdr`.
+llamada recursiva con el `first` en la primera posición de la lista
+devuelta en la llamada recursiva con el `rest`.
 
 Es muy interesante la versión de esta función con funciones de orden
 superior:
@@ -696,8 +696,8 @@ usando el parámetro `f`:
 (define (map-estruct f lista)
   (cond ((null? lista) '())
         ((hoja? lista) (f lista))
-        (else (cons (map-estruct f (car lista))
-                    (map-estruct f (cdr lista))))))
+        (else (cons (map-estruct f (first lista))
+                    (map-estruct f (rest lista))))))
 ```
 	
 Solución con `map`:
@@ -828,10 +828,10 @@ Funciones que obtienen los elementos de un árbol:
 
 ```racket
 (define (dato-arbol arbol) 
-    (car arbol))
+    (first arbol))
 
 (define (hijos-arbol arbol) 
-    (cdr arbol))
+    (rest arbol))
 
 (define (hoja-arbol? arbol) 
    (null? (hijos-arbol arbol)))
@@ -843,8 +843,8 @@ funciones:
 - `(dato-arbol arbol)`: devuelve **el dato** de la raíz del árbol.
 - `(hijos-arbol arbol)`: devuelve **una lista de árboles** hijos. En
   algunas ocasiones llamaremos *bosque* a una lista de
-  árboles. Podremos recorrer esa lista usando las funciones `car` y
-  `cdr` para obtener los árboles hijos.
+  árboles. Podremos recorrer esa lista usando las funciones `first` y
+  `rest` para obtener los árboles hijos.
 
 Volvemos a mostrar el `arbol1` para comprobar estas funciones.
 
@@ -855,7 +855,7 @@ Las funciones anteriores devuelven los siguientes valores:
 ```racket
 (dato-arbol arbol1) ; ⇒ 30
 (hijos-arbol arbol1) ; ⇒ ((15 (10) (12)) (18) (25 (19) (21) (22)))
-(hoja-arbol? (car (hijos-arbol arbol1))) ; ⇒ #f
+(hoja-arbol? (first (hijos-arbol arbol1))) ; ⇒ #f
 (hoja-arbol? (cadr (hijos-arbol arbol1))) ; ⇒ #t
 ```
 
@@ -874,8 +874,8 @@ Es muy importante considerar en cada caso con qué tipo de dato estamos
 trabajando y usar la barrera de abstracción adecuada en cada caso:
 
 - La función `hijos-arbol` siempre devuelve una **lista de árboles**, que
-  podemos recorrer usando `car` y `cdr`.
-- El `car` de una lista de árboles (devuelta por `hijos-arbol`) siempre
+  podemos recorrer usando `first` y `rest`.
+- El `first` de una lista de árboles (devuelta por `hijos-arbol`) siempre
   es un árbol y debemos de usar las funciones de su barrera de
   abstracción: `dato-arbol` e `hijos-arbol`.
 - La función `dato-arbol` devuelve un **dato**, del tipo que
@@ -885,11 +885,11 @@ Por ejemplo, para obtener el número `12` en el árbol anterior tendríamos
 que hacer lo siguiente: acceder al primer elemento de la lista de
 hijos, después al segundo hijo de éste y por último acceder a su
 dato. Recordemos que `hijos-arbol` devuelve la lista de árboles hijos,
-por lo que utilizaremos las funciones `car` y `cdr` para recorrerlas y
+por lo que utilizaremos las funciones `first` y `rest` para recorrerlas y
 obtener los elementos que nos interesen:
 
 ```racket
-(dato-arbol (cadr (hijos-arbol (car (hijos-arbol arbol1)))))
+(dato-arbol (cadr (hijos-arbol (first (hijos-arbol arbol1)))))
 ; ⇒ 12
 ```
 
@@ -1015,7 +1015,7 @@ entonces para construir la siguiente función que suma una lista de
 (define (suma-datos-bosque bosque)
    (if (null? bosque)
        0
-       (+ (suma-datos-arbol (car bosque)) (suma-datos-bosque (cdr bosque)))))
+       (+ (suma-datos-arbol (first bosque)) (suma-datos-bosque (rest bosque)))))
 ```
 
 Podemos visualizar el funcionamiento de la `suma-datos-bosque` en la
@@ -1110,8 +1110,8 @@ La solución, siguiendo el patrón visto en `suma-datos`, es la siguiente.
 (define (to-list-bosque bosque)
    (if (null? bosque)
        '()
-       (append (to-list-arbol (car bosque))
-               (to-list-bosque (cdr bosque)))))
+       (append (to-list-arbol (first bosque))
+               (to-list-bosque (rest bosque)))))
 ```
 
 Igual que antes, la función utiliza una *recursión mutua*: para listar
@@ -1158,8 +1158,8 @@ elevados al cuadrado:
 (define (cuadrado-bosque bosque)
    (if (null? bosque)
        '()
-       (cons (cuadrado-arbol (car bosque))
-               (cuadrado-bosque (cdr bosque)))))
+       (cons (cuadrado-arbol (first bosque))
+               (cuadrado-bosque (rest bosque)))))
 ```
 
 Ejemplo:
@@ -1191,8 +1191,8 @@ pasa la función a aplicar a los elementos del árbol.
 (define (map-bosque f bosque)
    (if (null? bosque)
        '()
-       (cons (map-arbol f (car bosque))
-             (map-bosque f (cdr bosque)))))
+       (cons (map-arbol f (first bosque))
+             (map-bosque f (rest bosque)))))
 ```
 
 Ejemplos:
@@ -1240,13 +1240,13 @@ La mayor altura de los hijos la calculamos con la función
 (define (altura-arbol arbol)
    (if (hoja-arbol? arbol)
        0
-       (+ 1 (altura-bosque (hijos-arbol arbol)))))  
+       (+ 1 (altura-bosque (hijos-arbol arbol)))))
 
 (define (altura-bosque bosque)
     (if (null? bosque)
         0
-        (max (altura-arbol (car bosque))
-             (altura-bosque (cdr bosque)))))
+        (max (altura-arbol (first bosque))
+             (altura-bosque (rest bosque)))))
 ```
 
 Ejemplos:
@@ -1336,7 +1336,7 @@ siguientes.
 
 ```racket
 (define (dato-arbolb arbol)
-   (car arbol))
+   (first arbol))
    
 (define (hijo-izq-arbolb arbol)
    (cadr arbol))
