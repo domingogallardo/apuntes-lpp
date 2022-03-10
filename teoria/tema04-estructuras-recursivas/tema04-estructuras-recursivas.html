@@ -612,9 +612,9 @@ sublistas y el segundo y el tercero hojas. Podemos comprobar si son o
 no hojas sus elementos:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="mi">4</span> <span class="p">(</span><span class="mi">5</span> <span class="mi">6</span><span class="p">)))</span>
 <span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
-<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">cadr</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">caddr</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">cadddr</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">second</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">third</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">fourth</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
 </code></pre></div>
 <p>La lista vacía no es una hoja</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">hoja?</span> <span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ #f</span>
@@ -1190,7 +1190,7 @@ Las funciones anteriores devuelven los siguientes valores:
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol1</span><span class="p">)</span> <span class="c1">; ⇒ 30</span>
 <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)</span> <span class="c1">; ⇒ ((15 (10) (12)) (18) (25 (19) (21) (22)))</span>
 <span class="p">(</span><span class="n">hoja-arbol?</span> <span class="p">(</span><span class="nb">first</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))</span> <span class="c1">; ⇒ #f</span>
-<span class="p">(</span><span class="n">hoja-arbol?</span> <span class="p">(</span><span class="nb">cadr</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">hoja-arbol?</span> <span class="p">(</span><span class="nb">second</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))</span> <span class="c1">; ⇒ #t</span>
 </code></pre></div>
 
 - La llamada `(dato-arbol arbol1)` devuelve el dato que hay en la raíz
@@ -1222,7 +1222,7 @@ dato. Recordemos que `hijos-arbol` devuelve la lista de árboles hijos,
 por lo que utilizaremos las funciones `first` y `rest` para recorrerlas y
 obtener los elementos que nos interesen:
 
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">dato-arbol</span> <span class="p">(</span><span class="nb">cadr</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="p">(</span><span class="nb">first</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">dato-arbol</span> <span class="p">(</span><span class="nb">second</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="p">(</span><span class="nb">first</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))))</span>
 <span class="c1">; ⇒ 12</span>
 </code></pre></div>
 
@@ -1648,10 +1648,10 @@ siguientes.
    <span class="p">(</span><span class="nb">first</span> <span class="n">arbol</span><span class="p">))</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hijo-izq-arbolb</span> <span class="n">arbol</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">cadr</span> <span class="n">arbol</span><span class="p">))</span>
+   <span class="p">(</span><span class="nb">second</span> <span class="n">arbol</span><span class="p">))</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hijo-der-arbolb</span> <span class="n">arbol</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">caddr</span> <span class="n">arbol</span><span class="p">))</span>
+   <span class="p">(</span><span class="nb">third</span> <span class="n">arbol</span><span class="p">))</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="n">arbolb-vacio</span> <span class="o">&#39;</span><span class="p">())</span>
 
