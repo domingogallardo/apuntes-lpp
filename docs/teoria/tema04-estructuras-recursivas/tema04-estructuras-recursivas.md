@@ -103,9 +103,9 @@ no hojas sus elementos:
 ```racket
 (define lista '((1 2) 3 4 (5 6)))
 (hoja? (first lista)) ; ⇒ #f
-(hoja? (cadr lista)) ; ⇒ #t
-(hoja? (caddr lista)) ; ⇒ #t
-(hoja? (cadddr lista)) ; ⇒ #f
+(hoja? (second lista)) ; ⇒ #t
+(hoja? (third lista)) ; ⇒ #t
+(hoja? (fourth lista)) ; ⇒ #f
 ```
 
 La lista vacía no es una hoja
@@ -858,7 +858,7 @@ Las funciones anteriores devuelven los siguientes valores:
 (dato-arbol arbol1) ; ⇒ 30
 (hijos-arbol arbol1) ; ⇒ ((15 (10) (12)) (18) (25 (19) (21) (22)))
 (hoja-arbol? (first (hijos-arbol arbol1))) ; ⇒ #f
-(hoja-arbol? (cadr (hijos-arbol arbol1))) ; ⇒ #t
+(hoja-arbol? (second (hijos-arbol arbol1))) ; ⇒ #t
 ```
 
 - La llamada `(dato-arbol arbol1)` devuelve el dato que hay en la raíz
@@ -891,7 +891,7 @@ por lo que utilizaremos las funciones `first` y `rest` para recorrerlas y
 obtener los elementos que nos interesen:
 
 ```racket
-(dato-arbol (cadr (hijos-arbol (first (hijos-arbol arbol1)))))
+(dato-arbol (second (hijos-arbol (first (hijos-arbol arbol1)))))
 ; ⇒ 12
 ```
 
@@ -1341,10 +1341,10 @@ siguientes.
    (first arbol))
    
 (define (hijo-izq-arbolb arbol)
-   (cadr arbol))
+   (second arbol))
 
 (define (hijo-der-arbolb arbol)
-   (caddr arbol))
+   (third arbol))
    
 (define arbolb-vacio '())
 
