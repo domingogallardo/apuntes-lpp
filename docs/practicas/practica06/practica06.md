@@ -7,10 +7,10 @@ vistos la semana pasada. Antes de la clase de prácticas debes repasar
 todos los conceptos y **probar en el DrRacket** todos los ejemplos de
 los siguientes apartados del tema 3 [_Procedimientos recursivos_](../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.md):
 
-    - 1. El coste de la recursión
-    - 2. Procesos iterativos
-    - 3. Memoization
-    - 4. Figuras recursivas
+    - 1 El coste de la recursión
+    - 2 Procesos iterativos
+    - 3 Memoization
+    - 4 Figuras recursivas
 
 ## Ejercicios
 
