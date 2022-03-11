@@ -96,16 +96,20 @@ a) Implementa utilizando recursión por la cola la función
 ```
 
 
-b) Implementa una versión con recursión por la cola del predicado
-`(prefijo-lista? lista1 lista2)` que comprueba si la primera lista es
-prefijo de la segunda. Suponemos que siempre la primera lista será más
-pequeña que la segunda.
+b) Implementa, utilizando una recursión por la cola, la función
+recursiva `(binario-a-decimal lista-bits)` que reciba una lista de
+bits que representan un número en binario (el primer elemento será el
+bit más significativo) y devuelva el número decimal equivalente.
 
-Ejemplos: 
+!!! Hint "Pista"
+    La función `(binario-a-decimal lista-bits)` puede llamar a una
+    función iterativa pasándole como parámetro la lista de bits
+    invertida.
 
 ```racket
-(prefijo-lista? '(a b c) '(a b c d e)) ⇒ #t
-(prefijo-lista? '(b c) '(a b c d e)) ⇒ #f
+(binario-a-decimal '(1 1 1 1)) ; ⇒ 15
+(binario-a-decimal '(1 1 0)) ; ⇒ 6
+(binario-a-decimal '(1 0)) ; ⇒ 2
 ```
 
 
