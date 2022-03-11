@@ -159,7 +159,7 @@ Define la función `(alfombra-sierpinski tam)` que construya la
 alfombra de Sierpinski (una variante del triángulo de Sierpinski que
 hemos visto en teoría) de lado `tam` píxeles.
 
-Por ejemplo, la llamada a `(alfombra-sierpinski 500)` debe dibujar la
+Por ejemplo, la llamada a `(alfombra-sierpinski 360)` debe dibujar la
 siguiente figura:
 
 <img src="imagenes/alfombra-sierpinski.png" width="400px"/>
