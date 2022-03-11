@@ -197,8 +197,8 @@ table {
 <li>
 <p>Funciones para trabajar con listas:</p>
 <ul>
-<li><code>(car lista)</code> para obtener el primer elemento de una lista</li>
-<li><code>(cdr lista)</code> para obtener el resto de la lista</li>
+<li><code>(first lista)</code> para obtener el primer elemento de una lista</li>
+<li><code>(rest lista)</code> para obtener el resto de la lista</li>
 <li><code>(cons dato lista)</code> para construir una nueva lista con el dato
   como primer elemento</li>
 </ul>
@@ -209,7 +209,7 @@ table {
   elementos atómicos u otras listas.</p>
 </li>
 <li>
-<p>La función <code>(car lista)</code> puede devolver un elemento u otra lista.</p>
+<p>La función <code>(first lista)</code> puede devolver un elemento u otra lista.</p>
 </li>
 </ul>
 <hr />
@@ -264,10 +264,10 @@ table {
 sublistas y el segundo y el tercero hojas. Podemos comprobar si
 son o no hojas sus elementos:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="mi">4</span> <span class="p">(</span><span class="mi">5</span> <span class="mi">6</span><span class="p">)))</span>
-<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
-<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">cadr</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">caddr</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">cadddr</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">second</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">third</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">fourth</span> <span class="n">lista</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
 </code></pre></div>
 </li>
 <li>
@@ -307,8 +307,8 @@ resto es plana.</p>
   función <code>(plana? lista)</code> que comprueba si una lista es plana:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">plana?</span> <span class="n">lista</span><span class="p">)</span>
    <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
-       <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-            <span class="p">(</span><span class="n">plana?</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+       <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+            <span class="p">(</span><span class="n">plana?</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 </li>
 </ul>
@@ -320,8 +320,8 @@ resto es plana.</p>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">for-all?</span> <span class="n">predicado</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-           <span class="p">(</span><span class="n">for-all?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+      <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+           <span class="p">(</span><span class="n">for-all?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 <hr />
 <h3>Función <code>(estructurada? lista)</code></h3>
@@ -339,8 +339,8 @@ resto es plana.</p>
   lista:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">estructurada?</span> <span class="n">lista</span><span class="p">)</span>
    <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="nb">not</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">))</span>
-        <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="nb">list?</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-            <span class="p">(</span><span class="n">estructurada?</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+        <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="nb">list?</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+            <span class="p">(</span><span class="n">estructurada?</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 </li>
 </ul>
@@ -353,8 +353,8 @@ resto es plana.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">exists?</span> <span class="n">predicado</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
       <span class="no">#f</span>
-      <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-          <span class="p">(</span><span class="n">exists?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">)))))</span>
+      <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+          <span class="p">(</span><span class="n">exists?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 <ul>
 <li>
@@ -440,7 +440,7 @@ siguiente lista estructurada?:</p>
 </li>
 <li>
 <p>Como hemos dicho antes, la cuestión clave en este tipo de listas es
-  que el <code>car</code> puede ser a su vez otra lista.</p>
+  que el <code>first</code> puede ser a su vez otra lista.</p>
 </li>
 </ul>
 <hr />
@@ -471,8 +471,8 @@ número de hojas del resto.</p>
 <div class="highlight"><pre><span></span><code><span class="c1">;Caso general num-hojas</span>
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">num-hojas</span> <span class="n">lista</span><span class="p">)</span>
   <span class="c1">; Falta caso base</span>
-  <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-     <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))</span>
+  <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+     <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))))</span>
 </code></pre></div>
 </li>
 </ul>
@@ -511,8 +511,8 @@ número de elementos de la lista.</li>
    <span class="p">(</span><span class="k">cond</span>
       <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
       <span class="p">((</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-               <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))))</span>
+      <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+               <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))))))</span>
 </code></pre></div>
 </li>
 </ul>
@@ -527,7 +527,7 @@ tipo. En ese caso el código debería ser un poco más largo y antes
 de llamar a la recursión habría que comprobar si el elemento es un
 dato o es otra lista. En el caso de Scheme, podemos aprovecharnos
 de su característica de ser débilmente tipado y podemos hacer el
-código más conciso, llamando siempre a la recursión con el <code>car</code>
+código más conciso, llamando siempre a la recursión con el <code>first</code>
 de la lista, independientemente de si es un dato u otra lista.</p>
 </div>
 <hr />
@@ -574,8 +574,8 @@ de la lista devuelta por el <code>map</code>:</li>
     <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">())</span>
     <span class="p">((</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">list</span> <span class="n">lista</span><span class="p">))</span>
     <span class="p">(</span><span class="k">else</span> 
-     <span class="p">(</span><span class="nb">append</span> <span class="p">(</span><span class="n">aplana</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-             <span class="p">(</span><span class="n">aplana</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))))</span>
+     <span class="p">(</span><span class="nb">append</span> <span class="p">(</span><span class="n">aplana</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+             <span class="p">(</span><span class="n">aplana</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))))))</span>
 </code></pre></div>
 </li>
 <li>
@@ -627,8 +627,8 @@ estructura jerárquica de las listas estructuradas.</p>
   <span class="p">(</span><span class="k">cond</span> 
     <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="no">#f</span><span class="p">)</span>
     <span class="p">((</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">equal?</span> <span class="n">dato</span> <span class="n">lista</span><span class="p">))</span>
-    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="n">pertenece?</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-              <span class="p">(</span><span class="n">pertenece?</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))))</span>
+    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="n">pertenece?</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+              <span class="p">(</span><span class="n">pertenece?</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))))))</span>
 </code></pre></div>
 </li>
 <li>
@@ -672,8 +672,8 @@ elemento y devolver el máximo de los dos números.</p>
    <span class="p">(</span><span class="k">cond</span> 
       <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
       <span class="p">((</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">max</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">altura</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)))</span>
-                 <span class="p">(</span><span class="n">altura</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))))</span>
+      <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">max</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">altura</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)))</span>
+                 <span class="p">(</span><span class="n">altura</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))))))</span>
 </code></pre></div>
 </li>
 </ul>
@@ -711,8 +711,8 @@ nivel mayor.</p>
     <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="mi">-1</span><span class="p">)</span>
     <span class="p">((</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">equal?</span> <span class="n">lista</span> <span class="n">dato</span><span class="p">)</span> <span class="mi">0</span> <span class="mi">-1</span><span class="p">))</span>
     <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">max</span> <span class="p">(</span><span class="n">suma-1-si-mayor-igual-que-0</span> 
-                    <span class="p">(</span><span class="n">nivel-hoja</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">)))</span>
-               <span class="p">(</span><span class="n">nivel-hoja</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))))</span>
+                    <span class="p">(</span><span class="n">nivel-hoja</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)))</span>
+               <span class="p">(</span><span class="n">nivel-hoja</span> <span class="n">dato</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))))))</span>
 </code></pre></div>
 </li>
 <li>
@@ -748,8 +748,8 @@ números elevados al cuadrado.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-estruct</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">())</span>
         <span class="p">((</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">lista</span> <span class="n">lista</span><span class="p">))</span>
-        <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">cuadrado-estruct</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-                    <span class="p">(</span><span class="n">cuadrado-estruct</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))))</span>
+        <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">cuadrado-estruct</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+                    <span class="p">(</span><span class="n">cuadrado-estruct</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))))))</span>
 </code></pre></div>
 </li>
 <li>
@@ -776,8 +776,8 @@ resultado de aplicar a cada uno de sus hojas la función <code>f</code></p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">map-estruct</span> <span class="n">f</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">())</span>
         <span class="p">((</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">f</span> <span class="n">lista</span><span class="p">))</span>
-        <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">map-estruct</span> <span class="n">f</span> <span class="p">(</span><span class="nb">car</span> <span class="n">lista</span><span class="p">))</span>
-                    <span class="p">(</span><span class="n">map-estruct</span> <span class="n">f</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">lista</span><span class="p">))))))</span>
+        <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">map-estruct</span> <span class="n">f</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+                    <span class="p">(</span><span class="n">map-estruct</span> <span class="n">f</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))))))</span>
 </code></pre></div>
 </li>
 <li>
