@@ -156,11 +156,18 @@ Define la función `(alfombra-sierpinski tam)` que construya la
 alfombra de Sierpinski (una variante del triángulo de Sierpinski que
 hemos visto en teoría) de lado `tam` píxeles.
 
-Por ejemplo, la llamada a `(alfombra-sierpinski 360)` debe dibujar la
-siguiente figura:
+En el caso base, cuando el tamaño sea menor que un umbral determinado,
+se debe dibujar un círculo sin relleno de ancho `tam`. Fíjate que el
+parámetro que se le pasa a la primitiva `circle` es el del radio
+(puedes consultar
+[aquí](https://docs.racket-lang.org/teachpack/2htdpimage.html#%28def._%28%28lib._2htdp%2Fimage..rkt%29._circle%29%29),
+por lo que para dibujar un círculo de ancho (diámetro) `tam` habrá que
+llamar a la primitiva con el parámetro `tam/2`.
+
+Por ejemplo, la llamada a `(alfombra-sierpinski 360)`, poniendo como
+umbral 20 píxeles, debe dibujar la siguiente figura:
 
 <img src="imagenes/alfombra-sierpinski.png" width="400px"/>
-
 
 ----
 
