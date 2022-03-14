@@ -147,13 +147,6 @@ Notas de clase de la semana 6 de LPP.
   (for-all? hoja? lista))
 ```
 
-```racket
-(define (for-all? predicado lista)
-  (or (null? lista)
-      (and (predicado (first lista))
-           (for-all? predicado (rest lista)))))
-```
-
 ----
 
 ### Función `(estructurada? lista)`
@@ -186,14 +179,6 @@ Notas de clase de la semana 6 de LPP.
 ```racket
 (define (estructurada-fos? lista)
   (exists? list? lista))
-```
-
-```racket
-(define (exists? predicado lista)
-  (if (null? lista)
-      #f
-      (or (predicado (first lista))
-          (exists? predicado (rest lista)))))
 ```
 
 - Realmente bastaría con haber hecho una de las dos definiciones y

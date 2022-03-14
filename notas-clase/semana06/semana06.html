@@ -318,11 +318,6 @@ resto es plana.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">plana-fos?</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="n">for-all?</span> <span class="n">hoja?</span> <span class="n">lista</span><span class="p">))</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">for-all?</span> <span class="n">predicado</span> <span class="n">lista</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
-           <span class="p">(</span><span class="n">for-all?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
-</code></pre></div>
 <hr />
 <h3>Función <code>(estructurada? lista)</code></h3>
 <ul>
@@ -349,12 +344,6 @@ resto es plana.</p>
 
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">estructurada-fos?</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="n">exists?</span> <span class="nb">list?</span> <span class="n">lista</span><span class="p">))</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">exists?</span> <span class="n">predicado</span> <span class="n">lista</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
-      <span class="no">#f</span>
-      <span class="p">(</span><span class="k">or</span> <span class="p">(</span><span class="n">predicado</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
-          <span class="p">(</span><span class="n">exists?</span> <span class="n">predicado</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 <ul>
 <li>
