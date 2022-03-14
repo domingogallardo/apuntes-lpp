@@ -39,8 +39,8 @@ iterativa usando recursión por la cola.
 Ejemplo:
 
 ```racket
-(concat  '("hola" "y" "adiós")) ; ⇒ "holayadiós")
-(concat-iter '("hola" "y" "adiós") "") ; ⇒ "holayadiós")
+(concat  '("hola" "y" "adiós")) ; ⇒ "holayadiós"
+(concat-iter '("hola" "y" "adiós") "") ; ⇒ "holayadiós"
 ```
 
 
