@@ -704,8 +704,15 @@ combinando tres veces la curva de Koch anterior.</p>
 <p>Define la función <code>(alfombra-sierpinski tam)</code> que construya la
 alfombra de Sierpinski (una variante del triángulo de Sierpinski que
 hemos visto en teoría) de lado <code>tam</code> píxeles.</p>
-<p>Por ejemplo, la llamada a <code>(alfombra-sierpinski 360)</code> debe dibujar la
-siguiente figura:</p>
+<p>En el caso base, cuando el tamaño sea menor que un umbral determinado,
+se debe dibujar un círculo sin relleno de ancho <code>tam</code>. Fíjate que el
+parámetro que se le pasa a la primitiva <code>circle</code> es el del radio
+(puedes consultar
+<a href="https://docs.racket-lang.org/teachpack/2htdpimage.html#%28def._%28%28lib._2htdp%2Fimage..rkt%29._circle%29%29">aquí</a>,
+por lo que para dibujar un círculo de ancho (diámetro) <code>tam</code> habrá que
+llamar a la primitiva con el parámetro <code>tam/2</code>.</p>
+<p>Por ejemplo, la llamada a <code>(alfombra-sierpinski 360)</code>, poniendo como
+umbral 20 píxeles, debe dibujar la siguiente figura:</p>
 <p><img src="imagenes/alfombra-sierpinski.png" width="400px"/></p>
 <hr />
 <p>Lenguajes y Paradigmas de Programación, curso 2021-22<br />
