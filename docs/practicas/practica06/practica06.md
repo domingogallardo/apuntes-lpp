@@ -46,7 +46,8 @@ Ejemplo:
 
 b) Define utilizando recursión por la cola la función `(min-max
 lista)` que recibe una lista numérica y devuelve una pareja con el
-mínimo y el máximo de sus elementos.
+mínimo y el máximo de sus elementos. La lista recibida como parámetro
+tendrá como mínimo un elemento.
 
 Ejemplo:
 
