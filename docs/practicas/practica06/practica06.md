@@ -160,7 +160,7 @@ En el caso base, cuando el tamaño sea menor que un umbral determinado,
 se debe dibujar un círculo sin relleno de ancho `tam`. Fíjate que el
 parámetro que se le pasa a la primitiva `circle` es el del radio
 (puedes consultar
-[aquí](https://docs.racket-lang.org/teachpack/2htdpimage.html#%28def._%28%28lib._2htdp%2Fimage..rkt%29._circle%29%29),
+[aquí](https://docs.racket-lang.org/teachpack/2htdpimage.html#%28def._%28%28lib._2htdp%2Fimage..rkt%29._circle%29%29)),
 por lo que para dibujar un círculo de ancho (diámetro) `tam` habrá que
 llamar a la primitiva con el parámetro `tam/2`.
 
