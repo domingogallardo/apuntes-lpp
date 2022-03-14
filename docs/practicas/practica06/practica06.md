@@ -103,11 +103,6 @@ recursiva `(binario-a-decimal lista-bits)` que reciba una lista de
 bits que representan un número en binario (el primer elemento será el
 bit más significativo) y devuelva el número decimal equivalente.
 
-!!! Hint "Pista"
-    La función `(binario-a-decimal lista-bits)` puede llamar a una
-    función iterativa pasándole como parámetro la lista de bits
-    invertida.
-
 ```racket
 (binario-a-decimal '(1 1 1 1)) ; ⇒ 15
 (binario-a-decimal '(1 1 0)) ; ⇒ 6
