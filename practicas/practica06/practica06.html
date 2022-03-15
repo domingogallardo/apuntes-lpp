@@ -669,10 +669,10 @@ número binario basado en usar de forma iterativa una multiplicación
 por 2. La idea es que si a un número binario le añadimos un dígito a
 su derecha, el valor del número resultante es el valor del número
 original multiplicado por 2 más el dígito que hemos añadido.</p>
-<p>Por ejemplo, si tenemos el número <code>100</code>, que es el número decimal 4, y
-le añadimos un <code>1</code> a su derecha (obteniendo el <code>1001</code>) el número
+<p>Por ejemplo, si tenemos el número <code>101</code>, que es el número decimal 5, y
+le añadimos un <code>1</code> a su derecha (obteniendo el <code>1011</code>) el número
 decimal resultante se obtendría multiplicando por 2 el número original
-(<em>4*2 = 8</em>) y sumándole el 1 que hemos añadido (<em>9</em>).</p>
+(<em>5*2 = 10</em>) y sumándole el 1 que hemos añadido (<em>11</em>).</p>
 <p>De esta forma, podemos calcular de forma iterativa el valor decimal de
 un número binario haciendo esta operación con sus dígitos de izquierda
 a derecha. Deberíamos ir acumulando en un resultado el valor del
@@ -681,7 +681,7 @@ sumar el valor del nuevo dígito que estamos procesando.</p>
 <div class="highlight"><pre><span></span><code>resultado nuevo = resultado anterior * 2 + nuevo bit
 </code></pre></div>
 <p>Supongamos el número binario anterior, el <code>1011</code>. Veamos una traza de
-cómo se obtendría el 9.</p>
+cómo se obtendría el 11.</p>
 <div class="highlight"><pre><span></span><code> número       nuevo        resultado    resultado
  procesado    bit          anterior      nuevo 
 =======================================================
