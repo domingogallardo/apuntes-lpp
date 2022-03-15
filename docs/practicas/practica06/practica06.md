@@ -104,10 +104,10 @@ por 2. La idea es que si a un número binario le añadimos un dígito a
 su derecha, el valor del número resultante es el valor del número
 original multiplicado por 2 más el dígito que hemos añadido.
 
-Por ejemplo, si tenemos el número `100`, que es el número decimal 4, y
-le añadimos un `1` a su derecha (obteniendo el `1001`) el número
+Por ejemplo, si tenemos el número `101`, que es el número decimal 5, y
+le añadimos un `1` a su derecha (obteniendo el `1011`) el número
 decimal resultante se obtendría multiplicando por 2 el número original
-(_4*2 = 8_) y sumándole el 1 que hemos añadido (_9_).
+(_5*2 = 10_) y sumándole el 1 que hemos añadido (_11_).
 
 De esta forma, podemos calcular de forma iterativa el valor decimal de
 un número binario haciendo esta operación con sus dígitos de izquierda
@@ -120,7 +120,7 @@ resultado nuevo = resultado anterior * 2 + nuevo bit
 ```
 
 Supongamos el número binario anterior, el `1011`. Veamos una traza de
-cómo se obtendría el 9.
+cómo se obtendría el 11.
 
 ```
  número       nuevo        resultado    resultado
