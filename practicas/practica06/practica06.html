@@ -664,10 +664,37 @@ parámetro <code>lista</code> como el parámetro donde acumular el resultado.</p
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mi-foldl</span> <span class="nb">string-append</span> <span class="s2">&quot;****&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;que&quot;</span> <span class="s2">&quot;tal&quot;</span><span class="p">))</span> <span class="n">⇒</span> <span class="s2">&quot;talquehola****&quot;</span>
 <span class="p">(</span><span class="n">mi-foldl</span> <span class="nb">cons</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ (4 3 2 1)</span>
 </code></pre></div>
-<p>b) Implementa, utilizando una recursión por la cola, la función
-recursiva <code>(binario-a-decimal lista-bits)</code> que reciba una lista de
-bits que representan un número en binario (el primer elemento será el
-bit más significativo) y devuelva el número decimal equivalente.</p>
+<p>b) Existe un algoritmo eficiente para calcular el valor decimal de un
+número binario basado en usar de forma iterativa una multiplicación
+por 2. La idea es que si a un número binario le añadimos un dígito a
+su derecha, el valor del número resultante es el valor del número
+original multiplicado por 2 más el dígito que hemos añadido.</p>
+<p>Por ejemplo, si tenemos el número <code>100</code>, que es el número decimal 4, y
+le añadimos un <code>1</code> a su derecha (obteniendo el <code>1001</code>) el número
+decimal resultante se obtendría multiplicando por 2 el número original
+(<em>4*2 = 8</em>) y sumándole el 1 que hemos añadido (<em>9</em>).</p>
+<p>De esta forma, podemos calcular de forma iterativa el valor decimal de
+un número binario haciendo esta operación con sus dígitos de izquierda
+a derecha. Deberíamos ir acumulando en un resultado el valor del
+número procesado y, en cada nuevo paso, multiplicar por 2 ese valor y
+sumar el valor del nuevo dígito que estamos procesando.</p>
+<div class="highlight"><pre><span></span><code>resultado nuevo = resultado anterior * 2 + nuevo bit
+</code></pre></div>
+<p>Supongamos el número binario anterior, el <code>1011</code>. Veamos una traza de
+cómo se obtendría el 9.</p>
+<div class="highlight"><pre><span></span><code> número       nuevo        resultado    resultado
+ procesado    bit          anterior      nuevo 
+=======================================================
+                 1            0         0*2 + 1 = 1
+    1            0            1         1*2 + 0 = 2
+    10           1            2         2*2 + 1 = 5
+    101          1            5         5*2 + 1 = 11
+    1011                      11
+</code></pre></div>
+<p>Implementa, usando el algoritmo anterior iterativo, la función
+<code>(binario-a-decimal lista-bits)</code> que reciba una lista de bits que
+representan un número en binario (el primer elemento será el bit más
+significativo) y devuelva el número decimal equivalente.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">binario-a-decimal</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span> <span class="c1">; ⇒ 15</span>
 <span class="p">(</span><span class="n">binario-a-decimal</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">))</span> <span class="c1">; ⇒ 6</span>
 <span class="p">(</span><span class="n">binario-a-decimal</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">0</span><span class="p">))</span> <span class="c1">; ⇒ 2</span>
