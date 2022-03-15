@@ -98,10 +98,45 @@ a) Implementa utilizando recursión por la cola la función
 ```
 
 
-b) Implementa, utilizando una recursión por la cola, la función
-recursiva `(binario-a-decimal lista-bits)` que reciba una lista de
-bits que representan un número en binario (el primer elemento será el
-bit más significativo) y devuelva el número decimal equivalente.
+b) Existe un algoritmo eficiente para calcular el valor decimal de un
+número binario basado en usar de forma iterativa una multiplicación
+por 2. La idea es que si a un número binario le añadimos un dígito a
+su derecha, el valor del número resultante es el valor del número
+original multiplicado por 2 más el dígito que hemos añadido.
+
+Por ejemplo, si tenemos el número `100`, que es el número decimal 4, y
+le añadimos un `1` a su derecha (obteniendo el `1001`) el número
+decimal resultante se obtendría multiplicando por 2 el número original
+(_4*2 = 8_) y sumándole el 1 que hemos añadido (_9_).
+
+De esta forma, podemos calcular de forma iterativa el valor decimal de
+un número binario haciendo esta operación con sus dígitos de izquierda
+a derecha. Deberíamos ir acumulando en un resultado el valor del
+número procesado y, en cada nuevo paso, multiplicar por 2 ese valor y
+sumar el valor del nuevo dígito que estamos procesando.
+
+```
+resultado nuevo = resultado anterior * 2 + nuevo bit
+```
+
+Supongamos el número binario anterior, el `1011`. Veamos una traza de
+cómo se obtendría el 9.
+
+```
+ número       nuevo        resultado    resultado
+ procesado    bit          anterior      nuevo 
+=======================================================
+                 1            0         0*2 + 1 = 1
+    1            0            1         1*2 + 0 = 2
+    10           1            2         2*2 + 1 = 5
+    101          1            5         5*2 + 1 = 11
+    1011                      11
+```
+
+Implementa, usando el algoritmo anterior iterativo, la función
+`(binario-a-decimal lista-bits)` que reciba una lista de bits que
+representan un número en binario (el primer elemento será el bit más
+significativo) y devuelva el número decimal equivalente.
 
 ```racket
 (binario-a-decimal '(1 1 1 1)) ; ⇒ 15
