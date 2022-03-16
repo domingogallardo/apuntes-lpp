@@ -61,7 +61,7 @@ Ejemplo:
 ### Ejercicio 2 ###
 
 a) Implementa utilizando recursión por la cola las funciones
-`expande-pareja` y `expande-parejas` de la práctica 3.
+`expande-pareja` y `expande-parejas` de la práctica 4.
 
 Ejemplo:
 
