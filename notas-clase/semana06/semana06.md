@@ -258,7 +258,8 @@ siguiente lista estructurada?:
 ### Funciones recursivas sobre listas estructuradas
 
 - `(num-hojas lista)`: número de hojas de una lista estructurada
-- `(aplana lista)`: nivel mayor de una lista estructurada
+- `(aplana lista)`: devuelve una lista plana con todas las hojas de la
+  lista estructurada
 
 - Como hemos dicho antes, la cuestión clave en este tipo de listas es
   que el `first` puede ser a su vez otra lista.
