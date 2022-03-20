@@ -224,7 +224,6 @@ Otros ejemplos:
 ```
 (intersecta '(a b) '(c d)) ; ⇒ '((a . c) (b . d))
 (intersecta '(a (b) (c)) '(d e (f))) ; ⇒ '((a . d) ((c . f)))
-; ⇒
 ```
 
 b.2) Generaliza la función anterior, haciendo que reciba otra función
