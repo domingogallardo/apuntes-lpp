@@ -1,17 +1,34 @@
-# Práctica 6: Listas estructuradas
+# Práctica 7: Listas estructuradas
 
-## Entrega de la práctica
+## Antes de la clase de prácticas
 
-Para entregar la práctica debes subir a Moodle el fichero
-`practica06.rkt` con una cabecera inicial con tu nombre y apellidos, y
-las soluciones de cada ejercicio separadas por comentarios. Cada
-solución debe incluir:
+- Los siguientes ejercicios están basados en los conceptos de teoría
+vistos la semana pasada. Antes de la clase de prácticas debes repasar
+todos los conceptos y **probar en el DrRacket** todos los ejemplos de
+los siguientes apartados del tema 4 [_Estructuras de datos recursivas_](../../teoria/tema04-estructuras-recursivas/tema04-estructuras-recursivas.md)
 
-- La **definición de las funciones** que resuelven el ejercicio.
-- Un conjunto de **pruebas** que comprueben su funcionamiento
-  utilizando el API `RackUnit`.
+    - 1 Listas estructuradas
 
 ## Ejercicios
+
+Descarga el [fichero
+`lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt),
+pulsando el botón derecho del ratón y seleccionando la opción _Guardar
+como_ `lpp.rkt`. Guárdalo en la misma carpeta en la que tengas el
+fichero `practica7.rkt`.
+
+El fichero contiene la definición de la función `(hoja? dato)` y la
+función `(pinta-lista lista)` que nos permite dibujar gráficamente una lista estructurada.
+
+Por ejemplo, si definimos una lista estructurada como 
+
+```racket
+(define lista '(a (b (c d) e) (f g)))
+```
+
+La llamada a `pinta-lista` dibujará lo siguiente:
+
+<img src="imagenes/pinta-lista.png" width="300px"/>
 
 
 ### Ejercicio 1 ###
@@ -34,10 +51,12 @@ lista, como mostramos en el `check-equal?` que hay a continuación.
 
 ```scheme
 (define lista-a '(________))
-(check-equal? (cadddr (caddr lista-a)) 'h)
+(check-equal? (fourth (third lista-a)) 'h)
 ```
 
-b) Dibuja la representación en niveles de las siguientes listas estructurada
+b) Dibuja la representación en niveles de las siguientes listas
+estructurada. Comprueba después con la función `(pinta-lista lista)`
+que las has dibujado correctamente.
 
 ```racket
 (define lista-b1 '((2 (3)) (4 2) ((2) 3)))
@@ -135,10 +154,11 @@ Utilizando la función anterior implementa las siguientes funciones:
 
 ### Ejercicio 4 ###
 
-a) Implementa la función recursiva `(sustituye-elem elem-old
-elem-new lista)` que recibe como argumentos una lista estructurada y dos
-elementos, y devuelve otra lista con la misma estructura, pero en la
-que se ha sustituido las ocurrencias de `elem-old` por `elem-new`.
+a) Implementa la función `(sustituye-elem elem-old elem-new lista)`
+que recibe como argumentos una lista estructurada y dos elementos, y
+devuelve otra lista con la misma estructura, pero en la que se ha
+sustituido las ocurrencias de `elem-old` por `elem-new`. Puedes
+hacerla de forma recursiva o con funciones de orden superior.
 
 Ejemplo:
 
@@ -148,21 +168,69 @@ Ejemplo:
 ```
 
 
-b) Implementa la función recursiva `(diff-listas l1 l2)` que tome como
-argumentos dos listas estructuradas con la misma estructura, pero con
-diferentes elementos, y devuelva una lista de parejas que contenga los
-elementos que son diferentes.
+b.1) Implementa la función `(intersecta lista-1 lista-2)` que recibe como
+parámetros dos listas estructuradas y devuelve la lista estructurada
+resultante de recorrer ambas listas y colocar una pareja formada por
+la hoja de la primera y de la segunda en aquellas posiciones en las
+que el recorrido de ambas listas terminen al mismo tiempo en una hoja.
 
-Ejemplos:
+Por ejemplo, si definimos las dos listas de la siguiente forma:
 
-```scheme
-(diff-listas '(a (b ((c)) d e) f) '(1 (b ((2)) 3 4) f))
-; ⇒ ((a . 1) (c . 2) (d . 3) (e . 4))
+```racket
+(define lista-1 '(a (b c) (d))) 
+;     * 
+;   / | \ 
+;  a  *  *
+;    / \  \ 
+;   b   c  d
 
-(diff-listas '((a b) c) '((a b) c))
-; ⇒ ()
+(define lista-2 '((e) (f) (g)))
+;     * 
+;   / | \ 
+;  *  *  * 
+; /  /    \ 
+;e  f      g
 ```
 
+La intersección de ambas listas sería:
+
+```racket
+(intersecta lista-1 lista-2)
+; ⇒ (((b . f)) ((d . g)))
+;     *
+;     | \
+;     *  *
+;    /    \
+;  (b.f)  (d.g)
+```
+
+La función recorrerá al mismo tiempo la primera y la segunda lista. En
+la primera lista, en su primer elemento, llegará a la hoja `a`,
+mientras que en la segunda lista llegará a una sublista (la que
+contiene `e`). Ahí no habrá intersección. Después recorrerá el segundo
+elemento de la primera y la segunda lista y llegará a las hojas `b` y
+`f` al mismo tiempo, por lo que construirá la pareja `(b
+. f)`. Descartará la sublista de la segunda lista formada por la `c`,
+por no existir correspondencia en la primera lista. Y, por último,
+comprobará que recorriendo el último elemento de ambas listas se
+llegará al mismo tiempo a las hojas `d` y `g`, formando la pareja `(d
+. g)`.
+
+Puedes implementar la función usando recursión o con funciones de
+orden superior.
+
+Otros ejemplos:
+
+```
+(intersecta '(a b) '(c d)) ; ⇒ '((a . c) (b . d))
+(intersecta '(a (b) (c)) '(d e (f))) ; ⇒ '((a . d) ((c . f)))
+; ⇒
+```
+
+b.2) Generaliza la función anterior, haciendo que reciba otra función
+con la operación a realizar con las hojas: `(intersecta-gen f lista-1
+lista-2)`. Escribe tres ejemplos de uso de la función genérica con
+distintas funciones a aplicar a las hojas y explica qué devuelve cada caso.
 
 ### Ejercicio 5 ###
 
@@ -197,6 +265,6 @@ recursión o con funciones de orden superior.
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2020-21  
+Lenguajes y Paradigmas de Programación, curso 2021-22  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
