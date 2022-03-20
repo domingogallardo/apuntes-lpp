@@ -171,7 +171,7 @@ Las funciones anteriores devuelven los siguientes valores:
 (dato-arbol arbol1) ; ⇒ 30
 (hijos-arbol arbol1) ; ⇒ ((15 (10) (12)) (18) (25 (19) (21) (22)))
 (hoja-arbol? (first (hijos-arbol arbol1))) ; ⇒ #f
-(hoja-arbol? (cadr (hijos-arbol arbol1))) ; ⇒ #t
+(hoja-arbol? (second (hijos-arbol arbol1))) ; ⇒ #t
 ```
 
 ---
@@ -182,8 +182,8 @@ Es muy importante considerar en cada caso con qué tipo de dato estamos
 trabajando y usar la barrera de abstracción adecuada en cada caso:
 
 - La función `hijos-arbol` siempre devuelve una lista de árboles, que
-  podemos recorrer usando `car` y `cdr`.
-- El `car` de una lista de árboles (devuelta por `hijos-arbol`) siempre
+  podemos recorrer usando `first` y `rest`.
+- El `first` de una lista de árboles (devuelta por `hijos-arbol`) siempre
   es un árbol y debemos de usar las funciones de su barrera de
   abstracción: `dato-arbol` e `hijos-arbol`.
 - La función `dato-arbol` devuelve un dato de árbol, del tipo que
@@ -191,7 +191,7 @@ trabajando y usar la barrera de abstracción adecuada en cada caso:
 
 !!! Warning "¡Cuidado!"
     Para remarcar el uso correcto de la barrera de abstracción
-    usaremos siempre `car` y `cdr` cuando trabajemos con listas y
+    usaremos siempre `first` y `rest` cuando trabajemos con listas y
     `dato-arbol` y `hijos-arbol` cuando lo hagamos con árboles. Aunque
     la implementación de las funciones sea la misma, el hecho de
     darles nombres distintos nos permite entender mejor sobre qué tipo
@@ -202,7 +202,7 @@ trabajando y usar la barrera de abstracción adecuada en cada caso:
 <p style="margin-bottom:4cm;"/>
 
 ```racket
-(dato-arbol (cadr (hijos-arbol (first (hijos-arbol arbol1)))))
+(dato-arbol (second (hijos-arbol (first (hijos-arbol arbol1)))))
 ; ⇒ 12
 ```
 

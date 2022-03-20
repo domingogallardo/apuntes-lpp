@@ -321,7 +321,7 @@ elemento, el propio dato:</li>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol1</span><span class="p">)</span> <span class="c1">; ⇒ 30</span>
 <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)</span> <span class="c1">; ⇒ ((15 (10) (12)) (18) (25 (19) (21) (22)))</span>
 <span class="p">(</span><span class="n">hoja-arbol?</span> <span class="p">(</span><span class="nb">first</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))</span> <span class="c1">; ⇒ #f</span>
-<span class="p">(</span><span class="n">hoja-arbol?</span> <span class="p">(</span><span class="nb">cadr</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">hoja-arbol?</span> <span class="p">(</span><span class="nb">second</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))</span> <span class="c1">; ⇒ #t</span>
 </code></pre></div>
 <hr />
 <h3>Tipos devueltos por las funciones</h3>
@@ -329,8 +329,8 @@ elemento, el propio dato:</li>
 trabajando y usar la barrera de abstracción adecuada en cada caso:</p>
 <ul>
 <li>La función <code>hijos-arbol</code> siempre devuelve una lista de árboles, que
-  podemos recorrer usando <code>car</code> y <code>cdr</code>.</li>
-<li>El <code>car</code> de una lista de árboles (devuelta por <code>hijos-arbol</code>) siempre
+  podemos recorrer usando <code>first</code> y <code>rest</code>.</li>
+<li>El <code>first</code> de una lista de árboles (devuelta por <code>hijos-arbol</code>) siempre
   es un árbol y debemos de usar las funciones de su barrera de
   abstracción: <code>dato-arbol</code> e <code>hijos-arbol</code>.</li>
 <li>La función <code>dato-arbol</code> devuelve un dato de árbol, del tipo que
@@ -339,7 +339,7 @@ trabajando y usar la barrera de abstracción adecuada en cada caso:</p>
 <div class="admonition warning">
 <p class="admonition-title">¡Cuidado!</p>
 <p>Para remarcar el uso correcto de la barrera de abstracción
-usaremos siempre <code>car</code> y <code>cdr</code> cuando trabajemos con listas y
+usaremos siempre <code>first</code> y <code>rest</code> cuando trabajemos con listas y
 <code>dato-arbol</code> y <code>hijos-arbol</code> cuando lo hagamos con árboles. Aunque
 la implementación de las funciones sea la misma, el hecho de
 darles nombres distintos nos permite entender mejor sobre qué tipo
@@ -350,7 +350,7 @@ de datos estamos trabajando, una lista o un árbol.</p>
 </ul>
 <p style="margin-bottom:4cm;"/>
 
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">dato-arbol</span> <span class="p">(</span><span class="nb">cadr</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="p">(</span><span class="nb">first</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">dato-arbol</span> <span class="p">(</span><span class="nb">second</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="p">(</span><span class="nb">first</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))))</span>
 <span class="c1">; ⇒ 12</span>
 </code></pre></div>
 <hr />
