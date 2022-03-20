@@ -142,10 +142,10 @@ Funciones que obtienen los elementos de un árbol:
 
 ```racket
 (define (dato-arbol arbol) 
-    (car arbol))
+    (first arbol))
 
 (define (hijos-arbol arbol) 
-    (cdr arbol))
+    (rest arbol))
 
 (define (hoja-arbol? arbol) 
    (null? (hijos-arbol arbol)))
@@ -170,7 +170,7 @@ Las funciones anteriores devuelven los siguientes valores:
 ```racket
 (dato-arbol arbol1) ; ⇒ 30
 (hijos-arbol arbol1) ; ⇒ ((15 (10) (12)) (18) (25 (19) (21) (22)))
-(hoja-arbol? (car (hijos-arbol arbol1))) ; ⇒ #f
+(hoja-arbol? (first (hijos-arbol arbol1))) ; ⇒ #f
 (hoja-arbol? (cadr (hijos-arbol arbol1))) ; ⇒ #t
 ```
 
@@ -202,7 +202,7 @@ trabajando y usar la barrera de abstracción adecuada en cada caso:
 <p style="margin-bottom:4cm;"/>
 
 ```racket
-(dato-arbol (cadr (hijos-arbol (car (hijos-arbol arbol1)))))
+(dato-arbol (cadr (hijos-arbol (first (hijos-arbol arbol1)))))
 ; ⇒ 12
 ```
 
@@ -334,8 +334,8 @@ Ejemplo:
 (define (suma-datos-bosque bosque)
    (if (null? bosque)
        0
-       (+ (suma-datos-arbol (car bosque)) 
-          (suma-datos-bosque (cdr bosque)))))
+       (+ (suma-datos-arbol (first bosque)) 
+          (suma-datos-bosque (rest bosque)))))
 ```
 
 <p style="margin-bottom:4cm;"/>
@@ -405,8 +405,8 @@ Ejemplo:
 (define (to-list-bosque bosque)
    (if (null? bosque)
        '()
-       (append (to-list-arbol (car bosque))
-               (to-list-bosque (cdr bosque)))))
+       (append (to-list-arbol (first bosque))
+               (to-list-bosque (rest bosque)))))
 ```
 
 
@@ -451,8 +451,8 @@ Ejemplo:
 (define (cuadrado-bosque bosque) 
    (if (null? bosque)
        '()
-       (cons (cuadrado-arbol (car bosque))
-             (cuadrado-bosque (cdr bosque)))))
+       (cons (cuadrado-arbol (first bosque))
+             (cuadrado-bosque (rest bosque)))))
 ```
 
 ---
@@ -490,8 +490,8 @@ Ejemplos:
 (define (map-bosque f bosque)
    (if (null? bosque)
        '()
-       (cons (map-arbol f (car bosque))
-             (map-bosque f (cdr bosque)))))
+       (cons (map-arbol f (first bosque))
+             (map-bosque f (rest bosque)))))
 ```
 
 ----
@@ -529,8 +529,8 @@ Ejemplos:
 (define (altura-bosque bosque)
     (if (null? bosque)
         0
-        (max (altura-arbol (car bosque))
-             (altura-bosque (cdr bosque)))))
+        (max (altura-arbol (first bosque))
+             (altura-bosque (rest bosque)))))
 ```
 
 ----
@@ -606,13 +606,13 @@ binarios. Terminamos todos los nombres de las funciones con el sufijo
 
 ```racket
 (define (dato-arbolb arbol)
-   (car arbol))
+   (first arbol))
    
 (define (hijo-izq-arbolb arbol)
-   (cadr arbol))
+   (second arbol))
 
 (define (hijo-der-arbolb arbol)
-   (caddr arbol))
+   (third arbol))
    
 (define (vacio-arbolb? x)
    (null? x))

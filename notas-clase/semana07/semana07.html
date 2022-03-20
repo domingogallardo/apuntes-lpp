@@ -299,10 +299,10 @@ elemento, el propio dato:</li>
 <h3>Selectores</h3>
 <p>Funciones que obtienen los elementos de un árbol:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span> 
-    <span class="p">(</span><span class="nb">car</span> <span class="n">arbol</span><span class="p">))</span>
+    <span class="p">(</span><span class="nb">first</span> <span class="n">arbol</span><span class="p">))</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">)</span> 
-    <span class="p">(</span><span class="nb">cdr</span> <span class="n">arbol</span><span class="p">))</span>
+    <span class="p">(</span><span class="nb">rest</span> <span class="n">arbol</span><span class="p">))</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hoja-arbol?</span> <span class="n">arbol</span><span class="p">)</span> 
    <span class="p">(</span><span class="nb">null?</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">)))</span>
@@ -320,7 +320,7 @@ elemento, el propio dato:</li>
 <p>Las funciones anteriores devuelven los siguientes valores:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol1</span><span class="p">)</span> <span class="c1">; ⇒ 30</span>
 <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)</span> <span class="c1">; ⇒ ((15 (10) (12)) (18) (25 (19) (21) (22)))</span>
-<span class="p">(</span><span class="n">hoja-arbol?</span> <span class="p">(</span><span class="nb">car</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">hoja-arbol?</span> <span class="p">(</span><span class="nb">first</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))</span> <span class="c1">; ⇒ #f</span>
 <span class="p">(</span><span class="n">hoja-arbol?</span> <span class="p">(</span><span class="nb">cadr</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))</span> <span class="c1">; ⇒ #t</span>
 </code></pre></div>
 <hr />
@@ -350,7 +350,7 @@ de datos estamos trabajando, una lista o un árbol.</p>
 </ul>
 <p style="margin-bottom:4cm;"/>
 
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">dato-arbol</span> <span class="p">(</span><span class="nb">cadr</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="p">(</span><span class="nb">car</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">dato-arbol</span> <span class="p">(</span><span class="nb">cadr</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="p">(</span><span class="nb">first</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))))</span>
 <span class="c1">; ⇒ 12</span>
 </code></pre></div>
 <hr />
@@ -458,8 +458,8 @@ llamada recursiva que suma el resto de árboles:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-datos-bosque</span> <span class="n">bosque</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">bosque</span><span class="p">)</span>
        <span class="mi">0</span>
-       <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">suma-datos-arbol</span> <span class="p">(</span><span class="nb">car</span> <span class="n">bosque</span><span class="p">))</span> 
-          <span class="p">(</span><span class="n">suma-datos-bosque</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">bosque</span><span class="p">)))))</span>
+       <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">suma-datos-arbol</span> <span class="p">(</span><span class="nb">first</span> <span class="n">bosque</span><span class="p">))</span> 
+          <span class="p">(</span><span class="n">suma-datos-bosque</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">bosque</span><span class="p">)))))</span>
 </code></pre></div>
 <p style="margin-bottom:4cm;"/>
 
@@ -515,8 +515,8 @@ llamada recursiva que suma el resto de árboles:</p>
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">to-list-bosque</span> <span class="n">bosque</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">bosque</span><span class="p">)</span>
        <span class="o">&#39;</span><span class="p">()</span>
-       <span class="p">(</span><span class="nb">append</span> <span class="p">(</span><span class="n">to-list-arbol</span> <span class="p">(</span><span class="nb">car</span> <span class="n">bosque</span><span class="p">))</span>
-               <span class="p">(</span><span class="n">to-list-bosque</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">bosque</span><span class="p">)))))</span>
+       <span class="p">(</span><span class="nb">append</span> <span class="p">(</span><span class="n">to-list-arbol</span> <span class="p">(</span><span class="nb">first</span> <span class="n">bosque</span><span class="p">))</span>
+               <span class="p">(</span><span class="n">to-list-bosque</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">bosque</span><span class="p">)))))</span>
 </code></pre></div>
 <hr />
 <h3>Versión con <code>map</code></h3>
@@ -548,8 +548,8 @@ llamada recursiva que suma el resto de árboles:</p>
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-bosque</span> <span class="n">bosque</span><span class="p">)</span> 
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">bosque</span><span class="p">)</span>
        <span class="o">&#39;</span><span class="p">()</span>
-       <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">cuadrado-arbol</span> <span class="p">(</span><span class="nb">car</span> <span class="n">bosque</span><span class="p">))</span>
-             <span class="p">(</span><span class="n">cuadrado-bosque</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">bosque</span><span class="p">)))))</span>
+       <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">cuadrado-arbol</span> <span class="p">(</span><span class="nb">first</span> <span class="n">bosque</span><span class="p">))</span>
+             <span class="p">(</span><span class="n">cuadrado-bosque</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">bosque</span><span class="p">)))))</span>
 </code></pre></div>
 <hr />
 <h3>Versión con <code>map</code>:</h3>
@@ -575,8 +575,8 @@ pasa la función a aplicar a los elementos del árbol.</p>
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">map-bosque</span> <span class="n">f</span> <span class="n">bosque</span><span class="p">)</span>
    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">bosque</span><span class="p">)</span>
        <span class="o">&#39;</span><span class="p">()</span>
-       <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">map-arbol</span> <span class="n">f</span> <span class="p">(</span><span class="nb">car</span> <span class="n">bosque</span><span class="p">))</span>
-             <span class="p">(</span><span class="n">map-bosque</span> <span class="n">f</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">bosque</span><span class="p">)))))</span>
+       <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">map-arbol</span> <span class="n">f</span> <span class="p">(</span><span class="nb">first</span> <span class="n">bosque</span><span class="p">))</span>
+             <span class="p">(</span><span class="n">map-bosque</span> <span class="n">f</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">bosque</span><span class="p">)))))</span>
 </code></pre></div>
 <hr />
 <h3>Usando  <code>map</code></h3>
@@ -602,8 +602,8 @@ pasa la función a aplicar a los elementos del árbol.</p>
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">altura-bosque</span> <span class="n">bosque</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">bosque</span><span class="p">)</span>
         <span class="mi">0</span>
-        <span class="p">(</span><span class="nb">max</span> <span class="p">(</span><span class="n">altura-arbol</span> <span class="p">(</span><span class="nb">car</span> <span class="n">bosque</span><span class="p">))</span>
-             <span class="p">(</span><span class="n">altura-bosque</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">bosque</span><span class="p">)))))</span>
+        <span class="p">(</span><span class="nb">max</span> <span class="p">(</span><span class="n">altura-arbol</span> <span class="p">(</span><span class="nb">first</span> <span class="n">bosque</span><span class="p">))</span>
+             <span class="p">(</span><span class="n">altura-bosque</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">bosque</span><span class="p">)))))</span>
 </code></pre></div>
 <hr />
 <h3>Con funciones de orden superior</h3>
@@ -651,13 +651,13 @@ binarios. Terminamos todos los nombres de las funciones con el sufijo
 <code>-arbolb</code> (árbol binario).</p>
 <p><strong>Selectores</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">dato-arbolb</span> <span class="n">arbol</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">car</span> <span class="n">arbol</span><span class="p">))</span>
+   <span class="p">(</span><span class="nb">first</span> <span class="n">arbol</span><span class="p">))</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hijo-izq-arbolb</span> <span class="n">arbol</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">cadr</span> <span class="n">arbol</span><span class="p">))</span>
+   <span class="p">(</span><span class="nb">second</span> <span class="n">arbol</span><span class="p">))</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hijo-der-arbolb</span> <span class="n">arbol</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">caddr</span> <span class="n">arbol</span><span class="p">))</span>
+   <span class="p">(</span><span class="nb">third</span> <span class="n">arbol</span><span class="p">))</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">vacio-arbolb?</span> <span class="n">x</span><span class="p">)</span>
    <span class="p">(</span><span class="nb">null?</span> <span class="n">x</span><span class="p">))</span>
