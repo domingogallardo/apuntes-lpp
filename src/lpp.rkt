@@ -1,6 +1,9 @@
 #lang racket
 (require 2htdp/image)
 
+(provide hoja?)
+(provide pinta-lista)
+
 (provide crea-diccionario)
 (provide get)
 (provide put)
@@ -9,6 +12,65 @@
 (provide for-all?)
 
 (provide caja-puntero)
+
+;;---------------------
+;; Listas estructuradas
+;;---------------------
+
+(define (hoja? elem)
+  (not (list? elem)))
+
+;; --------------------------
+;;  Pinta lista estructurada
+;; --------------------------
+
+(define t-espacio 8)
+(define t-nodo 16)
+
+(define (contenido imagen)
+  (ajusta imagen
+          (image-width imagen)
+          (image-height imagen)))
+
+(define (enlaza-raiz imagen pareja)     ; En pareja se espera la imagen de los hijos y
+  (overlay/align "center" "top" imagen  ; una lista de las posiciones x de sus raices.
+                 (foldl (lambda (x resultado)
+                          (add-line resultado
+                                    (/ (image-width resultado) 2)
+                                    (+ (/ (image-height imagen) 2) t-espacio)
+                                    x (+ (image-height imagen) t-espacio) "black"))
+                        (above (rectangle (image-width (car pareja))
+                                          (+ (image-height imagen) t-espacio)
+                                          "solid"
+                                          "transparent")
+                               (car pareja))
+                        (cdr pareja))))
+
+(define (pinta-nodo dato)
+  (overlay (contenido (escrito dato))
+           (circle (- t-nodo 1) "solid" "white")
+           (circle t-nodo "solid" "white")))
+
+(define (junta-hijos lista)         ; Devuelve la pareja que necesita enlaza-raiz:
+  (foldl (lambda (imagen resultado) ;                    (imagen . (x1 x2 ... xn))
+           (cons (beside/align "top" (car resultado)
+                                     (rectangle t-espacio (image-height imagen)
+                                                "solid"
+                                                "transparent")
+                                     imagen)
+                 (append (cdr resultado)
+                         (list (+ t-espacio (image-width (car resultado))
+                                  (/ (image-width imagen) 2))))))
+         (cons (car lista) (list (/ (image-width (car lista)) 2)))
+         (cdr lista)))
+
+
+(define (pinta-lista lista)
+  (if (hoja? lista)
+      (pinta-nodo lista)
+      (enlaza-raiz (pinta-nodo "*")
+                   (junta-hijos (map pinta-lista lista)))))
+
 
 ;; ------------
 ;; Diccionario
