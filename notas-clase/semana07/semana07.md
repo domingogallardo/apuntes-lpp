@@ -127,9 +127,7 @@ Se haría con la lista de la siguiente sentencia:
   permiten trabajar con un tipo de datos escondiendo su
   implementación.
 - Por convenio, en todas las funciones ponemos el mismo sufijo, el
-  nombre del tipo de dato, en este caso **arbol** (vamos a hacer una
-  mezcla un poco extraña, escribiendo el nombre del tipo de dato en
-  inglés, y el nombre de las funciones en castellano).
+  nombre del tipo de dato, en este caso **arbol**.
 - Definimos dos conjuntos de funciones: **constructores** para construir un
   nuevo árbol y **selectores** para obtener los elementos del árbol. Vamos a
   empezar por los selectores.
