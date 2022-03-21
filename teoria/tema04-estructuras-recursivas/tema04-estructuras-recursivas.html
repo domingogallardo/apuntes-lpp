@@ -1124,8 +1124,8 @@ estructura y sus números elevados al cuadrado.</p>
 </code></pre></div>
 <p>La solución recursiva es:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-estruct</span> <span class="n">lista</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">null?</span> <span class="n">elem</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">())</span>
-        <span class="p">((</span><span class="n">hoja?</span> <span class="n">elem</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">lista</span> <span class="n">lista</span> <span class="p">))</span>
+  <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">())</span>
+        <span class="p">((</span><span class="n">hoja?</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">lista</span> <span class="n">lista</span> <span class="p">))</span>
         <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">cuadrado-estruct</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
                     <span class="p">(</span><span class="n">cuadrado-estruct</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))))))</span>
 </code></pre></div>
