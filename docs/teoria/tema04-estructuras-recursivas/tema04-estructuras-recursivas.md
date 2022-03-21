@@ -648,8 +648,8 @@ La solución recursiva es:
 
 ```racket
 (define (cuadrado-estruct lista)
-  (cond ((null? elem) '())
-        ((hoja? elem) (* lista lista ))
+  (cond ((null? lista) '())
+        ((hoja? lista) (* lista lista ))
         (else (cons (cuadrado-estruct (first lista))
                     (cuadrado-estruct (rest lista))))))
 ```
