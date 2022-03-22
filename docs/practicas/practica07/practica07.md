@@ -49,7 +49,7 @@ lista, como mostramos en el `check-equal?` que hay a continuación.
            e f  g
 ```
 
-```scheme
+```racket
 (define lista-a '(________))
 (check-equal? (fourth (third lista-a)) 'h)
 ```
@@ -65,7 +65,14 @@ que las has dibujado correctamente.
 
 c) Dada la definición de `cuadrado-estruct` vista en teoría:
 
-<img src="imagenes/cuadrado-estruct.png" width="500px"/>
+```
+(define (cuadrado-estruct lista)
+  (cond ((null? lista) '())
+        ((hoja? lista) (* lista lista ))
+        (else (cons
+             ①➜(cuadrado-estruct (first lista))
+             ②➜(cuadrado-estruct (rest lista))))))
+```
 
 1. Indica qué devuelve la expresión `(cuadrado-estruct lista-b1)`. La
 lista `lista-b1` es la definida en el apartado anterior.
@@ -100,21 +107,21 @@ contiene. Implementa dos versiones de la función, una con
 
 Ejemplos:
 
-```scheme
+```racket
 (cuenta-pares '(1 (2 3) 4 (5 6))) ; ⇒ 3
-(cuenta-pares '(((1 2) 3 (4) 5) ((((6)))))) ; ⇒ 3
+(cuenta-pares-fos '(((1 2) 3 (4) 5) ((((6)))))) ; ⇒ 3
 ```
 
-b) Implementa la función recursiva `(todos-positivos lista)` que
+b) Implementa la función recursiva `(todos-positivos? lista)` que
 recibe una lista estructurada con números y comprueba si todos sus
 elementos son positivos. Implementa dos versiones de la función, una con
 **recursión pura** y otra con **funciones de orden superior**.
 
 Ejemplos:
 
-```scheme
-(todos-positivos-fos '(1 (2 (3 (-3))) 4)) ; ⇒ #f
-(todos-positivos-fos '(1 (2 (3 (3))) 4)) ; ⇒ #t
+```racket
+(todos-positivos? '(1 (2 (3 (-3))) 4)) ; ⇒ #f
+(todos-positivos-fos? '(1 (2 (3 (3))) 4)) ; ⇒ #t
 ```
 
 ### Ejercicio 3 ###
@@ -126,7 +133,7 @@ usando **funciones de orden superior**.
 
 Ejemplo:
 
-```scheme
+```racket
 (cumplen-predicado even? '(1 (2 (3 (4))) (5 6))) ; ⇒ (2 4 6)
 (cumplen-predicado pair? '(((1 . 2) 3 (4 . 3) 5) 6)) ; ⇒ ((1 . 2) (4 . 3))
 ```
@@ -137,7 +144,7 @@ Utilizando la función anterior implementa las siguientes funciones:
   estructurada con números y un número `n` y devuelve una lista plana
   con los números de la lista original mayores que `n`.
   
-  ```scheme
+  ```racket
   (busca-mayores 10 '(-1 (20 (10 12) (30 (25 (15)))))) ; ⇒ (20 12 30 25 15)
   ```
 
@@ -146,7 +153,7 @@ Utilizando la función anterior implementa las siguientes funciones:
   plana con los símbolos de la lista original que comienzan por el
   carácter `char`.
   
-  ```scheme
+  ```racket
   (empieza-por #\m '((hace (mucho tiempo)) (en) (una galaxia ((muy  muy) lejana))))
   ; ⇒ (mucho muy muy)
   ```
@@ -162,7 +169,7 @@ hacerla de forma recursiva o con funciones de orden superior.
 
 Ejemplo:
 
-```scheme
+```racket
 (sustituye-elem 'c 'h '(a b (c d (e c)) c (f (c) g)))
 ; ⇒ (a b (h d (e h)) h (f (h) g))
 ```
@@ -221,7 +228,7 @@ orden superior.
 
 Otros ejemplos:
 
-```
+```racket
 (intersecta '(a b) '(c d)) ; ⇒ '((a . c) (b . d))
 (intersecta '(a (b) (c)) '(d e (f))) ; ⇒ '((a . d) ((c . f)))
 ```
@@ -257,7 +264,7 @@ derecha el nivel en el que se encuentra. Puedes definir alguna
 función auxiliar si lo necesitas. Puedes hacerlo con
 recursión o con funciones de orden superior.
 
-```scheme
+```racket
 (nivel-elemento '(2 (3))) ; ⇒ (3 . 2)
 (nivel-elemento '((2) (3 (4)((((((5))) 6)) 7)) 8)) ; ⇒ (5 . 8)
 ```
