@@ -632,8 +632,8 @@ lista, como mostramos en el <code>check-equal?</code> que hay a continuación.</
            |  / \
            e f  g
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define </span><span class="nv">lista-a</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">________</span><span class="p">))</span>
-<span class="p">(</span><span class="nf">check-equal?</span> <span class="p">(</span><span class="nf">fourth</span> <span class="p">(</span><span class="nf">third</span> <span class="nv">lista-a</span><span class="p">))</span> <span class="ss">&#39;h</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista-a</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">________</span><span class="p">))</span>
+<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="nb">fourth</span> <span class="p">(</span><span class="nb">third</span> <span class="n">lista-a</span><span class="p">))</span> <span class="o">&#39;</span><span class="ss">h</span><span class="p">)</span>
 </code></pre></div>
 <p>b) Dibuja la representación en niveles de las siguientes listas
 estructurada. Comprueba después con la función <code>(pinta-lista lista)</code>
@@ -642,7 +642,13 @@ que las has dibujado correctamente.</p>
 <span class="p">(</span><span class="k">define</span> <span class="n">lista-b2</span> <span class="o">&#39;</span><span class="p">((</span><span class="ss">b</span><span class="p">)</span> <span class="p">(</span><span class="ss">c</span> <span class="p">(</span><span class="ss">a</span><span class="p">))</span> <span class="ss">d</span> <span class="p">(</span><span class="ss">a</span><span class="p">)))</span>
 </code></pre></div>
 <p>c) Dada la definición de <code>cuadrado-estruct</code> vista en teoría:</p>
-<p><img src="imagenes/cuadrado-estruct.png" width="500px"/></p>
+<div class="highlight"><pre><span></span><code>(define (cuadrado-estruct lista)
+  (cond ((null? lista) &#39;())
+        ((hoja? lista) (* lista lista ))
+        (else (cons
+             ①➜(cuadrado-estruct (first lista))
+             ②➜(cuadrado-estruct (rest lista))))))
+</code></pre></div>
 <ol>
 <li>Indica qué devuelve la expresión <code>(cuadrado-estruct lista-b1)</code>. La
 lista <code>lista-b1</code> es la definida en el apartado anterior.</li>
@@ -669,16 +675,16 @@ lista estructurada y cuenta la cantidad de números pares que
 contiene. Implementa dos versiones de la función, una con
 <strong>recursión pura</strong> y otra con <strong>funciones de orden superior</strong>.</p>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">cuenta-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span> <span class="p">(</span><span class="mi">5</span> <span class="mi">6</span><span class="p">)))</span> <span class="c1">; ⇒ 3</span>
-<span class="p">(</span><span class="nf">cuenta-pares</span> <span class="o">&#39;</span><span class="p">(((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="mi">5</span><span class="p">)</span> <span class="p">((((</span><span class="mi">6</span><span class="p">))))))</span> <span class="c1">; ⇒ 3</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cuenta-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span> <span class="p">(</span><span class="mi">5</span> <span class="mi">6</span><span class="p">)))</span> <span class="c1">; ⇒ 3</span>
+<span class="p">(</span><span class="n">cuenta-pares-fos</span> <span class="o">&#39;</span><span class="p">(((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="mi">5</span><span class="p">)</span> <span class="p">((((</span><span class="mi">6</span><span class="p">))))))</span> <span class="c1">; ⇒ 3</span>
 </code></pre></div>
-<p>b) Implementa la función recursiva <code>(todos-positivos lista)</code> que
+<p>b) Implementa la función recursiva <code>(todos-positivos? lista)</code> que
 recibe una lista estructurada con números y comprueba si todos sus
 elementos son positivos. Implementa dos versiones de la función, una con
 <strong>recursión pura</strong> y otra con <strong>funciones de orden superior</strong>.</p>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">todos-positivos-fos</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">-3</span><span class="p">)))</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
-<span class="p">(</span><span class="nf">todos-positivos-fos</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">3</span><span class="p">)))</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">todos-positivos?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">-3</span><span class="p">)))</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">todos-positivos-fos?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">3</span><span class="p">)))</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 </code></pre></div>
 <h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
 <p>Implementa la función <code>(cumplen-predicado pred lista)</code> que devuelva
@@ -686,8 +692,8 @@ una lista con todos los elementos de lista estructurada que cumplen un
 predicado. Implementa dos versiones, una <strong>recursiva pura</strong> y otra
 usando <strong>funciones de orden superior</strong>.</p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">cumplen-predicado</span> <span class="nv">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)))</span> <span class="p">(</span><span class="mi">5</span> <span class="mi">6</span><span class="p">)))</span> <span class="c1">; ⇒ (2 4 6)</span>
-<span class="p">(</span><span class="nf">cumplen-predicado</span> <span class="nv">pair?</span> <span class="o">&#39;</span><span class="p">(((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">5</span><span class="p">)</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ ((1 . 2) (4 . 3))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cumplen-predicado</span> <span class="nb">even?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)))</span> <span class="p">(</span><span class="mi">5</span> <span class="mi">6</span><span class="p">)))</span> <span class="c1">; ⇒ (2 4 6)</span>
+<span class="p">(</span><span class="n">cumplen-predicado</span> <span class="nb">pair?</span> <span class="o">&#39;</span><span class="p">(((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">5</span><span class="p">)</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ ((1 . 2) (4 . 3))</span>
 </code></pre></div>
 <p>Utilizando la función anterior implementa las siguientes funciones:</p>
 <ul>
@@ -695,7 +701,7 @@ usando <strong>funciones de orden superior</strong>.</p>
   estructurada con números y un número <code>n</code> y devuelve una lista plana
   con los números de la lista original mayores que <code>n</code>.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">busca-mayores</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">-1</span> <span class="p">(</span><span class="mi">20</span> <span class="p">(</span><span class="mi">10</span> <span class="mi">12</span><span class="p">)</span> <span class="p">(</span><span class="mi">30</span> <span class="p">(</span><span class="mi">25</span> <span class="p">(</span><span class="mi">15</span><span class="p">))))))</span> <span class="c1">; ⇒ (20 12 30 25 15)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">busca-mayores</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">-1</span> <span class="p">(</span><span class="mi">20</span> <span class="p">(</span><span class="mi">10</span> <span class="mi">12</span><span class="p">)</span> <span class="p">(</span><span class="mi">30</span> <span class="p">(</span><span class="mi">25</span> <span class="p">(</span><span class="mi">15</span><span class="p">))))))</span> <span class="c1">; ⇒ (20 12 30 25 15)</span>
 </code></pre></div>
 <ul>
 <li>Función <code>(empieza-por char lista-pal)</code> que recibe una lista
@@ -703,7 +709,7 @@ usando <strong>funciones de orden superior</strong>.</p>
   plana con los símbolos de la lista original que comienzan por el
   carácter <code>char</code>.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">empieza-por</span> <span class="sc">#\m</span> <span class="o">&#39;</span><span class="p">((</span><span class="nf">hace</span> <span class="p">(</span><span class="nf">mucho</span> <span class="nv">tiempo</span><span class="p">))</span> <span class="p">(</span><span class="nf">en</span><span class="p">)</span> <span class="p">(</span><span class="nf">una</span> <span class="nv">galaxia</span> <span class="p">((</span><span class="nf">muy</span>  <span class="nv">muy</span><span class="p">)</span> <span class="nv">lejana</span><span class="p">))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">empieza-por</span> <span class="sc">#\m</span> <span class="o">&#39;</span><span class="p">((</span><span class="ss">hace</span> <span class="p">(</span><span class="ss">mucho</span> <span class="ss">tiempo</span><span class="p">))</span> <span class="p">(</span><span class="ss">en</span><span class="p">)</span> <span class="p">(</span><span class="ss">una</span> <span class="ss">galaxia</span> <span class="p">((</span><span class="ss">muy</span>  <span class="ss">muy</span><span class="p">)</span> <span class="ss">lejana</span><span class="p">))))</span>
 <span class="c1">; ⇒ (mucho muy muy)</span>
 </code></pre></div>
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
@@ -713,7 +719,7 @@ devuelve otra lista con la misma estructura, pero en la que se ha
 sustituido las ocurrencias de <code>elem-old</code> por <code>elem-new</code>. Puedes
 hacerla de forma recursiva o con funciones de orden superior.</p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">sustituye-elem</span> <span class="ss">&#39;c</span> <span class="ss">&#39;h</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">a</span> <span class="nv">b</span> <span class="p">(</span><span class="nf">c</span> <span class="nv">d</span> <span class="p">(</span><span class="nf">e</span> <span class="nv">c</span><span class="p">))</span> <span class="nv">c</span> <span class="p">(</span><span class="nf">f</span> <span class="p">(</span><span class="nf">c</span><span class="p">)</span> <span class="nv">g</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">sustituye-elem</span> <span class="o">&#39;</span><span class="ss">c</span> <span class="o">&#39;</span><span class="ss">h</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="p">(</span><span class="ss">c</span> <span class="ss">d</span> <span class="p">(</span><span class="ss">e</span> <span class="ss">c</span><span class="p">))</span> <span class="ss">c</span> <span class="p">(</span><span class="ss">f</span> <span class="p">(</span><span class="ss">c</span><span class="p">)</span> <span class="ss">g</span><span class="p">)))</span>
 <span class="c1">; ⇒ (a b (h d (e h)) h (f (h) g))</span>
 </code></pre></div>
 <p>b.1) Implementa la función <code>(intersecta lista-1 lista-2)</code> que recibe como
@@ -759,8 +765,8 @@ llegará al mismo tiempo a las hojas <code>d</code> y <code>g</code>, formando l
 <p>Puedes implementar la función usando recursión o con funciones de
 orden superior.</p>
 <p>Otros ejemplos:</p>
-<div class="highlight"><pre><span></span><code>(intersecta &#39;(a b) &#39;(c d)) ; ⇒ &#39;((a . c) (b . d))
-(intersecta &#39;(a (b) (c)) &#39;(d e (f))) ; ⇒ &#39;((a . d) ((c . f)))
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">intersecta</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">c</span> <span class="ss">d</span><span class="p">))</span> <span class="c1">; ⇒ &#39;((a . c) (b . d))</span>
+<span class="p">(</span><span class="n">intersecta</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span><span class="p">)</span> <span class="p">(</span><span class="ss">c</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">d</span> <span class="ss">e</span> <span class="p">(</span><span class="ss">f</span><span class="p">)))</span> <span class="c1">; ⇒ &#39;((a . d) ((c . f)))</span>
 </code></pre></div>
 <p>b.2) Generaliza la función anterior, haciendo que reciba otra función
 con la operación a realizar con las hojas: <code>(intersecta-gen f lista-1
@@ -785,8 +791,8 @@ izquierda es el elemento que se encuentra a mayor nivel y la parte
 derecha el nivel en el que se encuentra. Puedes definir alguna
 función auxiliar si lo necesitas. Puedes hacerlo con
 recursión o con funciones de orden superior.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nf">nivel-elemento</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span><span class="p">)))</span> <span class="c1">; ⇒ (3 . 2)</span>
-<span class="p">(</span><span class="nf">nivel-elemento</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)((((((</span><span class="mi">5</span><span class="p">)))</span> <span class="mi">6</span><span class="p">))</span> <span class="mi">7</span><span class="p">))</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ (5 . 8)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">nivel-elemento</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span><span class="p">)))</span> <span class="c1">; ⇒ (3 . 2)</span>
+<span class="p">(</span><span class="n">nivel-elemento</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)((((((</span><span class="mi">5</span><span class="p">)))</span> <span class="mi">6</span><span class="p">))</span> <span class="mi">7</span><span class="p">))</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ (5 . 8)</span>
 </code></pre></div>
 <hr />
 <p>Lenguajes y Paradigmas de Programación, curso 2021-22<br />
