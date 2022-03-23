@@ -18,7 +18,7 @@ como_ `lpp.rkt`. Guárdalo en la misma carpeta en la que tengas el
 fichero `practica7.rkt`. 
 
 Puedes encontrar también el fichero `lpp.rkt` en la aplicación
-_Materiales docentes_ de UACloud.
+**_Materiales docentes_ de UACloud**.
 
 El fichero contiene la definición de la función `(hoja? dato)` y la
 función `(pinta-lista lista)` que nos permite dibujar gráficamente una lista estructurada.
