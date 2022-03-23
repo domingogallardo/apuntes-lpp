@@ -1,8 +1,25 @@
 #lang racket
 (require 2htdp/image)
 
+(provide dato-arbol)
+(provide hijos-arbol)
+(provide hoja-arbol?)
+(provide construye-arbol)
+
+(provide dato-arbolb)
+(provide hijo-izq-arbolb)
+(provide hijo-der-arbolb)
+(provide arbolb-vacio)
+(provide vacio-arbolb?)
+(provide hoja-arbolb?)
+(provide construye-arbolb)
+
 (provide hoja?)
+
 (provide pinta-lista)
+(provide pinta-arbol)
+(provide pinta-arbolb)
+
 
 (provide crea-diccionario)
 (provide get)
@@ -13,24 +30,85 @@
 
 (provide caja-puntero)
 
-;;---------------------
+
+;; --------------------------
+;; Árboles y árboles binarios
+;; --------------------------
+
+(define (dato-arbol arbol) 
+    (first arbol))
+
+(define (hijos-arbol arbol) 
+    (rest arbol))
+
+(define (hoja-arbol? arbol) 
+   (null? (hijos-arbol arbol)))
+
+(define (construye-arbol dato lista-arboles)
+   (cons dato lista-arboles))
+
+(define (dato-arbolb arbol)
+   (first arbol))
+
+(define (hijo-izq-arbolb arbol)
+   (second arbol))
+
+(define (hijo-der-arbolb arbol)
+   (third arbol))
+
+(define arbolb-vacio '())
+
+(define (vacio-arbolb? arbol)
+   (equal? arbol arbolb-vacio))
+
+(define (hoja-arbolb? arbol)
+   (and (vacio-arbolb? (hijo-izq-arbolb arbol))
+        (vacio-arbolb? (hijo-der-arbolb arbol))))
+
+(define (construye-arbolb dato hijo-izq hijo-der)
+    (list dato hijo-izq hijo-der))
+
+;; --------------------
 ;; Listas estructuradas
-;;---------------------
+;; --------------------
 
 (define (hoja? elem)
   (not (list? elem)))
 
-;; --------------------------
-;;  Pinta lista estructurada
-;; --------------------------
 
-(define t-espacio 8)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Pintar arbol genérico ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (define t-nodo 16)
+(define t-letra 14)
+(define t-ajuste 28)
+(define t-espacio 8)
+
+(define (pinta-nodo dato circulo?)
+  (overlay (contenido (escrito dato))
+           (circle (- t-nodo 1) "solid" "white")
+           (circle t-nodo "solid" (if circulo? "black" "white"))))
+
+(define (escrito dato)
+  (text (format "~a" dato) t-letra "black"))
+
+(define (ajusta imagen ancho alto)
+  (scale/xy
+   (/ (min t-ajuste ancho) ancho)
+   (/ (min t-ajuste alto) alto)
+   imagen))
 
 (define (contenido imagen)
   (ajusta imagen
           (image-width imagen)
           (image-height imagen)))
+
+(define (pinta-arbol arbol)
+  (if (hoja-arbol? arbol)
+      (pinta-nodo (dato-arbol arbol) #t)
+      (enlaza-raiz (pinta-nodo (dato-arbol arbol) #t)
+                   (junta-hijos (map pinta-arbol (hijos-arbol arbol))))))
 
 (define (enlaza-raiz imagen pareja)     ; En pareja se espera la imagen de los hijos y
   (overlay/align "center" "top" imagen  ; una lista de las posiciones x de sus raices.
@@ -46,11 +124,6 @@
                                (car pareja))
                         (cdr pareja))))
 
-(define (pinta-nodo dato)
-  (overlay (contenido (escrito dato))
-           (circle (- t-nodo 1) "solid" "white")
-           (circle t-nodo "solid" "white")))
-
 (define (junta-hijos lista)         ; Devuelve la pareja que necesita enlaza-raiz:
   (foldl (lambda (imagen resultado) ;                    (imagen . (x1 x2 ... xn))
            (cons (beside/align "top" (car resultado)
@@ -65,12 +138,49 @@
          (cdr lista)))
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Pintar arbol binario ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(define (pinta-arbolb arbolb)
+  (cond
+    ((vacio-arbolb? arbolb) (circle t-nodo "solid" "white"))
+    ((hoja-arbolb? arbolb) (pinta-nodo (dato-arbolb arbolb) #t))
+    ((vacio-arbolb? (hijo-izq-arbolb arbolb))
+     (enlaza-uno #f (pinta-nodo (dato-arbolb arbolb) #t)
+                 (junta-hijos (list (pinta-arbolb arbolb-vacio)
+                                    (pinta-arbolb (hijo-der-arbolb arbolb))))))
+    ((vacio-arbolb? (hijo-der-arbolb arbolb))
+     (enlaza-uno #t (pinta-nodo (dato-arbolb arbolb) #t)
+                 (junta-hijos (list (pinta-arbolb (hijo-izq-arbolb arbolb))
+                                    (pinta-arbolb arbolb-vacio)))))
+    (else (enlaza-raiz (pinta-nodo (dato-arbolb arbolb) #t)
+                       (junta-hijos (list (pinta-arbolb (hijo-izq-arbolb arbolb))
+                                          (pinta-arbolb (hijo-der-arbolb arbolb))))))))
+
+(define (enlaza-uno izq imagen pareja)   ; En pareja se espera lo mismo que en enlaza-raiz.
+  (overlay/align "center" "top" imagen   ; iqz: #t enlaza a iquierda y #f enlaza a derecha.
+                 (add-line (above (rectangle (image-width (car pareja))
+                                          (+ (image-height imagen) t-espacio)
+                                          "solid"
+                                          "transparent")
+                                  (car pareja))
+                           (/ (image-width (car pareja)) 2)
+                           (+ (/ (image-height imagen) 2) t-espacio)
+                           ((if izq car cadr) (cdr pareja))
+                           (+ (image-height imagen) t-espacio)
+                           "black")))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Pintar lista estructurada ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (define (pinta-lista lista)
   (if (hoja? lista)
-      (pinta-nodo lista)
-      (enlaza-raiz (pinta-nodo "*")
+      (pinta-nodo lista #f)
+      (enlaza-raiz (pinta-nodo "*" #f)
                    (junta-hijos (map pinta-lista lista)))))
-
 
 ;; ------------
 ;; Diccionario
@@ -122,7 +232,6 @@
 ;; Dibujo de diagramas caja y puntero
 ;; ----------------------------------
 
-(define tamaño-texto 15)
 (define ancho-puntero 1)
 
 (define (caja apaisado)
@@ -137,14 +246,6 @@
           (rectangle ancho-puntero largo "solid" "black")
           (circle 3 "solid" "black"))))
 
-(define (escrito dato)
-  (text (format "~a" dato) tamaño-texto "black"))
-
-(define (ajusta imagen ancho alto)
-  (scale/xy
-   (/ (min 25 ancho) ancho)
-   (/ (min 25 alto) alto)
-   imagen))
 
 (define (escalada imagen)
   (ajusta imagen
