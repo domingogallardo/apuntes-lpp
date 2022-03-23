@@ -17,7 +17,7 @@ pulsando el botón derecho del ratón y seleccionando la opción _Guardar
 como_ `lpp.rkt`. Guárdalo en la misma carpeta en la que tengas el
 fichero `practica7.rkt`. 
 
-Puedes encontrar también el fichero `lpp.rkt` en la [página de Moodle
+Puedes encontrar también el fichero `lpp.rkt` en el [sitio Moodle
 de la asignatura](https://moodle2021-22.ua.es/moodle/mod/resource/view.php?id=130802).
 
 El fichero contiene la definición de la función `(hoja? dato)` y la
