@@ -724,11 +724,12 @@ hacerla de forma recursiva o con funciones de orden superior.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">sustituye-elem</span> <span class="o">&#39;</span><span class="ss">c</span> <span class="o">&#39;</span><span class="ss">h</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="p">(</span><span class="ss">c</span> <span class="ss">d</span> <span class="p">(</span><span class="ss">e</span> <span class="ss">c</span><span class="p">))</span> <span class="ss">c</span> <span class="p">(</span><span class="ss">f</span> <span class="p">(</span><span class="ss">c</span><span class="p">)</span> <span class="ss">g</span><span class="p">)))</span>
 <span class="c1">; ⇒ (a b (h d (e h)) h (f (h) g))</span>
 </code></pre></div>
-<p>b.1) Implementa la función <code>(intersecta lista-1 lista-2)</code> que recibe como
-parámetros dos listas estructuradas y devuelve la lista estructurada
-resultante de recorrer ambas listas y colocar una pareja formada por
-la hoja de la primera y de la segunda en aquellas posiciones en las
-que el recorrido de ambas listas terminen al mismo tiempo en una hoja.</p>
+<p>b.1) Implementa la función recursiva <code>(intersecta lista-1 lista-2)</code>
+que recibe como parámetros dos listas estructuradas y devuelve la
+lista estructurada resultante de recorrer ambas listas y colocar una
+pareja formada por la hoja de la primera y de la segunda en aquellas
+posiciones en las que el recorrido de ambas listas terminen al mismo
+tiempo en una hoja.</p>
 <p>Por ejemplo, si definimos las dos listas de la siguiente forma:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista-1</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="p">(</span><span class="ss">d</span><span class="p">)))</span> 
 <span class="c1">;     * </span>
@@ -764,8 +765,7 @@ por no existir correspondencia en la primera lista. Y, por último,
 comprobará que recorriendo el último elemento de ambas listas se
 llegará al mismo tiempo a las hojas <code>d</code> y <code>g</code>, formando la pareja <code>(d
 . g)</code>.</p>
-<p>Puedes implementar la función usando recursión o con funciones de
-orden superior.</p>
+<p>Debes implementar sólo la versión recursiva. </p>
 <p>Otros ejemplos:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">intersecta</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">c</span> <span class="ss">d</span><span class="p">))</span> <span class="c1">; ⇒ &#39;((a . c) (b . d))</span>
 <span class="p">(</span><span class="n">intersecta</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="p">(</span><span class="ss">b</span><span class="p">)</span> <span class="p">(</span><span class="ss">c</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">d</span> <span class="ss">e</span> <span class="p">(</span><span class="ss">f</span><span class="p">)))</span> <span class="c1">; ⇒ &#39;((a . d) ((c . f)))</span>
