@@ -178,11 +178,12 @@ Ejemplo:
 ```
 
 
-b.1) Implementa la función `(intersecta lista-1 lista-2)` que recibe como
-parámetros dos listas estructuradas y devuelve la lista estructurada
-resultante de recorrer ambas listas y colocar una pareja formada por
-la hoja de la primera y de la segunda en aquellas posiciones en las
-que el recorrido de ambas listas terminen al mismo tiempo en una hoja.
+b.1) Implementa la función recursiva `(intersecta lista-1 lista-2)`
+que recibe como parámetros dos listas estructuradas y devuelve la
+lista estructurada resultante de recorrer ambas listas y colocar una
+pareja formada por la hoja de la primera y de la segunda en aquellas
+posiciones en las que el recorrido de ambas listas terminen al mismo
+tiempo en una hoja.
 
 Por ejemplo, si definimos las dos listas de la siguiente forma:
 
@@ -226,8 +227,7 @@ comprobará que recorriendo el último elemento de ambas listas se
 llegará al mismo tiempo a las hojas `d` y `g`, formando la pareja `(d
 . g)`.
 
-Puedes implementar la función usando recursión o con funciones de
-orden superior.
+Debes implementar sólo la versión recursiva. 
 
 Otros ejemplos:
 
