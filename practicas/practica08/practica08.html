@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practica-7-arboles" class="md-skip">
+        <a href="#practica-8-arboles" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -301,6 +301,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../seminarios/seminario2-swift/seminario2-swift.html" class="md-nav__link">
+        Seminario de Swift
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -455,8 +467,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#entrega-de-la-practica" class="md-nav__link">
-    Entrega de la práctica
+  <a href="#antes-de-la-clase-de-practicas" class="md-nav__link">
+    Antes de la clase de prácticas
   </a>
   
 </li>
@@ -563,8 +575,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#entrega-de-la-practica" class="md-nav__link">
-    Entrega de la práctica
+  <a href="#antes-de-la-clase-de-practicas" class="md-nav__link">
+    Antes de la clase de prácticas
   </a>
   
 </li>
@@ -644,31 +656,30 @@
               
                 
                 
-                <h1 id="practica-7-arboles">Práctica 7: Árboles<a class="headerlink" href="#practica-7-arboles" title="Permanent link">&para;</a></h1>
-<h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
-<p>Para entregar la práctica debes subir a Moodle el fichero
-<code>practica07.rkt</code> con una cabecera inicial con tu nombre y apellidos, y
-las soluciones de cada ejercicio separadas por comentarios. Cada
-solución debe incluir:</p>
+                <h1 id="practica-8-arboles">Práctica 8: Árboles<a class="headerlink" href="#practica-8-arboles" title="Permanent link">&para;</a></h1>
+<h2 id="antes-de-la-clase-de-practicas">Antes de la clase de prácticas<a class="headerlink" href="#antes-de-la-clase-de-practicas" title="Permanent link">&para;</a></h2>
 <ul>
-<li>La <strong>definición de las funciones</strong> que resuelven el ejercicio.</li>
-<li>Un conjunto de <strong>pruebas</strong> que comprueben su funcionamiento
-  utilizando el API <code>RackUnit</code>.</li>
+<li>
+<p>Los siguientes ejercicios están basados en los conceptos de teoría
+vistos la semana pasada. Antes de la clase de prácticas debes repasar
+todos los conceptos y <strong>probar en el DrRacket</strong> todos los ejemplos de
+los siguientes apartados del tema 4 <a href="../../teoria/tema04-estructuras-recursivas/tema04-estructuras-recursivas.html"><em>Estructuras de datos recursivas</em></a></p>
+<ul>
+<li>2 Árboles</li>
+<li>3 Árboles binarios</li>
+</ul>
+</li>
 </ul>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Importante</p>
-<p>Antes de empezar la práctica debes haber estudiado los apartados
-de <a href="https://domingogallardo.github.io/apuntes-lpp/teoria/tema04-estructuras-recursivas/tema04-estructuras-recursivas.html#arboles">árboles
-genéricos</a>
-y <a href="https://domingogallardo.github.io/apuntes-lpp/teoria/tema04-estructuras-recursivas/tema04-estructuras-recursivas.html#arboles-binarios">árboles
-binarios</a>
-del tema 4 de teoría.</p>
-<p>Copia al principio de la práctica las funciones de las
-barreras de abstracción de árboles y árboles binarios y utiliza
-esas funciones en todos los ejercicios cuando estés realizando
-operaciones sobre árboles.</p>
-</div>
+<p>Descarga el <a href="https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt">fichero
+<code>lpp.rkt</code></a>,
+pulsando el botón derecho del ratón y seleccionando la opción <em>Guardar
+como</em> <code>lpp.rkt</code>. Guárdalo en la misma carpeta en la que tengas el
+fichero <code>practica7.rkt</code>. </p>
+<p>El fichero contiene la definición de las funciones de la barrera de
+abstracción de árboles y árboles binarios, y las funciones
+<code>(pinta-arbol arbol)</code> y <code>(pinta-arbolb arbol-binario)</code> que nos
+permiten dibujar gráficamente árboles y árboles binarios.</p>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
 <p>a.1) Escribe la sentencia en Scheme que define el siguiente árbol
 genérico y escribe <strong>utilizando las funciones de la barrera de
@@ -686,15 +697,15 @@ recursión mutua y que hemos visto en teoría son las siguientes:</p>
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-datos-bosque</span> <span class="n">bosque</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">bosque</span><span class="p">)</span>
         <span class="mi">0</span>
-        <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">suma-datos-arbol</span> <span class="p">(</span><span class="nb">car</span> <span class="n">bosque</span><span class="p">))</span> 
-           <span class="p">(</span><span class="n">suma-datos-bosque</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">bosque</span><span class="p">)))))</span>
+        <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">suma-datos-arbol</span> <span class="p">(</span><span class="nb">first</span> <span class="n">bosque</span><span class="p">))</span> 
+           <span class="p">(</span><span class="n">suma-datos-bosque</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">bosque</span><span class="p">)))))</span>
 </code></pre></div>
 <p>Si realizamos la siguiente llamada a la función <code>suma-datos-bosque</code>,
 siendo <code>arbol</code> el definido en el apartado anterior:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-datos-bosque</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))</span>
 </code></pre></div>
 <ol>
-<li>¿Qué devuelve la invocación a <code>(suma-datos-arbol (car bosque))</code> que
+<li>¿Qué devuelve la invocación a <code>(suma-datos-arbol (first bosque))</code> que
   se realiza dentro de la función?</li>
 <li>¿Qué devuelve la primera llamada recursiva a <code>suma-datos-bosque</code>?</li>
 </ol>
@@ -772,7 +783,7 @@ hijos de un árbol genérico.</p>
 <p><img src="imagenes/arbol-suma-raices.png" width="180px"/></p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">arbol3</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">20</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">8</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="p">(</span><span class="mi">9</span> <span class="p">(</span><span class="mi">5</span><span class="p">))))</span>
 <span class="p">(</span><span class="n">suma-raices-hijos</span> <span class="n">arbol3</span><span class="p">)</span> <span class="c1">; ⇒ 19</span>
-<span class="p">(</span><span class="n">suma-raices-hijos</span> <span class="p">(</span><span class="nb">cadr</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol3</span><span class="p">)))</span> <span class="c1">; ⇒ 6</span>
+<span class="p">(</span><span class="n">suma-raices-hijos</span> <span class="p">(</span><span class="nb">second</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol3</span><span class="p">)))</span> <span class="c1">; ⇒ 6</span>
 </code></pre></div>
 <p>b) Implementa dos versiones, una con recursión mutua y otra con
 funciones de orden superior, de la función <code>(raices-mayores-arbol?
