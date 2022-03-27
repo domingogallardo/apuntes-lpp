@@ -1,31 +1,27 @@
-# Práctica 7: Árboles
+# Práctica 8: Árboles
 
-## Entrega de la práctica
+## Antes de la clase de prácticas
 
-Para entregar la práctica debes subir a Moodle el fichero
-`practica07.rkt` con una cabecera inicial con tu nombre y apellidos, y
-las soluciones de cada ejercicio separadas por comentarios. Cada
-solución debe incluir:
+- Los siguientes ejercicios están basados en los conceptos de teoría
+vistos la semana pasada. Antes de la clase de prácticas debes repasar
+todos los conceptos y **probar en el DrRacket** todos los ejemplos de
+los siguientes apartados del tema 4 [_Estructuras de datos recursivas_](../../teoria/tema04-estructuras-recursivas/tema04-estructuras-recursivas.md)
 
-- La **definición de las funciones** que resuelven el ejercicio.
-- Un conjunto de **pruebas** que comprueben su funcionamiento
-  utilizando el API `RackUnit`.
+    - 2 Árboles
+    - 3 Árboles binarios
 
 ## Ejercicios
 
-!!! Warning "Importante"
-    Antes de empezar la práctica debes haber estudiado los apartados
-    de [árboles
-    genéricos](https://domingogallardo.github.io/apuntes-lpp/teoria/tema04-estructuras-recursivas/tema04-estructuras-recursivas.html#arboles)
-    y [árboles
-    binarios](https://domingogallardo.github.io/apuntes-lpp/teoria/tema04-estructuras-recursivas/tema04-estructuras-recursivas.html#arboles-binarios)
-    del tema 4 de teoría.
+Descarga el [fichero
+`lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt),
+pulsando el botón derecho del ratón y seleccionando la opción _Guardar
+como_ `lpp.rkt`. Guárdalo en la misma carpeta en la que tengas el
+fichero `practica7.rkt`. 
 
-    Copia al principio de la práctica las funciones de las
-    barreras de abstracción de árboles y árboles binarios y utiliza
-    esas funciones en todos los ejercicios cuando estés realizando
-    operaciones sobre árboles.
-
+El fichero contiene la definición de las funciones de la barrera de
+abstracción de árboles y árboles binarios, y las funciones
+`(pinta-arbol arbol)` y `(pinta-arbolb arbol-binario)` que nos
+permiten dibujar gráficamente árboles y árboles binarios.
 
 ### Ejercicio 1 ###
 
@@ -51,8 +47,8 @@ recursión mutua y que hemos visto en teoría son las siguientes:
 (define (suma-datos-bosque bosque)
     (if (null? bosque)
         0
-        (+ (suma-datos-arbol (car bosque)) 
-           (suma-datos-bosque (cdr bosque)))))
+        (+ (suma-datos-arbol (first bosque)) 
+           (suma-datos-bosque (rest bosque)))))
 ```
 
 
@@ -63,7 +59,7 @@ siendo `arbol` el definido en el apartado anterior:
 (suma-datos-bosque (hijos-arbol arbol))
 ```
 
-1. ¿Qué devuelve la invocación a `(suma-datos-arbol (car bosque))` que
+1. ¿Qué devuelve la invocación a `(suma-datos-arbol (first bosque))` que
   se realiza dentro de la función?
 2. ¿Qué devuelve la primera llamada recursiva a `suma-datos-bosque`?
 
@@ -176,7 +172,7 @@ Ejemplo:
 ```racket
 (define arbol3 '(20 (2) (8 (4) (2)) (9 (5))))
 (suma-raices-hijos arbol3) ; ⇒ 19
-(suma-raices-hijos (cadr (hijos-arbol arbol3))) ; ⇒ 6
+(suma-raices-hijos (second (hijos-arbol arbol3))) ; ⇒ 6
 ```
 
 b) Implementa dos versiones, una con recursión mutua y otra con
