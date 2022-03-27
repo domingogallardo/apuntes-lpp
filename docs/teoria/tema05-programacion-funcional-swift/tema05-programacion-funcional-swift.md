@@ -7,7 +7,7 @@ Te recomendamos que leas el seminario de Swift
 en el que se introduce el lenguaje y se explica cómo ejecutar
 programas en este lenguaje:
 
-- [Seminario de Swift](https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario2-swift/seminario2-swift.html)
+- [Seminario de Swift](../../seminarios/seminario2-swift/seminario2-swift.md)
 
 
 ### 1.2. Conceptos fundamentales de Programación Funcional ###
@@ -1310,6 +1310,9 @@ print(suma(lista: lista2))
 // Imprime 15
 ```
 
+
+<!--
+
 ## 9. Opcionales
 
 Una de las características principales que Swift intenta promover es
@@ -2397,6 +2400,9 @@ print(car(cdr(cdr(lista)!)!)!) // Imprime 40
 print(vacia(cdr(cdr(cdr(lista)!)!)!)) // Imprime true
 ```
 
+
+
+-->
 
 ## 13. Bibliografía
 
