@@ -247,6 +247,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html" class="md-nav__link">
+        Tema 5: Programación funcional con Swift
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -398,6 +410,18 @@
     <li class="md-nav__item">
       <a href="../../practicas/practica07/practica07.html" class="md-nav__link">
         Práctica 7
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicas/practica08/practica08.html" class="md-nav__link">
+        Práctica 8
       </a>
     </li>
   
@@ -628,7 +652,7 @@ te recomendamos que investigues y pruebes más comandos y que conozcas
 mejor esta interesante tecnología. Puedes empezar por la guía <a href="https://docs.docker.com/get-started/">Get
 started with Docker</a>.</p>
 <p>Usaremos la <a href="https://hub.docker.com/_/swift/">imagen Docker
-swift:5.1.2</a>, que contiene el
+swift</a>, que contiene el
 comando <code>swift</code> necesario para compilar y ejecutar aplicaciones Swift.</p>
 <h4 id="instalacion-de-docker">Instalación de Docker<a class="headerlink" href="#instalacion-de-docker" title="Permanent link">&para;</a></h4>
 <p>Debes instalar la versión de Docker Desktop correspondiente a tu sistema operativo. Descárgalo <a href="https://www.docker.com/products/docker-desktop">desde esta
@@ -637,11 +661,16 @@ instrucciones correspondientes a tu sistema operativo.</p>
 <h4 id="instalacion-y-ejecucion-de-la-imagen-swift">Instalación y ejecución de la imagen Swift<a class="headerlink" href="#instalacion-y-ejecucion-de-la-imagen-swift" title="Permanent link">&para;</a></h4>
 <p>Una vez instalado Docker, abre un terminal y lanza el siguiente
 comando:</p>
-<div class="highlight"><pre><span></span><code>$ docker pull swift:5.1.2
+<div class="highlight"><pre><span></span><code>$ docker pull swift
 </code></pre></div>
-<p>El comando descarga la imagen <code>swift:5.1.2</code> a nuestro ordenador. Una
+<div class="admonition warning">
+<p class="admonition-title">MacBook con arquitectura ARM</p>
+<p>Si tienes un MacBook reciente con el procesador M1 deberás
+descargar y ejecutar la imagen <code>swiftarm/swift</code>.</p>
+</div>
+<p>El comando descarga la última imagen de swift <code>swift</code> a nuestro ordenador. Una
 vez descargada lanzamos el contenedor con el siguiente comando:</p>
-<div class="highlight"><pre><span></span><code>$ docker run --privileged -it --rm -v &quot;${PWD}:/home&quot; swift:5.1.2 /bin/bash
+<div class="highlight"><pre><span></span><code>$ docker run --privileged -it --rm -v &quot;${PWD}:/home&quot; swift /bin/bash
 </code></pre></div>
 <p>El contenedor arranca en muy pocos segundos y aparece su prompt,
 indicando que ya estás dentro de él y puedes ejecutar cualquier
@@ -652,7 +681,7 @@ root@97265a262a58:/#
 </code></pre></div>
 <p>Lanzamos el intérprete de Swift con el comando <code>swift</code>:</p>
 <div class="highlight"><pre><span></span><code>root@97265a262a58:/# swift
-Welcome to Swift version 5.1.2 (swift-5.1.2-RELEASE).
+Welcome to Swift version 5.5.3 (swift-5.5.3-RELEASE).
 Type :help for assistance.
 1&gt; &quot;hola&quot;.uppercased()
 $R0: String = &quot;HOLA&quot;
@@ -796,9 +825,9 @@ usando <code>apt-get</code>.</p>
 <h3 id="visual-studio-code">Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permanent link">&para;</a></h3>
 <p>Para editar código Swift puedes usar cualquier editor orientado a
 programación como Visual Studio Code o Atom. Aconsejamos <a href="https://code.visualstudio.com">Visual Studio
-Code</a>.</p>
-<p>Es recomendable instalar la extensión <code>Swift Language</code> que realiza un
-coloreado de sintaxis de Swift.</p>
+Code</a>. </p>
+<p>Las últimas versiones de Visual Studio Code traen incorporado el
+<a href="https://marketplace.visualstudio.com/items?itemName=sswg.swift-lang">plugin oficial de Swift</a> que permite un coloreado de sintaxis.</p>
 <p>Para trabajar de forma más cómoda podemos abrir el terminal integrado
 <strong>Ver &gt; Terminal integrado</strong> y lanzar el contenedor de Swift en ese
 terminal.</p>
