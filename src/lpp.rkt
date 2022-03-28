@@ -134,8 +134,8 @@
                  (append (cdr resultado)
                          (list (+ t-espacio (image-width (car resultado))
                                   (/ (image-width imagen) 2))))))
-         (cons (car lista) (list (/ (image-width (car lista)) 2)))
-         (cdr lista)))
+         (cons (first lista) (list (/ (image-width (first lista)) 2)))
+         (rest lista)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
