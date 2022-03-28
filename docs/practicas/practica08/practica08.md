@@ -306,14 +306,14 @@ Dado un árbol binario y un camino definido como una lista de símbolos:
 - `>`: indica que nos vamos por la rama derecha
 - `=`: indica que nos quedamos con el dato de ese nodo.
 
-Implementa la función `(camino-b-tree b-tree camino)` que devuelva una
+Implementa la función `(camino-arbolb arbolb camino)` que devuelva una
 lista con los datos recogidos por el camino.
 
 <img src="imagenes/arbol-binario2.png" width="250px"/>
 
 ```racket
-(camino-b-tree b-tree '(= < < = > =)) ; ⇒ '(9 3 4)
-(camino-b-tree b-tree '(> = < < =)) ; ⇒ '(15 10)
+(camino-arbolb arbolb '(= < < = > =)) ; ⇒ '(9 3 4)
+(camino-arbolb arbolb '(> = < < =)) ; ⇒ '(15 10)
 ```
 
 ----
