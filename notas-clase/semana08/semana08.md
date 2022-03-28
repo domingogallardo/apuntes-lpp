@@ -1191,8 +1191,8 @@ func suma(lista: Lista) -> Int {
     switch lista {
     case  .vacia:
         return 0
-    case let .nodo(car, cdr):
-        return car + suma(lista: cdr)
+    case let .nodo(first, rest):
+        return first + suma(lista: rest)
     }
 }
 

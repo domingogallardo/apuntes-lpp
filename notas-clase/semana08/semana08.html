@@ -1309,8 +1309,8 @@ hicimos en Scheme:</li>
     <span class="k">switch</span> <span class="n">lista</span> <span class="p">{</span>
     <span class="k">case</span>  <span class="p">.</span><span class="n">vacia</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="n">car</span><span class="p">,</span> <span class="n">cdr</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">car</span> <span class="o">+</span> <span class="n">suma</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">cdr</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="bp">first</span><span class="p">,</span> <span class="n">rest</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">first</span> <span class="o">+</span> <span class="n">suma</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">rest</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
