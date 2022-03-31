@@ -1029,49 +1029,14 @@ enumeración.
 
 ### Valores asociados a instancias de enumeraciones
 
-- Veamos un ejemplo inicial muy sencillo, con una enumeración con un
-único caso, en el que se define una variable de tipo `Int`:
+- Un enumerado instanciable permite asociar valores a
+  la instancia del enumerado. Para crear una instancia del
+  enumerado debemos proporcionar el valor asociado.
 
-```swift
-enum Prueba {
-    case num(Int)
-}
-```
+- Al igual que un enumerado normal, el enumerado puede especificar
+  distintos casos. Cada caso puede determinar un tipo de valor asociado.
 
-- Esta notación obliga a definir un valor concreto del `Int` asociado
-al caso `num` en el momento de creación del enumerado:
-
-```swift
-let valor1 = Prueba.num(10)
-let valor2 = Prueba.num(40)
-```
-
-- Las variables `valor1` y `valor2` son de tipo `Prueba` y tiene como
-valor el caso `num`, y el entero asociado a ese caso (`10` y `40` en
-cada instancia). Son parecidas a instancias de una clase.
-
-- Para obtener el valor asociado debemos usar una expresión `case let`
-en una sentencia `switch` con una variable a la que se asigna el
-valor. Por ejemplo, en el siguiente código el valor del enumerado se
-asigna a la variable `x`:
-
-```swift
-switch valor1 {
-case let .num(x):
-    print("Valor asociado al caso num: \(x)")
-}
-// Imprime "Valor asociado al caso num: 10
-```
-
-!!! Note "Nota"
-    No hay que confundir un valor asociado a un caso y un valor bruto:
-    el valor bruto de un caso de enumeración es el mismo para todas las
-    instancias, mientras que el valor asociado es distinto y se
-    proporciona cuando se define el valor concreto de la enumeración.
-
-- Cuando unimos a la característica del valor asociado la posibilidad
-de los enumerados de tener más de un caso tenemos lo que en otros
-lenguajes de programación se llaman _uniones etiquetadas_ o
+- En otros lenguajes de programación se llaman _uniones etiquetadas_ o
 _variantes_.
 
 - Por ejemplo, podemos definir un enumerado que permita guardar un
@@ -1084,17 +1049,21 @@ enum Multiple {
 }
 ```
 
-- De esta forma, podemos crear valores de tipo `Multiple` que contienen
-un `Int` (instanciando el caso `num`) o un `String` (instanciando el
-caso `str`):
+- De esta forma, podemos crear valores de tipo `Multiple` que
+contienen un valor asociado `Int` (instanciando el caso `num`) o un
+`String` (instanciando el caso `str`):
 
 ```swift
 let valor3 = Multiple.num(10)
 let valor4 = Multiple.str("Hola")
 ```
 
-- Y podemos definir una función que reciba instancias de tipo `Multiple`
-y use un `switch` para comprobar qué caso tienen instanciado:
+- Es necesario definir un valor concreto asociado al crear el enumerado.
+
+- Para obtener el valor asociado debemos usar una expresión `case let`
+en una sentencia `switch` con una variable a la que se asigna el
+valor. Por ejemplo, la siguiente función reciba instancias de tipo
+`Multiple` e imprime el valor asociado al enumerado que se pasa como parámetro.
 
 ```swift
 func imprime(multiple: Multiple) {
@@ -1109,6 +1078,21 @@ imprime(multiple: valor3)
 // Imprime "Multiple tiene un Int: 10"
 imprime(multiple: valor4)
 // Imprime "Multiple tiene un String: Hola
+```
+
+!!! Note "Nota"
+    No hay que confundir un valor asociado a un caso y un valor bruto:
+    el valor bruto de un caso de enumeración es el mismo para todas las
+    instancias, mientras que el valor asociado es distinto y se
+    proporciona cuando se define el valor concreto de la enumeración.
+
+- El valor asociado puede ser una tupla:
+
+```swift
+enum CodigoBarras {
+    case upc(Int, Int, Int, Int)
+    case qrCode(String)
+}
 ```
 
 ----

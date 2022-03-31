@@ -1151,51 +1151,17 @@ enumeración.</li>
 </ul>
 <h3>Valores asociados a instancias de enumeraciones</h3>
 <ul>
-<li>Veamos un ejemplo inicial muy sencillo, con una enumeración con un
-único caso, en el que se define una variable de tipo <code>Int</code>:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Prueba</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">num</span><span class="p">(</span><span class="nb">Int</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li>Esta notación obliga a definir un valor concreto del <code>Int</code> asociado
-al caso <code>num</code> en el momento de creación del enumerado:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">valor1</span> <span class="p">=</span> <span class="n">Prueba</span><span class="p">.</span><span class="n">num</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nv">valor2</span> <span class="p">=</span> <span class="n">Prueba</span><span class="p">.</span><span class="n">num</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
-</code></pre></div>
-<ul>
 <li>
-<p>Las variables <code>valor1</code> y <code>valor2</code> son de tipo <code>Prueba</code> y tiene como
-valor el caso <code>num</code>, y el entero asociado a ese caso (<code>10</code> y <code>40</code> en
-cada instancia). Son parecidas a instancias de una clase.</p>
+<p>Un enumerado instanciable permite asociar valores a
+  la instancia del enumerado. Para crear una instancia del
+  enumerado debemos proporcionar el valor asociado.</p>
 </li>
 <li>
-<p>Para obtener el valor asociado debemos usar una expresión <code>case let</code>
-en una sentencia <code>switch</code> con una variable a la que se asigna el
-valor. Por ejemplo, en el siguiente código el valor del enumerado se
-asigna a la variable <code>x</code>:</p>
+<p>Al igual que un enumerado normal, el enumerado puede especificar
+  distintos casos. Cada caso puede determinar un tipo de valor asociado.</p>
 </li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="k">switch</span> <span class="n">valor1</span> <span class="p">{</span>
-<span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">num</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Valor asociado al caso num: </span><span class="si">\(</span><span class="n">x</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Imprime &quot;Valor asociado al caso num: 10</span>
-</code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>No hay que confundir un valor asociado a un caso y un valor bruto:
-el valor bruto de un caso de enumeración es el mismo para todas las
-instancias, mientras que el valor asociado es distinto y se
-proporciona cuando se define el valor concreto de la enumeración.</p>
-</div>
-<ul>
 <li>
-<p>Cuando unimos a la característica del valor asociado la posibilidad
-de los enumerados de tener más de un caso tenemos lo que en otros
-lenguajes de programación se llaman <em>uniones etiquetadas</em> o
+<p>En otros lenguajes de programación se llaman <em>uniones etiquetadas</em> o
 <em>variantes</em>.</p>
 </li>
 <li>
@@ -1209,16 +1175,23 @@ lenguajes de programación se llaman <em>uniones etiquetadas</em> o
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>De esta forma, podemos crear valores de tipo <code>Multiple</code> que contienen
-un <code>Int</code> (instanciando el caso <code>num</code>) o un <code>String</code> (instanciando el
-caso <code>str</code>):</li>
+<li>De esta forma, podemos crear valores de tipo <code>Multiple</code> que
+contienen un valor asociado <code>Int</code> (instanciando el caso <code>num</code>) o un
+<code>String</code> (instanciando el caso <code>str</code>):</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">valor3</span> <span class="p">=</span> <span class="n">Multiple</span><span class="p">.</span><span class="n">num</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="kd">let</span> <span class="nv">valor4</span> <span class="p">=</span> <span class="n">Multiple</span><span class="p">.</span><span class="n">str</span><span class="p">(</span><span class="s">&quot;Hola&quot;</span><span class="p">)</span>
 </code></pre></div>
 <ul>
-<li>Y podemos definir una función que reciba instancias de tipo <code>Multiple</code>
-y use un <code>switch</code> para comprobar qué caso tienen instanciado:</li>
+<li>
+<p>Es necesario definir un valor concreto asociado al crear el enumerado.</p>
+</li>
+<li>
+<p>Para obtener el valor asociado debemos usar una expresión <code>case let</code>
+en una sentencia <code>switch</code> con una variable a la que se asigna el
+valor. Por ejemplo, la siguiente función reciba instancias de tipo
+<code>Multiple</code> e imprime el valor asociado al enumerado que se pasa como parámetro.</p>
+</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">imprime</span><span class="p">(</span><span class="n">multiple</span><span class="p">:</span> <span class="n">Multiple</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">switch</span> <span class="n">multiple</span> <span class="p">{</span>
@@ -1232,6 +1205,21 @@ y use un <code>switch</code> para comprobar qué caso tienen instanciado:</li>
 <span class="c1">// Imprime &quot;Multiple tiene un Int: 10&quot;</span>
 <span class="n">imprime</span><span class="p">(</span><span class="n">multiple</span><span class="p">:</span> <span class="n">valor4</span><span class="p">)</span>
 <span class="c1">// Imprime &quot;Multiple tiene un String: Hola</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>No hay que confundir un valor asociado a un caso y un valor bruto:
+el valor bruto de un caso de enumeración es el mismo para todas las
+instancias, mientras que el valor asociado es distinto y se
+proporciona cuando se define el valor concreto de la enumeración.</p>
+</div>
+<ul>
+<li>El valor asociado puede ser una tupla:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">CodigoBarras</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">upc</span><span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span>
+    <span class="k">case</span> <span class="n">qrCode</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span>
+<span class="p">}</span>
 </code></pre></div>
 <hr />
 <h3>Enumeraciones recursivas</h3>
