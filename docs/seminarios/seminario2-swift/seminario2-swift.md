@@ -414,14 +414,14 @@ del /q vs_community.exe
 ```
 
 3. Instalar Swift, descargando el instalador oficial en la [página de
-   descargas](https://www.swift.org/download) o usando el Windows
+   descargas](https://www.swift.org/download), o usando el Windows
    Package Manager:
    
-```
-winget install Swift.Toolchain
-```
+    ```
+    winget install Swift.Toolchain
+    ```
 
-Una vez hecho esto podrás abrir el terminal de Windows y lanzar el
+Una vez terminada la instalación podrás abrir el terminal de Windows y lanzar el
 comando `swift`.
 
 ### Visual Studio Code ###
