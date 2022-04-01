@@ -370,15 +370,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejecucion-en-una-maquina-docker" class="md-nav__link">
-    Ejecución en una máquina Docker
+  <a href="#instalacion-en-linux-ubuntu" class="md-nav__link">
+    Instalación en Linux Ubuntu
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#instalacion-en-linux-ubuntu" class="md-nav__link">
-    Instalación en Linux Ubuntu
+  <a href="#instalacion-en-windows" class="md-nav__link">
+    Instalación en Windows
   </a>
   
 </li>
@@ -604,15 +604,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejecucion-en-una-maquina-docker" class="md-nav__link">
-    Ejecución en una máquina Docker
+  <a href="#instalacion-en-linux-ubuntu" class="md-nav__link">
+    Instalación en Linux Ubuntu
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#instalacion-en-linux-ubuntu" class="md-nav__link">
-    Instalación en Linux Ubuntu
+  <a href="#instalacion-en-windows" class="md-nav__link">
+    Instalación en Windows
   </a>
   
 </li>
@@ -751,51 +751,65 @@ salida:</p>
 <p>Si hay algún error de compilación se detecta cuando se escribe el
 código y se muestra en el propio editor:</p>
 <p><img src="imagenes/xcode-error.png" width="700px"/></p>
-<h3 id="ejecucion-en-una-maquina-docker">Ejecución en una máquina Docker<a class="headerlink" href="#ejecucion-en-una-maquina-docker" title="Permanent link">&para;</a></h3>
-<p><a href="https://docs.docker.com">Docker</a> es una tecnología que ha tenido una gran expansión en los
+<!--
+### Ejecución en una máquina Docker
+
+[Docker](https://docs.docker.com) es una tecnología que ha tenido una gran expansión en los
 últimos años. Permite construir máquinas virtuales ligeras que
 utilizan el mismo sistema operativo de la máquina host. Estas máquinas
 virtuales se denominan contenedores y, al compartir el propio sistema
 operativo en el que se están ejecutando, su gestión (construcción,
 arranque, parada, etc.) es muchísimo más rápida que las máquinas
-virtuales tradicionales.</p>
-<p>Docker se controla desde línea de comando, desde la aplicación
+virtuales tradicionales.
+
+Docker se controla desde línea de comando, desde la aplicación
 Terminal de Mac o el PowerShell de Windows. Existen comandos docker
 para descargar imágenes, lanzar y parar contenedores, montar
 directorios de la máquina host en contenedores, etc. Nosotros sólo
-utilizaremos el comando <code>docker run</code> para lanzar un contenedor, pero
+utilizaremos el comando `docker run` para lanzar un contenedor, pero
 te recomendamos que investigues y pruebes más comandos y que conozcas
-mejor esta interesante tecnología. Puedes empezar por la guía <a href="https://docs.docker.com/get-started/">Get
-started with Docker</a>.</p>
-<p>Usaremos la <a href="https://hub.docker.com/_/swift/">imagen Docker
-swift</a>, que contiene el
-comando <code>swift</code> necesario para compilar y ejecutar aplicaciones Swift.</p>
-<h4 id="instalacion-de-docker">Instalación de Docker<a class="headerlink" href="#instalacion-de-docker" title="Permanent link">&para;</a></h4>
-<p>Debes instalar la versión de Docker Desktop correspondiente a tu sistema operativo. Descárgalo <a href="https://www.docker.com/products/docker-desktop">desde esta
-página</a> y sigue las
-instrucciones correspondientes a tu sistema operativo.</p>
-<h4 id="instalacion-y-ejecucion-de-la-imagen-swift">Instalación y ejecución de la imagen Swift<a class="headerlink" href="#instalacion-y-ejecucion-de-la-imagen-swift" title="Permanent link">&para;</a></h4>
-<p>Una vez instalado Docker, abre un terminal y lanza el siguiente
-comando:</p>
+mejor esta interesante tecnología. Puedes empezar por la guía [Get
+started with Docker](https://docs.docker.com/get-started/).
+
+Usaremos la [imagen Docker
+swift](https://hub.docker.com/_/swift/), que contiene el
+comando `swift` necesario para compilar y ejecutar aplicaciones Swift.
+
+#### Instalación de Docker ####
+
+Debes instalar la versión de Docker Desktop correspondiente a tu sistema operativo. Descárgalo [desde esta
+página](https://www.docker.com/products/docker-desktop) y sigue las
+instrucciones correspondientes a tu sistema operativo.
+
+#### Instalación y ejecución de la imagen Swift ####
+
+Una vez instalado Docker, abre un terminal y lanza el siguiente
+comando:
+
 <div class="highlight"><pre><span></span><code>$ docker pull swift
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">MacBook con arquitectura ARM</p>
-<p>Si tienes un MacBook reciente con el procesador M1 deberás
-descargar y ejecutar la imagen <code>swiftarm/swift</code>.</p>
-</div>
-<p>El comando descarga la última imagen de swift <code>swift</code> a nuestro ordenador. Una
-vez descargada lanzamos el contenedor con el siguiente comando:</p>
+
+!!! Warning "MacBook con arquitectura ARM"
+    Si tienes un MacBook reciente con el procesador M1 deberás
+    descargar y ejecutar la imagen `swiftarm/swift`.
+
+El comando descarga la última imagen de swift `swift` a nuestro ordenador. Una
+vez descargada lanzamos el contenedor con el siguiente comando:
+
 <div class="highlight"><pre><span></span><code>$ docker run --privileged -it --rm -v &quot;${PWD}:/home&quot; swift /bin/bash
 </code></pre></div>
-<p>El contenedor arranca en muy pocos segundos y aparece su prompt,
+
+El contenedor arranca en muy pocos segundos y aparece su prompt,
 indicando que ya estás dentro de él y puedes ejecutar cualquier
-comando linux:</p>
+comando linux:
+
 <div class="highlight"><pre><span></span><code>root@97265a262a58:/# ls
 bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
 root@97265a262a58:/# 
 </code></pre></div>
-<p>Lanzamos el intérprete de Swift con el comando <code>swift</code>:</p>
+
+Lanzamos el intérprete de Swift con el comando `swift`:
+
 <div class="highlight"><pre><span></span><code>root@97265a262a58:/# swift
 Welcome to Swift version 5.5.3 (swift-5.5.3-RELEASE).
 Type :help for assistance.
@@ -803,43 +817,51 @@ Type :help for assistance.
 $R0: String = &quot;HOLA&quot;
 2&gt;
 </code></pre></div>
-<p>Una vez hayamos terminado de trabajar podemos salir del intérprete
-de Swift y del contenedor de la siguiente forma:</p>
+
+Una vez hayamos terminado de trabajar podemos salir del intérprete
+de Swift y del contenedor de la siguiente forma:
+
 <div class="highlight"><pre><span></span><code>3&gt; :quit
 root@97265a262a58:/# exit
 </code></pre></div>
-<h4 id="directorio-compartido-entre-el-ordenador-host-y-el-contenedor">Directorio compartido entre el ordenador <em>host</em> y el contenedor<a class="headerlink" href="#directorio-compartido-entre-el-ordenador-host-y-el-contenedor" title="Permanent link">&para;</a></h4>
-<p>El argumento <code>-v "${PWD}:/home"</code> del comando <code>docker run</code> hace que el
-contenedor monte el <strong>directorio actual</strong> del ordenador anfitrión en
-el directorio <code>/home</code> de la máquina docker. De esta forma podemos
+
+
+#### Directorio compartido entre el ordenador _host_ y el contenedor ####
+
+El argumento `-v "${PWD}:/home"` del comando `docker run` hace que el
+contenedor monte el **directorio actual** del ordenador anfitrión en
+el directorio `/home` de la máquina docker. De esta forma podemos
 editar los programas Swift en el ordenador anfitrión y ejecutarlos
-desde línea de comando en el contenedor.</p>
-<p>Recomendamos utilizar un editor de textos orientado a la programación
+desde línea de comando en el contenedor.
+
+Recomendamos utilizar un editor de textos orientado a la programación
 para editar los programas Swift en el ordenador anfitrión. Más
 adelante hablaremos de los editores Atom y Visual Studio Code, pero
 cualquier otro editor orientado a programación te puede valer
-(Sublime, Xcode en el Mac, etc.)</p>
-<p>Vamos a probar a usar el directorio compartido:</p>
-<ol>
-<li>Nos movemos en el ordenador anfitrión a un directorio en el que
-   trabajaremos con los programas en Swift:</li>
-</ol>
+(Sublime, Xcode en el Mac, etc.)
+
+Vamos a probar a usar el directorio compartido:
+
+1. Nos movemos en el ordenador anfitrión a un directorio en el que
+   trabajaremos con los programas en Swift:
+
 <div class="highlight"><pre><span></span><code>~ $ cd swift
 ~/swift $ 
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Aviso</p>
-<p>Si estás en Windows, por una cuestión de permisos, el directorio
-de trabajo es recomendable que se encuentre bajo la ruta
-<code>C:\Users\&lt;usuario&gt;\</code>. Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code>$ cd /c/Users/&lt;usuario&gt;/Documents/Ejercicios/Swift
+
+!!! Warning "Aviso"
+    Si estás en Windows, por una cuestión de permisos, el directorio
+    de trabajo es recomendable que se encuentre bajo la ruta
+    `C:\Users\<usuario>\`. Por ejemplo:
+
+    <div class="highlight"><pre><span></span><code>$ cd /c/Users/&lt;usuario&gt;/Documents/Ejercicios/Swift
 </code></pre></div>
-</div>
-<ol start="2">
-<li>Creamos en el directorio actual un programa llamado
-   <code>holaMundo.swift</code>.</li>
-</ol>
-<p><strong>Fichero <code>holaMundo.swift</code></strong>:</p>
+
+2. Creamos en el directorio actual un programa llamado
+   `holaMundo.swift`.
+
+**Fichero `holaMundo.swift`**:
+
 <div class="highlight"><pre><span></span><code><span class="c1">// Primer programa Swift</span>
 
 <span class="kd">var</span> <span class="nv">str</span> <span class="p">=</span> <span class="s">&quot;Mensaje&quot;</span>
@@ -856,64 +878,78 @@ de trabajo es recomendable que se encuentre bajo la ruta
 <span class="n">totalSum</span> <span class="p">=</span> <span class="n">firstNumber</span> <span class="o">+</span> <span class="n">secondNumber</span>
 <span class="bp">print</span><span class="p">(</span><span class="s">&quot;El resultado de la suma es = </span><span class="si">\(</span><span class="n">totalSum</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
 </code></pre></div>
-<ol start="3">
-<li>Arrancamos el contenedor swift:</li>
-</ol>
+
+3. Arrancamos el contenedor swift:
+
 <div class="highlight"><pre><span></span><code>$ docker run --privileged -it -v &quot;${PWD}:/home&quot; swift:5.1.2 /bin/bash
 </code></pre></div>
-<ol start="4">
-<li>Compilamos y ejecutamos el programa desde el contenedor, cambiando
-   al directorio <code>/home</code> (el directorio compartido) y ejecutando el
-   comando swift:</li>
-</ol>
+
+4. Compilamos y ejecutamos el programa desde el contenedor, cambiando
+   al directorio `/home` (el directorio compartido) y ejecutando el
+   comando swift:
+
 <div class="highlight"><pre><span></span><code>root@3131534ce480:/# cd /home
 root@3131534ce480:~# swift holaMundo.swift 
 Hola mundo!
 El resultado de la suma es = 7
 </code></pre></div>
-<ol start="5">
-<li>Prueba a cambiar cualquier cosa en el programa desde el editor en
+
+5. Prueba a cambiar cualquier cosa en el programa desde el editor en
    el ordenador anfitrión y a volver a ejecutar el programa desde el
    contenedor. Verás que el directorio está realmente compartido
    y que el programa se ejecuta con las modificaciones que has
-   introducido.</li>
-</ol>
+   introducido.
+
 <div class="highlight"><pre><span></span><code>root@3131534ce480:~# exit
 exit
 ~/swift $ 
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Script</p>
-<p>El siguiente script realiza la llamada a la máquina docker y
-ejecuta el fichero que recibe como parámetro. Es muy cómodo para
-ejecutar ficheros .swift en el directorio actual. Lo puedes
-ejecutar en <strong>Linux</strong>, <strong>MacOS</strong> o en <strong>Windows</strong> con el <strong>Docker
-Quickstart Terminal</strong>. </p>
-<p><strong>Fichero <code>swift.sh</code></strong>:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">SWIFT_VER</span><span class="o">=</span><span class="m">5</span>.1.2
+
+!!! Note "Script"
+    El siguiente script realiza la llamada a la máquina docker y
+    ejecuta el fichero que recibe como parámetro. Es muy cómodo para
+    ejecutar ficheros .swift en el directorio actual. Lo puedes
+    ejecutar en **Linux**, **MacOS** o en **Windows** con el **Docker
+    Quickstart Terminal**. 
+
+    **Fichero `swift.sh`**:
+
+    <div class="highlight"><pre><span></span><code><span class="nv">SWIFT_VER</span><span class="o">=</span><span class="m">5</span>.1.2
 docker run --privileged -it --rm -v <span class="s2">&quot;</span><span class="si">${</span><span class="nv">PWD</span><span class="si">}</span><span class="s2">:/home&quot;</span> <span class="s2">&quot;swift:</span><span class="si">${</span><span class="nv">SWIFT_VER</span><span class="si">}</span><span class="s2">&quot;</span> /bin/bash -c <span class="s2">&quot;</span>
 <span class="s2">cd /home</span>
 <span class="s2">swift </span><span class="nv">$*</span><span class="s2">&quot;</span>
 </code></pre></div>
-<p>Puedes guardarlo en el directorio actual, hacerlo ejecutable con</p>
-<div class="highlight"><pre><span></span><code>$ chmod +x swift.sh
+
+    Puedes guardarlo en el directorio actual, hacerlo ejecutable con
+
+    <div class="highlight"><pre><span></span><code>$ chmod +x swift.sh
 </code></pre></div>
-<p>y llamarlo pasándole como parámetro el fichero swift a ejecutar:</p>
-<div class="highlight"><pre><span></span><code>$ ./swift.sh holaMundo.swift
+
+    y llamarlo pasándole como parámetro el fichero swift a ejecutar:
+
+    <div class="highlight"><pre><span></span><code>$ ./swift.sh holaMundo.swift
 </code></pre></div>
-<p>Si estás en <strong>Windows</strong> y quieres ejecutar el script desde un terminal
-normal puedes hacer el siguiente fichero .bat que ejecuta el
-script anterior en el terminal Docker.</p>
-<p><strong>Fichero <code>swift.bat</code></strong>:</p>
-<div class="highlight"><pre><span></span><code>&quot;C:\Program Files\Git\bin\bash.exe&quot; --login -i &quot;C:\Program Files\Docker Toolbox\start.sh&quot; &quot;./swift.sh %*&quot;
+
+
+    Si estás en **Windows** y quieres ejecutar el script desde un terminal
+    normal puedes hacer el siguiente fichero .bat que ejecuta el
+    script anterior en el terminal Docker.
+
+    **Fichero `swift.bat`**:
+
+    <div class="highlight"><pre><span></span><code>&quot;C:\Program Files\Git\bin\bash.exe&quot; --login -i &quot;C:\Program Files\Docker Toolbox\start.sh&quot; &quot;./swift.sh %*&quot;
 </code></pre></div>
-<p>Uso:</p>
-<div class="highlight"><pre><span></span><code>&gt; swift holaMundo.swift
+
+    Uso:
+
+    <div class="highlight"><pre><span></span><code>&gt; swift holaMundo.swift
 </code></pre></div>
-</div>
+
+-->
+
 <h3 id="instalacion-en-linux-ubuntu">Instalación en Linux Ubuntu<a class="headerlink" href="#instalacion-en-linux-ubuntu" title="Permanent link">&para;</a></h3>
-<p>Existe una distribución oficial de Swift para Ubuntu de 64 bits
-(distribuciones 14.04, 16.04 y 16.10).</p>
+<p>Existen distribuciones oficiales de Swift para Ubuntu 18.04, 20.4,
+CentOS 7, CentOS 8 y Amazon Linux 2.</p>
 <p>Puedes encontrar la información completa en la
 <a href="https://swift.org/download/#using-downloads">web oficial de Apple</a>.</p>
 <p>Brevemente, los pasos son los siguientes:</p>
@@ -938,12 +974,50 @@ usando <code>apt-get</code>.</p>
 </code></pre></div>
 </li>
 </ol>
+<h3 id="instalacion-en-windows">Instalación en Windows<a class="headerlink" href="#instalacion-en-windows" title="Permanent link">&para;</a></h3>
+<p>Existe una distribución oficial de Swift Windows 10.</p>
+<p>Puedes encontrar la información completa en la
+<a href="https://swift.org/download/#using-downloads">web oficial de Apple</a>.</p>
+<p>Brevemente, los pasos son los siguientes, utilizando el Windows
+Package Manager. </p>
+<p>El <a href="https://docs.microsoft.com/windows/package-manager/">Windows Package
+Manager</a> puede
+encontrarse en el <a href="https://www.microsoft.com/en-us/p/app-installer/9nblggh4nns1">App
+Store</a> o
+puede <a href="ms-appinstaller:?source=https://aka.ms/getwinget">instalarse directamente</a>..</p>
+<ol>
+<li>Instalar las dependencias (Git y Python).</li>
+</ol>
+<div class="highlight"><pre><span></span><code>winget install Git.Git
+winget install Python.Python.3 --version 3.7.8150.0
+</code></pre></div>
+<ol start="2">
+<li>Instalar librerías necesarias de Windows y de Visual Studio.</li>
+</ol>
+<div class="highlight"><pre><span></span><code>curl -sOL https://aka.ms/vs/16/release/vs_community.exe
+start /w vs_community.exe --passive --wait --norestart --nocache ^
+  --installPath &quot;%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community&quot; ^
+  --add Microsoft.VisualStudio.Component.Windows10SDK.19041 ^
+  --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64
+del /q vs_community.exe
+</code></pre></div>
+<ol start="3">
+<li>Instalar Swift, descargando el instalador oficial en la <a href="https://www.swift.org/download">página de
+   descargas</a> o usando el Windows
+   Package Manager:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>winget install Swift.Toolchain
+</code></pre></div>
+<p>Una vez hecho esto podrás abrir el terminal de Windows y lanzar el
+comando <code>swift</code>.</p>
 <h3 id="visual-studio-code">Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permanent link">&para;</a></h3>
 <p>Para editar código Swift puedes usar cualquier editor orientado a
-programación como Visual Studio Code o Atom. Aconsejamos <a href="https://code.visualstudio.com">Visual Studio
-Code</a>. </p>
+programación como Visual Studio Code o Atom. Aconsejamos <a href="https://code.visualstudio.com">Visual
+Studio Code</a>. </p>
 <p>Las últimas versiones de Visual Studio Code traen incorporado el
-<a href="https://marketplace.visualstudio.com/items?itemName=sswg.swift-lang">plugin oficial de Swift</a> que permite un coloreado de sintaxis.</p>
+<a href="https://marketplace.visualstudio.com/items?itemName=sswg.swift-lang">plugin oficial de
+Swift</a>
+que permite un coloreado de sintaxis y completa automáticamente el código.</p>
 <p>Para trabajar de forma más cómoda podemos abrir el terminal integrado
 <strong>Ver &gt; Terminal integrado</strong> y lanzar el contenedor de Swift en ese
 terminal.</p>
