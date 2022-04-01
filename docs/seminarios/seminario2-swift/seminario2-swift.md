@@ -387,14 +387,13 @@ Existe una distribución oficial de Swift Windows 10. Puedes encontrar
 la información completa en la [web oficial de
 Apple](https://swift.org/download/#using-downloads).
 
-Brevemente, los pasos son los siguientes, utilizando el Windows
-Package Manager. 
-
-El [Windows Package
-Manager](https://docs.microsoft.com/windows/package-manager/) puede
-encontrarse en el [App
+Brevemente, los pasos son los siguientes, utilizando el [Windows
+Package
+Manager](https://docs.microsoft.com/windows/package-manager/). Puedes
+instalarlo en el [App
 Store](https://www.microsoft.com/en-us/p/app-installer/9nblggh4nns1) o
-puede [instalarse directamente](ms-appinstaller:?source=https://aka.ms/getwinget)..
+puede [instalarse
+directamente](ms-appinstaller:?source=https://aka.ms/getwinget).
 
 1. Instalar las dependencias (Git y Python).
 
