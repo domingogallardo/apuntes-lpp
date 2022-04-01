@@ -383,10 +383,9 @@ usando `apt-get`.
 
 ### Instalación en Windows ###
 
-Existe una distribución oficial de Swift Windows 10.
-
-Puedes encontrar la información completa en la
-[web oficial de Apple](https://swift.org/download/#using-downloads).
+Existe una distribución oficial de Swift Windows 10. Puedes encontrar
+la información completa en la [web oficial de
+Apple](https://swift.org/download/#using-downloads).
 
 Brevemente, los pasos son los siguientes, utilizando el Windows
 Package Manager. 
