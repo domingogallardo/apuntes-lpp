@@ -137,6 +137,8 @@ código y se muestra en el propio editor:
 
 <img src="imagenes/xcode-error.png" width="700px"/>
 
+
+<!--
 ### Ejecución en una máquina Docker
 
 [Docker](https://docs.docker.com) es una tecnología que ha tenido una gran expansión en los
@@ -345,11 +347,13 @@ exit
     ```
     > swift holaMundo.swift
     ```
-    
+
+-->
+
 ### Instalación en Linux Ubuntu
 
-Existe una distribución oficial de Swift para Ubuntu de 64 bits
-(distribuciones 14.04, 16.04 y 16.10).
+Existen distribuciones oficiales de Swift para Ubuntu 18.04, 20.4,
+CentOS 7, CentOS 8 y Amazon Linux 2.
 
 Puedes encontrar la información completa en la
 [web oficial de Apple](https://swift.org/download/#using-downloads).
@@ -376,14 +380,62 @@ usando `apt-get`.
     $ export PATH=/path/to/usr/bin:"${PATH}"
     ```
 
+
+### Instalación en Windows ###
+
+Existe una distribución oficial de Swift Windows 10.
+
+Puedes encontrar la información completa en la
+[web oficial de Apple](https://swift.org/download/#using-downloads).
+
+Brevemente, los pasos son los siguientes, utilizando el Windows
+Package Manager. 
+
+El [Windows Package
+Manager](https://docs.microsoft.com/windows/package-manager/) puede
+encontrarse en el [App
+Store](https://www.microsoft.com/en-us/p/app-installer/9nblggh4nns1) o
+puede [instalarse directamente](ms-appinstaller:?source=https://aka.ms/getwinget)..
+
+1. Instalar las dependencias (Git y Python).
+
+```
+winget install Git.Git
+winget install Python.Python.3 --version 3.7.8150.0
+```
+
+2. Instalar librerías necesarias de Windows y de Visual Studio.
+
+```
+curl -sOL https://aka.ms/vs/16/release/vs_community.exe
+start /w vs_community.exe --passive --wait --norestart --nocache ^
+  --installPath "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community" ^
+  --add Microsoft.VisualStudio.Component.Windows10SDK.19041 ^
+  --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64
+del /q vs_community.exe
+```
+
+3. Instalar Swift, descargando el instalador oficial en la [página de
+   descargas](https://www.swift.org/download) o usando el Windows
+   Package Manager:
+   
+```
+winget install Swift.Toolchain
+```
+
+Una vez hecho esto podrás abrir el terminal de Windows y lanzar el
+comando `swift`.
+
 ### Visual Studio Code ###
 
 Para editar código Swift puedes usar cualquier editor orientado a
-programación como Visual Studio Code o Atom. Aconsejamos [Visual Studio
-Code](https://code.visualstudio.com). 
+programación como Visual Studio Code o Atom. Aconsejamos [Visual
+Studio Code](https://code.visualstudio.com). 
 
 Las últimas versiones de Visual Studio Code traen incorporado el
-[plugin oficial de Swift](https://marketplace.visualstudio.com/items?itemName=sswg.swift-lang) que permite un coloreado de sintaxis.
+[plugin oficial de
+Swift](https://marketplace.visualstudio.com/items?itemName=sswg.swift-lang)
+que permite un coloreado de sintaxis y completa automáticamente el código.
 
 Para trabajar de forma más cómoda podemos abrir el terminal integrado
 **Ver > Terminal integrado** y lanzar el contenedor de Swift en ese
