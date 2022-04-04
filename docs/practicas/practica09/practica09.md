@@ -1,4 +1,4 @@
-# Práctica 9: Seminario de Swift
+# Práctica 9: Seminario de Swift y Programación Funcional en Swift (1)
 
 ## Ejercicios
 
