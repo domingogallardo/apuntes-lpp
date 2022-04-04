@@ -356,7 +356,7 @@ Existen distribuciones oficiales de Swift para Ubuntu 18.04, 20.4,
 CentOS 7, CentOS 8 y Amazon Linux 2.
 
 Puedes encontrar la información completa en la
-[web oficial de Apple](https://swift.org/download/#using-downloads).
+[web oficial de Apple](https://www.swift.org/getting-started/#installing-swift).
 
 Brevemente, los pasos son los siguientes:
 
