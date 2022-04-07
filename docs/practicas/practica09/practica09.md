@@ -9,15 +9,8 @@ Swift](https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario2-swift
 hasta el apartado _Funciones y clausuras_ (incluido).
 
 1. Para instalar el comando `swift` en tu ordenador sigue las
-   instrucciones del seminario. Dependiendo de tu sistema operativo
-   debes realizar una instalación distinta:
-
-    - **Windows, linux y Mac sin Xcode**: Sigue los pasos indicados en _Ejecución en una máquina Docker_.
-    - **Mac con Xcode**: Sigue los pasos indicados en _Ejecución con MacOS_.
-    - En **linux** y **Windows** hay la posibilidad de realizar una
-    instalación nativa, pero no la hemos probado. Puedes hacerlo tú siguiendo
-    los pasos indicados en la web [swift.org](https://swift.org/getting-started/).
-
+   instrucciones del seminario. 
+   
 2. Tal y como se indica en el seminario, puedes ejecutar también
    programas Swift usando el entorno on-line
    [http://online.swiftplayground.run](http://online.swiftplayground.run). 
