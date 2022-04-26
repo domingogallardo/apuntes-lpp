@@ -365,8 +365,7 @@ si un opcional tiene valor y asignar su valor a otra variable al mismo
 tiempo con una construcción llamada <em>ligado opcional</em> (<em>optional
 binding</em>):</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">respuestaEncuesta</span> <span class="p">=</span> <span class="n">leerRespuesta</span><span class="p">()</span>
-<span class="k">if</span> <span class="kd">let</span> <span class="nv">respuesta</span> <span class="p">=</span> <span class="n">respuestaEncuesta</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="kd">let</span> <span class="nv">respuesta</span> <span class="p">=</span> <span class="n">leerRespuesta</span><span class="p">()</span> <span class="p">{</span>
     <span class="bp">print</span> <span class="p">(</span><span class="s">&quot;Respuesta: &quot;</span> <span class="o">+</span> <span class="n">respuesta</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -454,11 +453,11 @@ de la lista sea <code>nil</code> haciéndolo opcional.</li>
 </ul>
 <div class="highlight"><pre><span></span><code>func suma(lista: Lista) -&gt; Int {
     switch lista {
-        case let .nodo(car, cdr):
-        if (cdr == nil) {
-            return car
+        case let .nodo(first, rest):
+        if (rest == nil) {
+            return first
         } else {
-            return car + suma(lista: cdr!)
+            return first + suma(lista: rest!)
         }
     }
 }
@@ -1100,7 +1099,7 @@ del array inicial elevados al cuadrado:</p>
      <span class="k">case</span> <span class="n">nodo</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span>
 <span class="p">}</span>
 
-<span class="kd">func</span> <span class="nf">car</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">lista</span><span class="p">:</span> <span class="n">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="n">T</span><span class="p">?</span> <span class="p">{</span>
+<span class="kd">func</span> <span class="nf">first</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">lista</span><span class="p">:</span> <span class="n">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="n">T</span><span class="p">?</span> <span class="p">{</span>
    <span class="k">switch</span> <span class="n">lista</span> <span class="p">{</span>
       <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="n">primero</span><span class="p">,</span> <span class="kc">_</span><span class="p">):</span>
          <span class="k">return</span> <span class="n">primero</span>
@@ -1109,7 +1108,7 @@ del array inicial elevados al cuadrado:</p>
    <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">func</span> <span class="nf">cdr</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">lista</span><span class="p">:</span> <span class="n">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="n">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;?</span> <span class="p">{</span>
+<span class="kd">func</span> <span class="nf">rest</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">lista</span><span class="p">:</span> <span class="n">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="n">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;?</span> <span class="p">{</span>
    <span class="k">switch</span> <span class="n">lista</span> <span class="p">{</span>
       <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="kc">_</span><span class="p">,</span> <span class="n">resto</span><span class="p">):</span>
          <span class="k">return</span> <span class="n">resto</span>
@@ -1129,10 +1128,10 @@ del array inicial elevados al cuadrado:</p>
 
 <span class="kd">let</span> <span class="nv">lista</span> <span class="p">:</span> <span class="n">Lista</span> <span class="p">=</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="p">.</span><span class="n">vacia</span><span class="p">)))</span>
 
-<span class="bp">print</span><span class="p">(</span><span class="n">car</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="c1">// Imprime 20</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">car</span><span class="p">(</span><span class="n">cdr</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="c1">// Imprime 30</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">car</span><span class="p">(</span><span class="n">cdr</span><span class="p">(</span><span class="n">cdr</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="c1">// Imprime 40</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">vacia</span><span class="p">(</span><span class="n">cdr</span><span class="p">(</span><span class="n">cdr</span><span class="p">(</span><span class="n">cdr</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="o">!</span><span class="p">))</span> <span class="c1">// Imprime true</span>
+<span class="bp">print</span><span class="p">(</span><span class="bp">first</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="c1">// Imprime 20</span>
+<span class="bp">print</span><span class="p">(</span><span class="bp">first</span><span class="p">(</span><span class="n">rest</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="c1">// Imprime 30</span>
+<span class="bp">print</span><span class="p">(</span><span class="bp">first</span><span class="p">(</span><span class="n">rest</span><span class="p">(</span><span class="n">rest</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="c1">// Imprime 40</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">vacia</span><span class="p">(</span><span class="n">rest</span><span class="p">(</span><span class="n">rest</span><span class="p">(</span><span class="n">rest</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="o">!</span><span class="p">))</span> <span class="c1">// Imprime true</span>
 </code></pre></div></body>
 
 </html>

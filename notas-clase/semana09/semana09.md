@@ -181,8 +181,7 @@ tiempo con una construcción llamada _ligado opcional_ (_optional
 binding_):
 
 ```swift
-let respuestaEncuesta = leerRespuesta()
-if let respuesta = respuestaEncuesta {
+if let respuesta = leerRespuesta() {
     print ("Respuesta: " + respuesta)
 }
 ```
@@ -288,11 +287,11 @@ indirect enum Lista{
 ```
 func suma(lista: Lista) -> Int {
 	switch lista {
-		case let .nodo(car, cdr):
-		if (cdr == nil) {
-			return car
+		case let .nodo(first, rest):
+		if (rest == nil) {
+			return first
 		} else {
-			return car + suma(lista: cdr!)
+			return first + suma(lista: rest!)
 		}
 	}
 }
@@ -987,7 +986,7 @@ indirect enum Lista<T> {
      case nodo(T, Lista<T>)
 }
 
-func car<T>(_ lista: Lista<T>) -> T? {
+func first<T>(_ lista: Lista<T>) -> T? {
    switch lista {
       case let .nodo(primero, _):
          return primero
@@ -996,7 +995,7 @@ func car<T>(_ lista: Lista<T>) -> T? {
    }
 }
 
-func cdr<T>(_ lista: Lista<T>) -> Lista<T>? {
+func rest<T>(_ lista: Lista<T>) -> Lista<T>? {
    switch lista {
       case let .nodo(_, resto):
          return resto
@@ -1016,8 +1015,8 @@ func vacia<T>(_ lista: Lista<T>) -> Bool {
 
 let lista : Lista = .nodo(20, .nodo(30, .nodo(40, .vacia)))
 
-print(car(lista)!) // Imprime 20
-print(car(cdr(lista)!)!) // Imprime 30
-print(car(cdr(cdr(lista)!)!)!) // Imprime 40
-print(vacia(cdr(cdr(cdr(lista)!)!)!)) // Imprime true
+print(first(lista)!) // Imprime 20
+print(first(rest(lista)!)!) // Imprime 30
+print(first(rest(rest(lista)!)!)!) // Imprime 40
+print(vacia(rest(rest(rest(lista)!)!)!)) // Imprime true
 ```

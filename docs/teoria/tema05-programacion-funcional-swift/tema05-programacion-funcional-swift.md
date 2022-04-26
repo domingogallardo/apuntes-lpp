@@ -1285,9 +1285,6 @@ print(suma(lista: lista2))
 // Imprime 15
 ```
 
-
-<!--
-
 ## 9. Opcionales
 
 Una de las características principales que Swift intenta promover es
@@ -1584,7 +1581,7 @@ indirect enum Lista{
 func suma(lista: Lista) -> Int {
 	switch lista {
 		case let .nodo(first, rest):
-		if (cdr == nil) {
+		if (rest == nil) {
 			return first
 		} else {
 			return first + suma(lista: rest!)
@@ -2375,9 +2372,6 @@ print(first(rest(rest(lista)!)!)!) // Imprime 40
 print(vacia(rest(rest(rest(lista)!)!)!)) // Imprime true
 ```
 
-
-
--->
 
 ## 13. Bibliografía
 
