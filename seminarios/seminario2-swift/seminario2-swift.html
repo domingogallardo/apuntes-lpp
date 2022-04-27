@@ -972,7 +972,8 @@ usando <code>apt-get</code>.</p>
 </li>
 <li>
 <p>Descargar la versión y plataforma deseada (fichero
-<code>swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz</code>).</p>
+<code>swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz</code>). Por ejemplo, el siguiente
+comando instala la versión 5.6.1 de Swift para Ubuntu 18.04:</p>
 <div class="highlight"><pre><span></span><code>$ wget https://download.swift.org/swift-5.6.1-release/ubuntu1804/swift-5.6.1-RELEASE/swift-5.6.1-RELEASE-ubuntu18.04.tar.gz
 </code></pre></div>
 </li>
@@ -980,52 +981,27 @@ usando <code>apt-get</code>.</p>
 <p>Extaer el archivo:</p>
 <div class="highlight"><pre><span></span><code>$ tar xzf swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz
 </code></pre></div>
-<p>Esto crea el directorio <code>usr/</code> en la localización del archivo.</p>
+<p>Esto crea el directorio <code>usr/</code> en la localización del
+archivo. Puedes probar si funciona el comando <code>swift</code> moviéndote
+al directorio <code>bin</code> y ejecutando:</p>
+<div class="highlight"><pre><span></span><code>$ ./swift
+</code></pre></div>
 </li>
 <li>
-<p>Actualizar el PATH o mover <code>usr/bin/swift</code> al directorio <code>/usr/bin</code>.</p>
+<p>Para poder ejecutar <code>swift</code> desde cualquier directorio debes actualizar el PATH o mover <code>usr/bin/swift</code> al directorio <code>/usr/bin</code>.</p>
 <div class="highlight"><pre><span></span><code>$ export PATH=/path/to/usr/bin:&quot;${PATH}&quot;
 </code></pre></div>
 </li>
 </ol>
 <h3 id="instalacion-en-windows">Instalación en Windows<a class="headerlink" href="#instalacion-en-windows" title="Permanent link">&para;</a></h3>
-<p>Existe una distribución oficial de Swift para Windows 10. Puedes
-encontrar la información completa en la <a href="https://swift.org/download/#using-downloads">web oficial de
-Apple</a>.</p>
-<p>Brevemente, los pasos son los siguientes, utilizando el <a href="https://docs.microsoft.com/windows/package-manager/">Windows
-Package
-Manager</a>. Puedes
-instalarlo en el <a href="https://www.microsoft.com/en-us/p/app-installer/9nblggh4nns1">App
-Store</a> o
-puede <a href="ms-appinstaller:?source=https://aka.ms/getwinget">instalarse
-directamente</a>.</p>
-<ol>
-<li>Instalar las dependencias (Git y Python).</li>
-</ol>
-<div class="highlight"><pre><span></span><code>winget install Git.Git
-winget install Python.Python.3 --version 3.7.8150.0
-</code></pre></div>
-<ol start="2">
-<li>Instalar librerías necesarias de Windows y de Visual Studio.</li>
-</ol>
-<div class="highlight"><pre><span></span><code>curl -sOL https://aka.ms/vs/16/release/vs_community.exe
-start /w vs_community.exe --passive --wait --norestart --nocache ^
-  --installPath &quot;%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community&quot; ^
-  --add Microsoft.VisualStudio.Component.Windows10SDK.19041 ^
-  --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64
-del /q vs_community.exe
-</code></pre></div>
-<ol start="3">
-<li>
-<p>Instalar Swift, descargando el instalador oficial en la <a href="https://www.swift.org/download">página de
-   descargas</a>, o usando el Windows
-   Package Manager:</p>
-<div class="highlight"><pre><span></span><code>winget install Swift.Toolchain
-</code></pre></div>
-</li>
-</ol>
-<p>Una vez terminada la instalación podrás abrir el terminal de Windows y lanzar el
-comando <code>swift</code>.</p>
+<p>Aunque existe una <a href="https://swift.org/download/#using-downloads">distribución oficial de
+Swift</a> para Windows 10,
+no hemos conseguido hacerla funcionar.</p>
+<p>Recomendamos instalar una distribución de Ubuntu en WSL2 (Windows
+Subsystem for Linux) siguiendo <a href="https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#1-overview">estas
+instrucciones</a>
+y después realizar la instalación de Swift en Ubuntu tal y como se
+explica en el apartado anterior.</p>
 <h3 id="visual-studio-code">Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permanent link">&para;</a></h3>
 <p>Para editar código Swift puedes usar cualquier editor orientado a
 programación como Visual Studio Code o Atom. Aconsejamos <a href="https://code.visualstudio.com">Visual
