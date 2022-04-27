@@ -364,7 +364,8 @@ Brevemente, los pasos son los siguientes:
 usando `apt-get`.
 
 2. Descargar la versión y plataforma deseada (fichero
-`swift-<VERSION>-<PLATFORM>.tar.gz`).
+`swift-<VERSION>-<PLATFORM>.tar.gz`). Por ejemplo, el siguiente
+comando instala la versión 5.6.1 de Swift para Ubuntu 18.04:
 
     ```
     $ wget https://download.swift.org/swift-5.6.1-release/ubuntu1804/swift-5.6.1-RELEASE/swift-5.6.1-RELEASE-ubuntu18.04.tar.gz
@@ -376,9 +377,15 @@ usando `apt-get`.
     $ tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
     ```
 
-    Esto crea el directorio `usr/` en la localización del archivo.
+    Esto crea el directorio `usr/` en la localización del
+    archivo. Puedes probar si funciona el comando `swift` moviéndote
+    al directorio `bin` y ejecutando:
+    
+    ```
+    $ ./swift
+    ```
 
-4. Actualizar el PATH o mover `usr/bin/swift` al directorio `/usr/bin`.
+4. Para poder ejecutar `swift` desde cualquier directorio debes actualizar el PATH o mover `usr/bin/swift` al directorio `/usr/bin`.
 
     ```
     $ export PATH=/path/to/usr/bin:"${PATH}"
@@ -387,46 +394,15 @@ usando `apt-get`.
 
 ### Instalación en Windows ###
 
-Existe una distribución oficial de Swift para Windows 10. Puedes
-encontrar la información completa en la [web oficial de
-Apple](https://swift.org/download/#using-downloads).
+Aunque existe una [distribución oficial de
+Swift](https://swift.org/download/#using-downloads) para Windows 10,
+no hemos conseguido hacerla funcionar.
 
-Brevemente, los pasos son los siguientes, utilizando el [Windows
-Package
-Manager](https://docs.microsoft.com/windows/package-manager/). Puedes
-instalarlo en el [App
-Store](https://www.microsoft.com/en-us/p/app-installer/9nblggh4nns1) o
-puede [instalarse
-directamente](ms-appinstaller:?source=https://aka.ms/getwinget).
-
-1. Instalar las dependencias (Git y Python).
-
-```
-winget install Git.Git
-winget install Python.Python.3 --version 3.7.8150.0
-```
-
-2. Instalar librerías necesarias de Windows y de Visual Studio.
-
-```
-curl -sOL https://aka.ms/vs/16/release/vs_community.exe
-start /w vs_community.exe --passive --wait --norestart --nocache ^
-  --installPath "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community" ^
-  --add Microsoft.VisualStudio.Component.Windows10SDK.19041 ^
-  --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64
-del /q vs_community.exe
-```
-
-3. Instalar Swift, descargando el instalador oficial en la [página de
-   descargas](https://www.swift.org/download), o usando el Windows
-   Package Manager:
-   
-    ```
-    winget install Swift.Toolchain
-    ```
-
-Una vez terminada la instalación podrás abrir el terminal de Windows y lanzar el
-comando `swift`.
+Recomendamos instalar una distribución de Ubuntu en WSL2 (Windows
+Subsystem for Linux) siguiendo [estas
+instrucciones](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#1-overview)
+y después realizar la instalación de Swift en Ubuntu tal y como se
+explica en el apartado anterior.
 
 ### Visual Studio Code ###
 
