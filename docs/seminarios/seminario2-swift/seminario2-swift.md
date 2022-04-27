@@ -366,6 +366,10 @@ usando `apt-get`.
 2. Descargar la versión y plataforma deseada (fichero
 `swift-<VERSION>-<PLATFORM>.tar.gz`).
 
+    ```
+    $ wget https://download.swift.org/swift-5.6.1-release/ubuntu1804/swift-5.6.1-RELEASE/swift-5.6.1-RELEASE-ubuntu18.04.tar.gz
+    ```
+    
 3. Extaer el archivo:
 
     ```
