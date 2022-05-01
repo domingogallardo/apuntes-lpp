@@ -487,33 +487,22 @@ print(suma(lista: z))
 <hr />
 <h3>El método <code>sorted(by:)</code></h3>
 <ul>
-<li>La biblioteca stándar de Swift define un método <code>sorted()</code> que
-  devuelve los elementos ordenados de un
-  <a href="https://developer.apple.com/reference/swift/array">Array</a>. </li>
-<li>El array original no se modifica. </li>
-<li>La comparación entre los elementos se realiza usando el comparador
-  <code>&lt;</code>.</li>
-<li>El array original no se modifica, sino que la ordenación construye
-un nuevo array (existe una función alternativa mutable que se denomina
-<code>sort()</code>).</li>
-</ul>
-<div class="highlight"><pre><span></span><code>let estudiantes = [&quot;Kofi&quot;, &quot;Abena&quot;, &quot;Peter&quot;, &quot;Kweku&quot;, &quot;Akosua&quot;]
-let ordenados = estudiantes.sorted()
-print(ordenados)
-// Imprime &quot;[&quot;Abena&quot;, &quot;Akosua&quot;, &quot;Kofi&quot;, &quot;Kweku&quot;, &quot;Peter&quot;]&quot;
-</code></pre></div>
-<ul>
-<li>Lo interesante relacionado con las clausuras está en la función
-  <code>sorted(by:)</code>. </li>
-<li>En esta función se utiliza una clausura como parámetro para
-  modificar la comparación entre elementos y resultar en una
-  ordenación distinta. </li>
+<li>El método <code>sorted(by:)</code> utiliza una clausura como parámetro para
+  definir la función de comparación entre dos elementos.</li>
 </ul>
 <div class="highlight"><pre><span></span><code>func sorted(by areInIncreasingOrder: (Element, Element) -&gt; Bool)
 </code></pre></div>
 <ul>
-<li>Por ejemplo, podríamos ordenar un array de cadenas en orden
-  alfabético inverso.</li>
+<li>
+<p>La función de comparación recibe dos elementos y devuelve un
+  booleano que indica si están en orden creciente; esto es, si el
+  primer elemento debe aparecer antes que el segundo en el resultado
+  ordenado. </p>
+</li>
+<li>
+<p>Por ejemplo, podríamos ordenar un array de cadenas en orden
+  alfabético inverso.</p>
+</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">primeroMayor</span><span class="p">(</span><span class="n">s1</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">s2</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span>

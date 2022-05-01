@@ -325,32 +325,17 @@ print(suma(lista: z))
 
 ### El método `sorted(by:)`
 
-- La biblioteca stándar de Swift define un método `sorted()` que
-  devuelve los elementos ordenados de un
-  [Array](https://developer.apple.com/reference/swift/array). 
-- El array original no se modifica. 
-- La comparación entre los elementos se realiza usando el comparador
-  `<`.
-- El array original no se modifica, sino que la ordenación construye
-un nuevo array (existe una función alternativa mutable que se denomina
-`sort()`).
-
-```
-let estudiantes = ["Kofi", "Abena", "Peter", "Kweku", "Akosua"]
-let ordenados = estudiantes.sorted()
-print(ordenados)
-// Imprime "["Abena", "Akosua", "Kofi", "Kweku", "Peter"]"
-```
-
-- Lo interesante relacionado con las clausuras está en la función
-  `sorted(by:)`. 
-- En esta función se utiliza una clausura como parámetro para
-  modificar la comparación entre elementos y resultar en una
-  ordenación distinta. 
+- El método `sorted(by:)` utiliza una clausura como parámetro para
+  definir la función de comparación entre dos elementos.
 
 ```
 func sorted(by areInIncreasingOrder: (Element, Element) -> Bool)
 ```
+
+- La función de comparación recibe dos elementos y devuelve un
+  booleano que indica si están en orden creciente; esto es, si el
+  primer elemento debe aparecer antes que el segundo en el resultado
+  ordenado. 
 
 - Por ejemplo, podríamos ordenar un array de cadenas en orden
   alfabético inverso.
