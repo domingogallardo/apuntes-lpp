@@ -1000,9 +1000,8 @@ func vacia<T>(_ lista: Lista<T>) -> Bool {
 }
 
 let lista : Lista = .nodo(20, .nodo(30, .nodo(40, .vacia)))
+let lista2 : Lista = .nodo("A", .nodo("B", .nodo("C", .vacia)))
 
-print(first(lista)!) // Imprime 20
 print(first(rest(lista)!)!) // Imprime 30
-print(first(rest(rest(lista)!)!)!) // Imprime 40
-print(vacia(rest(rest(rest(lista)!)!)!)) // Imprime true
+print(first(rest(lista2)!)!) // Imprime "B"
 ```
