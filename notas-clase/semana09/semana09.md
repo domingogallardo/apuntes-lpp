@@ -699,7 +699,7 @@ tambienIncrementaDiez()
 
 - Una de las características funcionales que más hemos usado para
   trabajar con listas en Scheme son las funciones de orden superior
-  como `map`, `filter` o `foldr`. 
+  como `map`, `filter` o `foldl`. 
 - Swift tiene definidas funciones equivalentes para trabajar con
   colecciones. 
 - Se denominan `map`, `filter` y `reduce`. Todas ellas aceptan
@@ -798,7 +798,7 @@ numeros.filter {$0 % 2 == 0}
 
 ### Reduce 
 
-- Similar al _foldr_ de Scheme.
+- Similar al _foldl_ de Scheme.
 
 - Su perfil:
 
