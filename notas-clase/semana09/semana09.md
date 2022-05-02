@@ -344,6 +344,7 @@ func sorted(by areInIncreasingOrder: (Element, Element) -> Bool)
 func primeroMayor(s1: String, s2: String) -> Bool {
     return s1 > s2
 }
+let estudiantes = ["Kofi", "Abena", "Peter", "Kweku", "Akosua"]
 let alreves = estudiantes.sorted(by: primeroMayor)
 print(alreves)
 // Imprime ["Peter", "Kweku", "Kofi", "Akosua", "Abena"]
