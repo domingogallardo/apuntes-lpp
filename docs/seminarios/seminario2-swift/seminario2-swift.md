@@ -361,7 +361,8 @@ Puedes encontrar la información completa en la
 Brevemente, los pasos son los siguientes:
 
 1. Instalar las dependencias que encontrarás en la página anterior
-usando `apt-get`.
+usando `apt-get install`. Puede ser que necesites tener permisos de super
+usuario para hacerlo: `sudo apt-get install`.
 
 2. Descargar la versión y plataforma deseada (fichero
 `swift-<VERSION>-<PLATFORM>.tar.gz`). Por ejemplo, el siguiente
