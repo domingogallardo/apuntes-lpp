@@ -46,12 +46,21 @@ palabras. Devuelve un array de `Bool` con los booleanos resultantes de
 comprobar si la cadena es prefijo de cada una de las palabras de la
 lista.
 
+Puedes usar el método `hasPrefix()` de `String` para comprobar si una
+cadena es prefijo de otra:
+
+```swift
+let miCadena = "Hola"
+miCadena.hasPrefix("Ho") // Devuelve true
+miCadena.hasPrefix("la") // Devuelve false
+```
+
 Ejemplo:
 
 ```swift
 let array = ["anterior", "antígona", "antena"]
 let prefijo = "ante"
-print("\n******\n1a) Función prefijos(prefijo:palabras:)\n******")
+print("\n******\n2a) Función prefijos(prefijo:palabras:)\n******")
 print(prefijos(prefijo: prefijo, palabras: array))
 // Imprime: [true, false, true]
 ```
@@ -63,7 +72,7 @@ número par. Si no hay ningún número par o impar se devolverá un 0.
 
 ```swift
 let numeros = [10, 201, 12, 103, 204, 2]
-print("\n******\n1b) Función parejaMayorParImpar(numeros:)\n******")
+print("\n******\n2b) Función parejaMayorParImpar(numeros:)\n******")
 print(parejaMayorParImpar(numeros: numeros))
 // Imprime: (201, 204)
 ```
@@ -101,10 +110,7 @@ al primer número de cada pareja coincide con el segundo.
     
 ```swift
 let array = [(2,4), (4,14), (4,16), (5,25), (10,100)]
-func cuadrado(x: Int) -> Int {
-   return x * x
-}
-print(coinciden(parejas: array, funcion: cuadrado)")
+print(coinciden(parejas: array, funcion: cuadrado))
 // Imprime: [true, false, true, true, true]
 ```
 

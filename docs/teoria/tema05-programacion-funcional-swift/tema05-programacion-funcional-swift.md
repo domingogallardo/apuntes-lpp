@@ -2217,7 +2217,6 @@ La combinación se hace de izquierda a derecha:
 
 ```swift
 let cadenas = ["Patatas", "Arroz", "Huevos"]
-let cadenas = ["Patatas","Arroz", "Huevos"]
 print(cadenas.reduce("*", {$0 + "-" + $1}))
 // Imprime "*-Patatas-Arroz-Huevos"
 ```
