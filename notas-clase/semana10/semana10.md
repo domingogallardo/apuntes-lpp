@@ -1355,11 +1355,43 @@ print("CocheAutomatico: \(automatico.descripcion)")
 // CocheAutomatico: viajando a 100.0 kilómetros por hora con la marcha 5
 ```
 
-- Por último, es posible prevenir un método o propiedad de ser
-  sobreescrito declarándolo como _final_. 
-- Para ello, hay que escribir el modificador `final` antes del nombre
-  de la palabra clave que introduce el método o la propiedad (como
-  `final var`, `final func` o `final class`). 
-- También es posible marcar la clase completa como final, escribiendo
-  el modificador antes de `class` (`final class`).
+---
 
+### Inicialización ###
+
+- Supongamos que añadimos un inicializador a la clase base `Vehiculo`:
+
+```swift
+class Vehiculo {
+    var velocidadActual = 0.0
+    
+    // Resto de código de la clase
+    
+    init(velocidad: Double) {
+        self.velocidadActual = velocidad
+    }
+}
+```
+
+- Automáticamente las subclases heredan este inicializador y dejan de
+tener el inicializador por defecto:
+
+```swift
+// Error: let miBici = Bicicleta()
+let miBic = Bicicleta(velocidad: 5)
+```
+
+- Podemos definir inicializadores propios en las subclases que
+inicialicen sus atributos, pero siempre es necesario inicializar la
+clase base llamando a su inicializador con `super`:
+
+```swift
+class Bicicleta: Vehiculo {
+    var tieneCesta = false
+    
+    init(tieneCesta: Bool, velocidad: Double) {
+        self.tieneCesta = tieneCesta
+        super.init(velocidad: velocidad)
+    }
+}
+```

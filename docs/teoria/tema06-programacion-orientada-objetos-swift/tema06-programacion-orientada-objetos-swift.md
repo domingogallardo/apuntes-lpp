@@ -1,28 +1,9 @@
 
 <!--
 
-Para el curso que viene:
+Ver comentarios más adelante
 
-- Un protocolo puede extender otro protocolo (o más de uno)
-https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-ID280
-
-Un ejemplo es el Comparable y Equatable. En el ejercicio 1c de la
-práctica 12 no es necesario ajustarse al protocolo `Equatable` porque
-`Comparable` hereda de él.
-
-struct Equipo: Equatable, Comparable {
-    let puntos: Int
-    let nombre: String
-
-    static func < (primero: Equipo, segundo: Equipo) -> Bool {
-        return
-            primero.puntos < segundo.puntos ||
-            (primero.puntos == segundo.puntos && primero.nombre < segundo.nombre)
-    }
-}
-
-Ver en el código:
-
+- Protocolo puede extender otro protocolo
 - Inicialización de la clase padre
 - Enlace dinámico
 
@@ -1851,22 +1832,64 @@ print("CocheAutomatico: \(automatico.descripcion)")
 // CocheAutomatico: viajando a 100.0 kilómetros por hora con la marcha 5
 ```
 
-<!--- Para el curso que viene
+### 6.4. Inicialización ###
 
-### 6.4. Inicialización de la clase padre ###
+Hasta ahora por simplificar no hemos definido inicializadores ni en la
+clase base ni en las subclases. Vamos a ver cómo funciona la
+inicialización en una relación de herencia.
 
-Habría que explicar también cómo inicializar la clase padre cuando 
-inicializamos la clase derivada, llamando al inicializador con
-super.init, como hacemos en la solución del último ejercicio de 
-la práctica 11 (figuras geométricas).
+Supongamos que añadimos un inicializador a la clase base `Vehiculo`:
 
+```swift
+class Vehiculo {
+    var velocidadActual = 0.0
+    
+    // Resto de código de la clase
+    
+    init(velocidad: Double) {
+        self.velocidadActual = velocidad
+    }
+}
+```
+
+Al hacer esto ya no podemos usar el inicializador por defecto para
+crear una instancia de `Vehiculo`, sino que debemos utilizar el
+inicializador definido:
+
+```swift
+// Error: let miVehiculo = Vehiculo()
+let miVehiculo = Vehiculo(velocidad: 40)
+```
+
+Automáticamente las subclases heredan este inicializador y dejan de
+tener el inicializador por defecto:
+
+```swift
+// Error: let miBici = Bicicleta()
+let miBic = Bicicleta(velocidad: 5)
+```
+
+Podemos definir inicializadores propios en las subclases que
+inicialicen sus atributos, pero siempre es necesario inicializar la
+clase base llamando a su inicializador con `super`:
+
+```swift
+class Bicicleta: Vehiculo {
+    var tieneCesta = false
+    
+    init(tieneCesta: Bool, velocidad: Double) {
+        self.tieneCesta = tieneCesta
+        super.init(velocidad: velocidad)
+    }
+}
+```
 
 ### 6.5. Enlace dinámico ###
 
-Al igual que en Java y en otros lenguajes orientados a objetos, es
-posible que una relación de herencia haga imposible conocer en
-tiempo de compilación el código a ejecutar en una llamada a un método
-o una propiedad.
+Al igual que en Java y en otros lenguajes orientados a objetos, una
+relación de herencia puede hacer imposible conocer en tiempo de
+compilación el código a ejecutar en una llamada a un método o una
+propiedad.
 
 Por ejemplo, supongamos que creamos otra subclase derivada de
 `Vehículo` que haga un ruido distinto a la que hace el tren:
@@ -1893,7 +1916,7 @@ pasarse como parámetro a la función, por lo que no se puede generar el
 código que va a ejecutarse en la llamada al método `hazRuido()`. El
 código sólo se conocerá en tiempo de ejecución, dependiendo del tipo
 real de la instancia que se pasa como parámetro. Es lo que se denomina
-_enlace dinámico_.
+_enlace dinámico_ o _late binding_.
 
 ```swift
 let barco = Barco()
@@ -1901,8 +1924,6 @@ let tren = Tren()
 imprimeRuido(vehiculo: barco) // Imprime "Buuuuuuuu"
 imprimeRuido(vehiculo: tren) // Imprime "Chu chu"
 ```
-
--->
 
 ### 6.6. Modificador `final` ###
 
@@ -1914,6 +1935,7 @@ el método o la propiedad (como `final var`, `final func`).
 También es posible marcar la clase completa como final, escribiendo el
 modificador antes de `class` (`final class`).
 
+<!--
 
 ## 7. Protocolos
 
@@ -2256,6 +2278,32 @@ ni de tipo `NaveEstelar`, incluso aunque las instancias que hay tras
 de escena son do esos tipos. Por ser del tipo `TieneNombre` sabemos
 que tiene una propiedad `nombreCompleto` que podemos usar sobre la
 variable iteradora.
+
+
+### TODO
+Para el curso que viene
+###
+
+Un protocolo puede extender otro protocolo
+
+
+- Un protocolo puede extender otro protocolo (o más de uno)
+https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-ID280
+
+Un ejemplo es el Comparable y Equatable. En el ejercicio 1c de la
+práctica 12 no es necesario ajustarse al protocolo `Equatable` porque
+`Comparable` hereda de él.
+
+struct Equipo: Equatable, Comparable {
+    let puntos: Int
+    let nombre: String
+
+    static func < (primero: Equipo, segundo: Equipo) -> Bool {
+        return
+            primero.puntos < segundo.puntos ||
+            (primero.puntos == segundo.puntos && primero.nombre < segundo.nombre)
+    }
+}
 
 ### 7.7. Protocolo `Equatable`
 
@@ -2779,9 +2827,11 @@ p.mayorEdad // false
 Es posible incluso extender clases de las librerías estándar de
 Swift, como `Int`, `Double`, `Array`, etc.
 
-<!--
+
+### TODO 
 El ejemplo siguiente es bastante lioso... ¿lo quitamos?
--->
+###
+
 
 Por ejemplo, podemos añadir propiedades calculadas a la clase Double
 para trabajar con unidades de distancia. Las siguientes propiedades
@@ -3364,10 +3414,13 @@ if let topItem = stackOfStrings.topItem {
 // Imprime "El ítem en el tope de la pila es tres."
 ```
 
-<!-- 
+###
+TODO
 
 Para el curso que viene (y quitar el apartado
 "Restricción en las extensiones de un protocolo"
+###
+
 
 ### 11.2. Restricción en los tipos genéricos ###
 
@@ -3396,9 +3449,6 @@ con, por ejemplo, un array de `Persona`s (estructura en la que no se
 ha adoptado el protocolo `Equatable`) se obtendrá un error en tiempo
 de compilación.
 
--->
-
-
 
 ## 12. Bibliografía
 
@@ -3414,6 +3464,7 @@ de compilación.
     - [Funciones operador](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-ID28)
     - [Genéricos](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-ID179)
 
+--->
 ----
 
 Lenguajes y Paradigmas de Programación, curso 2021–22  
