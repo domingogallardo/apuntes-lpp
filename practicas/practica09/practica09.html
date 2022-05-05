@@ -683,10 +683,16 @@ indicando el experimento.</p>
 palabras. Devuelve un array de <code>Bool</code> con los booleanos resultantes de
 comprobar si la cadena es prefijo de cada una de las palabras de la
 lista.</p>
+<p>Puedes usar el método <code>hasPrefix()</code> de <code>String</code> para comprobar si una
+cadena es prefijo de otra:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">miCadena</span> <span class="p">=</span> <span class="s">&quot;Hola&quot;</span>
+<span class="n">miCadena</span><span class="p">.</span><span class="n">hasPrefix</span><span class="p">(</span><span class="s">&quot;Ho&quot;</span><span class="p">)</span> <span class="c1">// Devuelve true</span>
+<span class="n">miCadena</span><span class="p">.</span><span class="n">hasPrefix</span><span class="p">(</span><span class="s">&quot;la&quot;</span><span class="p">)</span> <span class="c1">// Devuelve false</span>
+</code></pre></div>
 <p>Ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">array</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;anterior&quot;</span><span class="p">,</span> <span class="s">&quot;antígona&quot;</span><span class="p">,</span> <span class="s">&quot;antena&quot;</span><span class="p">]</span>
 <span class="kd">let</span> <span class="nv">prefijo</span> <span class="p">=</span> <span class="s">&quot;ante&quot;</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">******</span><span class="se">\n</span><span class="s">1a) Función prefijos(prefijo:palabras:)</span><span class="se">\n</span><span class="s">******&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">******</span><span class="se">\n</span><span class="s">2a) Función prefijos(prefijo:palabras:)</span><span class="se">\n</span><span class="s">******&quot;</span><span class="p">)</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">prefijos</span><span class="p">(</span><span class="n">prefijo</span><span class="p">:</span> <span class="n">prefijo</span><span class="p">,</span> <span class="n">palabras</span><span class="p">:</span> <span class="n">array</span><span class="p">))</span>
 <span class="c1">// Imprime: [true, false, true]</span>
 </code></pre></div>
@@ -695,7 +701,7 @@ recibe un array de enteros positivos y devuelve una pareja con dos
 enteros: el primero es el mayor número impar y el segundo el mayor
 número par. Si no hay ningún número par o impar se devolverá un 0.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">numeros</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">204</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">******</span><span class="se">\n</span><span class="s">1b) Función parejaMayorParImpar(numeros:)</span><span class="se">\n</span><span class="s">******&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">******</span><span class="se">\n</span><span class="s">2b) Función parejaMayorParImpar(numeros:)</span><span class="se">\n</span><span class="s">******&quot;</span><span class="p">)</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">parejaMayorParImpar</span><span class="p">(</span><span class="n">numeros</span><span class="p">:</span> <span class="n">numeros</span><span class="p">))</span>
 <span class="c1">// Imprime: (201, 204)</span>
 </code></pre></div>
@@ -721,11 +727,8 @@ de aplicar la función al número situado en la posición anterior.</p>
 un array de booleanos que indica si el resultado de aplicar la función
 al primer número de cada pareja coincide con el segundo.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">array</span> <span class="p">=</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">16</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">25</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)]</span>
-<span class="kd">func</span> <span class="nf">cuadrado</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-   <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
-<span class="p">}</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">coinciden</span><span class="p">(</span><span class="n">parejas</span><span class="p">:</span> <span class="n">array</span><span class="p">,</span> <span class="n">funcion</span><span class="p">:</span> <span class="n">cuadrado</span><span class="p">)</span><span class="s">&quot;)</span>
-<span class="s">// Imprime: [true, false, true, true, true]</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">coinciden</span><span class="p">(</span><span class="n">parejas</span><span class="p">:</span> <span class="n">array</span><span class="p">,</span> <span class="n">funcion</span><span class="p">:</span> <span class="n">cuadrado</span><span class="p">))</span>
+<span class="c1">// Imprime: [true, false, true, true, true]</span>
 </code></pre></div>
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
 <p>Supongamos que estamos escribiendo un programa que debe tratar
