@@ -753,6 +753,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#64-inicializacion-de-la-clase-padre" class="md-nav__link">
+    6.4. Inicialización de la clase padre
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-enlace-dinamico" class="md-nav__link">
+    6.5. Enlace dinámico
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#66-modificador-final" class="md-nav__link">
     6.6. Modificador final
   </a>
@@ -1012,28 +1026,9 @@
                 
                 <!--
 
-Para el curso que viene:
+Ver comentarios más adelante
 
-- Un protocolo puede extender otro protocolo (o más de uno)
-https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-ID280
-
-Un ejemplo es el Comparable y Equatable. En el ejercicio 1c de la
-práctica 12 no es necesario ajustarse al protocolo `Equatable` porque
-`Comparable` hereda de él.
-
-struct Equipo: Equatable, Comparable {
-    let puntos: Int
-    let nombre: String
-
-    static func < (primero: Equipo, segundo: Equipo) -> Bool {
-        return
-            primero.puntos < segundo.puntos ||
-            (primero.puntos == segundo.puntos && primero.nombre < segundo.nombre)
-    }
-}
-
-Ver en el código:
-
+- Protocolo puede extender otro protocolo
 - Inicialización de la clase padre
 - Enlace dinámico
 
@@ -2517,56 +2512,73 @@ ejemplo de ejecución:</p>
 <span class="bp">print</span><span class="p">(</span><span class="s">&quot;CocheAutomatico: </span><span class="si">\(</span><span class="n">automatico</span><span class="p">.</span><span class="n">descripcion</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="c1">// CocheAutomatico: viajando a 100.0 kilómetros por hora con la marcha 5</span>
 </code></pre></div>
-<!--- Para el curso que viene
+<h3 id="64-inicializacion-de-la-clase-padre">6.4. Inicialización de la clase padre<a class="headerlink" href="#64-inicializacion-de-la-clase-padre" title="Permanent link">&para;</a></h3>
+<p>Hasta ahora por simplificar no hemos definido inicializadores ni en la
+clase base ni en las subclases. Vamos a ver cómo funciona la
+inicialización en una relación de herencia.</p>
+<p>Supongamos que añadimos un inicializador a la clase base <code>Vehiculo</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Vehiculo</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">velocidadActual</span> <span class="p">=</span> <span class="mf">0.0</span>
 
-### 6.4. Inicialización de la clase padre ###
+    <span class="c1">// Resto de código de la clase</span>
 
-Habría que explicar también cómo inicializar la clase padre cuando 
-inicializamos la clase derivada, llamando al inicializador con
-super.init, como hacemos en la solución del último ejercicio de 
-la práctica 11 (figuras geométricas).
-
-
-### 6.5. Enlace dinámico ###
-
-Al igual que en Java y en otros lenguajes orientados a objetos, es
-posible que una relación de herencia haga imposible conocer en
-tiempo de compilación el código a ejecutar en una llamada a un método
-o una propiedad.
-
-Por ejemplo, supongamos que creamos otra subclase derivada de
-`Vehículo` que haga un ruido distinto a la que hace el tren:
-
+    <span class="kd">init</span><span class="p">(</span><span class="n">velocidad</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">velocidadActual</span> <span class="p">=</span> <span class="n">velocidad</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Al hacer esto ya no podemos usar el inicializador por defecto para
+crear una instancia de <code>Vehiculo</code>, sino que debemos utilizar el
+inicializador definido:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Error: let miVehiculo = Vehiculo()</span>
+<span class="kd">let</span> <span class="nv">miVehiculo</span> <span class="p">=</span> <span class="n">Vehiculo</span><span class="p">(</span><span class="n">velocidad</span><span class="p">:</span> <span class="mi">40</span><span class="p">)</span>
+</code></pre></div>
+<p>Automáticamente las subclases heredan este inicializador y dejan de
+tener el inicializador por defecto:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Error: let miBici = Bicicleta()</span>
+<span class="kd">let</span> <span class="nv">miBic</span> <span class="p">=</span> <span class="n">Bicicleta</span><span class="p">(</span><span class="n">velocidad</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+<p>Podemos definir inicializadores propios en las subclases que
+inicialicen sus atributos, pero siempre es necesario inicializar la
+clase base llamando a su inicializador con <code>super</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Bicicleta</span><span class="p">:</span> <span class="n">Vehiculo</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">tieneCesta</span> <span class="p">=</span> <span class="kc">false</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">tieneCesta</span><span class="p">:</span> <span class="nb">Bool</span><span class="p">,</span> <span class="n">velocidad</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">tieneCesta</span> <span class="p">=</span> <span class="n">tieneCesta</span>
+        <span class="kc">super</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span><span class="n">velocidad</span><span class="p">:</span> <span class="n">velocidad</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="65-enlace-dinamico">6.5. Enlace dinámico<a class="headerlink" href="#65-enlace-dinamico" title="Permanent link">&para;</a></h3>
+<p>Al igual que en Java y en otros lenguajes orientados a objetos, una
+relación de herencia puede hacer imposible conocer en tiempo de
+compilación el código a ejecutar en una llamada a un método o una
+propiedad.</p>
+<p>Por ejemplo, supongamos que creamos otra subclase derivada de
+<code>Vehículo</code> que haga un ruido distinto a la que hace el tren:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Barco</span><span class="p">:</span> <span class="n">Vehiculo</span> <span class="p">{</span>
     <span class="kr">override</span> <span class="kd">func</span> <span class="nf">hazRuido</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
         <span class="k">return</span> <span class="s">&quot;Buuuuuuuu&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-
-Supongamos que definimos una función que recibe un `Vehículo` y que
-imprime el resultado a la llamada al método `hazRuido`:
-
+<p>Supongamos que definimos una función que recibe un <code>Vehículo</code> y que
+imprime el resultado a la llamada al método <code>hazRuido</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">imprimeRuido</span><span class="p">(</span><span class="n">vehiculo</span><span class="p">:</span> <span class="n">Vehiculo</span><span class="p">)</span> <span class="p">{</span>
     <span class="bp">print</span><span class="p">(</span><span class="n">vehiculo</span><span class="p">.</span><span class="n">hazRuido</span><span class="p">())</span>
 <span class="p">}</span>
 </code></pre></div>
-
-En tiempo de compilación no se puede saber qué tipo de vehículo va a
+<p>En tiempo de compilación no se puede saber qué tipo de vehículo va a
 pasarse como parámetro a la función, por lo que no se puede generar el
-código que va a ejecutarse en la llamada al método `hazRuido()`. El
+código que va a ejecutarse en la llamada al método <code>hazRuido()</code>. El
 código sólo se conocerá en tiempo de ejecución, dependiendo del tipo
 real de la instancia que se pasa como parámetro. Es lo que se denomina
-_enlace dinámico_.
-
+<em>enlace dinámico</em> o <em>late binding</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">barco</span> <span class="p">=</span> <span class="n">Barco</span><span class="p">()</span>
 <span class="kd">let</span> <span class="nv">tren</span> <span class="p">=</span> <span class="n">Tren</span><span class="p">()</span>
 <span class="n">imprimeRuido</span><span class="p">(</span><span class="n">vehiculo</span><span class="p">:</span> <span class="n">barco</span><span class="p">)</span> <span class="c1">// Imprime &quot;Buuuuuuuu&quot;</span>
 <span class="n">imprimeRuido</span><span class="p">(</span><span class="n">vehiculo</span><span class="p">:</span> <span class="n">tren</span><span class="p">)</span> <span class="c1">// Imprime &quot;Chu chu&quot;</span>
 </code></pre></div>
-
--->
-
 <h3 id="66-modificador-final">6.6. Modificador <code>final</code><a class="headerlink" href="#66-modificador-final" title="Permanent link">&para;</a></h3>
 <p>Por último, es posible prevenir un método o propiedad de ser
 sobreescrito declarándolo como <em>final</em>. Para ello, hay que escribir el
@@ -2846,6 +2858,31 @@ ni de tipo <code>NaveEstelar</code>, incluso aunque las instancias que hay tras
 de escena son do esos tipos. Por ser del tipo <code>TieneNombre</code> sabemos
 que tiene una propiedad <code>nombreCompleto</code> que podemos usar sobre la
 variable iteradora.</p>
+<!--
+
+Para el curso que viene:
+
+### 7.7 Un protocolo puede extender otro protocolo
+
+- Un protocolo puede extender otro protocolo (o más de uno)
+https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-ID280
+
+Un ejemplo es el Comparable y Equatable. En el ejercicio 1c de la
+práctica 12 no es necesario ajustarse al protocolo `Equatable` porque
+`Comparable` hereda de él.
+
+struct Equipo: Equatable, Comparable {
+    let puntos: Int
+    let nombre: String
+
+    static func < (primero: Equipo, segundo: Equipo) -> Bool {
+        return
+            primero.puntos < segundo.puntos ||
+            (primero.puntos == segundo.puntos && primero.nombre < segundo.nombre)
+    }
+}
+-->
+
 <h3 id="77-protocolo-equatable">7.7. Protocolo <code>Equatable</code><a class="headerlink" href="#77-protocolo-equatable" title="Permanent link">&para;</a></h3>
 <p>En la <a href="https://developer.apple.com/documentation/swift">biblioteca estándar de
 Swift</a> se definen
