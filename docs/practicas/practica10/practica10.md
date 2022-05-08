@@ -6,7 +6,7 @@ Los siguientes ejercicios están basados en los conceptos de teoría
 vistos la semana pasada. Antes de la clase de prácticas debes repasar
 todos los conceptos y **probar en con el compilador de Swift** todos
 los ejemplos de los siguientes apartados del tema 5 [_Programación
-funcional con Swift_](../../teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#9-opcionales)
+funcional con Swift_](../../teoria/tema05-programacion-funcional-swift.html#9-opcionales)
 
 - Opcionales
 - Clausuras
