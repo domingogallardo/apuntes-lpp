@@ -1,8 +1,8 @@
-# Práctica 9: Programación funcional en Swift (1)
+# Práctica 10: Programación funcional en Swift (2)
 
 ## Antes de la clase de prácticas
 
-- Los siguientes ejercicios están basados en los conceptos de teoría
+Los siguientes ejercicios están basados en los conceptos de teoría
 vistos la semana pasada. Antes de la clase de prácticas debes repasar
 todos los conceptos y **probar en con el compilador de Swift** todos
 los ejemplos de los siguientes apartados del tema 5 [_Programación
