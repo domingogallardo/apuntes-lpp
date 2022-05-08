@@ -450,7 +450,7 @@ print("cuadrado.origen está ahora en (\(cuadrado.origen.x), \(cuadrado.origen.y
 código del `set` y se actualizan las propiedades `x` e `y` con valores
 calculados a partir del nuevo centro que se pasa como parámetro (`centroNuevo`).
 
-<img src="imagenes/computedProperties.png" width="300px"/>
+<img src="imagenes/computedProperties.png" width="200px"/>
 
 - Se puede definir una versión acortada del _setter_ usando la variable
 por defecto `newValue` que contiene el nuevo valor asignado en el
@@ -1170,7 +1170,9 @@ class Vehiculo {
         return "viajando a \(velocidadActual) kilómetros por hora"
     }
     func hazRuido() -> String {
-        // no hace nada - un vehículo arbitrario no hace ruido necesariamente
+        // devuelve una cadena vacía - un vehículo arbitrario no hace
+        // ruido necesariamente
+        return ""
     }
 }
 ```
