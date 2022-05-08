@@ -503,8 +503,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#entrega-de-la-practica" class="md-nav__link">
-    Entrega de la práctica
+  <a href="#antes-de-la-clase-de-practicas" class="md-nav__link">
+    Antes de la clase de prácticas
   </a>
   
 </li>
@@ -548,6 +548,13 @@
           <li class="md-nav__item">
   <a href="#ejercicio-5" class="md-nav__link">
     Ejercicio 5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" class="md-nav__link">
+    Ejercicio 6
   </a>
   
 </li>
@@ -597,8 +604,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#entrega-de-la-practica" class="md-nav__link">
-    Entrega de la práctica
+  <a href="#antes-de-la-clase-de-practicas" class="md-nav__link">
+    Antes de la clase de prácticas
   </a>
   
 </li>
@@ -646,6 +653,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" class="md-nav__link">
+    Ejercicio 6
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -665,147 +679,287 @@
                 
                 
                 <h1 id="practica-9-programacion-funcional-en-swift-1">Práctica 9: Programación funcional en Swift (1)<a class="headerlink" href="#practica-9-programacion-funcional-en-swift-1" title="Permanent link">&para;</a></h1>
-<h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
-<p>Para entregar la práctica debes subir a Moodle el fichero
-<code>practica09.swift</code> con una cabecera inicial con tu nombre y apellidos,
-y las soluciones de cada ejercicio separadas por comentarios. Cada
-solución debe incluir:</p>
+<h2 id="antes-de-la-clase-de-practicas">Antes de la clase de prácticas<a class="headerlink" href="#antes-de-la-clase-de-practicas" title="Permanent link">&para;</a></h2>
 <ul>
-<li>La <strong>definición de las funciones</strong> que resuelven el ejercicio.</li>
-<li>Una visualización por pantalla con ejemplos distintos de los
-  presentados en el enunciado que <strong>demuestren qué hace la función</strong>.</li>
+<li>
+<p>Los siguientes ejercicios están basados en los conceptos de teoría
+vistos la semana pasada. Antes de la clase de prácticas debes repasar
+todos los conceptos y <strong>probar en con el compilador de Swift</strong> todos
+los ejemplos de los siguientes apartados del tema 5 <a href="../../teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html#9-opcionales"><em>Programación
+funcional con Swift</em></a></p>
+</li>
+<li>
+<p>Opcionales</p>
+</li>
+<li>Clausuras</li>
+<li>Funciones de orden superior</li>
+<li>Genéricos</li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">Importante</p>
-<p>Los ejemplos que muestres en pantalla <strong>deben ser distintos</strong> de los
-incluidos en el enunciado.</p>
-</div>
 <h2 id="ejercicios">Ejercicios<a class="headerlink" href="#ejercicios" title="Permanent link">&para;</a></h2>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
-<p>a) Implementa en Swift la función recursiva
-<code>prefijos(prefijo:palabras:)</code> que recibe una cadena y un array de
-palabras. Devuelve un array de <code>Bool</code> con los booleanos resultantes de
-comprobar si la cadena es prefijo de cada una de las palabras de la
-lista.</p>
+<p>a) Define la función <code>maxOpt(_ x: Int?, _ y: Int?) -&gt; Int?</code> que
+devuelve el máximo de dos enteros opcionales. En el caso en que ambos
+sean <code>nil</code> se devolverá <code>nil</code>. En el caso en que uno sea <code>nil</code> y el
+otro no se devolverá el entero que no es <code>nil</code>. En el caso en que
+ningún parámetro sea <code>nil</code> se devolverá el mayor.</p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">array</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;anterior&quot;</span><span class="p">,</span> <span class="s">&quot;antígona&quot;</span><span class="p">,</span> <span class="s">&quot;antena&quot;</span><span class="p">]</span>
-<span class="kd">let</span> <span class="nv">prefijo</span> <span class="p">=</span> <span class="s">&quot;ante&quot;</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">******</span><span class="se">\n</span><span class="s">1a) Función prefijos(prefijo:palabras:)</span><span class="se">\n</span><span class="s">******&quot;</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">prefijos</span><span class="p">(</span><span class="n">prefijo</span><span class="p">:</span> <span class="n">prefijo</span><span class="p">,</span> <span class="n">palabras</span><span class="p">:</span> <span class="n">array</span><span class="p">))</span>
-<span class="c1">// Imprime: [true, false, true]</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">res1</span> <span class="p">=</span> <span class="n">maxOpt</span><span class="p">(</span><span class="kc">nil</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span> 
+<span class="kd">let</span> <span class="nv">res2</span> <span class="p">=</span> <span class="n">maxOpt</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">res3</span> <span class="p">=</span> <span class="n">maxOpt</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;res1 = </span><span class="si">\(</span><span class="nb">String</span><span class="si">(</span><span class="n">describing</span><span class="p">:</span> <span class="n">res1</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;res2 = </span><span class="si">\(</span><span class="nb">String</span><span class="si">(</span><span class="n">describing</span><span class="p">:</span> <span class="n">res2</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;res3 = </span><span class="si">\(</span><span class="nb">String</span><span class="si">(</span><span class="n">describing</span><span class="p">:</span> <span class="n">res3</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime:</span>
+<span class="c1">// res1 = nil</span>
+<span class="c1">// res2 = Optional(10)</span>
+<span class="c1">// res3 = Optional(30)</span>
 </code></pre></div>
-<p>b) Implementa en Swift la función recursiva <code>parejaMayorParImpar(numeros:)</code> que
-recibe un array de enteros positivos y devuelve una pareja con dos
-enteros: el primero es el mayor número impar y el segundo el mayor
-número par. Si no hay ningún número par o impar se devolverá un 0.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">numeros</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">204</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">******</span><span class="se">\n</span><span class="s">1b) Función parejaMayorParImpar(numeros:)</span><span class="se">\n</span><span class="s">******&quot;</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">parejaMayorParImpar</span><span class="p">(</span><span class="n">numeros</span><span class="p">:</span> <span class="n">numeros</span><span class="p">))</span>
-<span class="c1">// Imprime: (201, 204)</span>
+<p>b1) Escribe una nueva versión del ejercicio 1b) de la práctica 9 que
+permita recibir números negativos y que devuelva una pareja de <code>(Int?,
+Int?)</code> con <code>nil</code> en la parte izquierda y/o derecha si no hay número
+impares o pares.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">numeros</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">202</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">204</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">******</span><span class="se">\n</span><span class="s">1b1) Función parejaMayorParImpar2(numeros:)</span><span class="se">\n</span><span class="s">******&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">parejaMayorParImpar2</span><span class="p">(</span><span class="n">numeros</span><span class="p">:</span> <span class="n">numeros</span><span class="p">))</span>
+<span class="c1">// Imprime:</span>
+<span class="c1">// parejaMayorParImpar2(numeros: [-10, 202, 12, 100, 204, 2])</span>
+<span class="c1">// (nil, Optional(204))</span>
 </code></pre></div>
+<p>b2) Escribe la función <code>sumaMaxParesImpares(numeros: [Int]) -&gt; Int</code>
+que llama a la función anterior y devuelve la suma del máximo de los
+pares y el máximo de los impares. En el caso en que se pase un array
+vacío deberá devolver un 0.</p>
+<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="s">&quot;sumaMaxParesImpares(numeros: </span><span class="si">\(</span><span class="n">numeros2</span><span class="si">)</span><span class="s">)&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">sumaMaxParesImpares</span><span class="p">(</span><span class="n">numeros</span><span class="p">:</span> <span class="n">numeros2</span><span class="p">))</span>
+<span class="c1">// Imprime:</span>
+<span class="c1">// sumaMaxParesImpares(numeros: [-10, 202, 12, 100, 204, 2])</span>
+<span class="c1">// 204</span>
+</code></pre></div>
+<p>b3) Escribe una nueva versión de la función del ejercicio b1) en la que se devuelva
+<code>nil</code> en el caso en que se le pase como parámetro un array
+vacío. ¿Cómo se debería cambiar la declaración de la función? Escribe
+también una nueva versión de la función del ejercicio b2) en la que se
+llame a la función anterior.</p>
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
-<p>a) Implementa en Swift la <strong>función recursiva</strong>
-<code>compruebaParejas(_:funcion:)</code> con el siguiente perfil:</p>
-<div class="highlight"><pre><span></span><code>([Int], (Int) -&gt; Int) -&gt; [(Int, Int)]
-</code></pre></div>
-<p>La función recibe dos parámetros: un <code>Array</code> de enteros y una función
-que recibe un entero y devuelve un entero. La función devolverá un
-array de tuplas que contiene las tuplas formadas por aquellos números
-contiguos del primer array que cumplan que el número es el resultado
-de aplicar la función al número situado en la posición anterior.</p>
-<p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">cuadrado</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-   <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+<p>a) Indica qué devuelven las siguientes expresiones:</p>
+<p>a.1)
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">nums</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">nums</span><span class="p">.</span><span class="bp">filter</span><span class="p">{</span><span class="nv">$0</span> <span class="o">%</span> <span class="mi">3</span> <span class="p">==</span> <span class="mi">0</span><span class="p">}.</span><span class="bp">count</span>
+</code></pre></div></p>
+<p>a.2)
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">nums2</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">nums2</span><span class="p">.</span><span class="bp">map</span><span class="p">{</span><span class="nv">$0</span><span class="o">+</span><span class="mi">100</span><span class="p">}.</span><span class="bp">filter</span><span class="p">{</span><span class="nv">$0</span> <span class="o">%</span> <span class="mi">5</span> <span class="p">==</span> <span class="mi">0</span><span class="p">}.</span><span class="bp">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">+</span><span class="p">)</span>
+</code></pre></div></p>
+<p>a.3)
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">cadenas</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;En&quot;</span><span class="p">,</span> <span class="s">&quot;un&quot;</span><span class="p">,</span> <span class="s">&quot;lugar&quot;</span><span class="p">,</span> <span class="s">&quot;de&quot;</span><span class="p">,</span> <span class="s">&quot;La&quot;</span><span class="p">,</span> <span class="s">&quot;Mancha&quot;</span><span class="p">]</span>
+<span class="n">cadenas</span><span class="p">.</span><span class="bp">sorted</span><span class="p">{</span><span class="nv">$0</span><span class="p">.</span><span class="bp">count</span> <span class="o">&lt;</span> <span class="nv">$1</span><span class="p">.</span><span class="bp">count</span><span class="p">}.</span><span class="bp">map</span><span class="p">{</span><span class="nv">$0</span><span class="p">.</span><span class="bp">count</span><span class="p">}</span>
+</code></pre></div></p>
+<p>a.4)
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">cadenas2</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;En&quot;</span><span class="p">,</span> <span class="s">&quot;un&quot;</span><span class="p">,</span> <span class="s">&quot;lugar&quot;</span><span class="p">,</span> <span class="s">&quot;de&quot;</span><span class="p">,</span> <span class="s">&quot;La&quot;</span><span class="p">,</span> <span class="s">&quot;Mancha&quot;</span><span class="p">]</span>
+<span class="n">cadenas2</span><span class="p">.</span><span class="bp">reduce</span><span class="p">([])</span> <span class="p">{</span>
+    <span class="p">(</span><span class="n">res</span><span class="p">:</span> <span class="p">[(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)],</span> <span class="n">c</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)]</span> <span class="k">in</span>
+        <span class="n">res</span> <span class="o">+</span> <span class="p">[(</span><span class="n">c</span><span class="p">,</span> <span class="n">c</span><span class="p">.</span><span class="bp">count</span><span class="p">)]}.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span><span class="nv">$0</span><span class="p">.</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="nv">$1</span><span class="p">.</span><span class="mi">1</span><span class="p">})</span>
+</code></pre></div></p>
+<p>b) Explica qué hacen las siguientes funciones y pon un ejemplo de su funcionamiento:</p>
+<p>b.1)
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">f</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">nums</span><span class="p">.</span><span class="bp">filter</span><span class="p">{</span><span class="nv">$0</span> <span class="p">==</span> <span class="n">n</span><span class="p">}.</span><span class="bp">count</span>
 <span class="p">}</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">compruebaParejas</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">105</span><span class="p">],</span> <span class="n">funcion</span><span class="p">:</span> <span class="n">cuadrado</span><span class="p">))</span>
-<span class="c1">// Imprime [(2,4), (4,16), (10,100)]</span>
-</code></pre></div>
-<p>b) Implementa en Swift la <strong>función recursiva</strong>
-<code>coinciden(parejas: [(Int,Int)], funcion: (Int)-&gt;Int)</code> que devuelve
-un array de booleanos que indica si el resultado de aplicar la función
-al primer número de cada pareja coincide con el segundo.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">array</span> <span class="p">=</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">14</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">16</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">25</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)]</span>
-<span class="kd">func</span> <span class="nf">cuadrado</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-   <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+</code></pre></div></p>
+<p>b.2)
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">g</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">nums</span><span class="p">.</span><span class="bp">reduce</span><span class="p">([],</span> <span class="p">{</span>
+        <span class="p">(</span><span class="n">res</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="k">in</span>
+            <span class="k">if</span> <span class="o">!</span><span class="n">res</span><span class="p">.</span><span class="bp">contains</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">res</span> <span class="o">+</span> <span class="p">[</span><span class="n">n</span><span class="p">]</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">res</span>
+            <span class="p">}</span>
+    <span class="p">})</span>
 <span class="p">}</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">coinciden</span><span class="p">(</span><span class="n">parejas</span><span class="p">:</span> <span class="n">array</span><span class="p">,</span> <span class="n">funcion</span><span class="p">:</span> <span class="n">cuadrado</span><span class="p">)</span><span class="s">&quot;)</span>
-<span class="s">// Imprime: [true, false, true, true, true]</span>
+</code></pre></div></p>
+<p>b.3)
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">h</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">([</span><span class="nb">Int</span><span class="p">],</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">{</span>
+   <span class="k">return</span> <span class="n">nums</span><span class="p">.</span><span class="bp">reduce</span><span class="p">(([],[]),</span> <span class="p">{</span>
+       <span class="p">(</span><span class="n">res</span><span class="p">:</span> <span class="p">([</span><span class="nb">Int</span><span class="p">],[</span><span class="nb">Int</span><span class="p">]),</span> <span class="n">num</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">)</span> <span class="p">-&gt;</span> <span class="p">([</span><span class="nb">Int</span><span class="p">],[</span><span class="nb">Int</span><span class="p">])</span> <span class="k">in</span>
+           <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;=</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">res</span><span class="p">.</span><span class="mi">1</span> <span class="o">+</span> <span class="p">[</span><span class="n">num</span><span class="p">])</span>
+           <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="p">((</span><span class="n">res</span><span class="p">.</span><span class="mi">0</span> <span class="o">+</span> <span class="p">[</span><span class="n">num</span><span class="p">],</span> <span class="n">res</span><span class="p">.</span><span class="mi">1</span><span class="p">))</span>
+           <span class="p">}</span>
+   <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>c) Implementa las siguientes funciones con funciones de orden superior.</p>
+<p>c.1) Función <code>suma(palabras:contienen:)</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">suma</span><span class="p">(</span><span class="n">palabras</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">],</span> <span class="n">contienen</span><span class="p">:</span> <span class="nb">Character</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span>
+</code></pre></div>
+<p>que recibe una array de cadenas y devuelve la suma de las longitudes
+de las cadenas que contiene el carácter que se pasa como parámetro.</p>
+<p>c.2) Función <code>sumaMenoresMayores(nums:pivote:)</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">sumaMenoresMayores</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">],</span> <span class="n">pivote</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span>
+</code></pre></div>
+<p>que recibe un array de números y un número pivote y
+devuelve una tupla con la suma de los números menores y mayores o
+iguales que el pivote.</p>
+<p>d) (Ejercicio sobre variables capturadas por clausuras) Reflexiona
+sobre el siguiente código y completa el hueco para obtener el
+resultado esperado.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">bar</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+  <span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">__________</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">3</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="n">x</span> <span class="o">+=</span> <span class="nv">$0</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">x</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">5</span>
+<span class="kd">let</span> <span class="nv">g</span> <span class="p">=</span> <span class="n">foo</span><span class="p">()</span>
+<span class="n">bar</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">g</span><span class="p">)</span>   <span class="c1">// =&gt; 9</span>
+<span class="n">bar</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">g</span><span class="p">)</span>   <span class="c1">// =&gt; 15</span>
 </code></pre></div>
 <h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
-<p>Supongamos que estamos escribiendo un programa que debe tratar
-movimientos de cuentas bancarias. Define un enumerado <code>Movimiento</code>
-con valores asociados con el que podamos representar:</p>
-<ul>
-<li>Depósito (valor asociado: <code>(Double)</code>)</li>
-<li>Cargo de un recibo (valor asociado: <code>(String, Double)</code>)</li>
-<li>Cajero (valor asociado: <code>(Double)</code>)</li>
-</ul>
-<p>Y define la función <code>aplica(movimientos:[Movimiento])</code> que reciba un
-array de movimientos y devuelva una pareja con el dinero resultante de acumular todos
-los movimientos y un array de Strings con todos los cargos realizados.</p>
+<p>Define un tipo enumerado con un árbol genérico, tal y como hicimos en
+el último ejercicio de la práctica anterior, que tenga como genérico
+el tipo de dato que contiene.</p>
+<p>En el siguiente ejemplo vemos cómo debería poderse definir con el
+mismo tipo genérico un árbol de enteros y un árbol de cadenas:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">arbolInt</span><span class="p">:</span> <span class="n">Arbol</span> <span class="p">=</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">53</span><span class="p">,</span> 
+                            <span class="p">[.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="p">[]),</span> 
+                             <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">[]),</span> 
+                             <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">41</span><span class="p">,</span> 
+                                   <span class="p">[.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span> <span class="p">[]),</span> 
+                                    <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">39</span><span class="p">,</span> <span class="p">[])</span>
+                                   <span class="p">])</span>
+                            <span class="p">])</span>
+<span class="kd">let</span> <span class="nv">arbolString</span><span class="p">:</span> <span class="n">Arbol</span> <span class="p">=</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Zamora&quot;</span><span class="p">,</span> 
+                               <span class="p">[.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Buendía&quot;</span><span class="p">,</span> 
+                                      <span class="p">[.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Albeza&quot;</span><span class="p">,</span> <span class="p">[]),</span> 
+                                       <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Berenguer&quot;</span><span class="p">,</span> <span class="p">[]),</span> 
+                                       <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Bolardo&quot;</span><span class="p">,</span> <span class="p">[])</span>
+                                      <span class="p">]),</span> 
+                                <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;Galván&quot;</span><span class="p">,</span> <span class="p">[])</span>
+                               <span class="p">])</span>
+</code></pre></div>
+<p>Define las funciones genéricas <code>toArray</code> y <code>toArrayFOS</code> que devuelvan un array con todos
+los componentes del árbol usando un recorrido <em>preorden</em> (primero la
+raíz y después los hijos). La primera la debes implementar con
+recursión mutua y la segunda usando funciones de orden superior.</p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">movimientos</span><span class="p">:</span> <span class="p">[</span><span class="n">Movimiento</span><span class="p">]</span> <span class="p">=</span> <span class="p">[.</span><span class="n">deposito</span><span class="p">(</span><span class="mf">830.0</span><span class="p">),</span> <span class="p">.</span><span class="n">cargoRecibo</span><span class="p">(</span><span class="s">&quot;Gimnasio&quot;</span><span class="p">,</span> <span class="mf">45.0</span><span class="p">),</span> <span class="p">.</span><span class="n">deposito</span><span class="p">(</span><span class="mf">400.0</span><span class="p">),</span> <span class="p">.</span><span class="n">cajero</span><span class="p">(</span><span class="mf">100.0</span><span class="p">),</span> <span class="p">.</span><span class="n">cargoRecibo</span><span class="p">(</span><span class="s">&quot;Fnac&quot;</span><span class="p">,</span> <span class="mf">38.70</span><span class="p">)]</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">aplica</span><span class="p">(</span><span class="n">movimientos</span><span class="p">:</span> <span class="n">movimientos</span><span class="p">))</span>
-<span class="c1">//Imprime (1046.3, [&quot;Gimnasio&quot;, &quot;Fnac&quot;])</span>
+<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="n">toArray</span><span class="p">(</span><span class="n">arbol</span><span class="p">:</span> <span class="n">arbolInt</span><span class="p">))</span>
+<span class="c1">// Imprime: [53, 13, 32, 41, 36, 39]</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">toArrayFOS</span><span class="p">(</span><span class="n">arbol</span><span class="p">:</span> <span class="n">arbolString</span><span class="p">))</span>
+<span class="c1">// Imprime: [&quot;Zamora&quot;, &quot;Buendía&quot;, &quot;Albeza&quot;, &quot;Berenguer&quot;, &quot;Bolardo&quot;, &quot;Galván&quot;]</span>
 </code></pre></div>
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
-<p>Implementa en Swift un tipo enumerado recursivo que permita construir
-árboles binarios de enteros. El enumerado debe tener </p>
+<p>Implementa en Swift la función <code>imprimirListadosNotas(alumnos:)</code> que
+recibe un array de tuplas, en donde cada tupla contiene información de
+la evaluación de un alumno de LPP (nombreAlumno, notaParcial1,
+notaParcial2, notaParcial3, añosMatriculacion) y que debe imprimir por pantalla los
+siguientes listados: </p>
 <ul>
-<li>un caso en el que guardar tres valores: un <code>Int</code> y dos árboles
-binarios (el hijo izquierdo y el hijo derecho)</li>
-<li>otro caso constante: un árbol binario vacío </li>
+<li>listado 1: array ordenado por nombre del alumno (orden alfabético
+creciente) </li>
+<li>listado 2: array ordenado por la nota del parcial 1 (orden
+decreciente de nota) </li>
+<li>listado 3: array ordenado por la nota del parcial 2 (orden creciente
+de nota) </li>
+<li>listado 4: array ordenado por año de matriculación y nota del
+  parcial 3 (orden decreciente de año y nota) </li>
+<li>listado 5: array ordenado por nota final (media de los tres
+parciales, ponderados en: 0,34, 0,33, 0,33) (orden decreciente de nota final)</li>
 </ul>
-<p>Llamaremos al tipo <code>ArbolBinario</code> y a los casos <code>nodo</code> y <code>vacio</code>.</p>
-<p>Impleméntalo de forma que el siguiente ejemplo funcione correctamente:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">arbol</span><span class="p">:</span> <span class="n">ArbolBinario</span> <span class="p">=</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> 
-                                <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">.</span><span class="n">vacio</span><span class="p">,</span> <span class="p">.</span><span class="n">vacio</span><span class="p">),</span> 
-                                <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="p">.</span><span class="n">vacio</span><span class="p">,</span> <span class="p">.</span><span class="n">vacio</span><span class="p">))</span>
+<p>Las ordenaciones hay que realizarlas usando la función <code>sorted</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Para que los listados se muestren formateados con espacios, puedes usar la siguiente
+función (para ello también debes incluir el import que se indica)</p>
+<div class="highlight"><pre><span></span><code><span class="kd">import</span> <span class="nc">Foundation</span>
+
+<span class="kd">func</span> <span class="nf">imprimirListadoAlumnos</span><span class="p">(</span><span class="kc">_</span> <span class="n">alumnos</span><span class="p">:</span> <span class="p">[(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Double</span><span class="p">,</span> <span class="nb">Double</span><span class="p">,</span> <span class="nb">Double</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)])</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Alumno   Parcial1   Parcial2   Parcial3  Años&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">alu</span> <span class="k">in</span> <span class="n">alumnos</span> <span class="p">{</span>
+        <span class="n">alu</span><span class="p">.</span><span class="mf">0.</span><span class="n">withCString</span> <span class="p">{</span>
+            <span class="bp">print</span><span class="p">(</span><span class="nb">String</span><span class="p">(</span><span class="n">format</span><span class="p">:</span><span class="s">&quot;%-10s %5.2f      %5.2f    %5.2f  %3d&quot;</span><span class="p">,</span> <span class="nv">$0</span><span class="p">,</span> <span class="n">alu</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span><span class="n">alu</span><span class="p">.</span><span class="mi">2</span><span class="p">,</span><span class="n">alu</span><span class="p">.</span><span class="mi">3</span><span class="p">,</span><span class="n">alu</span><span class="p">.</span><span class="mi">4</span><span class="p">))</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>Implementa también la función <code>suma(arbolb:)</code> que reciba una instancia de
-árbol binario y devuelva la suma de todos sus nodos:</p>
-<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="n">suma</span><span class="p">(</span><span class="n">arbolb</span><span class="p">:</span> <span class="n">arbol</span><span class="p">))</span>
-<span class="c1">// Imprime: 22</span>
+</div>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">listaAlumnos</span> <span class="p">=</span> <span class="p">[(</span><span class="s">&quot;Pepe&quot;</span><span class="p">,</span> <span class="mf">8.45</span><span class="p">,</span> <span class="mf">3.75</span><span class="p">,</span> <span class="mf">6.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> 
+                    <span class="p">(</span><span class="s">&quot;Maria&quot;</span><span class="p">,</span> <span class="mf">9.1</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="mf">8.18</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> 
+                    <span class="p">(</span><span class="s">&quot;Jose&quot;</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">6.65</span><span class="p">,</span> <span class="mf">7.96</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                    <span class="p">(</span><span class="s">&quot;Carmen&quot;</span><span class="p">,</span> <span class="mf">6.25</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">5.41</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> 
+                    <span class="p">(</span><span class="s">&quot;Felipe&quot;</span><span class="p">,</span> <span class="mf">5.65</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">3.16</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> 
+                    <span class="p">(</span><span class="s">&quot;Carla&quot;</span><span class="p">,</span> <span class="mf">6.25</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">4.23</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> 
+                    <span class="p">(</span><span class="s">&quot;Luis&quot;</span><span class="p">,</span> <span class="mf">6.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">4.63</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> 
+                    <span class="p">(</span><span class="s">&quot;Loli&quot;</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">2.19</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
+<span class="n">imprimirListadosNotas</span><span class="p">(</span><span class="n">listaAlumnos</span><span class="p">)</span>
+</code></pre></div>
+<p>Algunos de los listados que se deben mostrar serían los siguientes:</p>
+<div class="highlight"><pre><span></span><code>LISTADO ORIGINAL
+Alumno   Parcial1   Parcial2   Parcial3  Años
+Pepe        8.45       3.75     6.05    1
+Maria       9.10       7.50     8.18    1
+Jose        8.00       6.65     7.96    1
+Carmen      6.25       1.20     5.41    2
+Felipe      5.65       0.25     3.16    3
+Carla       6.25       1.25     4.23    2
+Luis        6.75       0.25     4.63    2
+Loli        3.00       1.25     2.19    3
+
+LISTADO ORDENADO por Parcial1 (decreciente)
+Alumno   Parcial1   Parcial2   Parcial3  Años
+Loli        3.00       1.25     2.19    3
+Felipe      5.65       0.25     3.16    3
+Carmen      6.25       1.20     5.41    2
+Carla       6.25       1.25     4.23    2
+Luis        6.75       0.25     4.63    2
+Jose        8.00       6.65     7.96    1
+Pepe        8.45       3.75     6.05    1
+Maria       9.10       7.50     8.18    1
 </code></pre></div>
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
-<p>Implementa en Swift un tipo enumerado recursivo que permita construir
-árboles de enteros usando el mismo enfoque que en Scheme: un nodo está
-formado por un dato (un <code>Int</code>) y una colección de árboles
-hijos. Llamaremos al tipo <code>Arbol</code>.</p>
-<p>Impleméntalo de forma que el siguiente ejemplo funcione correctamente:</p>
-<div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm">Definimos el árbol</span>
-
-<span class="cm">    10</span>
-<span class="cm">   / | \</span>
-<span class="cm">  3  5  8</span>
-<span class="cm">  |</span>
-<span class="cm">  1</span>
-
-<span class="cm">*/</span>
-
-<span class="kd">let</span> <span class="nv">arbol1</span> <span class="p">=</span> <span class="n">Arbol</span><span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[])</span>
-<span class="kd">let</span> <span class="nv">arbol3</span> <span class="p">=</span> <span class="n">Arbol</span><span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="n">arbol1</span><span class="p">])</span>
-<span class="kd">let</span> <span class="nv">arbol5</span> <span class="p">=</span> <span class="n">Arbol</span><span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="p">[])</span>
-<span class="kd">let</span> <span class="nv">arbol8</span> <span class="p">=</span> <span class="n">Arbol</span><span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="p">[])</span>
-<span class="kd">let</span> <span class="nv">arbol10</span> <span class="p">=</span> <span class="n">Arbol</span><span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="n">arbol3</span><span class="p">,</span> <span class="n">arbol5</span><span class="p">,</span> <span class="n">arbol8</span><span class="p">])</span>
+<p>Dado el array <code>listaAlumnos</code> del ejercicio anterior, utiliza funciones
+de orden superior para obtener los datos requeridos en cada caso.</p>
+<p>A) Número de alumnos que han aprobado primer parcial y suspendido el segundo</p>
+<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="n">listaAlumnos</span><span class="p">.</span> <span class="n">________________________________</span> <span class="p">)</span>
+<span class="c1">// Resultado: 5</span>
 </code></pre></div>
-<p>Implementa también la función <code>suma(arbol:cumplen:)</code> que reciba una instancia de
-árbol y una función <code>(Int) -&gt; Bool</code> que comprueba una
-condición sobre el nodo. La función debe devolver la suma de todos los
-nodos del árbol que cumplan la condición. </p>
-<p>Implementa la función usando la misma estrategia que ya utilizamos en
-Scheme de definir una función auxiliar <code>suma(bosque:cumplen:)</code> y una recursión
-mutua.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">esPar</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="p">==</span> <span class="mi">0</span>
-<span class="p">}</span>
+<p>B) Alumnos que han aprobado la asignatura (tienen una nota final &gt;= 5)</p>
+<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="n">listaAlumnos</span><span class="p">.</span><span class="n">_______________________________</span> <span class="p">)</span>
 
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La suma del árbol es: </span><span class="si">\(</span><span class="n">suma</span><span class="si">(</span><span class="n">arbol</span><span class="p">:</span> <span class="n">arbol10</span><span class="p">,</span> <span class="n">cumplen</span><span class="p">:</span> <span class="n">esPar</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="c1">// Imprime: La suma del árbol genérico es: 18</span>
+<span class="c1">// Resultado: [&quot;Pepe&quot;, &quot;Maria&quot;, &quot;Jose&quot;]</span>
+</code></pre></div>
+<p>C) Nota media de todos los alumnos en forma de tupla <code>(media_p1, media_p2, media_p3)</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">tupla</span> <span class="p">=</span> <span class="n">listaAlumnos</span><span class="p">.</span><span class="n">_____________________________________</span> <span class="p">)</span>
+<span class="n">tupla</span> <span class="p">=</span> <span class="p">(</span><span class="n">tupla</span><span class="p">.</span><span class="mi">0</span> <span class="o">/</span> <span class="nb">Double</span><span class="p">(</span><span class="n">listaAlumnos</span><span class="p">.</span><span class="bp">count</span><span class="p">),</span> <span class="n">tupla</span><span class="p">.</span><span class="mi">1</span> <span class="o">/</span> <span class="nb">Double</span><span class="p">(</span><span class="n">listaAlumnos</span><span class="p">.</span><span class="bp">count</span><span class="p">),</span> <span class="n">tupla</span><span class="p">.</span><span class="mi">2</span> <span class="o">/</span> <span class="nb">Double</span><span class="p">(</span><span class="n">listaAlumnos</span><span class="p">.</span><span class="bp">count</span><span class="p">))</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">tupla</span><span class="p">)</span>
+<span class="c1">// Resultado: (6.6812499999999995, 2.7624999999999997, 5.2262500000000003)</span>
+</code></pre></div>
+<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
+<p>Implementa la función <code>construye</code> con el siguiente perfil:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construye</span><span class="p">(</span><span class="n">operador</span><span class="p">:</span> <span class="nb">Character</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span>
+</code></pre></div>
+<p>La función recibe un operador que puede ser uno de los siguientes
+caracteres: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> y debe devolver una clausura que reciba
+dos argumentos y realice la operación indicada sobre ellos.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">f</span> <span class="p">=</span> <span class="n">construye</span><span class="p">(</span><span class="n">operador</span><span class="p">:</span> <span class="s">&quot;+&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="c1">// Imprime 5</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">construye</span><span class="p">(</span><span class="n">operador</span><span class="p">:</span> <span class="s">&quot;-&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="c1">// Imprime -1</span>
 </code></pre></div>
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2020-21<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2021-22<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
                 
