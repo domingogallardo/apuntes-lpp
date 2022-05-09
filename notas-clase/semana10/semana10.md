@@ -528,15 +528,48 @@ class ContadorPasos {
 }
 let contadorPasos = ContadorPasos()
 contadorPasos.totalPasos = 200
-// Imprime: "A punto de actualizar totalPasos a 200"
+// Imprime: "Voy a actualizar totalPasos a 200"
 // Imprime: "Añadidos 200 pasos"
 contadorPasos.totalPasos = 360
-// Imprime: "A punto de actualizar totalPasos a 360"
+// Imprime: "Voy a actualizar totalPasos a 360"
 // Imprime: "Añadidos 160 pasos"
 contadorPasos.totalPasos = 896
-// Imprime: "A punto de actualizar totalPasos a 896"
+// Imprime: "Voy a actualizar totalPasos a 896"
 // Imprime: "Añadidos 536 pasos"
 ```
+
+- Podemos incluso utilizar el observador `didSet` para evitar que queden
+en las propiedades valores no deseados. Por ejemplo, podríamos evitar
+que se asignen valores negativos al total de pasos:
+
+
+```swift
+class ContadorPasos {
+    var totalPasos: Int = 0 {
+        willSet(nuevoTotalPasos) {
+            print("Voy a actualizar totalPasos a \(nuevoTotalPasos)")
+        }
+        didSet {
+            if totalPasos < 0 {
+                totalPasos = oldValue
+            }
+            if totalPasos > oldValue  {
+                print("Añadidos \(totalPasos - oldValue) pasos")
+            }
+        }
+    }
+}
+let contadorPasos = ContadorPasos()
+contadorPasos.totalPasos = 200
+// Imprime: "Voy a actualizar totalPasos a 200"
+// Imprime: "Añadidos 200 pasos"
+contadorPasos.totalPasos = -10
+// Imprime: "Voy a actualizar totalPasos a -10"
+contadorPasos.totalPasos // devuelve 200
+```
+
+- Hay que hacer notar que al hacer la asignación `totalPasos =
+  oldValue` dentro del `didSet` no se vuelve a lanzar el `willSet`.
 
 ---
 

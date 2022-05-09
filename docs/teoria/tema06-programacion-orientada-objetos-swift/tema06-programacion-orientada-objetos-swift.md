@@ -836,6 +836,41 @@ se imprime un mensaje indicando cuántos pasos se han tomado. El
 observador `didSet` no proporciona un parámetro definido por nosotros
 para el valor antiguo, sino que usa el nombre por defecto `oldValue`.
 
+
+Podemos incluso utilizar el observador `didSet` para evitar que queden
+en las propiedades valores no deseados. Por ejemplo, podríamos evitar
+que se asignen valores negativos al total de pasos:
+
+```swift hl_lines="7 8 9"
+class ContadorPasos {
+    var totalPasos: Int = 0 {
+        willSet(nuevoTotalPasos) {
+            print("Voy a actualizar totalPasos a \(nuevoTotalPasos)")
+        }
+        didSet {
+            if totalPasos < 0 {
+                totalPasos = oldValue
+            }
+            if totalPasos > oldValue  {
+                print("Añadidos \(totalPasos - oldValue) pasos")
+            }
+        }
+    }
+}
+let contadorPasos = ContadorPasos()
+contadorPasos.totalPasos = 200
+// Imprime: "Voy a actualizar totalPasos a 200"
+// Imprime: "Añadidos 200 pasos"
+contadorPasos.totalPasos = -10
+// Imprime: "Voy a actualizar totalPasos a -10"
+contadorPasos.totalPasos // devuelve 200
+```
+
+Hay que hacer notar que al hacer la asignación `totalPasos =
+oldValue` dentro del `didSet` no se vuelve a lanzar el `willSet`.
+
+
+
 ### 3.5. Variables locales y globales
 
 Las capacidades anteriores de propiedades calculadas y de observadores
