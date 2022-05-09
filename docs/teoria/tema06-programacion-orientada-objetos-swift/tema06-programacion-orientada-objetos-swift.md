@@ -841,11 +841,13 @@ Podemos incluso utilizar el observador `didSet` para evitar que queden
 en las propiedades valores no deseados. Por ejemplo, podríamos evitar
 que se asignen valores negativos al total de pasos:
 
-```swift hl_lines="7 8 9"
+```swift hl_lines="4 6 9 10 11"
 class ContadorPasos {
     var totalPasos: Int = 0 {
         willSet(nuevoTotalPasos) {
-            print("Voy a actualizar totalPasos a \(nuevoTotalPasos)")
+            if nuevoTotalPasos > 0 {
+                print("Voy a actualizar totalPasos a \(nuevoTotalPasos)")
+            }
         }
         didSet {
             if totalPasos < 0 {
@@ -861,14 +863,12 @@ let contadorPasos = ContadorPasos()
 contadorPasos.totalPasos = 200
 // Imprime: "Voy a actualizar totalPasos a 200"
 // Imprime: "Añadidos 200 pasos"
-contadorPasos.totalPasos = -10
-// Imprime: "Voy a actualizar totalPasos a -10"
-contadorPasos.totalPasos // devuelve 200
+contadorPasos.totalPasos = -10 // No imprime nada
+contadorPasos.totalPasos // devuelve 200, el valor antiguo
 ```
 
 Hay que hacer notar que al hacer la asignación `totalPasos =
 oldValue` dentro del `didSet` no se vuelve a lanzar el `willSet`.
-
 
 
 ### 3.5. Variables locales y globales

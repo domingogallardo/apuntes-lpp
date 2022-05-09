@@ -547,7 +547,9 @@ que se asignen valores negativos al total de pasos:
 class ContadorPasos {
     var totalPasos: Int = 0 {
         willSet(nuevoTotalPasos) {
-            print("Voy a actualizar totalPasos a \(nuevoTotalPasos)")
+            if nuevoTotalPasos > 0 {
+                print("Voy a actualizar totalPasos a \(nuevoTotalPasos)")
+            }
         }
         didSet {
             if totalPasos < 0 {
@@ -563,9 +565,8 @@ let contadorPasos = ContadorPasos()
 contadorPasos.totalPasos = 200
 // Imprime: "Voy a actualizar totalPasos a 200"
 // Imprime: "Añadidos 200 pasos"
-contadorPasos.totalPasos = -10
-// Imprime: "Voy a actualizar totalPasos a -10"
-contadorPasos.totalPasos // devuelve 200
+contadorPasos.totalPasos = -10 // No imprime nada
+contadorPasos.totalPasos // devuelve 200, el valor antiguo
 ```
 
 - Hay que hacer notar que al hacer la asignación `totalPasos =
