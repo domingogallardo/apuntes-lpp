@@ -1849,6 +1849,34 @@ con el valor antiguo. Si el número total de pasos se ha incrementado,
 se imprime un mensaje indicando cuántos pasos se han tomado. El
 observador <code>didSet</code> no proporciona un parámetro definido por nosotros
 para el valor antiguo, sino que usa el nombre por defecto <code>oldValue</code>.</p>
+<p>Podemos incluso utilizar el observador <code>didSet</code> para evitar que queden
+en las propiedades valores no deseados. Por ejemplo, podríamos evitar
+que se asignen valores negativos al total de pasos:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">ContadorPasos</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">totalPasos</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="kr">willSet</span><span class="p">(</span><span class="n">nuevoTotalPasos</span><span class="p">)</span> <span class="p">{</span>
+            <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Voy a actualizar totalPasos a </span><span class="si">\(</span><span class="n">nuevoTotalPasos</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="kr">didSet</span> <span class="p">{</span>
+<span class="hll">            <span class="k">if</span> <span class="n">totalPasos</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+</span><span class="hll">                <span class="n">totalPasos</span> <span class="p">=</span> <span class="n">oldValue</span>
+</span><span class="hll">            <span class="p">}</span>
+</span>            <span class="k">if</span> <span class="n">totalPasos</span> <span class="o">&gt;</span> <span class="n">oldValue</span>  <span class="p">{</span>
+                <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Añadidos </span><span class="si">\(</span><span class="n">totalPasos</span> <span class="o">-</span> <span class="n">oldValue</span><span class="si">)</span><span class="s"> pasos&quot;</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">contadorPasos</span> <span class="p">=</span> <span class="n">ContadorPasos</span><span class="p">()</span>
+<span class="n">contadorPasos</span><span class="p">.</span><span class="n">totalPasos</span> <span class="p">=</span> <span class="mi">200</span>
+<span class="c1">// Imprime: &quot;Voy a actualizar totalPasos a 200&quot;</span>
+<span class="c1">// Imprime: &quot;Añadidos 200 pasos&quot;</span>
+<span class="n">contadorPasos</span><span class="p">.</span><span class="n">totalPasos</span> <span class="p">=</span> <span class="o">-</span><span class="mi">10</span>
+<span class="c1">// Imprime: &quot;Voy a actualizar totalPasos a -10&quot;</span>
+<span class="n">contadorPasos</span><span class="p">.</span><span class="n">totalPasos</span> <span class="c1">// devuelve 200</span>
+</code></pre></div>
+<p>Hay que hacer notar que al hacer la asignación <code>totalPasos =
+oldValue</code> dentro del <code>didSet</code> no se vuelve a lanzar el <code>willSet</code>.</p>
 <h3 id="35-variables-locales-y-globales">3.5. Variables locales y globales<a class="headerlink" href="#35-variables-locales-y-globales" title="Permanent link">&para;</a></h3>
 <p>Las capacidades anteriores de propiedades calculadas y de observadores
 también están disponibles para variables globales y locales.</p>
