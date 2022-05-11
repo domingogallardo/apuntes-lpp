@@ -3182,51 +3182,6 @@ var p = Persona(edad: 15, nombreCompleto: "Lucía")
 p.mayorEdad // false
 ```
 
-Es posible incluso extender clases de las librerías estándar de
-Swift, como `Int`, `Double`, `Array`, `String`.
-
-Por ejemplo, en Swift es algo complicado devolver el carácter situado
-en una posición de una cadena:
-
-```swift
-let cadena = "Hola"
-let posicion = 2
-let index = cadena.index(cadena.startIndex, offsetBy: posicion)
-cadena[index] // Devuelve "l"
-```
-
-Podemos definir una extensión que añada esa funcionalidad a la clase
-`String`:
-
-```swift
-extension String {
-    func at(_ pos: Int) -> Character {
-        let index = self.index(self.startIndex, offsetBy: pos)
-        return self[index]
-    }
-}
-```
-
-El método `at` devuelve el carácter situado en una posición de la
-cadena:
-
-```swift
-"Hola".at(3) // devuelve "a"
-```
-
-Incluso Swift permite definir un método con la palabra clave
-`subscript` para después usar la notación típica de corchetes para
-acceder a un componente:
-
-```swift
-extension String {
-    subscript (pos: Int) -> Character {
-        let index = self.index(self.startIndex, offsetBy: pos)
-        return self[index]
-    }
-}
-"Hola"[3] // devuelve "a"
-```
 
 <!--
 
@@ -3361,8 +3316,13 @@ let reedRichards = Persona(edad: 40, nombreCompleto: "Reed Richards")
 print(reedRichards.descripcion())
 ```
 
-También podemos añadir métodos a clases y estructuras importadas. Por
-ejemplo podemos añadir un nuevo método de instancia llamado
+Es posible incluso extender clases de las librerías estándar de
+Swift, como `Int`, `Double`, `Array`, `String` y clases y estructuras
+importadas. 
+
+#### 11.4.1 Nuevo método del tipo `Int` ####
+
+Por ejemplo podemos añadir un nuevo método de instancia llamado
 `repeticiones` al tipo `Int`:
 
 
@@ -3402,6 +3362,54 @@ Usando clausuras por la cola podemos hacer la llamada más concisa:
 // Adios!
 // Adios!
 ```
+
+#### 11.4.2 Nuevo método del tipo `String` ####
+
+Veamos otro ejemplo de extensión de un tipo ya existente.
+
+Por ejemplo, en Swift es algo complicado devolver el carácter situado
+en una posición de una cadena:
+
+```swift
+let cadena = "Hola"
+let posicion = 2
+let index = cadena.index(cadena.startIndex, offsetBy: posicion)
+cadena[index] // Devuelve "l"
+```
+
+Podemos definir una extensión que añada esa funcionalidad a la clase
+`String`:
+
+```swift
+extension String {
+    func at(_ pos: Int) -> Character {
+        let index = self.index(self.startIndex, offsetBy: pos)
+        return self[index]
+    }
+}
+```
+
+El método `at` devuelve el carácter situado en una posición de la
+cadena:
+
+```swift
+"Hola".at(3) // devuelve "a"
+```
+
+Incluso Swift permite definir un método con la palabra clave
+`subscript` para después usar la notación típica de corchetes para
+acceder a un componente:
+
+```swift
+extension String {
+    subscript (pos: Int) -> Character {
+        let index = self.index(self.startIndex, offsetBy: pos)
+        return self[index]
+    }
+}
+"Hola"[3] // devuelve "a"
+```
+
 
 ### 11.5. Métodos de instancia mutadores
 
