@@ -787,48 +787,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#115-metodos-de-instancia-mutadores" class="md-nav__link">
-    11.5. Métodos de instancia mutadores
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#116-ajustar-un-tipo-a-un-protocolo-mediante-una-extension" class="md-nav__link">
-    11.6. Ajustar un tipo a un protocolo mediante una extensión
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#117-declaracion-de-la-adopcion-de-un-protocolo-con-una-extension" class="md-nav__link">
-    11.7. Declaración de la adopción de un protocolo con una extensión
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#118-implementacion-de-metodos-de-un-protocolo" class="md-nav__link">
-    11.8. Implementación de métodos de un protocolo
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#119-extension-de-un-tipo-generico" class="md-nav__link">
-    11.9. Extensión de un tipo genérico
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1110-restriccion-en-las-extensiones-de-un-protocolo" class="md-nav__link">
-    11.10. Restricción en las extensiones de un protocolo
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1573,48 +1531,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#115-metodos-de-instancia-mutadores" class="md-nav__link">
-    11.5. Métodos de instancia mutadores
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#116-ajustar-un-tipo-a-un-protocolo-mediante-una-extension" class="md-nav__link">
-    11.6. Ajustar un tipo a un protocolo mediante una extensión
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#117-declaracion-de-la-adopcion-de-un-protocolo-con-una-extension" class="md-nav__link">
-    11.7. Declaración de la adopción de un protocolo con una extensión
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#118-implementacion-de-metodos-de-un-protocolo" class="md-nav__link">
-    11.8. Implementación de métodos de un protocolo
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#119-extension-de-un-tipo-generico" class="md-nav__link">
-    11.9. Extensión de un tipo genérico
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1110-restriccion-en-las-extensiones-de-un-protocolo" class="md-nav__link">
-    11.10. Restricción en las extensiones de un protocolo
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1751,8 +1667,6 @@ común. Ambos pueden:</p>
 <ul>
 <li>Definir propiedades y almacenar valores</li>
 <li>Definir métodos para proporcionar funcionalidad</li>
-<li>Definir subíndices para proporcionar acceso a sus valores usando una
-  sintaxis de subíndice</li>
 <li>Definir inicializadores para configurar el estado inicial</li>
 <li>Ser extendidas para expandir su funcionalidad más allá de una
   implementación por defecto</li>
@@ -2255,7 +2169,7 @@ solo-lectura eliminando la palabra clave <code>get</code> y sus llaves:</p>
 representa una caja rectangular 3D con propiedades <code>ancho</code>, <code>alto</code> y
 <code>profundo</code>. Esta estructura tiene una propiedad calculada llamada
 <code>volumen</code>, que calcula y devuelve el volumen actual del cuboide. No
-tendría sentido que el volumen fuera modificable, porque no sería
+tendría sentido que el volumen fuera modificable, porque sería
 ambiguo determinar qué valores concretos de ancho, alto y profundo
 deberían usarse para un valor particular del volumen.</p>
 <h3 id="34-observadores-de-propiedades">3.4. Observadores de propiedades<a class="headerlink" href="#34-observadores-de-propiedades" title="Permanent link">&para;</a></h3>
@@ -2641,11 +2555,6 @@ en imperativo (<code>array.sort()</code>).</p>
 <p>Sin embargo, hay ocasiones en las que necesitamos modificar las
 propiedades de nuestra estructura o enumeración dentro de un método
 particular. </p>
-<p>Necesitamos conseguir una conducta <em>mutadora</em> para ese método. El
-método puede mutar (esto es, cambiar) sus propiedades desde dentro del
-método, así como asignar una instancia completamente nueva a su
-propiedad implícita <code>self</code>, con lo que esta nueva instancia
-reemplazará la existente cuando el método termine.</p>
 <p>Podemos conseguir esta conducta colocando la palabra clave <code>mutating</code>
 antes de la palabra <code>func</code> del método:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Punto</span> <span class="p">{</span>
@@ -2660,8 +2569,9 @@ antes de la palabra <code>func</code> del método:</p>
 <span class="bp">print</span><span class="p">(</span><span class="s">&quot;El punto está ahora en (</span><span class="si">\(</span><span class="n">unPunto</span><span class="p">.</span><span class="n">x</span><span class="si">)</span><span class="s">, </span><span class="si">\(</span><span class="n">unPunto</span><span class="p">.</span><span class="n">y</span><span class="si">)</span><span class="s">)&quot;</span><span class="p">)</span>
 <span class="c1">// Imprime &quot;El punto está ahora en (3.0, 4.0)&quot;</span>
 </code></pre></div>
-<p>La estructura <code>Punto</code> anterior define un método mutador
-<code>incrementa(incX:incY:)</code> que mueve una instancia de <code>Punto</code> una cierta
+<p>El método tiene ahora una conducta <em>mutadora</em>, puede mutar las
+propiedades de la instancia. En concreto, el método mutador
+<code>incrementa(incX:incY:)</code> mueve una instancia de <code>Punto</code> una cierta
 cantidad. En lugar de devolver un nuevo punto, el método modifica
 realmente el punto en el que es llamado. La palabra clave <code>mutating</code>
 se añade a su definición para permitirle modificar sus propiedades.</p>
@@ -4139,9 +4049,8 @@ conoce como <em>modelado retroactivo</em>).</p>
 <p>Entre otras cosas, las extensiones pueden: </p>
 <ul>
 <li>Añadir <strong>propiedades calculadas</strong> de instancia y de tipo</li>
-<li>Definir métodos de instancia y de tipo</li>
+<li>Definir nuevos métodos de instancia y de tipo</li>
 <li>Proporcionar nuevos inicializadores</li>
-<li>Hacer que un tipo existente se ajuste a un protocolo</li>
 </ul>
 <h3 id="111-sintaxis">11.1. Sintaxis<a class="headerlink" href="#111-sintaxis" title="Permanent link">&para;</a></h3>
 <p>Para declarar una extensión hay que usar la palabra clave <code>extension</code>,
@@ -4178,56 +4087,6 @@ la clase. </p>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">p</span> <span class="p">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">edad</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="n">nombreCompleto</span><span class="p">:</span> <span class="s">&quot;Lucía&quot;</span><span class="p">)</span>
 <span class="n">p</span><span class="p">.</span><span class="n">mayorEdad</span> <span class="c1">// false</span>
 </code></pre></div>
-<!--
-
-Por ejemplo, podemos añadir propiedades calculadas a la clase Double
-para trabajar con unidades de distancia. Las siguientes propiedades
-convierten una cantidad en las unidades correspondientes a su
-equivalente en metros:
-
-
-<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Double</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">km</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">self</span> <span class="o">*</span> <span class="mf">1_000.0</span> <span class="p">}</span>
-    <span class="kd">var</span> <span class="nv">m</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">self</span> <span class="p">}</span>
-    <span class="kd">var</span> <span class="nv">cm</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">self</span> <span class="o">/</span> <span class="mf">100.0</span> <span class="p">}</span>
-    <span class="kd">var</span> <span class="nv">mm</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">self</span> <span class="o">/</span> <span class="mf">1_000.0</span> <span class="p">}</span>
-    <span class="kd">var</span> <span class="nv">ft</span><span class="p">:</span> <span class="nb">Double</span> <span class="p">{</span> <span class="k">return</span> <span class="kc">self</span> <span class="o">/</span> <span class="mf">3.28084</span> <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-
-Una vez definida la extensión, podemos usarla en cualquier variable
-`Double`. Incluso la podemos usar en literales:
-
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">distancia</span> <span class="p">=</span> <span class="mf">11.</span><span class="n">km</span>
-<span class="c1">// En distancia tendremos 11000 metros</span>
-<span class="kd">let</span> <span class="nv">unaPulgada</span> <span class="p">=</span> <span class="mf">25.4</span><span class="p">.</span><span class="n">mm</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Una pulgada es </span><span class="si">\(</span><span class="n">unaPulgada</span><span class="si">)</span><span class="s"> metros&quot;</span><span class="p">)</span>
-<span class="c1">// Una pulgada es 0.0254 metros</span>
-<span class="kd">let</span> <span class="nv">tresPies</span> <span class="p">=</span> <span class="mf">3.</span><span class="n">ft</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Tres pies son </span><span class="si">\(</span><span class="n">tresPies</span><span class="si">)</span><span class="s"> metros&quot;</span><span class="p">)</span>
-<span class="c1">// Tres pies son 0.914399970739201 metros</span>
-</code></pre></div>
-
-Por ejemplo, cuando se escribe `11.km` se pide el valor de la
-propiedad calculada `km` de la instancia `11`. La propiedad calculada
-devuelve el resultado de multiplicar `11` por `1000`, esto es, los
-metros correspondientes a 11 kilómetros.
-
-De forma similar, hay 3.28084 pies en un metro, por lo que la
-propiedad calculada `ft` divide el valor `Double` subyacente por
-3.28084, para conventirlo de pies a metros.
-
-Estas propiedades son propiedades calculadas de solo lectura, por lo
-que se expresan sin la palabra clave `get`, por brevedad. Sus valores
-devueltos son de tipo `Double`, y pueden usarse en cálculos
-matemáticos en cualquier sitio que se acepte un `Double`:
-
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">unMaraton</span> <span class="p">=</span> <span class="mf">42.</span><span class="n">km</span> <span class="o">+</span> <span class="mf">195.</span><span class="n">m</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Un maratón tiene una longitud de </span><span class="si">\(</span><span class="n">unMaraton</span><span class="si">)</span><span class="s"> metros&quot;</span><span class="p">)</span>
-<span class="c1">// Un maratón tiene una longitud de 42195.0 metros</span>
-</code></pre></div>
--->
-
 <h3 id="113-inicializadores">11.3. Inicializadores<a class="headerlink" href="#113-inicializadores" title="Permanent link">&para;</a></h3>
 <p>Las extensiones pueden añadir nuevos inicializadores a tipos
 existentes. Esto nos permite extender otros tipos para aceptar
@@ -4355,192 +4214,6 @@ acceder a un componente:</p>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="s">&quot;Hola&quot;</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="c1">// devuelve &quot;a&quot;</span>
-</code></pre></div>
-<h3 id="115-metodos-de-instancia-mutadores">11.5. Métodos de instancia mutadores<a class="headerlink" href="#115-metodos-de-instancia-mutadores" title="Permanent link">&para;</a></h3>
-<p>Los métodos de instancia añadidos con una extensión también pueden
-modificar (o mutar) la propia instancia. Los métodos de las
-estructuras y los enumerados que modifican <code>self</code> o sus propiedades
-deben marcarse como <code>mutating</code>.</p>
-<p>Por ejemplo: </p>
-<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Int</span> <span class="p">{</span>
-    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">cuadrado</span><span class="p">()</span> <span class="p">{</span>
-        <span class="kc">self</span> <span class="p">=</span> <span class="kc">self</span> <span class="o">*</span> <span class="kc">self</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="kd">var</span> <span class="nv">unInt</span> <span class="p">=</span> <span class="mi">3</span>
-<span class="n">unInt</span><span class="p">.</span><span class="n">cuadrado</span><span class="p">()</span>
-<span class="c1">// unInt es ahora 9</span>
-</code></pre></div>
-<h3 id="116-ajustar-un-tipo-a-un-protocolo-mediante-una-extension">11.6. Ajustar un tipo a un protocolo mediante una extensión<a class="headerlink" href="#116-ajustar-un-tipo-a-un-protocolo-mediante-una-extension" title="Permanent link">&para;</a></h3>
-<p>Una extensión puede extender un tipo existente para hacer que se
-ajuste a uno o más protocolos. En este caso, los nombres de los
-protocolos se escriben exactamente de la misma forma que en una clase
-o estructura:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">UnTipo</span><span class="p">:</span> <span class="n">UnProtocolo</span><span class="p">,</span> <span class="n">OtroProtocolo</span> <span class="p">{</span>
-    <span class="c1">// implementación de los requisitos del protocolo</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Las instancias del tipo adoptarán automáticamente el protocolo y se
-ajustarán al protocolo con las propiedades y métodos añadidos por la
-extensión.</p>
-<p>Por ejemplo, este protocolo, llamado <code>RepresentableComoTexto</code> puede
-ser implementado por cualquier tipo que tenga una forma de
-representarse como texto. Esto puede ser una descripción de si mismo o
-una versión de texto de su estado actual:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">RepresentableComoTexto</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">descripcionTextual</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>La clase <code>Dado</code> que vimos anteriormente puede extenderse para ajustarse al protocolo:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Dado</span><span class="p">:</span> <span class="n">RepresentableComoTexto</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">descripcionTextual</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s">&quot;Un dado de </span><span class="si">\(</span><span class="n">caras</span><span class="si">)</span><span class="s"> caras&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Esta extensión adopta el nuevo protocolo exactamente como si el <code>Dado</code>
-lo hubiera proporcionado en su implementación original. El nombre del
-protocolo se indica tras el nombre del tipo, separado por dos puntos,
-y se proporciona una implementación entre llaves.</p>
-<p>Cualquier instancia de un dado se puede tratar ahora como <code>RepresentableComoTexto</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">d12</span> <span class="p">=</span> <span class="n">Dado</span><span class="p">(</span><span class="n">caras</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="n">generador</span><span class="p">:</span> <span class="n">GeneradorLinealCongruente</span><span class="p">())</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">d12</span><span class="p">.</span><span class="n">descripcionTextual</span><span class="p">)</span>
-<span class="c1">// Un dado de 12 caras</span>
-</code></pre></div>
-<p>De forma similar, un <code>Rectangulo</code> también puede extenderse para
-adoptar y ajustarse al protocolo:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Rectangulo</span><span class="p">:</span> <span class="n">RepresentableComoTexto</span> <span class="p">{</span>
-   <span class="kd">var</span> <span class="nv">descripcionTextual</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="s">&quot;Un rectángulo situado en (</span><span class="si">\(</span><span class="n">origen</span><span class="p">.</span><span class="n">x</span><span class="si">)</span><span class="s">, </span><span class="si">\(</span><span class="n">origen</span><span class="p">.</span><span class="n">y</span><span class="si">)</span><span class="s">)&quot;</span>
-   <span class="p">}</span>
-<span class="p">}</span>
-<span class="kd">let</span> <span class="nv">rectanguloInicializado</span> <span class="p">=</span> <span class="n">Rectangulo</span><span class="p">(</span><span class="n">origen</span><span class="p">:</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">),</span>
-                                <span class="n">tamaño</span><span class="p">:</span> <span class="n">Tamaño</span><span class="p">(</span><span class="n">ancho</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">alto</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">))</span>
-
-<span class="bp">print</span><span class="p">(</span><span class="n">rectanguloInicializado</span><span class="p">.</span><span class="n">descripcionTextual</span><span class="p">)</span>
-<span class="c1">// Un rectángulo situado en (2.0, 2.0)</span>
-</code></pre></div>
-<h3 id="117-declaracion-de-la-adopcion-de-un-protocolo-con-una-extension">11.7. Declaración de la adopción de un protocolo con una extensión<a class="headerlink" href="#117-declaracion-de-la-adopcion-de-un-protocolo-con-una-extension" title="Permanent link">&para;</a></h3>
-<p>Si un tipo ya se ajusta a todos los requisitos de un protocolo, pero
-todavía no se ha declarado que se ajusta al protocolo, podemos hacer
-que lo adopte con una extensión vacía:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Hamster</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">nombre</span><span class="p">:</span> <span class="nb">String</span>
-    <span class="kd">var</span> <span class="nv">descripcionTextual</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s">&quot;Un hamster llamado </span><span class="si">\(</span><span class="n">nombre</span><span class="si">)</span><span class="s">&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="kd">extension</span> <span class="nc">Hamster</span><span class="p">:</span> <span class="n">RepresentableComoTexto</span> <span class="p">{}</span>
-</code></pre></div>
-<p>Las instancias de <code>Hamster</code> pueden ahora usarse en cualquier sitio que
-se requiera un tipo <code>RepresentableComoTexto</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">simonElHamster</span> <span class="p">=</span> <span class="n">Hamster</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Simon&quot;</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nv">algoRepresentableComoTexto</span><span class="p">:</span> <span class="n">RepresentableComoTexto</span> <span class="p">=</span> <span class="n">simonElHamster</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">algoRepresentableComoTexto</span><span class="p">.</span><span class="n">descripcionTextual</span><span class="p">)</span>
-<span class="c1">// Un hamster llamado Simon</span>
-</code></pre></div>
-<h3 id="118-implementacion-de-metodos-de-un-protocolo">11.8. Implementación de métodos de un protocolo<a class="headerlink" href="#118-implementacion-de-metodos-de-un-protocolo" title="Permanent link">&para;</a></h3>
-<p>Podemos definir extensiones en los protocolos para proporcionar
-implementaciones de métodos y propiedades a todos los tipos que se
-ajustan a él. Esto permite definir conductas en los propios
-protocolos, más que en cada tipo individual o en una función global.</p>
-<p>Por ejemplo, el protocolo <code>GeneradorNumerosAleatorios</code> puede ser extendido
-para proporcionar un método <code>boolAleatorio()</code>, que usa el resultado del
-<code>random()</code> requerido para devolver un valor <code>Bool</code> aleatorio:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">GeneradorNumerosAleatorios</span> <span class="p">{</span>
-    <span class="kd">func</span> <span class="nf">randomBool</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">random</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.5</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Al crear una extensión en el protocolo, todos los tipos que se ajustan
-a él adquieren automáticamente esta implementación sin ninguna
-modificación adicional.</p>
-<div class="highlight"><pre><span></span><code>let generator = GeneradorLinealCongruente()
-print(&quot;Un número aleatorio: \(generator.random())&quot;)
-// Imprime &quot;Un número aleatorio: 0.37464991998171&quot;
-print(&quot;Y un booleano aleatorio: \(generator.randomBool())&quot;)
-// Imprime &quot;Un booleano aleatorio: true&quot;
-</code></pre></div>
-<p>El tipo que se ajusta al protocolo puede proporcionar su propia
-implementación, que se usará en lugar de la proporcionada por la extensión.</p>
-<h3 id="119-extension-de-un-tipo-generico">11.9. Extensión de un tipo genérico<a class="headerlink" href="#119-extension-de-un-tipo-generico" title="Permanent link">&para;</a></h3>
-<p>Cuando se extiende un tipo genérico, no hace falta añadir el parámetro
-del tipo entre <code>&lt;&gt;</code>. El tipo genérico está disponible a partir de la
-definición original y se puede usar tal cual en el cuerpo de la
-extensión.</p>
-<p>Por ejemplo, podemos extender el tipo genérico <code>Stack</code> para añadir una
-propiedad computable de sólo lectura que devuelva el tope de la pila:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Stack</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">topItem</span><span class="p">:</span> <span class="n">Element</span><span class="p">?</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">items</span><span class="p">.</span><span class="bp">isEmpty</span> <span class="p">?</span> <span class="kc">nil</span> <span class="p">:</span> <span class="n">items</span><span class="p">[</span><span class="n">items</span><span class="p">.</span><span class="bp">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>En la extensión se utiliza el nombre genérico <code>Element</code> sin tener que
-declararlo después de <code>Stack</code>, porque está definido en la estructura
-original.</p>
-<p>Ahora ya se puede acceder al tope de la pila sin retirar el elemento:</p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="kd">let</span> <span class="nv">topItem</span> <span class="p">=</span> <span class="n">stackOfStrings</span><span class="p">.</span><span class="n">topItem</span> <span class="p">{</span>
-    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;El ítem en el tope de la pila es </span><span class="si">\(</span><span class="n">topItem</span><span class="si">)</span><span class="s">.&quot;</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Imprime &quot;El ítem en el tope de la pila es tres.&quot;</span>
-</code></pre></div>
-<h3 id="1110-restriccion-en-las-extensiones-de-un-protocolo">11.10. Restricción en las extensiones de un protocolo<a class="headerlink" href="#1110-restriccion-en-las-extensiones-de-un-protocolo" title="Permanent link">&para;</a></h3>
-<p>En una extensión de un protocolo es posible definir una restricción
-indicando una condición que se debe cumplir para que la extensión se
-pueda aplicar. Los métodos y propiedades de la extensión sólo estarán
-disponibles en aquellos tipos que se ajusten al protocolo y cumplan el
-requisito.</p>
-<p>El requisito se definen usando una cláusula genérica <code>where</code> en la que
-se indica una condición sobre algún <em>tipo asociado</em> definido en el
-protocolo.</p>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>No hemos visto el concepto de <a href="https://docs.swift.org/swift-book/LanguageGuide/Generics.html#ID189"><em>tipo
-asociado</em></a>
-en un protocolo. Es una especie de tipo genérico que se define en el
-protocolo y que se convierte en un tipo concreto en la clase que se
-ajusta al protocolo.</p>
-</div>
-<p>Por ejemplo, podemos definir una extensión al protocolo <code>Collection</code>
-que se aplique a cualquier colección cuyos elementos cumplen el
-protocolo <code>Equatable</code>. De esta forma nos aseguramos de que los
-operadores <code>==</code> y <code>!=</code> están definidos y podemos usarlos en la
-extensión:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Collection</span> <span class="k">where</span> <span class="n">Element</span><span class="p">:</span> <span class="nb">Equatable</span> <span class="p">{</span>
-    <span class="kd">func</span> <span class="nf">allEqual</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
-        <span class="k">for</span> <span class="n">element</span> <span class="k">in</span> <span class="kc">self</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="n">element</span> <span class="o">!=</span> <span class="kc">self</span><span class="p">.</span><span class="bp">first</span> <span class="p">{</span>
-                <span class="k">return</span> <span class="kc">false</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="kc">true</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>El nombre <code>Element</code> es un nombre definido en el protocolo <code>Collection</code>
-que se refiere al tipo de los elementos de la colección. Es un <em>tipo
-asociado</em>.</p>
-<p>El método <code>allEqual()</code> devuelve <code>true</code> si y sólo si todos los
-elementos en la colección son iguales.</p>
-<p>Un ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">numerosIguales</span> <span class="p">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
-<span class="kd">let</span> <span class="nv">numerosDiferentes</span> <span class="p">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>
-</code></pre></div>
-<p>Dado que ambos arrays cumplen el protocolo <code>Collection</code> y los enteros
-cumplen el protocolo <code>Equatable</code> podemos usar el método <code>allEqual()</code>:</p>
-<div class="highlight"><pre><span></span><code>print(numerosIguales.allEqual())
-// Prints &quot;true&quot;
-print(numerosDiferentes.allEqual())
-// Prints &quot;false&quot;
-</code></pre></div>
-<p>En una colección cuyos elementos no cumplen el protocolo <code>Equatable</code>
-no se puede utilizar el método de la extensión:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">tormenta</span> <span class="p">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">edad</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span> <span class="n">nombreCompleto</span><span class="p">:</span> <span class="s">&quot;Ororo Munroe&quot;</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nv">superHeroes</span> <span class="p">=</span> <span class="p">[</span><span class="n">tormenta</span><span class="p">,</span> <span class="n">peterParker</span><span class="p">,</span> <span class="n">reedRichards</span><span class="p">]</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">superHeroes</span><span class="p">.</span><span class="n">allEqual</span><span class="p">())</span>
-<span class="c1">//error: type &#39;Persona&#39; does not conform to protocol &#39;Equatable&#39;</span>
 </code></pre></div>
 <h2 id="12-bibliografia">12. Bibliografía<a class="headerlink" href="#12-bibliografia" title="Permanent link">&para;</a></h2>
 <ul>
