@@ -130,8 +130,6 @@ común. Ambos pueden:
 
 - Definir propiedades y almacenar valores
 - Definir métodos para proporcionar funcionalidad
-- Definir subíndices para proporcionar acceso a sus valores usando una
-  sintaxis de subíndice
 - Definir inicializadores para configurar el estado inicial
 - Ser extendidas para expandir su funcionalidad más allá de una
   implementación por defecto
@@ -733,7 +731,7 @@ Este ejemplo define una nueva estructura llamada `Cubiode`, que
 representa una caja rectangular 3D con propiedades `ancho`, `alto` y
 `profundo`. Esta estructura tiene una propiedad calculada llamada
 `volumen`, que calcula y devuelve el volumen actual del cuboide. No
-tendría sentido que el volumen fuera modificable, porque no sería
+tendría sentido que el volumen fuera modificable, porque sería
 ambiguo determinar qué valores concretos de ancho, alto y profundo
 deberían usarse para un valor particular del volumen.
 
@@ -1207,12 +1205,6 @@ Sin embargo, hay ocasiones en las que necesitamos modificar las
 propiedades de nuestra estructura o enumeración dentro de un método
 particular. 
 
-Necesitamos conseguir una conducta _mutadora_ para ese método. El
-método puede mutar (esto es, cambiar) sus propiedades desde dentro del
-método, así como asignar una instancia completamente nueva a su
-propiedad implícita `self`, con lo que esta nueva instancia
-reemplazará la existente cuando el método termine.
-
 Podemos conseguir esta conducta colocando la palabra clave `mutating`
 antes de la palabra `func` del método:
 
@@ -1230,8 +1222,9 @@ print("El punto está ahora en (\(unPunto.x), \(unPunto.y))")
 // Imprime "El punto está ahora en (3.0, 4.0)"
 ```
 
-La estructura `Punto` anterior define un método mutador
-`incrementa(incX:incY:)` que mueve una instancia de `Punto` una cierta
+El método tiene ahora una conducta _mutadora_, puede mutar las
+propiedades de la instancia. En concreto, el método mutador
+`incrementa(incX:incY:)` mueve una instancia de `Punto` una cierta
 cantidad. En lugar de devolver un nuevo punto, el método modifica
 realmente el punto en el que es llamado. La palabra clave `mutating`
 se añade a su definición para permitirle modificar sus propiedades.
@@ -3127,9 +3120,8 @@ conoce como _modelado retroactivo_).
 Entre otras cosas, las extensiones pueden: 
 
 - Añadir **propiedades calculadas** de instancia y de tipo
-- Definir métodos de instancia y de tipo
+- Definir nuevos métodos de instancia y de tipo
 - Proporcionar nuevos inicializadores
-- Hacer que un tipo existente se ajuste a un protocolo
 
 
 ### 11.1. Sintaxis
@@ -3181,60 +3173,6 @@ Podemos preguntar si una persona es mayor de edad:
 var p = Persona(edad: 15, nombreCompleto: "Lucía")
 p.mayorEdad // false
 ```
-
-
-<!--
-
-Por ejemplo, podemos añadir propiedades calculadas a la clase Double
-para trabajar con unidades de distancia. Las siguientes propiedades
-convierten una cantidad en las unidades correspondientes a su
-equivalente en metros:
-
-
-```swift
-extension Double {
-    var km: Double { return self * 1_000.0 }
-    var m: Double { return self }
-    var cm: Double { return self / 100.0 }
-    var mm: Double { return self / 1_000.0 }
-    var ft: Double { return self / 3.28084 }
-}
-```
-
-Una vez definida la extensión, podemos usarla en cualquier variable
-`Double`. Incluso la podemos usar en literales:
-
-```swift
-let distancia = 11.km
-// En distancia tendremos 11000 metros
-let unaPulgada = 25.4.mm
-print("Una pulgada es \(unaPulgada) metros")
-// Una pulgada es 0.0254 metros
-let tresPies = 3.ft
-print("Tres pies son \(tresPies) metros")
-// Tres pies son 0.914399970739201 metros
-```
-
-Por ejemplo, cuando se escribe `11.km` se pide el valor de la
-propiedad calculada `km` de la instancia `11`. La propiedad calculada
-devuelve el resultado de multiplicar `11` por `1000`, esto es, los
-metros correspondientes a 11 kilómetros.
-
-De forma similar, hay 3.28084 pies en un metro, por lo que la
-propiedad calculada `ft` divide el valor `Double` subyacente por
-3.28084, para conventirlo de pies a metros.
-
-Estas propiedades son propiedades calculadas de solo lectura, por lo
-que se expresan sin la palabra clave `get`, por brevedad. Sus valores
-devueltos son de tipo `Double`, y pueden usarse en cálculos
-matemáticos en cualquier sitio que se acepte un `Double`:
-
-```Swift
-let unMaraton = 42.km + 195.m
-print("Un maratón tiene una longitud de \(unMaraton) metros")
-// Un maratón tiene una longitud de 42195.0 metros
-```
--->
 
 ### 11.3. Inicializadores
 
@@ -3409,264 +3347,6 @@ extension String {
 }
 "Hola"[3] // devuelve "a"
 ```
-
-
-### 11.5. Métodos de instancia mutadores
-
-Los métodos de instancia añadidos con una extensión también pueden
-modificar (o mutar) la propia instancia. Los métodos de las
-estructuras y los enumerados que modifican `self` o sus propiedades
-deben marcarse como `mutating`.
-
-Por ejemplo: 
-
-```swift
-extension Int {
-    mutating func cuadrado() {
-        self = self * self
-    }
-}
-var unInt = 3
-unInt.cuadrado()
-// unInt es ahora 9
-```
-
-
-### 11.6. Ajustar un tipo a un protocolo mediante una extensión
-
-
-Una extensión puede extender un tipo existente para hacer que se
-ajuste a uno o más protocolos. En este caso, los nombres de los
-protocolos se escriben exactamente de la misma forma que en una clase
-o estructura:
-
-
-```swift
-extension UnTipo: UnProtocolo, OtroProtocolo {
-    // implementación de los requisitos del protocolo
-}
-```
-
-Las instancias del tipo adoptarán automáticamente el protocolo y se
-ajustarán al protocolo con las propiedades y métodos añadidos por la
-extensión.
-
-Por ejemplo, este protocolo, llamado `RepresentableComoTexto` puede
-ser implementado por cualquier tipo que tenga una forma de
-representarse como texto. Esto puede ser una descripción de si mismo o
-una versión de texto de su estado actual:
-
-```swift
-protocol RepresentableComoTexto {
-    var descripcionTextual: String { get }
-}
-```
-
-La clase `Dado` que vimos anteriormente puede extenderse para ajustarse al protocolo:
-
-```swift
-extension Dado: RepresentableComoTexto {
-    var descripcionTextual: String {
-        return "Un dado de \(caras) caras"
-    }
-}
-```
-
-Esta extensión adopta el nuevo protocolo exactamente como si el `Dado`
-lo hubiera proporcionado en su implementación original. El nombre del
-protocolo se indica tras el nombre del tipo, separado por dos puntos,
-y se proporciona una implementación entre llaves.
-
-Cualquier instancia de un dado se puede tratar ahora como `RepresentableComoTexto`:
-
-```swift
-let d12 = Dado(caras: 12, generador: GeneradorLinealCongruente())
-print(d12.descripcionTextual)
-// Un dado de 12 caras
-```
-
-De forma similar, un `Rectangulo` también puede extenderse para
-adoptar y ajustarse al protocolo:
-
-```swift
-extension Rectangulo: RepresentableComoTexto {
-   var descripcionTextual: String {
-      return "Un rectángulo situado en (\(origen.x), \(origen.y))"
-   }
-}
-let rectanguloInicializado = Rectangulo(origen: Punto(x: 2.0, y: 2.0),
-                                tamaño: Tamaño(ancho: 5.0, alto: 5.0))
-
-print(rectanguloInicializado.descripcionTextual)
-// Un rectángulo situado en (2.0, 2.0)
-```
-
-### 11.7. Declaración de la adopción de un protocolo con una extensión
-
-Si un tipo ya se ajusta a todos los requisitos de un protocolo, pero
-todavía no se ha declarado que se ajusta al protocolo, podemos hacer
-que lo adopte con una extensión vacía:
-
-```swift
-struct Hamster {
-    var nombre: String
-    var descripcionTextual: String {
-        return "Un hamster llamado \(nombre)"
-    }
-}
-extension Hamster: RepresentableComoTexto {}
-```
-
-Las instancias de `Hamster` pueden ahora usarse en cualquier sitio que
-se requiera un tipo `RepresentableComoTexto`:
-
-```swift
-let simonElHamster = Hamster(nombre: "Simon")
-let algoRepresentableComoTexto: RepresentableComoTexto = simonElHamster
-print(algoRepresentableComoTexto.descripcionTextual)
-// Un hamster llamado Simon
-```
-
-### 11.8. Implementación de métodos de un protocolo
-
-Podemos definir extensiones en los protocolos para proporcionar
-implementaciones de métodos y propiedades a todos los tipos que se
-ajustan a él. Esto permite definir conductas en los propios
-protocolos, más que en cada tipo individual o en una función global.
-
-Por ejemplo, el protocolo `GeneradorNumerosAleatorios` puede ser extendido
-para proporcionar un método `boolAleatorio()`, que usa el resultado del
-`random()` requerido para devolver un valor `Bool` aleatorio:
-
-```swift
-extension GeneradorNumerosAleatorios {
-    func randomBool() -> Bool {
-        return random() > 0.5
-    }
-}
-```
-
-Al crear una extensión en el protocolo, todos los tipos que se ajustan
-a él adquieren automáticamente esta implementación sin ninguna
-modificación adicional.
-
-```
-let generator = GeneradorLinealCongruente()
-print("Un número aleatorio: \(generator.random())")
-// Imprime "Un número aleatorio: 0.37464991998171"
-print("Y un booleano aleatorio: \(generator.randomBool())")
-// Imprime "Un booleano aleatorio: true"
-```
-
-El tipo que se ajusta al protocolo puede proporcionar su propia
-implementación, que se usará en lugar de la proporcionada por la extensión.
-
-
-### 11.9. Extensión de un tipo genérico
-
-Cuando se extiende un tipo genérico, no hace falta añadir el parámetro
-del tipo entre `<>`. El tipo genérico está disponible a partir de la
-definición original y se puede usar tal cual en el cuerpo de la
-extensión.
-
-Por ejemplo, podemos extender el tipo genérico `Stack` para añadir una
-propiedad computable de sólo lectura que devuelva el tope de la pila:
-
-```swift
-extension Stack {
-    var topItem: Element? {
-        return items.isEmpty ? nil : items[items.count - 1]
-    }
-}
-```
-
-En la extensión se utiliza el nombre genérico `Element` sin tener que
-declararlo después de `Stack`, porque está definido en la estructura
-original.
-
-Ahora ya se puede acceder al tope de la pila sin retirar el elemento:
-
-```swift
-if let topItem = stackOfStrings.topItem {
-    print("El ítem en el tope de la pila es \(topItem).")
-}
-// Imprime "El ítem en el tope de la pila es tres."
-```
-
-
-### 11.10. Restricción en las extensiones de un protocolo ####
-
-En una extensión de un protocolo es posible definir una restricción
-indicando una condición que se debe cumplir para que la extensión se
-pueda aplicar. Los métodos y propiedades de la extensión sólo estarán
-disponibles en aquellos tipos que se ajusten al protocolo y cumplan el
-requisito.
-
-El requisito se definen usando una cláusula genérica `where` en la que
-se indica una condición sobre algún _tipo asociado_ definido en el
-protocolo.
-
-!!!Note "Nota"
-    No hemos visto el concepto de [_tipo
-    asociado_](https://docs.swift.org/swift-book/LanguageGuide/Generics.html#ID189)
-    en un protocolo. Es una especie de tipo genérico que se define en el
-    protocolo y que se convierte en un tipo concreto en la clase que se
-    ajusta al protocolo.
-
-Por ejemplo, podemos definir una extensión al protocolo `Collection`
-que se aplique a cualquier colección cuyos elementos cumplen el
-protocolo `Equatable`. De esta forma nos aseguramos de que los
-operadores `==` y `!=` están definidos y podemos usarlos en la
-extensión:
-
-```swift
-extension Collection where Element: Equatable {
-    func allEqual() -> Bool {
-        for element in self {
-            if element != self.first {
-                return false
-            }
-        }
-        return true
-    }
-}
-```
-
-El nombre `Element` es un nombre definido en el protocolo `Collection`
-que se refiere al tipo de los elementos de la colección. Es un _tipo
-asociado_.
-
-El método `allEqual()` devuelve `true` si y sólo si todos los
-elementos en la colección son iguales.
-
-Un ejemplo:
-
-```swift
-let numerosIguales = [100, 100, 100, 100, 100]
-let numerosDiferentes = [100, 100, 200, 100, 200]
-```
-
-Dado que ambos arrays cumplen el protocolo `Collection` y los enteros
-cumplen el protocolo `Equatable` podemos usar el método `allEqual()`:
-
-```
-print(numerosIguales.allEqual())
-// Prints "true"
-print(numerosDiferentes.allEqual())
-// Prints "false"
-```
-
-En una colección cuyos elementos no cumplen el protocolo `Equatable`
-no se puede utilizar el método de la extensión:
-
-```swift
-let tormenta = Persona(edad: 32, nombreCompleto: "Ororo Munroe")
-let superHeroes = [tormenta, peterParker, reedRichards]
-print(superHeroes.allEqual())
-//error: type 'Persona' does not conform to protocol 'Equatable'
-```
-
-
 
 ## 12. Bibliografía
 
