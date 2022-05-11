@@ -4192,39 +4192,6 @@ la clase. </p>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">p</span> <span class="p">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">edad</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="n">nombreCompleto</span><span class="p">:</span> <span class="s">&quot;Lucía&quot;</span><span class="p">)</span>
 <span class="n">p</span><span class="p">.</span><span class="n">mayorEdad</span> <span class="c1">// false</span>
 </code></pre></div>
-<p>Es posible incluso extender clases de las librerías estándar de
-Swift, como <code>Int</code>, <code>Double</code>, <code>Array</code>, <code>String</code>.</p>
-<p>Por ejemplo, en Swift es algo complicado devolver el carácter situado
-en una posición de una cadena:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">cadena</span> <span class="p">=</span> <span class="s">&quot;Hola&quot;</span>
-<span class="kd">let</span> <span class="nv">posicion</span> <span class="p">=</span> <span class="mi">2</span>
-<span class="kd">let</span> <span class="nv">index</span> <span class="p">=</span> <span class="n">cadena</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">cadena</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="n">offsetBy</span><span class="p">:</span> <span class="n">posicion</span><span class="p">)</span>
-<span class="n">cadena</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="c1">// Devuelve &quot;l&quot;</span>
-</code></pre></div>
-<p>Podemos definir una extensión que añada esa funcionalidad a la clase
-<code>String</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">String</span> <span class="p">{</span>
-    <span class="kd">func</span> <span class="nf">at</span><span class="p">(</span><span class="kc">_</span> <span class="n">pos</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Character</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nv">index</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="kc">self</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="n">offsetBy</span><span class="p">:</span> <span class="n">pos</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">self</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>El método <code>at</code> devuelve el carácter situado en una posición de la
-cadena:</p>
-<div class="highlight"><pre><span></span><code><span class="s">&quot;Hola&quot;</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// devuelve &quot;a&quot;</span>
-</code></pre></div>
-<p>Incluso Swift permite definir un método con la palabra clave
-<code>subscript</code> para después usar la notación típica de corchetes para
-acceder a un componente:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">String</span> <span class="p">{</span>
-    <span class="kd">subscript</span> <span class="p">(</span><span class="n">pos</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Character</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nv">index</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="kc">self</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="n">offsetBy</span><span class="p">:</span> <span class="n">pos</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">self</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="s">&quot;Hola&quot;</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="c1">// devuelve &quot;a&quot;</span>
-</code></pre></div>
 <!--
 
 Por ejemplo, podemos añadir propiedades calculadas a la clase Double
@@ -4336,8 +4303,11 @@ métodos del tipo.</p>
 <span class="kd">let</span> <span class="nv">reedRichards</span> <span class="p">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">edad</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="n">nombreCompleto</span><span class="p">:</span> <span class="s">&quot;Reed Richards&quot;</span><span class="p">)</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">reedRichards</span><span class="p">.</span><span class="n">descripcion</span><span class="p">())</span>
 </code></pre></div>
-<p>También podemos añadir métodos a clases y estructuras importadas. Por
-ejemplo podemos añadir un nuevo método de instancia llamado
+<p>Es posible incluso extender clases de las librerías estándar de
+Swift, como <code>Int</code>, <code>Double</code>, <code>Array</code>, <code>String</code> y clases y estructuras
+importadas. </p>
+<h4 id="1141-nuevo-metodo-del-tipo-int">11.4.1 Nuevo método del tipo <code>Int</code><a class="headerlink" href="#1141-nuevo-metodo-del-tipo-int" title="Permanent link">&para;</a></h4>
+<p>Por ejemplo podemos añadir un nuevo método de instancia llamado
 <code>repeticiones</code> al tipo <code>Int</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Int</span> <span class="p">{</span>
     <span class="kd">func</span> <span class="nf">repeticiones</span><span class="p">(</span><span class="kc">_</span> <span class="n">tarea</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">)</span> <span class="p">{</span>
@@ -4366,6 +4336,39 @@ tarea un cierto número de veces:</p>
 <span class="c1">// Adios!</span>
 <span class="c1">// Adios!</span>
 <span class="c1">// Adios!</span>
+</code></pre></div>
+<h4 id="1142-nuevo-metodo-del-tipo-string">11.4.2 Nuevo método del tipo <code>String</code><a class="headerlink" href="#1142-nuevo-metodo-del-tipo-string" title="Permanent link">&para;</a></h4>
+<p>Veamos otro ejemplo de extensión de un tipo ya existente.</p>
+<p>Por ejemplo, en Swift es algo complicado devolver el carácter situado
+en una posición de una cadena:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">cadena</span> <span class="p">=</span> <span class="s">&quot;Hola&quot;</span>
+<span class="kd">let</span> <span class="nv">posicion</span> <span class="p">=</span> <span class="mi">2</span>
+<span class="kd">let</span> <span class="nv">index</span> <span class="p">=</span> <span class="n">cadena</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">cadena</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="n">offsetBy</span><span class="p">:</span> <span class="n">posicion</span><span class="p">)</span>
+<span class="n">cadena</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="c1">// Devuelve &quot;l&quot;</span>
+</code></pre></div>
+<p>Podemos definir una extensión que añada esa funcionalidad a la clase
+<code>String</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">String</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">at</span><span class="p">(</span><span class="kc">_</span> <span class="n">pos</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Character</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">index</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="kc">self</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="n">offsetBy</span><span class="p">:</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">self</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>El método <code>at</code> devuelve el carácter situado en una posición de la
+cadena:</p>
+<div class="highlight"><pre><span></span><code><span class="s">&quot;Hola&quot;</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1">// devuelve &quot;a&quot;</span>
+</code></pre></div>
+<p>Incluso Swift permite definir un método con la palabra clave
+<code>subscript</code> para después usar la notación típica de corchetes para
+acceder a un componente:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">String</span> <span class="p">{</span>
+    <span class="kd">subscript</span> <span class="p">(</span><span class="n">pos</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Character</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">index</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="kc">self</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="n">offsetBy</span><span class="p">:</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">self</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="s">&quot;Hola&quot;</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="c1">// devuelve &quot;a&quot;</span>
 </code></pre></div>
 <h3 id="115-metodos-de-instancia-mutadores">11.5. Métodos de instancia mutadores<a class="headerlink" href="#115-metodos-de-instancia-mutadores" title="Permanent link">&para;</a></h3>
 <p>Los métodos de instancia añadidos con una extensión también pueden
