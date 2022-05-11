@@ -1950,8 +1950,8 @@ modificador `final` antes del nombre de la palabra clave que introduce
 el método o la propiedad (como `final var`, `final func`). 
 
 También es posible marcar la clase completa como final, escribiendo el
-modificador antes de `class` (`final class`).
-
+modificador antes de `class` (`final class`). De esta forma no se
+permite que se pueda heredar de ella.
 
 ## 7. Funciones operadoras
 
