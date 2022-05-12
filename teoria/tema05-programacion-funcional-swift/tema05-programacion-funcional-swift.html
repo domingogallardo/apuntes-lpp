@@ -505,22 +505,29 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#92-operador-nil-coalescing" class="md-nav__link">
-    9.2. Operador nil-coalescing
+  <a href="#92-comparacion-con-opcionales" class="md-nav__link">
+    9.2 Comparación con opcionales
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#93-encadenamiento-de-opcionales" class="md-nav__link">
-    9.3. Encadenamiento de opcionales
+  <a href="#93-operador-nil-coalescing" class="md-nav__link">
+    9.3. Operador nil-coalescing
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#94-definicion-de-lista-con-opcionales" class="md-nav__link">
-    9.4. Definición de Lista con opcionales
+  <a href="#94-encadenamiento-de-opcionales" class="md-nav__link">
+    9.4. Encadenamiento de opcionales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95-definicion-de-lista-con-opcionales" class="md-nav__link">
+    9.5. Definición de Lista con opcionales
   </a>
   
 </li>
@@ -1156,22 +1163,29 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#92-operador-nil-coalescing" class="md-nav__link">
-    9.2. Operador nil-coalescing
+  <a href="#92-comparacion-con-opcionales" class="md-nav__link">
+    9.2 Comparación con opcionales
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#93-encadenamiento-de-opcionales" class="md-nav__link">
-    9.3. Encadenamiento de opcionales
+  <a href="#93-operador-nil-coalescing" class="md-nav__link">
+    9.3. Operador nil-coalescing
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#94-definicion-de-lista-con-opcionales" class="md-nav__link">
-    9.4. Definición de Lista con opcionales
+  <a href="#94-encadenamiento-de-opcionales" class="md-nav__link">
+    9.4. Encadenamiento de opcionales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95-definicion-de-lista-con-opcionales" class="md-nav__link">
+    9.5. Definición de Lista con opcionales
   </a>
   
 </li>
@@ -2522,7 +2536,22 @@ distintos de <code>nil</code> usando varios <code>let</code> en el mismo <code>i
    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Algún dato del usuario es nil&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="92-operador-nil-coalescing">9.2. Operador <em>nil-coalescing</em><a class="headerlink" href="#92-operador-nil-coalescing" title="Permanent link">&para;</a></h3>
+<h3 id="92-comparacion-con-opcionales">9.2 Comparación con opcionales<a class="headerlink" href="#92-comparacion-con-opcionales" title="Permanent link">&para;</a></h3>
+<p>No es necesario desenvolver un opcional para compararlo con otro valor
+usando los operadores <code>==</code> o <code>!=</code>.</p>
+<p>Por ejemplo, el siguiente código es correcto:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="n">x</span> <span class="p">==</span> <span class="mi">10</span> <span class="c1">// devuelve true</span>
+<span class="n">x</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="c1">// devuelve true</span>
+<span class="n">x</span> <span class="p">==</span> <span class="mi">0</span> <span class="c1">// devuelve false</span>
+</code></pre></div>
+<p>Si en el opcional hay <code>nil</code> solo devolverá <code>true</code> cuando se compare
+con <code>nil</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="p">=</span> <span class="kc">nil</span>
+<span class="n">x</span> <span class="p">==</span> <span class="kc">nil</span> <span class="c1">// devuelve true</span>
+<span class="n">x</span> <span class="p">==</span> <span class="mi">10</span> <span class="c1">// devuelve false</span>
+</code></pre></div>
+<h3 id="93-operador-nil-coalescing">9.3. Operador <em>nil-coalescing</em><a class="headerlink" href="#93-operador-nil-coalescing" title="Permanent link">&para;</a></h3>
 <p>El operador <em>nil-coalescing</em> (<code>??</code>) permite definir un valor por
 defecto en una asignación si un opcional es nil.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span>
@@ -2534,7 +2563,7 @@ defecto en una asignación si un opcional es nil.</p>
 </code></pre></div>
 <p>En el ejemplo anterior, en la variable <code>x</code> se guardará el valor <code>-1</code> y
 en la variable <code>y</code> el valor <code>10</code>.</p>
-<h3 id="93-encadenamiento-de-opcionales">9.3. Encadenamiento de opcionales<a class="headerlink" href="#93-encadenamiento-de-opcionales" title="Permanent link">&para;</a></h3>
+<h3 id="94-encadenamiento-de-opcionales">9.4. Encadenamiento de opcionales<a class="headerlink" href="#94-encadenamiento-de-opcionales" title="Permanent link">&para;</a></h3>
 <p>El encadenamiento de opcionales (<em>optional chaining</em>) permite llamar a
 un método de una variable que contiene un opcional. Si la variable no
 es <code>nil</code>, se ejecuta el método y se devuelve su valor como un
@@ -2551,7 +2580,7 @@ opcional. Si la variable es <code>nil</code> se devuelve <code>nil</code>.</p>
 <span class="c1">// str1: String? = &quot;pedro&quot;</span>
 <span class="c1">// str2: String? = nil</span>
 </code></pre></div>
-<h3 id="94-definicion-de-lista-con-opcionales">9.4. Definición de <code>Lista</code> con opcionales<a class="headerlink" href="#94-definicion-de-lista-con-opcionales" title="Permanent link">&para;</a></h3>
+<h3 id="95-definicion-de-lista-con-opcionales">9.5. Definición de <code>Lista</code> con opcionales<a class="headerlink" href="#95-definicion-de-lista-con-opcionales" title="Permanent link">&para;</a></h3>
 <p>Veamos como último ejemplo una segunda versión del enum <code>Lista</code>, en el que
 utilizamos un único <code>case</code>, pero dando la posibilidad de que el resto
 de la lista sea <code>nil</code> haciéndolo opcional.</p>
