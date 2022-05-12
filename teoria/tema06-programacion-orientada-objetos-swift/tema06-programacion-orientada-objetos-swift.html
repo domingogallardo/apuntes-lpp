@@ -740,8 +740,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#101-restriccion-en-los-tipos-genericos" class="md-nav__link">
-    10.1. Restricción en los tipos genéricos
+  <a href="#101-restricciones-en-los-tipos-genericos" class="md-nav__link">
+    10.1. Restricciones en los tipos genéricos
   </a>
   
 </li>
@@ -1484,8 +1484,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#101-restriccion-en-los-tipos-genericos" class="md-nav__link">
-    10.1. Restricción en los tipos genéricos
+  <a href="#101-restricciones-en-los-tipos-genericos" class="md-nav__link">
+    10.1. Restricciones en los tipos genéricos
   </a>
   
 </li>
@@ -3206,10 +3206,6 @@ implementación real de esos requisitos. Cualquier tipo que satisface
 los requerimientos de un protocolo se dice que <em>se ajusta</em> o <em>cumple</em>
 (<em>conform</em>) ese protocolo. Podemos considerar los protocolos como una
 construcción de Swift que amplía la idea de las <em>interfaces</em> de Java.</p>
-<p>Además de especificar los requisitos de los tipos que cumplen el
-protocolo, también se puede <strong>extender un protocolo</strong> (lo veremos más
-adelante, cuando hablemos de <strong>extensiones</strong>) para proporcionar una
-implementación de algunos de los métodos requeridos por el protocolo.</p>
 <p>La utilización de protocolos permite un estilo de programación muy
 flexible que puede ser usado para definir bibliotecas que se adaptan
 fácilmente a nuevos requisitos. En la charla de la conferencia de
@@ -3973,7 +3969,7 @@ son también objetos de tipo <code>Element</code>.</p>
 <p>Y podemos retirar la última cadena de la pila:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">fromTheTop</span> <span class="p">=</span> <span class="n">stackOfStrings</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
 </code></pre></div>
-<h3 id="101-restriccion-en-los-tipos-genericos">10.1. Restricción en los tipos genéricos<a class="headerlink" href="#101-restriccion-en-los-tipos-genericos" title="Permanent link">&para;</a></h3>
+<h3 id="101-restricciones-en-los-tipos-genericos">10.1. Restricciones en los tipos genéricos<a class="headerlink" href="#101-restricciones-en-los-tipos-genericos" title="Permanent link">&para;</a></h3>
 <p>Es posible definir una restricción en el tipo genérico, indicando que
 debe heredar de una clase o cumplir un protocolo.</p>
 <p>La sintaxis es la siguiente:</p>
@@ -4037,14 +4033,14 @@ el protocolo <code>Equatable</code>. Si se intenta llamar a la función
 <code>findIndex</code> con, por ejemplo, un array de <code>Persona</code>s (estructura en la
 que no se ha adoptado el protocolo <code>Equatable</code>) se obtendrá un error
 en tiempo de compilación.</p>
-<p>Podemos entonces usar en la función <code>find</code> cualquier tipo que cumpla
+<p>Ahora ya podemos usar en la función <code>find</code> cualquier tipo que cumpla
 <code>Equatable</code>, como <code>Double</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">doubleIndex</span> <span class="p">=</span> <span class="n">findIndex</span><span class="p">(</span><span class="n">of</span><span class="p">:</span> <span class="mf">9.3</span><span class="p">,</span> <span class="k">in</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.14159</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">9.3</span><span class="p">])</span>
 <span class="c1">// devuelve Int? 2</span>
 </code></pre></div>
 <h2 id="11-extensiones">11. Extensiones<a class="headerlink" href="#11-extensiones" title="Permanent link">&para;</a></h2>
 <p>Las <em>extensiones</em> añaden nueva funcionalidad a una clase, estructura,
-enumeración o protocolo. Esto incluye la posibilidad de extender tipos
+enumeración. Esto incluye la posibilidad de extender tipos
 para los que no tenemos acceso al código fuente original (esto se
 conoce como <em>modelado retroactivo</em>).</p>
 <p>Entre otras cosas, las extensiones pueden: </p>
@@ -4192,8 +4188,7 @@ en una posición de una cadena:</p>
 <span class="kd">let</span> <span class="nv">index</span> <span class="p">=</span> <span class="n">cadena</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">cadena</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="n">offsetBy</span><span class="p">:</span> <span class="n">posicion</span><span class="p">)</span>
 <span class="n">cadena</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="c1">// Devuelve &quot;l&quot;</span>
 </code></pre></div>
-<p>Podemos definir una extensión que añada esa funcionalidad a la clase
-<code>String</code>:</p>
+<p>Podemos definir una extensión que añada esa funcionalidad a <code>String</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">String</span> <span class="p">{</span>
     <span class="kd">func</span> <span class="nf">at</span><span class="p">(</span><span class="kc">_</span> <span class="n">pos</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Character</span> <span class="p">{</span>
         <span class="kd">let</span> <span class="nv">index</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="kc">self</span><span class="p">.</span><span class="n">startIndex</span><span class="p">,</span> <span class="n">offsetBy</span><span class="p">:</span> <span class="n">pos</span><span class="p">)</span>
