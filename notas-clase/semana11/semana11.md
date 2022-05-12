@@ -1,17 +1,3 @@
-
-<!--
-
-Cosas importantes que no contamos, que habría que contar (si hubiera 
-tiempo en esta sesión):
-
-- Un protocolo puede extender otro protocolo (o más de uno)
-  https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Protocols.html#//apple_ref/doc/uid/TP40014097-CH25-ID280
-
-- Ampliar el tema de genéricos con type constraints y cláusula where
-  (ya está añadido en las extensiones)
-
--->
-
 ## Tema 7: Programación Orientada a Objetos con Swift (2)
 
 ### Contenidos
@@ -22,11 +8,11 @@ tiempo en esta sesión):
 - 4. Métodos
 - 5. Herencia
 - 6. Inicialización
-- **7. Protocolos**
-- **8. Casting de tipos**
-- **9. Extensiones**
-- **10. Funciones operador**
-- **11. Genericos**
+- **7. Funciones operadoras**
+- **8. Protocolos**
+- **9. Casting de tipos**
+- **10. Genéricos**
+- **11. Extensiones**
 
 
 ----
@@ -41,7 +27,80 @@ tiempo en esta sesión):
     - [Genéricos](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-ID179)
 
 ---
-### 7. Protocolos
+### 7. Funciones operadoras
+---
+
+- Las clases y las estructuras pueden proporcionar sus propias
+  implementaciones de operadores existentes. Esto se conoce como
+  _sobrecarga_ de los operadores existentes.
+
+Por ejemplo, podemos implementar el operador de suma (`+`) para una
+estructura `Vector2D`:
+
+
+```swift
+struct Vector2D {
+    var x = 0.0, y = 0.0
+    static func + (izquierdo: Vector2D, derecho: Vector2D) -> Vector2D {
+        return Vector2D(x: izquierdo.x + derecho.x, y: izquierdo.y + derecho.y)
+    }
+}
+```
+
+- La función operador se define como una función estática con un un nombre
+  de función que empareja con el operador a sobrecargar (`+`). 
+- La función toma dos parámetros de entrada de tipo `Vector2D` y
+  devuelve un único valor de salida, también de tipo `Vector2D`.
+- La función se define globalmente, más que como un método en la
+  estructura `Vector2D`, para que pueda usarse como un operador infijo
+  entre instancias existentes de `Vector2D`:
+
+
+```swift
+let vector = Vector2D(x: 3.0, y: 1.0)
+let otroVector = Vector2D(x: 2.0, y: 4.0)
+let vectorSuma = vector + otroVector
+// vectorSuma es una instancia de Vector2D con valores de (5.0, 5.0)
+```
+
+---
+
+### Operadores prefijos y postfijos
+
+- Las clases y las estructuras pueden también proporcionar
+  implementaciones de los operadores unarios estándar. 
+- Los operadores unarios operan sobre un único objetivo. Son prefijos
+  se preceden el objetivo (como `-a`) y postfijos si siguen su
+  objetivo (como en `b!`).
+- Para implementar un operador unario prefijo o postfijo se debe
+  escribir el modificador `prefix` o `postfix` antes de la palabra
+  clave `func` en la declaración de la función operador:
+
+Por ejemplo, implementamos el operador unario negación (`-a`) para
+instancias de `Vector2D`:
+
+
+```swift
+struct Vector2D {
+   ...
+   static prefix func - (vector: Vector2D) -> Vector2D {
+       return Vector2D(x: -vector.x, y: -vector.y)
+   }
+}
+```
+
+Ejemplo de uso:
+
+```swift
+let positivo = Vector2D(x: 3.0, y: 4.0)
+let negativo = -positivo
+// negativo es una instancia de Vector2D con valores de (-3.0, -4.0)
+let tambienPositivo = -negativo
+// tambienPositivo es una instancia de Vector2D con valores de (3.0, 4.0)
+```
+
+---
+### 8. Protocolos
 ---
 
 - Un _protocolo_ (_protocol_) define un esquema de métodos,
@@ -53,11 +112,6 @@ tiempo en esta sesión):
   dice que _se ajusta_ o cumple (_conform_) ese protocolo.
 - Podemos considerar los protocolos como una construcción de Swift que
   amplía la idea de las _interfaces_ de Java. 
-- Además de especificar los requisitos de los tipos que cumplen el
-  protocolo, también se puede **extender un protocolo** (lo veremos
-  más adelante, cuando hablemos de **extensiones**) para **proporcionar
-  una implementación** de algunos de los métodos requeridos por el
-  protocolo.
   
 ---
 
@@ -379,10 +433,10 @@ print(p1 != p2)
 - El operador `!=` que se usa en la última instrucción se define en una
   implementación por defecto.
 
-- En **Swift 5** el compilador define una **implementación automática
-del operador `==` en las estructuras y enumeraciones** al añadir el
-protocolo `Equatable`, siempre que las propiedades almacenadas y los
-valores asociados cumplan ese protocolo.
+- En las estructuras y enumeraciones el compilador define una
+**implementación automática del operador `==`** al añadir el protocolo
+`Equatable`, siempre que las propiedades almacenadas y los valores
+asociados cumplan ese protocolo.
   
 - Por ejemplo, si en lugar de una clase definimos un `struct Punto3D`
 el código quedaría como sigue (no es necesario definir ni el
@@ -402,10 +456,102 @@ print(p1 != p2)
 // Imprime false
 ```
 
+---
+
+### Herencia en protocolos
+
+
+- Un protocolo puede heredar uno o más protocolos y puede añadir
+requisitos adicionales sobre los requisitos que hereda. 
+
+- Sintaxis:
+
+```swift
+protocol ProtocoloQueHereda: UnProtocolo, OtroProtocolo {
+    // definición del protocolo
+}
+```
+
+- Por ejemplo, recordemos el protocolo `TieneNombre`:
+
+```swift
+protocol TieneNombre {
+    var nombreCompleto: String { get }
+}
+```
+
+- Podemos definir el protocolo `TieneEdad`, que hereda del protocolo
+anterior y que obliga a definir una propiedad de lectura `edad` de
+tipo `Int`:
+
+```swift
+protocol TieneEdad: TieneNombre {
+    var edad: Int { get }
+}
+```
+
+- Si un tipo se ajusta al protocolo `TieneEdad` debe cumplir sus
+  restricciones y las de `TieneNombre`:
+
+```swift
+struct Persona: TieneEdad {
+    var nombre: String
+    var apellidos: String
+    var nombreCompleto: String {
+        return nombre + " " + apellidos
+    }
+    var edad: Int
+}
+```
+
+- Ejemplo:
+
+```swift
+let persona = Persona(nombre:"Pedro", apellidos: "García Pérez", edad: 23)
+print(persona.edad)
+var algoConEdad: TieneEdad = persona
+print(algoConEdad.edad)
+// Imprime 23
+var algoConNombre: TieneNombre = persona
+print(algoConNombre.nombreCompleto) 
+// Imprime "Pedro García Pérez"
+```
+
+- Otro ejemplo de la librería de Swift es `Comparable` y
+`Equatable`. El protocolo `Comparable` hereda de
+`Equatable`. Cumpliendo el protocolo `Comparable` también se debe
+cumplir el protocolo `Equatable`.
+
+- En el caso de los structs, Swift crea automáticamente el operador `==`
+y nosotros solo tendríamos que definir el operador `<`. 
+
+```swift
+struct CoordPantalla : Comparable {
+    var x: Int 
+    var y: Int 
+    static func < (primero: CoordPantalla, segundo: CoordPantalla) -> Bool { 
+        return primero.x < segundo.x || 
+               (primero.x == segundo.x && primero.y < segundo.y) 
+    } 
+}
+```
+
+- Automáticamente el compilador genera a partir de los operadores `<` y
+`==` los operadores `>`, `<=`, etc.:
+
+```swift
+var c1 = CoordPantalla(x: 0, y: 0)
+var c2 = CoordPantalla(x: 10, y: 10)
+c1 < c2 // true
+c1 > c2 // false
+c1.x = 10
+c1.y = 10
+c1 == c2 // true
+```
 
 
 ---
-### 8. Casting de tipos
+### 9. Casting de tipos
 ---
 
 - El _casting_ de tipos es una forma de comprobar el tipo de una
@@ -726,11 +872,157 @@ for objecto in objetos {
 
 
 ---
-### 9. Extensiones
+###  10. Genéricos
+---
+
+- Veamos cómo podemos utilizar los genéricos con clases y estructuras.
+- Vamos a utilizar como ejemplo un tipo de dato muy sencillo: una pila
+  (_stack_) en la que se podrán añadir (_push_) y retirar (_pop_)
+  elementos.
+
+Versión no genérica: 
+
+```swift
+struct IntStack {
+    var items = [Int]()
+    mutating func push(_ item: Int) {
+        items.append(item)
+    }
+    mutating func pop() -> Int {
+        return items.removeLast()
+    }
+}
+```
+
+Versión usando genéricos:
+
+```swift
+struct Stack<Element> {
+    var items = [Element]()
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+}
+```
+
+- El parámetro del tipo `Element` define un tipo genérico que se utiliza
+  como _placeholder_ del tipo real del que se declare la
+  estructura. 
+- Se utiliza en la definición de los distintos elementos de la
+  estructura. Por ejemplo, el array de ítems es un array de
+  `Element`s. Y los ítems añadidos y retirados de la pila son también
+  objetos de tipo `Element`.
+
+Por ejemplo, podemos crear una pila de cadenas:
+
+```swift
+var stackOfStrings = Stack<String>()
+stackOfStrings.push("uno")
+stackOfStrings.push("dos")
+stackOfStrings.push("tres")
+stackOfStrings.push("cuatro")
+// la pila contiene ahora 4 cadenas
+```
+
+Y podemos retirar la última cadena de la pila:
+
+```swift
+let fromTheTop = stackOfStrings.pop()
+```
+
+---
+
+### Restricciones en los tipos genéricos ###
+
+- Es posible definir una restricción en el tipo genérico, indicando que
+debe heredar de una clase o cumplir un protocolo.
+
+- Sintaxis:
+
+```swift
+func someFunction<T: SomeClass, U: SomeProtocol>(someT: T, someU: U) {
+    // function body goes here
+}
+```
+
+- Por ejemplo, supongamos una función que busca una cadena en un array
+de cadenas y devuelve el índice en el que se encuentra:
+
+```swift
+func findIndex(ofString valueToFind: String, in array: [String]) -> Int? {
+    for (index, value) in array.enumerated() {
+        if value == valueToFind {
+            return index
+        }
+    }
+    return nil
+}
+```
+
+- Uso:
+
+```swift
+let cadenas = ["gato", "perro", "llama", "kanguro", "colibrí"]
+if let indiceEncontrado = findIndex(ofString: "llama", in: cadenas) {
+    print("El índice de la llama es \(indiceEncontrado)")
+}
+// Imprime: "El índice de la llama es 2"
+```
+
+- La función anterior busca en un array de cadenas. ¿Podríamos
+generalizarla para que buscara en un array de cualquier tipo? Vamos a
+probarlo: 
+
+```swift
+func findIndex<T>(ofString valueToFind: T, in array: [T]) -> Int? {
+    for (index, value) in array.enumerated() {
+        if value == valueToFind {
+            return index
+        }
+    }
+    return nil
+}
+```
+
+- Error:
+
+```
+error: binary operator '==' cannot be applied to two 'T' operands
+        if value == valueToFind {
+           ~~~~~ ^  ~~~~~~~~~~~
+```
+
+Debemos restringir el tipo genérico a ese protocolo al protocolo `Equatable`:
+
+```swift
+func findIndex<T: Equatable>(of valueToFind: T, in array:[T]) -> Int? {
+    for (index, value) in array.enumerated() {
+        if value == valueToFind {
+            return index
+n        }
+    }
+    return nil
+}
+```
+
+- Ahora ya podemos usar en la función `find` cualquier tipo que cumpla
+`Equatable`, como `Double`:
+
+```swift
+let doubleIndex = findIndex(of: 9.3, in: [3.14159, 0.1, 0.25, 9.3])
+// devuelve Int? 2
+```
+
+
+---
+### 11. Extensiones
 ---
 
 - Las _extensiones_ añaden nueva funcionalidad a una clase,
-  estructura, enumeración o protocolo. 
+  estructura, enumeración. 
 - Esto incluye la posibilidad de extender tipos para los que no
   tenemos acceso al código fuente original (esto se conoce como
   _modelado retroactivo_).
@@ -742,7 +1034,6 @@ Entre otras cosas, las extensiones pueden:
 - Añadir propiedades calculadas de instancia y de tipo
 - Definir métodos de instancia y de tipo
 - Proporcionar nuevos inicializadores
-- Hacer que un tipo existente se ajuste a un protocolo
 
 
 ---
@@ -783,55 +1074,6 @@ extension Persona {
 ```swift
 var p = Persona(edad: 15, nombreCompleto: "Lucía")
 p.mayorEdad // false
-```
-
-Otro ejemplo:
-
-- Añadimos cinco propiedades de instancia calculadas al tipo de Swift
-  Double, para proporcionar un soporte básico para trabajar con
-  unidades de distancia.
-- Cuando se accede a estas propiedades se devuelve el valor en metros,
-  suponiendo que el valor que contiene la variable está en la unidad
-  de distancia correspondiente.
-
-```swift
-extension Double {
-    var km: Double { return self * 1_000.0 }
-    var m: Double { return self }
-    var cm: Double { return self / 100.0 }
-    var mm: Double { return self / 1_000.0 }
-    var ft: Double { return self / 3.28084 }
-}
-```
-
-- Una vez definida la extensión, podemos usarla en cualquier variable
-  `Double`. Incluso la podemos usar en literales:
-
-```swift
-let distancia = 11.km
-// En distancia tendremos 11.000 metros
-let unaPulgada = 25.4.mm
-print("Una pulgada es \(unaPulgada) metros")
-// Una pulgada es 0.0254 metros
-let tresPies = 3.ft
-print("Tres pies son \(tresPies) metros")
-// Tres pies son 0.914399970739201 metros
-```
-
-- Por ejemplo, cuando se escribe `11.km` se pide el valor de la
-  propiedad calculada `km` de la instancia 11. La propiedad calculada
-  devuelve el resultado de multiplicar 11 por 1000, esto es, los
-  metros correspondientes a 11 kilómetros.
-
-- Estas propiedades son propiedades calculadas de solo lectura, por lo
-  que se expresan sin la palabra clave `get`, por brevedad. Sus
-  valores devueltos son de tipo `Double`, y pueden usarse en cálculos
-  matemáticos en cualquier sitio que se acepte un `Double`:
-
-```Swift
-let unMaraton = 42.km + 195.m
-print("Un maratón tiene una longitud de \(unMaraton) metros")
-// Un maratón tiene una longitud de 42195.0 metros
 ```
 
 ---
@@ -915,7 +1157,6 @@ let reedRichards = Persona(edad: 40, nombreCompleto: "Reed Richards")
 print(reedRichards.descripcion())
 ```
 
-
 Ejemplo, en el que se añade un nuevo método de instancia llamado
 `repeticiones` al tipo `Int`:
 
@@ -956,368 +1197,41 @@ extension Int {
 // Adios!
 ```
 
----
+- Otro ejemplo, para extender el tipo estándar `String`.
 
-### Métodos de instancia mutadores
-
-- Los métodos de instancia añadidos con una extensión también pueden
-  modificar (o mutar) la propia instancia.
-- Los métodos de las estructuras y los enumerados que modifican `self`
-  o sus propiedades deben marcarse como `mutating`.
-
-Ejemplo: 
+- En Swift es algo complicado devolver el carácter situado
+en una posición de una cadena:
 
 ```swift
-extension Int {
-    mutating func cuadrado() {
-        self = self * self
-    }
-}
-var unInt = 3
-unInt.cuadrado()
-// unInt es ahora 9
+let cadena = "Hola"
+let posicion = 2
+let index = cadena.index(cadena.startIndex, offsetBy: posicion)
+cadena[index] // Devuelve "l"
 ```
 
----
-
-### Ajustar un tipo a un protocolo mediante una extensión
-
-- Una extensión puede extender un tipo existente para hacer que se
-  ajuste a uno o más protocolos.
-
-Sintaxis:
+- Podemos definir una extensión que añada esa funcionalidad a
+`String`:
 
 ```swift
-extension UnTipo: UnProtocolo, OtroProtocolo {
-    // implementación de los requisitos del protocolo
-}
-```
-
-- Las instancias del tipo adoptarán automáticamente el protocolo y se
-  ajustarán al protocolo con las propiedades y métodos añadidos por la
-  extensión.
-
-Ejemplo:
-
-
-```swift
-protocol RepresentableComoTexto {
-    var descripcionTextual: String { get }
-}
-```
-
-- La clase `Dado` que vimos anteriormente puede extenderse para ajustarse al protocolo:
-
-```swift
-extension Dado: RepresentableComoTexto {
-    var descripcionTextual: String {
-        return "Un dado de \(caras) caras"
+extension String {
+    func at(_ pos: Int) -> Character {
+        let index = self.index(self.startIndex, offsetBy: pos)
+        return self[index]
     }
 }
 ```
 
-- Esta extensión adopta el nuevo protocolo exactamente como si el
-  `Dado` lo hubiera proporcionado en su implementación original.
-- Cualquier instancia de un dado se puede tratar ahora como
-  `RepresentableComoTexto`:
+- Incluso Swift permite definir un método con la palabra clave
+`subscript` para después usar la notación típica de corchetes para
+acceder a un componente:
 
 ```swift
-let d12 = Dado(caras: 12, generador: GeneradorLinealCongruente())
-print(d12.descripcionTextual)
-// Un dado de 12 caras
-```
-
-- De forma similar, un `Rectangulo` también puede extenderse para
-  adoptar y ajustarse al protocolo:
-
-```swift
-extension Rectangulo: RepresentableComoTexto {
-   var descripcionTextual: String {
-      return "Un rectángulo situado en (\(origen.x), \(origen.y))"
-   }
-}
-let rectanguloInicializado = Rectangulo(origen: Punto(x: 2.0, y: 2.0),
-                                tamaño: Tamaño(ancho: 5.0, alto: 5.0))
-
-print(rectanguloInicializado.descripcionTextual)
-// Un rectángulo situado en (2.0, 2.0)
-```
-
----
-
-### Declaración de la adopción de un protocolo con una extensión
-
-- Si un tipo ya se ajusta a todos los requisitos de un protocolo, pero
-  todavía no se ha declarado que se ajusta al protocolo, podemos hacer
-  que lo adopte con una extensión vacía:
-
-```swift
-struct Hamster {
-    var nombre: String
-    var descripcionTextual: String {
-        return "Un hamster llamado \(nombre)"
+extension String {
+    subscript (pos: Int) -> Character {
+        let index = self.index(self.startIndex, offsetBy: pos)
+        return self[index]
     }
 }
-extension Hamster: RepresentableComoTexto {}
-```
-
-- Las instancias de `Hamster` pueden ahora usarse en cualquier sitio
-  que se requiera un tipo `RepresentableComoTexto`:
-
-```swift
-let simonElHamster = Hamster(nombre: "Simon")
-let algoRepresentableComoTexto: RepresentableComoTexto = simonElHamster
-print(algoRepresentableComoTexto.descripcionTextual)
-// Un hamster llamado Simon
-```
-
----
-
-### Implementación de métodos de un protocolo
-     
-
-- Podemos definir extensiones en los protocolos para proporcionar
-  implementaciones de métodos y propiedades a todos los tipos que se
-  ajustan a él. 
-- Esto permite definir conductas en los propios protocolos, más que en
-  cada tipo individual o en una función global.
-
-Ejemplo:
-
-```swift
-extension GeneradorNumerosAleatorios {
-    func randomBool() -> Bool {
-        return random() > 0.5
-    }
-}
-```
-
-- Al crear una extensión en el protocolo, todos los tipos que se
-  ajustan a él adquieren automáticamente esta implementación sin
-  ninguna modificación adicional.
-
-```
-let generator = GeneradorLinealCongruente()
-print("Un número aleatorio: \(generator.random())")
-// Imprime "Un número aleatorio: 0.37464991998171"
-print("Y un booleano aleatorio: \(generator.randomBool())")
-// Imprime "Un booleano aleatorio: true"
-```
-
-- El tipo que se ajusta al protocolo puede proporcionar su propia
-  implementación, que se usará en lugar de la proporcionada por la
-  extensión.
-
-
----
-
-### Restricción en las extensiones de un protocolo
-
-- En la definición de una extensión de un protocolo es posible definir
-  restricciones que deben cumplir los tipos que lo cumplen. Los
-  métodos y propiedades de la extensión sólo estarán disponibles en
-  aquellos tipos que cumplan estos requisitos.
-- Los requisitos se definen usando una cláusula genérica `where`.
-- Por ejemplo, podemos definir una extensión al protocolo `Collection`
-  que se aplique a cualquier colección cuyos elementos cumplen el
-  protocolo `Equatable`. De esta forma nos aseguramos de que los
-  operadores `==` y `!=` están definidos y podemos usarlos en la
-  extensión:
-
-```swift
-extension Collection where Element: Equatable {
-    func allEqual() -> Bool {
-        for element in self {
-            if element != self.first {
-                return false
-            }
-        }
-        return true
-    }
-}
-let numerosIguales = [100, 100, 100, 100, 100]
-let numerosDiferentes = [100, 100, 200, 100, 200]
-print(numerosIguales.allEqual())
-// Prints "true"
-print(numerosDiferentes.allEqual())
-// Prints "false"
-```
-
-- En una colección de una clase que no cumple el protocolo `Equatable`
-  no se puede utilizar el método de la extensión:
-
-```swift
-let tormenta = Persona(edad: 32, nombreCompleto: "Ororo Munroe")
-let superHeroes = [tormenta, peterParker, reedRichards]
-print(superHeroes.allEqual())
-//error: type 'Persona' does not conform to protocol 'Equatable'
-```
-
----
-### 10. Funciones operadoras
----
-
-- Las clases y las estructuras pueden proporcionar sus propias
-  implementaciones de operadores existentes. Esto se conoce como
-  _sobrecarga_ de los operadores existentes.
-
-Por ejemplo, podemos implementar el operador de suma (`+`) para una
-estructura `Vector2D`:
-
-
-```swift
-struct Vector2D {
-    var x = 0.0, y = 0.0
-    static func + (izquierdo: Vector2D, derecho: Vector2D) -> Vector2D {
-        return Vector2D(x: izquierdo.x + derecho.x, y: izquierdo.y + derecho.y)
-    }
-}
-```
-
-- La función operador se define como una función estática con un un nombre
-  de función que empareja con el operador a sobrecargar (`+`). 
-- La función toma dos parámetros de entrada de tipo `Vector2D` y
-  devuelve un único valor de salida, también de tipo `Vector2D`.
-- La función se define globalmente, más que como un método en la
-  estructura `Vector2D`, para que pueda usarse como un operador infijo
-  entre instancias existentes de `Vector2D`:
-
-
-```swift
-let vector = Vector2D(x: 3.0, y: 1.0)
-let otroVector = Vector2D(x: 2.0, y: 4.0)
-let vectorSuma = vector + otroVector
-// vectorSuma es una instancia de Vector2D con valores de (5.0, 5.0)
-```
-
----
-
-### Operadores prefijos y postfijos
-
-- Las clases y las estructuras pueden también proporcionar
-  implementaciones de los operadores unarios estándar. 
-- Los operadores unarios operan sobre un único objetivo. Son prefijos
-  se preceden el objetivo (como `-a`) y postfijos si siguen su
-  objetivo (como en `b!`).
-- Para implementar un operador unario prefijo o postfijo se debe
-  escribir el modificador `prefix` o `postfix` antes de la palabra
-  clave `func` en la declaración de la función operador:
-
-Por ejemplo, implementamos el operador unario negación (`-a`) para
-instancias de `Vector2D`:
-
-
-```swift
-struct Vector2D {
-   ...
-   static prefix func - (vector: Vector2D) -> Vector2D {
-       return Vector2D(x: -vector.x, y: -vector.y)
-   }
-}
-```
-
-Ejemplo de uso:
-
-```swift
-let positivo = Vector2D(x: 3.0, y: 4.0)
-let negativo = -positivo
-// negativo es una instancia de Vector2D con valores de (-3.0, -4.0)
-let tambienPositivo = -negativo
-// tambienPositivo es una instancia de Vector2D con valores de (3.0, 4.0)
-```
-
----
-###  11. Genéricos
----
-
-- Veamos cómo podemos utilizar los genéricos con clases y estructuras.
-- Vamos a utilizar como ejemplo un tipo de dato muy sencillo: una pila
-  (_stack_) en la que se podrán añadir (_push_) y retirar (_pop_)
-  elementos.
-
-Versión no genérica: 
-
-```swift
-struct IntStack {
-    var items = [Int]()
-    mutating func push(_ item: Int) {
-        items.append(item)
-    }
-    mutating func pop() -> Int {
-        return items.removeLast()
-    }
-}
-```
-
-Versión usando genéricos:
-
-```swift
-struct Stack<Element> {
-    var items = [Element]()
-    mutating func push(_ item: Element) {
-        items.append(item)
-    }
-    mutating func pop() -> Element {
-        return items.removeLast()
-    }
-}
-```
-
-- El parámetro del tipo `Element` define un tipo genérico que se utiliza
-  como _placeholder_ del tipo real del que se declare la
-  estructura. 
-- Se utiliza en la definición de los distintos elementos de la
-  estructura. Por ejemplo, el array de ítems es un array de
-  `Element`s. Y los ítems añadidos y retirados de la pila son también
-  objetos de tipo `Element`.
-
-Por ejemplo, podemos crear una pila de cadenas:
-
-```swift
-var stackOfStrings = Stack<String>()
-stackOfStrings.push("uno")
-stackOfStrings.push("dos")
-stackOfStrings.push("tres")
-stackOfStrings.push("cuatro")
-// la pila contiene ahora 4 cadenas
-```
-
-Y podemos retirar la última cadena de la pila:
-
-```swift
-let fromTheTop = stackOfStrings.pop()
-```
-
----
-
-### Extensión de un tipo genérico
-
-- Cuando se extiende un tipo genérico, no hace falta añadir el
-  parámetro del tipo entre `<>`. El tipo genérico está disponible a
-  partir de la definición original y se puede usar tal cual en el
-  cuerpo de la extensión.
-
-Ejemplo, con una extensión del tipo genérico `Stack` para añadir una
-propiedad computable de sólo lectura que devuelva el tope de la pila:
-
-```swift
-extension Stack {
-    var topItem: Element? {
-        return items.isEmpty ? nil : items[items.count - 1]
-    }
-}
-```
-
-- En la extensión se utiliza el nombre genérico `Element` sin tener que
-declararlo después de `Stack`, porque está definido en la estructura
-original.
-
-Ahora ya se puede acceder al tope de la pila sin retirar el elemento:
-
-```swift
-if let topItem = stackOfStrings.topItem {
-    print("El ítem en el tope de la pila es \(topItem).")
-}
-// Imprime "El ítem en el tope de la pila es tres."
+"Hola"[3] // devuelve "a"
 ```
 

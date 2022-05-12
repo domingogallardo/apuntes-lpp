@@ -2050,11 +2050,6 @@ los requerimientos de un protocolo se dice que _se ajusta_ o _cumple_
 (_conform_) ese protocolo. Podemos considerar los protocolos como una
 construcción de Swift que amplía la idea de las _interfaces_ de Java.
 
-Además de especificar los requisitos de los tipos que cumplen el
-protocolo, también se puede **extender un protocolo** (lo veremos más
-adelante, cuando hablemos de **extensiones**) para proporcionar una
-implementación de algunos de los métodos requeridos por el protocolo.
-
 La utilización de protocolos permite un estilo de programación muy
 flexible que puede ser usado para definir bibliotecas que se adaptan
 fácilmente a nuevos requisitos. En la charla de la conferencia de
@@ -3016,7 +3011,7 @@ Y podemos retirar la última cadena de la pila:
 let fromTheTop = stackOfStrings.pop()
 ```
 
-### 10.1. Restricción en los tipos genéricos ###
+### 10.1. Restricciones en los tipos genéricos ###
 
 Es posible definir una restricción en el tipo genérico, indicando que
 debe heredar de una clase o cumplir un protocolo.
@@ -3102,7 +3097,7 @@ el protocolo `Equatable`. Si se intenta llamar a la función
 que no se ha adoptado el protocolo `Equatable`) se obtendrá un error
 en tiempo de compilación.
 
-Podemos entonces usar en la función `find` cualquier tipo que cumpla
+Ahora ya podemos usar en la función `find` cualquier tipo que cumpla
 `Equatable`, como `Double`:
 
 ```swift
@@ -3113,7 +3108,7 @@ let doubleIndex = findIndex(of: 9.3, in: [3.14159, 0.1, 0.25, 9.3])
 ## 11. Extensiones
 
 Las _extensiones_ añaden nueva funcionalidad a una clase, estructura,
-enumeración o protocolo. Esto incluye la posibilidad de extender tipos
+enumeración. Esto incluye la posibilidad de extender tipos
 para los que no tenemos acceso al código fuente original (esto se
 conoce como _modelado retroactivo_).
 
@@ -3315,8 +3310,7 @@ let index = cadena.index(cadena.startIndex, offsetBy: posicion)
 cadena[index] // Devuelve "l"
 ```
 
-Podemos definir una extensión que añada esa funcionalidad a la clase
-`String`:
+Podemos definir una extensión que añada esa funcionalidad a `String`:
 
 ```swift
 extension String {
