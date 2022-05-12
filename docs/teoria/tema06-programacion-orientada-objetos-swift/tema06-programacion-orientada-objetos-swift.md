@@ -2435,7 +2435,7 @@ El operador `!=` que se usa en la última instrucción se define en una
 implementación por defecto.
 
 En las estructuras y enumeraciones el compilador define una
-**implementación automática del operador `==` al añadir el protocolo
+**implementación automática del operador `==`** al añadir el protocolo
 `Equatable`, siempre que las propiedades almacenadas y los valores
 asociados cumplan ese protocolo.
   
