@@ -254,7 +254,7 @@ de nota)
 - listado 4: array ordenado por año de matriculación y nota del
   parcial 3 (orden decreciente de año y nota) 
 - listado 5: array ordenado por nota final (media de los tres
-parciales, ponderados en: 0,34, 0,33, 0,33) (orden decreciente de nota final)
+parciales, ponderados en: 0,35, 0,3, 0,35) (orden decreciente de nota final)
  
 Las ordenaciones hay que realizarlas usando la función `sorted`.
 
@@ -344,7 +344,7 @@ C) Nota media de todos los alumnos en forma de tupla `(media_p1, media_p2, media
 var tupla = listaAlumnos._____________________________________ )
 tupla = (tupla.0 / Double(listaAlumnos.count), tupla.1 / Double(listaAlumnos.count), tupla.2 / Double(listaAlumnos.count))
 print(tupla)
-// Resultado: (6.6812499999999995, 2.7624999999999997, 5.2262500000000003)
+// Resultado: (6.6812499999999995, 2.7624999999999997, 5.22625)
 ```
 
 ### Ejercicio 6 ###
