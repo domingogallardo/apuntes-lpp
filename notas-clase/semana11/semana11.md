@@ -47,7 +47,7 @@ struct Vector2D {
 }
 ```
 
-- La función operador se define como una función estática con un un nombre
+- La función operador se define como una función estática con un nombre
   de función que empareja con el operador a sobrecargar (`+`). 
 - La función toma dos parámetros de entrada de tipo `Vector2D` y
   devuelve un único valor de salida, también de tipo `Vector2D`.
@@ -136,7 +136,7 @@ struct UnStruct: PrimerProtocolo, OtroProtocolo {
 - Una clase que hereda de una superclase y se ajusta a dos protocolos:
 
 ```swift
-class UnaClase: UnaSuperClase, PrimerProtocolo, OtroProto {
+class UnaClase: UnaSuperClase, PrimerProtocolo, OtroProtocolo {
     // definición de la clase
 }
 ```
@@ -310,8 +310,8 @@ interruptorLampara.conmutar()
   cualquier sitio donde permitamos otros tipos, incluyendo:
     - El tipo de un parámetro de una función, método o inicializador o
       de sus valores devueltos.
-    - El tipo de una constante, variable o propiedad
-    - El tipo de los ítems de un array, diccionario u otro contenedor
+    - El tipo de una constante, variable o propiedad.
+    - El tipo de los ítems de un array, diccionario u otro contenedor.
 
 Ejemplo:
 
@@ -378,8 +378,8 @@ for cosa in cosasConNombre {
 ```
 
 - La constante `cosa` que itera sobre los elementos del array es de
-  tipo `TieneNombre`], no es de tipo `Persona` ni de tipo `NaveEstelar`,
-  incluso aunque las instancias que hay tras de escena son do esos
+  tipo `TieneNombre`, no es de tipo `Persona` ni de tipo `NaveEstelar`,
+  incluso aunque las instancias que hay tras de escena son de esos
   tipos. 
 - Por ser del tipo `TieneNombre` sabemos que tiene una propiedad
   `nombreCompleto` que podemos usar sobre la variable iteradora.
