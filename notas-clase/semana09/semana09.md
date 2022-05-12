@@ -229,6 +229,25 @@ if let dato1 = x1, let dato2 = x2, let dato3 = x3 {
 }
 ```
 
+---
+
+### Comparación con opcionales
+
+- No es necesario desenvolver un opcional para compararlo con otro valor
+usando los operadores `==` o `!=`.
+
+```swift
+var x: Int? = 10
+x == 10 // devuelve true
+x != nil // devuelve true
+x == 0 // devuelve false
+
+// Asignamos nil a x
+x = nil
+x == nil // devuelve true
+x == 10 // devuelve false
+```
+
 ----
 
 ### Operador _nil-coalescing_ ###

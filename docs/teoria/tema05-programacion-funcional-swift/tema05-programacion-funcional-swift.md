@@ -1525,7 +1525,30 @@ if let dato1 = x1, let dato2 = x2, let dato3 = x3 {
 }
 ```
 
-### 9.2. Operador _nil-coalescing_ ###
+### 9.2 Comparación con opcionales ###
+
+No es necesario desenvolver un opcional para compararlo con otro valor
+usando los operadores `==` o `!=`.
+
+Por ejemplo, el siguiente código es correcto:
+
+```swift
+var x: Int? = 10
+x == 10 // devuelve true
+x != nil // devuelve true
+x == 0 // devuelve false
+```
+
+Si en el opcional hay `nil` solo devolverá `true` cuando se compare
+con `nil`:
+
+```swift
+x = nil
+x == nil // devuelve true
+x == 10 // devuelve false
+```
+
+### 9.3. Operador _nil-coalescing_ ###
 
 El operador _nil-coalescing_ (`??`) permite definir un valor por
 defecto en una asignación si un opcional es nil.
@@ -1542,7 +1565,7 @@ print("Resultado: \(x), \(y)")
 En el ejemplo anterior, en la variable `x` se guardará el valor `-1` y
 en la variable `y` el valor `10`.
 
-### 9.3. Encadenamiento de opcionales ###
+### 9.4. Encadenamiento de opcionales ###
 
 El encadenamiento de opcionales (_optional chaining_) permite llamar a
 un método de una variable que contiene un opcional. Si la variable no
@@ -1565,7 +1588,7 @@ let str2 = nombre2?.lowercased()
 ```
 
 
-### 9.4. Definición de `Lista` con opcionales
+### 9.5. Definición de `Lista` con opcionales
 
 Veamos como último ejemplo una segunda versión del enum `Lista`, en el que
 utilizamos un único `case`, pero dando la posibilidad de que el resto
