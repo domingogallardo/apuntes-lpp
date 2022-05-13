@@ -39,7 +39,7 @@ print("res3 = \(String(describing: res3))")
 
 ```
 
-b1) Escribe una nueva versión del ejercicio 1b) de la práctica 9 que
+b1) Escribe una nueva versión del ejercicio 2b) de la práctica 9 que
 permita recibir números negativos y que devuelva una pareja de `(Int?,
 Int?)` con `nil` en la parte izquierda y/o derecha si no hay número
 impares o pares. Debes usar la función auxiliar definida en el
@@ -62,8 +62,8 @@ pares y el máximo de los impares. En el caso en que se pase un array
 vacío deberá devolver un 0.
 
 ```swift
-print("sumaMaxParesImpares(numeros: \(numeros2))")
-print(sumaMaxParesImpares(numeros: numeros2))
+print("sumaMaxParesImpares(numeros: \(numeros))")
+print(sumaMaxParesImpares(numeros: numeros))
 // Imprime:
 // sumaMaxParesImpares(numeros: [-10, 202, 12, 100, 204, 2])
 // 204
