@@ -1,10 +1,18 @@
 # Práctica 11: Programación Orientada a Objetos en Swift (1)
 
-## Entrega de la práctica
+## Antes de la clase de prácticas
 
-Para entregar la práctica debes subir a Moodle el fichero
-`practica11.swift` con una cabecera inicial con tu nombre y apellidos,
-y las soluciones de cada ejercicio separadas por comentarios.
+Los siguientes ejercicios están basados en los conceptos de teoría
+vistos la semana pasada. Antes de la clase de prácticas debes repasar
+todos los conceptos y **probar en con el compilador de Swift** todos
+los ejemplos de los siguientes apartados del tema 6 [_Programación
+OO con Swift_](../../teoria/tema06-programacion-orientada-objetos-swift/tema06-programacion-orientada-objetos-swift.md)
+
+- Clases y estructuras
+- Propiedades
+- Métodos
+- Inicialización
+- Herencia
 
 
 ### Ejercicio 1 ###
@@ -13,8 +21,9 @@ Contesta los siguientes apartados sin usar el compilador de
 Swift. Una vez los hayas terminado, comprueba si la solución que
 habías indicado era correcta.
 
-a) Examina el siguiente código. ¿Qué error o errores tiene? Una vez que
-arregles el código, indica qué se va a imprimir por pantalla.
+a) Examina el siguiente código. ¿Qué error o errores tiene? Arregla
+los errores con el mínimo número de cambios posibles e indica qué se
+va a imprimir por pantalla.
 
 ```swift
 struct MiEstructura {
@@ -45,10 +54,10 @@ print("c1.x, después de llamar a la función: \(c1.x)")
 b) Examina el código a continuación y añade en la estructura `Cuadrado`
 dos versiones de un método `movido` que reciba un incremento x y un
 incremento y y devuelva un nuevo cuadrado resultante de haber movido
-su esquina. Llama a la primera versión del método `movido1` y usa en
-ella el método `movida` de la clase `Coord`. Llama a la segunda
-versión del método `movido2` y usa en ella el método `mueve` de la
-clase `Coord`.
+su esquina. Llama a la primera versión del método `movido` y usa en
+ella el método `movida` de la estructura `Coord`. Llama a la segunda
+versión del método `mueve` y usa en ella el método `mueve` de la
+estructura `Coord`.
 
 ```swift
 struct Coord {
@@ -69,11 +78,11 @@ struct Cuadrado {
     var esquina = Coord(x: 0.0, y: 0.0)
     var lado: Double
 
-    func movido1 ... {
+    func movido ... {
         ...
     }
 
-    func movido2 ... {
+    func mueve ... {
         ...
     }
 }
@@ -83,41 +92,79 @@ struct Cuadrado {
 c) Indica qué muestra por pantalla la función print:
 
 ```swift
-func foo(palabra pal: String) -> String {
-    let lon = pal.count
-    if lon < 2 {
-        return pal 
+func foo(palabra: String, longitud: Int) -> Bool {
+    if palabra.count >= longitud {
+        return true
     }
     else {
-        let start = pal.startIndex
-        let end =  pal.index(start, offsetBy: lon/2)
-        return String(pal[end])
+        return false
     } 
 }
 
 class MisPalabras {
     var guardadas: [String] = []
-    func guarda(palabra: String) {
+    func guarda(_ palabra: String) {
         guardadas.append(palabra)
     }
-    var x : [String] {
+    var x : [Bool] {
         get {
-            return guardadas.map(foo)
+            return guardadas.map {foo(palabra: $0,longitud: 4)}
         }
     } 
 }
 
 let palabras = MisPalabras()
-palabras.guarda(palabra: "sal")
-palabras.guarda(palabra: "limon")
+palabras.guarda("Ana")
+palabras.guarda("Pascual")
+palabras.guarda("María")
 print(palabras.x)
 ```
 
 
-
 ### Ejercicio 2 ###
 
-a) El siguiente código usa observadores de propiedades y una variable
+a) El siguiente código usa propiedades calculadas y observadores de
+propiedades. ¿Qué se imprime al final de su ejecución? Reflexiona sobre el
+funcionamiento del código, compruébalo con el compilador y experimenta
+haciendo cambios y comprobando el resultado.
+
+
+```swift
+var x = 10  {
+   didSet {
+      if (x > 100) {
+          x = oldValue
+      }
+   }
+}
+
+var y: Int {
+    get {
+        return x / 3
+    }
+    set {
+        x = 3 * newValue
+    }
+}
+
+var z : Int {
+   get {
+      return x + y
+   }
+   set {
+      x = newValue / 2
+      y = newValue / 2
+   }
+}
+z = 60
+print("y: \(y)")
+print("x: \(x)")
+z = 600
+print("y: \(y)")
+print("x: \(x)")
+```
+
+b) El siguiente código usa observadores de propiedades y una variable
 del tipo (estática). 
 
 ¿Qué se imprime al final de su ejecución? Reflexiona sobre el
@@ -145,24 +192,6 @@ c1.valor = 20
 c2.valor = 8
 print(c1.valor + c2.valor + Valor.z)
 ```
-
-
-b) Escribe un ejemplo de código en el que definas una relación de
-herencia entre una clase base y una clase derivada. Comprueba en el
-código que un objeto de la clase derivada hereda las propiedades y
-métodos de la clase base.
-
-Investiga sobre el funcionamiento de la herencia en Swift. Escribe
-ejemplos en donde compruebes este funcionamiento. Algunos ejemplos de
-preguntas que puedes investigar (puedes añadir tú más preguntas):
-
-- ¿Se puede sobreescribir el valor de una propiedad almacenada? ¿Y
-calculada? 
-- ¿Se puede añadir un observador a una propiedad de la clase base en
-  una clase derivada?
-- ¿Hereda la clase derivada propiedades y métodos estáticos de la clase base?
-- ¿Cómo se puede llamar a la implementación de un método de la clase
-  base en una sobreescritura de ese mismo método en la clase derivada?
 
 
 ### Ejercicio 3 ###
@@ -211,10 +240,30 @@ solución con tres estructuras:
 
 Puedes usar esta propuesta, o proponer tú alguna solución alternativa.
 
-
 ### Ejercicio 4
 
-En este ejercicio vamos a trabajar con figuras geométricas usando estructuras y clases. 
+Escribe un ejemplo de código en el que definas una relación de
+herencia entre una clase base y una clase derivada. Comprueba en el
+código que un objeto de la clase derivada hereda las propiedades y
+métodos de la clase base.
+
+Investiga sobre el funcionamiento de la herencia en Swift. Escribe
+ejemplos en donde compruebes este funcionamiento. Algunos ejemplos de
+preguntas que puedes investigar (puedes añadir tú más preguntas):
+
+- ¿Se puede sobreescribir el valor de una propiedad almacenada? ¿Y
+calculada? 
+- ¿Se puede añadir un observador a una propiedad de la clase base en
+  una clase derivada?
+- ¿Hereda la clase derivada propiedades y métodos estáticos de la clase base?
+- ¿Cómo se puede llamar a la implementación de un método de la clase
+  base en una sobreescritura de ese mismo método en la clase derivada?
+
+
+### Ejercicio 5
+
+En este ejercicio vamos a trabajar con figuras geométricas usando
+estructuras y clases.
 
 En el ejercicio deberás usar la función para calcular la raíz
 cuadrada y el valor de la constante matemática _pi_.
@@ -237,7 +286,7 @@ se definirán con números decimales (`Double`).
 Vamos a definir las siguientes estructuras y clases:
 
 - Estructuras: `Punto`, `Tamaño`
-- Clases: `Figura` (clase padre), `Cuadrilátero` y `Circulo` (clases
+- Clases: `Figura` (superclase), `Cuadrilátero` y `Circulo` (clases
 derivadas). 
 
 <img src="imagenes/figuras.png" width="500px"/>
@@ -249,9 +298,9 @@ todas las figuras geométricas.
 
 Las debes declarar tal y como aparecen en los apuntes.
 
-**Clase padre `Figura`**:
+**Clase `Figura`**:
 
-- Constructor:
+- Inicializador:
     - `Figura(origen: Punto, tamaño: Tamaño)`
 - Propiedades de instancia almacenadas:
     - `origen` (`Punto`) que define las coordenadas de la esquina
@@ -267,10 +316,11 @@ Las debes declarar tal y como aparecen en los apuntes.
 
 **Clase derivada `Cuadrilatero`**
 
-Un cuadrilátero se define por cuatro puntos. La figura padre representa el
-rectángulo que engloba los cuatro puntos del cuadrilátero (ver imagen arriba).
+Un cuadrilátero se define por cuatro puntos. La figura representa el
+rectángulo que engloba los cuatro puntos del cuadrilátero (ver imagen
+arriba).
 
-- Constructor:
+- Inicializador:
     - `Cuadrilatero(p1: Punto, p2: Punto, p3: Punto, p4: Punto)`. Los
       puntos se dan en el orden definido por el sentido de las agujas
       del reloj, aunque no siempre se empezará por el punto que está
@@ -281,8 +331,8 @@ rectángulo que engloba los cuatro puntos del cuadrilátero (ver imagen arriba).
 - Propiedades de instancia almacenadas propias:
     - Los puntos del cuadrilátero `p1`, `p2`, `p3` y `p4`.
 - Propiedades de instancia calculadas:
-    - `centro` (`Punto`, de lectura y escritura), heredada de la clase
-      padre. El `setter` modifica la posición de los
+    - `centro` (`Punto`, de lectura y escritura), heredada de la superclase
+       El `setter` modifica la posición de los
       puntos del cuadrilátero y del origen de la figura,
       desplazándolos los mismos incrementos en los que ha sido
       desplazado el centro de la figura.
@@ -291,19 +341,18 @@ rectángulo que engloba los cuatro puntos del cuadrilátero (ver imagen arriba).
 
 **Clase derivada `Circulo`**
 
-Un círculo se define por un centro y un radio. La figura padre
+Un círculo se define por un centro y un radio. La superclase figura
 representa el cuadrado más pequeño en el que está inscrito el círculo
 (ver imagen arriba).
 
-- Constructor:
+- Inicializador:
     - `Circulo(centro: Punto, radio: Double)`. Al crear el círculo
       deberemos actualizar las propiedades `origen` y `tamaño` de la
       figura.
 - Propiedades de instancia almacenadas:
     - `radio` (`Double`) que contiene la longitud del radio.
 - Propiedades de instancia calculadas:
-    - `centro` (`Punto`, de lectura y escritura), heredada de la clase
-      padre. 
+    - `centro` (`Punto`, de lectura y escritura), heredada de la superclase.
     - `area` (`Double`, de lectura y escritura) que devuelve el área
       del círculo. El `setter` modifica el tamaño del círculo (su
       radio), manteniendo el centro en la misma posición.
@@ -330,6 +379,6 @@ sus métodos.
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2020-21  
+Lenguajes y Paradigmas de Programación, curso 2021-22  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
