@@ -3504,13 +3504,13 @@ operación de diferencia ya tiene una implementación por defecto.</p>
 <span class="bp">print</span><span class="p">(</span><span class="n">p1</span> <span class="o">!=</span> <span class="n">p2</span><span class="p">)</span>
 <span class="c1">// Imprime false</span>
 </code></pre></div>
-<p>El operador <code>==</code> se define en la propia clase. Se utiliza la
-palabra <code>static</code> para indicar que se trata de un operador que estamos
-sobrecargando (hablaremos más adelante de los operadores).</p>
+<p>El operador <code>==</code> se define en la propia clase. Tal y como hemos
+comentado, se utiliza la palabra <code>static</code> para indicar que se trata de
+un operador que estamos sobrecargando.</p>
 <p>El operador <code>!=</code> que se usa en la última instrucción se define en una
-implementación por defecto.</p>
-<p>En las estructuras y enumeraciones el compilador define una
-<strong>implementación automática del operador <code>==</code></strong> al añadir el protocolo
+implementación por defecto proporcionada por Swift.</p>
+<p>En <strong>las estructuras y enumeraciones</strong> el compilador define una
+implementación automática del operador <code>==</code> al añadir el protocolo
 <code>Equatable</code>, siempre que las propiedades almacenadas y los valores
 asociados cumplan ese protocolo.</p>
 <p>Por ejemplo, si en lugar de una clase definimos el <code>Punto3D</code> como una

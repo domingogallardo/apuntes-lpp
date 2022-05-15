@@ -507,11 +507,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#entrega-de-la-practica" class="md-nav__link">
-    Entrega de la práctica
+  <a href="#antes-de-la-clase-de-practicas" class="md-nav__link">
+    Antes de la clase de prácticas
   </a>
   
-    <nav class="md-nav" aria-label="Entrega de la práctica">
+    <nav class="md-nav" aria-label="Antes de la clase de prácticas">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -542,6 +542,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" class="md-nav__link">
+    Ejercicio 5
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -561,16 +568,26 @@
                 
                 
                 <h1 id="practica-11-programacion-orientada-a-objetos-en-swift-1">Práctica 11: Programación Orientada a Objetos en Swift (1)<a class="headerlink" href="#practica-11-programacion-orientada-a-objetos-en-swift-1" title="Permanent link">&para;</a></h1>
-<h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
-<p>Para entregar la práctica debes subir a Moodle el fichero
-<code>practica11.swift</code> con una cabecera inicial con tu nombre y apellidos,
-y las soluciones de cada ejercicio separadas por comentarios.</p>
+<h2 id="antes-de-la-clase-de-practicas">Antes de la clase de prácticas<a class="headerlink" href="#antes-de-la-clase-de-practicas" title="Permanent link">&para;</a></h2>
+<p>Los siguientes ejercicios están basados en los conceptos de teoría
+vistos la semana pasada. Antes de la clase de prácticas debes repasar
+todos los conceptos y <strong>probar en con el compilador de Swift</strong> todos
+los ejemplos de los siguientes apartados del tema 6 <a href="../../teoria/tema06-programacion-orientada-objetos-swift/tema06-programacion-orientada-objetos-swift.html"><em>Programación
+OO con Swift</em></a></p>
+<ul>
+<li>Clases y estructuras</li>
+<li>Propiedades</li>
+<li>Métodos</li>
+<li>Inicialización</li>
+<li>Herencia</li>
+</ul>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
 <p>Contesta los siguientes apartados sin usar el compilador de
 Swift. Una vez los hayas terminado, comprueba si la solución que
 habías indicado era correcta.</p>
-<p>a) Examina el siguiente código. ¿Qué error o errores tiene? Una vez que
-arregles el código, indica qué se va a imprimir por pantalla.</p>
+<p>a) Examina el siguiente código. ¿Qué error o errores tiene? Arregla
+los errores con el mínimo número de cambios posibles e indica qué se
+va a imprimir por pantalla.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">MiEstructura</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">0</span>
 <span class="p">}</span>
@@ -598,10 +615,10 @@ arregles el código, indica qué se va a imprimir por pantalla.</p>
 <p>b) Examina el código a continuación y añade en la estructura <code>Cuadrado</code>
 dos versiones de un método <code>movido</code> que reciba un incremento x y un
 incremento y y devuelva un nuevo cuadrado resultante de haber movido
-su esquina. Llama a la primera versión del método <code>movido1</code> y usa en
-ella el método <code>movida</code> de la clase <code>Coord</code>. Llama a la segunda
-versión del método <code>movido2</code> y usa en ella el método <code>mueve</code> de la
-clase <code>Coord</code>.</p>
+su esquina. Llama a la primera versión del método <code>movido</code> y usa en
+ella el método <code>movida</code> de la estructura <code>Coord</code>. Llama a la segunda
+versión del método <code>mueve</code> y usa en ella el método <code>mueve</code> de la
+estructura <code>Coord</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Coord</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">x</span><span class="p">:</span> <span class="nb">Double</span>
     <span class="kd">var</span> <span class="nv">y</span><span class="p">:</span> <span class="nb">Double</span>
@@ -620,47 +637,82 @@ clase <code>Coord</code>.</p>
     <span class="kd">var</span> <span class="nv">esquina</span> <span class="p">=</span> <span class="n">Coord</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">)</span>
     <span class="kd">var</span> <span class="nv">lado</span><span class="p">:</span> <span class="nb">Double</span>
 
-    <span class="kd">func</span> <span class="nf">movido1</span> <span class="p">...</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">movido</span> <span class="p">...</span> <span class="p">{</span>
         <span class="p">...</span>
     <span class="p">}</span>
 
-    <span class="kd">func</span> <span class="nf">movido2</span> <span class="p">...</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">mueve</span> <span class="p">...</span> <span class="p">{</span>
         <span class="p">...</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>c) Indica qué muestra por pantalla la función print:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">foo</span><span class="p">(</span><span class="n">palabra</span> <span class="n">pal</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nv">lon</span> <span class="p">=</span> <span class="n">pal</span><span class="p">.</span><span class="bp">count</span>
-    <span class="k">if</span> <span class="n">lon</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">pal</span> 
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">foo</span><span class="p">(</span><span class="n">palabra</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">longitud</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">palabra</span><span class="p">.</span><span class="bp">count</span> <span class="o">&gt;=</span> <span class="n">longitud</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">true</span>
     <span class="p">}</span>
     <span class="k">else</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nv">start</span> <span class="p">=</span> <span class="n">pal</span><span class="p">.</span><span class="n">startIndex</span>
-        <span class="kd">let</span> <span class="nv">end</span> <span class="p">=</span>  <span class="n">pal</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">offsetBy</span><span class="p">:</span> <span class="n">lon</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">String</span><span class="p">(</span><span class="n">pal</span><span class="p">[</span><span class="n">end</span><span class="p">])</span>
+        <span class="k">return</span> <span class="kc">false</span>
     <span class="p">}</span> 
 <span class="p">}</span>
 
 <span class="kd">class</span> <span class="nc">MisPalabras</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">guardadas</span><span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>
-    <span class="kd">func</span> <span class="nf">guarda</span><span class="p">(</span><span class="n">palabra</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">guarda</span><span class="p">(</span><span class="kc">_</span> <span class="n">palabra</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">guardadas</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">palabra</span><span class="p">)</span>
     <span class="p">}</span>
-    <span class="kd">var</span> <span class="nv">x</span> <span class="p">:</span> <span class="p">[</span><span class="nb">String</span><span class="p">]</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">x</span> <span class="p">:</span> <span class="p">[</span><span class="nb">Bool</span><span class="p">]</span> <span class="p">{</span>
         <span class="kr">get</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="n">guardadas</span><span class="p">.</span><span class="bp">map</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">guardadas</span><span class="p">.</span><span class="bp">map</span> <span class="p">{</span><span class="n">foo</span><span class="p">(</span><span class="n">palabra</span><span class="p">:</span> <span class="nv">$0</span><span class="p">,</span><span class="n">longitud</span><span class="p">:</span> <span class="mi">4</span><span class="p">)}</span>
         <span class="p">}</span>
     <span class="p">}</span> 
 <span class="p">}</span>
 
 <span class="kd">let</span> <span class="nv">palabras</span> <span class="p">=</span> <span class="n">MisPalabras</span><span class="p">()</span>
-<span class="n">palabras</span><span class="p">.</span><span class="n">guarda</span><span class="p">(</span><span class="n">palabra</span><span class="p">:</span> <span class="s">&quot;sal&quot;</span><span class="p">)</span>
-<span class="n">palabras</span><span class="p">.</span><span class="n">guarda</span><span class="p">(</span><span class="n">palabra</span><span class="p">:</span> <span class="s">&quot;limon&quot;</span><span class="p">)</span>
+<span class="n">palabras</span><span class="p">.</span><span class="n">guarda</span><span class="p">(</span><span class="s">&quot;Ana&quot;</span><span class="p">)</span>
+<span class="n">palabras</span><span class="p">.</span><span class="n">guarda</span><span class="p">(</span><span class="s">&quot;Pascual&quot;</span><span class="p">)</span>
+<span class="n">palabras</span><span class="p">.</span><span class="n">guarda</span><span class="p">(</span><span class="s">&quot;María&quot;</span><span class="p">)</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">palabras</span><span class="p">.</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
-<p>a) El siguiente código usa observadores de propiedades y una variable
+<p>a) El siguiente código usa propiedades calculadas y observadores de
+propiedades. ¿Qué se imprime al final de su ejecución? Reflexiona sobre el
+funcionamiento del código, compruébalo con el compilador y experimenta
+haciendo cambios y comprobando el resultado.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">10</span>  <span class="p">{</span>
+   <span class="kr">didSet</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+          <span class="n">x</span> <span class="p">=</span> <span class="n">oldValue</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">y</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="kr">get</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">3</span>
+    <span class="p">}</span>
+    <span class="kr">set</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="p">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">newValue</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">z</span> <span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
+   <span class="kr">get</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+   <span class="p">}</span>
+   <span class="kr">set</span> <span class="p">{</span>
+      <span class="n">x</span> <span class="p">=</span> <span class="n">newValue</span> <span class="o">/</span> <span class="mi">2</span>
+      <span class="n">y</span> <span class="p">=</span> <span class="n">newValue</span> <span class="o">/</span> <span class="mi">2</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">z</span> <span class="p">=</span> <span class="mi">60</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;y: </span><span class="si">\(</span><span class="n">y</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;x: </span><span class="si">\(</span><span class="n">x</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">z</span> <span class="p">=</span> <span class="mi">600</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;y: </span><span class="si">\(</span><span class="n">y</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;x: </span><span class="si">\(</span><span class="n">x</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>b) El siguiente código usa observadores de propiedades y una variable
 del tipo (estática). </p>
 <p>¿Qué se imprime al final de su ejecución? Reflexiona sobre el
 funcionamiento del código, compruébalo con el compilador y experimenta
@@ -685,22 +737,6 @@ haciendo cambios y comprobando el resultado.</p>
 <span class="n">c2</span><span class="p">.</span><span class="n">valor</span> <span class="p">=</span> <span class="mi">8</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">c1</span><span class="p">.</span><span class="n">valor</span> <span class="o">+</span> <span class="n">c2</span><span class="p">.</span><span class="n">valor</span> <span class="o">+</span> <span class="n">Valor</span><span class="p">.</span><span class="n">z</span><span class="p">)</span>
 </code></pre></div>
-<p>b) Escribe un ejemplo de código en el que definas una relación de
-herencia entre una clase base y una clase derivada. Comprueba en el
-código que un objeto de la clase derivada hereda las propiedades y
-métodos de la clase base.</p>
-<p>Investiga sobre el funcionamiento de la herencia en Swift. Escribe
-ejemplos en donde compruebes este funcionamiento. Algunos ejemplos de
-preguntas que puedes investigar (puedes añadir tú más preguntas):</p>
-<ul>
-<li>¿Se puede sobreescribir el valor de una propiedad almacenada? ¿Y
-calculada? </li>
-<li>¿Se puede añadir un observador a una propiedad de la clase base en
-  una clase derivada?</li>
-<li>¿Hereda la clase derivada propiedades y métodos estáticos de la clase base?</li>
-<li>¿Cómo se puede llamar a la implementación de un método de la clase
-  base en una sobreescritura de ese mismo método en la clase derivada?</li>
-</ul>
 <h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
 <p>Tenemos que escribir un programa que permita definir resultados de
 partidos de fútbol y calcular la puntuación de un conjunto de equipos
@@ -741,7 +777,25 @@ solución con tres estructuras:</p>
 </ul>
 <p>Puedes usar esta propuesta, o proponer tú alguna solución alternativa.</p>
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
-<p>En este ejercicio vamos a trabajar con figuras geométricas usando estructuras y clases. </p>
+<p>Escribe un ejemplo de código en el que definas una relación de
+herencia entre una clase base y una clase derivada. Comprueba en el
+código que un objeto de la clase derivada hereda las propiedades y
+métodos de la clase base.</p>
+<p>Investiga sobre el funcionamiento de la herencia en Swift. Escribe
+ejemplos en donde compruebes este funcionamiento. Algunos ejemplos de
+preguntas que puedes investigar (puedes añadir tú más preguntas):</p>
+<ul>
+<li>¿Se puede sobreescribir el valor de una propiedad almacenada? ¿Y
+calculada? </li>
+<li>¿Se puede añadir un observador a una propiedad de la clase base en
+  una clase derivada?</li>
+<li>¿Hereda la clase derivada propiedades y métodos estáticos de la clase base?</li>
+<li>¿Cómo se puede llamar a la implementación de un método de la clase
+  base en una sobreescritura de ese mismo método en la clase derivada?</li>
+</ul>
+<h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
+<p>En este ejercicio vamos a trabajar con figuras geométricas usando
+estructuras y clases.</p>
 <p>En el ejercicio deberás usar la función para calcular la raíz
 cuadrada y el valor de la constante matemática <em>pi</em>.</p>
 <ul>
@@ -761,7 +815,7 @@ se definirán con números decimales (<code>Double</code>).</p>
 <p>Vamos a definir las siguientes estructuras y clases:</p>
 <ul>
 <li>Estructuras: <code>Punto</code>, <code>Tamaño</code></li>
-<li>Clases: <code>Figura</code> (clase padre), <code>Cuadrilátero</code> y <code>Circulo</code> (clases
+<li>Clases: <code>Figura</code> (superclase), <code>Cuadrilátero</code> y <code>Circulo</code> (clases
 derivadas). </li>
 </ul>
 <p><img src="imagenes/figuras.png" width="500px"/></p>
@@ -769,9 +823,9 @@ derivadas). </li>
 todas las figuras geométricas.</p>
 <p><strong>Estructuras <code>Punto</code> y <code>Tamaño</code></strong></p>
 <p>Las debes declarar tal y como aparecen en los apuntes.</p>
-<p><strong>Clase padre <code>Figura</code></strong>:</p>
+<p><strong>Clase <code>Figura</code></strong>:</p>
 <ul>
-<li>Constructor:<ul>
+<li>Inicializador:<ul>
 <li><code>Figura(origen: Punto, tamaño: Tamaño)</code></li>
 </ul>
 </li>
@@ -792,10 +846,11 @@ todas las figuras geométricas.</p>
 </li>
 </ul>
 <p><strong>Clase derivada <code>Cuadrilatero</code></strong></p>
-<p>Un cuadrilátero se define por cuatro puntos. La figura padre representa el
-rectángulo que engloba los cuatro puntos del cuadrilátero (ver imagen arriba).</p>
+<p>Un cuadrilátero se define por cuatro puntos. La figura representa el
+rectángulo que engloba los cuatro puntos del cuadrilátero (ver imagen
+arriba).</p>
 <ul>
-<li>Constructor:<ul>
+<li>Inicializador:<ul>
 <li><code>Cuadrilatero(p1: Punto, p2: Punto, p3: Punto, p4: Punto)</code>. Los
   puntos se dan en el orden definido por el sentido de las agujas
   del reloj, aunque no siempre se empezará por el punto que está
@@ -810,8 +865,8 @@ rectángulo que engloba los cuatro puntos del cuadrilátero (ver imagen arriba).
 </ul>
 </li>
 <li>Propiedades de instancia calculadas:<ul>
-<li><code>centro</code> (<code>Punto</code>, de lectura y escritura), heredada de la clase
-  padre. El <code>setter</code> modifica la posición de los
+<li><code>centro</code> (<code>Punto</code>, de lectura y escritura), heredada de la superclase
+   El <code>setter</code> modifica la posición de los
   puntos del cuadrilátero y del origen de la figura,
   desplazándolos los mismos incrementos en los que ha sido
   desplazado el centro de la figura.</li>
@@ -821,11 +876,11 @@ rectángulo que engloba los cuatro puntos del cuadrilátero (ver imagen arriba).
 </li>
 </ul>
 <p><strong>Clase derivada <code>Circulo</code></strong></p>
-<p>Un círculo se define por un centro y un radio. La figura padre
+<p>Un círculo se define por un centro y un radio. La superclase figura
 representa el cuadrado más pequeño en el que está inscrito el círculo
 (ver imagen arriba).</p>
 <ul>
-<li>Constructor:<ul>
+<li>Inicializador:<ul>
 <li><code>Circulo(centro: Punto, radio: Double)</code>. Al crear el círculo
   deberemos actualizar las propiedades <code>origen</code> y <code>tamaño</code> de la
   figura.</li>
@@ -836,8 +891,7 @@ representa el cuadrado más pequeño en el que está inscrito el círculo
 </ul>
 </li>
 <li>Propiedades de instancia calculadas:<ul>
-<li><code>centro</code> (<code>Punto</code>, de lectura y escritura), heredada de la clase
-  padre. </li>
+<li><code>centro</code> (<code>Punto</code>, de lectura y escritura), heredada de la superclase.</li>
 <li><code>area</code> (<code>Double</code>, de lectura y escritura) que devuelve el área
   del círculo. El <code>setter</code> modifica el tamaño del círculo (su
   radio), manteniendo el centro en la misma posición.</li>
@@ -870,7 +924,7 @@ código en el que se creen al menos un cuadrilátero y un círculo, se
 prueben sus propiedades, se añadan al almacén de figuras y se prueben
 sus métodos.</p>
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2020-21<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2021-22<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
                 
