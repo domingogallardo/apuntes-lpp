@@ -427,14 +427,14 @@ print(p1 != p2)
 // Imprime false
 ```
 
-- El operador `==` se define en la propia clase. Se utiliza la
-  palabra `static` para indicar que se trata de un operador que estamos
-  sobrecargando (hablaremos más adelante de los operadores).
+- El operador `==` se define en la propia clase. Tal y como hemos
+  visto previamente, se utiliza la palabra `static` para indicar que
+  se trata de un operador que estamos sobrecargando.
 - El operador `!=` que se usa en la última instrucción se define en una
-  implementación por defecto.
+  implementación por defecto proporcionada por Swift.
 
-- En las estructuras y enumeraciones el compilador define una
-**implementación automática del operador `==`** al añadir el protocolo
+- En **las estructuras y enumeraciones** el compilador define una
+implementación automática del operador `==` al añadir el protocolo
 `Equatable`, siempre que las propiedades almacenadas y los valores
 asociados cumplan ese protocolo.
   
