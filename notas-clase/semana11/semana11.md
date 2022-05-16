@@ -995,14 +995,14 @@ error: binary operator '==' cannot be applied to two 'T' operands
            ~~~~~ ^  ~~~~~~~~~~~
 ```
 
-Debemos restringir el tipo genérico a ese protocolo al protocolo `Equatable`:
+Debemos restringir el tipo genérico al protocolo `Equatable`:
 
 ```swift
 func findIndex<T: Equatable>(of valueToFind: T, in array:[T]) -> Int? {
     for (index, value) in array.enumerated() {
         if value == valueToFind {
             return index
-n        }
+        }
     }
     return nil
 }
@@ -1026,7 +1026,7 @@ let doubleIndex = findIndex(of: 9.3, in: [3.14159, 0.1, 0.25, 9.3])
 - Esto incluye la posibilidad de extender tipos para los que no
   tenemos acceso al código fuente original (esto se conoce como
   _modelado retroactivo_).
-- Es posible incluso extender clases de las librerías estándar de
+- Es posible incluso extender estructuras de las librerías estándar de
   Swift, como Int, Double, Array, etc.
 
 Entre otras cosas, las extensiones pueden: 
@@ -1200,7 +1200,9 @@ extension Int {
 - Otro ejemplo, para extender el tipo estándar `String`.
 
 - En Swift es algo complicado devolver el carácter situado
-en una posición de una cadena:
+en una posición de una cadena porque el índice que se utiliza para el
+acceso a la posición no es de tipo `Int`, sino un valor del tipo
+`String.Index`:
 
 ```swift
 let cadena = "Hola"
@@ -1209,8 +1211,8 @@ let index = cadena.index(cadena.startIndex, offsetBy: posicion)
 cadena[index] // Devuelve "l"
 ```
 
-- Podemos definir una extensión que añada esa funcionalidad a
-`String`:
+- Para simplificar el acceso a una posición de un `String` podemos
+definir una extensión que añada esa funcionalidad a la estructura:
 
 ```swift
 extension String {

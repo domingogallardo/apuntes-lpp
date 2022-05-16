@@ -3249,7 +3249,7 @@ let reedRichards = Persona(edad: 40, nombreCompleto: "Reed Richards")
 print(reedRichards.descripcion())
 ```
 
-Es posible incluso extender clases de las librerías estándar de
+Es posible incluso extender estructuras de las librerías estándar de
 Swift, como `Int`, `Double`, `Array`, `String` y clases y estructuras
 importadas. 
 
@@ -3301,7 +3301,9 @@ Usando clausuras por la cola podemos hacer la llamada más concisa:
 Veamos otro ejemplo de extensión de un tipo ya existente.
 
 Por ejemplo, en Swift es algo complicado devolver el carácter situado
-en una posición de una cadena:
+en una posición de una cadena, porque el índice que se utiliza para el
+acceso a la posición no es de tipo `Int`, sino un valor del tipo
+`String.Index`:
 
 ```swift
 let cadena = "Hola"
@@ -3310,7 +3312,8 @@ let index = cadena.index(cadena.startIndex, offsetBy: posicion)
 cadena[index] // Devuelve "l"
 ```
 
-Podemos definir una extensión que añada esa funcionalidad a `String`:
+Para simplificar el acceso a una posición de un `String` podemos
+definir una extensión que añada esa funcionalidad a la estructura:
 
 ```swift
 extension String {
