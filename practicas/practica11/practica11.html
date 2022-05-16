@@ -710,10 +710,11 @@ va a imprimir por pantalla.</p>
 <p>b) Examina el código a continuación y añade en la estructura <code>Cuadrado</code>
 dos versiones de un método <code>movido</code> que reciba un incremento x y un
 incremento y y devuelva un nuevo cuadrado resultante de haber movido
-su esquina. Llama a la primera versión del método <code>movido</code> y usa en
+su esquina. Llama a la primera versión del método <code>movido1</code> y usa en
 ella el método <code>movida</code> de la estructura <code>Coord</code>. Llama a la segunda
-versión del método <code>mueve</code> y usa en ella el método <code>mueve</code> de la
-estructura <code>Coord</code>.</p>
+versión del método <code>movido2</code> y usa en ella el método <code>mueve</code> de la
+estructura <code>Coord</code>. Añade también un método mutador <code>mueve</code> que mute
+la posición del cuadrado.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Coord</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">x</span><span class="p">:</span> <span class="nb">Double</span>
     <span class="kd">var</span> <span class="nv">y</span><span class="p">:</span> <span class="nb">Double</span>
@@ -732,13 +733,15 @@ estructura <code>Coord</code>.</p>
     <span class="kd">var</span> <span class="nv">esquina</span> <span class="p">=</span> <span class="n">Coord</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">)</span>
     <span class="kd">var</span> <span class="nv">lado</span><span class="p">:</span> <span class="nb">Double</span>
 
-    <span class="kd">func</span> <span class="nf">movido</span> <span class="p">...</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">movido1</span> <span class="p">...</span> <span class="p">{</span>
         <span class="p">...</span>
     <span class="p">}</span>
 
-    <span class="kd">func</span> <span class="nf">mueve</span> <span class="p">...</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">movido2</span> <span class="p">...</span> <span class="p">{</span>
         <span class="p">...</span>
     <span class="p">}</span>
+
+    <span class="c1">// Añade un método mutador mueve</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>c) Indica qué muestra por pantalla la función print:</p>
