@@ -57,8 +57,8 @@ incremento y y devuelva un nuevo cuadrado resultante de haber movido
 su esquina. Llama a la primera versión del método `movido1` y usa en
 ella el método `movida` de la estructura `Coord`. Llama a la segunda
 versión del método `movido2` y usa en ella el método `mueve` de la
-estructura `Coord`. Añade también un método mutador `mueve` que mute
-la posición del cuadrado.
+estructura `Coord`. Añade también un método mutador `mueve` que haga
+lo mismo que los anteriores, pero mutando la posición del cuadrado.
 
 ```swift
 struct Coord {
