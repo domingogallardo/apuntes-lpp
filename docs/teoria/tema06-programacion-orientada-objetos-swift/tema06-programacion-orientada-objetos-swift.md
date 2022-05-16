@@ -2791,6 +2791,24 @@ El mismo ejemplo se puede aplicar al array `cosasConNombre`. Prueba a
 adaptar el código anterior a este array, recorriéndolo y haciendo el
 _downcasting_ a los tipos `Persona` y `NaveEspacial`.
 
+Otra forma de hacer el _downcasting_ es usando un operador `switch as`
+en el que se definen los distintos tipos posibles que puede tener la
+variable y se asignan a una variable del tipo correspondiente con un
+operador `case let`. Por ejemplo, el siguiente código es equivalente
+al anterior:
+
+```swift
+for item in biblioteca {
+    switch item {
+    case let pelicula as Pelicula:
+        print("Película: \(pelicula.nombre), dir. \(pelicula.director)")
+    case let cancion as Cancion:
+        print("Cancion: \(cancion.nombre), de \(cancion.artista)")
+    default:
+        break
+    }
+}
+```
 
 ### 9.4. El tipo `Any` 
 
