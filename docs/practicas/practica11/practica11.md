@@ -54,10 +54,11 @@ print("c1.x, después de llamar a la función: \(c1.x)")
 b) Examina el código a continuación y añade en la estructura `Cuadrado`
 dos versiones de un método `movido` que reciba un incremento x y un
 incremento y y devuelva un nuevo cuadrado resultante de haber movido
-su esquina. Llama a la primera versión del método `movido` y usa en
+su esquina. Llama a la primera versión del método `movido1` y usa en
 ella el método `movida` de la estructura `Coord`. Llama a la segunda
-versión del método `mueve` y usa en ella el método `mueve` de la
-estructura `Coord`.
+versión del método `movido2` y usa en ella el método `mueve` de la
+estructura `Coord`. Añade también un método mutador `mueve` que mute
+la posición del cuadrado.
 
 ```swift
 struct Coord {
@@ -78,13 +79,15 @@ struct Cuadrado {
     var esquina = Coord(x: 0.0, y: 0.0)
     var lado: Double
 
-    func movido ... {
+    func movido1 ... {
         ...
     }
 
-    func mueve ... {
+    func movido2 ... {
         ...
     }
+    
+    // Añade un método mutador mueve
 }
 ```
 
