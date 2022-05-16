@@ -3809,6 +3809,22 @@ correspondientes métodos de la clase <code>Pelicula</code>. Igual con <code>Can
 <p>El mismo ejemplo se puede aplicar al array <code>cosasConNombre</code>. Prueba a
 adaptar el código anterior a este array, recorriéndolo y haciendo el
 <em>downcasting</em> a los tipos <code>Persona</code> y <code>NaveEspacial</code>.</p>
+<p>Otra forma de hacer el <em>downcasting</em> es usando un operador <code>switch as</code>
+en el que se definen los distintos tipos posibles que puede tener la
+variable y se asignan a una variable del tipo correspondiente con un
+operador <code>case let</code>. Por ejemplo, el siguiente código es equivalente
+al anterior:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">biblioteca</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="n">item</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="nv">pelicula</span> <span class="k">as</span> <span class="n">Pelicula</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Película: </span><span class="si">\(</span><span class="n">pelicula</span><span class="p">.</span><span class="n">nombre</span><span class="si">)</span><span class="s">, dir. </span><span class="si">\(</span><span class="n">pelicula</span><span class="p">.</span><span class="n">director</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="nv">cancion</span> <span class="k">as</span> <span class="n">Cancion</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Cancion: </span><span class="si">\(</span><span class="n">cancion</span><span class="p">.</span><span class="n">nombre</span><span class="si">)</span><span class="s">, de </span><span class="si">\(</span><span class="n">cancion</span><span class="p">.</span><span class="n">artista</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="94-el-tipo-any">9.4. El tipo <code>Any</code><a class="headerlink" href="#94-el-tipo-any" title="Permanent link">&para;</a></h3>
 <p>El tipo <code>Any</code> puede representar una instancia de cualquier tipo,
 incluyendo tipos función:</p>
