@@ -720,6 +720,44 @@ for item in biblioteca {
 // Cancion: Yellow, de Coldplay
 ```
 
+Otra forma de hacer el _downcasting_ es usando un operador `switch as`
+en el que se definen los distintos tipos posibles que puede tener la
+variable y se asignan a una variable del tipo correspondiente con un
+operador `case let`. Por ejemplo, el siguiente código es equivalente
+al anterior:
+
+```swift
+for item in biblioteca {
+    switch item {
+    case let pelicula as Pelicula:
+        print("Película: \(pelicula.nombre), dir. \(pelicula.director)")
+    case let cancion as Cancion:
+        print("Cancion: \(cancion.nombre), de \(cancion.artista)")
+    default:
+        break
+    }
+}
+```
+
+- Otra forma de hacer el _downcasting_ es usando un operador `switch as`
+en el que se definen los distintos tipos posibles que puede tener la
+variable y se asignan a una variable del tipo correspondiente con un
+operador `case let`. Por ejemplo, el siguiente código es equivalente
+al anterior:
+
+```swift
+for item in biblioteca {
+    switch item {
+    case let pelicula as Pelicula:
+        print("Película: \(pelicula.nombre), dir. \(pelicula.director)")
+    case let cancion as Cancion:
+        print("Cancion: \(cancion.nombre), de \(cancion.artista)")
+    default:
+        break
+    }
+}
+```
+
 ---
 
 ### El tipo `Any`

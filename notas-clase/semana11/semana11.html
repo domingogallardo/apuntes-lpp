@@ -852,6 +852,40 @@ el protocolo.</li>
 <span class="c1">// Cancion: I Wish You Were Here, de Pink Floyd</span>
 <span class="c1">// Cancion: Yellow, de Coldplay</span>
 </code></pre></div>
+<p>Otra forma de hacer el <em>downcasting</em> es usando un operador <code>switch as</code>
+en el que se definen los distintos tipos posibles que puede tener la
+variable y se asignan a una variable del tipo correspondiente con un
+operador <code>case let</code>. Por ejemplo, el siguiente código es equivalente
+al anterior:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">biblioteca</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="n">item</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="nv">pelicula</span> <span class="k">as</span> <span class="n">Pelicula</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Película: </span><span class="si">\(</span><span class="n">pelicula</span><span class="p">.</span><span class="n">nombre</span><span class="si">)</span><span class="s">, dir. </span><span class="si">\(</span><span class="n">pelicula</span><span class="p">.</span><span class="n">director</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="nv">cancion</span> <span class="k">as</span> <span class="n">Cancion</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Cancion: </span><span class="si">\(</span><span class="n">cancion</span><span class="p">.</span><span class="n">nombre</span><span class="si">)</span><span class="s">, de </span><span class="si">\(</span><span class="n">cancion</span><span class="p">.</span><span class="n">artista</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Otra forma de hacer el <em>downcasting</em> es usando un operador <code>switch as</code>
+en el que se definen los distintos tipos posibles que puede tener la
+variable y se asignan a una variable del tipo correspondiente con un
+operador <code>case let</code>. Por ejemplo, el siguiente código es equivalente
+al anterior:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">biblioteca</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="n">item</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="nv">pelicula</span> <span class="k">as</span> <span class="n">Pelicula</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Película: </span><span class="si">\(</span><span class="n">pelicula</span><span class="p">.</span><span class="n">nombre</span><span class="si">)</span><span class="s">, dir. </span><span class="si">\(</span><span class="n">pelicula</span><span class="p">.</span><span class="n">director</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">case</span> <span class="kd">let</span> <span class="nv">cancion</span> <span class="k">as</span> <span class="n">Cancion</span><span class="p">:</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Cancion: </span><span class="si">\(</span><span class="n">cancion</span><span class="p">.</span><span class="n">nombre</span><span class="si">)</span><span class="s">, de </span><span class="si">\(</span><span class="n">cancion</span><span class="p">.</span><span class="n">artista</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <hr />
 <h3>El tipo <code>Any</code></h3>
 <ul>
@@ -1098,12 +1132,12 @@ probarlo: </li>
         if value == valueToFind {
            ~~~~~ ^  ~~~~~~~~~~~
 </code></pre></div>
-<p>Debemos restringir el tipo genérico a ese protocolo al protocolo <code>Equatable</code>:</p>
+<p>Debemos restringir el tipo genérico al protocolo <code>Equatable</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">findIndex</span><span class="p">&lt;</span><span class="n">T</span><span class="p">:</span> <span class="nb">Equatable</span><span class="p">&gt;(</span><span class="n">of</span> <span class="n">valueToFind</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="k">in</span> <span class="n">array</span><span class="p">:[</span><span class="n">T</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">{</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">in</span> <span class="n">array</span><span class="p">.</span><span class="n">enumerated</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">if</span> <span class="n">value</span> <span class="p">==</span> <span class="n">valueToFind</span> <span class="p">{</span>
             <span class="k">return</span> <span class="n">index</span>
-<span class="n">n</span>        <span class="p">}</span>
+        <span class="p">}</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="kc">nil</span>
 <span class="p">}</span>
@@ -1124,7 +1158,7 @@ probarlo: </li>
 <li>Esto incluye la posibilidad de extender tipos para los que no
   tenemos acceso al código fuente original (esto se conoce como
   <em>modelado retroactivo</em>).</li>
-<li>Es posible incluso extender clases de las librerías estándar de
+<li>Es posible incluso extender estructuras de las librerías estándar de
   Swift, como Int, Double, Array, etc.</li>
 </ul>
 <p>Entre otras cosas, las extensiones pueden: </p>
@@ -1279,7 +1313,9 @@ nuevos métodos del tipo. </p>
 </li>
 <li>
 <p>En Swift es algo complicado devolver el carácter situado
-en una posición de una cadena:</p>
+en una posición de una cadena porque el índice que se utiliza para el
+acceso a la posición no es de tipo <code>Int</code>, sino un valor del tipo
+<code>String.Index</code>:</p>
 </li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">cadena</span> <span class="p">=</span> <span class="s">&quot;Hola&quot;</span>
@@ -1288,8 +1324,8 @@ en una posición de una cadena:</p>
 <span class="n">cadena</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="c1">// Devuelve &quot;l&quot;</span>
 </code></pre></div>
 <ul>
-<li>Podemos definir una extensión que añada esa funcionalidad a
-<code>String</code>:</li>
+<li>Para simplificar el acceso a una posición de un <code>String</code> podemos
+definir una extensión que añada esa funcionalidad a la estructura:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">String</span> <span class="p">{</span>
     <span class="kd">func</span> <span class="nf">at</span><span class="p">(</span><span class="kc">_</span> <span class="n">pos</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Character</span> <span class="p">{</span>
