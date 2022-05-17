@@ -379,8 +379,9 @@ for cosa in cosasConNombre {
 
 - El iterador `cosa` que va recorriendo los valores del array es de
 tipo `TieneNombre`, no es de tipo `Persona` ni de tipo `NaveEstelar`.
-- Por ser del tipo `TieneNombre` sabemos que tiene una propiedad
-  `nombreCompleto` que usamos para imprimirlo.
+- Por ser de tipo `TieneNombre` sabemos que tiene una propiedad
+  `nombreCompleto` (declarada por el protocolo) y la usamos en la
+  sentencia con el `print`.
 
 - En el bucle podría interesarnos también acceder a las propiedades
 `edad` o `prefijo` dependiendo de si tenemos una `Persona` o una
