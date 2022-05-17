@@ -2375,8 +2375,8 @@ tiene una propiedad `nombreCompleto` que podemos usar para imprimirlo.
 
 En el bucle podría interesarnos también acceder a las propiedades
 `edad` o `prefijo` dependiendo de si tenemos una `Persona` o una
-`NaveEstelar`. Veremos como hacerlo en el siguiente apartado en el que
-hablamos de _Casting de tipos_.
+`NaveEstelar`. Veremos más adelante como hacerlo cuando hablemos de
+_Casting de tipos_.
 
 ### 8.7. Protocolo `Equatable`
 
