@@ -377,12 +377,16 @@ for cosa in cosasConNombre {
 // USS Enterprise
 ```
 
-- La constante `cosa` que itera sobre los elementos del array es de
-  tipo `TieneNombre`, no es de tipo `Persona` ni de tipo `NaveEstelar`,
-  incluso aunque las instancias que hay tras de escena son de esos
-  tipos. 
+- El iterador `cosa` que va recorriendo los valores del array es de
+tipo `TieneNombre`, no es de tipo `Persona` ni de tipo `NaveEstelar`.
 - Por ser del tipo `TieneNombre` sabemos que tiene una propiedad
-  `nombreCompleto` que podemos usar sobre la variable iteradora.
+  `nombreCompleto` que podemos usar para imprimirlo.
+
+- En el bucle podría interesarnos también acceder a las propiedades
+`edad` o `prefijo` dependiendo de si tenemos una `Persona` o una
+`NaveEstelar`. Veremos más adelante como hacerlo cuando hablemos de
+_Casting de tipos_.
+
 
 ---
 

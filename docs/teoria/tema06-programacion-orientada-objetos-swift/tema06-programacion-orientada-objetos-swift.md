@@ -2285,7 +2285,6 @@ interruptorLampara.conmutar()
 ### 8.5. Protocolos como tipos
 
 Los protocolos no implementan realmente ninguna funcionalidad por
-
 ellos mismos. Sin embargo, cualquier protocolo que definamos se
 convierte automáticamente en un tipo con todas sus propiedades que
 podemos usar en nuestro código.
@@ -2369,13 +2368,15 @@ for cosa in cosasConNombre {
 // USS Enterprise
 ```
 
-Hay que hacer notar que la constante `cosa` que itera sobre los
-elementos del array es de tipo `TieneNombre`], no es de tipo `Persona`
-ni de tipo `NaveEstelar`, incluso aunque las instancias que hay tras
-de escena son do esos tipos. Por ser del tipo `TieneNombre` sabemos
-que tiene una propiedad `nombreCompleto` que podemos usar sobre la
-variable iteradora.
+Hay que hacer notar que el iterador `cosa` que va recorriendo los
+valores del array es de tipo `TieneNombre`, no es de tipo `Persona` ni
+de tipo `NaveEstelar`. Por ser del tipo `TieneNombre` sabemos que
+tiene una propiedad `nombreCompleto` que podemos usar para imprimirlo.
 
+En el bucle podría interesarnos también acceder a las propiedades
+`edad` o `prefijo` dependiendo de si tenemos una `Persona` o una
+`NaveEstelar`. Veremos como hacerlo en el siguiente apartado en el que
+hablamos de _Casting de tipos_.
 
 ### 8.7. Protocolo `Equatable`
 
