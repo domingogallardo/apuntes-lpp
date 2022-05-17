@@ -3400,8 +3400,8 @@ enumeraciones.</p>
 <span class="c1">// interruptorLampara es ahora igual a .encendido</span>
 </code></pre></div>
 <h3 id="85-protocolos-como-tipos">8.5. Protocolos como tipos<a class="headerlink" href="#85-protocolos-como-tipos" title="Permanent link">&para;</a></h3>
-<p>Los protocolos no implementan realmente ninguna funcionalidad por</p>
-<p>ellos mismos. Sin embargo, cualquier protocolo que definamos se
+<p>Los protocolos no implementan realmente ninguna funcionalidad por
+ellos mismos. Sin embargo, cualquier protocolo que definamos se
 convierte automáticamente en un tipo con todas sus propiedades que
 podemos usar en nuestro código.</p>
 <p>Podemos entonces usar el protocolo en cualquier sitio donde permitamos
@@ -3471,12 +3471,14 @@ etc.). Veamos un ejemplo:</p>
 <span class="c1">// Peter Parker</span>
 <span class="c1">// USS Enterprise</span>
 </code></pre></div>
-<p>Hay que hacer notar que la constante <code>cosa</code> que itera sobre los
-elementos del array es de tipo <code>TieneNombre</code>], no es de tipo <code>Persona</code>
-ni de tipo <code>NaveEstelar</code>, incluso aunque las instancias que hay tras
-de escena son do esos tipos. Por ser del tipo <code>TieneNombre</code> sabemos
-que tiene una propiedad <code>nombreCompleto</code> que podemos usar sobre la
-variable iteradora.</p>
+<p>Hay que hacer notar que el iterador <code>cosa</code> que va recorriendo los
+valores del array es de tipo <code>TieneNombre</code>, no es de tipo <code>Persona</code> ni
+de tipo <code>NaveEstelar</code>. Por ser del tipo <code>TieneNombre</code> sabemos que
+tiene una propiedad <code>nombreCompleto</code> que podemos usar para imprimirlo.</p>
+<p>En el bucle podría interesarnos también acceder a las propiedades
+<code>edad</code> o <code>prefijo</code> dependiendo de si tenemos una <code>Persona</code> o una
+<code>NaveEstelar</code>. Veremos como hacerlo en el siguiente apartado en el que
+hablamos de <em>Casting de tipos</em>.</p>
 <h3 id="87-protocolo-equatable">8.7. Protocolo <code>Equatable</code><a class="headerlink" href="#87-protocolo-equatable" title="Permanent link">&para;</a></h3>
 <p>En la <a href="https://developer.apple.com/documentation/swift">biblioteca estándar de
 Swift</a> se definen
