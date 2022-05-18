@@ -2424,9 +2424,8 @@ print(p1 != p2)
 // Imprime false
 ```
 
-El operador `==` se define en la propia clase. Tal y como hemos
-comentado, se utiliza la palabra `static` para indicar que se trata de
-un operador que estamos sobrecargando.
+El operador `==` se define en la propia clase, con un método estático
+tal y como vimos en el apartado anterior sobre funciones operadoras.
 
 El operador `!=` que se usa en la última instrucción se define en una
 implementación por defecto proporcionada por Swift.

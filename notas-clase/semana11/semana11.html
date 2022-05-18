@@ -526,12 +526,19 @@ instancias de <code>Vector2D</code>:</p>
 <span class="c1">// USS Enterprise</span>
 </code></pre></div>
 <ul>
-<li>La constante <code>cosa</code> que itera sobre los elementos del array es de
-  tipo <code>TieneNombre</code>, no es de tipo <code>Persona</code> ni de tipo <code>NaveEstelar</code>,
-  incluso aunque las instancias que hay tras de escena son de esos
-  tipos. </li>
-<li>Por ser del tipo <code>TieneNombre</code> sabemos que tiene una propiedad
-  <code>nombreCompleto</code> que podemos usar sobre la variable iteradora.</li>
+<li>El iterador <code>cosa</code> que va recorriendo los valores del array es de
+tipo <code>TieneNombre</code>, no es de tipo <code>Persona</code> ni de tipo <code>NaveEstelar</code>.</li>
+<li>
+<p>Por ser de tipo <code>TieneNombre</code> sabemos que tiene una propiedad
+  <code>nombreCompleto</code> (declarada por el protocolo) que usamos en la
+  sentencia con la llamada a <code>print</code>.</p>
+</li>
+<li>
+<p>En el bucle podría interesarnos también acceder a las propiedades
+<code>edad</code> o <code>prefijo</code> dependiendo de si tenemos una <code>Persona</code> o una
+<code>NaveEstelar</code>. Veremos más adelante como hacerlo cuando hablemos de
+<em>Casting de tipos</em>.</p>
+</li>
 </ul>
 <hr />
 <h3>Protocolo <code>Equatable</code></h3>
@@ -574,9 +581,9 @@ instancias de <code>Vector2D</code>:</p>
 <span class="c1">// Imprime false</span>
 </code></pre></div>
 <ul>
-<li>El operador <code>==</code> se define en la propia clase. Tal y como hemos
-  visto previamente, se utiliza la palabra <code>static</code> para indicar que
-  se trata de un operador que estamos sobrecargando.</li>
+<li>El operador <code>==</code> se define en la propia clase, con un método
+  estático tal y como vimos en el apartado anterior sobre funciones
+  operadoras.</li>
 <li>
 <p>El operador <code>!=</code> que se usa en la última instrucción se define en una
   implementación por defecto proporcionada por Swift.</p>
