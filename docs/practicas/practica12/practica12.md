@@ -1,10 +1,19 @@
 # Práctica 12: Programación Orientada a Objetos en Swift (2)
 
-## Entrega de la práctica
+## Antes de la clase de prácticas
 
-Para entregar la práctica debes subir a Moodle el fichero
-`practica12.swift` con una cabecera inicial con tu nombre y apellidos,
-y las soluciones de cada ejercicio separadas por comentarios.
+Los siguientes ejercicios están basados en los conceptos de teoría
+vistos la semana pasada. Antes de la clase de prácticas debes repasar
+todos los conceptos y **probar en con el compilador de Swift** todos
+los ejemplos de los siguientes apartados del tema 6 [_Programación
+OO con Swift_](../../teoria/tema06-programacion-orientada-objetos-swift/tema06-programacion-orientada-objetos-swift.md#7-funciones-operadoras)
+
+- Funciones operadoras
+- Protocolos
+- Casting de tipos
+- Genéricos
+- Extensiones
+
 
 ## Ejercicios
 
@@ -449,7 +458,7 @@ en un almacén de figuras y se llame a sus métodos.
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2020-21  
+Lenguajes y Paradigmas de Programación, curso 2021-22  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
 
