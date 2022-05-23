@@ -404,7 +404,7 @@ struct Rectangulo {
 }
 ```
 
-Prueba las clases escribiendo algún código en el que se creen algunas
+Prueba las estructuras escribiendo algún código en el que se creen algunas
 instancias y se actualicen sus propiedades.
 
 #### 2. Define el protocolo figura
@@ -420,7 +420,7 @@ Define el protocolo `Figura` que contiene:
 
 #### 3. Define extensiones
 
-- Modifica las clases `Rectangulo` y `Circulo` para que se ajusten al
+- Modifica las estructuras `Rectangulo` y `Circulo` para que se ajusten al
   protocolo `Figura`, añadiendo el código de implementación necesario.
 
 - Prueba el código escrito hasta ahora, creando un array del tipo
