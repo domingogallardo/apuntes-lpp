@@ -415,16 +415,13 @@ Define el protocolo `Figura` que contiene:
   centro de la figura.
 - Propiedades de sólo lectura `area` (`Double`) y `tamaño` (`Tamaño`)
   que devuelven el tamaño (alto y ancho) de la figura.
+- Método `descripcion()` que devuelva un `String` con el centro y el
+  área de la figura.
 
 #### 3. Define extensiones
 
-- Define las extensiones necesarias para que las clases `Rectangulo`,
-y `Circulo` se ajusten al protocolo `Figura`, añadiendo el
-código de implementación necesario.
-
-- Añade mediante una extensión al protocolo `Figura` la propiedad
-  calculada `descripcion` que devuelva un `String` con el centro y el
-  área de la figura.
+- Modifica las clases `Rectangulo` y `Circulo` para que se ajusten al
+  protocolo `Figura`, añadiendo el código de implementación necesario.
 
 - Prueba el código escrito hasta ahora, creando un array del tipo
   `Figura` (el protocolo) y añadiendo en él círculos y rectángulos.
@@ -441,16 +438,16 @@ figuras. Como en la práctica anterior, define en ella el método
 - Escribe el método `cuentaTipos() -> (Int, Int)` que recorra el array
 de figuras y devuelva una tupla con dos enteros: número de rectángulos
 y número de círculos. La función debe imprimir por cada figura del
-array, su descripción por defecto proporcionada por el protocolo y el
-tipo de figura y sus características específicas.
+array el tipo de figura, su descripción y, en el caso en que la figura sea un rectángulo,
+su tamaño.
 
 Por ejemplo:
 
 ```
-- Descripción de la figura: Una figura con centro Punto(x: 7.0, y: 3.5) y área 50.0
-  Rectangulo con origen Punto(x: 2.0, y: 1.0) y tamaño Tamaño(ancho: 10.0, alto: 5.0)
-- Descripción de la figura: Una figura con centro Punto(x: 0.0, y: 2.0) y área 78.5398163397448
-  Circulo con centro Punto(x: 0.0, y: 2.0) y radio 5.0
+** Un rectángulo con tamaño Tamaño(ancho: 10.0, alto: 5.0) y descripción:
+Centro: Punto(x: 8.0, y: 6.5) y área: 50.0
+** Un círculo con descripción:
+Centro: Punto(x: 5.0, y: 0.0) y área: 314.1592653589793
 ```
 
 - Escribe un ejemplo de código en el que se guarden varias figuras
