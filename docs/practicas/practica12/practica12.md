@@ -163,10 +163,10 @@ Deberás implementar los siguientes enumerados y clases, con las propiedades ind
   correspondiente al literal del enumerado usando la interpolación de
   cadenas:
   
-  ```swift
-  print("Marca: \(MarcaCoche.Ferrari)")
-  // Imprime: "Marca: Ferrari"
-  ```
+    ```swift
+    print("Marca: \(MarcaCoche.Ferrari)")
+    // Imprime: "Marca: Ferrari"
+    ```
 
 - Propiedades del tipo: Constantes `velocidadMaxima` (`Double`) y
   `marchaMaxima` (`Int`) inicializadas a 150.0 y 6
