@@ -1027,18 +1027,14 @@ instancias y se actualicen sus propiedades.</p>
   centro de la figura.</li>
 <li>Propiedades de sólo lectura <code>area</code> (<code>Double</code>) y <code>tamaño</code> (<code>Tamaño</code>)
   que devuelven el tamaño (alto y ancho) de la figura.</li>
+<li>Método <code>descripcion()</code> que devuelva un <code>String</code> con el centro y el
+  área de la figura.</li>
 </ul>
 <h4 id="3-define-extensiones">3. Define extensiones<a class="headerlink" href="#3-define-extensiones" title="Permanent link">&para;</a></h4>
 <ul>
 <li>
-<p>Define las extensiones necesarias para que las clases <code>Rectangulo</code>,
-y <code>Circulo</code> se ajusten al protocolo <code>Figura</code>, añadiendo el
-código de implementación necesario.</p>
-</li>
-<li>
-<p>Añade mediante una extensión al protocolo <code>Figura</code> la propiedad
-  calculada <code>descripcion</code> que devuelva un <code>String</code> con el centro y el
-  área de la figura.</p>
+<p>Modifica las clases <code>Rectangulo</code> y <code>Circulo</code> para que se ajusten al
+  protocolo <code>Figura</code>, añadiendo el código de implementación necesario.</p>
 </li>
 <li>
 <p>Prueba el código escrito hasta ahora, creando un array del tipo
@@ -1058,15 +1054,15 @@ figuras. Como en la práctica anterior, define en ella el método
 <p>Escribe el método <code>cuentaTipos() -&gt; (Int, Int)</code> que recorra el array
 de figuras y devuelva una tupla con dos enteros: número de rectángulos
 y número de círculos. La función debe imprimir por cada figura del
-array, su descripción por defecto proporcionada por el protocolo y el
-tipo de figura y sus características específicas.</p>
+array el tipo de figura, su descripción y, en el caso en que la figura sea un rectángulo,
+su tamaño.</p>
 </li>
 </ul>
 <p>Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code>- Descripción de la figura: Una figura con centro Punto(x: 7.0, y: 3.5) y área 50.0
-  Rectangulo con origen Punto(x: 2.0, y: 1.0) y tamaño Tamaño(ancho: 10.0, alto: 5.0)
-- Descripción de la figura: Una figura con centro Punto(x: 0.0, y: 2.0) y área 78.5398163397448
-  Circulo con centro Punto(x: 0.0, y: 2.0) y radio 5.0
+<div class="highlight"><pre><span></span><code>** Un rectángulo con tamaño Tamaño(ancho: 10.0, alto: 5.0) y descripción:
+Centro: Punto(x: 8.0, y: 6.5) y área: 50.0
+** Un círculo con descripción:
+Centro: Punto(x: 5.0, y: 0.0) y área: 314.1592653589793
 </code></pre></div>
 <ul>
 <li>Escribe un ejemplo de código en el que se guarden varias figuras
