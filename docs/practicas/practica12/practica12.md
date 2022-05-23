@@ -156,8 +156,18 @@ Deberás implementar los siguientes enumerados y clases, con las propiedades ind
 - Propiedades de instancia almacenadas: `velocidadActual` (`Double`),
   `marcha` (`Int`), `distanciaRecorrida` (`Double`) y `marca`
   (`MarcaCoche`).
+
 - Propiedad de instancia calculada: `descripcion` (`String`), que
-  devuelve la marca del coche.
+  devuelve la marca del coche. A pesar de que el tipo subyacente del
+  enumerado `MarcaChoche` es `Int`, es posible devolver la cadena
+  correspondiente al literal del enumerado usando la interpolación de
+  cadenas:
+  
+  ```swift
+  print("Marca: \(MarcaCoche.Ferrari)")
+  // Imprime: "Marca: Ferrari"
+  ```
+
 - Propiedades del tipo: Constantes `velocidadMaxima` (`Double`) y
   `marchaMaxima` (`Int`) inicializadas a 150.0 y 6
 
