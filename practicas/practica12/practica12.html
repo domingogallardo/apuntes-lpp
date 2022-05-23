@@ -809,11 +809,23 @@ coche:</p>
 </ul>
 <p><strong>Clase base <code>Coche</code></strong></p>
 <ul>
-<li>Propiedades de instancia almacenadas: <code>velocidadActual</code> (<code>Double</code>),
+<li>
+<p>Propiedades de instancia almacenadas: <code>velocidadActual</code> (<code>Double</code>),
   <code>marcha</code> (<code>Int</code>), <code>distanciaRecorrida</code> (<code>Double</code>) y <code>marca</code>
-  (<code>MarcaCoche</code>).</li>
-<li>Propiedad de instancia calculada: <code>descripcion</code> (<code>String</code>), que
-  devuelve la marca del coche.</li>
+  (<code>MarcaCoche</code>).</p>
+</li>
+<li>
+<p>Propiedad de instancia calculada: <code>descripcion</code> (<code>String</code>), que
+  devuelve la marca del coche. A pesar de que el tipo subyacente del
+  enumerado <code>MarcaChoche</code> es <code>Int</code>, es posible devolver la cadena
+  correspondiente al literal del enumerado usando la interpolación de
+  cadenas:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="s">&quot;Marca: </span><span class="si">\(</span><span class="n">MarcaCoche</span><span class="p">.</span><span class="n">Ferrari</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime: &quot;Marca: Ferrari&quot;</span>
+</code></pre></div>
+<ul>
 <li>Propiedades del tipo: Constantes <code>velocidadMaxima</code> (<code>Double</code>) y
   <code>marchaMaxima</code> (<code>Int</code>) inicializadas a 150.0 y 6</li>
 </ul>
