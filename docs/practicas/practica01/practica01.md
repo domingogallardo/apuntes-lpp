@@ -178,8 +178,8 @@
 ## Entrega de la práctica
 
 Sube la solución de los ejercicios a Moodle en el cuestionario
-_Entrega práctica 1_ hasta el domingo 6 a las 21:00 h. Una vez
-finalizado el plazo de entrega podrás revisar el cuestionario y
+_Entrega práctica 1_ hasta el domingo 5 de enero a las 21:00 h. Una
+vez finalizado el plazo de entrega podrás revisar el cuestionario y
 visualizar la solución del ejercicio 6.
 
 Una vez esté disponible la solución debes compararla con la
@@ -187,6 +187,6 @@ tuya. Puedes consultar cualquier duda con tu profesor de prácticas en
 la clase de prácticas de la semana que viene.
 
 ----
-Lenguajes y Paradigmas de Programación, curso 2021-22  
+Lenguajes y Paradigmas de Programación, curso 2022-23  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

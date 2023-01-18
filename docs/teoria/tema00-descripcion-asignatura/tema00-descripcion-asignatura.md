@@ -9,24 +9,23 @@ prácticas de 2 h. a la semana
 **Profesores**:  
 
 * Antonio Botía ([e-mail](mailto:abotia@dccia.ua.es)): Grupos de
-  prácticas: 2, 9 y 40
+  prácticas: 1, 2 y 40
 * Domingo Gallardo ([e-mail](mailto:domingo.gallardo@ua.es)): Profesor
   coordinador de la asignatura. Grupos de teoría: 3, 4 y 40. Grupos de
-  prácticas: 6
+  prácticas: 5
 * Francisco Martínez ([e-mail](mailto:fmartine@ua.es)): Grupos de
-  prácticas: 4, 5 y 8
+  prácticas: 4, 6 y 7
 * Cristina Pomares ([e-mail](mailto:cpomares@ua.es)): Grupos de
-  teoría: 1 y 2. Grupos de prácticas: 1, 3 y 7.
+  teoría: 1 y 2. Grupos de prácticas: 3, 8 y 9.
 
 ## 2. Recursos de la asignatura
 
-* [Ficha de la asignatura](https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wCodEst=C203&wcodasi=34017&wlengua=es&scaca=2021-22)
+* [Ficha de la asignatura](https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wCodEst=C203&wcodasi=34017&wlengua=es&scaca=2022-23)
 * [Apuntes de la asignatura (teoría, seminarios y prácticas)](https://domingogallardo.github.io/apuntes-lpp/)
-* [Sitio Moodle](https://moodle2021-22.ua.es/moodle/course/view.php?id=1505)
+* [Sitio Moodle](https://moodle2022-23.ua.es/moodle/course/view.php?id=6377)
   abierto y accesible a toda la comunidad educativa, contiene los
   apuntes, transparencias, prácticas y otros materiales docentes
-* [Foro de consultas y anuncios](https://moodle2021-22.ua.es/moodle/mod/forum/view.php?id=41853)
-  en el sitio Moodle (sólo accesible a estudiantes)
+* [Foro de consultas y anuncios](https://moodle2022-23.ua.es/moodle/mod/forum/view.php?id=104671) en el sitio Moodle
 
 ## 3. Objetivos y competencias
 
@@ -177,7 +176,7 @@ compañeros.
 
 ## 6. Horarios
 
-La distribución de grupos del curso 2021-22 es la siguiente:
+La distribución de grupos del curso 2022-23 es la siguiente:
 
 <img src="imagenes/horario.png" width="800px"/>
 
@@ -324,6 +323,6 @@ Para ampliar algunos conceptos se recomiendan las siguientes referencias:
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2021-22  
+Lenguajes y Paradigmas de Programación, curso 2022-23  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

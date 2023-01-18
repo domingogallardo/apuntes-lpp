@@ -1769,6 +1769,8 @@ concatenar dos o más listas
 (append list1 list2) ; ⇒ (1 2 3 4 hola como estás)
 ```
 
+<!--
+
 ### 2.7. Recursión
 
 Otra característica fundamental de la programación funcional es la no
@@ -4769,8 +4771,10 @@ Capítulos del libro *Structure and Intepretation of Computer Programs*:
 - [1.3  Formulating Abstractions with Higher-Order Procedures](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-12.html#%_sec_1.3)
 - [2.2.1  Representing Sequences](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.1)
 
+-->
+
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2021-22  
+Lenguajes y Paradigmas de Programación, curso 2022-23  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
