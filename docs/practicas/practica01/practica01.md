@@ -11,9 +11,8 @@
    comentarios para separar secciones y realizar anotaciones.
 
 2. Lee el seminario de Scheme hasta el apartado 2.4. (_Tipos de datos
-   simples_) incluido. Puedes
-   ver el **vídeo 1** que hemos subido a
-   [Moodle](https://moodle2022-23.ua.es/moodle/course/view.php?id=6377).
+   simples_) incluido. Puedes ver el **vídeo 1** en la página con los
+   vídeos del seminario (en la semana 1 en Moodle).
    
     A la vez que lees el texto o ves el vídeo debes probar en el
     intérprete de Racket todos los ejemplos que aparecen. Pruébalos de
@@ -45,8 +44,8 @@
 
 4. Lee el apartado 2.5. (_Tipos de datos compuestos_) del seminario de
    Scheme, en el que se explica cómo se trabaja con cadenas, parejas y
-   listas en Racket. Puedes ver el **vídeo 2** que hemos subido a
-   [Moodle](https://moodle2021-22.ua.es/moodle/mod/page/view.php?id=41861).
+   listas en Racket. Puedes ver el **vídeo 2** en la página con los
+   vídeos del seminario en Moodle.
    
     Prueba en el intérprete de Racket todos los ejemplos que aparecen
     en el seminario.
@@ -123,9 +122,8 @@
 
 6. Lee el apartado 3 (_Estructuras de
    control_) del seminario de Scheme. Puedes ver el
-   **vídeo 3** en la [página de
-   Moodle](https://moodle2021-22.ua.es/moodle/mod/page/view.php?id=41861)
-   hasta el minuto 7:00.
+   **vídeo 3** hasta el minuto 7:00 en la página con los vídeos del
+   seminario en Moodle.
 
 7. Haz el siguiente ejercicio.
 
@@ -149,9 +147,8 @@
     | `(+ (* pi pi) (- 2 pi pi pi pi))`              | `((if (< a b) + -) a b)`                                                  |
 
 8. Lee el resto del seminario, desde el apartado 4 hasta el
-   final. Puedes ver el **vídeo 3** en la [página de
-   Moodle](https://moodle2021-22.ua.es/moodle/mod/page/view.php?id=41861)
-   desde el minuto 7:00 hasta el final.
+   final. Puedes ver el **vídeo 3** desde el mintuo 7:00 hasta el
+   final en la página con los vídeos del seminario en Moodle.
 
     - Prueba las funciones `ecuacion` y `convertir-temperatura` y
       reflexiona sobre cómo se implementan.
