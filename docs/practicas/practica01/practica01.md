@@ -13,7 +13,7 @@
 2. Lee el seminario de Scheme hasta el apartado 2.4. (_Tipos de datos
    simples_) incluido. Puedes
    ver el **vídeo 1** que hemos subido a
-   [Moodle](https://moodle2021-22.ua.es/moodle/mod/page/view.php?id=41861).
+   [Moodle](https://moodle2022-23.ua.es/moodle/course/view.php?id=6377).
    
     A la vez que lees el texto o ves el vídeo debes probar en el
     intérprete de Racket todos los ejemplos que aparecen. Pruébalos de
