@@ -160,7 +160,9 @@
 
 9. Haz el siguiente ejercicio.
 
-    **Ejercicio 6**. Define una función que calcule la distancia entre
+    **Ejercicio 6**
+    
+    a) Define una función que calcule la distancia entre
     dos puntos, definidos por parejas de números enteros. Añade los
     siguientes tests para comprobar que funciona correctamente:
     
@@ -170,6 +172,21 @@
     | `p1:(0 0) p2:(0 10)`  | `10`     |
     | `p1:(0 0) p2:(10 0)`  | `10`     |
     | `p1:(0 0) p2:(10 10)` | `14.142135623730951`     |
+
+
+    b) Usando la función `distancia` definida anteriormente,
+    implementa la función `es-isosceles?` que recibe las tres
+    coordenadas de los vértices de un triángulo y debe devolver si la
+    figura es un triángulo isósceles.  Para ello, debes comprobar que
+    los tres lados **NO** son iguales (sería equilátero) **Y** que el primer
+    lado es igual que el segundo **O** el primer lado es igual que el
+    tercero **O** que el segundo lado es igual que el tercero).
+
+    !!! Hint "Pista"
+        Recuerda del seminario que la función `=` puede tener más de dos
+        argumentos.  Y fíjate en que las funciones booleanas `and`, `or` y
+        `not` devuelven ya un valor booleano, no hace falta usar un `if`
+        para implementar la función.
 
 
 ## Entrega de la práctica
