@@ -169,24 +169,38 @@
     
     | Entrada               | Salida   |
     |-----------------------|----------|
-    | `p1:(0 0) p2:(0 10)`  | `10`     |
-    | `p1:(0 0) p2:(10 0)`  | `10`     |
-    | `p1:(0 0) p2:(10 10)` | `14.142135623730951`     |
+    | `p1:(0, 0) p2:(0, 10)`  | `10`     |
+    | `p1:(0, 0) p2:(10, 0)`  | `10`     |
+    | `p1:(0, 0) p2:(10, 10)` | `14.142135623730951`     |
 
 
     b) Usando la función `distancia` definida anteriormente,
     implementa la función `es-isosceles?` que recibe las tres
     coordenadas de los vértices de un triángulo y debe devolver si la
     figura es un triángulo isósceles.  Para ello, debes comprobar que
-    los tres lados **NO** son iguales (sería equilátero) **Y** que el primer
-    lado es igual que el segundo **O** el primer lado es igual que el
-    tercero **O** que el segundo lado es igual que el tercero).
-
+    los tres lados no son iguales (sería equilátero) y que sucede
+    alguna de las tres siguientes condiciones: o bien el primer
+    lado es igual que el segundo, o el primer lado es igual que el
+    tercero, o el segundo lado es igual que el tercero.
+    
     !!! Hint "Pista"
         Recuerda del seminario que la función `=` puede tener más de dos
         argumentos.  Y fíjate en que las funciones booleanas `and`, `or` y
         `not` devuelven ya un valor booleano, no hace falta usar un `if`
-        para implementar la función.
+        para la implementación.
+
+    Añade los siguientes tests:
+    
+    ```
+    Ejemplos de triángulos isósceles:
+    
+    p1:(0, 0) p2:(3, 0) p3:(6, 0)
+    p1:(2, 2) p2:(4, 0) p3:(0, 0)
+
+    No isósceles:
+    p1:(0, 0) p2:(0, 0) p3:(0, 0) (los tres "lados" iguales)
+    p1:(0, 0) p2:(1, 1) p3: (3, 2) (ningún lado igual)
+    ```
 
 
 ## Entrega de la práctica
