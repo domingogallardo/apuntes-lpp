@@ -175,7 +175,7 @@
 
 
     b) Usando la función `distancia` definida anteriormente,
-    implementa la función `es-isosceles?` que recibe las tres
+    implementa la función `isosceles?` que recibe las tres
     coordenadas de los vértices de un triángulo y debe devolver si la
     figura es un triángulo isósceles.  Para ello, debes comprobar que
     los tres lados no son iguales (sería equilátero) y que sucede
@@ -183,11 +183,16 @@
     lado es igual que el segundo, o el primer lado es igual que el
     tercero, o el segundo lado es igual que el tercero.
     
+    Fíjate en que las funciones booleanas `and`, `or` y
+    `not` devuelven ya un valor booleano y que en programación
+    funcional se usa la composición de funciones.
+    
+    Debes implementar la función usando una única expresión en la que
+    no uses `if`, sino una composición de expresiones booleanas.
+    
     !!! Hint "Pista"
         Recuerda del seminario que la función `=` puede tener más de dos
-        argumentos.  Y fíjate en que las funciones booleanas `and`, `or` y
-        `not` devuelven ya un valor booleano, no hace falta usar un `if`
-        para la implementación.
+        argumentos. 
 
     Añade los siguientes tests:
     
@@ -207,7 +212,7 @@
 
 ## Entrega de la práctica
 
-Sube la solución de los ejercicios a Moodle en el cuestionario
+Sube la solución del ejercicio 6 a Moodle en el cuestionario
 _Entrega práctica 1_ hasta el domingo 5 de enero a las 21:00 h. Una
 vez finalizado el plazo de entrega podrás revisar el cuestionario y
 visualizar la solución del ejercicio 6.
