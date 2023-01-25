@@ -704,15 +704,15 @@ siguientes tests para comprobar que funciona correctamente:</p>
 </thead>
 <tbody>
 <tr>
-<td><code>p1:(0 0) p2:(0 10)</code></td>
+<td><code>p1:(0, 0) p2:(0, 10)</code></td>
 <td><code>10</code></td>
 </tr>
 <tr>
-<td><code>p1:(0 0) p2:(10 0)</code></td>
+<td><code>p1:(0, 0) p2:(10, 0)</code></td>
 <td><code>10</code></td>
 </tr>
 <tr>
-<td><code>p1:(0 0) p2:(10 10)</code></td>
+<td><code>p1:(0, 0) p2:(10, 10)</code></td>
 <td><code>14.142135623730951</code></td>
 </tr>
 </tbody>
@@ -721,16 +721,27 @@ siguientes tests para comprobar que funciona correctamente:</p>
 implementa la función <code>es-isosceles?</code> que recibe las tres
 coordenadas de los vértices de un triángulo y debe devolver si la
 figura es un triángulo isósceles.  Para ello, debes comprobar que
-los tres lados <strong>NO</strong> son iguales (sería equilátero) <strong>Y</strong> que el primer
-lado es igual que el segundo <strong>O</strong> el primer lado es igual que el
-tercero <strong>O</strong> que el segundo lado es igual que el tercero).</p>
+los tres lados no son iguales (sería equilátero) y que sucede
+alguna de las tres siguientes condiciones: o bien el primer
+lado es igual que el segundo, o el primer lado es igual que el
+tercero, o el segundo lado es igual que el tercero.</p>
 <div class="admonition hint">
 <p class="admonition-title">Pista</p>
 <p>Recuerda del seminario que la función <code>=</code> puede tener más de dos
 argumentos.  Y fíjate en que las funciones booleanas <code>and</code>, <code>or</code> y
 <code>not</code> devuelven ya un valor booleano, no hace falta usar un <code>if</code>
-para implementar la función.</p>
+para la implementación.</p>
 </div>
+<p>Añade los siguientes tests:</p>
+<div class="highlight"><pre><span></span><code>Ejemplos de triángulos isósceles:
+
+p1:(0, 0) p2:(3, 0) p3:(6, 0)
+p1:(2, 2) p2:(4, 0) p3:(0, 0)
+
+No isósceles:
+p1:(0, 0) p2:(0, 0) p3:(0, 0) (los tres &quot;lados&quot; iguales)
+p1:(0, 0) p2:(1, 1) p3: (3, 2) (ningún lado igual)
+</code></pre></div>
 </li>
 </ol>
 <h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
