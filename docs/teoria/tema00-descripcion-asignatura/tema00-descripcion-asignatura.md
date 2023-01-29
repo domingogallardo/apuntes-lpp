@@ -149,8 +149,7 @@ lenguajes de programación y entornos de desarrollo:
   programación orientada a objetos)
 
 Cada semana tendrás que realizar una **hoja de ejercicios** en la que
-se incluirá un repaso de la teoría vista la semana anterior y 5 o 6
-pequeños problemas de programación relacionados con esa teoría.
+se incluirán 5 o 6 pequeños problemas de programación relacionados con la teoría de la semana anterior.
 
 La hoja de ejercicios estará disponible al comienzo de la semana y
 tendrás toda la semana para su realización. Una vez entregada la
