@@ -213,7 +213,7 @@
 ## Entrega de la práctica
 
 Sube la solución del ejercicio 6 a Moodle en el cuestionario
-_Entrega práctica 1_ hasta el domingo 5 de enero a las 21:00 h. Una
+_Entrega práctica 1_ hasta el domingo 5 de febrero a las 21:00 h. Una
 vez finalizado el plazo de entrega podrás revisar el cuestionario y
 visualizar la solución del ejercicio 6.
 
