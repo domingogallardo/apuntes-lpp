@@ -145,8 +145,6 @@ analizará la expresión y mostrará el valor resultante de evaluarla.
 ```racket
 2 ; ⇒ 2
 (+ 2 3) ; ⇒ 5
-(+) ; ⇒ 0
-(+ 2 4 5 6) ; ⇒ 17
 (+ (* 2 3) (- 3 1)) ; ⇒ 8
 ```
 
@@ -176,9 +174,28 @@ forma que tiene Scheme de evaluar una expresión es muy sencilla:
 ⇒ 5
 ```
 
+Existen funciones que admiten un número variable de argumentos, como
+la suma o la resta:
+
+```racket
+(+) ; ⇒ 0
+(+ 2 4 5 6) ; ⇒ 17
+(- 10 2 3) ; ⇒ 5
+```
+
+En el caso de la resta, los argumentos se van restando de izquierda a
+derecha (al primer argumento se le resta el segundo, al resultado se
+le resta el tercero, y así sucesivamente):
+
+```racket
+(- 4 5 4 8) ; ⇒ -13
+(- 4 (+ 5 4) 8) ; ⇒ -13
+(- 4 (+ 5 4 8)) ; ⇒ -13
+```
+
 En Scheme los términos función y procedimiento significan lo mismo y
 se usan de forma intercambiable. Son ejemplos de funciones o
-procedimientos: +, -, \*. En Scheme la evaluación de una función
+procedimientos: +, -, \, *. En Scheme la evaluación de una función
 siempre devuelve un valor, a no ser que se produzca un error que
 detiene la evaluación:
 
@@ -202,11 +219,17 @@ Podemos definir variables en la ventana de interacción para facilitar
 la escritura de expresiones:
 
 ```racket
-(define pi 3.14159)
-pi ; ⇒ 3.14159
-(sin (/ pi 2)) ; ⇒ 0.9999999999991198
 (define a (+ 2 (* 3 4)))
 a ; ⇒ 14
+(+ a (* 2 3)) ; ⇒ 20
+```
+
+Existen identificadores (en Scheme los llamamos _símbolos_) que ya
+están definidos en el intérprete de Racket, por ejemplo `pi`:
+
+```
+pi ; ⇒ 3.141592653589793
+(sin (/ pi 2)) ; ⇒ 1.0
 ```
 
 Para implementar una función también se utiliza define, con la
