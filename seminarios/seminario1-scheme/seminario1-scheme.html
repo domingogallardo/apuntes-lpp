@@ -829,8 +829,6 @@ en la ventana de interacción algunas expresiones. El intérprete
 analizará la expresión y mostrará el valor resultante de evaluarla.</p>
 <div class="highlight"><pre><span></span><code><span class="mi">2</span> <span class="c1">; ⇒ 2</span>
 <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 5</span>
-<span class="p">(</span><span class="nb">+</span><span class="p">)</span> <span class="c1">; ⇒ 0</span>
-<span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span> <span class="c1">; ⇒ 17</span>
 <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">))</span> <span class="c1">; ⇒ 8</span>
 </code></pre></div>
 <p>Las expresiones en Scheme tienen una forma denominada <em>notación
@@ -854,9 +852,22 @@ forma que tiene Scheme de evaluar una expresión es muy sencilla:</p>
 ⇒ (+ 6 -1)
 ⇒ 5
 </code></pre></div>
+<p>Existen funciones que admiten un número variable de argumentos, como
+la suma o la resta:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">+</span><span class="p">)</span> <span class="c1">; ⇒ 0</span>
+<span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span> <span class="c1">; ⇒ 17</span>
+<span class="p">(</span><span class="nb">-</span> <span class="mi">10</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 5</span>
+</code></pre></div>
+<p>En el caso de la resta, los argumentos se van restando de izquierda a
+derecha (al primer argumento se le resta el segundo, al resultado se
+le resta el tercero, y así sucesivamente):</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">-</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">4</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">; ⇒ -13</span>
+<span class="p">(</span><span class="nb">-</span> <span class="mi">4</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">5</span> <span class="mi">4</span><span class="p">)</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">; ⇒ -13</span>
+<span class="p">(</span><span class="nb">-</span> <span class="mi">4</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">5</span> <span class="mi">4</span> <span class="mi">8</span><span class="p">))</span> <span class="c1">; ⇒ -13</span>
+</code></pre></div>
 <p>En Scheme los términos función y procedimiento significan lo mismo y
 se usan de forma intercambiable. Son ejemplos de funciones o
-procedimientos: +, -, *. En Scheme la evaluación de una función
+procedimientos: +, -, \, *. En Scheme la evaluación de una función
 siempre devuelve un valor, a no ser que se produzca un error que
 detiene la evaluación:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">*</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">3</span> <span class="mi">0</span><span class="p">))</span>
@@ -872,11 +883,14 @@ funcionamiento del <code>define</code>, pero por el momento lo utilizaremos para
 definir variables asociadas a valores, y para implementar funciones.</p>
 <p>Podemos definir variables en la ventana de interacción para facilitar
 la escritura de expresiones:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="nb">pi</span> <span class="mf">3.14159</span><span class="p">)</span>
-<span class="nb">pi</span> <span class="c1">; ⇒ 3.14159</span>
-<span class="p">(</span><span class="nb">sin</span> <span class="p">(</span><span class="nb">/</span> <span class="nb">pi</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">; ⇒ 0.9999999999991198</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)))</span>
 <span class="n">a</span> <span class="c1">; ⇒ 14</span>
+<span class="p">(</span><span class="nb">+</span> <span class="n">a</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ 20</span>
+</code></pre></div>
+<p>Existen identificadores (en Scheme los llamamos <em>símbolos</em>) que ya
+están definidos en el intérprete de Racket, por ejemplo <code>pi</code>:</p>
+<div class="highlight"><pre><span></span><code>pi ; ⇒ 3.141592653589793
+(sin (/ pi 2)) ; ⇒ 1.0
 </code></pre></div>
 <p>Para implementar una función también se utiliza define, con la
 siguiente sintaxis:</p>
