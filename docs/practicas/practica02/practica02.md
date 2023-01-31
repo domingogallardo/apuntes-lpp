@@ -244,7 +244,7 @@ Ejemplos:
 ## Entrega de la práctica
 
 Sube la solución de los ejercicios al cuestionario de Moodle _Entrega
-práctica 2_ hasta el domingo 13 de febrero a las 21:00 h.
+práctica 2_ hasta el domingo 12 de febrero a las 21:00 h.
 
 Tal y como hemos comentado al comienzo de la práctica, debes incluir
 casos de prueba en todo el código que escribas.
@@ -255,6 +255,6 @@ con la tuya. Puedes consultar cualquier duda con tu profesor en la
 clase de prácticas de la semana que viene.
 
 ----
-Lenguajes y Paradigmas de Programación, curso 2021-22  
+Lenguajes y Paradigmas de Programación, curso 2022-23  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
