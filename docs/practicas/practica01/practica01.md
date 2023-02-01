@@ -199,7 +199,7 @@
     ```
     Ejemplos de triángulos isósceles:
     
-    p1:(0, 0) p2:(3, 0) p3:(6, 0)
+    p1:(0, 0) p2:(3, 3) p3:(6, 0)
     p1:(2, 2) p2:(4, 0) p3:(0, 0)
 
     No isósceles:
