@@ -1076,7 +1076,8 @@ Ejemplos:
 
 ### Composición de listas: `cons` y `append`
 
-- La función `cons` añade un elemento a la cabeza de una lista
+- La función `cons` crea una nueva lista en la que se añade un
+  elemento a la cabeza de la lista que pasamos como parámetro:
 
 ```racket
 (cons 1 '(1 2 3 4)) ; ⇒ (1 1 2 3 4)
@@ -1084,7 +1085,8 @@ Ejemplos:
 (cons '(1 2) '(1 2 3 4))  ; ⇒ ((1 2) 1 2 3 4)
 ```
 
-- La función `append` concatena dos o más listas
+- La función `append` crea una nueva lista que en la que se concatenan
+  dos o más listas que se pasan como parámetro:
 
 ```racket
 (define list1 '(1 2 3 4))

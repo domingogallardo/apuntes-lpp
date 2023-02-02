@@ -1169,14 +1169,16 @@ principales es el uso de listas. </p>
 
 <h3>Composición de listas: <code>cons</code> y <code>append</code></h3>
 <ul>
-<li>La función <code>cons</code> añade un elemento a la cabeza de una lista</li>
+<li>La función <code>cons</code> crea una nueva lista en la que se añade un
+  elemento a la cabeza de la lista que pasamos como parámetro:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ (1 1 2 3 4)</span>
 <span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">hola</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">como</span> <span class="ss">estás</span><span class="p">))</span> <span class="c1">; ⇒ (hola como estás)</span>
 <span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>  <span class="c1">; ⇒ ((1 2) 1 2 3 4)</span>
 </code></pre></div>
 <ul>
-<li>La función <code>append</code> concatena dos o más listas</li>
+<li>La función <code>append</code> crea una nueva lista que en la que se concatenan
+  dos o más listas que se pasan como parámetro:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">list1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">list2</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">hola</span> <span class="ss">como</span> <span class="ss">estás</span><span class="p">))</span>
