@@ -1769,6 +1769,7 @@ concatenar dos o más listas
 (append list1 list2) ; ⇒ (1 2 3 4 hola como estás)
 ```
 
+<!--
 
 ### 2.7. Recursión
 
@@ -2824,8 +2825,6 @@ listas. Algunas ya las conocemos, pero otras no:
 ```
 
 En los siguientes apartados veremos cómo están implementadas.
-
-<!--
 
 ### 4.3. Funciones recursivas que construyen listas
 

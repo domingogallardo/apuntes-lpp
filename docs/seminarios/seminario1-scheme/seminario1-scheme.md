@@ -381,6 +381,7 @@ complejos e inexactos. Por ejemplo:
 (= 0.5 (/ 1 2)) ; ⇒ #t (igualdad matemática)
 (abs (* 3 -2)) ; ⇒ 6 (valor absoluto)
 (sin 2.2) ; relacionados: cos, tan, asin, acos, ata
+(expt 4 2) ; ⇒ 16 (exponente: 4 elevado a 2)
 ```
 
 ##### 2.4.2.2. Funciones de redondeo
