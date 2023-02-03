@@ -112,17 +112,17 @@ Implementa dos versiones de la función:
 a) Supongamos las definiciones
 
 ```racket
-(define (f x y)
-    (cons x y))
+(define (f x)
+    (cons x 2))
 
-(define (g x)
-    (cons 2 x))
+(define (g x y)
+    (cons y x))
 ```
 
 Realiza la evaluación paso a paso de la siguiente expresión 
 
 ```racket
-(f (g (+ 2 1)) (+ 1 1))
+(g (f (+ 2 1)) (+ 1 1))
 ```
 
 mediante el **modelo de sustitución**, utilizando tanto el **orden
@@ -134,10 +134,10 @@ la práctica.
 b) Supongamos las definiciones
 
 ```racket
-(define (f x)
+(define (func-1 x)
     (/ x 0))
     
-(define (g x y)
+(define (func-2 x y)
     (if (= x 0)
         0
         y))
@@ -147,7 +147,7 @@ Igual que en el apartado anterior, realiza la evaluación paso a paso
 de la siguiente expresión
 
 ```racket
-(g 0 (f 10))
+(func-2 0 (func-1 10))
 ```
 
 mediante el **modelo de sustitución**, utilizando tanto el **orden
@@ -163,6 +163,10 @@ longitud, comparando las cadenas de cada posición de la
 lista. En el caso en que las cadenas tengan la misma longitud, se
 devuelve la cadena de la primera lista.
 
+!!! Note "Pista"
+    Puedes utilizar las funciones `second` y `third` que devuelven el
+    segundo y el tercer elemento de una lista.
+    
 ```racket
 (cadenas-mayores '("hola" "que" "tal") '("meme" "y" "adios")) ; ⇒ ("hola" "que" "adios")
 (cadenas-mayores '("esto" "es" "lpp") '("hoy" "hay" "clase")) ; ⇒ ("esto" "hay" "clase")
@@ -170,39 +174,45 @@ devuelve la cadena de la primera lista.
 
 ### Ejercicio 5
 
-Supongamos que queremos programar un juego de cartas. Lo primero que
-debemos hacer es definir una forma de representar las cartas y
-funciones que trabajen con esa representación. En este ejercicio vamos
-a implementar esas funciones.
+Supongamos que queremos programar un juego de cartas que usa la baraja
+francesa. Lo primero que debemos hacer es definir una forma de
+representar las cartas y funciones que trabajen con esa
+representación. En este ejercicio vamos a implementar esas funciones.
 
 Representaremos una carta por un símbolo con dos letras: la primera
-indicará su número o figura y la segunda el palo de la carta.
+indicará su número o figura y la segunda el palo de la carta,
+representado con el símbolo UTF correspondiente.
+
+!!! Nota "Símbolos UTF de los palos de la baraja francesa"
+    Puedes copiar los siguientes símbolos UTF y pegarlos en el código
+    fuente de la práctica: ♠, ♣, ♥ y ♦ (picas, tréboles, corazones y
+    diamantes).
 
 Por ejemplo:
 
 ```racket
-(define tres-de-oros '3O)
-(define as-de-copas 'AC)
-(define caballo-de-espadas 'CE)
+(define tres-de-picas '3♠)
+(define as-de-corazones 'A♥)
+(define jota-de-diamantes 'J♦)
 ```
 
 Debemos definir la función `carta` que devuelve una pareja con el
-valor correspondiente a su orden en la baraja española (un número) y el palo
+valor correspondiente a su orden en la baraja francesa (un número) y el palo
 de la carta (un símbolo).
 
 ```racket
-(carta tres-de-oros) ; ⇒ (3 . Oros)
-(carta as-de-copas) ; ⇒ (1 . Copas)
-(carta 'RB) ; ⇒ (12 . Bastos)
+(carta tres-de-picas) ; ⇒ (3 . Picas)
+(carta as-de-corazones) ; ⇒ (1 . Corazones)
+(carta 'R♣) ; ⇒ (12 . Tréboles)
 ```
 
-Los valores de las cartas de la baraja española son:
+Los valores de las cartas de la baraja francesa son:
 
 ```text
 A (As) ⇒ 1
-S (Sota) ⇒ 10
-C (Caballo) ⇒ 11
-R (Rey) ⇒ 12
+J (Jota) ⇒ 10
+Q (Reina) ⇒ 11
+K (Rey) ⇒ 12
 ```
 
 Para realizar el ejercicio debes definir en primer lugar las funciones
@@ -211,8 +221,8 @@ valor, dado un carácter. Y debes implementar la función `carta` usando
 estas dos funciones.
 
 ```racket
-(obten-palo #\O) ; ⇒ Oros
-(obten-palo #\E) ; ⇒ Espadas
+(obten-palo #\♠) ; ⇒ Picas
+(obten-palo #\♥) ; ⇒ Corazones
 (obten-valor #\3) ; ⇒ 3
 (obten-valor #\S) ; ⇒ 10
 ```
@@ -225,20 +235,21 @@ estas dos funciones.
 
 ### Ejercicio 6
 
-Implementa la función `(palos-mano-cartas carta1 carta2 carta3)` que recibe 3 cartas de la
-baraja española y devuelve una cadena indicando la cantidad de palos repetidos:
-"todas del mismo palo", "palos distintos" o "dos cartas con el mismo
-palo".
+Implementa la función `(jugada-mano carta1 carta2 carta3)` que recibe 3 cartas de la
+baraja francesa y devuelve una cadena indicando si la jugada de tres
+cartas contiene una **pareja** (dos cartas con el mismo valor), un **trío**
+(las tres cartas tienen el mismo valor) o **nada** (las tres cartas
+son distintas) y también el valor de la pareja o del trío.
 
-Para obtener los palos de las cartas debes usar las funciones
+Para obtener los valores de las cartas debes usar las funciones
 definidas en el ejercicio anterior.
 
 Ejemplos:
 
 ```racket
-(palos-mano-cartas '3O '7O '2O) ; ⇒ "todas del mismo palo"
-(palos-mano-cartas '3O '7C '2E) ; ⇒ "palos distintos"
-(palos-mano-cartas '3O '7O '2E) ; ⇒ "dos cartas con el mismo palo"
+(jugada-mano '3♥ '3♣ '3♥) ; ⇒ "trío de 3"
+(jugada-mano 'K♦ '7♠ 'K♥) ; ⇒ "pareja de 12"
+(jugada-mano 5♣ '4♣ '6♣) ; ⇒ "nada"
 ```
 
 ## Entrega de la práctica
