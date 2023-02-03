@@ -197,8 +197,8 @@ Por ejemplo:
 ```
 
 Debemos definir la función `carta` que devuelve una pareja con el
-valor correspondiente a su orden en la baraja francesa (un número) y el palo
-de la carta (un símbolo).
+valor correspondiente a su orden en la baraja francesa (un número) y
+el nombre del palo de la carta (como símbolo, no como cadena).
 
 ```racket
 (carta tres-de-picas) ; ⇒ (3 . Picas)
