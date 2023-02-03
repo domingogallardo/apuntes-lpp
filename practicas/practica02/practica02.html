@@ -508,31 +508,31 @@ el número de condiciones sea mínima.</p>
 </code></pre></div>
 <h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
 <p>a) Supongamos las definiciones</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">f</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">cons</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">f</span> <span class="n">x</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">cons</span> <span class="n">x</span> <span class="mi">2</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">g</span> <span class="n">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">cons</span> <span class="mi">2</span> <span class="n">x</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">g</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+    <span class="p">(</span><span class="nb">cons</span> <span class="n">y</span> <span class="n">x</span><span class="p">))</span>
 </code></pre></div>
 <p>Realiza la evaluación paso a paso de la siguiente expresión </p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="n">g</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">))</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">g</span> <span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">))</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span>
 </code></pre></div>
 <p>mediante el <strong>modelo de sustitución</strong>, utilizando tanto el <strong>orden
 aplicativo</strong> y como el <strong>orden normal</strong>.</p>
 <p>Escribe la solución entre comentarios en el propio fichero <code>.rkt</code> de
 la práctica.</p>
 <p>b) Supongamos las definiciones</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">f</span> <span class="n">x</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">func-1</span> <span class="n">x</span><span class="p">)</span>
     <span class="p">(</span><span class="nb">/</span> <span class="n">x</span> <span class="mi">0</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">g</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">func-2</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
     <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">)</span>
         <span class="mi">0</span>
         <span class="n">y</span><span class="p">))</span>
 </code></pre></div>
 <p>Igual que en el apartado anterior, realiza la evaluación paso a paso
 de la siguiente expresión</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">g</span> <span class="mi">0</span> <span class="p">(</span><span class="n">f</span> <span class="mi">10</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">func-2</span> <span class="mi">0</span> <span class="p">(</span><span class="n">func-1</span> <span class="mi">10</span><span class="p">))</span>
 </code></pre></div>
 <p>mediante el <strong>modelo de sustitución</strong>, utilizando tanto el <strong>orden
 aplicativo</strong> y como el <strong>orden normal</strong>. Y escribe la solución entre
@@ -543,40 +543,52 @@ listas con 3 cadenas y devuelve otra lista con las 3 cadenas de mayor
 longitud, comparando las cadenas de cada posición de la
 lista. En el caso en que las cadenas tengan la misma longitud, se
 devuelve la cadena de la primera lista.</p>
+<div class="admonition note">
+<p class="admonition-title">Pista</p>
+<p>Puedes utilizar las funciones <code>second</code> y <code>third</code> que devuelven el
+segundo y el tercer elemento de una lista.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cadenas-mayores</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;que&quot;</span> <span class="s2">&quot;tal&quot;</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;meme&quot;</span> <span class="s2">&quot;y&quot;</span> <span class="s2">&quot;adios&quot;</span><span class="p">))</span> <span class="c1">; ⇒ (&quot;hola&quot; &quot;que&quot; &quot;adios&quot;)</span>
 <span class="p">(</span><span class="n">cadenas-mayores</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;esto&quot;</span> <span class="s2">&quot;es&quot;</span> <span class="s2">&quot;lpp&quot;</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hoy&quot;</span> <span class="s2">&quot;hay&quot;</span> <span class="s2">&quot;clase&quot;</span><span class="p">))</span> <span class="c1">; ⇒ (&quot;esto&quot; &quot;hay&quot; &quot;clase&quot;)</span>
 </code></pre></div>
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
-<p>Supongamos que queremos programar un juego de cartas. Lo primero que
-debemos hacer es definir una forma de representar las cartas y
-funciones que trabajen con esa representación. En este ejercicio vamos
-a implementar esas funciones.</p>
+<p>Supongamos que queremos programar un juego de cartas que usa la baraja
+francesa. Lo primero que debemos hacer es definir una forma de
+representar las cartas y funciones que trabajen con esa
+representación. En este ejercicio vamos a implementar esas funciones.</p>
 <p>Representaremos una carta por un símbolo con dos letras: la primera
-indicará su número o figura y la segunda el palo de la carta.</p>
+indicará su número o figura y la segunda el palo de la carta,
+representado con el símbolo UTF correspondiente.</p>
+<div class="admonition nota">
+<p class="admonition-title">Símbolos UTF de los palos de la baraja francesa</p>
+<p>Puedes copiar los siguientes símbolos UTF y pegarlos en el código
+fuente de la práctica: ♠, ♣, ♥ y ♦ (picas, tréboles, corazones y
+diamantes).</p>
+</div>
 <p>Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">tres-de-oros</span> <span class="o">&#39;</span><span class="ss">3O</span><span class="p">)</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">as-de-copas</span> <span class="o">&#39;</span><span class="ss">AC</span><span class="p">)</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">caballo-de-espadas</span> <span class="o">&#39;</span><span class="ss">CE</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">tres-de-picas</span> <span class="o">&#39;</span><span class="ss">3♠</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">as-de-corazones</span> <span class="o">&#39;</span><span class="ss">A♥</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">jota-de-diamantes</span> <span class="o">&#39;</span><span class="ss">J♦</span><span class="p">)</span>
 </code></pre></div>
 <p>Debemos definir la función <code>carta</code> que devuelve una pareja con el
-valor correspondiente a su orden en la baraja española (un número) y el palo
+valor correspondiente a su orden en la baraja francesa (un número) y el palo
 de la carta (un símbolo).</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">carta</span> <span class="n">tres-de-oros</span><span class="p">)</span> <span class="c1">; ⇒ (3 . Oros)</span>
-<span class="p">(</span><span class="n">carta</span> <span class="n">as-de-copas</span><span class="p">)</span> <span class="c1">; ⇒ (1 . Copas)</span>
-<span class="p">(</span><span class="n">carta</span> <span class="o">&#39;</span><span class="ss">RB</span><span class="p">)</span> <span class="c1">; ⇒ (12 . Bastos)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">carta</span> <span class="n">tres-de-picas</span><span class="p">)</span> <span class="c1">; ⇒ (3 . Picas)</span>
+<span class="p">(</span><span class="n">carta</span> <span class="n">as-de-corazones</span><span class="p">)</span> <span class="c1">; ⇒ (1 . Corazones)</span>
+<span class="p">(</span><span class="n">carta</span> <span class="o">&#39;</span><span class="ss">R♣</span><span class="p">)</span> <span class="c1">; ⇒ (12 . Tréboles)</span>
 </code></pre></div>
-<p>Los valores de las cartas de la baraja española son:</p>
+<p>Los valores de las cartas de la baraja francesa son:</p>
 <div class="highlight"><pre><span></span><code>A (As) ⇒ 1
-S (Sota) ⇒ 10
-C (Caballo) ⇒ 11
-R (Rey) ⇒ 12
+J (Jota) ⇒ 10
+Q (Reina) ⇒ 11
+K (Rey) ⇒ 12
 </code></pre></div>
 <p>Para realizar el ejercicio debes definir en primer lugar las funciones
 <code>(obten-palo char)</code> y <code>(obten-valor char)</code> que devuelven el palo y el
 valor, dado un carácter. Y debes implementar la función <code>carta</code> usando
 estas dos funciones.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">obten-palo</span> <span class="sc">#\O</span><span class="p">)</span> <span class="c1">; ⇒ Oros</span>
-<span class="p">(</span><span class="n">obten-palo</span> <span class="sc">#\E</span><span class="p">)</span> <span class="c1">; ⇒ Espadas</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">obten-palo</span> <span class="sc">#\♠</span><span class="p">)</span> <span class="c1">; ⇒ Picas</span>
+<span class="p">(</span><span class="n">obten-palo</span> <span class="sc">#\♥</span><span class="p">)</span> <span class="c1">; ⇒ Corazones</span>
 <span class="p">(</span><span class="n">obten-valor</span> <span class="sc">#\3</span><span class="p">)</span> <span class="c1">; ⇒ 3</span>
 <span class="p">(</span><span class="n">obten-valor</span> <span class="sc">#\S</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
 </code></pre></div>
@@ -587,16 +599,17 @@ símbolo en una cadena y <code>(string-ref cadena pos)</code> que devuelve el
 carácter de una cadena situado en una determinada posición.</p>
 </div>
 <h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
-<p>Implementa la función <code>(palos-mano-cartas carta1 carta2 carta3)</code> que recibe 3 cartas de la
-baraja española y devuelve una cadena indicando la cantidad de palos repetidos:
-"todas del mismo palo", "palos distintos" o "dos cartas con el mismo
-palo".</p>
-<p>Para obtener los palos de las cartas debes usar las funciones
+<p>Implementa la función <code>(jugada-mano carta1 carta2 carta3)</code> que recibe 3 cartas de la
+baraja francesa y devuelve una cadena indicando si la jugada de tres
+cartas contiene una <strong>pareja</strong> (dos cartas con el mismo valor), un <strong>trío</strong>
+(las tres cartas tienen el mismo valor) o <strong>nada</strong> (las tres cartas
+son distintas) y también el valor de la pareja o del trío.</p>
+<p>Para obtener los valores de las cartas debes usar las funciones
 definidas en el ejercicio anterior.</p>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">palos-mano-cartas</span> <span class="o">&#39;</span><span class="ss">3O</span> <span class="o">&#39;</span><span class="ss">7O</span> <span class="o">&#39;</span><span class="ss">2O</span><span class="p">)</span> <span class="c1">; ⇒ &quot;todas del mismo palo&quot;</span>
-<span class="p">(</span><span class="n">palos-mano-cartas</span> <span class="o">&#39;</span><span class="ss">3O</span> <span class="o">&#39;</span><span class="ss">7C</span> <span class="o">&#39;</span><span class="ss">2E</span><span class="p">)</span> <span class="c1">; ⇒ &quot;palos distintos&quot;</span>
-<span class="p">(</span><span class="n">palos-mano-cartas</span> <span class="o">&#39;</span><span class="ss">3O</span> <span class="o">&#39;</span><span class="ss">7O</span> <span class="o">&#39;</span><span class="ss">2E</span><span class="p">)</span> <span class="c1">; ⇒ &quot;dos cartas con el mismo palo&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">jugada-mano</span> <span class="o">&#39;</span><span class="ss">3♥</span> <span class="o">&#39;</span><span class="ss">3♣</span> <span class="o">&#39;</span><span class="ss">3♥</span><span class="p">)</span> <span class="c1">; ⇒ &quot;trío de 3&quot;</span>
+<span class="p">(</span><span class="n">jugada-mano</span> <span class="o">&#39;</span><span class="ss">K♦</span> <span class="o">&#39;</span><span class="ss">7♠</span> <span class="o">&#39;</span><span class="ss">K♥</span><span class="p">)</span> <span class="c1">; ⇒ &quot;pareja de 12&quot;</span>
+<span class="p">(</span><span class="n">jugada-mano</span> <span class="n">5♣</span> <span class="o">&#39;</span><span class="ss">4♣</span> <span class="o">&#39;</span><span class="ss">6♣</span><span class="p">)</span> <span class="c1">; ⇒ &quot;nada&quot;</span>
 </code></pre></div>
 <h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
 <p>Sube la solución de los ejercicios al cuestionario de Moodle <em>Entrega
