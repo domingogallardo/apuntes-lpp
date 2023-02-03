@@ -325,7 +325,7 @@ MIT Press, 1964
 
 Desde 1954 hasta la actualidad se han documentado más de 2.500
 (consultar en [The Language List]).  Entre 1952 y 1972 alrededor de
-200 lenguajes. Una decena fueron realmente siginificativos y tuvieron
+200 lenguajes. Una decena fueron realmente significativos y tuvieron
 influencia en el desarrollo de lenguajes posteriores.
 
 [The Language List]: http://people.ku.edu/~nkinners/LangList/Extras/langlist.htm
