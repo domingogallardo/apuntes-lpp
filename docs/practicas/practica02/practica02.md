@@ -249,7 +249,7 @@ Ejemplos:
 ```racket
 (jugada-mano '3♥ '3♣ '3♥) ; ⇒ "trío de 3"
 (jugada-mano 'K♦ '7♠ 'K♥) ; ⇒ "pareja de 12"
-(jugada-mano 5♣ '4♣ '6♣) ; ⇒ "nada"
+(jugada-mano '5♣ '4♣ '6♣) ; ⇒ "nada"
 ```
 
 ## Entrega de la práctica
