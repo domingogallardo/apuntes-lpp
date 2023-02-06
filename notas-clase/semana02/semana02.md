@@ -616,7 +616,7 @@ La pareja cumple las condiciones anteriores:
 (cons 1
       (cons 2
             (cons 3
-                  '()))))
+                  '())))
 ```
 
 - La primera pareja cumple las condiciones de ser una lista:
