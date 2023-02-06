@@ -354,7 +354,7 @@ La versión completa:
 
 ### Las parejas son objetos inmutables
 
-- En programación funcional una vez creada una parea no está permitido modificar (mutar) su contenido.
+- En programación funcional una vez creada una pareja no está permitido modificar (mutar) su contenido.
 - En Scheme hay funciones para mutar parejas, pero no las veremos hasta ver el paradigma de programación imperativa
 
 
