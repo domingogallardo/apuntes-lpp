@@ -215,7 +215,7 @@ Ejemplo:
 
 - En este caso podemos pensar que para sumar la lista de
 números `(12 3 5 1 8)` podemos obtener un problema más sencillo (una
-lista más pequeña) haciendo el `cdr` de la lista de números y llamando
+lista más pequeña) haciendo el `rest` de la lista de números y llamando
 a la recursión con el resultado. 
 
 - La llamada recursiva devolverá la suma de esos números (confiamos en
@@ -298,7 +298,23 @@ La versión completa:
 (define c (cons 1 2))
 ```
 
+- También podemos construir una pareja utilizando la forma especial
+  `quote` escribiendo entre paréntesis separados por un punto los
+  elementos que forman la pareja:
+  
+```racket
+(define c '(1 . 2))
+```
 
+- Al igual que con las listas, la diferencia entre `cons` y `quote`
+  para construir una pareja es que `quote` no evalúa sus parámetros:
+
+```racket
+(define a 1)
+(define b 2)
+(cons a b) ; ⇒ (1 . 2)
+'(a . b) ; ⇒ (a . b)
+```
 
 ### Funciones de acceso `car` y `cdr`
 
@@ -318,7 +334,6 @@ La versión completa:
 (car (cons x y)) = x
 (cdr (cons x y)) = y
 ```
-
 
 ### Función pair?
 

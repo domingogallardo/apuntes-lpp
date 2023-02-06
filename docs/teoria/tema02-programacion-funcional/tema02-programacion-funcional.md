@@ -1769,8 +1769,6 @@ concatenar dos o más listas
 (append list1 list2) ; ⇒ (1 2 3 4 hola como estás)
 ```
 
-<!--
-
 ### 2.7. Recursión
 
 Otra característica fundamental de la programación funcional es la no
@@ -2745,8 +2743,14 @@ lista de 3 elementos:
 Y el segundo elemento de la lista es otra lista:
 
 ```racket
-(car (cdr lista)) ; ⇒ (1 2 3)
+(second lista) ; ⇒ (1 2 3)
 ```
+
+!!! Note "Funciones second, third, ..., tenth"
+    En Racket existen funciones que devuelven el segundo, tercer,
+    ... y así hasta el décimo elemento de una lista. Son las funciones
+    `second`, `third`, ..., `tenth`. Se pueden consultar en el [manual
+    de referencia del lenguaje](https://docs.racket-lang.org/reference/pairs.html#%28part._.Additional_.List_.Functions_and_.Synonyms%29).
 
 ¿Cómo implementa Scheme esta lista usando parejas?
 
@@ -2825,6 +2829,9 @@ listas. Algunas ya las conocemos, pero otras no:
 ```
 
 En los siguientes apartados veremos cómo están implementadas.
+
+
+<!--
 
 ### 4.3. Funciones recursivas que construyen listas
 

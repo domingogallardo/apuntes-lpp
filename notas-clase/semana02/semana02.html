@@ -342,7 +342,7 @@ como parámetro una lista de números y devuelva la suma de todos ellos.</p>
 <li>
 <p>En este caso podemos pensar que para sumar la lista de
 números <code>(12 3 5 1 8)</code> podemos obtener un problema más sencillo (una
-lista más pequeña) haciendo el <code>cdr</code> de la lista de números y llamando
+lista más pequeña) haciendo el <code>rest</code> de la lista de números y llamando
 a la recursión con el resultado. </p>
 </li>
 <li>
@@ -409,6 +409,22 @@ identificador.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ (1 . 2)</span>
 <span class="p">(</span><span class="k">define</span> <span class="n">c</span> <span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<ul>
+<li>También podemos construir una pareja utilizando la forma especial
+  <code>quote</code> escribiendo entre paréntesis separados por un punto los
+  elementos que forman la pareja:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">c</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<ul>
+<li>Al igual que con las listas, la diferencia entre <code>cons</code> y <code>quote</code>
+  para construir una pareja es que <code>quote</code> no evalúa sus parámetros:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">b</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">cons</span> <span class="n">a</span> <span class="n">b</span><span class="p">)</span> <span class="c1">; ⇒ (1 . 2)</span>
+<span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="o">.</span> <span class="ss">b</span><span class="p">)</span> <span class="c1">; ⇒ (a . b)</span>
 </code></pre></div>
 <h3>Funciones de acceso <code>car</code> y <code>cdr</code></h3>
 <ul>
