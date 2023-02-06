@@ -116,7 +116,7 @@ a) Supongamos las definiciones
     (cons x 2))
 
 (define (g x y)
-    (cons y x))
+    (cons x y))
 ```
 
 Realiza la evaluación paso a paso de la siguiente expresión 
@@ -251,6 +251,11 @@ Ejemplos:
 (jugada-mano 'K♦ '7♠ 'K♥) ; ⇒ "pareja de 12"
 (jugada-mano '5♣ '4♣ '6♣) ; ⇒ "nada"
 ```
+
+!!! Note "Números a cadenas"
+    Puedes obtener una cadena correspondiente a un número usando la función
+    `number->string`. 
+
 
 ## Entrega de la práctica
 
