@@ -610,20 +610,19 @@ La pareja cumple las condiciones anteriores:
 ```
 
 
-### Otro ejemplo: `(1 2 3 4)`
+### Otro ejemplo: `(1 2 3)`
 
 ```racket
 (cons 1
       (cons 2
             (cons 3
-                  (cons 4 
-                        '()))))
+                  '()))))
 ```
 
 - La primera pareja cumple las condiciones de ser una lista:
 
 * Su primer elemento es el 1
-* Su parte derecha es la lista '(2 3 4)
+* Su parte derecha es la lista '(2 3)
 
 <img src="./imagenes/lista.png" width="400px"/>
 

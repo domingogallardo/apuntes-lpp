@@ -224,7 +224,7 @@ estas dos funciones.
 (obten-palo #\♠) ; ⇒ Picas
 (obten-palo #\♥) ; ⇒ Corazones
 (obten-valor #\3) ; ⇒ 3
-(obten-valor #\S) ; ⇒ 10
+(obten-valor #\J) ; ⇒ 10
 ```
 
 !!! Note "Pista"

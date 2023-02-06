@@ -2634,21 +2634,20 @@ El objeto es al mismo tiempo una pareja y una lista. La función
 (list? l)
 ```
 
-Por ejemplo, la lista '(1 2 3 4) se construye con la siguiente
+Por ejemplo, la lista '(1 2 3) se construye con la siguiente
 secuencia de parejas:
 
 ```racket
 (cons 1
       (cons 2
-            (cons 3
-                  (cons 4 
-                        '()))))
+            (cons 3 
+                  '())))
 ```
 
 La primera pareja cumple las condiciones de ser una lista:
 
 * Su primer elemento es el 1
-* Su parte derecha es la lista '(2 3 4)
+* Su parte derecha es la lista '(2 3)
 
 <img src="imagenes/lista.png" width="400px"/>
 
