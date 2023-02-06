@@ -203,7 +203,7 @@ el nombre del palo de la carta (como símbolo, no como cadena).
 ```racket
 (carta tres-de-picas) ; ⇒ (3 . Picas)
 (carta as-de-corazones) ; ⇒ (1 . Corazones)
-(carta 'R♣) ; ⇒ (12 . Tréboles)
+(carta 'K♣) ; ⇒ (12 . Tréboles)
 ```
 
 Los valores de las cartas de la baraja francesa son:
