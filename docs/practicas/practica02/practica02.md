@@ -254,7 +254,7 @@ Ejemplos:
 
 !!! Note "Números a cadenas"
     Puedes obtener una cadena correspondiente a un número usando la función
-    `number->string`. 
+    `number->string`. Esta función solo la debes usar en este ejercicio.
 
 
 ## Entrega de la práctica
