@@ -130,44 +130,55 @@ Ejemplos:
 ; ⇒ "Scheme mola"
 ```
 
-c) Implementa la función `(contiene? cadena char)` que comprueba si
-una cadena contiene un carácter determinado. Debes usar la función
-`string->list` e implementar la función auxiliar recursiva
-`(contiene-lista?  lista dato)`.
+c) Implementa el predicado recursivo `(contiene? lista elemento)` que comprueba si
+una lista tiene un elemento determinado. Después úsala para
+implementar la función `(str-contiene? cadena char)` que comprueba si
+una cadena contiene un carácter. Recuerda que la función `string->list`
+que convierte una cadena en una lista de caracteres.
 
 Ejemplos:
 
 ```racket
-(contiene? "Hola" #\o) ; ⇒ #t
-(contiene? "Esto es una frase" #\space) ; ⇒ #t
-(contiene? "Hola" #\h) ; ⇒ #f
+(contiene? '(algo 3 #\A) 3) ; ⇒ #t
+(contiene? '(algo 3 #\A) "algo") ; ⇒ #f
+(contiene? '(algo 3 #\A) 'algo) ; ⇒ #t
+(str-contiene? "Hola" #\o) ; ⇒ #t
+(str-contiene? "Esto es una frase" #\space) ; ⇒ #t
+(str-contiene? "Hola" #\h) ; ⇒ #f
 ```
 
 ### Ejercicio 2 ###
 
-a) Implementa la función recursiva `(binario-a-decimal lista-bits)` que reciba
-una lista de bits que representan un número en binario (el primer
-elemento será el bit más significativo) y devuelva el número decimal
-equivalente.
+a) Implementa el predicado recursivo `(todos-iguales? lista)` que
+comprueba si todos los elementos de una lista son iguales.
 
-!!! Hint "Pista"
-    Puedes utilizar la función `length`.
 
 ```racket
-(binario-a-decimal '(1 1 1 1)) ; ⇒ 15
-(binario-a-decimal '(1 1 0)) ; ⇒ 6
-(binario-a-decimal '(1 0)) ; ⇒ 2
+(todos-iguales? '()) ; ⇒ #t
+(todos-iguales? '(a)) ; ⇒ #t
+(todos-iguales? '(a a a a a a a)) ; ⇒ #t
+(todos-iguales? '((a b) (a b) (a b))) ; ⇒ #t
+(todos-iguales? '(a a a a a b)) ; ⇒ #f
 ```
 
-b) Implementa la función recursiva `(ordenada-creciente? lista-nums)`
-que recibe como argumento una lista de números y devuelve `#t` si los
-números de la lista están ordenados de forma creciente o `#f` en
-caso contrario. Suponemos listas de 1 o más elementos.
+b) Implementa el predicado recursivo `(todos-distintos? lista)` que
+comprueba si todos los elementos de una lista son distintos. Para su
+implementación debes usar el predicado del ejercicio 1 `contiene?`.
+
 
 ```racket
-(ordenada-creciente? '(-1 23 45 59 99))  ; ⇒ #t
-(ordenada-creciente? '(12 50 -1 293 1000))  ; ⇒ #f
-(ordenada-creciente? '(3))  ; ⇒ #t
+(todos-distintos? '(a b c)) ; ⇒ #t
+(todos-distintos? '(a b c a)) ; ⇒ #f
+```
+
+c) Implementa el predicado recursivo `(solo-dos-iguales? lista)`que
+comprueba que solo hay dos elementos iguales en una lista. Para su
+implementación puedes usar los predicados anteriores.
+
+```racket
+(solo-dos-iguales? '(a b c a)) ; ⇒ #t
+(solo-dos-iguales? '(a b c b a a)) ; ⇒ #t
+(solo-dos-iguales? '(a b c a a)) ; ⇒ #f
 ```
 
 
@@ -180,8 +191,8 @@ función gráfica `caja-puntero` para comprobar si tu solución es correcta.
 
 <img src="imagenes/box-and-pointer.png" width="400px"/>
 
-a.2) Escribe las expresiones que devuelven 2 y 4 a partir de
-`p1`. Debes usar las funciones `first` y `rest` si el argumento es una
+a.2) Escribe las expresiones que devuelven `b` y `d` a partir de
+`p1`. Debes usar las funciones sobre listas `first`, `second`, etc. si el argumento es una
 lista y `car` y `cdr` si es una pareja que no forma parte de una lista.
 
 b.1) Dado el siguiente diagrama caja y puntero, escribe la expresión en
@@ -189,10 +200,10 @@ Scheme que define `p2` usando el mínimo número de llamadas a `list` y `cons`.
 
 <img src="imagenes/box-and-pointer2.png" width="400px"/>
 
-b.2) Escribe las expresiones que devuelven 9 y 2 a partir de
-`p2`. Debes usar las funciones `first` y `rest` si el argumento es una
-lista y `car` y `cdr` si es una pareja que no forma parte de una
-lista.
+b.2) Escribe las expresiones que devuelven `c` y `e` a partir de
+`p2`. Debes usar las funciones sobre listas `first`, `second`, etc. si
+el argumento es una lista y `car` y `cdr` si es una pareja que no
+forma parte de una lista.
 
 ### Ejercicio 4 ###
 
@@ -208,58 +219,48 @@ tienen sus dos datos iguales.
 
 ### Ejercicio 5 ###
 
-Vamos a jugar al dominó. 
+Vamos a seguir jugando al poker. Esta vez vamos a definir funciones
+sobre **manos de cartas**, definidas como listas de 5 símbolos que
+representan cartas.
 
-En el juego del dominó las fichas tienen una pareja de
-valores. Podemos colocar una ficha en la partida cuando uno de los
-valores de la ficha coincide con el primer valor de la lista de fichas
-ya colocadas o con el último.
-
-Por ejemplo, supongamos que la partida ha formado la siguiente lista de fichas:
+Por ejemplo, las siguientes manos:
 
 ```racket
-((1 . 3) (3 . 0) (0 . 0) (0 . 4) (4 . 2))
+(define mano1 '(1♦ 2♦ 3♣ 4♦ 5♥))
+(define mano2 '(K♣ J♦ J♣ J♠ J♥))
 ```
 
-Esta es una lista correcta, porque coinciden los valores de las fichas
-que la forman (el valor derecho de una ficha con el izquierdo de la
-siguiente).
-
-Si tuviéramos en nuestra mano de fichas las fichas:
+Copia de la práctica anterior la solución de la función `(valor-carta
+carta)` que devuelve el valor numérico de una carta:
 
 ```racket
-((5 . 5) (3 . 2) (4 . 6) (6 . 6))
+(valor-carta '5♣) ; ⇒ 5
+(valor-carta 'K♦) ; ⇒ 12
 ```
 
-podríamos colocar la ficha `(3 . 2)` al final de la lista de la partida (girándola).
+Tendrás que usar esta función para implementar las siguientes
+funciones del ejercicio.
 
-a) Implementa la función recursiva `(domino-correcto? fichas)` que
-recibe una lista de fichas resultantes de una partida de dominó y
-comprueba si las fichas están colocadas de forma correcta.
+a) Implementa el predicado recursivo `escalera?` que recibe una mano
+de cartas y comprueba si contiene una escalera (cartas con valores
+consecutivos). Para simplificar, suponemos que la mano que pasamos
+siempre tiene los valores ordenados de menor a mayor.
 
 ```racket
-(define partida '((1 . 3) (3 . 0) (0 . 0) (0 . 4) (4 . 2)))
-(domino-correcto? partida) ; ⇒ #t
-(domino-correcto? '((1 . 3))) ; ⇒ #t
-(domino-correcto? '((1 . 4) (2 . 1))) ; ⇒ #f
+(escalera? '(5♣ 4♦ 3♣ 2♦ 1♥)) ; ⇒ #t
+(escalera? '(8♣ 9♦ J♣ Q♦ K♥)) ; ⇒ #t
+(escalera? '(8♣ 9♦ 2♣ 3♦ J♥)) ; ⇒ #f
 ```
 
-b) Implementa la función recursiva `(juega? mano partida)` que recibe
-una mano (una lista de fichas) y otra lista de fichas colocadas en la
-partida y devuelve `#t` si existe alguna ficha de la mano que se puede
-colocar en la partida.
+b) Implementa la función `(poker mano)` que recibe una mano y devuelve
+una cadena indicando si hay o no poker y el valor del poker:
 
-Para obtener la última ficha de la partida debes usar e implementar
-la función `(ultimo lista)` que devuelva el último elemento de una
-lista. Hazla también recursiva.
+```racket
+(poker '(5♣ 5♦ 3♣ 5♠ 5♥)) ; ⇒ "poker de 5"
+(poker '(3♣ 5♦ 3♣ 5♠ 5♥)) ; ⇒ "no hay poker"
+(poker '(K♣ J♦ J♣ J♠ J♥)) ; ⇒ "poker de 10"
 
 ```
-(define mano '((5 . 5) (3 . 2) (4 . 6) (6 . 6)))
-(juega? mano partida) ; ⇒ #t - podría poner la ficha (3 . 2)
-(juega? mano '((0 . 0))) ; ⇒ #f
-(juega? mano '((0 . 0) (0 . 1))) ; ⇒ #f
-```
-
 
 ### Ejercicio 6 ###
 
@@ -292,25 +293,7 @@ Ejemplos:
 (suma-impares-pares '(3 1 5))           ; ⇒ (9 . 0)
 ```
 
-c) Recuerda la función recursiva `(veces lista id)` que vimos en
-teoría:
-
-```racket
-(define (veces lista id)
-  (cond
-    ((null? lista) 0)
-    ((equal? (first lista) id) (+ 1 (veces (rest lista) id)))
-    (else (veces (rest lista) id))))
-
-(veces '(a b a a b b) 'a) ; ⇒ 3 
-```
-
-Reescribe la función `(veces lista id)` para que solo aparezca una
-llamada recursiva en su código.
-
-### Ejercicio 7 ###
-
-Implementa la función recursiva `(cadena-mayor lista)` que recibe un
+c) Implementa la función recursiva `(cadena-mayor lista)` que recibe un
 lista de cadenas y devuelve una pareja con la cadena de mayor longitud
 y dicha longitud.  En el caso de que haya más de una cadena con la
 máxima longitud, se devolverá la última de ellas que aparezca en la
@@ -330,7 +313,7 @@ cadena vacía y un 0 (la longitud de la cadena vacía).
 ## Entrega de la práctica
 
 Sube la solución de los ejercicios al cuestionario de Moodle Entrega
-práctica 3 hasta el domingo 20 de febrero a las 21:00 h.
+práctica 3 hasta el domingo 19 de febrero a las 21:00 h.
 
 Tal y como hemos comentado al comienzo de la práctica, debes incluir
 casos de prueba en todo el código que escribas.
@@ -342,6 +325,6 @@ clase de prácticas de la semana que viene.
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2021-22  
+Lenguajes y Paradigmas de Programación, curso 2022-23  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
