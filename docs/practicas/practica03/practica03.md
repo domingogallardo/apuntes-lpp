@@ -189,7 +189,7 @@ que define `p1` usando el mínimo número de llamadas a `list` y
 `cons`. No debes utilizar expresiones con `quote`. Puedes usar la
 función gráfica `caja-puntero` para comprobar si tu solución es correcta.
 
-<img src="imagenes/box-and-pointer.png" width="400px"/>
+<img src="imagenes/box-and-pointer.png" width="300px"/>
 
 a.2) Escribe las expresiones que devuelven `b` y `d` a partir de
 `p1`. Debes usar las funciones sobre listas `first`, `second`, etc. si el argumento es una
@@ -198,7 +198,7 @@ lista y `car` y `cdr` si es una pareja que no forma parte de una lista.
 b.1) Dado el siguiente diagrama caja y puntero, escribe la expresión en
 Scheme que define `p2` usando el mínimo número de llamadas a `list` y `cons`.
 
-<img src="imagenes/box-and-pointer2.png" width="400px"/>
+<img src="imagenes/box-and-pointer2.png" width="300px"/>
 
 b.2) Escribe las expresiones que devuelven `c` y `e` a partir de
 `p2`. Debes usar las funciones sobre listas `first`, `second`, etc. si
