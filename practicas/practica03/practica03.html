@@ -414,13 +414,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ejercicio-7" class="md-nav__link">
-    Ejercicio 7
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -549,35 +542,40 @@ concatenarlos.</p>
 <span class="p">(</span><span class="n">concatena</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\S</span> <span class="sc">#\c</span> <span class="sc">#\h</span> <span class="sc">#\e</span> <span class="sc">#\m</span> <span class="sc">#\e</span> <span class="sc">#\space</span> <span class="sc">#\m</span> <span class="sc">#\o</span> <span class="sc">#\l</span> <span class="sc">#\a</span><span class="p">))</span>  
 <span class="c1">; ⇒ &quot;Scheme mola&quot;</span>
 </code></pre></div>
-<p>c) Implementa la función <code>(contiene? cadena char)</code> que comprueba si
-una cadena contiene un carácter determinado. Debes usar la función
-<code>string-&gt;list</code> e implementar la función auxiliar recursiva
-<code>(contiene-lista?  lista dato)</code>.</p>
+<p>c) Implementa el predicado recursivo <code>(contiene? lista elemento)</code> que comprueba si
+una lista tiene un elemento determinado. Después úsala para
+implementar la función <code>(str-contiene? cadena char)</code> que comprueba si
+una cadena contiene un carácter. Recuerda que la función <code>string-&gt;list</code>
+que convierte una cadena en una lista de caracteres.</p>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">contiene?</span> <span class="s2">&quot;Hola&quot;</span> <span class="sc">#\o</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">contiene?</span> <span class="s2">&quot;Esto es una frase&quot;</span> <span class="sc">#\space</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">contiene?</span> <span class="s2">&quot;Hola&quot;</span> <span class="sc">#\h</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">contiene?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">algo</span> <span class="mi">3</span> <span class="sc">#\A</span><span class="p">)</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">contiene?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">algo</span> <span class="mi">3</span> <span class="sc">#\A</span><span class="p">)</span> <span class="s2">&quot;algo&quot;</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">contiene?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">algo</span> <span class="mi">3</span> <span class="sc">#\A</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">algo</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">str-contiene?</span> <span class="s2">&quot;Hola&quot;</span> <span class="sc">#\o</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">str-contiene?</span> <span class="s2">&quot;Esto es una frase&quot;</span> <span class="sc">#\space</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">str-contiene?</span> <span class="s2">&quot;Hola&quot;</span> <span class="sc">#\h</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
 </code></pre></div>
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
-<p>a) Implementa la función recursiva <code>(binario-a-decimal lista-bits)</code> que reciba
-una lista de bits que representan un número en binario (el primer
-elemento será el bit más significativo) y devuelva el número decimal
-equivalente.</p>
-<div class="admonition hint">
-<p class="admonition-title">Pista</p>
-<p>Puedes utilizar la función <code>length</code>.</p>
-</div>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">binario-a-decimal</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">))</span> <span class="c1">; ⇒ 15</span>
-<span class="p">(</span><span class="n">binario-a-decimal</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">))</span> <span class="c1">; ⇒ 6</span>
-<span class="p">(</span><span class="n">binario-a-decimal</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">0</span><span class="p">))</span> <span class="c1">; ⇒ 2</span>
+<p>a) Implementa el predicado recursivo <code>(todos-iguales? lista)</code> que
+comprueba si todos los elementos de una lista son iguales.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">todos-iguales?</span> <span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">todos-iguales?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">todos-iguales?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">todos-iguales?</span> <span class="o">&#39;</span><span class="p">((</span><span class="ss">a</span> <span class="ss">b</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span> <span class="ss">b</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span> <span class="ss">b</span><span class="p">)))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">todos-iguales?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">b</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
 </code></pre></div>
-<p>b) Implementa la función recursiva <code>(ordenada-creciente? lista-nums)</code>
-que recibe como argumento una lista de números y devuelve <code>#t</code> si los
-números de la lista están ordenados de forma creciente o <code>#f</code> en
-caso contrario. Suponemos listas de 1 o más elementos.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">ordenada-creciente?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">-1</span> <span class="mi">23</span> <span class="mi">45</span> <span class="mi">59</span> <span class="mi">99</span><span class="p">))</span>  <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">ordenada-creciente?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span> <span class="mi">50</span> <span class="mi">-1</span> <span class="mi">293</span> <span class="mi">1000</span><span class="p">))</span>  <span class="c1">; ⇒ #f</span>
-<span class="p">(</span><span class="n">ordenada-creciente?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>  <span class="c1">; ⇒ #t</span>
+<p>b) Implementa el predicado recursivo <code>(todos-distintos? lista)</code> que
+comprueba si todos los elementos de una lista son distintos. Para su
+implementación debes usar el predicado del ejercicio 1 <code>contiene?</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">todos-distintos?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">todos-distintos?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+</code></pre></div>
+<p>c) Implementa el predicado recursivo <code>(solo-dos-iguales? lista)</code>que
+comprueba que solo hay dos elementos iguales en una lista. Para su
+implementación puedes usar los predicados anteriores.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">solo-dos-iguales?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">solo-dos-iguales?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">b</span> <span class="ss">a</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">solo-dos-iguales?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">a</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
 </code></pre></div>
 <h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
 <p>a.1) Dado el siguiente <em>box &amp; pointer</em>, escribe la expresión en Scheme
@@ -585,16 +583,16 @@ que define <code>p1</code> usando el mínimo número de llamadas a <code>list</c
 <code>cons</code>. No debes utilizar expresiones con <code>quote</code>. Puedes usar la
 función gráfica <code>caja-puntero</code> para comprobar si tu solución es correcta.</p>
 <p><img src="imagenes/box-and-pointer.png" width="400px"/></p>
-<p>a.2) Escribe las expresiones que devuelven 2 y 4 a partir de
-<code>p1</code>. Debes usar las funciones <code>first</code> y <code>rest</code> si el argumento es una
+<p>a.2) Escribe las expresiones que devuelven <code>b</code> y <code>d</code> a partir de
+<code>p1</code>. Debes usar las funciones sobre listas <code>first</code>, <code>second</code>, etc. si el argumento es una
 lista y <code>car</code> y <code>cdr</code> si es una pareja que no forma parte de una lista.</p>
 <p>b.1) Dado el siguiente diagrama caja y puntero, escribe la expresión en
 Scheme que define <code>p2</code> usando el mínimo número de llamadas a <code>list</code> y <code>cons</code>.</p>
 <p><img src="imagenes/box-and-pointer2.png" width="400px"/></p>
-<p>b.2) Escribe las expresiones que devuelven 9 y 2 a partir de
-<code>p2</code>. Debes usar las funciones <code>first</code> y <code>rest</code> si el argumento es una
-lista y <code>car</code> y <code>cdr</code> si es una pareja que no forma parte de una
-lista.</p>
+<p>b.2) Escribe las expresiones que devuelven <code>c</code> y <code>e</code> a partir de
+<code>p2</code>. Debes usar las funciones sobre listas <code>first</code>, <code>second</code>, etc. si
+el argumento es una lista y <code>car</code> y <code>cdr</code> si es una pareja que no
+forma parte de una lista.</p>
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
 <p>Implementa la función recursiva <code>(contar-datos-iguales lista-parejas)</code>
 que recibe una lista de parejas y devuelve el número de parejas que
@@ -603,40 +601,33 @@ tienen sus dos datos iguales.</p>
 <span class="p">(</span><span class="n">contar-datos-iguales</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="s2">&quot;hola&quot;</span><span class="p">)</span> <span class="p">(</span><span class="s2">&quot;hola&quot;</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="ss">\#a</span> <span class="o">.</span> <span class="ss">true</span><span class="p">)</span> <span class="p">(</span><span class="ss">\#b</span> <span class="o">.</span> <span class="ss">false</span><span class="p">)))</span> <span class="c1">; ⇒ 0</span>
 </code></pre></div>
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
-<p>Vamos a jugar al dominó. </p>
-<p>En el juego del dominó las fichas tienen una pareja de
-valores. Podemos colocar una ficha en la partida cuando uno de los
-valores de la ficha coincide con el primer valor de la lista de fichas
-ya colocadas o con el último.</p>
-<p>Por ejemplo, supongamos que la partida ha formado la siguiente lista de fichas:</p>
-<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">2</span><span class="p">))</span>
+<p>Vamos a seguir jugando al poker. Esta vez vamos a definir funciones
+sobre <strong>manos de cartas</strong>, definidas como listas de 5 símbolos que
+representan cartas.</p>
+<p>Por ejemplo, las siguientes manos:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">mano1</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">1♦</span> <span class="ss">2♦</span> <span class="ss">3♣</span> <span class="ss">4♦</span> <span class="ss">5♥</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">mano2</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">K♣</span> <span class="ss">J♦</span> <span class="ss">J♣</span> <span class="ss">J♠</span> <span class="ss">J♥</span><span class="p">))</span>
 </code></pre></div>
-<p>Esta es una lista correcta, porque coinciden los valores de las fichas
-que la forman (el valor derecho de una ficha con el izquierdo de la
-siguiente).</p>
-<p>Si tuviéramos en nuestra mano de fichas las fichas:</p>
-<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="mi">6</span> <span class="o">.</span> <span class="mi">6</span><span class="p">))</span>
+<p>Copia de la práctica anterior la solución de la función <code>(valor-carta
+carta)</code> que devuelve el valor numérico de una carta:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">valor-carta</span> <span class="o">&#39;</span><span class="ss">5♣</span><span class="p">)</span> <span class="c1">; ⇒ 5</span>
+<span class="p">(</span><span class="n">valor-carta</span> <span class="o">&#39;</span><span class="ss">K♦</span><span class="p">)</span> <span class="c1">; ⇒ 12</span>
 </code></pre></div>
-<p>podríamos colocar la ficha <code>(3 . 2)</code> al final de la lista de la partida (girándola).</p>
-<p>a) Implementa la función recursiva <code>(domino-correcto? fichas)</code> que
-recibe una lista de fichas resultantes de una partida de dominó y
-comprueba si las fichas están colocadas de forma correcta.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">partida</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)))</span>
-<span class="p">(</span><span class="n">domino-correcto?</span> <span class="n">partida</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">domino-correcto?</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)))</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">domino-correcto?</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">1</span><span class="p">)))</span> <span class="c1">; ⇒ #f</span>
+<p>Tendrás que usar esta función para implementar las siguientes
+funciones del ejercicio.</p>
+<p>a) Implementa el predicado recursivo <code>escalera?</code> que recibe una mano
+de cartas y comprueba si contiene una escalera (cartas con valores
+consecutivos). Para simplificar, suponemos que la mano que pasamos
+siempre tiene los valores ordenados de menor a mayor.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">escalera?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">5♣</span> <span class="ss">4♦</span> <span class="ss">3♣</span> <span class="ss">2♦</span> <span class="ss">1♥</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">escalera?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">8♣</span> <span class="ss">9♦</span> <span class="ss">J♣</span> <span class="ss">Q♦</span> <span class="ss">K♥</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">escalera?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">8♣</span> <span class="ss">9♦</span> <span class="ss">2♣</span> <span class="ss">3♦</span> <span class="ss">J♥</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
 </code></pre></div>
-<p>b) Implementa la función recursiva <code>(juega? mano partida)</code> que recibe
-una mano (una lista de fichas) y otra lista de fichas colocadas en la
-partida y devuelve <code>#t</code> si existe alguna ficha de la mano que se puede
-colocar en la partida.</p>
-<p>Para obtener la última ficha de la partida debes usar e implementar
-la función <code>(ultimo lista)</code> que devuelva el último elemento de una
-lista. Hazla también recursiva.</p>
-<div class="highlight"><pre><span></span><code>(define mano &#39;((5 . 5) (3 . 2) (4 . 6) (6 . 6)))
-(juega? mano partida) ; ⇒ #t - podría poner la ficha (3 . 2)
-(juega? mano &#39;((0 . 0))) ; ⇒ #f
-(juega? mano &#39;((0 . 0) (0 . 1))) ; ⇒ #f
+<p>b) Implementa la función <code>(poker mano)</code> que recibe una mano y devuelve
+una cadena indicando si hay o no poker y el valor del poker:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">poker</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">5♣</span> <span class="ss">5♦</span> <span class="ss">3♣</span> <span class="ss">5♠</span> <span class="ss">5♥</span><span class="p">))</span> <span class="c1">; ⇒ &quot;poker de 5&quot;</span>
+<span class="p">(</span><span class="n">poker</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">3♣</span> <span class="ss">5♦</span> <span class="ss">3♣</span> <span class="ss">5♠</span> <span class="ss">5♥</span><span class="p">))</span> <span class="c1">; ⇒ &quot;no hay poker&quot;</span>
+<span class="p">(</span><span class="n">poker</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">K♣</span> <span class="ss">J♦</span> <span class="ss">J♣</span> <span class="ss">J♠</span> <span class="ss">J♥</span><span class="p">))</span> <span class="c1">; ⇒ &quot;poker de 10&quot;</span>
 </code></pre></div>
 <h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
 <p>a) Implementa las funciones <code>(suma-izq pareja n)</code> y <code>(suma-der pareja n)</code>
@@ -661,20 +652,7 @@ apartado anterior. También puedes utilizar las funciones predefinidas
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-impares-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">8</span> <span class="mi">7</span> <span class="mi">6</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ (16 . 20)</span>
 <span class="p">(</span><span class="n">suma-impares-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="mi">1</span> <span class="mi">5</span><span class="p">))</span>           <span class="c1">; ⇒ (9 . 0)</span>
 </code></pre></div>
-<p>c) Recuerda la función recursiva <code>(veces lista id)</code> que vimos en
-teoría:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">veces</span> <span class="n">lista</span> <span class="n">id</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">cond</span>
-    <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="p">((</span><span class="nb">equal?</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">)))</span>
-    <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">veces</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="n">id</span><span class="p">))))</span>
-
-<span class="p">(</span><span class="n">veces</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">b</span> <span class="ss">b</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span> <span class="c1">; ⇒ 3 </span>
-</code></pre></div>
-<p>Reescribe la función <code>(veces lista id)</code> para que solo aparezca una
-llamada recursiva en su código.</p>
-<h3 id="ejercicio-7">Ejercicio 7<a class="headerlink" href="#ejercicio-7" title="Permanent link">&para;</a></h3>
-<p>Implementa la función recursiva <code>(cadena-mayor lista)</code> que recibe un
+<p>c) Implementa la función recursiva <code>(cadena-mayor lista)</code> que recibe un
 lista de cadenas y devuelve una pareja con la cadena de mayor longitud
 y dicha longitud.  En el caso de que haya más de una cadena con la
 máxima longitud, se devolverá la última de ellas que aparezca en la
@@ -688,7 +666,7 @@ cadena vacía y un 0 (la longitud de la cadena vacía).</p>
 </code></pre></div>
 <h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
 <p>Sube la solución de los ejercicios al cuestionario de Moodle Entrega
-práctica 3 hasta el domingo 20 de febrero a las 21:00 h.</p>
+práctica 3 hasta el domingo 19 de febrero a las 21:00 h.</p>
 <p>Tal y como hemos comentado al comienzo de la práctica, debes incluir
 casos de prueba en todo el código que escribas.</p>
 <p>Una vez finalizado el plazo de entrega podrás revisar el cuestionario
@@ -696,7 +674,7 @@ y visualizar la solución. Corrige la entrega, comparando la solución
 con la tuya. Puedes consultar cualquier duda con tu profesor en la
 clase de prácticas de la semana que viene.</p>
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2021-22<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2022-23<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
                 
