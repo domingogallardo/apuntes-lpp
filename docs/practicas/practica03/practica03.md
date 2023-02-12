@@ -125,6 +125,7 @@ concatenarlos.
 Ejemplos:
 
 ```racket
+(concatena '()) ; ⇒ ""
 (concatena '(#\H #\o #\l #\a)) ; ⇒ "Hola"
 (concatena '(#\S #\c #\h #\e #\m #\e #\space #\m #\o #\l #\a))  
 ; ⇒ "Scheme mola"
@@ -176,6 +177,8 @@ comprueba que solo hay dos elementos iguales en una lista. Para su
 implementación puedes usar los predicados anteriores.
 
 ```racket
+(solo-dos-iguales? '()) ; ⇒ #f
+(solo-dos-iguales' '(a)) ; ⇒ #f
 (solo-dos-iguales? '(a b c a)) ; ⇒ #t
 (solo-dos-iguales? '(a b c b a a)) ; ⇒ #t
 (solo-dos-iguales? '(a b c a a)) ; ⇒ #f
@@ -238,28 +241,58 @@ carta)` que devuelve el valor numérico de una carta:
 (valor-carta 'K♦) ; ⇒ 12
 ```
 
-Tendrás que usar esta función para implementar las siguientes
-funciones del ejercicio.
-
-a) Implementa el predicado recursivo `escalera?` que recibe una mano
-de cartas y comprueba si contiene una escalera (cartas con valores
-consecutivos). Para simplificar, suponemos que la mano que pasamos
-siempre tiene los valores ordenados de menor a mayor.
+a) Implementa la función `(palo-carta carta)` de forma similar a la
+función `valor-carta` para que devuelva el símbolo con la descripción
+del palo de la carta.
 
 ```racket
-(escalera? '(5♣ 4♦ 3♣ 2♦ 1♥)) ; ⇒ #t
-(escalera? '(8♣ 9♦ J♣ Q♦ K♥)) ; ⇒ #t
-(escalera? '(8♣ 9♦ 2♣ 3♦ J♥)) ; ⇒ #f
+(palo-carta 'A♠) ; ⇒ Picas
+(palo-carta '2♣) ; ⇒ Tréboles
+(palo-carta '3♥) ; ⇒ Corazones
+(palo-carta '4♦) ; ⇒ Diamantes
 ```
 
-b) Implementa la función `(poker mano)` que recibe una mano y devuelve
-una cadena indicando si hay o no poker y el valor del poker:
+Tendrás que usar las funciones `valor-carta` y `palo-carta` para implementar las siguientes
+funciones del ejercicio.
+
+b) Implementa la función recursiva `(veces-palo lista palo)` que devuelve el
+número de veces que aparece un palo en una lista de cartas.
 
 ```racket
-(poker '(5♣ 5♦ 3♣ 5♠ 5♥)) ; ⇒ "poker de 5"
-(poker '(3♣ 5♦ 3♣ 5♠ 5♥)) ; ⇒ "no hay poker"
-(poker '(K♣ J♦ J♣ J♠ J♥)) ; ⇒ "poker de 10"
+(veces-palo '(5♠ 6♣ 7♥ 8♦ 9♠) 'Picas) ; ⇒ 2
+(veces-palo '(J♠ Q♣ K♥) 'Diamantes) ; ⇒ 0
+(veces-palo '(A♣ 2♥ 3♠) 'Corazones) ; ⇒ 1
+(veces-palo '() 'Tréboles) ; ⇒ 0
+```
 
+Usando la función anterior, implementa el predicado `color?` que
+comprueba si en una mano tenemos todas las cartas del mismo palo:
+
+```racket
+(color? '(5♣ J♦ J♣ Q♠ Q♥)) ; ⇒ #f
+(color? '(2♦ 5♦ 6♦ J♦ K♦)) ; ⇒ #t
+```
+
+c) Implementa el predicado recursivo `escalera?` que recibe una lista
+de cartas y comprueba si todas ellas tienen valores consecutivos,
+ordenados de menor a mayor.
+
+
+```racket
+(escalera? '(5♣ 4♦ 3♣)) ; ⇒ #f
+(escalera? '(8♣ 9♦ J♣ Q♦)) ; ⇒ #t
+(escalera? '(8♣ 2♣)) ; ⇒ #f
+(escalera? '(A♣ 2♦ 3♣)) ; ⇒ #t
+```
+
+Usando las funciones anteriores implementa la función
+`(escalera-color? mano)` que comprueba si una mano de cartas es una
+escalera de color. Suponemos que las cartas que forman la mano están
+ordenadas de menor a mayor.
+
+```racket
+(escalera-color? '(5♣ 6♦ 7♣ 8♠ 9♥)) ; ⇒ #f
+(escalera-color? '(A♦ 2♦ 3♦ 4♦ 5♦)) ; ⇒ #t
 ```
 
 ### Ejercicio 6 ###
