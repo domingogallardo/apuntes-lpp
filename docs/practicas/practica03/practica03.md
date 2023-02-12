@@ -110,10 +110,10 @@ Ejemplos:
     Para el caso base de la función `minimo` debemos comprobar si la
     lista que recibimos tiene un solo elemento. En ese caso el mínimo
     de la lista es el propio elemento. Sería un error llamar a la
-    recursión porque el resto devolvería una lista vacía y el
-    resultado de llamar a `menor` con una lista vacía sería un error.
+    recursión porque no se puede calcular el menor elemento de una
+    lista vacía.
     
-    La forma de comprobar en Scheme si una lista tiene un solo
+    La mejor forma de comprobar en Scheme si una lista tiene un solo
     elemento es:
     
     ```racket
@@ -121,10 +121,10 @@ Ejemplos:
     ```
     
     Esta forma es más eficiente que llamar a la función `length` que necesita
-    recorrer toda la lista. La instrucción `(null? (rest lista))`
-    tiene una complejidad O(1), es independiente de la longitud de la
-    lista. Sin embargo, la instrucción `(length lista)` tiene que
-    recorrer toda la lista por lo que tiene una complejidad de O(n). 
+    recorrer toda la lista. El coste de la instrucción `(null? (rest
+    lista))` no depende de la longitud de la lista, es O(1). Sin
+    embargo, la instrucción `(length lista)` tiene que recorrer toda
+    la lista por lo que tiene una complejidad de O(n).
     
     Muchas veces verás también una expresión equivalente para
     comprobar si una lista tiene un único elemento: :
