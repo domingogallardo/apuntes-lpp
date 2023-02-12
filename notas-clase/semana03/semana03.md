@@ -30,7 +30,6 @@ Vamos a ver cómo se implementan de forma recursiva:
 
 - Funciones de Scheme que trabajan con listas (para no solapar con las
   definiciones de Scheme pondremos el prefijo `mi-` en todas ellas):
-    - Función `mi-list-ref`
     - Función `mi-append`
     - Función `mi-reverse`
 - Otras funciones recursivas
@@ -51,77 +50,81 @@ Vamos a ver cómo se implementan de forma recursiva:
   **confiar en que la recursión funciona correctamente** devolviendo
   lo que tiene que devolver y obtener con este valor devuelto la
   solución al problema principal. Es recomendable probar con un
-  ejemplo concreto.
+  **ejemplo concreto**.
 - Una vez formulado el caso general, buscamos el **caso base de la
   recursión**: el caso más sencillo posible en el que no es necesario
   hacer una llamada recursiva para devolver la solución.
 
 
-### Función `mi-list-ref`
-
-- La función `(mi-list-ref n lista)` devuelve el elemento `n` de una
-  lista (empezando a contar por 0). Un ejemplo concreto:
-
-    ```racket
-    (mi-list-ref '(a b c d e f g) 4) ; ⇒ e
-    ```
-
-- ¿Podemos formular `(mi-list-ref '(a b c d e f g) 4)` de forma
-  recursiva?:
-
-<p style="margin-bottom:2cm;"></p>
-
-- Formulación recursiva de `mi-list-ref`:
-
-    ```text
-    Para devolver el elemento 2 de la lista (a b c d e f g):
-        Obtenemos el resto de la lista (b c d e f g)
-        y devolvemos su elemento 1. Será el valor c (empezamos 
-        a contar por 0).
-    ```
-
-- En general, para cualquier `n` y cualquier lista:
-
-    ```text
-    Para devolver el elemento que está en la posición `n` de una lista,
-    devuelvo el elemento n-1 de su resto.
-    ```
-
-- Por último, formulamos el caso base de la recursión, el problema más
-  sencillo que se puede resolver directamente, sin hacer una llamada
-  recursiva:
-
-    ```text
-    Para devolver el elemento que está en la posición 0 de una lista,
-    devuelvo el `first` de la lista.
-    ```
-
-- Implementación en Scheme:
-
-    ```racket
-    (define (mi-list-ref lista n)
-        (if (= n 0) 
-            (first lista)
-            (mi-list-ref (rest lista) (- n 1))))
-    ```
-
-
 ### Función `mi-append` 
 
-- Por ejemplo
+- Queremos conseguir una implementación recursiva de la función
+  `append` que construye una lista resultante de la unión de dos. Por
+  ejemplo:
 
     ```racket
     (mi-append '(a b c) '(d e f)) ; ⇒ (a b c d e f)
     ```
 
-- Formulación recursiva del ejemplo:
+- ¿Cómo formulamos el ejemplo de forma recursiva? 
+
+<p style="margin-bottom: 1cm;"></p>
+
+- ¿Funcionaría si llamamos a la recursión con el resto de la primera
+lista y el resto de la segunda lista? ¿Podríamos conseguir a partir de
+la lista a resultante de esa llamada recursiva la lista que queremos?
+Vamos a probarlo:
+
+    <p style="margin-bottom: 1cm;"></p>
+
+    ```racket
+    (mi-append '(b c) '(e f)) => '(b c e f)
+    ```
+    
+    <p style="margin-bottom: 1cm;"></p>
+
+    ¿Podemos conseguir la lista `(a b c d e f)` a partir de la lista `(b c
+    e f)` y de `a` y `d`? No, no hay una forma fácil de hacerlo.
+
+<p style="margin-bottom: 1cm;"></p>
+
+- ¿Funcionaría si llamamos a la recursión con la primera lista y el
+  resto de la segunda? 
+
+    <p style="margin-bottom: 1cm;"></p>
+  
+    Vamos a probarlo:
 
     ```text
-    (mi-append '(a b c) '(d e f)) = 
+    (mi-append '(a b c) '(e f)) => '(a b c e f)
+    ```
+    
+    <p style="margin-bottom: 1cm;"></p>
+
+    ¿Podemos conseguir la lista `(a b c d e f)` a partir de la lista `(a
+    b c e f)` y `d`? No, no hay una forma fácil de hacerlo.
+
+<p style="margin-bottom: 1cm;"></p>
+
+- ¿Cuál es la forma correcta de hacerlo? 
+
+    <p style="margin-bottom: 1cm;"></p>
+
+    ```text
+    (mi-append '(b c) '(d e f)) => '(b c d e f)
+    ```
+    
+    <p style="margin-bottom: 1cm;"></p>
+
+    Y después hacer un `cons` de `a` y la lista resultante de la llamada a
+    la recursión:
+
+    ```text
     (cons 'a (mi-append '(b c) '(d e f))) = 
     (cons 'a (b c d e f)) = 
     (a b c d e f)
     ```
+<p style="margin-bottom: 1cm;"></p>
 
 - En general:
 

@@ -215,7 +215,6 @@ table {
 <ul>
 <li>Funciones de Scheme que trabajan con listas (para no solapar con las
   definiciones de Scheme pondremos el prefijo <code>mi-</code> en todas ellas):<ul>
-<li>Función <code>mi-list-ref</code></li>
 <li>Función <code>mi-append</code></li>
 <li>Función <code>mi-reverse</code></li>
 </ul>
@@ -240,73 +239,75 @@ table {
   <strong>confiar en que la recursión funciona correctamente</strong> devolviendo
   lo que tiene que devolver y obtener con este valor devuelto la
   solución al problema principal. Es recomendable probar con un
-  ejemplo concreto.</li>
+  <strong>ejemplo concreto</strong>.</li>
 <li>Una vez formulado el caso general, buscamos el <strong>caso base de la
   recursión</strong>: el caso más sencillo posible en el que no es necesario
   hacer una llamada recursiva para devolver la solución.</li>
 </ul>
-<h3>Función <code>mi-list-ref</code></h3>
-<ul>
-<li>
-<p>La función <code>(mi-list-ref n lista)</code> devuelve el elemento <code>n</code> de una
-  lista (empezando a contar por 0). Un ejemplo concreto:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mi-list-ref</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span> <span class="ss">g</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ e</span>
-</code></pre></div>
-</li>
-<li>
-<p>¿Podemos formular <code>(mi-list-ref '(a b c d e f g) 4)</code> de forma
-  recursiva?:</p>
-</li>
-</ul>
-<p style="margin-bottom:2cm;"></p>
-
-<ul>
-<li>
-<p>Formulación recursiva de <code>mi-list-ref</code>:</p>
-<div class="highlight"><pre><span></span><code>Para devolver el elemento 2 de la lista (a b c d e f g):
-    Obtenemos el resto de la lista (b c d e f g)
-    y devolvemos su elemento 1. Será el valor c (empezamos 
-    a contar por 0).
-</code></pre></div>
-</li>
-<li>
-<p>En general, para cualquier <code>n</code> y cualquier lista:</p>
-<div class="highlight"><pre><span></span><code>Para devolver el elemento que está en la posición `n` de una lista,
-devuelvo el elemento n-1 de su resto.
-</code></pre></div>
-</li>
-<li>
-<p>Por último, formulamos el caso base de la recursión, el problema más
-  sencillo que se puede resolver directamente, sin hacer una llamada
-  recursiva:</p>
-<div class="highlight"><pre><span></span><code>Para devolver el elemento que está en la posición 0 de una lista,
-devuelvo el `first` de la lista.
-</code></pre></div>
-</li>
-<li>
-<p>Implementación en Scheme:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-list-ref</span> <span class="n">lista</span> <span class="n">n</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">0</span><span class="p">)</span> 
-        <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">mi-list-ref</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">))))</span>
-</code></pre></div>
-</li>
-</ul>
 <h3>Función <code>mi-append</code></h3>
 <ul>
 <li>
-<p>Por ejemplo</p>
+<p>Queremos conseguir una implementación recursiva de la función
+  <code>append</code> que construye una lista resultante de la unión de dos. Por
+  ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mi-append</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">))</span> <span class="c1">; ⇒ (a b c d e f)</span>
 </code></pre></div>
 </li>
 <li>
-<p>Formulación recursiva del ejemplo:</p>
-<div class="highlight"><pre><span></span><code>(mi-append &#39;(a b c) &#39;(d e f)) = 
-(cons &#39;a (mi-append &#39;(b c) &#39;(d e f))) = 
+<p>¿Cómo formulamos el ejemplo de forma recursiva? </p>
+</li>
+</ul>
+<p style="margin-bottom: 1cm;"></p>
+
+<ul>
+<li>
+<p>¿Funcionaría si llamamos a la recursión con el resto de la primera
+lista y el resto de la segunda lista? ¿Podríamos conseguir a partir de
+la lista a resultante de esa llamada recursiva la lista que queremos?
+Vamos a probarlo:</p>
+<p><p style="margin-bottom: 1cm;"></p></p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mi-append</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">e</span> <span class="ss">f</span><span class="p">))</span> <span class="k">=&gt;</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="ss">c</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">)</span>
+</code></pre></div>
+<p><p style="margin-bottom: 1cm;"></p></p>
+<p>¿Podemos conseguir la lista <code>(a b c d e f)</code> a partir de la lista <code>(b c
+e f)</code> y de <code>a</code> y <code>d</code>? No, no hay una forma fácil de hacerlo.</p>
+</li>
+</ul>
+<p style="margin-bottom: 1cm;"></p>
+
+<ul>
+<li>
+<p>¿Funcionaría si llamamos a la recursión con la primera lista y el
+  resto de la segunda? </p>
+<p><p style="margin-bottom: 1cm;"></p></p>
+<p>Vamos a probarlo:</p>
+<div class="highlight"><pre><span></span><code>(mi-append &#39;(a b c) &#39;(e f)) =&gt; &#39;(a b c e f)
+</code></pre></div>
+<p><p style="margin-bottom: 1cm;"></p></p>
+<p>¿Podemos conseguir la lista <code>(a b c d e f)</code> a partir de la lista <code>(a
+b c e f)</code> y <code>d</code>? No, no hay una forma fácil de hacerlo.</p>
+</li>
+</ul>
+<p style="margin-bottom: 1cm;"></p>
+
+<ul>
+<li>
+<p>¿Cuál es la forma correcta de hacerlo? </p>
+<p><p style="margin-bottom: 1cm;"></p></p>
+<div class="highlight"><pre><span></span><code>(mi-append &#39;(b c) &#39;(d e f)) =&gt; &#39;(b c d e f)
+</code></pre></div>
+<p><p style="margin-bottom: 1cm;"></p></p>
+<p>Y después hacer un <code>cons</code> de <code>a</code> y la lista resultante de la llamada a
+la recursión:</p>
+<div class="highlight"><pre><span></span><code>(cons &#39;a (mi-append &#39;(b c) &#39;(d e f))) = 
 (cons &#39;a (b c d e f)) = 
 (a b c d e f)
 </code></pre></div>
 </li>
+</ul>
+<p style="margin-bottom: 1cm;"></p>
+
+<ul>
 <li>
 <p>En general:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-append</span> <span class="n">lista1</span> <span class="n">lista2</span><span class="p">)</span> 
