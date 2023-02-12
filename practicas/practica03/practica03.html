@@ -538,7 +538,8 @@ primer elemento de la lista y el mínimo del resto de la lista.</p>
 una lista de caracteres y devuelve la cadena resultante de
 concatenarlos.</p>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">concatena</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\H</span> <span class="sc">#\o</span> <span class="sc">#\l</span> <span class="sc">#\a</span><span class="p">))</span> <span class="c1">; ⇒ &quot;Hola&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">concatena</span> <span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ &quot;&quot;</span>
+<span class="p">(</span><span class="n">concatena</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\H</span> <span class="sc">#\o</span> <span class="sc">#\l</span> <span class="sc">#\a</span><span class="p">))</span> <span class="c1">; ⇒ &quot;Hola&quot;</span>
 <span class="p">(</span><span class="n">concatena</span> <span class="o">&#39;</span><span class="p">(</span><span class="sc">#\S</span> <span class="sc">#\c</span> <span class="sc">#\h</span> <span class="sc">#\e</span> <span class="sc">#\m</span> <span class="sc">#\e</span> <span class="sc">#\space</span> <span class="sc">#\m</span> <span class="sc">#\o</span> <span class="sc">#\l</span> <span class="sc">#\a</span><span class="p">))</span>  
 <span class="c1">; ⇒ &quot;Scheme mola&quot;</span>
 </code></pre></div>
@@ -573,7 +574,9 @@ implementación debes usar el predicado del ejercicio 1 <code>contiene?</code>.<
 <p>c) Implementa el predicado recursivo <code>(solo-dos-iguales? lista)</code>que
 comprueba que solo hay dos elementos iguales en una lista. Para su
 implementación puedes usar los predicados anteriores.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">solo-dos-iguales?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">solo-dos-iguales?</span> <span class="o">&#39;</span><span class="p">())</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">solo-dos-iguales</span><span class="o">&#39;</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">solo-dos-iguales?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="n">solo-dos-iguales?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">b</span> <span class="ss">a</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="n">solo-dos-iguales?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">a</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
 </code></pre></div>
@@ -613,21 +616,42 @@ carta)</code> que devuelve el valor numérico de una carta:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">valor-carta</span> <span class="o">&#39;</span><span class="ss">5♣</span><span class="p">)</span> <span class="c1">; ⇒ 5</span>
 <span class="p">(</span><span class="n">valor-carta</span> <span class="o">&#39;</span><span class="ss">K♦</span><span class="p">)</span> <span class="c1">; ⇒ 12</span>
 </code></pre></div>
-<p>Tendrás que usar esta función para implementar las siguientes
-funciones del ejercicio.</p>
-<p>a) Implementa el predicado recursivo <code>escalera?</code> que recibe una mano
-de cartas y comprueba si contiene una escalera (cartas con valores
-consecutivos). Para simplificar, suponemos que la mano que pasamos
-siempre tiene los valores ordenados de menor a mayor.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">escalera?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">5♣</span> <span class="ss">4♦</span> <span class="ss">3♣</span> <span class="ss">2♦</span> <span class="ss">1♥</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">escalera?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">8♣</span> <span class="ss">9♦</span> <span class="ss">J♣</span> <span class="ss">Q♦</span> <span class="ss">K♥</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">escalera?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">8♣</span> <span class="ss">9♦</span> <span class="ss">2♣</span> <span class="ss">3♦</span> <span class="ss">J♥</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+<p>a) Implementa la función <code>(palo-carta carta)</code> de forma similar a la
+función <code>valor-carta</code> para que devuelva el símbolo con la descripción
+del palo de la carta.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">palo-carta</span> <span class="o">&#39;</span><span class="ss">A♠</span><span class="p">)</span> <span class="c1">; ⇒ Picas</span>
+<span class="p">(</span><span class="n">palo-carta</span> <span class="o">&#39;</span><span class="ss">2♣</span><span class="p">)</span> <span class="c1">; ⇒ Tréboles</span>
+<span class="p">(</span><span class="n">palo-carta</span> <span class="o">&#39;</span><span class="ss">3♥</span><span class="p">)</span> <span class="c1">; ⇒ Corazones</span>
+<span class="p">(</span><span class="n">palo-carta</span> <span class="o">&#39;</span><span class="ss">4♦</span><span class="p">)</span> <span class="c1">; ⇒ Diamantes</span>
 </code></pre></div>
-<p>b) Implementa la función <code>(poker mano)</code> que recibe una mano y devuelve
-una cadena indicando si hay o no poker y el valor del poker:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">poker</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">5♣</span> <span class="ss">5♦</span> <span class="ss">3♣</span> <span class="ss">5♠</span> <span class="ss">5♥</span><span class="p">))</span> <span class="c1">; ⇒ &quot;poker de 5&quot;</span>
-<span class="p">(</span><span class="n">poker</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">3♣</span> <span class="ss">5♦</span> <span class="ss">3♣</span> <span class="ss">5♠</span> <span class="ss">5♥</span><span class="p">))</span> <span class="c1">; ⇒ &quot;no hay poker&quot;</span>
-<span class="p">(</span><span class="n">poker</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">K♣</span> <span class="ss">J♦</span> <span class="ss">J♣</span> <span class="ss">J♠</span> <span class="ss">J♥</span><span class="p">))</span> <span class="c1">; ⇒ &quot;poker de 10&quot;</span>
+<p>Tendrás que usar las funciones <code>valor-carta</code> y <code>palo-carta</code> para implementar las siguientes
+funciones del ejercicio.</p>
+<p>b) Implementa la función recursiva <code>(veces-palo lista palo)</code> que devuelve el
+número de veces que aparece un palo en una lista de cartas.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">veces-palo</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">5♠</span> <span class="ss">6♣</span> <span class="ss">7♥</span> <span class="ss">8♦</span> <span class="ss">9♠</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">Picas</span><span class="p">)</span> <span class="c1">; ⇒ 2</span>
+<span class="p">(</span><span class="n">veces-palo</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">J♠</span> <span class="ss">Q♣</span> <span class="ss">K♥</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">Diamantes</span><span class="p">)</span> <span class="c1">; ⇒ 0</span>
+<span class="p">(</span><span class="n">veces-palo</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">A♣</span> <span class="ss">2♥</span> <span class="ss">3♠</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">Corazones</span><span class="p">)</span> <span class="c1">; ⇒ 1</span>
+<span class="p">(</span><span class="n">veces-palo</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="ss">Tréboles</span><span class="p">)</span> <span class="c1">; ⇒ 0</span>
+</code></pre></div>
+<p>Usando la función anterior, implementa el predicado <code>color?</code> que
+comprueba si en una mano tenemos todas las cartas del mismo palo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">color?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">5♣</span> <span class="ss">J♦</span> <span class="ss">J♣</span> <span class="ss">Q♠</span> <span class="ss">Q♥</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">color?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">2♦</span> <span class="ss">5♦</span> <span class="ss">6♦</span> <span class="ss">J♦</span> <span class="ss">K♦</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+</code></pre></div>
+<p>c) Implementa el predicado recursivo <code>escalera?</code> que recibe una lista
+de cartas y comprueba si todas ellas tienen valores consecutivos,
+ordenados de menor a mayor.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">escalera?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">5♣</span> <span class="ss">4♦</span> <span class="ss">3♣</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">escalera?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">8♣</span> <span class="ss">9♦</span> <span class="ss">J♣</span> <span class="ss">Q♦</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">escalera?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">8♣</span> <span class="ss">2♣</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">escalera?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">A♣</span> <span class="ss">2♦</span> <span class="ss">3♣</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
+</code></pre></div>
+<p>Usando las funciones anteriores implementa la función
+<code>(escalera-color? mano)</code> que comprueba si una mano de cartas es una
+escalera de color. Suponemos que las cartas que forman la mano están
+ordenadas de menor a mayor.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">escalera-color?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">5♣</span> <span class="ss">6♦</span> <span class="ss">7♣</span> <span class="ss">8♠</span> <span class="ss">9♥</span><span class="p">))</span> <span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">escalera-color?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">A♦</span> <span class="ss">2♦</span> <span class="ss">3♦</span> <span class="ss">4♦</span> <span class="ss">5♦</span><span class="p">))</span> <span class="c1">; ⇒ #t</span>
 </code></pre></div>
 <h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
 <p>a) Implementa las funciones <code>(suma-izq pareja n)</code> y <code>(suma-der pareja n)</code>
