@@ -101,9 +101,36 @@ práctica anterior.
 Ejemplos:
 
 ```racket
+(minimo '(2)) ; ⇒ 1
 (minimo '(1 8 6 4 3)) ; ⇒ 1
 (minimo '(1 -1 3 -6 4)) ; ⇒ -6
 ```
+
+!!! Note "Cómo comprobar el caso base de `minimo`"
+    Para el caso base de la función `minimo` debemos comprobar si la
+    lista que recibimos tiene un solo elemento. En ese caso el mínimo
+    de la lista es el propio elemento. Sería un error llamar a la
+    recursión porque el resto devolvería una lista vacía y el
+    resultado de llamar a `menor` con una lista vacía sería un error.
+    
+    La forma de comprobar en Scheme si una lista tiene un solo
+    elemento es:
+    
+    ```racket
+    (null? (rest lista))
+    ```
+    
+    Esta forma es más eficiente que llamar a la función `length` que necesita
+    recorrer toda la lista (tiene una complejidad O(1) en lugar de
+    O(n)). 
+    
+    Muchas veces verás también una expresión equivalente que
+    suelen usar los programadores de Scheme, algo que se conoce como una
+    "expresión idiomática" del lenguaje:
+    
+    ```racket
+    (null? (cdr lista))
+    ```
 
 a.2) Vamos a investigar el funcionamiento de la recursión en la función
 `minimo`. Supongamos la siguiente llamada:
