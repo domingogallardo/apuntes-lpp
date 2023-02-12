@@ -121,16 +121,20 @@ Ejemplos:
     ```
     
     Esta forma es más eficiente que llamar a la función `length` que necesita
-    recorrer toda la lista (tiene una complejidad O(1) en lugar de
-    O(n)). 
+    recorrer toda la lista. La instrucción `(null? (rest lista))`
+    tiene una complejidad O(1), es independiente de la longitud de la
+    lista. Sin embargo, la instrucción `(length lista)` tiene que
+    recorrer toda la lista por lo que tiene una complejidad de O(n). 
     
-    Muchas veces verás también una expresión equivalente que
-    suelen usar los programadores de Scheme, algo que se conoce como una
-    "expresión idiomática" del lenguaje:
+    Muchas veces verás también una expresión equivalente para
+    comprobar si una lista tiene un único elemento: :
     
     ```racket
     (null? (cdr lista))
     ```
+    
+    Es una expresión que suelen usar los programadores de Scheme, algo
+    que se conoce como una _expresión idiomática_ del lenguaje.
 
 a.2) Vamos a investigar el funcionamiento de la recursión en la función
 `minimo`. Supongamos la siguiente llamada:
