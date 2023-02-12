@@ -101,7 +101,7 @@ práctica anterior.
 Ejemplos:
 
 ```racket
-(minimo '(2)) ; ⇒ 1
+(minimo '(2)) ; ⇒ 2
 (minimo '(1 8 6 4 3)) ; ⇒ 1
 (minimo '(1 -1 3 -6 4)) ; ⇒ -6
 ```
