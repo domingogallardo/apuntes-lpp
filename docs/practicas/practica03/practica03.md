@@ -261,7 +261,7 @@ representan cartas.
 Por ejemplo, las siguientes manos:
 
 ```racket
-(define mano1 '(1♦ 2♦ 3♣ 4♦ 5♥))
+(define mano1 '(A♦ 2♦ 3♣ 4♦ 5♥))
 (define mano2 '(J♦ J♣ J♠ J♥ K♣))
 ```
 
