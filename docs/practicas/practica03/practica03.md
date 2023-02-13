@@ -262,7 +262,7 @@ Por ejemplo, las siguientes manos:
 
 ```racket
 (define mano1 '(1♦ 2♦ 3♣ 4♦ 5♥))
-(define mano2 '(K♣ J♦ J♣ J♠ J♥))
+(define mano2 '(J♦ J♣ J♠ J♥ K♣))
 ```
 
 Copia de la práctica anterior la solución de la función `(valor-carta
