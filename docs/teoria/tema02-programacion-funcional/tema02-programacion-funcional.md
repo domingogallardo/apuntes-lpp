@@ -2829,9 +2829,6 @@ listas. Algunas ya las conocemos, pero otras no:
 
 En los siguientes apartados veremos cómo están implementadas.
 
-
-<!--
-
 ### 4.3. Funciones recursivas que construyen listas
 
 Para terminar el apartado sobre las listas en Scheme vamos a ver
@@ -3657,6 +3654,7 @@ funcionamiento de la recursión:
 
 <img src="imagenes/suma-parejas-apply.png" width="600px"/>
 
+<!--
 
 ### 5.4. Generalización ###
 
