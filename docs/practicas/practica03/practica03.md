@@ -204,7 +204,8 @@ implementación debes usar el predicado del ejercicio 1 `contiene?`.
 ```
 
 c) Implementa el predicado recursivo `(solo-dos-iguales? lista)`que
-comprueba que solo hay dos elementos iguales en una lista. Para su
+comprueba que solo hay dos elementos iguales en una lista (los únicos
+elementos repetidos que hay en la lista se repiten dos veces). Para su
 implementación puedes usar los predicados anteriores.
 
 ```racket
@@ -213,6 +214,7 @@ implementación puedes usar los predicados anteriores.
 (solo-dos-iguales? '(a b c a)) ; ⇒ #t
 (solo-dos-iguales? '(a b c b a a)) ; ⇒ #t
 (solo-dos-iguales? '(a b c a a)) ; ⇒ #f
+(solo-dos-iguales? '(a b c b a a a)) ; ⇒ #f
 ```
 
 
