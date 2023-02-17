@@ -276,7 +276,7 @@ respuesta era correcta.
 ## Entrega de la práctica
 
 Sube la solución de los ejercicios al cuestionario de Moodle Entrega
-práctica 4 hasta el domingo 27 de febrero a las 21:00 h.
+práctica 4 hasta el domingo 26 de febrero a las 21:00 h.
 
 Tal y como hemos comentado al comienzo de la práctica, debes incluir
 casos de prueba en todo el código que escribas.
@@ -288,6 +288,6 @@ clase de prácticas de la semana que viene.
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2021-22  
+Lenguajes y Paradigmas de Programación, curso 2022-23  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
