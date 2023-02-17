@@ -457,6 +457,38 @@ pulsando el botón derecho del ratón y seleccionando la opción <em>Guardar
 como</em> <code>lpp.rkt</code>. Guárdalo en la misma carpeta en la que tengas el
 fichero <code>practica4.rkt</code>.</p>
 <p>El fichero contiene la definición de las funciones de orden superior <code>exists?</code> y <code>for-all?</code>.</p>
+<!--
+
+b) Generalizamos la función anterior `(comprueba-simbolos)` y la llamamos
+`(comprueba pred lista lista-num)` pasándole como parámetro un predicado
+de comparación. La función ahora podrá procesar cualquier tipo de
+listas (de símbolos, de cadenas, de listas, etc.). La función pasada
+como parámetro se encarga de hacer la comparación apropiada al tipo de
+dato de la lista.
+
+Ejemplo:
+
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">comprueba</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+             <span class="p">(</span><span class="nb">=</span> <span class="p">(</span><span class="nb">string-length</span> <span class="p">(</span><span class="nb">symbol-&gt;string</span> <span class="n">x</span><span class="p">))</span> <span class="n">y</span><span class="p">))</span>
+           <span class="o">&#39;</span><span class="p">(</span><span class="ss">este</span> <span class="ss">es</span> <span class="ss">un</span> <span class="ss">ejercicio</span> <span class="ss">de</span> <span class="ss">examen</span><span class="p">)</span> 
+           <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">6</span><span class="p">))</span>
+<span class="c1">; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))</span>
+
+<span class="p">(</span><span class="n">comprueba</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+              <span class="p">(</span><span class="nb">=</span> <span class="p">(</span><span class="nb">length</span> <span class="n">x</span><span class="p">)</span> <span class="n">y</span><span class="p">))</span>
+           <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span> <span class="ss">b</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span> <span class="ss">a</span><span class="p">)</span> <span class="p">(</span><span class="ss">c</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span><span class="p">))</span> 
+           <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">4</span><span class="p">))</span>
+<span class="c1">; ⇒ (((a) . 1) ((a b) . 2) ((c) . 1) ((a b c d) . 4))</span>
+
+<span class="p">(</span><span class="n">comprueba</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+              <span class="p">(</span><span class="nb">=</span> <span class="p">(</span><span class="nb">string-length</span> <span class="n">x</span><span class="p">)</span> <span class="n">y</span><span class="p">))</span>
+           <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;aui&quot;</span> <span class="s2">&quot;a&quot;</span> <span class="s2">&quot;ae&quot;</span> <span class="s2">&quot;aa&quot;</span> <span class="s2">&quot;c&quot;</span> <span class="s2">&quot;aeiou&quot;</span><span class="p">)</span> 
+           <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">5</span><span class="p">))</span>
+<span class="c1">; ⇒ ((&quot;a&quot; . 1) (&quot;ae&quot; . 2) (&quot;c&quot; . 1) (&quot;aeiou&quot; . 5))</span>
+</code></pre></div>
+
+-->
+
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
 <p>a) Define la función <code>(aplica-veces f1 f2 n x)</code> que aplica <code>n</code> veces
 las funciones <code>f2</code> y <code>f1</code> al número <code>x</code>. </p>

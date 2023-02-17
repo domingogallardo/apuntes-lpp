@@ -499,7 +499,8 @@ resultante.</p>
                  <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;confiar&quot;</span> <span class="s2">&quot;en&quot;</span> <span class="s2">&quot;la&quot;</span> <span class="s2">&quot;recursión&quot;</span> <span class="s2">&quot;facilita&quot;</span> <span class="s2">&quot;su&quot;</span> <span class="s2">&quot;resolución&quot;</span><span class="p">))</span>
 <span class="c1">; ⇒ (&quot;confiar&quot; &quot;primera&quot; &quot;práctica&quot; &quot;recursión&quot; &quot;recursión&quot; &quot;su&quot; &quot;resolución&quot;)</span>
 </code></pre></div>
-<p>c) Implementa la función recursiva <code>(inserta-pos dato pos lista)</code> que
+<h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
+<p>a) Implementa la función recursiva <code>(inserta-pos dato pos lista)</code> que
 recibe un dato, una posición y una lista e inserta el dato en la
 posición indicada de la lista. Si la posición es 0, el dato se inserta
 en cabeza. Suponemos que la posición siempre será positiva y menor o
@@ -508,20 +509,41 @@ igual que la longitud de la lista.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">inserta-pos</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="mi">2</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(a a b a a)</span>
 <span class="p">(</span><span class="n">inserta-pos</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="mi">0</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(b a a a a)</span>
 </code></pre></div>
-<p>d) Implementa la función recursiva <code>(inserta-ordenada n
+<p>b) Implementa la función recursiva <code>(inserta-ordenada n
 lista-ordenada)</code> que recibe un número y una lista de números ordenados
 de menor a mayor y devuelve la lista resultante de insertar el número
 <code>n</code> en la posición correcta para que la lista siga estando ordenada.</p>
 <p>Ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">inserta-ordenada</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">-8</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">11</span> <span class="mi">20</span><span class="p">))</span> <span class="c1">; ⇒ (-8 2 3 10 11 20)</span>
 </code></pre></div>
-<p>Usando la función anterior <code>inserta-ordenada</code> implementa la función recursiva
+<p>c) Usando la función anterior <code>inserta-ordenada</code> implementa la función recursiva
 <code>(ordena lista)</code> que recibe una lista de números y devuelve una lista
 ordenada.</p>
 <p>Ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">ordena</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">-1</span> <span class="mi">100</span> <span class="mi">4</span> <span class="mi">-6</span><span class="p">))</span> <span class="c1">; ⇒ (-6 -1 2 4 100)</span>
 </code></pre></div>
-<h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
+<h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
+<p>a) Implementa la función recursiva <code>(mueve-al-principio lista dato)</code> que recibe una lista y un 
+dato que está contenido en la lista. La función debe devolver la lista resultante de
+mover la primera aparición del dato al comienzo de la lista, dejando el resto de la lista
+sin modificar. Suponemos que el dato que se pasa como parámetro está contenido en la lista.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mueve-al-principio</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">e</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">e</span><span class="p">)</span> <span class="c1">; ⇒ (e a b c d e f)</span>
+<span class="p">(</span><span class="n">mueve-al-principio</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span> <span class="ss">g</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span> <span class="c1">; ⇒ (a b c d e f g))</span>
+</code></pre></div>
+<p>b) Implementa una función recursiva <code>(comprueba-simbolos lista-simbolos
+lista-num)</code> que recibe una lista de símbolos y una lista de números
+enteros (ambas de la misma longitud) y devuelve una lista de
+parejas. Cada pareja está formada por el símbolo de la i-ésima
+posición de <code>lista-simbolos</code> y el número entero situado esa posición
+de <code>lista-num</code>, siempre y cuando dicho número se corresponda con la
+longitud de la cadena correspondiente al símbolo. Puedes utilizar las
+funciones predefinidas <code>string-length</code> y <code>symbol-&gt;string</code>.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">comprueba-simbolos</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">este</span> <span class="ss">es</span> <span class="ss">un</span> <span class="ss">ejercicio</span> <span class="ss">de</span> <span class="ss">examen</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">6</span><span class="p">))</span>
+<span class="c1">; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))</span>
+</code></pre></div>
+<h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
 <p>Vamos a implementar distintas versiones de funciones que expanden
 una lista original. </p>
 <p>En el primer apartado definiremos una función auxiliar que se deberá
@@ -569,24 +591,9 @@ pareja)</code> definida en el apartado a).</p>
 que el siguiente elemento (<code>lpp</code>) se va a repetir 3 veces.</p>
 <p>Como en los anteriores ejercicios, te recomendamos implementar alguna
 función auxiliar.</p>
-<h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
-<p>a) Implementa la función recursiva <code>(mueve-al-principio lista dato)</code> que recibe una lista y un 
-dato que está contenido en la lista. La función debe devolver la lista resultante de
-mover la primera aparición del dato al comienzo de la lista, dejando el resto de la lista
-sin modificar. Suponemos que el dato que se pasa como parámetro está contenido en la lista.</p>
-<p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mueve-al-principio</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">e</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">e</span><span class="p">)</span> <span class="c1">; ⇒ (e a b c d e f)</span>
-<span class="p">(</span><span class="n">mueve-al-principio</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span> <span class="ss">g</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span> <span class="c1">; ⇒ (a b c d e f g))</span>
-</code></pre></div>
-<p>b) Implementa la función recursiva <code>(producto-cartesiano lista1
-lista2)</code> que devuelva una lista con todas las parejas resultantes de
-combinar todos los elementos de la lista 1 con todos los elementos de
-la lista 2.</p>
-<p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">producto-cartesiano</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
-<span class="c1">; ⇒ ((1 . 1) (1 . 2) (1 . 3) (2 . 1) (2 . 2) (2 . 3))</span>
-</code></pre></div>
-<h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
+<h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
+<p>Truco de cartas.</p>
+<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
 <p>a) Indica qué devuelven las siguientes expresiones en Scheme. Puede ser
 que alguna expresión contenga algún error. Indícalo también en ese
 caso y explica qué tipo de error. Hazlo sin el intérprete, y después
@@ -640,62 +647,6 @@ respuesta era correcta.</p>
 <span class="p">(</span><span class="n">bar</span> <span class="n">doble</span> <span class="nb">number?</span> <span class="mi">10</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
 <span class="p">(</span><span class="n">bar</span> <span class="nb">string-append</span> <span class="nb">string?</span> <span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;Adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
 <span class="p">(</span><span class="n">bar</span> <span class="nb">+</span> <span class="nb">number?</span> <span class="s2">&quot;Hola&quot;</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
-</code></pre></div>
-<h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
-<p>Seguimos con el juego del dominó. </p>
-<p>Implementa la función recursiva <code>(quitar-ficha mano puntos)</code> que
-recibe una lista de fichas de dominó (parejas, como ya vimos en la
-práctica anterior) y unos puntos (los puntos del inicio o final de la
-partida de fichas sobre la mesa).</p>
-<p>La función debe buscar en la mano alguna ficha que contenga esos
-puntos, esto es, la ficha que vamos a poner sobre la mesa. Y debe
-quitarla de la mano. O sea, la función devolverá una lista de la que
-se ha quitado la primera ficha que contiene esos puntos, ya sea en su
-parte izquierda o en su parte derecha.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">quitar-ficha</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">5</span><span class="p">))</span> <span class="mi">4</span><span class="p">)</span>
-<span class="c1">; ⇒ ((2 . 3) (1 . 6) (4 . 5))</span>
-<span class="p">(</span><span class="n">quitar-ficha</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">5</span><span class="p">))</span> <span class="mi">5</span><span class="p">)</span> 
-<span class="c1">; ⇒ ((2 . 3) (4 . 4) (1 . 6)))</span>
-<span class="p">(</span><span class="n">quitar-ficha</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">6</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span> <span class="o">.</span> <span class="mi">5</span><span class="p">))</span> <span class="mi">0</span><span class="p">)</span> 
-<span class="c1">; ⇒ ((2 . 3) (4 . 4) (1 . 6) (4 . 5))</span>
-</code></pre></div>
-<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
-<p>a) Implementa una función recursiva <code>(comprueba-simbolos lista-simbolos
-lista-num)</code> que recibe una lista de símbolos y una lista de números
-enteros (ambas de la misma longitud) y devuelve una lista de
-parejas. Cada pareja está formada por el símbolo de la i-ésima
-posición de <code>lista-simbolos</code> y el número entero situado esa posición
-de <code>lista-num</code>, siempre y cuando dicho número se corresponda con la
-longitud de la cadena correspondiente al símbolo. Puedes utilizar las
-funciones predefinidas <code>string-length</code> y <code>symbol-&gt;string</code>.</p>
-<p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">comprueba-simbolos</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">este</span> <span class="ss">es</span> <span class="ss">un</span> <span class="ss">ejercicio</span> <span class="ss">de</span> <span class="ss">examen</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">6</span><span class="p">))</span>
-<span class="c1">; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))</span>
-</code></pre></div>
-<p>b) Generalizamos la función anterior <code>(comprueba-simbolos)</code> y la llamamos
-<code>(comprueba pred lista lista-num)</code> pasándole como parámetro un predicado
-de comparación. La función ahora podrá procesar cualquier tipo de
-listas (de símbolos, de cadenas, de listas, etc.). La función pasada
-como parámetro se encarga de hacer la comparación apropiada al tipo de
-dato de la lista.</p>
-<p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">comprueba</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-             <span class="p">(</span><span class="nb">=</span> <span class="p">(</span><span class="nb">string-length</span> <span class="p">(</span><span class="nb">symbol-&gt;string</span> <span class="n">x</span><span class="p">))</span> <span class="n">y</span><span class="p">))</span>
-           <span class="o">&#39;</span><span class="p">(</span><span class="ss">este</span> <span class="ss">es</span> <span class="ss">un</span> <span class="ss">ejercicio</span> <span class="ss">de</span> <span class="ss">examen</span><span class="p">)</span> 
-           <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">6</span><span class="p">))</span>
-<span class="c1">; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))</span>
-
-<span class="p">(</span><span class="n">comprueba</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-              <span class="p">(</span><span class="nb">=</span> <span class="p">(</span><span class="nb">length</span> <span class="n">x</span><span class="p">)</span> <span class="n">y</span><span class="p">))</span>
-           <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span> <span class="ss">b</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span> <span class="ss">a</span><span class="p">)</span> <span class="p">(</span><span class="ss">c</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span><span class="p">))</span> 
-           <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">4</span><span class="p">))</span>
-<span class="c1">; ⇒ (((a) . 1) ((a b) . 2) ((c) . 1) ((a b c d) . 4))</span>
-
-<span class="p">(</span><span class="n">comprueba</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-              <span class="p">(</span><span class="nb">=</span> <span class="p">(</span><span class="nb">string-length</span> <span class="n">x</span><span class="p">)</span> <span class="n">y</span><span class="p">))</span>
-           <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;aui&quot;</span> <span class="s2">&quot;a&quot;</span> <span class="s2">&quot;ae&quot;</span> <span class="s2">&quot;aa&quot;</span> <span class="s2">&quot;c&quot;</span> <span class="s2">&quot;aeiou&quot;</span><span class="p">)</span> 
-           <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">5</span><span class="p">))</span>
-<span class="c1">; ⇒ ((&quot;a&quot; . 1) (&quot;ae&quot; . 2) (&quot;c&quot; . 1) (&quot;aeiou&quot; . 5))</span>
 </code></pre></div>
 <h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
 <p>Sube la solución de los ejercicios al cuestionario de Moodle Entrega
