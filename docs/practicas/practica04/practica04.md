@@ -1,4 +1,4 @@
-# Práctica 4: Funciones recursivas con listas
+# Práctica 4: Funciones recursivas que devuelven listas
 
 ## Antes de la clase de prácticas ##
 
