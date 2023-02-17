@@ -210,7 +210,7 @@ implementación puedes usar los predicados anteriores.
 
 ```racket
 (solo-dos-iguales? '()) ; ⇒ #f
-(solo-dos-iguales' '(a)) ; ⇒ #f
+(solo-dos-iguales? '(a)) ; ⇒ #f
 (solo-dos-iguales? '(a b c a)) ; ⇒ #t
 (solo-dos-iguales? '(a b c b a a)) ; ⇒ #f
 (solo-dos-iguales? '(a b c a a)) ; ⇒ #f

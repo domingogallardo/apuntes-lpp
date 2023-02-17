@@ -19,7 +19,8 @@ Funcional_](../../teoria/tema02-programacion-funcional/tema02-programacion-funci
 
 ## Ejercicios
 
-### Ejercicio 1
+
+### Ejercicio 1 ###
 
 a) Implementa la función recursiva `(contiene-prefijo prefijo
 lista-pal)` que recibe una cadena y una lista de palabras. Devuelve
@@ -61,7 +62,10 @@ Ejemplos:
 ; ⇒ ("confiar" "primera" "práctica" "recursión" "recursión" "su" "resolución")
 ```
 
-c) Implementa la función recursiva `(inserta-pos dato pos lista)` que
+### Ejercicio 2 ###
+
+
+a) Implementa la función recursiva `(inserta-pos dato pos lista)` que
 recibe un dato, una posición y una lista e inserta el dato en la
 posición indicada de la lista. Si la posición es 0, el dato se inserta
 en cabeza. Suponemos que la posición siempre será positiva y menor o
@@ -74,7 +78,7 @@ Ejemplos:
 (inserta-pos 'b 0 '(a a a a)) ; ⇒ '(b a a a a)
 ```
 
-d) Implementa la función recursiva `(inserta-ordenada n
+b) Implementa la función recursiva `(inserta-ordenada n
 lista-ordenada)` que recibe un número y una lista de números ordenados
 de menor a mayor y devuelve la lista resultante de insertar el número
 `n` en la posición correcta para que la lista siga estando ordenada.
@@ -85,7 +89,7 @@ Ejemplo:
 (inserta-ordenada 10 '(-8 2 3 11 20)) ; ⇒ (-8 2 3 10 11 20)
 ```
 
-Usando la función anterior `inserta-ordenada` implementa la función recursiva
+c) Usando la función anterior `inserta-ordenada` implementa la función recursiva
 `(ordena lista)` que recibe una lista de números y devuelve una lista
 ordenada.
 
@@ -95,8 +99,39 @@ Ejemplo:
 (ordena '(2 -1 100 4 -6)) ; ⇒ (-6 -1 2 4 100)
 ```
 
+### Ejercicio 3 ###
 
-### Ejercicio 2 ###
+a) Implementa la función recursiva `(mueve-al-principio lista dato)` que recibe una lista y un 
+dato que está contenido en la lista. La función debe devolver la lista resultante de
+mover la primera aparición del dato al comienzo de la lista, dejando el resto de la lista
+sin modificar. Suponemos que el dato que se pasa como parámetro está contenido en la lista.
+
+Ejemplo:
+
+```racket
+(mueve-al-principio '(a b e c d e f) 'e) ; ⇒ (e a b c d e f)
+(mueve-al-principio '(a b c d e f g) 'a) ; ⇒ (a b c d e f g))
+```
+
+b) Implementa una función recursiva `(comprueba-simbolos lista-simbolos
+lista-num)` que recibe una lista de símbolos y una lista de números
+enteros (ambas de la misma longitud) y devuelve una lista de
+parejas. Cada pareja está formada por el símbolo de la i-ésima
+posición de `lista-simbolos` y el número entero situado esa posición
+de `lista-num`, siempre y cuando dicho número se corresponda con la
+longitud de la cadena correspondiente al símbolo. Puedes utilizar las
+funciones predefinidas `string-length` y `symbol->string`.
+
+Ejemplo:
+
+```racket
+(comprueba-simbolos '(este es un ejercicio de examen) '(2 1 2 9 1 6))
+; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))
+```
+
+
+
+### Ejercicio 4 ###
 
 Vamos a implementar distintas versiones de funciones que expanden
 una lista original. 
@@ -164,35 +199,11 @@ Como en los anteriores ejercicios, te recomendamos implementar alguna
 función auxiliar.
 
 
-### Ejercicio 3 ###
+### Ejercicio 5 ###
 
-a) Implementa la función recursiva `(mueve-al-principio lista dato)` que recibe una lista y un 
-dato que está contenido en la lista. La función debe devolver la lista resultante de
-mover la primera aparición del dato al comienzo de la lista, dejando el resto de la lista
-sin modificar. Suponemos que el dato que se pasa como parámetro está contenido en la lista.
+Truco de cartas.
 
-Ejemplo:
-
-```racket
-(mueve-al-principio '(a b e c d e f) 'e) ; ⇒ (e a b c d e f)
-(mueve-al-principio '(a b c d e f g) 'a) ; ⇒ (a b c d e f g))
-```
-
-
-b) Implementa la función recursiva `(producto-cartesiano lista1
-lista2)` que devuelva una lista con todas las parejas resultantes de
-combinar todos los elementos de la lista 1 con todos los elementos de
-la lista 2.
-
-Ejemplo:
-
-```racket
-(producto-cartesiano '(1 2) '(1 2 3))
-; ⇒ ((1 . 1) (1 . 2) (1 . 3) (2 . 1) (2 . 2) (2 . 3))
-```
-
-
-### Ejercicio 4 ###
+### Ejercicio 6 ###
 
 a) Indica qué devuelven las siguientes expresiones en Scheme. Puede ser
 que alguna expresión contenga algún error. Indícalo también en ese
@@ -260,77 +271,6 @@ respuesta era correcta.
 (bar doble number? 10 15) ; ⇒ ?
 (bar string-append string? "Hola" "Adios") ; ⇒ ?
 (bar + number? "Hola" 5) ; ⇒ ?
-```
-
-### Ejercicio 5 ###
-
-Seguimos con el juego del dominó. 
-
-Implementa la función recursiva `(quitar-ficha mano puntos)` que
-recibe una lista de fichas de dominó (parejas, como ya vimos en la
-práctica anterior) y unos puntos (los puntos del inicio o final de la
-partida de fichas sobre la mesa).
-
-La función debe buscar en la mano alguna ficha que contenga esos
-puntos, esto es, la ficha que vamos a poner sobre la mesa. Y debe
-quitarla de la mano. O sea, la función devolverá una lista de la que
-se ha quitado la primera ficha que contiene esos puntos, ya sea en su
-parte izquierda o en su parte derecha.
-
-```racket
-(quitar-ficha '((2 . 3) (4 . 4) (1 . 6) (4 . 5)) 4)
-; ⇒ ((2 . 3) (1 . 6) (4 . 5))
-(quitar-ficha '((2 . 3) (4 . 4) (1 . 6) (4 . 5)) 5) 
-; ⇒ ((2 . 3) (4 . 4) (1 . 6)))
-(quitar-ficha '((2 . 3) (4 . 4) (1 . 6) (4 . 5)) 0) 
-; ⇒ ((2 . 3) (4 . 4) (1 . 6) (4 . 5))
-```
-
-### Ejercicio 6 ###
-
-a) Implementa una función recursiva `(comprueba-simbolos lista-simbolos
-lista-num)` que recibe una lista de símbolos y una lista de números
-enteros (ambas de la misma longitud) y devuelve una lista de
-parejas. Cada pareja está formada por el símbolo de la i-ésima
-posición de `lista-simbolos` y el número entero situado esa posición
-de `lista-num`, siempre y cuando dicho número se corresponda con la
-longitud de la cadena correspondiente al símbolo. Puedes utilizar las
-funciones predefinidas `string-length` y `symbol->string`.
-
-Ejemplo:
-
-```racket
-(comprueba-simbolos '(este es un ejercicio de examen) '(2 1 2 9 1 6))
-; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))
-```
-
-b) Generalizamos la función anterior `(comprueba-simbolos)` y la llamamos
-`(comprueba pred lista lista-num)` pasándole como parámetro un predicado
-de comparación. La función ahora podrá procesar cualquier tipo de
-listas (de símbolos, de cadenas, de listas, etc.). La función pasada
-como parámetro se encarga de hacer la comparación apropiada al tipo de
-dato de la lista.
-
-Ejemplo:
-
-```racket
-(comprueba (lambda (x y)
-             (= (string-length (symbol->string x)) y))
-           '(este es un ejercicio de examen) 
-           '(2 1 2 9 1 6))
-; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))
-
-(comprueba (lambda (x y)
-              (= (length x) y))
-           '((1 2 3) (a) (a b) (a a) (c) (a b c d)) 
-           '(2 1 2 9 1 4))
-; ⇒ (((a) . 1) ((a b) . 2) ((c) . 1) ((a b c d) . 4))
-
-(comprueba (lambda (x y)
-              (= (string-length x) y))
-           '("aui" "a" "ae" "aa" "c" "aeiou") 
-           '(2 1 2 9 1 5))
-; ⇒ (("a" . 1) ("ae" . 2) ("c" . 1) ("aeiou" . 5))
 ```
 
 ## Entrega de la práctica

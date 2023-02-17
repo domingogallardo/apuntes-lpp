@@ -26,6 +26,39 @@ fichero `practica4.rkt`.
 El fichero contiene la definición de las funciones de orden superior `exists?` y `for-all?`.
 
 
+<!--
+
+b) Generalizamos la función anterior `(comprueba-simbolos)` y la llamamos
+`(comprueba pred lista lista-num)` pasándole como parámetro un predicado
+de comparación. La función ahora podrá procesar cualquier tipo de
+listas (de símbolos, de cadenas, de listas, etc.). La función pasada
+como parámetro se encarga de hacer la comparación apropiada al tipo de
+dato de la lista.
+
+Ejemplo:
+
+```racket
+(comprueba (lambda (x y)
+             (= (string-length (symbol->string x)) y))
+           '(este es un ejercicio de examen) 
+           '(2 1 2 9 1 6))
+; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))
+
+(comprueba (lambda (x y)
+              (= (length x) y))
+           '((1 2 3) (a) (a b) (a a) (c) (a b c d)) 
+           '(2 1 2 9 1 4))
+; ⇒ (((a) . 1) ((a b) . 2) ((c) . 1) ((a b c d) . 4))
+
+(comprueba (lambda (x y)
+              (= (string-length x) y))
+           '("aui" "a" "ae" "aa" "c" "aeiou") 
+           '(2 1 2 9 1 5))
+; ⇒ (("a" . 1) ("ae" . 2) ("c" . 1) ("aeiou" . 5))
+```
+
+-->
+
 ### Ejercicio 1 ###
 
 a) Define la función `(aplica-veces f1 f2 n x)` que aplica `n` veces
