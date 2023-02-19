@@ -209,7 +209,7 @@ hacer un truco de cartas al final del ejercicio.
 Comienza por volver a descargar el [fichero
 `lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt). En
 él hemos incluido una nueva función `(cartas n)` con las que
-puedes generar una lista `n` cartas aleatorias de una baraja de hasta
+puedes generar una lista de _n_ cartas aleatorias de una baraja de hasta
 48 cartas. Por ejemplo:
 
 ```racket
@@ -329,26 +329,27 @@ carta sin decirla. Por ejemplo el as de tréboles.
 3. Preguntamos al espectador en qué montón está la carta
    pensada. Juntamos los montones usando la función correspondiente a
    lugar del montón (`izquierda`, `derecha` o `centro`). En este caso
-   está en el montón derecho. Y volvemos a repartir en tres montones,
-   que guardamos en la variable `t2`:
+   el as de tréboles está en el montón derecho, por lo que usamos la
+   función `derecha`. Y volvemos a repartir en tres montones el mazo
+   resultante. Los guardamos en la variable `t2`:
    
-   ```racket
-   (define t2 (reparte (derecha t1)))
-   ```
+    ```racket
+    (define t2 (reparte (derecha t1)))
+    ```
 
 4. Visualizamos de nuevo los montones y preguntamos dónde está la
    carta. En este caso se encuentra en el centro.
    
-   ```racket
-   t2 ; ⇒ ((J♥ 7♠ Q♦ K♥ K♠ 5♠ Q♠ 8♠ A♦) (K♣ 4♣ 3♠ 4♠ A♠ A♣ 3♣ 5♦ 7♥) (4♥ 4♦ 2♦ 2♣ 6♥ 9♦ 2♥ J♦ 7♦))
-   ```
+    ```racket
+    t2 ; ⇒ ((J♥ 7♠ Q♦ K♥ K♠ 5♠ Q♠ 8♠ A♦) (K♣ 4♣ 3♠ 4♠ A♠ A♣ 3♣ 5♦ 7♥) (4♥ 4♦ 2♦ 2♣ 6♥ 9♦ 2♥ J♦ 7♦))
+    ```
    
-   Juntamos usando la función `centro` y volvemos a repartir,
-   guardando el resultado en la variable `t3`:
+    Juntamos usando la función `centro` y volvemos a repartir,
+    guardando el resultado en la variable `t3`:
    
-   ```racket
-   (define t3 (reparte (centro t2)))
-   ```
+    ```racket
+    (define t3 (reparte (centro t2)))
+    ```
    
 5. Visualizamos los montones:
 
