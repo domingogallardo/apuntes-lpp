@@ -683,8 +683,7 @@ con 27:</p>
 <li>
 <p>Visualizamos los montones y pedimos al espectador que piense en una
 carta sin decirla. Por ejemplo el as de tréboles.</p>
-<div class="highlight"><pre><span></span><code><span class="n">t1</span> <span class="c1">; ⇒ ((Q♠ 3♣ 2♥ 8♠ 5♦ J♦ A♦ 7♥ 7♦) (J♥ K♣ 4♥ 7♠ 4♣ 4♦ Q♦ 3♠ 2♦)</span>
-<span class="p">(</span><span class="n">K♥</span>  <span class="n">4♠</span> <span class="n">2♣</span> <span class="n">K♠</span> <span class="n">A♠</span> <span class="n">6♥</span> <span class="n">5♠</span> <span class="n">A♣</span> <span class="n">9♦</span><span class="p">)</span><span class="err">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">t1</span> <span class="c1">; ⇒ ((Q♠ 3♣ 2♥ 8♠ 5♦ J♦ A♦ 7♥ 7♦) (J♥ K♣ 4♥ 7♠ 4♣ 4♦ Q♦ 3♠ 2♦) (K♥ 4♠ 2♣ K♠ A♠ 6♥ 5♠ A♣ 9♦))</span>
 </code></pre></div>
 </li>
 <li>
@@ -714,7 +713,7 @@ guardando el resultado en la variable <code>t3</code>:</p>
 <p>Y preguntamos dónde se encuentra la carta. En este caso el as de
 trébol se encuentra en el montón de la derecha. Volvemos a juntar
 los montones usando entonces la función <code>derecha</code> y ya podemos
-llamar a la función <code>adivina</code> con la baraja resultante y esta
+llamar a la función <code>adivina</code> con la baraja resultante. Esta
 función devolverá mágicamente la carta escogida:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">adivina</span> <span class="p">(</span><span class="n">derecha</span> <span class="n">t3</span><span class="p">))</span> <span class="c1">; ⇒ A♣</span>
 </code></pre></div>
