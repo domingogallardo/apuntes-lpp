@@ -406,15 +406,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-5" class="md-nav__link">
-    Ejercicio 5
+  <a href="#ejercicio-6" class="md-nav__link">
+    Ejercicio 6
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-6" class="md-nav__link">
-    Ejercicio 6
+  <a href="#ejercicio-5" class="md-nav__link">
+    Ejercicio 5
   </a>
   
 </li>
@@ -592,6 +592,61 @@ pareja)</code> definida en el apartado a).</p>
 que el siguiente elemento (<code>lpp</code>) se va a repetir 3 veces.</p>
 <p>Como en los anteriores ejercicios, te recomendamos implementar alguna
 función auxiliar.</p>
+<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
+<p>a) Indica qué devuelven las siguientes expresiones en Scheme. Puede ser
+que alguna expresión contenga algún error. Indícalo también en ese
+caso y explica qué tipo de error. Hazlo sin el intérprete, y después
+comprueba con el intérprete si tu respuesta era correcta.</p>
+<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">((</span><span class="k">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">6</span> <span class="mi">4</span><span class="p">)))</span> <span class="c1">; ⇒ ?</span>
+<span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="n">y</span><span class="p">)))</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="n">x</span><span class="p">)))</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+
+
+<span class="p">(</span><span class="k">define</span> <span class="n">f</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">a</span> <span class="n">b</span><span class="p">)</span> <span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;***&quot;</span> <span class="n">a</span> <span class="n">b</span> <span class="s2">&quot;***&quot;</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">g</span> <span class="n">f</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">procedure?</span> <span class="n">g</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">g</span> <span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;Adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+</code></pre></div>
+<p>b) Hemos visto en teoría que la forma especial <code>define</code> para construir
+funciones es <em>azucar sintáctico</em> y que el intérprete de Scheme la
+convierte en una expresión equivalente usando la forma especial
+<code>lambda</code>.</p>
+<p>Escribe cuál sería las expresiones equivalentes, usando la forma
+especial <code>lambda</code> a las siguientes definiciones de funciones:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-3</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">factorial</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="mi">1</span>
+      <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="n">factorial</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))))</span>
+</code></pre></div>
+<p>c) Suponiendo las siguientes definiciones de funciones indica qué
+devolverían las invocaciones. Puede ser que alguna expresión contenga
+algún error. Indícalo también en ese caso y explica qué tipo de error.</p>
+<p>Hazlo sin el intérprete, y después comprueba con el intérprete si tu
+respuesta era correcta.</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">doble</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="n">x</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">foo</span> <span class="n">f</span> <span class="n">g</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+   <span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="n">g</span> <span class="n">x</span><span class="p">)</span> <span class="n">y</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">bar</span> <span class="n">f</span> <span class="n">p</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="n">p</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="n">p</span> <span class="n">y</span><span class="p">))</span>
+       <span class="p">(</span><span class="n">f</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+       <span class="o">&#39;</span><span class="ss">error</span><span class="p">))</span>
+
+<span class="p">(</span><span class="n">foo</span> <span class="nb">+</span> <span class="mi">10</span> <span class="n">doble</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">foo</span> <span class="n">doble</span> <span class="nb">+</span> <span class="mi">10</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">foo</span> <span class="nb">+</span> <span class="n">doble</span> <span class="mi">10</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">foo</span> <span class="nb">string-append</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;***&quot;</span> <span class="n">x</span><span class="p">))</span> <span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;Adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+
+<span class="p">(</span><span class="n">bar</span> <span class="n">doble</span> <span class="nb">number?</span> <span class="mi">10</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">bar</span> <span class="nb">string-append</span> <span class="nb">string?</span> <span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;Adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">bar</span> <span class="nb">+</span> <span class="nb">number?</span> <span class="s2">&quot;Hola&quot;</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+</code></pre></div>
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
 <p>Vamos a seguir jugando a las cartas con Scheme. Vas a tener que
 implementar una serie de funciones auxiliares con las que vas a poder
@@ -606,6 +661,13 @@ puedes generar una lista de <em>n</em> cartas aleatorias de una baraja de hasta
 </code></pre></div>
 <p>Como máximo puedes poner como parámetro 48 para generar aleatoriamente
 las 48 cartas de una baraja francesa sin dieces.</p>
+<div class="admonition note">
+<p class="admonition-title">La función <code>cartas</code> no cumple el paradigma funcional</p>
+<p>La función <code>cartas</code> es una función que devuelve una lista
+aleatoria de cartas. No cumple el paradigma funcional porque
+devuelve valores distintos cuando se llama con los mismos
+parámetros.</p>
+</div>
 <p>a) Define una función <code>(coloca un dos tres tres-listas)</code> que recibe
 tres elementos y una listas con tres listas y devuelva el resultado de
 colocar los elementos en la cabeza de las tres listas.</p>
@@ -719,61 +781,6 @@ función devolverá mágicamente la carta escogida:</p>
 </code></pre></div>
 </li>
 </ol>
-<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
-<p>a) Indica qué devuelven las siguientes expresiones en Scheme. Puede ser
-que alguna expresión contenga algún error. Indícalo también en ese
-caso y explica qué tipo de error. Hazlo sin el intérprete, y después
-comprueba con el intérprete si tu respuesta era correcta.</p>
-<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
-<span class="p">((</span><span class="k">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">6</span> <span class="mi">4</span><span class="p">)))</span> <span class="c1">; ⇒ ?</span>
-<span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="n">y</span><span class="p">)))</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
-<span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="n">x</span><span class="p">)))</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
-
-
-<span class="p">(</span><span class="k">define</span> <span class="n">f</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">a</span> <span class="n">b</span><span class="p">)</span> <span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;***&quot;</span> <span class="n">a</span> <span class="n">b</span> <span class="s2">&quot;***&quot;</span><span class="p">)))</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">g</span> <span class="n">f</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">procedure?</span> <span class="n">g</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
-<span class="p">(</span><span class="n">g</span> <span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;Adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
-</code></pre></div>
-<p>b) Hemos visto en teoría que la forma especial <code>define</code> para construir
-funciones es <em>azucar sintáctico</em> y que el intérprete de Scheme la
-convierte en una expresión equivalente usando la forma especial
-<code>lambda</code>.</p>
-<p>Escribe cuál sería las expresiones equivalentes, usando la forma
-especial <code>lambda</code> a las siguientes definiciones de funciones:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-3</span> <span class="n">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">3</span><span class="p">))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">factorial</span> <span class="n">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="mi">1</span>
-      <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="n">factorial</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))))</span>
-</code></pre></div>
-<p>c) Suponiendo las siguientes definiciones de funciones indica qué
-devolverían las invocaciones. Puede ser que alguna expresión contenga
-algún error. Indícalo también en ese caso y explica qué tipo de error.</p>
-<p>Hazlo sin el intérprete, y después comprueba con el intérprete si tu
-respuesta era correcta.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">doble</span> <span class="n">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="n">x</span><span class="p">))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">foo</span> <span class="n">f</span> <span class="n">g</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-   <span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="n">g</span> <span class="n">x</span><span class="p">)</span> <span class="n">y</span><span class="p">))</span>
-
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">bar</span> <span class="n">f</span> <span class="n">p</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="n">p</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="n">p</span> <span class="n">y</span><span class="p">))</span>
-       <span class="p">(</span><span class="n">f</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-       <span class="o">&#39;</span><span class="ss">error</span><span class="p">))</span>
-
-<span class="p">(</span><span class="n">foo</span> <span class="nb">+</span> <span class="mi">10</span> <span class="n">doble</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
-<span class="p">(</span><span class="n">foo</span> <span class="n">doble</span> <span class="nb">+</span> <span class="mi">10</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
-<span class="p">(</span><span class="n">foo</span> <span class="nb">+</span> <span class="n">doble</span> <span class="mi">10</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
-<span class="p">(</span><span class="n">foo</span> <span class="nb">string-append</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;***&quot;</span> <span class="n">x</span><span class="p">))</span> <span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;Adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
-
-<span class="p">(</span><span class="n">bar</span> <span class="n">doble</span> <span class="nb">number?</span> <span class="mi">10</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
-<span class="p">(</span><span class="n">bar</span> <span class="nb">string-append</span> <span class="nb">string?</span> <span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;Adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
-<span class="p">(</span><span class="n">bar</span> <span class="nb">+</span> <span class="nb">number?</span> <span class="s2">&quot;Hola&quot;</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
-</code></pre></div>
 <h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
 <p>Sube la solución de los ejercicios al cuestionario de Moodle Entrega
 práctica 4 hasta el domingo 26 de febrero a las 21:00 h.</p>
