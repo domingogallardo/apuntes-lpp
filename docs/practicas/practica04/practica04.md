@@ -322,8 +322,7 @@ con 27:
 carta sin decirla. Por ejemplo el as de tréboles.
 
     ```racket
-    t1 ; ⇒ ((Q♠ 3♣ 2♥ 8♠ 5♦ J♦ A♦ 7♥ 7♦) (J♥ K♣ 4♥ 7♠ 4♣ 4♦ Q♦ 3♠ 2♦)
-    (K♥  4♠ 2♣ K♠ A♠ 6♥ 5♠ A♣ 9♦))
+    t1 ; ⇒ ((Q♠ 3♣ 2♥ 8♠ 5♦ J♦ A♦ 7♥ 7♦) (J♥ K♣ 4♥ 7♠ 4♣ 4♦ Q♦ 3♠ 2♦) (K♥ 4♠ 2♣ K♠ A♠ 6♥ 5♠ A♣ 9♦))
     ```
 
 3. Preguntamos al espectador en qué montón está la carta
@@ -360,7 +359,7 @@ carta sin decirla. Por ejemplo el as de tréboles.
     Y preguntamos dónde se encuentra la carta. En este caso el as de
     trébol se encuentra en el montón de la derecha. Volvemos a juntar
     los montones usando entonces la función `derecha` y ya podemos
-    llamar a la función `adivina` con la baraja resultante y esta
+    llamar a la función `adivina` con la baraja resultante. Esta
     función devolverá mágicamente la carta escogida:
     
     ```racket
