@@ -200,6 +200,76 @@ Como en los anteriores ejercicios, te recomendamos implementar alguna
 función auxiliar.
 
 
+### Ejercicio 6 ###
+
+a) Indica qué devuelven las siguientes expresiones en Scheme. Puede ser
+que alguna expresión contenga algún error. Indícalo también en ese
+caso y explica qué tipo de error. Hazlo sin el intérprete, y después
+comprueba con el intérprete si tu respuesta era correcta.
+
+
+```racket
+((lambda (x) (* x x)) 3) ; ⇒ ?
+((lambda () (+ 6 4))) ; ⇒ ?
+((lambda (x y) (* x (+ 2 y))) (+ 2 3) 4) ; ⇒ ?
+((lambda (x y) (* x (+ 2 x))) 5) ; ⇒ ?
+
+
+(define f (lambda (a b) (string-append "***" a b "***")))
+(define g f)
+(procedure? g) ; ⇒ ?
+(g "Hola" "Adios") ; ⇒ ?
+```
+
+b) Hemos visto en teoría que la forma especial `define` para construir
+funciones es _azucar sintáctico_ y que el intérprete de Scheme la
+convierte en una expresión equivalente usando la forma especial
+`lambda`.
+
+Escribe cuál sería las expresiones equivalentes, usando la forma
+especial `lambda` a las siguientes definiciones de funciones:
+
+```racket
+(define (suma-3 x)
+   (+ x 3))
+    
+(define (factorial x)
+   (if (= x 0)
+      1
+      (* x (factorial (- x 1)))))
+```
+
+
+c) Suponiendo las siguientes definiciones de funciones indica qué
+devolverían las invocaciones. Puede ser que alguna expresión contenga
+algún error. Indícalo también en ese caso y explica qué tipo de error.
+
+Hazlo sin el intérprete, y después comprueba con el intérprete si tu
+respuesta era correcta.
+
+
+```racket
+(define (doble x)
+   (* 2 x))
+   
+(define (foo f g x y)
+   (f (g x) y))
+
+(define (bar f p x y)
+   (if (and (p x) (p y))
+       (f x y)
+       'error))
+       
+(foo + 10 doble 15) ; ⇒ ?
+(foo doble + 10 15) ; ⇒ ?
+(foo + doble 10 15) ; ⇒ ?
+(foo string-append (lambda (x) (string-append "***" x)) "Hola" "Adios") ; ⇒ ?
+
+(bar doble number? 10 15) ; ⇒ ?
+(bar string-append string? "Hola" "Adios") ; ⇒ ?
+(bar + number? "Hola" 5) ; ⇒ ?
+```
+
 ### Ejercicio 5 ###
 
 Vamos a seguir jugando a las cartas con Scheme. Vas a tener que
@@ -219,6 +289,12 @@ puedes generar una lista de _n_ cartas aleatorias de una baraja de hasta
 
 Como máximo puedes poner como parámetro 48 para generar aleatoriamente
 las 48 cartas de una baraja francesa sin dieces.
+
+!!! Note "La función `cartas` no cumple el paradigma funcional"
+    La función `cartas` es una función que devuelve una lista
+    aleatoria de cartas. No cumple el paradigma funcional porque
+    devuelve valores distintos cuando se llama con los mismos
+    parámetros.
 
 a) Define una función `(coloca un dos tres tres-listas)` que recibe
 tres elementos y una listas con tres listas y devuelva el resultado de
@@ -365,76 +441,6 @@ carta sin decirla. Por ejemplo el as de tréboles.
     ```racket
     (adivina (derecha t3)) ; ⇒ A♣
     ```
-
-### Ejercicio 6 ###
-
-a) Indica qué devuelven las siguientes expresiones en Scheme. Puede ser
-que alguna expresión contenga algún error. Indícalo también en ese
-caso y explica qué tipo de error. Hazlo sin el intérprete, y después
-comprueba con el intérprete si tu respuesta era correcta.
-
-
-```racket
-((lambda (x) (* x x)) 3) ; ⇒ ?
-((lambda () (+ 6 4))) ; ⇒ ?
-((lambda (x y) (* x (+ 2 y))) (+ 2 3) 4) ; ⇒ ?
-((lambda (x y) (* x (+ 2 x))) 5) ; ⇒ ?
-
-
-(define f (lambda (a b) (string-append "***" a b "***")))
-(define g f)
-(procedure? g) ; ⇒ ?
-(g "Hola" "Adios") ; ⇒ ?
-```
-
-b) Hemos visto en teoría que la forma especial `define` para construir
-funciones es _azucar sintáctico_ y que el intérprete de Scheme la
-convierte en una expresión equivalente usando la forma especial
-`lambda`.
-
-Escribe cuál sería las expresiones equivalentes, usando la forma
-especial `lambda` a las siguientes definiciones de funciones:
-
-```racket
-(define (suma-3 x)
-   (+ x 3))
-    
-(define (factorial x)
-   (if (= x 0)
-      1
-      (* x (factorial (- x 1)))))
-```
-
-
-c) Suponiendo las siguientes definiciones de funciones indica qué
-devolverían las invocaciones. Puede ser que alguna expresión contenga
-algún error. Indícalo también en ese caso y explica qué tipo de error.
-
-Hazlo sin el intérprete, y después comprueba con el intérprete si tu
-respuesta era correcta.
-
-
-```racket
-(define (doble x)
-   (* 2 x))
-   
-(define (foo f g x y)
-   (f (g x) y))
-
-(define (bar f p x y)
-   (if (and (p x) (p y))
-       (f x y)
-       'error))
-       
-(foo + 10 doble 15) ; ⇒ ?
-(foo doble + 10 15) ; ⇒ ?
-(foo + doble 10 15) ; ⇒ ?
-(foo string-append (lambda (x) (string-append "***" x)) "Hola" "Adios") ; ⇒ ?
-
-(bar doble number? 10 15) ; ⇒ ?
-(bar string-append string? "Hola" "Adios") ; ⇒ ?
-(bar + number? "Hola" 5) ; ⇒ ?
-```
 
 ## Entrega de la práctica
 
