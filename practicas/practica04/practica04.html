@@ -599,7 +599,7 @@ hacer un truco de cartas al final del ejercicio.</p>
 <p>Comienza por volver a descargar el <a href="https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt">fichero
 <code>lpp.rkt</code></a>. En
 él hemos incluido una nueva función <code>(cartas n)</code> con las que
-puedes generar una lista <code>n</code> cartas aleatorias de una baraja de hasta
+puedes generar una lista de <em>n</em> cartas aleatorias de una baraja de hasta
 48 cartas. Por ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cartas</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ (9♣ 7♠ Q♠ 4♥ 8♠ 3♠ 7♦ A♠ A♥ K♠)</span>
 <span class="p">(</span><span class="n">cartas</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ (7♣ 3♣ 6♣ 7♠ 5♣)</span>
@@ -691,23 +691,22 @@ carta sin decirla. Por ejemplo el as de tréboles.</p>
 <p>Preguntamos al espectador en qué montón está la carta
    pensada. Juntamos los montones usando la función correspondiente a
    lugar del montón (<code>izquierda</code>, <code>derecha</code> o <code>centro</code>). En este caso
-   está en el montón derecho. Y volvemos a repartir en tres montones,
-   que guardamos en la variable <code>t2</code>:</p>
-</li>
-</ol>
+   el as de tréboles está en el montón derecho, por lo que usamos la
+   función <code>derecha</code>. Y volvemos a repartir en tres montones el mazo
+   resultante. Los guardamos en la variable <code>t2</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">t2</span> <span class="p">(</span><span class="n">reparte</span> <span class="p">(</span><span class="n">derecha</span> <span class="n">t1</span><span class="p">)))</span>
 </code></pre></div>
-<ol start="4">
-<li>Visualizamos de nuevo los montones y preguntamos dónde está la
-   carta. En este caso se encuentra en el centro.</li>
-</ol>
+</li>
+<li>
+<p>Visualizamos de nuevo los montones y preguntamos dónde está la
+   carta. En este caso se encuentra en el centro.</p>
 <div class="highlight"><pre><span></span><code><span class="n">t2</span> <span class="c1">; ⇒ ((J♥ 7♠ Q♦ K♥ K♠ 5♠ Q♠ 8♠ A♦) (K♣ 4♣ 3♠ 4♠ A♠ A♣ 3♣ 5♦ 7♥) (4♥ 4♦ 2♦ 2♣ 6♥ 9♦ 2♥ J♦ 7♦))</span>
 </code></pre></div>
 <p>Juntamos usando la función <code>centro</code> y volvemos a repartir,
-   guardando el resultado en la variable <code>t3</code>:</p>
+guardando el resultado en la variable <code>t3</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">t3</span> <span class="p">(</span><span class="n">reparte</span> <span class="p">(</span><span class="n">centro</span> <span class="n">t2</span><span class="p">)))</span>
 </code></pre></div>
-<ol start="5">
+</li>
 <li>
 <p>Visualizamos los montones:</p>
 <div class="highlight"><pre><span></span><code><span class="n">t3</span> <span class="c1">; ⇒ ((4♥ 2♣ 2♥ K♣ 4♠ 3♣ J♥ K♥ Q♠) (4♦ 6♥ J♦ 4♣ A♠ 5♦ 7♠ K♠ 8♠) (2♦ 9♦ 7♦ 3♠ A♣ 7♥ Q♦ 5♠ A♦))</span>
