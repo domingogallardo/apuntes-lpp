@@ -202,7 +202,169 @@ función auxiliar.
 
 ### Ejercicio 5 ###
 
-Truco de cartas.
+Vamos a seguir jugando a las cartas con Scheme. Vas a tener que
+implementar una serie de funciones auxiliares con las que vas a poder
+hacer un truco de cartas al final del ejercicio.
+
+Comienza por volver a descargar el [fichero
+`lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt). En
+él hemos incluido una nueva función `(cartas n)` con las que
+puedes generar una lista `n` cartas aleatorias de una baraja de hasta
+48 cartas. Por ejemplo:
+
+```racket
+(cartas 10) ; ⇒ (9♣ 7♠ Q♠ 4♥ 8♠ 3♠ 7♦ A♠ A♥ K♠)
+(cartas 5) ; ⇒ (7♣ 3♣ 6♣ 7♠ 5♣)
+```
+
+Como máximo puedes poner como parámetro 48 para generar aleatoriamente
+las 48 cartas de una baraja francesa sin dieces.
+
+a) Define una función `(coloca un dos tres tres-listas)` que recibe
+tres elementos y una listas con tres listas y devuelva el resultado de
+colocar los elementos en la cabeza de las tres listas.
+
+Ejemplo:
+
+```racket
+(coloca 'a 'b 'c '(() () ())) ; ⇒ ((a) (b) (c)))
+(coloca 'b 'b 'b '((a) (a) (a))) ; ⇒ ((b a) (b a) (b a)))
+(coloca 'g 'h 'i '((a) (b c) (d e f))) ; ⇒ ((g a) (h b c) (i d e f)))
+```
+
+b) Usando la función anterior como función auxiliar implementa una
+función recursiva `(reparte lista-cartas)` que recibe una lista de
+cartas con un número de cartas múltiplo de 3 y devuelve el resultado
+de repartir esas cartas una a una en tres montones. Las cartas en
+las posiciones 0, 3, 6, etc. irán en un montón. Las cartas en las
+posiciones 1, 4, 7, etc. irán en el segundo montón. Y las cartas en
+las posiciones 2, 5, 8, etc. irán en el tercero.
+
+El resultado será una lista con tres listas representando esos tres
+montones de cartas.
+
+Ejemplo:
+
+```racket
+(define baraja (cartas 12))
+baraja ; ⇒ (Q♣ J♥ 9♣ 7♠ Q♠ 4♥ 8♠ 3♠ 7♦ A♠ A♥ K♠)
+(reparte baraja) ; ⇒ ((Q♣ 7♠ 8♠ A♠) (J♥ Q♠ 3♠ A♥) (9♣ 4♥ 7♦ K♠))
+```
+
+c) Implementa una función recursiva `(elemento-central lista)` que
+reciba una lista con un número impar de elementos (mayor o igual que
+uno) y devuelva su elemento central.
+
+Ejemplo:
+
+```racket
+(elemento-central '(a b c d e f g)) ; ⇒ d
+```
+
+d) Una vez que has implementado las funciones anteriores ya solo te
+queda copiar las siguientes definiciones para poder hacer el truco de
+cartas. Son funciones que recomponen la baraja a partir de los tres
+montones dependiendo de si la carta elegida está en el montón de la
+izquierda, del centro o de la derecha.
+
+Y la función `adivina` es la que devuelve la carta elegida en el truco.
+
+```racket
+(define (izquierda tres-listas)
+  (append (third tres-listas)
+          (first tres-listas)
+          (second tres-listas)))
+
+(define (centro tres-listas)
+  (append (third tres-listas)
+          (second tres-listas)
+          (first tres-listas)))
+
+(define (derecha tres-listas)
+  (append (second tres-listas)
+          (third tres-listas)
+          (first tres-listas)))
+
+(define (adivina lista)
+  (elemento-central lista))
+```
+
+Ya podemos hacer el truco de cartas.
+
+La siguiente función, con la constante 90 como argumento, genera
+siempre la secuencia aleatoria que permite seguir el ejemplo. Si se
+cambia por otra constante, la secuencia también se reperirá siempre
+aunque será otra. Tener siempre la misma secuencia aleatoria permite
+poder depurar la programación trabajando siempre con el mismo ejemplo
+aleatorio.
+
+```racket
+(random-seed 90)
+```
+Si en lugar de una constante se usa un valor variable, se obtiene una
+secuencia aleatoria distinta cada vez que se ejecute el programa. 
+
+Ejemplo:
+
+```racket
+(random-seed (modulo (current-milliseconds) (expt 2 31)))
+```
+
+1. Repartimos una lista de cartas y las guardamos en la variable
+`t1`. Podríamos jugar con 3, 9, 15, 21 o 27 cartas. Vamos a hacerlo
+con 27:
+
+    ```racket
+    (define t1 (reparte (cartas 27)))
+    ```
+
+2. Visualizamos los montones y pedimos al espectador que piense en una
+carta sin decirla. Por ejemplo el as de tréboles.
+
+    ```racket
+    t1 ; ⇒ ((Q♠ 3♣ 2♥ 8♠ 5♦ J♦ A♦ 7♥ 7♦) (J♥ K♣ 4♥ 7♠ 4♣ 4♦ Q♦ 3♠ 2♦)
+    (K♥  4♠ 2♣ K♠ A♠ 6♥ 5♠ A♣ 9♦))
+    ```
+
+3. Preguntamos al espectador en qué montón está la carta
+   pensada. Juntamos los montones usando la función correspondiente a
+   lugar del montón (`izquierda`, `derecha` o `centro`). En este caso
+   está en el montón derecho. Y volvemos a repartir en tres montones,
+   que guardamos en la variable `t2`:
+   
+   ```racket
+   (define t2 (reparte (derecha t1)))
+   ```
+
+4. Visualizamos de nuevo los montones y preguntamos dónde está la
+   carta. En este caso se encuentra en el centro.
+   
+   ```racket
+   t2 ; ⇒ ((J♥ 7♠ Q♦ K♥ K♠ 5♠ Q♠ 8♠ A♦) (K♣ 4♣ 3♠ 4♠ A♠ A♣ 3♣ 5♦ 7♥) (4♥ 4♦ 2♦ 2♣ 6♥ 9♦ 2♥ J♦ 7♦))
+   ```
+   
+   Juntamos usando la función `centro` y volvemos a repartir,
+   guardando el resultado en la variable `t3`:
+   
+   ```racket
+   (define t3 (reparte (centro t2)))
+   ```
+   
+5. Visualizamos los montones:
+
+    ```racket
+    t3 ; ⇒ ((4♥ 2♣ 2♥ K♣ 4♠ 3♣ J♥ K♥ Q♠) (4♦ 6♥ J♦ 4♣ A♠ 5♦ 7♠ K♠ 8♠) (2♦ 9♦ 7♦ 3♠ A♣ 7♥ Q♦ 5♠ A♦))
+    ```
+    
+    Y preguntamos dónde se encuentra la carta. En este caso el as de
+    trébol se encuentra en el montón de la derecha. Volvemos a juntar
+    los montones usando entonces la función `derecha` y ya podemos
+    llamar a la función `adivina` con la baraja resultante y esta
+    función devolverá mágicamente la carta escogida:
+    
+    ```racket
+    (adivina (derecha t3)) ; ⇒ A♣
+    ```
 
 ### Ejercicio 6 ###
 
