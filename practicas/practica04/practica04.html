@@ -617,7 +617,7 @@ resultante.</p>
 </code></pre></div>
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
 <p>a) Implementa la función recursiva <code>(inserta-pos dato pos lista)</code> que
-recibe un dato, una posición y una lista e devuelve la lista
+recibe un dato, una posición y una lista y devuelve la lista
 resultante de insertar el dato en la posición indicada de la lista. Si
 la posición es 0, el dato se inserta en cabeza. Suponemos que la
 posición siempre será positiva y menor o igual que la longitud de la
@@ -686,12 +686,14 @@ devolverá la lista vacía.</p>
 llame a una función recursiva <code>(expande-lista lista-parejas)</code>
 que trabaje sobre una lista de parejas.</p>
 <p>b.2) Escribe una solución en la que la propia función
-<code>expande-parejas</code> sea recursiva. </p>
+<code>expande-parejas</code> sea recursiva. Llámala <code>expande-parejas-2</code> y ten
+cuidado de que la llamada recursiva sea también a la propia
+<code>expande-parejas-2</code>.</p>
 <div class="admonition hint">
 <p class="admonition-title">Pista</p>
 <p>Repasa el apartado 5.3.1 de teoría.</p>
 </div>
-<p>c) Implementa la función recursiva <code>(expande2 lista)</code>. Recibe una
+<p>c) Implementa la función recursiva <code>(expande lista)</code>. Recibe una
 lista en la que hay intercalados algunos números enteros
 positivos. Devuelve la lista original en la que se han expandido los
 elementos siguientes a los números, tantas veces como indica el
@@ -700,14 +702,12 @@ siempre va a haber un elemento después de un número.</p>
 <p>Debes usar también para su implementación la función <code>(expande-pareja
 pareja)</code> definida en el apartado a).</p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">expande2</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="ss">clase</span> <span class="ss">ua</span> <span class="mi">3</span> <span class="ss">lpp</span> <span class="ss">aulario</span><span class="p">))</span> 
-<span class="c1">; ⇒ (clase clase clase clase ua lpp lpp lpp aulario))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">expande</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="ss">clase</span> <span class="ss">ua</span> <span class="mi">3</span> <span class="ss">lpp</span> <span class="ss">aulario</span><span class="p">))</span> 
+<span class="c1">; ⇒ (clase clase clase clase ua lpp lpp lpp aulario)</span>
 </code></pre></div>
 <p>En el ejemplo, el 4 indica que el siguiente elemento
 (<code>clase</code>) se debe repetir 4 veces en la lista expandida y el 3 indica
 que el siguiente elemento (<code>lpp</code>) se va a repetir 3 veces.</p>
-<p>Como en los anteriores ejercicios, te recomendamos implementar alguna
-función auxiliar.</p>
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
 <p>a) Indica qué devuelven las siguientes expresiones en Scheme. Puede ser
 que alguna expresión contenga algún error. Indícalo también en ese
@@ -902,8 +902,8 @@ función devolverá mágicamente la carta escogida:</p>
 <h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
 <p>Sube la solución de los ejercicios al cuestionario de Moodle Entrega
 práctica 4 hasta el domingo 26 de febrero a las 21:00 h.</p>
-<p>Tal y como hemos comentado al comienzo de la práctica, debes incluir
-casos de prueba en todo el código que escribas.</p>
+<p>Como siempre te recordamos, debes incluir casos de prueba en todo el
+código que escribas. </p>
 <p>Una vez finalizado el plazo de entrega podrás revisar el cuestionario
 y visualizar la solución. Corrige la entrega, comparando la solución
 con la tuya. Puedes consultar cualquier duda con tu profesor en la
