@@ -111,7 +111,7 @@ Ejemplo:
 
 ```racket
 (mueve-al-principio '(a b e c d e f) 'e) ; ⇒ (e a b c d e f)
-(mueve-al-principio '(a b c d e f g) 'a) ; ⇒ (a b c d e f g))
+(mueve-al-principio '(a b c d e f g) 'a) ; ⇒ (a b c d e f g)
 ```
 
 b) Implementa una función recursiva `(comprueba-simbolos lista-simbolos
@@ -302,9 +302,9 @@ colocar los elementos en la cabeza de las tres listas.
 Ejemplo:
 
 ```racket
-(coloca 'a 'b 'c '(() () ())) ; ⇒ ((a) (b) (c)))
-(coloca 'b 'b 'b '((a) (a) (a))) ; ⇒ ((b a) (b a) (b a)))
-(coloca 'g 'h 'i '((a) (b c) (d e f))) ; ⇒ ((g a) (h b c) (i d e f)))
+(coloca 'a 'b 'c '(() () ())) ; ⇒ ((a) (b) (c))
+(coloca 'b 'b 'b '((a) (a) (a))) ; ⇒ ((b a) (b a) (b a))
+(coloca 'g 'h 'i '((a) (b c) (d e f))) ; ⇒ ((g a) (h b c) (i d e f))
 ```
 
 b) Usando la función anterior como función auxiliar implementa una
@@ -321,14 +321,22 @@ montones de cartas.
 Ejemplo:
 
 ```racket
-(define baraja (cartas 12))
-baraja ; ⇒ (Q♣ J♥ 9♣ 7♠ Q♠ 4♥ 8♠ 3♠ 7♦ A♠ A♥ K♠)
-(reparte baraja) ; ⇒ ((Q♣ 7♠ 8♠ A♠) (J♥ Q♠ 3♠ A♥) (9♣ 4♥ 7♦ K♠))
+(define doce-cartas '(A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ J♣ Q♣ K♣))
+(reparte doce-cartas) ; ⇒ '((A♣ 4♣ 7♣ J♣) (2♣ 5♣ 8♣ Q♣) (3♣ 6♣ 9♣ K♣))
 ```
 
 c) Implementa una función recursiva `(elemento-central lista)` que
 reciba una lista con un número impar de elementos (mayor o igual que
 uno) y devuelva su elemento central.
+
+!!! Note "Pista"
+    Supongamos que defines una función auxiliar `(quita-ultimo lista)` que
+    devuelve una lista sin el último elemento. 
+    
+    ¿Podrías usar esta función para pasarle un caso más sencillo a la
+    llamada recursiva y que sea la llamada recursiva la que devuelva
+    el elemento central? 
+    
 
 Ejemplo:
 
@@ -400,7 +408,7 @@ con 27:
 carta sin decirla. Por ejemplo el as de tréboles.
 
     ```racket
-    t1 ; ⇒ ((Q♠ 3♣ 2♥ 8♠ 5♦ J♦ A♦ 7♥ 7♦) (J♥ K♣ 4♥ 7♠ 4♣ 4♦ Q♦ 3♠ 2♦) (K♥ 4♠ 2♣ K♠ A♠ 6♥ 5♠ A♣ 9♦))
+    t1 ; ⇒ ((J♣ 8♦ K♥ J♠ 2♠ 8♥ Q♣ 4♦ A♥) (5♥ 9♣ 5♦ Q♠ A♦ 9♥ 5♠ 9♦ Q♦) (7♣ 3♠ 6♥ 6♣ 7♥ 3♣ 4♣ A♣ J♥))
     ```
 
 3. Preguntamos al espectador en qué montón está la carta
@@ -418,7 +426,7 @@ carta sin decirla. Por ejemplo el as de tréboles.
    carta. En este caso se encuentra en el centro.
    
     ```racket
-    t2 ; ⇒ ((J♥ 7♠ Q♦ K♥ K♠ 5♠ Q♠ 8♠ A♦) (K♣ 4♣ 3♠ 4♠ A♠ A♣ 3♣ 5♦ 7♥) (4♥ 4♦ 2♦ 2♣ 6♥ 9♦ 2♥ J♦ 7♦))
+    t2 ; ⇒  ((5♥ Q♠ 5♠ 7♣ 6♣ 4♣ J♣ J♠ Q♣) (9♣ A♦ 9♦ 3♠ 7♥ A♣ 8♦ 2♠ 4♦) (5♦ 9♥ Q♦ 6♥ 3♣ J♥ K♥ 8♥ A♥))
     ```
    
     Juntamos usando la función `centro` y volvemos a repartir,
@@ -431,7 +439,7 @@ carta sin decirla. Por ejemplo el as de tréboles.
 5. Visualizamos los montones:
 
     ```racket
-    t3 ; ⇒ ((4♥ 2♣ 2♥ K♣ 4♠ 3♣ J♥ K♥ Q♠) (4♦ 6♥ J♦ 4♣ A♠ 5♦ 7♠ K♠ 8♠) (2♦ 9♦ 7♦ 3♠ A♣ 7♥ Q♦ 5♠ A♦))
+    t3 ; ⇒  ((5♦ 6♥ K♥ 9♣ 3♠ 8♦ 5♥ 7♣ J♣) (9♥ 3♣ 8♥ A♦ 7♥ 2♠ Q♠ 6♣ J♠) (Q♦ J♥ A♥ 9♦ A♣ 4♦ 5♠ 4♣ Q♣))
     ```
     
     Y preguntamos dónde se encuentra la carta. En este caso el as de
