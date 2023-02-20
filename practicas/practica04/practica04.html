@@ -836,7 +836,8 @@ izquierda, del centro o de la derecha.</p>
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">adivina</span> <span class="n">lista</span><span class="p">)</span>
   <span class="p">(</span><span class="n">elemento-central</span> <span class="n">lista</span><span class="p">))</span>
 </code></pre></div>
-<p>Ya podemos hacer el truco de cartas.</p>
+<p>Por último, antes de empezar el truco, un par de consideraciones sobre
+los programas con números aleatorios.</p>
 <p>La siguiente función, con la constante 90 como argumento, genera
 siempre la secuencia aleatoria que permite seguir el ejemplo. Si se
 cambia por otra constante, la secuencia también se reperirá siempre
@@ -850,6 +851,7 @@ secuencia aleatoria distinta cada vez que se ejecute el programa. </p>
 <p>Ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">random-seed</span> <span class="p">(</span><span class="nb">modulo</span> <span class="p">(</span><span class="nb">current-milliseconds</span><span class="p">)</span> <span class="p">(</span><span class="nb">expt</span> <span class="mi">2</span> <span class="mi">31</span><span class="p">)))</span>
 </code></pre></div>
+<p>Y ahora ya podemos empezar el truco de cartas.</p>
 <ol>
 <li>
 <p>Repartimos una lista de cartas y las guardamos en la variable
