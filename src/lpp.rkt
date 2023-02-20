@@ -1,4 +1,5 @@
 #lang racket
+(require rackunit)
 (require 2htdp/image)
 
 (provide dato-arbol)
@@ -29,6 +30,70 @@
 (provide for-all?)
 
 (provide caja-puntero)
+
+(provide cartas)
+
+;; --------------------------
+;; Cartas y baraja francesa
+;; --------------------------
+
+(define (crea-parejas elemento lista)
+  (if (null? lista)
+      '()
+      (cons (cons elemento (first lista))
+            (crea-parejas elemento (rest lista)))))
+  
+(define (producto-cartesiano lista-x lista-y)
+  (if (null? lista-x)
+      '()
+      (append (crea-parejas (first lista-x) lista-y)
+              (producto-cartesiano (rest lista-x) lista-y))))
+
+(check-equal? (producto-cartesiano '(J Q K) '(♠ ♣ ♥ ♦))
+              '((J . ♠) (J . ♣) (J . ♥) (J . ♦)
+                (Q . ♠) (Q . ♣) (Q . ♥) (Q . ♦)
+                (K . ♠) (K . ♣) (K . ♥) (K . ♦)))
+
+(define (crea-carta pareja)
+  (string->symbol (string (car pareja) (cdr pareja))))
+
+(check-equal? (crea-carta '(#\Q . #\♥)) 'Q♥)
+
+(define (crea-cartas lista-parejas)
+  (if (null? lista-parejas)
+      '()
+      (cons (crea-carta (first lista-parejas))
+            (crea-cartas (rest lista-parejas)))))
+
+(check-equal? (crea-cartas '((#\A . #\♣) (#\K . #\♦))) '(A♣ K♦))
+
+(define baraja (crea-cartas
+                (producto-cartesiano
+                 (string->list "A23456789JQK")
+                 (string->list "♠♣♥♦"))))
+
+(define (pon-en-primera-lista elemento dos-listas)
+  (cons (cons elemento (first dos-listas)) (rest dos-listas)))
+
+(define (mueve-ref n dos-listas)
+  (if (= n 0)
+      (list (rest (first dos-listas))
+            (cons (first (first dos-listas))
+                  (second dos-listas)))
+      (pon-en-primera-lista (first (first dos-listas))
+                            (mueve-ref (- n 1)
+                                       (list (rest (first dos-listas))
+                                             (second dos-listas))))))
+
+(define (cartas-ite n dos-listas)
+  (if (= n 0)
+      dos-listas
+      (cartas-ite (- n 1)
+                  (mueve-ref (random (length (first dos-listas)))
+                             dos-listas))))
+
+(define (cartas n)
+  (second (cartas-ite n (list baraja '()))))
 
 
 ;; --------------------------
