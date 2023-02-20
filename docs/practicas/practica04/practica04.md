@@ -66,7 +66,7 @@ Ejemplos:
 
 
 a) Implementa la función recursiva `(inserta-pos dato pos lista)` que
-recibe un dato, una posición y una lista e devuelve la lista
+recibe un dato, una posición y una lista y devuelve la lista
 resultante de insertar el dato en la posición indicada de la lista. Si
 la posición es 0, el dato se inserta en cabeza. Suponemos que la
 posición siempre será positiva y menor o igual que la longitud de la
@@ -170,12 +170,14 @@ llame a una función recursiva `(expande-lista lista-parejas)`
 que trabaje sobre una lista de parejas.
 
 b.2) Escribe una solución en la que la propia función
-`expande-parejas` sea recursiva. 
+`expande-parejas` sea recursiva. Llámala `expande-parejas-2` y ten
+cuidado de que la llamada recursiva sea también a la propia
+`expande-parejas-2`.
 
 !!! Hint "Pista"
     Repasa el apartado 5.3.1 de teoría.
 
-c) Implementa la función recursiva `(expande2 lista)`. Recibe una
+c) Implementa la función recursiva `(expande lista)`. Recibe una
 lista en la que hay intercalados algunos números enteros
 positivos. Devuelve la lista original en la que se han expandido los
 elementos siguientes a los números, tantas veces como indica el
@@ -188,16 +190,13 @@ pareja)` definida en el apartado a).
 Ejemplo:
 
 ```racket
-(expande2 '(4 clase ua 3 lpp aulario)) 
-; ⇒ (clase clase clase clase ua lpp lpp lpp aulario))
+(expande '(4 clase ua 3 lpp aulario)) 
+; ⇒ (clase clase clase clase ua lpp lpp lpp aulario)
 ```
 
 En el ejemplo, el 4 indica que el siguiente elemento
 (`clase`) se debe repetir 4 veces en la lista expandida y el 3 indica
 que el siguiente elemento (`lpp`) se va a repetir 3 veces.
-
-Como en los anteriores ejercicios, te recomendamos implementar alguna
-función auxiliar.
 
 
 ### Ejercicio 5 ###
@@ -450,8 +449,8 @@ carta sin decirla. Por ejemplo el as de tréboles.
 Sube la solución de los ejercicios al cuestionario de Moodle Entrega
 práctica 4 hasta el domingo 26 de febrero a las 21:00 h.
 
-Tal y como hemos comentado al comienzo de la práctica, debes incluir
-casos de prueba en todo el código que escribas.
+Como siempre te recordamos, debes incluir casos de prueba en todo el
+código que escribas. 
 
 Una vez finalizado el plazo de entrega podrás revisar el cuestionario
 y visualizar la solución. Corrige la entrega, comparando la solución

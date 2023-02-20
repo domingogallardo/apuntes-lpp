@@ -172,8 +172,8 @@ de un argumento que sumará 10 a ese argumento:
            (+ x k)))
     (define g (construye-sumador 100))
     (define f (construye-sumador 50))
-    (g 3) ; ⇒ 103
-    (f 6) ; ⇒ 56
+    (g 3) ; ⇒ ???
+    (f 6) ; ⇒ ???
     ```
 
 - Cuando invocamos a `construye-sumador` con un valor concreto para
