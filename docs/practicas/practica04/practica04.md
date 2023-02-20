@@ -365,7 +365,8 @@ Y la función `adivina` es la que devuelve la carta elegida en el truco.
   (elemento-central lista))
 ```
 
-Ya podemos hacer el truco de cartas.
+Por último, antes de empezar el truco, un par de consideraciones sobre
+los programas con números aleatorios.
 
 La siguiente función, con la constante 90 como argumento, genera
 siempre la secuencia aleatoria que permite seguir el ejemplo. Si se
@@ -385,6 +386,8 @@ Ejemplo:
 ```racket
 (random-seed (modulo (current-milliseconds) (expt 2 31)))
 ```
+
+Y ahora ya podemos empezar el truco de cartas.
 
 1. Repartimos una lista de cartas y las guardamos en la variable
 `t1`. Podríamos jugar con 3, 9, 15, 21 o 27 cartas. Vamos a hacerlo
