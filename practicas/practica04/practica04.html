@@ -646,7 +646,7 @@ mover la primera aparición del dato al comienzo de la lista, dejando el resto d
 sin modificar. Suponemos que el dato que se pasa como parámetro está contenido en la lista.</p>
 <p>Ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mueve-al-principio</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">e</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">e</span><span class="p">)</span> <span class="c1">; ⇒ (e a b c d e f)</span>
-<span class="p">(</span><span class="n">mueve-al-principio</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span> <span class="ss">g</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span> <span class="c1">; ⇒ (a b c d e f g))</span>
+<span class="p">(</span><span class="n">mueve-al-principio</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span> <span class="ss">g</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span> <span class="c1">; ⇒ (a b c d e f g)</span>
 </code></pre></div>
 <p>b) Implementa una función recursiva <code>(comprueba-simbolos lista-simbolos
 lista-num)</code> que recibe una lista de símbolos y una lista de números
@@ -788,9 +788,9 @@ parámetros.</p>
 tres elementos y una listas con tres listas y devuelva el resultado de
 colocar los elementos en la cabeza de las tres listas.</p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">coloca</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="ss">c</span> <span class="o">&#39;</span><span class="p">(()</span> <span class="p">()</span> <span class="p">()))</span> <span class="c1">; ⇒ ((a) (b) (c)))</span>
-<span class="p">(</span><span class="n">coloca</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="p">((</span><span class="ss">a</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span><span class="p">)))</span> <span class="c1">; ⇒ ((b a) (b a) (b a)))</span>
-<span class="p">(</span><span class="n">coloca</span> <span class="o">&#39;</span><span class="ss">g</span> <span class="o">&#39;</span><span class="ss">h</span> <span class="o">&#39;</span><span class="ss">i</span> <span class="o">&#39;</span><span class="p">((</span><span class="ss">a</span><span class="p">)</span> <span class="p">(</span><span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="p">(</span><span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">)))</span> <span class="c1">; ⇒ ((g a) (h b c) (i d e f)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">coloca</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="ss">c</span> <span class="o">&#39;</span><span class="p">(()</span> <span class="p">()</span> <span class="p">()))</span> <span class="c1">; ⇒ ((a) (b) (c))</span>
+<span class="p">(</span><span class="n">coloca</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="p">((</span><span class="ss">a</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span><span class="p">)))</span> <span class="c1">; ⇒ ((b a) (b a) (b a))</span>
+<span class="p">(</span><span class="n">coloca</span> <span class="o">&#39;</span><span class="ss">g</span> <span class="o">&#39;</span><span class="ss">h</span> <span class="o">&#39;</span><span class="ss">i</span> <span class="o">&#39;</span><span class="p">((</span><span class="ss">a</span><span class="p">)</span> <span class="p">(</span><span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="p">(</span><span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">)))</span> <span class="c1">; ⇒ ((g a) (h b c) (i d e f))</span>
 </code></pre></div>
 <p>b) Usando la función anterior como función auxiliar implementa una
 función recursiva <code>(reparte lista-cartas)</code> que recibe una lista de
@@ -802,13 +802,20 @@ las posiciones 2, 5, 8, etc. irán en el tercero.</p>
 <p>El resultado será una lista con tres listas representando esos tres
 montones de cartas.</p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">baraja</span> <span class="p">(</span><span class="n">cartas</span> <span class="mi">12</span><span class="p">))</span>
-<span class="n">baraja</span> <span class="c1">; ⇒ (Q♣ J♥ 9♣ 7♠ Q♠ 4♥ 8♠ 3♠ 7♦ A♠ A♥ K♠)</span>
-<span class="p">(</span><span class="n">reparte</span> <span class="n">baraja</span><span class="p">)</span> <span class="c1">; ⇒ ((Q♣ 7♠ 8♠ A♠) (J♥ Q♠ 3♠ A♥) (9♣ 4♥ 7♦ K♠))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">doce-cartas</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">A♣</span> <span class="ss">2♣</span> <span class="ss">3♣</span> <span class="ss">4♣</span> <span class="ss">5♣</span> <span class="ss">6♣</span> <span class="ss">7♣</span> <span class="ss">8♣</span> <span class="ss">9♣</span> <span class="ss">J♣</span> <span class="ss">Q♣</span> <span class="ss">K♣</span><span class="p">))</span>
+<span class="p">(</span><span class="n">reparte</span> <span class="n">doce-cartas</span><span class="p">)</span> <span class="c1">; ⇒ &#39;((A♣ 4♣ 7♣ J♣) (2♣ 5♣ 8♣ Q♣) (3♣ 6♣ 9♣ K♣))</span>
 </code></pre></div>
 <p>c) Implementa una función recursiva <code>(elemento-central lista)</code> que
 reciba una lista con un número impar de elementos (mayor o igual que
 uno) y devuelva su elemento central.</p>
+<div class="admonition note">
+<p class="admonition-title">Pista</p>
+<p>Supongamos que defines una función auxiliar <code>(quita-ultimo lista)</code> que
+devuelve una lista sin el último elemento. </p>
+<p>¿Podrías usar esta función para pasarle un caso más sencillo a la
+llamada recursiva y que sea la llamada recursiva la que devuelva
+el elemento central? </p>
+</div>
 <p>Ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">elemento-central</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span> <span class="ss">g</span><span class="p">))</span> <span class="c1">; ⇒ d</span>
 </code></pre></div>
@@ -863,7 +870,7 @@ con 27:</p>
 <li>
 <p>Visualizamos los montones y pedimos al espectador que piense en una
 carta sin decirla. Por ejemplo el as de tréboles.</p>
-<div class="highlight"><pre><span></span><code><span class="n">t1</span> <span class="c1">; ⇒ ((Q♠ 3♣ 2♥ 8♠ 5♦ J♦ A♦ 7♥ 7♦) (J♥ K♣ 4♥ 7♠ 4♣ 4♦ Q♦ 3♠ 2♦) (K♥ 4♠ 2♣ K♠ A♠ 6♥ 5♠ A♣ 9♦))</span>
+<div class="highlight"><pre><span></span><code><span class="n">t1</span> <span class="c1">; ⇒ ((J♣ 8♦ K♥ J♠ 2♠ 8♥ Q♣ 4♦ A♥) (5♥ 9♣ 5♦ Q♠ A♦ 9♥ 5♠ 9♦ Q♦) (7♣ 3♠ 6♥ 6♣ 7♥ 3♣ 4♣ A♣ J♥))</span>
 </code></pre></div>
 </li>
 <li>
@@ -879,7 +886,7 @@ carta sin decirla. Por ejemplo el as de tréboles.</p>
 <li>
 <p>Visualizamos de nuevo los montones y preguntamos dónde está la
    carta. En este caso se encuentra en el centro.</p>
-<div class="highlight"><pre><span></span><code><span class="n">t2</span> <span class="c1">; ⇒ ((J♥ 7♠ Q♦ K♥ K♠ 5♠ Q♠ 8♠ A♦) (K♣ 4♣ 3♠ 4♠ A♠ A♣ 3♣ 5♦ 7♥) (4♥ 4♦ 2♦ 2♣ 6♥ 9♦ 2♥ J♦ 7♦))</span>
+<div class="highlight"><pre><span></span><code><span class="n">t2</span> <span class="c1">; ⇒  ((5♥ Q♠ 5♠ 7♣ 6♣ 4♣ J♣ J♠ Q♣) (9♣ A♦ 9♦ 3♠ 7♥ A♣ 8♦ 2♠ 4♦) (5♦ 9♥ Q♦ 6♥ 3♣ J♥ K♥ 8♥ A♥))</span>
 </code></pre></div>
 <p>Juntamos usando la función <code>centro</code> y volvemos a repartir,
 guardando el resultado en la variable <code>t3</code>:</p>
@@ -888,7 +895,7 @@ guardando el resultado en la variable <code>t3</code>:</p>
 </li>
 <li>
 <p>Visualizamos los montones:</p>
-<div class="highlight"><pre><span></span><code><span class="n">t3</span> <span class="c1">; ⇒ ((4♥ 2♣ 2♥ K♣ 4♠ 3♣ J♥ K♥ Q♠) (4♦ 6♥ J♦ 4♣ A♠ 5♦ 7♠ K♠ 8♠) (2♦ 9♦ 7♦ 3♠ A♣ 7♥ Q♦ 5♠ A♦))</span>
+<div class="highlight"><pre><span></span><code><span class="n">t3</span> <span class="c1">; ⇒  ((5♦ 6♥ K♥ 9♣ 3♠ 8♦ 5♥ 7♣ J♣) (9♥ 3♣ 8♥ A♦ 7♥ 2♠ Q♠ 6♣ J♠) (Q♦ J♥ A♥ 9♦ A♣ 4♦ 5♠ 4♣ Q♣))</span>
 </code></pre></div>
 <p>Y preguntamos dónde se encuentra la carta. En este caso el as de
 trébol se encuentra en el montón de la derecha. Volvemos a juntar
