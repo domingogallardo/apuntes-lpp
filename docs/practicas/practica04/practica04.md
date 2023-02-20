@@ -200,7 +200,7 @@ Como en los anteriores ejercicios, te recomendamos implementar alguna
 función auxiliar.
 
 
-### Ejercicio 6 ###
+### Ejercicio 5 ###
 
 a) Indica qué devuelven las siguientes expresiones en Scheme. Puede ser
 que alguna expresión contenga algún error. Indícalo también en ese
@@ -270,7 +270,7 @@ respuesta era correcta.
 (bar + number? "Hola" 5) ; ⇒ ?
 ```
 
-### Ejercicio 5 ###
+### Ejercicio 6 ###
 
 Vamos a seguir jugando a las cartas con Scheme. Vas a tener que
 implementar una serie de funciones auxiliares con las que vas a poder
