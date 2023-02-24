@@ -280,17 +280,8 @@
 ;; Funciones de orden superior
 ;;-----------------------------
 
-(define (exists? predicado lista)
-  (if (null? lista)
-      #f
-      (or (predicado (first lista))
-          (exists? predicado (rest lista)))))
-
-
-(define (for-all? predicado lista)
-  (or (null? lista)
-      (and (predicado (first lista))
-           (for-all? predicado (rest lista)))))
+(define exists? ormap)
+(define for-all? andmap)
 
 
 ;; ----------------------------------

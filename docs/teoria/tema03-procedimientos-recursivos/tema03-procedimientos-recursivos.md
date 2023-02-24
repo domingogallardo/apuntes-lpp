@@ -840,17 +840,21 @@ la imagen H3 a partir de cuatro imágenes H2.
 El patrón se muestra en la siguiente función `(componer imagen)`: 
 
 ```racket
-(define trazo-horizontal (line 16 0 "black"))
-(define trazo-vertical (rotate 90 trazo-horizontal))
 
-(define (componer imagen)
+(define (trazo-horizontal long)
+  (line long 0 "black"))
+
+(define (trazo-vertical long)
+  (rotate 90 (trazo-horizontal long)))
+
+(define (componer imagen long-trazo)
   (beside (above/align "left"
-                       (beside/align "bottom" imagen trazo-horizontal)
-                       trazo-vertical
+                       (beside/align "bottom" imagen (trazo-horizontal long-trazo))
+                       (trazo-vertical long-trazo)
                        (rotate -90 imagen))
           (above/align "right"
                        imagen
-                       trazo-vertical
+                       (trazo-vertical long-trazo)
                        (rotate 90 imagen))))
 ```
 
@@ -875,15 +879,15 @@ una imagen base formada por un cuadrado con un triángulo dentro.
 
 <img src="imagenes/imagen-ejemplo-componer.png" width="30px"/>
 
-Si llamamos a `componer` con la imagen anterior podemos ver que se
-construye el patrón básico de la curva de Hilbert, el que construye la
-imagen H2 a partir de H1.
+Si llamamos a `componer` con la imagen anterior, usando una longitud
+de trazo de 16 píxeles, podemos ver que se construye el patrón básico
+de la curva de Hilbert, el que construye la imagen H2 a partir de H1.
 
 ```racket
 (define imagen (overlay (triangle 20 "solid" "green")
                         (rectangle 20 20 "solid" "black")))
 imagen 
-(componer imagen)
+(componer imagen 16)
 ```
 
 <img src="imagenes/imagen-componer.png" width="500px"/>
@@ -892,25 +896,25 @@ Una vez entendido este patrón de composición, podemos ya formular el
 algoritmo recursivo:
 
 ```racket
-(define (hilbert nivel)
+(define (hilbert nivel long-trazo)
   (if (= 1 nivel)
       (beside/align "top"
-                    trazo-vertical
-                    trazo-horizontal
-                    trazo-vertical)
-      (componer (hilbert (- nivel 1)))))
-
+                    (trazo-vertical long-trazo)
+                    (trazo-horizontal long-trazo)
+                    (trazo-vertical long-trazo))
+      (componer (hilbert (- nivel 1) long-trazo) long-trazo)))
 ```
 
 - El caso base es el nivel 1, en el que se construye el trazo básico
-  de la curva de Hilbert.
+  de la curva de Hilbert con la longitud de trazo que se pasa como
+  parámetro.
 - Para cualquier nivel _n_  mayor que 1, se llama a la recursión para
   formar la curva de Hilbert de nivel _n-1_ y, con la imagen
   resultante, se llama a la función `componer`.
   
 En la siguiente imagen se muestran distintas llamadas a la función `hilbert`:
 
-<img src="imagenes/image-hilbert.png" width="250px"/>
+<img src="imagenes/image-hilbert.png" width="600px"/>
 
 ## 5. Bibliografía
 
@@ -928,7 +932,7 @@ Manual de Racket:
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2021-22  
+Lenguajes y Paradigmas de Programación, curso 2022-23  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
 
