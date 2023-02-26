@@ -1,3 +1,4 @@
+
 # Práctica 5: Funciones como datos de primera clase y funciones de orden superior
 
 ## Antes de la clase de prácticas ##
@@ -26,38 +27,6 @@ fichero `practica4.rkt`.
 El fichero contiene la definición de las funciones de orden superior `exists?` y `for-all?`.
 
 
-<!--
-
-b) Generalizamos la función anterior `(comprueba-simbolos)` y la llamamos
-`(comprueba pred lista lista-num)` pasándole como parámetro un predicado
-de comparación. La función ahora podrá procesar cualquier tipo de
-listas (de símbolos, de cadenas, de listas, etc.). La función pasada
-como parámetro se encarga de hacer la comparación apropiada al tipo de
-dato de la lista.
-
-Ejemplo:
-
-```racket
-(comprueba (lambda (x y)
-             (= (string-length (symbol->string x)) y))
-           '(este es un ejercicio de examen) 
-           '(2 1 2 9 1 6))
-; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))
-
-(comprueba (lambda (x y)
-              (= (length x) y))
-           '((1 2 3) (a) (a b) (a a) (c) (a b c d)) 
-           '(2 1 2 9 1 4))
-; ⇒ (((a) . 1) ((a b) . 2) ((c) . 1) ((a b c d) . 4))
-
-(comprueba (lambda (x y)
-              (= (string-length x) y))
-           '("aui" "a" "ae" "aa" "c" "aeiou") 
-           '(2 1 2 9 1 5))
-; ⇒ (("a" . 1) ("ae" . 2) ("c" . 1) ("aeiou" . 5))
-```
-
--->
 
 ### Ejercicio 1 ###
 
@@ -97,8 +66,73 @@ Ejemplos:
 (mueve-al-principio-condicion number? '(a b c d)) ; ⇒ '(a b c d)
 ```
 
+c) Vamos a generalizar la función de la práctica anterior
+`(comprueba-simbolos)` llamándola `(comprueba pred lista1
+lista2)` y pasándole como parámetro un predicado de comparación. La
+función ahora podrá procesar cualquier tipo de listas (de símbolos, de
+cadenas, de listas, etc.). La función pasada como parámetro se encarga
+de comparar si el elemento de la primera lista cumple la condición con el
+elemento de la segunda.
+
+Implementa la función `(comprueba pred lista1 lista2)`.
+
+Ejemplo:
+
+```racket
+(comprueba (lambda (x y)
+             (= (string-length (symbol->string x)) y))
+           '(este es un ejercicio de examen) 
+           '(2 1 2 9 1 6))
+; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))
+
+(comprueba (lambda (x y)
+              (= (string-length x) (string-length y)))
+             '("aui" "a" "ae" "c" "aeiou")
+             '("hola" "b" "es" "que" "cinco"))
+; ⇒ (("a" . "b") ("ae" . "es") ("aeiou" . "cinco"))
+```
+
 
 ### Ejercicio 2 ###
+
+Queremos ordenar de menor a mayor una lista que contenga cualquier
+tipo de elemento, no solo números. Para ello vamos a generalizar el
+ejercicio 2 de la práctica anterior, añadiendo un parámetro funcional,
+un predicado `(menor-igual? dato1 dato2)` que nos dice si el dato1 es
+menor o igual que el dato 2.
+
+a) Generaliza las funciones `inserta-ordenada` y `ordena` añadiéndoles
+el parámetro adicional `menor-igual?` que es una función predicado que
+comprueba si un dato de los que componen la lista es menor o igual que
+otro. Llama a las funciones resultantes `inserta-ordenada-genérica` y
+`ordena-genérica`.
+
+
+b) Escribe tres pruebas. En la primera deberás ordenar una lista de
+cadenas por su longitud, en la segunda la lista de cadenas por su
+orden lexicográfico y en la tercera deberás ordenar una lista de
+parejas de números por la suma de su parte izquierda y su parte
+derecha:
+
+```racket
+(check-equal? (ordena-generica '("Hola" "me" "llamo" "Iñigo" "Montoya") ...... ) '("me" "Hola" "llamo" "Iñigo" "Montoya"))
+(check-equal? (ordena-generica '("Hola" "me" "llamo" "Iñigo" "Montoya") ....... ) '("Hola" "Iñigo" "Montoya" "llamo" "me"))
+(check-equal? (ordena-generica '((2 . 2) (1 . 1) (3 . 0) (5 . 1)) ...... ) '((1 . 1) (3 . 0) (2 . 2) (5 . 1)))
+```
+
+c) Define la función `(ordena-cartas lista-cartas)` que ordene una
+lista de cartas de menor a mayor valor usando la función anterior
+`ordena-generica`. Deberás incluir la función `valor-carta` y sus
+funciones auxiliares definidas en prácticas anteriores.
+
+
+Ejemplo:
+
+```racket
+(ordena-cartas '(Q♠ J♣ 5♣ Q♥ J♦)) ; ⇒ '(5♣ J♣ J♦ Q♠ Q♥)
+```
+
+### Ejercicio 3 ###
 
 a) Indica qué devuelven las siguientes expresiones, sin utilizar el
 intérprete. Comprueba después si has acertado.
@@ -195,7 +229,7 @@ _____________
 (check-equal? _____________________  '(3 . 4))
 ```
 
-### Ejercicio 3 ###
+### Ejercicio 4 ###
 
 a) Implementa utilizando funciones de orden superior la función
 `(contar-datos-iguales-fos lista-parejas)` que recibe una lista de
@@ -233,7 +267,7 @@ Ejemplo:
 ; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))
 ```
 
-### Ejercicio 4 ###
+### Ejercicio 5 ###
 
 a) Implementa usando funciones de orden superior la función `(suma-n-izq n
 lista-parejas)` que recibe una lista de parejas y devuelve otra lista
@@ -265,7 +299,7 @@ Ejemplo:
 ```
 
 
-### Ejercicio 5 ###
+### Ejercicio 6 ###
 
 a) Completa la definición de la siguiente función de orden superior
 `(busca-mayor mayor? lista)` que busca el mayor elemento de una
@@ -309,8 +343,29 @@ Ejemplo:
 (todos-menores? '((10 30 20) (1 50 30) (30 40 90)) 55) ; ⇒ #f
 ```
 
+c) Define, usando funciones de orden superior, la función
+`(cuenta-repetidas-fos cartas)` a la que le pasamos una lista de
+cartas y cuenta el número de ocurrencias de los distintos valores de
+las cartas. La función debe devolver una lista también ordenada de
+parejas que indican el número de veces que aparece cada valor. La
+parte izquierda de cada pareja será el número de veces que aparece el
+valor y la parte derecha el propio valor.
+
+Por ejemplo en la lista de cartas '(J♦ Q♠ 2♦ 5♣ J♣ 2♣ Q♥) aparecen 2
+doses, 1 cinco, 2 dieces y 2 onces. La función debe devolver entonces
+la lista '((2 . 2) (1 . 5) (2 . 10) (2 .11))
+
+```racket
+(cuenta-repetidas-fos '(J♦ Q♠ 2♦ 5♣ J♣ 2♣ Q♥)) ; ⇒  ((2 . 2) (1 . 5) (2 . 10) (2 . 11))
+```
+
+!!! Hint "Pista"
+    La función puede primero ordenar las cartas y después aplicar
+    alguna función de orden superior que haga el trabajo de contar,
+    procesando la lista de cartas ya ordenada. 
+
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2021-22  
+Lenguajes y Paradigmas de Programación, curso 2022-23  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
