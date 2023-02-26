@@ -22,7 +22,7 @@ Funcional_](../../teoria/tema02-programacion-funcional/tema02-programacion-funci
 Descarga el [fichero `lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt),
 pulsando el botón derecho del ratón y seleccionando la opción _Guardar
 como_ `lpp.rkt`. Guárdalo en la misma carpeta en la que tengas el
-fichero `practica4.rkt`.
+fichero `practica5.rkt`.
 
 El fichero contiene la definición de las funciones de orden superior `exists?` y `for-all?`.
 
