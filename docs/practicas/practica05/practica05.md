@@ -351,9 +351,9 @@ parejas que indican el número de veces que aparece cada valor. La
 parte izquierda de cada pareja será el número de veces que aparece el
 valor y la parte derecha el propio valor.
 
-Por ejemplo en la lista de cartas '(J♦ Q♠ 2♦ 5♣ J♣ 2♣ Q♥) aparecen 2
+Por ejemplo en la lista de cartas `(J♦ Q♠ 2♦ 5♣ J♣ 2♣ Q♥)` aparecen 2
 doses, 1 cinco, 2 dieces y 2 onces. La función debe devolver entonces
-la lista '((2 . 2) (1 . 5) (2 . 10) (2 .11))
+la lista `((2 . 2) (1 . 5) (2 . 10) (2 .11))`.
 
 ```racket
 (cuenta-repetidas-fos '(J♦ Q♠ 2♦ 5♣ J♣ 2♣ Q♥)) ; ⇒  ((2 . 2) (1 . 5) (2 . 10) (2 . 11))
