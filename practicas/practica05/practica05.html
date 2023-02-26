@@ -436,6 +436,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" class="md-nav__link">
+    Ejercicio 6
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -481,38 +488,6 @@ pulsando el botón derecho del ratón y seleccionando la opción <em>Guardar
 como</em> <code>lpp.rkt</code>. Guárdalo en la misma carpeta en la que tengas el
 fichero <code>practica4.rkt</code>.</p>
 <p>El fichero contiene la definición de las funciones de orden superior <code>exists?</code> y <code>for-all?</code>.</p>
-<!--
-
-b) Generalizamos la función anterior `(comprueba-simbolos)` y la llamamos
-`(comprueba pred lista lista-num)` pasándole como parámetro un predicado
-de comparación. La función ahora podrá procesar cualquier tipo de
-listas (de símbolos, de cadenas, de listas, etc.). La función pasada
-como parámetro se encarga de hacer la comparación apropiada al tipo de
-dato de la lista.
-
-Ejemplo:
-
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">comprueba</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-             <span class="p">(</span><span class="nb">=</span> <span class="p">(</span><span class="nb">string-length</span> <span class="p">(</span><span class="nb">symbol-&gt;string</span> <span class="n">x</span><span class="p">))</span> <span class="n">y</span><span class="p">))</span>
-           <span class="o">&#39;</span><span class="p">(</span><span class="ss">este</span> <span class="ss">es</span> <span class="ss">un</span> <span class="ss">ejercicio</span> <span class="ss">de</span> <span class="ss">examen</span><span class="p">)</span> 
-           <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">6</span><span class="p">))</span>
-<span class="c1">; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))</span>
-
-<span class="p">(</span><span class="n">comprueba</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-              <span class="p">(</span><span class="nb">=</span> <span class="p">(</span><span class="nb">length</span> <span class="n">x</span><span class="p">)</span> <span class="n">y</span><span class="p">))</span>
-           <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span> <span class="ss">b</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span> <span class="ss">a</span><span class="p">)</span> <span class="p">(</span><span class="ss">c</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span><span class="p">))</span> 
-           <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">4</span><span class="p">))</span>
-<span class="c1">; ⇒ (((a) . 1) ((a b) . 2) ((c) . 1) ((a b c d) . 4))</span>
-
-<span class="p">(</span><span class="n">comprueba</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-              <span class="p">(</span><span class="nb">=</span> <span class="p">(</span><span class="nb">string-length</span> <span class="n">x</span><span class="p">)</span> <span class="n">y</span><span class="p">))</span>
-           <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;aui&quot;</span> <span class="s2">&quot;a&quot;</span> <span class="s2">&quot;ae&quot;</span> <span class="s2">&quot;aa&quot;</span> <span class="s2">&quot;c&quot;</span> <span class="s2">&quot;aeiou&quot;</span><span class="p">)</span> 
-           <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">5</span><span class="p">))</span>
-<span class="c1">; ⇒ ((&quot;a&quot; . 1) (&quot;ae&quot; . 2) (&quot;c&quot; . 1) (&quot;aeiou&quot; . 5))</span>
-</code></pre></div>
-
--->
-
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
 <p>a) Define la función <code>(aplica-veces f1 f2 n x)</code> que aplica <code>n</code> veces
 las funciones <code>f2</code> y <code>f1</code> al número <code>x</code>. </p>
@@ -540,7 +515,55 @@ lista original.</p>
 <span class="p">(</span><span class="n">mueve-al-principio-condicion</span> <span class="nb">number?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="ss">a</span> <span class="ss">b</span> <span class="mi">1</span> <span class="ss">c</span><span class="p">))</span> <span class="c1">; ⇒ (1 a b 1 c)</span>
 <span class="p">(</span><span class="n">mueve-al-principio-condicion</span> <span class="nb">number?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(a b c d)</span>
 </code></pre></div>
+<p>c) Vamos a generalizar la función de la práctica anterior
+<code>(comprueba-simbolos)</code> llamándola <code>(comprueba pred lista1
+lista2)</code> y pasándole como parámetro un predicado de comparación. La
+función ahora podrá procesar cualquier tipo de listas (de símbolos, de
+cadenas, de listas, etc.). La función pasada como parámetro se encarga
+de comparar si el elemento de la primera lista cumple la condición con el
+elemento de la segunda.</p>
+<p>Implementa la función <code>(comprueba pred lista1 lista2)</code>.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">comprueba</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+             <span class="p">(</span><span class="nb">=</span> <span class="p">(</span><span class="nb">string-length</span> <span class="p">(</span><span class="nb">symbol-&gt;string</span> <span class="n">x</span><span class="p">))</span> <span class="n">y</span><span class="p">))</span>
+           <span class="o">&#39;</span><span class="p">(</span><span class="ss">este</span> <span class="ss">es</span> <span class="ss">un</span> <span class="ss">ejercicio</span> <span class="ss">de</span> <span class="ss">examen</span><span class="p">)</span> 
+           <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">6</span><span class="p">))</span>
+<span class="c1">; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))</span>
+
+<span class="p">(</span><span class="n">comprueba</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+              <span class="p">(</span><span class="nb">=</span> <span class="p">(</span><span class="nb">string-length</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">string-length</span> <span class="n">y</span><span class="p">)))</span>
+             <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;aui&quot;</span> <span class="s2">&quot;a&quot;</span> <span class="s2">&quot;ae&quot;</span> <span class="s2">&quot;c&quot;</span> <span class="s2">&quot;aeiou&quot;</span><span class="p">)</span>
+             <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;b&quot;</span> <span class="s2">&quot;es&quot;</span> <span class="s2">&quot;que&quot;</span> <span class="s2">&quot;cinco&quot;</span><span class="p">))</span>
+<span class="c1">; ⇒ ((&quot;a&quot; . &quot;b&quot;) (&quot;ae&quot; . &quot;es&quot;) (&quot;aeiou&quot; . &quot;cinco&quot;))</span>
+</code></pre></div>
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
+<p>Queremos ordenar de menor a mayor una lista que contenga cualquier
+tipo de elemento, no solo números. Para ello vamos a generalizar el
+ejercicio 2 de la práctica anterior, añadiendo un parámetro funcional,
+un predicado <code>(menor-igual? dato1 dato2)</code> que nos dice si el dato1 es
+menor o igual que el dato 2.</p>
+<p>a) Generaliza las funciones <code>inserta-ordenada</code> y <code>ordena</code> añadiéndoles
+el parámetro adicional <code>menor-igual?</code> que es una función predicado que
+comprueba si un dato de los que componen la lista es menor o igual que
+otro. Llama a las funciones resultantes <code>inserta-ordenada-genérica</code> y
+<code>ordena-genérica</code>.</p>
+<p>b) Escribe tres pruebas. En la primera deberás ordenar una lista de
+cadenas por su longitud, en la segunda la lista de cadenas por su
+orden lexicográfico y en la tercera deberás ordenar una lista de
+parejas de números por la suma de su parte izquierda y su parte
+derecha:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">ordena-generica</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;me&quot;</span> <span class="s2">&quot;llamo&quot;</span> <span class="s2">&quot;Iñigo&quot;</span> <span class="s2">&quot;Montoya&quot;</span><span class="p">)</span> <span class="n">......</span> <span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;me&quot;</span> <span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;llamo&quot;</span> <span class="s2">&quot;Iñigo&quot;</span> <span class="s2">&quot;Montoya&quot;</span><span class="p">))</span>
+<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">ordena-generica</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;me&quot;</span> <span class="s2">&quot;llamo&quot;</span> <span class="s2">&quot;Iñigo&quot;</span> <span class="s2">&quot;Montoya&quot;</span><span class="p">)</span> <span class="n">.......</span> <span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;Iñigo&quot;</span> <span class="s2">&quot;Montoya&quot;</span> <span class="s2">&quot;llamo&quot;</span> <span class="s2">&quot;me&quot;</span><span class="p">))</span>
+<span class="p">(</span><span class="n">check-equal?</span> <span class="p">(</span><span class="n">ordena-generica</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">1</span><span class="p">))</span> <span class="n">......</span> <span class="p">)</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">1</span><span class="p">)))</span>
+</code></pre></div>
+<p>c) Define la función <code>(ordena-cartas lista-cartas)</code> que ordene una
+lista de cartas de menor a mayor valor usando la función anterior
+<code>ordena-generica</code>. Deberás incluir la función <code>valor-carta</code> y sus
+funciones auxiliares definidas en prácticas anteriores.</p>
+<p>Ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">ordena-cartas</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">Q♠</span> <span class="ss">J♣</span> <span class="ss">5♣</span> <span class="ss">Q♥</span> <span class="ss">J♦</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(5♣ J♣ J♦ Q♠ Q♥)</span>
+</code></pre></div>
+<h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
 <p>a) Indica qué devuelven las siguientes expresiones, sin utilizar el
 intérprete. Comprueba después si has acertado.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -624,7 +647,7 @@ con el intérprete si lo has hecho correctamente.</p>
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">f</span> <span class="n">g</span><span class="p">)</span> <span class="p">(</span><span class="k">lambda</span><span class="p">(</span><span class="n">z</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="n">g</span> <span class="n">z</span> <span class="n">x</span><span class="p">)))</span>
 <span class="p">(</span><span class="n">check-equal?</span> <span class="n">_____________________</span>  <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">4</span><span class="p">))</span>
 </code></pre></div>
-<h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
+<h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
 <p>a) Implementa utilizando funciones de orden superior la función
 <code>(contar-datos-iguales-fos lista-parejas)</code> que recibe una lista de
 parejas y devuelve el número de parejas que tienen sus dos datos
@@ -651,7 +674,7 @@ pasada.</p>
 <div class="highlight"><pre><span></span><code>(comprueba-simbolos-fos &#39;(este es un ejercicio de examen) &#39;(2 1 2 9 1 6))
 ; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))
 </code></pre></div>
-<h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
+<h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
 <p>a) Implementa usando funciones de orden superior la función <code>(suma-n-izq n
 lista-parejas)</code> que recibe una lista de parejas y devuelve otra lista
 a la que hemos sumado <code>n</code> a todas las partes izquierdas.</p>
@@ -672,7 +695,7 @@ función a los elementos izquierdo y derecho de cada pareja.</p>
                  <span class="p">(</span><span class="nb">*</span> <span class="n">y</span> <span class="mi">-1</span><span class="p">)))</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">8</span> <span class="o">.</span> <span class="mi">10</span><span class="p">)))</span>
 <span class="c1">; ⇒ (3 -3 -4 10)</span>
 </code></pre></div>
-<h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
+<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
 <p>a) Completa la definición de la siguiente función de orden superior
 <code>(busca-mayor mayor? lista)</code> que busca el mayor elemento de una
 lista. Recibe un predicado <code>mayor?</code> que compara dos elementos de la
@@ -705,8 +728,26 @@ usando <code>for-all?</code> y la función de orden superior <code>exists?</code
 <span class="p">(</span><span class="n">todos-menores?</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">10</span> <span class="mi">30</span> <span class="mi">20</span><span class="p">)</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">50</span> <span class="mi">30</span><span class="p">)</span> <span class="p">(</span><span class="mi">30</span> <span class="mi">40</span> <span class="mi">90</span><span class="p">))</span> <span class="mi">90</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
 <span class="p">(</span><span class="n">todos-menores?</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">10</span> <span class="mi">30</span> <span class="mi">20</span><span class="p">)</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">50</span> <span class="mi">30</span><span class="p">)</span> <span class="p">(</span><span class="mi">30</span> <span class="mi">40</span> <span class="mi">90</span><span class="p">))</span> <span class="mi">55</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
 </code></pre></div>
+<p>c) Define, usando funciones de orden superior, la función
+<code>(cuenta-repetidas-fos cartas)</code> a la que le pasamos una lista de
+cartas y cuenta el número de ocurrencias de los distintos valores de
+las cartas. La función debe devolver una lista también ordenada de
+parejas que indican el número de veces que aparece cada valor. La
+parte izquierda de cada pareja será el número de veces que aparece el
+valor y la parte derecha el propio valor.</p>
+<p>Por ejemplo en la lista de cartas '(J♦ Q♠ 2♦ 5♣ J♣ 2♣ Q♥) aparecen 2
+doses, 1 cinco, 2 dieces y 2 onces. La función debe devolver entonces
+la lista '((2 . 2) (1 . 5) (2 . 10) (2 .11))</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cuenta-repetidas-fos</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">J♦</span> <span class="ss">Q♠</span> <span class="ss">2♦</span> <span class="ss">5♣</span> <span class="ss">J♣</span> <span class="ss">2♣</span> <span class="ss">Q♥</span><span class="p">))</span> <span class="c1">; ⇒  ((2 . 2) (1 . 5) (2 . 10) (2 . 11))</span>
+</code></pre></div>
+<div class="admonition hint">
+<p class="admonition-title">Pista</p>
+<p>La función puede primero ordenar las cartas y después aplicar
+alguna función de orden superior que haga el trabajo de contar,
+procesando la lista de cartas ya ordenada. </p>
+</div>
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2021-22<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2022-23<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
                 
