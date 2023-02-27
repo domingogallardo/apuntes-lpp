@@ -619,6 +619,18 @@ modificar.</p>
 <p>A diferencia de la práctica anterior, en la lista puede no haber
 ningún elemento que cumpla el predicado. En ese caso se devolverá la
 lista original.</p>
+<div class="admonition hint">
+<p class="admonition-title">Pista</p>
+<p>El hecho de que se permita que no haya ningún elemento que cumpla
+el predicado obliga a cambiar bastante la solución de la práctica
+anterior. Fíjate por ejemplo en la función
+<code>(inserta-en-segunda-posicion dato lista)</code>. En el caso en que no
+haya en la lista ningún elemento que cumpla la condición esta
+función deberá <strong>añadir en cabeza</strong> el dato, en lugar de
+insertarlo en segunda posición. De hecho, podríamos cambiar el
+nombre de la función auxiliar y llamarla <code>inserta-segundo-cond</code> o
+algo así.</p>
+</div>
 <p>Ejemplos:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mueve-al-principio-condicion</span> <span class="nb">number?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="mi">1</span> <span class="ss">d</span> <span class="mi">1</span> <span class="ss">e</span><span class="p">)</span> <span class="c1">; ⇒ (1 a b c d 1 e)</span>
 <span class="p">(</span><span class="n">mueve-al-principio-condicion</span> <span class="nb">number?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="ss">a</span> <span class="ss">b</span> <span class="mi">1</span> <span class="ss">c</span><span class="p">))</span> <span class="c1">; ⇒ (1 a b 1 c)</span>
