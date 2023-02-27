@@ -61,13 +61,14 @@ lista original.
 !!! Hint "Pista"
     El hecho de que se permita que no haya ningún elemento que cumpla
     el predicado obliga a cambiar bastante la solución de la práctica
-    anterior. Fíjate por ejemplo en la función
-    `(inserta-en-segunda-posicion dato lista)`. En el caso en que no
-    haya en la lista ningún elemento que cumpla la condición esta
-    función deberá **añadir en cabeza** el dato, en lugar de
-    insertarlo en segunda posición. De hecho, podríamos cambiar el
-    nombre de la función auxiliar y llamarla `inserta-segundo-cond` o
-    algo así.
+    anterior. 
+    
+    Fíjate por ejemplo en la función `(inserta-en-segunda-posicion
+    dato lista)` de la solución. En el caso en que no haya en la lista
+    ningún elemento que cumpla la condición esta función deberá
+    **añadir en cabeza** el dato, en lugar de insertarlo en segunda
+    posición. De hecho, podríamos cambiar el nombre de la función
+    auxiliar y llamarla `inserta-segundo-cond` o algo así.
 
 
 Ejemplos:
