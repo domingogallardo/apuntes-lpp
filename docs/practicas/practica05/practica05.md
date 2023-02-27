@@ -346,10 +346,10 @@ Ejemplo:
 c) Define, usando funciones de orden superior, la función
 `(cuenta-repetidas-fos cartas)` a la que le pasamos una lista de
 cartas y cuenta el número de ocurrencias de los distintos valores de
-las cartas. La función debe devolver una lista también ordenada de
-parejas que indican el número de veces que aparece cada valor. La
-parte izquierda de cada pareja será el número de veces que aparece el
-valor y la parte derecha el propio valor.
+las cartas. La función debe devolver una lista ordenada de parejas que
+indican el número de veces que aparece cada valor. La parte izquierda
+de cada pareja será el número de veces que aparece el valor y la parte
+derecha el propio valor.
 
 Por ejemplo en la lista de cartas `(J♦ Q♠ 2♦ 5♣ J♣ 2♣ Q♥)` aparecen 2
 doses, 1 cinco, 2 dieces y 2 onces. La función debe devolver entonces
