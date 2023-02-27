@@ -214,18 +214,18 @@ con el intérprete si lo has hecho correctamente.
 
 
 ```racket
-(define (f x) (lambda (y z) (string-append y z x)))
-(define g (f "a"))
+(define (f1 x) (lambda (y z) (string-append y z x)))
+(define g1 (f "a"))
 (check-equal? ____________________ "claselppa")
 
 
 
-(define (f x) (lambda (y z) (list y x z)))
+(define (f2 x) (lambda (y z) (list y x z)))
 _____________
-(check-equal? (g "hola" "clase") (list "hola" "lpp" "clase"))
+(check-equal? (g2 "hola" "clase") (list "hola" "lpp" "clase"))
 
 
-(define (f g) (lambda(z x) (g z x)))
+(define (f3 g3) (lambda(z x) (g z x)))
 (check-equal? _____________________  '(3 . 4))
 ```
 
