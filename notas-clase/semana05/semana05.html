@@ -716,8 +716,32 @@ rellenar completamente el plano.</p>
 <p>La curva H2 se puede construir a partir de la curva H1. El algoritmo
 recursivo se formula dibujando la curva i-ésima a partir de la curva
 i-1.</p>
-<ul>
-<li>Estudia su formulación recursiva y su implementación en los apuntes.</li>
-</ul></body>
+<p>Función <code>componer</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">trazo-horizontal</span> <span class="n">long</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">line</span> <span class="n">long</span> <span class="mi">0</span> <span class="s2">&quot;black&quot;</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">rotate</span> <span class="mi">90</span> <span class="p">(</span><span class="n">trazo-horizontal</span> <span class="n">long</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">componer</span> <span class="n">imagen</span> <span class="n">long-trazo</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">beside</span> <span class="p">(</span><span class="n">above/align</span> <span class="s2">&quot;left&quot;</span>
+                       <span class="p">(</span><span class="n">beside/align</span> <span class="s2">&quot;bottom&quot;</span> <span class="n">imagen</span> <span class="p">(</span><span class="n">trazo-horizontal</span> <span class="n">long-trazo</span><span class="p">))</span>
+                       <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long-trazo</span><span class="p">)</span>
+                       <span class="p">(</span><span class="n">rotate</span> <span class="mi">-90</span> <span class="n">imagen</span><span class="p">))</span>
+          <span class="p">(</span><span class="n">above/align</span> <span class="s2">&quot;right&quot;</span>
+                       <span class="n">imagen</span>
+                       <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long-trazo</span><span class="p">)</span>
+                       <span class="p">(</span><span class="n">rotate</span> <span class="mi">90</span> <span class="n">imagen</span><span class="p">))))</span>
+</code></pre></div>
+<p><img src="imagenes/imagen-componer.png" width="500px"/></p>
+<p>Función <code>hilbert</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hilbert</span> <span class="n">nivel</span> <span class="n">long-trazo</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="mi">1</span> <span class="n">nivel</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">beside/align</span> <span class="s2">&quot;top&quot;</span>
+                    <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long-trazo</span><span class="p">)</span>
+                    <span class="p">(</span><span class="n">trazo-horizontal</span> <span class="n">long-trazo</span><span class="p">)</span>
+                    <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long-trazo</span><span class="p">))</span>
+      <span class="p">(</span><span class="n">componer</span> <span class="p">(</span><span class="n">hilbert</span> <span class="p">(</span><span class="nb">-</span> <span class="n">nivel</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long-trazo</span><span class="p">)</span> <span class="n">long-trazo</span><span class="p">)))</span>
+</code></pre></div></body>
 
 </html>

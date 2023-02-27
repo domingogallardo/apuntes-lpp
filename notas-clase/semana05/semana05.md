@@ -652,6 +652,36 @@ La curva H2 se puede construir a partir de la curva H1. El algoritmo
 recursivo se formula dibujando la curva i-ésima a partir de la curva
 i-1.
 
-- Estudia su formulación recursiva y su implementación en los apuntes.
+Función `componer`:
 
+```racket
+(define (trazo-horizontal long)
+  (line long 0 "black"))
 
+(define (trazo-vertical long)
+  (rotate 90 (trazo-horizontal long)))
+
+(define (componer imagen long-trazo)
+  (beside (above/align "left"
+                       (beside/align "bottom" imagen (trazo-horizontal long-trazo))
+                       (trazo-vertical long-trazo)
+                       (rotate -90 imagen))
+          (above/align "right"
+                       imagen
+                       (trazo-vertical long-trazo)
+                       (rotate 90 imagen))))
+```
+
+<img src="imagenes/imagen-componer.png" width="500px"/>
+
+Función `hilbert`:
+
+```racket
+(define (hilbert nivel long-trazo)
+  (if (= 1 nivel)
+      (beside/align "top"
+                    (trazo-vertical long-trazo)
+                    (trazo-horizontal long-trazo)
+                    (trazo-vertical long-trazo))
+      (componer (hilbert (- nivel 1) long-trazo) long-trazo)))
+```
