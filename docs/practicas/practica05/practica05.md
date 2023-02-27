@@ -58,6 +58,15 @@ A diferencia de la práctica anterior, en la lista puede no haber
 ningún elemento que cumpla el predicado. En ese caso se devolverá la
 lista original.
 
+
+Ejemplos:
+
+```racket
+(mueve-al-principio-condicion number? '(a b c 1 d 1 e) ; ⇒ (1 a b c d 1 e)
+(mueve-al-principio-condicion number? '(1 a b 1 c)) ; ⇒ (1 a b 1 c)
+(mueve-al-principio-condicion number? '(a b c d)) ; ⇒ '(a b c d)
+```
+
 !!! Hint "Pista"
     El hecho de que se permita que no haya ningún elemento que cumpla
     el predicado obliga a cambiar bastante la solución de la práctica
@@ -70,14 +79,6 @@ lista original.
     posición. De hecho, podríamos cambiar el nombre de la función
     auxiliar y llamarla `inserta-segundo-cond` o algo así.
 
-
-Ejemplos:
-
-```racket
-(mueve-al-principio-condicion number? '(a b c 1 d 1 e) ; ⇒ (1 a b c d 1 e)
-(mueve-al-principio-condicion number? '(1 a b 1 c)) ; ⇒ (1 a b 1 c)
-(mueve-al-principio-condicion number? '(a b c d)) ; ⇒ '(a b c d)
-```
 
 c) Vamos a generalizar la función de la práctica anterior
 `(comprueba-simbolos)` llamándola `(comprueba pred lista1
