@@ -619,6 +619,11 @@ modificar.</p>
 <p>A diferencia de la práctica anterior, en la lista puede no haber
 ningún elemento que cumpla el predicado. En ese caso se devolverá la
 lista original.</p>
+<p>Ejemplos:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mueve-al-principio-condicion</span> <span class="nb">number?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="mi">1</span> <span class="ss">d</span> <span class="mi">1</span> <span class="ss">e</span><span class="p">)</span> <span class="c1">; ⇒ (1 a b c d 1 e)</span>
+<span class="p">(</span><span class="n">mueve-al-principio-condicion</span> <span class="nb">number?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="ss">a</span> <span class="ss">b</span> <span class="mi">1</span> <span class="ss">c</span><span class="p">))</span> <span class="c1">; ⇒ (1 a b 1 c)</span>
+<span class="p">(</span><span class="n">mueve-al-principio-condicion</span> <span class="nb">number?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(a b c d)</span>
+</code></pre></div>
 <div class="admonition hint">
 <p class="admonition-title">Pista</p>
 <p>El hecho de que se permita que no haya ningún elemento que cumpla
@@ -631,11 +636,6 @@ ningún elemento que cumpla la condición esta función deberá
 posición. De hecho, podríamos cambiar el nombre de la función
 auxiliar y llamarla <code>inserta-segundo-cond</code> o algo así.</p>
 </div>
-<p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mueve-al-principio-condicion</span> <span class="nb">number?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="mi">1</span> <span class="ss">d</span> <span class="mi">1</span> <span class="ss">e</span><span class="p">)</span> <span class="c1">; ⇒ (1 a b c d 1 e)</span>
-<span class="p">(</span><span class="n">mueve-al-principio-condicion</span> <span class="nb">number?</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="ss">a</span> <span class="ss">b</span> <span class="mi">1</span> <span class="ss">c</span><span class="p">))</span> <span class="c1">; ⇒ (1 a b 1 c)</span>
-<span class="p">(</span><span class="n">mueve-al-principio-condicion</span> <span class="nb">number?</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(a b c d)</span>
-</code></pre></div>
 <p>c) Vamos a generalizar la función de la práctica anterior
 <code>(comprueba-simbolos)</code> llamándola <code>(comprueba pred lista1
 lista2)</code> y pasándole como parámetro un predicado de comparación. La
