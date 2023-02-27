@@ -685,3 +685,5 @@ Función `hilbert`:
                     (trazo-vertical long-trazo))
       (componer (hilbert (- nivel 1) long-trazo) long-trazo)))
 ```
+
+<img src="imagenes/image-hilbert.png" width="600px"/>
