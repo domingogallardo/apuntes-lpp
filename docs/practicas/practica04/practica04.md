@@ -330,8 +330,9 @@ reciba una lista con un número impar de elementos (mayor o igual que
 uno) y devuelva su elemento central.
 
 !!! Note "Pista"
-    Supongamos que defines una función auxiliar `(quita-ultimo lista)` que
-    devuelve una lista sin el último elemento. 
+    Supongamos que defines una función recursiva auxiliar
+    `(quita-ultimo lista)` que devuelve una lista sin el último
+    elemento.
     
     ¿Podrías usar esta función para pasarle un caso más sencillo a la
     llamada recursiva y que sea la llamada recursiva la que devuelva

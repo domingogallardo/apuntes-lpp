@@ -30,8 +30,8 @@ El fichero contiene la definición de las funciones de orden superior `exists?` 
 
 ### Ejercicio 1 ###
 
-a) Define la función `(aplica-veces f1 f2 n x)` que aplica `n` veces
-las funciones `f2` y `f1` al número `x`. 
+a) Define la función recursiva `(aplica-veces f1 f2 n x)` que aplica
+`n` veces las funciones `f2` y `f1` al número `x`. 
 
 Por ejemplo, `(aplica-veces doble suma-2 3 5)` deberá devolver el
 resultado de sumarle 2 a 5 (7), después calcular el doble (14),
