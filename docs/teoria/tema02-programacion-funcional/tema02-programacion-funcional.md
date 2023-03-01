@@ -3138,7 +3138,7 @@ y:
 
 ```racket
 (define (divisor? x y)
-      (= 0 (mod y x)))
+      (= 0 (remainder y x)))
 ```
 
 Ejemplos:
