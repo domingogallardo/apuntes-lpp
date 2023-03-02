@@ -229,7 +229,7 @@ con el intérprete si lo has hecho correctamente.
 
 ```racket
 (define (f1 x) (lambda (y z) (string-append y z x)))
-(define g1 (f "a"))
+(define g1 (f1 "a"))
 (check-equal? ____________________ "claselppa")
 
 
