@@ -239,7 +239,7 @@ _____________
 (check-equal? (g2 "hola" "clase") (list "hola" "lpp" "clase"))
 
 
-(define (f3 g3) (lambda(z x) (g z x)))
+(define (f3 g3) (lambda(z x) (g3 z x)))
 (check-equal? _____________________  '(3 . 4))
 ```
 
