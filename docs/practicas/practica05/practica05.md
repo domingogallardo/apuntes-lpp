@@ -271,7 +271,7 @@ la práctica anterior debes usar la función `expande-pareja`.
 
 c) Implementa, utilizando funciones de orden superior, la función
 `(comprueba-simbolos-fos lista-simbolos lista-num)` que hace lo mismo
-que la función `comprueba-simbolos` del ejercicio 6a) de la práctica
+que la función `comprueba-simbolos` del ejercicio 3b) de la práctica
 pasada.
 
 Ejemplo:
