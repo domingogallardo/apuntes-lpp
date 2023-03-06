@@ -823,15 +823,15 @@ Un ejemplo de la ejecución:
 
 El código anterior no es nada eficiente porque cada llamada recursiva
 genera a su vez otras 3 llamadas, provocando un coste exponencial como
-hemos visto al comienzo de la clase.
+hemos visto al comienzo del tema.
 
 En este caso es muy sencillo eliminar las tres llamadas porque las
 tres son llamadas repetidas que van a devolver exactamente la misma
-figura. Podemos entonces usar la técnica que ya hemos visto tanto en
-teoría como en prácticas de llamar a una función auxiliar con el
-resultado de la recursión para que esta función auxiliar sea la que
-recoja en el parámetro el valor devuelto por la recursión y realice
-con ese valor las operaciones necesarias.
+figura. Podemos entonces usar la técnica que ya hemos usado otras
+veces de llamar a una función auxiliar con el resultado de la
+recursión. Esta función auxiliar recogerá en su parámetro el valor
+devuelto por la recursión y realizará con ese valor las operaciones
+necesarias.
 
 En este caso, el valor obtenido por la recursión es la figura de
 Serpienski más pequeña. La función auxiliar recibirá entonces esa
