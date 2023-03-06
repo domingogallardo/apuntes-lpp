@@ -707,6 +707,26 @@ la imagen resultante con el patrón visto anteriormente.</li>
                      <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">ancho</span> <span class="mi">2</span><span class="p">))))))</span>
 </code></pre></div>
 <p><img src="imagenes/image-sierpinski.png" width="600px"/></p>
+<ul>
+<li>
+<p>Mejoramos el código para evitar hacer tres llamadas recursivas. </p>
+</li>
+<li>
+<p>Como todas las llamadas son iguales, hacemos solo una única llamada y
+  pasamos el valor resultante (la figura de Sierpiniski pequeña) a una
+  función auxiliar que hace la composición de la figura para construir
+  la figura grande.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">componer-sierpinski</span> <span class="n">figura</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">above</span> <span class="n">figura</span>
+           <span class="p">(</span><span class="n">beside</span> <span class="n">figura</span> <span class="n">figura</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">sierpinski</span> <span class="n">ancho</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&lt;</span> <span class="n">ancho</span> <span class="mi">10</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">sierpinski-elem</span> <span class="n">ancho</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">componer-sierpinski</span> <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">ancho</span> <span class="mi">2</span><span class="p">)))))</span>
+</code></pre></div>
 <h3>Otra figura recursiva: curvas de Hilbert</h3>
 <p>La curva de Hilbert es una curva fractal que tiene la propiedad de
 rellenar completamente el plano.</p>
@@ -716,14 +736,14 @@ rellenar completamente el plano.</p>
 <p>La curva H2 se puede construir a partir de la curva H1. El algoritmo
 recursivo se formula dibujando la curva i-ésima a partir de la curva
 i-1.</p>
-<p>Función <code>componer</code>:</p>
+<p>Función <code>componer-hilbert</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">trazo-horizontal</span> <span class="n">long</span><span class="p">)</span>
   <span class="p">(</span><span class="n">line</span> <span class="n">long</span> <span class="mi">0</span> <span class="s2">&quot;black&quot;</span><span class="p">))</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long</span><span class="p">)</span>
   <span class="p">(</span><span class="n">rotate</span> <span class="mi">90</span> <span class="p">(</span><span class="n">trazo-horizontal</span> <span class="n">long</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">componer</span> <span class="n">imagen</span> <span class="n">long-trazo</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">componer-hilbert</span> <span class="n">imagen</span> <span class="n">long-trazo</span><span class="p">)</span>
   <span class="p">(</span><span class="n">beside</span> <span class="p">(</span><span class="n">above/align</span> <span class="s2">&quot;left&quot;</span>
                        <span class="p">(</span><span class="n">beside/align</span> <span class="s2">&quot;bottom&quot;</span> <span class="n">imagen</span> <span class="p">(</span><span class="n">trazo-horizontal</span> <span class="n">long-trazo</span><span class="p">))</span>
                        <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long-trazo</span><span class="p">)</span>
@@ -741,7 +761,7 @@ i-1.</p>
                     <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long-trazo</span><span class="p">)</span>
                     <span class="p">(</span><span class="n">trazo-horizontal</span> <span class="n">long-trazo</span><span class="p">)</span>
                     <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long-trazo</span><span class="p">))</span>
-      <span class="p">(</span><span class="n">componer</span> <span class="p">(</span><span class="n">hilbert</span> <span class="p">(</span><span class="nb">-</span> <span class="n">nivel</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long-trazo</span><span class="p">)</span> <span class="n">long-trazo</span><span class="p">)))</span>
+      <span class="p">(</span><span class="n">componer-hilbert</span> <span class="p">(</span><span class="n">hilbert</span> <span class="p">(</span><span class="nb">-</span> <span class="n">nivel</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long-trazo</span><span class="p">)</span> <span class="n">long-trazo</span><span class="p">)))</span>
 </code></pre></div>
 <p><img src="imagenes/image-hilbert.png" width="600px"/></p></body>
 

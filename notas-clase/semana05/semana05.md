@@ -636,6 +636,24 @@ Recursión completa:
 
 <img src="imagenes/image-sierpinski.png" width="600px"/>
 
+- Mejoramos el código para evitar hacer tres llamadas recursivas. 
+
+- Como todas las llamadas son iguales, hacemos solo una única llamada y
+  pasamos el valor resultante (la figura de Sierpiniski pequeña) a una
+  función auxiliar que hace la composición de la figura para construir
+  la figura grande.
+
+```racket
+(define (componer-sierpinski figura)
+    (above figura
+           (beside figura figura)))
+
+(define (sierpinski ancho)
+  (if (< ancho 10)
+      (sierpinski-elem ancho)
+      (componer-sierpinski (sierpinski (/ ancho 2)))))
+```
+
 
 ### Otra figura recursiva: curvas de Hilbert
 
@@ -652,7 +670,7 @@ La curva H2 se puede construir a partir de la curva H1. El algoritmo
 recursivo se formula dibujando la curva i-ésima a partir de la curva
 i-1.
 
-Función `componer`:
+Función `componer-hilbert`:
 
 ```racket
 (define (trazo-horizontal long)
@@ -661,7 +679,7 @@ Función `componer`:
 (define (trazo-vertical long)
   (rotate 90 (trazo-horizontal long)))
 
-(define (componer imagen long-trazo)
+(define (componer-hilbert imagen long-trazo)
   (beside (above/align "left"
                        (beside/align "bottom" imagen (trazo-horizontal long-trazo))
                        (trazo-vertical long-trazo)
@@ -683,7 +701,7 @@ Función `hilbert`:
                     (trazo-vertical long-trazo)
                     (trazo-horizontal long-trazo)
                     (trazo-vertical long-trazo))
-      (componer (hilbert (- nivel 1) long-trazo) long-trazo)))
+      (componer-hilbert (hilbert (- nivel 1) long-trazo) long-trazo)))
 ```
 
 <img src="imagenes/image-hilbert.png" width="600px"/>

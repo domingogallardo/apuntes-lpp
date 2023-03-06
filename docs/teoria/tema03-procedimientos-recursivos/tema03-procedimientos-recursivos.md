@@ -821,6 +821,35 @@ Un ejemplo de la ejecución:
 
 <img src="imagenes/image-sierpinski.png" width="600px"/>
 
+El código anterior no es nada eficiente porque cada llamada recursiva
+genera a su vez otras 3 llamadas, provocando un coste exponencial como
+hemos visto al comienzo de la clase.
+
+En este caso es muy sencillo eliminar las tres llamadas porque las
+tres son llamadas repetidas que van a devolver exactamente la misma
+figura. Podemos entonces usar la técnica que ya hemos visto tanto en
+teoría como en prácticas de llamar a una función auxiliar con el
+resultado de la recursión para que esta función auxiliar sea la que
+recoja en el parámetro el valor devuelto por la recursión y realice
+con ese valor las operaciones necesarias.
+
+En este caso, el valor obtenido por la recursión es la figura de
+Serpienski más pequeña. La función auxiliar recibirá entonces esa
+figura y deberá combinarla tres veces para formar la figura de
+Sierpinski mayor.
+
+El código resultante es el siguiente:
+
+```racket
+(define (componer-sierpinski figura)
+    (above figura
+           (beside figura figura)))
+
+(define (sierpinski ancho)
+  (if (< ancho 10)
+      (sierpinski-elem ancho)
+      (componer-sierpinski (sierpinski (/ ancho 2)))))
+```
 
 ### 4.3. Curva de Hilbert ###
 
@@ -837,7 +866,7 @@ La imagen H2 se puede componer a partir de cuatro imágenes H1
 siguiendo un patrón. Es el mismo patrón con el que se puede componer
 la imagen H3 a partir de cuatro imágenes H2.
 
-El patrón se muestra en la siguiente función `(componer imagen)`: 
+El patrón se muestra en la siguiente función `(componer-hilbert imagen)`: 
 
 ```racket
 
@@ -847,7 +876,7 @@ El patrón se muestra en la siguiente función `(componer imagen)`:
 (define (trazo-vertical long)
   (rotate 90 (trazo-horizontal long)))
 
-(define (componer imagen long-trazo)
+(define (componer-hilbert imagen long-trazo)
   (beside (above/align "left"
                        (beside/align "bottom" imagen (trazo-horizontal long-trazo))
                        (trazo-vertical long-trazo)
@@ -879,7 +908,7 @@ una imagen base formada por un cuadrado con un triángulo dentro.
 
 <img src="imagenes/imagen-ejemplo-componer.png" width="30px"/>
 
-Si llamamos a `componer` con la imagen anterior, usando una longitud
+Si llamamos a `componer-hilbert` con la imagen anterior, usando una longitud
 de trazo de 16 píxeles, podemos ver que se construye el patrón básico
 de la curva de Hilbert, el que construye la imagen H2 a partir de H1.
 
@@ -887,7 +916,7 @@ de la curva de Hilbert, el que construye la imagen H2 a partir de H1.
 (define imagen (overlay (triangle 20 "solid" "green")
                         (rectangle 20 20 "solid" "black")))
 imagen 
-(componer imagen 16)
+(componer-hilbert imagen 16)
 ```
 
 <img src="imagenes/imagen-componer.png" width="500px"/>
@@ -902,7 +931,7 @@ algoritmo recursivo:
                     (trazo-vertical long-trazo)
                     (trazo-horizontal long-trazo)
                     (trazo-vertical long-trazo))
-      (componer (hilbert (- nivel 1) long-trazo) long-trazo)))
+      (componer-hilbert (hilbert (- nivel 1) long-trazo) long-trazo)))
 ```
 
 - El caso base es el nivel 1, en el que se construye el trazo básico
@@ -910,7 +939,7 @@ algoritmo recursivo:
   parámetro.
 - Para cualquier nivel _n_  mayor que 1, se llama a la recursión para
   formar la curva de Hilbert de nivel _n-1_ y, con la imagen
-  resultante, se llama a la función `componer`.
+  resultante, se llama a la función `componer-hilbert`.
   
 En la siguiente imagen se muestran distintas llamadas a la función `hilbert`:
 
