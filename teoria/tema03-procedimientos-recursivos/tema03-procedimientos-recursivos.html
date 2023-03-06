@@ -1358,6 +1358,30 @@ resultante con el patrón visto anteriormente.</p>
 </ul>
 <p>Un ejemplo de la ejecución:</p>
 <p><img src="imagenes/image-sierpinski.png" width="600px"/></p>
+<p>El código anterior no es nada eficiente porque cada llamada recursiva
+genera a su vez otras 3 llamadas, provocando un coste exponencial como
+hemos visto al comienzo de la clase.</p>
+<p>En este caso es muy sencillo eliminar las tres llamadas porque las
+tres son llamadas repetidas que van a devolver exactamente la misma
+figura. Podemos entonces usar la técnica que ya hemos visto tanto en
+teoría como en prácticas de llamar a una función auxiliar con el
+resultado de la recursión para que esta función auxiliar sea la que
+recoja en el parámetro el valor devuelto por la recursión y realice
+con ese valor las operaciones necesarias.</p>
+<p>En este caso, el valor obtenido por la recursión es la figura de
+Serpienski más pequeña. La función auxiliar recibirá entonces esa
+figura y deberá combinarla tres veces para formar la figura de
+Sierpinski mayor.</p>
+<p>El código resultante es el siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">componer-sierpinski</span> <span class="n">figura</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">above</span> <span class="n">figura</span>
+           <span class="p">(</span><span class="n">beside</span> <span class="n">figura</span> <span class="n">figura</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">sierpinski</span> <span class="n">ancho</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&lt;</span> <span class="n">ancho</span> <span class="mi">10</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">sierpinski-elem</span> <span class="n">ancho</span><span class="p">)</span>
+      <span class="p">(</span><span class="n">componer-sierpinski</span> <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">ancho</span> <span class="mi">2</span><span class="p">)))))</span>
+</code></pre></div>
 <h3 id="43-curva-de-hilbert">4.3. Curva de Hilbert<a class="headerlink" href="#43-curva-de-hilbert" title="Permanent link">&para;</a></h3>
 <p>La curva de Hilbert es una curva fractal que tiene la propiedad de
 rellenar completamente el plano.</p>
@@ -1367,14 +1391,14 @@ rellenar completamente el plano.</p>
 <p>La imagen H2 se puede componer a partir de cuatro imágenes H1
 siguiendo un patrón. Es el mismo patrón con el que se puede componer
 la imagen H3 a partir de cuatro imágenes H2.</p>
-<p>El patrón se muestra en la siguiente función <code>(componer imagen)</code>: </p>
+<p>El patrón se muestra en la siguiente función <code>(componer-hilbert imagen)</code>: </p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">trazo-horizontal</span> <span class="n">long</span><span class="p">)</span>
   <span class="p">(</span><span class="n">line</span> <span class="n">long</span> <span class="mi">0</span> <span class="s2">&quot;black&quot;</span><span class="p">))</span>
 
 <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long</span><span class="p">)</span>
   <span class="p">(</span><span class="n">rotate</span> <span class="mi">90</span> <span class="p">(</span><span class="n">trazo-horizontal</span> <span class="n">long</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">componer</span> <span class="n">imagen</span> <span class="n">long-trazo</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">componer-hilbert</span> <span class="n">imagen</span> <span class="n">long-trazo</span><span class="p">)</span>
   <span class="p">(</span><span class="n">beside</span> <span class="p">(</span><span class="n">above/align</span> <span class="s2">&quot;left&quot;</span>
                        <span class="p">(</span><span class="n">beside/align</span> <span class="s2">&quot;bottom&quot;</span> <span class="n">imagen</span> <span class="p">(</span><span class="n">trazo-horizontal</span> <span class="n">long-trazo</span><span class="p">))</span>
                        <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long-trazo</span><span class="p">)</span>
@@ -1402,13 +1426,13 @@ una imagen base formada por un cuadrado con un triángulo dentro.</p>
          <span class="p">(</span><span class="n">rectangle</span> <span class="mi">20</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">))</span><span class="err">)</span>
 </code></pre></div>
 <p><img src="imagenes/imagen-ejemplo-componer.png" width="30px"/></p>
-<p>Si llamamos a <code>componer</code> con la imagen anterior, usando una longitud
+<p>Si llamamos a <code>componer-hilbert</code> con la imagen anterior, usando una longitud
 de trazo de 16 píxeles, podemos ver que se construye el patrón básico
 de la curva de Hilbert, el que construye la imagen H2 a partir de H1.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">imagen</span> <span class="p">(</span><span class="n">overlay</span> <span class="p">(</span><span class="n">triangle</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;green&quot;</span><span class="p">)</span>
                         <span class="p">(</span><span class="n">rectangle</span> <span class="mi">20</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">)))</span>
 <span class="n">imagen</span> 
-<span class="p">(</span><span class="n">componer</span> <span class="n">imagen</span> <span class="mi">16</span><span class="p">)</span>
+<span class="p">(</span><span class="n">componer-hilbert</span> <span class="n">imagen</span> <span class="mi">16</span><span class="p">)</span>
 </code></pre></div>
 <p><img src="imagenes/imagen-componer.png" width="500px"/></p>
 <p>Una vez entendido este patrón de composición, podemos ya formular el
@@ -1419,7 +1443,7 @@ algoritmo recursivo:</p>
                     <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long-trazo</span><span class="p">)</span>
                     <span class="p">(</span><span class="n">trazo-horizontal</span> <span class="n">long-trazo</span><span class="p">)</span>
                     <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long-trazo</span><span class="p">))</span>
-      <span class="p">(</span><span class="n">componer</span> <span class="p">(</span><span class="n">hilbert</span> <span class="p">(</span><span class="nb">-</span> <span class="n">nivel</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long-trazo</span><span class="p">)</span> <span class="n">long-trazo</span><span class="p">)))</span>
+      <span class="p">(</span><span class="n">componer-hilbert</span> <span class="p">(</span><span class="n">hilbert</span> <span class="p">(</span><span class="nb">-</span> <span class="n">nivel</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long-trazo</span><span class="p">)</span> <span class="n">long-trazo</span><span class="p">)))</span>
 </code></pre></div>
 <ul>
 <li>El caso base es el nivel 1, en el que se construye el trazo básico
@@ -1427,7 +1451,7 @@ algoritmo recursivo:</p>
   parámetro.</li>
 <li>Para cualquier nivel <em>n</em>  mayor que 1, se llama a la recursión para
   formar la curva de Hilbert de nivel <em>n-1</em> y, con la imagen
-  resultante, se llama a la función <code>componer</code>.</li>
+  resultante, se llama a la función <code>componer-hilbert</code>.</li>
 </ul>
 <p>En la siguiente imagen se muestran distintas llamadas a la función <code>hilbert</code>:</p>
 <p><img src="imagenes/image-hilbert.png" width="600px"/></p>
