@@ -710,6 +710,8 @@ Solución con `map`:
              (map-estruct-fos f elem)) lista)))
 ```
 
+
+<!--
 ## 2. Árboles
 
 ### 2.1. Definición de árboles en Scheme
@@ -1479,6 +1481,9 @@ constructor `construye-arbolb`.
 ```
 
 
+
+-->
+
 ## 4. Bibliografía - SICP
 
 En este tema explicamos conceptos de los siguientes capítulos del libro *Structure and Intepretation of Computer Programs*:
@@ -1487,7 +1492,7 @@ En este tema explicamos conceptos de los siguientes capítulos del libro *Struct
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2021-22  
+Lenguajes y Paradigmas de Programación, curso 2022-23  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
 
