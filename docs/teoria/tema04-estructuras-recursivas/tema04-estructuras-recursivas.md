@@ -386,6 +386,19 @@ La definición completa de la función queda de la siguiente forma:
     de su característica de ser débilmente tipado y podemos hacer el
     código más conciso, llamando siempre a la recursión con el `first`
     de la lista, independientemente de si es un dato u otra lista.
+    
+    El código de la  versión en la que comprobamos si el elemento es
+    una lista antes de llamar a la recursión sería el siguiente:
+    
+    ```racket
+    (define (num-hojas lista)
+        (cond
+            ((null? lista) 0)
+            ((hoja? (first lista))
+                (+ 1 (num-hojas (rest lista))))
+            (else (+ (num-hojas (first lista))
+                     (num-hojas (rest lista))))))
+    ```
 
 
 ##### 1.2.1.1. Versión con funciones de orden superior

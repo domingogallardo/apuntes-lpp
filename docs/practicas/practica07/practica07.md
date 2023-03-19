@@ -103,17 +103,17 @@ de la expresión.
 
 ### Ejercicio 2  ###
 
-a) Implementa la función recursiva `(cuenta-pares lista)` que recibe una
-lista estructurada y cuenta la cantidad de números pares que
-contiene. Implementa dos versiones de la función, una con
-**recursión pura** y otra con **funciones de orden superior**.
+a) Implementa la función recursiva `(concatena lista)` que recibe una
+lista estructurada con símbolos y devuelve la cadena resultante de
+concatenar todos los símbolos de la lista estructurada.
 
 Ejemplos:
 
 ```racket
-(cuenta-pares '(1 (2 3) 4 (5 6))) ; ⇒ 3
-(cuenta-pares-fos '(((1 2) 3 (4) 5) ((((6)))))) ; ⇒ 3
+(concatena '(a b (c) d)) ; ⇒ "abcd"
+(concatena '(a (((b)) (c (d (e f (g))) h)) i)) ; ⇒ "abcdefghi"
 ```
+
 
 b) Implementa la función recursiva `(todos-positivos? lista)` que
 recibe una lista estructurada con números y comprueba si todos sus
@@ -126,6 +126,8 @@ Ejemplos:
 (todos-positivos? '(1 (2 (3 (-3))) 4)) ; ⇒ #f
 (todos-positivos-fos? '(1 (2 (3 (3))) 4)) ; ⇒ #t
 ```
+
+
 
 ### Ejercicio 3 ###
 
