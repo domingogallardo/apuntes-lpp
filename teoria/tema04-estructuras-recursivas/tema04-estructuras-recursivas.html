@@ -820,6 +820,16 @@ dato o es otra lista. En el caso de Scheme, podemos aprovecharnos
 de su característica de ser débilmente tipado y podemos hacer el
 código más conciso, llamando siempre a la recursión con el <code>first</code>
 de la lista, independientemente de si es un dato u otra lista.</p>
+<p>El código de la  versión en la que comprobamos si el elemento es
+una lista antes de llamar a la recursión sería el siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">num-hojas</span> <span class="n">lista</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">cond</span>
+        <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">((</span><span class="n">hoja?</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+            <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))))</span>
+        <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
+                 <span class="p">(</span><span class="n">num-hojas</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))))))</span>
+</code></pre></div>
 </div>
 <h5 id="1211-version-con-funciones-de-orden-superior">1.2.1.1. Versión con funciones de orden superior<a class="headerlink" href="#1211-version-con-funciones-de-orden-superior" title="Permanent link">&para;</a></h5>
 <p>Podemos usar también las funciones de orden superior <code>map</code> y
