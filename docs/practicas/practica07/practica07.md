@@ -276,6 +276,6 @@ recursión o con funciones de orden superior.
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2021-22  
+Lenguajes y Paradigmas de Programación, curso 2022-23  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
