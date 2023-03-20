@@ -724,7 +724,7 @@ Solución con `map`:
 ```
 
 
-<!--
+
 ## 2. Árboles
 
 ### 2.1. Definición de árboles en Scheme
@@ -1495,7 +1495,6 @@ constructor `construye-arbolb`.
 
 
 
--->
 
 ## 4. Bibliografía - SICP
 
