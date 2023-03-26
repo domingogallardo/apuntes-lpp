@@ -407,6 +407,22 @@ distintos de <code>nil</code> usando varios <code>let</code> en el mismo <code>i
 <span class="p">}</span>
 </code></pre></div>
 <hr />
+<h3>Comparación con opcionales</h3>
+<ul>
+<li>No es necesario desenvolver un opcional para compararlo con otro valor
+usando los operadores <code>==</code> o <code>!=</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="mi">10</span>
+<span class="n">x</span> <span class="p">==</span> <span class="mi">10</span> <span class="c1">// devuelve true</span>
+<span class="n">x</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="c1">// devuelve true</span>
+<span class="n">x</span> <span class="p">==</span> <span class="mi">0</span> <span class="c1">// devuelve false</span>
+
+<span class="c1">// Asignamos nil a x</span>
+<span class="n">x</span> <span class="p">=</span> <span class="kc">nil</span>
+<span class="n">x</span> <span class="p">==</span> <span class="kc">nil</span> <span class="c1">// devuelve true</span>
+<span class="n">x</span> <span class="p">==</span> <span class="mi">10</span> <span class="c1">// devuelve false</span>
+</code></pre></div>
+<hr />
 <h3>Operador <em>nil-coalescing</em></h3>
 <ul>
 <li>El operador <em>nil-coalescing</em> (<code>??</code>) permite definir un valor por
@@ -732,7 +748,7 @@ la siguiente:</li>
     <span class="k">return</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">+</span> <span class="mi">10</span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">var</span> <span class="nv">f</span> <span class="p">=</span> <span class="n">construyeSumador10</span><span class="p">()</span>
+<span class="kd">let</span> <span class="nv">f</span> <span class="p">=</span> <span class="n">construyeSumador10</span><span class="p">()</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 <span class="c1">// Imprime &quot;30&quot;</span>
 </code></pre></div>

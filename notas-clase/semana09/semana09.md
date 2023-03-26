@@ -612,7 +612,7 @@ func construyeSumador10() -> (Int) -> Int {
     return {$0 + 10}
 }
 
-var f = construyeSumador10()
+let f = construyeSumador10()
 print(f(20))
 // Imprime "30"
 ```

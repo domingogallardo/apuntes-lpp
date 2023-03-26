@@ -621,7 +621,7 @@ func suma(_ x: Int, _ y: Int) -> Int {
    return x + y
 }
 // La siguiente línea genera un error
-var misFunciones = [doble, cuadrado, suma]
+let misFunciones = [doble, cuadrado, suma]
 // error: heterogenous collection literal could only be inferred to
 // '[Any]'; add explicit type annotation if this is intentional
 
@@ -644,7 +644,7 @@ func construyeSumador10() -> (Int) -> Int {
   return suma10
 }
 
-var g = construyeSumador10()
+let g = construyeSumador10()
 print(g(20))
 // Imprime 30
 ```
@@ -666,8 +666,8 @@ func construyeSumador(inc: Int) -> (Int) -> Int {
   return suma
 }
 
-var f2 = construyeSumador(inc: 10)
-var f3 = construyeSumador(inc: 100)
+let f2 = construyeSumador(inc: 10)
+let f3 = construyeSumador(inc: 100)
 print(f2(20))
 // Imprime "30"
 print(f3(20))

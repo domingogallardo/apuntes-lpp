@@ -655,7 +655,7 @@ Como cualquier otro tipo Las funciones pueden también incluirse en
   estructuras de datos compuestas, como arrays:
   
 ```swift
-var funciones = [identidad, doble, cuadrado]
+let funciones = [identidad, doble, cuadrado]
 print(funciones[0](10)) // 10
 print(funciones[1](10)) // 20 
 print(funciones[2](10)) // 100
@@ -672,7 +672,7 @@ func suma(_ x: Int, _ y: Int) -> Int {
    return x + y
 }
 // La siguiente línea genera un error
-var misFunciones = [doble, cuadrado, suma]
+let misFunciones = [doble, cuadrado, suma]
 // error: heterogenous collection literal could only be inferred to
 // '[Any]'; add explicit type annotation if this is intentional
 
@@ -692,7 +692,7 @@ func construyeSumador10() -> (Int) -> Int {
   return suma10
 }
 
-var g = construyeSumador10()
+let g = construyeSumador10()
 print(g(20))
 // Imprime 30
 ```
@@ -716,8 +716,8 @@ func construyeSumador(inc: Int) -> (Int) -> Int {
   return suma
 }
 
-var f2 = construyeSumador(inc: 10)
-var f3 = construyeSumador(inc: 100)
+let f2 = construyeSumador(inc: 10)
+let f3 = construyeSumador(inc: 100)
 print(f2(20))
 // Imprime "30"
 print(f3(20))
@@ -1956,7 +1956,7 @@ func construyeSumador10() -> (Int) -> Int {
     return {$0 + 10}
 }
 
-var f = construyeSumador10()
+let f = construyeSumador10()
 print(f(20))
 // Imprime "30"
 ```
