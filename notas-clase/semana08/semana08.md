@@ -929,13 +929,6 @@ case .oeste:
 // Imprime "Cuidado con los pinguinos"
 ```
 
-Otro ejemplo:
-
-```swift
-enum Planeta {
-    case mercurio, venus, tierra, marte, jupiter, saturno, urano, neptuno
-}
-```
 
 ### Valores brutos de enumeraciones
 
