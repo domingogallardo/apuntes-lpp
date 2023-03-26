@@ -500,10 +500,10 @@ inmutables definidas con `let`.
 parámetros y el tipo del valor devuelto.
 
 ```swift
-func sumaDosInts(_ a: Int, _ b: Int) -> Int {
+func sumaDosInts(a: Int, b: Int) -> Int {
     return a + b
 }
-func multiplicaDosInts(_ a: Int, _ b: Int) -> Int {
+func multiplicaDosInts(a: Int, b: Int) -> Int {
     return a * b
 }
 ```
