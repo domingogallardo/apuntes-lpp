@@ -1355,7 +1355,7 @@ sumatorio(a, b, f) = 0 si a &gt; b
 <h3 id="52-funciones-en-estructuras">5.2. Funciones en estructuras<a class="headerlink" href="#52-funciones-en-estructuras" title="Permanent link">&para;</a></h3>
 <p>Como cualquier otro tipo Las funciones pueden también incluirse en
   estructuras de datos compuestas, como arrays:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">funciones</span> <span class="p">=</span> <span class="p">[</span><span class="n">identidad</span><span class="p">,</span> <span class="n">doble</span><span class="p">,</span> <span class="n">cuadrado</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">funciones</span> <span class="p">=</span> <span class="p">[</span><span class="n">identidad</span><span class="p">,</span> <span class="n">doble</span><span class="p">,</span> <span class="n">cuadrado</span><span class="p">]</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">funciones</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="mi">10</span><span class="p">))</span> <span class="c1">// 10</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">funciones</span><span class="p">[</span><span class="mi">1</span><span class="p">](</span><span class="mi">10</span><span class="p">))</span> <span class="c1">// 20 </span>
 <span class="bp">print</span><span class="p">(</span><span class="n">funciones</span><span class="p">[</span><span class="mi">2</span><span class="p">](</span><span class="mi">10</span><span class="p">))</span> <span class="c1">// 100</span>
@@ -1368,7 +1368,7 @@ error:</p>
    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 <span class="p">}</span>
 <span class="c1">// La siguiente línea genera un error</span>
-<span class="kd">var</span> <span class="nv">misFunciones</span> <span class="p">=</span> <span class="p">[</span><span class="n">doble</span><span class="p">,</span> <span class="n">cuadrado</span><span class="p">,</span> <span class="n">suma</span><span class="p">]</span>
+<span class="kd">let</span> <span class="nv">misFunciones</span> <span class="p">=</span> <span class="p">[</span><span class="n">doble</span><span class="p">,</span> <span class="n">cuadrado</span><span class="p">,</span> <span class="n">suma</span><span class="p">]</span>
 <span class="c1">// error: heterogenous collection literal could only be inferred to</span>
 <span class="c1">// &#39;[Any]&#39;; add explicit type annotation if this is intentional</span>
 </code></pre></div>
@@ -1382,7 +1382,7 @@ suma 10:</p>
   <span class="k">return</span> <span class="n">suma10</span>
 <span class="p">}</span>
 
-<span class="kd">var</span> <span class="nv">g</span> <span class="p">=</span> <span class="n">construyeSumador10</span><span class="p">()</span>
+<span class="kd">let</span> <span class="nv">g</span> <span class="p">=</span> <span class="n">construyeSumador10</span><span class="p">()</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 <span class="c1">// Imprime 30</span>
 </code></pre></div>
@@ -1401,8 +1401,8 @@ anónimas. </p>
   <span class="k">return</span> <span class="n">suma</span>
 <span class="p">}</span>
 
-<span class="kd">var</span> <span class="nv">f2</span> <span class="p">=</span> <span class="n">construyeSumador</span><span class="p">(</span><span class="n">inc</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
-<span class="kd">var</span> <span class="nv">f3</span> <span class="p">=</span> <span class="n">construyeSumador</span><span class="p">(</span><span class="n">inc</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">f2</span> <span class="p">=</span> <span class="n">construyeSumador</span><span class="p">(</span><span class="n">inc</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">f3</span> <span class="p">=</span> <span class="n">construyeSumador</span><span class="p">(</span><span class="n">inc</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">f2</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 <span class="c1">// Imprime &quot;30&quot;</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">f3</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
@@ -2341,7 +2341,7 @@ la siguiente:</p>
     <span class="k">return</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">+</span> <span class="mi">10</span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">var</span> <span class="nv">f</span> <span class="p">=</span> <span class="n">construyeSumador10</span><span class="p">()</span>
+<span class="kd">let</span> <span class="nv">f</span> <span class="p">=</span> <span class="n">construyeSumador10</span><span class="p">()</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 <span class="c1">// Imprime &quot;30&quot;</span>
 </code></pre></div>
