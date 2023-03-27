@@ -1285,6 +1285,9 @@ print(suma(lista: lista2))
 // Imprime 15
 ```
 
+
+<!--
+
 ## 9. Opcionales
 
 Una de las características principales que Swift intenta promover es
@@ -2395,6 +2398,9 @@ print(first(rest(lista2)!)!) // Imprime "B"
 ```
 
 
+
+-->
+
 ## 13. Bibliografía
 
 - Swift Language Guide
@@ -2408,6 +2414,6 @@ print(first(rest(lista2)!)!) // Imprime "B"
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2021–22  
+Lenguajes y Paradigmas de Programación, curso 2022–23  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
