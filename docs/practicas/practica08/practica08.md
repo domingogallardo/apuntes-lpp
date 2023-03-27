@@ -133,9 +133,6 @@ que recibe un predicado y un árbol y devuelve una lista con todas
 aquellas hojas del árbol que cumplen el predicado. Una función con
 recursión mutua y otra con funciones de orden superior. 
 
-Para evitar complicar la función de orden superior, suponemos que el
-árbol inicial que pasamos como parámetro no es un árbol hoja.
-
 <img src="imagenes/hojas-cumplen.png" width="400px">
 
 ```racket
