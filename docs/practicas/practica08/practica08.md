@@ -16,7 +16,7 @@ Descarga el [fichero
 `lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt),
 pulsando el botón derecho del ratón y seleccionando la opción _Guardar
 como_ `lpp.rkt`. Guárdalo en la misma carpeta en la que tengas el
-fichero `practica7.rkt`. 
+fichero `practica8.rkt`. 
 
 El fichero contiene la definición de las funciones de la barrera de
 abstracción de árboles y árboles binarios, y las funciones
