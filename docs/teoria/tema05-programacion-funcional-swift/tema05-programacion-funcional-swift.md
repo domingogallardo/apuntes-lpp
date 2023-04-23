@@ -1286,8 +1286,6 @@ print(suma(lista: lista2))
 ```
 
 
-<!--
-
 ## 9. Opcionales
 
 Una de las características principales que Swift intenta promover es
@@ -2397,9 +2395,6 @@ print(first(rest(lista2)!)!) // Imprime "B"
 
 ```
 
-
-
--->
 
 ## 13. Bibliografía
 
