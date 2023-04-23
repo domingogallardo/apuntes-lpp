@@ -9,8 +9,13 @@
       
       
       
+        <link rel="prev" href="../tema02-programacion-funcional/tema02-programacion-funcional.html">
+      
+      
+        <link rel="next" href="../tema04-estructuras-recursivas/tema04-estructuras-recursivas.html">
+      
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.1.5">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.7">
     
     
       
@@ -18,30 +23,30 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.bde7dde4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ded33207.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
-        
-          
-          
-          <meta name="theme-color" content="#009485">
-        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
       
+      
+
     
     
     
       
+        
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+
+    
     
     
   </head>
@@ -52,10 +57,9 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="teal">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="Teal" data-md-color-accent="Teal">
   
     
-    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -72,7 +76,12 @@
       
     </div>
     
-      <header class="md-header" data-md-component="header">
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
     <a href="../.." title="LPP" class="md-header__button md-logo" aria-label="LPP" data-md-component="logo">
       
@@ -80,7 +89,7 @@
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -102,21 +111,24 @@
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -124,7 +136,7 @@
           <div class="md-search-result__meta">
             Inicializando búsqueda
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -133,11 +145,14 @@
     
     
   </nav>
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
+        
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -176,13 +191,18 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
       
-      <label class="md-nav__link" for="__nav_1">
-        Teoría
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Teoría" data-md-level="1">
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+          Teoría
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_1">
           <span class="md-nav__icon md-icon"></span>
           Teoría
@@ -190,6 +210,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -200,8 +221,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -212,8 +235,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -224,8 +249,10 @@
     </li>
   
 
+            
           
             
+              
   
   
     
@@ -233,7 +260,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
         
@@ -249,6 +276,7 @@
       </a>
       
         
+
 <nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
   
   
@@ -419,8 +447,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -431,8 +461,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -443,6 +475,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -461,13 +494,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
-      <label class="md-nav__link" for="__nav_2">
-        Seminarios
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Seminarios" data-md-level="1">
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Seminarios
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Seminarios
@@ -475,6 +513,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -485,8 +524,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -497,6 +538,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -515,13 +557,18 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
-      <label class="md-nav__link" for="__nav_3">
-        Prácticas
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Prácticas" data-md-level="1">
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Prácticas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Prácticas
@@ -529,6 +576,7 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+              
   
   
   
@@ -539,8 +587,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -551,8 +601,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -563,8 +615,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -575,8 +629,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -587,8 +643,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -599,8 +657,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -611,8 +671,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -623,8 +685,10 @@
     </li>
   
 
+            
           
             
+              
   
   
   
@@ -635,6 +699,7 @@
     </li>
   
 
+            
           
         </ul>
       </nav>
@@ -654,6 +719,7 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
 <nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
   
   
@@ -825,12 +891,14 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
-                
-                <h1 id="tema-3-procedimientos-recursivos">Tema 3: Procedimientos recursivos<a class="headerlink" href="#tema-3-procedimientos-recursivos" title="Permanent link">&para;</a></h1>
+                  
+
+
+<h1 id="tema-3-procedimientos-recursivos">Tema 3: Procedimientos recursivos<a class="headerlink" href="#tema-3-procedimientos-recursivos" title="Permanent link">&para;</a></h1>
 <p>Ya hemos visto muchos ejemplos de funciones recursivas. Una
 función es recursiva cuando se llama a si misma. Una vez que uno se
 acostumbra a su uso, se comprueba que la recursión es una forma mucho
@@ -860,10 +928,10 @@ también que existen soluciones para esos casos.</p>
 <p>Vamos a estudiar el comportamiento de la evaluación de una llamada a
 una función recursiva. Supongamos la función
 <code>mi-length</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-length</span> <span class="n">items</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">items</span><span class="p">)</span>
-      <span class="mi">0</span>
-      <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">mi-length</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">items</span><span class="p">)))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">mi-length</span><span class="w"> </span><span class="n">items</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">null?</span><span class="w"> </span><span class="n">items</span><span class="p">)</span>
+<span class="w">      </span><span class="mi">0</span>
+<span class="w">      </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="n">mi-length</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">items</span><span class="p">)))))</span>
 </code></pre></div>
 <p>Examinamos cómo se evalúan las llamadas recursivas:</p>
 <div class="highlight"><pre><span></span><code>(mi-length &#39;(a b c d))
@@ -904,11 +972,11 @@ Fibonacci(0) = 0
 Fibonacci(1) = 1
 </code></pre></div>
 <p>Formulación recursiva en Scheme:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fib</span> <span class="n">n</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">0</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="p">((</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
-      <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">fib</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">))</span>
-               <span class="p">(</span><span class="n">fib</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">2</span><span class="p">))))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">fib</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="k">cond</span><span class="w"> </span><span class="p">((</span><span class="nb">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">      </span><span class="p">((</span><span class="nb">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="k">else</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="n">fib</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+<span class="w">               </span><span class="p">(</span><span class="n">fib</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">2</span><span class="p">))))))</span>
 </code></pre></div>
 <p>Evaluación de una llamada a Fibonacci:</p>
 <p><img src="imagenes/fibonacci.png"/></p>
@@ -936,13 +1004,13 @@ proceso, eliminando la pila de la recursión.</p>
 <p>Empezamos a explicar la recursión por la cola con un ejemplo muy
 sencillo: la versión iterativa de la típica función <code>factorial</code>. Le
 pondremos de nombre a la función <code>factorial-iter</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">factorial</span> <span class="n">n</span><span class="p">)</span>
-   <span class="p">(</span><span class="n">fact-iter</span> <span class="n">n</span> <span class="n">n</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">factorial</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="n">fact-iter</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">n</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fact-iter</span> <span class="n">n</span> <span class="n">result</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span>
-      <span class="n">result</span>
-      <span class="p">(</span><span class="n">fact-iter</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">result</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">))</span>  <span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">fact-iter</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">      </span><span class="n">result</span>
+<span class="w">      </span><span class="p">(</span><span class="n">fact-iter</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w">  </span><span class="p">)))</span>
 </code></pre></div>
 <p>La función <code>(fact-iter n result)</code> es la que define el proceso
 iterativo. Su argumento <code>n</code> es el valor del que hay que calcular el
@@ -986,13 +1054,13 @@ recursión eliminado un elemento de la lista, incrementaremos en 1 el
 valor del resultado. Para que funcione bien este enfoque, debemos
 inicializar este resultado a 0.</p>
 <p>La solución es la siguiente:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-length</span> <span class="n">lista</span><span class="p">)</span>
-   <span class="p">(</span><span class="n">mi-length-iter</span> <span class="n">lista</span> <span class="mi">0</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">mi-length</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="n">mi-length-iter</span><span class="w"> </span><span class="n">lista</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-length-iter</span> <span class="n">lista</span> <span class="n">result</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
-      <span class="n">result</span>
-      <span class="p">(</span><span class="n">mi-length-iter</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">result</span> <span class="mi">1</span><span class="p">))))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">mi-length-iter</span><span class="w"> </span><span class="n">lista</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">null?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
+<span class="w">      </span><span class="n">result</span>
+<span class="w">      </span><span class="p">(</span><span class="n">mi-length-iter</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="mi">1</span><span class="p">))))</span>
 </code></pre></div>
 <p>Fijaros que, al igual que en la versión iterativa de factorial, no hay
 ninguna llamada a ningúna función que recoja el resultado de la
@@ -1004,13 +1072,13 @@ por la cola la suma de los números de una lista.</p>
 <p>Deberíamos añadir un parámetro adicional en el que vamos acumulando
 esa suma. Inicializaremos a 0 ese parámetro e iremos en cada llamada
 recursiva acumulando el primer elemento de la lista:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="n">lista</span><span class="p">)</span>
-   <span class="p">(</span><span class="n">suma-lista-iter</span> <span class="n">lista</span> <span class="mi">0</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">suma-lista</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="n">suma-lista-iter</span><span class="w"> </span><span class="n">lista</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-lista-iter</span> <span class="n">lista</span> <span class="n">result</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span>
-      <span class="n">result</span>
-      <span class="p">(</span><span class="n">suma-lista-iter</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">result</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)))))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">suma-lista-iter</span><span class="w"> </span><span class="n">lista</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">null?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
+<span class="w">      </span><span class="n">result</span>
+<span class="w">      </span><span class="p">(</span><span class="n">suma-lista-iter</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
 <h3 id="24-caracteristicas-de-los-procesos-iterativos">2.4. Características de los procesos iterativos<a class="headerlink" href="#24-caracteristicas-de-los-procesos-iterativos" title="Permanent link">&para;</a></h3>
 <p>Un resumen de las características de los procesos iterativos
@@ -1029,13 +1097,13 @@ un proceso iterativo.</p>
 <p>En general, las versiones iterativas son menos intuitivas y más
 difíciles de entender y depurar.</p>
 <p>Veamos, por ejemplo, la formulación iterativa de Fibonacci:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fib</span> <span class="n">n</span><span class="p">)</span>
-   <span class="p">(</span><span class="n">fib-iter</span> <span class="mi">1</span> <span class="mi">0</span> <span class="n">n</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">fib</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="n">fib-iter</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">n</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fib-iter</span> <span class="n">a</span> <span class="n">b</span> <span class="nb">count</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="nb">count</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="n">b</span>
-      <span class="p">(</span><span class="n">fib-iter</span> <span class="p">(</span><span class="nb">+</span> <span class="n">a</span> <span class="n">b</span><span class="p">)</span> <span class="n">a</span> <span class="p">(</span><span class="nb">-</span> <span class="nb">count</span> <span class="mi">1</span><span class="p">))))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">fib-iter</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="nb">count</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="nb">count</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">      </span><span class="n">b</span>
+<span class="w">      </span><span class="p">(</span><span class="n">fib-iter</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="nb">count</span><span class="w"> </span><span class="mi">1</span><span class="p">))))</span>
 </code></pre></div>
 <p>La secuencia de llamadas recursivas sería la siguiente:</p>
 <div class="highlight"><pre><span></span><code>(fib 6)
@@ -1076,16 +1144,16 @@ Pascal (fila, columna) =
 iguales que <code>fila</code>.</p>
 <p>En Scheme es fácil escribir una función recursiva que implemente la
 definición anterior:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal</span> <span class="n">fila</span> <span class="n">col</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">=</span> <span class="n">col</span> <span class="mi">0</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
-         <span class="p">((</span><span class="nb">=</span> <span class="n">col</span> <span class="n">fila</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
-         <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">pascal</span> <span class="p">(</span><span class="nb">-</span> <span class="n">fila</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="n">col</span> <span class="mi">1</span><span class="p">))</span>
-                  <span class="p">(</span><span class="n">pascal</span> <span class="p">(</span><span class="nb">-</span> <span class="n">fila</span> <span class="mi">1</span><span class="p">)</span> <span class="n">col</span><span class="p">)</span> <span class="p">))))</span>
-<span class="p">(</span><span class="n">pascal</span> <span class="mi">4</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">pascal</span><span class="w"> </span><span class="n">fila</span><span class="w"> </span><span class="n">col</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="k">cond</span><span class="w"> </span><span class="p">((</span><span class="nb">=</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">         </span><span class="p">((</span><span class="nb">=</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="n">fila</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">         </span><span class="p">(</span><span class="k">else</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="n">pascal</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">fila</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+<span class="w">                  </span><span class="p">(</span><span class="n">pascal</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">fila</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">col</span><span class="p">)</span><span class="w"> </span><span class="p">))))</span>
+<span class="p">(</span><span class="n">pascal</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
 <span class="c1">; ⇒ 6</span>
-<span class="p">(</span><span class="n">pascal</span> <span class="mi">8</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="n">pascal</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
 <span class="c1">; ⇒ 70</span>
-<span class="p">(</span><span class="n">pascal</span> <span class="mi">27</span> <span class="mi">13</span><span class="p">)</span>
+<span class="p">(</span><span class="n">pascal</span><span class="w"> </span><span class="mi">27</span><span class="w"> </span><span class="mi">13</span><span class="p">)</span>
 <span class="c1">; ⇒ 20058300</span>
 </code></pre></div>
 <p>Hay que llamar a la función con un valor de <code>col</code> menor o igual que
@@ -1117,7 +1185,7 @@ vamos decrementando el parámetro <code>n</code> hasta que se llega a 0.</p>
 lista-fila)</code> que recibe una fila del triángulo y devuelve la
 siguiente. </p>
 <p>Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">pascal-sig-fila</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">3</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">pascal-sig-fila</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
 <span class="c1">; ⇒ (1 4 6 4 1)</span>
 </code></pre></div>
 <p>Esta función la implementamos con una función recursiva auxiliar (esta
@@ -1126,28 +1194,28 @@ la que se encarga de realizar el cálculo de la nueva fila. No es
 necesario convertir esta función a iterativa porque no genera un coste
 exponencial.</p>
 <p>El código completo es el siguiente:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal</span> <span class="n">fila</span> <span class="n">col</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">list-ref</span> <span class="p">(</span><span class="n">pascal-fila</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">fila</span><span class="p">)</span> <span class="n">col</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">pascal</span><span class="w"> </span><span class="n">fila</span><span class="w"> </span><span class="n">col</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="nb">list-ref</span><span class="w"> </span><span class="p">(</span><span class="n">pascal-fila</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">fila</span><span class="p">)</span><span class="w"> </span><span class="n">col</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal-fila</span> <span class="n">lista-fila</span> <span class="n">n</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="mi">0</span> <span class="n">n</span><span class="p">)</span>
-      <span class="n">lista-fila</span>
-      <span class="p">(</span><span class="n">pascal-fila</span> <span class="p">(</span><span class="n">pascal-sig-fila</span> <span class="n">lista-fila</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">))))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">pascal-fila</span><span class="w"> </span><span class="n">lista-fila</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="w">      </span><span class="n">lista-fila</span>
+<span class="w">      </span><span class="p">(</span><span class="n">pascal-fila</span><span class="w"> </span><span class="p">(</span><span class="n">pascal-sig-fila</span><span class="w"> </span><span class="n">lista-fila</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">1</span><span class="p">))))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal-sig-fila</span> <span class="n">lista-fila</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">append</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-           <span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span> <span class="n">lista-fila</span><span class="p">)</span>
-           <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">pascal-sig-fila</span><span class="w"> </span><span class="n">lista-fila</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="nb">append</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">           </span><span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span><span class="w"> </span><span class="n">lista-fila</span><span class="p">)</span>
+<span class="w">           </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span> <span class="n">lista-fila</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista-fila</span><span class="p">))</span>
-      <span class="o">&#39;</span><span class="p">()</span>
-      <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista-fila</span><span class="p">)</span> <span class="p">(</span><span class="nb">first</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista-fila</span><span class="p">)))</span>
-            <span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista-fila</span><span class="p">)))))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span><span class="w"> </span><span class="n">lista-fila</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">null?</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista-fila</span><span class="p">))</span>
+<span class="w">      </span><span class="o">&#39;</span><span class="p">()</span>
+<span class="w">      </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">lista-fila</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista-fila</span><span class="p">)))</span>
+<span class="w">            </span><span class="p">(</span><span class="n">pascal-suma-dos-a-dos</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista-fila</span><span class="p">)))))</span>
 </code></pre></div>
 <p>Con esta implementación ya no se tiene un coste exponencial y se puede
 calcular el valor de números como Pascal(40, 20):</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">pascal</span> <span class="mi">40</span> <span class="mi">20</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">pascal</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span>
 <span class="c1">; ⇒ 137846528820</span>
 </code></pre></div>
 <h2 id="3-soluciones-al-coste-de-la-recursion-memoization">3. Soluciones al coste de la recursión: memoization<a class="headerlink" href="#3-soluciones-al-coste-de-la-recursion-memoization" title="Permanent link">&para;</a></h2>
@@ -1174,10 +1242,10 @@ guarda en el diccionario (con mutación) y devuelve el valor.</li>
 una clave. En el caso en que no exista ningún valor se devuelve <code>#f</code>.</li>
 </ul>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">mi-dic</span> <span class="p">(</span><span class="n">crea-diccionario</span><span class="p">))</span>
-<span class="p">(</span><span class="n">put</span> <span class="mi">1</span> <span class="mi">10</span> <span class="n">mi-dic</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
-<span class="p">(</span><span class="n">get</span> <span class="mi">1</span> <span class="n">mi-dic</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
-<span class="p">(</span><span class="n">get</span> <span class="mi">2</span> <span class="n">mi-dic</span><span class="p">)</span> <span class="c1">; ⇒ #f</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">mi-dic</span><span class="w"> </span><span class="p">(</span><span class="n">crea-diccionario</span><span class="p">))</span>
+<span class="p">(</span><span class="n">put</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">mi-dic</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 10</span>
+<span class="p">(</span><span class="n">get</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">mi-dic</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 10</span>
+<span class="p">(</span><span class="n">get</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">mi-dic</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #f</span>
 </code></pre></div>
 <p>Estos métodos son imperativos porque modifican (mutan) la estructura
 de datos que pasamos como parámetro. La implementación de estas
@@ -1195,20 +1263,20 @@ el número de fibonacci <code>n</code> se comprueba si ya está guardado en la
 lista. Sólo en el caso en que no esté guardado se llama a la recursión
 para calcularlo y guardarlo. La función <code>put</code> que guarda el nuevo
 valor calculado también lo devuelve.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">fib-memo</span> <span class="n">n</span> <span class="n">dic</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">cond</span> <span class="p">((</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">0</span><span class="p">)</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="p">((</span><span class="nb">=</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="p">((</span><span class="nb">not</span> <span class="p">(</span><span class="nb">equal?</span> <span class="p">(</span><span class="n">get</span> <span class="n">n</span> <span class="n">dic</span><span class="p">)</span> <span class="no">#f</span><span class="p">))</span>
-         <span class="p">(</span><span class="n">get</span> <span class="n">n</span> <span class="n">dic</span><span class="p">))</span>
-        <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">put</span> <span class="n">n</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">fib-memo</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">1</span><span class="p">)</span> <span class="n">dic</span><span class="p">)</span>
-                        <span class="p">(</span><span class="n">fib-memo</span> <span class="p">(</span><span class="nb">-</span> <span class="n">n</span> <span class="mi">2</span><span class="p">)</span> <span class="n">dic</span><span class="p">))</span> <span class="n">dic</span><span class="p">))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">fib-memo</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">dic</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="k">cond</span><span class="w"> </span><span class="p">((</span><span class="nb">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="p">((</span><span class="nb">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">        </span><span class="p">((</span><span class="nb">not</span><span class="w"> </span><span class="p">(</span><span class="nb">equal?</span><span class="w"> </span><span class="p">(</span><span class="n">get</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">dic</span><span class="p">)</span><span class="w"> </span><span class="no">#f</span><span class="p">))</span>
+<span class="w">         </span><span class="p">(</span><span class="n">get</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">dic</span><span class="p">))</span>
+<span class="w">        </span><span class="p">(</span><span class="k">else</span><span class="w"> </span><span class="p">(</span><span class="n">put</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="n">fib-memo</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">dic</span><span class="p">)</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">fib-memo</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">dic</span><span class="p">))</span><span class="w"> </span><span class="n">dic</span><span class="p">))))</span>
 </code></pre></div>
 <p>Podemos comprobar la diferencia de tiempos de ejecución entre esta
 versión y la anterior. El coste de la función <em>memoizada</em> es
 O(n). Frente al coste O(2^n) de la versión inicial que la hacía
 imposible de utilizar.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">fib-memo</span> <span class="mi">200</span> <span class="n">lista</span><span class="p">)</span>
-<span class="n">⇒</span> <span class="mi">280571172992510140037611932413038677189525</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">fib-memo</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
+<span class="n">⇒</span><span class="w"> </span><span class="mi">280571172992510140037611932413038677189525</span>
 </code></pre></div>
 <h2 id="4-figuras-recursivas">4. Figuras recursivas<a class="headerlink" href="#4-figuras-recursivas" title="Permanent link">&para;</a></h2>
 <p>Vamos a terminar el apartado sobre procedimientos recursivos con un
@@ -1228,12 +1296,12 @@ construir imágenes básicas.</p>
 <p>Podemos obtener un círculo, un cuadrado, un rectángulo y un triángulo
 equilátero de la siguiente forma:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
-<span class="p">(</span><span class="k">require</span> <span class="n">2htdp/image</span><span class="p">)</span>
+<span class="p">(</span><span class="k">require</span><span class="w"> </span><span class="n">2htdp/image</span><span class="p">)</span>
 
-<span class="p">(</span><span class="n">circle</span> <span class="mi">30</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>
-<span class="p">(</span><span class="n">square</span> <span class="mi">30</span> <span class="s2">&quot;outline&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
-<span class="p">(</span><span class="n">rectangle</span> <span class="mi">80</span> <span class="mi">40</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;gray&quot;</span><span class="p">)</span>
-<span class="p">(</span><span class="n">triangle</span> <span class="mi">40</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">circle</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">square</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="s2">&quot;outline&quot;</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">rectangle</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">triangle</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Cada instrucción construye la imagen correspondiente. Si lo ejecutamos
 en el intérprete obtendremos lo siguiente:</p>
@@ -1247,12 +1315,12 @@ forma sólida o se dibuje solo el borde. Y también su color, mediante
 una cadena escogida de una <a href="https://docs.racket-lang.org/draw/color-database___.html">lista de colores permitidos</a>.</p>
 <p>Podemos también construir un triángulo isósceles indicando la longitud
 de sus lados iguales y el ángulo entre ellos:</p>
-<div class="highlight"><pre><span></span><code> <span class="p">(</span><span class="n">isosceles-triangle</span> <span class="mi">60</span> <span class="mi">30</span> <span class="s2">&quot;outline&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span> 
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="p">(</span><span class="n">isosceles-triangle</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="s2">&quot;outline&quot;</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">)</span><span class="w"> </span>
 </code></pre></div>
 <p><img src="imagenes/image-isosceles.png" width="360px"/></p>
 <p>Por último, otra primitiva que vamos a utilizar más adelante es un
 trazo de una línea:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">line</span> <span class="mi">30</span> <span class="mi">30</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">line</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p><img src="imagenes/image-line.png" width="30"/></p>
 <p>Esta función construye una imagen con una línea hasta la posición
@@ -1266,10 +1334,10 @@ transformar y combinar imágenes. Vamos a ver algunos de ellas.</p>
 <p>Podemos rotar una imagen un ángulo, expresado en grados sexagesimales
 en el sentido contrario de las agujas del reloj.</p>
 <p>Por ejemplo, podemos rotar el triángulo isósceles anterior:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">triangulo</span> <span class="p">(</span><span class="n">isosceles-triangle</span> <span class="mi">60</span> <span class="mi">30</span> <span class="s2">&quot;outline&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">))</span>
-<span class="p">(</span><span class="n">rotate</span> <span class="mi">90</span> <span class="n">triangulo</span><span class="p">)</span> 
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">triangulo</span><span class="w"> </span><span class="p">(</span><span class="n">isosceles-triangle</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="s2">&quot;outline&quot;</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">))</span>
+<span class="p">(</span><span class="n">rotate</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="n">triangulo</span><span class="p">)</span><span class="w"> </span>
 <span class="c1">; ⇒ imagen rotada 90 grados en sentido contrario a las agujas del reloj</span>
-<span class="p">(</span><span class="n">rotate</span> <span class="mi">-90</span> <span class="n">triangulo</span><span class="p">)</span>
+<span class="p">(</span><span class="n">rotate</span><span class="w"> </span><span class="mi">-90</span><span class="w"> </span><span class="n">triangulo</span><span class="p">)</span>
 <span class="c1">; ⇒ imagen rotada 90 grados en sentido de las agujas del reloj</span>
 </code></pre></div>
 <p><img src="imagenes/imagen-rotada.png" width="500px"/></p>
@@ -1278,18 +1346,18 @@ en el sentido contrario de las agujas del reloj.</p>
 argumentos y devuelven una nueva imagen en la que las imágenes se han
 colocado unas sobre otras o unas al lado de otras.</p>
 <p>Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">above</span> <span class="p">(</span><span class="n">ellipse</span> <span class="mi">70</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;gray&quot;</span><span class="p">)</span>
-       <span class="p">(</span><span class="n">ellipse</span> <span class="mi">50</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;darkgray&quot;</span><span class="p">)</span>
-       <span class="p">(</span><span class="n">ellipse</span> <span class="mi">30</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;dimgray&quot;</span><span class="p">)</span>
-       <span class="p">(</span><span class="n">ellipse</span> <span class="mi">10</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">above</span><span class="w"> </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="w">       </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;darkgray&quot;</span><span class="p">)</span>
+<span class="w">       </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;dimgray&quot;</span><span class="p">)</span>
+<span class="w">       </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">))</span>
 </code></pre></div>
 <p>La llamada anterior devuelve la siguiente imagen:</p>
 <p><img src="imagenes/image-above.png" width="340px"/></p>
 <p>Otro ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">beside</span> <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">70</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;gray&quot;</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">50</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;darkgray&quot;</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">30</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;dimgray&quot;</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">10</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">beside</span><span class="w"> </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;darkgray&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;dimgray&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">))</span>
 </code></pre></div>
 <p>Que produce:</p>
 <p><img src="imagenes/image-beside.png" width="340px"/></p>
@@ -1299,42 +1367,42 @@ funciones <code>above/align</code> y <code>beside/align</code>. </p>
 <p>En el caso de <code>above</code>, que acumula las imágenes unas sobre otras,
 podremos especificar si queremos alinearlas a la izquierda o a la
 derecha:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">above/align</span> <span class="s2">&quot;left&quot;</span>
-               <span class="p">(</span><span class="n">ellipse</span> <span class="mi">70</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;yellowgreen&quot;</span><span class="p">)</span>
-               <span class="p">(</span><span class="n">ellipse</span> <span class="mi">50</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;olivedrab&quot;</span><span class="p">)</span>
-               <span class="p">(</span><span class="n">ellipse</span> <span class="mi">30</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;darkolivegreen&quot;</span><span class="p">)</span>
-               <span class="p">(</span><span class="n">ellipse</span> <span class="mi">10</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;darkgreen&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">above/align</span><span class="w"> </span><span class="s2">&quot;left&quot;</span>
+<span class="w">               </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;yellowgreen&quot;</span><span class="p">)</span>
+<span class="w">               </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;olivedrab&quot;</span><span class="p">)</span>
+<span class="w">               </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;darkolivegreen&quot;</span><span class="p">)</span>
+<span class="w">               </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;darkgreen&quot;</span><span class="p">))</span>
 </code></pre></div>
 <p><img src="imagenes/image-above-left.png" width="100px"/></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">above/align</span> <span class="s2">&quot;right&quot;</span>
-               <span class="p">(</span><span class="n">ellipse</span> <span class="mi">70</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;gold&quot;</span><span class="p">)</span>
-               <span class="p">(</span><span class="n">ellipse</span> <span class="mi">50</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;goldenrod&quot;</span><span class="p">)</span>
-               <span class="p">(</span><span class="n">ellipse</span> <span class="mi">30</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;darkgoldenrod&quot;</span><span class="p">)</span>
-               <span class="p">(</span><span class="n">ellipse</span> <span class="mi">10</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;sienna&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">above/align</span><span class="w"> </span><span class="s2">&quot;right&quot;</span>
+<span class="w">               </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;gold&quot;</span><span class="p">)</span>
+<span class="w">               </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;goldenrod&quot;</span><span class="p">)</span>
+<span class="w">               </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;darkgoldenrod&quot;</span><span class="p">)</span>
+<span class="w">               </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;sienna&quot;</span><span class="p">))</span>
 </code></pre></div>
 <p><img src="imagenes/image-above-right.png" width="100px"/></p>
 <p>En el caso de <code>beside</code>, que acumula las imágenes unas junto a otras,
 podemos especificar si queremos alinearla arriba o abajo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">beside/align</span> <span class="s2">&quot;top&quot;</span>
-                <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">70</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;mediumorchid&quot;</span><span class="p">)</span>
-                <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">50</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;darkorchid&quot;</span><span class="p">)</span>
-                <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">30</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;purple&quot;</span><span class="p">)</span>
-                <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">10</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;indigo&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">beside/align</span><span class="w"> </span><span class="s2">&quot;top&quot;</span>
+<span class="w">                </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;mediumorchid&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;darkorchid&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;purple&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;indigo&quot;</span><span class="p">))</span>
 </code></pre></div>
 <p><img src="imagenes/image-beside-top.png" width="100px"/></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">beside/align</span> <span class="s2">&quot;bottom&quot;</span>
-                <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">70</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;lightsteelblue&quot;</span><span class="p">)</span>
-                <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">50</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;mediumslateblue&quot;</span><span class="p">)</span>
-                <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">30</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;slateblue&quot;</span><span class="p">)</span>
-                <span class="p">(</span><span class="n">ellipse</span> <span class="mi">20</span> <span class="mi">10</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;navy&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">beside/align</span><span class="w"> </span><span class="s2">&quot;bottom&quot;</span>
+<span class="w">                </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;lightsteelblue&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;mediumslateblue&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;slateblue&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="p">(</span><span class="n">ellipse</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;navy&quot;</span><span class="p">))</span>
 </code></pre></div>
 <p><img src="imagenes/image-beside-bottom.png" width="100px"/></p>
 <p>Podemos combinar todas las funciones anteriores para construir figuras
 complejas. Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">rotate</span> <span class="mi">45</span>
-        <span class="p">(</span><span class="n">above</span> <span class="p">(</span><span class="n">triangle</span> <span class="mi">40</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;orange&quot;</span><span class="p">)</span>
-               <span class="p">(</span><span class="n">beside</span> <span class="p">(</span><span class="n">rectangle</span> <span class="mi">40</span> <span class="mi">30</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
-                       <span class="p">(</span><span class="n">rectangle</span> <span class="mi">40</span> <span class="mi">30</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;olivedrab&quot;</span><span class="p">))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">rotate</span><span class="w"> </span><span class="mi">45</span>
+<span class="w">        </span><span class="p">(</span><span class="n">above</span><span class="w"> </span><span class="p">(</span><span class="n">triangle</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+<span class="w">               </span><span class="p">(</span><span class="n">beside</span><span class="w"> </span><span class="p">(</span><span class="n">rectangle</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="w">                       </span><span class="p">(</span><span class="n">rectangle</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;olivedrab&quot;</span><span class="p">))))</span>
 </code></pre></div>
 <p><img src="imagenes/imagen-compleja.png" width="100px"/></p>
 <p>Prueba a realizar algunas figuras combinando figuras básicas con las
@@ -1387,22 +1455,22 @@ del triángulo isósceles original será también <em>h/2</em>.</p>
 <p><img src="imagenes/image-sierpinski-elemental.png" width="350px"/></p>
 <p>La hipotenusa de un triángulo rectángulo con dos catetos de longitud
 <em>x</em> se calcula con la siguiente expresión:</p>
-<div>
+<div class="arithmatex">
 <div class="MathJax_Preview">hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}</div>
 <script type="math/tex; mode=display">hipot(x) = \sqrt{x^2+x^2} = x \sqrt{2}</script>
 </div>
 <p>Lo podemos expresar en Racket:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hipotenusa</span> <span class="n">x</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">sqrt</span> <span class="mi">2</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">hipotenusa</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="nb">sqrt</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span>
 </code></pre></div>
 <p>Una vez definida la función <code>hipotenusa</code> podemos dibujar el triángulo
 de Sierpinski elemental de base <code>h</code>. Será un triángulo isósceles de
 ángulo 90 grados y de longitud de lado <code>hipotenusa(h/2)</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">sierpinski-elem</span> <span class="n">base</span><span class="p">)</span>
-  <span class="p">(</span><span class="n">isosceles-triangle</span> <span class="p">(</span><span class="n">hipotenusa</span> <span class="p">(</span><span class="nb">/</span> <span class="n">base</span> <span class="mi">2</span><span class="p">))</span> <span class="mi">90</span> <span class="s2">&quot;outline&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">sierpinski-elem</span><span class="w"> </span><span class="n">base</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="n">isosceles-triangle</span><span class="w"> </span><span class="p">(</span><span class="n">hipotenusa</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="s2">&quot;outline&quot;</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">))</span>
 </code></pre></div>
 <p>Por ejemplo, la llamada a </p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">sierpinski-elem</span> <span class="mi">40</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">sierpinski-elem</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span>
 </code></pre></div>
 <p>produce la siguiente imagen:</p>
 <p><img src="imagenes/image-sierpinski-elem.png" width="180px"/></p>
@@ -1412,12 +1480,12 @@ Sierpinski de ancho <em>x</em> se construye llamando a la recursión para que
 construya el triángulo de ancho <em>x/2</em> y componiendo la imagen
 resultante con el patrón visto anteriormente.</p>
 <p>El código de la función completa es el siguiente:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">sierpinski</span> <span class="n">ancho</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&lt;</span> <span class="n">ancho</span> <span class="mi">10</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">sierpinski-elem</span> <span class="n">ancho</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">above</span> <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">ancho</span> <span class="mi">2</span><span class="p">))</span>
-             <span class="p">(</span><span class="n">beside</span> <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">ancho</span> <span class="mi">2</span><span class="p">))</span>
-                     <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">ancho</span> <span class="mi">2</span><span class="p">))))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">sierpinski</span><span class="w"> </span><span class="n">ancho</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="n">ancho</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="n">sierpinski-elem</span><span class="w"> </span><span class="n">ancho</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="n">above</span><span class="w"> </span><span class="p">(</span><span class="n">sierpinski</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="n">ancho</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span>
+<span class="w">             </span><span class="p">(</span><span class="n">beside</span><span class="w"> </span><span class="p">(</span><span class="n">sierpinski</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="n">ancho</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span>
+<span class="w">                     </span><span class="p">(</span><span class="n">sierpinski</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="n">ancho</span><span class="w"> </span><span class="mi">2</span><span class="p">))))))</span>
 </code></pre></div>
 <ul>
 <li>Si el ancho es menor que un umbral (10) se dibuja el triángulo elemental.</li>
@@ -1445,14 +1513,14 @@ Serpienski más pequeña. La función auxiliar recibirá entonces esa
 figura y deberá combinarla tres veces para formar la figura de
 Sierpinski mayor.</p>
 <p>El código resultante es el siguiente:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">componer-sierpinski</span> <span class="n">figura</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">above</span> <span class="n">figura</span>
-           <span class="p">(</span><span class="n">beside</span> <span class="n">figura</span> <span class="n">figura</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">componer-sierpinski</span><span class="w"> </span><span class="n">figura</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="n">above</span><span class="w"> </span><span class="n">figura</span>
+<span class="w">           </span><span class="p">(</span><span class="n">beside</span><span class="w"> </span><span class="n">figura</span><span class="w"> </span><span class="n">figura</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">sierpinski</span> <span class="n">ancho</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&lt;</span> <span class="n">ancho</span> <span class="mi">10</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">sierpinski-elem</span> <span class="n">ancho</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">componer-sierpinski</span> <span class="p">(</span><span class="n">sierpinski</span> <span class="p">(</span><span class="nb">/</span> <span class="n">ancho</span> <span class="mi">2</span><span class="p">)))))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">sierpinski</span><span class="w"> </span><span class="n">ancho</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="n">ancho</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="n">sierpinski-elem</span><span class="w"> </span><span class="n">ancho</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="n">componer-sierpinski</span><span class="w"> </span><span class="p">(</span><span class="n">sierpinski</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="n">ancho</span><span class="w"> </span><span class="mi">2</span><span class="p">)))))</span>
 </code></pre></div>
 <h3 id="43-curva-de-hilbert">4.3. Curva de Hilbert<a class="headerlink" href="#43-curva-de-hilbert" title="Permanent link">&para;</a></h3>
 <p>La curva de Hilbert es una curva fractal que tiene la propiedad de
@@ -1464,21 +1532,21 @@ rellenar completamente el plano.</p>
 siguiendo un patrón. Es el mismo patrón con el que se puede componer
 la imagen H3 a partir de cuatro imágenes H2.</p>
 <p>El patrón se muestra en la siguiente función <code>(componer-hilbert imagen)</code>: </p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">trazo-horizontal</span> <span class="n">long</span><span class="p">)</span>
-  <span class="p">(</span><span class="n">line</span> <span class="n">long</span> <span class="mi">0</span> <span class="s2">&quot;black&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">trazo-horizontal</span><span class="w"> </span><span class="n">long</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="n">line</span><span class="w"> </span><span class="n">long</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long</span><span class="p">)</span>
-  <span class="p">(</span><span class="n">rotate</span> <span class="mi">90</span> <span class="p">(</span><span class="n">trazo-horizontal</span> <span class="n">long</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">trazo-vertical</span><span class="w"> </span><span class="n">long</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="n">rotate</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="p">(</span><span class="n">trazo-horizontal</span><span class="w"> </span><span class="n">long</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">componer-hilbert</span> <span class="n">imagen</span> <span class="n">long-trazo</span><span class="p">)</span>
-  <span class="p">(</span><span class="n">beside</span> <span class="p">(</span><span class="n">above/align</span> <span class="s2">&quot;left&quot;</span>
-                       <span class="p">(</span><span class="n">beside/align</span> <span class="s2">&quot;bottom&quot;</span> <span class="n">imagen</span> <span class="p">(</span><span class="n">trazo-horizontal</span> <span class="n">long-trazo</span><span class="p">))</span>
-                       <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long-trazo</span><span class="p">)</span>
-                       <span class="p">(</span><span class="n">rotate</span> <span class="mi">-90</span> <span class="n">imagen</span><span class="p">))</span>
-          <span class="p">(</span><span class="n">above/align</span> <span class="s2">&quot;right&quot;</span>
-                       <span class="n">imagen</span>
-                       <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long-trazo</span><span class="p">)</span>
-                       <span class="p">(</span><span class="n">rotate</span> <span class="mi">90</span> <span class="n">imagen</span><span class="p">))))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">componer-hilbert</span><span class="w"> </span><span class="n">imagen</span><span class="w"> </span><span class="n">long-trazo</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="n">beside</span><span class="w"> </span><span class="p">(</span><span class="n">above/align</span><span class="w"> </span><span class="s2">&quot;left&quot;</span>
+<span class="w">                       </span><span class="p">(</span><span class="n">beside/align</span><span class="w"> </span><span class="s2">&quot;bottom&quot;</span><span class="w"> </span><span class="n">imagen</span><span class="w"> </span><span class="p">(</span><span class="n">trazo-horizontal</span><span class="w"> </span><span class="n">long-trazo</span><span class="p">))</span>
+<span class="w">                       </span><span class="p">(</span><span class="n">trazo-vertical</span><span class="w"> </span><span class="n">long-trazo</span><span class="p">)</span>
+<span class="w">                       </span><span class="p">(</span><span class="n">rotate</span><span class="w"> </span><span class="mi">-90</span><span class="w"> </span><span class="n">imagen</span><span class="p">))</span>
+<span class="w">          </span><span class="p">(</span><span class="n">above/align</span><span class="w"> </span><span class="s2">&quot;right&quot;</span>
+<span class="w">                       </span><span class="n">imagen</span>
+<span class="w">                       </span><span class="p">(</span><span class="n">trazo-vertical</span><span class="w"> </span><span class="n">long-trazo</span><span class="p">)</span>
+<span class="w">                       </span><span class="p">(</span><span class="n">rotate</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="n">imagen</span><span class="p">))))</span>
 </code></pre></div>
 <ul>
 <li>La primera llamada a <code>above/align</code> compone una imagen juntando la
@@ -1494,28 +1562,28 @@ la imagen H3 a partir de cuatro imágenes H2.</p>
 </ul>
 <p>Podemos ver un ejemplo del funcionamiento de esta composición usando
 una imagen base formada por un cuadrado con un triángulo dentro.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">overlay</span> <span class="p">(</span><span class="n">triangle</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;green&quot;</span><span class="p">)</span>
-         <span class="p">(</span><span class="n">rectangle</span> <span class="mi">20</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">))</span><span class="err">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">overlay</span><span class="w"> </span><span class="p">(</span><span class="n">triangle</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+<span class="w">         </span><span class="p">(</span><span class="n">rectangle</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">))</span><span class="err">)</span>
 </code></pre></div>
 <p><img src="imagenes/imagen-ejemplo-componer.png" width="30px"/></p>
 <p>Si llamamos a <code>componer-hilbert</code> con la imagen anterior, usando una longitud
 de trazo de 16 píxeles, podemos ver que se construye el patrón básico
 de la curva de Hilbert, el que construye la imagen H2 a partir de H1.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">imagen</span> <span class="p">(</span><span class="n">overlay</span> <span class="p">(</span><span class="n">triangle</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;green&quot;</span><span class="p">)</span>
-                        <span class="p">(</span><span class="n">rectangle</span> <span class="mi">20</span> <span class="mi">20</span> <span class="s2">&quot;solid&quot;</span> <span class="s2">&quot;black&quot;</span><span class="p">)))</span>
-<span class="n">imagen</span> 
-<span class="p">(</span><span class="n">componer-hilbert</span> <span class="n">imagen</span> <span class="mi">16</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">imagen</span><span class="w"> </span><span class="p">(</span><span class="n">overlay</span><span class="w"> </span><span class="p">(</span><span class="n">triangle</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">rectangle</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="s2">&quot;solid&quot;</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">)))</span>
+<span class="n">imagen</span><span class="w"> </span>
+<span class="p">(</span><span class="n">componer-hilbert</span><span class="w"> </span><span class="n">imagen</span><span class="w"> </span><span class="mi">16</span><span class="p">)</span>
 </code></pre></div>
 <p><img src="imagenes/imagen-componer.png" width="500px"/></p>
 <p>Una vez entendido este patrón de composición, podemos ya formular el
 algoritmo recursivo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hilbert</span> <span class="n">nivel</span> <span class="n">long-trazo</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="mi">1</span> <span class="n">nivel</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">beside/align</span> <span class="s2">&quot;top&quot;</span>
-                    <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long-trazo</span><span class="p">)</span>
-                    <span class="p">(</span><span class="n">trazo-horizontal</span> <span class="n">long-trazo</span><span class="p">)</span>
-                    <span class="p">(</span><span class="n">trazo-vertical</span> <span class="n">long-trazo</span><span class="p">))</span>
-      <span class="p">(</span><span class="n">componer-hilbert</span> <span class="p">(</span><span class="n">hilbert</span> <span class="p">(</span><span class="nb">-</span> <span class="n">nivel</span> <span class="mi">1</span><span class="p">)</span> <span class="n">long-trazo</span><span class="p">)</span> <span class="n">long-trazo</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">hilbert</span><span class="w"> </span><span class="n">nivel</span><span class="w"> </span><span class="n">long-trazo</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">nivel</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="n">beside/align</span><span class="w"> </span><span class="s2">&quot;top&quot;</span>
+<span class="w">                    </span><span class="p">(</span><span class="n">trazo-vertical</span><span class="w"> </span><span class="n">long-trazo</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">(</span><span class="n">trazo-horizontal</span><span class="w"> </span><span class="n">long-trazo</span><span class="p">)</span>
+<span class="w">                    </span><span class="p">(</span><span class="n">trazo-vertical</span><span class="w"> </span><span class="n">long-trazo</span><span class="p">))</span>
+<span class="w">      </span><span class="p">(</span><span class="n">componer-hilbert</span><span class="w"> </span><span class="p">(</span><span class="n">hilbert</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">nivel</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">long-trazo</span><span class="p">)</span><span class="w"> </span><span class="n">long-trazo</span><span class="p">)))</span>
 </code></pre></div>
 <ul>
 <li>El caso base es el nivel 1, en el que se construye el trazo básico
@@ -1544,65 +1612,33 @@ algoritmo recursivo:</p>
 <p>Lenguajes y Paradigmas de Programación, curso 2022-23<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
-                
-              
-              
-                
 
 
-              
-            </article>
-          </div>
+
+
+
+                
+              </article>
+            </div>
+          
+          
         </div>
         
       </main>
       
-        
-<footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Pie">
-      
-        <a href="../tema02-programacion-funcional/tema02-programacion-funcional.html" class="md-footer__link md-footer__link--prev" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Anterior
-              </span>
-              Tema 2: Programación funcional
-            </div>
-          </div>
-        </a>
-      
-      
-        <a href="../tema04-estructuras-recursivas/tema04-estructuras-recursivas.html" class="md-footer__link md-footer__link--next" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Siguiente
-              </span>
-              Tema 4: Estructuras recursivas
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
+        <footer class="md-footer">
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
-        
-      </div>
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
     </div>
   </div>
@@ -1612,10 +1648,11 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d351de03.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta"}, "version": null}</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.a1609d9a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.51198bba.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
