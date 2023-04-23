@@ -1489,6 +1489,8 @@ Si se escribe `<T: Equatable>` es equivalente a escribir `<T> ... where T: Equat
     - [Repositorio `swift` en GitHub](https://github.com/apple/swift): repositorio principal de Swift, que contiene el código fuente del compilador Swift, la biblioteca estándar y SourceKit.
     - [Repositorio `swift-evolution` en GitHub](https://github.com/apple/swift-evolution): documentos relacionados con la evolución continua de Swift, incluyendo objetivos de las próximas versiones y propuestas de cambios y extensiones de Swift.
 
----
-Lenguajes y Paradigmas de Programación, curso 2022-23__
-Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
+----
+
+Lenguajes y Paradigmas de Programación, curso 2022-23  
+© Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
+Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
