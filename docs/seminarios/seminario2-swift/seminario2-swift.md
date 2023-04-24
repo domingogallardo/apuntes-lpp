@@ -46,9 +46,15 @@ Swift.
 ### Ejecución on-line ###
 
 Existen varios sitios on-line en los que es posible ejecutar código
-Swift. Recomendamos la dirección [http://online.swiftplayground.run](http://online.swiftplayground.run).
+Swift. Recomendamos la dirección
+[http://online.swiftplayground.run](http://online.swiftplayground.run). 
 
 <img src="imagenes/swift-on-line.png" width="700px"/>
+
+En el caso en que el enlace anterior no funcione, también es posible
+usar [replit](https://replit.com).
+
+<img src="imagenes/replit.png" width=700px"/>
 
 ### Ejecución con MacOS ###
 
