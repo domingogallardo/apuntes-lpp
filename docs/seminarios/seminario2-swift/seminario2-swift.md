@@ -63,7 +63,14 @@ CentOS 7, CentOS 8 y Amazon Linux 2.
 
 Brevemente, los pasos para su instalación son los siguientes:
 
-1. Instalar las dependencias que encontrarás en la página [web oficial
+1. Confirmar que los paquetes de la instalación de Linux están
+   actualizados:
+   
+    ```
+    $ sudo apt-get update
+    ```
+
+2. Instalar las dependencias que encontrarás en la página [web oficial
 de Apple](https://www.swift.org/getting-started/#installing-swift)
 usando `apt-get install`. Puede ser que necesites tener permisos de
 super usuario para hacerlo: `sudo apt-get install`.
@@ -74,7 +81,7 @@ super usuario para hacerlo: `sudo apt-get install`.
         página de Apple el comando `apt-get install` concreto que
         debes ejecutar según tu versión.
 
-2. Descargar la versión y plataforma deseada (fichero
+3. Descargar la versión y plataforma deseada (fichero
 `swift-<VERSION>-<PLATFORM>.tar.gz`). Por ejemplo, los siguientes
 comandos se descargan la versión 5.8 de Swift de las distintas
 distribuciones de Ubuntu. 
@@ -97,7 +104,7 @@ distribuciones de Ubuntu.
         $ wget https://download.swift.org/swift-5.8-release/ubuntu2204/swift-5.8-RELEASE/swift-5.8-RELEASE-ubuntu22.04.tar.gz
         ```
 
-3. Extaer el archivo:
+4. Extaer el archivo:
 
     ```
     $ tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
@@ -110,7 +117,7 @@ distribuciones de Ubuntu.
     $ ./swift
     ```
 
-4. Para poder ejecutar `swift` desde cualquier directorio debes actualizar el PATH o mover `usr/bin/swift` al directorio `/usr/bin`.
+5. Para poder ejecutar `swift` desde cualquier directorio debes actualizar el PATH o mover `usr/bin/swift` al directorio `/usr/bin`.
 
     ```
     $ export PATH=/path/to/usr/bin:"${PATH}"
