@@ -56,6 +56,80 @@ usar [replit](https://replit.com).
 
 <img src="imagenes/replit.png" width=700px"/>
 
+### Instalación en Linux Ubuntu
+
+Existen distribuciones oficiales de Swift para Ubuntu 18.04, 20.04, 22.04
+CentOS 7, CentOS 8 y Amazon Linux 2.
+
+Puedes encontrar la información completa en la
+[web oficial de Apple](https://www.swift.org/getting-started/#installing-swift).
+
+Brevemente, los pasos son los siguientes:
+
+1. Instalar las dependencias que encontrarás en la página anterior
+usando `apt-get install`. Puede ser que necesites tener permisos de super
+usuario para hacerlo: `sudo apt-get install`.
+
+!!! Danger "Cuidado"
+    Dependiendo de tu versión de Linux deberás descargarte unas
+    dependencias distintas. Mira bien en la página de Apple el comando
+    `apt-get install` concreto que debes ejecutar según tu versión.
+
+2. Descargar la versión y plataforma deseada (fichero
+`swift-<VERSION>-<PLATFORM>.tar.gz`). Por ejemplo, el siguiente
+comando instala la versión 5.8 de Swift para Ubuntu 18.04:
+
+    - Ubuntu 18.04:
+
+        ```
+        $ wget https://download.swift.org/swift-5.8-release/ubuntu1804/swift-5.8-RELEASE/swift-5.8-RELEASE-ubuntu18.04.tar.gz
+        ```
+
+    - Ubuntu 20.04:
+    
+        ```
+        $ wget https://download.swift.org/swift-5.8-release/ubuntu2004/swift-5.8-RELEASE/swift-5.8-RELEASE-ubuntu20.04.tar.gz
+        ```
+
+    - Ubuntu 22.04:
+    
+        ```
+        $ wget https://download.swift.org/swift-5.8-release/ubuntu2204/swift-5.8-RELEASE/swift-5.8-RELEASE-ubuntu22.04.tar.gz
+        ```
+
+3. Extaer el archivo:
+
+    ```
+    $ tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
+    ```
+
+    Esto crea el directorio `usr/` en la localización del archivo. Puedes probar si funciona el comando `swift` moviéndote
+    al directorio `bin` y ejecutando:
+    
+    ```
+    $ ./swift
+    ```
+
+4. Para poder ejecutar `swift` desde cualquier directorio debes actualizar el PATH o mover `usr/bin/swift` al directorio `/usr/bin`.
+
+    ```
+    $ export PATH=/path/to/usr/bin:"${PATH}"
+    ```
+
+
+### Instalación en Windows ###
+
+Aunque existe una [distribución oficial de
+Swift](https://swift.org/download/#using-downloads) para Windows 10,
+no hemos conseguido hacerla funcionar.
+
+Recomendamos instalar una distribución de Ubuntu en WSL2 (Windows
+Subsystem for Linux) siguiendo [estas
+instrucciones](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#1-overview)
+y después realizar la instalación de Swift en Ubuntu tal y como se
+explica en el apartado anterior.
+
+
 ### Ejecución con MacOS ###
 
 Podemos trabajar de dos formas: ejecutando los programas Swift desde
@@ -356,60 +430,6 @@ exit
 
 -->
 
-### Instalación en Linux Ubuntu
-
-Existen distribuciones oficiales de Swift para Ubuntu 18.04, 20.4,
-CentOS 7, CentOS 8 y Amazon Linux 2.
-
-Puedes encontrar la información completa en la
-[web oficial de Apple](https://www.swift.org/getting-started/#installing-swift).
-
-Brevemente, los pasos son los siguientes:
-
-1. Instalar las dependencias que encontrarás en la página anterior
-usando `apt-get install`. Puede ser que necesites tener permisos de super
-usuario para hacerlo: `sudo apt-get install`.
-
-2. Descargar la versión y plataforma deseada (fichero
-`swift-<VERSION>-<PLATFORM>.tar.gz`). Por ejemplo, el siguiente
-comando instala la versión 5.6.1 de Swift para Ubuntu 18.04:
-
-    ```
-    $ wget https://download.swift.org/swift-5.6.1-release/ubuntu1804/swift-5.6.1-RELEASE/swift-5.6.1-RELEASE-ubuntu18.04.tar.gz
-    ```
-    
-3. Extaer el archivo:
-
-    ```
-    $ tar xzf swift-<VERSION>-<PLATFORM>.tar.gz
-    ```
-
-    Esto crea el directorio `usr/` en la localización del
-    archivo. Puedes probar si funciona el comando `swift` moviéndote
-    al directorio `bin` y ejecutando:
-    
-    ```
-    $ ./swift
-    ```
-
-4. Para poder ejecutar `swift` desde cualquier directorio debes actualizar el PATH o mover `usr/bin/swift` al directorio `/usr/bin`.
-
-    ```
-    $ export PATH=/path/to/usr/bin:"${PATH}"
-    ```
-
-
-### Instalación en Windows ###
-
-Aunque existe una [distribución oficial de
-Swift](https://swift.org/download/#using-downloads) para Windows 10,
-no hemos conseguido hacerla funcionar.
-
-Recomendamos instalar una distribución de Ubuntu en WSL2 (Windows
-Subsystem for Linux) siguiendo [estas
-instrucciones](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#1-overview)
-y después realizar la instalación de Swift en Ubuntu tal y como se
-explica en el apartado anterior.
 
 ### Visual Studio Code ###
 
