@@ -149,20 +149,13 @@ Swift](https://marketplace.visualstudio.com/items?itemName=sswg.swift-lang)
 que permite un coloreado de sintaxis y completa automáticamente el código.
 
 Para trabajar de forma más cómoda podemos abrir el terminal integrado
-**Ver > Terminal integrado** y lanzar el contenedor de Swift en ese
-terminal.
+**Ver > Terminal integrado**. Podemos comprobar que VSC permite abrir
+un terminal de WSL en el que podemos ejecutar el Swift instalado previamente.
 
 <img src="imagenes/vcode.png" width="700px"/>
 
 Puedes consultar los conceptos básicos de Visual Studio Code y el
 manual completo en [este enlace](https://code.visualstudio.com/docs).
-
-!!! Note "VSC y WSL"
-    Es muy interesante que VSC puede abrir una terminal WSL y trabajar con
-    el Swift instalado allí.
-    
-    Para más información puedes consultar la página de la
-    documentación de VSC [Developing in WSL](https://code.visualstudio.com/docs/remote/wsl).
 
 
 ### Ejecución con MacOS ###
