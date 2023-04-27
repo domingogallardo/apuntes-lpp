@@ -13,10 +13,8 @@ lenguaje propietario, pero el 3 de diciembre de 2015 se hizo _open
 source_ bajo la licencia Apache 2.0, para las plataformas Apple y
 Linux. Los cambios en el lenguaje son propuestos y discutidos por la
 comunidad en un proceso denominado [Swift
-evolution](https://github.com/apple/swift-evolution). En la actualidad
-se ha estabilizado la versión 5.1 del lenguaje, que es la que
-utilizaremos para realizar las prácticas.
- 
+evolution](https://github.com/apple/swift-evolution). 
+
 La siguiente descripción se ha extraído del repositorio GitHub de
 Swift:
 
@@ -33,6 +31,16 @@ Swift:
 > protocolos, clausuras y genéricos. Swift se apoya en módulos,
 > eliminando la necesidad de cabeceras y la duplicación de código que
 > éstas inducen.
+
+
+En los primeros años de vida del lenguaje se introdujeron cambios muy
+fuertes, incrementándose en años consecutivos el número de versión
+mayor y rompiendo la compatibilidad del código fuente con las
+versiones anteriores. Sin embargo, en los últimos años el lenguaje ha
+madurado y llevamos varios años con incrementos sólo de versiones
+menores de la versión mayor 5. En la actualidad se ha lanzado la
+versión 5.8, pero puedes seguir perfectamente la asignatura y las
+prácticas con cualquier versión 5.x.
 
 
 ## Ejecución de programas Swift
