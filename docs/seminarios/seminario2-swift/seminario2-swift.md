@@ -68,10 +68,11 @@ de Apple](https://www.swift.org/getting-started/#installing-swift)
 usando `apt-get install`. Puede ser que necesites tener permisos de
 super usuario para hacerlo: `sudo apt-get install`.
 
-!!! Danger "Cuidado"
-    Dependiendo de tu versión de Linux deberás descargarte unas
-    dependencias distintas. Mira bien en la página de Apple el comando
-    `apt-get install` concreto que debes ejecutar según tu versión.
+    !!! Danger "Cuidado" 
+        Dependiendo de tu versión de Linux deberás
+        descargarte unas dependencias distintas. Mira bien en la
+        página de Apple el comando `apt-get install` concreto que
+        debes ejecutar según tu versión.
 
 2. Descargar la versión y plataforma deseada (fichero
 `swift-<VERSION>-<PLATFORM>.tar.gz`). Por ejemplo, los siguientes
