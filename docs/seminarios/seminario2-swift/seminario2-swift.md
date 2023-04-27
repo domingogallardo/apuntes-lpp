@@ -130,6 +130,32 @@ y después realizar la instalación de Swift en Ubuntu tal y como se
 explica en el apartado anterior.
 
 
+### Visual Studio Code ###
+
+Para editar código Swift puedes usar cualquier editor orientado a
+programación como Visual Studio Code (VSC) o Atom. Aconsejamos [Visual
+Studio Code](https://code.visualstudio.com). 
+
+Las últimas versiones de Visual Studio Code traen incorporado el
+[plugin oficial de
+Swift](https://marketplace.visualstudio.com/items?itemName=sswg.swift-lang)
+que permite un coloreado de sintaxis y completa automáticamente el código.
+
+Para trabajar de forma más cómoda podemos abrir el terminal integrado
+**Ver > Terminal integrado** y lanzar el contenedor de Swift en ese
+terminal.
+
+<img src="imagenes/vcode.png" width="700px"/>
+
+Puedes consultar los conceptos básicos de Visual Studio Code y el
+manual completo en [este enlace](https://code.visualstudio.com/docs).
+
+!!! Note "Importante"
+    Es muy interesante que VSC puede abrir una terminal WSL y trabajar con
+    el Swift instalado allí.
+
+
+
 ### Ejecución con MacOS ###
 
 Podemos trabajar de dos formas: ejecutando los programas Swift desde
@@ -431,25 +457,6 @@ exit
 -->
 
 
-### Visual Studio Code ###
-
-Para editar código Swift puedes usar cualquier editor orientado a
-programación como Visual Studio Code o Atom. Aconsejamos [Visual
-Studio Code](https://code.visualstudio.com). 
-
-Las últimas versiones de Visual Studio Code traen incorporado el
-[plugin oficial de
-Swift](https://marketplace.visualstudio.com/items?itemName=sswg.swift-lang)
-que permite un coloreado de sintaxis y completa automáticamente el código.
-
-Para trabajar de forma más cómoda podemos abrir el terminal integrado
-**Ver > Terminal integrado** y lanzar el contenedor de Swift en ese
-terminal.
-
-<img src="imagenes/vcode.png" width="700px"/>
-
-Puedes consultar los conceptos básicos de Visual Studio Code y el
-manual completo en [este enlace](https://code.visualstudio.com/docs).
 
 <!--
 #### Integración del Docker Quickstart Terminal en Visual Studio Code (Windows) ####
