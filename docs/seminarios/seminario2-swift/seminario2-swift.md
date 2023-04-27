@@ -74,8 +74,9 @@ super usuario para hacerlo: `sudo apt-get install`.
     `apt-get install` concreto que debes ejecutar según tu versión.
 
 2. Descargar la versión y plataforma deseada (fichero
-`swift-<VERSION>-<PLATFORM>.tar.gz`). Por ejemplo, el siguiente
-comando instala la versión 5.8 de Swift para Ubuntu 18.04:
+`swift-<VERSION>-<PLATFORM>.tar.gz`). Por ejemplo, los siguientes
+comandos se descargan la versión 5.8 de Swift de las distintas
+distribuciones de Ubuntu. 
 
     - Ubuntu 18.04:
 
