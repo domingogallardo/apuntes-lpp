@@ -663,15 +663,15 @@ func construyeFunc() -> () -> Int {
 }
 
 let f = construyeFunc()
-print(f()) // -> 1
-print(f()) // -> 2
+print(f()) // -> ?
+print(f()) // -> ?
 
 func usaFunc(_ f: () -> Int) -> Int {
      var x = 10
      return f()
 }
 
-print(usaFunc(f)) // -> 3
+print(usaFunc(f)) // -> ?
 ```
 
 - La función `usaFunc` definida en la línea 13 recibe una función `f`
