@@ -404,13 +404,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejecucion-con-macos" class="md-nav__link">
-    Ejecución con MacOS
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#instalacion-en-linux-ubuntu" class="md-nav__link">
     Instalación en Linux Ubuntu
   </a>
@@ -420,6 +413,13 @@
           <li class="md-nav__item">
   <a href="#instalacion-en-windows" class="md-nav__link">
     Instalación en Windows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejecucion-con-macos" class="md-nav__link">
+    Ejecución con MacOS
   </a>
   
 </li>
@@ -675,13 +675,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejecucion-con-macos" class="md-nav__link">
-    Ejecución con MacOS
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#instalacion-en-linux-ubuntu" class="md-nav__link">
     Instalación en Linux Ubuntu
   </a>
@@ -691,6 +684,13 @@
           <li class="md-nav__item">
   <a href="#instalacion-en-windows" class="md-nav__link">
     Instalación en Windows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejecucion-con-macos" class="md-nav__link">
+    Ejecución con MacOS
   </a>
   
 </li>
@@ -780,6 +780,70 @@ Swift. Recomendamos la dirección
 <p>En el caso en que el enlace anterior no funcione, también es posible
 usar <a href="https://replit.com">replit</a>.</p>
 <p><img src="imagenes/replit.png" width=700px"/></p>
+<h3 id="instalacion-en-linux-ubuntu">Instalación en Linux Ubuntu<a class="headerlink" href="#instalacion-en-linux-ubuntu" title="Permanent link">&para;</a></h3>
+<p>Existen distribuciones oficiales de Swift para Ubuntu 18.04, 20.04, 22.04
+CentOS 7, CentOS 8 y Amazon Linux 2.</p>
+<p>Puedes encontrar la información completa en la
+<a href="https://www.swift.org/getting-started/#installing-swift">web oficial de Apple</a>.</p>
+<p>Brevemente, los pasos son los siguientes:</p>
+<ol>
+<li>Instalar las dependencias que encontrarás en la página anterior
+usando <code>apt-get install</code>. Puede ser que necesites tener permisos de super
+usuario para hacerlo: <code>sudo apt-get install</code>.</li>
+</ol>
+<div class="admonition danger">
+<p class="admonition-title">Cuidado</p>
+<p>Dependiendo de tu versión de Linux deberás descargarte unas
+dependencias distintas. Mira bien en la página de Apple el comando
+<code>apt-get install</code> concreto que debes ejecutar según tu versión.</p>
+</div>
+<ol start="2">
+<li>
+<p>Descargar la versión y plataforma deseada (fichero
+<code>swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz</code>). Por ejemplo, el siguiente
+comando instala la versión 5.8 de Swift para Ubuntu 18.04:</p>
+<ul>
+<li>
+<p>Ubuntu 18.04:</p>
+<div class="highlight"><pre><span></span><code>$ wget https://download.swift.org/swift-5.8-release/ubuntu1804/swift-5.8-RELEASE/swift-5.8-RELEASE-ubuntu18.04.tar.gz
+</code></pre></div>
+</li>
+<li>
+<p>Ubuntu 20.04:</p>
+<div class="highlight"><pre><span></span><code>$ wget https://download.swift.org/swift-5.8-release/ubuntu2004/swift-5.8-RELEASE/swift-5.8-RELEASE-ubuntu20.04.tar.gz
+</code></pre></div>
+</li>
+<li>
+<p>Ubuntu 22.04:</p>
+<div class="highlight"><pre><span></span><code>$ wget https://download.swift.org/swift-5.8-release/ubuntu2204/swift-5.8-RELEASE/swift-5.8-RELEASE-ubuntu22.04.tar.gz
+</code></pre></div>
+</li>
+</ul>
+</li>
+<li>
+<p>Extaer el archivo:</p>
+<div class="highlight"><pre><span></span><code>$ tar xzf swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz
+</code></pre></div>
+<p>Esto crea el directorio <code>usr/</code> en la localización del archivo. Puedes probar si funciona el comando <code>swift</code> moviéndote
+al directorio <code>bin</code> y ejecutando:</p>
+<div class="highlight"><pre><span></span><code>$ ./swift
+</code></pre></div>
+</li>
+<li>
+<p>Para poder ejecutar <code>swift</code> desde cualquier directorio debes actualizar el PATH o mover <code>usr/bin/swift</code> al directorio <code>/usr/bin</code>.</p>
+<div class="highlight"><pre><span></span><code>$ export PATH=/path/to/usr/bin:&quot;${PATH}&quot;
+</code></pre></div>
+</li>
+</ol>
+<h3 id="instalacion-en-windows">Instalación en Windows<a class="headerlink" href="#instalacion-en-windows" title="Permanent link">&para;</a></h3>
+<p>Aunque existe una <a href="https://swift.org/download/#using-downloads">distribución oficial de
+Swift</a> para Windows 10,
+no hemos conseguido hacerla funcionar.</p>
+<p>Recomendamos instalar una distribución de Ubuntu en WSL2 (Windows
+Subsystem for Linux) siguiendo <a href="https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#1-overview">estas
+instrucciones</a>
+y después realizar la instalación de Swift en Ubuntu tal y como se
+explica en el apartado anterior.</p>
 <h3 id="ejecucion-con-macos">Ejecución con MacOS<a class="headerlink" href="#ejecucion-con-macos" title="Permanent link">&para;</a></h3>
 <p>Podemos trabajar de dos formas: ejecutando los programas Swift desde
 la terminal o desde Xcode. Para ambas formas lo primero que hay que
@@ -1031,50 +1095,6 @@ docker<span class="w"> </span>run<span class="w"> </span>--privileged<span class
 
 -->
 
-<h3 id="instalacion-en-linux-ubuntu">Instalación en Linux Ubuntu<a class="headerlink" href="#instalacion-en-linux-ubuntu" title="Permanent link">&para;</a></h3>
-<p>Existen distribuciones oficiales de Swift para Ubuntu 18.04, 20.4,
-CentOS 7, CentOS 8 y Amazon Linux 2.</p>
-<p>Puedes encontrar la información completa en la
-<a href="https://www.swift.org/getting-started/#installing-swift">web oficial de Apple</a>.</p>
-<p>Brevemente, los pasos son los siguientes:</p>
-<ol>
-<li>
-<p>Instalar las dependencias que encontrarás en la página anterior
-usando <code>apt-get install</code>. Puede ser que necesites tener permisos de super
-usuario para hacerlo: <code>sudo apt-get install</code>.</p>
-</li>
-<li>
-<p>Descargar la versión y plataforma deseada (fichero
-<code>swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz</code>). Por ejemplo, el siguiente
-comando instala la versión 5.6.1 de Swift para Ubuntu 18.04:</p>
-<div class="highlight"><pre><span></span><code>$ wget https://download.swift.org/swift-5.6.1-release/ubuntu1804/swift-5.6.1-RELEASE/swift-5.6.1-RELEASE-ubuntu18.04.tar.gz
-</code></pre></div>
-</li>
-<li>
-<p>Extaer el archivo:</p>
-<div class="highlight"><pre><span></span><code>$ tar xzf swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz
-</code></pre></div>
-<p>Esto crea el directorio <code>usr/</code> en la localización del
-archivo. Puedes probar si funciona el comando <code>swift</code> moviéndote
-al directorio <code>bin</code> y ejecutando:</p>
-<div class="highlight"><pre><span></span><code>$ ./swift
-</code></pre></div>
-</li>
-<li>
-<p>Para poder ejecutar <code>swift</code> desde cualquier directorio debes actualizar el PATH o mover <code>usr/bin/swift</code> al directorio <code>/usr/bin</code>.</p>
-<div class="highlight"><pre><span></span><code>$ export PATH=/path/to/usr/bin:&quot;${PATH}&quot;
-</code></pre></div>
-</li>
-</ol>
-<h3 id="instalacion-en-windows">Instalación en Windows<a class="headerlink" href="#instalacion-en-windows" title="Permanent link">&para;</a></h3>
-<p>Aunque existe una <a href="https://swift.org/download/#using-downloads">distribución oficial de
-Swift</a> para Windows 10,
-no hemos conseguido hacerla funcionar.</p>
-<p>Recomendamos instalar una distribución de Ubuntu en WSL2 (Windows
-Subsystem for Linux) siguiendo <a href="https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#1-overview">estas
-instrucciones</a>
-y después realizar la instalación de Swift en Ubuntu tal y como se
-explica en el apartado anterior.</p>
 <h3 id="visual-studio-code">Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permanent link">&para;</a></h3>
 <p>Para editar código Swift puedes usar cualquier editor orientado a
 programación como Visual Studio Code o Atom. Aconsejamos <a href="https://code.visualstudio.com">Visual
