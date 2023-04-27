@@ -150,10 +150,12 @@ terminal.
 Puedes consultar los conceptos básicos de Visual Studio Code y el
 manual completo en [este enlace](https://code.visualstudio.com/docs).
 
-!!! Note "Importante"
+!!! Note "VSC y WSL"
     Es muy interesante que VSC puede abrir una terminal WSL y trabajar con
     el Swift instalado allí.
-
+    
+    Para más información puedes consultar la página de la
+    documentación de VSC [Developing in WSL](https://code.visualstudio.com/docs/remote/wsl).
 
 
 ### Ejecución con MacOS ###
