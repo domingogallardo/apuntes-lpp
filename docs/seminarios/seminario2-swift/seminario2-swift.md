@@ -122,7 +122,8 @@ distribuciones de Ubuntu.
     al directorio `bin` y ejecutando:
     
     ```
-    $ ./swift
+    $ ./swift --version
+    $ ./swift repl
     ```
 
 5. Para poder ejecutar `swift` desde cualquier directorio debes actualizar el PATH o mover `usr/bin/swift` al directorio `/usr/bin`.
@@ -169,8 +170,7 @@ manual completo en [este enlace](https://code.visualstudio.com/docs).
 ### Ejecución con MacOS ###
 
 Podemos trabajar de dos formas: ejecutando los programas Swift desde
-la terminal o desde Xcode. Para ambas formas lo primero que hay que
-hacer es **instalar Xcode**. 
+la terminal o desde Xcode.
 
 La primera forma, usar la terminal, es más inmediata, porque no es
 necesario conocer Xcode. La segunda, usar Xcode, es un poco más
@@ -183,13 +183,21 @@ más cómoda.
 
 #### Ejecución desde la terminal  ####
 
-Una vez instalado Xcode podemos ejecutar programas Swift desde la terminal, de forma
-interactiva.
+Debemos instalar las _Xcode Command Line Tools_ con el siguiente
+comando:
+
+```
+$ xcode-select --install
+```
+
+
+Una vez instaladas las herramientas podemos ejecutar programas Swift desde la terminal, de forma
+interactiva:
 
 Abre la terminar y escribe:
 
 ```text
-$ swift
+$ swift repl
 ```
 
 Verás que se ejecuta el intérprete de Swift y que puedes escribir y
@@ -198,7 +206,27 @@ ejecutar código Swift:
 <img src="imagenes/terminal-swift.png" width="600px"/>
 
 Para editar un programa Swift puedes utilizar un editor como _Visual
-Studio Code_ o el propio Xcode. En Xcode puedes crear un fichero nuevo
+Studio Code_, tal y como hemos comentado anteriormente y después
+ejecutarlo desde la terminal.
+
+```text
+$ swift prueba.swift
+Hola mundo
+```
+
+<img src="imagenes/terminal-swift-programa.png" width="500px"/>
+
+
+#### Ejecución desde Xcode ####
+
+Primero debes instalar Xcode desde la Mac App Store.
+
+Una vez instalado Xcode puedes ejecutar un programa Swift de dos
+formas: compilando desde la terminal o compilando en Xcode.
+
+##### Compilación desde la terminal #####
+
+En Xcode puedes crear un fichero nuevo
 con la opción _File > New File..._ y seleccionar la plantilla _macOS >
 Swift File_.
 
@@ -225,7 +253,7 @@ desde el terminal.
 
 <img src="imagenes/error-terminal.png" width="500px"/>
 
-#### Ejecución desde Xcode ####
+##### Compilación con Xcode #####
 
 La otra forma de trabajar es crear desde Xcode un proyecto Swift. Es
 un poco más complicado (hay que conocer algunos comandos más de
