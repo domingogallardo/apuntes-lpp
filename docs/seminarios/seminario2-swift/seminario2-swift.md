@@ -122,7 +122,6 @@ distribuciones de Ubuntu.
     al directorio `bin` y ejecutando:
     
     ```
-    $ ./swift --version
     $ ./swift repl
     Welcome to Swift version 5.8 
     Type :help for assistance.
