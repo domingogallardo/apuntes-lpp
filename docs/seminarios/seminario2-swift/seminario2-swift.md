@@ -172,12 +172,6 @@ manual completo en [este enlace](https://code.visualstudio.com/docs).
 Podemos trabajar de dos formas: ejecutando los programas Swift desde
 la terminal o desde Xcode.
 
-La primera forma, usar la terminal, es más inmediata, porque no es
-necesario conocer Xcode. La segunda, usar Xcode, es un poco más
-complicada, porque hay que crear un proyecto Xcode y conocer algunos
-de sus comandos. Pero la ventaja principal es que podremos comprobar
-los errores de compilación del código conforme lo escribimos.
-
 Si tienes Mac, puedes probar las dos formas y elegir la que te parezca
 más cómoda.
 
