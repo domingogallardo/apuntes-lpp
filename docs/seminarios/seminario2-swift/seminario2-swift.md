@@ -124,6 +124,12 @@ distribuciones de Ubuntu.
     ```
     $ ./swift --version
     $ ./swift repl
+    Welcome to Swift version 5.8 
+    Type :help for assistance.
+    1> print("Hola mundo")
+    Hola mundo
+    2> :quit
+    $ 
     ```
 
 5. Para poder ejecutar `swift` desde cualquier directorio debes actualizar el PATH o mover `usr/bin/swift` al directorio `/usr/bin`.
