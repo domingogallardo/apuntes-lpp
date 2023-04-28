@@ -839,7 +839,8 @@ distribuciones de Ubuntu. </p>
 </code></pre></div>
 <p>Esto crea el directorio <code>usr/</code> en la localización del archivo. Puedes probar si funciona el comando <code>swift</code> moviéndote
 al directorio <code>bin</code> y ejecutando:</p>
-<div class="highlight"><pre><span></span><code>$ ./swift
+<div class="highlight"><pre><span></span><code>$ ./swift --version
+$ ./swift repl
 </code></pre></div>
 </li>
 <li>
@@ -873,8 +874,7 @@ un terminal de WSL en el que podemos ejecutar el Swift instalado previamente.</p
 manual completo en <a href="https://code.visualstudio.com/docs">este enlace</a>.</p>
 <h3 id="ejecucion-con-macos">Ejecución con MacOS<a class="headerlink" href="#ejecucion-con-macos" title="Permanent link">&para;</a></h3>
 <p>Podemos trabajar de dos formas: ejecutando los programas Swift desde
-la terminal o desde Xcode. Para ambas formas lo primero que hay que
-hacer es <strong>instalar Xcode</strong>. </p>
+la terminal o desde Xcode.</p>
 <p>La primera forma, usar la terminal, es más inmediata, porque no es
 necesario conocer Xcode. La segunda, usar Xcode, es un poco más
 complicada, porque hay que crear un proyecto Xcode y conocer algunos
@@ -883,16 +883,31 @@ los errores de compilación del código conforme lo escribimos.</p>
 <p>Si tienes Mac, puedes probar las dos formas y elegir la que te parezca
 más cómoda.</p>
 <h4 id="ejecucion-desde-la-terminal">Ejecución desde la terminal<a class="headerlink" href="#ejecucion-desde-la-terminal" title="Permanent link">&para;</a></h4>
-<p>Una vez instalado Xcode podemos ejecutar programas Swift desde la terminal, de forma
-interactiva.</p>
+<p>Debemos instalar las <em>Xcode Command Line Tools</em> con el siguiente
+comando:</p>
+<div class="highlight"><pre><span></span><code>$ xcode-select --install
+</code></pre></div>
+<p>Una vez instaladas las herramientas podemos ejecutar programas Swift desde la terminal, de forma
+interactiva:</p>
 <p>Abre la terminar y escribe:</p>
-<div class="highlight"><pre><span></span><code>$ swift
+<div class="highlight"><pre><span></span><code>$ swift repl
 </code></pre></div>
 <p>Verás que se ejecuta el intérprete de Swift y que puedes escribir y
 ejecutar código Swift:</p>
 <p><img src="imagenes/terminal-swift.png" width="600px"/></p>
 <p>Para editar un programa Swift puedes utilizar un editor como <em>Visual
-Studio Code</em> o el propio Xcode. En Xcode puedes crear un fichero nuevo
+Studio Code</em>, tal y como hemos comentado anteriormente y después
+ejecutarlo desde la terminal.</p>
+<div class="highlight"><pre><span></span><code>$ swift prueba.swift
+Hola mundo
+</code></pre></div>
+<p><img src="imagenes/terminal-swift-programa.png" width="500px"/></p>
+<h4 id="ejecucion-desde-xcode">Ejecución desde Xcode<a class="headerlink" href="#ejecucion-desde-xcode" title="Permanent link">&para;</a></h4>
+<p>Primero debes instalar Xcode desde la Mac App Store.</p>
+<p>Una vez instalado Xcode puedes ejecutar un programa Swift de dos
+formas: compilando desde la terminal o compilando en Xcode.</p>
+<h5 id="compilacion-desde-la-terminal">Compilación desde la terminal<a class="headerlink" href="#compilacion-desde-la-terminal" title="Permanent link">&para;</a></h5>
+<p>En Xcode puedes crear un fichero nuevo
 con la opción <em>File &gt; New File...</em> y seleccionar la plantilla <em>macOS &gt;
 Swift File</em>.</p>
 <p><img src="imagenes/template-new-swift-file.png" width="600px"/></p>
@@ -908,7 +923,7 @@ Hola mundo
 desde el terminal.</p>
 <p><img src="imagenes/programa-con-error.png" width="600px"/></p>
 <p><img src="imagenes/error-terminal.png" width="500px"/></p>
-<h4 id="ejecucion-desde-xcode">Ejecución desde Xcode<a class="headerlink" href="#ejecucion-desde-xcode" title="Permanent link">&para;</a></h4>
+<h5 id="compilacion-con-xcode">Compilación con Xcode<a class="headerlink" href="#compilacion-con-xcode" title="Permanent link">&para;</a></h5>
 <p>La otra forma de trabajar es crear desde Xcode un proyecto Swift. Es
 un poco más complicado (hay que conocer algunos comandos más de
 Xcode), pero tiene la ventaja de que Xcode muestra los errores en la
