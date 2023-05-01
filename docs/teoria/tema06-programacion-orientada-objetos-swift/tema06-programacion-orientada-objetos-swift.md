@@ -1953,6 +1953,9 @@ También es posible marcar la clase completa como final, escribiendo el
 modificador antes de `class` (`final class`). De esta forma no se
 permite que se pueda heredar de ella.
 
+
+<!--
+
 ## 7. Funciones operadoras
 
 Las clases y las estructuras pueden proporcionar sus propias
@@ -3364,6 +3367,9 @@ extension String {
 "Hola"[3] // devuelve "a"
 ```
 
+
+-->
+
 ## 12. Bibliografía
 
 - Swift Language Guide
@@ -3380,6 +3386,6 @@ extension String {
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2021–22  
+Lenguajes y Paradigmas de Programación, curso 2022–23  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
