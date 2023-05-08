@@ -498,8 +498,19 @@ arriba).
       puntos del cuadrilátero y del origen de la figura,
       desplazándolos los mismos incrementos en los que ha sido
       desplazado el centro de la figura.
-    - `area` (`Double`, sólo lectura ) que devuelve el [área del
-      cuadrilátero](https://www.cuemath.com/coordinate-geometry/area-of-a-quadrilateral/).
+    - `area` (`Double`, sólo lectura ) que devuelve el área del
+      cuadrilatero. Se puede calcular esta área sumando las áreas de
+      dos triángulos que forman el cuadrilatero.
+
+      Se puede utilizar la siguiente función auxiliar para calcular el
+      área de un triángulo en función de los puntos de sus vértices:
+
+      ```swift
+      func areaTriangulo(_ p1: Punto, _ p2: Punto, _ p3: Punto) -> Double {
+          let det = p1.x * (p2.y - p3.y) + p2.x * (p3.y - p1.y) + p3.x * (p1.y - p2.y)
+          return abs(det)/2
+      }
+      ```
 
 **Clase derivada `Circulo`**
 
