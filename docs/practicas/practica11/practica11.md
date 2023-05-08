@@ -15,6 +15,7 @@ OO con Swift_](../../teoria/tema06-programacion-orientada-objetos-swift/tema06-p
 - Herencia
 
 
+
 ### Ejercicio 1 ###
 
 Contesta los siguientes apartados sin usar el compilador de
@@ -262,8 +263,166 @@ calculada?
 - ¿Cómo se puede llamar a la implementación de un método de la clase
   base en una sobreescritura de ese mismo método en la clase derivada?
 
-
 ### Ejercicio 5
+
+En este ejercicio deberás implementar un conjunto de clases con las
+que podamos "simular" una carrera de coches.
+
+#### Función `Int.random(in:)`
+
+Utilizaremos la función del sistema
+[`Int.random(in:)`](https://developer.apple.com/documentation/swift/int/2995648-random)
+que devuelve un número aleatorio entero en un rango. Por ejemplo, el
+siguiente código devuelve un número aleatorio entre 1 y 99
+
+```swift
+for _ in 1...3 {
+    print(Int.random(in: 1...99))
+}
+// Prints "53"
+// Prints "64"
+// Prints "5"
+```
+
+A continuación puedes ver un ejemplo de su utilización en un método de
+tipo del enumerado `MarcaCoche` para devolver una marca aleatoria de
+coche:
+
+
+```swift
+enum MarcaCoche: Int {
+    case Mercedes=0, Ferrari, RedBull, McLaren
+    
+    static func random() -> MarcaCoche {
+        let maxValue = McLaren.rawValue
+        
+        let r = Int.random(in: 0...maxValue)
+        return MarcaCoche(rawValue: r)!
+    }
+
+}
+```
+
+#### Enumerados y clases que gestionan los vehículos
+
+Deberás implementar los siguientes enumerados y clases, con las propiedades indicadas.
+
+**Enumerado `MarcaCoche`** 
+
+- Posibles valores: `Mercedes`, `Ferrari`, `RedBull` y `McLaren`
+- Método del tipo `random()` que devuelva aleatoriamente uno de los
+  valores (consultar el código anterior).
+
+**Enumerado `TipoCambio`**
+
+- Posibles valores: `Automatico` o `Manual`
+- Método del tipo `random()` que devuelve uno de esos valores.
+
+**Clase base `Coche`**
+
+- Propiedades de instancia almacenadas: `velocidadActual` (`Double`),
+  `marcha` (`Int`), `distanciaRecorrida` (`Double`) y `marca`
+  (`MarcaCoche`).
+
+- Propiedad de instancia calculada: `descripcion` (`String`), que
+  devuelve la marca del coche. A pesar de que el tipo subyacente del
+  enumerado `MarcaChoche` es `Int`, es posible devolver la cadena
+  correspondiente al literal del enumerado usando la interpolación de
+  cadenas:
+  
+    ```swift
+    print("Marca: \(MarcaCoche.Ferrari)")
+    // Imprime: "Marca: Ferrari"
+    ```
+
+- Propiedades del tipo: Constantes `velocidadMaxima` (`Double`) y
+  `marchaMaxima` (`Int`) inicializadas a 150.0 y 6
+
+**Subclase `CocheAutomatico`**
+
+- Hereda de `Coche` y sobreescribe la descripción, añadiendo la cadena
+  "Automático".
+
+**Subclase `CocheManual`**
+
+- Hereda de `Coche` y sobreescribe la descripción, añadiendo la cadena
+  "Manual".
+
+**Observadores de propiedades en las subclases**
+
+La velocidad de un coche manual se modifica cambiando su propiedad
+`marcha` y la de un coche automático cambiando su propiedad
+`velocidadActual`. En cada caso hay que definir observadores de
+propiedades que modifiquen la otra propiedad.
+
+La velocidad se calcula a partir de la marcha según la siguiente expresión:
+
+```swift
+velocidadActual = 25.0 * marcha
+```
+
+Y la marcha se calcula a partir de la velocidad con la expresión que
+puedes encontrar en los apuntes de teoría, en la definición de la
+clase `CocheAutomatico`.
+
+
+**Distancia recorrida e información en pantalla**
+
+Suponemos que se cambia la velocidad del coche cada hora y que en cada
+cambio de velocidad se actualiza la propiedad `distanciaRecorrida`,
+que irá acumulando la distancia recorrida por el coche desde su
+inicialización. Cada vez que se cambia la velocidad también se
+imprimirá la velocidad actual y la marca del coche en pantalla (ver el
+ejemplo al final del ejercicio). Esto se puede implementar también en
+los observadores.
+
+#### Clase Carrera
+
+Debes implementar las clases anteriores y una clase `Carrera` con la
+que simular una carrera de `n` coches que conducen durante `k` horas.
+
+Un ejemplo de uso de la clase `Carrera`:
+
+```swift
+let carrera = Carrera(numCoches: 2, horas: 3)
+print("\nDescripción de la carrera:")
+carrera.descripcion()
+print("\n!!! Comienza la carrera !!!")
+carrera.empezar()
+print("\n!!! Clasificación !!!")
+carrera.clasificacion()
+```
+
+Y su correspondiente salida por pantalla:
+
+```text
+Descripción de la carrera:
+2 coches con una duración de 3 horas
+ McLaren Automatico
+ Mercedes Manual
+
+!!! Comienza la carrera !!!
+
+Horas transcurridas 1
+McLaren Automatico viajando a 141.0 kilómetros por hora con la marcha 6
+Mercedes Manual viajando a 25.0 kilómetros por hora con la marcha 1
+
+Horas transcurridas 2
+McLaren Automatico viajando a 114.0 kilómetros por hora con la marcha 5
+Mercedes Manual viajando a 25.0 kilómetros por hora con la marcha 1
+
+Horas transcurridas 3
+McLaren Automatico viajando a 105.0 kilómetros por hora con la marcha 5
+Mercedes Manual viajando a 100.0 kilómetros por hora con la marcha 4
+
+!!! Clasificación !!!
+1. McLaren Automatico (360.0 kilómetros recorridos)
+2. Mercedes Manual (150.0 kilómetros recorridos)
+```
+
+
+    
+### Ejercicio 6
 
 En este ejercicio vamos a trabajar con figuras geométricas usando
 estructuras y clases.
