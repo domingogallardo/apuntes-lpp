@@ -467,14 +467,12 @@ de la lista sea <code>nil</code> haciéndolo opcional.</li>
 <ul>
 <li>La función <code>suma(lista:)</code> quedaría así:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>func suma(lista: Lista) -&gt; Int {
+<div class="highlight"><pre><span></span><code>func suma(lista: Lista?) -&gt; Int {
     switch lista {
+        case nil:
+            return 0
         case let .nodo(first, rest):
-        if (rest == nil) {
-            return first
-        } else {
-            return first + suma(lista: rest!)
-        }
+            return first + suma(lista: rest)
     }
 }
 

@@ -304,15 +304,13 @@ indirect enum Lista{
 - La función `suma(lista:)` quedaría así:
 
 ```
-func suma(lista: Lista) -> Int {
-	switch lista {
-		case let .nodo(first, rest):
-		if (rest == nil) {
-			return first
-		} else {
-			return first + suma(lista: rest!)
-		}
-	}
+func suma(lista: Lista?) -> Int {
+    switch lista {
+        case nil:
+            return 0
+        case let .nodo(first, rest):
+            return first + suma(lista: rest)
+    }
 }
 
 let z: Lista = .nodo(20, .nodo(10, nil))
