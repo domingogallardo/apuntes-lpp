@@ -959,7 +959,7 @@ let fromTheTop = stackOfStrings.pop()
 
 ---
 
-### Restricciones en los tipos genéricos ###
+### Restricciones en los tipos genéricos: una sola restricción ###
 
 - Es posible definir una restricción en el tipo genérico, indicando que
 debe heredar de una clase o cumplir un protocolo.
@@ -1039,6 +1039,11 @@ func findIndex<T: Equatable>(of valueToFind: T, in array:[T]) -> Int? {
 let doubleIndex = findIndex(of: 9.3, in: [3.14159, 0.1, 0.25, 9.3])
 // devuelve Int? 2
 ```
+
+---
+
+### Restricciones en los tipos genéricos: más de una restricción ###
+
 
 - También podemos restringir más de un tipo genérico. Por ejemplo, la
   siguiente sintaxis permite restringir dos tipos:
