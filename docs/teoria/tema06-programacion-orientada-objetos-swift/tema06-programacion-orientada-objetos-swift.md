@@ -1954,8 +1954,6 @@ modificador antes de `class` (`final class`). De esta forma no se
 permite que se pueda heredar de ella.
 
 
-<!--
-
 ## 7. Funciones operadoras
 
 Las clases y las estructuras pueden proporcionar sus propias
@@ -3038,16 +3036,15 @@ let fromTheTop = stackOfStrings.pop()
 Es posible definir una restricción en el tipo genérico, indicando que
 debe heredar de una clase o cumplir un protocolo.
 
+#### 10.1.1 Restricción de un tipo genérico ####
+
 La sintaxis es la siguiente:
 
 ```swift
-func someFunction<T: SomeClass, U: SomeProtocol>(someT: T, someU: U) {
+func someFunction<T: SomeClassOrProtocol>(someT: T) {
     // function body goes here
 }
 ```
-
-La función define dos tipos genéricos `T` y `U`. El primero debe
-heredar de una clase y el segundo debe cumplir un protocolo.
 
 Por ejemplo, supongamos una función que busca una cadena en un array
 de cadenas y devuelve el índice en el que se encuentra:
@@ -3126,6 +3123,54 @@ Ahora ya podemos usar en la función `find` cualquier tipo que cumpla
 let doubleIndex = findIndex(of: 9.3, in: [3.14159, 0.1, 0.25, 9.3])
 // devuelve Int? 2
 ```
+
+#### 10.1.2 Restricciones de más de un tipo genérico ####
+
+Podemos definir más de un parámetro, cada uno con una restricción. Por
+ejemplo, podríamos definir dos tipos genéricos `T` y `U`, de forma que
+el primero deba heredar de una clase y el segundo cumplir un protocolo:
+
+```swift
+func someFunction<T: SomeClass, U: SomeProtocol>(someT: T, someU: U) {
+    // function body goes here
+}
+```
+
+Un ejemplo sencillo en el que se demuestra esta posibilidad:
+
+```swift
+class Animal {
+    var nombre: String
+    
+    init(nombre: String) {
+        self.nombre = nombre
+    }
+}
+
+protocol EmisorDeSonido {
+    func emitirSonido() -> String
+}
+
+func reproducirSonido<T: Animal, U: EmisorDeSonido>(animal: T, emisorDeSonido: U) {
+    let sonido = emisorDeSonido.emitirSonido()
+    print("\(animal.nombre) emite el sonido: \(sonido)")
+}
+
+class Perro: Animal {}
+
+class Silbato: EmisorDeSonido {
+    func emitirSonido() -> String {
+        return "silbido"
+    }
+}
+
+let perro = Perro(nombre: "Fido")
+let silbato = Silbato()
+
+reproducirSonido(animal: perro, emisorDeSonido: silbato)
+// Output: Fido emite el sonido: silbido
+```
+
 
 ## 11. Extensiones
 
@@ -3367,8 +3412,6 @@ extension String {
 "Hola"[3] // devuelve "a"
 ```
 
-
--->
 
 ## 12. Bibliografía
 

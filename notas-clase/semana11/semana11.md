@@ -967,7 +967,7 @@ debe heredar de una clase o cumplir un protocolo.
 - Sintaxis:
 
 ```swift
-func someFunction<T: SomeClass, U: SomeProtocol>(someT: T, someU: U) {
+func someFunction<T: SomeClassOrProtocol>(someT: T) {
     // function body goes here
 }
 ```
@@ -1040,6 +1040,49 @@ let doubleIndex = findIndex(of: 9.3, in: [3.14159, 0.1, 0.25, 9.3])
 // devuelve Int? 2
 ```
 
+- También podemos restringir más de un tipo genérico. Por ejemplo, la
+  siguiente sintaxis permite restringir dos tipos:
+
+```swift
+func someFunction<T: SomeClass, U: SomeProtocol>(someT: T, someU: U) {
+    // function body goes here
+}
+```
+
+- Un ejemplo sencillo:
+
+```swift
+class Animal {
+    var nombre: String
+    
+    init(nombre: String) {
+        self.nombre = nombre
+    }
+}
+
+protocol EmisorDeSonido {
+    func emitirSonido() -> String
+}
+
+func reproducirSonido<T: Animal, U: EmisorDeSonido>(animal: T, emisorDeSonido: U) {
+    let sonido = emisorDeSonido.emitirSonido()
+    print("\(animal.nombre) emite el sonido: \(sonido)")
+}
+
+class Perro: Animal {}
+
+class Silbato: EmisorDeSonido {
+    func emitirSonido() -> String {
+        return "silbido"
+    }
+}
+
+let perro = Perro(nombre: "Fido")
+let silbato = Silbato()
+
+reproducirSonido(animal: perro, emisorDeSonido: silbato)
+// Output: Fido emite el sonido: silbido
+```
 
 ---
 ### 11. Extensiones
