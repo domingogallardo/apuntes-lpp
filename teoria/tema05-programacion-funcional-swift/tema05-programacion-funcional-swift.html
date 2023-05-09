@@ -2675,14 +2675,12 @@ de la lista sea <code>nil</code> haciéndolo opcional.</p>
     <span class="k">case</span> <span class="n">nodo</span><span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="n">Lista</span><span class="p">?)</span>
 <span class="p">}</span>
 
-<span class="kd">func</span> <span class="nf">suma</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">Lista</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+<span class="kd">func</span> <span class="nf">suma</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">Lista</span><span class="p">?)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
     <span class="k">switch</span> <span class="n">lista</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="kc">nil</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
         <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="bp">first</span><span class="p">,</span> <span class="n">rest</span><span class="p">):</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">rest</span> <span class="p">==</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="bp">first</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="bp">first</span> <span class="o">+</span> <span class="n">suma</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">rest</span><span class="p">!)</span>
-        <span class="p">}</span>
+            <span class="k">return</span> <span class="bp">first</span> <span class="o">+</span> <span class="n">suma</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">rest</span><span class="p">)</span>
     <span class="p">}</span>
 <span class="p">}</span>
 

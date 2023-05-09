@@ -1178,15 +1178,25 @@ arriba).</p>
 <li>Los puntos del cuadrilátero <code>p1</code>, <code>p2</code>, <code>p3</code> y <code>p4</code>.</li>
 </ul>
 </li>
-<li>Propiedades de instancia calculadas:<ul>
+<li>
+<p>Propiedades de instancia calculadas:</p>
+<ul>
 <li><code>centro</code> (<code>Punto</code>, de lectura y escritura), heredada de la superclase
    El <code>setter</code> modifica la posición de los
   puntos del cuadrilátero y del origen de la figura,
   desplazándolos los mismos incrementos en los que ha sido
   desplazado el centro de la figura.</li>
-<li><code>area</code> (<code>Double</code>, sólo lectura ) que devuelve el <a href="https://www.cuemath.com/coordinate-geometry/area-of-a-quadrilateral/">área del
-  cuadrilátero</a>.</li>
+<li><code>area</code> (<code>Double</code>, sólo lectura ) que devuelve el área del
+  cuadrilatero. Se puede calcular esta área sumando las áreas de
+  dos triángulos que forman el cuadrilatero.</li>
 </ul>
+<p>Se puede utilizar la siguiente función auxiliar para calcular el
+  área de un triángulo en función de los puntos de sus vértices:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">areaTriangulo</span><span class="p">(</span><span class="kc">_</span> <span class="n">p1</span><span class="p">:</span> <span class="n">Punto</span><span class="p">,</span> <span class="kc">_</span> <span class="n">p2</span><span class="p">:</span> <span class="n">Punto</span><span class="p">,</span> <span class="kc">_</span> <span class="n">p3</span><span class="p">:</span> <span class="n">Punto</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Double</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">det</span> <span class="p">=</span> <span class="n">p1</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">p2</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">p3</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">p2</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">p3</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">p1</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">p3</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">p1</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">p2</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">abs</span><span class="p">(</span><span class="n">det</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+<span class="p">}</span>
+</code></pre></div>
 </li>
 </ul>
 <p><strong>Clase derivada <code>Circulo</code></strong></p>
