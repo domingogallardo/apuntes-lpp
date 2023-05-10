@@ -1667,36 +1667,47 @@ palabra <code>return</code>.</p>
     <span class="k">return</span> <span class="n">saludo</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Para invocar a la función <code>saluda(nombre:)</code>:</p>
+<p>Una característica de Swift es que para invocar a la función es
+necesario preceder al argumento con la etiqueta definida por el nombre
+del parámetro.</p>
+<p>Por ejemplo, sería un error llamar a la función anterior de la
+siguiente forma:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Error: hay que especificar la etiqueta `nombre:`</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">saluda</span><span class="p">(</span><span class="s">&quot;Ana&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p>La forma correcta de llamar a la función es la siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="n">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span><span class="s">&quot;Ana&quot;</span><span class="p">))</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span><span class="s">&quot;Pedro&quot;</span><span class="p">))</span>
 <span class="c1">// Imprime &quot;Hola, Ana!&quot;</span>
 <span class="c1">// Imprime &quot;Hola, Pedro!&quot;</span>
 </code></pre></div>
-<h3 id="32-etiquetas-de-argumentos-y-nombres-de-parametros">3.2. Etiquetas de argumentos y nombres de parámetros<a class="headerlink" href="#32-etiquetas-de-argumentos-y-nombres-de-parametros" title="Permanent link">&para;</a></h3>
-<p>Cada parámetro de una función tiene una etiqueta del argumento y un
-nombre de parámetro. La etiqueta del argumento se usa cuando se llama a
-la función y el nombre del parámetro se usa internamente en su
-implementación. Por defecto, los parámetros usan su nombre de
-parámetro como etiqueta del argumento:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">unaFuncion</span><span class="p">(</span><span class="n">primerNombreParametro</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">segundoNombreParametro</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// En el cuerpo de la función, primerNombreParametro y</span>
-    <span class="c1">// segundoNombreParametro se refieren a los valores de los</span>
-    <span class="c1">// argumentos del primer y el segundo parámetro</span>
+<p>Esta característica de Swift hace que el código sea más legible y
+fácil de entender, ya que podemos ver claramente cuál es el propósito
+de cada argumento al llamar a la función. </p>
+<p>Por ejemplo, podemos tener también otra función similar que devuelve
+un saludo recibiendo el nombre y la edad de una persona:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">crearSaludo</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">edad</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">&quot;Hola, </span><span class="si">\(</span><span class="n">nombre</span><span class="si">)</span><span class="s">! Tienes </span><span class="si">\(</span><span class="n">edad</span><span class="si">)</span><span class="s"> años.&quot;</span>
 <span class="p">}</span>
-<span class="n">unaFuncion</span><span class="p">(</span><span class="n">primerNombreParametro</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">segundoNombreParametro</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="kd">let</span> <span class="nv">saludo</span> <span class="p">=</span> <span class="n">crearSaludo</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Carlos&quot;</span><span class="p">,</span> <span class="n">edad</span><span class="p">:</span> <span class="mi">25</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">saludo</span><span class="p">)</span>
 </code></pre></div>
-<p>Es posible hacer distintos la etiqueta del argumento del nombre del
-parámetro:</p>
+<p>Al llamar a la función <code>crearSaludo</code> queda claro que estamos pasando
+el nombre y la edad de la persona a la que queremos saludar.</p>
+<h3 id="32-etiquetas-de-argumentos-y-nombres-de-parametros">3.2. Etiquetas de argumentos y nombres de parámetros<a class="headerlink" href="#32-etiquetas-de-argumentos-y-nombres-de-parametros" title="Permanent link">&para;</a></h3>
+<p>Es posible hacer distintos la etiqueta del argumento (nombre externo
+con el que hay que llamar a la función) del nombre del parámetro
+(nombre interno que se usa en el cuerpo de la función):</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">de</span> <span class="n">ciudad</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
     <span class="k">return</span> <span class="s">&quot;Hola </span><span class="si">\(</span><span class="n">nombre</span><span class="si">)</span><span class="s">! Me alegro de que hayas podido visitarnos desde </span><span class="si">\(</span><span class="n">ciudad</span><span class="si">)</span><span class="s">.&quot;</span>
 <span class="p">}</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Bill&quot;</span><span class="p">,</span> <span class="n">de</span><span class="p">:</span> <span class="s">&quot;Cupertino&quot;</span><span class="p">))</span>
 <span class="c1">// Imprime &quot;Hola Bill! Me alegro de que hayas podido visitarnos desde Cupertino.&quot;</span>
 </code></pre></div>
-<p>En este caso el nombre externo del parámetro (el que usamos al invocar la función)
-es <code>de</code> y el nombre interno (el que se usa en el cuerpo de la función)
-es <code>ciudad</code>. </p>
+<p>En este caso el nombre externo del parámetro, el que usamos al invocar
+la función, es <code>de</code> y el nombre interno, el que se usa en el cuerpo de
+la función, es <code>ciudad</code>.</p>
 <p>Otro ejemplo, la siguiente función <code>concatena(palabra:con:)</code>: </p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">concatena</span><span class="p">(</span><span class="n">palabra</span> <span class="n">str1</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">con</span> <span class="n">str2</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">str1</span><span class="o">+</span><span class="n">str2</span>
@@ -1709,7 +1720,7 @@ escribir un subrayado (<code>_</code>) en lugar de una etiqueta del argumento
 explícita para ese parámetro. Esto nos permite llamar a la función sin
 usar un nombre de parámetro. Por ejemplo, la función <code>max(_:_:)</code> y la
 función <code>divide(_:entre:)</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">max</span><span class="p">(</span><span class="kc">_</span> <span class="n">x</span><span class="p">:</span><span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">y</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">max</span><span class="p">(</span><span class="kc">_</span> <span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">y</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="p">{</span>
       <span class="k">return</span> <span class="n">x</span>
    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -1719,20 +1730,38 @@ función <code>divide(_:entre:)</code>:</p>
 
 <span class="bp">print</span><span class="p">(</span><span class="bp">max</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 
-<span class="kd">func</span> <span class="nf">divide</span><span class="p">(</span><span class="kc">_</span> <span class="n">x</span><span class="p">:</span><span class="nb">Double</span><span class="p">,</span> <span class="n">entre</span> <span class="n">y</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Double</span> <span class="p">{</span>
+<span class="kd">func</span> <span class="nf">divide</span><span class="p">(</span><span class="kc">_</span> <span class="n">x</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">entre</span> <span class="n">y</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Double</span> <span class="p">{</span>
    <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
 <span class="p">}</span>
 
 <span class="bp">print</span><span class="p">(</span><span class="n">divide</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">entre</span><span class="p">:</span><span class="mi">4</span><span class="p">))</span>
 </code></pre></div>
-<p>El perfil de la función está formado por el nombre de la función, las
-etiquetas de los argumentos y el tipo devuelto por la función. En la
-documentación de las funciones usaremos las etiquetas separadas por
-dos puntos. Por ejemplo, las funciones anteriores son <code>max(_:_:)</code> y
-<code>divide(_:entre:)</code>.</p>
-<p>Las etiquetas de los argumentos son parte del nombre de la
-función. Es posible definir funciones distintas con
-sólo distintos nombres de argumentos, como las siguientes funciones
+<p>La firma de la función ("function signature" en inglés, también
+llamada "perfil" de la función) está formada por el nombre de la
+función, las etiquetas de los argumentos y sus tipos y el tipo
+devuelto por la función.</p>
+<p>Por ejemplo, en el caso anterior, la firma de la función <code>max</code> sería:</p>
+<ul>
+<li>Nombre: <code>max</code></li>
+<li>Lista de parámetros: <code>(_ x: Int, _ y: Int)</code></li>
+<li>Tipo de retorno: <code>Int</code></li>
+</ul>
+<p>Y la firma de la función <code>divide</code> sería:</p>
+<ul>
+<li>Nombre: <code>divide</code></li>
+<li>Lista de parámetros: <code>(_ x: Double, entre y: Double)</code></li>
+<li>Tipo de retorno: <code>Double</code></li>
+</ul>
+<p>Esta firma permite al compilador y al programador identificar y
+diferenciar funciones con el mismo nombre pero con diferentes listas
+de parámetros o tipos de retorno.</p>
+<p>En la documentación de las funciones en Swift se suele usar para
+nombrarlas su nombre completo: el nombre de la función propio de la
+función más el nombre de los parámetros. Por ejemplo, las funciones
+anteriores se nombran como <code>max(_:_:)</code> y <code>divide(_:entre:)</code>.</p>
+<p>Como hemos dicho, los nombres de los parámetros son parte del nombre
+completo de la función. Es posible definir funciones distintas con
+sólo distintos nombres de parámetros, como las siguientes funciones
 <code>mitad(par:)</code> y <code>mitad(impar:)</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">mitad</span><span class="p">(</span><span class="n">par</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">{</span>
     <span class="k">return</span> <span class="n">par</span><span class="o">/</span><span class="mi">2</span>
@@ -1864,9 +1893,44 @@ inmutables definidas con <code>let</code>.</p>
 <h2 id="5-tipos-funcion">5. Tipos función<a class="headerlink" href="#5-tipos-funcion" title="Permanent link">&para;</a></h2>
 <p>En Swift las funciones son objetos de primera clase y podemos
 asignarlas a variables, pasarlas como parámetro o devolverlas como
-resultado de otra función. Al ser un lenguaje fuertemente tipado, las
-variables, parámetros o resultados deben ser objetos de tipo función.</p>
-<p>Cada función tiene un tipo específico, definido por el tipo de sus
+resultado de otra función. </p>
+<p>El siguiente ejemplo muestra todos los posibles usos de una función
+como objeto de primera clase en Swift. Más adelante veremos con más
+detalle cada uno de los casos.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Definimos una función simple que suma dos números</span>
+<span class="kd">func</span> <span class="nf">suma</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="p">}</span>
+
+<span class="c1">// Asignamos la función suma a una variable</span>
+<span class="kd">let</span> <span class="nv">miSuma</span> <span class="p">=</span> <span class="n">suma</span>
+
+<span class="c1">// Llamamos a la función suma usando la variable</span>
+<span class="kd">let</span> <span class="nv">resultado</span> <span class="p">=</span> <span class="n">miSuma</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La suma de 3 y 4 es: </span><span class="si">\(</span><span class="n">resultado</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span> <span class="c1">// Salida: La suma de 3 y 4 es: 7</span>
+
+<span class="c1">// Definimos una función que toma otra función como parámetro y la aplica a dos números</span>
+<span class="kd">func</span> <span class="nf">aplicarOperacion</span><span class="p">(</span><span class="kc">_</span> <span class="n">operacion</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">operacion</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">resultadoAplicarOperacion</span> <span class="p">=</span> <span class="n">aplicarOperacion</span><span class="p">(</span><span class="n">suma</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="mi">6</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La suma de 5 y 6 es: </span><span class="si">\(</span><span class="n">resultadoAplicarOperacion</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span> <span class="c1">// Salida: La suma de 5 y 6 es: 11</span>
+
+<span class="c1">// Definimos una función que devuelve otra función como resultado</span>
+<span class="kd">func</span> <span class="nf">obtenerOperacion</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">((</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">suma</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nv">funcionObtenida</span> <span class="p">=</span> <span class="n">obtenerOperacion</span><span class="p">()</span>
+<span class="kd">let</span> <span class="nv">resultadoFuncionObtenida</span> <span class="p">=</span> <span class="n">funcionObtenida</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La suma de 7 y 8 es: </span><span class="si">\(</span><span class="n">resultadoFuncionObtenida</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span> <span class="c1">// Salida: La suma de 7 y 8 es: 15</span>
+</code></pre></div>
+<p>Como vemos en el ejemplo anterior el funcionamiento es similar al que
+hemos visto en Scheme, pero al ser Swift un lenguaje fuertemente
+tipado, debemos especificar el tipo de los parámetros o resultados de
+tipo función.</p>
+<p>El tipo específico de la función está definido por el tipo de sus
 parámetros y el tipo del valor devuelto.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">sumaDosInts</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
@@ -1878,8 +1942,8 @@ parámetros y el tipo del valor devuelto.</p>
 <p>El tipo de estas funciones es <code>(Int, Int) -&gt; Int</code>, que se puede leer como:</p>
 <p>"Un tipo función que tiene dos parámetros, ambos de tipo <code>Int</code> y que
 devuelve un valor de tipo <code>Int</code>".</p>
-<p>En Swift se puede usar un tipo función de la misma forma que cualquier
-otro tipo, por ejemplo asignando la función a una variable:</p>
+<p>Como hemos visto en el primer ejemplo, podemos asignar estas funciones
+a una variable de tipo función:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">f</span> <span class="p">=</span> <span class="n">sumaDosInts</span>
 <span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="c1">// Imprime &quot;5&quot;</span>
@@ -1899,11 +1963,12 @@ quejaría:</p>
 <span class="c1">//error: extraneous argument labels &#39;a:b:&#39; in call</span>
 </code></pre></div>
 <p>Esto es debido a que al ser <code>f</code> una variable se le puede asignar
-cualquier función que tenga el perfil <code>(Int, Int) -&gt; Int</code> sin
+cualquier función que tenga el tipo <code>(Int, Int) -&gt; Int</code> sin
 tener en cuenta las etiquetas de los argumentos.</p>
 </div>
 <h3 id="51-funciones-que-reciben-otras-funciones">5.1. Funciones que reciben otras funciones<a class="headerlink" href="#51-funciones-que-reciben-otras-funciones" title="Permanent link">&para;</a></h3>
-<p>Podemos usar un tipo función en parámetros de otras funciones:</p>
+<p>Tal y como vimos en el ejemplo inicial, podemos usar un tipo función
+en parámetros de otras funciones:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">printResultado</span><span class="p">(</span><span class="n">funcion</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
     <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Resultado: </span><span class="si">\(</span><span class="n">funcion</span><span class="si">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="p">}</span>
@@ -3068,7 +3133,7 @@ argumento.</p>
 <a href="https://developer.apple.com/library/ios/documentation/Swift/Reference/Swift_CollectionType_Protocol/index.html#//apple_ref/swift/intfm/CollectionType/s:FEsPs14CollectionType3mapurFzFzWx9Generator7Element_qd__GSaqd___"><code>CollectionType</code></a>
 y es adoptado por múltiples estructuras como <code>Array</code>, <code>Dictionary</code>,
 <code>Set</code>.</p>
-<p>El perfil del método <code>map</code> es el siguiente:</p>
+<p>La firma del método <code>map</code> es el siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">map</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">transform</span><span class="p">:</span> <span class="p">(</span><span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">T</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="n">T</span><span class="p">]</span>
 </code></pre></div>
 <p>Se trata de un método genérico (lo veremos más adelante) que recibe
@@ -3125,7 +3190,7 @@ colección para los que la clausura devuelve <em>true</em>. </p>
 <span class="c1">// devuelve [0, 2, 4, 6, 8, 10]</span>
 </code></pre></div>
 <h3 id="113-reduce">11.3. Reduce<a class="headerlink" href="#113-reduce" title="Permanent link">&para;</a></h3>
-<p>Similar al <em>foldl</em> de Scheme. Su perfil es el siguiente:</p>
+<p>Similar al <em>foldl</em> de Scheme. Su firma es el siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">reduce</span><span class="p">&lt;</span><span class="n">Result</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">initialResult</span><span class="p">:</span> <span class="n">Result</span><span class="p">,</span> 
                     <span class="kc">_</span> <span class="n">nextPartialResult</span><span class="p">:</span> <span class="p">(</span><span class="n">Result</span><span class="p">,</span> <span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Result</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Result</span>
 </code></pre></div>
