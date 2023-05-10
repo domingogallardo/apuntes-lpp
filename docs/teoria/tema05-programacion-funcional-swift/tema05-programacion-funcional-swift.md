@@ -399,9 +399,9 @@ diferenciar funciones con el mismo nombre pero con diferentes listas
 de parámetros o tipos de retorno.
 
 En la documentación de las funciones en Swift se suele usar para
-nombrarlas su nombre completo: el nombre de la función propio de la
-función más el nombre de los parámetros. Por ejemplo, las funciones
-anteriores se nombran como `max(_:_:)` y `divide(_:entre:)`.
+nombrarlas su nombre completo: el nombre de la propia función más el
+nombre de los parámetros. Por ejemplo, las funciones anteriores se
+nombran como `max(_:_:)` y `divide(_:entre:)`.
 
 Como hemos dicho, los nombres de los parámetros son parte del nombre
 completo de la función. Es posible definir funciones distintas con
@@ -591,7 +591,8 @@ let miSuma = suma
 
 // Llamamos a la función suma usando la variable
 let resultado = miSuma(3, 4)
-print("La suma de 3 y 4 es: \(resultado)") // Salida: La suma de 3 y 4 es: 7
+print("La suma de 3 y 4 es: \(resultado)") 
+// Salida: La suma de 3 y 4 es: 7
 
 // Definimos una función que toma otra función como parámetro y la aplica a dos números
 func aplicarOperacion(_ operacion: (Int, Int) -> Int, a: Int, b: Int) -> Int {
@@ -599,7 +600,8 @@ func aplicarOperacion(_ operacion: (Int, Int) -> Int, a: Int, b: Int) -> Int {
 }
 
 let resultadoAplicarOperacion = aplicarOperacion(suma, a: 5, b: 6)
-print("La suma de 5 y 6 es: \(resultadoAplicarOperacion)") // Salida: La suma de 5 y 6 es: 11
+print("La suma de 5 y 6 es: \(resultadoAplicarOperacion)") 
+// Salida: La suma de 5 y 6 es: 11
 
 // Definimos una función que devuelve otra función como resultado
 func obtenerOperacion() -> ((Int, Int) -> Int) {
@@ -608,13 +610,15 @@ func obtenerOperacion() -> ((Int, Int) -> Int) {
 
 let funcionObtenida = obtenerOperacion()
 let resultadoFuncionObtenida = funcionObtenida(7, 8)
-print("La suma de 7 y 8 es: \(resultadoFuncionObtenida)") // Salida: La suma de 7 y 8 es: 15
+print("La suma de 7 y 8 es: \(resultadoFuncionObtenida)") 
+// Salida: La suma de 7 y 8 es: 15
 ```
 
-Como vemos en el ejemplo anterior el funcionamiento es similar al que
-hemos visto en Scheme, pero al ser Swift un lenguaje fuertemente
-tipado, debemos especificar el tipo de los parámetros o resultados de
-tipo función.
+Como vemos en el ejemplo anterior, el funcionamiento de los objetos
+función es similar al que ya hemos visto en Scheme. Pero con una
+diferencia importante: al ser Swift un lenguaje fuertemente tipado,
+debemos especificar el tipo de los parámetros o resultados de tipo
+función.
 
 El tipo específico de la función está definido por el tipo de sus
 parámetros y el tipo del valor devuelto.
