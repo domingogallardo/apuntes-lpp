@@ -1756,9 +1756,9 @@ devuelto por la función.</p>
 diferenciar funciones con el mismo nombre pero con diferentes listas
 de parámetros o tipos de retorno.</p>
 <p>En la documentación de las funciones en Swift se suele usar para
-nombrarlas su nombre completo: el nombre de la función propio de la
-función más el nombre de los parámetros. Por ejemplo, las funciones
-anteriores se nombran como <code>max(_:_:)</code> y <code>divide(_:entre:)</code>.</p>
+nombrarlas su nombre completo: el nombre de la propia función más el
+nombre de los parámetros. Por ejemplo, las funciones anteriores se
+nombran como <code>max(_:_:)</code> y <code>divide(_:entre:)</code>.</p>
 <p>Como hemos dicho, los nombres de los parámetros son parte del nombre
 completo de la función. Es posible definir funciones distintas con
 sólo distintos nombres de parámetros, como las siguientes funciones
@@ -1907,7 +1907,8 @@ detalle cada uno de los casos.</p>
 
 <span class="c1">// Llamamos a la función suma usando la variable</span>
 <span class="kd">let</span> <span class="nv">resultado</span> <span class="p">=</span> <span class="n">miSuma</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La suma de 3 y 4 es: </span><span class="si">\(</span><span class="n">resultado</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span> <span class="c1">// Salida: La suma de 3 y 4 es: 7</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La suma de 3 y 4 es: </span><span class="si">\(</span><span class="n">resultado</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span> 
+<span class="c1">// Salida: La suma de 3 y 4 es: 7</span>
 
 <span class="c1">// Definimos una función que toma otra función como parámetro y la aplica a dos números</span>
 <span class="kd">func</span> <span class="nf">aplicarOperacion</span><span class="p">(</span><span class="kc">_</span> <span class="n">operacion</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
@@ -1915,7 +1916,8 @@ detalle cada uno de los casos.</p>
 <span class="p">}</span>
 
 <span class="kd">let</span> <span class="nv">resultadoAplicarOperacion</span> <span class="p">=</span> <span class="n">aplicarOperacion</span><span class="p">(</span><span class="n">suma</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="mi">6</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La suma de 5 y 6 es: </span><span class="si">\(</span><span class="n">resultadoAplicarOperacion</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span> <span class="c1">// Salida: La suma de 5 y 6 es: 11</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La suma de 5 y 6 es: </span><span class="si">\(</span><span class="n">resultadoAplicarOperacion</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span> 
+<span class="c1">// Salida: La suma de 5 y 6 es: 11</span>
 
 <span class="c1">// Definimos una función que devuelve otra función como resultado</span>
 <span class="kd">func</span> <span class="nf">obtenerOperacion</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">((</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
@@ -1924,12 +1926,14 @@ detalle cada uno de los casos.</p>
 
 <span class="kd">let</span> <span class="nv">funcionObtenida</span> <span class="p">=</span> <span class="n">obtenerOperacion</span><span class="p">()</span>
 <span class="kd">let</span> <span class="nv">resultadoFuncionObtenida</span> <span class="p">=</span> <span class="n">funcionObtenida</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La suma de 7 y 8 es: </span><span class="si">\(</span><span class="n">resultadoFuncionObtenida</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span> <span class="c1">// Salida: La suma de 7 y 8 es: 15</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La suma de 7 y 8 es: </span><span class="si">\(</span><span class="n">resultadoFuncionObtenida</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span> 
+<span class="c1">// Salida: La suma de 7 y 8 es: 15</span>
 </code></pre></div>
-<p>Como vemos en el ejemplo anterior el funcionamiento es similar al que
-hemos visto en Scheme, pero al ser Swift un lenguaje fuertemente
-tipado, debemos especificar el tipo de los parámetros o resultados de
-tipo función.</p>
+<p>Como vemos en el ejemplo anterior, el funcionamiento de los objetos
+función es similar al que ya hemos visto en Scheme. Pero con una
+diferencia importante: al ser Swift un lenguaje fuertemente tipado,
+debemos especificar el tipo de los parámetros o resultados de tipo
+función.</p>
 <p>El tipo específico de la función está definido por el tipo de sus
 parámetros y el tipo del valor devuelto.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">sumaDosInts</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
