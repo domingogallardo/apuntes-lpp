@@ -80,7 +80,7 @@ print(parejaMayorParImpar(numeros: numeros))
 ### Ejercicio 3 ###
 
 a) Implementa en Swift la **función recursiva**
-`compruebaParejas(_:funcion:)` con el siguiente perfil:
+`compruebaParejas(_:funcion:)` con el siguiente tipo:
 
 ```
 ([Int], (Int) -> Int) -> [(Int, Int)]

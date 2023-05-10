@@ -284,7 +284,19 @@ func saluda(nombre: String) -> String {
 }
 ```
 
-Para invocar a la función `saluda(nombre:)`:
+Una característica de Swift es que para invocar a la función es
+necesario preceder al argumento con la etiqueta definida por el nombre
+del parámetro.
+
+Por ejemplo, sería un error llamar a la función anterior de la
+siguiente forma:
+
+```swift
+// Error: hay que especificar la etiqueta `nombre:`
+print(saluda("Ana"))
+```
+
+La forma correcta de llamar a la función es la siguiente:
 
 ```swift
 print(saluda(nombre:"Ana"))
@@ -293,25 +305,31 @@ print(saluda(nombre:"Pedro"))
 // Imprime "Hola, Pedro!"
 ```
 
-### 3.2. Etiquetas de argumentos y nombres de parámetros
+Esta característica de Swift hace que el código sea más legible y
+fácil de entender, ya que podemos ver claramente cuál es el propósito
+de cada argumento al llamar a la función. 
 
-Cada parámetro de una función tiene una etiqueta del argumento y un
-nombre de parámetro. La etiqueta del argumento se usa cuando se llama a
-la función y el nombre del parámetro se usa internamente en su
-implementación. Por defecto, los parámetros usan su nombre de
-parámetro como etiqueta del argumento:
+Por ejemplo, podemos tener también otra función similar que devuelve
+un saludo recibiendo el nombre y la edad de una persona:
 
 ```swift
-func unaFuncion(primerNombreParametro: Int, segundoNombreParametro: Int) {
-    // En el cuerpo de la función, primerNombreParametro y
-    // segundoNombreParametro se refieren a los valores de los
-    // argumentos del primer y el segundo parámetro
+func crearSaludo(nombre: String, edad: Int) -> String {
+    return "Hola, \(nombre)! Tienes \(edad) años."
 }
-unaFuncion(primerNombreParametro: 1, segundoNombreParametro: 2)
+
+let saludo = crearSaludo(nombre: "Carlos", edad: 25)
+print(saludo)
 ```
 
-Es posible hacer distintos la etiqueta del argumento del nombre del
-parámetro:
+Al llamar a la función `crearSaludo` queda claro que estamos pasando
+el nombre y la edad de la persona a la que queremos saludar.
+
+
+### 3.2. Etiquetas de argumentos y nombres de parámetros
+
+Es posible hacer distintos la etiqueta del argumento (nombre externo
+con el que hay que llamar a la función) del nombre del parámetro
+(nombre interno que se usa en el cuerpo de la función):
 
 ```swift
 func saluda(nombre: String, de ciudad: String) -> String {
@@ -321,9 +339,9 @@ print(saluda(nombre: "Bill", de: "Cupertino"))
 // Imprime "Hola Bill! Me alegro de que hayas podido visitarnos desde Cupertino."
 ```
 
-En este caso el nombre externo del parámetro (el que usamos al invocar la función)
-es `de` y el nombre interno (el que se usa en el cuerpo de la función)
-es `ciudad`. 
+En este caso el nombre externo del parámetro, el que usamos al invocar
+la función, es `de` y el nombre interno, el que se usa en el cuerpo de
+la función, es `ciudad`.
 
 Otro ejemplo, la siguiente función `concatena(palabra:con:)`: 
 
@@ -342,7 +360,7 @@ usar un nombre de parámetro. Por ejemplo, la función `max(_:_:)` y la
 función `divide(_:entre:)`:
 
 ```swift
-func max(_ x:Int, _ y: Int) -> Int {
+func max(_ x: Int, _ y: Int) -> Int {
    if x > y {
       return x
    } else {
@@ -352,22 +370,42 @@ func max(_ x:Int, _ y: Int) -> Int {
 
 print(max(10,3))
 
-func divide(_ x:Double, entre y: Double) -> Double {
+func divide(_ x: Double, entre y: Double) -> Double {
    return x / y
 }
 
 print(divide(30, entre:4))
 ```
 
-El perfil de la función está formado por el nombre de la función, las
-etiquetas de los argumentos y el tipo devuelto por la función. En la
-documentación de las funciones usaremos las etiquetas separadas por
-dos puntos. Por ejemplo, las funciones anteriores son `max(_:_:)` y
-`divide(_:entre:)`.
+La firma de la función ("function signature" en inglés, también
+llamada "perfil" de la función) está formada por el nombre de la
+función, las etiquetas de los argumentos y sus tipos y el tipo
+devuelto por la función.
 
-Las etiquetas de los argumentos son parte del nombre de la
-función. Es posible definir funciones distintas con
-sólo distintos nombres de argumentos, como las siguientes funciones
+Por ejemplo, en el caso anterior, la firma de la función `max` sería:
+
+- Nombre: `max`
+- Lista de parámetros: `(_ x: Int, _ y: Int)`
+- Tipo de retorno: `Int`
+
+Y la firma de la función `divide` sería:
+
+- Nombre: `divide`
+- Lista de parámetros: `(_ x: Double, entre y: Double)`
+- Tipo de retorno: `Double`
+
+Esta firma permite al compilador y al programador identificar y
+diferenciar funciones con el mismo nombre pero con diferentes listas
+de parámetros o tipos de retorno.
+
+En la documentación de las funciones en Swift se suele usar para
+nombrarlas su nombre completo: el nombre de la función propio de la
+función más el nombre de los parámetros. Por ejemplo, las funciones
+anteriores se nombran como `max(_:_:)` y `divide(_:entre:)`.
+
+Como hemos dicho, los nombres de los parámetros son parte del nombre
+completo de la función. Es posible definir funciones distintas con
+sólo distintos nombres de parámetros, como las siguientes funciones
 `mitad(par:)` y `mitad(impar:)`:
 
 ```swift
@@ -384,8 +422,6 @@ print(mitad(par: 8))
 print(mitad(impar: 9))
 // Imprime 5
 ```
-
-
 
 ### 3.3. Parámetros y valores devueltos
 
@@ -538,10 +574,49 @@ inmutables definidas con `let`.
 
 En Swift las funciones son objetos de primera clase y podemos
 asignarlas a variables, pasarlas como parámetro o devolverlas como
-resultado de otra función. Al ser un lenguaje fuertemente tipado, las
-variables, parámetros o resultados deben ser objetos de tipo función.
+resultado de otra función. 
 
-Cada función tiene un tipo específico, definido por el tipo de sus
+El siguiente ejemplo muestra todos los posibles usos de una función
+como objeto de primera clase en Swift. Más adelante veremos con más
+detalle cada uno de los casos.
+
+```swift
+// Definimos una función simple que suma dos números
+func suma(a: Int, b: Int) -> Int {
+    return a + b
+}
+
+// Asignamos la función suma a una variable
+let miSuma = suma
+
+// Llamamos a la función suma usando la variable
+let resultado = miSuma(3, 4)
+print("La suma de 3 y 4 es: \(resultado)") // Salida: La suma de 3 y 4 es: 7
+
+// Definimos una función que toma otra función como parámetro y la aplica a dos números
+func aplicarOperacion(_ operacion: (Int, Int) -> Int, a: Int, b: Int) -> Int {
+    return operacion(a, b)
+}
+
+let resultadoAplicarOperacion = aplicarOperacion(suma, a: 5, b: 6)
+print("La suma de 5 y 6 es: \(resultadoAplicarOperacion)") // Salida: La suma de 5 y 6 es: 11
+
+// Definimos una función que devuelve otra función como resultado
+func obtenerOperacion() -> ((Int, Int) -> Int) {
+    return suma
+}
+
+let funcionObtenida = obtenerOperacion()
+let resultadoFuncionObtenida = funcionObtenida(7, 8)
+print("La suma de 7 y 8 es: \(resultadoFuncionObtenida)") // Salida: La suma de 7 y 8 es: 15
+```
+
+Como vemos en el ejemplo anterior el funcionamiento es similar al que
+hemos visto en Scheme, pero al ser Swift un lenguaje fuertemente
+tipado, debemos especificar el tipo de los parámetros o resultados de
+tipo función.
+
+El tipo específico de la función está definido por el tipo de sus
 parámetros y el tipo del valor devuelto.
 
 ```swift
@@ -558,8 +633,8 @@ El tipo de estas funciones es `(Int, Int) -> Int`, que se puede leer como:
 "Un tipo función que tiene dos parámetros, ambos de tipo `Int` y que
 devuelve un valor de tipo `Int`".
 
-En Swift se puede usar un tipo función de la misma forma que cualquier
-otro tipo, por ejemplo asignando la función a una variable:
+Como hemos visto en el primer ejemplo, podemos asignar estas funciones
+a una variable de tipo función:
 
 ```swift
 var f = sumaDosInts
@@ -585,12 +660,13 @@ devuelven un `Int`.
     ```
 
     Esto es debido a que al ser `f` una variable se le puede asignar
-    cualquier función que tenga el perfil `(Int, Int) -> Int` sin
+    cualquier función que tenga el tipo `(Int, Int) -> Int` sin
     tener en cuenta las etiquetas de los argumentos.
 
 ### 5.1. Funciones que reciben otras funciones
 
-Podemos usar un tipo función en parámetros de otras funciones:
+Tal y como vimos en el ejemplo inicial, podemos usar un tipo función
+en parámetros de otras funciones:
 
 ```swift
 func printResultado(funcion: (Int, Int) -> Int, _ a: Int, _ b: Int) {
@@ -2100,7 +2176,7 @@ El método `map` se define en el protocolo
 y es adoptado por múltiples estructuras como `Array`, `Dictionary`,
 `Set`.
 
-El perfil del método `map` es el siguiente:
+La firma del método `map` es el siguiente:
 
 ```swift
 func map<T>(_ transform: (Element) -> T) -> [T]
@@ -2184,7 +2260,7 @@ numeros.filter {$0 % 2 == 0}
 
 ### 11.3. Reduce 
 
-Similar al _foldl_ de Scheme. Su perfil es el siguiente:
+Similar al _foldl_ de Scheme. Su firma es el siguiente:
 
 
 ```swift

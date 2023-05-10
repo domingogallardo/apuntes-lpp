@@ -350,7 +350,7 @@ print(tupla)
 ### Ejercicio 6 ###
 
 
-Implementa la función `construye` con el siguiente perfil:
+Implementa la función `construye` con el siguiente tipo:
 
 ```swift
 func construye(operador: Character) -> (Int, Int) -> Int
