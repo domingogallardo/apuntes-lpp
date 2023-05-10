@@ -3075,7 +3075,7 @@ generalizarla para que buscara en un array de cualquier tipo? Vamos a
 probarlo: 
 
 ```swift
-func findIndex<T>(ofString valueToFind: T, in array: [T]) -> Int? {
+func findIndex<T>(of valueToFind: T, in array: [T]) -> Int? {
     for (index, value) in array.enumerated() {
         if value == valueToFind {
             return index
