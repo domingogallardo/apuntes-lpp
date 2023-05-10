@@ -302,12 +302,12 @@ func divide(_ x:Double, entre y: Double) -> Double {
 print(divide(30, entre:4))
 ```
 
-- La firma de la función ("function signature" en inglés, también
-llamada "perfil" de la función) está formada por el nombre de la
-función, las etiquetas de los argumentos y sus tipos y el tipo
-devuelto por la función. Esta firma permite al compilador y al
-programador identificar y diferenciar funciones con el mismo nombre
-pero con diferentes listas de parámetros o tipos de retorno. 
+- El perfil de una función (el nombre técnico es "function signature"
+en inglés) está formada por el nombre de la función, las etiquetas de
+los argumentos y sus tipos y el tipo devuelto por la función. Este
+perfil permite al compilador y al programador identificar y diferenciar
+funciones con el mismo nombre pero con diferentes listas de parámetros
+o tipos de retorno.
 
 - En la documentación de las funciones en Swift se suele usar para
 nombrarlas su nombre completo: el nombre de la propia función más el
