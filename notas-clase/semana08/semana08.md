@@ -302,16 +302,23 @@ func divide(_ x:Double, entre y: Double) -> Double {
 print(divide(30, entre:4))
 ```
 
-- El perfil de la función está formado por el nombre de la función,
-las etiquetas de los argumentos y el tipo devuelto por la función. En
-la documentación de las funciones usaremos las etiquetas separadas por
-dos puntos. Por ejemplo, las funciones anteriores son `max(_:_:)` y
-`divide(_:entre:)`.
+- La firma de la función ("function signature" en inglés, también
+llamada "perfil" de la función) está formada por el nombre de la
+función, las etiquetas de los argumentos y sus tipos y el tipo
+devuelto por la función. Esta firma permite al compilador y al
+programador identificar y diferenciar funciones con el mismo nombre
+pero con diferentes listas de parámetros o tipos de retorno. 
 
-- Las etiquetas de los argumentos son parte del nombre de la
-función. Es posible definir funciones distintas con
-sólo distintos nombres de argumentos, como las siguientes funciones
-`mitad(par:)` y `mitad(impar:)`:
+- En la documentación de las funciones en Swift se suele usar para
+nombrarlas su nombre completo: el nombre de la propia función más el
+nombre de los parámetros. Por ejemplo, las funciones anteriores se
+nombran como `max(_:_:)` y `divide(_:entre:)`.
+
+- Los nombres de los parámetros son parte del nombre completo de la
+función. Es posible definir funciones distintas con sólo distintos
+nombres de parámetros, como las siguientes funciones `mitad(par:)` y
+`mitad(impar:)`:
+
 
 ```swift
 func mitad(par: Int) -> Int{
@@ -492,9 +499,7 @@ inmutables definidas con `let`.
 
 - En Swift las funciones son objetos de primera clase y podemos
   asignarlas a variables, pasarlas como parámetro o devolverlas como
-  resultado de otra función. Al ser un lenguaje fuertemente tipado,
-  las variables, parámetros o resultados deben ser objetos de tipo
-  función.
+  resultado de otra función.
 
 - Cada función tiene un tipo específico, definido por el tipo de sus
 parámetros y el tipo del valor devuelto.
@@ -536,7 +541,7 @@ devuelven un `Int`.
     ```
 
     Esto es debido a que al ser `f` una variable se le puede asignar
-    cualquier función que tenga el perfil `(Int, Int) -> Int` sin
+    cualquier función que tenga el tipo `(Int, Int) -> Int` sin
     tener en cuenta las etiquetas de los argumentos.
 
 ----

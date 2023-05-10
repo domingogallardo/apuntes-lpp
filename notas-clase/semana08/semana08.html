@@ -457,17 +457,24 @@ explícita para ese parámetro:</li>
 </code></pre></div>
 <ul>
 <li>
-<p>El perfil de la función está formado por el nombre de la función,
-las etiquetas de los argumentos y el tipo devuelto por la función. En
-la documentación de las funciones usaremos las etiquetas separadas por
-dos puntos. Por ejemplo, las funciones anteriores son <code>max(_:_:)</code> y
-<code>divide(_:entre:)</code>.</p>
+<p>La firma de la función ("function signature" en inglés, también
+llamada "perfil" de la función) está formada por el nombre de la
+función, las etiquetas de los argumentos y sus tipos y el tipo
+devuelto por la función. Esta firma permite al compilador y al
+programador identificar y diferenciar funciones con el mismo nombre
+pero con diferentes listas de parámetros o tipos de retorno. </p>
 </li>
 <li>
-<p>Las etiquetas de los argumentos son parte del nombre de la
-función. Es posible definir funciones distintas con
-sólo distintos nombres de argumentos, como las siguientes funciones
-<code>mitad(par:)</code> y <code>mitad(impar:)</code>:</p>
+<p>En la documentación de las funciones en Swift se suele usar para
+nombrarlas su nombre completo: el nombre de la propia función más el
+nombre de los parámetros. Por ejemplo, las funciones anteriores se
+nombran como <code>max(_:_:)</code> y <code>divide(_:entre:)</code>.</p>
+</li>
+<li>
+<p>Los nombres de los parámetros son parte del nombre completo de la
+función. Es posible definir funciones distintas con sólo distintos
+nombres de parámetros, como las siguientes funciones <code>mitad(par:)</code> y
+<code>mitad(impar:)</code>:</p>
 </li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">mitad</span><span class="p">(</span><span class="n">par</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">{</span>
@@ -634,9 +641,7 @@ inmutables definidas con <code>let</code>.</li>
 <li>
 <p>En Swift las funciones son objetos de primera clase y podemos
   asignarlas a variables, pasarlas como parámetro o devolverlas como
-  resultado de otra función. Al ser un lenguaje fuertemente tipado,
-  las variables, parámetros o resultados deben ser objetos de tipo
-  función.</p>
+  resultado de otra función.</p>
 </li>
 <li>
 <p>Cada función tiene un tipo específico, definido por el tipo de sus
@@ -678,7 +683,7 @@ quejaría:</p>
 <span class="c1">//error: extraneous argument labels &#39;a:b:&#39; in call</span>
 </code></pre></div>
 <p>Esto es debido a que al ser <code>f</code> una variable se le puede asignar
-cualquier función que tenga el perfil <code>(Int, Int) -&gt; Int</code> sin
+cualquier función que tenga el tipo <code>(Int, Int) -&gt; Int</code> sin
 tener en cuenta las etiquetas de los argumentos.</p>
 </div>
 <hr />
