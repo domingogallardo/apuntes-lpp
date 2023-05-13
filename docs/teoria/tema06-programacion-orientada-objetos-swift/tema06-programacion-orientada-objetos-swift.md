@@ -2228,25 +2228,40 @@ entre 0.0 y 1.0 (sin incluirlo). El protocolo
 será generado cada número aleatorio, simplemente requiere al generador
 que proporcione una forma estándar de generarlo.
 
-Una implementación de una clase que adopta el protocolo:
+Una vez definido el protocolo podremos usarlo como un tipo otras en
+clases y structs (verlo más adelante en el struct `Dado`) y definir
+distintas implementaciones que lo cumplen.
+
+Por ejemplo, si no tuviéramos inicialmente una buena implementación de
+un generador de números aleatorios podríamos hacer una implementación
+_fake_ como la siguiente:
 
 ```swift
-class GeneradorLinealCongruente: GeneradorNumerosAleatorios {
-    var ultimoRandom = 42.0
-    let m = 139968.0
-    let a = 3877.0
-    let c = 29573.0
+class GeneradorNumerosAleatoriosFake: GeneradorNumerosAleatorios {
+    private var numeros: [Double] = [0.2, 0.5, 0.8]
+    private var indiceActual = 0
+    
     func random() -> Double {
-        let number = ultimoRandom * a + c
-        ultimoRandom = number.truncatingRemainder(dividingBy: m)
-        return ultimoRandom / m
+        let resultado = numeros[indiceActual]
+        indiceActual = (indiceActual + 1) % numeros.count
+        return resultado
     }
 }
-let generador = GeneradorLinealCongruente()
-print("Un número aleatorio: \(generador.random())")
-// Imprime "Un número aleatorio: 0.37464991998171"
-print("Y otro: \(generador.random())")
-// Imprime "Y otro: 0.729023776863283"
+```
+
+El generador anterior va proporcionando cíclicamente los números con
+los que se inicializa el array:
+
+```swift
+var generador = GeneradorNumerosAleatoriosFake()
+for _ in 1...5 {
+    print("Número aleatorio: \(generador.random())")
+}
+// Número aleatorio: 0.2
+// Número aleatorio: 0.5
+// Número aleatorio: 0.8
+// Número aleatorio: 0.2
+// Número aleatorio: 0.5
 ```
 
 ### 8.4. Requisito de método `mutating`
@@ -2336,18 +2351,71 @@ sabemos que el generador se ajusta al protocolo
 `GeneradorNumerosAleatorios` tenemos la garantía de que va a existir
 un método `random()` al que llamar.
 
-Un ejemplo de uso del código:
+Podemos probar el código usando una instancia del
+`GeneradorNumerosAleatoriosFake` que creamos anteriormente
 
 ```swift
-var d6 = Dado(caras: 6, generador: GeneradorLinealCongruente())
+var d6 = Dado(caras: 6, generador: GeneradorNumerosAleatoriosFake())
 for _ in 1...5 {
-    print("La tirada del dado es \(d6.tirar())")
+    print("Tirada: \(d6.tirar())")
 }
-// La tirada del dado es 3
-// La tirada del dado es 5
-// La tirada del dado es 4
-// La tirada del dado es 5
-// La tirada del dado es 4
+// Tirada: 2
+// Tirada: 4
+// Tirada: 5
+// Tirada: 2
+// Tirada: 4
+```
+
+Una de las ventajas de la programación con protocolos es que el código
+es mucho más flexible porque no nos atamos a una implementación
+concreta. Por ejemplo, en el caso anterior, pese a no tener una buena
+implementación del generador de números aleatorios hemos podido probar
+la clase `Dado` e incluso podríamos ejecutarla en una versión inicial de un
+programa en el que necesitemos un dado aleatorio.
+
+Después, más adelante, podremos definir una implementación más
+correcta del protocolo y usarla para construir un dado mejor, sin
+tocar nada del código de la clase `Dado`:
+
+Por ejemplo, una implementación más correcta de un generador de
+números aleatorios es la siguiente:
+
+```swift
+class GeneradorLinealCongruente: GeneradorNumerosAleatorios {
+    var ultimoRandom = 42.0
+    let m = 139968.0
+    let a = 3877.0
+    let c = 29573.0
+    func random() -> Double {
+        let number = ultimoRandom * a + c
+        ultimoRandom = number.truncatingRemainder(dividingBy: m)
+        return ultimoRandom / m
+    }
+}
+let generador = GeneradorLinealCongruente()
+var generador = GeneradorLinealCongruente()
+for _ in 1...5 {
+    print("Número aleatorio: \(generador.random())")
+
+// Número aleatorio: 0.3746499199817101
+// Número aleatorio: 0.729023776863283
+// Número aleatorio: 0.6364669067215364
+// Número aleatorio: 0.7934813671696388
+// Número aleatorio: 0.5385445244627344
+```
+
+Y su uso para construir un dado más aleatorio que el anterior:
+
+```swift
+var dado = Dado(caras: 6, generador: GeneradorLinealCongruente())
+for _ in 1...5 {
+    print("Tirada: \(dado.tirar())")
+}
+// Tirada: 3
+// Tirada: 5
+// Tirada: 4
+// Tirada: 5
+// Tirada: 4
 ```
 
 ### 8.6. Colecciones de tipos protocolo
