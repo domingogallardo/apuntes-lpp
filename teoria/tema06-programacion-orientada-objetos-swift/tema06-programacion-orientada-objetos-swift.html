@@ -3424,23 +3424,34 @@ entre 0.0 y 1.0 (sin incluirlo). El protocolo
 <code>GeneradorNumerosAleatorios</code> no hace ninguna suposición sobre cómo
 será generado cada número aleatorio, simplemente requiere al generador
 que proporcione una forma estándar de generarlo.</p>
-<p>Una implementación de una clase que adopta el protocolo:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">GeneradorLinealCongruente</span><span class="p">:</span> <span class="n">GeneradorNumerosAleatorios</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">ultimoRandom</span> <span class="p">=</span> <span class="mf">42.0</span>
-    <span class="kd">let</span> <span class="nv">m</span> <span class="p">=</span> <span class="mf">139968.0</span>
-    <span class="kd">let</span> <span class="nv">a</span> <span class="p">=</span> <span class="mf">3877.0</span>
-    <span class="kd">let</span> <span class="nv">c</span> <span class="p">=</span> <span class="mf">29573.0</span>
+<p>Una vez definido el protocolo podremos usarlo como un tipo otras en
+clases y structs (verlo más adelante en el struct <code>Dado</code>) y definir
+distintas implementaciones que lo cumplen.</p>
+<p>Por ejemplo, si no tuviéramos inicialmente una buena implementación de
+un generador de números aleatorios podríamos hacer una implementación
+<em>fake</em> como la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">GeneradorNumerosAleatoriosFake</span><span class="p">:</span> <span class="n">GeneradorNumerosAleatorios</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="kd">var</span> <span class="nv">numeros</span><span class="p">:</span> <span class="p">[</span><span class="nb">Double</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>
+    <span class="kd">private</span> <span class="kd">var</span> <span class="nv">indiceActual</span> <span class="p">=</span> <span class="mi">0</span>
+
     <span class="kd">func</span> <span class="nf">random</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Double</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nv">number</span> <span class="p">=</span> <span class="n">ultimoRandom</span> <span class="o">*</span> <span class="n">a</span> <span class="o">+</span> <span class="n">c</span>
-        <span class="n">ultimoRandom</span> <span class="p">=</span> <span class="n">number</span><span class="p">.</span><span class="n">truncatingRemainder</span><span class="p">(</span><span class="n">dividingBy</span><span class="p">:</span> <span class="n">m</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ultimoRandom</span> <span class="o">/</span> <span class="n">m</span>
+        <span class="kd">let</span> <span class="nv">resultado</span> <span class="p">=</span> <span class="n">numeros</span><span class="p">[</span><span class="n">indiceActual</span><span class="p">]</span>
+        <span class="n">indiceActual</span> <span class="p">=</span> <span class="p">(</span><span class="n">indiceActual</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">numeros</span><span class="p">.</span><span class="bp">count</span>
+        <span class="k">return</span> <span class="n">resultado</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">let</span> <span class="nv">generador</span> <span class="p">=</span> <span class="n">GeneradorLinealCongruente</span><span class="p">()</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Un número aleatorio: </span><span class="si">\(</span><span class="n">generador</span><span class="p">.</span><span class="n">random</span><span class="si">())</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="c1">// Imprime &quot;Un número aleatorio: 0.37464991998171&quot;</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Y otro: </span><span class="si">\(</span><span class="n">generador</span><span class="p">.</span><span class="n">random</span><span class="si">())</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="c1">// Imprime &quot;Y otro: 0.729023776863283&quot;</span>
+</code></pre></div>
+<p>El generador anterior va proporcionando cíclicamente los números con
+los que se inicializa el array:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">generador</span> <span class="p">=</span> <span class="n">GeneradorNumerosAleatoriosFake</span><span class="p">()</span>
+<span class="k">for</span> <span class="kc">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">5</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Número aleatorio: </span><span class="si">\(</span><span class="n">generador</span><span class="p">.</span><span class="n">random</span><span class="si">())</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Número aleatorio: 0.2</span>
+<span class="c1">// Número aleatorio: 0.5</span>
+<span class="c1">// Número aleatorio: 0.8</span>
+<span class="c1">// Número aleatorio: 0.2</span>
+<span class="c1">// Número aleatorio: 0.5</span>
 </code></pre></div>
 <h3 id="84-requisito-de-metodo-mutating">8.4. Requisito de método <code>mutating</code><a class="headerlink" href="#84-requisito-de-metodo-mutating" title="Permanent link">&para;</a></h3>
 <p>Si definimos un protocolo con un requisito de método de instancia que
@@ -3517,16 +3528,61 @@ valor de tirada que esté dentro del rango correcto. Debido a que
 sabemos que el generador se ajusta al protocolo
 <code>GeneradorNumerosAleatorios</code> tenemos la garantía de que va a existir
 un método <code>random()</code> al que llamar.</p>
-<p>Un ejemplo de uso del código:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">d6</span> <span class="p">=</span> <span class="n">Dado</span><span class="p">(</span><span class="n">caras</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="n">generador</span><span class="p">:</span> <span class="n">GeneradorLinealCongruente</span><span class="p">())</span>
+<p>Podemos probar el código usando una instancia del
+<code>GeneradorNumerosAleatoriosFake</code> que creamos anteriormente</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">d6</span> <span class="p">=</span> <span class="n">Dado</span><span class="p">(</span><span class="n">caras</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="n">generador</span><span class="p">:</span> <span class="n">GeneradorNumerosAleatoriosFake</span><span class="p">())</span>
 <span class="k">for</span> <span class="kc">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">5</span> <span class="p">{</span>
-    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;La tirada del dado es </span><span class="si">\(</span><span class="n">d6</span><span class="p">.</span><span class="n">tirar</span><span class="si">())</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Tirada: </span><span class="si">\(</span><span class="n">d6</span><span class="p">.</span><span class="n">tirar</span><span class="si">())</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="c1">// La tirada del dado es 3</span>
-<span class="c1">// La tirada del dado es 5</span>
-<span class="c1">// La tirada del dado es 4</span>
-<span class="c1">// La tirada del dado es 5</span>
-<span class="c1">// La tirada del dado es 4</span>
+<span class="c1">// Tirada: 2</span>
+<span class="c1">// Tirada: 4</span>
+<span class="c1">// Tirada: 5</span>
+<span class="c1">// Tirada: 2</span>
+<span class="c1">// Tirada: 4</span>
+</code></pre></div>
+<p>Una de las ventajas de la programación con protocolos es que el código
+es mucho más flexible porque no nos atamos a una implementación
+concreta. Por ejemplo, en el caso anterior, pese a no tener una buena
+implementación del generador de números aleatorios hemos podido probar
+la clase <code>Dado</code> e incluso podríamos ejecutarla en una versión inicial de un
+programa en el que necesitemos un dado aleatorio.</p>
+<p>Después, más adelante, podremos definir una implementación más
+correcta del protocolo y usarla para construir un dado mejor, sin
+tocar nada del código de la clase <code>Dado</code>:</p>
+<p>Por ejemplo, una implementación más correcta de un generador de
+números aleatorios es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">GeneradorLinealCongruente</span><span class="p">:</span> <span class="n">GeneradorNumerosAleatorios</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">ultimoRandom</span> <span class="p">=</span> <span class="mf">42.0</span>
+    <span class="kd">let</span> <span class="nv">m</span> <span class="p">=</span> <span class="mf">139968.0</span>
+    <span class="kd">let</span> <span class="nv">a</span> <span class="p">=</span> <span class="mf">3877.0</span>
+    <span class="kd">let</span> <span class="nv">c</span> <span class="p">=</span> <span class="mf">29573.0</span>
+    <span class="kd">func</span> <span class="nf">random</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Double</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">number</span> <span class="p">=</span> <span class="n">ultimoRandom</span> <span class="o">*</span> <span class="n">a</span> <span class="o">+</span> <span class="n">c</span>
+        <span class="n">ultimoRandom</span> <span class="p">=</span> <span class="n">number</span><span class="p">.</span><span class="n">truncatingRemainder</span><span class="p">(</span><span class="n">dividingBy</span><span class="p">:</span> <span class="n">m</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ultimoRandom</span> <span class="o">/</span> <span class="n">m</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="nv">generador</span> <span class="p">=</span> <span class="n">GeneradorLinealCongruente</span><span class="p">()</span>
+<span class="kd">var</span> <span class="nv">generador</span> <span class="p">=</span> <span class="n">GeneradorLinealCongruente</span><span class="p">()</span>
+<span class="k">for</span> <span class="kc">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">5</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Número aleatorio: </span><span class="si">\(</span><span class="n">generador</span><span class="p">.</span><span class="n">random</span><span class="si">())</span><span class="s">&quot;</span><span class="p">)</span>
+
+<span class="c1">// Número aleatorio: 0.3746499199817101</span>
+<span class="c1">// Número aleatorio: 0.729023776863283</span>
+<span class="c1">// Número aleatorio: 0.6364669067215364</span>
+<span class="c1">// Número aleatorio: 0.7934813671696388</span>
+<span class="c1">// Número aleatorio: 0.5385445244627344</span>
+</code></pre></div>
+<p>Y su uso para construir un dado más aleatorio que el anterior:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">dado</span> <span class="p">=</span> <span class="n">Dado</span><span class="p">(</span><span class="n">caras</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="n">generador</span><span class="p">:</span> <span class="n">GeneradorLinealCongruente</span><span class="p">())</span>
+<span class="k">for</span> <span class="kc">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">5</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Tirada: </span><span class="si">\(</span><span class="n">dado</span><span class="p">.</span><span class="n">tirar</span><span class="si">())</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Tirada: 3</span>
+<span class="c1">// Tirada: 5</span>
+<span class="c1">// Tirada: 4</span>
+<span class="c1">// Tirada: 5</span>
+<span class="c1">// Tirada: 4</span>
 </code></pre></div>
 <h3 id="86-colecciones-de-tipos-protocolo">8.6. Colecciones de tipos protocolo<a class="headerlink" href="#86-colecciones-de-tipos-protocolo" title="Permanent link">&para;</a></h3>
 <p>Como hemos comentado anteriormente, un protocolo puede usarse como el
