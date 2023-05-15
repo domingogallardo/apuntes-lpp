@@ -95,164 +95,80 @@ Una vez definidos los operadores necesarios comprueba que funcionan
 correctamente creando varios equipos, insertándolos en un array y
 llamando al método `sorted`.
 
+### Ejercicio 2 ###
 
-### Ejercicio 2
-
-En este ejercicio deberás implementar un conjunto de clases con las
-que podamos "simular" una carrera de coches.
-
-#### Función `Int.random(in:)`
-
-Utilizaremos la función del sistema
-[`Int.random(in:)`](https://developer.apple.com/documentation/swift/int/2995648-random)
-que devuelve un número aleatorio entero en un rango. Por ejemplo, el
-siguiente código devuelve un número aleatorio entre 1 y 99
+a) Completa el siguiente código para que compile correctamente e imprima lo indicado:
 
 ```swift
-for _ in 1...3 {
-    print(Int.random(in: 1...99))
+struct Cuadrado {
+    var lado: Double
 }
-// Prints "53"
-// Prints "64"
-// Prints "5"
+
+// Completa el código en a continuación
+
+var cuadrado = Cuadrado(lado: 4.0)
+print(cuadrado.area) // Imprime: 16.0
+cuadrado.lado = 10.0
+print(cuadrado.area) // Imprime: 100.0
+
 ```
 
-A continuación puedes ver un ejemplo de su utilización en un método de
-tipo del enumerado `MarcaCoche` para devolver una marca aleatoria de
-coche:
-
+b) Rellena el siguiente código para que funcione correctamente:
 
 ```swift
-enum MarcaCoche: Int {
-    case Mercedes=0, Ferrari, RedBull, McLaren
-    
-    static func random() -> MarcaCoche {
-        let maxValue = McLaren.rawValue
-        
-        let r = Int.random(in: 0...maxValue)
-        return MarcaCoche(rawValue: r)!
+protocol Persona {
+    var nombre: String {get}
+    func encantada() -> Persona 
+    func refrescada() -> Persona 
+}
+
+enum Pocion {
+    case magica, refrescante, venenosa
+
+    func esBebida(por persona: Persona) -> __________ {
+        ______________ {
+            case _________:
+                return persona.encantada()
+            case _________:
+                return persona.refrescada()
+            default:
+                return nil
+        }
     }
+}
+```
+
+c) Completa el código de la estructura ​`MiStruct` para que compile correctamente:
+
+```swift
+protocol A {
+    var valor: Int {get set}
+    func foo(a: Int) -> Int
+}
+protocol B {
+    mutating func bar()
+}
+struct MiStruct: A, B {
+    // Completa el código
 
 }
 ```
 
-#### Enumerados y clases que gestionan los vehículos
-
-Deberás implementar los siguientes enumerados y clases, con las propiedades indicadas.
-
-**Enumerado `MarcaCoche`** 
-
-- Posibles valores: `Mercedes`, `Ferrari`, `RedBull` y `McLaren`
-- Método del tipo `random()` que devuelva aleatoriamente uno de los
-  valores (consultar el código anterior).
-
-**Enumerado `TipoCambio`**
-
-- Posibles valores: `Automatico` o `Manual`
-- Método del tipo `random()` que devuelve uno de esos valores.
-
-**Clase base `Coche`**
-
-- Propiedades de instancia almacenadas: `velocidadActual` (`Double`),
-  `marcha` (`Int`), `distanciaRecorrida` (`Double`) y `marca`
-  (`MarcaCoche`).
-
-- Propiedad de instancia calculada: `descripcion` (`String`), que
-  devuelve la marca del coche. A pesar de que el tipo subyacente del
-  enumerado `MarcaChoche` es `Int`, es posible devolver la cadena
-  correspondiente al literal del enumerado usando la interpolación de
-  cadenas:
-  
-    ```swift
-    print("Marca: \(MarcaCoche.Ferrari)")
-    // Imprime: "Marca: Ferrari"
-    ```
-
-- Propiedades del tipo: Constantes `velocidadMaxima` (`Double`) y
-  `marchaMaxima` (`Int`) inicializadas a 150.0 y 6
-
-**Subclase `CocheAutomatico`**
-
-- Hereda de `Coche` y sobreescribe la descripción, añadiendo la cadena
-  "Automático".
-
-**Subclase `CocheManual`**
-
-- Hereda de `Coche` y sobreescribe la descripción, añadiendo la cadena
-  "Manual".
-
-**Observadores de propiedades en las subclases**
-
-La velocidad de un coche manual se modifica cambiando su propiedad
-`marcha` y la de un coche automático cambiando su propiedad
-`velocidadActual`. En cada caso hay que definir observadores de
-propiedades que modifiquen la otra propiedad.
-
-La velocidad se calcula a partir de la marcha según la siguiente expresión:
+d) Completa el siguiente código para que compile correctamente e imprima lo indicado:
 
 ```swift
-velocidadActual = 25.0 * marcha
+struct Circulo {
+    var radio: Double
+    // Completa el código
+
+}
+
+let c1 = Circulo(radio: 5.0)
+let c2 = Circulo(radio: 10.0)
+let c3 = c1 + c2
+print("El radio de la suma es: \(c3.radio)")
+// Imprime: El radio de la suma es: 15.0
 ```
-
-Y la marcha se calcula a partir de la velocidad con la expresión que
-puedes encontrar en los apuntes de teoría, en la definición de la
-clase `CocheAutomatico`.
-
-
-**Distancia recorrida e información en pantalla**
-
-Suponemos que se cambia la velocidad del coche cada hora y que en cada
-cambio de velocidad se actualiza la propiedad `distanciaRecorrida`,
-que irá acumulando la distancia recorrida por el coche desde su
-inicialización. Cada vez que se cambia la velocidad también se
-imprimirá la velocidad actual y la marca del coche en pantalla (ver el
-ejemplo al final del ejercicio). Esto se puede implementar también en
-los observadores.
-
-#### Clase Carrera
-
-Debes implementar las clases anteriores y una clase `Carrera` con la
-que simular una carrera de `n` coches que conducen durante `k` horas.
-
-Un ejemplo de uso de la clase `Carrera`:
-
-```swift
-let carrera = Carrera(numCoches: 2, horas: 3)
-print("\nDescripción de la carrera:")
-carrera.descripcion()
-print("\n!!! Comienza la carrera !!!")
-carrera.empezar()
-print("\n!!! Clasificación !!!")
-carrera.clasificacion()
-```
-
-Y su correspondiente salida por pantalla:
-
-```text
-Descripción de la carrera:
-2 coches con una duración de 3 horas
- McLaren Automatico
- Mercedes Manual
-
-!!! Comienza la carrera !!!
-
-Horas transcurridas 1
-McLaren Automatico viajando a 141.0 kilómetros por hora con la marcha 6
-Mercedes Manual viajando a 25.0 kilómetros por hora con la marcha 1
-
-Horas transcurridas 2
-McLaren Automatico viajando a 114.0 kilómetros por hora con la marcha 5
-Mercedes Manual viajando a 25.0 kilómetros por hora con la marcha 1
-
-Horas transcurridas 3
-McLaren Automatico viajando a 105.0 kilómetros por hora con la marcha 5
-Mercedes Manual viajando a 100.0 kilómetros por hora con la marcha 4
-
-!!! Clasificación !!!
-1. McLaren Automatico (360.0 kilómetros recorridos)
-2. Mercedes Manual (150.0 kilómetros recorridos)
-```
-
 
 
 ### Ejercicio 3 ##
@@ -291,15 +207,6 @@ for i in array {
 b) Completa el código que hay a continuación para que compile
 correctamente y aparezca en pantalla el resultado que se muestra.
 
-Resultado:
-
-```swift
-0.0
-300.0
-```
-
-Código:
-
 ```swift
 
 protocol TieneVelocidad {
@@ -332,6 +239,8 @@ let transportes: [TieneVelocidad] = [vehiculo1, tren1]
 for i in transportes {
     print(i.velocidadActual())
 }
+// 0.0
+// 300.0
 ```
 
 ### Ejercicio 4 ###
@@ -465,7 +374,7 @@ en un almacén de figuras y se llame a sus métodos.
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2021-22  
+Lenguajes y Paradigmas de Programación, curso 2022-23  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
 
