@@ -9,13 +9,15 @@
       
       
       
+        <link rel="prev" href="../practica11/practica11.html">
+      
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.7">
     
     
       
-        <title>Práctica 12: Programación Orientada a Objetos en Swift (2) - LPP</title>
+        <title>Práctica 12 - LPP</title>
       
     
     
@@ -97,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Práctica 12: Programación Orientada a Objetos en Swift (2)
+              Práctica 12
             
           </span>
         </div>
@@ -376,14 +378,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
       
       
       
@@ -392,7 +396,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Prácticas
@@ -548,6 +552,109 @@
       <a href="../practica11/practica11.html" class="md-nav__link">
         Práctica 11
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Práctica 12
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="practica12.html" class="md-nav__link md-nav__link--active">
+        Práctica 12
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#antes-de-la-clase-de-practicas" class="md-nav__link">
+    Antes de la clase de prácticas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    Ejercicios
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" class="md-nav__link">
+    Ejercicio 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" class="md-nav__link">
+    Ejercicio 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" class="md-nav__link">
+    Ejercicio 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" class="md-nav__link">
+    Ejercicio 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" class="md-nav__link">
+    Ejercicio 5
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -732,134 +839,65 @@ nombre en orden alfabético.</p>
 correctamente creando varios equipos, insertándolos en un array y
 llamando al método <code>sorted</code>.</p>
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
-<p>En este ejercicio deberás implementar un conjunto de clases con las
-que podamos "simular" una carrera de coches.</p>
-<h4 id="funcion-intrandomin">Función <code>Int.random(in:)</code><a class="headerlink" href="#funcion-intrandomin" title="Permanent link">&para;</a></h4>
-<p>Utilizaremos la función del sistema
-<a href="https://developer.apple.com/documentation/swift/int/2995648-random"><code>Int.random(in:)</code></a>
-que devuelve un número aleatorio entero en un rango. Por ejemplo, el
-siguiente código devuelve un número aleatorio entre 1 y 99</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="kc">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">3</span> <span class="p">{</span>
-    <span class="bp">print</span><span class="p">(</span><span class="nb">Int</span><span class="p">.</span><span class="n">random</span><span class="p">(</span><span class="k">in</span><span class="p">:</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">99</span><span class="p">))</span>
+<p>a) Completa el siguiente código para que compile correctamente e imprima lo indicado:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Cuadrado</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">lado</span><span class="p">:</span> <span class="nb">Double</span>
 <span class="p">}</span>
-<span class="c1">// Prints &quot;53&quot;</span>
-<span class="c1">// Prints &quot;64&quot;</span>
-<span class="c1">// Prints &quot;5&quot;</span>
+
+<span class="c1">// Completa el código en a continuación</span>
+
+<span class="kd">var</span> <span class="nv">cuadrado</span> <span class="p">=</span> <span class="n">Cuadrado</span><span class="p">(</span><span class="n">lado</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">cuadrado</span><span class="p">.</span><span class="n">area</span><span class="p">)</span> <span class="c1">// Imprime: 16.0</span>
+<span class="n">cuadrado</span><span class="p">.</span><span class="n">lado</span> <span class="p">=</span> <span class="mf">10.0</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">cuadrado</span><span class="p">.</span><span class="n">area</span><span class="p">)</span> <span class="c1">// Imprime: 100.0</span>
 </code></pre></div>
-<p>A continuación puedes ver un ejemplo de su utilización en un método de
-tipo del enumerado <code>MarcaCoche</code> para devolver una marca aleatoria de
-coche:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">MarcaCoche</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">Mercedes</span><span class="p">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Ferrari</span><span class="p">,</span> <span class="n">RedBull</span><span class="p">,</span> <span class="n">McLaren</span>
+<p>b) Rellena el siguiente código para que funcione correctamente:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">Persona</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">nombre</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span><span class="kr">get</span><span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">encantada</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="n">Persona</span> 
+    <span class="kd">func</span> <span class="nf">refrescada</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="n">Persona</span> 
+<span class="p">}</span>
 
-    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">random</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="n">MarcaCoche</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nv">maxValue</span> <span class="p">=</span> <span class="n">McLaren</span><span class="p">.</span><span class="n">rawValue</span>
+<span class="kd">enum</span> <span class="nc">Pocion</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">magica</span><span class="p">,</span> <span class="n">refrescante</span><span class="p">,</span> <span class="n">venenosa</span>
 
-        <span class="kd">let</span> <span class="nv">r</span> <span class="p">=</span> <span class="nb">Int</span><span class="p">.</span><span class="n">random</span><span class="p">(</span><span class="k">in</span><span class="p">:</span> <span class="mf">0.</span><span class="p">..</span><span class="n">maxValue</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">MarcaCoche</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="n">r</span><span class="p">)</span><span class="o">!</span>
+    <span class="kd">func</span> <span class="nf">esBebida</span><span class="p">(</span><span class="n">por</span> <span class="n">persona</span><span class="p">:</span> <span class="n">Persona</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">__________</span> <span class="p">{</span>
+        <span class="n">______________</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="n">_________</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">persona</span><span class="p">.</span><span class="n">encantada</span><span class="p">()</span>
+            <span class="k">case</span> <span class="n">_________</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">persona</span><span class="p">.</span><span class="n">refrescada</span><span class="p">()</span>
+            <span class="k">default</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">nil</span>
+        <span class="p">}</span>
     <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>c) Completa el código de la estructura ​<code>MiStruct</code> para que compile correctamente:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">A</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">valor</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span><span class="kr">get</span> <span class="kr">set</span><span class="p">}</span>
+    <span class="kd">func</span> <span class="nf">foo</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span>
+<span class="p">}</span>
+<span class="kd">protocol</span> <span class="nc">B</span> <span class="p">{</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">bar</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="kd">struct</span> <span class="nc">MiStruct</span><span class="p">:</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="p">{</span>
+    <span class="c1">// Completa el código</span>
 
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="enumerados-y-clases-que-gestionan-los-vehiculos">Enumerados y clases que gestionan los vehículos<a class="headerlink" href="#enumerados-y-clases-que-gestionan-los-vehiculos" title="Permanent link">&para;</a></h4>
-<p>Deberás implementar los siguientes enumerados y clases, con las propiedades indicadas.</p>
-<p><strong>Enumerado <code>MarcaCoche</code></strong> </p>
-<ul>
-<li>Posibles valores: <code>Mercedes</code>, <code>Ferrari</code>, <code>RedBull</code> y <code>McLaren</code></li>
-<li>Método del tipo <code>random()</code> que devuelva aleatoriamente uno de los
-  valores (consultar el código anterior).</li>
-</ul>
-<p><strong>Enumerado <code>TipoCambio</code></strong></p>
-<ul>
-<li>Posibles valores: <code>Automatico</code> o <code>Manual</code></li>
-<li>Método del tipo <code>random()</code> que devuelve uno de esos valores.</li>
-</ul>
-<p><strong>Clase base <code>Coche</code></strong></p>
-<ul>
-<li>
-<p>Propiedades de instancia almacenadas: <code>velocidadActual</code> (<code>Double</code>),
-  <code>marcha</code> (<code>Int</code>), <code>distanciaRecorrida</code> (<code>Double</code>) y <code>marca</code>
-  (<code>MarcaCoche</code>).</p>
-</li>
-<li>
-<p>Propiedad de instancia calculada: <code>descripcion</code> (<code>String</code>), que
-  devuelve la marca del coche. A pesar de que el tipo subyacente del
-  enumerado <code>MarcaChoche</code> es <code>Int</code>, es posible devolver la cadena
-  correspondiente al literal del enumerado usando la interpolación de
-  cadenas:</p>
-<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="s">&quot;Marca: </span><span class="si">\(</span><span class="n">MarcaCoche</span><span class="p">.</span><span class="n">Ferrari</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="c1">// Imprime: &quot;Marca: Ferrari&quot;</span>
-</code></pre></div>
-</li>
-<li>
-<p>Propiedades del tipo: Constantes <code>velocidadMaxima</code> (<code>Double</code>) y
-  <code>marchaMaxima</code> (<code>Int</code>) inicializadas a 150.0 y 6</p>
-</li>
-</ul>
-<p><strong>Subclase <code>CocheAutomatico</code></strong></p>
-<ul>
-<li>Hereda de <code>Coche</code> y sobreescribe la descripción, añadiendo la cadena
-  "Automático".</li>
-</ul>
-<p><strong>Subclase <code>CocheManual</code></strong></p>
-<ul>
-<li>Hereda de <code>Coche</code> y sobreescribe la descripción, añadiendo la cadena
-  "Manual".</li>
-</ul>
-<p><strong>Observadores de propiedades en las subclases</strong></p>
-<p>La velocidad de un coche manual se modifica cambiando su propiedad
-<code>marcha</code> y la de un coche automático cambiando su propiedad
-<code>velocidadActual</code>. En cada caso hay que definir observadores de
-propiedades que modifiquen la otra propiedad.</p>
-<p>La velocidad se calcula a partir de la marcha según la siguiente expresión:</p>
-<div class="highlight"><pre><span></span><code><span class="n">velocidadActual</span> <span class="p">=</span> <span class="mf">25.0</span> <span class="o">*</span> <span class="n">marcha</span>
-</code></pre></div>
-<p>Y la marcha se calcula a partir de la velocidad con la expresión que
-puedes encontrar en los apuntes de teoría, en la definición de la
-clase <code>CocheAutomatico</code>.</p>
-<p><strong>Distancia recorrida e información en pantalla</strong></p>
-<p>Suponemos que se cambia la velocidad del coche cada hora y que en cada
-cambio de velocidad se actualiza la propiedad <code>distanciaRecorrida</code>,
-que irá acumulando la distancia recorrida por el coche desde su
-inicialización. Cada vez que se cambia la velocidad también se
-imprimirá la velocidad actual y la marca del coche en pantalla (ver el
-ejemplo al final del ejercicio). Esto se puede implementar también en
-los observadores.</p>
-<h4 id="clase-carrera">Clase Carrera<a class="headerlink" href="#clase-carrera" title="Permanent link">&para;</a></h4>
-<p>Debes implementar las clases anteriores y una clase <code>Carrera</code> con la
-que simular una carrera de <code>n</code> coches que conducen durante <code>k</code> horas.</p>
-<p>Un ejemplo de uso de la clase <code>Carrera</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">carrera</span> <span class="p">=</span> <span class="n">Carrera</span><span class="p">(</span><span class="n">numCoches</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">horas</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Descripción de la carrera:&quot;</span><span class="p">)</span>
-<span class="n">carrera</span><span class="p">.</span><span class="n">descripcion</span><span class="p">()</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">!!! Comienza la carrera !!!&quot;</span><span class="p">)</span>
-<span class="n">carrera</span><span class="p">.</span><span class="n">empezar</span><span class="p">()</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">!!! Clasificación !!!&quot;</span><span class="p">)</span>
-<span class="n">carrera</span><span class="p">.</span><span class="n">clasificacion</span><span class="p">()</span>
-</code></pre></div>
-<p>Y su correspondiente salida por pantalla:</p>
-<div class="highlight"><pre><span></span><code>Descripción de la carrera:
-2 coches con una duración de 3 horas
- McLaren Automatico
- Mercedes Manual
+<p>d) Completa el siguiente código para que compile correctamente e imprima lo indicado:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Circulo</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">radio</span><span class="p">:</span> <span class="nb">Double</span>
+    <span class="c1">// Completa el código</span>
 
-!!! Comienza la carrera !!!
+<span class="p">}</span>
 
-Horas transcurridas 1
-McLaren Automatico viajando a 141.0 kilómetros por hora con la marcha 6
-Mercedes Manual viajando a 25.0 kilómetros por hora con la marcha 1
-
-Horas transcurridas 2
-McLaren Automatico viajando a 114.0 kilómetros por hora con la marcha 5
-Mercedes Manual viajando a 25.0 kilómetros por hora con la marcha 1
-
-Horas transcurridas 3
-McLaren Automatico viajando a 105.0 kilómetros por hora con la marcha 5
-Mercedes Manual viajando a 100.0 kilómetros por hora con la marcha 4
-
-!!! Clasificación !!!
-1. McLaren Automatico (360.0 kilómetros recorridos)
-2. Mercedes Manual (150.0 kilómetros recorridos)
+<span class="kd">let</span> <span class="nv">c1</span> <span class="p">=</span> <span class="n">Circulo</span><span class="p">(</span><span class="n">radio</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">c2</span> <span class="p">=</span> <span class="n">Circulo</span><span class="p">(</span><span class="n">radio</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">c3</span> <span class="p">=</span> <span class="n">c1</span> <span class="o">+</span> <span class="n">c2</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;El radio de la suma es: </span><span class="si">\(</span><span class="n">c3</span><span class="p">.</span><span class="n">radio</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="c1">// Imprime: El radio de la suma es: 15.0</span>
 </code></pre></div>
 <h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
 <p>a) Completa el bucle con el código que comprueba el tipo de la variable
@@ -891,11 +929,6 @@ de su tipo.</p>
 </code></pre></div>
 <p>b) Completa el código que hay a continuación para que compile
 correctamente y aparezca en pantalla el resultado que se muestra.</p>
-<p>Resultado:</p>
-<div class="highlight"><pre><span></span><code><span class="mf">0.0</span>
-<span class="mf">300.0</span>
-</code></pre></div>
-<p>Código:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">TieneVelocidad</span> <span class="p">{</span>
     <span class="kd">func</span> <span class="nf">velocidadActual</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Double</span>
 <span class="p">}</span>
@@ -926,6 +959,8 @@ correctamente y aparezca en pantalla el resultado que se muestra.</p>
 <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">transportes</span> <span class="p">{</span>
     <span class="bp">print</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">velocidadActual</span><span class="p">())</span>
 <span class="p">}</span>
+<span class="c1">// 0.0</span>
+<span class="c1">// 300.0</span>
 </code></pre></div>
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
 <p>Define una estructura <code>Timer</code> con la que podamos ejecutar el siguiente
@@ -1048,7 +1083,7 @@ Centro: Punto(x: 5.0, y: 0.0) y área: 314.1592653589793
 en un almacén de figuras y se llame a sus métodos.</li>
 </ul>
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2021-22<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2022-23<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
 
