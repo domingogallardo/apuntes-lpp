@@ -104,7 +104,8 @@ struct Cuadrado {
     var lado: Double
 }
 
-// Completa el código en a continuación
+// Completa el código justo a continuación,
+// no puedes modificar el código anterior
 
 var cuadrado = Cuadrado(lado: 4.0)
 print(cuadrado.area) // Imprime: 16.0
