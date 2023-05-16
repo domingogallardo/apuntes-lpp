@@ -2189,6 +2189,29 @@ obligatorio y un prefijo opcional. La propiedad `nombreCompleto` usa
 el valor del prefijo si existe, y la añade al comienzo del nombre para
 crear un nombre completo de la nave estelar.
 
+Podemos definir una variable de tipo `TieneNombre` para indicar que
+solo nos interesa la propiedad `nombreCompleto` de esa variable. En
+esa variable podemos almacenar cualquier instancia de cualquier tipo
+que cumpla el protocolo.
+
+```swift
+var algoConNombre: TieneNombre = nc1701 // guardamos la nave estelar
+algoConNombre = john // y ahora guardamos la persona
+```
+
+En esta variable no podemos acceder a otras propiedades que no sean
+las definidas por el tipo `TieneNombre`. 
+
+```swift
+print(algoConNombre.edad) 
+// error: value of type 'TieneNombre' has no member 'edad'
+```
+
+Esto es una ventaja, porque nos permite especializar el código y
+concentrarnos solo en las características necesarias definidas por el
+tipo. Hablaremos más de esto más adelante, cuando hablemos de _downcasting_.
+
+
 ### 8.3. Requisitos de métodos
 
 Los protocolos pueden requerir que los tipos que se ajusten a ellos
@@ -2536,69 +2559,65 @@ protocol ProtocoloQueHereda: UnProtocolo, OtroProtocolo {
 }
 ```
 
-Por ejemplo, recordemos el protocolo `TieneNombre`:
+Por ejemplo, imaginemos que estamos programando un sistema para
+definir una biblioteca. Podríamos tener un protocolo `Libro` que
+define propiedades como el título y el autor de un libro, y otro
+protocolo `LibroPrestable` que hereda del protocolo `Libro` y añade la
+capacidad de prestar y devolver libros.
+
+El código sería el siguiente:
 
 ```swift
-protocol TieneNombre {
-    var nombreCompleto: String { get }
+protocol Libro {
+    var titulo: String { get }
+    var autor: String { get }
+}
+
+protocol LibroPrestable: Libro {
+    var estaPrestado: Bool { get set }
+    mutating func prestar()
+    mutating func devolver()
 }
 ```
 
-Podemos definir el protocolo `TieneEdad`, que hereda del protocolo
-anterior y que obliga a definir una propiedad de lectura `edad` de
-tipo `Int`:
+De esta forma, estamos obligando a que cualquier cosa que sea un libro
+prestable, también debe ser un libro. Esto es, cualquier tipo que cumpla el
+protocolo `LibroPrestable` debe definir unas propiedades de lectura
+`titulo` y `autor` (obligado por el protocolo `Libro` del que hereda
+`LibroPrestable`) y otra propiedad `estaPrestado` (obligado
+por el propio protocolo `LibroPrestable`).
+
+Un ejemplo de una estructura que cumple el protocolo y de su uso:
 
 ```swift
-protocol TieneEdad: TieneNombre {
-    var edad: Int { get }
-}
-```
+struct LibroDeBiblioteca: LibroPrestable {
+    var titulo: String
+    var autor: String
+    var estaPrestado: Bool = false
 
-De esta forma, estamos obligando a que cualquier cosa que tenga edad
-también debe de tener un nombre. Esto es, cualquier tipo bue cumpla el
-protocolo debe definir una propiedad de lectura `edad` (obligado por
-el protocolo `TieneEdad`) y otra propiedad `nombreCompleto` (obligado
-por el protocolo `TieneNombre` del que hereda `TieneEdad`):
-
-```swift
-struct Persona: TieneEdad {
-    var nombre: String
-    var apellidos: String
-    var nombreCompleto: String {
-        return nombre + " " + apellidos
+    mutating func prestar() {
+        if !estaPrestado {
+            estaPrestado = true
+        } else {
+            print("El libro ya está prestado.")
+        }
     }
-    var edad: Int
+
+    mutating func devolver() {
+        if estaPrestado {
+            estaPrestado = false
+        } else {
+            print("El libro no está prestado.")
+        }
+    }
 }
-```
 
-Un ejemplo de uso. Creamos una persona:
-
-```swift
-let persona = Persona(nombre:"Pedro", apellidos: "García Pérez", edad: 23)
-print(persona.edad)
-```
-
-Como `TieneEdad` hereda de `TieneNombre`, sabemos que una persona
-cumple tanto las condiciones de `TieneEdad` como las de `TieneNombre`
-y podemos usarla en cualquier variable o parámetro de ambos tipos:
-
-```
-var algoConEdad: TieneEdad = persona
-print(algoConEdad.edad)
-// Imprime 23
-var algoConNombre: TieneNombre = persona
-print(algoConNombre.nombreCompleto) 
-// Imprime "Pedro García Pérez"
-```
-
-Desde las variables `algoConEdad` y `algoConNombre` no podemos acceder
-a otras propiedades que no sean las definidas por el propio tipo. Esto
-es una ventaja, porque nos permite especializar el código y
-concentrarnos solo en las características necesarias definidas por el tipo.
-
-```swift
-print(algoConNombre.edad) 
-// error: value of type 'TieneNombre' has no member 'edad'
+var libro = LibroDeBiblioteca(titulo: "1984", autor: "George Orwell")
+print(libro.estaPrestado)  // Imprime: false
+libro.prestar()
+print(libro.estaPrestado)  // Imprime: true
+libro.devolver()
+print(libro.estaPrestado)  // Imprime: false
 ```
 
 Otro ejemplo de la librería de Swift es `Comparable` y `Equatable`. El

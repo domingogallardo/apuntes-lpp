@@ -379,6 +379,27 @@ instancias de <code>Vector2D</code>:</p>
 <span class="kd">var</span> <span class="nv">ncc1701</span> <span class="p">=</span> <span class="n">NaveEstelar</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Enterprise&quot;</span><span class="p">,</span> <span class="n">prefijo</span><span class="p">:</span> <span class="s">&quot;USS&quot;</span><span class="p">)</span>
 <span class="c1">// ncc1701.nombreCompleto es &quot;USS Enterprise&quot;</span>
 </code></pre></div>
+<ul>
+<li>Podemos definir una variable de tipo <code>TieneNombre</code> para indicar que
+solo nos interesa la propiedad <code>nombreCompleto</code> de esa variable. En
+esa variable podemos almacenar cualquier instancia de cualquier tipo
+que cumpla el protocolo.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">algoConNombre</span><span class="p">:</span> <span class="n">TieneNombre</span> <span class="p">=</span> <span class="n">nc1701</span> <span class="c1">// guardamos la nave estelar</span>
+<span class="n">algoConNombre</span> <span class="p">=</span> <span class="n">john</span> <span class="c1">// y ahora guardamos la persona</span>
+</code></pre></div>
+<ul>
+<li>En esta variable no podemos acceder a otras propiedades que no sean
+las definidas por el tipo <code>TieneNombre</code>. </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="n">algoConNombre</span><span class="p">.</span><span class="n">edad</span><span class="p">)</span> 
+<span class="c1">// error: value of type &#39;TieneNombre&#39; has no member &#39;edad&#39;</span>
+</code></pre></div>
+<ul>
+<li>Esto es una ventaja, porque nos permite especializar el código y
+concentrarnos solo en las características necesarias definidas por el
+tipo. Hablaremos más de esto más adelante, cuando hablemos de <em>downcasting</em>.</li>
+</ul>
 <hr />
 <h3>Requisitos de métodos</h3>
 <ul>
@@ -697,45 +718,56 @@ requisitos adicionales sobre los requisitos que hereda. </p>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>Por ejemplo, recordemos el protocolo <code>TieneNombre</code>:</li>
+<li>Por ejemplo: </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">TieneNombre</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">nombreCompleto</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">Libro</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">titulo</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+    <span class="kd">var</span> <span class="nv">autor</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">protocol</span> <span class="nc">LibroPrestable</span><span class="p">:</span> <span class="n">Libro</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">estaPrestado</span><span class="p">:</span> <span class="nb">Bool</span> <span class="p">{</span> <span class="kr">get</span> <span class="kr">set</span> <span class="p">}</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">prestar</span><span class="p">()</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">devolver</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>Podemos definir el protocolo <code>TieneEdad</code>, que hereda del protocolo
-anterior y que obliga a definir una propiedad de lectura <code>edad</code> de
-tipo <code>Int</code>:</li>
+<li>
+<p>Estamos obligando a que cualquier cosa que sea un libro prestable,
+también debe ser un libro. </p>
+</li>
+<li>
+<p>Un ejemplo de una estructura que cumple el protocolo y de su uso:</p>
+</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">TieneEdad</span><span class="p">:</span> <span class="n">TieneNombre</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">edad</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<ul>
-<li>Si un tipo se ajusta al protocolo <code>TieneEdad</code> debe cumplir sus
-  restricciones y las de <code>TieneNombre</code>:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Persona</span><span class="p">:</span> <span class="n">TieneEdad</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">nombre</span><span class="p">:</span> <span class="nb">String</span>
-    <span class="kd">var</span> <span class="nv">apellidos</span><span class="p">:</span> <span class="nb">String</span>
-    <span class="kd">var</span> <span class="nv">nombreCompleto</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">nombre</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">apellidos</span>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">LibroDeBiblioteca</span><span class="p">:</span> <span class="n">LibroPrestable</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">titulo</span><span class="p">:</span> <span class="nb">String</span>
+    <span class="kd">var</span> <span class="nv">autor</span><span class="p">:</span> <span class="nb">String</span>
+    <span class="kd">var</span> <span class="nv">estaPrestado</span><span class="p">:</span> <span class="nb">Bool</span> <span class="p">=</span> <span class="kc">false</span>
+
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">prestar</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="o">!</span><span class="n">estaPrestado</span> <span class="p">{</span>
+            <span class="n">estaPrestado</span> <span class="p">=</span> <span class="kc">true</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="bp">print</span><span class="p">(</span><span class="s">&quot;El libro ya está prestado.&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
     <span class="p">}</span>
-    <span class="kd">var</span> <span class="nv">edad</span><span class="p">:</span> <span class="nb">Int</span>
+
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">devolver</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">estaPrestado</span> <span class="p">{</span>
+            <span class="n">estaPrestado</span> <span class="p">=</span> <span class="kc">false</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="bp">print</span><span class="p">(</span><span class="s">&quot;El libro no está prestado.&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-<ul>
-<li>Ejemplo:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">persona</span> <span class="p">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span><span class="s">&quot;Pedro&quot;</span><span class="p">,</span> <span class="n">apellidos</span><span class="p">:</span> <span class="s">&quot;García Pérez&quot;</span><span class="p">,</span> <span class="n">edad</span><span class="p">:</span> <span class="mi">23</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">persona</span><span class="p">.</span><span class="n">edad</span><span class="p">)</span>
-<span class="kd">var</span> <span class="nv">algoConEdad</span><span class="p">:</span> <span class="n">TieneEdad</span> <span class="p">=</span> <span class="n">persona</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">algoConEdad</span><span class="p">.</span><span class="n">edad</span><span class="p">)</span>
-<span class="c1">// Imprime 23</span>
-<span class="kd">var</span> <span class="nv">algoConNombre</span><span class="p">:</span> <span class="n">TieneNombre</span> <span class="p">=</span> <span class="n">persona</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">algoConNombre</span><span class="p">.</span><span class="n">nombreCompleto</span><span class="p">)</span> 
-<span class="c1">// Imprime &quot;Pedro García Pérez&quot;</span>
+
+<span class="kd">var</span> <span class="nv">libro</span> <span class="p">=</span> <span class="n">LibroDeBiblioteca</span><span class="p">(</span><span class="n">titulo</span><span class="p">:</span> <span class="s">&quot;1984&quot;</span><span class="p">,</span> <span class="n">autor</span><span class="p">:</span> <span class="s">&quot;George Orwell&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">libro</span><span class="p">.</span><span class="n">estaPrestado</span><span class="p">)</span>  <span class="c1">// Imprime: false</span>
+<span class="n">libro</span><span class="p">.</span><span class="n">prestar</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">libro</span><span class="p">.</span><span class="n">estaPrestado</span><span class="p">)</span>  <span class="c1">// Imprime: true</span>
+<span class="n">libro</span><span class="p">.</span><span class="n">devolver</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">libro</span><span class="p">.</span><span class="n">estaPrestado</span><span class="p">)</span>  <span class="c1">// Imprime: false</span>
 </code></pre></div>
 <ul>
 <li>
