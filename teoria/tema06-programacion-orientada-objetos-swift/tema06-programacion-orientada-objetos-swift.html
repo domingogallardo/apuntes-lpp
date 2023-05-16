@@ -3410,6 +3410,21 @@ estelar. Cada instancia de <code>NavaEstelar</code> almacena un nombre
 obligatorio y un prefijo opcional. La propiedad <code>nombreCompleto</code> usa
 el valor del prefijo si existe, y la añade al comienzo del nombre para
 crear un nombre completo de la nave estelar.</p>
+<p>Podemos definir una variable de tipo <code>TieneNombre</code> para indicar que
+solo nos interesa la propiedad <code>nombreCompleto</code> de esa variable. En
+esa variable podemos almacenar cualquier instancia de cualquier tipo
+que cumpla el protocolo.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">algoConNombre</span><span class="p">:</span> <span class="n">TieneNombre</span> <span class="p">=</span> <span class="n">nc1701</span> <span class="c1">// guardamos la nave estelar</span>
+<span class="n">algoConNombre</span> <span class="p">=</span> <span class="n">john</span> <span class="c1">// y ahora guardamos la persona</span>
+</code></pre></div>
+<p>En esta variable no podemos acceder a otras propiedades que no sean
+las definidas por el tipo <code>TieneNombre</code>. </p>
+<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="n">algoConNombre</span><span class="p">.</span><span class="n">edad</span><span class="p">)</span> 
+<span class="c1">// error: value of type &#39;TieneNombre&#39; has no member &#39;edad&#39;</span>
+</code></pre></div>
+<p>Esto es una ventaja, porque nos permite especializar el código y
+concentrarnos solo en las características necesarias definidas por el
+tipo. Hablaremos más de esto más adelante, cuando hablemos de <em>downcasting</em>.</p>
 <h3 id="83-requisitos-de-metodos">8.3. Requisitos de métodos<a class="headerlink" href="#83-requisitos-de-metodos" title="Permanent link">&para;</a></h3>
 <p>Los protocolos pueden requerir que los tipos que se ajusten a ellos
 implementen métodos de instancia y de tipos específicos. Estos métodos
@@ -3694,52 +3709,58 @@ comas:</p>
     <span class="c1">// definición del protocolo</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Por ejemplo, recordemos el protocolo <code>TieneNombre</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">TieneNombre</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">nombreCompleto</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+<p>Por ejemplo, imaginemos que estamos programando un sistema para
+definir una biblioteca. Podríamos tener un protocolo <code>Libro</code> que
+define propiedades como el título y el autor de un libro, y otro
+protocolo <code>LibroPrestable</code> que hereda del protocolo <code>Libro</code> y añade la
+capacidad de prestar y devolver libros.</p>
+<p>El código sería el siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">Libro</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">titulo</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+    <span class="kd">var</span> <span class="nv">autor</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">protocol</span> <span class="nc">LibroPrestable</span><span class="p">:</span> <span class="n">Libro</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">estaPrestado</span><span class="p">:</span> <span class="nb">Bool</span> <span class="p">{</span> <span class="kr">get</span> <span class="kr">set</span> <span class="p">}</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">prestar</span><span class="p">()</span>
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">devolver</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Podemos definir el protocolo <code>TieneEdad</code>, que hereda del protocolo
-anterior y que obliga a definir una propiedad de lectura <code>edad</code> de
-tipo <code>Int</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">TieneEdad</span><span class="p">:</span> <span class="n">TieneNombre</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">edad</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>De esta forma, estamos obligando a que cualquier cosa que tenga edad
-también debe de tener un nombre. Esto es, cualquier tipo bue cumpla el
-protocolo debe definir una propiedad de lectura <code>edad</code> (obligado por
-el protocolo <code>TieneEdad</code>) y otra propiedad <code>nombreCompleto</code> (obligado
-por el protocolo <code>TieneNombre</code> del que hereda <code>TieneEdad</code>):</p>
-<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Persona</span><span class="p">:</span> <span class="n">TieneEdad</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">nombre</span><span class="p">:</span> <span class="nb">String</span>
-    <span class="kd">var</span> <span class="nv">apellidos</span><span class="p">:</span> <span class="nb">String</span>
-    <span class="kd">var</span> <span class="nv">nombreCompleto</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">nombre</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">apellidos</span>
+<p>De esta forma, estamos obligando a que cualquier cosa que sea un libro
+prestable, también debe ser un libro. Esto es, cualquier tipo que cumpla el
+protocolo <code>LibroPrestable</code> debe definir unas propiedades de lectura
+<code>titulo</code> y <code>autor</code> (obligado por el protocolo <code>Libro</code> del que hereda
+<code>LibroPrestable</code>) y otra propiedad <code>estaPrestado</code> (obligado
+por el propio protocolo <code>LibroPrestable</code>).</p>
+<p>Un ejemplo de una estructura que cumple el protocolo y de su uso:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">LibroDeBiblioteca</span><span class="p">:</span> <span class="n">LibroPrestable</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">titulo</span><span class="p">:</span> <span class="nb">String</span>
+    <span class="kd">var</span> <span class="nv">autor</span><span class="p">:</span> <span class="nb">String</span>
+    <span class="kd">var</span> <span class="nv">estaPrestado</span><span class="p">:</span> <span class="nb">Bool</span> <span class="p">=</span> <span class="kc">false</span>
+
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">prestar</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="o">!</span><span class="n">estaPrestado</span> <span class="p">{</span>
+            <span class="n">estaPrestado</span> <span class="p">=</span> <span class="kc">true</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="bp">print</span><span class="p">(</span><span class="s">&quot;El libro ya está prestado.&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
     <span class="p">}</span>
-    <span class="kd">var</span> <span class="nv">edad</span><span class="p">:</span> <span class="nb">Int</span>
+
+    <span class="kr">mutating</span> <span class="kd">func</span> <span class="nf">devolver</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">estaPrestado</span> <span class="p">{</span>
+            <span class="n">estaPrestado</span> <span class="p">=</span> <span class="kc">false</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="bp">print</span><span class="p">(</span><span class="s">&quot;El libro no está prestado.&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-<p>Un ejemplo de uso. Creamos una persona:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">persona</span> <span class="p">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span><span class="s">&quot;Pedro&quot;</span><span class="p">,</span> <span class="n">apellidos</span><span class="p">:</span> <span class="s">&quot;García Pérez&quot;</span><span class="p">,</span> <span class="n">edad</span><span class="p">:</span> <span class="mi">23</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">persona</span><span class="p">.</span><span class="n">edad</span><span class="p">)</span>
-</code></pre></div>
-<p>Como <code>TieneEdad</code> hereda de <code>TieneNombre</code>, sabemos que una persona
-cumple tanto las condiciones de <code>TieneEdad</code> como las de <code>TieneNombre</code>
-y podemos usarla en cualquier variable o parámetro de ambos tipos:</p>
-<div class="highlight"><pre><span></span><code>var algoConEdad: TieneEdad = persona
-print(algoConEdad.edad)
-// Imprime 23
-var algoConNombre: TieneNombre = persona
-print(algoConNombre.nombreCompleto) 
-// Imprime &quot;Pedro García Pérez&quot;
-</code></pre></div>
-<p>Desde las variables <code>algoConEdad</code> y <code>algoConNombre</code> no podemos acceder
-a otras propiedades que no sean las definidas por el propio tipo. Esto
-es una ventaja, porque nos permite especializar el código y
-concentrarnos solo en las características necesarias definidas por el tipo.</p>
-<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="n">algoConNombre</span><span class="p">.</span><span class="n">edad</span><span class="p">)</span> 
-<span class="c1">// error: value of type &#39;TieneNombre&#39; has no member &#39;edad&#39;</span>
+
+<span class="kd">var</span> <span class="nv">libro</span> <span class="p">=</span> <span class="n">LibroDeBiblioteca</span><span class="p">(</span><span class="n">titulo</span><span class="p">:</span> <span class="s">&quot;1984&quot;</span><span class="p">,</span> <span class="n">autor</span><span class="p">:</span> <span class="s">&quot;George Orwell&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">libro</span><span class="p">.</span><span class="n">estaPrestado</span><span class="p">)</span>  <span class="c1">// Imprime: false</span>
+<span class="n">libro</span><span class="p">.</span><span class="n">prestar</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">libro</span><span class="p">.</span><span class="n">estaPrestado</span><span class="p">)</span>  <span class="c1">// Imprime: true</span>
+<span class="n">libro</span><span class="p">.</span><span class="n">devolver</span><span class="p">()</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">libro</span><span class="p">.</span><span class="n">estaPrestado</span><span class="p">)</span>  <span class="c1">// Imprime: false</span>
 </code></pre></div>
 <p>Otro ejemplo de la librería de Swift es <code>Comparable</code> y <code>Equatable</code>. El
 protocolo <code>Comparable</code> hereda de <code>Equatable</code>. Cumpliendo el protocolo
