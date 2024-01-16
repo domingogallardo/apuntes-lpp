@@ -222,6 +222,6 @@ tuya. Puedes consultar cualquier duda con tu profesor de prácticas en
 la clase de prácticas de la semana que viene.
 
 ----
-Lenguajes y Paradigmas de Programación, curso 2022-23  
+Lenguajes y Paradigmas de Programación, curso 2023-24  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

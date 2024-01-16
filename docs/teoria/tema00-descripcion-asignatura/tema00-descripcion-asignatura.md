@@ -8,15 +8,10 @@
 prácticas de 2 h. a la semana  
 **Profesores**:  
 
-* Antonio Botía ([e-mail](mailto:abotia@dccia.ua.es)): Grupos de
-  prácticas: 1, 2 y 40
-* Domingo Gallardo ([e-mail](mailto:domingo.gallardo@ua.es)): Profesor
-  coordinador de la asignatura. Grupos de teoría: 3, 4 y 40. Grupos de
-  prácticas: 5
-* Francisco Martínez ([e-mail](mailto:fmartine@ua.es)): Grupos de
-  prácticas: 4, 6 y 7
-* Cristina Pomares ([e-mail](mailto:cpomares@ua.es)): Grupos de
-  teoría: 1 y 2. Grupos de prácticas: 3, 8 y 9.
+* Antonio Botía
+* Domingo Gallardo (Coordinador)
+* Francisco Martínez
+* Cristina Pomares
 
 ## 2. Recursos de la asignatura
 
@@ -322,6 +317,6 @@ Para ampliar algunos conceptos se recomiendan las siguientes referencias:
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2022-23  
+Lenguajes y Paradigmas de Programación, curso 2023-24  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

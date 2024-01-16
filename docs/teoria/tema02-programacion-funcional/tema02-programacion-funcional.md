@@ -1744,7 +1744,7 @@ Ejemplos:
 (rest lista2) ⇒ (3 4)
 ```
 
-#### 2.6.3. Composición de listas: `cons` y `append`
+#### 2.6.3. Creación de listas: `cons` y `append`
 
 Por último, en el seminario vimos también cómo crear nuevas listas a
 partir de ya existentes con las funciones `cons` y `append`.
@@ -1768,6 +1768,17 @@ concatenar dos o más listas
 (define list2 '(hola como estás))
 (append list1 list2) ; ⇒ (1 2 3 4 hola como estás)
 ```
+
+!!! Note "Nota"
+    Es muy importante diferenciar `cons` y `append`. En ambos
+    casos el resultado es una lista y ambas funciones tienen dos parámetros,
+    siendo el segundo la lista en la que se añade el primero. La diferencia
+    entre ambas funciones es el tipo del primer parámetro. En `cons` es un
+    elemento que se añade a la lista, mientras que en `append` es otra lista que
+    se concatena con la segunda.
+
+
+<!--
 
 ### 2.7. Recursión
 
@@ -4772,9 +4783,9 @@ Capítulos del libro *Structure and Intepretation of Computer Programs*:
 - [1.3  Formulating Abstractions with Higher-Order Procedures](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-12.html#%_sec_1.3)
 - [2.2.1  Representing Sequences](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.1)
 
-
+-->
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2022-23  
+Lenguajes y Paradigmas de Programación, curso 2023-24  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

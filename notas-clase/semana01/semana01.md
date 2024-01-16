@@ -1074,7 +1074,7 @@ Ejemplos:
 
 <p style="margin-bottom:2cm;"></p>
 
-### Composición de listas: `cons` y `append`
+### Creación de listas: `cons` y `append`
 
 - La función `cons` crea una nueva lista en la que se añade un
   elemento a la cabeza de la lista que pasamos como parámetro:
