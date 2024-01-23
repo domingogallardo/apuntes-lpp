@@ -1183,6 +1183,15 @@ principales es el uso de listas. </p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">list1</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span>
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">list2</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">hola</span><span class="w"> </span><span class="ss">como</span><span class="w"> </span><span class="ss">estás</span><span class="p">))</span>
 <span class="p">(</span><span class="nb">append</span><span class="w"> </span><span class="n">list1</span><span class="w"> </span><span class="n">list2</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ (1 2 3 4 hola como estás)</span>
-</code></pre></div></body>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Diferencias entre cons y append</p>
+<p>Es muy importante diferenciar <code>cons</code> y <code>append</code>. En ambos
+casos el resultado es una lista y ambas funciones tienen dos parámetros,
+siendo el segundo la lista en la que se añade el primero. La diferencia
+entre ambas funciones es el tipo del primer parámetro. En <code>cons</code> es un
+elemento que se añade a la lista, mientras que en <code>append</code> es otra lista que
+se concatena con la segunda.</p>
+</div></body>
 
 </html>
