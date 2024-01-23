@@ -15,12 +15,12 @@ prácticas de 2 h. a la semana
 
 ## 2. Recursos de la asignatura
 
-* [Ficha de la asignatura](https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wCodEst=C203&wcodasi=34017&wlengua=es&scaca=2022-23)
+* [Ficha de la asignatura](https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wcodest=C203&wcodasi=34017&wlengua=es&scaca=2023-24)
 * [Apuntes de la asignatura (teoría, seminarios y prácticas)](https://domingogallardo.github.io/apuntes-lpp/)
-* [Sitio Moodle](https://moodle2022-23.ua.es/moodle/course/view.php?id=6377)
-  abierto y accesible a toda la comunidad educativa, contiene los
-  apuntes, transparencias, prácticas y otros materiales docentes
-* [Foro de consultas y anuncios](https://moodle2022-23.ua.es/moodle/mod/forum/view.php?id=104671) en el sitio Moodle
+* [Sitio Moodle](https://moodle2023-24.ua.es/moodle/course/view.php?id=7310)
+  abierto y accesible a toda la comunidad educativa, contiene los apuntes,
+  transparencias, prácticas y otros materiales docentes.
+* [Foro de consultas y anuncios](https://moodle2023-24.ua.es/moodle/course/view.php?id=7310) en el sitio Moodle.
 
 ## 3. Objetivos y competencias
 
