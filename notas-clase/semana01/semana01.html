@@ -529,11 +529,11 @@ efecto lateral.</p>
 <p style="margin-bottom:2cm;"></p>
 
 <h3>Evaluación de expresiones</h3>
-<div class="highlight"><pre><span></span><code><span class="mi">2</span> <span class="n">⇒</span> <span class="mi">2</span>
-<span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="n">⇒</span> <span class="mi">5</span>
-<span class="p">(</span><span class="nb">+</span><span class="p">)</span> <span class="n">⇒</span> <span class="mi">0</span>
-<span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span> <span class="n">⇒</span> <span class="mi">17</span>
-<span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">))</span> <span class="n">⇒</span> <span class="mi">8</span>
+<div class="highlight"><pre><span></span><code><span class="mi">2</span><span class="w"> </span><span class="n">⇒</span><span class="w"> </span><span class="mi">2</span>
+<span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="n">⇒</span><span class="w"> </span><span class="mi">5</span>
+<span class="p">(</span><span class="nb">+</span><span class="p">)</span><span class="w"> </span><span class="n">⇒</span><span class="w"> </span><span class="mi">0</span>
+<span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="n">⇒</span><span class="w"> </span><span class="mi">17</span>
+<span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="n">⇒</span><span class="w"> </span><span class="mi">8</span>
 </code></pre></div>
 <p>Se dice "<strong>evaluar una expresión</strong>" en lugar de "<strong>ejecutar una expresión</strong>".</p>
 <p>Partes de una expresión:</p>
@@ -543,18 +543,18 @@ efecto lateral.</p>
 <li>Evaluación de dentro a fuera</li>
 </ul>
 <p>Por ejemplo, ¿cuál es la evaluación de la siguiente expresión?:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="mi">3</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">12</span> <span class="mi">3</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="mi">3</span><span class="p">)))</span>
 </code></pre></div>
 <p style="margin-bottom:3cm;"></p>
 
 <h3>Definición de funciones</h3>
 <p>Definición</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">cuadrado</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
 </code></pre></div>
 <p>Uso y evaluación:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cuadrado</span> <span class="mi">10</span><span class="p">)</span> <span class="n">⇒</span> <span class="mi">100</span>
-<span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">10</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">4</span><span class="p">))))</span> <span class="n">⇒</span> <span class="mi">2116</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cuadrado</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="n">⇒</span><span class="w"> </span><span class="mi">100</span>
+<span class="p">(</span><span class="n">cuadrado</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="p">(</span><span class="n">cuadrado</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">4</span><span class="p">))))</span><span class="w"> </span><span class="n">⇒</span><span class="w"> </span><span class="mi">2116</span>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
@@ -569,17 +569,17 @@ las anteriores.</p>
 <p>No demasiado bien:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">y</span> <span class="n">y</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">suma-cuadrados</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">y</span><span class="p">)))</span>
 </code></pre></div>
 <ul>
 <li>Mucho más correcto:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">cuadrado</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-cuadrados</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">y</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">suma-cuadrados</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="n">cuadrado</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">cuadrado</span><span class="w"> </span><span class="n">y</span><span class="p">)))</span>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
@@ -602,11 +602,11 @@ funciones que transforman unos datos de entrada en otros de salida. </li>
 <li>En un lenguaje de programación funcional como Scheme (cuidado: la evaluación
   se hace de dentro a afuera):</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">conduce-vehiculo</span> <span class="n">imagenes</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">obten-acciones</span> 
-        <span class="p">(</span><span class="n">reconoce</span> 
-            <span class="p">(</span><span class="n">filtra</span> 
-                <span class="p">(</span><span class="n">obten-caracteristicas</span> <span class="n">imagenes</span><span class="p">)))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">conduce-vehiculo</span><span class="w"> </span><span class="n">imagenes</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="n">obten-acciones</span><span class="w"> </span>
+<span class="w">        </span><span class="p">(</span><span class="n">reconoce</span><span class="w"> </span>
+<span class="w">            </span><span class="p">(</span><span class="n">filtra</span><span class="w"> </span>
+<span class="w">                </span><span class="p">(</span><span class="n">obten-caracteristicas</span><span class="w"> </span><span class="n">imagenes</span><span class="p">)))))</span>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
@@ -632,13 +632,13 @@ funciones que transforman unos datos de entrada en otros de salida. </li>
 <li>Como hemos visto, en programación funcional <strong>declaramos funciones</strong>
 que transforman datos de entrada en datos de salida.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">cuadrado</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
 </code></pre></div>
 <ul>
 <li>La llamada a la función con el parámetro 4 devuelve 16:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cuadrado</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; devuelve 16</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cuadrado</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="c1">; devuelve 16</span>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
@@ -657,10 +657,10 @@ que transforman datos de entrada en datos de salida.</li>
 
 <h3>Pasos de ejecución</h3>
 <p>Pasos de ejecución en C:</p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">cuadrado</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
-<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">doble</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
-<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">cuadrado</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
-<span class="k">return</span> <span class="n">c</span>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuadrado</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doble</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuadrado</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="k">return</span><span class="w"> </span><span class="n">c</span>
 </code></pre></div>
 <p>En Swift:</p>
 <div class="highlight"><pre><span></span><code><span class="n">filtrados</span> <span class="p">=</span> <span class="n">filtra</span><span class="p">(</span><span class="n">pedidos</span><span class="p">);</span>
@@ -670,22 +670,22 @@ que transforman datos de entrada en datos de salida.</li>
 <p>En programación funcional, en lugar de pasos de ejecución se utiliza
 como hemos visto la composición de funciones. Los ejemplos anteriores
 se expresan de la siguiente forma en programación funcional:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="n">doble</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="mi">8</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cuadrado</span><span class="w"> </span><span class="p">(</span><span class="n">doble</span><span class="w"> </span><span class="p">(</span><span class="n">cuadrado</span><span class="w"> </span><span class="mi">8</span><span class="p">)))</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">procesa</span> <span class="p">(</span><span class="n">filtra</span> <span class="n">pedidos</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">procesa</span><span class="w"> </span><span class="p">(</span><span class="n">filtra</span><span class="w"> </span><span class="n">pedidos</span><span class="p">))</span>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
 <h3>Mutación</h3>
 <p>Asignación destructiva o mutación:</p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 </code></pre></div>
 <p>En programación funcional los valores definidos son inmutables:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">#lang </span><span class="nn">racket</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="mi">12</span><span class="p">)</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="mi">200</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">200</span><span class="p">)</span>
 </code></pre></div>
 <p>tendremos el siguiente error:</p>
 <div class="highlight"><pre><span></span><code>module: identifier already defined in: a
@@ -703,17 +703,17 @@ se expresan de la siguiente forma en programación funcional:</p>
 <li>Referencias + mutación = efectos laterales (<em>side effect</em> en inglés)</li>
 </ul>
 <p>Ejemplo de mutación:</p>
-<div class="highlight"><pre><span></span><code><span class="n">Point2D</span> <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point2D</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">);</span> <span class="c1">// la coord x de p1 es 3.0</span>
-<span class="n">p1</span><span class="p">.</span><span class="na">getCoordX</span><span class="p">();</span> <span class="c1">// la coord x de p1 es 3.0</span>
+<div class="highlight"><pre><span></span><code><span class="n">Point2D</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Point2D</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">);</span><span class="w"> </span><span class="c1">// la coord x de p1 es 3.0</span>
+<span class="n">p1</span><span class="p">.</span><span class="na">getCoordX</span><span class="p">();</span><span class="w"> </span><span class="c1">// la coord x de p1 es 3.0</span>
 <span class="n">p1</span><span class="p">.</span><span class="na">setCoordX</span><span class="p">(</span><span class="mf">10.0</span><span class="p">);</span>
-<span class="n">p1</span><span class="p">.</span><span class="na">getCoordX</span><span class="p">();</span> <span class="c1">// la coord x de p1 es 10.0</span>
+<span class="n">p1</span><span class="p">.</span><span class="na">getCoordX</span><span class="p">();</span><span class="w"> </span><span class="c1">// la coord x de p1 es 10.0</span>
 </code></pre></div>
 <p>Ejemplo de efecto lateral:</p>
-<div class="highlight"><pre><span></span><code><span class="n">Point2D</span> <span class="n">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Point2D</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">);</span> <span class="c1">// la coord x de p1 es 3.0</span>
-<span class="n">p1</span><span class="p">.</span><span class="na">getCoordX</span><span class="p">();</span> <span class="c1">// la coord x de p1 es 3.0</span>
-<span class="n">Point2D</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">p1</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">Point2D</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Point2D</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">);</span><span class="w"> </span><span class="c1">// la coord x de p1 es 3.0</span>
+<span class="n">p1</span><span class="p">.</span><span class="na">getCoordX</span><span class="p">();</span><span class="w"> </span><span class="c1">// la coord x de p1 es 3.0</span>
+<span class="n">Point2D</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p1</span><span class="p">;</span>
 <span class="n">p2</span><span class="p">.</span><span class="na">setCoordX</span><span class="p">(</span><span class="mf">10.0</span><span class="p">);</span>
-<span class="n">p1</span><span class="p">.</span><span class="na">getCoordX</span><span class="p">();</span> <span class="c1">// la coord x de p1 es 10.0, sin que ninguna sentencia haya modificado directamente p1</span>
+<span class="n">p1</span><span class="p">.</span><span class="na">getCoordX</span><span class="p">();</span><span class="w"> </span><span class="c1">// la coord x de p1 es 10.0, sin que ninguna sentencia haya modificado directamente p1</span>
 </code></pre></div>
 <ul>
 <li>Los efectos laterales permiten definir estructuras de datos más
@@ -725,35 +725,35 @@ se expresan de la siguiente forma en programación funcional:</p>
 
 <h3>Estado local mutable</h3>
 <p>Función con estado local mutable en lenguaje imperativo (Java):</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Contador</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Contador</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
 
-    <span class="kd">public</span> <span class="nf">Contador</span><span class="p">(</span><span class="kt">int</span> <span class="n">valorInicial</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">c</span> <span class="o">=</span> <span class="n">valorInicial</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Contador</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">valorInicial</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">valorInicial</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">valor</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">c</span><span class="o">++</span><span class="p">;</span>
-        <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">valor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">c</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">Contador</span> <span class="n">cont</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Contador</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="n">cont</span><span class="p">.</span><span class="na">valor</span><span class="p">();</span> <span class="c1">// 11</span>
-<span class="n">cont</span><span class="p">.</span><span class="na">valor</span><span class="p">();</span> <span class="c1">// 12</span>
-<span class="n">cont</span><span class="p">.</span><span class="na">valor</span><span class="p">();</span> <span class="c1">// 13</span>
+<span class="n">Contador</span><span class="w"> </span><span class="n">cont</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Contador</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="n">cont</span><span class="p">.</span><span class="na">valor</span><span class="p">();</span><span class="w"> </span><span class="c1">// 11</span>
+<span class="n">cont</span><span class="p">.</span><span class="na">valor</span><span class="p">();</span><span class="w"> </span><span class="c1">// 12</span>
+<span class="n">cont</span><span class="p">.</span><span class="na">valor</span><span class="p">();</span><span class="w"> </span><span class="c1">// 13</span>
 </code></pre></div>
 <p>En C:</p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">function</span> <span class="n">contador</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="k">static</span> <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="nf">contador</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 
-    <span class="n">c</span><span class="o">++</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+<span class="w">    </span><span class="n">c</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="n">contador</span><span class="p">()</span> <span class="p">;;</span> <span class="mi">1</span>
-<span class="n">contador</span><span class="p">()</span> <span class="p">;;</span> <span class="mi">2</span>
-<span class="n">contador</span><span class="p">()</span> <span class="p">;;</span> <span class="mi">3</span>
+<span class="n">contador</span><span class="p">()</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">contador</span><span class="p">()</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="mi">2</span>
+<span class="n">contador</span><span class="p">()</span><span class="w"> </span><span class="p">;;</span><span class="w"> </span><span class="mi">3</span>
 </code></pre></div>
 <p><strong>Por el contrario</strong>, los lenguajes funcionales puros tienen la propiedad
 de <em>transparencia referencial</em>: si se sustituye una expresión por su
@@ -847,15 +847,15 @@ evalúa entonces.</p>
 <p>Comprobamos las sustituciones en cada tipo de orden.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">doble</span> <span class="n">x</span><span class="p">)</span> 
-    <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">doble</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span>
+<span class="w">    </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">y</span><span class="p">)</span> 
-    <span class="p">(</span><span class="nb">*</span> <span class="n">y</span> <span class="n">y</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">cuadrado</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span>
+<span class="w">    </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">y</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
 
-<span class="p">(</span><span class="n">doble</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">a</span><span class="p">))</span>
+<span class="p">(</span><span class="n">doble</span><span class="w"> </span><span class="p">(</span><span class="n">cuadrado</span><span class="w"> </span><span class="n">a</span><span class="p">))</span>
 </code></pre></div>
 <p>Orden aplicativo:</p>
 <div class="highlight"><pre><span></span><code>(doble (cuadrado a)) ⇒       ; Sustituimos a por su valor (R2)
@@ -880,8 +880,8 @@ evalúa entonces.</p>
 <li>El resultado es el mismo, siempre que no se definan funciones no puras.</li>
 </ul>
 <p>Ejemplo de resultado distinto con funciones no puras:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">zero</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
-<span class="p">(</span><span class="n">zero</span> <span class="p">(</span><span class="nb">random</span> <span class="mi">10</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">zero</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
+<span class="p">(</span><span class="n">zero</span><span class="w"> </span><span class="p">(</span><span class="nb">random</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
@@ -896,7 +896,7 @@ tienen una forma de evaluarse propia, distinta de las funciones.</li>
 
 <h3>Forma especial <code>define</code></h3>
 <p><strong>Sintaxis</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">&lt;identificador&gt;</span> <span class="n">&lt;expresión&gt;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">&lt;identificador&gt;</span><span class="w"> </span><span class="n">&lt;expresión&gt;</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Evaluación</strong></p>
 <ol>
@@ -904,9 +904,9 @@ tienen una forma de evaluarse propia, distinta de las funciones.</li>
 <li>Asociar el valor resultante con el <em>identificador</em></li>
 </ol>
 <p><strong>Ejemplo</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">base</span> <span class="mi">10</span><span class="p">)</span>   <span class="c1">; Asociamos a &#39;base&#39; el valor 10</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">altura</span> <span class="mi">12</span><span class="p">)</span> <span class="c1">; Asociamos a &#39;altura&#39; el valor 12</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">area</span> <span class="p">(</span><span class="nb">/</span> <span class="p">(</span><span class="nb">*</span> <span class="n">base</span> <span class="n">altura</span><span class="p">)</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">; Asociamos a &#39;area&#39; el valor 60</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w">   </span><span class="c1">; Asociamos a &#39;base&#39; el valor 10</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">altura</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="c1">; Asociamos a &#39;altura&#39; el valor 12</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">area</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="n">altura</span><span class="p">)</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="c1">; Asociamos a &#39;area&#39; el valor 60</span>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
@@ -921,16 +921,16 @@ tienen una forma de evaluarse propia, distinta de las funciones.</li>
 <li>Dar a la función el nombre <em>nombre-función</em></li>
 </ol>
 <p><strong>Ejemplo</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">factorial</span> <span class="n">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="mi">1</span>
-        <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="n">factorial</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">factorial</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="mi">1</span>
+<span class="w">        </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="n">factorial</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">)))))</span>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
 <h3>Forma especial <code>if</code></h3>
 <p><strong>Sintaxis</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">if</span> <span class="n">&lt;condición&gt;</span> <span class="n">&lt;expresión-true&gt;</span> <span class="n">&lt;expresión-false&gt;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="n">&lt;condición&gt;</span><span class="w"> </span><span class="n">&lt;expresión-true&gt;</span><span class="w"> </span><span class="n">&lt;expresión-false&gt;</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Evaluación</strong></p>
 <ol>
@@ -939,7 +939,7 @@ tienen una forma de evaluarse propia, distinta de las funciones.</li>
    caso, evaluar la <em>expresión-false</em></li>
 </ol>
 <p><strong>Ejemplo</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="mi">10</span> <span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="nb">substring</span> <span class="s2">&quot;Hola qué tal&quot;</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">12</span> <span class="mi">0</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">substring</span><span class="w"> </span><span class="s2">&quot;Hola qué tal&quot;</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
 
 <span class="c1">;; Evaluamos (&gt; 10 5). Como el resultado es #t, evaluamos </span>
 <span class="c1">;; (substring &quot;Hola qué tal&quot; (+ 1 1) 4), que devuelve &quot;la&quot;</span>
@@ -948,11 +948,11 @@ tienen una forma de evaluarse propia, distinta de las funciones.</li>
 
 <h3>Forma especial <code>cond</code></h3>
 <p><strong>Sintaxis</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">cond</span> 
-    <span class="p">(</span><span class="n">&lt;exp-cond-1&gt;</span> <span class="n">&lt;exp-consec-1&gt;</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">&lt;exp-cond-2&gt;</span> <span class="n">&lt;exp-consec-2&gt;</span><span class="p">)</span>
-    <span class="k">...</span>
-    <span class="p">(</span><span class="k">else</span> <span class="n">&lt;exp-consec-else&gt;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">cond</span><span class="w"> </span>
+<span class="w">    </span><span class="p">(</span><span class="n">&lt;exp-cond-1&gt;</span><span class="w"> </span><span class="n">&lt;exp-consec-1&gt;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="n">&lt;exp-cond-2&gt;</span><span class="w"> </span><span class="n">&lt;exp-consec-2&gt;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">...</span>
+<span class="w">    </span><span class="p">(</span><span class="k">else</span><span class="w"> </span><span class="n">&lt;exp-consec-else&gt;</span><span class="p">))</span>
 </code></pre></div>
 <p><strong>Evaluación</strong></p>
 <ol>
@@ -965,11 +965,11 @@ tienen una forma de evaluarse propia, distinta de las funciones.</li>
 </ol>
 <p><strong>Ejemplo</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">cond</span>
-   <span class="p">((</span><span class="nb">&gt;</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="s2">&quot;3 es mayor que 4&quot;</span><span class="p">)</span>
-   <span class="p">((</span><span class="nb">&lt;</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">)</span> <span class="s2">&quot;2 es menor que 1&quot;</span><span class="p">)</span>
-   <span class="p">((</span><span class="nb">=</span> <span class="mi">3</span> <span class="mi">1</span><span class="p">)</span> <span class="s2">&quot;3 es igual que 1&quot;</span><span class="p">)</span>
-   <span class="p">((</span><span class="nb">&gt;</span> <span class="mi">3</span> <span class="mi">5</span><span class="p">)</span> <span class="s2">&quot;3 es mayor que 2&quot;</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">else</span> <span class="s2">&quot;ninguna condición es cierta&quot;</span><span class="p">))</span>
+<span class="w">   </span><span class="p">((</span><span class="nb">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;3 es mayor que 4&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="p">((</span><span class="nb">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;2 es menor que 1&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="p">((</span><span class="nb">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;3 es igual que 1&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="p">((</span><span class="nb">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;3 es mayor que 2&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;ninguna condición es cierta&quot;</span><span class="p">))</span>
 
 <span class="c1">;; Se evalúan una a una las expresiones (&gt; 3 4),</span>
 <span class="c1">;; (&lt; 2 1), (= 3 1) y (&gt; 3 5). Como ninguna de ella</span>
@@ -979,7 +979,7 @@ tienen una forma de evaluarse propia, distinta de las funciones.</li>
 
 <h3>Forma especial <code>quote</code> y símbolos</h3>
 <p><strong>Sintaxis</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">quote</span> <span class="ss">&lt;identificador&gt;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">quote</span><span class="w"> </span><span class="ss">&lt;identificador&gt;</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Evaluación</strong></p>
 <ul>
@@ -987,8 +987,8 @@ tienen una forma de evaluarse propia, distinta de las funciones.</li>
 <li>Se abrevia en con el carácter <code>'</code>.</li>
 </ul>
 <p><strong>Ejemplo</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">quote</span> <span class="ss">x</span><span class="p">)</span> <span class="c1">; el símbolo x</span>
-<span class="o">&#39;</span><span class="ss">hola</span> <span class="c1">; el símbolo hola</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">quote</span><span class="w"> </span><span class="ss">x</span><span class="p">)</span><span class="w"> </span><span class="c1">; el símbolo x</span>
+<span class="o">&#39;</span><span class="ss">hola</span><span class="w"> </span><span class="c1">; el símbolo hola</span>
 </code></pre></div>
 <ul>
 <li>
@@ -1003,25 +1003,25 @@ símbolo es un tipo atómico, es sólo un identificador.</p>
 </li>
 </ul>
 <p>Ejemplos de funciones Scheme con símbolos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">x</span> <span class="mi">12</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">symbol?</span> <span class="o">&#39;</span><span class="ss">x</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="nb">symbol?</span> <span class="n">x</span><span class="p">)</span> <span class="c1">; ⇒ #f ¿Por qué?</span>
-<span class="p">(</span><span class="nb">symbol?</span> <span class="o">&#39;</span><span class="ss">hola-que&lt;&gt;</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">symbol-&gt;string</span> <span class="o">&#39;</span><span class="ss">hola-que&lt;&gt;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">symbol?</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">x</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="nb">symbol?</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #f ¿Por qué?</span>
+<span class="p">(</span><span class="nb">symbol?</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">hola-que&lt;&gt;</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">symbol-&gt;string</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">hola-que&lt;&gt;</span><span class="p">)</span>
 <span class="o">&#39;</span><span class="ss">mañana</span>
-<span class="o">&#39;</span><span class="ss">lápiz</span> <span class="c1">; aunque sea posible, no vamos a usar acentos en los símbolos</span>
+<span class="o">&#39;</span><span class="ss">lápiz</span><span class="w"> </span><span class="c1">; aunque sea posible, no vamos a usar acentos en los símbolos</span>
 <span class="c1">; pero sí en los comentarios</span>
-<span class="p">(</span><span class="nb">symbol?</span> <span class="s2">&quot;hola&quot;</span><span class="p">)</span> <span class="c1">; #f</span>
-<span class="p">(</span><span class="nb">symbol?</span>  <span class="no">#f</span><span class="p">)</span> <span class="c1">; #f</span>
-<span class="p">(</span><span class="nb">symbol?</span> <span class="p">(</span><span class="nb">first</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">hola</span> <span class="ss">cómo</span> <span class="ss">estás</span><span class="p">)))</span> <span class="c1">; #t</span>
-<span class="p">(</span><span class="nb">equal?</span> <span class="o">&#39;</span><span class="ss">hola</span> <span class="o">&#39;</span><span class="ss">hola</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">equal?</span> <span class="o">&#39;</span><span class="ss">hola</span> <span class="s2">&quot;hola&quot;</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">symbol?</span><span class="w"> </span><span class="s2">&quot;hola&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; #f</span>
+<span class="p">(</span><span class="nb">symbol?</span><span class="w">  </span><span class="no">#f</span><span class="p">)</span><span class="w"> </span><span class="c1">; #f</span>
+<span class="p">(</span><span class="nb">symbol?</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">hola</span><span class="w"> </span><span class="ss">cómo</span><span class="w"> </span><span class="ss">estás</span><span class="p">)))</span><span class="w"> </span><span class="c1">; #t</span>
+<span class="p">(</span><span class="nb">equal?</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">hola</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">hola</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">equal?</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">hola</span><span class="w"> </span><span class="s2">&quot;hola&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Un símbolo es un identificador que puede asociarse o ligarse (<em>bind</em>)
 a un valor (cualquier dato <em>de primera clase</em>).</p>
 <p>Cuando escribimos un símbolo en el prompt de Scheme el intérprete lo
 evalúa y devuelve su valor:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="nb">pi</span> <span class="mf">3.14159</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nb">pi</span><span class="w"> </span><span class="mf">3.14159</span><span class="p">)</span>
 <span class="nb">pi</span>
 <span class="n">⇒3.14159</span>
 </code></pre></div>
@@ -1030,39 +1030,39 @@ símbolos (los de las macros no) y Scheme también los evalúa (en un par
 de semanas hablaremos de las funciones como objetos primitivos en
 Scheme):</p>
 <div class="highlight"><pre><span></span><code><span class="nb">sin</span>
-<span class="n">⇒</span> <span class="n">#&lt;procedure:sin&gt;</span>
+<span class="n">⇒</span><span class="w"> </span><span class="n">#&lt;procedure:sin&gt;</span>
 <span class="nb">+</span>
-<span class="n">⇒</span> <span class="n">#&lt;procedure:+&gt;</span>
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
-<span class="n">⇒</span> <span class="n">#&lt;procedure:cuadrado&gt;</span>
+<span class="n">⇒</span><span class="w"> </span><span class="n">#&lt;procedure:+&gt;</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">cuadrado</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
+<span class="n">⇒</span><span class="w"> </span><span class="n">#&lt;procedure:cuadrado&gt;</span>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
 <h3>Símbolos como tipos primitivos</h3>
 <p>Los símbolos son tipos primitivos del lenguaje: pueden pasarse como
 parámetros o ligarse a variables.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">x</span> <span class="o">&#39;</span><span class="ss">hola</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">hola</span><span class="p">)</span>
 <span class="n">x</span>
-<span class="n">⇒</span> <span class="n">hola</span>
+<span class="n">⇒</span><span class="w"> </span><span class="n">hola</span>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
 <h3>Forma especial <code>quote</code> y expresiones</h3>
 <p><strong>Sintaxis</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">quote</span> <span class="ss">&lt;expresión&gt;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">quote</span><span class="w"> </span><span class="ss">&lt;expresión&gt;</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Evaluación</strong></p>
 <p>Si <code>quote</code> recibe una expresión correcta de Scheme (una expresión
 entre paréntesis) se devuelve la lista o pareja pareja definida por la
 expresión (sin evaluar sus elementos).</p>
 <p><strong>Ejemplos</strong></p>
-<div class="highlight"><pre><span></span><code><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ (1 2 3) Una lista</span>
-<span class="o">&#39;</span><span class="p">(</span><span class="ss">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; La lista formada por el símbolo + y los números 1 2 3 4</span>
-<span class="p">(</span><span class="k">quote</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; La lista formada por los números 1 2 3 4</span>
-<span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="c1">; ⇒ La lista con los símbolos a, b, y c</span>
-<span class="o">&#39;</span><span class="p">(</span><span class="ss">*</span> <span class="p">(</span><span class="ss">+</span> <span class="mi">1</span> <span class="p">(</span><span class="ss">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; Una lista con 3 elementos, el segundo de ellos otra lista</span>
-<span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">; ⇒ La pareja (1 . 2)</span>
-<span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">2</span> <span class="o">.</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ Una lista con las parejas (1 . 2) y (2 . 3)</span>
+<div class="highlight"><pre><span></span><code><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ (1 2 3) Una lista</span>
+<span class="o">&#39;</span><span class="p">(</span><span class="ss">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="c1">; La lista formada por el símbolo + y los números 1 2 3 4</span>
+<span class="p">(</span><span class="k">quote</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span><span class="w"> </span><span class="c1">; La lista formada por los números 1 2 3 4</span>
+<span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span><span class="w"> </span><span class="ss">b</span><span class="w"> </span><span class="ss">c</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ La lista con los símbolos a, b, y c</span>
+<span class="o">&#39;</span><span class="p">(</span><span class="ss">*</span><span class="w"> </span><span class="p">(</span><span class="ss">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="ss">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="c1">; Una lista con 3 elementos, el segundo de ellos otra lista</span>
+<span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ La pareja (1 . 2)</span>
+<span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ Una lista con las parejas (1 . 2) y (2 . 3)</span>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
@@ -1073,26 +1073,26 @@ lenguajes funcionales. Permite invocar al intérprete en tiempo de
 ejecución y hacer que éste evalúe una expresión que puede haberse
 construido dinámicamente.</p>
 <p><strong>Sintaxis</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">eval</span> <span class="n">&lt;expresión&gt;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="n">&lt;expresión&gt;</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Evaluación</strong></p>
 <p>La función <code>eval</code> invoca al intérprete para realizar la evaluación de
 la expresión que se le pasa como parámetro y devuelve el resultado de
 dicha evaluación.</p>
 <p><strong>Ejemplos</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="mi">10</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 10</span>
 
-<span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ 6</span>
+<span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ 6</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="n">lista</span> <span class="p">(</span><span class="nb">list</span> <span class="o">&#39;</span><span class="ss">+</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span>
-<span class="p">(</span><span class="nb">eval</span> <span class="n">lista</span><span class="p">)</span> <span class="c1">; ⇒ 6</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">lista</span><span class="w"> </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 6</span>
 
-<span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="mi">10</span><span class="p">)</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">x</span> <span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="ss">x</span><span class="p">)</span> <span class="c1">; ⇒ a</span>
-<span class="p">(</span><span class="nb">eval</span> <span class="n">x</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
-<span class="p">(</span><span class="nb">eval</span> <span class="p">(</span><span class="nb">eval</span> <span class="o">&#39;</span><span class="ss">x</span><span class="p">))</span> <span class="c1">; ⇒ 10 </span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">x</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ a</span>
+<span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 10</span>
+<span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">x</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ 10 </span>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
@@ -1113,27 +1113,27 @@ principales es el uso de listas. </p>
 <ul>
 <li>Función <code>list</code></li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)</span> <span class="n">⇒</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">list</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="ss">c</span><span class="p">)</span> <span class="n">⇒</span> <span class="p">(</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="mi">2</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="mi">3</span> <span class="o">&#39;</span><span class="ss">c</span> <span class="no">#t</span><span class="p">)</span> <span class="n">⇒</span> <span class="p">(</span><span class="mi">1</span> <span class="n">a</span> <span class="mi">2</span> <span class="n">b</span> <span class="mi">3</span> <span class="n">c</span> <span class="no">#t</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)))</span> <span class="n">⇒</span> <span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">6</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="n">⇒</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">a</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">b</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">c</span><span class="p">)</span><span class="w"> </span><span class="n">⇒</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">c</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">a</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">b</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">c</span><span class="w"> </span><span class="no">#t</span><span class="p">)</span><span class="w"> </span><span class="n">⇒</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="no">#t</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span><span class="w"> </span><span class="n">⇒</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span>
 </code></pre></div>
 <p>Otro ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="mi">1</span><span class="p">)</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">b</span> <span class="mi">2</span><span class="p">)</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">c</span> <span class="mi">3</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">list</span> <span class="n">a</span> <span class="n">b</span> <span class="n">c</span><span class="p">)</span> <span class="c1">; ⇒ (1 2 3)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ (1 2 3)</span>
 </code></pre></div>
 <ul>
 <li>La forma especial <code>quote</code> delante de una expresión entre paréntesis
   convierte la expresión en una lista y la devuelve:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ (1 2 3 4)</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">a</span> <span class="mi">1</span><span class="p">)</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">b</span> <span class="mi">2</span><span class="p">)</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">c</span> <span class="mi">3</span><span class="p">)</span>
-<span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="c1">; ⇒ (a b c)</span>
-<span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="ss">+</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="ss">*</span> <span class="mi">2</span> <span class="p">(</span><span class="ss">+</span> <span class="mi">1</span> <span class="mi">2</span><span class="p">)))</span> <span class="c1">; ⇒ (1 (+ 1 1) (* 2 (+ 1 2)))</span>
+<div class="highlight"><pre><span></span><code><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ (1 2 3 4)</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span><span class="w"> </span><span class="ss">b</span><span class="w"> </span><span class="ss">c</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ (a b c)</span>
+<span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="ss">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="ss">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">(</span><span class="ss">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span><span class="w"> </span><span class="c1">; ⇒ (1 (+ 1 1) (* 2 (+ 1 2)))</span>
 </code></pre></div>
 <p>La última lista tiene 3 elementos:</p>
 <ul>
@@ -1146,9 +1146,9 @@ principales es el uso de listas. </p>
 <p>Otro ejemplo sobre la diferencia entre <code>list</code> y <code>quote</code>:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">list</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">/</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ (1 2/3 5)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (1 2/3 5)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="ss">/</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="ss">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ (1 (/ 2 3) (+ 2 3))</span>
+<div class="highlight"><pre><span></span><code><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="ss">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="ss">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (1 (/ 2 3) (+ 2 3))</span>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
@@ -1158,31 +1158,31 @@ principales es el uso de listas. </p>
 <li>Resto de elementos: función <code>rest</code></li>
 </ul>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">lista1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
-<span class="p">(</span><span class="nb">first</span> <span class="n">lista1</span><span class="p">)</span> <span class="c1">; ⇒ 1</span>
-<span class="p">(</span><span class="nb">rest</span> <span class="n">lista1</span><span class="p">)</span> <span class="c1">; ⇒ (2 3 4)</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">lista2</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
-<span class="p">(</span><span class="nb">first</span> <span class="n">lista2</span><span class="p">)</span> <span class="c1">; ⇒ (1 2)</span>
-<span class="p">(</span><span class="nb">rest</span> <span class="n">lista2</span><span class="p">)</span> <span class="c1">; ⇒ (3 4)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">lista1</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">lista1</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 1</span>
+<span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista1</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ (2 3 4)</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">lista2</span><span class="w"> </span><span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">lista2</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ (1 2)</span>
+<span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista2</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ (3 4)</span>
 </code></pre></div>
 <p style="margin-bottom:2cm;"></p>
 
-<h3>Composición de listas: <code>cons</code> y <code>append</code></h3>
+<h3>Creación de listas: <code>cons</code> y <code>append</code></h3>
 <ul>
 <li>La función <code>cons</code> crea una nueva lista en la que se añade un
   elemento a la cabeza de la lista que pasamos como parámetro:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">cons</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ (1 1 2 3 4)</span>
-<span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="ss">hola</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">como</span> <span class="ss">estás</span><span class="p">))</span> <span class="c1">; ⇒ (hola como estás)</span>
-<span class="p">(</span><span class="nb">cons</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>  <span class="c1">; ⇒ ((1 2) 1 2 3 4)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (1 1 2 3 4)</span>
+<span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">hola</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">como</span><span class="w"> </span><span class="ss">estás</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (hola como estás)</span>
+<span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span><span class="w">  </span><span class="c1">; ⇒ ((1 2) 1 2 3 4)</span>
 </code></pre></div>
 <ul>
 <li>La función <code>append</code> crea una nueva lista que en la que se concatenan
   dos o más listas que se pasan como parámetro:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">list1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">list2</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">hola</span> <span class="ss">como</span> <span class="ss">estás</span><span class="p">))</span>
-<span class="p">(</span><span class="nb">append</span> <span class="n">list1</span> <span class="n">list2</span><span class="p">)</span> <span class="c1">; ⇒ (1 2 3 4 hola como estás)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">list1</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">list2</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">hola</span><span class="w"> </span><span class="ss">como</span><span class="w"> </span><span class="ss">estás</span><span class="p">))</span>
+<span class="p">(</span><span class="nb">append</span><span class="w"> </span><span class="n">list1</span><span class="w"> </span><span class="n">list2</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ (1 2 3 4 hola como estás)</span>
 </code></pre></div></body>
 
 </html>
