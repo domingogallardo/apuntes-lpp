@@ -1769,7 +1769,7 @@ concatenar dos o más listas
 (append list1 list2) ; ⇒ (1 2 3 4 hola como estás)
 ```
 
-!!! Note "Nota"
+!!! Note "Diferencias entre `cons` y `append`"
     Es muy importante diferenciar `cons` y `append`. En ambos
     casos el resultado es una lista y ambas funciones tienen dos parámetros,
     siendo el segundo la lista en la que se añade el primero. La diferencia

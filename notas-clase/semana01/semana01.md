@@ -1093,3 +1093,14 @@ Ejemplos:
 (define list2 '(hola como estás))
 (append list1 list2) ; ⇒ (1 2 3 4 hola como estás)
 ```
+
+!!! danger "Diferencias entre cons y append"
+    Es muy importante diferenciar `cons` y `append`. En ambos
+    casos el resultado es una lista y ambas funciones tienen dos parámetros,
+    siendo el segundo la lista en la que se añade el primero. La diferencia
+    entre ambas funciones es el tipo del primer parámetro. En `cons` es un
+    elemento que se añade a la lista, mientras que en `append` es otra lista que
+    se concatena con la segunda.
+
+
+
