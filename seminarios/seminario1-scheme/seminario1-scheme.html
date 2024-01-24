@@ -12,6 +12,8 @@
         <link rel="prev" href="../../teoria/tema02-programacion-funcional/tema02-programacion-funcional.html">
       
       
+        <link rel="next" href="../../practicas/practica01/practica01.html">
+      
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.7">
     
@@ -501,6 +503,55 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Prácticas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Prácticas
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicas/practica01/practica01.html" class="md-nav__link">
+        Práctica 1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -791,6 +842,7 @@ ello no es necesario realizar nada, sólo asegurarnos de lo siguiente:</p>
 </ol>
 <p><img src="imagenes/racket3.png" width="500px" style="border:1px solid black;"/></p>
 <h4 id="123-cambiar-el-idioma-del-entorno">1.2.3. Cambiar el idioma del entorno<a class="headerlink" href="#123-cambiar-el-idioma-del-entorno" title="Permanent link">&para;</a></h4>
+<p>---&gt; QUITAR</p>
 <p>Podemos interactuar con el entorno en el idioma que queramos. Si
 queremos tenerlo por ejemplo en español, vamos al menú <em>Help -&gt;
 Interactúa con DrRacket en español</em>. Nos aparecerá un diálogo que nos
@@ -1067,13 +1119,13 @@ que permiten aglutinar elementos simples de los tipos de datos vistos anteriorme
 <div class="highlight"><pre><span></span><code><span class="s2">&quot;hola&quot;</span>
 <span class="s2">&quot;La palabra </span><span class="se">\&quot;</span><span class="s2">hola</span><span class="se">\&quot;</span><span class="s2"> tiene 4 letras&quot;</span>
 </code></pre></div>
-<h5 id="252-constructores-de-cadenas">2.5.2. Constructores de cadenas<a class="headerlink" href="#252-constructores-de-cadenas" title="Permanent link">&para;</a></h5>
+<h5 id="constructores-de-cadenas">Constructores de cadenas<a class="headerlink" href="#constructores-de-cadenas" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">make-string</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="sc">#\o</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ &quot;ooooo&quot; (función constructora que recibe un</span>
 <span class="w">                    </span><span class="c1">;            entero y un carácter) </span>
 <span class="p">(</span><span class="nb">string</span><span class="w"> </span><span class="sc">#\h</span><span class="w"> </span><span class="sc">#\o</span><span class="w"> </span><span class="sc">#\l</span><span class="w"> </span><span class="sc">#\a</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ &quot;hola&quot; (función constructora que recibe</span>
 <span class="w">                         </span><span class="c1">;           un número variable de caracteres) </span>
 </code></pre></div>
-<h5 id="253-operaciones-con-cadenas">2.5.3. Operaciones con cadenas<a class="headerlink" href="#253-operaciones-con-cadenas" title="Permanent link">&para;</a></h5>
+<h5 id="operaciones-con-cadenas">Operaciones con cadenas<a class="headerlink" href="#operaciones-con-cadenas" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">substring</span><span class="w"> </span><span class="s2">&quot;Hola que tal&quot;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ &quot;la&quot; (subcadena que va de la</span>
 <span class="w">                               </span><span class="c1">;      posición 2 a la 4, sin llegar a ella) </span>
 <span class="p">(</span><span class="nb">string?</span><span class="w"> </span><span class="s2">&quot;hola&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #t (predicado que comprueba que el argumento es</span>
@@ -1084,13 +1136,13 @@ que permiten aglutinar elementos simples de los tipos de datos vistos anteriorme
 <span class="p">(</span><span class="nb">string-ref</span><span class="w"> </span><span class="s2">&quot;hola&quot;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\h (carácter en la posición 0)</span>
 <span class="p">(</span><span class="nb">string-append</span><span class="w"> </span><span class="s2">&quot;hola&quot;</span><span class="w"> </span><span class="s2">&quot;adios&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ &quot;holaadios&quot; (concatenación de cadenas) </span>
 </code></pre></div>
-<h5 id="254-comparadores-de-cadenas">2.5.4. Comparadores de cadenas<a class="headerlink" href="#254-comparadores-de-cadenas" title="Permanent link">&para;</a></h5>
+<h5 id="comparadores-de-cadenas">Comparadores de cadenas<a class="headerlink" href="#comparadores-de-cadenas" title="Permanent link">&para;</a></h5>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">string=?</span><span class="w"> </span><span class="s2">&quot;Hola&quot;</span><span class="w"> </span><span class="s2">&quot;hola&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #f </span>
 <span class="p">(</span><span class="nb">string=?</span><span class="w"> </span><span class="s2">&quot;hola&quot;</span><span class="w"> </span><span class="s2">&quot;hola&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #t </span>
 <span class="p">(</span><span class="nb">string&lt;?</span><span class="w"> </span><span class="s2">&quot;aab&quot;</span><span class="w"> </span><span class="s2">&quot;cde&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #t (se compara usando el orden lexicográfico)</span>
 <span class="p">(</span><span class="nb">string&gt;=?</span><span class="w"> </span><span class="s2">&quot;www&quot;</span><span class="w"> </span><span class="s2">&quot;qqq&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #t</span>
 </code></pre></div>
-<h4 id="26-parejas">2.6. Parejas<a class="headerlink" href="#26-parejas" title="Permanent link">&para;</a></h4>
+<h4 id="252-parejas">2.5.2. Parejas<a class="headerlink" href="#252-parejas" title="Permanent link">&para;</a></h4>
 <p>Elemento fundamental de Scheme. Es un tipo compuesto formado por dos
 elementos (no necesariamente del mismo tipo).</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ (1 . 2) (cons crea una pareja)</span>
@@ -1126,7 +1178,7 @@ esperamos:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (1 2 . 3)</span>
 </code></pre></div>
 <p>Más adelante explicaremos por qué.</p>
-<h4 id="27-listas">2.7. Listas<a class="headerlink" href="#27-listas" title="Permanent link">&para;</a></h4>
+<h4 id="253-listas">2.5.3. Listas<a class="headerlink" href="#253-listas" title="Permanent link">&para;</a></h4>
 <p>Uno de los elementos fundamentales de Scheme, y de Lisp, son las
 listas. Es un tipo compuesto formado por un conjunto finito de
 elementos (no necesariamente del mismo tipo). Vamos a ver cómo
@@ -1576,7 +1628,7 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.51198bba.min.js"></script>

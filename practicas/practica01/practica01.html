@@ -9,13 +9,15 @@
       
       
       
+        <link rel="prev" href="../../seminarios/seminario1-scheme/seminario1-scheme.html">
+      
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.7">
     
     
       
-        <title>Práctica 1: Seminario de Scheme - LPP</title>
+        <title>Práctica 1 - LPP</title>
       
     
     
@@ -97,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Práctica 1: Seminario de Scheme
+              Práctica 1
             
           </span>
         </div>
@@ -300,6 +302,105 @@
   
 
     
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Prácticas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Prácticas
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Práctica 1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="practica01.html" class="md-nav__link md-nav__link--active">
+        Práctica 1
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#realizacion-de-la-practica" class="md-nav__link">
+    Realización de la práctica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrega-de-la-practica" class="md-nav__link">
+    Entrega de la práctica
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -358,15 +459,16 @@
 <h1 id="practica-1-seminario-de-scheme">Práctica 1: Seminario de Scheme<a class="headerlink" href="#practica-1-seminario-de-scheme" title="Permanent link">&para;</a></h1>
 <h2 id="realizacion-de-la-practica">Realización de la práctica<a class="headerlink" href="#realizacion-de-la-practica" title="Permanent link">&para;</a></h2>
 <ol>
-<li>
-<p>Instala en tu ordenador el DrRacket, tal y como se comenta al
+<li>Instala en tu ordenador el DrRacket, tal y como se comenta al
    comienzo del <a href="../../seminarios/seminario1-scheme/seminario1-scheme.html">seminario de
    Scheme</a>
-   y crea un fichero <code>practica1.rkt</code>. Escribe en comentarios
-   (comenzando por punto y coma <code>;</code>) tu nombre y apellidos. Incluye en
-   el fichero todo el código que escribas esta semana. Usa también
-   comentarios para separar secciones y realizar anotaciones.</p>
-</li>
+   y crea un fichero <code>practica1.rkt</code>. Incluye en el fichero todo el código que
+   escribas esta semana. Usa comentarios (líneas que comienzan con <code>;</code>) para separar secciones y
+   realizar anotaciones. </li>
+</ol>
+<p>Este fichero te servirá guardar tu práctica. Para realizar la entrega deberás
+   copiar las soluciones de cada ejercicio en el cuestionario que habilitaremos en Moodle.</p>
+<ol start="2">
 <li>
 <p>Lee el seminario de Scheme hasta el apartado 2.4. (<em>Tipos de datos
    simples</em>) incluido. Puedes ver el <strong>vídeo 1</strong> en la página con los
@@ -677,24 +779,49 @@ no uses <code>if</code>, sino una composición de expresiones booleanas.</p>
 argumentos. </p>
 </div>
 <p>Añade los siguientes tests:</p>
-<div class="highlight"><pre><span></span><code>Ejemplos de triángulos isósceles:
-
-p1:(0, 0) p2:(3, 3) p3:(6, 0)
-p1:(2, 2) p2:(4, 0) p3:(0, 0)
-
-No isósceles:
-
-p1:(0, 0) p2:(0, 0) p3:(0, 0) (la función debe devolver #f al ser igual la
-                               distancia entre los tres puntos)
-p1:(0, 0) p2:(1, 1) p3: (3, 2) (ningún lado igual)
-</code></pre></div>
 </li>
 </ol>
+<p>--&gt; Adaptar los ejemplos para que incluyan código de Scheme, como en el resto de
+las prácticas</p>
+<div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">```</span>
+<span class="o">;</span><span class="w"> </span><span class="nt">Ejemplos</span><span class="w"> </span><span class="nt">de</span><span class="w"> </span><span class="nt">triángulos</span><span class="w"> </span><span class="nt">isósceles</span><span class="o">:</span>
+
+<span class="o">;</span><span class="w"> </span><span class="nt">p1</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="nt">p2</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">3</span><span class="o">,</span><span class="w"> </span><span class="nt">3</span><span class="o">)</span><span class="w"> </span><span class="nt">p3</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">6</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span>
+<span class="o">;</span><span class="w"> </span><span class="nt">p1</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">2</span><span class="o">,</span><span class="w"> </span><span class="nt">2</span><span class="o">)</span><span class="w"> </span><span class="nt">p2</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">4</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="nt">p3</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span>
+
+<span class="o">;</span><span class="w"> </span><span class="nt">No</span><span class="w"> </span><span class="nt">isósceles</span><span class="o">:</span>
+
+<span class="o">;</span><span class="w"> </span><span class="nt">p1</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="nt">p2</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="nt">p3</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="nt">igual</span><span class="w"> </span><span class="nt">la</span><span class="w"> </span><span class="nt">distancia</span><span class="w"> </span><span class="nt">entre</span><span class="w"> </span><span class="nt">los</span><span class="w"> </span><span class="nt">tres</span><span class="w"> </span><span class="nt">puntos</span><span class="o">)</span>
+<span class="o">;</span><span class="w"> </span><span class="nt">p1</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="nt">p2</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">1</span><span class="o">,</span><span class="w"> </span><span class="nt">1</span><span class="o">)</span><span class="w"> </span><span class="nt">p3</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">3</span><span class="o">,</span><span class="w"> </span><span class="nt">2</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="nt">ningún</span><span class="w"> </span><span class="nt">lado</span><span class="w"> </span><span class="nt">igual</span><span class="o">)</span>
+
+<span class="o">(</span><span class="nt">isosceles</span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;(0 . 0) &#39;</span><span class="o">(</span><span class="nt">3</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="s1">&#39;(6 . 0)) ; ⇒ #t</span>
+<span class="s1">(isosceles? &#39;</span><span class="o">(</span><span class="nt">2</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="nt">2</span><span class="o">)</span><span class="w"> </span><span class="s1">&#39;(4 . 0) &#39;</span><span class="o">(</span><span class="nt">0</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="nt">0</span><span class="o">))</span><span class="w"> </span><span class="o">;</span><span class="w"> </span><span class="err">⇒</span><span class="w"> </span><span class="p">#</span><span class="nn">t</span>
+<span class="o">(</span><span class="nt">isosceles</span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;(0 . 0) &#39;</span><span class="o">(</span><span class="nt">0</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="s1">&#39;(0 . 0)) ; ⇒ #f</span>
+<span class="s1">(isosceles? &#39;</span><span class="o">(</span><span class="nt">0</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="s1">&#39;(1 . 1) &#39;</span><span class="o">(</span><span class="nt">3</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="nt">2</span><span class="o">))</span><span class="w"> </span><span class="o">;</span><span class="w"> </span><span class="err">⇒</span><span class="w"> </span><span class="err">#</span>
+<span class="err">```</span>
+</code></pre></div></td></tr></table></div>
+
 <h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
-<p>Sube la solución del ejercicio 6 a Moodle en el cuestionario
-<em>Entrega práctica 1</em> hasta el domingo 5 de febrero a las 21:00 h. Una
-vez finalizado el plazo de entrega podrás revisar el cuestionario y
-visualizar la solución del ejercicio 6.</p>
+<p>Copia los ejercicios de la práctica en el cuestionario
+<em>Entrega práctica 1</em>. Tienes de plazo hasta el domingo 4 de febrero a las 21:00
+h. Una vez finalizado el plazo de entrega podrás revisar el cuestionario y
+visualizar la solución. En este caso el único ejercicio con solución es el
+ejercicio 6. </p>
 <p>Una vez esté disponible la solución debes compararla con la
 tuya. Puedes consultar cualquier duda con tu profesor de prácticas en
 la clase de prácticas de la semana que viene.</p>
@@ -739,7 +866,7 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.51198bba.min.js"></script>
