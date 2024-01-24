@@ -1744,9 +1744,9 @@ Ejemplos:
 (rest lista2) ⇒ (3 4)
 ```
 
-#### 2.6.3. Creación de listas: `cons` y `append`
+#### 2.6.3. Funciones `cons` y `append`
 
-Por último, en el seminario vimos también cómo crear nuevas listas a
+Por último, en el seminario vimos también cómo construir nuevas listas a
 partir de ya existentes con las funciones `cons` y `append`.
 
 La función `cons` crea una lista nueva resultante de añadir un elemento

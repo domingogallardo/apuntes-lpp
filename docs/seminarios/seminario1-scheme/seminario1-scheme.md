@@ -105,6 +105,8 @@ ello no es necesario realizar nada, sólo asegurarnos de lo siguiente:
 
 #### 1.2.3. Cambiar el idioma del entorno ####
 
+---> QUITAR
+
 Podemos interactuar con el entorno en el idioma que queramos. Si
 queremos tenerlo por ejemplo en español, vamos al menú _Help ->
 Interactúa con DrRacket en español_. Nos aparecerá un diálogo que nos
@@ -475,7 +477,7 @@ Las cadenas son secuencias finitas de caracteres.
 "La palabra \"hola\" tiene 4 letras"
 ```
 
-##### 2.5.2. Constructores de cadenas
+##### Constructores de cadenas
 
 ```racket
 (make-string 5 #\o) ; ⇒ "ooooo" (función constructora que recibe un
@@ -484,7 +486,7 @@ Las cadenas son secuencias finitas de caracteres.
                          ;           un número variable de caracteres) 
 ```
 
-##### 2.5.3. Operaciones con cadenas
+##### Operaciones con cadenas
 
 ```racket
 (substring "Hola que tal" 2 4) ; ⇒ "la" (subcadena que va de la
@@ -498,7 +500,7 @@ Las cadenas son secuencias finitas de caracteres.
 (string-append "hola" "adios") ; ⇒ "holaadios" (concatenación de cadenas) 
 ```
 
-##### 2.5.4. Comparadores de cadenas
+##### Comparadores de cadenas
 
 ```racket
 (string=? "Hola" "hola") ; ⇒ #f 
@@ -507,7 +509,7 @@ Las cadenas son secuencias finitas de caracteres.
 (string>=? "www" "qqq") ; ⇒ #t
 ```
 
-#### 2.6. Parejas
+#### 2.5.2. Parejas
 
 Elemento fundamental de Scheme. Es un tipo compuesto formado por dos
 elementos (no necesariamente del mismo tipo).
@@ -563,8 +565,7 @@ esperamos:
 
 Más adelante explicaremos por qué.
 
-
-#### 2.7. Listas
+#### 2.5.3. Listas
 
 Uno de los elementos fundamentales de Scheme, y de Lisp, son las
 listas. Es un tipo compuesto formado por un conjunto finito de

@@ -5,10 +5,12 @@
 1. Instala en tu ordenador el DrRacket, tal y como se comenta al
    comienzo del [seminario de
    Scheme](../../seminarios/seminario1-scheme/seminario1-scheme.md)
-   y crea un fichero `practica1.rkt`. Escribe en comentarios
-   (comenzando por punto y coma `;`) tu nombre y apellidos. Incluye en
-   el fichero todo el código que escribas esta semana. Usa también
-   comentarios para separar secciones y realizar anotaciones.
+   y crea un fichero `practica1.rkt`. Incluye en el fichero todo el código que
+   escribas esta semana. Usa comentarios (líneas que comienzan con `;`) para separar secciones y
+   realizar anotaciones. 
+
+   Este fichero te servirá guardar tu práctica. Para realizar la entrega deberás
+   copiar las soluciones de cada ejercicio en el cuestionario que habilitaremos en Moodle.
 
 2. Lee el seminario de Scheme hasta el apartado 2.4. (_Tipos de datos
    simples_) incluido. Puedes ver el **vídeo 1** en la página con los
@@ -195,27 +197,36 @@
         argumentos. 
 
     Añade los siguientes tests:
-    
+
+
+--> Adaptar los ejemplos para que incluyan código de Scheme, como en el resto de
+las prácticas
+
     ```
-    Ejemplos de triángulos isósceles:
+    ; Ejemplos de triángulos isósceles:
     
-    p1:(0, 0) p2:(3, 3) p3:(6, 0)
-    p1:(2, 2) p2:(4, 0) p3:(0, 0)
+    ; p1: (0, 0) p2: (3, 3) p3: (6, 0)
+    ; p1: (2, 2) p2: (4, 0) p3: (0, 0)
 
-    No isósceles:
+    ; No isósceles:
 
-    p1:(0, 0) p2:(0, 0) p3:(0, 0) (la función debe devolver #f al ser igual la
-                                   distancia entre los tres puntos)
-    p1:(0, 0) p2:(1, 1) p3: (3, 2) (ningún lado igual)
+    ; p1: (0, 0) p2: (0, 0) p3: (0, 0) (igual la distancia entre los tres puntos)
+    ; p1: (0, 0) p2: (1, 1) p3: (3, 2) (ningún lado igual)
+    
+    (isosceles? '(0 . 0) '(3 . 0) '(6 . 0)) ; ⇒ #t
+    (isosceles? '(2 . 2) '(4 . 0) '(0 . 0)) ; ⇒ #t
+    (isosceles? '(0 . 0) '(0 . 0) '(0 . 0)) ; ⇒ #f
+    (isosceles? '(0 . 0) '(1 . 1) '(3 . 2)) ; ⇒ #
     ```
 
 
 ## Entrega de la práctica
 
-Sube la solución del ejercicio 6 a Moodle en el cuestionario
-_Entrega práctica 1_ hasta el domingo 5 de febrero a las 21:00 h. Una
-vez finalizado el plazo de entrega podrás revisar el cuestionario y
-visualizar la solución del ejercicio 6.
+Copia los ejercicios de la práctica en el cuestionario
+_Entrega práctica 1_. Tienes de plazo hasta el domingo 4 de febrero a las 21:00
+h. Una vez finalizado el plazo de entrega podrás revisar el cuestionario y
+visualizar la solución. En este caso el único ejercicio con solución es el
+ejercicio 6. 
 
 Una vez esté disponible la solución debes compararla con la
 tuya. Puedes consultar cualquier duda con tu profesor de prácticas en
