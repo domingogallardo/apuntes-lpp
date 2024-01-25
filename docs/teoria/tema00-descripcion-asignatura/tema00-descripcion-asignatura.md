@@ -170,7 +170,7 @@ compañeros.
 
 ## 6. Horarios
 
-La distribución de grupos del curso 2022-23 es la siguiente:
+La distribución de grupos del curso 2023-24 es la siguiente:
 
 <img src="imagenes/horario.png" width="800px"/>
 
