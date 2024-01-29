@@ -103,18 +103,7 @@ ello no es necesario realizar nada, sólo asegurarnos de lo siguiente:
 
 <img src="imagenes/racket3.png" width="500px" style="border:1px solid black;"/>
 
-#### 1.2.3. Cambiar el idioma del entorno ####
-
----> QUITAR
-
-Podemos interactuar con el entorno en el idioma que queramos. Si
-queremos tenerlo por ejemplo en español, vamos al menú _Help ->
-Interactúa con DrRacket en español_. Nos aparecerá un diálogo que nos
-obligará a reiniciar el intérprete para aceptar los cambios.
-
-<img src="imagenes/racket2.png" width="400px" style="border:1px solid black;"/>
-
-#### 1.2.4. Cómo escribir en el intérprete ####
+#### 1.2.3. Cómo escribir en el intérprete ####
 
 En la ventana inferior se encuentra el intérprete de Racket. El
 intérprete realiza un bucle en el que se lee una expresión, se evalúa
@@ -1093,6 +1082,6 @@ apuntes para ampliar información.
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2022-23  
+Lenguajes y Paradigmas de Programación, curso 2023-24  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
