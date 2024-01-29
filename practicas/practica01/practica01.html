@@ -717,7 +717,7 @@ comprender por qué.</p>
 </li>
 <li>
 <p>Lee el resto del seminario, desde el apartado 4 hasta el
-   final. Puedes ver el <strong>vídeo 3</strong> desde el mintuo 7:00 hasta el
+   final. Puedes ver el <strong>vídeo 3</strong> desde el minuto 7:00 hasta el
    final en la página con los vídeos del seminario en Moodle.</p>
 <ul>
 <li>
@@ -778,44 +778,24 @@ no uses <code>if</code>, sino una composición de expresiones booleanas.</p>
 <p>Recuerda del seminario que la función <code>=</code> puede tener más de dos
 argumentos. </p>
 </div>
-<p>Añade los siguientes tests:</p>
+<p>Añade los tests correspondientes a los siguientes ejemplos:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">; Ejemplos de triángulos isósceles:</span>
+
+<span class="c1">; p1: (0, 0) p2: (3, 3) p3: (6, 0)</span>
+<span class="c1">; p1: (2, 2) p2: (4, 0) p3: (0, 0)</span>
+
+<span class="c1">; No isósceles:</span>
+
+<span class="c1">; p1: (0, 0) p2: (0, 0) p3: (0, 0) (igual la distancia entre los tres puntos)</span>
+<span class="c1">; p1: (0, 0) p2: (1, 1) p3: (3, 2) (ningún lado igual)</span>
+
+<span class="p">(</span><span class="n">isosceles?</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">6</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">isosceles?</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">isosceles?</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">isosceles?</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ #f</span>
+</code></pre></div>
 </li>
 </ol>
-<p>--&gt; Adaptar los ejemplos para que incluyan código de Scheme, como en el resto de
-las prácticas</p>
-<div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">```</span>
-<span class="o">;</span><span class="w"> </span><span class="nt">Ejemplos</span><span class="w"> </span><span class="nt">de</span><span class="w"> </span><span class="nt">triángulos</span><span class="w"> </span><span class="nt">isósceles</span><span class="o">:</span>
-
-<span class="o">;</span><span class="w"> </span><span class="nt">p1</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="nt">p2</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">3</span><span class="o">,</span><span class="w"> </span><span class="nt">3</span><span class="o">)</span><span class="w"> </span><span class="nt">p3</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">6</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span>
-<span class="o">;</span><span class="w"> </span><span class="nt">p1</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">2</span><span class="o">,</span><span class="w"> </span><span class="nt">2</span><span class="o">)</span><span class="w"> </span><span class="nt">p2</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">4</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="nt">p3</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span>
-
-<span class="o">;</span><span class="w"> </span><span class="nt">No</span><span class="w"> </span><span class="nt">isósceles</span><span class="o">:</span>
-
-<span class="o">;</span><span class="w"> </span><span class="nt">p1</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="nt">p2</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="nt">p3</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="nt">igual</span><span class="w"> </span><span class="nt">la</span><span class="w"> </span><span class="nt">distancia</span><span class="w"> </span><span class="nt">entre</span><span class="w"> </span><span class="nt">los</span><span class="w"> </span><span class="nt">tres</span><span class="w"> </span><span class="nt">puntos</span><span class="o">)</span>
-<span class="o">;</span><span class="w"> </span><span class="nt">p1</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="nt">p2</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">1</span><span class="o">,</span><span class="w"> </span><span class="nt">1</span><span class="o">)</span><span class="w"> </span><span class="nt">p3</span><span class="o">:</span><span class="w"> </span><span class="o">(</span><span class="nt">3</span><span class="o">,</span><span class="w"> </span><span class="nt">2</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="nt">ningún</span><span class="w"> </span><span class="nt">lado</span><span class="w"> </span><span class="nt">igual</span><span class="o">)</span>
-
-<span class="o">(</span><span class="nt">isosceles</span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;(0 . 0) &#39;</span><span class="o">(</span><span class="nt">3</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="s1">&#39;(6 . 0)) ; ⇒ #t</span>
-<span class="s1">(isosceles? &#39;</span><span class="o">(</span><span class="nt">2</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="nt">2</span><span class="o">)</span><span class="w"> </span><span class="s1">&#39;(4 . 0) &#39;</span><span class="o">(</span><span class="nt">0</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="nt">0</span><span class="o">))</span><span class="w"> </span><span class="o">;</span><span class="w"> </span><span class="err">⇒</span><span class="w"> </span><span class="p">#</span><span class="nn">t</span>
-<span class="o">(</span><span class="nt">isosceles</span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;(0 . 0) &#39;</span><span class="o">(</span><span class="nt">0</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="s1">&#39;(0 . 0)) ; ⇒ #f</span>
-<span class="s1">(isosceles? &#39;</span><span class="o">(</span><span class="nt">0</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="nt">0</span><span class="o">)</span><span class="w"> </span><span class="s1">&#39;(1 . 1) &#39;</span><span class="o">(</span><span class="nt">3</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="nt">2</span><span class="o">))</span><span class="w"> </span><span class="o">;</span><span class="w"> </span><span class="err">⇒</span><span class="w"> </span><span class="err">#</span>
-<span class="err">```</span>
-</code></pre></div></td></tr></table></div>
-
 <h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
 <p>Copia los ejercicios de la práctica en el cuestionario
 <em>Entrega práctica 1</em>. Tienes de plazo hasta el domingo 4 de febrero a las 21:00
