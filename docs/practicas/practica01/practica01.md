@@ -149,7 +149,7 @@
     | `(+ (* pi pi) (- 2 pi pi pi pi))`              | `((if (< a b) + -) a b)`                                                  |
 
 8. Lee el resto del seminario, desde el apartado 4 hasta el
-   final. Puedes ver el **vídeo 3** desde el mintuo 7:00 hasta el
+   final. Puedes ver el **vídeo 3** desde el minuto 7:00 hasta el
    final en la página con los vídeos del seminario en Moodle.
 
     - Prueba las funciones `ecuacion` y `convertir-temperatura` y
@@ -196,13 +196,9 @@
         Recuerda del seminario que la función `=` puede tener más de dos
         argumentos. 
 
-    Añade los siguientes tests:
+    Añade los tests correspondientes a los siguientes ejemplos:
 
-
---> Adaptar los ejemplos para que incluyan código de Scheme, como en el resto de
-las prácticas
-
-    ```
+    ```racket
     ; Ejemplos de triángulos isósceles:
     
     ; p1: (0, 0) p2: (3, 3) p3: (6, 0)
@@ -216,7 +212,7 @@ las prácticas
     (isosceles? '(0 . 0) '(3 . 0) '(6 . 0)) ; ⇒ #t
     (isosceles? '(2 . 2) '(4 . 0) '(0 . 0)) ; ⇒ #t
     (isosceles? '(0 . 0) '(0 . 0) '(0 . 0)) ; ⇒ #f
-    (isosceles? '(0 . 0) '(1 . 1) '(3 . 2)) ; ⇒ #
+    (isosceles? '(0 . 0) '(1 . 1) '(3 . 2)) ; ⇒ #f
     ```
 
 
