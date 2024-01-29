@@ -446,7 +446,7 @@ Características:
 
 <p style="margin-bottom:2cm;"></p>
 
-### Pasos de ejecución
+#### Pasos de ejecución
 
 Pasos de ejecución en C:
 
@@ -480,7 +480,7 @@ se expresan de la siguiente forma en programación funcional:
 
 <p style="margin-bottom:2cm;"></p>
 
-### Mutación 
+#### Mutación 
 
 Asignación destructiva o mutación:
 
@@ -515,7 +515,7 @@ En lenguajes imperativos también hay sentencias declarativas:
 
 <p style="margin-bottom:2cm;"></p>
 
-### Mutación y efectos laterales
+#### Mutación y efectos laterales
 
 - Referencias + mutación = efectos laterales (_side effect_ en inglés)
 
@@ -546,7 +546,7 @@ p1.getCoordX(); // la coord x de p1 es 10.0, sin que ninguna sentencia haya modi
 
 <p style="margin-bottom:2cm;"></p>
 
-### Estado local mutable
+#### Estado local mutable
 
 Función con estado local mutable en lenguaje imperativo (Java):
 
