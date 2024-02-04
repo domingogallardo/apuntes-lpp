@@ -4,11 +4,8 @@ En este documento listamos consejos que te ayudarán a escribir programas legibl
 concisos, abstractos que siguen el paradigma de programación funcional y que
 usamos también en todos los ejemplos de código de la asignatura.
 
-Actualizaremos el documento cada semana, una vez que hayamos terminado la
-práctica correspondiente, para incluir los conceptos y ejemplos explicados durante
-esa semana.
-
-## Semana 1: Lenguaje Scheme e introducción a la programación funcional ##
+Actualizaremos el documento a lo largo de las semanas, cuando vayamos
+introduciendo nuevos conceptos y ejemplos.
 
 ### Nombres de funciones y variables ###
 
@@ -34,7 +31,7 @@ esa semana.
 - Los nombres de los predicados (funciones que devuelven `#t` o `#f`) siempre
   terminan con el símbolo `?`.
   
-    **Ejemplos**: `equal?`, `number?`, `(entre? p1 p2 p3)`
+    **Buenos ejemplos**: `equal?`, `number?`, `(entre? p1 p2 p3)`
 
 ### Indentación y espacios ###
 
@@ -42,6 +39,7 @@ esa semana.
   la forma especial. Siempre debe haber un espacio precediendo cada argumento.
   
     **Buen ejemplo**: `(+ (* 2 3) (* 10 3))`
+    
     **Mal ejemplo**: `(+(* 2 3)(* 10 3))`
 
 
@@ -52,18 +50,18 @@ esa semana.
   
     **Mal ejemplo**
     
-        ```
-        (if (and (<= x n) (>= y n)) "n entre x e y" "n menor que x o mayor que y")
-        ```
+    ```racket
+    (if (and (<= x n) (>= y n)) "n entre x e y" "n menor que x o mayor que y")
+    ```
 
     **Buen ejemplo**
     
-        ```
-        (if (and (<= x n)
-                 (>= y n))
-            "n entre x e y"
-            "n menor que x o mayor que y")
-        ```
+    ```racket
+    (if (and (<= x n)
+             (>= y n))
+        "n entre x e y"
+        "n menor que x o mayor que y")
+    ```
 
 ### Estructuras de control y formas especiales ###
 
@@ -73,16 +71,16 @@ esa semana.
 - Se usará la sintaxis tradicional de la forma especial `cond`, y siempre
   se incluirá una expresión `else` al final:
   
-    **Ejemplo**
+    **Buen ejemplo**
     
-        ```
-        (cond
-            ((> 3 4) "3 es mayor que 4")
-            ((< 2 1) "2 es menor que 1")
-            ((= 3 1) "3 es igual que 1")
-            ((> 3 5) "3 es mayor que 2")
-            (else "ninguna condición es cierta"))
-        ```
+    ```racket
+    (cond
+        ((> 3 4) "3 es mayor que 4")
+        ((< 2 1) "2 es menor que 1")
+        ((= 3 1) "3 es igual que 1")
+        ((> 3 5) "3 es mayor que 2")
+        (else "ninguna condición es cierta"))
+    ```
 
 ### No usar variables locales, funciones locales ni pasos de ejecución ###
 
@@ -92,24 +90,24 @@ esa semana.
   
     **Mal ejemplo**
     
-        ```
-        (define (longitud-palabra-entre? a b palabra)
-            (define (entre? a b n)
-                (and (<= a n)
-                     (>= b n)))
-            (entre? a b (string-length palabra)))
-        ```
-
-    **Buen ejemplo**
-    
-        ```
+    ```racket
+    (define (longitud-palabra-entre? a b palabra)
         (define (entre? a b n)
             (and (<= a n)
                  (>= b n)))
+        (entre? a b (string-length palabra)))
+    ```
 
-        (define (longitud-palabra-entre? a b palabra)
-            (entre? a b (string-length palabra)))
-        ```
+    **Buen ejemplo**
+    
+    ```racket
+    (define (entre? a b n)
+        (and (<= a n)
+             (>= b n)))
+
+    (define (longitud-palabra-entre? a b palabra)
+        (entre? a b (string-length palabra)))
+    ```
 
 - No se usarán variables locales, ni usando  `define` ni otras formas especiales
   de `scheme`. En lugar de ello, se usarán directamente las expresiones que
@@ -117,19 +115,20 @@ esa semana.
   
     **Mal ejemplo**
     
-        ```
-        (define (suma-cuadrados x y)
-            (define x-cuadrado (cuadrado x))
-            (define y-cuadrado (cuadrado y))
-            (+ x-cuadrado y-cuadrado))
-        ```
+    ```racket
+    (define (suma-cuadrados x y)
+        (define x-cuadrado (cuadrado x))
+        (define y-cuadrado (cuadrado y))
+        
+        (+ x-cuadrado y-cuadrado))
+    ```
 
     **Buen ejemplo**
     
-        ```
-        (define (suma-cuadrados x y)
-            (+ (cuadrado x) (cuadrado y)))
-        ```
+    ```
+    (define (suma-cuadrados x y)
+        (+ (cuadrado x) (cuadrado y)))
+    ```
 
 ### Listas ###
 
@@ -141,6 +140,7 @@ esa semana.
   de una lista.
   
     **Mal ejemplo**: `(append (list 1) '(2 3 4 5))`
+    
     **Buen ejemplo**: `(cons 1 '(2 3 4 5))`
 
 ### Pruebas unitarias ###
@@ -151,7 +151,7 @@ esa semana.
   
     **Buen ejemplo**
     
-    ```
+    ```racket
     (require rackunit)
     (define (suma-parejas p1 p2)
         (cons (+ (car p1) (car p2))
@@ -162,7 +162,7 @@ esa semana.
 
     **Mal ejemplo**
     
-    ```
+    ```racket
     (define (suma-parejas p1 p2)
         (cons (+ (car p1) (car p2))
               (+ (cdr p1) (cdr p2))))
@@ -179,22 +179,22 @@ esa semana.
   
     **Buen ejemplo**
     
-        ```
-        (define (numero-entre? a b n)
-            (and (<= a n)
-                 (>= b n)))
-        ```
+    ```racket
+    (define (numero-entre? a b n)
+        (and (<= a n)
+             (>= b n)))
+    ```
         
     **Mal ejemplo**
     
-        ```
-        (define (numero-entre? a b n)
-            (if (> a n)
+    ```racket
+    (define (numero-entre? a b n)
+        (if (> a n)
+            #f
+            (if (< b n)
                 #f
-                (if (< b n)
-                    #f
-                    #t)))
-        ```
+                #t)))
+    ```
 
 
 - Es recomendable el uso de composición de funciones y la creación de funciones
@@ -204,22 +204,51 @@ esa semana.
   
     **Mal ejemplo**
     
-        ```
-        (define (longitud-palabra-entre? a b palabra)
-            (and (<= a (string-length palabra))
-                 (>= b (string-length palabra))))
-        ```
+    ```racket
+    (define (longitud-palabra-entre? a b palabra)
+        (and (<= a (string-length palabra))
+             (>= b (string-length palabra))))
+    ```
+    
+    No cumple la recomendación porque el código es complicando, con una
+    expresión en donde hay varias llamadas acumuladas. Además se repiten
+    dos veces la llamada a `(string-length palabra)`. 
+    
+    Es mucho mejor la siguiente versión, en la que simplificamos la expresión
+    problema, obteniendo la longitud de la palabra y comprobando si esa longitud
+    está entre `a` y `b`:
 
     **Buen ejemplo**
     
-        ```
-        (define (entre? a b n)
-            (and (<= a n)
-                 (>= b n)))
+    ```racket
+    (define (entre? a b n)
+        (and (<= a n)
+             (>= b n)))
 
-        (define (longitud-palabra-entre? a b palabra)
-            (entre? a b (string-length palabra)))
-        ```
+    (define (longitud-palabra-entre? a b palabra)
+        (entre? a b (string-length palabra)))
+    ```
+
+- Las funciones auxiliares definidas deben ser lo más flexibles y genéricas
+  posibles, facilitando la reutilización del código y su uso en la construcción
+  de otras funciones.
+  
+    **Mal ejemplo**
+    
+    ```racket
+    (define (longitud-aux? a b n)
+        (and (<= a n)
+             (>= b n)))
+
+    (define (longitud-palabra-entre? a b palabra)
+        (longitud-aux? a b (string-length palabra)))
+    ```
+    
+    El nombre `longitud-aux` no es correcto, porque no explica lo que hace la
+    función y no permite darnos cuenta de que podemos reusarla en otros
+    contexto. Es mucho más adecuado el nombre `(entre? a b n)` o `(numero-entre?
+    a b n)`.
+
 
 ----
 Lenguajes y Paradigmas de Programación, curso 2023-24  
