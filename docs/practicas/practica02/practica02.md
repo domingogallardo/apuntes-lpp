@@ -115,7 +115,6 @@ funciones auxiliares y las funciones principales:
 (encuentra-indice #\m) ; ⇒ 12
 (encuentra-indice #\z) ; ⇒ 25
 
-
 (encuentra-caracter 0) ; ⇒ #\a
 (encuentra-caracter 1) ; ⇒ #\b
 (encuentra-caracter 12) ; ⇒ #\m
