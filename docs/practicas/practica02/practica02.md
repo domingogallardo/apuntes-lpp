@@ -94,7 +94,7 @@ minúsculas y mayúsculas del alfabeto inglés (26 caracteres: desde `#\a` hasta
 dependiendo en que sentido rotemos el alfabeto.
 
 Define las funciones `(cifrar-caracter char desplazamiento)` y `(descifra char
-despalzamiento)` que implementen el cifrado anterior.
+desplazamiento)` que implementen el cifrado anterior.
 
 Para la implementación de las funciones anteriores debes definir y usar las
 siguientes funciones auxiliares:
