@@ -1,11 +1,16 @@
 # Buenas prácticas de programación funcional
 
-En este documento iremos incluyendo semana a semana una guía sobre buenas
-prácticas de programación funcional. Son consejos que te ayudarán a escribir
-programas legibles, concisos, abstractos que siguen el paradigma de programación
-funcional y que usamos también en todos los ejemplos de código de la asignatura.
+En este documento listamos consejos que te ayudarán a escribir programas legibles,
+concisos, abstractos que siguen el paradigma de programación funcional y que
+usamos también en todos los ejemplos de código de la asignatura.
 
-### Nombres de funciones y variables
+Actualizaremos el documento cada semana, una vez que hayamos terminado la
+práctica correspondiente, para incluir los conceptos y ejemplos explicados durante
+esa semana.
+
+## Semana 1: Lenguaje Scheme e introducción a la programación funcional
+
+### Nombres de funciones y variables 
 
 - Los nombres de funciones y variables deben ser descriptivos y tener un
   significado que ayude a explicar qué hace la función que estamos
