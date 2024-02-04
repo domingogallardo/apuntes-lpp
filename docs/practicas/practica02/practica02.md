@@ -88,22 +88,26 @@ letras no son consecutivos.
 ### Ejercicio 2
 
 El cifrado César es una técnica cifrado por sustitución en la que cada letra del
-texto desplaza un cierto número de lugares. 
-
-Vamos a cifrar y descifrar letras minúsculas y mayúsculas del alfabeto inglés
-(26 caracteres: desde #\a hasta #\z).
-
-Vamos a trabajar con un desplazamiento variable, positivo o negativo,
+texto desplaza un cierto número de lugares. Vamos a cifrar y descifrar letras
+minúsculas y mayúsculas del alfabeto inglés (26 caracteres: desde `#\a` hasta
+`#\z`). Vamos a trabajar con un desplazamiento variable, positivo o negativo,
 dependiendo en que sentido rotemos el alfabeto.
 
 Define las funciones `(cifrar-caracter char desplazamiento)` y `(descifra char
-despalzamiento)` utilizando las siguientes funciones auxiliares:
-`(encuentra-indice char)`, `(encuentra-caracter indice)`, `(entre-az? char)` y
-`(rota-indice indice desplazamiento)`.
+despalzamiento)` que implementen el cifrado anterior.
+
+Para la implementación de las funciones anteriores debes definir y usar las
+siguientes funciones auxiliares:
+
+- `(encuentra-indice char)`
+- `(encuentra-caracter indice)`
+- `(entre-az? char)`
+- `(rota-indice indice desplazamiento)`
 
 **Consejo**: puedes usar la función [`modulo`](https://docs.racket-lang.org/reference/generic-numbers.html#(def._((quote._~23~25kernel)._modulo))).
 
-Analiza los siguientes ejemplos para entender mejor el funcionamiento de las funciones auxiliares:
+Analiza los siguientes ejemplos para entender mejor el funcionamiento de las
+funciones auxiliares y las funciones principales:
 
 ```racket
 (encuentra-indice #\a) ; ⇒ 0
