@@ -221,8 +221,7 @@ introduciendo nuevos conceptos y ejemplos.
     dos veces la llamada a `(string-length palabra)`. 
     
     Es mucho mejor la siguiente versión, en la que simplificamos la expresión
-    problema, obteniendo la longitud de la palabra y comprobando si esa longitud
-    está entre `a` y `b`:
+    obteniendo la longitud de la palabra y comprobando si esa longitud está entre `a` y `b`:
 
     **Buen ejemplo**
     
