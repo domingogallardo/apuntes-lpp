@@ -39,7 +39,7 @@ introduciendo nuevos conceptos y ejemplos.
   
     **Buenos ejemplos**: `equal?`, `number?`, `(entre? p1 p2 p3)`
 
-### Indentación y espacios ###
+### Espacio, indentación y paréntesis ###
 
 - En las expresiones no habrá espacio entre el primer paréntesis y el operador o
   la forma especial. Siempre debe haber un espacio precediendo cada argumento.
@@ -47,7 +47,6 @@ introduciendo nuevos conceptos y ejemplos.
     **Buen ejemplo**: `(+ (* 2 3) (* 10 3))`
     
     **Mal ejemplo**: `(+(* 2 3)(* 10 3))`
-
 
 - El código tendrá una indentación correcta, que muestre correctamente la estructura de
   las formas especiales, expresiones y los parámetros de las llamadas a
@@ -67,6 +66,29 @@ introduciendo nuevos conceptos y ejemplos.
              (>= y n))
         "n entre x e y"
         "n menor que x o mayor que y")
+    ```
+
+- Las paréntesis de cierre deben estar todos en la misma línea, al final de la
+  expresión. No deben escribirse como llaves de cierre en líneas separadas.
+  
+    **Buen ejemplo**
+    
+    ```racket
+    (define (suma-si-positivo x y)
+        (if (> 0 x)
+            (+ x y)
+            y))
+    ```
+    
+    **Mal ejemplo**
+    
+    ```racket
+    (define (suma-si-positivo x y)
+        (if (> 0 x)
+            (+ x y)
+            y
+        )
+    )
     ```
 
 ### Estructuras de control y formas especiales ###
