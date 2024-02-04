@@ -5,7 +5,7 @@ concisos y abstractos en el paradigma de programación funcional usando el
 lenguaje de programación Scheme/Racket.
 
 Estos consejos se usan en todos los ejemplos de código de la asignatura,
-en los ejemplos de teoría y en las soluciones de las prácticas. Es muy
+tanto en los ejemplos de teoría como en las soluciones de las prácticas. Es muy
 importante que cuando estudies esos ejemplos reflexiones sobre la forma en la
 que está escrita el código. Aquí extraemos algunas de esas buenas prácticas para
 hacerlas más explícitas.
