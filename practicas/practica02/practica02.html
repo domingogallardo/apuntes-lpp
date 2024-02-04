@@ -335,6 +335,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../buenas-practicas-programacion-funcional.html" class="md-nav__link">
+        Buenas prácticas de programación funcional
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../practica01/practica01.html" class="md-nav__link">
         Práctica 1
       </a>
@@ -432,15 +446,15 @@
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#ejercicio-7" class="md-nav__link">
+    Ejercicio 7
+  </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#entrega-de-la-practica" class="md-nav__link">
-    Entrega de la práctica
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -529,6 +543,56 @@ entero correspondiente al carácter <code>#\A</code> es uno menos que el
 correspondiente al carácter <code>#\B</code>. Los caracteres de números y los de
 letras no son consecutivos.</p>
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
+<p>El cifrado César es una técnica cifrado por sustitución en la que cada letra del
+texto desplaza un cierto número de lugares. Vamos a cifrar y descifrar letras
+minúsculas y mayúsculas del alfabeto inglés (26 caracteres: desde <code>#\a</code> hasta
+<code>#\z</code>). Vamos a trabajar con un desplazamiento variable, positivo o negativo,
+dependiendo en que sentido rotemos el alfabeto.</p>
+<p>Define las funciones <code>(cifrar-caracter char desplazamiento)</code> y <code>(descifra char
+desplazamiento)</code> que implementen el cifrado anterior.</p>
+<p>Para la implementación de las funciones anteriores debes definir y usar las
+siguientes funciones auxiliares:</p>
+<ul>
+<li><code>(encuentra-indice char)</code></li>
+<li><code>(encuentra-caracter indice)</code></li>
+<li><code>(entre-az? char)</code></li>
+<li><code>(rota-indice indice desplazamiento)</code></li>
+</ul>
+<p><strong>Consejo</strong>: puedes usar la función <a href="https://docs.racket-lang.org/reference/generic-numbers.html#(def._((quote._~23~25kernel)._modulo))"><code>modulo</code></a>.</p>
+<p>Analiza los siguientes ejemplos para entender mejor el funcionamiento de las
+funciones auxiliares y las funciones principales:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">encuentra-indice</span><span class="w"> </span><span class="sc">#\a</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 0</span>
+<span class="p">(</span><span class="n">encuentra-indice</span><span class="w"> </span><span class="sc">#\b</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 1</span>
+<span class="p">(</span><span class="n">encuentra-indice</span><span class="w"> </span><span class="sc">#\m</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 12</span>
+<span class="p">(</span><span class="n">encuentra-indice</span><span class="w"> </span><span class="sc">#\z</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 25</span>
+
+<span class="p">(</span><span class="n">encuentra-caracter</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\a</span>
+<span class="p">(</span><span class="n">encuentra-caracter</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\b</span>
+<span class="p">(</span><span class="n">encuentra-caracter</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\m</span>
+<span class="p">(</span><span class="n">encuentra-caracter</span><span class="w"> </span><span class="mi">25</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\z</span>
+
+<span class="p">(</span><span class="n">entre-az?</span><span class="w"> </span><span class="sc">#\a</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">entre-az?</span><span class="w"> </span><span class="sc">#\m</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">entre-az?</span><span class="w"> </span><span class="sc">#\z</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">entre-az?</span><span class="w"> </span><span class="sc">#\`</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">entre-az?</span><span class="w"> </span><span class="sc">#\{</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #f</span>
+
+<span class="p">(</span><span class="n">rota-indice</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">24</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 2)</span>
+<span class="p">(</span><span class="n">rota-indice</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 25)</span>
+
+<span class="p">(</span><span class="n">cifra-caracter</span><span class="w"> </span><span class="sc">#\a</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\d)</span>
+<span class="p">(</span><span class="n">cifra-caracter</span><span class="w"> </span><span class="sc">#\z</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\y)</span>
+<span class="p">(</span><span class="n">cifra-caracter</span><span class="w"> </span><span class="sc">#\j</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\x)</span>
+<span class="p">(</span><span class="n">cifra-caracter</span><span class="w"> </span><span class="sc">#\D</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\G)</span>
+<span class="p">(</span><span class="n">cifra-caracter</span><span class="w"> </span><span class="sc">#\ñ</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\ñ)</span>
+
+<span class="p">(</span><span class="n">descifra-caracter</span><span class="w"> </span><span class="sc">#\d</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\a)</span>
+<span class="p">(</span><span class="n">descifra-caracter</span><span class="w"> </span><span class="sc">#\y</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\z)</span>
+<span class="p">(</span><span class="n">descifra-caracter</span><span class="w"> </span><span class="sc">#\x</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\j)</span>
+<span class="p">(</span><span class="n">descifra-caracter</span><span class="w"> </span><span class="sc">#\G</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\D)</span>
+<span class="p">(</span><span class="n">descifra-caracter</span><span class="w"> </span><span class="sc">#\tab</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\tab)</span>
+</code></pre></div>
+<h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
 <p>Implementa la función <code>(menor-de-tres n1 n2 n3)</code> que reciba tres
 números como argumento y devuelva el menor de los tres, intentando que
 el número de condiciones sea mínima.</p>
@@ -545,7 +609,7 @@ el número de condiciones sea mínima.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">menor-de-tres</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">;; ⇒ 1</span>
 <span class="p">(</span><span class="n">menor-de-tres-v2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">;; ⇒ 0</span>
 </code></pre></div>
-<h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
+<h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
 <p>a) Supongamos las definiciones</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
 <span class="w">    </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span>
@@ -576,7 +640,7 @@ de la siguiente expresión</p>
 <p>mediante el <strong>modelo de sustitución</strong>, utilizando tanto el <strong>orden
 aplicativo</strong> y como el <strong>orden normal</strong>. Y escribe la solución entre
 comentarios en el propio fichero <code>.rkt</code> de la práctica.</p>
-<h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
+<h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
 <p>Implementa la función <code>(cadenas-mayores lista1 lista2)</code> que recibe 2
 listas con 3 cadenas y devuelve otra lista con las 3 cadenas de mayor
 longitud, comparando las cadenas de cada posición de la
@@ -590,7 +654,7 @@ segundo y el tercer elemento de una lista.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cadenas-mayores</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span><span class="w"> </span><span class="s2">&quot;que&quot;</span><span class="w"> </span><span class="s2">&quot;tal&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;meme&quot;</span><span class="w"> </span><span class="s2">&quot;y&quot;</span><span class="w"> </span><span class="s2">&quot;adios&quot;</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (&quot;hola&quot; &quot;que&quot; &quot;adios&quot;)</span>
 <span class="p">(</span><span class="n">cadenas-mayores</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;esto&quot;</span><span class="w"> </span><span class="s2">&quot;es&quot;</span><span class="w"> </span><span class="s2">&quot;lpp&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hoy&quot;</span><span class="w"> </span><span class="s2">&quot;hay&quot;</span><span class="w"> </span><span class="s2">&quot;clase&quot;</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (&quot;esto&quot; &quot;hay&quot; &quot;clase&quot;)</span>
 </code></pre></div>
-<h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
+<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
 <p>Supongamos que queremos programar un juego de cartas que usa la baraja
 francesa. Lo primero que debemos hacer es definir una forma de
 representar las cartas y funciones que trabajen con esa
@@ -637,7 +701,7 @@ estas dos funciones.</p>
 símbolo en una cadena y <code>(string-ref cadena pos)</code> que devuelve el
 carácter de una cadena situado en una determinada posición.</p>
 </div>
-<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
+<h3 id="ejercicio-7">Ejercicio 7<a class="headerlink" href="#ejercicio-7" title="Permanent link">&para;</a></h3>
 <p>Implementa la función <code>(jugada-mano carta1 carta2 carta3)</code> que recibe 3 cartas de la
 baraja francesa y devuelve una cadena indicando si la jugada de tres
 cartas contiene una <strong>pareja</strong> (dos cartas con el mismo valor), un <strong>trío</strong>
@@ -655,17 +719,8 @@ definidas en el ejercicio anterior.</p>
 <p>Puedes obtener una cadena correspondiente a un número usando la función
 <code>number-&gt;string</code>. Esta función solo la debes usar en este ejercicio.</p>
 </div>
-<h2 id="entrega-de-la-practica">Entrega de la práctica<a class="headerlink" href="#entrega-de-la-practica" title="Permanent link">&para;</a></h2>
-<p>Sube la solución de los ejercicios al cuestionario de Moodle <em>Entrega
-práctica 2</em> hasta el domingo 12 de febrero a las 21:00 h.</p>
-<p>Tal y como hemos comentado al comienzo de la práctica, debes incluir
-casos de prueba en todo el código que escribas.</p>
-<p>Una vez finalizado el plazo de entrega podrás revisar el cuestionario
-y visualizar la solución. Corrige la entrega, comparando la solución
-con la tuya. Puedes consultar cualquier duda con tu profesor en la
-clase de prácticas de la semana que viene.</p>
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2022-23<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2023-24<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
 
