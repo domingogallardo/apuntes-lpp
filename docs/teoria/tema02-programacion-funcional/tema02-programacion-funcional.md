@@ -1777,9 +1777,6 @@ concatenar dos o más listas
     elemento que se añade a la lista, mientras que en `append` es otra lista que
     se concatena con la segunda.
 
-
-<!--
-
 ### 2.7. Recursión
 
 Otra característica fundamental de la programación funcional es la no
@@ -2839,6 +2836,8 @@ listas. Algunas ya las conocemos, pero otras no:
 ```
 
 En los siguientes apartados veremos cómo están implementadas.
+
+<!--
 
 ### 4.3. Funciones recursivas que construyen listas
 

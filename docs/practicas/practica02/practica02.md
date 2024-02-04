@@ -84,7 +84,63 @@ entero correspondiente al carácter `#\A` es uno menos que el
 correspondiente al carácter `#\B`. Los caracteres de números y los de
 letras no son consecutivos.
 
+
 ### Ejercicio 2
+
+El cifrado César es una técnica cifrado por sustitución en la que cada letra del
+texto desplaza un cierto número de lugares. 
+
+Vamos a cifrar y descifrar letras minúsculas y mayúsculas del alfabeto inglés
+(26 caracteres: desde #\a hasta #\z).
+
+Vamos a trabajar con un desplazamiento variable, positivo o negativo,
+dependiendo en que sentido rotemos el alfabeto.
+
+Define las funciones `(cifrar-caracter char desplazamiento)` y `(descifra char
+despalzamiento)` utilizando las siguientes funciones auxiliares:
+`(encuentra-indice char)`, `(encuentra-caracter indice)`, `(entre-az? char)` y
+`(rota-indice indice desplazamiento)`.
+
+**Consejo**: puedes usar la función [`modulo`](https://docs.racket-lang.org/reference/generic-numbers.html#(def._((quote._~23~25kernel)._modulo))).
+
+Analiza los siguientes ejemplos para entender mejor el funcionamiento de las funciones auxiliares:
+
+```racket
+(encuentra-indice #\a) ; ⇒ 0
+(encuentra-indice #\b) ; ⇒ 1
+(encuentra-indice #\m) ; ⇒ 12
+(encuentra-indice #\z) ; ⇒ 25
+
+
+(encuentra-caracter 0) ; ⇒ #\a
+(encuentra-caracter 1) ; ⇒ #\b
+(encuentra-caracter 12) ; ⇒ #\m
+(encuentra-caracter 25) ; ⇒ #\z
+
+(entre-az? #\a) ; ⇒ #t
+(entre-az? #\m) ; ⇒ #t
+(entre-az? #\z) ; ⇒ #t
+(entre-az? #\`) ; ⇒ #f
+(entre-az? #\{) ; ⇒ #f
+
+(rota-indice 4 24) ; ⇒ 2)
+(rota-indice 4 -5) ; ⇒ 25)
+
+(cifra-caracter #\a 3) ; ⇒ #\d)
+(cifra-caracter #\z -1) ; ⇒ #\y)
+(cifra-caracter #\j 40) ; ⇒ #\x)
+(cifra-caracter #\D 3) ; ⇒ #\G)
+(cifra-caracter #\ñ 3) ; ⇒ #\ñ)
+
+(descifra-caracter #\d 3) ; ⇒ #\a)
+(descifra-caracter #\y -1) ; ⇒ #\z)
+(descifra-caracter #\x 40) ; ⇒ #\j)
+(descifra-caracter #\G 3) ; ⇒ #\D)
+(descifra-caracter #\tab 3) ; ⇒ #\tab)
+```
+
+
+### Ejercicio 3
 
 Implementa la función `(menor-de-tres n1 n2 n3)` que reciba tres
 números como argumento y devuelva el menor de los tres, intentando que
@@ -106,8 +162,7 @@ Implementa dos versiones de la función:
 (menor-de-tres-v2 3 0 3) ;; ⇒ 0
 ```
 
-
-### Ejercicio 3
+### Ejercicio 4
 
 a) Supongamos las definiciones
 
@@ -155,7 +210,7 @@ aplicativo** y como el **orden normal**. Y escribe la solución entre
 comentarios en el propio fichero `.rkt` de la práctica.
 
 
-### Ejercicio 4
+### Ejercicio 5
 
 Implementa la función `(cadenas-mayores lista1 lista2)` que recibe 2
 listas con 3 cadenas y devuelve otra lista con las 3 cadenas de mayor
@@ -172,7 +227,8 @@ devuelve la cadena de la primera lista.
 (cadenas-mayores '("esto" "es" "lpp") '("hoy" "hay" "clase")) ; ⇒ ("esto" "hay" "clase")
 ```
 
-### Ejercicio 5
+
+### Ejercicio 6
 
 Supongamos que queremos programar un juego de cartas que usa la baraja
 francesa. Lo primero que debemos hacer es definir una forma de
@@ -233,7 +289,7 @@ estas dos funciones.
     carácter de una cadena situado en una determinada posición.
 
 
-### Ejercicio 6
+### Ejercicio 7
 
 Implementa la función `(jugada-mano carta1 carta2 carta3)` que recibe 3 cartas de la
 baraja francesa y devuelve una cadena indicando si la jugada de tres
@@ -260,7 +316,7 @@ Ejemplos:
 ## Entrega de la práctica
 
 Sube la solución de los ejercicios al cuestionario de Moodle _Entrega
-práctica 2_ hasta el domingo 12 de febrero a las 21:00 h.
+práctica 2_ hasta el domingo 11 de febrero a las 21:00 h.
 
 Tal y como hemos comentado al comienzo de la práctica, debes incluir
 casos de prueba en todo el código que escribas.
@@ -271,6 +327,6 @@ con la tuya. Puedes consultar cualquier duda con tu profesor en la
 clase de prácticas de la semana que viene.
 
 ----
-Lenguajes y Paradigmas de Programación, curso 2022-23  
+Lenguajes y Paradigmas de Programación, curso 2023-24  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
