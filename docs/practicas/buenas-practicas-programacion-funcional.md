@@ -1,4 +1,4 @@
-# Buenas prácticas de programación funcional
+# Buenas prácticas de programación funcional #
 
 En este documento listamos consejos que te ayudarán a escribir programas legibles,
 concisos, abstractos que siguen el paradigma de programación funcional y que
@@ -8,9 +8,9 @@ Actualizaremos el documento cada semana, una vez que hayamos terminado la
 práctica correspondiente, para incluir los conceptos y ejemplos explicados durante
 esa semana.
 
-## Semana 1: Lenguaje Scheme e introducción a la programación funcional
+## Semana 1: Lenguaje Scheme e introducción a la programación funcional ##
 
-### Nombres de funciones y variables 
+### Nombres de funciones y variables ###
 
 - Los nombres de funciones y variables deben ser descriptivos y tener un
   significado que ayude a explicar qué hace la función que estamos
@@ -18,24 +18,209 @@ esa semana.
   como `car`, `palabra`, `lista-numeros` nos ayudan a entender cuál debe ser el
   tipo del parámetro y cómo debemos llamar a la función.
   
-    Buenos ejemplos: `(entre-dos-puntos? p1 p2 p3)`, `(distancia punto1 punto2)`,
+    **Buenos ejemplos**: `(entre-dos-puntos? p1 p2 p3)`, `(distancia punto1 punto2)`,
     `(veces car palabra)`
 
-    Malos ejemplos: `(aux1 x1 x2)`, `(mi-func x y z)`
+    **Malos ejemplos**: `(aux1 x1 x2)`, `(mi-func x y z)`
 
 - Los nombres de las funciones y parámetros siempre empiezan en
   minúscula. Cuando el nombre de una función o un parámetro sea compuesto,
   usaremos un guión para dividir las palabras.
   
-    Buenos ejemplos: `suma-cuadrados`, `tiempo-impacto`, `conduce-vehiculo`.
+    **Buenos ejemplos**: `suma-cuadrados`, `tiempo-impacto`, `conduce-vehiculo`.
     
-    Malos ejemplos: `sumaCuadrados`, `Tiempo-Impacto`, `conduce_vehiculo`.
+    **Malos ejemplos**: `sumaCuadrados`, `Tiempo-Impacto`, `conduce_vehiculo`.
   
 - Los nombres de los predicados (funciones que devuelven `#t` o `#f`) siempre
   terminan con el símbolo `?`.
   
-    Ejemplos: `equal?`, `number?`, `(entre? p1 p2 p3)`
+    **Ejemplos**: `equal?`, `number?`, `(entre? p1 p2 p3)`
+
+### Indentación y espacios ###
+
+- En las expresiones no habrá espacio entre el primer paréntesis y el operador o
+  la forma especial. Siempre debe haber un espacio precediendo cada argumento.
   
+    **Buen ejemplo**: `(+ (* 2 3) (* 10 3))`
+    **Mal ejemplo**: `(+(* 2 3)(* 10 3))`
+
+
+- El código tendrá una indentación correcta, que muestre correctamente la estructura de
+  las formas especiales, expresiones y los parámetros de las llamadas a
+  funciones. Se evitarán líneas largas, introduciendo nuevas líneas y ajustando
+  la indentación de las nuevas líneas para mejorar la legibilidad del código.
+  
+    **Mal ejemplo**
+    
+        ```
+        (if (and (<= x n) (>= y n)) "n entre x e y" "n menor que x o mayor que y")
+        ```
+
+    **Buen ejemplo**
+    
+        ```
+        (if (and (<= x n)
+                 (>= y n))
+            "n entre x e y"
+            "n menor que x o mayor que y")
+        ```
+
+### Estructuras de control y formas especiales ###
+
+- Las únicas estructuras de control, formas especiales y funciones de Scheme que
+  se deben usar son: `define`, `if`, `cond` y `quote` (`'`).
+  
+- Se usará la sintaxis tradicional de la forma especial `cond`, y siempre
+  se incluirá una expresión `else` al final:
+  
+    **Ejemplo**
+    
+        ```
+        (cond
+            ((> 3 4) "3 es mayor que 4")
+            ((< 2 1) "2 es menor que 1")
+            ((= 3 1) "3 es igual que 1")
+            ((> 3 5) "3 es mayor que 2")
+            (else "ninguna condición es cierta"))
+        ```
+
+### No usar variables locales, funciones locales ni pasos de ejecución ###
+
+- No se usará `define` para definir funciones locales. Todas las funciones,
+  incluyendo las funciones auxiliares, se definirán en el ámbito
+  global.
+  
+    **Mal ejemplo**
+    
+        ```
+        (define (longitud-palabra-entre? a b palabra)
+            (define (entre? a b n)
+                (and (<= a n)
+                     (>= b n)))
+            (entre? a b (string-length palabra)))
+        ```
+
+    **Buen ejemplo**
+    
+        ```
+        (define (entre? a b n)
+            (and (<= a n)
+                 (>= b n)))
+
+        (define (longitud-palabra-entre? a b palabra)
+            (entre? a b (string-length palabra)))
+        ```
+
+- No se usarán variables locales, ni usando  `define` ni otras formas especiales
+  de `scheme`. En lugar de ello, se usarán directamente las expresiones que
+  definen las variables. 
+  
+    **Mal ejemplo**
+    
+        ```
+        (define (suma-cuadrados x y)
+            (define x-cuadrado (cuadrado x))
+            (define y-cuadrado (cuadrado y))
+            (+ x-cuadrado y-cuadrado))
+        ```
+
+    **Buen ejemplo**
+    
+        ```
+        (define (suma-cuadrados x y)
+            (+ (cuadrado x) (cuadrado y)))
+        ```
+
+### Listas ###
+
+- Para devolver el primer elemento de la lista y el resto se usarán las funciones
+  `first` y `rest`.
+  
+- Las funciones `cons` y `append` se usan para añadir un elemento a una lista y
+  para unir dos listas. No usaremos `append` para añadir un elemento en cabeza
+  de una lista.
+  
+    **Mal ejemplo**: `(append (list 1) '(2 3 4 5))`
+    **Buen ejemplo**: `(cons 1 '(2 3 4 5))`
+
+### Pruebas unitarias ###
+
+- Para comprobar el correcto funcionamiento de las funciones implementadas
+  usaremos pruebas unitarias con la librería `rackunit`, en lugar de mostrar los
+  resultados por pantalla con `display`.
+  
+    **Buen ejemplo**
+    
+    ```
+    (require rackunit)
+    (define (suma-parejas p1 p2)
+        (cons (+ (car p1) (car p2))
+              (+ (cdr p1) (cdr p2))))
+              
+    (check-equal? (suma-parejas '(2 . 3) '(1 . 4)) '(3 . 7))
+    ```
+
+    **Mal ejemplo**
+    
+    ```
+    (define (suma-parejas p1 p2)
+        (cons (+ (car p1) (car p2))
+              (+ (cdr p1) (cdr p2))))
+              
+    (display (suma-parejas '(2 . 3) '(1 . 4))) ;=>  (3 . 7)
+    ```
+    
+### Estilo funcional ###
+
+- Siempre que la expresión resultante sea legible, es preferible construir una
+  expresión que devuelve un booleano utilizando una composición de operadores
+  lógicos `and`, `or`, `not`, en lugar de utilizar un `if` que devuelva
+  directamente un `#t` o un `#f`.
+  
+    **Buen ejemplo**
+    
+        ```
+        (define (numero-entre? a b n)
+            (and (<= a n)
+                 (>= b n)))
+        ```
+        
+    **Mal ejemplo**
+    
+        ```
+        (define (numero-entre? a b n)
+            (if (> a n)
+                #f
+                (if (< b n)
+                    #f
+                    #t)))
+        ```
+
+
+- Es recomendable el uso de composición de funciones y la creación de funciones
+  de ayuda que proporcionen más abstracción, legibilidad y simplicidad al
+  código. Es preferible código corto y expresivo, evitando la repetición de
+  llamadas repetidas a la misma función con los mismos parámetros.
+  
+    **Mal ejemplo**
+    
+        ```
+        (define (longitud-palabra-entre? a b palabra)
+            (and (<= a (string-length palabra))
+                 (>= b (string-length palabra))))
+        ```
+
+    **Buen ejemplo**
+    
+        ```
+        (define (entre? a b n)
+            (and (<= a n)
+                 (>= b n)))
+
+        (define (longitud-palabra-entre? a b palabra)
+            (entre? a b (string-length palabra)))
+        ```
+
 ----
 Lenguajes y Paradigmas de Programación, curso 2023-24  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
