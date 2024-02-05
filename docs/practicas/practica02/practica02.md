@@ -88,12 +88,17 @@ letras no son consecutivos.
 ### Ejercicio 2
 
 El cifrado César es una técnica cifrado por sustitución en la que cada letra del
-texto desplaza un cierto número de lugares. Vamos a cifrar y descifrar letras
-minúsculas y mayúsculas del alfabeto inglés (26 caracteres: desde `#\a` hasta
-`#\z`). Vamos a trabajar con un desplazamiento variable, positivo o negativo,
-dependiendo en que sentido rotemos el alfabeto.
+texto se codifica por la correspondiente desplazada un cierto número de
+lugares. Por ejemplo, si usamos un desplazamiento de 5, el carácter `#\c` se
+codificaría por el carácter `#\h` (el carácter 5 posiciones después de la `#\c`
+en el alfabeto).
 
-Define las funciones `(cifrar-caracter char desplazamiento)` y `(descifra char
+Vamos a cifrar y descifrar letras minúsculas y mayúsculas del alfabeto inglés
+(26 caracteres: desde `#\a ó #\A)` hasta `#\z ó #\Z`). Vamos a trabajar con un
+desplazamiento variable, positivo o negativo, dependiendo en que sentido rotemos
+el alfabeto.
+
+Define las funciones `(cifra-caracter char desplazamiento)` y `(descifra-caracter char
 desplazamiento)` que implementen el cifrado anterior.
 
 Para la implementación de las funciones anteriores debes definir y usar las
@@ -129,7 +134,7 @@ funciones auxiliares y las funciones principales:
 (rota-indice 4 24) ; ⇒ 2)
 (rota-indice 4 -5) ; ⇒ 25)
 
-(cifra-caracter #\a 3) ; ⇒ #\d)
+(cifra-caracter #\c 5) ; ⇒ #\h)
 (cifra-caracter #\z -1) ; ⇒ #\y)
 (cifra-caracter #\j 40) ; ⇒ #\x)
 (cifra-caracter #\D 3) ; ⇒ #\G)
