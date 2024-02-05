@@ -94,7 +94,8 @@ introduciendo nuevos conceptos y ejemplos.
 ### Estructuras de control y formas especiales ###
 
 - Las únicas estructuras de control, formas especiales y funciones de Scheme que
-  se deben usar son: `define`, `if`, `cond` y `quote` (`'`).
+  se deben usar son: `define`, `if`, `cond`, `quote` (`'`), `and`, `or`, `not` y
+  `eval`.
   
 - Se usará la sintaxis tradicional de la forma especial `cond`, y siempre
   se incluirá una expresión `else` al final:
