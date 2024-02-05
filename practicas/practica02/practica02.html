@@ -665,11 +665,15 @@ correspondiente al carácter <code>#\B</code>. Los caracteres de números y los 
 letras no son consecutivos.</p>
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
 <p>El cifrado César es una técnica cifrado por sustitución en la que cada letra del
-texto desplaza un cierto número de lugares. Vamos a cifrar y descifrar letras
-minúsculas y mayúsculas del alfabeto inglés (26 caracteres: desde <code>#\a</code> hasta
-<code>#\z</code>). Vamos a trabajar con un desplazamiento variable, positivo o negativo,
-dependiendo en que sentido rotemos el alfabeto.</p>
-<p>Define las funciones <code>(cifrar-caracter char desplazamiento)</code> y <code>(descifra char
+texto se codifica por la correspondiente desplazada un cierto número de
+lugares. Por ejemplo, si usamos un desplazamiento de 5, el carácter <code>#\c</code> se
+codificaría por el carácter <code>#\h</code> (el carácter 5 posiciones después de la <code>#\c</code>
+en el alfabeto).</p>
+<p>Vamos a cifrar y descifrar letras minúsculas y mayúsculas del alfabeto inglés
+(26 caracteres: desde <code>#\a ó #\A)</code> hasta <code>#\z ó #\Z</code>). Vamos a trabajar con un
+desplazamiento variable, positivo o negativo, dependiendo en que sentido rotemos
+el alfabeto.</p>
+<p>Define las funciones <code>(cifra-caracter char desplazamiento)</code> y <code>(descifra-caracter char
 desplazamiento)</code> que implementen el cifrado anterior.</p>
 <p>Para la implementación de las funciones anteriores debes definir y usar las
 siguientes funciones auxiliares:</p>
@@ -701,7 +705,7 @@ funciones auxiliares y las funciones principales:</p>
 <span class="p">(</span><span class="n">rota-indice</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">24</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 2)</span>
 <span class="p">(</span><span class="n">rota-indice</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 25)</span>
 
-<span class="p">(</span><span class="n">cifra-caracter</span><span class="w"> </span><span class="sc">#\a</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\d)</span>
+<span class="p">(</span><span class="n">cifra-caracter</span><span class="w"> </span><span class="sc">#\c</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\h)</span>
 <span class="p">(</span><span class="n">cifra-caracter</span><span class="w"> </span><span class="sc">#\z</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\y)</span>
 <span class="p">(</span><span class="n">cifra-caracter</span><span class="w"> </span><span class="sc">#\j</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\x)</span>
 <span class="p">(</span><span class="n">cifra-caracter</span><span class="w"> </span><span class="sc">#\D</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #\G)</span>
