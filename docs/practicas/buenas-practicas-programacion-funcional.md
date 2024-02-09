@@ -159,6 +159,37 @@ introduciendo nuevos conceptos y ejemplos.
         (+ (cuadrado x) (cuadrado y)))
     ```
 
+### No usar "números mágicos" ###
+
+- Debemos dar un nombre a todos los elementos que aparezcan en nuestro código,
+  para aclarar su significado. Por ejemplo, debemos dar nombre a las constantes
+  numéricas, definiendo su significado o, en el caso en que sea una constante
+  que depende de otros valores,  definir una expresión para calcular su valor.
+  
+    **Mal ejemplo**
+    
+    ```racket
+    (define (encuentra-indice char)
+        (- (char->integer char) 97))
+    ```
+    
+    **Buen ejemplo**
+    
+    ```racket
+    (define (encuentra-indice char)
+        (- (char->integer char)
+           (char->integer #\a)))
+    ```
+    
+    O también:
+    
+    ```racket
+    (define indice-char-a (char->integer #\a))
+    
+    (define (encuentra-indice char)
+        (- (char->integer char) indice-char-a))
+    ```
+
 ### Listas ###
 
 - Para devolver el primer elemento de la lista y el resto se usarán las funciones
