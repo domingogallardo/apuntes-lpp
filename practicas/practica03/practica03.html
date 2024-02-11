@@ -749,6 +749,18 @@ que convierte una cadena en una lista de caracteres.</p>
 <span class="p">(</span><span class="n">str-contiene?</span><span class="w"> </span><span class="s2">&quot;Esto es una frase&quot;</span><span class="w"> </span><span class="sc">#\space</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #t</span>
 <span class="p">(</span><span class="n">str-contiene?</span><span class="w"> </span><span class="s2">&quot;Hola&quot;</span><span class="w"> </span><span class="sc">#\h</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #f</span>
 </code></pre></div>
+<p>c) Implementa la función recursiva <code>(cifra-cadena cad desplazamiento)</code> que,
+usando la función <code>cifra-caracter</code> de la práctica anterior, cifre una cadena
+completa usando el cifrado de César. </p>
+<p>Implementa después la función <code>(descifra-cadena cad desplazamiento)</code> que
+descifra una cadena completa. </p>
+<p>Ejemplos:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cifra-cadena</span><span class="w"> </span><span class="s2">&quot;En un lugar de la Mancha, de cuyo nombre no quiero acordarme&quot;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒</span>
+<span class="s2">&quot;Ox ex veqkb no vk Wkxmrk, no meiy xywlbo xy aesoby kmybnkbwo&quot;</span>
+
+<span class="p">(</span><span class="n">descifra-cadena</span><span class="w"> </span><span class="s2">&quot;Ox ex veqkb no vk Wkxmrk, no meiy xywlbo xy aesoby kmybnkbwo&quot;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒</span>
+<span class="s2">&quot;En un lugar de la Mancha, de cuyo nombre no quiero acordarme&quot;</span>
+</code></pre></div>
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
 <p>a) Implementa el predicado recursivo <code>(todos-iguales? lista)</code> que
 comprueba si todos los elementos de una lista son iguales.</p>
