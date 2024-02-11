@@ -109,7 +109,10 @@ siguientes funciones auxiliares:
 - `(entre-az? char)`
 - `(rota-indice indice desplazamiento)`
 
-**Consejo**: puedes usar la función [`modulo`](https://docs.racket-lang.org/reference/generic-numbers.html#(def._((quote._~23~25kernel)._modulo))).
+La función `(rota-indice indice desplazamiento)` recibe el índice del carácter
+original y calcula el índice del carácter cifrado.
+
+**Consejo**: puedes usar la función `modulo` [ver documentación](https://docs.racket-lang.org/reference/generic-numbers.html#(def._((quote._~23~25kernel)._modulo))).
 
 Analiza los siguientes ejemplos para entender mejor el funcionamiento de las
 funciones auxiliares y las funciones principales:
@@ -131,6 +134,7 @@ funciones auxiliares y las funciones principales:
 (entre-az? #\`) ; ⇒ #f
 (entre-az? #\{) ; ⇒ #f
 
+(rota-indice 4 12) ; ⇒ 16)
 (rota-indice 4 24) ; ⇒ 2)
 (rota-indice 4 -5) ; ⇒ 25)
 
@@ -238,7 +242,7 @@ devuelve la cadena de la primera lista.
 
 ### Ejercicio 6
 
-Supongamos que queremos programar un juego de cartas que usa la baraja
+a) Supongamos que queremos programar un juego de cartas que usa la baraja
 francesa. Lo primero que debemos hacer es definir una forma de
 representar las cartas y funciones que trabajen con esa
 representación. En este ejercicio vamos a implementar esas funciones.
@@ -296,17 +300,14 @@ estas dos funciones.
     símbolo en una cadena y `(string-ref cadena pos)` que devuelve el
     carácter de una cadena situado en una determinada posición.
 
-
-### Ejercicio 7
-
-Implementa la función `(jugada-mano carta1 carta2 carta3)` que recibe 3 cartas de la
+b) Implementa la función `(jugada-mano carta1 carta2 carta3)` que recibe 3 cartas de la
 baraja francesa y devuelve una cadena indicando si la jugada de tres
 cartas contiene una **pareja** (dos cartas con el mismo valor), un **trío**
 (las tres cartas tienen el mismo valor) o **nada** (las tres cartas
 son distintas) y también el valor de la pareja o del trío.
 
-Para obtener los valores de las cartas debes usar las funciones
-definidas en el ejercicio anterior.
+Para obtener los valores de las cartas debes implementar la función
+`(valor-carta carta)`.
 
 Ejemplos:
 

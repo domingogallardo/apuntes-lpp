@@ -375,21 +375,8 @@ cadena vacía y un 0 (la longitud de la cadena vacía).
 (cadena-mayor '()) ; ⇒ ("" . 0)
 ```
 
-## Entrega de la práctica
-
-Sube la solución de los ejercicios al cuestionario de Moodle Entrega
-práctica 3 hasta el domingo 19 de febrero a las 21:00 h.
-
-Tal y como hemos comentado al comienzo de la práctica, debes incluir
-casos de prueba en todo el código que escribas.
-
-Una vez finalizado el plazo de entrega podrás revisar el cuestionario
-y visualizar la solución. Corrige la entrega, comparando la solución
-con la tuya. Puedes consultar cualquier duda con tu profesor en la
-clase de prácticas de la semana que viene.
-
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2022-23  
+Lenguajes y Paradigmas de Programación, curso 2023-24  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

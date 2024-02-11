@@ -2119,11 +2119,8 @@ longitud de una lista:
 #### 2.8.3. Cómo comprobar si una lista tiene un único elemento ####
 
 En el caso base de algunas funciones recursivas es necesario comprobar
-que la lista que se pasa como parámetro tiene un único elemento. Por
-ejemplo, en el caso base de la función recursiva que comprueba si una
-lista está ordenada.
-
-Al estar definida la función `length` en Scheme la primera idea que se
+que la lista que se pasa como parámetro tiene un único elemento. Al estar
+definida la función `length` en Scheme la primera idea que se 
 nos puede ocurrir es comprobar si la longitud de la lista es 1. Sin
 embargo es una mala idea.
 
