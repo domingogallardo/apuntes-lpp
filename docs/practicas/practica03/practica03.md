@@ -179,6 +179,24 @@ Ejemplos:
 (str-contiene? "Hola" #\h) ; ⇒ #f
 ```
 
+c) Implementa la función recursiva `(cifra-cadena cad desplazamiento)` que,
+usando la función `cifra-caracter` de la práctica anterior, cifre una cadena
+completa usando el cifrado de César. 
+
+Implementa después la función `(descifra-cadena cad desplazamiento)` que
+descifra una cadena completa. 
+
+Ejemplos:
+
+```racket
+(cifra-cadena "En un lugar de la Mancha, de cuyo nombre no quiero acordarme" 10) ; ⇒
+"Ox ex veqkb no vk Wkxmrk, no meiy xywlbo xy aesoby kmybnkbwo"
+
+(descifra-cadena "Ox ex veqkb no vk Wkxmrk, no meiy xywlbo xy aesoby kmybnkbwo" 10) ; ⇒
+"En un lugar de la Mancha, de cuyo nombre no quiero acordarme"
+```
+
+
 ### Ejercicio 2 ###
 
 a) Implementa el predicado recursivo `(todos-iguales? lista)` que
