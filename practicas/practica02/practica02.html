@@ -12,6 +12,8 @@
         <link rel="prev" href="../practica01/practica01.html">
       
       
+        <link rel="next" href="../practica03/practica03.html">
+      
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.7">
     
@@ -457,13 +459,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ejercicio-7" class="md-nav__link">
-    Ejercicio 7
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -473,6 +468,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica03/practica03.html" class="md-nav__link">
+        Práctica 3
+      </a>
     </li>
   
 
@@ -563,13 +572,6 @@
           <li class="md-nav__item">
   <a href="#ejercicio-6" class="md-nav__link">
     Ejercicio 6
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ejercicio-7" class="md-nav__link">
-    Ejercicio 7
   </a>
   
 </li>
@@ -683,7 +685,9 @@ siguientes funciones auxiliares:</p>
 <li><code>(entre-az? char)</code></li>
 <li><code>(rota-indice indice desplazamiento)</code></li>
 </ul>
-<p><strong>Consejo</strong>: puedes usar la función <a href="https://docs.racket-lang.org/reference/generic-numbers.html#(def._((quote._~23~25kernel)._modulo))"><code>modulo</code></a>.</p>
+<p>La función <code>(rota-indice indice desplazamiento)</code> recibe el índice del carácter
+original y calcula el índice del carácter cifrado.</p>
+<p><strong>Consejo</strong>: puedes usar la función <code>modulo</code> <a href="https://docs.racket-lang.org/reference/generic-numbers.html#(def._((quote._~23~25kernel)._modulo))">ver documentación</a>.</p>
 <p>Analiza los siguientes ejemplos para entender mejor el funcionamiento de las
 funciones auxiliares y las funciones principales:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">encuentra-indice</span><span class="w"> </span><span class="sc">#\a</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 0</span>
@@ -702,6 +706,7 @@ funciones auxiliares y las funciones principales:</p>
 <span class="p">(</span><span class="n">entre-az?</span><span class="w"> </span><span class="sc">#\`</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #f</span>
 <span class="p">(</span><span class="n">entre-az?</span><span class="w"> </span><span class="sc">#\{</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #f</span>
 
+<span class="p">(</span><span class="n">rota-indice</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 16)</span>
 <span class="p">(</span><span class="n">rota-indice</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">24</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 2)</span>
 <span class="p">(</span><span class="n">rota-indice</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">-5</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 25)</span>
 
@@ -780,7 +785,7 @@ segundo y el tercer elemento de una lista.</p>
 <span class="p">(</span><span class="n">cadenas-mayores</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;esto&quot;</span><span class="w"> </span><span class="s2">&quot;es&quot;</span><span class="w"> </span><span class="s2">&quot;lpp&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hoy&quot;</span><span class="w"> </span><span class="s2">&quot;hay&quot;</span><span class="w"> </span><span class="s2">&quot;clase&quot;</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (&quot;esto&quot; &quot;hay&quot; &quot;clase&quot;)</span>
 </code></pre></div>
 <h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
-<p>Supongamos que queremos programar un juego de cartas que usa la baraja
+<p>a) Supongamos que queremos programar un juego de cartas que usa la baraja
 francesa. Lo primero que debemos hacer es definir una forma de
 representar las cartas y funciones que trabajen con esa
 representación. En este ejercicio vamos a implementar esas funciones.</p>
@@ -826,14 +831,13 @@ estas dos funciones.</p>
 símbolo en una cadena y <code>(string-ref cadena pos)</code> que devuelve el
 carácter de una cadena situado en una determinada posición.</p>
 </div>
-<h3 id="ejercicio-7">Ejercicio 7<a class="headerlink" href="#ejercicio-7" title="Permanent link">&para;</a></h3>
-<p>Implementa la función <code>(jugada-mano carta1 carta2 carta3)</code> que recibe 3 cartas de la
+<p>b) Implementa la función <code>(jugada-mano carta1 carta2 carta3)</code> que recibe 3 cartas de la
 baraja francesa y devuelve una cadena indicando si la jugada de tres
 cartas contiene una <strong>pareja</strong> (dos cartas con el mismo valor), un <strong>trío</strong>
 (las tres cartas tienen el mismo valor) o <strong>nada</strong> (las tres cartas
 son distintas) y también el valor de la pareja o del trío.</p>
-<p>Para obtener los valores de las cartas debes usar las funciones
-definidas en el ejercicio anterior.</p>
+<p>Para obtener los valores de las cartas debes implementar la función
+<code>(valor-carta carta)</code>.</p>
 <p>Ejemplos:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">jugada-mano</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">3♥</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">3♣</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">3♥</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ &quot;trío de 3&quot;</span>
 <span class="p">(</span><span class="n">jugada-mano</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">K♦</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">7♠</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">K♥</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ &quot;pareja de 12&quot;</span>

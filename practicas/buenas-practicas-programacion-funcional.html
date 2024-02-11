@@ -403,6 +403,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#no-usar-numeros-magicos" class="md-nav__link">
+    No usar "números mágicos"
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#listas" class="md-nav__link">
     Listas
   </a>
@@ -454,6 +461,20 @@
     <li class="md-nav__item">
       <a href="practica02/practica02.html" class="md-nav__link">
         Práctica 2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="practica03/practica03.html" class="md-nav__link">
+        Práctica 3
       </a>
     </li>
   
@@ -516,6 +537,13 @@
         <li class="md-nav__item">
   <a href="#no-usar-variables-locales-funciones-locales-ni-pasos-de-ejecucion" class="md-nav__link">
     No usar variables locales, funciones locales ni pasos de ejecución
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-usar-numeros-magicos" class="md-nav__link">
+    No usar "números mágicos"
   </a>
   
 </li>
@@ -690,6 +718,30 @@ introduciendo nuevos conceptos y ejemplos.</p>
 <p><strong>Buen ejemplo</strong></p>
 <div class="highlight"><pre><span></span><code>(define (suma-cuadrados x y)
     (+ (cuadrado x) (cuadrado y)))
+</code></pre></div>
+</li>
+</ul>
+<h3 id="no-usar-numeros-magicos">No usar "números mágicos"<a class="headerlink" href="#no-usar-numeros-magicos" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Debemos dar un nombre a todos los elementos que aparezcan en nuestro código,
+  para aclarar su significado. Por ejemplo, debemos dar nombre a las constantes
+  numéricas, definiendo su significado o, en el caso en que sea una constante
+  que depende de otros valores,  definir una expresión para calcular su valor.</p>
+<p><strong>Mal ejemplo</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">encuentra-indice</span><span class="w"> </span><span class="n">char</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="p">(</span><span class="nb">char-&gt;integer</span><span class="w"> </span><span class="n">char</span><span class="p">)</span><span class="w"> </span><span class="mi">97</span><span class="p">))</span>
+</code></pre></div>
+<p><strong>Buen ejemplo</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">encuentra-indice</span><span class="w"> </span><span class="n">char</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="p">(</span><span class="nb">char-&gt;integer</span><span class="w"> </span><span class="n">char</span><span class="p">)</span>
+<span class="w">       </span><span class="p">(</span><span class="nb">char-&gt;integer</span><span class="w"> </span><span class="sc">#\a</span><span class="p">)))</span>
+</code></pre></div>
+<p>O también:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">indice-char-a</span><span class="w"> </span><span class="p">(</span><span class="nb">char-&gt;integer</span><span class="w"> </span><span class="sc">#\a</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">encuentra-indice</span><span class="w"> </span><span class="n">char</span><span class="p">)</span>
+<span class="w">    </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="p">(</span><span class="nb">char-&gt;integer</span><span class="w"> </span><span class="n">char</span><span class="p">)</span><span class="w"> </span><span class="n">indice-char-a</span><span class="p">))</span>
 </code></pre></div>
 </li>
 </ul>
