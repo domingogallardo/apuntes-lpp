@@ -162,23 +162,6 @@ Ejemplos:
 ; ⇒ "Scheme mola"
 ```
 
-c) Implementa el predicado recursivo `(contiene? lista elemento)` que comprueba si
-una lista tiene un elemento determinado. Después úsala para
-implementar la función `(str-contiene? cadena char)` que comprueba si
-una cadena contiene un carácter. Recuerda que la función `string->list`
-que convierte una cadena en una lista de caracteres.
-
-Ejemplos:
-
-```racket
-(contiene? '(algo 3 #\A) 3) ; ⇒ #t
-(contiene? '(algo 3 #\A) "algo") ; ⇒ #f
-(contiene? '(algo 3 #\A) 'algo) ; ⇒ #t
-(str-contiene? "Hola" #\o) ; ⇒ #t
-(str-contiene? "Esto es una frase" #\space) ; ⇒ #t
-(str-contiene? "Hola" #\h) ; ⇒ #f
-```
-
 c) Implementa la función recursiva `(cifra-cadena cad desplazamiento)` que,
 usando la función `cifra-caracter` de la práctica anterior, cifre una cadena
 completa usando el cifrado de César. 
@@ -194,6 +177,23 @@ Ejemplos:
 
 (descifra-cadena "Ox ex veqkb no vk Wkxmrk, no meiy xywlbo xy aesoby kmybnkbwo" 10) ; ⇒
 "En un lugar de la Mancha, de cuyo nombre no quiero acordarme"
+```
+
+d) Implementa el predicado recursivo `(contiene? lista elemento)` que comprueba si
+una lista tiene un elemento determinado. Después úsala para
+implementar la función `(str-contiene? cadena char)` que comprueba si
+una cadena contiene un carácter. Recuerda que la función `string->list`
+que convierte una cadena en una lista de caracteres.
+
+Ejemplos:
+
+```racket
+(contiene? '(algo 3 #\A) 3) ; ⇒ #t
+(contiene? '(algo 3 #\A) "algo") ; ⇒ #f
+(contiene? '(algo 3 #\A) 'algo) ; ⇒ #t
+(str-contiene? "Hola" #\o) ; ⇒ #t
+(str-contiene? "Esto es una frase" #\space) ; ⇒ #t
+(str-contiene? "Hola" #\h) ; ⇒ #f
 ```
 
 
