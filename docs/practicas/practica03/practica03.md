@@ -217,6 +217,8 @@ implementación debes usar el predicado del ejercicio 1 `contiene?`.
 
 
 ```racket
+(todos-distintos? '()) ; ⇒ #f
+(todos-distintos? '(a)) ; ⇒ #f
 (todos-distintos? '(a b c)) ; ⇒ #t
 (todos-distintos? '(a b c a)) ; ⇒ #f
 ```
