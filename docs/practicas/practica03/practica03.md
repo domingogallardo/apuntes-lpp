@@ -239,8 +239,9 @@ implementación puedes usar los predicados anteriores.
 
 a.1) Dado el siguiente _box & pointer_, escribe la expresión en Scheme
 que define `p1` usando el mínimo número de llamadas a `list` y
-`cons`. No debes utilizar expresiones con `quote`. Puedes usar la
-función gráfica `caja-puntero` para comprobar si tu solución es correcta.
+`cons`. No debes utilizar expresiones con `quote` para construir las listas ni
+las parejas. Puedes usar la función gráfica `caja-puntero` para comprobar si tu
+solución es correcta. 
 
 <img src="imagenes/box-and-pointer.png" width="200px"/>
 
