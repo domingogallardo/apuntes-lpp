@@ -234,6 +234,7 @@ implementación puedes usar los predicados anteriores.
 (solo-dos-iguales? '(a b c a)) ; ⇒ #t
 (solo-dos-iguales? '(a b c b a a)) ; ⇒ #f
 (solo-dos-iguales? '(a b c a a)) ; ⇒ #f
+(solo-dos-iguales? '(a b c a b)) ; ⇒ #f
 ```
 
 
