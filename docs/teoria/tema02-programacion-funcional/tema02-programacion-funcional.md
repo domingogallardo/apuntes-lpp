@@ -3659,7 +3659,6 @@ funcionamiento de la recursión:
 
 <img src="imagenes/suma-parejas-apply.png" width="600px"/>
 
-<!--
 
 ### 5.4. Generalización ###
 
@@ -4779,8 +4778,6 @@ Capítulos del libro *Structure and Intepretation of Computer Programs*:
 - [1.3  Formulating Abstractions with Higher-Order Procedures](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-12.html#%_sec_1.3)
 - [2.2.1  Representing Sequences](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.1)
 
-
--->
 
 ----
 
