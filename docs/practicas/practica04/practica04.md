@@ -295,20 +295,20 @@ las 48 cartas de una baraja francesa sin dieces.
     devuelve valores distintos cuando se llama con los mismos
     parámetros.
 
-a) Define una función `(coloca un dos tres tres-listas)` que recibe
-tres elementos y una listas con tres listas y devuelva el resultado de
+a) Define una función `(coloca tres-listas un dos tres)` que recibe
+una listas con tres listas y tres elementos y devuelva el resultado de
 colocar los elementos en la cabeza de las tres listas.
 
 Ejemplo:
 
 ```racket
-(coloca 'a 'b 'c '(() () ())) ; ⇒ ((a) (b) (c))
-(coloca 'b 'b 'b '((a) (a) (a))) ; ⇒ ((b a) (b a) (b a))
-(coloca 'g 'h 'i '((a) (b c) (d e f))) ; ⇒ ((g a) (h b c) (i d e f))
+(coloca '(() () ()) 'a 'b 'c) ; ⇒ '((a) (b) (c))
+(coloca '((a) (a) (a)) 'b 'b 'b) ; ⇒ '((b a) (b a) (b a))
+(coloca '((a) (b c) (d e f)) 'g 'h 'i) ; ⇒ '((g a) (h b c) (i d e f)))
 ```
 
 b) Usando la función anterior como función auxiliar implementa una
-función recursiva `(reparte lista-cartas)` que recibe una lista de
+función recursiva `(reparte-tres lista-cartas)` que recibe una lista de
 cartas con un número de cartas múltiplo de 3 y devuelve el resultado
 de repartir esas cartas una a una en tres montones. Las cartas en
 las posiciones 0, 3, 6, etc. irán en un montón. Las cartas en las
@@ -322,7 +322,7 @@ Ejemplo:
 
 ```racket
 (define doce-cartas '(A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ J♣ Q♣ K♣))
-(reparte doce-cartas) ; ⇒ '((A♣ 4♣ 7♣ J♣) (2♣ 5♣ 8♣ Q♣) (3♣ 6♣ 9♣ K♣))
+(reparte-tres doce-cartas) ; ⇒ '((A♣ 4♣ 7♣ J♣) (2♣ 5♣ 8♣ Q♣) (3♣ 6♣ 9♣ K♣))
 ```
 
 c) Implementa una función recursiva `(elemento-central lista)` que
