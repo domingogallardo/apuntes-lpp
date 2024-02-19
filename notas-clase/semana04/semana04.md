@@ -121,7 +121,7 @@ Notas de clase de la semana 4 de LPP.
 
 ----
 
-### Ejemplo 1: función `sumador`
+### Ejemplo: función `construye-sumador`
 
 - Definimos una función constructora `(construye-sumador k)` que crea
   en su ejecución una función sumadora:
