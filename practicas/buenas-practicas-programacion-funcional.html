@@ -772,6 +772,14 @@ introduciendo nuevos conceptos y ejemplos.</p>
 <p><strong>Mal ejemplo</strong>: <code>(append (list 1) '(2 3 4 5))</code></p>
 <p><strong>Buen ejemplo</strong>: <code>(cons 1 '(2 3 4 5))</code></p>
 </li>
+<li>
+<p>Para comprobar si una lista tiene un único elemento es preferible, por
+  motivos de eficiencia, comprobar si su resto es <code>null?</code>, en lugar de usar la función
+  <code>length</code>. La función <code>length</code> tiene un coste lineal mientras que las funciones
+  <code>rest</code> y <code>null?</code> tienen coste unitario.</p>
+<p><strong>Buen ejemplo</strong>: <code>(null? (rest lista))</code></p>
+<p><strong>Mal ejemplo</strong>: <code>(= 1 (length lista))</code></p>
+</li>
 </ul>
 <h3 id="pruebas-unitarias">Pruebas unitarias<a class="headerlink" href="#pruebas-unitarias" title="Permanent link">&para;</a></h3>
 <ul>
