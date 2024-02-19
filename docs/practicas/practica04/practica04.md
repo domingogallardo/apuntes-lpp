@@ -405,7 +405,7 @@ Y ahora ya podemos empezar el truco de cartas.
 con 27:
 
     ```racket
-    (define t1 (reparte (cartas 27)))
+    (define t1 (reparte-tres (cartas 27)))
     ```
 
 2. Visualizamos los montones y pedimos al espectador que piense en una
@@ -423,7 +423,7 @@ carta sin decirla. Por ejemplo el as de tréboles.
    resultante. Los guardamos en la variable `t2`:
    
     ```racket
-    (define t2 (reparte (derecha t1)))
+    (define t2 (reparte-tres (derecha t1)))
     ```
 
 4. Visualizamos de nuevo los montones y preguntamos dónde está la
@@ -437,7 +437,7 @@ carta sin decirla. Por ejemplo el as de tréboles.
     guardando el resultado en la variable `t3`:
    
     ```racket
-    (define t3 (reparte (centro t2)))
+    (define t3 (reparte-tres (centro t2)))
     ```
    
 5. Visualizamos los montones:
