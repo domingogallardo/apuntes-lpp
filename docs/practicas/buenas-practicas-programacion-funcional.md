@@ -203,6 +203,15 @@ introduciendo nuevos conceptos y ejemplos.
     
     **Buen ejemplo**: `(cons 1 '(2 3 4 5))`
 
+- Para comprobar si una lista tiene un único elemento es preferible, por
+  motivos de eficiencia, comprobar si su resto es `null?`, en lugar de usar la función
+  `length`. La función `length` tiene un coste lineal mientras que las funciones
+  `rest` y `null?` tienen coste unitario.
+  
+    **Buen ejemplo**: `(null? (rest lista))`
+    
+    **Mal ejemplo**: `(= 1 (length lista))`
+
 ### Pruebas unitarias ###
 
 - Para comprobar el correcto funcionamiento de las funciones implementadas

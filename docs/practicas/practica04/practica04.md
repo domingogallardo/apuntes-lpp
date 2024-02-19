@@ -175,7 +175,10 @@ cuidado de que la llamada recursiva sea también a la propia
 `expande-parejas-2`.
 
 !!! Hint "Pista"
-    Repasa el apartado 5.3.1 de teoría.
+    Repasa el [apartado
+    5.3.1](https://domingogallardo.github.io/apuntes-lpp/teoria/tema02-programacion-funcional/tema02-programacion-funcional.html#531-funcion-apply-y-funciones-recursivas)
+    de teoría, en el que se explica cómo usar `apply` para implementar funciones
+    recursivas con número variable de argumentos.
 
 c) Implementa la función recursiva `(expande lista)`. Recibe una
 lista en la que hay intercalados algunos números enteros
