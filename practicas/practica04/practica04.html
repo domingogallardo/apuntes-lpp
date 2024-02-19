@@ -916,7 +916,7 @@ secuencia aleatoria distinta cada vez que se ejecute el programa. </p>
 <p>Repartimos una lista de cartas y las guardamos en la variable
 <code>t1</code>. Podríamos jugar con 3, 9, 15, 21 o 27 cartas. Vamos a hacerlo
 con 27:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="p">(</span><span class="n">reparte</span><span class="w"> </span><span class="p">(</span><span class="n">cartas</span><span class="w"> </span><span class="mi">27</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="p">(</span><span class="n">reparte-tres</span><span class="w"> </span><span class="p">(</span><span class="n">cartas</span><span class="w"> </span><span class="mi">27</span><span class="p">)))</span>
 </code></pre></div>
 </li>
 <li>
@@ -932,7 +932,7 @@ carta sin decirla. Por ejemplo el as de tréboles.</p>
    el as de tréboles está en el montón derecho, por lo que usamos la
    función <code>derecha</code>. Y volvemos a repartir en tres montones el mazo
    resultante. Los guardamos en la variable <code>t2</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="p">(</span><span class="n">reparte</span><span class="w"> </span><span class="p">(</span><span class="n">derecha</span><span class="w"> </span><span class="n">t1</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="p">(</span><span class="n">reparte-tres</span><span class="w"> </span><span class="p">(</span><span class="n">derecha</span><span class="w"> </span><span class="n">t1</span><span class="p">)))</span>
 </code></pre></div>
 </li>
 <li>
@@ -942,7 +942,7 @@ carta sin decirla. Por ejemplo el as de tréboles.</p>
 </code></pre></div>
 <p>Juntamos usando la función <code>centro</code> y volvemos a repartir,
 guardando el resultado en la variable <code>t3</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">t3</span><span class="w"> </span><span class="p">(</span><span class="n">reparte</span><span class="w"> </span><span class="p">(</span><span class="n">centro</span><span class="w"> </span><span class="n">t2</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">t3</span><span class="w"> </span><span class="p">(</span><span class="n">reparte-tres</span><span class="w"> </span><span class="p">(</span><span class="n">centro</span><span class="w"> </span><span class="n">t2</span><span class="p">)))</span>
 </code></pre></div>
 </li>
 <li>
