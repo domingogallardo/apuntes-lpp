@@ -3617,7 +3617,59 @@ La forma correcta de hacerlo:
 Usando `apply` podemos definir funciones recursivas con número
 variable de argumentos.
 
-Por ejemplo, supongamos que queremos definir la función `suma-parejas`
+##### Ejemplo `suma-nums` #####
+
+Por ejemplo, supongamos que queremos definir la función `suma-nums` que suma un
+número variable de argumentos:
+
+```racket
+(suma-nums 2 5 10 1) ; ⇒ 18
+```
+
+¿Podríamos definir `suma-nums` de forma recursiva? Debería tener la siguiente
+forma:
+
+```racket
+(define (suma-nums . args)
+   (if (null? args)
+       0
+       (+ (first args) (suma-nums ....))))
+```
+
+La cuestión está en cómo hacer la llamada recursiva. Supongamos que llamamos a
+la función principal con el ejemplo anterior. Al ser `suma-nums` una función con
+número variable de argumentos, la llamada recursiva habría que hacerla con los
+números 5, 10, 1 como argumentos.
+
+```
+(suma-nums 2 5 10 1) =>
+(+ 2 (suma-nums 5 10 1))
+```
+
+Y, sin embargo, lo que tenemos en `args` es una lista de números. No podemos
+hacer la llamada recursiva con `(rest args)` porque `suma-nums` no recibe una
+lista como argumento, sino un número variable de argumentos. 
+
+Tenemos que conseguir "desempaquetar" los números de la lista `(5 10 1)` para
+llamar a la recursión poniéndolos como argumentos de `suma-nums`: `(suma-nums 5
+10 1)`.
+
+La solución es usar `apply`:
+
+```racket
+(define (suma-nums . args)
+   (if (null? args)
+       0
+       (+ (first args) (apply suma-nums (rest args)))))
+```
+
+El uso de `apply` consigue hacer la llamada recursiva colocando como argumentos
+de `suma-nums` todos los elementos del resto de la lista original.
+
+
+##### Ejemplo `suma-parejas` #####
+
+Otro ejemplo similar, supongamos que queremos definir la función `suma-parejas`
 que suma un número variable de parejas:
 
 ```racket
@@ -3644,18 +3696,13 @@ la pareja resultante con la primera pareja de la lista:
       (suma-pareja (first parejas) (apply suma-parejas (rest parejas)))))
 ```
 
-Se trata de una llamada recursiva indirecta, porque se invoca a la
-propia función `suma-parejas` no directamente, sino a través de
-`apply`.
-
-Hay que hacer notar en que la llamada recursiva es necesario usar
-`apply` porque `(cdr parejas)` es una lista. No podemos invocar a
-`suma-parejas` pasando una lista como parámetro, sino que hay que
-pasarle todos los argumentos por separado (recibe un número variable
-de argumentos). Eso lo conseguimos hacer con `apply`.
+Al igual que antes, se trata de una llamada recursiva indirecta, porque se
+invoca a la propia función `suma-parejas` no directamente, sino a través de
+`apply`. Y `apply` consigue "desempaquetar" las parejas del resto de parejas y
+pasárselas como argumentos a `suma-parejas`.
 
 La siguiente imagen muestra una representación gráfica del
-funcionamiento de la recursión:
+funcionamiento de esta recursión:
 
 <img src="imagenes/suma-parejas-apply.png" width="600px"/>
 
@@ -3781,7 +3828,7 @@ decimos que la función que ha construido la clausura es una **función
 constructora**.
 
 
-#### 5.5.1. Función `sumador`
+#### 5.5.1. Función `construye-sumador`
 
 Vamos a empezar con un ejemplo muy sencillo. Definimos una función
 constructora que crea en su ejecución una función que suma
@@ -3892,14 +3939,14 @@ es lo que hace que se denomine una **clausura** (del inglés
 utilizar sus variables.
 
 
-#### 5.5.2. Función `composicion` 
+#### 5.5.2. Función `construye-composicion` 
 
 Otro ejemplo de una función que devuelve otra función es la función
-siguiente `(composicion f g)` que recibe dos funciones de un argumento
+siguiente `(construye-composicion f g)` que recibe dos funciones de un argumento
 y devuelve otra función que realiza la composición de ambas:
 
 ```racket
-(define (composicion f g)
+(define (construye-composicion f g)
     (lambda (x)
 	    (f (g x))))
 ```
@@ -3907,15 +3954,15 @@ y devuelve otra función que realiza la composición de ambas:
 La función devuelta invoca primero a `g` y el resultado se lo pasa a
 `f`. Veamos un ejemplo. Supongamos que tenemos definidas la función
 `cuadrado` y `doble` que calculan el cuadrado y el doble de un número
-respectivamente. Podremos entonces llamar a `composicion` con esas dos
+respectivamente. Podremos entonces llamar a `construye-composicion` con esas dos
 funciones para construir otra función que primero calcule el cuadrado y
 después el doble de una número:
 
 ```racket
-(define h (composicion doble cuadrado))
+(define h (construye-composicion doble cuadrado))
 ```
 
-La variable `h` contiene la función devuelta por `composicion`. Una
+La variable `h` contiene la función devuelta por `construye-composicion`. Una
 función de un argumento que devuelve el doble del cuadrado de un
 número:
 
