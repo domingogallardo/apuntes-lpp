@@ -3623,7 +3623,41 @@ contrario, se produce un error:</p>
 <h4 id="531-funcion-apply-y-funciones-recursivas">5.3.1. Función <code>apply</code> y funciones recursivas<a class="headerlink" href="#531-funcion-apply-y-funciones-recursivas" title="Permanent link">&para;</a></h4>
 <p>Usando <code>apply</code> podemos definir funciones recursivas con número
 variable de argumentos.</p>
-<p>Por ejemplo, supongamos que queremos definir la función <code>suma-parejas</code>
+<h5 id="ejemplo-suma-nums">Ejemplo <code>suma-nums</code><a class="headerlink" href="#ejemplo-suma-nums" title="Permanent link">&para;</a></h5>
+<p>Por ejemplo, supongamos que queremos definir la función <code>suma-nums</code> que suma un
+número variable de argumentos:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-nums</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 18</span>
+</code></pre></div>
+<p>¿Podríamos definir <code>suma-nums</code> de forma recursiva? Debería tener la siguiente
+forma:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">suma-nums</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">null?</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">       </span><span class="mi">0</span>
+<span class="w">       </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">suma-nums</span><span class="w"> </span><span class="n">....</span><span class="p">))))</span>
+</code></pre></div>
+<p>La cuestión está en cómo hacer la llamada recursiva. Supongamos que llamamos a
+la función principal con el ejemplo anterior. Al ser <code>suma-nums</code> una función con
+número variable de argumentos, la llamada recursiva habría que hacerla con los
+números 5, 10, 1 como argumentos.</p>
+<div class="highlight"><pre><span></span><code>(suma-nums 2 5 10 1) =&gt;
+(+ 2 (suma-nums 5 10 1))
+</code></pre></div>
+<p>Y, sin embargo, lo que tenemos en <code>args</code> es una lista de números. No podemos
+hacer la llamada recursiva con <code>(rest args)</code> porque <code>suma-nums</code> no recibe una
+lista como argumento, sino un número variable de argumentos. </p>
+<p>Tenemos que conseguir "desempaquetar" los números de la lista <code>(5 10 1)</code> para
+llamar a la recursión poniéndolos como argumentos de <code>suma-nums</code>: <code>(suma-nums 5
+10 1)</code>.</p>
+<p>La solución es usar <code>apply</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">suma-nums</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">   </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">null?</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">       </span><span class="mi">0</span>
+<span class="w">       </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">apply</span><span class="w"> </span><span class="n">suma-nums</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">args</span><span class="p">)))))</span>
+</code></pre></div>
+<p>El uso de <code>apply</code> consigue hacer la llamada recursiva colocando como argumentos
+de <code>suma-nums</code> todos los elementos del resto de la lista original.</p>
+<h5 id="ejemplo-suma-parejas">Ejemplo <code>suma-parejas</code><a class="headerlink" href="#ejemplo-suma-parejas" title="Permanent link">&para;</a></h5>
+<p>Otro ejemplo similar, supongamos que queremos definir la función <code>suma-parejas</code>
 que suma un número variable de parejas:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-parejas</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">6</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ &#39;(9 . 12)</span>
 </code></pre></div>
@@ -3641,16 +3675,12 @@ la pareja resultante con la primera pareja de la lista:</p>
 <span class="w">      </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="w">      </span><span class="p">(</span><span class="n">suma-pareja</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">parejas</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">apply</span><span class="w"> </span><span class="n">suma-parejas</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">parejas</span><span class="p">)))))</span>
 </code></pre></div>
-<p>Se trata de una llamada recursiva indirecta, porque se invoca a la
-propia función <code>suma-parejas</code> no directamente, sino a través de
-<code>apply</code>.</p>
-<p>Hay que hacer notar en que la llamada recursiva es necesario usar
-<code>apply</code> porque <code>(cdr parejas)</code> es una lista. No podemos invocar a
-<code>suma-parejas</code> pasando una lista como parámetro, sino que hay que
-pasarle todos los argumentos por separado (recibe un número variable
-de argumentos). Eso lo conseguimos hacer con <code>apply</code>.</p>
+<p>Al igual que antes, se trata de una llamada recursiva indirecta, porque se
+invoca a la propia función <code>suma-parejas</code> no directamente, sino a través de
+<code>apply</code>. Y <code>apply</code> consigue "desempaquetar" las parejas del resto de parejas y
+pasárselas como argumentos a <code>suma-parejas</code>.</p>
 <p>La siguiente imagen muestra una representación gráfica del
-funcionamiento de la recursión:</p>
+funcionamiento de esta recursión:</p>
 <p><img src="imagenes/suma-parejas-apply.png" width="600px"/></p>
 <h3 id="54-generalizacion">5.4. Generalización<a class="headerlink" href="#54-generalizacion" title="Permanent link">&para;</a></h3>
 <p>La posibilidad de pasar funciones como parámetros de otras es una
@@ -3741,7 +3771,7 @@ la función principal.</p>
 (<a href="https://es.wikipedia.org/wiki/Clausura_(informática)">Wikipedia</a>). Y
 decimos que la función que ha construido la clausura es una <strong>función
 constructora</strong>.</p>
-<h4 id="551-funcion-sumador">5.5.1. Función <code>sumador</code><a class="headerlink" href="#551-funcion-sumador" title="Permanent link">&para;</a></h4>
+<h4 id="551-funcion-construye-sumador">5.5.1. Función <code>construye-sumador</code><a class="headerlink" href="#551-funcion-construye-sumador" title="Permanent link">&para;</a></h4>
 <p>Vamos a empezar con un ejemplo muy sencillo. Definimos una función
 constructora que crea en su ejecución una función que suma
 <code>k</code> a un número:</p>
@@ -3821,23 +3851,23 @@ invocaciones a las funciones.</p>
 es lo que hace que se denomine una <strong>clausura</strong> (del inglés
 <strong>closure</strong>). La función <em>se cierra</em> sobre el ámbito capturado y puede
 utilizar sus variables.</p>
-<h4 id="552-funcion-composicion">5.5.2. Función <code>composicion</code><a class="headerlink" href="#552-funcion-composicion" title="Permanent link">&para;</a></h4>
+<h4 id="552-funcion-construye-composicion">5.5.2. Función <code>construye-composicion</code><a class="headerlink" href="#552-funcion-construye-composicion" title="Permanent link">&para;</a></h4>
 <p>Otro ejemplo de una función que devuelve otra función es la función
-siguiente <code>(composicion f g)</code> que recibe dos funciones de un argumento
+siguiente <code>(construye-composicion f g)</code> que recibe dos funciones de un argumento
 y devuelve otra función que realiza la composición de ambas:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">composicion</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">g</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">construye-composicion</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">g</span><span class="p">)</span>
 <span class="w">    </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="w">        </span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="n">x</span><span class="p">))))</span>
 </code></pre></div>
 <p>La función devuelta invoca primero a <code>g</code> y el resultado se lo pasa a
 <code>f</code>. Veamos un ejemplo. Supongamos que tenemos definidas la función
 <code>cuadrado</code> y <code>doble</code> que calculan el cuadrado y el doble de un número
-respectivamente. Podremos entonces llamar a <code>composicion</code> con esas dos
+respectivamente. Podremos entonces llamar a <code>construye-composicion</code> con esas dos
 funciones para construir otra función que primero calcule el cuadrado y
 después el doble de una número:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="p">(</span><span class="n">composicion</span><span class="w"> </span><span class="n">doble</span><span class="w"> </span><span class="n">cuadrado</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="p">(</span><span class="n">construye-composicion</span><span class="w"> </span><span class="n">doble</span><span class="w"> </span><span class="n">cuadrado</span><span class="p">))</span>
 </code></pre></div>
-<p>La variable <code>h</code> contiene la función devuelta por <code>composicion</code>. Una
+<p>La variable <code>h</code> contiene la función devuelta por <code>construye-composicion</code>. Una
 función de un argumento que devuelve el doble del cuadrado de un
 número:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 32</span>
