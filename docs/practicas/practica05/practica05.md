@@ -376,7 +376,7 @@ b) Implementa la función `(escoge-en-orden lista funcion_ordinal_1
 ... función_ordinal_n)` que aplica a un primer argumento obligatorio `lista`
 la serie de funciones "ordinales" (`first`, `second`, `third` ... `tenth`)
 pasadas a continuación de la lista como un número variable de argumentos,
-devolviendo la lista de resultandos de aplicar esas funciones en el
+devolviendo la lista de resultados de aplicar esas funciones en el
 orden en que se han proporcionado.
 
 ```racket
@@ -400,14 +400,16 @@ orden establecido por las funciones "ordinales" pasadas como argumentos a contin
               
 (reordena-cuatro-montones  '(A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ J♣ Q♣ K♣) fourth second first third)
 ; ⇒
-'((4♣ 8♣ K♣)(2♣ 6♣ J♣) (A♣ 5♣ 9♣) (3♣ 7♣ Q♣))
+; '((4♣ 8♣ K♣)(2♣ 6♣ J♣) (A♣ 5♣ 9♣) (3♣ 7♣ Q♣))
 ```
 
 c) Implementa la función `(junta-montones montones)` concatena la lista de sublistas
 de cartas (montones) en una sola lista de cartas.
 
 ```racket
-'((4♣ 8♣ K♣)(2♣ 6♣ J♣) (A♣ 5♣ 9♣) (3♣ 7♣ Q♣))
+(junta-montones '((4♣ 8♣ K♣)(2♣ 6♣ J♣) (A♣ 5♣ 9♣) (3♣ 7♣ Q♣)))
+; ⇒
+; (4♣ 8♣ K♣ 2♣ 6♣ J♣ A♣ 5♣ 9♣ 3♣ 7♣ Q♣)
 ```
 
 d) Una vez que has implementado las funciones anteriores ya solo te
