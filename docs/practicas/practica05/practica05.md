@@ -417,9 +417,9 @@ d) Una vez que has implementado las funciones anteriores ya solo te
 queda copiar la siguiente definición para poder hacer el truco de
 cartas. 
 
-La función `(adivina lista-cartas par1 par2 par3)` es la que hace
-toda la magia y calcula la posición de la carta escogida a partir de los
-montones en los que ha aparecido en tres reparticiones de la baraja.
+La función `(adivina lista-cartas par1 par2 par3)` es la que hace toda la magia
+y calcula la posición de la carta escogida a partir de las posiciones de los
+montones en los que ésta ha aparecido en tres reparticiones de la baraja.
 
 ```racket
 (define (adivina baraja par1 par2 par3)
