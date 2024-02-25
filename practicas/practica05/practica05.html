@@ -964,9 +964,9 @@ de cartas (montones) en una sola lista de cartas.</p>
 <p>d) Una vez que has implementado las funciones anteriores ya solo te
 queda copiar la siguiente definición para poder hacer el truco de
 cartas. </p>
-<p>La función <code>(adivina lista-cartas par1 par2 par3)</code> es la que hace
-toda la magia y calcula la posición de la carta escogida a partir de los
-montones en los que ha aparecido en tres reparticiones de la baraja.</p>
+<p>La función <code>(adivina lista-cartas par1 par2 par3)</code> es la que hace toda la magia
+y calcula la posición de la carta escogida a partir de las posiciones de los
+montones en los que ésta ha aparecido en tres reparticiones de la baraja.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">adivina</span><span class="w"> </span><span class="n">baraja</span><span class="w"> </span><span class="n">par1</span><span class="w"> </span><span class="n">par2</span><span class="w"> </span><span class="n">par3</span><span class="p">)</span>
 <span class="w">  </span><span class="p">(</span><span class="nb">list-ref</span><span class="w"> </span><span class="n">baraja</span>
 <span class="w">            </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="n">par3</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">cdr</span><span class="w"> </span><span class="n">par2</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">cdr</span><span class="w"> </span><span class="n">par1</span><span class="p">))</span>
