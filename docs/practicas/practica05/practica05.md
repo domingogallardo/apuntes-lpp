@@ -343,7 +343,7 @@ inverosímil todavía la adivinación de la carta elegida.
 Usamos la función `(cartas num-cartas)` del fichero `lpp.rkt` y la función
 `(reparte-tres lista-cartas)` definida en la práctica anterior.
 
-!!! Danger "Usa funciones de orden superior"
+!!! Important "Usa funciones de orden superior"
     Para la implementación de las siguientes funciones deberás usar, siempre que sea
     posible, funciones de orden superior en lugar de funciones recursivas.
 
