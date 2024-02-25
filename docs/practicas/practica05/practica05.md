@@ -26,8 +26,6 @@ fichero `practica5.rkt`.
 
 El fichero contiene la definición de las funciones de orden superior `exists?` y `for-all?`.
 
-
-
 ### Ejercicio 1 ###
 
 a) Define la función recursiva `(aplica-veces f1 f2 n x)` que aplica
@@ -294,28 +292,7 @@ Ejemplo
 ; ⇒ ((11 . 3) (10 . 9) (15 . 8) (14 . 1))
 ```
 
-
-b) Implementa usando funciones de orden superior la función `(aplica-2 func
-lista-parejas)` que recibe una función de dos argumentos y una lista
-de parejas y devuelve una lista con el resultado de aplicar esa
-función a los elementos izquierdo y derecho de cada pareja.
-
-Ejemplo:
-
-```racket
-(aplica-2 + '((2 . 3) (1 . -1) (5 . 4)))
-; ⇒ (5 0 9)
-(aplica-2 (lambda (x y)
-             (if (even? x)
-                 y
-                 (* y -1))) '((2 . 3) (1 . 3) (5 . 4) (8 . 10)))
-; ⇒ (3 -3 -4 10)
-```
-
-
-### Ejercicio 6 ###
-
-a) Completa la definición de la siguiente función de orden superior
+b) Completa la definición de la siguiente función de orden superior
 `(busca-mayor mayor? lista)` que busca el mayor elemento de una
 lista. Recibe un predicado `mayor?` que compara dos elementos de la
 lista y devuelve `#t` o `#f` dependiendo de si el primero es mayor que
@@ -340,7 +317,7 @@ como parámetro `mayor?` la función de comparación apropiada.
 Escribe algunos `check-equal?` en los que compruebes el funcionamiento
 de `busca-mayor`, utilizando funciones `mayor?` distintas.
 
-b) Implementa, usando el predicado de orden superior `for-all?` dos
+c) Implementa, usando el predicado de orden superior `for-all?` dos
 versiones de la función `(todos-menores? lista n)` que recibe una
 lista con sublistas de números y un número `n` y comprueba si todos
 los números en las sublistas son menores que `n`.
@@ -357,29 +334,205 @@ Ejemplo:
 (todos-menores? '((10 30 20) (1 50 30) (30 40 90)) 55) ; ⇒ #f
 ```
 
-c) Define, usando funciones de orden superior, la función
-`(cuenta-repetidas-fos cartas)` a la que le pasamos una lista de
-cartas y cuenta el número de ocurrencias de los distintos valores de
-las cartas. La función debe devolver una lista ordenada de parejas que
-indican el número de veces que aparece cada valor. La parte izquierda
-de cada pareja será el número de veces que aparece el valor y la parte
-derecha el propio valor.
+### Ejercicio 6
 
-Por ejemplo en la lista de cartas `(J♦ Q♠ 2♦ 5♣ J♣ 2♣ Q♥)` aparecen 2
-doses, 1 cinco, 2 dieces y 2 onces. La función debe devolver entonces
-la lista `((2 . 2) (1 . 5) (2 . 10) (2 .11))`.
+Vamos a mejorar el juego de cartas de la semana anterior, usando la baraja
+completa y dando más libertad al reparto de cartas en montones y haciendo más
+inverosímil todavía la adivinación de la carta elegida.
+
+Usamos la función `(cartas num-cartas)` del fichero `lpp.rkt` y la función
+`(reparte-tres lista-cartas)` definida en la práctica anterior.
+
+!!! Important "Usa funciones de orden superior"
+    Para la implementación de las siguientes funciones deberás usar, siempre que sea
+    posible, funciones de orden superior en lugar de funciones recursivas.
+
+a) Define una nueva versión de la función coloca usando número variable de
+argumentos. La nueva versión de la función `(coloca ...)` solo tiene como
+obligatorio el primer argumento, la lista de n listas. El resto de argumentos es
+opcional y puede ir de 0 a n elementos.
+
+Se asume que la lista de n listas debe tener tantas listas como
+elementos se pasen como argumentos, y si no se pasa ningún argumento
+se devuelve por convenio la lista de n listas tal cual, sin variar.
+
+Ejemplo:
 
 ```racket
-(cuenta-repetidas-fos '(J♦ Q♠ 2♦ 5♣ J♣ 2♣ Q♥)) ; ⇒  ((2 . 2) (1 . 5) (2 . 10) (2 . 11))
+(coloca '(() () ()) '(a b c)) ; ⇒ '((a) (b) (c))
+(coloca '((a) (a)) '(b b)) ; ⇒ '((b a) (b a))
+(coloca '((a b c d)) '(e)) ; ⇒ '((e a b c d))
+(coloca '() '()) ; ⇒ '()
+(coloca '((a) (b c) (d e f) (g h i j)) '(k l m n)) ; ⇒ '((k a) (l b c) (m d e f) (n g h i j))
 ```
 
-!!! Hint "Pista"
-    La función puede primero ordenar las cartas y después aplicar
-    alguna función de orden superior que haga el trabajo de contar,
-    procesando la lista de cartas ya ordenada. 
+Implementa una función `reparte-cuatro` inspirada en `reparte-tres` y con idéntica estructura.
+
+```racket
+(reparte-cuatro '(A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ J♣ Q♣ K♣)) ; ⇒ '((A♣ 5♣ 9♣) (2♣ 6♣ J♣) (3♣ 7♣ Q♣) (4♣ 8♣ K♣))
+```
+
+b) Implementa la función `(escoge-en-orden lista funcion_ordinal_1
+... función_ordinal_n)` que aplica a un primer argumento obligatorio `lista`
+la serie de funciones "ordinales" (`first`, `second`, `third` ... `tenth`)
+pasadas a continuación de la lista como un número variable de argumentos,
+devolviendo la lista de resultandos de aplicar esas funciones en el
+orden en que se han proporcionado.
+
+```racket
+(escoge-en-orden '(1 2 3 4 5)) ; ⇒  '()
+(escoge-en-orden '(1 2 3 4 5) fourth second) ; ⇒ '(4 2)
+(escoge-en-orden '(a b c d) third second fourth first) ; ⇒ '(c b d a)
+(escoge-en-orden '(dos tres un) third first second) ; ⇒ '(un dos tres)
+```
+
+Usando las funciones definidas anteriormente, implementa las funciones
+`(reordena-tres-montones baraja f-ordinal1 f-ordinal2 f-ordinal3)` y
+`(reordena-cuatro-montones baraja f-ordinal1 f-ordinal2 f-ordinal3 f-ordinal4)`
+que reparten las cartas de una supuesta baraja, lista de cartas, en tres o cuatro montones,
+lista de sublistas de cartas, y después reordena los montones, o sublistas, según el
+orden establecido por las funciones "ordinales" pasadas como argumentos a continuación de la baraja.
+
+```racket
+(reordena-tres-montones  '(A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ J♣ Q♣ K♣) second first third)
+; ⇒
+'((2♣ 5♣ 8♣ Q♣) (A♣ 4♣ 7♣ J♣) (3♣ 6♣ 9♣ K♣))
+              
+(reordena-cuatro-montones  '(A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ J♣ Q♣ K♣) fourth second first third)
+; ⇒
+'((4♣ 8♣ K♣)(2♣ 6♣ J♣) (A♣ 5♣ 9♣) (3♣ 7♣ Q♣))
+```
+
+c) Implementa la función `(junta-montones montones)` concatena la lista de sublistas
+de cartas (montones) en una sola lista de cartas.
+
+```racket
+'((4♣ 8♣ K♣)(2♣ 6♣ J♣) (A♣ 5♣ 9♣) (3♣ 7♣ Q♣))
+```
+
+d) Una vez que has implementado las funciones anteriores ya solo te
+queda copiar la siguiente definición para poder hacer el truco de
+cartas. 
+
+La función `(adivina lista-cartas par1 par2 par3)` es la que hace
+toda la magia y calcula la posición de la carta escogida a partir de los
+montones en los que ha aparecido en tres reparticiones de la baraja.
+
+```racket
+(define (adivina baraja par1 par2 par3)
+  (list-ref baraja
+            (+ (* (- (car par3) 1) (cdr par2) (cdr par1))
+               (* (- (car par2) 1) (cdr par1))
+               (- (car par1) 1))))
+```
+
+Cada pareja codifica en su parte derecha el número de montones en los que se ha
+repartido la baraja y en su parte izquierda el montón en el que el espectador ha
+visto la carta. Por ejemplo, la pareja `(2 . 4)` representa que la baraja se ha
+repartido en 4 montones y que la carta escogida está en el segundo montón.
+
+Lo curioso de la función de adivinación es que funciona correctamente siempre
+que se haya repartido la baraja dos veces en cuatro montones y una en tres (las
+partes derechas de las tres parejas deben sumar 11).
+
+Veamos un ejemplo de realización del juego, tal y como ya hicimos en la práctica
+pasada.
+
+La siguiente función, con la constante 90 como argumento, genera
+siempre la secuencia aleatoria que permite seguir el ejemplo. Si se
+cambia por otra constante, la secuencia también se reperirá siempre
+aunque será otra. Tener siempre la misma secuencia aleatoria permite
+poder depurar la programación trabajando siempre con el mismo ejemplo
+aleatorio.
+
+```racket
+(random-seed 90)
+```
+Si en lugar de una constante se usa un valor variable, se obtiene una
+secuencia aleatoria distinta cada vez que se ejecute el programa. 
+
+Ejemplo:
+
+```racket
+(random-seed (modulo (current-milliseconds) (expt 2 31)))
+```
+
+1. Repartimos una lista de 48 cartas en cuatro montones. Pedimos a un espectador
+   que nos diga en qué orden colocamos los montones, poniendo, por ejemplo,
+   primero el primero, después el cuarto, después el segundo y después el tercero:
+
+    ```racket
+    (define t1 (reordena-cuatro-montones (cartas 48) first fourth second third))
+    ```
+
+2. Visualizamos los montones y pedimos al espectador que piense en una
+carta sin decirla. Por ejemplo el as de tréboles. 
+
+    ```racket
+    t1 ; ⇒ ((K♦ 3♦ 6♠ 6♦ 3♥ K♣ 8♦ 5♦ 6♣ 8♥ 5♠ A♣)
+       ;   (8♠ 8♣ 9♠ 7♠ 2♣ 7♣ K♥ Q♠ 7♥ Q♣ 9♦ J♥)
+       ;   (4♠ 2♥ K♠ Q♥ 7♦ J♣ 9♣ 6♥ 2♠ 9♥ 4♣ A♥)
+       ;   (5♣ 2♦ J♦ 4♥ A♠ 5♥ 3♠ J♠ A♦ 3♣ 4♦ Q♦))
+    ```
+
+3. Preguntamos al espectador en qué montón se encuentra la carta. Anotamos en la
+parte izquierda de `p1` el montón en el que está (montón 1), y la parte derecha el
+número de montones (4).
+
+    ```racket
+    (define p1 '(1 . 4))
+    p1
+    ```
+
+4. Repetimos la operación con `t2`, pero ahora repartiendo en tres montones nada
+más. Podemos pedir a otro espectador que nos diga el orden en el que se
+colocan los montones. Por ejemplo, primero el segundo, después el tercero y
+después el primero.
+
+```racket
+(define t2 (reordena-tres-montones (junta-montones t1) second third first))
+```
+
+5. Visualizamos `t2` y determinamos la pareja según donde está el as de trébol:
+
+    ```racket
+    t2 ; ⇒ ((3♦ 3♥ 5♦ 5♠ 8♣ 2♣ Q♠ 9♦ 2♥ 7♦ 6♥ 4♣ 2♦ A♠ J♠ 4♦)
+       ;    (6♠ K♣ 6♣ A♣ 9♠ 7♣ 7♥ J♥ K♠ J♣ 2♠ A♥ J♦ 5♥ A♦ Q♦)
+       ;    (K♦ 6♦ 8♦ 8♥ 8♠ 7♠ K♥ Q♣ 4♠ Q♥ 9♣ 9♥ 5♣ 4♥ 3♠ 3♣))
+       ;En este caso (2 . 3) (el montón 2 de 3)
+    (define p2 '(2 . 3))
+    p2
+    ```
+
+6. Repetimos una última vez el reparto y ordenación de montones, pero con 4. Hay
+que hacer tres repartos, uno de 3 montones y los otros dos de 4, pero no
+necesariamente en el orden en el que se ha hecho (4-3-4). Se podía haber hecho
+primero el reparto en tres montones, o haberlo dejado para el final. 
+
+    ```racket
+    (define t3 (reordena-cuatro-montones (junta-montones t2) fourth second first third))
+    ```
+    
+7. Visualizamos `t3` y definimos la pareja `p3` según el montón del as de trébol: 
+
+    ```racket
+    t3 ; ⇒ ((5♠ 9♦ 4♣ 4♦ A♣ J♥ A♥ Q♦ 8♥ Q♣ 9♥ 3♣)
+       ;    (5♦ Q♠ 6♥ J♠ 6♣ 7♥ 2♠ A♦ 8♦ K♥ 9♣ 3♠)
+       ;    (3♦ 8♣ 2♥ 2♦ 6♠ 9♠ K♠ J♦ K♦ 8♠ 4♠ 5♣)
+       ;    (3♥ 2♣ 7♦ A♠ K♣ 7♣ J♣ 5♥ 6♦ 7♠ Q♥ 4♥))
+       ;Esta vez es (1 . 4)
+    (define p3 '(1 . 4))
+    p3
+    ```
+
+8. Ya tenemos las tres parejas mágicas que nos adivian la carta:
+
+    ```racket
+    (adivina (junta-montones t3) p1 p2 p3) ; ⇒ A♣
+    ```
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2022-23  
+Lenguajes y Paradigmas de Programación, curso 2023-24  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
