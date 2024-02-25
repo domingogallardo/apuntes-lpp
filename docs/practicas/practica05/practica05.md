@@ -492,9 +492,9 @@ más. Podemos pedir a otro espectador que nos diga el orden en el que se
 colocan los montones. Por ejemplo, primero el segundo, después el tercero y
 después el primero.
 
-```racket
-(define t2 (reordena-tres-montones (junta-montones t1) second third first))
-```
+    ```racket
+    (define t2 (reordena-tres-montones (junta-montones t1) second third first))
+    ```
 
 5. Visualizamos `t2` y determinamos la pareja según donde está el as de trébol:
 
