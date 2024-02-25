@@ -337,17 +337,17 @@ Ejemplo:
 ### Ejercicio 6
 
 Vamos a mejorar el juego de cartas de la semana anterior, usando la baraja
-completa y dando más libertad al reparto de cartas en montones y haciendo más
+completa y dando más libertad al reparto de cartas en montones, haciendo más
 inverosímil todavía la adivinación de la carta elegida.
 
 Usamos la función `(cartas num-cartas)` del fichero `lpp.rkt` y la función
 `(reparte-tres lista-cartas)` definida en la práctica anterior.
 
-!!! Important "Usa funciones de orden superior"
+!!! Danger "Usa funciones de orden superior"
     Para la implementación de las siguientes funciones deberás usar, siempre que sea
     posible, funciones de orden superior en lugar de funciones recursivas.
 
-a) Define una nueva versión de la función coloca usando número variable de
+a) Define una nueva versión de la función `coloca` usando número variable de
 argumentos. La nueva versión de la función `(coloca ...)` solo tiene como
 obligatorio el primer argumento, la lista de n listas. El resto de argumentos es
 opcional y puede ir de 0 a n elementos.
@@ -359,11 +359,11 @@ se devuelve por convenio la lista de n listas tal cual, sin variar.
 Ejemplo:
 
 ```racket
-(coloca '(() () ()) '(a b c)) ; ⇒ '((a) (b) (c))
-(coloca '((a) (a)) '(b b)) ; ⇒ '((b a) (b a))
-(coloca '((a b c d)) '(e)) ; ⇒ '((e a b c d))
-(coloca '() '()) ; ⇒ '()
-(coloca '((a) (b c) (d e f) (g h i j)) '(k l m n)) ; ⇒ '((k a) (l b c) (m d e f) (n g h i j))
+(coloca '(() () ()) 'a 'b 'c)) ; ⇒ '((a) (b) (c))
+(coloca '((a) (a)) 'b 'b)) ; ⇒ '((b a) (b a))
+(coloca '((a b c d)) 'e) ; ⇒ '((e a b c d))
+(coloca '()) ; ⇒ '()
+(coloca '((a) (b c) (d e f) (g h i j)) 'k 'l 'm 'n)) ; ⇒ '((k a) (l b c) (m d e f) (n g h i j))
 ```
 
 Implementa una función `reparte-cuatro` inspirada en `reparte-tres` y con idéntica estructura.
