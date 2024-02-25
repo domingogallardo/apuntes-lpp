@@ -389,9 +389,10 @@ orden en que se han proporcionado.
 Usando las funciones definidas anteriormente, implementa las funciones
 `(reordena-tres-montones baraja f-ordinal1 f-ordinal2 f-ordinal3)` y
 `(reordena-cuatro-montones baraja f-ordinal1 f-ordinal2 f-ordinal3 f-ordinal4)`
-que reparten las cartas de una supuesta baraja, lista de cartas, en tres o cuatro montones,
-lista de sublistas de cartas, y después reordena los montones, o sublistas, según el
-orden establecido por las funciones "ordinales" pasadas como argumentos a continuación de la baraja.
+que reparten las cartas de una supuesta baraja (lista de cartas) en tres o
+cuatro montones (lista de sublistas de cartas) y después reordena los montones,
+o sublistas, según el orden establecido por las funciones "ordinales" pasadas
+como argumentos a continuación de la baraja.
 
 ```racket
 (reordena-tres-montones  '(A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ J♣ Q♣ K♣) second first third)
