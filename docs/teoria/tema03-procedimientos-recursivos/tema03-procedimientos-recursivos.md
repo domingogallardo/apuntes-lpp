@@ -22,7 +22,7 @@ estilo de la recursión y generando *procesos iterativos* o usando un
 enfoque automático llamado *memoization* en el que se guardan los
 resultados de cada llamada recursiva. Por último, veremos un último
 ejemplo curioso e interesante de la recursión para realizar figuras
-fractales con gráficos de tortuga.
+fractales con la librería gráfica de Racket.
 
 ## 1. El coste de la recursión
 
