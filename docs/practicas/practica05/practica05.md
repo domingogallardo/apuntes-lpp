@@ -401,14 +401,14 @@ como argumentos a continuación de la baraja.
               
 (reordena-cuatro-montones  '(A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ J♣ Q♣ K♣) fourth second first third)
 ; ⇒
-; '((4♣ 8♣ K♣)(2♣ 6♣ J♣) (A♣ 5♣ 9♣) (3♣ 7♣ Q♣))
+; '((4♣ 8♣ K♣) (2♣ 6♣ J♣) (A♣ 5♣ 9♣) (3♣ 7♣ Q♣))
 ```
 
 c) Implementa la función `(junta-montones montones)` concatena la lista de sublistas
 de cartas (montones) en una sola lista de cartas.
 
 ```racket
-(junta-montones '((4♣ 8♣ K♣)(2♣ 6♣ J♣) (A♣ 5♣ 9♣) (3♣ 7♣ Q♣)))
+(junta-montones '((4♣ 8♣ K♣) (2♣ 6♣ J♣) (A♣ 5♣ 9♣) (3♣ 7♣ Q♣)))
 ; ⇒
 ; (4♣ 8♣ K♣ 2♣ 6♣ J♣ A♣ 5♣ 9♣ 3♣ 7♣ Q♣)
 ```
