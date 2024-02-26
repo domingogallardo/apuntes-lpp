@@ -323,7 +323,7 @@ El código completo:
 (define (pascal-suma-dos-a-dos lista-fila)
    (if (null? (rest lista-fila))
       '()
-      (cons (+ (first lista-fila) (first (rest lista-fila)))
+      (cons (+ (first lista-fila) (second lista-fila))
             (pascal-suma-dos-a-dos (rest lista-fila)))))
 ```
 
