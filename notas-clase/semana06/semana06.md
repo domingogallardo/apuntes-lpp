@@ -432,15 +432,15 @@ estructura jerárquica de las listas estructuradas.
 
 - `(pertenece-lista? dato lista)`: busca una hoja en una lista
   estructurada
-- `(altura lista)`: devuelve el número de niveles de una lista
-  estructurada.
-- `(nivel-lista dato lista)`: devuelve el nivel en el que se encuentra
-  un dato en una lista
 - `(cuadrado-estruct lista)`: eleva todas las hojas al cuadrado
   (suponemos que la lista estructurada contiene números)
 - `(map-estruct f lista)`: similar a map, aplica una función a todas las
   hojas de la lista estructurada y devuelve el resultado (otra lista
   estructurada)
+- `(altura lista)`: devuelve el número de niveles de una lista
+  estructurada.
+- `(nivel-lista dato lista)`: devuelve el nivel en el que se encuentra
+  un dato en una lista
 
 ---
 
@@ -477,6 +477,71 @@ estructura jerárquica de las listas estructuradas.
 
 
 ---
+
+
+### `(cuadrado-estruct lista)`
+
+- Devuelve una lista estructurada con la misma estructura y sus
+números elevados al cuadrado.
+
+    ```racket
+    (cuadrado-estruct '(2 3 (4 (5)))) ⇒ (4 9 (16 (25))
+    ```
+
+- Solución recursiva:
+
+    ```racket
+    (define (cuadrado-estruct lista)
+      (cond ((null? lista) '())
+            ((hoja? lista) (* lista lista))
+            (else (cons (cuadrado-estruct (first lista))
+                        (cuadrado-estruct (rest lista))))))
+    ```
+
+
+- Solución con `map`:
+
+    ```racket
+    (define (cuadrado-estruct-fos lista)
+      (if (hoja? lista)
+          (* lista lista)
+          (map cuadrado-estruct-fos lista)))
+    ```
+
+----
+
+### `(map-estruct f lista)`
+
+- Devuelve una lista estructurada igual que la original con el
+resultado de aplicar a cada uno de sus hojas la función `f`
+
+    ```racket
+    (map-estruct (lambda (x) (* x x)) '(2 3 (4 (5)))) 
+    ; ⇒ (4 9 (16 (25))
+    ```
+
+- Solución recursiva:
+
+    ```racket
+    (define (map-estruct f lista)
+      (cond ((null? lista) '())
+            ((hoja? lista) (f lista))
+            (else (cons (map-estruct f (first lista))
+                        (map-estruct f (rest lista))))))
+    ```
+	
+
+- Solución con `map`:
+
+    ```racket
+    (define (map-estruct-fos f lista)
+      (if (hoja? lista)
+          (f lista)
+          (map (lambda (elem)
+                 (map-estruct-fos f elem)) lista)))
+    ```
+
+----
 
 ### `(altura lista)`
 
@@ -575,68 +640,3 @@ nivel mayor.
 
                              
 ----
-
-### `(cuadrado-estruct lista)`
-
-- Devuelve una lista estructurada con la misma estructura y sus
-números elevados al cuadrado.
-
-    ```racket
-    (cuadrado-estruct '(2 3 (4 (5)))) ⇒ (4 9 (16 (25))
-    ```
-
-- Solución recursiva:
-
-    ```racket
-    (define (cuadrado-estruct lista)
-      (cond ((null? lista) '())
-            ((hoja? lista) (* lista lista))
-            (else (cons (cuadrado-estruct (first lista))
-                        (cuadrado-estruct (rest lista))))))
-    ```
-
-
-- Solución con `map`:
-
-    ```racket
-    (define (cuadrado-estruct-fos lista)
-      (if (hoja? lista)
-          (* lista lista)
-          (map cuadrado-estruct-fos lista)))
-    ```
-
-----
-
-### `(map-estruct f lista)`
-
-- Devuelve una lista estructurada igual que la original con el
-resultado de aplicar a cada uno de sus hojas la función `f`
-
-    ```racket
-    (map-estruct (lambda (x) (* x x)) '(2 3 (4 (5)))) 
-    ; ⇒ (4 9 (16 (25))
-    ```
-
-- Solución recursiva:
-
-    ```racket
-    (define (map-estruct f lista)
-      (cond ((null? lista) '())
-            ((hoja? lista) (f lista))
-            (else (cons (map-estruct f (first lista))
-                        (map-estruct f (rest lista))))))
-    ```
-	
-
-- Solución con `map`:
-
-    ```racket
-    (define (map-estruct-fos f lista)
-      (if (hoja? lista)
-          (f lista)
-          (map (lambda (elem)
-                 (map-estruct-fos f elem)) lista)))
-    ```
-
-----
-
