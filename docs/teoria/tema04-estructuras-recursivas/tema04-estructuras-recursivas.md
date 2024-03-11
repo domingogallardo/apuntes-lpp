@@ -724,6 +724,7 @@ Solución con `map`:
 ```
 
 
+<!--
 
 ## 2. Árboles
 
@@ -1502,9 +1503,11 @@ En este tema explicamos conceptos de los siguientes capítulos del libro *Struct
 
 - [2.2.2 - Hierarchical Structures](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.2)
 
+-->
+
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2022-23  
+Lenguajes y Paradigmas de Programación, curso 2023-24  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
 
