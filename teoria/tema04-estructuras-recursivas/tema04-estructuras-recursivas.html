@@ -958,15 +958,15 @@ estructura jerárquica de las listas estructuradas.</p>
 <ul>
 <li><code>(pertenece-lista? dato lista)</code>: busca una hoja en una lista
   estructurada.</li>
-<li><code>(altura lista)</code>: devuelve el número de niveles de una lista
-  estructurada.</li>
-<li><code>(nivel-hoja dato lista)</code>: devuelve el nivel en el que se encuentra
-  un dato en una lista.</li>
 <li><code>(cuadrado-estruct lista)</code>: eleva todas las hojas al cuadrado
   (suponemos que la lista estructurada contiene números).</li>
 <li><code>(map-estruct f lista)</code>: similar a map, aplica una función a todas las
   hojas de la lista estructurada y devuelve el resultado (otra lista
   estructurada).</li>
+<li><code>(altura lista)</code>: devuelve el número de niveles de una lista
+  estructurada.</li>
+<li><code>(nivel-hoja dato lista)</code>: devuelve el nivel en el que se encuentra
+  un dato en una lista.</li>
 </ul>
 <h5 id="1231-pertenece-lista-dato-lista">1.2.3.1. <code>(pertenece-lista? dato lista)</code><a class="headerlink" href="#1231-pertenece-lista-dato-lista" title="Permanent link">&para;</a></h5>
 <p>Comprueba si el <code>dato</code> aparece en la lista estructurada. </p>
@@ -988,7 +988,63 @@ estructura jerárquica de las listas estructuradas.</p>
 <span class="w">    </span><span class="p">(</span><span class="n">exists?</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
 <span class="w">               </span><span class="p">(</span><span class="n">pertenece-fos?</span><span class="w"> </span><span class="n">dato</span><span class="w"> </span><span class="n">elem</span><span class="p">))</span><span class="w"> </span><span class="n">lista</span><span class="p">)))</span>
 </code></pre></div>
-<h5 id="1232-altura-lista">1.2.3.2. <code>(altura lista)</code><a class="headerlink" href="#1232-altura-lista" title="Permanent link">&para;</a></h5>
+<h5 id="1232-cuadrado-estruct-lista">1.2.3.2. <code>(cuadrado-estruct lista)</code><a class="headerlink" href="#1232-cuadrado-estruct-lista" title="Permanent link">&para;</a></h5>
+<p>Vamos ahora a ver un tipo de función distinta. Una que construye una
+lista estructurada y la devuelve. </p>
+<p>Queremos implementar la función <code>(cuadrado-estruct lista)</code> que recibe
+una lista estructurada y devuelve otra lista estructurada con la misma
+estructura y sus números elevados al cuadrado.</p>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cuadrado-estruct</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">))))</span><span class="w"> </span><span class="c1">; ⇒ (4 9 (16 (25))</span>
+</code></pre></div>
+<p>La solución recursiva es:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">cuadrado-estruct</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="k">cond</span><span class="w"> </span><span class="p">((</span><span class="nb">null?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">())</span>
+<span class="w">        </span><span class="p">((</span><span class="n">hoja?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">lista</span><span class="w"> </span><span class="n">lista</span><span class="w"> </span><span class="p">))</span>
+<span class="w">        </span><span class="p">(</span><span class="k">else</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="p">(</span><span class="n">cuadrado-estruct</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">lista</span><span class="p">))</span>
+<span class="w">                    </span><span class="p">(</span><span class="n">cuadrado-estruct</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista</span><span class="p">))))))</span>
+</code></pre></div>
+<p>Se llama a la recursión con el <code>first</code> y con el <code>rest</code> de la lista
+original. El resultado de ambas llamadas serán las correspondientes
+listas estructuradas con sus elementos elevados al cuadrado. Y se
+devuelve la lista resultante de insertar la lista devuelta en la
+llamada recursiva con el <code>first</code> en la primera posición de la lista
+devuelta en la llamada recursiva con el <code>rest</code>.</p>
+<p>Es muy interesante la versión de esta función con funciones de orden
+superior:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">cuadrado-estruct-fos</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hoja?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">lista</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="n">cuadrado-estruct-fos</span><span class="w"> </span><span class="n">lista</span><span class="p">)))</span>
+</code></pre></div>
+<p>Como una lista estructurada está compuesta de datos o de otras
+sublistas podemos aplicar <code>map</code> para que devuelva la lista resultante
+de transformar la original con la función que le pasamos como
+parámetro.</p>
+<h5 id="1233-map-estruct-f-lista">1.2.3.3. <code>(map-estruct f lista)</code><a class="headerlink" href="#1233-map-estruct-f-lista" title="Permanent link">&para;</a></h5>
+<p>Podemos generalizar la función anterior y definir la función de orden
+superior sobre listas estructuradas <code>(map-estructurada f lista)</code> que
+devuelve una lista estructurada igual que la original con el resultado
+de aplicar a cada uno de sus hojas la función f</p>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">map-estruct</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">))))</span><span class="w"> </span><span class="c1">; ⇒ (4 9 (16 (25))</span>
+</code></pre></div>
+<p>La solución recursiva es una generalización de la función anterior,
+usando el parámetro <code>f</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">map-estruct</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="k">cond</span><span class="w"> </span><span class="p">((</span><span class="nb">null?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">())</span>
+<span class="w">        </span><span class="p">((</span><span class="n">hoja?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="n">lista</span><span class="p">))</span>
+<span class="w">        </span><span class="p">(</span><span class="k">else</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="p">(</span><span class="n">map-estruct</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">lista</span><span class="p">))</span>
+<span class="w">                    </span><span class="p">(</span><span class="n">map-estruct</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista</span><span class="p">))))))</span>
+</code></pre></div>
+<p>Solución con <code>map</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">map-estruct-fos</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hoja?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+<span class="w">             </span><span class="p">(</span><span class="n">map-estruct-fos</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">elem</span><span class="p">))</span><span class="w"> </span><span class="n">lista</span><span class="p">)))</span>
+</code></pre></div>
+<h5 id="1234-altura-lista">1.2.3.4. <code>(altura lista)</code><a class="headerlink" href="#1234-altura-lista" title="Permanent link">&para;</a></h5>
 <p>La <em>altura</em> de una lista estructurada viene dada por su número de
 niveles: una lista plana tiene una altura de 1, la lista <code>((1 2 3) 4
 5)</code> tiene una altura de 2.</p>
@@ -1026,7 +1082,7 @@ lista de valores que devuelve el map.</p>
 <span class="w">       </span><span class="mi">0</span>
 <span class="w">       </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="nb">apply</span><span class="w"> </span><span class="nb">max</span><span class="w"> </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="n">altura-fos</span><span class="w"> </span><span class="n">lista</span><span class="p">)))))</span>
 </code></pre></div>
-<h5 id="1233-nivel-hoja-dato-lista">1.2.3.3. <code>(nivel-hoja dato lista)</code><a class="headerlink" href="#1233-nivel-hoja-dato-lista" title="Permanent link">&para;</a></h5>
+<h5 id="1235-nivel-hoja-dato-lista">1.2.3.5. <code>(nivel-hoja dato lista)</code><a class="headerlink" href="#1235-nivel-hoja-dato-lista" title="Permanent link">&para;</a></h5>
 <p>Veamos una última función <code>(nivel-hoja dato lista)</code> que recorre una
 lista estructurada buscando el dato y devuelve el nivel en que se
 encuentra. Si el dato no se encuentra en la lista, se devolverá -1. Si
@@ -1060,62 +1116,6 @@ nivel mayor.</p>
 <span class="w">      </span><span class="p">(</span><span class="n">suma-1-si-mayor-igual-que-0</span>
 <span class="w">       </span><span class="p">(</span><span class="nb">foldr</span><span class="w"> </span><span class="nb">max</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
 <span class="w">                           </span><span class="p">(</span><span class="n">nivel-hoja-fos</span><span class="w"> </span><span class="n">dato</span><span class="w"> </span><span class="n">elem</span><span class="p">))</span><span class="w"> </span><span class="n">lista</span><span class="p">)))))</span>
-</code></pre></div>
-<h5 id="1234-cuadrado-estruct-lista">1.2.3.4. <code>(cuadrado-estruct lista)</code><a class="headerlink" href="#1234-cuadrado-estruct-lista" title="Permanent link">&para;</a></h5>
-<p>Vamos ahora a ver un tipo de función distinta. Una que construye una
-lista estructurada y la devuelve. </p>
-<p>Queremos implementar la función <code>(cuadrado-estruct lista)</code> que recibe
-una lista estructurada y devuelve otra lista estructurada con la misma
-estructura y sus números elevados al cuadrado.</p>
-<p>Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cuadrado-estruct</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">))))</span><span class="w"> </span><span class="c1">; ⇒ (4 9 (16 (25))</span>
-</code></pre></div>
-<p>La solución recursiva es:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">cuadrado-estruct</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">  </span><span class="p">(</span><span class="k">cond</span><span class="w"> </span><span class="p">((</span><span class="nb">null?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">())</span>
-<span class="w">        </span><span class="p">((</span><span class="n">hoja?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">lista</span><span class="w"> </span><span class="n">lista</span><span class="w"> </span><span class="p">))</span>
-<span class="w">        </span><span class="p">(</span><span class="k">else</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="p">(</span><span class="n">cuadrado-estruct</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">lista</span><span class="p">))</span>
-<span class="w">                    </span><span class="p">(</span><span class="n">cuadrado-estruct</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista</span><span class="p">))))))</span>
-</code></pre></div>
-<p>Se llama a la recursión con el <code>first</code> y con el <code>rest</code> de la lista
-original. El resultado de ambas llamadas serán las correspondientes
-listas estructuradas con sus elementos elevados al cuadrado. Y se
-devuelve la lista resultante de insertar la lista devuelta en la
-llamada recursiva con el <code>first</code> en la primera posición de la lista
-devuelta en la llamada recursiva con el <code>rest</code>.</p>
-<p>Es muy interesante la versión de esta función con funciones de orden
-superior:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">cuadrado-estruct-fos</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hoja?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">      </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">lista</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">      </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="n">cuadrado-estruct-fos</span><span class="w"> </span><span class="n">lista</span><span class="p">)))</span>
-</code></pre></div>
-<p>Como una lista estructurada está compuesta de datos o de otras
-sublistas podemos aplicar <code>map</code> para que devuelva la lista resultante
-de transformar la original con la función que le pasamos como
-parámetro.</p>
-<h5 id="1235-map-estruct-f-lista">1.2.3.5. <code>(map-estruct f lista)</code><a class="headerlink" href="#1235-map-estruct-f-lista" title="Permanent link">&para;</a></h5>
-<p>Podemos generalizar la función anterior y definir la función de orden
-superior sobre listas estructuradas <code>(map-estructurada f lista)</code> que
-devuelve una lista estructurada igual que la original con el resultado
-de aplicar a cada uno de sus hojas la función f</p>
-<p>Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">map-estruct</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">))))</span><span class="w"> </span><span class="c1">; ⇒ (4 9 (16 (25))</span>
-</code></pre></div>
-<p>La solución recursiva es una generalización de la función anterior,
-usando el parámetro <code>f</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">map-estruct</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">  </span><span class="p">(</span><span class="k">cond</span><span class="w"> </span><span class="p">((</span><span class="nb">null?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">())</span>
-<span class="w">        </span><span class="p">((</span><span class="n">hoja?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="n">lista</span><span class="p">))</span>
-<span class="w">        </span><span class="p">(</span><span class="k">else</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="p">(</span><span class="n">map-estruct</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">lista</span><span class="p">))</span>
-<span class="w">                    </span><span class="p">(</span><span class="n">map-estruct</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista</span><span class="p">))))))</span>
-</code></pre></div>
-<p>Solución con <code>map</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">map-estruct-fos</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hoja?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">      </span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">      </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-<span class="w">             </span><span class="p">(</span><span class="n">map-estruct-fos</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">elem</span><span class="p">))</span><span class="w"> </span><span class="n">lista</span><span class="p">)))</span>
 </code></pre></div>
 <!--
 
