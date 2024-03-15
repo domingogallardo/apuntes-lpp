@@ -496,15 +496,15 @@ estructura jerárquica de las listas estructuradas.
 
 - `(pertenece-lista? dato lista)`: busca una hoja en una lista
   estructurada.
-- `(altura lista)`: devuelve el número de niveles de una lista
-  estructurada.
-- `(nivel-hoja dato lista)`: devuelve el nivel en el que se encuentra
-  un dato en una lista.
 - `(cuadrado-estruct lista)`: eleva todas las hojas al cuadrado
   (suponemos que la lista estructurada contiene números).
 - `(map-estruct f lista)`: similar a map, aplica una función a todas las
   hojas de la lista estructurada y devuelve el resultado (otra lista
   estructurada).
+- `(altura lista)`: devuelve el número de niveles de una lista
+  estructurada.
+- `(nivel-hoja dato lista)`: devuelve el nivel en el que se encuentra
+  un dato en una lista.
 
 ##### 1.2.3.1. `(pertenece-lista? dato lista)`
 
@@ -536,7 +536,89 @@ Con funciones de orden superior:
                (pertenece-fos? dato elem)) lista)))
 ```
 
-##### 1.2.3.2. `(altura lista)` #####
+##### 1.2.3.2. `(cuadrado-estruct lista)` #####
+
+Vamos ahora a ver un tipo de función distinta. Una que construye una
+lista estructurada y la devuelve. 
+
+Queremos implementar la función `(cuadrado-estruct lista)` que recibe
+una lista estructurada y devuelve otra lista estructurada con la misma
+estructura y sus números elevados al cuadrado.
+
+Por ejemplo:
+
+```racket
+(cuadrado-estruct '(2 3 (4 (5)))) ; ⇒ (4 9 (16 (25))
+```
+
+La solución recursiva es:
+
+```racket
+(define (cuadrado-estruct lista)
+  (cond ((null? lista) '())
+        ((hoja? lista) (* lista lista ))
+        (else (cons (cuadrado-estruct (first lista))
+                    (cuadrado-estruct (rest lista))))))
+```
+
+Se llama a la recursión con el `first` y con el `rest` de la lista
+original. El resultado de ambas llamadas serán las correspondientes
+listas estructuradas con sus elementos elevados al cuadrado. Y se
+devuelve la lista resultante de insertar la lista devuelta en la
+llamada recursiva con el `first` en la primera posición de la lista
+devuelta en la llamada recursiva con el `rest`.
+
+Es muy interesante la versión de esta función con funciones de orden
+superior:
+
+```racket
+(define (cuadrado-estruct-fos lista)
+  (if (hoja? lista)
+      (* lista lista)
+      (map cuadrado-estruct-fos lista)))
+```
+
+Como una lista estructurada está compuesta de datos o de otras
+sublistas podemos aplicar `map` para que devuelva la lista resultante
+de transformar la original con la función que le pasamos como
+parámetro.
+
+##### 1.2.3.3. `(map-estruct f lista)` #####
+
+Podemos generalizar la función anterior y definir la función de orden
+superior sobre listas estructuradas `(map-estructurada f lista)` que
+devuelve una lista estructurada igual que la original con el resultado
+de aplicar a cada uno de sus hojas la función f
+
+Por ejemplo:
+
+```racket
+(map-estruct (lambda (x) (* x x)) '(2 3 (4 (5)))) ; ⇒ (4 9 (16 (25))
+```
+
+La solución recursiva es una generalización de la función anterior,
+usando el parámetro `f`:
+
+```racket
+(define (map-estruct f lista)
+  (cond ((null? lista) '())
+        ((hoja? lista) (f lista))
+        (else (cons (map-estruct f (first lista))
+                    (map-estruct f (rest lista))))))
+```
+	
+Solución con `map`:
+
+```racket
+(define (map-estruct-fos f lista)
+  (if (hoja? lista)
+      (f lista)
+      (map (lambda (elem)
+             (map-estruct-fos f elem)) lista)))
+```
+
+
+##### 1.2.3.4. `(altura lista)` #####
 
 La *altura* de una lista estructurada viene dada por su número de
 niveles: una lista plana tiene una altura de 1, la lista `((1 2 3) 4
@@ -592,7 +674,7 @@ Podríamos hacerlo también sustituyendo el `foldr` por un `apply`:
        (+ 1 (apply max (map altura-fos lista)))))
 ```
 
-##### 1.2.3.3. `(nivel-hoja dato lista)` #####
+##### 1.2.3.5. `(nivel-hoja dato lista)` #####
 
 Veamos una última función `(nivel-hoja dato lista)` que recorre una
 lista estructurada buscando el dato y devuelve el nivel en que se
@@ -641,88 +723,6 @@ Con funciones de orden superior:
        (foldr max -1 (map (lambda (elem)
                            (nivel-hoja-fos dato elem)) lista)))))
 ```
-
-##### 1.2.3.4. `(cuadrado-estruct lista)` #####
-
-Vamos ahora a ver un tipo de función distinta. Una que construye una
-lista estructurada y la devuelve. 
-
-Queremos implementar la función `(cuadrado-estruct lista)` que recibe
-una lista estructurada y devuelve otra lista estructurada con la misma
-estructura y sus números elevados al cuadrado.
-
-Por ejemplo:
-
-```racket
-(cuadrado-estruct '(2 3 (4 (5)))) ; ⇒ (4 9 (16 (25))
-```
-
-La solución recursiva es:
-
-```racket
-(define (cuadrado-estruct lista)
-  (cond ((null? lista) '())
-        ((hoja? lista) (* lista lista ))
-        (else (cons (cuadrado-estruct (first lista))
-                    (cuadrado-estruct (rest lista))))))
-```
-
-Se llama a la recursión con el `first` y con el `rest` de la lista
-original. El resultado de ambas llamadas serán las correspondientes
-listas estructuradas con sus elementos elevados al cuadrado. Y se
-devuelve la lista resultante de insertar la lista devuelta en la
-llamada recursiva con el `first` en la primera posición de la lista
-devuelta en la llamada recursiva con el `rest`.
-
-Es muy interesante la versión de esta función con funciones de orden
-superior:
-
-```racket
-(define (cuadrado-estruct-fos lista)
-  (if (hoja? lista)
-      (* lista lista)
-      (map cuadrado-estruct-fos lista)))
-```
-
-Como una lista estructurada está compuesta de datos o de otras
-sublistas podemos aplicar `map` para que devuelva la lista resultante
-de transformar la original con la función que le pasamos como
-parámetro.
-
-##### 1.2.3.5. `(map-estruct f lista)` #####
-
-Podemos generalizar la función anterior y definir la función de orden
-superior sobre listas estructuradas `(map-estructurada f lista)` que
-devuelve una lista estructurada igual que la original con el resultado
-de aplicar a cada uno de sus hojas la función f
-
-Por ejemplo:
-
-```racket
-(map-estruct (lambda (x) (* x x)) '(2 3 (4 (5)))) ; ⇒ (4 9 (16 (25))
-```
-
-La solución recursiva es una generalización de la función anterior,
-usando el parámetro `f`:
-
-```racket
-(define (map-estruct f lista)
-  (cond ((null? lista) '())
-        ((hoja? lista) (f lista))
-        (else (cons (map-estruct f (first lista))
-                    (map-estruct f (rest lista))))))
-```
-	
-Solución con `map`:
-
-```racket
-(define (map-estruct-fos f lista)
-  (if (hoja? lista)
-      (f lista)
-      (map (lambda (elem)
-             (map-estruct-fos f elem)) lista)))
-```
-
 
 <!--
 
