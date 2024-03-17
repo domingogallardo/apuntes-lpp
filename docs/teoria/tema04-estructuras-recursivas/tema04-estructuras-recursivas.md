@@ -724,8 +724,6 @@ Con funciones de orden superior:
                            (nivel-hoja-fos dato elem)) lista)))))
 ```
 
-<!--
-
 ## 2. Árboles
 
 ### 2.1. Definición de árboles en Scheme
@@ -1502,8 +1500,6 @@ constructor `construye-arbolb`.
 En este tema explicamos conceptos de los siguientes capítulos del libro *Structure and Intepretation of Computer Programs*:
 
 - [2.2.2 - Hierarchical Structures](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.2)
-
--->
 
 ----
 

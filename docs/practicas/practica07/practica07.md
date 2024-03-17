@@ -105,7 +105,10 @@ de la expresión.
 
 a) Implementa la función recursiva `(concatena lista)` que recibe una
 lista estructurada con símbolos y devuelve la cadena resultante de
-concatenar todos los símbolos de la lista estructurada.
+concatenar todos los símbolos de la lista estructurada. Implementa dos versiones
+de la función, una con **recursión pura** y otra con **funciones de orden
+superior**.
+
 
 Ejemplos:
 
