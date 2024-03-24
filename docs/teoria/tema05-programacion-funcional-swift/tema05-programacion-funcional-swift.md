@@ -1365,6 +1365,7 @@ print(suma(lista: lista2))
 // Imprime 15
 ```
 
+<!--
 
 ## 9. Opcionales
 
@@ -2485,8 +2486,10 @@ print(first(rest(lista2)!)!) // Imprime "B"
     - [Generics](https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-ID179)
 - [Biblioteca estándar de Swift](https://developer.apple.com/library/ios/documentation/General/Reference/SwiftStandardLibraryReference/)
 
+-->
+
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2022–23  
+Lenguajes y Paradigmas de Programación, curso 2023–24  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

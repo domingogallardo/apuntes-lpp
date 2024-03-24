@@ -296,6 +296,8 @@ arbolb)` que comprueba si un árbol binario está ordenado.
 
 ### Ejercicio 7 ###
 
+a)
+
 Dado un árbol binario y un camino definido como una lista de símbolos:
 `'(< > = > > =)` en el que:
 
@@ -313,8 +315,28 @@ lista con los datos recogidos por el camino.
 (camino-arbolb arbolb '(> = < < =)) ; ⇒ '(15 10)
 ```
 
+b) Recuerda que un árbol binario está ordenado si el dato de la raíz es mayor
+que todos los datos del hijo izquierdo y menor o igual que los del hijo derecho,
+y a su vez ambos hijos también están ordenados. 
+
+Implementa de forma recursiva la función `(inserta-ordenado n a)` que recibe un
+número y un árbol binario de números que está ordenado, y devuelve un nuevo
+árbol binario ordenado que incluye el número. 
+
+Ejemplo:
+
+```
+(define a1 (inserta-ordenado 5 arbolb-vacio)) 
+(define a2 (inserta-ordenado 4 a1))
+(define a3 (inserta-ordenado 2 a2))
+(define a4 (inserta-ordenado 6 a3))) 
+```
+
+<img src="imagenes/arbolesb-ordenados.png" width="500px"/>
+
+
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2022-23  
+Lenguajes y Paradigmas de Programación, curso 2023-24  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
