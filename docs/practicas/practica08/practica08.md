@@ -296,9 +296,7 @@ arbolb)` que comprueba si un árbol binario está ordenado.
 
 ### Ejercicio 7 ###
 
-a)
-
-Dado un árbol binario y un camino definido como una lista de símbolos:
+a) Dado un árbol binario y un camino definido como una lista de símbolos:
 `'(< > = > > =)` en el que:
 
 - `<`: indica que nos vamos por la rama izquierda
