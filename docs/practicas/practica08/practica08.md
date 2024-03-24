@@ -332,7 +332,7 @@ Ejemplo:
 (define a4 (inserta-ordenado 6 a3))) 
 ```
 
-<img src="imagenes/arbolesb-ordenados.png" width="500px"/>
+<img src="imagenes/arbolesb-ordenados.png" width="400px"/>
 
 
 ----
