@@ -2024,7 +2024,7 @@ recursión para obtener el valor esperado.
 
 Por ejemplo, en este caso podemos pensar que para sumar la lista de
 números `(12 3 5 1 8)` podemos obtener un problema más sencillo (una
-lista más pequeña) haciendo el `cdr` de la lista de números y llamando
+lista más pequeña) haciendo el `rest` de la lista de números y llamando
 a la recursión con el resultado. La llamada recursiva devolverá la
 suma de esos números (confiamos en la recursión) y a ese valor basta
 con sumarle el primer número de la lista. Lo podemos representar en el
@@ -2147,7 +2147,7 @@ función `foo`, por tanto, es cuadrático.
 anterior está haciendo cosas de más. Realmente no queremos saber la
 longitud de la lista sino únicamente si esa longitud es mayor que
 uno. Esta comprobación sí que puede hacerse en tiempo
-constante. Lo único que debemos hacer es comprobar si el `cdr` de la
+constante. Lo único que debemos hacer es comprobar si el `rest` de la
 lista es la lista vacía. Si lo es, ya sabemos que la lista original
 tenía un único elemento.
 
@@ -2661,7 +2661,7 @@ La primera pareja cumple las condiciones de ser una lista:
 Al comprobar la implementación de las listas en Scheme, entendemos por
 qué las funciones `car` y `cdr` nos devuelven el primer elemento y el
 resto de la lista. De hecho, las funciones `first` y `rest` se
-implementan usando las funciones `car` y `cdr`.
+implementan usando las funciones `car` y `cdr`. Cuando trabajemos con listas usaremos siempre las funciones `first`y `rest` que son las funciones. de la barrera de abstracción de las listas.
 
 #### 4.1.2. Lista vacía
 
