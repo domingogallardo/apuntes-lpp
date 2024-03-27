@@ -1,21 +1,38 @@
 
+
+
+
 <!doctype html>
 <html lang="es" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
       
       
-        <link rel="prev" href="../practica03/practica03.html">
+        <meta name="lang:clipboard.copy" content="Copiar al portapapeles">
       
+        <meta name="lang:clipboard.copied" content="Copiado al portapapeles">
       
-        <link rel="next" href="../practica05/practica05.html">
+        <meta name="lang:search.language" content="en">
       
-      <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.7">
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No se encontraron documentos">
+      
+        <meta name="lang:search.result.one" content="1 documento encontrado">
+      
+        <meta name="lang:search.result.other" content="# documentos encontrados">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
     
     
       
@@ -23,155 +40,132 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ded33207.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.0284f74d.css">
       
-        
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.01803549.css">
       
-      
-
-    
-    
-    
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <meta name="theme-color" content="#009688">
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
     
       
-
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
     
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
     
     
   </head>
   
+    
+    
+    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="teal">
   
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="Teal" data-md-color-accent="Teal">
-  
-    
-    
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#practica-4-funciones-recursivas-que-devuelven-listas" class="md-skip">
-          Saltar a contenido
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#practica-4-funciones-recursivas-que-devuelven-listas" tabindex="1" class="md-skip">
+        Saltar a contenido
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="LPP" class="md-header-nav__button md-logo">
+          
+            <img src="../../imagenes/logo.png" width="24" height="24">
+          
         </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
-
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="../.." title="LPP" class="md-header__button md-logo" aria-label="LPP" data-md-component="logo">
-      
-  <img src="../../imagenes/logo.png" alt="logo">
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            LPP
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              Práctica 4
-            
-          </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              LPP
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Práctica 4
+              
+            </span>
+          
         </div>
       </div>
-    </div>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Buscar">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
-        </button>
-      </nav>
-      
+      <input type="text" class="md-search__input" name="query" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
+        <div class="md-search-result" data-md-component="result">
           <div class="md-search-result__meta">
-            Inicializando búsqueda
+            Teclee para comenzar búsqueda
           </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
+          <ol class="md-search-result__list"></ol>
         </div>
       </div>
     </div>
   </div>
 </div>
-    
-    
+        
+      </div>
+      
+    </div>
   </nav>
-  
 </header>
     
-    <div class="md-container" data-md-component="container">
-      
+    <div class="md-container">
       
         
-          
-        
       
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
           
             
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    
-
-
-<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="LPP" class="md-nav__button md-logo" aria-label="LPP" data-md-component="logo">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="LPP" class="md-nav__button md-logo">
       
-  <img src="../../imagenes/logo.png" alt="logo">
-
+        <img src="../../imagenes/logo.png" width="48" height="48">
+      
     </a>
     LPP
   </label>
@@ -182,362 +176,299 @@
       
       
 
-  
-  
-  
+
+  <li class="md-nav__item md-nav__item--nested">
     
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
-          Teoría
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_1">
-          <span class="md-nav__icon md-icon"></span>
-          Teoría
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../teoria/tema00-descripcion-asignatura/tema00-descripcion-asignatura.html" class="md-nav__link">
-        Descripción de la asignatura
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../teoria/tema01-historia-lenguajes-programacion/tema01-historia-lenguajes-programacion.html" class="md-nav__link">
-        Tema 1: Historia de los lenguajes de programación
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../teoria/tema02-programacion-funcional/tema02-programacion-funcional.html" class="md-nav__link">
-        Tema 2: Programación funcional
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html" class="md-nav__link">
-        Tema 3: Procedimientos recursivos
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../teoria/tema04-estructuras-recursivas/tema04-estructuras-recursivas.html" class="md-nav__link">
-        Tema 4: Estructuras recursivas
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html" class="md-nav__link">
-        Tema 5: Programación funcional con Swift
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
     
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-          Seminarios
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
-          Seminarios
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../seminarios/seminario1-scheme/seminario1-scheme.html" class="md-nav__link">
-        Seminario de Scheme
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../seminarios/seminario2-swift/seminario2-swift.html" class="md-nav__link">
-        Seminario de Swift
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-          Prácticas
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
-          Prácticas
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../buenas-practicas-programacion-funcional.html" class="md-nav__link">
-        Buenas prácticas de programación funcional
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../practica01/practica01.html" class="md-nav__link">
-        Práctica 1
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../practica02/practica02.html" class="md-nav__link">
-        Práctica 2
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../practica03/practica03.html" class="md-nav__link">
-        Práctica 3
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Práctica 4
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="practica04.html" class="md-nav__link md-nav__link--active">
-        Práctica 4
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
+    <label class="md-nav__link" for="nav-1">
+      Teoría
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        Teoría
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../teoria/tema00-descripcion-asignatura/tema00-descripcion-asignatura.html" title="Descripción de la asignatura" class="md-nav__link">
+      Descripción de la asignatura
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../teoria/tema01-historia-lenguajes-programacion/tema01-historia-lenguajes-programacion.html" title="Tema 1: Historia de los lenguajes de programación" class="md-nav__link">
+      Tema 1: Historia de los lenguajes de programación
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../teoria/tema02-programacion-funcional/tema02-programacion-funcional.html" title="Tema 2: Programación funcional" class="md-nav__link">
+      Tema 2: Programación funcional
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html" title="Tema 3: Procedimientos recursivos" class="md-nav__link">
+      Tema 3: Procedimientos recursivos
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../teoria/tema04-estructuras-recursivas/tema04-estructuras-recursivas.html" title="Tema 4: Estructuras recursivas" class="md-nav__link">
+      Tema 4: Estructuras recursivas
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html" title="Tema 5: Programación funcional con Swift" class="md-nav__link">
+      Tema 5: Programación funcional con Swift
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Seminarios
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Seminarios
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../seminarios/seminario1-scheme/seminario1-scheme.html" title="Seminario de Scheme" class="md-nav__link">
+      Seminario de Scheme
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../seminarios/seminario2-swift/seminario2-swift.html" title="Seminario de Swift" class="md-nav__link">
+      Seminario de Swift
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Prácticas
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Prácticas
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../buenas-practicas-programacion-funcional.html" title="Buenas prácticas de programación funcional" class="md-nav__link">
+      Buenas prácticas de programación funcional
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../practica01/practica01.html" title="Práctica 1" class="md-nav__link">
+      Práctica 1
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../practica02/practica02.html" title="Práctica 2" class="md-nav__link">
+      Práctica 2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../practica03/practica03.html" title="Práctica 3" class="md-nav__link">
+      Práctica 3
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Práctica 4
+      </label>
+    
+    <a href="practica04.html" title="Práctica 4" class="md-nav__link md-nav__link--active">
+      Práctica 4
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#antes-de-la-clase-de-practicas" class="md-nav__link">
+  <a href="#antes-de-la-clase-de-practicas" title="Antes de la clase de prácticas" class="md-nav__link">
     Antes de la clase de prácticas
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicios" class="md-nav__link">
+  <a href="#ejercicios" title="Ejercicios" class="md-nav__link">
     Ejercicios
   </a>
   
-    <nav class="md-nav" aria-label="Ejercicios">
+    <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ejercicio-1" class="md-nav__link">
+  <a href="#ejercicio-1" title="Ejercicio 1" class="md-nav__link">
     Ejercicio 1
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-2" class="md-nav__link">
+  <a href="#ejercicio-2" title="Ejercicio 2" class="md-nav__link">
     Ejercicio 2
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-3" class="md-nav__link">
+  <a href="#ejercicio-3" title="Ejercicio 3" class="md-nav__link">
     Ejercicio 3
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-4" class="md-nav__link">
+  <a href="#ejercicio-4" title="Ejercicio 4" class="md-nav__link">
     Ejercicio 4
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-5" class="md-nav__link">
+  <a href="#ejercicio-5" title="Ejercicio 5" class="md-nav__link">
     Ejercicio 5
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-6" class="md-nav__link">
+  <a href="#ejercicio-6" title="Ejercicio 6" class="md-nav__link">
     Ejercicio 6
   </a>
   
@@ -548,75 +479,68 @@
   
 </li>
       
+      
+      
+      
+      
     </ul>
   
 </nav>
-      
-    </li>
-  
+    
+  </li>
 
-            
+        
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../practica05/practica05.html" class="md-nav__link">
-        Práctica 5
-      </a>
-    </li>
-  
+          
+          
 
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../practica06/practica06.html" class="md-nav__link">
-        Práctica 6
-      </a>
-    </li>
-  
 
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../practica07/practica07.html" class="md-nav__link">
-        Práctica 7
-      </a>
-    </li>
-  
+  <li class="md-nav__item">
+    <a href="../practica05/practica05.html" title="Práctica 5" class="md-nav__link">
+      Práctica 5
+    </a>
+  </li>
 
-            
+        
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../practica08/practica08.html" class="md-nav__link">
-        Práctica 8
-      </a>
-    </li>
-  
+          
+          
 
-            
+
+  <li class="md-nav__item">
+    <a href="../practica06/practica06.html" title="Práctica 6" class="md-nav__link">
+      Práctica 6
+    </a>
+  </li>
+
+        
           
-        </ul>
-      </nav>
-    </li>
-  
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../practica07/practica07.html" title="Práctica 7" class="md-nav__link">
+      Práctica 7
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../practica08/practica08.html" title="Práctica 8" class="md-nav__link">
+      Práctica 8
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
 
     
   </ul>
@@ -626,77 +550,71 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
+<nav class="md-nav md-nav--secondary">
   
   
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#antes-de-la-clase-de-practicas" class="md-nav__link">
+  <a href="#antes-de-la-clase-de-practicas" title="Antes de la clase de prácticas" class="md-nav__link">
     Antes de la clase de prácticas
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ejercicios" class="md-nav__link">
+  <a href="#ejercicios" title="Ejercicios" class="md-nav__link">
     Ejercicios
   </a>
   
-    <nav class="md-nav" aria-label="Ejercicios">
+    <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ejercicio-1" class="md-nav__link">
+  <a href="#ejercicio-1" title="Ejercicio 1" class="md-nav__link">
     Ejercicio 1
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-2" class="md-nav__link">
+  <a href="#ejercicio-2" title="Ejercicio 2" class="md-nav__link">
     Ejercicio 2
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-3" class="md-nav__link">
+  <a href="#ejercicio-3" title="Ejercicio 3" class="md-nav__link">
     Ejercicio 3
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-4" class="md-nav__link">
+  <a href="#ejercicio-4" title="Ejercicio 4" class="md-nav__link">
     Ejercicio 4
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-5" class="md-nav__link">
+  <a href="#ejercicio-5" title="Ejercicio 5" class="md-nav__link">
     Ejercicio 5
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejercicio-6" class="md-nav__link">
+  <a href="#ejercicio-6" title="Ejercicio 6" class="md-nav__link">
     Ejercicio 6
   </a>
   
@@ -707,6 +625,10 @@
   
 </li>
       
+      
+      
+      
+      
     </ul>
   
 </nav>
@@ -715,14 +637,12 @@
               </div>
             
           
-          
-            <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset">
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
                 
-                  
-
-
-<h1 id="practica-4-funciones-recursivas-que-devuelven-listas">Práctica 4: Funciones recursivas que devuelven listas<a class="headerlink" href="#practica-4-funciones-recursivas-que-devuelven-listas" title="Permanent link">&para;</a></h1>
+                
+                <h1 id="practica-4-funciones-recursivas-que-devuelven-listas">Práctica 4: Funciones recursivas que devuelven listas<a class="headerlink" href="#practica-4-funciones-recursivas-que-devuelven-listas" title="Permanent link">&para;</a></h1>
 <h2 id="antes-de-la-clase-de-practicas">Antes de la clase de prácticas<a class="headerlink" href="#antes-de-la-clase-de-practicas" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
@@ -758,10 +678,14 @@ la subcadena de la <code>palabra</code> que va desde la posición <code>inicio</
 la posición <code>final</code> (sin incluir).</p>
 </div>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">es-prefijo?</span><span class="w"> </span><span class="s2">&quot;ante&quot;</span><span class="w"> </span><span class="s2">&quot;anterior&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">contiene-prefijo</span><span class="w"> </span><span class="s2">&quot;ante&quot;</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;anterior&quot;</span><span class="w"> </span><span class="s2">&quot;antígona&quot;</span><span class="w"> </span><span class="s2">&quot;antena&quot;</span><span class="w"> </span><span class="s2">&quot;anatema&quot;</span><span class="p">))</span><span class="w"> </span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">es-prefijo?</span> <span class="s2">&quot;ante&quot;</span> <span class="s2">&quot;anterior&quot;</span><span class="p">)</span> <span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">contiene-prefijo</span> <span class="s2">&quot;ante&quot;</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;anterior&quot;</span> <span class="s2">&quot;antígona&quot;</span> <span class="s2">&quot;antena&quot;</span> <span class="s2">&quot;anatema&quot;</span><span class="p">))</span> 
 <span class="c1">; ⇒ (#t #f #t #f)</span>
-</code></pre></div>
+</pre></div>
+</td></tr></table>
+
 <p>b) Vamos a generalizar la solución del ejercicio 4 de la práctica 2 e
 implementar la función recursiva <code>(cadenas-mayores lista1 lista2)</code>
 teniendo en cuenta que las listas que recibe tienen un número
@@ -769,14 +693,22 @@ indeterminado de cadenas. En el caso en que una de las listas sea
 mayor que la otra, se deberán añadir todas sus cadenas a la lista
 resultante.</p>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cadenas-mayores</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span><span class="w"> </span><span class="s2">&quot;que&quot;</span><span class="w"> </span><span class="s2">&quot;tal&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;adios&quot;</span><span class="p">))</span><span class="w"> </span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">cadenas-mayores</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;que&quot;</span> <span class="s2">&quot;tal&quot;</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;adios&quot;</span><span class="p">))</span> 
 <span class="c1">; ⇒ (&quot;adios&quot; &quot;que&quot; &quot;tal&quot;)</span>
-<span class="p">(</span><span class="n">cadenas-mayores</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span><span class="w"> </span><span class="s2">&quot;que&quot;</span><span class="w"> </span><span class="s2">&quot;tal&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;meme&quot;</span><span class="w"> </span><span class="s2">&quot;y&quot;</span><span class="w"> </span><span class="s2">&quot;adios&quot;</span><span class="p">))</span>
+<span class="p">(</span><span class="n">cadenas-mayores</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;que&quot;</span> <span class="s2">&quot;tal&quot;</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;meme&quot;</span> <span class="s2">&quot;y&quot;</span> <span class="s2">&quot;adios&quot;</span><span class="p">))</span>
 <span class="c1">; ⇒ (&quot;hola&quot; &quot;que&quot; &quot;adios&quot;)</span>
-<span class="p">(</span><span class="n">cadenas-mayores</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;la&quot;</span><span class="w"> </span><span class="s2">&quot;primera&quot;</span><span class="w"> </span><span class="s2">&quot;práctica&quot;</span><span class="w"> </span><span class="s2">&quot;de&quot;</span><span class="w"> </span><span class="s2">&quot;recursión&quot;</span><span class="p">)</span>
-<span class="w">                 </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;confiar&quot;</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="w"> </span><span class="s2">&quot;la&quot;</span><span class="w"> </span><span class="s2">&quot;recursión&quot;</span><span class="w"> </span><span class="s2">&quot;facilita&quot;</span><span class="w"> </span><span class="s2">&quot;su&quot;</span><span class="w"> </span><span class="s2">&quot;resolución&quot;</span><span class="p">))</span>
+<span class="p">(</span><span class="n">cadenas-mayores</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;la&quot;</span> <span class="s2">&quot;primera&quot;</span> <span class="s2">&quot;práctica&quot;</span> <span class="s2">&quot;de&quot;</span> <span class="s2">&quot;recursión&quot;</span><span class="p">)</span>
+                 <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;confiar&quot;</span> <span class="s2">&quot;en&quot;</span> <span class="s2">&quot;la&quot;</span> <span class="s2">&quot;recursión&quot;</span> <span class="s2">&quot;facilita&quot;</span> <span class="s2">&quot;su&quot;</span> <span class="s2">&quot;resolución&quot;</span><span class="p">))</span>
 <span class="c1">; ⇒ (&quot;confiar&quot; &quot;primera&quot; &quot;práctica&quot; &quot;recursión&quot; &quot;recursión&quot; &quot;su&quot; &quot;resolución&quot;)</span>
-</code></pre></div>
+</pre></div>
+</td></tr></table>
+
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
 <p>a) Implementa la función recursiva <code>(inserta-pos dato pos lista)</code> que
 recibe un dato, una posición y una lista y devuelve la lista
@@ -785,31 +717,41 @@ la posición es 0, el dato se inserta en cabeza. Suponemos que la
 posición siempre será positiva y menor o igual que la longitud de la
 lista.</p>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">inserta-pos</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">b</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">a</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ &#39;(a a b a a)</span>
-<span class="p">(</span><span class="n">inserta-pos</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">b</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">a</span><span class="w"> </span><span class="ss">a</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ &#39;(b a a a a)</span>
-</code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">inserta-pos</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="mi">2</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(a a b a a)</span>
+<span class="p">(</span><span class="n">inserta-pos</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="mi">0</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span> <span class="ss">a</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(b a a a a)</span>
+</pre></div>
+</td></tr></table>
+
 <p>b) Implementa la función recursiva <code>(inserta-ordenada n
 lista-ordenada)</code> que recibe un número y una lista de números ordenados
 de menor a mayor y devuelve la lista resultante de insertar el número
 <code>n</code> en la posición correcta para que la lista siga estando ordenada.</p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">inserta-ordenada</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">-8</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="mi">20</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (-8 2 3 10 11 20)</span>
-</code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">inserta-ordenada</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">-8</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">11</span> <span class="mi">20</span><span class="p">))</span> <span class="c1">; ⇒ (-8 2 3 10 11 20)</span>
+</pre></div>
+</td></tr></table>
+
 <p>c) Usando la función anterior <code>inserta-ordenada</code> implementa la función recursiva
 <code>(ordena lista)</code> que recibe una lista de números y devuelve una lista
 ordenada.</p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">ordena</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">-6</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (-6 -1 2 4 100)</span>
-</code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">ordena</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">-1</span> <span class="mi">100</span> <span class="mi">4</span> <span class="mi">-6</span><span class="p">))</span> <span class="c1">; ⇒ (-6 -1 2 4 100)</span>
+</pre></div>
+</td></tr></table>
+
 <h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
 <p>a) Implementa la función recursiva <code>(mueve-al-principio lista dato)</code> que recibe una lista y un 
 dato que está contenido en la lista. La función debe devolver la lista resultante de
 mover la primera aparición del dato al comienzo de la lista, dejando el resto de la lista
 sin modificar. Suponemos que el dato que se pasa como parámetro está contenido en la lista.</p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mueve-al-principio</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span><span class="w"> </span><span class="ss">b</span><span class="w"> </span><span class="ss">e</span><span class="w"> </span><span class="ss">c</span><span class="w"> </span><span class="ss">d</span><span class="w"> </span><span class="ss">e</span><span class="w"> </span><span class="ss">f</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">e</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ (e a b c d e f)</span>
-<span class="p">(</span><span class="n">mueve-al-principio</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span><span class="w"> </span><span class="ss">b</span><span class="w"> </span><span class="ss">c</span><span class="w"> </span><span class="ss">d</span><span class="w"> </span><span class="ss">e</span><span class="w"> </span><span class="ss">f</span><span class="w"> </span><span class="ss">g</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ (a b c d e f g)</span>
-</code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">mueve-al-principio</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">e</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">e</span><span class="p">)</span> <span class="c1">; ⇒ (e a b c d e f)</span>
+<span class="p">(</span><span class="n">mueve-al-principio</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span> <span class="ss">g</span><span class="p">)</span> <span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span> <span class="c1">; ⇒ (a b c d e f g)</span>
+</pre></div>
+</td></tr></table>
+
 <p>b) Implementa una función recursiva <code>(comprueba-simbolos lista-simbolos
 lista-num)</code> que recibe una lista de símbolos y una lista de números
 enteros (ambas de la misma longitud) y devuelve una lista de
@@ -819,9 +761,12 @@ de <code>lista-num</code>, siempre y cuando dicho número se corresponda con la
 longitud de la cadena correspondiente al símbolo. Puedes utilizar las
 funciones predefinidas <code>string-length</code> y <code>symbol-&gt;string</code>.</p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">comprueba-simbolos</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">este</span><span class="w"> </span><span class="ss">es</span><span class="w"> </span><span class="ss">un</span><span class="w"> </span><span class="ss">ejercicio</span><span class="w"> </span><span class="ss">de</span><span class="w"> </span><span class="ss">examen</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">6</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">comprueba-simbolos</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">este</span> <span class="ss">es</span> <span class="ss">un</span> <span class="ss">ejercicio</span> <span class="ss">de</span> <span class="ss">examen</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">9</span> <span class="mi">1</span> <span class="mi">6</span><span class="p">))</span>
 <span class="c1">; ⇒ ((un . 2) (ejercicio . 9) (examen . 6))</span>
-</code></pre></div>
+</pre></div>
+</td></tr></table>
+
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
 <p>Vamos a implementar distintas versiones de funciones que expanden
 una lista original. </p>
@@ -831,9 +776,12 @@ usar en todos los demás apartados.</p>
 una pareja formada por un dato y un número <em>n</em> y devuelve la lista
 formada por <em>n</em> repeticiones del dato.</p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">expande-pareja</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">hola</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (hola hola hola)</span>
-<span class="p">(</span><span class="n">expande-pareja</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="no">#t</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">5</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (#t #t #t #t #t)</span>
-</code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">expande-pareja</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">hola</span> <span class="o">.</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">; ⇒ (hola hola hola)</span>
+<span class="p">(</span><span class="n">expande-pareja</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#t</span> <span class="o">.</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ (#t #t #t #t #t)</span>
+</pre></div>
+</td></tr></table>
+
 <p>b) Vamos a implementar dos versiones de la función <code>(expande-parejas
 pareja_1 ... pareja_n)</code> que recibe un número variable de
 argumentos (todos opcionales) y devuelve una lista donde se han "expandido" las parejas,
@@ -841,9 +789,12 @@ creando una lista con tantos elementos como el número que indique cada
 pareja. Todos los argumentos son opcionales; si no hay argumentos se
 devolverá la lista vacía.</p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">expande-parejas</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="no">#t</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;LPP&quot;</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span><span class="w"> </span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">expande-parejas</span> <span class="o">&#39;</span><span class="p">(</span><span class="no">#t</span> <span class="o">.</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;LPP&quot;</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="o">.</span> <span class="mi">4</span><span class="p">))</span> 
 <span class="c1">; ⇒ (#t #t #t &quot;LPP&quot; &quot;LPP&quot; b b b b)</span>
-</code></pre></div>
+</pre></div>
+</td></tr></table>
+
 <p>b.1) Escribe una solución en la que la función <code>expande-parejas</code>
 llame a una función recursiva <code>(expande-lista lista-parejas)</code>
 que trabaje sobre una lista de parejas.</p>
@@ -867,9 +818,12 @@ siempre va a haber un elemento después de un número.</p>
 <p>Debes usar también para su implementación la función <code>(expande-pareja
 pareja)</code> definida en el apartado a).</p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">expande</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="ss">clase</span><span class="w"> </span><span class="ss">ua</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="ss">lpp</span><span class="w"> </span><span class="ss">aulario</span><span class="p">))</span><span class="w"> </span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">expande</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="ss">clase</span> <span class="ss">ua</span> <span class="mi">3</span> <span class="ss">lpp</span> <span class="ss">aulario</span><span class="p">))</span> 
 <span class="c1">; ⇒ (clase clase clase clase ua lpp lpp lpp aulario)</span>
-</code></pre></div>
+</pre></div>
+</td></tr></table>
+
 <p>En el ejemplo, el 4 indica que el siguiente elemento
 (<code>clase</code>) se debe repetir 4 veces en la lista expandida y el 3 indica
 que el siguiente elemento (<code>lpp</code>) se va a repetir 3 veces.</p>
@@ -878,56 +832,95 @@ que el siguiente elemento (<code>lpp</code>) se va a repetir 3 veces.</p>
 que alguna expresión contenga algún error. Indícalo también en ese
 caso y explica qué tipo de error. Hazlo sin el intérprete, y después
 comprueba con el intérprete si tu respuesta era correcta.</p>
-<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ ?</span>
-<span class="p">((</span><span class="k">lambda</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">4</span><span class="p">)))</span><span class="w"> </span><span class="c1">; ⇒ ?</span>
-<span class="p">((</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">y</span><span class="p">)))</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ ?</span>
-<span class="p">((</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">x</span><span class="p">)))</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ ?</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">((</span><span class="k">lambda</span> <span class="p">()</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">6</span> <span class="mi">4</span><span class="p">)))</span> <span class="c1">; ⇒ ?</span>
+<span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="n">y</span><span class="p">)))</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="nb">+</span> <span class="mi">2</span> <span class="n">x</span><span class="p">)))</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
 
 
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">string-append</span><span class="w"> </span><span class="s2">&quot;***&quot;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="s2">&quot;***&quot;</span><span class="p">)))</span>
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="n">f</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">procedure?</span><span class="w"> </span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ ?</span>
-<span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="s2">&quot;Hola&quot;</span><span class="w"> </span><span class="s2">&quot;Adios&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ ?</span>
-</code></pre></div>
+<span class="p">(</span><span class="k">define</span> <span class="n">f</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">a</span> <span class="n">b</span><span class="p">)</span> <span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;***&quot;</span> <span class="n">a</span> <span class="n">b</span> <span class="s2">&quot;***&quot;</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span> <span class="n">g</span> <span class="n">f</span><span class="p">)</span>
+<span class="p">(</span><span class="nb">procedure?</span> <span class="n">g</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">g</span> <span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;Adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+</pre></div>
+</td></tr></table>
+
 <p>b) Hemos visto en teoría que la forma especial <code>define</code> para construir
 funciones es <em>azucar sintáctico</em> y que el intérprete de Scheme la
 convierte en una expresión equivalente usando la forma especial
 <code>lambda</code>.</p>
 <p>Escribe cuál sería las expresiones equivalentes, usando la forma
 especial <code>lambda</code> a las siguientes definiciones de funciones:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">suma-3</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
-<span class="w">   </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-3</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">3</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">factorial</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
-<span class="w">   </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">      </span><span class="mi">1</span>
-<span class="w">      </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="n">factorial</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">)))))</span>
-</code></pre></div>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">factorial</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="mi">1</span>
+      <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="p">(</span><span class="n">factorial</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))))</span>
+</pre></div>
+</td></tr></table>
+
 <p>c) Suponiendo las siguientes definiciones de funciones indica qué
 devolverían las invocaciones. Puede ser que alguna expresión contenga
 algún error. Indícalo también en ese caso y explica qué tipo de error.</p>
 <p>Hazlo sin el intérprete, y después comprueba con el intérprete si tu
 respuesta era correcta.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">doble</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
-<span class="w">   </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">doble</span> <span class="n">x</span><span class="p">)</span>
+   <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="n">x</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">foo</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
-<span class="w">   </span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">y</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">foo</span> <span class="n">f</span> <span class="n">g</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+   <span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="n">g</span> <span class="n">x</span><span class="p">)</span> <span class="n">y</span><span class="p">))</span>
 
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">bar</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
-<span class="w">   </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">and</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="n">y</span><span class="p">))</span>
-<span class="w">       </span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
-<span class="w">       </span><span class="o">&#39;</span><span class="ss">error</span><span class="p">))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">bar</span> <span class="n">f</span> <span class="n">p</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="k">and</span> <span class="p">(</span><span class="n">p</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="n">p</span> <span class="n">y</span><span class="p">))</span>
+       <span class="p">(</span><span class="n">f</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
+       <span class="o">&#39;</span><span class="ss">error</span><span class="p">))</span>
 
-<span class="p">(</span><span class="n">foo</span><span class="w"> </span><span class="nb">+</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">doble</span><span class="w"> </span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ ?</span>
-<span class="p">(</span><span class="n">foo</span><span class="w"> </span><span class="n">doble</span><span class="w"> </span><span class="nb">+</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ ?</span>
-<span class="p">(</span><span class="n">foo</span><span class="w"> </span><span class="nb">+</span><span class="w"> </span><span class="n">doble</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ ?</span>
-<span class="p">(</span><span class="n">foo</span><span class="w"> </span><span class="nb">string-append</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">string-append</span><span class="w"> </span><span class="s2">&quot;***&quot;</span><span class="w"> </span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="s2">&quot;Hola&quot;</span><span class="w"> </span><span class="s2">&quot;Adios&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">foo</span> <span class="nb">+</span> <span class="mi">10</span> <span class="n">doble</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">foo</span> <span class="n">doble</span> <span class="nb">+</span> <span class="mi">10</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">foo</span> <span class="nb">+</span> <span class="n">doble</span> <span class="mi">10</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">foo</span> <span class="nb">string-append</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;***&quot;</span> <span class="n">x</span><span class="p">))</span> <span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;Adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
 
-<span class="p">(</span><span class="n">bar</span><span class="w"> </span><span class="n">doble</span><span class="w"> </span><span class="nb">number?</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ ?</span>
-<span class="p">(</span><span class="n">bar</span><span class="w"> </span><span class="nb">string-append</span><span class="w"> </span><span class="nb">string?</span><span class="w"> </span><span class="s2">&quot;Hola&quot;</span><span class="w"> </span><span class="s2">&quot;Adios&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ ?</span>
-<span class="p">(</span><span class="n">bar</span><span class="w"> </span><span class="nb">+</span><span class="w"> </span><span class="nb">number?</span><span class="w"> </span><span class="s2">&quot;Hola&quot;</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ ?</span>
-</code></pre></div>
+<span class="p">(</span><span class="n">bar</span> <span class="n">doble</span> <span class="nb">number?</span> <span class="mi">10</span> <span class="mi">15</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">bar</span> <span class="nb">string-append</span> <span class="nb">string?</span> <span class="s2">&quot;Hola&quot;</span> <span class="s2">&quot;Adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+<span class="p">(</span><span class="n">bar</span> <span class="nb">+</span> <span class="nb">number?</span> <span class="s2">&quot;Hola&quot;</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ ?</span>
+</pre></div>
+</td></tr></table>
+
 <h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
 <p>Vamos a seguir jugando a las cartas con Scheme. Vas a tener que
 implementar una serie de funciones auxiliares con las que vas a poder
@@ -937,9 +930,12 @@ hacer un truco de cartas al final del ejercicio.</p>
 él hemos incluido una nueva función <code>(cartas n)</code> con las que
 puedes generar una lista de <em>n</em> cartas aleatorias de una baraja de hasta
 48 cartas. Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cartas</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ (9♣ 7♠ Q♠ 4♥ 8♠ 3♠ 7♦ A♠ A♥ K♠)</span>
-<span class="p">(</span><span class="n">cartas</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ (7♣ 3♣ 6♣ 7♠ 5♣)</span>
-</code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">cartas</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ (9♣ 7♠ Q♠ 4♥ 8♠ 3♠ 7♦ A♠ A♥ K♠)</span>
+<span class="p">(</span><span class="n">cartas</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ (7♣ 3♣ 6♣ 7♠ 5♣)</span>
+</pre></div>
+</td></tr></table>
+
 <p>Como máximo puedes poner como parámetro 48 para generar aleatoriamente
 las 48 cartas de una baraja francesa sin dieces.</p>
 <div class="admonition note">
@@ -953,10 +949,14 @@ parámetros.</p>
 una listas con tres listas y tres elementos y devuelva el resultado de
 colocar los elementos en la cabeza de las tres listas.</p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">coloca</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(()</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">())</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">a</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">b</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">c</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ &#39;((a) (b) (c))</span>
-<span class="p">(</span><span class="n">coloca</span><span class="w"> </span><span class="o">&#39;</span><span class="p">((</span><span class="ss">a</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="ss">a</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="ss">a</span><span class="p">))</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">b</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">b</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">b</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ &#39;((b a) (b a) (b a))</span>
-<span class="p">(</span><span class="n">coloca</span><span class="w"> </span><span class="o">&#39;</span><span class="p">((</span><span class="ss">a</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="ss">b</span><span class="w"> </span><span class="ss">c</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="ss">d</span><span class="w"> </span><span class="ss">e</span><span class="w"> </span><span class="ss">f</span><span class="p">))</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">g</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">h</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">i</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ &#39;((g a) (h b c) (i d e f)))</span>
-</code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">coloca</span> <span class="o">&#39;</span><span class="p">(()</span> <span class="p">()</span> <span class="p">())</span> <span class="o">&#39;</span><span class="ss">a</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="ss">c</span><span class="p">)</span> <span class="c1">; ⇒ &#39;((a) (b) (c))</span>
+<span class="p">(</span><span class="n">coloca</span> <span class="o">&#39;</span><span class="p">((</span><span class="ss">a</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span><span class="p">)</span> <span class="p">(</span><span class="ss">a</span><span class="p">))</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="ss">b</span> <span class="o">&#39;</span><span class="ss">b</span><span class="p">)</span> <span class="c1">; ⇒ &#39;((b a) (b a) (b a))</span>
+<span class="p">(</span><span class="n">coloca</span> <span class="o">&#39;</span><span class="p">((</span><span class="ss">a</span><span class="p">)</span> <span class="p">(</span><span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="p">(</span><span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">))</span> <span class="o">&#39;</span><span class="ss">g</span> <span class="o">&#39;</span><span class="ss">h</span> <span class="o">&#39;</span><span class="ss">i</span><span class="p">)</span> <span class="c1">; ⇒ &#39;((g a) (h b c) (i d e f)))</span>
+</pre></div>
+</td></tr></table>
+
 <p>b) Usando la función anterior como función auxiliar implementa una
 función recursiva <code>(reparte-tres lista-cartas)</code> que recibe una lista de
 cartas con un número de cartas múltiplo de 3 y devuelve el resultado
@@ -967,9 +967,12 @@ las posiciones 2, 5, 8, etc. irán en el tercero.</p>
 <p>El resultado será una lista con tres listas representando esos tres
 montones de cartas.</p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">doce-cartas</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">A♣</span><span class="w"> </span><span class="ss">2♣</span><span class="w"> </span><span class="ss">3♣</span><span class="w"> </span><span class="ss">4♣</span><span class="w"> </span><span class="ss">5♣</span><span class="w"> </span><span class="ss">6♣</span><span class="w"> </span><span class="ss">7♣</span><span class="w"> </span><span class="ss">8♣</span><span class="w"> </span><span class="ss">9♣</span><span class="w"> </span><span class="ss">J♣</span><span class="w"> </span><span class="ss">Q♣</span><span class="w"> </span><span class="ss">K♣</span><span class="p">))</span>
-<span class="p">(</span><span class="n">reparte-tres</span><span class="w"> </span><span class="n">doce-cartas</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ &#39;((A♣ 4♣ 7♣ J♣) (2♣ 5♣ 8♣ Q♣) (3♣ 6♣ 9♣ K♣))</span>
-</code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">doce-cartas</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">A♣</span> <span class="ss">2♣</span> <span class="ss">3♣</span> <span class="ss">4♣</span> <span class="ss">5♣</span> <span class="ss">6♣</span> <span class="ss">7♣</span> <span class="ss">8♣</span> <span class="ss">9♣</span> <span class="ss">J♣</span> <span class="ss">Q♣</span> <span class="ss">K♣</span><span class="p">))</span>
+<span class="p">(</span><span class="n">reparte-tres</span> <span class="n">doce-cartas</span><span class="p">)</span> <span class="c1">; ⇒ &#39;((A♣ 4♣ 7♣ J♣) (2♣ 5♣ 8♣ Q♣) (3♣ 6♣ 9♣ K♣))</span>
+</pre></div>
+</td></tr></table>
+
 <p>c) Implementa una función recursiva <code>(elemento-central lista)</code> que
 reciba una lista con un número impar de elementos (mayor o igual que
 uno) y devuelva su elemento central.</p>
@@ -983,32 +986,52 @@ llamada recursiva y que sea la llamada recursiva la que devuelva
 el elemento central? </p>
 </div>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">elemento-central</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span><span class="w"> </span><span class="ss">b</span><span class="w"> </span><span class="ss">c</span><span class="w"> </span><span class="ss">d</span><span class="w"> </span><span class="ss">e</span><span class="w"> </span><span class="ss">f</span><span class="w"> </span><span class="ss">g</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ d</span>
-</code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">elemento-central</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span> <span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span> <span class="ss">g</span><span class="p">))</span> <span class="c1">; ⇒ d</span>
+</pre></div>
+</td></tr></table>
+
 <p>d) Una vez que has implementado las funciones anteriores ya solo te
 queda copiar las siguientes definiciones para poder hacer el truco de
 cartas. Son funciones que recomponen la baraja a partir de los tres
 montones dependiendo de si la carta elegida está en el montón de la
 izquierda, del centro o de la derecha.</p>
 <p>Y la función <code>adivina</code> es la que devuelve la carta elegida en el truco.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">izquierda</span><span class="w"> </span><span class="n">tres-listas</span><span class="p">)</span>
-<span class="w">  </span><span class="p">(</span><span class="nb">append</span><span class="w"> </span><span class="p">(</span><span class="nb">third</span><span class="w"> </span><span class="n">tres-listas</span><span class="p">)</span>
-<span class="w">          </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">tres-listas</span><span class="p">)</span>
-<span class="w">          </span><span class="p">(</span><span class="nb">second</span><span class="w"> </span><span class="n">tres-listas</span><span class="p">)))</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">izquierda</span> <span class="n">tres-listas</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">append</span> <span class="p">(</span><span class="nb">third</span> <span class="n">tres-listas</span><span class="p">)</span>
+          <span class="p">(</span><span class="nb">first</span> <span class="n">tres-listas</span><span class="p">)</span>
+          <span class="p">(</span><span class="nb">second</span> <span class="n">tres-listas</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">centro</span><span class="w"> </span><span class="n">tres-listas</span><span class="p">)</span>
-<span class="w">  </span><span class="p">(</span><span class="nb">append</span><span class="w"> </span><span class="p">(</span><span class="nb">third</span><span class="w"> </span><span class="n">tres-listas</span><span class="p">)</span>
-<span class="w">          </span><span class="p">(</span><span class="nb">second</span><span class="w"> </span><span class="n">tres-listas</span><span class="p">)</span>
-<span class="w">          </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">tres-listas</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">centro</span> <span class="n">tres-listas</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">append</span> <span class="p">(</span><span class="nb">third</span> <span class="n">tres-listas</span><span class="p">)</span>
+          <span class="p">(</span><span class="nb">second</span> <span class="n">tres-listas</span><span class="p">)</span>
+          <span class="p">(</span><span class="nb">first</span> <span class="n">tres-listas</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">derecha</span><span class="w"> </span><span class="n">tres-listas</span><span class="p">)</span>
-<span class="w">  </span><span class="p">(</span><span class="nb">append</span><span class="w"> </span><span class="p">(</span><span class="nb">second</span><span class="w"> </span><span class="n">tres-listas</span><span class="p">)</span>
-<span class="w">          </span><span class="p">(</span><span class="nb">third</span><span class="w"> </span><span class="n">tres-listas</span><span class="p">)</span>
-<span class="w">          </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">tres-listas</span><span class="p">)))</span>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">derecha</span> <span class="n">tres-listas</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">append</span> <span class="p">(</span><span class="nb">second</span> <span class="n">tres-listas</span><span class="p">)</span>
+          <span class="p">(</span><span class="nb">third</span> <span class="n">tres-listas</span><span class="p">)</span>
+          <span class="p">(</span><span class="nb">first</span> <span class="n">tres-listas</span><span class="p">)))</span>
 
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">adivina</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">  </span><span class="p">(</span><span class="n">elemento-central</span><span class="w"> </span><span class="n">lista</span><span class="p">))</span>
-</code></pre></div>
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">adivina</span> <span class="n">lista</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">elemento-central</span> <span class="n">lista</span><span class="p">))</span>
+</pre></div>
+</td></tr></table>
+
 <p>Por último, antes de empezar el truco, un par de consideraciones sobre
 los programas con números aleatorios.</p>
 <p>La siguiente función, con la constante 90 como argumento, genera
@@ -1017,27 +1040,34 @@ cambia por otra constante, la secuencia también se reperirá siempre
 aunque será otra. Tener siempre la misma secuencia aleatoria permite
 poder depurar la programación trabajando siempre con el mismo ejemplo
 aleatorio.</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">random-seed</span><span class="w"> </span><span class="mi">90</span><span class="p">)</span>
-</code></pre></div>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">random-seed</span> <span class="mi">90</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
 Si en lugar de una constante se usa un valor variable, se obtiene una
 secuencia aleatoria distinta cada vez que se ejecute el programa. </p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">random-seed</span><span class="w"> </span><span class="p">(</span><span class="nb">modulo</span><span class="w"> </span><span class="p">(</span><span class="nb">current-milliseconds</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">expt</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">31</span><span class="p">)))</span>
-</code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="nb">random-seed</span> <span class="p">(</span><span class="nb">modulo</span> <span class="p">(</span><span class="nb">current-milliseconds</span><span class="p">)</span> <span class="p">(</span><span class="nb">expt</span> <span class="mi">2</span> <span class="mi">31</span><span class="p">)))</span>
+</pre></div>
+</td></tr></table>
+
 <p>Y ahora ya podemos empezar el truco de cartas.</p>
 <ol>
 <li>
 <p>Repartimos una lista de cartas y las guardamos en la variable
 <code>t1</code>. Podríamos jugar con 3, 9, 15, 21 o 27 cartas. Vamos a hacerlo
 con 27:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="p">(</span><span class="n">reparte-tres</span><span class="w"> </span><span class="p">(</span><span class="n">cartas</span><span class="w"> </span><span class="mi">27</span><span class="p">)))</span>
-</code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">t1</span> <span class="p">(</span><span class="n">reparte-tres</span> <span class="p">(</span><span class="n">cartas</span> <span class="mi">27</span><span class="p">)))</span>
+</pre></div>
+</td></tr></table>
+
 </li>
 <li>
 <p>Visualizamos los montones y pedimos al espectador que piense en una
 carta sin decirla. Por ejemplo el as de tréboles.</p>
-<div class="highlight"><pre><span></span><code><span class="n">t1</span><span class="w"> </span><span class="c1">; ⇒ ((J♣ 8♦ K♥ J♠ 2♠ 8♥ Q♣ 4♦ A♥) (5♥ 9♣ 5♦ Q♠ A♦ 9♥ 5♠ 9♦ Q♦) (7♣ 3♠ 6♥ 6♣ 7♥ 3♣ 4♣ A♣ J♥))</span>
-</code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">t1</span> <span class="c1">; ⇒ ((J♣ 8♦ K♥ J♠ 2♠ 8♥ Q♣ 4♦ A♥) (5♥ 9♣ 5♦ Q♠ A♦ 9♥ 5♠ 9♦ Q♦) (7♣ 3♠ 6♥ 6♣ 7♥ 3♣ 4♣ A♣ J♥))</span>
+</pre></div>
+</td></tr></table>
+
 </li>
 <li>
 <p>Preguntamos al espectador en qué montón está la carta
@@ -1046,77 +1076,118 @@ carta sin decirla. Por ejemplo el as de tréboles.</p>
    el as de tréboles está en el montón derecho, por lo que usamos la
    función <code>derecha</code>. Y volvemos a repartir en tres montones el mazo
    resultante. Los guardamos en la variable <code>t2</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="p">(</span><span class="n">reparte-tres</span><span class="w"> </span><span class="p">(</span><span class="n">derecha</span><span class="w"> </span><span class="n">t1</span><span class="p">)))</span>
-</code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">t2</span> <span class="p">(</span><span class="n">reparte-tres</span> <span class="p">(</span><span class="n">derecha</span> <span class="n">t1</span><span class="p">)))</span>
+</pre></div>
+</td></tr></table>
+
 </li>
 <li>
 <p>Visualizamos de nuevo los montones y preguntamos dónde está la
    carta. En este caso se encuentra en el centro.</p>
-<div class="highlight"><pre><span></span><code><span class="n">t2</span><span class="w"> </span><span class="c1">; ⇒  ((5♥ Q♠ 5♠ 7♣ 6♣ 4♣ J♣ J♠ Q♣) (9♣ A♦ 9♦ 3♠ 7♥ A♣ 8♦ 2♠ 4♦) (5♦ 9♥ Q♦ 6♥ 3♣ J♥ K♥ 8♥ A♥))</span>
-</code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">t2</span> <span class="c1">; ⇒  ((5♥ Q♠ 5♠ 7♣ 6♣ 4♣ J♣ J♠ Q♣) (9♣ A♦ 9♦ 3♠ 7♥ A♣ 8♦ 2♠ 4♦) (5♦ 9♥ Q♦ 6♥ 3♣ J♥ K♥ 8♥ A♥))</span>
+</pre></div>
+</td></tr></table>
+
 <p>Juntamos usando la función <code>centro</code> y volvemos a repartir,
 guardando el resultado en la variable <code>t3</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">t3</span><span class="w"> </span><span class="p">(</span><span class="n">reparte-tres</span><span class="w"> </span><span class="p">(</span><span class="n">centro</span><span class="w"> </span><span class="n">t2</span><span class="p">)))</span>
-</code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="k">define</span> <span class="n">t3</span> <span class="p">(</span><span class="n">reparte-tres</span> <span class="p">(</span><span class="n">centro</span> <span class="n">t2</span><span class="p">)))</span>
+</pre></div>
+</td></tr></table>
+
 </li>
 <li>
 <p>Visualizamos los montones:</p>
-<div class="highlight"><pre><span></span><code><span class="n">t3</span><span class="w"> </span><span class="c1">; ⇒  ((5♦ 6♥ K♥ 9♣ 3♠ 8♦ 5♥ 7♣ J♣) (9♥ 3♣ 8♥ A♦ 7♥ 2♠ Q♠ 6♣ J♠) (Q♦ J♥ A♥ 9♦ A♣ 4♦ 5♠ 4♣ Q♣))</span>
-</code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">t3</span> <span class="c1">; ⇒  ((5♦ 6♥ K♥ 9♣ 3♠ 8♦ 5♥ 7♣ J♣) (9♥ 3♣ 8♥ A♦ 7♥ 2♠ Q♠ 6♣ J♠) (Q♦ J♥ A♥ 9♦ A♣ 4♦ 5♠ 4♣ Q♣))</span>
+</pre></div>
+</td></tr></table>
+
 <p>Y preguntamos dónde se encuentra la carta. En este caso el as de
 trébol se encuentra en el montón de la derecha. Volvemos a juntar
 los montones usando entonces la función <code>derecha</code> y ya podemos
 llamar a la función <code>adivina</code> con la baraja resultante. Esta
 función devolverá mágicamente la carta escogida:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">adivina</span><span class="w"> </span><span class="p">(</span><span class="n">derecha</span><span class="w"> </span><span class="n">t3</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ A♣</span>
-</code></pre></div>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">adivina</span> <span class="p">(</span><span class="n">derecha</span> <span class="n">t3</span><span class="p">))</span> <span class="c1">; ⇒ A♣</span>
+</pre></div>
+</td></tr></table>
+
 </li>
 </ol>
 <hr />
 <p>Lenguajes y Paradigmas de Programación, curso 2023-24<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
-
-
-
-
-
                 
-              </article>
-            </div>
-          
-          
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
         </div>
-        
       </main>
       
-        <footer class="md-footer">
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../practica03/practica03.html" title="Práctica 3" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Práctica 3
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../practica05/practica05.html" title="Práctica 5" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Siguiente
+                </span>
+                Práctica 5
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-  
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
-  
-</div>
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
       
     </div>
   </div>
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
-    
-    
-      <script src="../../assets/javascripts/bundle.51198bba.min.js"></script>
+      <script src="../../assets/javascripts/application.245445c6.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
