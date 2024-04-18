@@ -265,7 +265,7 @@ tienen un nivel mayor que `n`.
 (mezclar lista1 lista2 2) ; ⇒ (((1 2) ((3))) (d) e)
 ```
 
-b) Implementa la función `(nivel-elemento lista)` que reciba una lista
+b) Implementa la función `(nivel-mas-profundo lista)` que reciba una lista
 estructurada y devuelva una pareja `(elem . nivel)`, donde la parte
 izquierda es el elemento que se encuentra a mayor nivel y la parte
 derecha el nivel en el que se encuentra. Puedes definir alguna
@@ -273,8 +273,8 @@ función auxiliar si lo necesitas. Puedes hacerlo con
 recursión o con funciones de orden superior.
 
 ```racket
-(nivel-elemento '(2 (3))) ; ⇒ (3 . 2)
-(nivel-elemento '((2) (3 (4)((((((5))) 6)) 7)) 8)) ; ⇒ (5 . 8)
+(nivel-mas-profundo '(2 (3))) ; ⇒ (3 . 2)
+(nivel-mas-profundo '((2) (3 (4)((((((5))) 6)) 7)) 8)) ; ⇒ (5 . 8)
 ```
 
 ----
