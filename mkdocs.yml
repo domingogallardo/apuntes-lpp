@@ -35,8 +35,20 @@ theme:
   language: es
   name: 'material'
   palette:
-    primary: teal
-    accent: teal
+        # Palette toggle for light mode
+      - scheme: default
+        primary: teal
+        accent: teal
+        toggle:
+          icon: material/brightness-7 
+          name: Switch to dark mode
+        # Palette toggle for dark mode
+      - scheme: slate
+        primary: black
+        accent: indigo
+        toggle:
+          icon: material/brightness-4
+          name: Switch to light mode
   font:
     text: Roboto
     code: Roboto Mono
