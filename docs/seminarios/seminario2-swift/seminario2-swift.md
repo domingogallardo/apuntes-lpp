@@ -140,15 +140,45 @@ distribuciones de Ubuntu.
 
 ### Instalación en Windows ###
 
-Aunque existe una [distribución oficial de
-Swift](https://swift.org/download/#using-downloads) para Windows 10,
-no hemos conseguido hacerla funcionar.
+Puedes instalar nuestra distribución WSL Ubuntu 22.04.03 para Windows con Swift
+5.10 instalado desde [este
+enlace](https://drive.google.com/file/d/1q1YWkNQ1i1H4hI1js296EXLa6nACigCy/view?usp=drive_link) 
 
-Recomendamos instalar una distribución de Ubuntu en WSL2 (Windows
-Subsystem for Linux) siguiendo [estas
-instrucciones](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#1-overview)
-y después realizar la instalación de Swift en Ubuntu tal y como se
-explica en el apartado anterior.
+Se trata de una copia exportada en formato tar de una una distribución WSL
+Ubuntu preparada con Swift 5.10 instalada para ejecutar directamente
+swift. Antes de proceder, verifica que tienes WSL instalado y habilitado en tu
+sistema con el siguiente comando en la terminal de Windows (PowerShell o CMD): 
+
+```
+wsl --list --verbose
+```
+
+Este comando te mostrará las distribuciones de Linux instaladas y su estado. 
+
+!!! Note "Si no tienes WSL instalado"
+    Si no tienes WSL puedes habilitarlo mediante PowerShell ejecutando el
+    siguiente comando como administrador: 
+    
+    ```
+    wsl --install
+    ```
+
+    Este comando instalará la versión más reciente de WSL. Si WSL ya está
+    habilitado, el comando actualizará a WSL 2 si es necesario y disponible.
+    
+    Alternativamente, puedes habilitar WSL a través del panel de control de
+    Windows:
+    
+    - Abre el Panel de Control.
+    - Ve a "Programas".
+    - Haz clic en "Activar o desactivar las características de Windows".
+    - Busca "Subsistema de Windows para Linux", márcalo y haz clic en OK.
+
+
+Evidentemente, también puedes descargar WSL Ubuntu desde la [Microsoft
+Store](https://apps.microsoft.com/detail/9pdxgncfsczv?hl=en-us&gl=US) 
+Subsystem for Linux) y después realizar la instalación de Swift en Ubuntu tal y
+como se explica en el apartado anterior.
 
 
 ### Visual Studio Code ###
