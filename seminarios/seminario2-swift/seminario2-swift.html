@@ -923,7 +923,27 @@ Windows:</p>
 <li>Haz clic en "Activar o desactivar las características de Windows".</li>
 <li>Busca "Subsistema de Windows para Linux", márcalo y haz clic en OK.</li>
 </ul>
+<p>Después de habilitar WSL, se te pedirá que reinicies tu ordenador.</p>
 </div>
+<p>Pasos para importar nuestra distribución: </p>
+<ol>
+<li>Crea una carpeta <code>UbuntuLPP</code> en un disco con al menos 3.5GB de capacidad.</li>
+<li>Descarga la copia (<code>UbuntuLPP.tar</code>) en esa carpeta.</li>
+<li>Abre un ventana de símbolo de sistema (<code>cmd.exe</code>) y posiciónate en esa
+carpeta (<code>cd [ruta]\UbuntuLPP</code>).</li>
+<li>Ejecuta el siguiente comando para importar la distribución a tu WSL 2:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>wsl --import UbuntuLPP . UbuntuLPP.tar
+</code></pre></div>
+<p>Al importar la distribución con el comando anterior, el nombre que se le ha
+dado a la distribución es <code>UbuntuLPP</code> (se podía haber puesto otro nombre), y el
+lugar donde se ha desempaquetado el disco virtual (<code>ext4.vhdx</code>) es el directorio
+donde se ejecuta el comando (se podía haber sustituido el <code>.</code> por otra ubicación
+distinta). Una vez importada la distribución, se puede eliminar el archivo tar
+(<code>UbuntuLPP.tar</code>). </p>
+<p>La distribución se creó con el usuario <code>swiftuser</code> como usuario por defecto y
+administrador con la contraseña <code>su-LPP-UA</code> (por si te es necesario, por ejemplo,
+para hacer <code>sudo</code>).</p>
 <p>Evidentemente, también puedes descargar WSL Ubuntu desde la <a href="https://apps.microsoft.com/detail/9pdxgncfsczv?hl=en-us&amp;gl=US">Microsoft
 Store</a> 
 Subsystem for Linux) y después realizar la instalación de Swift en Ubuntu tal y
