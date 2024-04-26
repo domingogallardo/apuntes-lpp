@@ -899,7 +899,7 @@ $
 <h3 id="instalacion-en-windows">Instalación en Windows<a class="headerlink" href="#instalacion-en-windows" title="Permanent link">&para;</a></h3>
 <p>Puedes instalar nuestra distribución WSL Ubuntu 22.04.03 para Windows con Swift
 5.10 instalado desde <a href="https://drive.google.com/file/d/1q1YWkNQ1i1H4hI1js296EXLa6nACigCy/view?usp=drive_link">este
-enlace</a> </p>
+enlace</a>.</p>
 <p>Se trata de una copia exportada en formato tar de una una distribución WSL
 Ubuntu preparada con Swift 5.10 instalada para ejecutar directamente
 swift. Antes de proceder, verifica que tienes WSL instalado y habilitado en tu
@@ -931,16 +931,18 @@ Windows:</p>
 <li>Descarga la copia (<code>UbuntuLPP.tar</code>) en esa carpeta.</li>
 <li>Abre un ventana de símbolo de sistema (<code>cmd.exe</code>) y posiciónate en esa
 carpeta (<code>cd [ruta]\UbuntuLPP</code>).</li>
-<li>Ejecuta el siguiente comando para importar la distribución a tu WSL 2:</li>
-</ol>
+<li>
+<p>Ejecuta el siguiente comando para importar la distribución a tu WSL 2:</p>
 <div class="highlight"><pre><span></span><code>wsl --import UbuntuLPP . UbuntuLPP.tar
 </code></pre></div>
 <p>Al importar la distribución con el comando anterior, el nombre que se le ha
-dado a la distribución es <code>UbuntuLPP</code> (se podía haber puesto otro nombre), y el
-lugar donde se ha desempaquetado el disco virtual (<code>ext4.vhdx</code>) es el directorio
-donde se ejecuta el comando (se podía haber sustituido el <code>.</code> por otra ubicación
-distinta). Una vez importada la distribución, se puede eliminar el archivo tar
-(<code>UbuntuLPP.tar</code>). </p>
+dado a la distribución es <code>UbuntuLPP</code> (se podía haber puesto otro nombre), y
+el lugar donde se ha desempaquetado el disco virtual (<code>ext4.vhdx</code>) es el
+directorio donde se ejecuta el comando (se podía haber sustituido el <code>.</code> por
+otra ubicación distinta). Una vez importada la distribución, se puede
+eliminar el archivo tar (<code>UbuntuLPP.tar</code>).</p>
+</li>
+</ol>
 <p>La distribución se creó con el usuario <code>swiftuser</code> como usuario por defecto y
 administrador con la contraseña <code>su-LPP-UA</code> (por si te es necesario, por ejemplo,
 para hacer <code>sudo</code>).</p>
