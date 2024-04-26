@@ -897,14 +897,37 @@ $
 </li>
 </ol>
 <h3 id="instalacion-en-windows">Instalación en Windows<a class="headerlink" href="#instalacion-en-windows" title="Permanent link">&para;</a></h3>
-<p>Aunque existe una <a href="https://swift.org/download/#using-downloads">distribución oficial de
-Swift</a> para Windows 10,
-no hemos conseguido hacerla funcionar.</p>
-<p>Recomendamos instalar una distribución de Ubuntu en WSL2 (Windows
-Subsystem for Linux) siguiendo <a href="https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#1-overview">estas
-instrucciones</a>
-y después realizar la instalación de Swift en Ubuntu tal y como se
-explica en el apartado anterior.</p>
+<p>Puedes instalar nuestra distribución WSL Ubuntu 22.04.03 para Windows con Swift
+5.10 instalado desde <a href="https://drive.google.com/file/d/1q1YWkNQ1i1H4hI1js296EXLa6nACigCy/view?usp=drive_link">este
+enlace</a> </p>
+<p>Se trata de una copia exportada en formato tar de una una distribución WSL
+Ubuntu preparada con Swift 5.10 instalada para ejecutar directamente
+swift. Antes de proceder, verifica que tienes WSL instalado y habilitado en tu
+sistema con el siguiente comando en la terminal de Windows (PowerShell o CMD): </p>
+<div class="highlight"><pre><span></span><code>wsl --list --verbose
+</code></pre></div>
+<p>Este comando te mostrará las distribuciones de Linux instaladas y su estado. </p>
+<div class="admonition note">
+<p class="admonition-title">Si no tienes WSL instalado</p>
+<p>Si no tienes WSL puedes habilitarlo mediante PowerShell ejecutando el
+siguiente comando como administrador: </p>
+<div class="highlight"><pre><span></span><code>wsl --install
+</code></pre></div>
+<p>Este comando instalará la versión más reciente de WSL. Si WSL ya está
+habilitado, el comando actualizará a WSL 2 si es necesario y disponible.</p>
+<p>Alternativamente, puedes habilitar WSL a través del panel de control de
+Windows:</p>
+<ul>
+<li>Abre el Panel de Control.</li>
+<li>Ve a "Programas".</li>
+<li>Haz clic en "Activar o desactivar las características de Windows".</li>
+<li>Busca "Subsistema de Windows para Linux", márcalo y haz clic en OK.</li>
+</ul>
+</div>
+<p>Evidentemente, también puedes descargar WSL Ubuntu desde la <a href="https://apps.microsoft.com/detail/9pdxgncfsczv?hl=en-us&amp;gl=US">Microsoft
+Store</a> 
+Subsystem for Linux) y después realizar la instalación de Swift en Ubuntu tal y
+como se explica en el apartado anterior.</p>
 <h3 id="visual-studio-code">Visual Studio Code<a class="headerlink" href="#visual-studio-code" title="Permanent link">&para;</a></h3>
 <p>Para editar código Swift puedes usar cualquier editor orientado a
 programación como Visual Studio Code (VSC) o Atom. Aconsejamos <a href="https://code.visualstudio.com">Visual
