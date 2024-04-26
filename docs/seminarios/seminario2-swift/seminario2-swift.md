@@ -174,6 +174,30 @@ Este comando te mostrará las distribuciones de Linux instaladas y su estado.
     - Haz clic en "Activar o desactivar las características de Windows".
     - Busca "Subsistema de Windows para Linux", márcalo y haz clic en OK.
 
+    Después de habilitar WSL, se te pedirá que reinicies tu ordenador.
+    
+Pasos para importar nuestra distribución: 
+
+1. Crea una carpeta `UbuntuLPP` en un disco con al menos 3.5GB de capacidad.
+2. Descarga la copia (`UbuntuLPP.tar`) en esa carpeta.
+3. Abre un ventana de símbolo de sistema (`cmd.exe`) y posiciónate en esa
+carpeta (`cd [ruta]\UbuntuLPP`).
+4. Ejecuta el siguiente comando para importar la distribución a tu WSL 2:
+
+```
+wsl --import UbuntuLPP . UbuntuLPP.tar
+```
+
+Al importar la distribución con el comando anterior, el nombre que se le ha
+dado a la distribución es `UbuntuLPP` (se podía haber puesto otro nombre), y el
+lugar donde se ha desempaquetado el disco virtual (`ext4.vhdx`) es el directorio
+donde se ejecuta el comando (se podía haber sustituido el `.` por otra ubicación
+distinta). Una vez importada la distribución, se puede eliminar el archivo tar
+(`UbuntuLPP.tar`). 
+
+La distribución se creó con el usuario `swiftuser` como usuario por defecto y
+administrador con la contraseña `su-LPP-UA` (por si te es necesario, por ejemplo,
+para hacer `sudo`).
 
 Evidentemente, también puedes descargar WSL Ubuntu desde la [Microsoft
 Store](https://apps.microsoft.com/detail/9pdxgncfsczv?hl=en-us&gl=US) 
