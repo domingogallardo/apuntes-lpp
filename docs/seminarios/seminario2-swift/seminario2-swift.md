@@ -142,7 +142,7 @@ distribuciones de Ubuntu.
 
 Puedes instalar nuestra distribución WSL Ubuntu 22.04.03 para Windows con Swift
 5.10 instalado desde [este
-enlace](https://drive.google.com/file/d/1q1YWkNQ1i1H4hI1js296EXLa6nACigCy/view?usp=drive_link) 
+enlace](https://drive.google.com/file/d/1q1YWkNQ1i1H4hI1js296EXLa6nACigCy/view?usp=drive_link).
 
 Se trata de una copia exportada en formato tar de una una distribución WSL
 Ubuntu preparada con Swift 5.10 instalada para ejecutar directamente
@@ -184,16 +184,16 @@ Pasos para importar nuestra distribución:
 carpeta (`cd [ruta]\UbuntuLPP`).
 4. Ejecuta el siguiente comando para importar la distribución a tu WSL 2:
 
-```
-wsl --import UbuntuLPP . UbuntuLPP.tar
-```
+    ```
+    wsl --import UbuntuLPP . UbuntuLPP.tar
+    ```
 
-Al importar la distribución con el comando anterior, el nombre que se le ha
-dado a la distribución es `UbuntuLPP` (se podía haber puesto otro nombre), y el
-lugar donde se ha desempaquetado el disco virtual (`ext4.vhdx`) es el directorio
-donde se ejecuta el comando (se podía haber sustituido el `.` por otra ubicación
-distinta). Una vez importada la distribución, se puede eliminar el archivo tar
-(`UbuntuLPP.tar`). 
+    Al importar la distribución con el comando anterior, el nombre que se le ha
+    dado a la distribución es `UbuntuLPP` (se podía haber puesto otro nombre), y
+    el lugar donde se ha desempaquetado el disco virtual (`ext4.vhdx`) es el
+    directorio donde se ejecuta el comando (se podía haber sustituido el `.` por
+    otra ubicación distinta). Una vez importada la distribución, se puede
+    eliminar el archivo tar (`UbuntuLPP.tar`).
 
 La distribución se creó con el usuario `swiftuser` como usuario por defecto y
 administrador con la contraseña `su-LPP-UA` (por si te es necesario, por ejemplo,
