@@ -141,7 +141,7 @@ distribuciones de Ubuntu.
 ### Instalación en Windows ###
 
 Puedes instalar nuestra distribución WSL Ubuntu 22.04.03 para Windows con Swift
-5.10 instalado desde [este
+5.10 descargándola desde [este
 enlace](https://drive.google.com/file/d/1q1YWkNQ1i1H4hI1js296EXLa6nACigCy/view?usp=drive_link).
 
 Se trata de una copia exportada en formato tar de una una distribución WSL
