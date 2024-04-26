@@ -200,9 +200,9 @@ administrador con la contraseña `su-LPP-UA` (por si te es necesario, por ejempl
 para hacer `sudo`).
 
 Evidentemente, también puedes descargar WSL Ubuntu desde la [Microsoft
-Store](https://apps.microsoft.com/detail/9pdxgncfsczv?hl=en-us&gl=US) 
-Subsystem for Linux) y después realizar la instalación de Swift en Ubuntu tal y
-como se explica en el apartado anterior.
+Store](https://apps.microsoft.com/detail/9pdxgncfsczv?hl=en-us&gl=US) (o usar
+alguna distribución que ya tengas instalada) y después realizar la instalación
+de Swift en Ubuntu tal y como se explica en el apartado anterior.
 
 
 ### Visual Studio Code ###
