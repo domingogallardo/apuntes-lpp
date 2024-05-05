@@ -44,7 +44,7 @@
 - Vamos a detallar a continuación las **características de Programación
 Orientada a Objetos de Swift**. 
 - Para una introducción rápida leer los últimos apartados del [seminario de
-Swift](https://github.com/domingogallardo/apuntes-lpp/blob/master/seminarios/seminario2-swift/seminario2-swift.md)
+Swift](https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario2-swift/seminario2-swift.html)
 (los apartados **Objetos, clases y estructuras**, **Protocolos y
 extensiones** y **Genéricos**).
 
