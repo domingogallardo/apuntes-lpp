@@ -57,7 +57,7 @@ print(parejaMayorParImpar2(numeros: numeros))
 ```
 
 b2) Escribe la función `sumaMaxParesImpares(numeros: [Int]) -> Int`
-que llama a la función anterior y devuelve la suma del máximo de los
+que **llama a la función anterior** y devuelve la suma del máximo de los
 pares y el máximo de los impares. En el caso en que se pase un array
 vacío deberá devolver un 0.
 

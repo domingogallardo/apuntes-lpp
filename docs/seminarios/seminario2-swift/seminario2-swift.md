@@ -717,7 +717,7 @@ let resumenFrutas = "Tengo \(manzanas + naranjas) frutas."
 !!! Example "Experimento 3"  
     Usa `\()` para imprimir una cadena con un cálculo con punto
     flotante y, en otra sentencia, para imprimir una cadena que
-    incluiya el nombre de alguien en un saludo.
+    incluya el nombre de alguien en un saludo.
 
 Crea arrays y diccionarios utilizando corchetes (`[]`), y accede a sus
 elementos escribiendo el índice o la clave en los corchetes. Se
