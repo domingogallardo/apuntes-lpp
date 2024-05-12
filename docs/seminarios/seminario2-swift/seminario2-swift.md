@@ -195,6 +195,12 @@ carpeta (`cd [ruta]\UbuntuLPP`).
     otra ubicación distinta). Una vez importada la distribución, se puede
     eliminar el archivo tar (`UbuntuLPP.tar`).
 
+!!! Danger "Evita almacenar discos WSL en servicios de sincronización."
+    Almacenar los archivos de disco virtual de WSL en servicios como OneDrive
+    puede provocar conflictos de acceso y errores. Para asegurar un
+    funcionamiento adecuado, guárdalos directamente en el disco duro de tu
+    ordenador, en una ruta local.
+
 La distribución se creó con el usuario `swiftuser` como usuario por defecto y
 administrador con la contraseña `su-LPP-UA` (por si te es necesario, por ejemplo,
 para hacer `sudo`).

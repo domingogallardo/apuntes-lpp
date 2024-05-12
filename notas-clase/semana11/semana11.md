@@ -792,11 +792,10 @@ print("La biblioteca contiene \(contadorCanciones) películas y \(contadorPelicu
 - Una constante o variable de un cierto tipo de clase puede referirse
   (contener) a una instancia de una subclase. 
 - Podemos entonces hacer un _downcast_ al tipo de la subclase con
-  un operador de _cast_ (`as?` o `as!`). 
+  un operador de _cast_ (como `as?`). 
 - Como el _downcast_ puede fallar, la versión condicional, `as?`,
   devuelve un valor opcional del tipo al que estamos intentando hacer
-  el _downcasting_. La versión forzosa, `as!`, intenta el _downcast_ y
-  fuerza la desenvoltura del resultado.
+  el _downcasting_. 
 
 Ejemplo:
 
@@ -905,9 +904,9 @@ for item in array {
 
 ### Comprobación de ajustarse a un protocolo
 
-- Podemos usar también los operadores anteriores `is` y `as` (y `as?`
-  y `as!`) para comprobar si una instancia se ajusta a un protocolo y
-  para hacer un _cast_ a un protocolo específico.
+- Podemos usar también los operadores anteriores `is` y `as` (y `as?`) para
+  comprobar si una instancia se ajusta a un protocolo y para hacer un _cast_ a
+  un protocolo específico. 
 
 Ejemplo:
 
