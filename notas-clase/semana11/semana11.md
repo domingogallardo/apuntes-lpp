@@ -217,7 +217,7 @@ esa variable podemos almacenar cualquier instancia de cualquier tipo
 que cumpla el protocolo.
 
 ```swift
-var algoConNombre: TieneNombre = nc1701 // guardamos la nave estelar
+var algoConNombre: TieneNombre = ncc1701 // guardamos la nave estelar
 algoConNombre = john // y ahora guardamos la persona
 ```
 
