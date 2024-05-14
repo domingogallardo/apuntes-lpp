@@ -3100,8 +3100,9 @@ solo lectura que hereda de <code>Vehiculo</code>:</p>
 </code></pre></div>
 <h3 id="63-sobreescritura">6.3. Sobreescritura<a class="headerlink" href="#63-sobreescritura" title="Permanent link">&para;</a></h3>
 <p>Una subclase puede proporcionar su propia implementación de un método
-de la instancia, método del tipo, propiedad de la instancia o
-propiedad del tipo que hereda de su superclase. Esto se conoce como
+de la instancia o método del tipo. También puede proporcionar su propia
+implementación de una propiedad calculada o añadir observadores a cualquier
+propiedad que hereda de su superclase. Esto se conoce como
 <em>sobreescritura</em> (<em>overriding</em>).</p>
 <p>Para sobreescribir una característica que sería de otra forma heredada
 debemos usar el prefijo <code>override</code>. De esta forma se clarifica que
@@ -3109,9 +3110,6 @@ intentamos proporcionar una sobreescritura y que no lo hacemos por
 error. Esta palabra clave también hace que el compilador comprueba que
 la superclase (o una de sus clases padre) tiene una declaración que
 empareja con la que proporcionamos en la sobreescritura.</p>
-<p>Cuando proporcionamos una sobreescritura puede ser útil acceder a los
-valores proporcionados por la clase padre. Para acceder a ellos
-podemos usar el prefijo <code>super</code>.</p>
 <p>El siguiente ejemplo define una nueva subclase de <code>Vehiculo</code> llamada
 <code>Tren</code>, que sobreescribe el método <code>hazRuido()</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Tren</span><span class="p">:</span> <span class="n">Vehiculo</span> <span class="p">{</span>
@@ -3143,7 +3141,9 @@ de solo-lectura.</p>
 una subclase de <code>Vehiculo</code>. La clase <code>Coche</code> introduce una nueva
 propiedad almacenada llamada <code>marcha</code>, con un valor por defecto
 de 1. También sobreescribe la propiedad heredada <code>descripcion</code>,
-incluyendo la marcha actual en la descripción:</p>
+incluyendo la marcha actual en la descripción.</p>
+<p>Vemos también en el ejemplo que cuando proporcionamos una sobreescritura podemos
+a los valores proporcionados por la clase padre usando la referencia <code>super</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Coche</span><span class="p">:</span> <span class="n">Vehiculo</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">marcha</span> <span class="p">=</span> <span class="mi">1</span>
     <span class="kr">override</span> <span class="kd">var</span> <span class="nv">descripcion</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
