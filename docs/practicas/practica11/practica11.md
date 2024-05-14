@@ -14,6 +14,8 @@ OO con Swift_](../../teoria/tema06-programacion-orientada-objetos-swift/tema06-p
 - Inicialización
 - Herencia
 
+### Seminario de Swift ###
+
 Continua también leyendo y probando el tour del seminario de
 Swift, en concreto los apartados [*Objetos y
 clases*](https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario2-swift/seminario2-swift.html#objetos-y-clases)
