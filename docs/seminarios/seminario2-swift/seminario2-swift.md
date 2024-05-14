@@ -1422,10 +1422,10 @@ switch exito {
 ```
 
 !!! Example "Experimento 14"
-    Añade un tercer caso al `ServerResponse` y al switch.
+    Añade un tercer caso a `RespuestaServidor` y al switch.
 
 Date cuenta de cómo la hora de salir el sol y de ponerse el sol se
-extraen del `ServerResponse` como parte del emparejamiento entre el
+extraen del enumerado `RespuestaServidor` como parte del emparejamiento entre el
 valor y los casos switch.
 
 Usa `struct` para crear una estructura. Las estructuras comparten
