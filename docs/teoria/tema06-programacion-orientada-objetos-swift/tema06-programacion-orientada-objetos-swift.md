@@ -1742,8 +1742,9 @@ print("Tandem: \(tandem.descripcion)")
 ### 6.3. Sobreescritura
 
 Una subclase puede proporcionar su propia implementación de un método
-de la instancia, método del tipo, propiedad de la instancia o
-propiedad del tipo que hereda de su superclase. Esto se conoce como
+de la instancia o método del tipo. También puede proporcionar su propia
+implementación de una propiedad calculada o añadir observadores a cualquier
+propiedad que hereda de su superclase. Esto se conoce como
 _sobreescritura_ (_overriding_).
 
 Para sobreescribir una característica que sería de otra forma heredada
@@ -1753,9 +1754,6 @@ error. Esta palabra clave también hace que el compilador comprueba que
 la superclase (o una de sus clases padre) tiene una declaración que
 empareja con la que proporcionamos en la sobreescritura.
 
-Cuando proporcionamos una sobreescritura puede ser útil acceder a los
-valores proporcionados por la clase padre. Para acceder a ellos
-podemos usar el prefijo `super`.
 
 El siguiente ejemplo define una nueva subclase de `Vehiculo` llamada
 `Tren`, que sobreescribe el método `hazRuido()`:
@@ -1796,7 +1794,11 @@ El siguiente ejemplo define una nueva clase llamada `Coche`, que es
 una subclase de `Vehiculo`. La clase `Coche` introduce una nueva
 propiedad almacenada llamada `marcha`, con un valor por defecto
 de 1. También sobreescribe la propiedad heredada `descripcion`,
-incluyendo la marcha actual en la descripción:
+incluyendo la marcha actual en la descripción.
+
+Vemos también en el ejemplo que cuando proporcionamos una sobreescritura podemos
+a los valores proporcionados por la clase padre usando la referencia `super`.
+
 
 ```swift
 class Coche: Vehiculo {
