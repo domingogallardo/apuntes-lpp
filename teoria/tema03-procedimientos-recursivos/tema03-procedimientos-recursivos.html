@@ -14,8 +14,9 @@
       
         <link rel="next" href="../tema04-estructuras-recursivas/tema04-estructuras-recursivas.html">
       
+      
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.1.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
     
     
       
@@ -23,14 +24,17 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ded33207.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
+
     
+    
+      
     
     
       
@@ -42,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -61,9 +65,6 @@
     
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
   
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -93,7 +94,8 @@
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -112,34 +114,40 @@
       </div>
     </div>
     
-      <form class="md-header__option" data-md-component="palette">
-        
-          
-          
-          
-          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
-          
-            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
-            </label>
-          
-        
-          
-          
-          
-          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
-            </label>
-          
-        
-      </form>
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -147,19 +155,22 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Buscar">
         
         <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Inicializando búsqueda
@@ -194,6 +205,7 @@
                     
 
 
+
 <nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="LPP" class="md-nav__button md-logo" aria-label="LPP" data-md-component="logo">
@@ -208,82 +220,110 @@
     
       
       
-      
-
   
   
     
   
   
+  
+    
+    
+    
     
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
-      
-      
-      
-        <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
-          Teoría
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_1">
-          <span class="md-nav__icon md-icon"></span>
-          Teoría
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
           
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Teoría
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Teoría
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../tema00-descripcion-asignatura/tema00-descripcion-asignatura.html" class="md-nav__link">
-        Descripción de la asignatura
+        
+  
+  <span class="md-ellipsis">
+    Descripción de la asignatura
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../tema01-historia-lenguajes-programacion/tema01-historia-lenguajes-programacion.html" class="md-nav__link">
-        Tema 1: Historia de los lenguajes de programación
+        
+  
+  <span class="md-ellipsis">
+    Tema 1: Historia de los lenguajes de programación
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../tema02-programacion-funcional/tema02-programacion-funcional.html" class="md-nav__link">
-        Tema 2: Programación funcional
+        
+  
+  <span class="md-ellipsis">
+    Tema 2: Programación funcional
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
     
+  
   
   
     <li class="md-nav__item md-nav__item--active">
@@ -295,12 +335,24 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Tema 3: Procedimientos recursivos
+          
+  
+  <span class="md-ellipsis">
+    Tema 3: Procedimientos recursivos
+  </span>
+  
+
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="tema03-procedimientos-recursivos.html" class="md-nav__link md-nav__link--active">
-        Tema 3: Procedimientos recursivos
+        
+  
+  <span class="md-ellipsis">
+    Tema 3: Procedimientos recursivos
+  </span>
+  
+
       </a>
       
         
@@ -320,7 +372,9 @@
       
         <li class="md-nav__item">
   <a href="#1-el-coste-de-la-recursion" class="md-nav__link">
-    1. El coste de la recursión
+    <span class="md-ellipsis">
+      1. El coste de la recursión
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="1. El coste de la recursión">
@@ -328,21 +382,27 @@
         
           <li class="md-nav__item">
   <a href="#11-la-pila-de-la-recursion" class="md-nav__link">
-    1.1. La pila de la recursión
+    <span class="md-ellipsis">
+      1.1. La pila de la recursión
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#12-coste-espacial-de-la-recursion" class="md-nav__link">
-    1.2. Coste espacial de la recursión
+    <span class="md-ellipsis">
+      1.2. Coste espacial de la recursión
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#13-el-coste-depende-del-numero-de-llamadas-a-la-recursion" class="md-nav__link">
-    1.3. El coste depende del número de llamadas a la recursión
+    <span class="md-ellipsis">
+      1.3. El coste depende del número de llamadas a la recursión
+    </span>
   </a>
   
 </li>
@@ -354,7 +414,9 @@
       
         <li class="md-nav__item">
   <a href="#2-soluciones-al-coste-de-la-recursion-procesos-iterativos" class="md-nav__link">
-    2. Soluciones al coste de la recursión: procesos iterativos
+    <span class="md-ellipsis">
+      2. Soluciones al coste de la recursión: procesos iterativos
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="2. Soluciones al coste de la recursión: procesos iterativos">
@@ -362,42 +424,54 @@
         
           <li class="md-nav__item">
   <a href="#21-factorial-iterativo" class="md-nav__link">
-    2.1. Factorial iterativo
+    <span class="md-ellipsis">
+      2.1. Factorial iterativo
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#22-version-iterativa-de-mi-length" class="md-nav__link">
-    2.2. Versión iterativa de mi-length
+    <span class="md-ellipsis">
+      2.2. Versión iterativa de mi-length
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#23-funcion-suma-lista-usando-recursion-por-la-cola" class="md-nav__link">
-    2.3. Función suma-lista usando recursión por la cola
+    <span class="md-ellipsis">
+      2.3. Función suma-lista usando recursión por la cola
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#24-caracteristicas-de-los-procesos-iterativos" class="md-nav__link">
-    2.4. Características de los procesos iterativos
+    <span class="md-ellipsis">
+      2.4. Características de los procesos iterativos
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#25-fibonacci-iterativo" class="md-nav__link">
-    2.5. Fibonacci iterativo
+    <span class="md-ellipsis">
+      2.5. Fibonacci iterativo
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#26-triangulo-de-pascal" class="md-nav__link">
-    2.6. Triángulo de Pascal
+    <span class="md-ellipsis">
+      2.6. Triángulo de Pascal
+    </span>
   </a>
   
 </li>
@@ -409,7 +483,9 @@
       
         <li class="md-nav__item">
   <a href="#3-soluciones-al-coste-de-la-recursion-memoization" class="md-nav__link">
-    3. Soluciones al coste de la recursión: memoization
+    <span class="md-ellipsis">
+      3. Soluciones al coste de la recursión: memoization
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="3. Soluciones al coste de la recursión: memoization">
@@ -417,7 +493,9 @@
         
           <li class="md-nav__item">
   <a href="#31-fibonacci-con-memoization" class="md-nav__link">
-    3.1. Fibonacci con memoization
+    <span class="md-ellipsis">
+      3.1. Fibonacci con memoization
+    </span>
   </a>
   
 </li>
@@ -429,7 +507,9 @@
       
         <li class="md-nav__item">
   <a href="#4-figuras-recursivas" class="md-nav__link">
-    4. Figuras recursivas
+    <span class="md-ellipsis">
+      4. Figuras recursivas
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="4. Figuras recursivas">
@@ -437,21 +517,27 @@
         
           <li class="md-nav__item">
   <a href="#41-libreria-de-imagenes-de-racket" class="md-nav__link">
-    4.1. Librería de imágenes de Racket
+    <span class="md-ellipsis">
+      4.1. Librería de imágenes de Racket
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#42-triangulo-de-sierpinski" class="md-nav__link">
-    4.2. Triángulo de Sierpinski
+    <span class="md-ellipsis">
+      4.2. Triángulo de Sierpinski
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#43-curva-de-hilbert" class="md-nav__link">
-    4.3. Curva de Hilbert
+    <span class="md-ellipsis">
+      4.3. Curva de Hilbert
+    </span>
   </a>
   
 </li>
@@ -463,7 +549,9 @@
       
         <li class="md-nav__item">
   <a href="#5-bibliografia" class="md-nav__link">
-    5. Bibliografía
+    <span class="md-ellipsis">
+      5. Bibliografía
+    </span>
   </a>
   
 </li>
@@ -475,332 +563,473 @@
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../tema04-estructuras-recursivas/tema04-estructuras-recursivas.html" class="md-nav__link">
-        Tema 4: Estructuras recursivas
+        
+  
+  <span class="md-ellipsis">
+    Tema 4: Estructuras recursivas
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html" class="md-nav__link">
-        Tema 5: Programación funcional con Swift
+        
+  
+  <span class="md-ellipsis">
+    Tema 5: Programación funcional con Swift
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../tema06-programacion-orientada-objetos-swift/tema06-programacion-orientada-objetos-swift.html" class="md-nav__link">
-        Tema 6: Programación OO con Swift
+        
+  
+  <span class="md-ellipsis">
+    Tema 6: Programación OO con Swift
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     
+    
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-          Seminarios
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
-          Seminarios
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
           
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Seminarios
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Seminarios
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../seminarios/seminario1-scheme/seminario1-scheme.html" class="md-nav__link">
-        Seminario de Scheme
+        
+  
+  <span class="md-ellipsis">
+    Seminario de Scheme
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../seminarios/seminario2-swift/seminario2-swift.html" class="md-nav__link">
-        Seminario de Swift
+        
+  
+  <span class="md-ellipsis">
+    Seminario de Swift
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     
+    
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-          Prácticas
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
-          Prácticas
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
           
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Prácticas
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Prácticas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../practicas/buenas-practicas-programacion-funcional.html" class="md-nav__link">
-        Buenas prácticas de programación funcional
+        
+  
+  <span class="md-ellipsis">
+    Buenas prácticas de programación funcional
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../practicas/practica01/practica01.html" class="md-nav__link">
-        Práctica 1
+        
+  
+  <span class="md-ellipsis">
+    Práctica 1
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../practicas/practica02/practica02.html" class="md-nav__link">
-        Práctica 2
+        
+  
+  <span class="md-ellipsis">
+    Práctica 2
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../practicas/practica03/practica03.html" class="md-nav__link">
-        Práctica 3
+        
+  
+  <span class="md-ellipsis">
+    Práctica 3
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../practicas/practica04/practica04.html" class="md-nav__link">
-        Práctica 4
+        
+  
+  <span class="md-ellipsis">
+    Práctica 4
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../practicas/practica05/practica05.html" class="md-nav__link">
-        Práctica 5
+        
+  
+  <span class="md-ellipsis">
+    Práctica 5
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../practicas/practica06/practica06.html" class="md-nav__link">
-        Práctica 6
+        
+  
+  <span class="md-ellipsis">
+    Práctica 6
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../practicas/practica07/practica07.html" class="md-nav__link">
-        Práctica 7
+        
+  
+  <span class="md-ellipsis">
+    Práctica 7
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../practicas/practica08/practica08.html" class="md-nav__link">
-        Práctica 8
+        
+  
+  <span class="md-ellipsis">
+    Práctica 8
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../practicas/practica09/practica09.html" class="md-nav__link">
-        Práctica 9
+        
+  
+  <span class="md-ellipsis">
+    Práctica 9
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../practicas/practica10/practica10.html" class="md-nav__link">
-        Práctica 10
+        
+  
+  <span class="md-ellipsis">
+    Práctica 10
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../practicas/practica11/practica11.html" class="md-nav__link">
-        Práctica 11
+        
+  
+  <span class="md-ellipsis">
+    Práctica 11
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../practicas/practica12/practica12.html" class="md-nav__link">
-        Práctica 12
+        
+  
+  <span class="md-ellipsis">
+    Práctica 12
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -833,7 +1062,9 @@
       
         <li class="md-nav__item">
   <a href="#1-el-coste-de-la-recursion" class="md-nav__link">
-    1. El coste de la recursión
+    <span class="md-ellipsis">
+      1. El coste de la recursión
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="1. El coste de la recursión">
@@ -841,21 +1072,27 @@
         
           <li class="md-nav__item">
   <a href="#11-la-pila-de-la-recursion" class="md-nav__link">
-    1.1. La pila de la recursión
+    <span class="md-ellipsis">
+      1.1. La pila de la recursión
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#12-coste-espacial-de-la-recursion" class="md-nav__link">
-    1.2. Coste espacial de la recursión
+    <span class="md-ellipsis">
+      1.2. Coste espacial de la recursión
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#13-el-coste-depende-del-numero-de-llamadas-a-la-recursion" class="md-nav__link">
-    1.3. El coste depende del número de llamadas a la recursión
+    <span class="md-ellipsis">
+      1.3. El coste depende del número de llamadas a la recursión
+    </span>
   </a>
   
 </li>
@@ -867,7 +1104,9 @@
       
         <li class="md-nav__item">
   <a href="#2-soluciones-al-coste-de-la-recursion-procesos-iterativos" class="md-nav__link">
-    2. Soluciones al coste de la recursión: procesos iterativos
+    <span class="md-ellipsis">
+      2. Soluciones al coste de la recursión: procesos iterativos
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="2. Soluciones al coste de la recursión: procesos iterativos">
@@ -875,42 +1114,54 @@
         
           <li class="md-nav__item">
   <a href="#21-factorial-iterativo" class="md-nav__link">
-    2.1. Factorial iterativo
+    <span class="md-ellipsis">
+      2.1. Factorial iterativo
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#22-version-iterativa-de-mi-length" class="md-nav__link">
-    2.2. Versión iterativa de mi-length
+    <span class="md-ellipsis">
+      2.2. Versión iterativa de mi-length
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#23-funcion-suma-lista-usando-recursion-por-la-cola" class="md-nav__link">
-    2.3. Función suma-lista usando recursión por la cola
+    <span class="md-ellipsis">
+      2.3. Función suma-lista usando recursión por la cola
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#24-caracteristicas-de-los-procesos-iterativos" class="md-nav__link">
-    2.4. Características de los procesos iterativos
+    <span class="md-ellipsis">
+      2.4. Características de los procesos iterativos
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#25-fibonacci-iterativo" class="md-nav__link">
-    2.5. Fibonacci iterativo
+    <span class="md-ellipsis">
+      2.5. Fibonacci iterativo
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#26-triangulo-de-pascal" class="md-nav__link">
-    2.6. Triángulo de Pascal
+    <span class="md-ellipsis">
+      2.6. Triángulo de Pascal
+    </span>
   </a>
   
 </li>
@@ -922,7 +1173,9 @@
       
         <li class="md-nav__item">
   <a href="#3-soluciones-al-coste-de-la-recursion-memoization" class="md-nav__link">
-    3. Soluciones al coste de la recursión: memoization
+    <span class="md-ellipsis">
+      3. Soluciones al coste de la recursión: memoization
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="3. Soluciones al coste de la recursión: memoization">
@@ -930,7 +1183,9 @@
         
           <li class="md-nav__item">
   <a href="#31-fibonacci-con-memoization" class="md-nav__link">
-    3.1. Fibonacci con memoization
+    <span class="md-ellipsis">
+      3.1. Fibonacci con memoization
+    </span>
   </a>
   
 </li>
@@ -942,7 +1197,9 @@
       
         <li class="md-nav__item">
   <a href="#4-figuras-recursivas" class="md-nav__link">
-    4. Figuras recursivas
+    <span class="md-ellipsis">
+      4. Figuras recursivas
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="4. Figuras recursivas">
@@ -950,21 +1207,27 @@
         
           <li class="md-nav__item">
   <a href="#41-libreria-de-imagenes-de-racket" class="md-nav__link">
-    4.1. Librería de imágenes de Racket
+    <span class="md-ellipsis">
+      4.1. Librería de imágenes de Racket
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#42-triangulo-de-sierpinski" class="md-nav__link">
-    4.2. Triángulo de Sierpinski
+    <span class="md-ellipsis">
+      4.2. Triángulo de Sierpinski
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#43-curva-de-hilbert" class="md-nav__link">
-    4.3. Curva de Hilbert
+    <span class="md-ellipsis">
+      4.3. Curva de Hilbert
+    </span>
   </a>
   
 </li>
@@ -976,7 +1239,9 @@
       
         <li class="md-nav__item">
   <a href="#5-bibliografia" class="md-nav__link">
-    5. Bibliografía
+    <span class="md-ellipsis">
+      5. Bibliografía
+    </span>
   </a>
   
 </li>
@@ -1715,11 +1980,19 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
 
 
 
+
+
+
+
+
+
+
                 
               </article>
             </div>
           
           
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
       </main>
@@ -1747,10 +2020,11 @@ Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.51198bba.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
