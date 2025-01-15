@@ -1776,7 +1776,7 @@ concatenar dos o más listas
     entre ambas funciones es el tipo del primer parámetro. En `cons` es un
     elemento que se añade a la lista, mientras que en `append` es otra lista que
     se concatena con la segunda.
-
+<!--
 ### 2.7. Recursión
 
 Otra característica fundamental de la programación funcional es la no
@@ -4817,6 +4817,8 @@ Entonces la función `(divisores n)` se implementaría de la siguiente forma:
             (divisor? x n)) (numeros-hasta n)))
 ```
 
+--!>
+
 ## 6. Bibliografía
 
 Capítulos del libro *Structure and Intepretation of Computer Programs*:
@@ -4825,9 +4827,8 @@ Capítulos del libro *Structure and Intepretation of Computer Programs*:
 - [1.3  Formulating Abstractions with Higher-Order Procedures](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-12.html#%_sec_1.3)
 - [2.2.1  Representing Sequences](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.1)
 
-
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2023-24  
+Lenguajes y Paradigmas de Programación, curso 2024-25  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
