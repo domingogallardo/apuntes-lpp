@@ -1776,7 +1776,9 @@ concatenar dos o más listas
     entre ambas funciones es el tipo del primer parámetro. En `cons` es un
     elemento que se añade a la lista, mientras que en `append` es otra lista que
     se concatena con la segunda.
+
 <!--
+
 ### 2.7. Recursión
 
 Otra característica fundamental de la programación funcional es la no
