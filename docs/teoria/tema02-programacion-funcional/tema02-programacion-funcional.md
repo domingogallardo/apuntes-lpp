@@ -4819,7 +4819,7 @@ Entonces la función `(divisores n)` se implementaría de la siguiente forma:
             (divisor? x n)) (numeros-hasta n)))
 ```
 
---!>
+-->
 
 ## 6. Bibliografía
 
