@@ -213,7 +213,7 @@ asignatura.
     ningún dispositivo con conexión a internet (smartphones, smart
     watches, tablets, etc). Antes de empezar la prueba, se deberán
     dejar dentro de las mochilas, y éstas en el suelo. En caso de no
-    cumplir alguna esta norma, la prueba queda invalidada con
+    cumplir esta norma, la prueba queda invalidada con
     calificación de 0. 
     
 ### 7.2. Convocatoria extraordinaria C4
