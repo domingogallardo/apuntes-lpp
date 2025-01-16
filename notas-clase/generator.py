@@ -1,4 +1,4 @@
-# 
+#
 # Comando que convierte un fichero Markdown en HTML
 # incluyendo un fichero CSS
 #
@@ -12,7 +12,13 @@
 # brew install python
 # pip3 install markdown
 #
-
+# Nota de Cristina:
+# Con las últimas versiones de Python, hay que crear un entorno virtual:
+# En la carpeta Documents lo creamos: python3 -m venv lpp-env
+# Activamos el entorno: source lpp-env/bin/activate
+# Instalamos markdown en ese entorno: pip3 install markdown
+# Instalamos extensiones: pip3 install pymdown-extensions
+# Ahora ya podemos generar los HTML
 
 import markdown, codecs, sys
 

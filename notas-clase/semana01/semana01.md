@@ -10,7 +10,7 @@ Notas de clase de la semana 1 de LPP.
 <p style="margin-bottom:2cm;"></p>
 
 - Usamos
-  [Moodle](https://moodle2020-21.ua.es/moodle/course/view.php?id=8242)
+  [Moodle](https://moodle2024-25.ua.es/moodle/course/view.php?id=4543)
   para mostrar la planificación semanal, subir prácticas,
   etc. 
 - Utilizaremos el foro para enviar avisos. También lo podéis usar
