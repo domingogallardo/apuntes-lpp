@@ -219,8 +219,7 @@
 ## Entrega de la práctica
 
 Copia los ejercicios de la práctica en el cuestionario
-_Entrega práctica 1_. Tienes de plazo hasta el domingo 4 de febrero a las 21:00
-h. Una vez finalizado el plazo de entrega podrás revisar el cuestionario y
+_Entrega práctica 1_. Tienes de plazo hasta el próximo domingo a las 21:00h. Una vez finalizado el plazo de entrega podrás revisar el cuestionario y
 visualizar la solución. En este caso el único ejercicio con solución es el
 ejercicio 6. 
 
@@ -229,6 +228,6 @@ tuya. Puedes consultar cualquier duda con tu profesor de prácticas en
 la clase de prácticas de la semana que viene.
 
 ----
-Lenguajes y Paradigmas de Programación, curso 2023-24  
+Lenguajes y Paradigmas de Programación, curso 2024-25  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
