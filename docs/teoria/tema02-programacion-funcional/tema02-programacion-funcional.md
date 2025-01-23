@@ -153,7 +153,7 @@ interesantes publicados recientemente sobre programación funcional:
 - Lupo Montero - [Introducción a la programación funcional en
   JavaScript](https://medium.com/laboratoria-how-to/introducción-a-la-programación-funcional-en-javascript-parte-1-e0b1d0b2142e) (Blog)
 - Andrés Marzal - [Por qué deberías aprender programación funcional ya
-  mismo](https://www.youtube.com/watch?v=YU2i3L-euB0) (Charla en YouTube)
+  mismo](https://www.youtube.com/watch?v=jG4QuREv5fE) (Charla en YouTube)
 - Mary Rose Cook - [A practical introduction to functional
 programming](https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming) (Blog)
 - Ben Christensen - [Functional Reactive Programming in the Netflix
@@ -270,7 +270,7 @@ expresivos y fáciles de probar.
 En la asignatura usaremos Scheme como primer lenguaje en el que
 exploraremos la programación funcional.
 
-En el seminario de Scheme que se imparte en prácticas se estudiará en
+En el seminario de Scheme que se imparte en prácticas se estudian en
 más profundidad los conceptos más importantes del lenguaje: tipos de
 datos, operadores, estructuras de control, intérprete, etc.
 
@@ -942,7 +942,7 @@ contador() ;; 3
 
 Por el contrario, los lenguajes funcionales tienen la propiedad de
 **transparencia referencial**: es posible sustituir cualquier
-aparición de una expresión por su resultado sin que cambia el
+aparición de una expresión por su resultado sin que cambie el
 resultado final del programa. Dicho de otra forma, en programación
 funcional, **una función siempre devuelve el mismo valor cuando se le
 llama con los mismos parámetros**. Las funciones no modifican ningún
@@ -1558,7 +1558,7 @@ hola
 **Evaluación**
 
 Si `quote` recibe una expresión correcta de Scheme (una expresión
-entre paréntesis) se devuelve la lista o pareja pareja definida por la
+entre paréntesis) se devuelve la lista o pareja definida por la
 expresión (sin evaluar sus elementos).
 
 **Ejemplos**

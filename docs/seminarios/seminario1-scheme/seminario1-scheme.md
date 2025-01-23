@@ -202,7 +202,7 @@ una de sus características principales es que los programas se
 construyen mediante la definición de funciones.
 
 Podemos utilizar en el intérprete la forma especial `define` para
-definir variables y funciones. En clase de teoría veremos cómo es el
+definir variables y funciones. En clase de teoría se explica cómo es el
 funcionamiento del `define`, pero por el momento lo utilizaremos para
 definir variables asociadas a valores, y para implementar funciones.
 

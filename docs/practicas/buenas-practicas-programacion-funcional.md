@@ -10,9 +10,6 @@ importante que cuando estudies esos ejemplos reflexiones sobre la forma en la
 que está escrita el código. Aquí extraemos algunas de esas buenas prácticas para
 hacerlas más explícitas.
 
-Actualizaremos el documento a lo largo de las semanas, cuando vayamos
-introduciendo nuevos conceptos y ejemplos.
-
 ### Nombres de funciones y variables ###
 
 - Los nombres de funciones y variables deben ser descriptivos y tener un

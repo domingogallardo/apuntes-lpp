@@ -266,7 +266,7 @@ Lenguaje funcional puro más importante:
 - Paradigma muy popular en la actualidad
 - Algunos artículos y charlas:
     - Lupo Montero - [Introducción a la programación funcional en JavaScript](https://medium.com/laboratoria-how-to/introducción-a-la-programación-funcional-en-javascript-parte-1-e0b1d0b2142e) (Blog)
-    - Andrés Marzal - [Por qué deberías aprender programación funcional ya mismo](https://www.youtube.com/watch?v=YU2i3L-euB0) (Charla en YouTube)
+    - Andrés Marzal - [Por qué deberías aprender programación funcional ya mismo](https://www.youtube.com/watch?v=jG4QuREv5fE) (Charla en YouTube)
     - Mary Rose Cook - [A practical introduction to functional programming](https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming) (Blog)
     - Ben Christensen - [Functional Reactive Programming in the Netflix API](https://www.infoq.com/presentations/Netflix-API-rxjava-hystrix) (Charla en InfoQ)
 
@@ -587,8 +587,7 @@ contador() ;; 3
 ```	
 
 **Por el contrario**, los lenguajes funcionales puros tienen la propiedad
-de *transparencia referencial*: si se sustituye una expresión por su
-valor el resultado final no debe cambiar. -> funciones no modifican estado.
+de *transparencia referencial*: si se sustituye una expresión por su valor el resultado final no debe cambiar. -> funciones no modifican estado.
 
 <p style="margin-bottom:2cm;"></p>
 
@@ -936,7 +935,7 @@ x
 **Evaluación**
 
 Si `quote` recibe una expresión correcta de Scheme (una expresión
-entre paréntesis) se devuelve la lista o pareja pareja definida por la
+entre paréntesis) se devuelve la lista o pareja definida por la
 expresión (sin evaluar sus elementos).
 
 **Ejemplos**
@@ -998,7 +997,7 @@ dicha evaluación.
 
 ### Listas ###
 
-- En el seminario de Scheme hemos visto que una de sus características
+- En el seminario de Scheme vemos que una de sus características
 principales es el uso de listas. 
 
 - Repasamos las funciones más importantes y explicamos el uso de la
