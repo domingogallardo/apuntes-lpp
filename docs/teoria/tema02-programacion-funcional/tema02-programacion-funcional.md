@@ -1777,7 +1777,6 @@ concatenar dos o más listas
     elemento que se añade a la lista, mientras que en `append` es otra lista que
     se concatena con la segunda.
 
-<!--
 
 ### 2.7. Recursión
 
@@ -1792,7 +1791,7 @@ En programación funcional las iteraciones se realizan con recursión.
 #### 2.7.1. Función `(suma-hasta x)`
 
 Por ejemplo, podemos definir la función `(suma-hasta x)` que devuelve
-la suma de los números hasta el parámetro `x` cuyo valor pasamos en la
+la suma de los números naturales hasta el parámetro `x` cuyo valor pasamos en la
 invocación de la función.
 
 Por ejemplo, `(suma-hasta 5)` devolverá `0+1+2+3+4+5 = 15`.
@@ -1855,7 +1854,7 @@ de la siguiente forma:
 La evaluación de esta función calculará la llamada recursiva
 `(suma-hasta 4)`. Ahí es donde debemos **confiar en que la recursión
 hace bien su trabajo** y que esa llamada devuelve el valor
-resultante de 4+3+2+1, o sea, 10. Una vez obtenido ese valor hay que
+resultante de 0+1+2+3+4, o sea, 10. Una vez obtenido ese valor hay que
 terminar el cálculo sumándole el propio número 5.
 
 Otra característica necesaria del caso general en una definición
@@ -2822,6 +2821,8 @@ resto).
 (first '(a b c d)) ; ⇒ a
 (rest '(a b c d)) ; ⇒ (b c d)
 ```
+
+<!--
 
 Existen otras funciones de alto nivel que trabajan sobre
 listas. Algunas ya las conocemos, pero otras no:
