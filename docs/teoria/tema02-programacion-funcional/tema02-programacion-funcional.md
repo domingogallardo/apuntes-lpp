@@ -2041,10 +2041,7 @@ Podemos generalizar este ejemplo y expresarlo en Scheme de la siguiente forma:
 ```
 
 Falta el caso base. ¿Cuál es la lista más sencilla con la que podemos
-calcular la suma de sus elementos sin llamar a la recursión?. Podría
-ser una lista sin elementos, y devolvemos 0. O una lista con un único
-elemento, y devolvemos el propio elemento. Escogemos como caso base el
-primero de ellos.
+calcular la suma de sus elementos sin llamar a la recursión?. La lista más sencilla es una lista sin elementos, y devolvemos 0. 
 
 Con todo junto, la recursión quedaría como sigue:
 
