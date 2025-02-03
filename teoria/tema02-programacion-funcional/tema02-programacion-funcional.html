@@ -2565,10 +2565,7 @@ siguiente dibujo:</p>
 <span class="w">    </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">suma-lista</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista</span><span class="p">))))</span>
 </code></pre></div>
 <p>Falta el caso base. ¿Cuál es la lista más sencilla con la que podemos
-calcular la suma de sus elementos sin llamar a la recursión?. Podría
-ser una lista sin elementos, y devolvemos 0. O una lista con un único
-elemento, y devolvemos el propio elemento. Escogemos como caso base el
-primero de ellos.</p>
+calcular la suma de sus elementos sin llamar a la recursión?. La lista más sencilla es una lista sin elementos, y devolvemos 0. </p>
 <p>Con todo junto, la recursión quedaría como sigue:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">suma-lista</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
 <span class="w">   </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">null?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
