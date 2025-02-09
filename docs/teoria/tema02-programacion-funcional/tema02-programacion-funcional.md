@@ -2531,6 +2531,7 @@ letra "r".
 Hay definidas 2^4 funciones de este tipo: `caaaar`, `caaadr`, …,
 `cddddr`.
 
+Además de las combinaciones de 4 letras, también hay combinaciones de 3, 2 y 1 letra. En total hay 30 funciones de este tipo: 2^1 + 2^2 + 2^3 + 2^4 = 2 + 4 + 8 + 16 = 30 
 
 ## 4. Listas en Scheme 
 
@@ -2819,8 +2820,6 @@ resto).
 (rest '(a b c d)) ; ⇒ (b c d)
 ```
 
-<!--
-
 Existen otras funciones de alto nivel que trabajan sobre
 listas. Algunas ya las conocemos, pero otras no:
 
@@ -3024,7 +3023,7 @@ La función `mi-reverse` quedaría entonces como sigue:
 ```racket
 (define (mi-reverse lista)
     (if (null? lista) '()
-    (añade-al-final (first lista) (mi-reverse (rest lista)))))
+        (añade-al-final (first lista) (mi-reverse (rest lista)))))
 ```
 
 #### 4.3.5. Función `cuadrados-hasta`
@@ -3180,7 +3179,7 @@ Se puede implementar de una forma muy sencilla:
 
 ```racket
 (define (divisores x)
-   (filtra-divisores (lista-disde x) x))
+   (filtra-divisores (lista-desde x) x))
 ```
 
 Y una vez definida esta función, ya puede funcionar correctamente la
@@ -3706,6 +3705,7 @@ funcionamiento de esta recursión:
 
 <img src="imagenes/suma-parejas-apply.png" width="600px"/>
 
+<!--
 
 ### 5.4. Generalización ###
 

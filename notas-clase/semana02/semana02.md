@@ -485,6 +485,7 @@ Diagramas *caja-y-puntero* (*box-and-pointer* en inglés):
 
 - Hay definidas 2^4 funciones de este tipo: `caaaar`, `caaadr`, …, `cddddr`.
 
+- También hay combinaciones de 3, 2 y 1 letra. En total hay 30 funciones de este tipo: 2^1 + 2^2 + 2^3 + 2^4 
 
 ### Listas en Scheme 
 

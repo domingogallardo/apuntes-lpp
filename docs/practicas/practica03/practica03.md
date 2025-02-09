@@ -366,7 +366,7 @@ Ejemplos:
 (suma-der (cons 10 20) 5)  ; ⇒ (10 . 25)
 ```
 
-b) Implementa la función recursiva `(suma-impares-pares lista-num)`
+b.1) Implementa la función recursiva `(suma-impares-pares lista-num)`
 que devuelva una pareja cuya parte izquierda sea la suma de los
 números impares de la lista y la parte derecha la suma de los números
 pares. Debes utilizar las funciones auxiliares definidas en el
@@ -378,6 +378,11 @@ Ejemplos:
 ```racket
 (suma-impares-pares '(3 2 1 4 8 7 6 5)) ; ⇒ (16 . 20)
 (suma-impares-pares '(3 1 5))           ; ⇒ (9 . 0)
+```
+b.2) Dada la siguiente llamada, indica qué devuelve la primera llamada recursiva:
+
+```racket
+(suma-impares-pares '(2 1 2 1 4))
 ```
 
 c) Implementa la función recursiva `(cadena-mayor lista)` que recibe un
@@ -399,6 +404,6 @@ cadena vacía y un 0 (la longitud de la cadena vacía).
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2023-24  
+Lenguajes y Paradigmas de Programación, curso 2024-25  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
