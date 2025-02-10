@@ -250,8 +250,7 @@ table {
 <p>Queremos conseguir una implementación recursiva de la función
   <code>append</code> que construye una lista resultante de la unión de dos. Por
   ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mi-append</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">d</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">))</span> <span class="c1">; ⇒ (a b c d e f)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(mi-append '(a b c) '(d e f)) ; ⇒ (a b c d e f)</code></pre>
 </li>
 <li>
 <p>¿Cómo formulamos el ejemplo de forma recursiva? </p>
@@ -266,8 +265,7 @@ lista y el resto de la segunda lista? ¿Podríamos conseguir a partir de
 la lista a resultante de esa llamada recursiva la lista que queremos?
 Vamos a probarlo:</p>
 <p><p style="margin-bottom: 1cm;"></p></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mi-append</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="ss">c</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">e</span> <span class="ss">f</span><span class="p">))</span> <span class="k">=&gt;</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">b</span> <span class="ss">c</span> <span class="ss">e</span> <span class="ss">f</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(mi-append '(b c) '(e f)) =&gt; '(b c e f)</code></pre>
 <p><p style="margin-bottom: 1cm;"></p></p>
 <p>¿Podemos conseguir la lista <code>(a b c d e f)</code> a partir de la lista <code>(b c
 e f)</code> y de <code>a</code> y <code>d</code>? No, no hay una forma fácil de hacerlo.</p>
@@ -281,8 +279,7 @@ e f)</code> y de <code>a</code> y <code>d</code>? No, no hay una forma fácil de
   resto de la segunda? </p>
 <p><p style="margin-bottom: 1cm;"></p></p>
 <p>Vamos a probarlo:</p>
-<div class="highlight"><pre><span></span><code>(mi-append &#39;(a b c) &#39;(e f)) =&gt; &#39;(a b c e f)
-</code></pre></div>
+<pre class="highlight"><code class="language-text">(mi-append '(a b c) '(e f)) =&gt; '(a b c e f)</code></pre>
 <p><p style="margin-bottom: 1cm;"></p></p>
 <p>¿Podemos conseguir la lista <code>(a b c d e f)</code> a partir de la lista <code>(a
 b c e f)</code> y <code>d</code>? No, no hay una forma fácil de hacerlo.</p>
@@ -294,15 +291,13 @@ b c e f)</code> y <code>d</code>? No, no hay una forma fácil de hacerlo.</p>
 <li>
 <p>¿Cuál es la forma correcta de hacerlo? </p>
 <p><p style="margin-bottom: 1cm;"></p></p>
-<div class="highlight"><pre><span></span><code>(mi-append &#39;(b c) &#39;(d e f)) =&gt; &#39;(b c d e f)
-</code></pre></div>
+<pre class="highlight"><code class="language-text">(mi-append '(b c) '(d e f)) =&gt; '(b c d e f)</code></pre>
 <p><p style="margin-bottom: 1cm;"></p></p>
 <p>Y después hacer un <code>cons</code> de <code>a</code> y la lista resultante de la llamada a
 la recursión:</p>
-<div class="highlight"><pre><span></span><code>(cons &#39;a (mi-append &#39;(b c) &#39;(d e f))) = 
-(cons &#39;a (b c d e f)) = 
-(a b c d e f)
-</code></pre></div>
+<pre class="highlight"><code class="language-text">(cons 'a (mi-append '(b c) '(d e f))) = 
+(cons 'a (b c d e f)) = 
+(a b c d e f)</code></pre>
 </li>
 </ul>
 <p style="margin-bottom: 1cm;"></p>
@@ -310,32 +305,28 @@ la recursión:</p>
 <ul>
 <li>
 <p>En general:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-append</span> <span class="n">lista1</span> <span class="n">lista2</span><span class="p">)</span> 
-    <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista1</span><span class="p">)</span> <span class="p">(</span><span class="n">mi-append</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista1</span><span class="p">)</span> <span class="n">lista2</span><span class="p">)))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (mi-append lista1 lista2) 
+    (cons (first lista1) (mi-append (rest lista1) lista2)))</code></pre>
 </li>
 <li>
 <p>El caso base es aquel en el que <code>lista1</code> es <code>null?</code>. En ese caso
   devolvemos <code>lista2</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mi-append</span> <span class="o">&#39;</span><span class="p">()</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">))</span> <span class="c1">;⇒ &#39;(a b c)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(mi-append '() '(a b c)) ;⇒ '(a b c)</code></pre>
 </li>
 <li>
 <p>La formulación recursiva completa queda como sigue:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-append</span> <span class="n">l1</span> <span class="n">l2</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">l1</span><span class="p">)</span>
-        <span class="n">l2</span>
-        <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">first</span> <span class="n">l1</span><span class="p">)</span>
-              <span class="p">(</span><span class="n">mi-append</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">l1</span><span class="p">)</span> <span class="n">l2</span><span class="p">))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (mi-append l1 l2)
+    (if (null? l1)
+        l2
+        (cons (first l1)
+              (mi-append (rest l1) l2))))</code></pre>
 </li>
 </ul>
 <h3>Función <code>mi-reverse</code></h3>
 <ul>
 <li>
 <p>Ejemplo</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">mi-reverse</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ (6 5 4 3 2 1)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(mi-reverse '(1 2 3 4 5 6)) ; ⇒ (6 5 4 3 2 1)</code></pre>
 </li>
 <li>
 <p>La idea es sencilla: llamamos a la recursión para hacer la inversa
@@ -345,16 +336,14 @@ la recursión:</p>
 <li>
 <p>Podemos definir una función auxiliar <code>(añade-al-final dato lista)</code>
   que añade un dato al final de una lista usando <code>append</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">añade-al-final</span> <span class="n">dato</span> <span class="n">lista</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">append</span> <span class="n">lista</span> <span class="p">(</span><span class="nb">list</span> <span class="n">dato</span><span class="p">)))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (añade-al-final dato lista)
+    (append lista (list dato)))</code></pre>
 </li>
 <li>
 <p>La función <code>mi-reverse</code> quedaría entonces como sigue:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-reverse</span> <span class="n">lista</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">()</span>
-        <span class="p">(</span><span class="n">añade-al-final</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">mi-reverse</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (mi-reverse lista)
+    (if (null? lista) '()
+        (añade-al-final (first lista) (mi-reverse (rest lista)))))</code></pre>
 </li>
 </ul>
 <h3>Función <code>lista-desde</code></h3>
@@ -362,8 +351,7 @@ la recursión:</p>
 <li>
 <p>La función <code>(lista-desde x)</code> devuelve una lista con los
   números desde x hasta 1:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">lista-desde</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ (5 4 3 2 1)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(lista-desde 5) ; ⇒ (5 4 3 2 1)</code></pre>
 </li>
 <li>
 <p>¿Cómo formulamos el ejemplo de forma recursiva?</p>
@@ -374,18 +362,16 @@ la recursión:</p>
 <ul>
 <li>
 <p>Solución:</p>
-<div class="highlight"><pre><span></span><code>(lista-desde 5) = 
+<pre class="highlight"><code class="language-text">(lista-desde 5) = 
 (cons 5 (lista-desde 4) =
 (cons 5 (4 3 2 1)) = 
-(5 4 3 2 1)
-</code></pre></div>
+(5 4 3 2 1)</code></pre>
 </li>
 <li>
 <p>En general:</p>
-<div class="highlight"><pre><span></span><code>Para construir una lista desde x hasta 1:
+<pre class="highlight"><code class="language-text">Para construir una lista desde x hasta 1:
    construyo la lista desde x-1 hasta 1 y le añado 
-   en cabeza el número x
-</code></pre></div>
+   en cabeza el número x</code></pre>
 </li>
 <li>
 <p>El caso base de la recursión es el caso en el que x es 1, entonces
@@ -393,12 +379,11 @@ la recursión:</p>
 </li>
 <li>
 <p>Ya podemos realizar la definición Scheme:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">lista-desde</span> <span class="n">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">=</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="p">(</span><span class="nb">cons</span> <span class="n">x</span>
-              <span class="p">(</span><span class="n">lista-desde</span> <span class="p">(</span><span class="nb">-</span> <span class="n">x</span> <span class="mi">1</span><span class="p">)))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (lista-desde x)
+    (if (= x 1)
+        '(1)
+        (cons x
+              (lista-desde (- x 1)))))</code></pre>
 </li>
 </ul>
 <h3>Función <code>filtra-pares</code></h3>
@@ -411,8 +396,7 @@ la recursión:</p>
 <li>
 <p>La función <code>filtra-pares</code> construye una lista con los números pares
   de la lista que le pasamos como parámetro:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">filtra-pares</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">;⇒ (2 4 6)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(filtra-pares '(1 2 3 4 5 6)) ;⇒ (2 4 6)</code></pre>
 </li>
 <li>
 <p>¿Cómo la definimos de forma recursiva?</p>
@@ -423,13 +407,12 @@ la recursión:</p>
 <ul>
 <li>
 <p>Solución en Scheme</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">filtra-pares</span> <span class="n">lista</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">cond</span>
-        <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">())</span>
-        <span class="p">((</span><span class="nb">even?</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">))</span>
-            <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="p">(</span><span class="n">filtra-pares</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">))))</span>
-        <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">filtra-pares</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (filtra-pares lista)
+    (cond
+        ((null? lista) '())
+        ((even? (first lista))
+            (cons (first lista) (filtra-pares (rest lista))))
+        (else (filtra-pares (rest lista)))))</code></pre>
 </li>
 </ul>
 <h3>Ejemplo final: Función <code>primo?</code></h3>
@@ -443,35 +426,31 @@ la recursión:</p>
   primo, usando alguna de las funciones anteriores sobre
   listas. Calcularemos la lista de divisores del número y
   comprobaremos si su longitud es dos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">divisores</span> <span class="mi">8</span><span class="p">)</span> <span class="c1">;⇒ (1 2 4 8) longitud = 4, no primo</span>
-<span class="p">(</span><span class="n">divisores</span> <span class="mi">9</span><span class="p">)</span> <span class="c1">;⇒ (1 3 9) longitud = 3, no primo</span>
-<span class="p">(</span><span class="n">divisores</span> <span class="mi">11</span><span class="p">)</span> <span class="c1">;⇒ (1 11) longitud = 2, primo</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(divisores 8) ;⇒ (1 2 4 8) longitud = 4, no primo
+(divisores 9) ;⇒ (1 3 9) longitud = 3, no primo
+(divisores 11) ;⇒ (1 11) longitud = 2, primo</code></pre>
 </li>
 <li>
 <p>En Scheme:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">primo?</span> <span class="n">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">=</span>  <span class="mi">2</span> 
-    <span class="p">(</span><span class="nb">length</span> <span class="p">(</span><span class="n">divisores</span> <span class="n">x</span><span class="p">))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (primo? x)
+    (=  2 
+    (length (divisores x))))</code></pre>
 </li>
 </ul>
 <h3>Función <code>(divisor? x y)</code></h3>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">divisor?</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-      <span class="p">(</span><span class="nb">=</span> <span class="mi">0</span> <span class="p">(</span><span class="nb">remainder</span> <span class="n">y</span> <span class="n">x</span><span class="p">)))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (divisor? x y)
+      (= 0 (remainder y x)))</code></pre>
 <h3>Función recursiva <code>(filtra-divisores lista x)</code></h3>
 <ul>
 <li>
 <p>Función que filtra aquellos números <code>lista</code> que son divisores del número <code>x</code></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">filtra-divisores</span> <span class="n">lista</span> <span class="n">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">cond</span>
-      <span class="p">((</span><span class="nb">null?</span> <span class="n">lista</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">())</span>
-      <span class="p">((</span><span class="n">divisor?</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span> <span class="n">x</span><span class="p">)</span>
-         <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">first</span> <span class="n">lista</span><span class="p">)</span>
-               <span class="p">(</span><span class="n">filtra-divisores</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="n">x</span><span class="p">)))</span>
-      <span class="p">(</span><span class="k">else</span> <span class="p">(</span><span class="n">filtra-divisores</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">lista</span><span class="p">)</span> <span class="n">x</span><span class="p">))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (filtra-divisores lista x)
+   (cond
+      ((null? lista) '())
+      ((divisor? (first lista) x)
+         (cons (first lista)
+               (filtra-divisores (rest lista) x)))
+      (else (filtra-divisores (rest lista) x))))</code></pre>
 </li>
 </ul>
 <h3>Función <code>(divisores x)</code></h3>
@@ -480,22 +459,19 @@ la recursión:</p>
 <p>Una vez definidas las funciones auxiliares anteriores, se puede
   implementar de una forma muy sencilla una función <code>(divisores x)</code>
   que devuelve una lista de todos los divisores del número <code>x</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">divisores</span> <span class="n">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">filtra-divisores</span> <span class="p">(</span><span class="n">lista-desde</span> <span class="n">x</span><span class="p">)</span> <span class="n">x</span><span class="p">))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (divisores x)
+    (filtra-divisores (lista-desde x) x))</code></pre>
 </li>
 <li>
 <p>Por ejemplo, para calcular los divisores de 10:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">filtra-divisores</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span> <span class="mi">9</span> <span class="mi">8</span> <span class="mi">7</span> <span class="mi">6</span> <span class="mi">5</span> <span class="mi">4</span> <span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">)</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">;⇒ (10 5 2 1)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(filtra-divisores '(10 9 8 7 6 5 4 3 2 1) 10) ;⇒ (10 5 2 1)</code></pre>
 </li>
 <li>
 <p>Y, una vez definida esta función, ya funciona correctamente la
   función <code>primo?</code> con la primera definición que vimos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">primo?</span> <span class="n">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">=</span>  <span class="mi">2</span> 
-    <span class="p">(</span><span class="nb">length</span> <span class="p">(</span><span class="n">divisores</span> <span class="n">x</span><span class="p">))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (primo? x)
+    (=  2 
+    (length (divisores x))))</code></pre>
 </li>
 </ul>
 <p style="margin-bottom:1cm;"></p>
@@ -507,14 +483,12 @@ la recursión:</p>
 <li>
 <p>Definición de número variable de argumentos con la notación de
   punto:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">funcion-dos-o-mas-args</span> <span class="n">x</span> <span class="n">y</span> <span class="o">.</span> <span class="n">lista-args</span><span class="p">)</span> 
-    <span class="n">&lt;cuerpo&gt;</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (funcion-dos-o-mas-args x y . lista-args) 
+    &lt;cuerpo&gt;)</code></pre>
 </li>
 <li>
 <p>Podemos llamar a la función anterior con dos o más argumentos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">funcion-dos-o-mas-args</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(funcion-dos-o-mas-args 1 2 3 4 5 6)</code></pre>
 </li>
 <li>
 <p>En la llamada, los parámetros <code>x</code> e <code>y</code> tomarán los valores 1 y 2.</p>
@@ -524,17 +498,15 @@ la recursión:</p>
 <li>
 <p>También es posible permitir que todos los argumentos sean opcionales
   no poniendo ningún argumento antes del punto:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">funcion-cualquier-numero-args</span> <span class="o">.</span> <span class="n">lista-args</span><span class="p">)</span> 
-    <span class="n">&lt;cuerpo&gt;</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (funcion-cualquier-numero-args . lista-args) 
+    &lt;cuerpo&gt;)</code></pre>
 </li>
 <li>
 <p>Ejemplo:</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">mi-suma</span> <span class="n">x</span> <span class="n">y</span> <span class="o">.</span> <span class="n">lista-nums</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">lista-nums</span><span class="p">)</span>
-        <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-        <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="p">(</span><span class="nb">+</span> <span class="n">y</span> <span class="p">(</span><span class="n">suma-lista</span> <span class="n">lista-nums</span><span class="p">)))))</span>
-</code></pre></div>
+<p><pre class="highlight"><code class="language-racket">(define (mi-suma x y . lista-nums)
+    (if (null? lista-nums)
+        (+ x y)
+        (+ x (+ y (suma-lista lista-nums)))))</code></pre>
 ¿Las funciones con número variable de argumentos pueden ser recursivas? </p>
 </li>
 </ul>
@@ -573,8 +545,7 @@ la recursión:</p>
 <p>Cualquier objeto de primera clase de un lenguaje debe poderse
   crear de forma anónima, sin asignarle un nombre. Por ejemplo, en la
   expresión:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">string-append</span> <span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;adiós&quot;</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(string-append "hola" "adiós")</code></pre>
 <p>las cadenas <code>"hola"</code> y <code>"adiós"</code> se han creado directamente,
 sin darles nombre, y se han pasado como parámetros a la función
 <code>string-append</code>.</p>
@@ -588,9 +559,8 @@ sin darles nombre, y se han pasado como parámetros a la función
 <ul>
 <li>
 <p>La sintaxis de la forma especial <code>lambda</code> es:</p>
-<div class="highlight"><pre><span></span><code>(lambda (&lt;arg1&gt; ... &lt;argn&gt;) 
-    &lt;cuerpo&gt;)
-</code></pre></div>
+<pre class="highlight"><code class="language-text">(lambda (&lt;arg1&gt; ... &lt;argn&gt;) 
+    &lt;cuerpo&gt;)</code></pre>
 </li>
 <li>
 <p>El cuerpo del lambda define un <em>bloque de código</em> y sus argumentos
@@ -599,18 +569,16 @@ sin darles nombre, y se han pasado como parámetros a la función
 </li>
 <li>
 <p>Una función anónima que suma dos parejas:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">p1</span> <span class="n">p2</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p2</span><span class="p">))</span>
-          <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p2</span><span class="p">))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(lambda (p1 p2)
+    (cons (+ (car p1) (car p2))
+          (+ (cdr p1) (cdr p2))))</code></pre>
 </li>
 <li>
 <p>Una función anónima que devuelve el mayor de dos números:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">a</span> <span class="n">b</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="n">a</span> <span class="n">b</span><span class="p">)</span>
-        <span class="n">a</span>
-        <span class="n">b</span><span class="p">))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(lambda (a b)
+    (if (&gt; a b)
+        a
+        b))</code></pre>
 </li>
 </ul>
 <h3>Semántica de la forma especial <code>lambda</code></h3>
@@ -618,8 +586,7 @@ sin darles nombre, y se han pasado como parámetros a la función
 <li>
 <p>La invocación a la forma especial <code>lambda</code> construye una función
   anónima en tiempo de ejecución.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span> <span class="c1">; ⇒ #&lt;procedure&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(lambda (x) (* x x)) ; ⇒ #&lt;procedure&gt;</code></pre>
 </li>
 <li>
 <p>El procedimiento construido es un bloque de código que devuelve el
@@ -630,33 +597,28 @@ sin darles nombre, y se han pasado como parámetros a la función
 </li>
 </ul>
 <h3>Podemos asignar el procedimiento a un identificador (símbolo)</h3>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">f</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">)))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define f (lambda (x) (* x x)))</code></pre>
 <ul>
 <li>Se evalúa la expresión lambda y el resultado (un procedimiento) se
   guarda en <code>f</code></li>
 <li>
 <p>Si escribimos <code>f</code> en el intérprete, Scheme lo evalúa y muestra el
   procedimiento:</p>
-<div class="highlight"><pre><span></span><code><span class="n">f</span> <span class="c1">; ⇒ #&lt;procedure:f&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">f ; ⇒ #&lt;procedure:f&gt;</code></pre>
 </li>
 <li>
 <p>Podemos usar el identificador <code>f</code> de la forma que habitualmente
   invocamos a una función:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">f</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 9</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(f 3) ; ⇒ 9</code></pre>
 </li>
 </ul>
 <h3>Podemos invocar a la función anónima directamente</h3>
-<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 9</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">((lambda (x) (* x x)) 3) ; ⇒ 9</code></pre>
 <ul>
 <li>
 <p>La llamada a <code>lambda</code> crea un procedimiento y el paréntesis a su
 izquierda lo invoca con el parámetro 3:</p>
-<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; =&gt; (#&lt;procedure&gt; 3) ⇒ 9</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">((lambda (x) (* x x)) 3) ; =&gt; (#&lt;procedure&gt; 3) ⇒ 9</code></pre>
 </li>
 <li>
 <p>Es importante remarcar que con <code>lambda</code> estamos creando una función
@@ -665,34 +627,28 @@ izquierda lo invoca con el parámetro 3:</p>
 </ul>
 <h3>Expresiones lambda en distintos lenguajes de programación</h3>
 <p><strong>Java 8</strong></p>
-<div class="highlight"><pre><span></span><code><span class="n">Integer</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="p">{</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-java">Integer x -&gt; {x*x}</code></pre>
 <p><strong>Scala</strong></p>
-<div class="highlight"><pre><span></span><code><span class="o">(</span><span class="n">x</span><span class="k">:</span><span class="kt">Int</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="o">{</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-scala">(x:Int) =&gt; {x*x}</code></pre>
 <p><strong>Objective C</strong></p>
-<div class="highlight"><pre><span></span><code><span class="o">^</span><span class="kt">int</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="n">x</span><span class="o">*</span><span class="n">x</span>
-<span class="p">};</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-objective-c">^int (int x)
+{
+   x*x
+};</code></pre>
 <p><strong>Swift</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span> <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">{ (x: Int) -&gt; Int in return x*x }</code></pre>
 <h3>Identificadores y funciones</h3>
 <ul>
 <li>
 <p>En Scheme una función está ligada al símbolo que define su nombre:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">+</span> <span class="c1">; ⇒ &lt;procedure:+&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">+ ; ⇒ &lt;procedure:+&gt;</code></pre>
 </li>
 <li>
 <p>Podemos asignar funciones ya existentes a nuevos identificadores
   usando <code>define</code>, como en el ejemplo siguiente:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">+</span> <span class="c1">;⇒ &lt;procedure:+&gt;</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">suma</span> <span class="nb">+</span><span class="p">)</span>
-<span class="p">(</span><span class="n">suma</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">+ ;⇒ &lt;procedure:+&gt;
+(define suma +)
+(suma 1 2 3 4) ; ⇒ 10</code></pre>
 </li>
 </ul>
 <p><img src="./imagenes/suma.png" style="width:100px;"/></p>
@@ -702,22 +658,18 @@ izquierda lo invoca con el parámetro 3:</p>
 <p>La forma especial <code>define</code> para definir funciones siempre se
   convierte internamente en una llamada a <code>lambda</code> y una asociación de
   la función a su nombre:</p>
-<div class="highlight"><pre><span></span><code>(define (&lt;nombre&gt; &lt;args&gt;)
-    &lt;cuerpo&gt;)
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>(define &lt;nombre&gt; 
+<pre class="highlight"><code class="language-text">(define (&lt;nombre&gt; &lt;args&gt;)
+    &lt;cuerpo&gt;)</code></pre>
+<pre class="highlight"><code class="language-text">(define &lt;nombre&gt; 
     (lambda (&lt;args&gt;)
-        &lt;cuerpo&gt;))
-</code></pre></div>
+        &lt;cuerpo&gt;))</code></pre>
 </li>
 <li>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="n">x</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">cuadrado</span> 
-    <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">)))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (cuadrado x)
+    (* x x))</code></pre>
+<pre class="highlight"><code class="language-racket">(define cuadrado 
+    (lambda (x) (* x x)))</code></pre>
 </li>
 </ul>
 <h3>Predicado <code>procedure?</code></h3>
@@ -725,14 +677,13 @@ izquierda lo invoca con el parámetro 3:</p>
 <li>
 <p>Podemos comprobar si algo es una función utilizando el predicado de
   Scheme <code>procedure?</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">procedure?</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">)))</span>
-<span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">suma</span> <span class="nb">+</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">procedure?</span> <span class="n">suma</span><span class="p">)</span>
-<span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="nb">procedure?</span> <span class="o">&#39;</span><span class="ss">+</span><span class="p">)</span>
-<span class="c1">; ⇒ #f</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(procedure? (lambda (x) (* x x)))
+; ⇒ #t
+(define suma +)
+(procedure? suma)
+; ⇒ #t
+(procedure? '+)
+; ⇒ #f</code></pre>
 </li>
 </ul>
 <h3>Funciones argumentos de otras funciones</h3>
@@ -747,26 +698,23 @@ izquierda lo invoca con el parámetro 3:</p>
 <p>La función <code>(aplica f x y)</code> recibe una función como argumento y dos
   parámetros. Devuelve el resultado de evaluar la función <code>f</code> con los
   argumentos <code>x</code> e <code>y</code></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">aplica</span> <span class="n">f</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span>
-   <span class="p">(</span><span class="n">f</span> <span class="n">x</span> <span class="n">y</span><span class="p">))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (aplica f x y)
+   (f x y))</code></pre>
 </li>
 <li>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">aplica</span> <span class="nb">+</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 5</span>
-<span class="p">(</span><span class="n">aplica</span> <span class="nb">*</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">; ⇒ 10</span>
-<span class="p">(</span><span class="n">aplica</span> <span class="nb">string-append</span> <span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ &quot;holaadios&quot;</span>
+<pre class="highlight"><code class="language-racket">(aplica + 2 3) ; ⇒ 5
+(aplica * 4 5) ; ⇒ 10
+(aplica string-append "hola" "adios") ; ⇒ "holaadios"
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">string-append-con-guion</span> <span class="n">s1</span> <span class="n">s2</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">string-append</span> <span class="n">s1</span> <span class="s2">&quot;-&quot;</span> <span class="n">s2</span><span class="p">))</span>
+(define (string-append-con-guion s1 s2)
+    (string-append s1 "-" s2))
 
-<span class="p">(</span><span class="n">aplica</span> <span class="n">string-append-con-guion</span> <span class="s2">&quot;hola&quot;</span> <span class="s2">&quot;adios&quot;</span><span class="p">)</span> <span class="c1">; ⇒ &quot;hola-adios&quot;</span>
-</code></pre></div>
+(aplica string-append-con-guion "hola" "adios") ; ⇒ "hola-adios"</code></pre>
 </li>
 <li>
 <p>Podemos pasar la función creándola con una expresión lambda:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">aplica</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">sqrt</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">y</span> <span class="n">y</span><span class="p">))))</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">)</span> <span class="c1">; ⇒ 5</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(aplica (lambda (x y) (sqrt (+ (* x x) (* y y)))) 3 4) ; ⇒ 5</code></pre>
 </li>
 </ul>
 <h3>Función <code>aplica-2</code></h3>
@@ -775,21 +723,19 @@ izquierda lo invoca con el parámetro 3:</p>
 <p>La función <code>aplica-2</code> toma dos funciones <code>f</code> y <code>g</code> y un argumento
   <code>x</code> y devuelve el resultado de aplicar <code>f</code> a lo que devuelve la
   invocación de <code>g</code> con <code>x</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">aplica-2</span> <span class="n">f</span> <span class="n">g</span> <span class="n">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="n">g</span> <span class="n">x</span><span class="p">)))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (aplica-2 f g x)
+   (f (g x)))</code></pre>
 </li>
 <li>
 <p>Ejemplos de invocación</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-5</span> <span class="n">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">5</span><span class="p">))</span>
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">doble</span> <span class="n">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="n">x</span><span class="p">))</span>
-<span class="p">(</span><span class="n">aplica-2</span> <span class="n">suma-5</span> <span class="n">doble</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">; ⇒ 11</span>
+<pre class="highlight"><code class="language-racket">(define (suma-5 x)
+   (+ x 5))
+(define (doble x)
+   (+ x x))
+(aplica-2 suma-5 doble 3) ; ⇒ 11
 
-<span class="p">(</span><span class="n">aplica-2</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">*</span> <span class="n">x</span> <span class="mi">2</span><span class="p">))</span>
-          <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">5</span><span class="p">))</span> <span class="mi">10</span><span class="p">)</span> <span class="c1">; ⇒ 30</span>
-</code></pre></div>
+(aplica-2 (lambda (x) (* x 2))
+          (lambda (x) (+ x 5)) 10) ; ⇒ 30</code></pre>
 </li>
 </ul>
 <h3>Función <code>apply</code></h3>
@@ -800,51 +746,43 @@ los datos se pasen a la función en orden como parámetros.</p>
 resultado de aplicar la función a los datos de la lista, tomándolos
 como parámetros.</p>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">apply</span> <span class="nb">+</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">))</span> <span class="c1">; ⇒ 10</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(apply + '(1 2 3 4)) ; ⇒ 10</code></pre>
 <p>Podemos pasar a <code>apply</code> una expresión lambda:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">apply</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">2</span> <span class="n">y</span><span class="p">)))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">; ⇒ 12</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(apply (lambda (x y) (+ x (* 2 y))) '(2 5)) ; ⇒ 12</code></pre>
 <p>La lista que pasamos como argumento de <code>apply</code> debe tener tantos
 elementos como parámetros tenga la función que aplicamos. En caso
 contrario, se produce un error:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">apply</span> <span class="nb">cons</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span> <span class="ss">c</span><span class="p">))</span> <span class="c1">; ⇒ error</span>
-<span class="n">cons:</span> <span class="n">arity</span> <span class="n">mismatch</span><span class="c1">;</span>
- <span class="n">the</span> <span class="n">expected</span> <span class="n">number</span> <span class="n">of</span> <span class="n">arguments</span> <span class="n">does</span> <span class="nb">not</span> <span class="k">match</span> <span class="n">the</span> <span class="n">given</span> <span class="n">number</span>
-  <span class="n">expected:</span> <span class="mi">2</span>
-  <span class="n">given:</span> <span class="mi">3</span>
-  <span class="n">arguments...:</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(apply cons '(a b c)) ; ⇒ error
+cons: arity mismatch;
+ the expected number of arguments does not match the given number
+  expected: 2
+  given: 3
+  arguments...:</code></pre>
 <p>La forma correcta de hacerlo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">apply</span> <span class="nb">cons</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span> <span class="ss">b</span><span class="p">))</span> <span class="c1">; ⇒ (a . b)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(apply cons '(a b)) ; ⇒ (a . b)</code></pre>
 <h3>Función <code>apply</code> y funciones recursivas</h3>
 <p>Usando <code>apply</code> podemos definir funciones recursivas con número
 variable de argumentos.</p>
 <p>Por ejemplo, supongamos que queremos definir la función <code>suma-parejas</code>
 que suma un número variable de parejas:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-parejas</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="o">.</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span> <span class="o">.</span> <span class="mi">4</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">5</span> <span class="o">.</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">; ⇒ &#39;(9 . 12)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(suma-parejas '(1 . 2) '(3 . 4) '(5 . 6)) ; ⇒ '(9 . 12)</code></pre>
 <p>Recordemos la definición de la función que suma dos parejas:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-pareja</span> <span class="n">p1</span> <span class="n">p2</span><span class="p">)</span>
-  <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">car</span> <span class="n">p2</span><span class="p">))</span>
-        <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p1</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="n">p2</span><span class="p">))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (suma-pareja p1 p2)
+  (cons (+ (car p1) (car p2))
+        (+ (cdr p1) (cdr p2))))</code></pre>
 <p>¿Cómo podríamos, usando <code>apply</code>, resolver el problema de sumar un
 número variable de parejas?</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-parejas</span> <span class="o">.</span> <span class="n">parejas</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">parejas</span><span class="p">)</span>
-      <span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">suma-pareja</span> <span class="n">???</span>  <span class="p">(</span><span class="nb">apply</span> <span class="n">???</span><span class="p">))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (suma-parejas . parejas)
+  (if (null? parejas)
+      '(0 . 0)
+      (suma-pareja ???  (apply ???))))</code></pre>
 <p style="margin-bottom:3cm;"></p>
 
 <p>Solución:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-parejas</span> <span class="o">.</span> <span class="n">parejas</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">parejas</span><span class="p">)</span>
-      <span class="o">&#39;</span><span class="p">(</span><span class="mi">0</span> <span class="o">.</span> <span class="mi">0</span><span class="p">)</span>
-      <span class="p">(</span><span class="n">suma-pareja</span> <span class="p">(</span><span class="nb">first</span> <span class="n">parejas</span><span class="p">)</span> <span class="p">(</span><span class="nb">apply</span> <span class="n">suma-parejas</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">parejas</span><span class="p">)))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (suma-parejas . parejas)
+  (if (null? parejas)
+      '(0 . 0)
+      (suma-pareja (first parejas) (apply suma-parejas (rest parejas)))))</code></pre>
 <p>Una representación gráfica de cómo funciona la recursión:</p>
 <p><img src="imagenes/suma-parejas-apply.png" width="600px"/></p></body>
 
