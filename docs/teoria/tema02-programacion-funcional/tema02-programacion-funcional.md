@@ -4405,8 +4405,8 @@ para poder usarla en las prácticas.
 Ejemplo de uso:
 
 ```racket
-(exits? even? '(1 2 3 4 5 6)) ; ⇒ #t
-(exits? (lambda (x)
+(exists? even? '(1 2 3 4 5 6)) ; ⇒ #t
+(exists? (lambda (x)
              (> x 10)) '(1 3 5 8)) ; ⇒ #f
 ```
 
@@ -4426,7 +4426,7 @@ La función de orden superior `for-all?` recibe un predicado y una lista
 y comprueba que todos los elementos de la lista cumplen ese predicado.
 
 La función tampoco está definida con este nombre en Racket, aunque
-sí en Scheme. Al igual que `exits?`, incluimos su definición en el
+sí en Scheme. Al igual que `exists?`, incluimos su definición en el
 [fichero `lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt).
 
 En Racket existe una función equivalente que se llama `andmap`.
