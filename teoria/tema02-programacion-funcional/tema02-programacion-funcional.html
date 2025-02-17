@@ -4422,8 +4422,8 @@ definición al <a href="https://raw.githubusercontent.com/domingogallardo/apunte
 <code>lpp.rkt</code></a>
 para poder usarla en las prácticas.</p>
 <p>Ejemplo de uso:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">exits?</span><span class="w"> </span><span class="nb">even?</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">exits?</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">exists?</span><span class="w"> </span><span class="nb">even?</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ #t</span>
+<span class="p">(</span><span class="n">exists?</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="w">             </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">8</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ #f</span>
 </code></pre></div>
 <p>La implementación recursiva de <code>exists?</code> es la siguiente:</p>
@@ -4437,7 +4437,7 @@ para poder usarla en las prácticas.</p>
 <p>La función de orden superior <code>for-all?</code> recibe un predicado y una lista
 y comprueba que todos los elementos de la lista cumplen ese predicado.</p>
 <p>La función tampoco está definida con este nombre en Racket, aunque
-sí en Scheme. Al igual que <code>exits?</code>, incluimos su definición en el
+sí en Scheme. Al igual que <code>exists?</code>, incluimos su definición en el
 <a href="https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt">fichero <code>lpp.rkt</code></a>.</p>
 <p>En Racket existe una función equivalente que se llama <code>andmap</code>.</p>
 <p>Ejemplo de uso:</p>
