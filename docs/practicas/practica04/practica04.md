@@ -43,7 +43,7 @@ Ejemplos:
 ; ⇒ (#t #f #t #f)
 ```
 
-b) Vamos a generalizar la solución del ejercicio 4 de la práctica 2 e
+b) Vamos a generalizar la solución del ejercicio 5 de la práctica 2 e
 implementar la función recursiva `(cadenas-mayores lista1 lista2)`
 teniendo en cuenta que las listas que recibe tienen un número
 indeterminado de cadenas. En el caso en que una de las listas sea
