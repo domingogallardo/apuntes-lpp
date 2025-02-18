@@ -4019,7 +4019,7 @@ Podríamos usar `construye-segura` con cualquier función de 1 argumento
 que queramos hacer segura. Por ejemplo, la función `sqrt`:
 
 ```racket
-(define sqrt-segura (construye-segura (lambda (x) (>= x 0) sqrt))
+(define sqrt-segura (construye-segura (lambda (x) (>= x 0)) sqrt))
 (sqrt-segura 100) ; ⇒ 10
 (sqrt-segura -100) ; ⇒ error
 ```
