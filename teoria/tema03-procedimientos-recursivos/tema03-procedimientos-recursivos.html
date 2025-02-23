@@ -522,6 +522,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practicas/practica05/practica05.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Práctica 5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1093,20 +1114,21 @@ siguientes veces.</p>
 <p>Para implementar la <em>memoization</em> necesitamos usar un diccionario con
 los métodos <code>put</code> y <code>get</code> que actualizan su información con mutación.</p>
 <ul>
-<li>La función <code>(crea-diccionario)</code> devuelve un diccionario vacío.</li>
+<li>La función <code>(make-dic)</code> devuelve un diccionario vacío.</li>
 <li>La función <code>(put key value dic)</code> asocia un valor a una clave, la
 guarda en el diccionario (con mutación) y devuelve el valor.</li>
 <li>La función <code>(get key dic)</code> devuelve el valor del diccionario asociado a
-una clave. En el caso en que no exista ningún valor se devuelve <code>#f</code>.</li>
+una clave (si no existe devuelve <code>#f</code>). </li>
+<li>El predicado <code>(key-exists? key dic)</code> devuelve <code>#f</code> en que no exista la clave y <code>#t</code> si existe.</li>
 </ul>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">mi-dic</span><span class="w"> </span><span class="p">(</span><span class="n">crea-diccionario</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">mi-dic</span><span class="w"> </span><span class="p">(</span><span class="n">make-dic</span><span class="p">))</span>
 <span class="p">(</span><span class="n">put</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">mi-dic</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 10</span>
 <span class="p">(</span><span class="n">get</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">mi-dic</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 10</span>
-<span class="p">(</span><span class="n">get</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">mi-dic</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #f</span>
+<span class="p">(</span><span class="n">key-exists?</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">dic</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #f</span>
 </code></pre></div>
 <p>Estos métodos son imperativos porque modifican (mutan) la estructura
-de datos que pasamos como parámetro. La implementación de estas
+de datos que pasamos como parámetro (no pertenecen al paradigma funcional). La implementación de estas
 funciones está incluidas en el <a href="https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt">fichero
 <code>lpp.rkt</code></a>.</p>
 <p>La función <code>fib-memo</code> realiza el cálculo de la serie de Fibonacci
@@ -1124,8 +1146,7 @@ valor calculado también lo devuelve.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">fib-memo</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">dic</span><span class="p">)</span>
 <span class="w">  </span><span class="p">(</span><span class="k">cond</span><span class="w"> </span><span class="p">((</span><span class="nb">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="w">        </span><span class="p">((</span><span class="nb">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
-<span class="w">        </span><span class="p">((</span><span class="nb">not</span><span class="w"> </span><span class="p">(</span><span class="nb">equal?</span><span class="w"> </span><span class="p">(</span><span class="n">get</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">dic</span><span class="p">)</span><span class="w"> </span><span class="no">#f</span><span class="p">))</span>
-<span class="w">         </span><span class="p">(</span><span class="n">get</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">dic</span><span class="p">))</span>
+<span class="w">        </span><span class="p">((</span><span class="n">key-exists?</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">dic</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">get</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">dic</span><span class="p">))</span>
 <span class="w">        </span><span class="p">(</span><span class="k">else</span><span class="w"> </span><span class="p">(</span><span class="n">put</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="n">fib-memo</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">dic</span><span class="p">)</span>
 <span class="w">                        </span><span class="p">(</span><span class="n">fib-memo</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="n">dic</span><span class="p">))</span><span class="w"> </span><span class="n">dic</span><span class="p">))))</span>
 </code></pre></div>
@@ -1467,7 +1488,7 @@ algoritmo recursivo:</p>
 <li><a href="https://docs.racket-lang.org/teachpack/2htdpimage-guide.html">Image Guide</a></li>
 </ul>
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2023-24<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2024-25<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
 
