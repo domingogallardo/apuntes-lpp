@@ -452,23 +452,24 @@ siguientes veces.
 Para implementar la _memoization_ necesitamos usar un diccionario con
 los métodos `put` y `get` que actualizan su información con mutación.
 
-- La función `(crea-diccionario)` devuelve un diccionario vacío.
+- La función `(make-dic)` devuelve un diccionario vacío.
 - La función `(put key value dic)` asocia un valor a una clave, la
 guarda en el diccionario (con mutación) y devuelve el valor.
 - La función `(get key dic)` devuelve el valor del diccionario asociado a
-una clave. En el caso en que no exista ningún valor se devuelve `#f`.
+una clave (si no existe devuelve `#f`). 
+- El predicado `(key-exists? key dic)` devuelve `#f` en que no exista la clave y `#t` si existe.
 
 Ejemplos:
 
 ```racket
-(define mi-dic (crea-diccionario))
+(define mi-dic (make-dic))
 (put 1 10 mi-dic) ; ⇒ 10
 (get 1 mi-dic) ; ⇒ 10
-(get 2 mi-dic) ; ⇒ #f
+(key-exists? 2 dic) ; ⇒ #f
 ```
 
 Estos métodos son imperativos porque modifican (mutan) la estructura
-de datos que pasamos como parámetro. La implementación de estas
+de datos que pasamos como parámetro (no pertenecen al paradigma funcional). La implementación de estas
 funciones está incluidas en el [fichero
 `lpp.rkt`](https://raw.githubusercontent.com/domingogallardo/apuntes-lpp/master/src/lpp.rkt).
 
@@ -490,8 +491,7 @@ valor calculado también lo devuelve.
 (define (fib-memo n dic)
   (cond ((= n 0) 0)
         ((= n 1) 1)
-        ((not (equal? (get n dic) #f))
-         (get n dic))
+        ((key-exists? n dic) (get n dic))
         (else (put n (+ (fib-memo (- n 1) dic)
                         (fib-memo (- n 2) dic)) dic))))
 ```
@@ -961,7 +961,7 @@ Manual de Racket:
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2023-24  
+Lenguajes y Paradigmas de Programación, curso 2024-25  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
 

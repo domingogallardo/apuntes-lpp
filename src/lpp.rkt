@@ -251,8 +251,10 @@
 ;; Diccionario
 ;;-------------
 
-(define (crea-diccionario)
+(define (make-dic)
   (mcons '*diccionario* '()))
+
+(define crea-diccionario make-dic)
 
 (define (busca key dic)
   (cond
@@ -275,6 +277,16 @@
                       (mcdr dic)))
       (set-mcdr! record value))
   value)
+
+(define (existe-clave-aux? key dic)
+  (cond
+    ((null? dic) #f) ; Si el diccionario está vacío, devuelve #f
+    ((not (mpair? dic)) #f) ; Si no es un mpair, devuelve #f (previene el error)
+    ((equal? key (mcar (mcar dic))) #t) ; Si la clave coincide, devuelve #t
+    (else (existe-clave-aux? key (mcdr dic))))) ; Continúa con el resto del diccionario
+
+(define (key-exists? key dic)
+  (existe-clave-aux? key (mcdr dic)))
 
 ;;----------------------------
 ;; Funciones de orden superior
