@@ -21,7 +21,7 @@ como_ `lpp.rkt`. Guárdalo en la misma carpeta en la que tengas el
 fichero `practica6.rkt`.
 
 El fichero contiene la definición de las funciones
-`(crea-diccionario)`, `(put key value dic)` y `(get key dic)`,
+`(make-dic)`, `(put key value dic)`, `(get key dic)` y `(key-exists? key)`
 necesarias para realizar una implementación de un algoritmo recursivo
 con _memoization_ y que necesitarás en el ejercicio 4.
 
@@ -147,16 +147,27 @@ significativo) y devuelva el número decimal equivalente.
 
 ### Ejercicio 4 ###
 
-Realiza una implementación que utilice la [técnica de la
+a) Realiza una implementación que utilice la [técnica de
 _memoization_](../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.md#soluciones-al-coste-de-la-recursion-memoization)
 del algoritmo que devuelve la [serie de
 Pascal](../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.md#triangulo-de-pascal).
 
 ```racket
-(define diccionario (crea-diccionario))
+(define diccionario (make-dic))
 (pascal-memo 8 4 diccionario) ; ⇒ 70
 (pascal-memo 40 20 diccionario) ; ⇒ 137846528820
 ```
+
+b) Vamos a generalizar la *memoización* anterior. Para ello definimos una función de orden superior llamada `memoize` que recibe un diccionario, una función y un número variable de argumentos de la función a pasada como parámetro:
+
+```racket
+(define (memoize dic f . args)
+  (or (get (cons f args) dic)
+      (put (cons f args)
+           (apply f args) fic)))
+```
+
+Modifica las funciones memoizadas de fibonnaci y de pascal para que utilicen la nueva función `memoize`.
 
 ### Ejercicio 5 ###
 
@@ -206,6 +217,6 @@ umbral 20 píxeles, debe dibujar la siguiente figura:
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2023-24  
+Lenguajes y Paradigmas de Programación, curso 2024-25)   
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

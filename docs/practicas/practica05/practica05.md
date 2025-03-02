@@ -109,27 +109,29 @@ Ejemplo:
 
 Queremos ordenar de menor a mayor una lista que contenga cualquier
 tipo de elemento, no solo números. Para ello vamos a generalizar el
-ejercicio 2 de la práctica anterior, añadiendo un parámetro funcional,
-un predicado `(menor-igual? dato1 dato2)` que nos dice si el dato1 es
-menor o igual que el dato 2.
+ejercicio 2 de la práctica anterior, añadiendo un parámetro adicional (un predicado),
+al que llamaremos `menor-igual?`.
 
 a) Generaliza las funciones `inserta-ordenada` y `ordena` añadiéndoles
-el parámetro adicional `menor-igual?` que es una función predicado que
+este parámetro adicional que es un predicado que
 comprueba si un dato de los que componen la lista es menor o igual que
 otro. Llama a las funciones resultantes `inserta-ordenada-genérica` y
 `ordena-genérica`.
 
+```racket
+(ordena-generica '(3 5 1) <=) ;=> '(1 3 5)
+```
 
-b) Escribe tres pruebas. En la primera deberás ordenar una lista de
+b) Completa las siguientes tres pruebas. En la primera deberás ordenar una lista de
 cadenas por su longitud, en la segunda la lista de cadenas por su
 orden lexicográfico y en la tercera deberás ordenar una lista de
 parejas de números por la suma de su parte izquierda y su parte
 derecha:
 
 ```racket
-(check-equal? (ordena-generica '("Hola" "me" "llamo" "Iñigo" "Montoya") ...... ) '("me" "Hola" "llamo" "Iñigo" "Montoya"))
-(check-equal? (ordena-generica '("Hola" "me" "llamo" "Iñigo" "Montoya") ....... ) '("Hola" "Iñigo" "Montoya" "llamo" "me"))
-(check-equal? (ordena-generica '((2 . 2) (1 . 1) (3 . 0) (5 . 1)) ...... ) '((1 . 1) (3 . 0) (2 . 2) (5 . 1)))
+(check-equal? (ordena-generica '("Hola" "me" "llamo" "Iñigo" "Montoya") ________ ) '("me" "Hola" "llamo" "Iñigo" "Montoya"))
+(check-equal? (ordena-generica '("Hola" "me" "llamo" "Iñigo" "Montoya") ________ ) '("Hola" "Iñigo" "Montoya" "llamo" "me"))
+(check-equal? (ordena-generica '((2 . 2) (1 . 1) (3 . 0) (5 . 1)) ________ ) '((1 . 1) (3 . 0) (2 . 2) (5 . 1)))
 ```
 
 c) Define la función `(ordena-cartas lista-cartas)` que ordene una
