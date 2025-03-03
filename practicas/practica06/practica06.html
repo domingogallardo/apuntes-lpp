@@ -939,7 +939,7 @@ significativo) y devuelva el número decimal equivalente.</p>
 <span class="p">(</span><span class="n">binario-a-decimal</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ 2</span>
 </code></pre></div>
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
-<p>a) Realiza una implementación que utilice la <a href="../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html#soluciones-al-coste-de-la-recursion-memoization">técnica de
+<p>Realiza una implementación que utilice la <a href="../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html#soluciones-al-coste-de-la-recursion-memoization">técnica de
 <em>memoization</em></a>
 del algoritmo que devuelve la <a href="../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html#triangulo-de-pascal">serie de
 Pascal</a>.</p>
@@ -947,13 +947,6 @@ Pascal</a>.</p>
 <span class="p">(</span><span class="n">pascal-memo</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">diccionario</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 70</span>
 <span class="p">(</span><span class="n">pascal-memo</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="n">diccionario</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 137846528820</span>
 </code></pre></div>
-<p>b) Vamos a generalizar la <em>memoización</em> anterior. Para ello definimos una función de orden superior llamada <code>memoize</code> que recibe un diccionario, una función y un número variable de argumentos de la función a pasada como parámetro:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">memoize</span><span class="w"> </span><span class="n">dic</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
-<span class="w">  </span><span class="p">(</span><span class="k">or</span><span class="w"> </span><span class="p">(</span><span class="n">get</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="n">dic</span><span class="p">)</span>
-<span class="w">      </span><span class="p">(</span><span class="n">put</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
-<span class="w">           </span><span class="p">(</span><span class="nb">apply</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="n">fic</span><span class="p">)))</span>
-</code></pre></div>
-<p>Modifica las funciones memoizadas de fibonnaci y de pascal para que utilicen la nueva función <code>memoize</code>.</p>
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
 <p>a) Usando la librería de imágenes de Racket <code>2htdp/image</code> implementa
 la figura recursiva conocida como <em>curva de Koch</em>. Debes definir una
