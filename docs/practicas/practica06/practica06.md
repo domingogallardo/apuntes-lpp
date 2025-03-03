@@ -147,7 +147,7 @@ significativo) y devuelva el número decimal equivalente.
 
 ### Ejercicio 4 ###
 
-a) Realiza una implementación que utilice la [técnica de
+Realiza una implementación que utilice la [técnica de
 _memoization_](../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.md#soluciones-al-coste-de-la-recursion-memoization)
 del algoritmo que devuelve la [serie de
 Pascal](../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.md#triangulo-de-pascal).
@@ -157,17 +157,6 @@ Pascal](../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recu
 (pascal-memo 8 4 diccionario) ; ⇒ 70
 (pascal-memo 40 20 diccionario) ; ⇒ 137846528820
 ```
-
-b) Vamos a generalizar la *memoización* anterior. Para ello definimos una función de orden superior llamada `memoize` que recibe un diccionario, una función y un número variable de argumentos de la función a pasada como parámetro:
-
-```racket
-(define (memoize dic f . args)
-  (or (get (cons f args) dic)
-      (put (cons f args)
-           (apply f args) fic)))
-```
-
-Modifica las funciones memoizadas de fibonnaci y de pascal para que utilicen la nueva función `memoize`.
 
 ### Ejercicio 5 ###
 
