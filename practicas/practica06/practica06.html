@@ -9,6 +9,8 @@
       
       
       
+        <link rel="prev" href="../practica05/practica05.html">
+      
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -16,7 +18,7 @@
     
     
       
-        <title>Práctica 6: Procedimientos recursivos e iterativos - LPP</title>
+        <title>Práctica 6 - LPP</title>
       
     
     
@@ -103,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Práctica 6: Procedimientos recursivos e iterativos
+              Práctica 6
             
           </span>
         </div>
@@ -407,17 +409,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -431,7 +435,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Prácticas
@@ -559,6 +563,145 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Práctica 6
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="practica06.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Práctica 6
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#antes-de-la-clase-de-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Antes de la clase de prácticas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 6
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -713,7 +856,7 @@ pulsando el botón derecho del ratón y seleccionando la opción <em>Guardar
 como</em> <code>lpp.rkt</code>. Guárdalo en la misma carpeta en la que tengas el
 fichero <code>practica6.rkt</code>.</p>
 <p>El fichero contiene la definición de las funciones
-<code>(crea-diccionario)</code>, <code>(put key value dic)</code> y <code>(get key dic)</code>,
+<code>(make-dic)</code>, <code>(put key value dic)</code>, <code>(get key dic)</code> y <code>(key-exists? key)</code>
 necesarias para realizar una implementación de un algoritmo recursivo
 con <em>memoization</em> y que necesitarás en el ejercicio 4.</p>
 <h3 id="ejercicio-1">Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permanent link">&para;</a></h3>
@@ -796,14 +939,21 @@ significativo) y devuelva el número decimal equivalente.</p>
 <span class="p">(</span><span class="n">binario-a-decimal</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ 2</span>
 </code></pre></div>
 <h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
-<p>Realiza una implementación que utilice la <a href="../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html#soluciones-al-coste-de-la-recursion-memoization">técnica de la
+<p>a) Realiza una implementación que utilice la <a href="../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html#soluciones-al-coste-de-la-recursion-memoization">técnica de
 <em>memoization</em></a>
 del algoritmo que devuelve la <a href="../../teoria/tema03-procedimientos-recursivos/tema03-procedimientos-recursivos.html#triangulo-de-pascal">serie de
 Pascal</a>.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">diccionario</span><span class="w"> </span><span class="p">(</span><span class="n">crea-diccionario</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">diccionario</span><span class="w"> </span><span class="p">(</span><span class="n">make-dic</span><span class="p">))</span>
 <span class="p">(</span><span class="n">pascal-memo</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">diccionario</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 70</span>
 <span class="p">(</span><span class="n">pascal-memo</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="n">diccionario</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 137846528820</span>
 </code></pre></div>
+<p>b) Vamos a generalizar la <em>memoización</em> anterior. Para ello definimos una función de orden superior llamada <code>memoize</code> que recibe un diccionario, una función y un número variable de argumentos de la función a pasada como parámetro:</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">memoize</span><span class="w"> </span><span class="n">dic</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">  </span><span class="p">(</span><span class="k">or</span><span class="w"> </span><span class="p">(</span><span class="n">get</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="n">dic</span><span class="p">)</span>
+<span class="w">      </span><span class="p">(</span><span class="n">put</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<span class="w">           </span><span class="p">(</span><span class="nb">apply</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="n">fic</span><span class="p">)))</span>
+</code></pre></div>
+<p>Modifica las funciones memoizadas de fibonnaci y de pascal para que utilicen la nueva función <code>memoize</code>.</p>
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
 <p>a) Usando la librería de imágenes de Racket <code>2htdp/image</code> implementa
 la figura recursiva conocida como <em>curva de Koch</em>. Debes definir una
@@ -838,7 +988,7 @@ llamar a la primitiva con el parámetro <code>tam/2</code>.</p>
 umbral 20 píxeles, debe dibujar la siguiente figura:</p>
 <p><img src="imagenes/alfombra-sierpinski.png" width="400px"/></p>
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2023-24<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2024-25) <br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
 

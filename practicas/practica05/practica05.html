@@ -12,6 +12,8 @@
         <link rel="prev" href="../practica04/practica04.html">
       
       
+        <link rel="next" href="../practica06/practica06.html">
+      
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
@@ -686,6 +688,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica06/practica06.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Práctica 6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -902,22 +925,23 @@ elemento de la segunda.</p>
 <h3 id="ejercicio-2">Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Permanent link">&para;</a></h3>
 <p>Queremos ordenar de menor a mayor una lista que contenga cualquier
 tipo de elemento, no solo números. Para ello vamos a generalizar el
-ejercicio 2 de la práctica anterior, añadiendo un parámetro funcional,
-un predicado <code>(menor-igual? dato1 dato2)</code> que nos dice si el dato1 es
-menor o igual que el dato 2.</p>
+ejercicio 2 de la práctica anterior, añadiendo un parámetro adicional (un predicado),
+al que llamaremos <code>menor-igual?</code>.</p>
 <p>a) Generaliza las funciones <code>inserta-ordenada</code> y <code>ordena</code> añadiéndoles
-el parámetro adicional <code>menor-igual?</code> que es una función predicado que
+este parámetro adicional que es un predicado que
 comprueba si un dato de los que componen la lista es menor o igual que
 otro. Llama a las funciones resultantes <code>inserta-ordenada-genérica</code> y
 <code>ordena-genérica</code>.</p>
-<p>b) Escribe tres pruebas. En la primera deberás ordenar una lista de
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">ordena-generica</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="nb">&lt;=</span><span class="p">)</span><span class="w"> </span><span class="c1">;=&gt; &#39;(1 3 5)</span>
+</code></pre></div>
+<p>b) Completa las siguientes tres pruebas. En la primera deberás ordenar una lista de
 cadenas por su longitud, en la segunda la lista de cadenas por su
 orden lexicográfico y en la tercera deberás ordenar una lista de
 parejas de números por la suma de su parte izquierda y su parte
 derecha:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">check-equal?</span><span class="w"> </span><span class="p">(</span><span class="n">ordena-generica</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="w"> </span><span class="s2">&quot;me&quot;</span><span class="w"> </span><span class="s2">&quot;llamo&quot;</span><span class="w"> </span><span class="s2">&quot;Iñigo&quot;</span><span class="w"> </span><span class="s2">&quot;Montoya&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">......</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;me&quot;</span><span class="w"> </span><span class="s2">&quot;Hola&quot;</span><span class="w"> </span><span class="s2">&quot;llamo&quot;</span><span class="w"> </span><span class="s2">&quot;Iñigo&quot;</span><span class="w"> </span><span class="s2">&quot;Montoya&quot;</span><span class="p">))</span>
-<span class="p">(</span><span class="n">check-equal?</span><span class="w"> </span><span class="p">(</span><span class="n">ordena-generica</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="w"> </span><span class="s2">&quot;me&quot;</span><span class="w"> </span><span class="s2">&quot;llamo&quot;</span><span class="w"> </span><span class="s2">&quot;Iñigo&quot;</span><span class="w"> </span><span class="s2">&quot;Montoya&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">.......</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="w"> </span><span class="s2">&quot;Iñigo&quot;</span><span class="w"> </span><span class="s2">&quot;Montoya&quot;</span><span class="w"> </span><span class="s2">&quot;llamo&quot;</span><span class="w"> </span><span class="s2">&quot;me&quot;</span><span class="p">))</span>
-<span class="p">(</span><span class="n">check-equal?</span><span class="w"> </span><span class="p">(</span><span class="n">ordena-generica</span><span class="w"> </span><span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="n">......</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">1</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">check-equal?</span><span class="w"> </span><span class="p">(</span><span class="n">ordena-generica</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="w"> </span><span class="s2">&quot;me&quot;</span><span class="w"> </span><span class="s2">&quot;llamo&quot;</span><span class="w"> </span><span class="s2">&quot;Iñigo&quot;</span><span class="w"> </span><span class="s2">&quot;Montoya&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">________</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;me&quot;</span><span class="w"> </span><span class="s2">&quot;Hola&quot;</span><span class="w"> </span><span class="s2">&quot;llamo&quot;</span><span class="w"> </span><span class="s2">&quot;Iñigo&quot;</span><span class="w"> </span><span class="s2">&quot;Montoya&quot;</span><span class="p">))</span>
+<span class="p">(</span><span class="n">check-equal?</span><span class="w"> </span><span class="p">(</span><span class="n">ordena-generica</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="w"> </span><span class="s2">&quot;me&quot;</span><span class="w"> </span><span class="s2">&quot;llamo&quot;</span><span class="w"> </span><span class="s2">&quot;Iñigo&quot;</span><span class="w"> </span><span class="s2">&quot;Montoya&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">________</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="w"> </span><span class="s2">&quot;Iñigo&quot;</span><span class="w"> </span><span class="s2">&quot;Montoya&quot;</span><span class="w"> </span><span class="s2">&quot;llamo&quot;</span><span class="w"> </span><span class="s2">&quot;me&quot;</span><span class="p">))</span>
+<span class="p">(</span><span class="n">check-equal?</span><span class="w"> </span><span class="p">(</span><span class="n">ordena-generica</span><span class="w"> </span><span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="n">________</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">1</span><span class="p">)))</span>
 </code></pre></div>
 <p>c) Define la función <code>(ordena-cartas lista-cartas)</code> que ordene una
 lista de cartas de menor a mayor valor usando la función anterior
