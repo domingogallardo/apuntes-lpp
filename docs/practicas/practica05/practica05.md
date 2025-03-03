@@ -62,7 +62,7 @@ Ejemplos:
 ```racket
 (mueve-al-principio-condicion number? '(a b c 1 d 1 e) ; ⇒ (1 a b c d 1 e)
 (mueve-al-principio-condicion number? '(1 a b 1 c)) ; ⇒ (1 a b 1 c)
-(mueve-al-principio-condicion number? '(a b c d)) ; ⇒ '(a b c d)
+(mueve-al-principio-condicion number? '(a b c d)) ; ⇒ (a b c d)
 ```
 
 !!! Hint "Pista"
@@ -119,7 +119,7 @@ otro. Llama a las funciones resultantes `inserta-ordenada-genérica` y
 `ordena-genérica`.
 
 ```racket
-(ordena-generica '(3 5 1) <=) ;=> '(1 3 5)
+(ordena-generica '(3 5 1) <=) ;=> (1 3 5)
 ```
 
 b) Completa las siguientes tres pruebas. En la primera deberás ordenar una lista de
@@ -143,7 +143,7 @@ funciones auxiliares definidas en prácticas anteriores.
 Ejemplo:
 
 ```racket
-(ordena-cartas '(Q♠ J♣ 5♣ Q♥ J♦)) ; ⇒ '(5♣ J♣ J♦ Q♠ Q♥)
+(ordena-cartas '(Q♠ J♣ 5♣ Q♥ J♦)) ; ⇒ (5♣ J♣ J♦ Q♠ Q♥)
 ```
 
 ### Ejercicio 3 ###
@@ -266,7 +266,7 @@ la práctica anterior debes usar la función `expande-pareja`.
 
 ```
 (expande-lista-fos '((#t . 3) ("LPP" . 2) (b . 4))) 
-; ⇒ '(#t #t #t "LPP" "LPP" b b b b))
+; ⇒ (#t #t #t "LPP" "LPP" b b b b))
 ```
 
 c) Implementa, utilizando funciones de orden superior, la función
@@ -361,11 +361,11 @@ se devuelve por convenio la lista de n listas tal cual, sin variar.
 Ejemplo:
 
 ```racket
-(coloca '(() () ()) 'a 'b 'c)) ; ⇒ '((a) (b) (c))
-(coloca '((a) (a)) 'b 'b)) ; ⇒ '((b a) (b a))
-(coloca '((a b c d)) 'e) ; ⇒ '((e a b c d))
+(coloca '(() () ()) 'a 'b 'c)) ; ⇒ ((a) (b) (c))
+(coloca '((a) (a)) 'b 'b)) ; ⇒ ((b a) (b a))
+(coloca '((a b c d)) 'e) ; ⇒ ((e a b c d))
 (coloca '()) ; ⇒ '()
-(coloca '((a) (b c) (d e f) (g h i j)) 'k 'l 'm 'n)) ; ⇒ '((k a) (l b c) (m d e f) (n g h i j))
+(coloca '((a) (b c) (d e f) (g h i j)) 'k 'l 'm 'n)) ; ⇒ ((k a) (l b c) (m d e f) (n g h i j))
 ```
 
 Implementa una función `reparte-cuatro` inspirada en `reparte-tres` y con idéntica estructura.
@@ -383,9 +383,9 @@ orden en que se han proporcionado.
 
 ```racket
 (escoge-en-orden '(1 2 3 4 5)) ; ⇒  '()
-(escoge-en-orden '(1 2 3 4 5) fourth second) ; ⇒ '(4 2)
-(escoge-en-orden '(a b c d) third second fourth first) ; ⇒ '(c b d a)
-(escoge-en-orden '(dos tres un) third first second) ; ⇒ '(un dos tres)
+(escoge-en-orden '(1 2 3 4 5) fourth second) ; ⇒ (4 2)
+(escoge-en-orden '(a b c d) third second fourth first) ; ⇒ (c b d a)
+(escoge-en-orden '(dos tres un) third first second) ; ⇒ (un dos tres)
 ```
 
 Usando las funciones definidas anteriormente, implementa las funciones
@@ -399,11 +399,11 @@ como argumentos a continuación de la baraja.
 ```racket
 (reordena-tres-montones  '(A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ J♣ Q♣ K♣) second first third)
 ; ⇒
-; '((2♣ 5♣ 8♣ Q♣) (A♣ 4♣ 7♣ J♣) (3♣ 6♣ 9♣ K♣))
+; ((2♣ 5♣ 8♣ Q♣) (A♣ 4♣ 7♣ J♣) (3♣ 6♣ 9♣ K♣))
               
 (reordena-cuatro-montones  '(A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ J♣ Q♣ K♣) fourth second first third)
 ; ⇒
-; '((4♣ 8♣ K♣) (2♣ 6♣ J♣) (A♣ 5♣ 9♣) (3♣ 7♣ Q♣))
+; ((4♣ 8♣ K♣) (2♣ 6♣ J♣) (A♣ 5♣ 9♣) (3♣ 7♣ Q♣))
 ```
 
 c) Implementa la función `(junta-montones montones)` concatena la lista de sublistas
