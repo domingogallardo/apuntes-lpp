@@ -217,6 +217,6 @@ umbral 20 píxeles, debe dibujar la siguiente figura:
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2024-25)   
+Lenguajes y Paradigmas de Programación, curso 2024-25   
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
