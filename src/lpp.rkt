@@ -22,7 +22,7 @@
 (provide pinta-arbolb)
 
 
-(provide crea-diccionario)
+;(provide crea-diccionario)
 (provide get)
 (provide put)
 (provide make-dic)
