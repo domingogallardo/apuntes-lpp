@@ -293,10 +293,10 @@ siguiente lista estructurada?:
 
     ```racket
     ;Caso general num-hojas
-    (define (num-hojas lista)
+    (define (num-hojas lisdat)
       ; Falta caso base
-      (+ (num-hojas (first lista))
-         (num-hojas (rest lista))))
+      (+ (num-hojas (first lisdat))
+         (num-hojas (rest lisdat))))
     ```
 
 !!! Warning "No hay coste exponencial"
@@ -324,16 +324,16 @@ siguiente lista estructurada?:
 - Definición completa de la función:
 
     ```racket
-    (define (num-hojas lista)
+    (define (num-hojas lisdat)
        (cond
-          ((null? lista) 0)
-          ((hoja? lista) 1)
-          (else (+ (num-hojas (first lista))
-                   (num-hojas (rest lista))))))
+          ((null? lisdat) 0)
+          ((hoja? lisdat) 1)
+          (else (+ (num-hojas (first lisdat))
+                   (num-hojas (rest lisdat))))))
     ```
 
 !!! Warning "Importante"
-    Hay que hacer notar que el parámetro `lista` puede ser tanto una lista
+    Hay que hacer notar que el parámetro `lisdat` puede ser tanto una lista
     como un dato atómico. En ese caso la función `(hoja? lista)`
     devuelve `#t`.
     
@@ -362,10 +362,10 @@ siguiente lista estructurada?:
   función `+`:
 
 ```racket
-(define (num-hojas-fos lista)
-    (if (hoja? lista)
+(define (num-hojas-fos ld)
+    (if (hoja? ld)
         1
-        (foldr + 0 (map num-hojas-fos lista))))
+        (foldr + 0 (map num-hojas-fos ld))))
 ```
 
 <img src="imagenes/map-lista.png" width="600px"/>
@@ -374,10 +374,10 @@ siguiente lista estructurada?:
 de la lista devuelta por el `map`:
 
 ```racket
-(define (num-hojas-fos lista)
-    (if (hoja? lista)
+(define (num-hojas-fos ld)
+    (if (hoja? ld)
         1
-        (apply + (map num-hojas-fos lista))))
+        (apply + (map num-hojas-fos ld))))
 ```
 
 
@@ -395,32 +395,32 @@ de la lista devuelta por el `map`:
 - Solución recursiva:
 
     ```racket
-    (define (aplana lista)
-      (cond
-        ((null? lista) '())
-        ((hoja? lista) (list lista))
-        (else 
-         (append (aplana (first lista))
-                 (aplana (rest lista))))))
+(define (aplana ld)
+  (cond
+    ((null? ld) '())
+    ((hoja? ld) (list ld))
+    (else 
+     (append (aplana (first ld))
+             (aplana (rest ld))))))
     ```
 
 - Solución con funciones de orden superior:
 
     ```racket
-    (define (aplana-fos lista)
-      (if (hoja? lista)
-        (list lista)
-        (foldr append '() (map aplana-fos lista))))
+(define (aplana-fos ld)
+  (if (hoja? ld)
+    (list ld)
+    (foldr append '() (map aplana-fos ld))))
     ```
 
 
 - Usando `apply`:
 
     ```racket
-    (define (aplana-fos lista)
-      (if (hoja? lista)
-        (list lista)
-        (apply append (map aplana-fos lista))))
+(define (aplana-fos ld)
+  (if (hoja? ld)
+    (list ld)
+    (apply append (map aplana-fos ld))))
     ```
 
 ---
@@ -456,23 +456,23 @@ estructura jerárquica de las listas estructuradas.
 - Solución recursiva:
 
     ```racket
-    (define (pertenece? dato lista)
-      (cond 
-        ((null? lista) #f)
-        ((hoja? lista) (equal? dato lista))
-        (else (or (pertenece? dato (first lista))
-                  (pertenece? dato (rest lista))))))
+(define (pertenece? dato ld)
+  (cond 
+    ((null? ld) #f)
+    ((hoja? ld) (equal? dato ld))
+    (else (or (pertenece? dato (first ld))
+              (pertenece? dato (rest ld))))))
     ```
 
 
 - Solución con funciones de orden superior:
 
     ```racket
-    (define (pertenece-fos? dato lista)
-      (if (hoja? lista)
-        (equal? dato lista)
-        (exists? (lambda (elem)
-                   (pertenece-fos? dato elem)) lista)))
+(define (pertenece-fos? dato ld)
+  (if (hoja? ld)
+    (equal? dato ld)
+    (exists? (lambda (elem)
+               (pertenece-fos? dato elem)) ld)))
     ```
 
 
@@ -491,21 +491,21 @@ números elevados al cuadrado.
 - Solución recursiva:
 
     ```racket
-    (define (cuadrado-estruct lista)
-      (cond ((null? lista) '())
-            ((hoja? lista) (* lista lista))
-            (else (cons (cuadrado-estruct (first lista))
-                        (cuadrado-estruct (rest lista))))))
+(define (cuadrado-estruct ld)
+  (cond ((null? ld) '())
+        ((hoja? ld) (* ld ld ))
+        (else (cons (cuadrado-estruct (first ld))
+                    (cuadrado-estruct (rest ld))))))
     ```
 
 
 - Solución con `map`:
 
     ```racket
-    (define (cuadrado-estruct-fos lista)
-      (if (hoja? lista)
-          (* lista lista)
-          (map cuadrado-estruct-fos lista)))
+(define (cuadrado-estruct-fos ld)
+  (if (hoja? ld)
+      (* ld ld)
+      (map cuadrado-estruct-fos ld)))
     ```
 
 ----
@@ -523,22 +523,22 @@ resultado de aplicar a cada uno de sus hojas la función `f`
 - Solución recursiva:
 
     ```racket
-    (define (map-estruct f lista)
-      (cond ((null? lista) '())
-            ((hoja? lista) (f lista))
-            (else (cons (map-estruct f (first lista))
-                        (map-estruct f (rest lista))))))
+(define (map-estruct f ld)
+  (cond ((null? ld) '())
+        ((hoja? ld) (f ld))
+        (else (cons (map-estruct f (first ld))
+                    (map-estruct f (rest ld))))))
     ```
 	
 
 - Solución con `map`:
 
     ```racket
-    (define (map-estruct-fos f lista)
-      (if (hoja? lista)
-          (f lista)
-          (map (lambda (elem)
-                 (map-estruct-fos f elem)) lista)))
+(define (map-estruct-fos f ld)
+  (if (hoja? ld)
+      (f ld)
+      (map (lambda (elem)
+             (map-estruct-fos f elem)) ld)))
     ```
 
 ----
@@ -569,12 +569,12 @@ resultado de aplicar a cada uno de sus hojas la función `f`
 - En Scheme:
 
     ```racket
-    (define (altura lista)
-       (cond 
-          ((null? lista) 0)
-          ((hoja? lista) 0)
-          (else (max (+ 1 (altura (first lista)))
-                     (altura (rest lista))))))
+(define (altura ld)
+   (cond 
+      ((null? ld) 0)
+      ((hoja? ld) 0)
+      (else (max (+ 1 (altura (first ld)))
+                 (altura (rest ld))))))
     ```
 
 ----
@@ -584,10 +584,10 @@ para obtener la altura de las sublistas y `foldr` para quedarse
 con el máximo.
 
     ```racket
-    (define (altura-fos lista)
-       (if (hoja? lista)
-           0
-           (+ 1 (foldr max 0 (map altura-fos lista)))))
+(define (altura-fos ld)
+   (if (hoja? ld)
+       0
+       (+ 1 (foldr max 0 (map altura-fos ld)))))
     ```
 
 ---
@@ -609,13 +609,13 @@ nivel mayor.
 - Solución recursiva:
 
     ```racket
-    (define (nivel-hoja dato lista)
-      (cond
-        ((null? lista) -1)
-        ((hoja? lista) (if (equal? lista dato) 0 -1))
-        (else (max (suma-1-si-mayor-igual-que-0 
-                        (nivel-hoja dato (first lista)))
-                   (nivel-hoja dato (rest lista))))))
+(define (nivel-hoja dato ld)
+  (cond
+    ((null? ld) -1)
+    ((hoja? ld) (if (equal? ld dato) 0 -1))
+    (else (max (suma-1-si-mayor-igual-que-0 
+                    (nivel-hoja dato (first ld)))
+               (nivel-hoja dato (rest ld))))))
     ```
 
 - La función auxiliar se define de la siguiente forma:
@@ -630,12 +630,12 @@ nivel mayor.
 - Solución con funciones de orden superior:
 
     ```racket
-    (define (nivel-hoja-fos dato lista)
-      (if (hoja? lista)
-          (if (equal? lista dato) 0 -1)
-          (suma-1-si-mayor-igual-que-0
-           (foldr max -1 (map (lambda (elem)
-                               (nivel-hoja-fos dato elem)) lista)))))
+(define (nivel-hoja-fos dato ld)
+  (if (hoja? ld)
+      (if (equal? ld dato) 0 -1)
+      (suma-1-si-mayor-igual-que-0
+       (foldr max -1 (map (lambda (elem)
+                           (nivel-hoja-fos dato elem)) ld)))))
     ```
 
                              

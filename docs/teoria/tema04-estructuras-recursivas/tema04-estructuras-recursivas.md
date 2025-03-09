@@ -336,10 +336,10 @@ lista.
 
 ```racket
 ;Caso general num-hojas
-(define (num-hojas lista)
+(define (num-hojas lisdat)
   ; Falta caso base
-  (+ (num-hojas (first lista))
-     (num-hojas (rest lista))))
+  (+ (num-hojas (first lisdat))
+     (num-hojas (rest lisdat))))
 ```
           
 
@@ -365,17 +365,17 @@ una hoja (un dato). Ese será el otro caso base y habrá que devolver 1.
 La definición completa de la función queda de la siguiente forma:
 
 ```racket
-(define (num-hojas lista)
+(define (num-hojas lisdat)
    (cond
-      ((null? lista) 0)
-      ((hoja? lista) 1)
-      (else (+ (num-hojas (first lista))
-               (num-hojas (rest lista))))))
+      ((null? lisdat) 0)
+      ((hoja? lisdat) 1)
+      (else (+ (num-hojas (first lisdat))
+               (num-hojas (rest lisdat))))))
 ```
 
 !!! Warning "Importante"
-    Hay que hacer notar que el parámetro `lista` puede ser tanto una lista
-    como un dato atómico. En ese caso la función `(hoja? lista)`
+    Hay que hacer notar que el parámetro `lisdat` puede ser tanto una lista
+    como un dato atómico. En ese caso la función `(hoja? lisdat)`
     devuelve `#t`.
     
     En lenguajes de programación fuertemente tipados esto no
@@ -420,10 +420,10 @@ cada componente), que podemos sumar haciendo un `foldr` con la
 función `+`:
 
 ```racket
-(define (num-hojas-fos lista)
-    (if (hoja? lista)
+(define (num-hojas-fos ld)
+    (if (hoja? ld)
         1
-        (foldr + 0 (map num-hojas-fos lista))))
+        (foldr + 0 (map num-hojas-fos ld))))
 ```
 
 Una explicación gráfica de cómo funciona la función sobre la lista `(1
@@ -435,10 +435,10 @@ Sería equivalente hacer un `apply` de la suma para sumar los números
 de la lista devuelta por el `map`:
 
 ```racket
-(define (num-hojas-fos lista)
-    (if (hoja? lista)
+(define (num-hojas-fos ld)
+    (if (hoja? ld)
         1
-        (apply + (map num-hojas-fos lista))))
+        (apply + (map num-hojas-fos ld))))
 ```
 
 !!! Note "Nota"
@@ -461,31 +461,31 @@ Por ejemplo:
 La solución recursiva es:
 
 ```racket
-(define (aplana lista)
+(define (aplana ld)
   (cond
-    ((null? lista) '())
-    ((hoja? lista) (list lista))
+    ((null? ld) '())
+    ((hoja? ld) (list ld))
     (else 
-     (append (aplana (first lista))
-             (aplana (rest lista))))))
+     (append (aplana (first ld))
+             (aplana (rest ld))))))
 ```
 
 Con funciones de orden superior:
 
 ```racket
-(define (aplana-fos lista)
-  (if (hoja? lista)
-    (list lista)
-    (foldr append '() (map aplana-fos lista))))
+(define (aplana-fos ld)
+  (if (hoja? ld)
+    (list ld)
+    (foldr append '() (map aplana-fos ld))))
 ```
 
 Usando `apply`:
 
 ```racket
-(define (aplana-fos lista)
-  (if (hoja? lista)
-    (list lista)
-    (apply append (map aplana-fos lista))))
+(define (aplana-fos ld)
+  (if (hoja? ld)
+    (list ld)
+    (apply append (map aplana-fos ld))))
 ```
 
 
@@ -518,22 +518,22 @@ Comprueba si el `dato` aparece en la lista estructurada.
 Solución recursiva:
 
 ```racket
-(define (pertenece? dato lista)
+(define (pertenece? dato ld)
   (cond 
-    ((null? lista) #f)
-    ((hoja? lista) (equal? dato lista))
-    (else (or (pertenece? dato (first lista))
-              (pertenece? dato (rest lista))))))
+    ((null? ld) #f)
+    ((hoja? ld) (equal? dato ld))
+    (else (or (pertenece? dato (first ld))
+              (pertenece? dato (rest ld))))))
 ```
 
 Con funciones de orden superior:
 
 ```racket
-(define (pertenece-fos? dato lista)
-  (if (hoja? lista)
-    (equal? dato lista)
+(define (pertenece-fos? dato ld)
+  (if (hoja? ld)
+    (equal? dato ld)
     (exists? (lambda (elem)
-               (pertenece-fos? dato elem)) lista)))
+               (pertenece-fos? dato elem)) ld)))
 ```
 
 ##### 1.2.3.2. `(cuadrado-estruct lista)` #####
@@ -554,11 +554,11 @@ Por ejemplo:
 La solución recursiva es:
 
 ```racket
-(define (cuadrado-estruct lista)
-  (cond ((null? lista) '())
-        ((hoja? lista) (* lista lista ))
-        (else (cons (cuadrado-estruct (first lista))
-                    (cuadrado-estruct (rest lista))))))
+(define (cuadrado-estruct ld)
+  (cond ((null? ld) '())
+        ((hoja? ld) (* ld ld ))
+        (else (cons (cuadrado-estruct (first ld))
+                    (cuadrado-estruct (rest ld))))))
 ```
 
 Se llama a la recursión con el `first` y con el `rest` de la lista
@@ -572,10 +572,10 @@ Es muy interesante la versión de esta función con funciones de orden
 superior:
 
 ```racket
-(define (cuadrado-estruct-fos lista)
-  (if (hoja? lista)
-      (* lista lista)
-      (map cuadrado-estruct-fos lista)))
+(define (cuadrado-estruct-fos ld)
+  (if (hoja? ld)
+      (* ld ld)
+      (map cuadrado-estruct-fos ld)))
 ```
 
 Como una lista estructurada está compuesta de datos o de otras
@@ -600,21 +600,21 @@ La solución recursiva es una generalización de la función anterior,
 usando el parámetro `f`:
 
 ```racket
-(define (map-estruct f lista)
-  (cond ((null? lista) '())
-        ((hoja? lista) (f lista))
-        (else (cons (map-estruct f (first lista))
-                    (map-estruct f (rest lista))))))
+(define (map-estruct f ld)
+  (cond ((null? ld) '())
+        ((hoja? ld) (f ld))
+        (else (cons (map-estruct f (first ld))
+                    (map-estruct f (rest ld))))))
 ```
 	
 Solución con `map`:
 
 ```racket
-(define (map-estruct-fos f lista)
-  (if (hoja? lista)
-      (f lista)
+(define (map-estruct-fos f ld)
+  (if (hoja? ld)
+      (f ld)
       (map (lambda (elem)
-             (map-estruct-fos f elem)) lista)))
+             (map-estruct-fos f elem)) ld)))
 ```
 
 
@@ -636,12 +636,12 @@ Como casos base, la altura de una lista vacía o de una hoja (dato) es 0.
 En Scheme:
 
 ```racket
-(define (altura lista)
+(define (altura ld)
    (cond 
-      ((null? lista) 0)
-      ((hoja? lista) 0)
-      (else (max (+ 1 (altura (first lista)))
-                 (altura (rest lista))))))
+      ((null? ld) 0)
+      ((hoja? ld) 0)
+      (else (max (+ 1 (altura (first ld)))
+                 (altura (rest ld))))))
 ```
 Por ejemplo:
 
@@ -658,20 +658,20 @@ hojas o sublistas) y `foldr` para quedarse con el máximo de la
 lista de valores que devuelve el map.
 
 ```racket
-(define (altura-fos lista)
-   (if (hoja? lista)
+(define (altura-fos ld)
+   (if (hoja? ld)
        0
-       (+ 1 (foldr max 0 (map altura-fos lista)))))
+       (+ 1 (foldr max 0 (map altura-fos ld)))))
 ```
 
 Podríamos hacerlo también sustituyendo el `foldr` por un `apply`:
 
 
 ```racket
-(define (altura-fos lista)
-   (if (hoja? lista)
+(define (altura-fos ld)
+   (if (hoja? ld)
        0
-       (+ 1 (apply max (map altura-fos lista)))))
+       (+ 1 (apply max (map altura-fos ld)))))
 ```
 
 ##### 1.2.3.5. `(nivel-hoja dato lista)` #####
@@ -694,13 +694,13 @@ Ejemplos:
 Solución recursiva:
 
 ```racket
-(define (nivel-hoja dato lista)
+(define (nivel-hoja dato ld)
   (cond
-    ((null? lista) -1)
-    ((hoja? lista) (if (equal? lista dato) 0 -1))
+    ((null? ld) -1)
+    ((hoja? ld) (if (equal? ld dato) 0 -1))
     (else (max (suma-1-si-mayor-igual-que-0 
-                    (nivel-hoja dato (first lista)))
-               (nivel-hoja dato (rest lista))))))
+                    (nivel-hoja dato (first ld)))
+               (nivel-hoja dato (rest ld))))))
 ```
 
 La función auxiliar se define de la siguiente forma:
@@ -715,15 +715,15 @@ La función auxiliar se define de la siguiente forma:
 Con funciones de orden superior:
 
 ```racket
-
-(define (nivel-hoja-fos dato lista)
-  (if (hoja? lista)
-      (if (equal? lista dato) 0 -1)
+(define (nivel-hoja-fos dato ld)
+  (if (hoja? ld)
+      (if (equal? ld dato) 0 -1)
       (suma-1-si-mayor-igual-que-0
        (foldr max -1 (map (lambda (elem)
-                           (nivel-hoja-fos dato elem)) lista)))))
+                           (nivel-hoja-fos dato elem)) ld)))))
 ```
 
+<!--
 ## 2. Árboles
 
 ### 2.1. Definición de árboles en Scheme
@@ -1492,7 +1492,7 @@ constructor `construye-arbolb`.
 (cuadrado-arbolb arbolb1) ; ⇒ (100 (64 () ()) (225 () ()))
 ```
 
-
+-->
 
 
 ## 4. Bibliografía - SICP
@@ -1503,7 +1503,7 @@ En este tema explicamos conceptos de los siguientes capítulos del libro *Struct
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2023-24  
+Lenguajes y Paradigmas de Programación, curso 2024-25  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
 
