@@ -477,6 +477,7 @@ Con funciones de orden superior:
   (if (hoja? ld)
     (list ld)
     (foldr append '() (map aplana-fos ld))))
+
 ```
 
 Usando `apply`:
@@ -486,6 +487,7 @@ Usando `apply`:
   (if (hoja? ld)
     (list ld)
     (apply append (map aplana-fos ld))))
+
 ```
 
 
