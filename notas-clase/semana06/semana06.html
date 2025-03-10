@@ -556,7 +556,7 @@ de la lista devuelta por el <code>map</code>:</li>
 <p>Vamos a diseñar otras funciones recursivas que trabajan con la
 estructura jerárquica de las listas estructuradas.</p>
 <ul>
-<li><code>(pertenece-lista? dato lista)</code>: busca una hoja en una lista
+<li><code>(pertenece-estruct? dato lista)</code>: busca una hoja en una lista
   estructurada</li>
 <li><code>(cuadrado-estruct lista)</code>: eleva todas las hojas al cuadrado
   (suponemos que la lista estructurada contiene números)</li>
@@ -569,21 +569,21 @@ estructura jerárquica de las listas estructuradas.</p>
   un dato en una lista</li>
 </ul>
 <hr />
-<h3><code>(pertenece-lista? dato lista)</code></h3>
+<h3><code>(pertenece-estruct? dato lista)</code></h3>
 <ul>
 <li>Comprueba si el dato <code>dato</code> aparece en la lista estructurada. </li>
 </ul>
-<pre class="highlight"><code class="language-racket">    (pertenece-lista? 'a '(b c (d (a)))) ⇒ #t
-    (pertenece-lista? 'a '(b c (d e (f)) g)) ⇒ #f</code></pre>
+<pre class="highlight"><code class="language-racket">    (pertenece-estruct? 'a '(b c (d (a)))) ⇒ #t
+    (pertenece-estruct? 'a '(b c (d e (f)) g)) ⇒ #f</code></pre>
 <ul>
 <li>Solución recursiva:</li>
 </ul>
-<pre class="highlight"><code class="language-racket">(define (pertenece-lista? dato ld)
+<pre class="highlight"><code class="language-racket">(define (pertenece-estruct? dato ld)
   (cond 
     ((null? ld) #f)
     ((hoja? ld) (equal? dato ld))
-    (else (or (pertenece-lista? dato (first ld))
-              (pertenece-lista? dato (rest ld))))))</code></pre>
+    (else (or (pertenece-estruct? dato (first ld))
+              (pertenece-estruct? dato (rest ld))))))</code></pre>
 <ul>
 <li>Solución con funciones de orden superior:</li>
 </ul>
