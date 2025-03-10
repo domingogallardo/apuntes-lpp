@@ -582,18 +582,18 @@ estructura jerárquica de las listas estructuradas.</p>
 <ul>
 <li>
 <p>Comprueba si el dato <code>dato</code> aparece en la lista estructurada. </p>
-<pre class="highlight"><code class="language-racket">(pertenece? 'a '(b c (d (a)))) ⇒ #t
-(pertenece? 'a '(b c (d e (f)) g)) ⇒ #f</code></pre>
+<pre class="highlight"><code class="language-racket">(pertenece-lista? 'a '(b c (d (a)))) ⇒ #t
+(pertenece-lista? 'a '(b c (d e (f)) g)) ⇒ #f</code></pre>
 </li>
 <li>
 <p>Solución recursiva:</p>
 <p><code>racket
-(define (pertenece? dato ld)
+(define (pertenece-lista? dato ld)
   (cond 
 ((null? ld) #f)
 ((hoja? ld) (equal? dato ld))
-(else (or (pertenece? dato (first ld))
-          (pertenece? dato (rest ld))))))</code></p>
+(else (or (pertenece-lista? dato (first ld))
+          (pertenece-lista? dato (rest ld))))))</code></p>
 </li>
 <li>
 <p>Solución con funciones de orden superior:</p>
