@@ -229,60 +229,61 @@ table {
 </li>
 <li>
 <p>Por ejemplo, la lista estructurada:</p>
-<pre class="highlight"><code class="language-racket">(a b (c d e) (f (g h)))</code></pre>
-<p>es una lista estructurada con 4 elementos:</p>
+</li>
+</ul>
+<pre class="highlight"><code class="language-racket">    (a b (c d e) (f (g h)))</code></pre>
+<pre class="codehilite"><code>es una lista estructurada con 4 elementos:
+
+- El elemento `'a`, una hoja
+- El elemento `'b`, otra hoja
+- La lista plana `'(c d e)`
+- La lista estructurada `'(f (g h))`
+</code></pre>
+
 <ul>
-<li>El elemento <code>'a</code>, una hoja</li>
-<li>El elemento <code>'b</code>, otra hoja</li>
-<li>La lista plana <code>'(c d e)</code></li>
-<li>La lista estructurada <code>'(f (g h))</code></li>
+<li>Una lista formada por parejas la consideraremos una lista plana, ya
+  que no contiene ninguna sublista. Por ejemplo, la lista</li>
 </ul>
-</li>
-<li>
-<p>Una lista formada por parejas la consideraremos una lista plana, ya
-  que no contiene ninguna sublista. Por ejemplo, la lista</p>
-<pre class="highlight"><code class="language-racket">((a . 3) (b . 5) (c . 12))</code></pre>
-<p>es una lista plana de tres elementos (hojas) que son parejas.</p>
-</li>
-</ul>
+<pre class="highlight"><code class="language-racket">    ((a . 3) (b . 5) (c . 12))</code></pre>
+<pre class="codehilite"><code>es una lista plana de tres elementos (hojas) que son parejas.
+</code></pre>
+
 <hr />
 <h3>Función <code>(hoja? dato)</code></h3>
 <ul>
-<li>
-<p>Un dato es una hoja si no es una lista:</p>
-<pre class="highlight"><code class="language-racket">(define (hoja? dato)
-    (not (list? dato)))</code></pre>
-</li>
-<li>
-<p>Por ejemplo, supongamos la siguiente lista:</p>
-<pre class="highlight"><code class="language-racket">((1 2) 3 4 (5 6))</code></pre>
-<p>Es una lista de 4 elementos, siendo el primero y el último otras
-sublistas y el segundo y el tercero hojas. Podemos comprobar si
-son o no hojas sus elementos:</p>
-<pre class="highlight"><code class="language-racket">(define lista '((1 2) 3 4 (5 6)))
-(hoja? (first lista)) ; ⇒ #f
-(hoja? (second lista)) ; ⇒ #t
-(hoja? (third lista)) ; ⇒ #t
-(hoja? (fourth lista)) ; ⇒ #f</code></pre>
-</li>
-<li>
-<p>La lista vacía no es una hoja</p>
-<pre class="highlight"><code class="language-racket">(hoja? '()) ; ⇒ #f</code></pre>
-</li>
+<li>Un dato es una hoja si no es una lista:</li>
 </ul>
+<pre class="highlight"><code class="language-racket">    (define (hoja? dato)
+        (not (list? dato)))</code></pre>
+<ul>
+<li>Por ejemplo, supongamos la siguiente lista:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">    ((1 2) 3 4 (5 6))</code></pre>
+<pre class="codehilite"><code>Es una lista de 4 elementos, siendo el primero y el último otras
+sublistas y el segundo y el tercero hojas. Podemos comprobar si
+son o no hojas sus elementos:
+</code></pre>
+
+<pre class="highlight"><code class="language-racket">    (define lista '((1 2) 3 4 (5 6)))
+    (hoja? (first lista)) ; ⇒ #f
+    (hoja? (second lista)) ; ⇒ #t
+    (hoja? (third lista)) ; ⇒ #t
+    (hoja? (fourth lista)) ; ⇒ #f</code></pre>
+<ul>
+<li>La lista vacía no es una hoja</li>
+</ul>
+<pre class="highlight"><code class="language-racket">    (hoja? '()) ; ⇒ #f</code></pre>
 <hr />
 <h3>Función <code>(plana? lista)</code></h3>
 <ul>
-<li>
-<p>Una lista es plana cuando todos sus elementos son hojas.</p>
-<pre class="highlight"><code class="language-racket">(plana? '(a b c d e f)) ; ⇒ #t
-(plana? (list (cons 'a 1) "Hola" #f)) ; ⇒ #t
-(plana? '(a (b c) d)) ; ⇒ #f
-(plana? '(a () b)) ; ⇒ #f</code></pre>
-</li>
-<li>
-<p>Una definición recursiva de lista plana:</p>
-</li>
+<li>Una lista es plana cuando todos sus elementos son hojas.</li>
+</ul>
+<pre class="highlight"><code class="language-racket">    (plana? '(a b c d e f)) ; ⇒ #t
+    (plana? (list (cons 'a 1) "Hola" #f)) ; ⇒ #t
+    (plana? '(a (b c) d)) ; ⇒ #f
+    (plana? '(a () b)) ; ⇒ #f</code></pre>
+<ul>
+<li>Una definición recursiva de lista plana:</li>
 </ul>
 <blockquote>
 <p>Una lista es plana si y solo si el primer elemento es una hoja y el
@@ -295,15 +296,13 @@ resto es plana.</p>
 <p>Una lista vacía es plana.</p>
 </blockquote>
 <ul>
-<li>
-<p>Usando esta definición recursiva, podemos implementar en Scheme la
-  función <code>(plana? lista)</code> que comprueba si una lista es plana:</p>
-<pre class="highlight"><code class="language-racket">(define (plana? lista)
-   (or (null? lista)
-       (and (hoja? (first lista))
-            (plana? (rest lista)))))</code></pre>
-</li>
+<li>Usando esta definición recursiva, podemos implementar en Scheme la
+  función <code>(plana? lista)</code> que comprueba si una lista es plana:</li>
 </ul>
+<pre class="highlight"><code class="language-racket">    (define (plana? lista)
+       (or (null? lista)
+           (and (hoja? (first lista))
+                (plana? (rest lista)))))</code></pre>
 <p>¿Cómo sería la definición de <code>plana?</code> utilizando funciones de orden superior?</p>
 <p style="margin-bottom:3cm;"></p>
 
@@ -312,35 +311,31 @@ resto es plana.</p>
 <hr />
 <h3>Función <code>(estructurada? lista)</code></h3>
 <ul>
-<li>
-<p>Ejemplos:</p>
-<pre class="highlight"><code class="language-racket">(estructurada? '(1 2 3 4)) ; ⇒ #f
-(estructurada? (list (cons 'a 1) (cons 'b 2) (cons 'c 3))) ; ⇒ #f
-(estructurada? '(a () b)) ; ⇒ #t
-(estructurada? '(a (b c) d)) ; ⇒ #t</code></pre>
-</li>
-<li>
-<p>Una lista es estructurada cuando alguno de sus elementos es otra
-  lista:</p>
-<pre class="highlight"><code class="language-racket">(define (estructurada? lista)
-   (and (not (null? lista))
-        (or (list? (first lista))
-            (estructurada? (rest lista)))))</code></pre>
-</li>
+<li>Ejemplos:</li>
 </ul>
+<pre class="highlight"><code class="language-racket">    (estructurada? '(1 2 3 4)) ; ⇒ #f
+    (estructurada? (list (cons 'a 1) (cons 'b 2) (cons 'c 3))) ; ⇒ #f
+    (estructurada? '(a () b)) ; ⇒ #t
+    (estructurada? '(a (b c) d)) ; ⇒ #t</code></pre>
+<ul>
+<li>Una lista es estructurada cuando alguno de sus elementos es otra
+  lista:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">    (define (estructurada? lista)
+       (and (not (null? lista))
+            (or (list? (first lista))
+                (estructurada? (rest lista)))))</code></pre>
 <p>¿Cómo sería la definición de <code>estructurada?</code> utilizando funciones de orden superior?</p>
 <p style="margin-bottom:3cm;"></p>
 
 <pre class="highlight"><code class="language-racket">(define (estructurada-fos? lista)
   (exists? list? lista))</code></pre>
 <ul>
-<li>
-<p>Realmente bastaría con haber hecho una de las dos definiciones y
-escribir la otra como la negación de la primera:</p>
-<pre class="highlight"><code class="language-racket">(define (estructurada? lista)
-   (not (plana? lista)))</code></pre>
-</li>
+<li>Realmente bastaría con haber hecho una de las dos definiciones y
+escribir la otra como la negación de la primera:</li>
 </ul>
+<pre class="highlight"><code class="language-racket">    (define (estructurada? lista)
+       (not (plana? lista)))</code></pre>
 <hr />
 <h3>Ejemplos de listas estructuradas</h3>
 <ul>
@@ -351,17 +346,17 @@ escribir la otra como la negación de la primera:</p>
 </li>
 <li>
 <p>Por ejemplo, las expresiones de Scheme son listas estructuradas:</p>
-<pre class="highlight"><code class="language-racket">(= 4 (+ 2 2))
-(if (= x y) (* x y) (+ (/ x y) 45))
-(define (factorial x) (if (= x 0) 1 (* x (factorial (- x 1)))))</code></pre>
-</li>
-<li>
-<p>El análisis sintáctico de una oración puede generar una lista
-  estructurada de símbolos, en donde se agrupan los distintos
-  elementos de la oración:</p>
-<pre class="highlight"><code class="language-racket">((Juan) (compró) (la entrada (de los Miserables)) (el viernes por la tarde))</code></pre>
 </li>
 </ul>
+<pre class="highlight"><code class="language-racket">    (= 4 (+ 2 2))
+    (if (= x y) (* x y) (+ (/ x y) 45))
+    (define (factorial x) (if (= x 0) 1 (* x (factorial (- x 1)))))</code></pre>
+<ul>
+<li>El análisis sintáctico de una oración puede generar una lista
+  estructurada de símbolos, en donde se agrupan los distintos
+  elementos de la oración:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">    ((Juan) (compró) (la entrada (de los Miserables)) (el viernes por la tarde))</code></pre>
 <hr />
 <h3><em>Pseudo árboles</em> con niveles</h3>
 <ul>
@@ -437,17 +432,15 @@ la suma del número de hojas de su primer elemento (que puede ser otra lista) y 
 número de hojas del resto.</p>
 </div>
 <ul>
-<li>
-<p>La recursión tiene dos llamadas recursivas. Una que recibe el
+<li>La recursión tiene dos llamadas recursivas. Una que recibe el
   elemento de la cabeza de la lista y otra que recibe el resto de la
-  lista. </p>
-<pre class="highlight"><code class="language-racket">;Caso general num-hojas
-(define (num-hojas lisdat)
-  ; Falta caso base
-  (+ (num-hojas (first lisdat))
-     (num-hojas (rest lisdat))))</code></pre>
-</li>
+  lista. </li>
 </ul>
+<pre class="highlight"><code class="language-racket">    ;Caso general num-hojas
+    (define (num-hojas lisdat)
+      ; Falta caso base
+      (+ (num-hojas (first lisdat))
+         (num-hojas (rest lisdat))))</code></pre>
 <div class="admonition warning">
 <p class="admonition-title">No hay coste exponencial</p>
 <ul>
@@ -479,14 +472,14 @@ número de elementos de la lista.</li>
 </li>
 <li>
 <p>Definición completa de la función:</p>
-<pre class="highlight"><code class="language-racket">(define (num-hojas lisdat)
-   (cond
-      ((null? lisdat) 0)
-      ((hoja? lisdat) 1)
-      (else (+ (num-hojas (first lisdat))
-               (num-hojas (rest lisdat))))))</code></pre>
 </li>
 </ul>
+<pre class="highlight"><code class="language-racket">    (define (num-hojas lisdat)
+       (cond
+          ((null? lisdat) 0)
+          ((hoja? lisdat) 1)
+          (else (+ (num-hojas (first lisdat))
+                   (num-hojas (rest lisdat))))))</code></pre>
 <div class="admonition warning">
 <p class="admonition-title">Importante</p>
 <p>Hay que hacer notar que el parámetro <code>lisdat</code> puede ser tanto una lista
@@ -530,14 +523,12 @@ de la lista devuelta por el <code>map</code>:</li>
 <hr />
 <h3><code>(aplana lista)</code></h3>
 <ul>
-<li>
-<p>Devuelve una lista plana con todas las hojas de la lista.</p>
-<pre class="highlight"><code class="language-racket">(aplana '(1 2 (3 (4 (5))) (((6)))))
-; ⇒ (1 2 3 4 5 6)</code></pre>
-</li>
-<li>
-<p>Solución recursiva:</p>
-</li>
+<li>Devuelve una lista plana con todas las hojas de la lista.</li>
+</ul>
+<pre class="highlight"><code class="language-racket">    (aplana '(1 2 (3 (4 (5))) (((6)))))
+    ; ⇒ (1 2 3 4 5 6)</code></pre>
+<ul>
+<li>Solución recursiva:</li>
 </ul>
 <pre class="highlight"><code class="language-racket">(define (aplana ld)
   (cond
@@ -580,97 +571,83 @@ estructura jerárquica de las listas estructuradas.</p>
 <hr />
 <h3><code>(pertenece-lista? dato lista)</code></h3>
 <ul>
-<li>
-<p>Comprueba si el dato <code>dato</code> aparece en la lista estructurada. </p>
-<pre class="highlight"><code class="language-racket">(pertenece-lista? 'a '(b c (d (a)))) ⇒ #t
-(pertenece-lista? 'a '(b c (d e (f)) g)) ⇒ #f</code></pre>
-</li>
-<li>
-<p>Solución recursiva:</p>
-<p><code>racket
-(define (pertenece-lista? dato ld)
-  (cond 
-((null? ld) #f)
-((hoja? ld) (equal? dato ld))
-(else (or (pertenece-lista? dato (first ld))
-          (pertenece-lista? dato (rest ld))))))</code></p>
-</li>
-<li>
-<p>Solución con funciones de orden superior:</p>
-<p><code>racket
-(define (pertenece-fos? dato ld)
-  (if (hoja? ld)
-(equal? dato ld)
-(exists? (lambda (elem)
-           (pertenece-fos? dato elem)) ld)))</code></p>
-</li>
+<li>Comprueba si el dato <code>dato</code> aparece en la lista estructurada. </li>
 </ul>
+<pre class="highlight"><code class="language-racket">    (pertenece-lista? 'a '(b c (d (a)))) ⇒ #t
+    (pertenece-lista? 'a '(b c (d e (f)) g)) ⇒ #f</code></pre>
+<ul>
+<li>Solución recursiva:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(define (pertenece-lista? dato ld)
+  (cond 
+    ((null? ld) #f)
+    ((hoja? ld) (equal? dato ld))
+    (else (or (pertenece-lista? dato (first ld))
+              (pertenece-lista? dato (rest ld))))))</code></pre>
+<ul>
+<li>Solución con funciones de orden superior:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(define (pertenece-fos? dato ld)
+  (if (hoja? ld)
+    (equal? dato ld)
+    (exists? (lambda (elem)
+               (pertenece-fos? dato elem)) ld)))</code></pre>
 <hr />
 <h3><code>(cuadrado-estruct lista)</code></h3>
 <ul>
-<li>
-<p>Devuelve una lista estructurada con la misma estructura y sus
-números elevados al cuadrado.</p>
-<pre class="highlight"><code class="language-racket">(cuadrado-estruct '(2 3 (4 (5)))) ⇒ (4 9 (16 (25))</code></pre>
-</li>
-<li>
-<p>Solución recursiva:</p>
-<p><code>racket
-(define (cuadrado-estruct ld)
-  (cond ((null? ld) '())
-    ((hoja? ld) (* ld ld ))
-    (else (cons (cuadrado-estruct (first ld))
-                (cuadrado-estruct (rest ld))))))</code></p>
-</li>
-<li>
-<p>Solución con <code>map</code>:</p>
-<p><code>racket
-(define (cuadrado-estruct-fos ld)
-  (if (hoja? ld)
-  (* ld ld)
-  (map cuadrado-estruct-fos ld)))</code></p>
-</li>
+<li>Devuelve una lista estructurada con la misma estructura y sus
+números elevados al cuadrado.</li>
 </ul>
+<pre class="highlight"><code class="language-racket">    (cuadrado-estruct '(2 3 (4 (5)))) ⇒ (4 9 (16 (25))</code></pre>
+<ul>
+<li>Solución recursiva:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(define (cuadrado-estruct ld)
+  (cond ((null? ld) '())
+        ((hoja? ld) (* ld ld ))
+        (else (cons (cuadrado-estruct (first ld))
+                    (cuadrado-estruct (rest ld))))))</code></pre>
+<ul>
+<li>Solución con <code>map</code>:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(define (cuadrado-estruct-fos ld)
+  (if (hoja? ld)
+      (* ld ld)
+      (map cuadrado-estruct-fos ld)))</code></pre>
 <hr />
 <h3><code>(map-estruct f lista)</code></h3>
 <ul>
-<li>
-<p>Devuelve una lista estructurada igual que la original con el
-resultado de aplicar a cada uno de sus hojas la función <code>f</code></p>
-<pre class="highlight"><code class="language-racket">(map-estruct (lambda (x) (* x x)) '(2 3 (4 (5)))) 
-; ⇒ (4 9 (16 (25))</code></pre>
-</li>
-<li>
-<p>Solución recursiva:</p>
-<p><code>racket
-(define (map-estruct f ld)
-  (cond ((null? ld) '())
-    ((hoja? ld) (f ld))
-    (else (cons (map-estruct f (first ld))
-                (map-estruct f (rest ld))))))</code></p>
-</li>
-<li>
-<p>Solución con <code>map</code>:</p>
-<p><code>racket
-(define (map-estruct-fos f ld)
-  (if (hoja? ld)
-  (f ld)
-  (map (lambda (elem)
-         (map-estruct-fos f elem)) ld)))</code></p>
-</li>
+<li>Devuelve una lista estructurada igual que la original con el
+resultado de aplicar a cada uno de sus hojas la función <code>f</code></li>
 </ul>
+<pre class="highlight"><code class="language-racket">    (map-estruct (lambda (x) (* x x)) '(2 3 (4 (5)))) 
+    ; ⇒ (4 9 (16 (25))</code></pre>
+<ul>
+<li>Solución recursiva:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(define (map-estruct f ld)
+  (cond ((null? ld) '())
+        ((hoja? ld) (f ld))
+        (else (cons (map-estruct f (first ld))
+                    (map-estruct f (rest ld))))))</code></pre>
+<ul>
+<li>Solución con <code>map</code>:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(define (map-estruct-fos f ld)
+  (if (hoja? ld)
+      (f ld)
+      (map (lambda (elem)
+             (map-estruct-fos f elem)) ld)))</code></pre>
 <hr />
 <h3><code>(altura lista)</code></h3>
 <ul>
 <li>La <em>altura</em> de una lista estructurada viene dada por su número de
   niveles</li>
-<li>
-<p>Una lista plana tiene una altura de 1, la lista <code>((1 2 3) 4 5)</code>
-  tiene una altura de 2.</p>
-<pre class="highlight"><code class="language-racket">(altura '(1 (2 3) 4)) ⇒ 2
-(altura '(((1)) (2 3) 4)) ⇒ 3</code></pre>
-</li>
+<li>Una lista plana tiene una altura de 1, la lista <code>((1 2 3) 4 5)</code>
+  tiene una altura de 2.</li>
 </ul>
+<pre class="highlight"><code class="language-racket">    (altura '(1 (2 3) 4)) ⇒ 2
+    (altura '(((1)) (2 3) 4)) ⇒ 3</code></pre>
 <p><img src="imagenes/altura-estructurada.png" width="300"/></p>
 <div class="admonition hint">
 <p class="admonition-title">Caso general altura</p>
@@ -680,75 +657,65 @@ altura del resto de la lista, sumarle 1 a la altura del primer
 elemento y devolver el máximo de los dos números.</p>
 </div>
 <ul>
-<li>
-<p>Caso base: la altura de una lista vacía y de una hoja es 0.</p>
-</li>
-<li>
-<p>En Scheme:</p>
-<p><code>racket
+<li>Caso base: la altura de una lista vacía y de una hoja es 0.
+<pre class="highlight"><code>- En Scheme:
+
+```racket
 (define (altura ld)
    (cond 
-  ((null? ld) 0)
-  ((hoja? ld) 0)
-  (else (max (+ 1 (altura (first ld)))
-             (altura (rest ld))))))</code></p>
-</li>
+      ((null? ld) 0)
+      ((hoja? ld) 0)
+      (else (max (+ 1 (altura (first ld)))
+                 (altura (rest ld))))))</code></pre></li>
 </ul>
 <hr />
 <ul>
-<li>
-<p>La segunda versión, usando las funciones de orden superior <code>map</code>
+<li>La segunda versión, usando las funciones de orden superior <code>map</code>
 para obtener la altura de las sublistas y <code>foldr</code> para quedarse
-con el máximo.</p>
-<p><code>racket
-(define (altura-fos ld)
-   (if (hoja? ld)
-   0
-   (+ 1 (foldr max 0 (map altura-fos ld)))))</code></p>
-</li>
+con el máximo.</li>
 </ul>
+<pre class="highlight"><code class="language-racket">(define (altura-fos ld)
+   (if (hoja? ld)
+       0
+       (+ 1 (foldr max 0 (map altura-fos ld)))))</code></pre>
 <hr />
 <h3><code>(nivel-hoja dato lista)</code></h3>
 <ul>
-<li>
-<p>Recorre la lista buscando el dato y devuelve el nivel en que se
+<li>Recorre la lista buscando el dato y devuelve el nivel en que se
 encuentra. Si el dato no se encuentra en la lista, se devolverá -1. Si
 el dato se encuentra en más de un lugar de la lista se devolverá el
-nivel mayor.</p>
-<pre class="highlight"><code class="language-racket">(nivel-hoja 'b '(a b (c))) ; ⇒ 1
-(nivel-hoja 'b '(a (b) c)) ; ⇒ 2
-(nivel-hoja 'b '(a (b) d ((b)))) ; ⇒ 3
-(nivel-hoja 'b '(a c d ((e)))) ; ⇒ -1</code></pre>
-</li>
-<li>
-<p>Solución recursiva:</p>
-<p><code>racket
-(define (nivel-hoja dato ld)
-  (cond
-((null? ld) -1)
-((hoja? ld) (if (equal? ld dato) 0 -1))
-(else (max (suma-1-si-mayor-igual-que-0 
-                (nivel-hoja dato (first ld)))
-           (nivel-hoja dato (rest ld))))))</code></p>
-</li>
-<li>
-<p>La función auxiliar se define de la siguiente forma:</p>
-<pre class="highlight"><code class="language-racket">(define (suma-1-si-mayor-igual-que-0 x)
-  (if (&gt;= x 0)
-      (+ x 1)
-      x))</code></pre>
-</li>
-<li>
-<p>Solución con funciones de orden superior:</p>
-<p><code>racket
-(define (nivel-hoja-fos dato ld)
-  (if (hoja? ld)
-  (if (equal? ld dato) 0 -1)
-  (suma-1-si-mayor-igual-que-0
-   (foldr max -1 (map (lambda (elem)
-                       (nivel-hoja-fos dato elem)) ld)))))</code></p>
-</li>
+nivel mayor.</li>
 </ul>
+<pre class="highlight"><code class="language-racket">    (nivel-hoja 'b '(a b (c))) ; ⇒ 1
+    (nivel-hoja 'b '(a (b) c)) ; ⇒ 2
+    (nivel-hoja 'b '(a (b) d ((b)))) ; ⇒ 3
+    (nivel-hoja 'b '(a c d ((e)))) ; ⇒ -1</code></pre>
+<ul>
+<li>Solución recursiva:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(define (nivel-hoja dato ld)
+  (cond
+    ((null? ld) -1)
+    ((hoja? ld) (if (equal? ld dato) 0 -1))
+    (else (max (suma-1-si-mayor-igual-que-0 
+                    (nivel-hoja dato (first ld)))
+               (nivel-hoja dato (rest ld))))))</code></pre>
+<ul>
+<li>La función auxiliar se define de la siguiente forma:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">    (define (suma-1-si-mayor-igual-que-0 x)
+      (if (&gt;= x 0)
+          (+ x 1)
+          x))</code></pre>
+<ul>
+<li>Solución con funciones de orden superior:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(define (nivel-hoja-fos dato ld)
+  (if (hoja? ld)
+      (if (equal? ld dato) 0 -1)
+      (suma-1-si-mayor-igual-que-0
+       (foldr max -1 (map (lambda (elem)
+                           (nivel-hoja-fos dato elem)) ld)))))</code></pre>
 <hr /></body>
 
 </html>
