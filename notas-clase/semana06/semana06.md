@@ -394,7 +394,7 @@ de la lista devuelta por el `map`:
 
 - Solución recursiva:
 
-    ```racket
+```racket
 (define (aplana ld)
   (cond
     ((null? ld) '())
@@ -402,26 +402,26 @@ de la lista devuelta por el `map`:
     (else 
      (append (aplana (first ld))
              (aplana (rest ld))))))
-    ```
+```
 
 - Solución con funciones de orden superior:
 
-    ```racket
+```racket
 (define (aplana-fos ld)
   (if (hoja? ld)
     (list ld)
     (foldr append '() (map aplana-fos ld))))
-    ```
+```
 
 
 - Usando `apply`:
 
-    ```racket
+```racket
 (define (aplana-fos ld)
   (if (hoja? ld)
     (list ld)
     (apply append (map aplana-fos ld))))
-    ```
+```
 
 ---
 
@@ -449,19 +449,19 @@ estructura jerárquica de las listas estructuradas.
 - Comprueba si el dato `dato` aparece en la lista estructurada. 
 
     ```racket
-    (pertenece? 'a '(b c (d (a)))) ⇒ #t
-    (pertenece? 'a '(b c (d e (f)) g)) ⇒ #f
+    (pertenece-lista? 'a '(b c (d (a)))) ⇒ #t
+    (pertenece-lista? 'a '(b c (d e (f)) g)) ⇒ #f
     ```
 
 - Solución recursiva:
 
     ```racket
-(define (pertenece? dato ld)
+(define (pertenece-lista? dato ld)
   (cond 
     ((null? ld) #f)
     ((hoja? ld) (equal? dato ld))
-    (else (or (pertenece? dato (first ld))
-              (pertenece? dato (rest ld))))))
+    (else (or (pertenece-lista? dato (first ld))
+              (pertenece-lista? dato (rest ld))))))
     ```
 
 

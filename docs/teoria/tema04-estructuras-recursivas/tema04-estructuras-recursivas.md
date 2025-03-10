@@ -513,19 +513,19 @@ estructura jerárquica de las listas estructuradas.
 Comprueba si el `dato` aparece en la lista estructurada. 
 
 ```racket
-(pertenece? 'a '(b c (d (a)))) ; ⇒ #t
-(pertenece? 'a '(b c (d e (f)) g)) ; ⇒ #f
+(pertenece-lista? 'a '(b c (d (a)))) ; ⇒ #t
+(pertenece-lista? 'a '(b c (d e (f)) g)) ; ⇒ #f
 ```
 
 Solución recursiva:
 
 ```racket
-(define (pertenece? dato ld)
+(define (pertenece-lista? dato ld)
   (cond 
     ((null? ld) #f)
     ((hoja? ld) (equal? dato ld))
-    (else (or (pertenece? dato (first ld))
-              (pertenece? dato (rest ld))))))
+    (else (or (pertenece-lista? dato (first ld))
+              (pertenece-lista? dato (rest ld))))))
 ```
 
 Con funciones de orden superior:

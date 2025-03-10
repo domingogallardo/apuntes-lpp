@@ -537,32 +537,29 @@ de la lista devuelta por el <code>map</code>:</li>
 </li>
 <li>
 <p>Solución recursiva:</p>
-<p><code>racket
-(define (aplana ld)
-  (cond
-((null? ld) '())
-((hoja? ld) (list ld))
-(else 
- (append (aplana (first ld))
-         (aplana (rest ld))))))</code></p>
-</li>
-<li>
-<p>Solución con funciones de orden superior:</p>
-<p><code>racket
-(define (aplana-fos ld)
-  (if (hoja? ld)
-(list ld)
-(foldr append '() (map aplana-fos ld))))</code></p>
-</li>
-<li>
-<p>Usando <code>apply</code>:</p>
-<p><code>racket
-(define (aplana-fos ld)
-  (if (hoja? ld)
-(list ld)
-(apply append (map aplana-fos ld))))</code></p>
 </li>
 </ul>
+<pre class="highlight"><code class="language-racket">(define (aplana ld)
+  (cond
+    ((null? ld) '())
+    ((hoja? ld) (list ld))
+    (else 
+     (append (aplana (first ld))
+             (aplana (rest ld))))))</code></pre>
+<ul>
+<li>Solución con funciones de orden superior:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(define (aplana-fos ld)
+  (if (hoja? ld)
+    (list ld)
+    (foldr append '() (map aplana-fos ld))))</code></pre>
+<ul>
+<li>Usando <code>apply</code>:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(define (aplana-fos ld)
+  (if (hoja? ld)
+    (list ld)
+    (apply append (map aplana-fos ld))))</code></pre>
 <hr />
 <h3>Otras funciones recursivas</h3>
 <p>Vamos a diseñar otras funciones recursivas que trabajan con la
