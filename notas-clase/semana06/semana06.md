@@ -430,7 +430,7 @@ de la lista devuelta por el `map`:
 Vamos a diseñar otras funciones recursivas que trabajan con la
 estructura jerárquica de las listas estructuradas.
 
-- `(pertenece-lista? dato lista)`: busca una hoja en una lista
+- `(pertenece-estruct? dato lista)`: busca una hoja en una lista
   estructurada
 - `(cuadrado-estruct lista)`: eleva todas las hojas al cuadrado
   (suponemos que la lista estructurada contiene números)
@@ -444,24 +444,24 @@ estructura jerárquica de las listas estructuradas.
 
 ---
 
-### `(pertenece-lista? dato lista)`
+### `(pertenece-estruct? dato lista)`
 
 - Comprueba si el dato `dato` aparece en la lista estructurada. 
 
 ```racket
-    (pertenece-lista? 'a '(b c (d (a)))) ⇒ #t
-    (pertenece-lista? 'a '(b c (d e (f)) g)) ⇒ #f
+    (pertenece-estruct? 'a '(b c (d (a)))) ⇒ #t
+    (pertenece-estruct? 'a '(b c (d e (f)) g)) ⇒ #f
 ```
 
 - Solución recursiva:
 
 ```racket
-(define (pertenece-lista? dato ld)
+(define (pertenece-estruct? dato ld)
   (cond 
     ((null? ld) #f)
     ((hoja? ld) (equal? dato ld))
-    (else (or (pertenece-lista? dato (first ld))
-              (pertenece-lista? dato (rest ld))))))
+    (else (or (pertenece-estruct? dato (first ld))
+              (pertenece-estruct? dato (rest ld))))))
 ```
 
 
