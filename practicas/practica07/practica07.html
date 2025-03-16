@@ -1001,12 +1001,13 @@ recursión o con funciones de orden superior.</p>
 <span class="p">(</span><span class="n">nivel-mas-profundo</span><span class="w"> </span><span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">)((((((</span><span class="mi">5</span><span class="p">)))</span><span class="w"> </span><span class="mi">6</span><span class="p">))</span><span class="w"> </span><span class="mi">7</span><span class="p">))</span><span class="w"> </span><span class="mi">8</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (5 . 8)</span>
 </code></pre></div>
 <h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
-<p>a) Define la función recursiva <code>(mezclar lista1 lista2 n)</code> que reciba
+<p>a) Define la función <code>(mezclar lista1 lista2 n)</code> que reciba
 dos listas estructuradas con la misma estructura y un número que
 indica un nivel. Devuelve una nueva lista estructurada con la misma
 estructura que las listas originales, con los elementos de lista1 que
 tienen un nivel menor o igual que <code>n</code> y los elementos de lista2 que
-tienen un nivel mayor que <code>n</code>.</p>
+tienen un nivel mayor que <code>n</code>. Puedes hacerlo con
+recursión o con funciones de orden superior.</p>
 <p><img src="imagenes/mezclar-listas.png" width="500px"/></p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">lista1</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(((</span><span class="ss">a</span><span class="w"> </span><span class="ss">b</span><span class="p">)</span><span class="w"> </span><span class="p">((</span><span class="ss">c</span><span class="p">)))</span><span class="w"> </span><span class="p">(</span><span class="ss">d</span><span class="p">)</span><span class="w"> </span><span class="ss">e</span><span class="p">))</span>
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">lista2</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(((</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">((</span><span class="mi">3</span><span class="p">)))</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="mi">5</span><span class="p">))</span>
