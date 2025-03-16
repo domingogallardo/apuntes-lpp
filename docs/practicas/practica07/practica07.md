@@ -197,12 +197,13 @@ recursión o con funciones de orden superior.
 
 ### Ejercicio 5 ###
 
-a) Define la función recursiva `(mezclar lista1 lista2 n)` que reciba
+a) Define la función `(mezclar lista1 lista2 n)` que reciba
 dos listas estructuradas con la misma estructura y un número que
 indica un nivel. Devuelve una nueva lista estructurada con la misma
 estructura que las listas originales, con los elementos de lista1 que
 tienen un nivel menor o igual que `n` y los elementos de lista2 que
-tienen un nivel mayor que `n`.
+tienen un nivel mayor que `n`. Puedes hacerlo con
+recursión o con funciones de orden superior.
 
 <img src="imagenes/mezclar-listas.png" width="500px"/>
 
