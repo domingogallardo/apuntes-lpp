@@ -166,8 +166,9 @@ Utilizando la función anterior implementa las siguientes funciones:
   ; ⇒ (mucho muy muy)
   ```
 
-
 ### Ejercicio 4 ###
+
+Dos funciones sobre niveles:
 
 a) Implementa la función `(sustituye-elem elem-old elem-new lista)`
 que recibe como argumentos una lista estructurada y dos elementos, y
@@ -182,6 +183,34 @@ Ejemplo:
 ; ⇒ (a b (h d (e h)) h (f (h) g))
 ```
 
+b) Implementa la función `(nivel-mas-profundo lista)` que reciba una lista
+estructurada y devuelva una pareja `(elem . nivel)`, donde la parte
+izquierda es el elemento que se encuentra a mayor nivel y la parte
+derecha el nivel en el que se encuentra. Puedes definir alguna
+función auxiliar si lo necesitas. Puedes hacerlo con
+recursión o con funciones de orden superior.
+
+```racket
+(nivel-mas-profundo '(2 (3))) ; ⇒ (3 . 2)
+(nivel-mas-profundo '((2) (3 (4)((((((5))) 6)) 7)) 8)) ; ⇒ (5 . 8)
+```
+
+### Ejercicio 5 ###
+
+a) Define la función recursiva `(mezclar lista1 lista2 n)` que reciba
+dos listas estructuradas con la misma estructura y un número que
+indica un nivel. Devuelve una nueva lista estructurada con la misma
+estructura que las listas originales, con los elementos de lista1 que
+tienen un nivel menor o igual que `n` y los elementos de lista2 que
+tienen un nivel mayor que `n`.
+
+<img src="imagenes/mezclar-listas.png" width="500px"/>
+
+```racket
+(define lista1 '(((a b) ((c))) (d) e))
+(define lista2 '(((1 2) ((3))) (4) 5))
+(mezclar lista1 lista2 2) ; ⇒ (((1 2) ((3))) (d) e)
+```
 
 b.1) Implementa la función recursiva `(intersecta lista-1 lista-2)`
 que recibe como parámetros dos listas estructuradas y devuelve la
@@ -246,39 +275,8 @@ con la operación a realizar con las hojas: `(intersecta-gen f lista-1
 lista-2)`. Escribe tres ejemplos de uso de la función genérica con
 distintas funciones a aplicar a las hojas y explica qué devuelve cada caso.
 
-### Ejercicio 5 ###
-
-Dos funciones sobre niveles:
-
-a) Define la función recursiva `(mezclar lista1 lista2 n)` que reciba
-dos listas estructuradas con la misma estructura y un número que
-indica un nivel. Devuelve una nueva lista estructurada con la misma
-estructura que las listas originales, con los elementos de lista1 que
-tienen un nivel menor o igual que `n` y los elementos de lista2 que
-tienen un nivel mayor que `n`.
-
-<img src="imagenes/mezclar-listas.png" width="500px"/>
-
-```racket
-(define lista1 '(((a b) ((c))) (d) e))
-(define lista2 '(((1 2) ((3))) (4) 5))
-(mezclar lista1 lista2 2) ; ⇒ (((1 2) ((3))) (d) e)
-```
-
-b) Implementa la función `(nivel-mas-profundo lista)` que reciba una lista
-estructurada y devuelva una pareja `(elem . nivel)`, donde la parte
-izquierda es el elemento que se encuentra a mayor nivel y la parte
-derecha el nivel en el que se encuentra. Puedes definir alguna
-función auxiliar si lo necesitas. Puedes hacerlo con
-recursión o con funciones de orden superior.
-
-```racket
-(nivel-mas-profundo '(2 (3))) ; ⇒ (3 . 2)
-(nivel-mas-profundo '((2) (3 (4)((((((5))) 6)) 7)) 8)) ; ⇒ (5 . 8)
-```
-
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2023-24  
+Lenguajes y Paradigmas de Programación, curso 2024-25  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

@@ -657,17 +657,19 @@ altura del resto de la lista, sumarle 1 a la altura del primer
 elemento y devolver el máximo de los dos números.</p>
 </div>
 <ul>
-<li>Caso base: la altura de una lista vacía y de una hoja es 0.
-<pre class="highlight"><code>- En Scheme:
-
-```racket
-(define (altura ld)
+<li>
+<p>Caso base: la altura de una lista vacía y de una hoja es 0.</p>
+</li>
+<li>
+<p>En Scheme:</p>
+</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(define (altura ld)
    (cond 
       ((null? ld) 0)
       ((hoja? ld) 0)
       (else (max (+ 1 (altura (first ld)))
-                 (altura (rest ld))))))</code></pre></li>
-</ul>
+                 (altura (rest ld))))))</code></pre>
 <hr />
 <ul>
 <li>La segunda versión, usando las funciones de orden superior <code>map</code>

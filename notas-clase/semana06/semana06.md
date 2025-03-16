@@ -565,7 +565,7 @@ resultado de aplicar a cada uno de sus hojas la función `f`
     elemento y devolver el máximo de los dos números.
 
 - Caso base: la altura de una lista vacía y de una hoja es 0.
-```
+
 - En Scheme:
 
 ```racket
