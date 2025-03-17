@@ -410,7 +410,7 @@ Ejemplo:
 
 ----
 
-### Versión con `map`
+### Versión con funciones de orden superior:
 
 Una definición alternativa usando funciones de orden superior:
 
@@ -455,12 +455,12 @@ Ejemplo:
 
 ---
 
-### Versión con `map`:
+### Versión con funciones de orden superior:
 
 ```racket
-(define (cuadrado-arbol arbol)
+(define (cuadrado-arbol-fos arbol)
    (construye-arbol (cuadrado (dato-arbol arbol))
-   	          (map cuadrado-arbol (hijos-arbol arbol))))
+   	          (map cuadrado-arbol-fos (hijos-arbol arbol))))
 ```
 
 ----
@@ -494,13 +494,13 @@ Ejemplos:
 
 ----
 
-### Usando  `map`
+### Versión con funciones de orden superior:
 
 ```racket
-(define (map-arbol f arbol)
+(define (map-arbol-fos f arbol)
   (construye-arbol (f (dato-arbol arbol))
              (map (lambda (x)
-                    (map-arbol f x)) (hijos-arbol arbol))))
+                    (map-arbol-fos f x)) (hijos-arbol arbol))))
 ```
 
 ----
@@ -533,7 +533,7 @@ Ejemplos:
 
 ----
 
-### Con funciones de orden superior
+### Versión con funciones de orden superior:
 
 La implementación con funciones de orden superior es similar a la que
 vimos con listas estructuradas:
