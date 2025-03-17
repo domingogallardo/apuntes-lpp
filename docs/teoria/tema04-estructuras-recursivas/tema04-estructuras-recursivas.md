@@ -1189,8 +1189,8 @@ Versión 2, con la función de orden superior `map`:
 
 ```racket
 (define (cuadrado-arbol-fos arbol)
-   (construye-arbol (cuadrado (dato-arbol arbol))
-   	                (map cuadrado-arbol-fos (hijos-arbol arbol))))
+    (construye-arbol (cuadrado (dato-arbol arbol))
+                     (map cuadrado-arbol-fos (hijos-arbol arbol))))
 ```
 
 #### 2.2.4. Función `map-arbol`

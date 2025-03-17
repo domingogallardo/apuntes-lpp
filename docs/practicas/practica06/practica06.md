@@ -93,7 +93,7 @@ a) Implementa utilizando recursión por la cola la función
 
 
 ```racket
-(mi-foldl string-append "****" '("hola" "que" "tal")) ⇒ "talquehola****"
+(mi-foldl string-append "****" '("hola" "que" "tal")) ;⇒ "talquehola****"
 (mi-foldl cons '() '(1 2 3 4)) ; ⇒ (4 3 2 1)
 ```
 
