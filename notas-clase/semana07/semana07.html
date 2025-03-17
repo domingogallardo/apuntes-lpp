@@ -235,23 +235,20 @@ hijos:</p>
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code>arbol -&gt; (dato hijo-1 hijo-2 ... hijo-n)
-</code></pre></div>
+<pre class="highlight"><code class="language-text">arbol -&gt; (dato hijo-1 hijo-2 ... hijo-n)</code></pre>
 <ul>
 <li>Los nodos hoja (datos al final del árbol que no tienen ningún hijo)
 son también árboles. Al no tener hijos se representan como listas con un único
 elemento, el propio dato:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>Nodo hoja -&gt; (dato)
-</code></pre></div>
+<pre class="highlight"><code class="language-text">Nodo hoja -&gt; (dato)</code></pre>
 <ul>
 <li>¿Cómo representaríamos de esta forma el árbol anterior?</li>
 </ul>
 <p><img src="imagenes/arbol-sencillo2.png" width="400px"/></p>
 <p style="margin-bottom:4cm;"/>
 
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="mi">30</span> <span class="p">(</span><span class="mi">15</span> <span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">(</span><span class="mi">12</span><span class="p">))</span> <span class="p">(</span><span class="mi">18</span><span class="p">)</span> <span class="p">(</span><span class="mi">25</span> <span class="p">(</span><span class="mi">19</span><span class="p">)</span> <span class="p">(</span><span class="mi">21</span><span class="p">)</span> <span class="p">(</span><span class="mi">22</span><span class="p">)))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(30 (15 (10) (12)) (18) (25 (19) (21) (22)))</code></pre>
 <p><img src="imagenes/lista-arbol.png" width="600px"/></p>
 <p>Los elementos de esta lista son:</p>
 <ul>
@@ -265,8 +262,7 @@ elemento, el propio dato:</li>
   árbol con un dato <code>15</code> y tres hijos</li>
 </ul>
 <p>Podríamos definir el árbol con la siguiente sentencia:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">arbol1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">30</span> <span class="p">(</span><span class="mi">15</span> <span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">(</span><span class="mi">12</span><span class="p">))</span> <span class="p">(</span><span class="mi">18</span><span class="p">)</span> <span class="p">(</span><span class="mi">25</span> <span class="p">(</span><span class="mi">19</span><span class="p">)</span> <span class="p">(</span><span class="mi">21</span><span class="p">)</span> <span class="p">(</span><span class="mi">22</span><span class="p">))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define arbol1 '(30 (15 (10) (12)) (18) (25 (19) (21) (22))))</code></pre>
 <p style="margin-bottom:3cm;"/>
 
 <p>Otro ejemplo más. ¿Cómo se implementa en Scheme el árbol de la siguiente figura?</p>
@@ -274,8 +270,7 @@ elemento, el propio dato:</li>
 <p style="margin-bottom:4cm;"/>
 
 <p>Se haría con la lista de la siguiente sentencia:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">arbol2</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">40</span> <span class="p">(</span><span class="mi">18</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">23</span> <span class="p">(</span><span class="mi">29</span><span class="p">)))</span> <span class="p">(</span><span class="mi">52</span> <span class="p">(</span><span class="mi">47</span><span class="p">))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define arbol2 '(40 (18 (3) (23 (29))) (52 (47))))</code></pre>
 <hr />
 <h3>Barrera de abstracción</h3>
 <ul>
@@ -288,9 +283,7 @@ elemento, el propio dato:</li>
   permiten trabajar con un tipo de datos escondiendo su
   implementación.</li>
 <li>Por convenio, en todas las funciones ponemos el mismo sufijo, el
-  nombre del tipo de dato, en este caso <strong>arbol</strong> (vamos a hacer una
-  mezcla un poco extraña, escribiendo el nombre del tipo de dato en
-  inglés, y el nombre de las funciones en castellano).</li>
+  nombre del tipo de dato, en este caso <strong>arbol</strong>.</li>
 <li>Definimos dos conjuntos de funciones: <strong>constructores</strong> para construir un
   nuevo árbol y <strong>selectores</strong> para obtener los elementos del árbol. Vamos a
   empezar por los selectores.</li>
@@ -298,15 +291,14 @@ elemento, el propio dato:</li>
 <hr />
 <h3>Selectores</h3>
 <p>Funciones que obtienen los elementos de un árbol:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span> 
-    <span class="p">(</span><span class="nb">first</span> <span class="n">arbol</span><span class="p">))</span>
+<pre class="highlight"><code class="language-racket">(define (dato-arbol arbol) 
+    (first arbol))
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">)</span> 
-    <span class="p">(</span><span class="nb">rest</span> <span class="n">arbol</span><span class="p">))</span>
+(define (hijos-arbol arbol) 
+    (rest arbol))
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hoja-arbol?</span> <span class="n">arbol</span><span class="p">)</span> 
-   <span class="p">(</span><span class="nb">null?</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">)))</span>
-</code></pre></div>
+(define (hoja-arbol? arbol) 
+   (null? (hijos-arbol arbol)))</code></pre>
 <p>Es importante tener claro los tipos devueltos por las dos primeras funciones:</p>
 <ul>
 <li><code>(dato-arbol arbol)</code>: devuelve <strong>el dato</strong> de la raíz del árbol.</li>
@@ -318,11 +310,10 @@ elemento, el propio dato:</li>
 <p>Por ejemplo, si usamos el árbol <code>arbol1</code> </p>
 <p><img src="imagenes/arbol-sencillo2.png" width="400px"/></p>
 <p>Las funciones anteriores devuelven los siguientes valores:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol1</span><span class="p">)</span> <span class="c1">; ⇒ 30</span>
-<span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)</span> <span class="c1">; ⇒ ((15 (10) (12)) (18) (25 (19) (21) (22)))</span>
-<span class="p">(</span><span class="n">hoja-arbol?</span> <span class="p">(</span><span class="nb">first</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))</span> <span class="c1">; ⇒ #f</span>
-<span class="p">(</span><span class="n">hoja-arbol?</span> <span class="p">(</span><span class="nb">second</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))</span> <span class="c1">; ⇒ #t</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(dato-arbol arbol1) ; ⇒ 30
+(hijos-arbol arbol1) ; ⇒ ((15 (10) (12)) (18) (25 (19) (21) (22)))
+(hoja-arbol? (first (hijos-arbol arbol1))) ; ⇒ #f
+(hoja-arbol? (second (hijos-arbol arbol1))) ; ⇒ #t</code></pre>
 <hr />
 <h3>Tipos devueltos por las funciones</h3>
 <p>Es muy importante considerar en cada caso con qué tipo de dato estamos
@@ -350,9 +341,8 @@ de datos estamos trabajando, una lista o un árbol.</p>
 </ul>
 <p style="margin-bottom:4cm;"/>
 
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">dato-arbol</span> <span class="p">(</span><span class="nb">second</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="p">(</span><span class="nb">first</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol1</span><span class="p">)))))</span>
-<span class="c1">; ⇒ 12</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(dato-arbol (second (hijos-arbol (first (hijos-arbol arbol1)))))
+; ⇒ 12</code></pre>
 <hr />
 <h3>Barreras de abstracción de árboles y listas estructuradas</h3>
 <ul>
@@ -376,9 +366,8 @@ de datos estamos trabajando, una lista o un árbol.</p>
 <ul>
 <li>Función constructora para construir un nuevo árbol:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">construye-arbol</span> <span class="n">dato</span> <span class="n">lista-arboles</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">cons</span> <span class="n">dato</span> <span class="n">lista-arboles</span><span class="p">))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (construye-arbol dato lista-arboles)
+   (cons dato lista-arboles))</code></pre>
 <ul>
 <li>La función <code>(construye-arbol dato lista-arboles)</code> recibe un dato y una
   lista de árboles y devuelve un árbol formado por el dato en su raíz
@@ -387,25 +376,22 @@ de datos estamos trabajando, una lista o un árbol.</p>
   <code>lista-arboles</code>. </li>
 </ul>
 <p>Por ejemplo, para definir un nodo hoja con el dato 2:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">arbol3</span> <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">2</span> <span class="o">&#39;</span><span class="p">()))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define arbol3 (construye-arbol 2 '()))</code></pre>
 <p>Y para definir un árbol con 3 hijos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">arbol4</span> <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">10</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">2</span> <span class="o">&#39;</span><span class="p">())</span>
-                                         <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">5</span> <span class="o">&#39;</span><span class="p">())</span> 
-                                         <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">9</span> <span class="o">&#39;</span><span class="p">())))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define arbol4 (construye-arbol 10 (list (construye-arbol 2 '())
+                                         (construye-arbol 5 '()) 
+                                         (construye-arbol 9 '())))</code></pre>
 <p>El <code>arbol1</code></p>
 <p><img src="imagenes/arbol-sencillo2.png" width="400px"/></p>
 <p>Se puede construir con las siguientes llamadas a los constructores:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">arbol-15</span> <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">15</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">10</span> <span class="o">&#39;</span><span class="p">())</span>
-                                           <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">12</span> <span class="o">&#39;</span><span class="p">()))))</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">arbol-18</span> <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">18</span> <span class="o">&#39;</span><span class="p">()))</span>                                             
-<span class="p">(</span><span class="k">define</span> <span class="n">arbol-25</span> <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">25</span> <span class="p">(</span><span class="nb">list</span> <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">19</span> <span class="o">&#39;</span><span class="p">())</span>
-                                           <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">21</span> <span class="o">&#39;</span><span class="p">())</span>
-                                           <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">22</span> <span class="o">&#39;</span><span class="p">()))))</span>
-<span class="p">(</span><span class="k">define</span> <span class="n">arbol1b</span> <span class="p">(</span><span class="n">construye-arbol</span> <span class="mi">30</span> <span class="p">(</span><span class="nb">list</span> <span class="n">arbol-15</span> <span class="n">arbol-18</span> <span class="n">arbol-25</span><span class="p">)))</span>
-<span class="n">arbol1b</span> <span class="c1">; ⇒ (30 (15 (10) (12)) (18) (25 (19) (21) (22)))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define arbol-15 (construye-arbol 15 (list (construye-arbol 10 '())
+                                           (construye-arbol 12 '()))))
+(define arbol-18 (construye-arbol 18 '()))                                             
+(define arbol-25 (construye-arbol 25 (list (construye-arbol 19 '())
+                                           (construye-arbol 21 '())
+                                           (construye-arbol 22 '()))))
+(define arbol1b (construye-arbol 30 (list arbol-15 arbol-18 arbol-25)))
+arbol1b ; ⇒ (30 (15 (10) (12)) (18) (25 (19) (21) (22)))</code></pre>
 <hr />
 <h3>Funciones recursivas sobre árboles</h3>
 <p>Vamos a diseñar las siguientes funciones recursivas:</p>
@@ -429,9 +415,8 @@ de datos estamos trabajando, una lista o un árbol.</p>
   <code>hijos-arbol</code>.</li>
 </ul>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">arbol2</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">40</span> <span class="p">(</span><span class="mi">18</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">23</span> <span class="p">(</span><span class="mi">29</span><span class="p">)))</span> <span class="p">(</span><span class="mi">52</span> <span class="p">(</span><span class="mi">47</span><span class="p">))))</span>
-<span class="p">(</span><span class="n">suma-datos-arbol</span> <span class="n">arbol2</span><span class="p">)</span> <span class="c1">; ⇒ 212</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define arbol2 '(40 (18 (3) (23 (29))) (52 (47))))
+(suma-datos-arbol arbol2) ; ⇒ 212</code></pre>
 <ul>
 <li>Podemos plantear entonces el problema de sumar los datos de un árbol
   como:</li>
@@ -441,10 +426,9 @@ de datos estamos trabajando, una lista o un árbol.</p>
 suma que devuelva la llamada a una función auxiliar que sume los
 datos de su lista de hijos (un bosque):</p>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-datos-arbol</span> <span class="n">arbol</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span>
-       <span class="p">(</span><span class="n">suma-datos-bosque</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (suma-datos-arbol arbol)
+    (+ (dato-arbol arbol)
+       (suma-datos-bosque (hijos-arbol arbol))))</code></pre>
 <ul>
 <li>Esta función suma los datos de <strong>un</strong> árbol.</li>
 <li>La podemos utilizar para construir la función auxiliar que suma una
@@ -455,12 +439,11 @@ datos de su lista de hijos (un bosque):</p>
 primero (con la función anterior) y añado lo que me devuelve la
 llamada recursiva que suma el resto de árboles:</p>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-datos-bosque</span> <span class="n">bosque</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">bosque</span><span class="p">)</span>
-       <span class="mi">0</span>
-       <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">suma-datos-arbol</span> <span class="p">(</span><span class="nb">first</span> <span class="n">bosque</span><span class="p">))</span> 
-          <span class="p">(</span><span class="n">suma-datos-bosque</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">bosque</span><span class="p">)))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (suma-datos-bosque bosque)
+   (if (null? bosque)
+       0
+       (+ (suma-datos-arbol (first bosque)) 
+          (suma-datos-bosque (rest bosque)))))</code></pre>
 <p style="margin-bottom:4cm;"/>
 
 <p><img src="imagenes/suma-datos-bosque.png" width="600px"/></p>
@@ -478,23 +461,21 @@ llamada recursiva que suma el resto de árboles:</p>
   conseguir una versión más concisa y elegante utilizando funciones de
   orden superior:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-datos-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">foldr</span> <span class="nb">+</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span> 
-        <span class="p">(</span><span class="nb">map</span> <span class="n">suma-datos-arbol-fos</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (suma-datos-arbol-fos arbol)
+    (foldr + (dato-arbol arbol) 
+        (map suma-datos-arbol-fos (hijos-arbol arbol))))</code></pre>
 <p style="margin-bottom:4cm;"/>
 
 <p><img src="imagenes/suma-datos-bosque-fos.png" width="500px"/></p>
 <ul>
 <li>Una traza de su funcionamiento sería la siguiente:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-datos-arbol-fos</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span><span class="p">))</span> <span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="mi">6</span> <span class="p">(</span><span class="mi">7</span><span class="p">))))</span> <span class="c1">;⇒</span>
-<span class="p">(</span><span class="nb">foldr</span> <span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">map</span> <span class="n">suma-datos-arbol-fos</span> <span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">(</span><span class="mi">4</span><span class="p">))</span> 
-                                                <span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-                                                <span class="p">(</span><span class="mi">6</span> <span class="p">(</span><span class="mi">7</span><span class="p">)))))</span> <span class="c1">; ⇒</span>
-<span class="p">(</span><span class="nb">foldr</span> <span class="nb">+</span> <span class="mi">1</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">9</span> <span class="mi">5</span> <span class="mi">13</span><span class="p">))</span> <span class="c1">;⇒</span>
-<span class="mi">28</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(suma-datos-arbol-fos '(1 (2 (3) (4)) (5) (6 (7)))) ;⇒
+(foldr + 1 (map suma-datos-arbol-fos '((2 (3) (4)) 
+                                                (5)
+                                                (6 (7))))) ; ⇒
+(foldr + 1 '(9 5 13)) ;⇒
+28</code></pre>
 <hr />
 <h3>Función <code>(to-list-arbol arbol)</code></h3>
 <ul>
@@ -503,29 +484,26 @@ llamada recursiva que suma el resto de árboles:</p>
 <li>¿Podríamos hacerlo usando el patrón anterior?</li>
 </ul>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">to-list-arbol</span> <span class="o">&#39;</span><span class="p">(</span><span class="ss">*</span> <span class="p">(</span><span class="ss">+</span> <span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="p">(</span><span class="ss">*</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">(</span><span class="mi">3</span><span class="p">))</span> <span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="p">(</span><span class="ss">-</span> <span class="p">(</span><span class="mi">12</span><span class="p">))))</span> 
-<span class="c1">; ⇒ (* + 5 * 2 3 10 - 12)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(to-list-arbol '(* (+ (5) (* (2) (3)) (10)) (- (12)))) 
+; ⇒ (* + 5 * 2 3 10 - 12)</code></pre>
 <p style="margin-bottom:4cm;"/>
 
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">to-list-arbol</span> <span class="n">arbol</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span>
-         <span class="p">(</span><span class="n">to-list-bosque</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>
+<pre class="highlight"><code class="language-racket">(define (to-list-arbol arbol)
+   (cons (dato-arbol arbol)
+         (to-list-bosque (hijos-arbol arbol))))
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">to-list-bosque</span> <span class="n">bosque</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">bosque</span><span class="p">)</span>
-       <span class="o">&#39;</span><span class="p">()</span>
-       <span class="p">(</span><span class="nb">append</span> <span class="p">(</span><span class="n">to-list-arbol</span> <span class="p">(</span><span class="nb">first</span> <span class="n">bosque</span><span class="p">))</span>
-               <span class="p">(</span><span class="n">to-list-bosque</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">bosque</span><span class="p">)))))</span>
-</code></pre></div>
+(define (to-list-bosque bosque)
+   (if (null? bosque)
+       '()
+       (append (to-list-arbol (first bosque))
+               (to-list-bosque (rest bosque)))))</code></pre>
 <hr />
-<h3>Versión con <code>map</code></h3>
+<h3>Versión con funciones de orden superior:</h3>
 <p>Una definición alternativa usando funciones de orden superior:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">to-list-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">)</span>
-          <span class="p">(</span><span class="nb">foldr</span> <span class="nb">append</span> <span class="o">&#39;</span><span class="p">()</span> 
-               <span class="p">(</span><span class="nb">map</span> <span class="n">to-list-arbol-fos</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">)))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (to-list-arbol-fos arbol)
+    (cons (dato-arbol arbol)
+          (foldr append '() 
+               (map to-list-arbol-fos (hijos-arbol arbol)))))</code></pre>
 <hr />
 <h3>Función <code>(cuadrado-arbol arbol)</code></h3>
 <ul>
@@ -536,85 +514,76 @@ llamada recursiva que suma el resto de árboles:</p>
   <strong>construir</strong> un árbol nuevo:</li>
 </ul>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cuadrado-arbol</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="p">(</span><span class="mi">6</span><span class="p">)))</span> 
-<span class="c1">; ⇒ (4 (9 (16) (25)) (36))</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">; Construye un árbol nuevo elevado al cuadrado el que se pasa como parámetro</span>
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-arbol</span> <span class="n">arbol</span><span class="p">)</span> 
-   <span class="p">(</span><span class="n">construye-arbol</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">))</span>
-              <span class="p">(</span><span class="n">cuadrado-bosque</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>  
+<pre class="highlight"><code class="language-racket">(cuadrado-arbol '(2 (3 (4) (5)) (6))) 
+; ⇒ (4 (9 (16) (25)) (36))</code></pre>
+<pre class="highlight"><code class="language-racket">; Construye un árbol nuevo elevado al cuadrado el que se pasa como parámetro
+(define (cuadrado-arbol arbol) 
+   (construye-arbol (cuadrado (dato-arbol arbol))
+              (cuadrado-bosque (hijos-arbol arbol))))  
 
-<span class="c1">; Devuelve una lista de árboles elevados al cuadrado</span>
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-bosque</span> <span class="n">bosque</span><span class="p">)</span> 
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">bosque</span><span class="p">)</span>
-       <span class="o">&#39;</span><span class="p">()</span>
-       <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">cuadrado-arbol</span> <span class="p">(</span><span class="nb">first</span> <span class="n">bosque</span><span class="p">))</span>
-             <span class="p">(</span><span class="n">cuadrado-bosque</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">bosque</span><span class="p">)))))</span>
-</code></pre></div>
+; Devuelve una lista de árboles elevados al cuadrado
+(define (cuadrado-bosque bosque) 
+   (if (null? bosque)
+       '()
+       (cons (cuadrado-arbol (first bosque))
+             (cuadrado-bosque (rest bosque)))))</code></pre>
 <hr />
-<h3>Versión con <code>map</code>:</h3>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-arbol</span> <span class="n">arbol</span><span class="p">)</span>
-   <span class="p">(</span><span class="n">construye-arbol</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">))</span>
-              <span class="p">(</span><span class="nb">map</span> <span class="n">cuadrado-arbol</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>
-</code></pre></div>
+<h3>Versión con funciones de orden superior:</h3>
+<pre class="highlight"><code class="language-racket">(define (cuadrado-arbol-fos arbol)
+   (construye-arbol (cuadrado (dato-arbol arbol))
+              (map cuadrado-arbol-fos (hijos-arbol arbol))))</code></pre>
 <hr />
 <h3><code>(map-arbol f arbol)</code></h3>
 <p>La función <code>map-arbol</code> es una función de orden superior que generaliza
 la función anterior. Definimos un parámetro adicional en el que se
 pasa la función a aplicar a los elementos del árbol.</p>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">map-arbol</span> <span class="n">cuadrado</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="p">(</span><span class="mi">6</span><span class="p">)))</span>
-<span class="c1">; ⇒ (4 (9 (16) (25)) (36))</span>
-<span class="p">(</span><span class="n">map-arbol</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">(</span><span class="nb">+</span> <span class="n">x</span> <span class="mi">1</span><span class="p">))</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span> <span class="p">(</span><span class="mi">3</span> <span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="p">(</span><span class="mi">6</span><span class="p">)))</span>
-<span class="c1">; ⇒ (3 (4 (5) (6)) (7))</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">map-arbol</span> <span class="n">f</span> <span class="n">arbol</span><span class="p">)</span>
-   <span class="p">(</span><span class="n">construye-arbol</span> <span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">))</span>
-              <span class="p">(</span><span class="n">map-bosque</span> <span class="n">f</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>  
+<pre class="highlight"><code class="language-racket">(map-arbol cuadrado '(2 (3 (4) (5)) (6)))
+; ⇒ (4 (9 (16) (25)) (36))
+(map-arbol (lambda (x) (+ x 1)) '(2 (3 (4) (5)) (6)))
+; ⇒ (3 (4 (5) (6)) (7))</code></pre>
+<pre class="highlight"><code class="language-racket">(define (map-arbol f arbol)
+   (construye-arbol (f (dato-arbol arbol))
+              (map-bosque f (hijos-arbol arbol))))  
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">map-bosque</span> <span class="n">f</span> <span class="n">bosque</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">bosque</span><span class="p">)</span>
-       <span class="o">&#39;</span><span class="p">()</span>
-       <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">map-arbol</span> <span class="n">f</span> <span class="p">(</span><span class="nb">first</span> <span class="n">bosque</span><span class="p">))</span>
-             <span class="p">(</span><span class="n">map-bosque</span> <span class="n">f</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">bosque</span><span class="p">)))))</span>
-</code></pre></div>
+(define (map-bosque f bosque)
+   (if (null? bosque)
+       '()
+       (cons (map-arbol f (first bosque))
+             (map-bosque f (rest bosque)))))</code></pre>
 <hr />
-<h3>Usando  <code>map</code></h3>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">map-arbol</span> <span class="n">f</span> <span class="n">arbol</span><span class="p">)</span>
-  <span class="p">(</span><span class="n">construye-arbol</span> <span class="p">(</span><span class="n">f</span> <span class="p">(</span><span class="n">dato-arbol</span> <span class="n">arbol</span><span class="p">))</span>
-             <span class="p">(</span><span class="nb">map</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
-                    <span class="p">(</span><span class="n">map-arbol</span> <span class="n">f</span> <span class="n">x</span><span class="p">))</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))</span>
-</code></pre></div>
+<h3>Versión con funciones de orden superior:</h3>
+<pre class="highlight"><code class="language-racket">(define (map-arbol-fos f arbol)
+  (construye-arbol (f (dato-arbol arbol))
+             (map (lambda (x)
+                    (map-arbol-fos f x)) (hijos-arbol arbol))))</code></pre>
 <hr />
 <h3>Función <code>(altura-arbol arbol)</code></h3>
 <p>Vamos por último a definir una función que devuelve la altura de un
 árbol (el nivel del nodo de mayor nivel). Un nodo hoja tiene de altura
 0.</p>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">altura-arbol</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1">;  ⇒ 0</span>
-<span class="p">(</span><span class="n">altura-arbol</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">4</span> <span class="p">(</span><span class="mi">9</span> <span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="p">(</span><span class="mi">25</span><span class="p">))</span> <span class="p">(</span><span class="mi">36</span><span class="p">)))</span> <span class="c1">; ⇒ 2</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">altura-arbol</span> <span class="n">arbol</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja-arbol?</span> <span class="n">arbol</span><span class="p">)</span>
-       <span class="mi">0</span>
-       <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="n">altura-bosque</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">)))))</span>  
+<pre class="highlight"><code class="language-racket">(altura-arbol '(2)) ;  ⇒ 0
+(altura-arbol '(4 (9 (16) (25)) (36))) ; ⇒ 2</code></pre>
+<pre class="highlight"><code class="language-racket">(define (altura-arbol arbol)
+   (if (hoja-arbol? arbol)
+       0
+       (+ 1 (altura-bosque (hijos-arbol arbol)))))  
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">altura-bosque</span> <span class="n">bosque</span><span class="p">)</span>
-    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="n">bosque</span><span class="p">)</span>
-        <span class="mi">0</span>
-        <span class="p">(</span><span class="nb">max</span> <span class="p">(</span><span class="n">altura-arbol</span> <span class="p">(</span><span class="nb">first</span> <span class="n">bosque</span><span class="p">))</span>
-             <span class="p">(</span><span class="n">altura-bosque</span> <span class="p">(</span><span class="nb">rest</span> <span class="n">bosque</span><span class="p">)))))</span>
-</code></pre></div>
+(define (altura-bosque bosque)
+    (if (null? bosque)
+        0
+        (max (altura-arbol (first bosque))
+             (altura-bosque (rest bosque)))))</code></pre>
 <hr />
-<h3>Con funciones de orden superior</h3>
+<h3>Versión con funciones de orden superior:</h3>
 <p>La implementación con funciones de orden superior es similar a la que
 vimos con listas estructuradas:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">altura-arbol-fos</span> <span class="n">arbol</span><span class="p">)</span>
-  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">hoja-arbol?</span> <span class="n">arbol</span><span class="p">)</span>
-      <span class="mi">0</span>
-      <span class="p">(</span><span class="nb">+</span> <span class="mi">1</span> <span class="p">(</span><span class="nb">foldr</span> <span class="nb">max</span> <span class="mi">0</span>
-                  <span class="p">(</span><span class="nb">map</span> <span class="n">altura-arbol-fos</span> <span class="p">(</span><span class="n">hijos-arbol</span> <span class="n">arbol</span><span class="p">))))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (altura-arbol-fos arbol)
+  (if (hoja-arbol? arbol)
+      0
+      (+ 1 (foldr max 0
+                  (map altura-arbol-fos (hijos-arbol arbol))))))</code></pre>
 <hr />
 <h3>Árboles binarios</h3>
 <p>Los árboles binarios son árboles cuyos nodos tienen 0, 1 o 2
@@ -634,15 +603,13 @@ binario no puede tener más de dos hijos.</p>
 <p>En el caso en que no exista el hijo izquierdo o el derecho (o ambos)
 utilizaremos una lista vacía para indicar un nodo vacío.</p>
 <p>Ejemplo, nodo hoja con el dato 10:</p>
-<div class="highlight"><pre><span></span><code><span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span> <span class="p">()</span> <span class="p">())</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">'(10 () ())</code></pre>
 <p>Otro ejemplo, el árbol de la figura anterior:</p>
-<div class="highlight"><pre><span></span><code><span class="o">&#39;</span><span class="p">(</span><span class="mi">40</span> <span class="p">(</span><span class="mi">18</span> <span class="p">(</span><span class="mi">3</span> <span class="p">()</span> <span class="p">())</span>
-         <span class="p">(</span><span class="mi">23</span> <span class="p">()</span>
-             <span class="p">(</span><span class="mi">29</span> <span class="p">()</span> <span class="p">())))</span>
-     <span class="p">(</span><span class="mi">52</span> <span class="p">(</span><span class="mi">47</span> <span class="p">()</span> <span class="p">())</span>
-         <span class="p">()))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">'(40 (18 (3 () ())
+         (23 ()
+             (29 () ())))
+     (52 (47 () ())
+         ()))</code></pre>
 <p><img src="imagenes/binario-3.png" width="350px"/></p>
 <hr />
 <h3>Barrera de abstracción</h3>
@@ -650,46 +617,42 @@ utilizaremos una lista vacía para indicar un nodo vacío.</p>
 binarios. Terminamos todos los nombres de las funciones con el sufijo
 <code>-arbolb</code> (árbol binario).</p>
 <p><strong>Selectores</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">dato-arbolb</span> <span class="n">arbol</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">first</span> <span class="n">arbol</span><span class="p">))</span>
+<pre class="highlight"><code class="language-racket">(define (dato-arbolb arbol)
+   (first arbol))
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hijo-izq-arbolb</span> <span class="n">arbol</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">second</span> <span class="n">arbol</span><span class="p">))</span>
+(define (hijo-izq-arbolb arbol)
+   (second arbol))
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">hijo-der-arbolb</span> <span class="n">arbol</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">third</span> <span class="n">arbol</span><span class="p">))</span>
+(define (hijo-der-arbolb arbol)
+   (third arbol))
 
-<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">vacio-arbolb?</span> <span class="n">x</span><span class="p">)</span>
-   <span class="p">(</span><span class="nb">null?</span> <span class="n">x</span><span class="p">))</span>
+(define (vacio-arbolb? x)
+   (null? x))
 
-<span class="p">(</span><span class="k">define</span> <span class="n">arbolb-vacio</span> <span class="o">&#39;</span><span class="p">())</span>
-</code></pre></div>
+(define arbolb-vacio '())</code></pre>
 <p><strong>Constructor</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">construye-arbolb</span> <span class="n">dato</span> <span class="n">hijo-izq</span> <span class="n">hijo-der</span><span class="p">)</span>
-    <span class="p">(</span><span class="nb">list</span> <span class="n">dato</span> <span class="n">hijo-izq</span> <span class="n">hijo-der</span><span class="p">))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (construye-arbolb dato hijo-izq hijo-der)
+    (list dato hijo-izq hijo-der))</code></pre>
 <p>Por ejemplo, para construir un árbol con 10 en la raíz y 8 en su hijo
 izquierdo y 15 en su derecho utilizando el constructor de la barrera
 de abstracción:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">arbolb1</span>
-   <span class="p">(</span><span class="n">construye-arbolb</span> <span class="mi">10</span> <span class="p">(</span><span class="n">construye-arbolb</span> <span class="mi">8</span> <span class="n">arbolb-vacio</span> <span class="n">arbolb-vacio</span><span class="p">)</span>
-                        <span class="p">(</span><span class="n">construye-arbolb</span> <span class="mi">15</span> <span class="n">arbolb-vacio</span> <span class="n">arbolb-vacio</span><span class="p">)))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define arbolb1
+   (construye-arbolb 10 (construye-arbolb 8 arbolb-vacio arbolb-vacio)
+                        (construye-arbolb 15 arbolb-vacio arbolb-vacio)))</code></pre>
 <p>Otro ejemplo, el árbol binario de la figura anterior utilizando el
 constructor de la barrera de abstracción:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="n">arbolb2</span>
-   <span class="p">(</span><span class="n">construye-arbolb</span> <span class="mi">40</span> 
-                    <span class="p">(</span><span class="n">construye-arbolb</span> <span class="mi">18</span>
-                                      <span class="p">(</span><span class="n">construye-arbolb</span> <span class="mi">3</span> <span class="n">arbolb-vacio</span> <span class="n">arbolb-vacio</span><span class="p">)</span>
-                                      <span class="p">(</span><span class="n">construye-arbolb</span> <span class="mi">23</span> 
-                                                        <span class="n">arbolb-vacio</span>
-                                                        <span class="p">(</span><span class="n">construye-arbolb</span> <span class="mi">29</span> 
-                                                                          <span class="n">arbolb-vacio</span>
-                                                                          <span class="n">arbolb-vacio</span><span class="p">)))</span>
-                    <span class="p">(</span><span class="n">construye-arbolb</span> <span class="mi">52</span>
-                                      <span class="p">(</span><span class="n">construye-arbolb</span> <span class="mi">47</span> <span class="n">arbolb-vacio</span> <span class="n">arbolb-vacio</span><span class="p">)</span>
-                                      <span class="n">arbolb-vacio</span><span class="p">)))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define arbolb2
+   (construye-arbolb 40 
+                    (construye-arbolb 18
+                                      (construye-arbolb 3 arbolb-vacio arbolb-vacio)
+                                      (construye-arbolb 23 
+                                                        arbolb-vacio
+                                                        (construye-arbolb 29 
+                                                                          arbolb-vacio
+                                                                          arbolb-vacio)))
+                    (construye-arbolb 52
+                                      (construye-arbolb 47 arbolb-vacio arbolb-vacio)
+                                      arbolb-vacio)))</code></pre>
 <hr />
 <h3>Funciones recursivas sobre árboles binarios</h3>
 <p>Veamos las siguientes funciones recursivas sobre árboles binarios:</p>
@@ -700,36 +663,33 @@ constructor de la barrera de abstracción:</p>
   árbol manteniendo la estructura del árbol original</li>
 </ul>
 <p><strong>suma-datos-arbolb</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">suma-datos-arbolb</span> <span class="n">arbol</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">vacio-arbolb?</span> <span class="n">arbol</span><span class="p">)</span>
-      <span class="mi">0</span>
-      <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="n">dato-arbolb</span> <span class="n">arbol</span><span class="p">)</span>
-         <span class="p">(</span><span class="n">suma-datos-arbolb</span> <span class="p">(</span><span class="n">hijo-izq-arbolb</span> <span class="n">arbol</span><span class="p">))</span>
-         <span class="p">(</span><span class="n">suma-datos-arbolb</span> <span class="p">(</span><span class="n">hijo-der-arbolb</span> <span class="n">arbol</span><span class="p">)))))</span>
+<pre class="highlight"><code class="language-racket">(define (suma-datos-arbolb arbol)
+   (if (vacio-arbolb? arbol)
+      0
+      (+ (dato-arbolb arbol)
+         (suma-datos-arbolb (hijo-izq-arbolb arbol))
+         (suma-datos-arbolb (hijo-der-arbolb arbol)))))
 
-<span class="p">(</span><span class="n">suma-datos-arbolb</span> <span class="n">arbolb2</span><span class="p">)</span> <span class="c1">; ⇒ 212</span>
-</code></pre></div>
+(suma-datos-arbolb arbolb2) ; ⇒ 212</code></pre>
 <p><img src="imagenes/suma-datos-binario.png" width="500px"/></p>
 <p><strong>to-list-arbolb</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">to-list-arbolb</span> <span class="n">arbol</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">vacio-arbolb?</span> <span class="n">arbol</span><span class="p">)</span>
-      <span class="o">&#39;</span><span class="p">()</span>
-      <span class="p">(</span><span class="nb">cons</span> <span class="p">(</span><span class="n">dato-arbolb</span> <span class="n">arbol</span><span class="p">)</span>
-            <span class="p">(</span><span class="nb">append</span> <span class="p">(</span><span class="n">to-list-arbolb</span> <span class="p">(</span><span class="n">hijo-izq-arbolb</span> <span class="n">arbol</span><span class="p">))</span>
-                    <span class="p">(</span><span class="n">to-list-arbolb</span> <span class="p">(</span><span class="n">hijo-der-arbolb</span> <span class="n">arbol</span><span class="p">))))))</span>
+<pre class="highlight"><code class="language-racket">(define (to-list-arbolb arbol)
+   (if (vacio-arbolb? arbol)
+      '()
+      (cons (dato-arbolb arbol)
+            (append (to-list-arbolb (hijo-izq-arbolb arbol))
+                    (to-list-arbolb (hijo-der-arbolb arbol))))))
 
-<span class="p">(</span><span class="n">to-list-arbolb</span> <span class="n">arbolb2</span><span class="p">)</span> <span class="c1">; ⇒ (40 18 3 23 29 52 47)</span>
-</code></pre></div>
+(to-list-arbolb arbolb2) ; ⇒ (40 18 3 23 29 52 47)</code></pre>
 <p><strong>cuadrado-arbolb</strong></p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="n">cuadrado-arbolb</span> <span class="n">arbol</span><span class="p">)</span>
-   <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="n">vacio-arbolb?</span> <span class="n">arbol</span><span class="p">)</span>
-      <span class="n">arbolb-vacio</span>
-      <span class="p">(</span><span class="n">construye-arbolb</span> <span class="p">(</span><span class="n">cuadrado</span> <span class="p">(</span><span class="n">dato-arbolb</span> <span class="n">arbol</span><span class="p">))</span>
-                        <span class="p">(</span><span class="n">cuadrado-arbolb</span> <span class="p">(</span><span class="n">hijo-izq-arbolb</span> <span class="n">arbol</span><span class="p">))</span>
-                        <span class="p">(</span><span class="n">cuadrado-arbolb</span> <span class="p">(</span><span class="n">hijo-der-arbolb</span> <span class="n">arbol</span><span class="p">)))))</span>
+<pre class="highlight"><code class="language-racket">(define (cuadrado-arbolb arbol)
+   (if (vacio-arbolb? arbol)
+      arbolb-vacio
+      (construye-arbolb (cuadrado (dato-arbolb arbol))
+                        (cuadrado-arbolb (hijo-izq-arbolb arbol))
+                        (cuadrado-arbolb (hijo-der-arbolb arbol)))))
 
-<span class="p">(</span><span class="n">cuadrado-arbolb</span> <span class="n">arbolb1</span><span class="p">)</span> <span class="c1">; ⇒ (100 (64 () ()) (225 () ()))</span>
-</code></pre></div>
+(cuadrado-arbolb arbolb1) ; ⇒ (100 (64 () ()) (225 () ()))</code></pre>
 <hr /></body>
 
 </html>

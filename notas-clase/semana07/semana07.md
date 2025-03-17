@@ -460,7 +460,7 @@ Ejemplo:
 ```racket
 (define (cuadrado-arbol-fos arbol)
    (construye-arbol (cuadrado (dato-arbol arbol))
-   	          (map cuadrado-arbol-fos (hijos-arbol arbol))))
+   	                 (map cuadrado-arbol-fos (hijos-arbol arbol))))
 ```
 
 ----
@@ -499,8 +499,8 @@ Ejemplos:
 ```racket
 (define (map-arbol-fos f arbol)
   (construye-arbol (f (dato-arbol arbol))
-             (map (lambda (x)
-                    (map-arbol-fos f x)) (hijos-arbol arbol))))
+                   (map (lambda (x)
+                          (map-arbol-fos f x)) (hijos-arbol arbol))))
 ```
 
 ----
