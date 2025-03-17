@@ -531,7 +531,7 @@ llamada recursiva que suma el resto de árboles:</p>
 <h3>Versión con funciones de orden superior:</h3>
 <pre class="highlight"><code class="language-racket">(define (cuadrado-arbol-fos arbol)
    (construye-arbol (cuadrado (dato-arbol arbol))
-              (map cuadrado-arbol-fos (hijos-arbol arbol))))</code></pre>
+                     (map cuadrado-arbol-fos (hijos-arbol arbol))))</code></pre>
 <hr />
 <h3><code>(map-arbol f arbol)</code></h3>
 <p>La función <code>map-arbol</code> es una función de orden superior que generaliza
@@ -555,8 +555,8 @@ pasa la función a aplicar a los elementos del árbol.</p>
 <h3>Versión con funciones de orden superior:</h3>
 <pre class="highlight"><code class="language-racket">(define (map-arbol-fos f arbol)
   (construye-arbol (f (dato-arbol arbol))
-             (map (lambda (x)
-                    (map-arbol-fos f x)) (hijos-arbol arbol))))</code></pre>
+                   (map (lambda (x)
+                          (map-arbol-fos f x)) (hijos-arbol arbol))))</code></pre>
 <hr />
 <h3>Función <code>(altura-arbol arbol)</code></h3>
 <p>Vamos por último a definir una función que devuelve la altura de un
