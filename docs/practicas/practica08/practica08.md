@@ -106,8 +106,8 @@ abstracción de árboles binarios** una expresión que devuelva el número 29.
 a) Implementa dos versiones de la función `(to-string-arbol arbol)` que
 recibe un árbol de símbolos y devuelve la cadena resultante de
 concatenar todos los símbolos en recorrido preorden. Debes implementar
-una versión con recursión mutua y otra (llamada `to-string-arbol-fos`)
-con una única función en la que se use funciones de orden superior.
+una versión con **recursión mutua** y otra (llamada `to-string-arbol-fos`)
+con una única función en la que se use **funciones de orden superior**.
 
 Ejemplo:
 
@@ -118,8 +118,8 @@ Ejemplo:
 
 b) Implementa dos versiones de la función `(veces-arbol dato arbol)` que
 recibe un árbol y un dato y comprueba el número de veces que aparece
-el dato en el árbol. Debes implementar una función con recursión mutua
-y otra con funciones de orden superior.
+el dato en el árbol. Debes implementar una función con **recursión mutua**
+y otra con **funciones de orden superior**.
 
 ```racket
 (veces-arbol 'b '(a (b (c) (d)) (b (b) (f)))) ; ⇒ 3
@@ -131,7 +131,7 @@ y otra con funciones de orden superior.
 a) Implementa dos versiones de la función `(hojas-cumplen pred arbol)`
 que recibe un predicado y un árbol y devuelve una lista con todas
 aquellas hojas del árbol que cumplen el predicado. Una función con
-recursión mutua y otra con funciones de orden superior. 
+**recursión mutua** y otra con **funciones de orden superior**. 
 
 <img src="imagenes/hojas-cumplen.png" width="400px">
 
@@ -144,8 +144,8 @@ recursión mutua y otra con funciones de orden superior.
 
 b) Implementa dos versiones del predicado `(todas-hojas-cumplen? pred
 arbol)` que comprueba si todas las hojas de un árbol cumplen un
-determinado predicado. Una función con recursión mutua y otra con
-funciones de orden superior.
+determinado predicado. Una función con **recursión mutua** y otra con
+**funciones de orden superior**.
 
 No debes usar la función anterior, tienes que hacer un recorrido por
 todo el árbol. Para la función de orden superior puedes usar la
@@ -158,7 +158,7 @@ función `for-all?` implementada en el [tema 2](https://domingogallardo.github.i
 
 ### Ejercicio 4 ###
 
-a) Implementa, utilizando funciones de orden superior, la función
+a) Implementa, utilizando **funciones de orden superior**, la función
 `(suma-raices-hijos arbol)` que devuelva la suma de las raíces de los
 hijos de un árbol genérico.
 
@@ -172,17 +172,20 @@ Ejemplo:
 (suma-raices-hijos (second (hijos-arbol arbol3))) ; ⇒ 6
 ```
 
-b) Implementa dos versiones, una con recursión mutua y otra con
-funciones de orden superior, de la función `(raices-mayores-arbol?
+b) Implementa dos versiones, una con **recursión mutua** y otra con
+**funciones de orden superior**, de la función `(raices-mayores-arbol?
 arbol)` que recibe un árbol y comprueba que su raíz sea mayor que la
 suma de las raíces de los hijos y que todos los hijos (nos referimos a
 todos los descendientes) cumplen también esta propiedad.
 
 Ejemplos:
 
+<img src="imagenes/arbol4.png" width="250px"/>
+
 ```racket
+(define arbol4 '(20 (2) (8 (4) (5)) (9 (5))))
 (raices-mayores-arbol? arbol3) ; ⇒ #t
-(raices-mayores-arbol? '(20 (2) (8 (4) (5)) (9 (5)))) ; ⇒ #f
+(raices-mayores-arbol? arbol4) ; ⇒ #f
 ```
 
 c) Define la función `(comprueba-raices-arbol arbol)` que recibe un
@@ -193,15 +196,16 @@ o no.
 Ejemplos:
 
 ```racket
-(comprueba-raices-arbol arbol3) ; ⇒ (1 (1) (1 (1) (1)) (1 (1)))
-(comprueba-raices-arbol '(20 (2) (8 (4) (5)) (9 (5)))) 
-; ⇒ (1 (1) (0 (1) (1)) (1 (1)))
+(define raices_arbol3 (comprueba-raices-arbol arbol3)) ; ⇒ (1 (1) (1 (1) (1)) (1 (1)))
+(define raices_arbol4 (comprueba-raices-arbol arbol4) ; ⇒ (1 (1) (0 (1) (1)) (1 (1)))
 ```
+
+<img src="imagenes/raices.png" width="200px"/>
 
 
 ### Ejercicio 5 ###
 
-a) Define la función `(es-camino? lista arbol)` que debe comprobar si
+a) Define la función con **recursión mutua** `(es-camino? lista arbol)` que debe comprobar si
 la secuencia de elementos de la lista se corresponde con un camino
 del árbol que empieza en la raíz y que termina exactamente en una
 hoja. Suponemos que `lista` contiene al menos un elemento
@@ -335,6 +339,6 @@ Ejemplo:
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2023-24  
+Lenguajes y Paradigmas de Programación, curso 2024-25  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

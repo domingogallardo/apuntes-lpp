@@ -20,7 +20,7 @@ fichero `practica7.rkt`.
 Puedes encontrar también el fichero `lpp.rkt` en el [sitio Moodle
 de la asignatura](https://moodle2021-22.ua.es/moodle/mod/resource/view.php?id=130802).
 
-El fichero contiene la definición de la función `(hoja? dato)` y la
+El fichero contiene la definición de la función `(hoja? elem)` y la
 función `(pinta-lista lista)` que nos permite dibujar gráficamente una lista estructurada.
 
 Por ejemplo, si definimos una lista estructurada como 
@@ -174,7 +174,7 @@ a) Implementa la función `(sustituye-elem elem-old elem-new lista)`
 que recibe como argumentos una lista estructurada y dos elementos, y
 devuelve otra lista con la misma estructura, pero en la que se ha
 sustituido las ocurrencias de `elem-old` por `elem-new`. Puedes
-hacerla de forma recursiva o con funciones de orden superior.
+hacerla de forma **recursiva pura** o con **funciones de orden superior**.
 
 Ejemplo:
 
@@ -188,7 +188,7 @@ estructurada y devuelva una pareja `(elem . nivel)`, donde la parte
 izquierda es el elemento que se encuentra a mayor nivel y la parte
 derecha el nivel en el que se encuentra. Puedes definir alguna
 función auxiliar si lo necesitas. Puedes hacerlo con
-recursión o con funciones de orden superior.
+**recursión pura** o con **funciones de orden superior**.
 
 ```racket
 (nivel-mas-profundo '(2 (3))) ; ⇒ (3 . 2)
@@ -203,7 +203,7 @@ indica un nivel. Devuelve una nueva lista estructurada con la misma
 estructura que las listas originales, con los elementos de lista1 que
 tienen un nivel menor o igual que `n` y los elementos de lista2 que
 tienen un nivel mayor que `n`. Puedes hacerlo con
-recursión o con funciones de orden superior.
+**recursión pura** o con **funciones de orden superior**.
 
 <img src="imagenes/mezclar-listas.png" width="500px"/>
 
@@ -262,7 +262,7 @@ comprobará que recorriendo el último elemento de ambas listas se
 llegará al mismo tiempo a las hojas `d` y `g`, formando la pareja `(d
 . g)`.
 
-Debes implementar sólo la versión recursiva. 
+Debes implementar **sólo la versión recursiva**s. 
 
 Otros ejemplos:
 
