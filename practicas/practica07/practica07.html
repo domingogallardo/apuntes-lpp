@@ -12,6 +12,8 @@
         <link rel="prev" href="../practica06/practica06.html">
       
       
+        <link rel="next" href="../practica08/practica08.html">
+      
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
@@ -356,6 +358,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teoria/tema05-programacion-funcional-swift/tema05-programacion-funcional-swift.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tema 5: Programación funcional con Swift
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -410,6 +433,27 @@
   
   <span class="md-ellipsis">
     Seminario de Scheme
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../seminarios/seminario2-swift/seminario2-swift.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Seminario de Swift
   </span>
   
 
@@ -740,6 +784,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practica08/practica08.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Práctica 8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -878,7 +943,7 @@ como</em> <code>lpp.rkt</code>. Guárdalo en la misma carpeta en la que tengas e
 fichero <code>practica7.rkt</code>. </p>
 <p>Puedes encontrar también el fichero <code>lpp.rkt</code> en el <a href="https://moodle2021-22.ua.es/moodle/mod/resource/view.php?id=130802">sitio Moodle
 de la asignatura</a>.</p>
-<p>El fichero contiene la definición de la función <code>(hoja? dato)</code> y la
+<p>El fichero contiene la definición de la función <code>(hoja? elem)</code> y la
 función <code>(pinta-lista lista)</code> que nos permite dibujar gráficamente una lista estructurada.</p>
 <p>Por ejemplo, si definimos una lista estructurada como </p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">lista</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span><span class="w"> </span><span class="p">(</span><span class="ss">b</span><span class="w"> </span><span class="p">(</span><span class="ss">c</span><span class="w"> </span><span class="ss">d</span><span class="p">)</span><span class="w"> </span><span class="ss">e</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="ss">f</span><span class="w"> </span><span class="ss">g</span><span class="p">)))</span>
@@ -986,7 +1051,7 @@ usando <strong>funciones de orden superior</strong>.</p>
 que recibe como argumentos una lista estructurada y dos elementos, y
 devuelve otra lista con la misma estructura, pero en la que se ha
 sustituido las ocurrencias de <code>elem-old</code> por <code>elem-new</code>. Puedes
-hacerla de forma recursiva o con funciones de orden superior.</p>
+hacerla de forma <strong>recursiva pura</strong> o con <strong>funciones de orden superior</strong>.</p>
 <p>Ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">sustituye-elem</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">c</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">h</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span><span class="w"> </span><span class="ss">b</span><span class="w"> </span><span class="p">(</span><span class="ss">c</span><span class="w"> </span><span class="ss">d</span><span class="w"> </span><span class="p">(</span><span class="ss">e</span><span class="w"> </span><span class="ss">c</span><span class="p">))</span><span class="w"> </span><span class="ss">c</span><span class="w"> </span><span class="p">(</span><span class="ss">f</span><span class="w"> </span><span class="p">(</span><span class="ss">c</span><span class="p">)</span><span class="w"> </span><span class="ss">g</span><span class="p">)))</span>
 <span class="c1">; ⇒ (a b (h d (e h)) h (f (h) g))</span>
@@ -996,7 +1061,7 @@ estructurada y devuelva una pareja <code>(elem . nivel)</code>, donde la parte
 izquierda es el elemento que se encuentra a mayor nivel y la parte
 derecha el nivel en el que se encuentra. Puedes definir alguna
 función auxiliar si lo necesitas. Puedes hacerlo con
-recursión o con funciones de orden superior.</p>
+<strong>recursión pura</strong> o con <strong>funciones de orden superior</strong>.</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">nivel-mas-profundo</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">)))</span><span class="w"> </span><span class="c1">; ⇒ (3 . 2)</span>
 <span class="p">(</span><span class="n">nivel-mas-profundo</span><span class="w"> </span><span class="o">&#39;</span><span class="p">((</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">)((((((</span><span class="mi">5</span><span class="p">)))</span><span class="w"> </span><span class="mi">6</span><span class="p">))</span><span class="w"> </span><span class="mi">7</span><span class="p">))</span><span class="w"> </span><span class="mi">8</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (5 . 8)</span>
 </code></pre></div>
@@ -1007,7 +1072,7 @@ indica un nivel. Devuelve una nueva lista estructurada con la misma
 estructura que las listas originales, con los elementos de lista1 que
 tienen un nivel menor o igual que <code>n</code> y los elementos de lista2 que
 tienen un nivel mayor que <code>n</code>. Puedes hacerlo con
-recursión o con funciones de orden superior.</p>
+<strong>recursión pura</strong> o con <strong>funciones de orden superior</strong>.</p>
 <p><img src="imagenes/mezclar-listas.png" width="500px"/></p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">lista1</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(((</span><span class="ss">a</span><span class="w"> </span><span class="ss">b</span><span class="p">)</span><span class="w"> </span><span class="p">((</span><span class="ss">c</span><span class="p">)))</span><span class="w"> </span><span class="p">(</span><span class="ss">d</span><span class="p">)</span><span class="w"> </span><span class="ss">e</span><span class="p">))</span>
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">lista2</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(((</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">((</span><span class="mi">3</span><span class="p">)))</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="mi">5</span><span class="p">))</span>
@@ -1054,7 +1119,7 @@ por no existir correspondencia en la primera lista. Y, por último,
 comprobará que recorriendo el último elemento de ambas listas se
 llegará al mismo tiempo a las hojas <code>d</code> y <code>g</code>, formando la pareja <code>(d
 . g)</code>.</p>
-<p>Debes implementar sólo la versión recursiva. </p>
+<p>Debes implementar <strong>sólo la versión recursiva</strong>s. </p>
 <p>Otros ejemplos:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">intersecta</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span><span class="w"> </span><span class="ss">b</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">c</span><span class="w"> </span><span class="ss">d</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ &#39;((a . c) (b . d))</span>
 <span class="p">(</span><span class="n">intersecta</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">a</span><span class="w"> </span><span class="p">(</span><span class="ss">b</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="ss">c</span><span class="p">))</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">d</span><span class="w"> </span><span class="ss">e</span><span class="w"> </span><span class="p">(</span><span class="ss">f</span><span class="p">)))</span><span class="w"> </span><span class="c1">; ⇒ &#39;((a . d) ((c . f)))</span>
