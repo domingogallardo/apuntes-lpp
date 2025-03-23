@@ -245,29 +245,30 @@ principalmente funcionales como:</p>
 <h3>Ejecución de programas Swift</h3>
 <ul>
 <li>Consultar en el seminario de Swift la forma de instalar el
-  compilador de Swift: usando un contenedor Docker, usando el terminal
-  (Mac) o en Linux.</li>
+  compilador de Swift: usar WSL en Windows, usando la terminal (Mac) o en Linux.</li>
 </ul>
-<p>Visual Code Studio con un terminal y con el comando docker para
-ejecutar Swift:</p>
-<p><img src="imagenes/vcode.png" width="700px"/></p>
+<!--
+Visual Code Studio con un terminal y con el comando docker para
+ejecutar Swift:
+
+<img src="imagenes/vcode.png" width="700px"/>
+-->
+
 <hr />
 <h3>Swift es fuertemente tipado</h3>
 <ul>
 <li>Swift es un lenguaje fuertemente tipado</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">n</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="mi">10</span>
-<span class="kd">let</span> <span class="nv">str</span><span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;Hola&quot;</span>
-<span class="kd">let</span> <span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let n: Int = 10
+let str: String = "Hola"
+let array: [Int] = [1,2,3,4,5]</code></pre>
 <ul>
 <li>Es posible no escribir el nombre del tipo en aquellos casos en los
   que el compilador pueda <strong>inferirlo</strong>.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">n</span> <span class="p">=</span> <span class="mi">10</span>
-<span class="kd">let</span> <span class="nv">str</span> <span class="p">=</span> <span class="s">&quot;Hola&quot;</span>
-<span class="kd">let</span> <span class="nv">array</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let n = 10
+let str = "Hola"
+let array = [1,2,3,4,5]</code></pre>
 <h3>Swift es multi-paradigma</h3>
 <ul>
 <li>Swift incorpora características funcionales, de programación
@@ -285,29 +286,26 @@ lenguaje. Veamos algunas características relacionadas con esto.</p>
 <li>La palabra clave <code>let</code> permite definir variables inmutables. Si se intenta
   modificar el valor el compilador da un error.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">10</span>
-<span class="n">x</span> <span class="p">=</span> <span class="mi">20</span> <span class="c1">// x es mutable</span>
-<span class="kd">let</span> <span class="nv">y</span> <span class="p">=</span> <span class="mi">10</span>
-<span class="n">y</span> <span class="p">=</span> <span class="mi">20</span> <span class="c1">// error: y es inmutable</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">var x = 10
+x = 20 // x es mutable
+let y = 10
+y = 20 // error: y es inmutable</code></pre>
 <ul>
 <li>El valor asignado puede no conocerse en tiempo de compilación:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">respuesta</span><span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="n">respuestaUsuario</span><span class="p">.</span><span class="n">respuesta</span><span class="p">()</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let respuesta: String = respuestaUsuario.respuesta()</code></pre>
 <ul>
 <li>Si una variable no se modifica es conveniente declararla como
   <code>let</code>. El compilador de Swift da una aviso para ello.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">saludo</span> <span class="p">=</span> <span class="s">&quot;Hola &quot;</span> <span class="o">+</span> <span class="n">nombre</span> <span class="o">+</span> <span class="s">&quot;!&quot;</span>
-    <span class="k">return</span> <span class="n">saludo</span>
-<span class="p">}</span>
-<span class="c1">//warning: variable &#39;saludo&#39; was never mutated; consider changing to &#39;let&#39; constant</span>
-<span class="c1">//    var saludo = &quot;Hola &quot; + nombre</span>
-<span class="c1">//    ~~~ ^</span>
-<span class="c1">//    let</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func saluda(nombre: String) -&gt; String {
+    var saludo = "Hola " + nombre + "!"
+    return saludo
+}
+//warning: variable 'saludo' was never mutated; consider changing to 'let' constant
+//    var saludo = "Hola " + nombre
+//    ~~~ ^
+//    let</code></pre>
 <hr />
 <h3>Creación de nuevas estructuras y mutación</h3>
 <ul>
@@ -325,52 +323,48 @@ método <code>sorted</code>. El primero ordena el array con mutación y el segun
 devuelve una copia ordenada, sin modificar el array original. </p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1">// Código recomendable en programación funcional</span>
-<span class="c1">// porque utiliza el método sorted que devuelve una</span>
-<span class="c1">// copia del array original</span>
-<span class="kd">let</span> <span class="nv">miArray</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">80</span><span class="p">]</span>
-<span class="kd">let</span> <span class="nv">arrayOrdenado</span> <span class="p">=</span> <span class="n">miArray</span><span class="p">.</span><span class="bp">sorted</span><span class="p">()</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">miArray</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">arrayOrdenado</span><span class="p">)</span>
-<span class="c1">// Imprime:</span>
-<span class="c1">// [10, -1, 3, 80]</span>
-<span class="c1">// [-1, 3, 10, 80]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">// Código recomendable en programación funcional
+// porque utiliza el método sorted que devuelve una
+// copia del array original
+let miArray = [10, -1, 3, 80]
+let arrayOrdenado = miArray.sorted()
+print(miArray)
+print(arrayOrdenado)
+// Imprime:
+// [10, -1, 3, 80]
+// [-1, 3, 10, 80]</code></pre>
 <ul>
 <li>Sin embargo, el siguiente código es imperativo y utiliza la mutación
   del array original: </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1">// Código no recomendable en programación funcional</span>
-<span class="c1">// porque utiliza el método sort que muta el array original</span>
-<span class="kd">var</span> <span class="nv">miArray</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">80</span><span class="p">]</span>
-<span class="n">miArray</span><span class="p">.</span><span class="bp">sort</span><span class="p">()</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">miArray</span><span class="p">)</span>
-<span class="c1">// Imprime:</span>
-<span class="c1">// [-1, 3, 10, 80]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">// Código no recomendable en programación funcional
+// porque utiliza el método sort que muta el array original
+var miArray = [10, -1, 3, 80]
+miArray.sort()
+print(miArray)
+// Imprime:
+// [-1, 3, 10, 80]</code></pre>
 <ul>
 <li>Otro ejemplo es en la forma de añadir elementos a un array. Podemos
 hacerlo con un enfoque funcional, usando el operador <code>+</code> que construye
 un array nuevo:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1">// Código recomendable en programación funcional</span>
-<span class="kd">let</span> <span class="nv">miArray</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">80</span><span class="p">]</span>
-<span class="kd">let</span> <span class="nv">array2</span> <span class="p">=</span> <span class="n">miArray</span> <span class="o">+</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">array2</span><span class="p">)</span>
-<span class="c1">// Imprime:</span>
-<span class="c1">// [10, -1, 3, 80, 100]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">// Código recomendable en programación funcional
+let miArray = [10, -1, 3, 80]
+let array2 = miArray + [100]
+print(array2)
+// Imprime:
+// [10, -1, 3, 80, 100]</code></pre>
 <ul>
 <li>Y podemos hacerlo usando un enfoque imperativo, con el método
 <code>append</code>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1">// Código no recomendable en programación funcional</span>
-<span class="kd">var</span> <span class="nv">miArray</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">80</span><span class="p">]</span>
-<span class="n">miArray</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">miArray</span><span class="p">)</span>
-<span class="c1">// Imprime:</span>
-<span class="c1">// [10, -1, 3, 80, 100]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">// Código no recomendable en programación funcional
+var miArray = [10, -1, 3, 80]
+miArray.append(100)
+print(miArray)
+// Imprime:
+// [10, -1, 3, 80, 100]</code></pre>
 <div class="admonition note">
 <p class="admonition-title">Importante</p>
 <p>Cuando estemos escribiendo código con estilo
@@ -389,17 +383,15 @@ definir el nombre de la función, sus parámetros y el tipo de vuelto.</li>
 <code>return</code>.</li>
 </ul>
 <p>Ejemplo función <code>saluda(nombre:)</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nv">saludo</span> <span class="p">=</span> <span class="s">&quot;Hola, &quot;</span> <span class="o">+</span> <span class="n">nombre</span> <span class="o">+</span> <span class="s">&quot;!&quot;</span>
-    <span class="k">return</span> <span class="n">saludo</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func saluda(nombre: String) -&gt; String {
+    let saludo = "Hola, " + nombre + "!"
+    return saludo
+}</code></pre>
 <p>Invocación a la función <code>saluda(nombre:)</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="n">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span><span class="s">&quot;Ana&quot;</span><span class="p">))</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span><span class="s">&quot;Pedro&quot;</span><span class="p">))</span>
-<span class="c1">// Imprime &quot;Hola, Ana!&quot;</span>
-<span class="c1">// Imprime &quot;Hola, Pedro!&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">print(saluda(nombre:"Ana"))
+print(saluda(nombre:"Pedro"))
+// Imprime "Hola, Ana!"
+// Imprime "Hola, Pedro!"</code></pre>
 <hr />
 <h3>Etiquetas de argumentos y nombres de parámetros</h3>
 <ul>
@@ -408,61 +400,57 @@ un <strong>nombre de parámetro</strong>.</li>
 <li>Por defecto, los parámetros usan su nombre de parámetro como etiqueta
 del argumento</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">unaFuncion</span><span class="p">(</span><span class="n">primerNombreParametro</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">segundoNombreParametro</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// En el cuerpo de la función, primerNombreParametro y</span>
-    <span class="c1">// segundoNombreParametro se refieren a los valores de los</span>
-    <span class="c1">// argumentos del primer y el segundo parámetro</span>
-<span class="p">}</span>
-<span class="n">unaFuncion</span><span class="p">(</span><span class="n">primerNombreParametro</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">segundoNombreParametro</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func unaFuncion(primerNombreParametro: Int, segundoNombreParametro: Int) {
+    // En el cuerpo de la función, primerNombreParametro y
+    // segundoNombreParametro se refieren a los valores de los
+    // argumentos del primer y el segundo parámetro
+}
+unaFuncion(primerNombreParametro: 1, segundoNombreParametro: 2)</code></pre>
 <ul>
 <li>Es posible hacer distintos la etiqueta del argumento del nombre del
 parámetro:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">de</span> <span class="n">ciudad</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="s">&quot;Hola </span><span class="si">\(</span><span class="n">nombre</span><span class="si">)</span><span class="s">! Me alegro de que hayas podido visitarnos desde </span><span class="si">\(</span><span class="n">ciudad</span><span class="si">)</span><span class="s">.&quot;</span>
-<span class="p">}</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Bill&quot;</span><span class="p">,</span> <span class="n">de</span><span class="p">:</span> <span class="s">&quot;Cupertino&quot;</span><span class="p">))</span>
-<span class="c1">// Imprime &quot;Hola Bill! Me alegro de que hayas podido visitarnos desde Cupertino.&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func saluda(nombre: String, de ciudad: String) -&gt; String {
+    return "Hola \(nombre)! Me alegro de que hayas podido visitarnos desde \(ciudad)."
+}
+print(saluda(nombre: "Bill", de: "Cupertino"))
+// Imprime "Hola Bill! Me alegro de que hayas podido visitarnos desde Cupertino."</code></pre>
 <ul>
 <li>Otro ejemplo, la siguiente función <code>concatena(palabra:con:)</code>: </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">concatena</span><span class="p">(</span><span class="n">palabra</span> <span class="n">str1</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">con</span> <span class="n">str2</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">str1</span><span class="o">+</span><span class="n">str2</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func concatena(palabra str1: String, con str2: String) -&gt; String {
+    return str1+str2
+}
 
-<span class="bp">print</span><span class="p">(</span><span class="n">concatena</span><span class="p">(</span><span class="n">palabra</span><span class="p">:</span><span class="s">&quot;Hola&quot;</span><span class="p">,</span> <span class="n">con</span><span class="p">:</span><span class="s">&quot;adios&quot;</span><span class="p">))</span>
-</code></pre></div>
+print(concatena(palabra:"Hola", con:"adios"))</code></pre>
 <ul>
 <li>Si no se quiere una etiqueta del argumento para un parámetro, se puede
 escribir un subrayado (<code>_</code>) en lugar de una etiqueta del argumento
 explícita para ese parámetro:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">max</span><span class="p">(</span><span class="kc">_</span> <span class="n">x</span><span class="p">:</span><span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">y</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-   <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="n">x</span>
-   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="n">y</span>
-   <span class="p">}</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func max(_ x:Int, _ y: Int) -&gt; Int {
+   if x &gt; y {
+      return x
+   } else {
+      return y
+   }
+}
 
-<span class="bp">print</span><span class="p">(</span><span class="bp">max</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+print(max(10,3))
 
-<span class="kd">func</span> <span class="nf">divide</span><span class="p">(</span><span class="kc">_</span> <span class="n">x</span><span class="p">:</span><span class="nb">Double</span><span class="p">,</span> <span class="n">entre</span> <span class="n">y</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Double</span> <span class="p">{</span>
-   <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
-<span class="p">}</span>
+func divide(_ x:Double, entre y: Double) -&gt; Double {
+   return x / y
+}
 
-<span class="bp">print</span><span class="p">(</span><span class="n">divide</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">entre</span><span class="p">:</span><span class="mi">4</span><span class="p">))</span>
-</code></pre></div>
+print(divide(30, entre:4))</code></pre>
 <ul>
 <li>
-<p>La firma de la función ("function signature" en inglés, también
-llamada "perfil" de la función) está formada por el nombre de la
-función, las etiquetas de los argumentos y sus tipos y el tipo
-devuelto por la función. Esta firma permite al compilador y al
-programador identificar y diferenciar funciones con el mismo nombre
-pero con diferentes listas de parámetros o tipos de retorno. </p>
+<p>El perfil de una función (el nombre técnico es "function signature"
+en inglés) está formada por el nombre de la función, las etiquetas de
+los argumentos y sus tipos y el tipo devuelto por la función. Este
+perfil permite al compilador y al programador identificar y diferenciar
+funciones con el mismo nombre pero con diferentes listas de parámetros
+o tipos de retorno.</p>
 </li>
 <li>
 <p>En la documentación de las funciones en Swift se suele usar para
@@ -477,72 +465,66 @@ nombres de parámetros, como las siguientes funciones <code>mitad(par:)</code> y
 <code>mitad(impar:)</code>:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">mitad</span><span class="p">(</span><span class="n">par</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">{</span>
-    <span class="k">return</span> <span class="n">par</span><span class="o">/</span><span class="mi">2</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func mitad(par: Int) -&gt; Int{
+    return par/2
+}
 
-<span class="kd">func</span> <span class="nf">mitad</span><span class="p">(</span><span class="n">impar</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">impar</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-<span class="p">}</span>
+func mitad(impar: Int) -&gt; Int{
+    return (impar+1)/2
+}
 
-<span class="bp">print</span><span class="p">(</span><span class="n">mitad</span><span class="p">(</span><span class="n">par</span><span class="p">:</span> <span class="mi">8</span><span class="p">))</span>
-<span class="c1">// Imprime 4</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">mitad</span><span class="p">(</span><span class="n">impar</span><span class="p">:</span> <span class="mi">9</span><span class="p">))</span>
-<span class="c1">// Imprime 5</span>
-</code></pre></div>
+print(mitad(par: 8))
+// Imprime 4
+print(mitad(impar: 9))
+// Imprime 5</code></pre>
 <hr />
 <h3>Parámetros y valores devueltos</h3>
 <ul>
 <li>Es posible definir funciones sin parámetros:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">diHolaMundo</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="s">&quot;hola, mundo&quot;</span>
-<span class="p">}</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">diHolaMundo</span><span class="p">())</span>
-<span class="c1">// Imprime &quot;hola, mundo&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func diHolaMundo() -&gt; String {
+    return "hola, mundo"
+}
+print(diHolaMundo())
+// Imprime "hola, mundo"</code></pre>
 <ul>
 <li>Podemos definir funciones sin valor devuelto. Por ejemplo, la
   siguiente función <code>diAdios(nombre:)</code>. No hay que escribir flecha con
   el tipo devuelto. Cuidado, no sería propiamente programación
   funcional.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">diAdios</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
-    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Adiós, </span><span class="si">\(</span><span class="n">nombre</span><span class="si">)</span><span class="s">!&quot;</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="n">diAdios</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span><span class="s">&quot;Dave&quot;</span><span class="p">)</span>
-<span class="c1">// Imprime &quot;Adiós, Dave!&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func diAdios(nombre: String) {
+    print("Adiós, \(nombre)!")
+}
+diAdios(nombre:"Dave")
+// Imprime "Adiós, Dave!"</code></pre>
 <ul>
 <li>Es posible devolver múltiples valores, construyendo una tupla. Por
 ejemplo, la siguiente función <code>ecuacion(a:b:c:)</code> calcula las dos
 soluciones de una ecuación de segundo grado:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">ecuacion</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="n">pos</span><span class="p">:</span> <span class="nb">Double</span><span class="p">,</span> <span class="n">neg</span><span class="p">:</span> <span class="nb">Double</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nv">discriminante</span> <span class="p">=</span> <span class="n">b</span><span class="o">*</span><span class="n">b</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
-    <span class="kd">let</span> <span class="nv">raizPositiva</span> <span class="p">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">discriminante</span><span class="p">.</span><span class="n">squareRoot</span><span class="p">())</span> <span class="o">/</span> <span class="mi">2</span><span class="o">*</span><span class="n">a</span>
-    <span class="kd">let</span> <span class="nv">raizNegativa</span> <span class="p">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">discriminante</span><span class="p">.</span><span class="n">squareRoot</span><span class="p">())</span> <span class="o">/</span> <span class="mi">2</span><span class="o">*</span><span class="n">a</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">raizPositiva</span><span class="p">,</span> <span class="n">raizNegativa</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func ecuacion(a: Double, b: Double, c: Double) -&gt; (pos: Double, neg: Double) {
+    let discriminante = b*b-4*a*c
+    let raizPositiva = (-b + discriminante.squareRoot()) / 2*a
+    let raizNegativa = (-b - discriminante.squareRoot()) / 2*a
+    return (raizPositiva, raizNegativa)
+}</code></pre>
 <ul>
 <li>Recordemos (consultar el seminario de Swift) que podemos acceder a los
 valores de la tupla por posición:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">resultado</span> <span class="p">=</span> <span class="n">ecuacion</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="mi">6</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Las raíces de la ecuación son </span><span class="si">\(</span><span class="n">resultado</span><span class="p">.</span><span class="mi">0</span><span class="si">)</span><span class="s"> y </span><span class="si">\(</span><span class="n">resultado</span><span class="p">.</span><span class="mi">1</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="c1">//Imprime &quot;Las raíces de la ecuación son 3.0 y 2.0&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let resultado = ecuacion(a: 1, b: -5, c: 6)
+print("Las raíces de la ecuación son \(resultado.0) y \(resultado.1)")
+//Imprime "Las raíces de la ecuación son 3.0 y 2.0"</code></pre>
 <ul>
 <li>En este caso en la definición del tipo devuelto por la función estamos
 etiquetando esos valores con las etiquetas <code>pos</code> y <code>neg</code>. De esta
 forma podemos acceder a los componentes de la tupla usando esas
 etiquetas definidas:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">resultado</span> <span class="p">=</span> <span class="n">ecuacion</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="mi">6</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Las raíces de la ecuación son </span><span class="si">\(</span><span class="n">resultado</span><span class="p">.</span><span class="n">pos</span><span class="si">)</span><span class="s"> y </span><span class="si">\(</span><span class="n">resultado</span><span class="p">.</span><span class="n">neg</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="c1">//Imprime &quot;Las raíces de la ecuación son 3.0 y 2.0&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let resultado = ecuacion(a: 1, b: -5, c: 6)
+print("Las raíces de la ecuación son \(resultado.pos) y \(resultado.neg)")
+//Imprime "Las raíces de la ecuación son 3.0 y 2.0"</code></pre>
 <hr />
 <h3>4. Recursión</h3>
 <hr />
@@ -550,16 +532,15 @@ etiquetas definidas:</li>
 <ul>
 <li>Recursión pura:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">suma</span><span class="p">(</span><span class="n">hasta</span> <span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="n">x</span> <span class="p">==</span> <span class="mi">0</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="mi">0</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">suma</span><span class="p">(</span><span class="n">hasta</span><span class="p">:</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func suma(hasta x: Int) -&gt; Int {
+  if x == 0 {
+    return 0
+  } else {
+    return x + suma(hasta: x - 1)
+  }
+}
 
-<span class="bp">print</span><span class="p">(</span><span class="n">suma</span><span class="p">(</span><span class="n">hasta</span><span class="p">:</span> <span class="mi">5</span><span class="p">))</span>
-</code></pre></div>
+print(suma(hasta: 5))</code></pre>
 <hr />
 <h3>Funciones recursivas sobre Arrays</h3>
 <ul>
@@ -567,10 +548,9 @@ etiquetas definidas:</li>
 Scheme (no son listas de parejas), pero podríamos obtener el primer
 elemento y el resto de la siguiente forma.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">a</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span>
-<span class="kd">let</span> <span class="nv">primero</span> <span class="p">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="kd">let</span> <span class="nv">resto</span> <span class="p">=</span> <span class="nb">Array</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="bp">dropFirst</span><span class="p">())</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let a = [10, 20, 30, 40, 50, 60]
+let primero = a[0]
+let resto = Array(a.dropFirst())</code></pre>
 <ul>
 <li>
 <p>En <code>primero</code> se guarda el número 10. En <code>resto</code> se guarda el <code>Array</code>
@@ -589,44 +569,42 @@ recursiva que suma los valores de un Array de la siguiente forma
 similar a cómo lo hacíamos en Scheme:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">sumaValores</span><span class="p">(</span><span class="kc">_</span> <span class="n">valores</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">valores</span><span class="p">.</span><span class="bp">isEmpty</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="mi">0</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nv">primero</span> <span class="p">=</span> <span class="n">valores</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="kd">let</span> <span class="nv">resto</span> <span class="p">=</span> <span class="nb">Array</span><span class="p">(</span><span class="n">valores</span><span class="p">.</span><span class="bp">dropFirst</span><span class="p">())</span>
-        <span class="k">return</span> <span class="n">primero</span> <span class="o">+</span> <span class="n">sumaValores</span><span class="p">(</span><span class="n">resto</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func sumaValores(_ valores: [Int]) -&gt; Int {
+    if (valores.isEmpty) {
+        return 0
+    } else {
+        let primero = valores[0]
+        let resto = Array(valores.dropFirst())
+        return primero + sumaValores(resto)
+    }
+}
 
-<span class="bp">print</span><span class="p">(</span><span class="n">sumaValores</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]))</span> 
-<span class="c1">// Imprime &quot;36&quot;</span>
-</code></pre></div>
+print(sumaValores([1,2,3,4,5,6,7,8])) 
+// Imprime "36"</code></pre>
 <ul>
 <li>Un último ejemplo es la siguiente función <code>minMax(array:)</code> que
 devuelve el número más pequeño y más grande de un array de enteros:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">minMax</span><span class="p">(</span><span class="n">array</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="bp">min</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="bp">max</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">array</span><span class="p">.</span><span class="bp">count</span> <span class="p">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nv">primero</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="kd">let</span> <span class="nv">resto</span> <span class="p">=</span> <span class="nb">Array</span><span class="p">(</span><span class="n">array</span><span class="p">.</span><span class="bp">dropFirst</span><span class="p">())</span>
+<pre class="highlight"><code class="language-swift">func minMax(array: [Int]) -&gt; (min: Int, max: Int) {
+    if (array.count == 1) {
+        return (array[0], array[0])
+    } else {
+        let primero = array[0]
+        let resto = Array(array.dropFirst())
 
-        <span class="c1">// Llamada recursiva que devuelve el mínimo y el máximo del</span>
-        <span class="c1">// resto del array</span>
-        <span class="kd">let</span> <span class="nv">minMaxResto</span> <span class="p">=</span> <span class="n">minMax</span><span class="p">(</span><span class="n">array</span><span class="p">:</span> <span class="n">resto</span><span class="p">)</span>
+        // Llamada recursiva que devuelve el mínimo y el máximo del
+        // resto del array
+        let minMaxResto = minMax(array: resto)
 
-        <span class="kd">let</span> <span class="nv">minimo</span> <span class="p">=</span> <span class="bp">min</span><span class="p">(</span><span class="n">primero</span><span class="p">,</span> <span class="n">minMaxResto</span><span class="p">.</span><span class="bp">min</span><span class="p">)</span>
-        <span class="kd">let</span> <span class="nv">maximo</span> <span class="p">=</span> <span class="bp">max</span><span class="p">(</span><span class="n">primero</span><span class="p">,</span> <span class="n">minMaxResto</span><span class="p">.</span><span class="bp">max</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">minimo</span><span class="p">,</span> <span class="n">maximo</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+        let minimo = min(primero, minMaxResto.min)
+        let maximo = max(primero, minMaxResto.max)
+        return (minimo, maximo)
+    }
+}
 
-<span class="kd">let</span> <span class="nv">limites</span> <span class="p">=</span> <span class="n">minMax</span><span class="p">(</span><span class="n">array</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">71</span><span class="p">])</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;El mínimo es </span><span class="si">\(</span><span class="n">limites</span><span class="p">.</span><span class="bp">min</span><span class="si">)</span><span class="s"> y el máximo es </span><span class="si">\(</span><span class="n">limites</span><span class="p">.</span><span class="bp">max</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="c1">// Imprime &quot;El mímimo es -6 y el máximo es 100&quot;</span>
-</code></pre></div>
+let limites = minMax(array: [8, -6, 2, 100, 3, 71])
+print("El mínimo es \(limites.min) y el máximo es \(limites.max)")
+// Imprime "El mímimo es -6 y el máximo es 100"</code></pre>
 <ul>
 <li>En este ejemplo nos apartamos un poco de la solución vista en Scheme
 porque permitimos pasos de ejecución que inicializan variables. Pero
@@ -648,13 +626,12 @@ inmutables definidas con <code>let</code>.</li>
 parámetros y el tipo del valor devuelto.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">sumaDosInts</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-<span class="p">}</span>
-<span class="kd">func</span> <span class="nf">multiplicaDosInts</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func sumaDosInts(a: Int, b: Int) -&gt; Int {
+    return a + b
+}
+func multiplicaDosInts(a: Int, b: Int) -&gt; Int {
+    return a * b
+}</code></pre>
 <ul>
 <li>
 <p>El tipo de estas funciones es <code>(Int, Int) -&gt; Int</code></p>
@@ -664,13 +641,12 @@ parámetros y el tipo del valor devuelto.</p>
   cualquier otro tipo:</p>
 </li>
 </ul>
-<p><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">f</span> <span class="p">=</span> <span class="n">sumaDosInts</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="c1">// Imprime &quot;5&quot;</span>
-<span class="n">f</span> <span class="p">=</span> <span class="n">multiplicaDosInts</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="c1">// Imprime &quot;6&quot;</span>
-</code></pre></div>
+<p><pre class="highlight"><code class="language-swift">var f = sumaDosInts
+print(f(2,3))
+// Imprime "5"
+f = multiplicaDosInts
+print(f(2,3))
+// Imprime "6"</code></pre>
 - La variable <code>f</code> es una variable de tipo <code>(Int, Int) -&gt; Int</code>, o sea,
 una variable que contiene funciones de dos argumentos <code>Int</code> que
 devuelven un <code>Int</code>.</p>
@@ -679,9 +655,8 @@ devuelven un <code>Int</code>.</p>
 <p>Habrás notado que al invocar a <code>f</code> no se ponen etiquetas en los
 argumentos. De hecho, si las pusiéramos el compilador de Swift se
 quejaría:</p>
-<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span><span class="mi">3</span><span class="p">))</span>
-<span class="c1">//error: extraneous argument labels &#39;a:b:&#39; in call</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">print(f(a:2, b:3))
+//error: extraneous argument labels 'a:b:' in call</code></pre>
 <p>Esto es debido a que al ser <code>f</code> una variable se le puede asignar
 cualquier función que tenga el tipo <code>(Int, Int) -&gt; Int</code> sin
 tener en cuenta las etiquetas de los argumentos.</p>
@@ -691,63 +666,58 @@ tener en cuenta las etiquetas de los argumentos.</p>
 <ul>
 <li>Podemos usar un tipo función en parámetros de otras funciones:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">printResultado</span><span class="p">(</span><span class="n">funcion</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
-    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Resultado: </span><span class="si">\(</span><span class="n">funcion</span><span class="si">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="si">))</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="n">printResultado</span><span class="p">(</span><span class="n">funcion</span><span class="p">:</span> <span class="n">sumaDosInts</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="c1">// Prints &quot;Resultado: 8&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func printResultado(funcion: (Int, Int) -&gt; Int, _ a: Int, _ b: Int) {
+    print("Resultado: \(funcion(a, b))")
+}
+printResultado(funcion: sumaDosInts, 3, 5)
+// Prints "Resultado: 8"</code></pre>
 <ul>
 <li>Veamos otro ejemplo, que ya vimos en Scheme. Supongamos que queremos
   calcular el sumatorio desde <code>a</code> hasta <code>b</code> en el que aplicamos una
   función <code>f</code> a cada número que sumamos:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>sumatorio(a, b, f) = f(a) + f(a+1) + f(a+2) + ... + f(b)
-</code></pre></div>
+<pre class="highlight"><code class="language-text">sumatorio(a, b, f) = f(a) + f(a+1) + f(a+2) + ... + f(b)</code></pre>
 <ul>
 <li>Recordamos que se resuelve con la siguiente recursión:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>sumatorio(a, b, f) = f(a) + sumatorio(a+1, b, f)
-sumatorio(a, b, f) = 0 si a &gt; b
-</code></pre></div>
+<pre class="highlight"><code class="language-text">sumatorio(a, b, f) = f(a) + sumatorio(a+1, b, f)
+sumatorio(a, b, f) = 0 si a &gt; b</code></pre>
 <ul>
 <li>Implementación en Swift: </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">sumatorio</span><span class="p">(</span><span class="n">desde</span> <span class="n">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">hasta</span> <span class="n">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="kd">func</span> <span class="nf">f</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-   <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span> <span class="p">{</span> 
-      <span class="k">return</span> <span class="mi">0</span> 
-   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">sumatorio</span><span class="p">(</span><span class="n">desde</span><span class="p">:</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">hasta</span><span class="p">:</span> <span class="n">b</span><span class="p">,</span> <span class="kd">func</span><span class="p">:</span> <span class="n">f</span><span class="p">)</span>
-   <span class="p">}</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func sumatorio(desde a: Int, hasta b: Int, func f: (Int) -&gt; Int) -&gt; Int {
+   if a &gt; b { 
+      return 0 
+   } else {
+      return f(a) + sumatorio(desde: a + 1, hasta: b, func: f)
+   }
+}
 
-<span class="kd">func</span> <span class="nf">identidad</span><span class="p">(</span><span class="kc">_</span> <span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-   <span class="k">return</span> <span class="n">x</span>
-<span class="p">}</span>
+func identidad(_ x: Int) -&gt; Int {
+   return x
+}
 
-<span class="kd">func</span> <span class="nf">doble</span><span class="p">(</span><span class="kc">_</span> <span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-   <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
-<span class="p">}</span>
+func doble(_ x: Int) -&gt; Int {
+   return x + x
+}
 
-<span class="kd">func</span> <span class="nf">cuadrado</span><span class="p">(</span><span class="kc">_</span> <span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
-<span class="p">}</span>
+func cuadrado(_ x: Int) -&gt; Int {
+    return x * x
+}
 
-<span class="bp">print</span><span class="p">(</span><span class="n">sumatorio</span><span class="p">(</span><span class="n">desde</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hasta</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="kd">func</span><span class="p">:</span> <span class="n">identidad</span><span class="p">))</span> <span class="c1">// Imprime 55</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">sumatorio</span><span class="p">(</span><span class="n">desde</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hasta</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="kd">func</span><span class="p">:</span> <span class="n">doble</span><span class="p">))</span> <span class="c1">// Imprime 110</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">sumatorio</span><span class="p">(</span><span class="n">desde</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hasta</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="kd">func</span><span class="p">:</span> <span class="n">cuadrado</span><span class="p">))</span> <span class="c1">// Imprime 385</span>
-</code></pre></div>
+print(sumatorio(desde: 0, hasta: 10, func: identidad)) // Imprime 55
+print(sumatorio(desde: 0, hasta: 10, func: doble)) // Imprime 110
+print(sumatorio(desde: 0, hasta: 10, func: cuadrado)) // Imprime 385</code></pre>
 <hr />
 <h3>Funciones en estructuras de datos</h3>
 <ul>
 <li>Las funciones pueden también incluirse en estructuras de datos
   compuestas, como arrays:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">funciones</span> <span class="p">=</span> <span class="p">[</span><span class="n">identidad</span><span class="p">,</span> <span class="n">doble</span><span class="p">,</span> <span class="n">cuadrado</span><span class="p">]</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">funciones</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="mi">10</span><span class="p">))</span> <span class="c1">// 10</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">funciones</span><span class="p">[</span><span class="mi">1</span><span class="p">](</span><span class="mi">10</span><span class="p">))</span> <span class="c1">// 20 </span>
-<span class="bp">print</span><span class="p">(</span><span class="n">funciones</span><span class="p">[</span><span class="mi">2</span><span class="p">](</span><span class="mi">10</span><span class="p">))</span> <span class="c1">// 100</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let funciones = [identidad, doble, cuadrado]
+print(funciones[0](10)) // 10
+print(funciones[1](10)) // 20 
+print(funciones[2](10)) // 100</code></pre>
 <ul>
 <li>
 <p>El tipo de la variable <code>funciones</code> sería <code>[(Int) -&gt; Int]</code>. </p>
@@ -758,14 +728,14 @@ distintos tipos de funciones. Por ejemplo el siguiente código daría un
 error:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">suma</span><span class="p">(</span><span class="kc">_</span> <span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="kc">_</span> <span class="n">y</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-   <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
-<span class="p">}</span>
-<span class="c1">// La siguiente línea genera un error</span>
-<span class="kd">let</span> <span class="nv">misFunciones</span> <span class="p">=</span> <span class="p">[</span><span class="n">doble</span><span class="p">,</span> <span class="n">cuadrado</span><span class="p">,</span> <span class="n">suma</span><span class="p">]</span>
-<span class="c1">// error: heterogenous collection literal could only be inferred to</span>
-<span class="c1">// &#39;[Any]&#39;; add explicit type annotation if this is intentional</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func suma(_ x: Int, _ y: Int) -&gt; Int {
+   return x + y
+}
+// La siguiente línea genera un error
+let misFunciones = [doble, cuadrado, suma]
+// error: heterogenous collection literal could only be inferred to
+// '[Any]'; add explicit type annotation if this is intentional
+</code></pre>
 <hr />
 <h3>Funciones que devuelven otras funciones</h3>
 <ul>
@@ -778,15 +748,14 @@ error:</p>
 que suma 10:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeSumador10</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-  <span class="kd">func</span> <span class="nf">suma10</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span><span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="mi">10</span><span class="p">}</span>
-  <span class="k">return</span> <span class="n">suma10</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func construyeSumador10() -&gt; (Int) -&gt; Int {
+  func suma10(x: Int) -&gt; Int {return x+10}
+  return suma10
+}
 
-<span class="kd">let</span> <span class="nv">g</span> <span class="p">=</span> <span class="n">construyeSumador10</span><span class="p">()</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
-<span class="c1">// Imprime 30</span>
-</code></pre></div>
+let g = construyeSumador10()
+print(g(20))
+// Imprime 30</code></pre>
 <ul>
 <li>
 <p>La función devuelta por <code>construyeSumador10()</code> es una función con el tipo
@@ -803,18 +772,17 @@ anónimas.</p>
 <code>construyeSumador</code> reciba el número a sumar como parámetro:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeSumador</span><span class="p">(</span><span class="n">inc</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-  <span class="kd">func</span> <span class="nf">suma</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span><span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">inc</span><span class="p">}</span>
-  <span class="k">return</span> <span class="n">suma</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func construyeSumador(inc: Int) -&gt; (Int) -&gt; Int {
+  func suma(x: Int) -&gt; Int {return x+inc}
+  return suma
+}
 
-<span class="kd">let</span> <span class="nv">f2</span> <span class="p">=</span> <span class="n">construyeSumador</span><span class="p">(</span><span class="n">inc</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nv">f3</span> <span class="p">=</span> <span class="n">construyeSumador</span><span class="p">(</span><span class="n">inc</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">f2</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
-<span class="c1">// Imprime &quot;30&quot;</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">f3</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
-<span class="c1">// Imprime &quot;120&quot;</span>
-</code></pre></div>
+let f2 = construyeSumador(inc: 10)
+let f3 = construyeSumador(inc: 100)
+print(f2(20))
+// Imprime "30"
+print(f3(20))
+// Imprime "120"</code></pre>
 <hr />
 <h3>6. Tipos</h3>
 <hr />
@@ -849,13 +817,12 @@ anónimas.</p>
   los tipos de los valores devueltos por una función:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">valorDouble</span> <span class="p">:</span> <span class="nb">Double</span> <span class="p">=</span> <span class="mf">3.0</span>
-<span class="kd">let</span> <span class="nv">unaCadena</span><span class="p">:</span> <span class="nb">String</span> <span class="p">=</span> <span class="s">&quot;Hola&quot;</span>
+<pre class="highlight"><code class="language-swift">let valorDouble : Double = 3.0
+let unaCadena: String = "Hola"
 
-<span class="kd">func</span> <span class="nf">calculaEstadisticas</span><span class="p">(</span><span class="n">valores</span><span class="p">:</span> <span class="nb">Array</span><span class="p">&lt;</span><span class="nb">Int</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="bp">min</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="bp">max</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">media</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
-   <span class="p">...</span>
-<span class="p">}</span>
-</code></pre></div>
+func calculaEstadisticas(valores: Array&lt;Int&gt;) -&gt; (min: Int, max: Int, media: Int) {
+   ...
+}</code></pre>
 <ul>
 <li>En Swift existen dos clases de tipos: <strong>tipos con nombre</strong> y <strong>tipos
   compuestos</strong>.</li>
@@ -897,18 +864,18 @@ Swift</a>. </p>
   hemos visto). </li>
 </ul>
 <p>Ejemplo tuplas:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">tupla</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">,</span> <span class="nb">String</span><span class="p">)</span> <span class="p">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&quot;Hola&quot;</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nv">otraTupla</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">,</span> <span class="nb">String</span><span class="p">)</span> <span class="p">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="s">&quot;Adios&quot;</span><span class="p">)</span>
+<pre class="highlight"><code class="language-swift">
+let tupla: (Int, Int, String) = (2, 3, "Hola")
+let otraTupla: (Int, Int, String) = (5, 8, "Adios")
 
-<span class="kd">func</span> <span class="nf">sumaTupla</span><span class="p">(</span><span class="n">tupla</span> <span class="n">t1</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">),</span> <span class="n">con</span> <span class="n">t2</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">))</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">(</span><span class="n">t1</span><span class="p">.</span><span class="mi">0</span> <span class="o">+</span> <span class="n">t2</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">t1</span><span class="p">.</span><span class="mi">1</span> <span class="o">+</span> <span class="n">t2</span><span class="p">.</span><span class="mi">1</span><span class="p">)</span>
-<span class="p">}</span>
+func sumaTupla(tupla t1: (Int, Int), con t2: (Int, Int)) -&gt; (Int, Int) {
+  return (t1.0 + t2.0, t1.1 + t2.1)
+}
 
-<span class="bp">print</span><span class="p">(</span><span class="n">sumaTupla</span><span class="p">(</span><span class="n">tupla</span><span class="p">:</span> <span class="p">(</span><span class="n">tupla</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">tupla</span><span class="p">.</span><span class="mi">1</span><span class="p">),</span>
-                <span class="n">con</span><span class="p">:</span> <span class="p">(</span><span class="n">otraTupla</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">otraTupla</span><span class="p">.</span><span class="mi">1</span><span class="p">)))</span>
+print(sumaTupla(tupla: (tupla.0, tupla.1),
+                con: (otraTupla.0, otraTupla.1)))
 
-<span class="c1">// Imprime (7, 11)</span>
-</code></pre></div>
+// Imprime (7, 11)</code></pre>
 <hr />
 <h3>Typealias</h3>
 <ul>
@@ -916,28 +883,27 @@ Swift</a>. </p>
   asignado a cualquier otro tipo. Ambos tipos son iguales a todos los
   efectos (es únicamente azúcar sintáctico).</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">typealias</span> <span class="n">Resultado</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span>
+<pre class="highlight"><code class="language-swift">typealias Resultado = (Int, Int)
 
-<span class="kd">enum</span> <span class="nc">Quiniela</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">uno</span><span class="p">,</span> <span class="n">equis</span><span class="p">,</span> <span class="n">dos</span>
-<span class="p">}</span>
+enum Quiniela {
+    case uno, equis, dos
+}
 
-<span class="kd">func</span> <span class="nf">quiniela</span><span class="p">(</span><span class="n">resultado</span><span class="p">:</span> <span class="n">Resultado</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Quiniela</span> <span class="p">{</span>
-  <span class="k">switch</span> <span class="n">resultado</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="p">(</span><span class="n">goles1</span><span class="p">,</span> <span class="n">goles2</span><span class="p">)</span> <span class="k">where</span> <span class="n">goles1</span> <span class="o">&lt;</span> <span class="n">goles2</span><span class="p">:</span>
-      <span class="k">return</span> <span class="p">.</span><span class="n">dos</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="p">(</span><span class="n">goles1</span><span class="p">,</span> <span class="n">goles2</span><span class="p">)</span> <span class="k">where</span> <span class="n">goles1</span> <span class="o">&gt;</span> <span class="n">goles2</span><span class="p">:</span>
-      <span class="k">return</span> <span class="p">.</span><span class="n">uno</span>
-    <span class="k">default</span><span class="p">:</span>
-      <span class="k">return</span> <span class="p">.</span><span class="n">equis</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+func quiniela(resultado: Resultado) -&gt; Quiniela {
+  switch resultado {
+    case let (goles1, goles2) where goles1 &lt; goles2:
+      return .dos
+    case let (goles1, goles2) where goles1 &gt; goles2:
+      return .uno
+    default:
+      return .equis
+  }
+}
 
-<span class="bp">print</span><span class="p">(</span><span class="n">quiniela</span><span class="p">(</span><span class="n">resultado</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
-<span class="c1">// Imprime Dos</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">quiniela</span><span class="p">(</span><span class="n">resultado</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
-<span class="c1">// Imprime Equis</span>
-</code></pre></div>
+print(quiniela(resultado: (1,3)))
+// Imprime Dos
+print(quiniela(resultado: (2,2)))
+// Imprime Equis</code></pre>
 <ul>
 <li>En el ejemplo se usa una sentencia <code>switch</code> que recibe el resultado
 del partido. Este resultado es una tupla de dos enteros. En el <code>case
@@ -982,33 +948,30 @@ gestión de memoria. </p>
   ejemplo, si asignamos una cadena a otra, se realiza una copia:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">str1</span> <span class="p">=</span> <span class="s">&quot;Hola&quot;</span>
-<span class="kd">var</span> <span class="nv">str2</span> <span class="p">=</span> <span class="n">str1</span>
-<span class="n">str1</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;Adios&quot;</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">str1</span><span class="p">)</span> <span class="c1">// Imprime &quot;HolaAdios&quot;</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">str2</span><span class="p">)</span> <span class="c1">// Imprime &quot;Hola&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">var str1 = "Hola"
+var str2 = str1
+str1.append("Adios")
+print(str1) // Imprime "HolaAdios"
+print(str2) // Imprime "Hola"</code></pre>
 <ul>
 <li>Los arrays también son estructuras y, por tanto, también tienen
   semántica de copia:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">array1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="kd">var</span> <span class="nv">array2</span> <span class="p">=</span> <span class="n">array1</span>
-<span class="n">array1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">10</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">array1</span><span class="p">)</span> <span class="c1">// [10, 2, 3, 4]</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">array2</span><span class="p">)</span> <span class="c1">// [1, 2, 3, 4]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">var array1 = [1, 2, 3, 4]
+var array2 = array1
+array1[0] = 10
+print(array1) // [10, 2, 3, 4]
+print(array2) // [1, 2, 3, 4]</code></pre>
 <ul>
 <li>A diferencia de otros lenguajes como Java, los parámetros de una
 función siempre son inmutables y se pasan por copia, para reforzar el
 carácter funcional de las funciones. Por ejemplo, es incorrecto
 escribir lo siguiente:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>func ponCero(array: [Int], pos: Int) {
+<pre class="highlight"><code>func ponCero(array: [Int], pos: Int) {
     array[pos] = 0
-// error: cannot assign through subscript: &#39;array&#39; is a &#39;let&#39; constant
-}
-</code></pre></div>
+// error: cannot assign through subscript: 'array' is a 'let' constant
+}</code></pre>
 <ul>
 <li>Se podría pensar que es muy costoso copiar un array entero, pero no
 es así. El compilador de Swift optimiza estas sentencias y sólo
@@ -1041,106 +1004,96 @@ ejemplos.</p>
 <li>Las enumeraciones definen un tipo con un valor restringido de
   posibles valores:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Direccion</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">norte</span>
-    <span class="k">case</span> <span class="n">sur</span>
-    <span class="k">case</span> <span class="n">este</span>
-    <span class="k">case</span> <span class="n">oeste</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">enum Direccion {
+    case norte
+    case sur
+    case este
+    case oeste
+}</code></pre>
 <p>Ejemplo de uso:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">hemosGirado</span> <span class="p">=</span> <span class="kc">true</span>
-<span class="kd">var</span> <span class="nv">direccionActual</span> <span class="p">=</span> <span class="n">Direccion</span><span class="p">.</span><span class="n">norte</span>
-<span class="k">if</span> <span class="n">hemosGirado</span> <span class="p">{</span>
-   <span class="n">direccionActual</span> <span class="p">=</span> <span class="p">.</span><span class="n">sur</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let hemosGirado = true
+var direccionActual = Direccion.norte
+if hemosGirado {
+   direccionActual = .sur
+}</code></pre>
 <p>En sentencias switch:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">direccionAIr</span> <span class="p">=</span> <span class="n">Direccion</span><span class="p">.</span><span class="n">sur</span>
-<span class="k">switch</span> <span class="n">direccionAIr</span> <span class="p">{</span>
-<span class="k">case</span> <span class="p">.</span><span class="n">norte</span><span class="p">:</span>
-   <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Nos vamos al norte&quot;</span><span class="p">)</span>
-<span class="k">case</span> <span class="p">.</span><span class="n">sur</span><span class="p">:</span>
-   <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Cuidado con los pinguinos&quot;</span><span class="p">)</span>
-<span class="k">case</span> <span class="p">.</span><span class="n">este</span><span class="p">:</span>
-    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Donde nace el sol&quot;</span><span class="p">)</span>
-<span class="k">case</span> <span class="p">.</span><span class="n">oeste</span><span class="p">:</span>
-    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Donde el cielo es azul&quot;</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="c1">// Imprime &quot;Cuidado con los pinguinos&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let direccionAIr = Direccion.sur
+switch direccionAIr {
+case .norte:
+   print("Nos vamos al norte")
+case .sur:
+   print("Cuidado con los pinguinos")
+case .este:
+    print("Donde nace el sol")
+case .oeste:
+    print("Donde el cielo es azul")
+}
+// Imprime "Cuidado con los pinguinos"</code></pre>
 <h3>Valores brutos de enumeraciones</h3>
 <ul>
 <li>Es posible asignar a las constantes del enumerado un valor concreto de
 un tipo subyacente, por ejemplo enteros:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Quiniela</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">uno</span><span class="p">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">equis</span><span class="p">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dos</span><span class="p">=</span><span class="mi">2</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">enum Quiniela: Int {
+    case uno=1, equis=0, dos=2
+}</code></pre>
 <ul>
 <li>Se puede obtener el valor bruto a partir del propio tipo o de una
 variable del tipo, usando <code>rawValue</code>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1">// Obtenemos el valor bruto a partir del tipo</span>
-<span class="kd">let</span> <span class="nv">valorEquis</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">=</span> <span class="n">Quiniela</span><span class="p">.</span><span class="n">equis</span><span class="p">.</span><span class="n">rawValue</span>
+<pre class="highlight"><code class="language-swift">// Obtenemos el valor bruto a partir del tipo
+let valorEquis: Int = Quiniela.equis.rawValue
 
-<span class="c1">// Obtenemos el valor bruto a partir de una variable</span>
-<span class="kd">let</span> <span class="nv">res</span> <span class="p">=</span> <span class="n">Quiniela</span><span class="p">.</span><span class="n">equis</span>
-<span class="kd">let</span> <span class="nv">valorEquis</span> <span class="p">=</span> <span class="n">res</span><span class="p">.</span><span class="n">rawValue</span>
-</code></pre></div>
+// Obtenemos el valor bruto a partir de una variable
+let res = Quiniela.equis
+let valorEquis = res.rawValue</code></pre>
 <ul>
 <li>También se puede asignar los valores de forma implícita, dando un
 valor a la primera constante. Las siguientes tienen el valor consecutivo:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Planeta</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">mercurio</span><span class="p">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">venus</span><span class="p">,</span> <span class="n">tierra</span><span class="p">,</span> <span class="n">marte</span><span class="p">,</span> <span class="n">jupiter</span><span class="p">,</span> <span class="n">saturno</span><span class="p">,</span> <span class="n">urano</span><span class="p">,</span> <span class="n">neptuno</span>
-<span class="p">}</span>
-<span class="kd">let</span> <span class="nv">posicionTierra</span> <span class="p">=</span> <span class="n">Planeta</span><span class="p">.</span><span class="n">tierra</span><span class="p">.</span><span class="n">rawValue</span>
-<span class="c1">// posicionTierra es 3</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">enum Planeta: Int {
+    case mercurio=1, venus, tierra, marte, jupiter, saturno, urano, neptuno
+}
+let posicionTierra = Planeta.tierra.rawValue
+// posicionTierra es 3</code></pre>
 <ul>
 <li>Podemos escoger cualquier tipo subyacente. Por ejemplo el tipo <code>Character</code>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">CaracterControlASCII</span><span class="p">:</span> <span class="nb">Character</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">tab</span> <span class="p">=</span> <span class="s">&quot;</span><span class="se">\t</span><span class="s">&quot;</span>
-    <span class="k">case</span> <span class="n">lineFeed</span> <span class="p">=</span> <span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span>
-    <span class="k">case</span> <span class="n">carriageReturn</span> <span class="p">=</span> <span class="s">&quot;</span><span class="se">\r</span><span class="s">&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">enum CaracterControlASCII: Character {
+    case tab = "\t"
+    case lineFeed = "\n"
+    case carriageReturn = "\r"
+}</code></pre>
 <ul>
 <li>Y por último, se puede definir como tipo subyacente <code>String</code> y los
 valores brutos de las constantes serán sus nombres convertidos a
 cadenas:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Direccion</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">norte</span><span class="p">,</span> <span class="n">sur</span><span class="p">,</span> <span class="n">este</span><span class="p">,</span> <span class="n">oeste</span>
-<span class="p">}</span>
-<span class="kd">let</span> <span class="nv">direccionAtardecer</span> <span class="p">=</span> <span class="n">Direccion</span><span class="p">.</span><span class="n">oeste</span><span class="p">.</span><span class="n">rawValue</span>
-<span class="c1">// direccionAtardecer es &quot;oeste&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">enum Direccion: String {
+    case norte, sur, este, oeste
+}
+let direccionAtardecer = Direccion.oeste.rawValue
+// direccionAtardecer es "oeste"</code></pre>
 <ul>
 <li>En este caso, también se puede inicializar el valor bruto con una
   asignación explícita y no usar el propio nombre:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Direccion</span><span class="p">:</span> <span class="nb">String</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">norte</span> <span class="p">=</span> <span class="s">&quot;north&quot;</span>
-    <span class="k">case</span> <span class="n">sur</span> <span class="p">=</span> <span class="s">&quot;south&quot;</span>
-    <span class="k">case</span> <span class="n">este</span> <span class="p">=</span> <span class="s">&quot;east&quot;</span>
-    <span class="k">case</span> <span class="n">oeste</span> <span class="p">=</span> <span class="s">&quot;west&quot;</span>
-<span class="p">}</span>
-<span class="kd">let</span> <span class="nv">direccionAtardecer</span> <span class="p">=</span> <span class="n">Direccion</span><span class="p">.</span><span class="n">oeste</span><span class="p">.</span><span class="n">rawValue</span>
-<span class="c1">// direccionAtardecer es &quot;west&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">enum Direccion: String {
+    case norte = "north"
+    case sur = "south"
+    case este = "east"
+    case oeste = "west"
+}
+let direccionAtardecer = Direccion.oeste.rawValue
+// direccionAtardecer es "west"</code></pre>
 <ul>
 <li>Cuando se definen valores brutos es posible inicializar el enumerado
 de una forma similar a una estructura o una clase pasando el valor
 bruto. Devuelve el valor enumerado correspondiente o <code>nil</code> (un
 opcional, lo veremos más adelante):</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">posiblePlaneta</span> <span class="p">=</span> <span class="n">Planeta</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="mi">7</span><span class="p">)</span>
-<span class="c1">// posiblePlaneta es de tipo Planeta? y es igual a Planeta.urano</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let posiblePlaneta = Planeta(rawValue: 7)
+// posiblePlaneta es de tipo Planeta? y es igual a Planeta.urano</code></pre>
 <hr />
 <h2>8. Enumeraciones instanciables</h2>
 <ul>
@@ -1169,19 +1122,17 @@ enumeración.</li>
 <code>Int</code> o un <code>String</code>:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">Multiple</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">num</span><span class="p">(</span><span class="nb">Int</span><span class="p">)</span>
-    <span class="k">case</span> <span class="n">str</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">enum Multiple {
+    case num(Int)
+    case str(String)
+}</code></pre>
 <ul>
 <li>De esta forma, podemos crear valores de tipo <code>Multiple</code> que
 contienen un valor asociado <code>Int</code> (instanciando el caso <code>num</code>) o un
 <code>String</code> (instanciando el caso <code>str</code>):</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">valor3</span> <span class="p">=</span> <span class="n">Multiple</span><span class="p">.</span><span class="n">num</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nv">valor4</span> <span class="p">=</span> <span class="n">Multiple</span><span class="p">.</span><span class="n">str</span><span class="p">(</span><span class="s">&quot;Hola&quot;</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let valor3 = Multiple.num(10)
+let valor4 = Multiple.str("Hola")</code></pre>
 <ul>
 <li>
 <p>Es necesario definir un valor concreto asociado al crear el enumerado.</p>
@@ -1193,19 +1144,18 @@ valor. Por ejemplo, la siguiente función reciba instancias de tipo
 <code>Multiple</code> e imprime el valor asociado al enumerado que se pasa como parámetro.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">imprime</span><span class="p">(</span><span class="n">multiple</span><span class="p">:</span> <span class="n">Multiple</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">switch</span> <span class="n">multiple</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">num</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Multiple tiene un Int: </span><span class="si">\(</span><span class="n">x</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">str</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Multiple tiene un String: </span><span class="si">\(</span><span class="n">s</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="n">imprime</span><span class="p">(</span><span class="n">multiple</span><span class="p">:</span> <span class="n">valor3</span><span class="p">)</span>
-<span class="c1">// Imprime &quot;Multiple tiene un Int: 10&quot;</span>
-<span class="n">imprime</span><span class="p">(</span><span class="n">multiple</span><span class="p">:</span> <span class="n">valor4</span><span class="p">)</span>
-<span class="c1">// Imprime &quot;Multiple tiene un String: Hola</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func imprime(multiple: Multiple) {
+    switch multiple {
+    case let .num(x):
+        print("Multiple tiene un Int: \(x)")
+    case let .str(s):
+        print("Multiple tiene un String: \(s)")
+    }
+}
+imprime(multiple: valor3)
+// Imprime "Multiple tiene un Int: 10"
+imprime(multiple: valor4)
+// Imprime "Multiple tiene un String: Hola</code></pre>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
 <p>No hay que confundir un valor asociado a un caso y un valor bruto:
@@ -1216,11 +1166,10 @@ proporciona cuando se define el valor concreto de la enumeración.</p>
 <ul>
 <li>El valor asociado puede ser una tupla:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">CodigoBarras</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">upc</span><span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span>
-    <span class="k">case</span> <span class="n">qrCode</span><span class="p">(</span><span class="nb">String</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">enum CodigoBarras {
+    case upc(Int, Int, Int, Int)
+    case qrCode(String)
+}</code></pre>
 <hr />
 <h3>Enumeraciones recursivas</h3>
 <ul>
@@ -1228,44 +1177,41 @@ proporciona cuando se define el valor concreto de la enumeración.</p>
 valor con la recursión para crear enumeraciones recursivas. Hay que
 preceder la palabra clave <code>enum</code> con <code>indirect</code>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kr">indirect</span> <span class="kd">enum</span> <span class="nc">ExpresionAritmetica</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">numero</span><span class="p">(</span><span class="nb">Int</span><span class="p">)</span>
-    <span class="k">case</span> <span class="n">suma</span><span class="p">(</span><span class="n">ExpresionAritmetica</span><span class="p">,</span> <span class="n">ExpresionAritmetica</span><span class="p">)</span>
-    <span class="k">case</span> <span class="n">multiplicacion</span><span class="p">(</span><span class="n">ExpresionAritmetica</span><span class="p">,</span> <span class="n">ExpresionAritmetica</span><span class="p">)</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">indirect enum ExpresionAritmetica {
+    case numero(Int)
+    case suma(ExpresionAritmetica, ExpresionAritmetica)
+    case multiplicacion(ExpresionAritmetica, ExpresionAritmetica)
+}
 
-<span class="kd">let</span> <span class="nv">cinco</span> <span class="p">=</span> <span class="n">ExpresionAritmetica</span><span class="p">.</span><span class="n">numero</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nv">cuatro</span> <span class="p">=</span> <span class="n">ExpresionAritmetica</span><span class="p">.</span><span class="n">numero</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nv">suma</span> <span class="p">=</span> <span class="n">ExpresionAritmetica</span><span class="p">.</span><span class="n">suma</span><span class="p">(</span><span class="n">cinco</span><span class="p">,</span> <span class="n">cuatro</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nv">producto</span> <span class="p">=</span> <span class="n">ExpresionAritmetica</span><span class="p">.</span><span class="n">multiplicacion</span><span class="p">(</span><span class="n">suma</span><span class="p">,</span> <span class="n">ExpresionAritmetica</span><span class="p">.</span><span class="n">numero</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-</code></pre></div>
+let cinco = ExpresionAritmetica.numero(5)
+let cuatro = ExpresionAritmetica.numero(4)
+let suma = ExpresionAritmetica.suma(cinco, cuatro)
+let producto = ExpresionAritmetica.multiplicacion(suma, ExpresionAritmetica.numero(2))</code></pre>
 <ul>
 <li>Es muy cómodo manejar enumeraciones recursivas de forma recursiva:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">evalua</span><span class="p">(</span><span class="n">expresion</span><span class="p">:</span> <span class="n">ExpresionAritmetica</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-    <span class="k">switch</span> <span class="n">expresion</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">numero</span><span class="p">(</span><span class="n">valor</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">valor</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">suma</span><span class="p">(</span><span class="n">izquierda</span><span class="p">,</span> <span class="n">derecha</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">evalua</span><span class="p">(</span><span class="n">expresion</span><span class="p">:</span> <span class="n">izquierda</span><span class="p">)</span> <span class="o">+</span> <span class="n">evalua</span><span class="p">(</span><span class="n">expresion</span><span class="p">:</span> <span class="n">derecha</span><span class="p">)</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">multiplicacion</span><span class="p">(</span><span class="n">izquierda</span><span class="p">,</span> <span class="n">derecha</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">evalua</span><span class="p">(</span><span class="n">expresion</span><span class="p">:</span> <span class="n">izquierda</span><span class="p">)</span> <span class="o">*</span> <span class="n">evalua</span><span class="p">(</span><span class="n">expresion</span><span class="p">:</span> <span class="n">derecha</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func evalua(expresion: ExpresionAritmetica) -&gt; Int {
+    switch expresion {
+    case let .numero(valor):
+        return valor
+    case let .suma(izquierda, derecha):
+        return evalua(expresion: izquierda) + evalua(expresion: derecha)
+    case let .multiplicacion(izquierda, derecha):
+        return evalua(expresion: izquierda) * evalua(expresion: derecha)
+    }
+}
 
-<span class="bp">print</span><span class="p">(</span><span class="n">evalua</span><span class="p">(</span><span class="n">expresion</span><span class="p">:</span> <span class="n">producto</span><span class="p">))</span>
-<span class="c1">// Imprime 18</span>
-</code></pre></div>
+print(evalua(expresion: producto))
+// Imprime 18</code></pre>
 <ul>
 <li>Otro ejemplo de enums recursivos, para definir un tipo de datos
 <code>Lista</code> similar al que vimos en Scheme. La lista puede ser una lista
 vacía o puede contener dos elementos: un valor <code>Int</code> y otra lista:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kr">indirect</span> <span class="kd">enum</span> <span class="nc">Lista</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">vacia</span>
-    <span class="k">case</span> <span class="n">nodo</span><span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="n">Lista</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">indirect enum Lista {
+    case vacia
+    case nodo(Int, Lista)
+}</code></pre>
 <ul>
 <li>
 <p>Para crear una lista de tipo <code>nodo</code> deberemos dar un valor entero (el
@@ -1277,15 +1223,13 @@ lista). También podemos crear una lista vacía.</p>
 manera:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">lista1</span> <span class="p">=</span> <span class="n">Lista</span><span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">Lista</span><span class="p">.</span><span class="n">vacia</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nv">lista2</span> <span class="p">=</span> <span class="n">Lista</span><span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">lista1</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nv">lista3</span> <span class="p">=</span> <span class="n">Lista</span><span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">lista2</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let lista1 = Lista.nodo(30, Lista.vacia)
+let lista2 = Lista.nodo(20, lista1)
+let lista3 = Lista.nodo(10, lista2)</code></pre>
 <ul>
 <li>Podríamos crear esta misma lista de una forma más abreviada:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">lista</span><span class="p">:</span> <span class="n">Lista</span> <span class="p">=</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="p">.</span><span class="n">vacia</span><span class="p">)))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let lista: Lista = .nodo(10, .nodo(20, .nodo(30, .vacia)))</code></pre>
 <ul>
 <li>Una vez definido el tipo enumerado, podemos definir funciones que
 trabajen con él. La siguiente función, por ejemplo, es una función
@@ -1293,38 +1237,36 @@ recursiva que recibe una lista y devuelve la suma de sus
 elementos. Funciona de una forma muy similar a la definición que
 hicimos en Scheme:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">suma</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">Lista</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-    <span class="k">switch</span> <span class="n">lista</span> <span class="p">{</span>
-    <span class="k">case</span>  <span class="p">.</span><span class="n">vacia</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
-    <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="bp">first</span><span class="p">,</span> <span class="n">rest</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">first</span> <span class="o">+</span> <span class="n">suma</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">rest</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func suma(lista: Lista) -&gt; Int {
+    switch lista {
+    case  .vacia:
+        return 0
+    case let .nodo(first, rest):
+        return first + suma(lista: rest)
+    }
+}
 
-<span class="kd">let</span> <span class="nv">z</span><span class="p">:</span> <span class="n">Lista</span> <span class="p">=</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">.</span><span class="n">vacia</span><span class="p">))</span>
+let z: Lista = .nodo(20, .nodo(10, .vacia))
 
-<span class="bp">print</span><span class="p">(</span><span class="n">suma</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">z</span><span class="p">))</span>
-<span class="c1">// Imprime 30</span>
-</code></pre></div>
+print(suma(lista: z))
+// Imprime 30</code></pre>
 <ul>
 <li>Podemos también definir una función recursiva <code>construye(lista:[Int])</code>
 que devuelve una lista a partir de una array de enteros:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construye</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="n">Lista</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">lista</span><span class="p">.</span><span class="bp">isEmpty</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">Lista</span><span class="p">.</span><span class="n">vacia</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nv">primero</span> <span class="p">=</span> <span class="n">lista</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="kd">let</span> <span class="nv">resto</span> <span class="p">=</span> <span class="nb">Array</span><span class="p">(</span><span class="n">lista</span><span class="p">.</span><span class="bp">dropFirst</span><span class="p">())</span>
-        <span class="k">return</span> <span class="n">Lista</span><span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="n">primero</span><span class="p">,</span> <span class="n">construye</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">resto</span><span class="p">))</span>
-    <span class="p">}</span> 
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func construye(lista: [Int]) -&gt; Lista {
+    if (lista.isEmpty) {
+        return Lista.vacia
+    } else {
+        let primero = lista[0]
+        let resto = Array(lista.dropFirst())
+        return Lista.nodo(primero, construye(lista: resto))
+    } 
+}
 
-<span class="kd">let</span> <span class="nv">lista2</span> <span class="p">=</span> <span class="n">construye</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+let lista2 = construye(lista: [1,2,3,4,5])
 
-<span class="bp">print</span><span class="p">(</span><span class="n">suma</span><span class="p">(</span><span class="n">lista</span><span class="p">:</span> <span class="n">lista2</span><span class="p">))</span>
-<span class="c1">// Imprime 15</span>
-</code></pre></div></body>
+print(suma(lista: lista2))
+// Imprime 15</code></pre></body>
 
 </html>
