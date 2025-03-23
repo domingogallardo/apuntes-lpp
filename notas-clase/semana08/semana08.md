@@ -62,13 +62,14 @@ principalmente funcionales como:
 ### Ejecución de programas Swift
 
 - Consultar en el seminario de Swift la forma de instalar el
-  compilador de Swift: usando un contenedor Docker, usando el terminal
-  (Mac) o en Linux.
+  compilador de Swift: usar WSL en Windows, usando la terminal (Mac) o en Linux.
 
+<!--
 Visual Code Studio con un terminal y con el comando docker para
 ejecutar Swift:
 
 <img src="imagenes/vcode.png" width="700px"/>
+-->
 
 ----
 
