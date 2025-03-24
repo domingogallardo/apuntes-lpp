@@ -53,16 +53,19 @@ Swift.
 
 ### Ejecución on-line ###
 
-Existen varios sitios on-line en los que es posible ejecutar código
-Swift. Recomendamos la dirección
-[http://online.swiftplayground.run](http://online.swiftplayground.run). 
+Existen varios sitios on-line en los que es posible ejecutar código Swift. Recomendamos:
 
-<img src="imagenes/swift-on-line.png" width="700px"/>
+- [Swift My Compiler](https://www.mycompiler.io/es/new/swift).
 
-En el caso en que el enlace anterior no funcione, también es posible
-usar [replit](https://replit.com).
+<img src="imagenes/myCompiler.png" width="700px"/>
 
-<img src="imagenes/replit.png" width=700px"/>
+- [Swift Playground Online IDE Pro](https://www.onlineide.pro/playground/swift).
+
+<img src="imagenes/onlineIdePro.png" width=700px"/>
+
+- [Online Swift Playground] (https://online.swiftplayground.run/). 
+
+<img src="imagenes/swift-on-line.png" width=700px"/>
 
 ### Instalación en Linux Ubuntu
 
@@ -142,11 +145,11 @@ distribuciones de Ubuntu.
 
 Puedes instalar nuestra distribución WSL Ubuntu 22.04.03 para Windows con Swift
 5.10 descargándola desde [este
-enlace](https://drive.google.com/file/d/1q1YWkNQ1i1H4hI1js296EXLa6nACigCy/view?usp=drive_link).
+enlace](https://drive.google.com/file/d/1yiQTEGQjRrxIorbrpU8pNCb0PTYQ0CJU/view?usp=sharing).
 
 Se trata de una copia exportada en formato tar de una una distribución WSL
-Ubuntu preparada con Swift 5.10 instalada para ejecutar directamente
-swift. Antes de proceder, verifica que tienes WSL instalado y habilitado en tu
+Ubuntu 24.04 preparada con Swift 6.0.3 instalada para ejecutar directamente
+Swift. Antes de proceder, verifica que tienes WSL instalado y habilitado en tu
 sistema con el siguiente comando en la terminal de Windows (PowerShell o CMD): 
 
 ```
