@@ -63,7 +63,7 @@ Existen varios sitios on-line en los que es posible ejecutar código Swift. Reco
 
 <img src="imagenes/onlineIdePro.png" width=700px"/>
 
-- [Online Swift Playground] (https://online.swiftplayground.run/). 
+- [Online Swift Playground](https://online.swiftplayground.run/). 
 
 <img src="imagenes/swift-on-line.png" width=700px"/>
 
