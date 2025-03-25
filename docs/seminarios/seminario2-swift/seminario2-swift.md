@@ -69,51 +69,42 @@ Existen varios sitios on-line en los que es posible ejecutar código Swift. Reco
 
 ### Instalación en Linux Ubuntu
 
-Existen distribuciones oficiales de Swift para Ubuntu 18.04, 20.04, 22.04
-CentOS 7, CentOS 8 y Amazon Linux 2.
+Existen distribuciones oficiales de Swift para Linux. Entre ellas, la 22.04 y 24.04.
 
 Brevemente, los pasos para su instalación son los siguientes:
 
-1. Confirmar que los paquetes de la instalación de Linux están
-   actualizados:
+1. Confirmar que los paquetes de la instalación de Linux están actualizados:
    
     ```
     $ sudo apt-get update
+    $ sudo apt-get upgrade
     ```
 
 2. Instalar las dependencias que encontrarás en la página [web oficial
 de Apple](https://www.swift.org/getting-started/#installing-swift)
-usando `apt-get install`. Puede ser que necesites tener permisos de
+usando `apt-get install`. Necesitarás tener permisos de
 super usuario para hacerlo: `sudo apt-get install`.
 
     !!! Danger "Cuidado" 
         Dependiendo de tu versión de Linux deberás
         descargarte unas dependencias distintas. Mira bien en la
         página de Apple el comando `apt-get install` concreto que
-        debes ejecutar según tu versión.
+        debes ejecutar según tu versión. 
+        Mira las dependencias para tu versión en la página [Swift oficial](https://www.swift.org/install/linux/tarball/).
 
 3. Descargar la versión y plataforma deseada (fichero
 `swift-<VERSION>-<PLATFORM>.tar.gz`). Por ejemplo, los siguientes
-comandos se descargan la versión 5.8 de Swift de las distintas
+comandos se descargan la versión 6.0.3 de Swift de las distintas
 distribuciones de Ubuntu. 
-
-    - Ubuntu 18.04:
-
-        ```
-        $ wget https://download.swift.org/swift-5.8-release/ubuntu1804/swift-5.8-RELEASE/swift-5.8-RELEASE-ubuntu18.04.tar.gz
-        ```
-
-    - Ubuntu 20.04:
-    
-        ```
-        $ wget https://download.swift.org/swift-5.8-release/ubuntu2004/swift-5.8-RELEASE/swift-5.8-RELEASE-ubuntu20.04.tar.gz
-        ```
 
     - Ubuntu 22.04:
     
         ```
-        $ wget https://download.swift.org/swift-5.8-release/ubuntu2204/swift-5.8-RELEASE/swift-5.8-RELEASE-ubuntu22.04.tar.gz
+        $ wget https://download.swift.org/swift-6.0.3-release/ubuntu2204/swift-6.0.3-RELEASE/swift-6.0.3-RELEASE-ubuntu22.04.tar.gz
         ```
+    - Ubuntu 24.04:        
+        
+        $ wget https://download.swift.org/swift-6.0.3-release/ubuntu2404/swift-6.0.3-RELEASE/swift-6.0.3-RELEASE-ubuntu24.04.tar.gz
 
 4. Extaer el archivo:
 
@@ -143,8 +134,7 @@ distribuciones de Ubuntu.
 
 ### Instalación en Windows ###
 
-Puedes instalar nuestra distribución WSL Ubuntu 22.04.03 para Windows con Swift
-5.10 descargándola desde [este
+Puedes instalar nuestra distribución WSL descargándola desde [este
 enlace](https://drive.google.com/file/d/1yiQTEGQjRrxIorbrpU8pNCb0PTYQ0CJU/view?usp=sharing).
 
 Se trata de una copia exportada en formato tar de una una distribución WSL
@@ -181,14 +171,14 @@ Este comando te mostrará las distribuciones de Linux instaladas y su estado.
     
 Pasos para importar nuestra distribución: 
 
-1. Crea una carpeta `UbuntuLPP` en un disco con al menos 3.5GB de capacidad.
-2. Descarga la copia (`UbuntuLPP.tar`) en esa carpeta.
+1. Crea una carpeta `UbuntuLPP` en un disco con al menos 8GB de capacidad.
+2. Descarga la copia (`UbuntuLPP.tgz`) en esa carpeta.
 3. Abre un ventana de símbolo de sistema (`cmd.exe`) y posiciónate en esa
 carpeta (`cd [ruta]\UbuntuLPP`).
 4. Ejecuta el siguiente comando para importar la distribución a tu WSL 2:
 
     ```
-    wsl --import UbuntuLPP . UbuntuLPP.tar
+    wsl --import UbuntuLPP . UbuntuLPP.tgz
     ```
 
     Al importar la distribución con el comando anterior, el nombre que se le ha
@@ -196,11 +186,11 @@ carpeta (`cd [ruta]\UbuntuLPP`).
     el lugar donde se ha desempaquetado el disco virtual (`ext4.vhdx`) es el
     directorio donde se ejecuta el comando (se podía haber sustituido el `.` por
     otra ubicación distinta). Una vez importada la distribución, se puede
-    eliminar el archivo tar (`UbuntuLPP.tar`).
+    eliminar el archivo tar (`UbuntuLPP.tgz`).
 
-    !!! Danger "Evita guardar el disco WSL en OneDrive"
+    !!! Danger "Evita guardar el disco WSL en la nube"
         Almacenar los archivos de disco virtual de WSL en servicios de
-        sincronización como OneDrive puede provocar conflictos de acceso y
+        sincronización como OneDrive, Drive o Dropbox, puede provocar conflictos de acceso y
         errores. Para asegurar un funcionamiento adecuado, guárdalos
         directamente en el disco duro de tu ordenador, en una ruta local.
 
