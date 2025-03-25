@@ -1015,49 +1015,41 @@ Swift.</p>
 </ul>
 <p><img src="imagenes/swift-on-line.png" width=700px"/></p>
 <h3 id="instalacion-en-linux-ubuntu">Instalación en Linux Ubuntu<a class="headerlink" href="#instalacion-en-linux-ubuntu" title="Permanent link">&para;</a></h3>
-<p>Existen distribuciones oficiales de Swift para Ubuntu 18.04, 20.04, 22.04
-CentOS 7, CentOS 8 y Amazon Linux 2.</p>
+<p>Existen distribuciones oficiales de Swift para Linux. Entre ellas, la 22.04 y 24.04.</p>
 <p>Brevemente, los pasos para su instalación son los siguientes:</p>
 <ol>
 <li>
-<p>Confirmar que los paquetes de la instalación de Linux están
-   actualizados:</p>
+<p>Confirmar que los paquetes de la instalación de Linux están actualizados:</p>
 <div class="highlight"><pre><span></span><code>$ sudo apt-get update
+$ sudo apt-get upgrade
 </code></pre></div>
 </li>
 <li>
 <p>Instalar las dependencias que encontrarás en la página <a href="https://www.swift.org/getting-started/#installing-swift">web oficial
 de Apple</a>
-usando <code>apt-get install</code>. Puede ser que necesites tener permisos de
+usando <code>apt-get install</code>. Necesitarás tener permisos de
 super usuario para hacerlo: <code>sudo apt-get install</code>.</p>
 <div class="admonition danger">
 <p class="admonition-title">Cuidado</p>
 <p>Dependiendo de tu versión de Linux deberás
 descargarte unas dependencias distintas. Mira bien en la
 página de Apple el comando <code>apt-get install</code> concreto que
-debes ejecutar según tu versión.</p>
+debes ejecutar según tu versión. 
+Mira las dependencias para tu versión en la página <a href="https://www.swift.org/install/linux/tarball/">Swift oficial</a>.</p>
 </div>
 </li>
 <li>
 <p>Descargar la versión y plataforma deseada (fichero
 <code>swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz</code>). Por ejemplo, los siguientes
-comandos se descargan la versión 5.8 de Swift de las distintas
+comandos se descargan la versión 6.0.3 de Swift de las distintas
 distribuciones de Ubuntu. </p>
 <ul>
 <li>
-<p>Ubuntu 18.04:</p>
-<div class="highlight"><pre><span></span><code>$ wget https://download.swift.org/swift-5.8-release/ubuntu1804/swift-5.8-RELEASE/swift-5.8-RELEASE-ubuntu18.04.tar.gz
-</code></pre></div>
-</li>
-<li>
-<p>Ubuntu 20.04:</p>
-<div class="highlight"><pre><span></span><code>$ wget https://download.swift.org/swift-5.8-release/ubuntu2004/swift-5.8-RELEASE/swift-5.8-RELEASE-ubuntu20.04.tar.gz
-</code></pre></div>
-</li>
-<li>
 <p>Ubuntu 22.04:</p>
-<div class="highlight"><pre><span></span><code>$ wget https://download.swift.org/swift-5.8-release/ubuntu2204/swift-5.8-RELEASE/swift-5.8-RELEASE-ubuntu22.04.tar.gz
+<p><div class="highlight"><pre><span></span><code>$ wget https://download.swift.org/swift-6.0.3-release/ubuntu2204/swift-6.0.3-RELEASE/swift-6.0.3-RELEASE-ubuntu22.04.tar.gz
 </code></pre></div>
+    - Ubuntu 24.04:        </p>
+<p>$ wget https://download.swift.org/swift-6.0.3-release/ubuntu2404/swift-6.0.3-RELEASE/swift-6.0.3-RELEASE-ubuntu24.04.tar.gz</p>
 </li>
 </ul>
 </li>
@@ -1083,8 +1075,7 @@ $
 </li>
 </ol>
 <h3 id="instalacion-en-windows">Instalación en Windows<a class="headerlink" href="#instalacion-en-windows" title="Permanent link">&para;</a></h3>
-<p>Puedes instalar nuestra distribución WSL Ubuntu 22.04.03 para Windows con Swift
-5.10 descargándola desde <a href="https://drive.google.com/file/d/1yiQTEGQjRrxIorbrpU8pNCb0PTYQ0CJU/view?usp=sharing">este
+<p>Puedes instalar nuestra distribución WSL descargándola desde <a href="https://drive.google.com/file/d/1yiQTEGQjRrxIorbrpU8pNCb0PTYQ0CJU/view?usp=sharing">este
 enlace</a>.</p>
 <p>Se trata de una copia exportada en formato tar de una una distribución WSL
 Ubuntu 24.04 preparada con Swift 6.0.3 instalada para ejecutar directamente
@@ -1113,24 +1104,24 @@ Windows:</p>
 </div>
 <p>Pasos para importar nuestra distribución: </p>
 <ol>
-<li>Crea una carpeta <code>UbuntuLPP</code> en un disco con al menos 3.5GB de capacidad.</li>
-<li>Descarga la copia (<code>UbuntuLPP.tar</code>) en esa carpeta.</li>
+<li>Crea una carpeta <code>UbuntuLPP</code> en un disco con al menos 8GB de capacidad.</li>
+<li>Descarga la copia (<code>UbuntuLPP.tgz</code>) en esa carpeta.</li>
 <li>Abre un ventana de símbolo de sistema (<code>cmd.exe</code>) y posiciónate en esa
 carpeta (<code>cd [ruta]\UbuntuLPP</code>).</li>
 <li>
 <p>Ejecuta el siguiente comando para importar la distribución a tu WSL 2:</p>
-<div class="highlight"><pre><span></span><code>wsl --import UbuntuLPP . UbuntuLPP.tar
+<div class="highlight"><pre><span></span><code>wsl --import UbuntuLPP . UbuntuLPP.tgz
 </code></pre></div>
 <p>Al importar la distribución con el comando anterior, el nombre que se le ha
 dado a la distribución es <code>UbuntuLPP</code> (se podía haber puesto otro nombre), y
 el lugar donde se ha desempaquetado el disco virtual (<code>ext4.vhdx</code>) es el
 directorio donde se ejecuta el comando (se podía haber sustituido el <code>.</code> por
 otra ubicación distinta). Una vez importada la distribución, se puede
-eliminar el archivo tar (<code>UbuntuLPP.tar</code>).</p>
+eliminar el archivo tar (<code>UbuntuLPP.tgz</code>).</p>
 <div class="admonition danger">
-<p class="admonition-title">Evita guardar el disco WSL en OneDrive</p>
+<p class="admonition-title">Evita guardar el disco WSL en la nube</p>
 <p>Almacenar los archivos de disco virtual de WSL en servicios de
-sincronización como OneDrive puede provocar conflictos de acceso y
+sincronización como OneDrive, Drive o Dropbox, puede provocar conflictos de acceso y
 errores. Para asegurar un funcionamiento adecuado, guárdalos
 directamente en el disco duro de tu ordenador, en una ruta local.</p>
 </div>
