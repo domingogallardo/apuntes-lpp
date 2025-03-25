@@ -69,7 +69,7 @@ Existen varios sitios on-line en los que es posible ejecutar código Swift. Reco
 
 ### Instalación en Linux Ubuntu
 
-Existen distribuciones oficiales de Swift para Linux. Entre ellas, la 22.04 y 24.04.
+Existen distribuciones oficiales de Swift para Linux 22.04 y 24.04.
 
 Brevemente, los pasos para su instalación son los siguientes:
 
