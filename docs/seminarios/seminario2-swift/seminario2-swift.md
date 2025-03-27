@@ -104,7 +104,9 @@ distribuciones de Ubuntu.
         ```
     - Ubuntu 24.04:        
         
+        ```
         $ wget https://download.swift.org/swift-6.0.3-release/ubuntu2404/swift-6.0.3-RELEASE/swift-6.0.3-RELEASE-ubuntu24.04.tar.gz
+        ```
 
 4. Extaer el archivo:
 
