@@ -197,7 +197,7 @@ Ejemplos:
 
 ```racket
 (define raices_arbol3 (comprueba-raices-arbol arbol3)) ; ⇒ (1 (1) (1 (1) (1)) (1 (1)))
-(define raices_arbol4 (comprueba-raices-arbol arbol4) ; ⇒ (1 (1) (0 (1) (1)) (1 (1)))
+(define raices_arbol4 (comprueba-raices-arbol arbol4)) ; ⇒ (1 (1) (0 (1) (1)) (1 (1)))
 ```
 
 <img src="imagenes/raices.png" width="200px"/>
