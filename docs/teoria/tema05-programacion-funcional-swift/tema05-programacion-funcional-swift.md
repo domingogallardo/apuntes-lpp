@@ -1703,7 +1703,7 @@ primera clase del lenguaje y que es posible definir funciones y
 pasarlas como parámetro de otras funciones. 
 
 También es posible construir clausuras, funciones definidas en el
-ámbito de otras funcionas y devueltas como resultados.
+ámbito de otras funciones y devueltas como resultados.
 
 Veremos primero cómo definir de forma compacta funciones que se pasan
 como parámetro de otras, utilizando _expresiones de clausuras_. Y
@@ -1780,7 +1780,7 @@ debería aparecer antes que `s2` en el array ordenado. La ordenación
 mayor o menor se refiere a la ordenación alfabética, al estar tratando
 con caracteres.
 
-La versión anterior esta es una forma bastante complicada de escribir
+La versión anterior es una forma bastante complicada de escribir
 lo que básicamente es una función de una única expresión (`a > b`). En
 este ejemplo, sería preferible escribir la clausura de ordenación
 _inline_, utilizando la sintaxis de expresiones de clausuras.
