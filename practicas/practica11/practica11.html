@@ -841,24 +841,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ejercicio-5" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ejercicio 5
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ejercicio-6" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ejercicio 6
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1061,45 +1043,6 @@ haciendo cambios y comprobando el resultado.</p>
 <span class="bp">print</span><span class="p">(</span><span class="n">c1</span><span class="p">.</span><span class="n">valor</span> <span class="o">+</span> <span class="n">c2</span><span class="p">.</span><span class="n">valor</span> <span class="o">+</span> <span class="n">Valor</span><span class="p">.</span><span class="n">z</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="ejercicio-3">Ejercicio 3<a class="headerlink" href="#ejercicio-3" title="Permanent link">&para;</a></h3>
-<p>Tenemos que escribir un programa que permita definir resultados de
-partidos de fútbol y calcular la puntuación de un conjunto de equipos
-una vez que se han jugado esos partidos.</p>
-<p>Un ejemplo de ejecución del código debería ser cómo sigue:</p>
-<div class="highlight"><pre><span></span><code>--------------
-Puntuación antes de los partidos:
-Real Madrid: 0 puntos
-Barcelona: 0 puntos
-Atlético Madrid: 0 puntos
-Valencia: 0 puntos
-Athlétic Bilbao: 0 puntos
-Sevilla: 0 puntos
---------------
-Resultados:
-Real Madrid 0 - Barcelona 3
-Sevilla 1 - Athlétic Bilbao 1
-Valencia 2 - Atlético Madrid 1
---------------
-Puntuación después de los partidos:
-Real Madrid: 0 puntos
-Barcelona: 3 puntos
-Atlético Madrid: 0 puntos
-Valencia: 3 puntos
-Athlétic Bilbao: 1 puntos
-Sevilla: 1 puntos
-</code></pre></div>
-<p>Escribe código en Swift que permita resolver el problema, <strong>utilizando
-structs</strong>. </p>
-<p>El ejercicio se puede resolver de varias formas. Te proponemos una
-solución con tres estructuras:</p>
-<ul>
-<li><code>Equipo</code>: Contiene el nombre y los puntos de un equipo y un método
-  para actualizar las puntaciones</li>
-<li><code>Partido</code>: Nombres de los equipos y goles del partido</li>
-<li><code>Liga</code>: Contiene array de equipos y partidos jugados, así como los
-  métodos para actualizar una jornada</li>
-</ul>
-<p>Puedes usar esta propuesta, o proponer tú alguna solución alternativa.</p>
-<h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
 <p>Escribe un ejemplo de código en el que definas una relación de
 herencia entre una clase base y una clase derivada. Comprueba en el
 código que un objeto de la clase derivada hereda las propiedades y
@@ -1116,137 +1059,7 @@ calculada? </li>
 <li>¿Cómo se puede llamar a la implementación de un método de la clase
   base en una sobreescritura de ese mismo método en la clase derivada?</li>
 </ul>
-<h3 id="ejercicio-5">Ejercicio 5<a class="headerlink" href="#ejercicio-5" title="Permanent link">&para;</a></h3>
-<p>En este ejercicio deberás implementar un conjunto de clases con las
-que podamos "simular" una carrera de coches.</p>
-<h4 id="funcion-intrandomin">Función <code>Int.random(in:)</code><a class="headerlink" href="#funcion-intrandomin" title="Permanent link">&para;</a></h4>
-<p>Utilizaremos la función del sistema
-<a href="https://developer.apple.com/documentation/swift/int/2995648-random"><code>Int.random(in:)</code></a>
-que devuelve un número aleatorio entero en un rango. Por ejemplo, el
-siguiente código devuelve un número aleatorio entre 1 y 99</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="kc">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">3</span> <span class="p">{</span>
-    <span class="bp">print</span><span class="p">(</span><span class="nb">Int</span><span class="p">.</span><span class="n">random</span><span class="p">(</span><span class="k">in</span><span class="p">:</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">99</span><span class="p">))</span>
-<span class="p">}</span>
-<span class="c1">// Prints &quot;53&quot;</span>
-<span class="c1">// Prints &quot;64&quot;</span>
-<span class="c1">// Prints &quot;5&quot;</span>
-</code></pre></div>
-<p>A continuación puedes ver un ejemplo de su utilización en un método de
-tipo del enumerado <code>MarcaCoche</code> para devolver una marca aleatoria de
-coche:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">enum</span> <span class="nc">MarcaCoche</span><span class="p">:</span> <span class="nb">Int</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="n">Mercedes</span><span class="p">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Ferrari</span><span class="p">,</span> <span class="n">RedBull</span><span class="p">,</span> <span class="n">McLaren</span>
-
-    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">random</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="n">MarcaCoche</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nv">maxValue</span> <span class="p">=</span> <span class="n">McLaren</span><span class="p">.</span><span class="n">rawValue</span>
-
-        <span class="kd">let</span> <span class="nv">r</span> <span class="p">=</span> <span class="nb">Int</span><span class="p">.</span><span class="n">random</span><span class="p">(</span><span class="k">in</span><span class="p">:</span> <span class="mf">0.</span><span class="p">..</span><span class="n">maxValue</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">MarcaCoche</span><span class="p">(</span><span class="n">rawValue</span><span class="p">:</span> <span class="n">r</span><span class="p">)</span><span class="o">!</span>
-    <span class="p">}</span>
-
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="enumerados-y-clases-que-gestionan-los-vehiculos">Enumerados y clases que gestionan los vehículos<a class="headerlink" href="#enumerados-y-clases-que-gestionan-los-vehiculos" title="Permanent link">&para;</a></h4>
-<p>Deberás implementar los siguientes enumerados y clases, con las propiedades indicadas.</p>
-<p><strong>Enumerado <code>MarcaCoche</code></strong> </p>
-<ul>
-<li>Posibles valores: <code>Mercedes</code>, <code>Ferrari</code>, <code>RedBull</code> y <code>McLaren</code></li>
-<li>Método del tipo <code>random()</code> que devuelva aleatoriamente uno de los
-  valores (consultar el código anterior).</li>
-</ul>
-<p><strong>Enumerado <code>TipoCambio</code></strong></p>
-<ul>
-<li>Posibles valores: <code>Automatico</code> o <code>Manual</code></li>
-<li>Método del tipo <code>random()</code> que devuelve uno de esos valores.</li>
-</ul>
-<p><strong>Clase base <code>Coche</code></strong></p>
-<ul>
-<li>
-<p>Propiedades de instancia almacenadas: <code>velocidadActual</code> (<code>Double</code>),
-  <code>marcha</code> (<code>Int</code>), <code>distanciaRecorrida</code> (<code>Double</code>) y <code>marca</code>
-  (<code>MarcaCoche</code>).</p>
-</li>
-<li>
-<p>Propiedad de instancia calculada: <code>descripcion</code> (<code>String</code>), que
-  devuelve la marca del coche. A pesar de que el tipo subyacente del
-  enumerado <code>MarcaChoche</code> es <code>Int</code>, es posible devolver la cadena
-  correspondiente al literal del enumerado usando la interpolación de
-  cadenas:</p>
-<div class="highlight"><pre><span></span><code><span class="bp">print</span><span class="p">(</span><span class="s">&quot;Marca: </span><span class="si">\(</span><span class="n">MarcaCoche</span><span class="p">.</span><span class="n">Ferrari</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="c1">// Imprime: &quot;Marca: Ferrari&quot;</span>
-</code></pre></div>
-</li>
-<li>
-<p>Propiedades del tipo: Constantes <code>velocidadMaxima</code> (<code>Double</code>) y
-  <code>marchaMaxima</code> (<code>Int</code>) inicializadas a 150.0 y 6</p>
-</li>
-</ul>
-<p><strong>Subclase <code>CocheAutomatico</code></strong></p>
-<ul>
-<li>Hereda de <code>Coche</code> y sobreescribe la descripción, añadiendo la cadena
-  "Automático".</li>
-</ul>
-<p><strong>Subclase <code>CocheManual</code></strong></p>
-<ul>
-<li>Hereda de <code>Coche</code> y sobreescribe la descripción, añadiendo la cadena
-  "Manual".</li>
-</ul>
-<p><strong>Observadores de propiedades en las subclases</strong></p>
-<p>La velocidad de un coche manual se modifica cambiando su propiedad
-<code>marcha</code> y la de un coche automático cambiando su propiedad
-<code>velocidadActual</code>. En cada caso hay que definir observadores de
-propiedades que modifiquen la otra propiedad.</p>
-<p>La velocidad se calcula a partir de la marcha según la siguiente expresión:</p>
-<div class="highlight"><pre><span></span><code><span class="n">velocidadActual</span> <span class="p">=</span> <span class="mf">25.0</span> <span class="o">*</span> <span class="n">marcha</span>
-</code></pre></div>
-<p>Y la marcha se calcula a partir de la velocidad con la expresión que
-puedes encontrar en los apuntes de teoría, en la definición de la
-clase <code>CocheAutomatico</code>.</p>
-<p><strong>Distancia recorrida e información en pantalla</strong></p>
-<p>Suponemos que se cambia la velocidad del coche cada hora y que en cada
-cambio de velocidad se actualiza la propiedad <code>distanciaRecorrida</code>,
-que irá acumulando la distancia recorrida por el coche desde su
-inicialización. Cada vez que se cambia la velocidad también se
-imprimirá la velocidad actual y la marca del coche en pantalla (ver el
-ejemplo al final del ejercicio). Esto se puede implementar también en
-los observadores.</p>
-<h4 id="clase-carrera">Clase Carrera<a class="headerlink" href="#clase-carrera" title="Permanent link">&para;</a></h4>
-<p>Debes implementar las clases anteriores y una clase <code>Carrera</code> con la
-que simular una carrera de <code>n</code> coches que conducen durante <code>k</code> horas.</p>
-<p>Un ejemplo de uso de la clase <code>Carrera</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">carrera</span> <span class="p">=</span> <span class="n">Carrera</span><span class="p">(</span><span class="n">numCoches</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">horas</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Descripción de la carrera:&quot;</span><span class="p">)</span>
-<span class="n">carrera</span><span class="p">.</span><span class="n">descripcion</span><span class="p">()</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">!!! Comienza la carrera !!!&quot;</span><span class="p">)</span>
-<span class="n">carrera</span><span class="p">.</span><span class="n">empezar</span><span class="p">()</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">!!! Clasificación !!!&quot;</span><span class="p">)</span>
-<span class="n">carrera</span><span class="p">.</span><span class="n">clasificacion</span><span class="p">()</span>
-</code></pre></div>
-<p>Y su correspondiente salida por pantalla:</p>
-<div class="highlight"><pre><span></span><code>Descripción de la carrera:
-2 coches con una duración de 3 horas
- McLaren Automatico
- Mercedes Manual
-
-!!! Comienza la carrera !!!
-
-Horas transcurridas 1
-McLaren Automatico viajando a 141.0 kilómetros por hora con la marcha 6
-Mercedes Manual viajando a 25.0 kilómetros por hora con la marcha 1
-
-Horas transcurridas 2
-McLaren Automatico viajando a 114.0 kilómetros por hora con la marcha 5
-Mercedes Manual viajando a 25.0 kilómetros por hora con la marcha 1
-
-Horas transcurridas 3
-McLaren Automatico viajando a 105.0 kilómetros por hora con la marcha 5
-Mercedes Manual viajando a 100.0 kilómetros por hora con la marcha 4
-
-!!! Clasificación !!!
-1. McLaren Automatico (360.0 kilómetros recorridos)
-2. Mercedes Manual (150.0 kilómetros recorridos)
-</code></pre></div>
-<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
+<h3 id="ejercicio-4">Ejercicio 4<a class="headerlink" href="#ejercicio-4" title="Permanent link">&para;</a></h3>
 <p>En este ejercicio vamos a trabajar con figuras geométricas usando
 estructuras y clases.</p>
 <p>En el ejercicio deberás usar la función para calcular la raíz
@@ -1387,7 +1200,7 @@ código en el que se creen al menos un cuadrilátero y un círculo, se
 prueben sus propiedades, se añadan al almacén de figuras y se prueben
 sus métodos.</p>
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2023-24<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2024-25<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
 
