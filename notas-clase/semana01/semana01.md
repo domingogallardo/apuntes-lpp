@@ -953,48 +953,6 @@ expresión (sin evaluar sus elementos).
 <p style="margin-bottom:2cm;"></p>
 
 
-### Función `eval` ###
-
-Una vez vista la forma especial `quote` podemos explicar la función
-`eval`. La función `eval` es una instrucción muy curiosa de los
-lenguajes funcionales. Permite invocar al intérprete en tiempo de
-ejecución y hacer que éste evalúe una expresión que puede haberse
-construido dinámicamente.
-
-**Sintaxis**
-
-```racket
-(eval <expresión>)
-```
-
-**Evaluación**
-
-La función `eval` invoca al intérprete para realizar la evaluación de
-la expresión que se le pasa como parámetro y devuelve el resultado de
-dicha evaluación.
-
-**Ejemplos**
-
-```racket
-(define a 10)
-(eval 'a) ; ⇒ 10
-
-(eval '(+ 1 2 3)) ; ⇒ 6
-
-(define lista (list '+ 1 2 3))
-(eval lista) ; ⇒ 6
-
-(define a 10)
-(define x 'a)
-(eval 'x) ; ⇒ a
-(eval x) ; ⇒ 10
-(eval (eval 'x)) ; ⇒ 10 
-```
-
-
-<p style="margin-bottom:2cm;"></p>
-
-
 ### Listas ###
 
 - En el seminario de Scheme vemos que una de sus características
@@ -1051,24 +1009,6 @@ La última lista tiene 3 elementos:
 
 ```racket
 '(1 (/ 2 3) (+ 2 3)) ; ⇒ (1 (/ 2 3) (+ 2 3))
-```
-
-<p style="margin-bottom:2cm;"></p>
-
-### Selección de elementos de una lista: `first` y `rest`
-
-- Primer elemento: función `first`
-- Resto de elementos: función `rest`
-
-Ejemplos:
-
-```racket
-(define lista1 '(1 2 3 4))
-(first lista1) ; ⇒ 1
-(rest lista1) ; ⇒ (2 3 4)
-(define lista2 '((1 2) 3 4))
-(first lista2) ; ⇒ (1 2)
-(rest lista2) ; ⇒ (3 4)
 ```
 
 <p style="margin-bottom:2cm;"></p>
