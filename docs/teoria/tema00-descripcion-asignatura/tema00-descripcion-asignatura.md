@@ -18,12 +18,12 @@ prácticas de 2 h. a la semana
 
 ## 2. Recursos de la asignatura
 
-* [Ficha de la asignatura](https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wcodest=C203&wcodasi=34017&wlengua=es&scaca=2024-25)
+* [Ficha de la asignatura](https://cvnet.cpd.ua.es/Guia-Docente/GuiaDocente/Index?wlengua=es&wcodasi=34017&scaca=2025-26)
 * [Apuntes de la asignatura (teoría, seminarios y prácticas)](https://domingogallardo.github.io/apuntes-lpp/)
-* [Sitio Moodle](https://moodle2024-25.ua.es/moodle/course/view.php?id=4543)
+* [Sitio Moodle](https://moodle2025-26.ua.es/moodle/course/view.php?id=8244)
   abierto y accesible a toda la comunidad educativa, contiene los apuntes,
   transparencias, prácticas y otros materiales docentes.
-* [Foro de consultas y anuncios](https://moodle2024-25.ua.es/moodle/mod/forum/view.php?id=99497) en el sitio Moodle.
+* [Foro de consultas y anuncios](https://moodle2025-26.ua.es/moodle/mod/forum/view.php?id=120943) en el sitio Moodle.
 
 ## 3. Objetivos y competencias
 
@@ -173,7 +173,7 @@ compañeros.
 
 ## 6. Horarios
 
-La distribución de grupos del curso 2024-25 es la siguiente:
+La distribución de grupos del curso 2025-26 es la siguiente:
 
 <img src="imagenes/horario.png" width="800px"/>
 
@@ -320,6 +320,6 @@ Para ampliar algunos conceptos se recomiendan las siguientes referencias:
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2024-25  
+Lenguajes y Paradigmas de Programación, curso 2025-26  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez

@@ -581,9 +581,9 @@ int function contador () {
 	return c;
 }
 	
-contador() ;; 1
-contador() ;; 2
-contador() ;; 3
+contador(); // 1
+contador(); // 2
+contador(); // 3
 ```	
 
 **Por el contrario**, los lenguajes funcionales puros tienen la propiedad

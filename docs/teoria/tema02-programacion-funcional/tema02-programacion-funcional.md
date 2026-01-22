@@ -935,9 +935,9 @@ int function contador () {
 Cada llamada a la función `contador()` devolverá un valor distinto:
 
 ```c
-contador() ;; 1
-contador() ;; 2
-contador() ;; 3
+contador(); // 1
+contador(); // 2
+contador(); // 3
 ```	
 
 Por el contrario, los lenguajes funcionales tienen la propiedad de
@@ -1777,7 +1777,7 @@ concatenar dos o más listas
     elemento que se añade a la lista, mientras que en `append` es otra lista que
     se concatena con la segunda.
 
-
+<!--
 ### 2.7. Recursión
 
 Otra característica fundamental de la programación funcional es la no
@@ -4815,7 +4815,7 @@ Entonces la función `(divisores n)` se implementaría de la siguiente forma:
   (filter (lambda (x)
             (divisor? x n)) (numeros-hasta n)))
 ```
-
+-->
 ## 6. Bibliografía
 
 Capítulos del libro *Structure and Intepretation of Computer Programs*:
@@ -4826,6 +4826,6 @@ Capítulos del libro *Structure and Intepretation of Computer Programs*:
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2024-25  
+Lenguajes y Paradigmas de Programación, curso 2025-26  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
