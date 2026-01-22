@@ -2049,17 +2049,14 @@ expresión (sin evaluar sus elementos).</p>
 <span class="o">&#39;</span><span class="p">((</span><span class="mi">1</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ Una lista con las parejas (1 . 2) y (2 . 3)</span>
 </code></pre></div>
 <h3 id="25-funcion-eval">2.5. Función <code>eval</code><a class="headerlink" href="#25-funcion-eval" title="Permanent link">&para;</a></h3>
-<p>Una vez vista la forma especial <code>quote</code> podemos explicar la función
-<code>eval</code>. La función <code>eval</code> es una instrucción muy curiosa de los
-lenguajes funcionales. Permite invocar al intérprete en tiempo de
-ejecución y hacer que éste evalúe una expresión que puede haberse
-construido dinámicamente.</p>
+<div class="admonition info">
+<p class="admonition-title">Curiosidad del lenguaje: <code>eval</code></p>
+<p>Racket dispone de la función <code>eval</code>, que permite evaluar expresiones construidas dinámicamente en tiempo de ejecución.</p>
 <p><strong>Sintaxis</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="n">&lt;expresión&gt;</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Evaluación</strong></p>
-<p>La función <code>eval</code> invoca al intérprete para realizar la evaluación de
-la expresión que se le pasa como parámetro y devuelve el resultado de
+<p>La función <code>eval</code> invoca al intérprete para realizar la evaluación de la expresión que se le pasa como parámetro y devuelve el resultado de
 dicha evaluación.</p>
 <p><strong>Ejemplos</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
@@ -2069,29 +2066,41 @@ dicha evaluación.</p>
 
 <span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">lista</span><span class="w"> </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span>
 <span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 6</span>
-
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">a</span><span class="p">)</span>
-<span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">x</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ a</span>
-<span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 10</span>
-<span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="o">&#39;</span><span class="ss">x</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ 10</span>
 </code></pre></div>
-<p><strong>Una nota sobre la evaluación de eval</strong></p>
-<p>Al ser <code>eval</code> una función, la expresión que se le pasa como parámetro se
-evalúa previamente, antes de ser procesada por <code>eval</code>. En el caso de
-ser una expresión con <code>quote</code>, el resultado de la evaluación es la
-propia expresión (una lista), que es procesada por <code>eval</code>.</p>
-<p>Por ejemplo, en la siguiente expresión</p>
+</div>
+<!--    
+    (define a 10)
+    (define x 'a)
+    (eval 'x) ; ⇒ a
+    (eval x) ; ⇒ 10
+    (eval (eval 'x)) ; ⇒ 10
+    ```
+
+**Una nota sobre la evaluación de eval**
+
+Al ser `eval` una función, la expresión que se le pasa como parámetro se
+evalúa previamente, antes de ser procesada por `eval`. En el caso de
+ser una expresión con `quote`, el resultado de la evaluación es la
+propia expresión (una lista), que es procesada por `eval`.
+
+Por ejemplo, en la siguiente expresión
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ 5</span>
 </code></pre></div>
-<p>primero se evaluaría la expresión <code>(+ 2 3)</code> y lo que se le pasaría a
-<code>eval</code> sería un <code>5</code>. El resultado de evaluar un <code>5</code> sería un <code>5</code>.</p>
-<p>Sin embargo, en la siguiente expresión:</p>
+
+primero se evaluaría la expresión `(+ 2 3)` y lo que se le pasaría a
+`eval` sería un `5`. El resultado de evaluar un `5` sería un `5`.
+
+Sin embargo, en la siguiente expresión:
+
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">eval</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span>
 </code></pre></div>
-<p>el resultado de evaluar <code>'(+ 2 3)</code> devolvería la lista <code>(+ 2 3)</code> que
-es la que se pasaría a <code>eval</code>. El resultado de evaluar esa expresión
-también sería <code>5</code>.</p>
+
+el resultado de evaluar `'(+ 2 3)` devolvería la lista `(+ 2 3)` que
+es la que se pasaría a `eval`. El resultado de evaluar esa expresión
+también sería `5`.
+-->
+
 <h3 id="26-listas">2.6. Listas<a class="headerlink" href="#26-listas" title="Permanent link">&para;</a></h3>
 <p>Otra de las características fundamentales del paradigma funcional es
 la utilización de listas. Ya hemos visto en el seminario de Scheme las
