@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<style type="text/css">
+
+/* Admonition */
+
+.admonition {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.admonition.note { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.admonition.quote { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #cecece;
+    border-color: #cccccc;
+}
+
+.admonition.warning { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #FCC8BE;
+    border-color: #FCC8BE;
+}
+
+.admonition.hint { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #E9F9F6;
+    border-color: #AFEEEE;
+}
+
+.admonition.danger { /* csslint allow: adjoining-classes */
+    color: black;
+    background-color: #F7B2A4;
+    border-color: #F7B2A4;
+}
+
+.admonition-title {
+    font-weight: bold;
+    text-align: left;
+}
+
+
+/* Codehilite */
+
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mb { color: #666666 } /* Literal.Number.Bin */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #0000FF } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+
+/* Estilo LPP */
+
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: white;
+  padding: 60px;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+</style>
+
+</head>
+
+<body>
+<h1>Semana 1</h1>
+<p>Notas de clase de la semana 1 de LPP.</p>
+<hr />
+<h1>Tema 0: Presentación de la asignatura</h1>
+<hr />
+<p style="margin-bottom:2cm;"></p>
+
+<ul>
+<li>Usamos
+  <a href="https://moodle2024-25.ua.es/moodle/course/view.php?id=4543">Moodle</a>
+  para mostrar la planificación semanal, subir prácticas,
+  etc. </li>
+<li>Utilizaremos el foro para enviar avisos. También lo podéis usar
+  vosotros para plantear dudas, consultas, etc. Así todos nos
+  enteremos de las contestaciones.</li>
+<li>Los apuntes y prácticas están en la web de apuntes de la asignatura: <a href="https://domingogallardo.github.io/apuntes-lpp/">https://domingogallardo.github.io/apuntes-lpp/</a>.</li>
+</ul>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Temario</h3>
+<ul>
+<li>
+<p>3 bloques temáticos:</p>
+<ol>
+<li>Programación funcional (Scheme): temas 1 y 2</li>
+<li>Procesos y estructuras recursivas (Scheme): temas 3 y 4</li>
+<li>Programación funcional en Swift y programación orientada a
+   objetos avanzada (Swift): temas 5 y 6</li>
+</ol>
+</li>
+<li>
+<p>Temas:</p>
+<ul>
+<li>T1. Lenguajes de programación</li>
+<li>T2. Programación Funcional</li>
+<li>T3. Procedimientos recursivos</li>
+<li>T4. Estructuras recursivas</li>
+<li>T5. Programación funcional en Swift</li>
+<li>T6. Programación Orientada a Objetos Avanzada en Swift</li>
+</ul>
+</li>
+</ul>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Planificación</h3>
+<p><img src="imagenes/planificacion.png" width="800px"/></p>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Horarios</h3>
+<p><img src="imagenes/horario.png" width="800px"/></p>
+<p>En los turnos de teoría es posible, de forma excepcional, asistir a un
+grupo distinto del asignado. </p>
+<p>En los turnos de prácticas se debe asistir al grupo al que se ha
+asignado. El cambio de turno deberá solicitarse en la Secretaría de la EPS.</p>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Prácticas</h3>
+<ul>
+<li>2 seminarios: Scheme y Swift</li>
+<li>12 hojas de ejercicios semanales en Scheme (temas 1-4) y Swift
+  (temas 5-6).</li>
+<li>Disponibles al comienzo de la semana y se realizarán en las sesiones
+  de prácticas y en casa. Al final de la semana se entregarán en
+  Moodle y se publicará la solución.</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">No sirve de nada mirar las soluciones si no has trabajado</p>
+<p>El objetivo de publicar la solución de los ejercicios es
+que corrijas tu propia solución comparándola con la publicada.
+En la clase de prácticas podrás preguntar a tu profesor cualquier
+duda que te pueda surgir de esta revisión. Esta es la forma
+correcta de aprender a programar. No sirve de nada aprender de
+memoria las soluciones si no has trabajado previamente los
+ejercicios.</p>
+</div>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Evaluación</h3>
+<p>La asignatura se divide en 3 bloques temáticos, todos ellos de igual
+duración, en los que se utilizará el lenguaje de programación que
+aparece entre paréntesis: </p>
+<ul>
+<li>Programación funcional (temas 1 y 2, Scheme)</li>
+<li>Recursión y estructuras de datos recursivas (temas 3 y 4, Scheme)</li>
+<li>Programación funcional en Swift y programación orientada a objetos (temas 5 y 6, Swift)</li>
+</ul>
+<p>Se realizarán tres exámenes parciales escritos sobre los conceptos de
+cada uno de los bloques temáticos (teoría y práctica). Los parciales
+tendrán la siguiente ponderación en la nota final: </p>
+<ul>
+<li>Parcial 1: 35%</li>
+<li>Parcial 2: 30%</li>
+<li>Parcial 3: 35%</li>
+</ul>
+<p>No se exige nota mínima en ninguno de los parciales. Los parciales 1 y
+2 se realizarán durante el curso. El parcial 3 se realizará en la
+fecha del examen oficial de la convocatoria ordinaria de la
+asignatura. </p>
+<div class="admonition danger">
+<p class="admonition-title">Sobre los dispositivos móviles</p>
+<p>Durante la realización de los exámenes no está permitido que llevéis encima
+ningún dispositivo con conexión a internet (smartphones, smart
+watches, tablets, etc). Antes de empezar la prueba, se deberán
+dejar dentro de las mochilas, y éstas en el suelo. En caso de no
+cumplir esta norma, la prueba queda invalidada con
+calificación de 0. </p>
+</div>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Consejos para aprender con éxito</h3>
+<ul>
+<li>
+<p>Consejos:</p>
+<ul>
+<li>Trabajar todas las semanas y seguir el ritmo de la asignatura.</li>
+<li>Trabajar todos los ejemplos de teoría, probándolos en el
+   ordenador y entendiéndolos (no aprenderlos de memoria).</li>
+<li>Usar lápiz y papel para enfrentarse con los problemas.</li>
+</ul>
+</li>
+<li>
+<p>Algunos comentarios:</p>
+</li>
+</ul>
+<div class="admonition quote">
+<p class="admonition-title">Cómo dominar los conceptos</p>
+<p>Para superar la asignatura lo que hice fue estudiar mucho. Hay que practicar y sobre todo
+entender los ejercicios y no sabérselos de memoria. Una vez
+dominados los ejercicios yo mismo me propuse variantes de los
+mismos. Así es como se domina.</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">No copiar las prácticas</p>
+<p>El mayor problema que creo que existe es que muchas personas se
+relajan y se copian las prácticas en cuanto les resultan un poco
+difíciles o les lleva algo mas del tiempo que les gustaría. Esta
+asignatura si no haces tu los ejercicios y te peleas con ellos es
+prácticamente imposible de sacar.</p>
+</div>
+<div class="admonition quote">
+<p class="admonition-title">No memorizar</p>
+<p>Otra de las cosas es que tienes que cambiar la forma de estudiar,
+no vale memorizar, ni hacer muchos ejercicios sin más. Tienes que
+entender bien el funcionamiento de la recursión para luego poder
+practicar con ejercicios, sino no sirve. [...] En mi opinión el
+problema de LPP para mucha gente es que para los exámenes se
+memorizan los ejercicios de prácticas de las soluciones que se dan
+en clase.</p>
+</div>
+<p style="margin-bottom:2cm;"></p>
+
+<hr />
+<h1>Tema 1: Lenguajes de programación.</h1>
+<p>Tema no presencial para estudiar en casa.</p>
+<hr />
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Algunos lenguajes importantes y su fecha de creación</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">1950-1960</th>
+<th style="text-align: center;">1970</th>
+<th style="text-align: center;">1980</th>
+<th style="text-align: center;">1990</th>
+<th style="text-align: center;">2000</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1957 FORTRAN</td>
+<td style="text-align: center;">1970 Pascal</td>
+<td style="text-align: center;">1980 Smalltalk-80</td>
+<td style="text-align: center;">1990 Haskell</td>
+<td style="text-align: center;">2000 C#</td>
+</tr>
+<tr>
+<td style="text-align: center;">1958 ALGOL</td>
+<td style="text-align: center;">1972 Prolog</td>
+<td style="text-align: center;">1983 Objective-C</td>
+<td style="text-align: center;">1991 Python</td>
+<td style="text-align: center;">2003 Scala</td>
+</tr>
+<tr>
+<td style="text-align: center;">1960 Lisp</td>
+<td style="text-align: center;">1972 C</td>
+<td style="text-align: center;">1983 Ada</td>
+<td style="text-align: center;">1993 Ruby</td>
+<td style="text-align: center;">2003 Groovy</td>
+</tr>
+<tr>
+<td style="text-align: center;">1960 COBOL</td>
+<td style="text-align: center;">1975 Scheme</td>
+<td style="text-align: center;">1986 C++</td>
+<td style="text-align: center;">1995 Java</td>
+<td style="text-align: center;">2009 Go</td>
+</tr>
+<tr>
+<td style="text-align: center;">1962 APL</td>
+<td style="text-align: center;">1975 Modula</td>
+<td style="text-align: center;">1986 Eiffel</td>
+<td style="text-align: center;">1995 Racket</td>
+<td style="text-align: center;">2014 Swift</td>
+</tr>
+<tr>
+<td style="text-align: center;">1964 BASIC</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1987 Perl</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">1967 SIMULA</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Genealogía de los lenguajes de programación</h3>
+<p><img src="imagenes/genealogia-de-los-lp.png" width="600px"/></p>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Lista TIOBE</h3>
+<p>La <a href="http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html">lista
+TIOBE</a>
+se publica cada año indicando los lenguajes de programación más
+populares.</p>
+<p><img src="imagenes/lista-tiobe.png" width="800px"/></p>
+<p><img src="imagenes/tpci_trends.png" width="800px"/></p>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Paradigmas de programación</h3>
+<ul>
+<li>Paradigmas más importantes de programación:<ul>
+<li>Paradigma funcional (Lisp, Scheme, Haskell, Racket)</li>
+<li>Paradigma lógico (Prolog)</li>
+<li>Paradigma imperativo o procedural (FORTRAN, BASIC, C, JavaScript)</li>
+<li>Paradigma orientado a objetos (Modula, Java, C++)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h1>Tema 2: Programación funcional</h1>
+<h3>Veremos hoy</h3>
+<ol>
+<li>El paradigma de Programación Funcional<ul>
+<li>1.1 Pasado y presente del paradigma funcional</li>
+<li>1.2. Programación declarativa vs. imperativa</li>
+<li>1.3. Evaluación de expresiones</li>
+<li>1.4. Modelo de computación de sustitución</li>
+</ul>
+</li>
+<li>Scheme como lenguaje de programación funcional<ul>
+<li>2.1. Funciones y formas especiales</li>
+<li>2.2. Formas especiales en Scheme: define, if, cond</li>
+<li>2.3. Forma especial quote y símbolos</li>
+<li>2.4. Listas</li>
+</ul>
+</li>
+</ol>
+<hr />
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Definición de programación funcional</h3>
+<div class="admonition note">
+<p class="admonition-title">Un programa funcional es</p>
+<p>Un conjunto de funciones matemáticas que convierten
+unas entradas en unas salidas, sin ningún estado interno y ningún
+efecto lateral.</p>
+</div>
+<ul>
+<li>Es posible utilizar este paradigma en muchos lenguajes de
+  programación, aunque no sean estrictamente funcionales.</li>
+</ul>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Principales características del paradigma funcional</h3>
+<ul>
+<li>Definiciones de funciones matemáticas puras, sin estado interno ni
+  efectos laterales</li>
+<li>Valores inmutables</li>
+<li>Uso profuso de la recursión en la definición de las funciones</li>
+<li>Uso de listas como estructuras de datos fundamentales</li>
+<li>Funciones como tipos de datos primitivos: expresiones lambda y
+  funciones de orden superior</li>
+</ul>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Lenguajes de programación funcional</h3>
+<p>Lenguajes modernos principalmente funcionales:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Clojure">Clojure</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Erlang_(programming_language)">Erlang</a></li>
+</ul>
+<p>Lenguajes multi-paradigma en los que se puede usar POO y PF:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Ruby_(programming_language)">Ruby</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Groovy_(programming_language)">Groovy</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Scala_(programming_language)">Scala</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Swift_(programming_language)">Swift</a></li>
+</ul>
+<p>Lenguaje funcional puro más importante:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Haskell_(programming_language)">Haskell</a></li>
+</ul>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Aplicaciones prácticas de la programación funcional</h3>
+<ul>
+<li>Paradigma muy popular en la actualidad</li>
+<li>
+<p>Algunos artículos y charlas:</p>
+<ul>
+<li>Lupo Montero - <a href="https://medium.com/laboratoria-how-to/introducción-a-la-programación-funcional-en-javascript-parte-1-e0b1d0b2142e">Introducción a la programación funcional en JavaScript</a> (Blog)</li>
+<li>Andrés Marzal - <a href="https://www.youtube.com/watch?v=jG4QuREv5fE">Por qué deberías aprender programación funcional ya mismo</a> (Charla en YouTube)</li>
+<li>Mary Rose Cook - <a href="https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming">A practical introduction to functional programming</a> (Blog)</li>
+<li>Ben Christensen - <a href="https://www.infoq.com/presentations/Netflix-API-rxjava-hystrix">Functional Reactive Programming in the Netflix API</a> (Charla en InfoQ)</li>
+</ul>
+</li>
+<li>
+<p>El paradigma funcional facilita:</p>
+<ul>
+<li>la programación de sistemas concurrentes, con múltiples hilos de
+  ejecución o con múltiples computadores ejecutando procesos
+  conectados concurrentes.</li>
+<li>la definición y composición de múltiples operaciones sobre
+  <em>streams</em> de forma muy concisa y compacta, aplicable a la
+  programación de sistemas distribuidos en Internet.</li>
+<li>la programación interactiva y evolutiva.</li>
+</ul>
+</li>
+</ul>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Evaluación de expresiones y definición de funciones</h3>
+<ul>
+<li>
+<p>En la asignatura usaremos Scheme como primer lenguaje en el que
+  exploraremos la programación funcional.</p>
+</li>
+<li>
+<p>En el seminario de Scheme que se imparte en prácticas se estudiará
+  en más profundidad los conceptos más importantes del lenguaje: tipos
+  de datos, operadores, estructuras de control, intérprete, etc.</p>
+</li>
+<li>
+<p>Vamos a empezar a ver ejemplo concretos de programación funcional
+  viendo cómo se evalúan expresiones y cómo se definen funciones en Scheme.</p>
+</li>
+</ul>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Evaluación de expresiones</h3>
+<pre class="highlight"><code class="language-racket">2 ⇒ 2
+(+ 2 3) ⇒ 5
+(+) ⇒ 0
+(+ 2 4 5 6) ⇒ 17
+(+ (* 2 3) (- 3 1)) ⇒ 8</code></pre>
+<p>Se dice "<strong>evaluar una expresión</strong>" en lugar de "<strong>ejecutar una expresión</strong>".</p>
+<p>Partes de una expresión:</p>
+<ul>
+<li>Operador</li>
+<li>Operandos</li>
+<li>Evaluación de dentro a fuera</li>
+</ul>
+<p>Por ejemplo, ¿cuál es la evaluación de la siguiente expresión?:</p>
+<pre class="highlight"><code class="language-racket">(+ (* 2 3) (- 3 (/ 12 3)))</code></pre>
+<p style="margin-bottom:3cm;"></p>
+
+<h3>Definición de funciones</h3>
+<p>Definición</p>
+<pre class="highlight"><code class="language-racket">(define (cuadrado x)
+   (* x x))</code></pre>
+<p>Uso y evaluación:</p>
+<pre class="highlight"><code class="language-racket">(cuadrado 10) ⇒ 100
+(cuadrado (+ 10 (cuadrado (+ 2 4)))) ⇒ 2116</code></pre>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Definición de funciones auxiliares</h3>
+<ul>
+<li>
+<p>Lo habitual en programación funcional es definir funciones muy
+pequeñas e ir construyendo funciones cada vez de mayor nivel usando
+las anteriores.</p>
+</li>
+<li>
+<p>No demasiado bien:</p>
+</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(define (suma-cuadrados x y)
+   (+ (* x x) (* y y)))</code></pre>
+<ul>
+<li>Mucho más correcto:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(define (cuadrado x)
+   (* x x))
+
+(define (suma-cuadrados x y)
+   (+ (cuadrado x) (cuadrado y)))</code></pre>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Funciones puras</h3>
+<ul>
+<li>No modifican los parámetros que se les pasa</li>
+<li>Devuelven un único resultado</li>
+<li>No tienen estado local ni el resultado depende de un estado exterior mutable</li>
+</ul>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Composición de funciones</h3>
+<ul>
+<li>Una idea fundamental de la programación funcional es la composición de
+funciones que transforman unos datos de entrada en otros de salida. </li>
+<li>Ejemplo: procesamiento de imágenes en vehículos autónomos:</li>
+</ul>
+<p><img src="imagenes/composicion-funciones.png" width="700px"/></p>
+<ul>
+<li>En un lenguaje de programación funcional como Scheme (cuidado: la evaluación
+  se hace de dentro a afuera):</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(define (conduce-vehiculo imagenes)
+    (obten-acciones 
+        (reconoce 
+            (filtra 
+                (obten-caracteristicas imagenes)))))</code></pre>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Programación declarativa</h3>
+<ul>
+<li>La PF es un estilo de <strong>programación declarativa</strong>, frente a la
+  programación tradicional imperativa.</li>
+<li>Frente a programación imperativa, basada en pasos de ejecución y
+  cambio de estado de variables, la programación declarativa es un
+  estilo de programación matemático.</li>
+<li>Se <strong>declaran</strong> valores y objetivos o características de los
+  elementos de programa.</li>
+<li>La ejecución del programa es "instantánea", sin que haya que
+  considerar los pasos de ejecución.</li>
+<li>Ejemplo: hoja de cálculo.</li>
+<li>La programación funcional es un ejemplo de programación declarativa:
+  se declaran funciones y se evalúan matemáticamente expresiones.</li>
+<li>La programación lógica (Prolog) es otro ejemplo de programación declarativa.</li>
+</ul>
+<p>Otro ejemplo de programación declarativa: SwiftUI.</p>
+<p><img src="imagenes/swiftui.png" width="700px"/></p>
+<ul>
+<li>Como hemos visto, en programación funcional <strong>declaramos funciones</strong>
+que transforman datos de entrada en datos de salida.</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(define (cuadrado x)
+   (* x x))</code></pre>
+<ul>
+<li>La llamada a la función con el parámetro 4 devuelve 16:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(cuadrado 4) ; devuelve 16</code></pre>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Programación imperativa</h3>
+<ul>
+<li>Lenguajes tradicionales (C, C++, Java, Python, etc.)</li>
+</ul>
+<p>Características:</p>
+<ul>
+<li>Pasos de ejecución</li>
+<li>Mutación</li>
+<li>Efectos laterales</li>
+<li>Estado local mutable en las funciones</li>
+</ul>
+<p style="margin-bottom:2cm;"></p>
+
+<h4>Pasos de ejecución</h4>
+<p>Pasos de ejecución en C:</p>
+<pre class="highlight"><code class="language-c">int a = cuadrado(8);
+int b = doble(a);
+int c = cuadrado(b);
+return c</code></pre>
+<p>En Swift:</p>
+<pre class="highlight"><code class="language-swift">filtrados = filtra(pedidos);
+procesados = procesa(filtrados);
+return procesados;</code></pre>
+<p>En programación funcional, en lugar de pasos de ejecución se utiliza
+como hemos visto la composición de funciones. Los ejemplos anteriores
+se expresan de la siguiente forma en programación funcional:</p>
+<pre class="highlight"><code class="language-racket">(cuadrado (doble (cuadrado 8)))</code></pre>
+<pre class="highlight"><code class="language-racket">(procesa (filtra pedidos))</code></pre>
+<p style="margin-bottom:2cm;"></p>
+
+<h4>Mutación</h4>
+<p>Asignación destructiva o mutación:</p>
+<pre class="highlight"><code class="language-java">int x = 10;
+int x = x + 1;</code></pre>
+<p>En programación funcional los valores definidos son inmutables:</p>
+<pre class="highlight"><code class="language-racket">#lang racket
+
+(define a 12)
+(define a 200)</code></pre>
+<p>tendremos el siguiente error:</p>
+<pre class="highlight"><code class="language-text">module: identifier already defined in: a</code></pre>
+<p>En lenguajes imperativos también hay sentencias declarativas:</p>
+<pre class="highlight"><code class="language-text">1. int x = 1;   // declarativa
+2. x = x+1;     // imperativa
+3. int y = x+1; // declarativa
+4. y = x;       // imperativa</code></pre>
+<p style="margin-bottom:2cm;"></p>
+
+<h4>Mutación y efectos laterales</h4>
+<ul>
+<li>Referencias + mutación = efectos laterales (<em>side effect</em> en inglés)</li>
+</ul>
+<p>Ejemplo de mutación:</p>
+<pre class="highlight"><code class="language-java">Point2D p1 = new Point2D(3.0, 2.0); // la coord x de p1 es 3.0
+p1.getCoordX(); // la coord x de p1 es 3.0
+p1.setCoordX(10.0);
+p1.getCoordX(); // la coord x de p1 es 10.0</code></pre>
+<p>Ejemplo de efecto lateral:</p>
+<pre class="highlight"><code class="language-java">Point2D p1 = new Point2D(3.0, 2.0); // la coord x de p1 es 3.0
+p1.getCoordX(); // la coord x de p1 es 3.0
+Point2D p2 = p1;
+p2.setCoordX(10.0);
+p1.getCoordX(); // la coord x de p1 es 10.0, sin que ninguna sentencia haya modificado directamente p1</code></pre>
+<ul>
+<li>Los efectos laterales permiten definir estructuras de datos más
+  eficientes, pero también generan <em>bugs</em> complicados de
+  depurar. Sobre todo cuando se están programando sistemas
+  concurrentes con múltiples hilos de ejecución.</li>
+</ul>
+<p style="margin-bottom:2cm;"></p>
+
+<h4>Estado local mutable</h4>
+<p>Función con estado local mutable en lenguaje imperativo (Java):</p>
+<pre class="highlight"><code class="language-java">public class Contador {
+    int c;
+
+    public Contador(int valorInicial) {
+        c = valorInicial;
+    }
+
+    public int valor() {
+        c++;
+        return c;
+    }
+}
+
+Contador cont = new Contador(10);
+cont.valor(); // 11
+cont.valor(); // 12
+cont.valor(); // 13</code></pre>
+<p>En C:</p>
+<pre class="highlight"><code class="language-c">int function contador () {
+    static int c = 0;
+
+    c++;
+    return c;
+}
+
+contador(); // 1
+contador(); // 2
+contador(); // 3</code></pre>
+<p><strong>Por el contrario</strong>, los lenguajes funcionales puros tienen la propiedad
+de <em>transparencia referencial</em>: si se sustituye una expresión por su valor el resultado final no debe cambiar. -&gt; funciones no modifican estado.</p>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Resumen</h3>
+<p><strong>Características de la programación declarativa</strong></p>
+<ul>
+<li>Variable = nombre dado a un valor (declaración)</li>
+<li>No existe asignación ni cambio de estado</li>
+<li>No existe mutación, se cumple la <em>transferencia referencial</em>: dentro
+  de un mismo ámbito todas las ocurrencias de una variable y las
+  llamadas a funciones devuelven el mismo valor</li>
+</ul>
+<p><strong>Características de la programación imperativa</strong></p>
+<ul>
+<li>Variable = nombre de una zona de memoria</li>
+<li>Asignación</li>
+<li>Referencias</li>
+<li>Pasos de ejecución</li>
+</ul>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Modelo de computación de sustitución</h3>
+<ul>
+<li>
+<p>El <strong>modelo de sustitución</strong> es un modelo muy sencillo que permite
+definir la semántica de la evaluación de expresiones en lenguajes
+funcionales como Scheme. </p>
+</li>
+<li>
+<p>Basado en la reescritura de unos términos por otros</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Reglas del modelo de sustitución</p>
+<ol>
+<li>Si <em>e</em> es un valor primitivo (por ejemplo, un número), devolvemos ese
+   mismo valor.</li>
+<li>Si <em>e</em> es un identificador, devolvemos su valor asociado con un
+   <code>define</code> (se lanzará un error si no existe ese valor).</li>
+<li>Si <em>e</em> es una expresión del tipo <em>(f arg1 ... argn)</em>, donde <em>f</em> es
+   el nombre de una función primitiva (<code>+</code>, <code>-</code>, ...), evaluamos uno a
+   uno los argumentos <em>arg1</em> ... <em>argn</em> (con estas mismas reglas) y
+   evaluamos la función primitiva con los resultados.</li>
+</ol>
+</div>
+<p>La regla 4 tiene dos variantes, dependiendo del orden de
+evaluación que utilizamos.</p>
+<div class="admonition note">
+<p class="admonition-title">Orden aplicativo</p>
+<ol start="4">
+<li>Si <em>e</em> es una expresión del tipo <em>(f arg1 ... argn)</em>, donde <em>f</em>
+   es el nombre de una función definida con un <code>define</code>, tenemos
+   que evaluar primero los argumentos <em>arg1</em> ... <em>argn</em> y después
+   <strong>sustituir <em>f</em> por su cuerpo</strong>, reemplazando cada parámetro
+   formal de la función por el correspondiente <strong>argumento
+   evaluado</strong>. Después evaluaremos la expresión resultante usando
+   estas mismas reglas.</li>
+</ol>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Orden normal</p>
+<ol start="4">
+<li>Si <em>e</em> es una expresión del tipo <em>(f arg1 ... argn)</em>, donde <em>f</em>
+   es el nombre de una función definida con un <code>define</code>, tenemos
+   que <strong>sustituir <em>f</em> por su cuerpo</strong>, reemplazando cada
+   parámetro formal de la función por el correspondiente
+   <strong>argumento sin evaluar</strong>. Después evaluar la expresión
+   resultante usando estas mismas reglas.</li>
+</ol>
+</div>
+<ul>
+<li>
+<p>Ambas formas de evaluación darán el mismo resultado en programación
+funcional. Scheme utiliza el orden aplicativo.</p>
+</li>
+<li>
+<p>En el orden aplicativo se realizan las evaluaciones antes de realizar
+las sustituciones, lo que define una evaluación de <em>dentro a fuera</em> de
+los paréntesis. Cuando se llega a una expresión primitiva se
+evalúa.</p>
+</li>
+<li>
+<p>En el orden normal se realizan todas las sustituciones hasta que se
+tiene una larga expresión formada por expresiones primitivas; se
+evalúa entonces.</p>
+</li>
+<li>
+<p>Comprobamos las sustituciones en cada tipo de orden.</p>
+</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(define (doble x) 
+    (+ x x))
+
+(define (cuadrado y) 
+    (* y y))
+
+(define a 2)
+
+(doble (cuadrado a))</code></pre>
+<p>Orden aplicativo:</p>
+<pre class="highlight"><code class="language-text">(doble (cuadrado a)) ⇒       ; Sustituimos a por su valor (R2)
+(doble (cuadrado 2)) ⇒       ; Sustitumos cuadrado por su cuerpo (R4)
+(doble (* 2 2)) ⇒            ; Evaluamos (* 2 2) (R3)
+(doble 4) ⇒                  ; Sustituimos doble por su cuerpo (R4)
+(+ 4 4) ⇒                    ; Evaluamos (+ 4 4) (R3)
+8</code></pre>
+<p>Orden normal:</p>
+<pre class="highlight"><code class="language-text">(doble (cuadrado a)) ⇒            ; Sustituimos doble por su cuerpo (R4)
+(+ (cuadrado a) (cuadrado a) ⇒    ; Sustituimos cuadrado por su cuerpo (R4)
+(+ (* a a) (* a a)  ⇒             ; Sustitumos a por su valor (R2)
+(+ (* 2 2) (* 2 2)  ⇒             ; Evaluamos (* 2 2) (R3)
+(+ 4 (* 2 2))  ⇒                  ; Evaluamos (* 2 2) (R3)
+(+ 4 4)  ⇒                        ; Evaluamos (+ 4 4) (R3)
+8</code></pre>
+<ul>
+<li>Scheme utiliza orden aplicativo.</li>
+<li>Repasar un ejemplo algo más complicado en los apuntes.</li>
+<li>El resultado es el mismo, siempre que no se definan funciones no puras.</li>
+</ul>
+<p>Ejemplo de resultado distinto con funciones no puras:</p>
+<pre class="highlight"><code class="language-racket">(define (zero x) (- x x))
+(zero (random 10))</code></pre>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Funciones y formas especiales en Scheme</h3>
+<ul>
+<li>Primitivas de Scheme: funciones y formas especiales</li>
+<li>Las funciones se evalúan con el modelo de evaluación visto. </li>
+<li>Las <em>formas especiales</em> son expresiones primitivas de Scheme que
+tienen una forma de evaluarse propia, distinta de las funciones.</li>
+</ul>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Forma especial <code>define</code></h3>
+<p><strong>Sintaxis</strong></p>
+<pre class="highlight"><code class="language-racket">(define &lt;identificador&gt; &lt;expresión&gt;)</code></pre>
+<p><strong>Evaluación</strong></p>
+<ol>
+<li>Evaluar <em>expresión</em></li>
+<li>Asociar el valor resultante con el <em>identificador</em></li>
+</ol>
+<p><strong>Ejemplo</strong></p>
+<pre class="highlight"><code class="language-racket">(define base 10)   ; Asociamos a 'base' el valor 10
+(define altura 12) ; Asociamos a 'altura' el valor 12
+(define area (/ (* base altura) 2)) ; Asociamos a 'area' el valor 60</code></pre>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Forma especial <code>define</code> para definir funciones</h3>
+<p><strong>Sintaxis</strong></p>
+<pre class="highlight"><code class="language-text">(define (&lt;nombre-funcion&gt; &lt;argumentos&gt;)
+    &lt;cuerpo&gt;)</code></pre>
+<p><strong>Evaluación</strong></p>
+<ol>
+<li>Crear la función con el <em>cuerpo</em></li>
+<li>Dar a la función el nombre <em>nombre-función</em></li>
+</ol>
+<p><strong>Ejemplo</strong></p>
+<pre class="highlight"><code class="language-racket">(define (factorial x)
+    (if (= x 0)
+        1
+        (* x (factorial (- x 1)))))</code></pre>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Forma especial <code>if</code></h3>
+<p><strong>Sintaxis</strong></p>
+<pre class="highlight"><code class="language-racket">(if &lt;condición&gt; &lt;expresión-true&gt; &lt;expresión-false&gt;)</code></pre>
+<p><strong>Evaluación</strong></p>
+<ol>
+<li>Evaluar <em>condición</em></li>
+<li>Si el resultado es <code>#t</code> evaluar la <em>expresión-true</em>, en otro
+   caso, evaluar la <em>expresión-false</em></li>
+</ol>
+<p><strong>Ejemplo</strong></p>
+<pre class="highlight"><code class="language-racket">(if (&gt; 10 5) (substring "Hola qué tal" (+ 1 1) 4) (/ 12 0))
+
+;; Evaluamos (&gt; 10 5). Como el resultado es #t, evaluamos 
+;; (substring "Hola qué tal" (+ 1 1) 4), que devuelve "la"
+</code></pre>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Forma especial <code>cond</code></h3>
+<p><strong>Sintaxis</strong></p>
+<pre class="highlight"><code class="language-racket">(cond 
+    (&lt;exp-cond-1&gt; &lt;exp-consec-1&gt;)
+    (&lt;exp-cond-2&gt; &lt;exp-consec-2&gt;)
+    ...
+    (else &lt;exp-consec-else&gt;))</code></pre>
+<p><strong>Evaluación</strong></p>
+<ol>
+<li>Se evalúan de forma ordenada todas las expresiones hasta que una de
+   ellas devuelva <code>#t</code></li>
+<li>Si alguna expresión devuelve <code>#t</code>, se devuelve el valor del
+   consecuente de esa expresión</li>
+<li>Si ninguna expresión es cierta, se devuelve el valor resultante de
+   evaluar el consecuente del <code>else</code></li>
+</ol>
+<p><strong>Ejemplo</strong></p>
+<pre class="highlight"><code class="language-racket">(cond
+   ((&gt; 3 4) "3 es mayor que 4")
+   ((&lt; 2 1) "2 es menor que 1")
+   ((= 3 1) "3 es igual que 1")
+   ((&gt; 3 5) "3 es mayor que 2")
+   (else "ninguna condición es cierta"))
+
+;; Se evalúan una a una las expresiones (&gt; 3 4),
+;; (&lt; 2 1), (= 3 1) y (&gt; 3 5). Como ninguna de ella
+;; es cierta se devuelve la cadena "ninguna condición es cierta"</code></pre>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Forma especial <code>quote</code> y símbolos</h3>
+<p><strong>Sintaxis</strong></p>
+<pre class="highlight"><code class="language-racket">(quote &lt;identificador&gt;)</code></pre>
+<p><strong>Evaluación</strong></p>
+<ul>
+<li>Se devuelve el identificador sin evaluar (un símbolo). </li>
+<li>Se abrevia en con el carácter <code>'</code>.</li>
+</ul>
+<p><strong>Ejemplo</strong></p>
+<pre class="highlight"><code class="language-racket">(quote x) ; el símbolo x
+'hola ; el símbolo hola</code></pre>
+<ul>
+<li>
+<p>En Scheme los <em>identificadores</em> (nombres que se les da a las
+variables) son datos del lenguaje de tipo <strong>symbol</strong>. </p>
+</li>
+<li>
+<p>Los símbolos son distintos de las cadenas. Una cadena es un tipo de
+dato compuesto formado por caracteres que podemos concatenar, dividir
+en subcadenas, etc. Nada de esto lo podemos hacer con un símbolo. Un
+símbolo es un tipo atómico, es sólo un identificador.</p>
+</li>
+</ul>
+<p>Ejemplos de funciones Scheme con símbolos:</p>
+<pre class="highlight"><code class="language-racket">(define x 12)
+(symbol? 'x) ; ⇒ #t
+(symbol? x) ; ⇒ #f ¿Por qué?
+(symbol? 'hola-que&lt;&gt;)
+(symbol-&gt;string 'hola-que&lt;&gt;)
+'mañana
+'lápiz ; aunque sea posible, no vamos a usar acentos en los símbolos
+; pero sí en los comentarios
+(symbol? "hola") ; #f
+(symbol?  #f) ; #f
+(symbol? (first '(hola cómo estás))) ; #t
+(equal? 'hola 'hola)
+(equal? 'hola "hola")</code></pre>
+<p>Un símbolo es un identificador que puede asociarse o ligarse (<em>bind</em>)
+a un valor (cualquier dato <em>de primera clase</em>).</p>
+<p>Cuando escribimos un símbolo en el prompt de Scheme el intérprete lo
+evalúa y devuelve su valor:</p>
+<pre class="highlight"><code class="language-racket">(define pi 3.14159)
+pi
+⇒3.14159</code></pre>
+<p>Los nombres de las funciones (<code>equal?,</code>sin, `+, ...) son también
+símbolos (los de las macros no) y Scheme también los evalúa (en un par
+de semanas hablaremos de las funciones como objetos primitivos en
+Scheme):</p>
+<pre class="highlight"><code class="language-racket">sin
+⇒ #&lt;procedure:sin&gt;
++
+⇒ #&lt;procedure:+&gt;
+(define (cuadrado x) (* x x))
+⇒ #&lt;procedure:cuadrado&gt;</code></pre>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Símbolos como tipos primitivos</h3>
+<p>Los símbolos son tipos primitivos del lenguaje: pueden pasarse como
+parámetros o ligarse a variables.</p>
+<pre class="highlight"><code class="language-racket">(define x 'hola)
+x
+⇒ hola</code></pre>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Forma especial <code>quote</code> y expresiones</h3>
+<p><strong>Sintaxis</strong></p>
+<pre class="highlight"><code class="language-racket">(quote &lt;expresión&gt;)</code></pre>
+<p><strong>Evaluación</strong></p>
+<p>Si <code>quote</code> recibe una expresión correcta de Scheme (una expresión
+entre paréntesis) se devuelve la lista o pareja definida por la
+expresión (sin evaluar sus elementos).</p>
+<p><strong>Ejemplos</strong></p>
+<pre class="highlight"><code class="language-racket">'(1 2 3) ; ⇒ (1 2 3) Una lista
+'(+ 1 2 3 4) ; La lista formada por el símbolo + y los números 1 2 3 4
+(quote (1 2 3 4)) ; La lista formada por los números 1 2 3 4
+'(a b c) ; ⇒ La lista con los símbolos a, b, y c
+'(* (+ 1 (+ 2 3)) 5) ; Una lista con 3 elementos, el segundo de ellos otra lista
+'(1 . 2) ; ⇒ La pareja (1 . 2)
+'((1 . 2) (2 . 3)) ; ⇒ Una lista con las parejas (1 . 2) y (2 . 3)</code></pre>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Listas</h3>
+<ul>
+<li>
+<p>En el seminario de Scheme vemos que una de sus características
+principales es el uso de listas. </p>
+</li>
+<li>
+<p>Repasamos las funciones más importantes y explicamos el uso de la
+  forma especial <code>quote</code> para construir listas.</p>
+</li>
+</ul>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Función <code>list</code> y forma especial <code>quote</code></h3>
+<ul>
+<li>Función <code>list</code></li>
+</ul>
+<pre class="highlight"><code class="language-racket">(list 1 2 3 4 5) ⇒ (1 2 3 4)
+(list 'a 'b 'c) ⇒ (a b c)
+(list 1 'a 2 'b 3 'c #t) ⇒ (1 a 2 b 3 c #t)
+(list 1 (+ 1 1) (* 2 (+ 1 2))) ⇒ (1 2 6)</code></pre>
+<p>Otro ejemplo:</p>
+<pre class="highlight"><code class="language-racket">(define a 1)
+(define b 2)
+(define c 3)
+(list a b c) ; ⇒ (1 2 3)</code></pre>
+<ul>
+<li>La forma especial <code>quote</code> delante de una expresión entre paréntesis
+  convierte la expresión en una lista y la devuelve:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">'(1 2 3 4) ; ⇒ (1 2 3 4)
+(define a 1)
+(define b 2)
+(define c 3)
+'(a b c) ; ⇒ (a b c)
+'(1 (+ 1 1) (* 2 (+ 1 2))) ; ⇒ (1 (+ 1 1) (* 2 (+ 1 2)))</code></pre>
+<p>La última lista tiene 3 elementos:</p>
+<ul>
+<li>El número 1</li>
+<li>La lista (+ 1 1)</li>
+<li>
+<p>La lista (* 2 (+ 1 2))</p>
+</li>
+<li>
+<p>Otro ejemplo sobre la diferencia entre <code>list</code> y <code>quote</code>:</p>
+</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(list 1 (/ 2 3) (+ 2 3)) ; ⇒ (1 2/3 5)</code></pre>
+<pre class="highlight"><code class="language-racket">'(1 (/ 2 3) (+ 2 3)) ; ⇒ (1 (/ 2 3) (+ 2 3))</code></pre>
+<p style="margin-bottom:2cm;"></p>
+
+<h3>Funciones <code>cons</code> y <code>append</code></h3>
+<ul>
+<li>La función <code>cons</code> crea una nueva lista en la que se añade un
+  elemento a la cabeza de la lista que pasamos como parámetro:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(cons 1 '(1 2 3 4)) ; ⇒ (1 1 2 3 4)
+(cons 'hola '(como estás)) ; ⇒ (hola como estás)
+(cons '(1 2) '(1 2 3 4))  ; ⇒ ((1 2) 1 2 3 4)</code></pre>
+<ul>
+<li>La función <code>append</code> crea una nueva lista que en la que se concatenan
+  dos o más listas que se pasan como parámetro:</li>
+</ul>
+<pre class="highlight"><code class="language-racket">(define list1 '(1 2 3 4))
+(define list2 '(hola como estás))
+(append list1 list2) ; ⇒ (1 2 3 4 hola como estás)</code></pre>
+<div class="admonition danger">
+<p class="admonition-title">Diferencias entre cons y append</p>
+<p>Es muy importante diferenciar <code>cons</code> y <code>append</code>. En ambos
+casos el resultado es una lista y ambas funciones tienen dos parámetros,
+siendo el segundo la lista en la que se añade el primero. La diferencia
+entre ambas funciones es el tipo del primer parámetro. En <code>cons</code> es un
+elemento que se añade a la lista, mientras que en <code>append</code> es otra lista que
+se concatena con la segunda.</p>
+</div></body>
+
+</html>
