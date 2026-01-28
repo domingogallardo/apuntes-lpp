@@ -2002,17 +2002,16 @@ por el <em>código hash</em> del identificador.</p>
 <p>Como hemos visto anteriormente, un símbolo puede asociarse o ligarse
 (<em>bind</em>) a un valor (cualquier dato <em>de primera clase</em>) con la forma
 especial <code>define</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="nb">pi</span><span class="w"> </span><span class="mf">3.14159</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="mf">2.71828</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>No es correcto escribir <code>(define 'pi 3.14156)</code> porque la forma
-especial <code>define</code> debe recibir un identificador <em>sin quote</em>.</p>
+<p>No es correcto escribir <code>(define 'e 2.71828)</code> porque la forma especial <code>define</code> debe recibir un identificador <em>sin quote</em>.</p>
 </div>
 <p>Cuando escribimos un símbolo en el prompt de Scheme el intérprete lo
 evalúa y devuelve su valor:</p>
-<div class="highlight"><pre><span></span><code>&gt; pi 
-3.14159
+<div class="highlight"><pre><span></span><code>&gt; e 
+2.71828
 </code></pre></div>
 <p>Los nombres de las funciones (<code>equal?</code>, <code>sin</code>, <code>+</code>, ...) son también
 símbolos y Scheme también los evalúa (en un par de semanas hablaremos
