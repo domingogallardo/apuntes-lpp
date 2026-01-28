@@ -195,19 +195,16 @@ detiene la evaluación:
 ; Error /: division by zero
 ```
 
-### 2.2. Definiendo variables y funciones
+### 2.2. Definiendo identificadores y funciones
 
 Scheme es un lenguaje multiparadigma pero principalmente funcional, y
 una de sus características principales es que los programas se
 construyen mediante la definición de funciones.
 
 Podemos utilizar en el intérprete la forma especial `define` para
-definir variables y funciones. En clase de teoría se explica cómo es el
-funcionamiento del `define`, pero por el momento lo utilizaremos para
-definir variables asociadas a valores, y para implementar funciones.
+definir variables (identificadores asociados a valores) y funciones, tal y como se ve esta semana en teoría.
 
-Podemos definir variables en la ventana de interacción para facilitar
-la escritura de expresiones:
+Podemos definir identificadores en la ventana de interacción para facilitar la escritura de expresiones:
 
 ```racket
 (define a (+ 2 (* 3 4)))
@@ -223,7 +220,7 @@ pi ; ⇒ 3.141592653589793
 (sin (/ pi 2)) ; ⇒ 1.0
 ```
 
-Para implementar una función también se utiliza define, con la
+Para implementar una función también se utiliza `define`, con la
 siguiente sintaxis:
 
 ```racket
@@ -364,7 +361,7 @@ complejos e inexactos. Por ejemplo:
 
 ```racket
 (<= 2 3 3 4 5) ; ⇒ #t (los argumentos están en orden creciente)
-(max 3 5 10 1000) ; ⇒ #1000
+(max 3 5 10 1000) ; ⇒ 1000
 (/ 22 4)  ; Devuelve una fracción
 (quotient 22 4) ; ⇒ 5 (cociente de la división entera)
 (remainder 22 4) ; ⇒ 2 (resto de la división entera)

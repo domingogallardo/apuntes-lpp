@@ -1508,20 +1508,18 @@ Como hemos visto anteriormente, un símbolo puede asociarse o ligarse
 especial `define`.
 
 ```racket
-(define pi 3.14159)
+(define e 2.71828)
 ```
 
 !!! Note "Nota"
-    No es correcto escribir `(define 'pi 3.14156)` porque la forma
-    especial `define` debe recibir un identificador _sin quote_.
-
+    No es correcto escribir `(define 'e 2.71828)` porque la forma especial `define` debe recibir un identificador _sin quote_.
 
 Cuando escribimos un símbolo en el prompt de Scheme el intérprete lo
 evalúa y devuelve su valor:
 
 ```text
-> pi 
-3.14159
+> e 
+2.71828
 ```
 
 Los nombres de las funciones (`equal?`, `sin`, `+`, ...) son también
