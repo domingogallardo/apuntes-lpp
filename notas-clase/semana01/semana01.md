@@ -890,9 +890,9 @@ Cuando escribimos un símbolo en el prompt de Scheme el intérprete lo
 evalúa y devuelve su valor:
 
 ```racket
-(define pi 3.14159)
-pi
-⇒3.14159
+(define e 2.71828)
+e
+⇒2.71828
 ```
 
 Los nombres de las funciones (`equal?, `sin, `+, ...) son también
