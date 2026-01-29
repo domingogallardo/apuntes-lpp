@@ -164,7 +164,7 @@
 
     **Ejercicio 6**
     
-    a) Define una función que calcule la distancia entre
+    a) Define la función `(distancia p1 p2)` que calcule la distancia entre
     dos puntos, definidos por parejas de números enteros. Añade los
     siguientes tests para comprobar que funciona correctamente:
     
