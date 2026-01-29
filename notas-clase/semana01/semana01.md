@@ -200,30 +200,29 @@ populares.
 
 ### Veremos hoy
 
-1. El paradigma de Programación Funcional
-    - 1.1 Pasado y presente del paradigma funcional
-    - 1.2. Programación declarativa vs. imperativa
-    - 1.3. Evaluación de expresiones
-    - 1.4. Modelo de computación de sustitución
-2. Scheme como lenguaje de programación funcional
-    - 2.1. Funciones y formas especiales
-    - 2.2. Formas especiales en Scheme: define, if, cond
-    - 2.3. Forma especial quote y símbolos
-    - 2.4. Listas
+1. El paradigma de Programación Funcional  
+2. Programación declarativa vs. imperativa  
+3. Evaluación de expresiones en Scheme  
+4. Definición y composición de funciones  
+5. Modelo de computación de sustitución  
+   - Orden aplicativo  
+   - Orden normal  
+6. Scheme: funciones y formas especiales  
+   - `define`, `if`, `cond`  
+   - `quote`, símbolos y listas  
 ---
 
 <p style="margin-bottom:2cm;"></p>
 
 ### Definición de programación funcional
 
-!!! Note "Un programa funcional es"
+!!! note "Un programa funcional es"
     Un conjunto de funciones matemáticas que convierten
     unas entradas en unas salidas, sin ningún estado interno y ningún
     efecto lateral.
 
 - Es posible utilizar este paradigma en muchos lenguajes de
   programación, aunque no sean estrictamente funcionales.
-
 
 <p style="margin-bottom:2cm;"></p>
 
@@ -261,190 +260,52 @@ Lenguaje funcional puro más importante:
 
 <p style="margin-bottom:2cm;"></p>
 
-### Aplicaciones prácticas de la programación funcional
+!!! note "Ventajas del paradigma funcional"
+    - Facilita la programación de sistemas concurrentes, con múltiples hilos de
+      ejecución o con múltiples computadores ejecutando procesos conectados.
+    - Permite la definición y composición de múltiples operaciones sobre *streams*
+      de forma muy concisa y compacta, aplicable a la programación de sistemas
+      distribuidos en Internet.
+    - Favorece una programación interactiva y evolutiva.
 
-- Paradigma muy popular en la actualidad
-- Algunos artículos y charlas:
+!!! info "Aplicaciones prácticas de la programación funcional"
+    - Paradigma muy popular en la actualidad.
+    - Artículos y charlas recomendadas:
     - Lupo Montero - [Introducción a la programación funcional en JavaScript](https://medium.com/laboratoria-how-to/introducción-a-la-programación-funcional-en-javascript-parte-1-e0b1d0b2142e) (Blog)
     - Andrés Marzal - [Por qué deberías aprender programación funcional ya mismo](https://www.youtube.com/watch?v=jG4QuREv5fE) (Charla en YouTube)
     - Mary Rose Cook - [A practical introduction to functional programming](https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming) (Blog)
     - Ben Christensen - [Functional Reactive Programming in the Netflix API](https://www.infoq.com/presentations/Netflix-API-rxjava-hystrix) (Charla en InfoQ)
 
-- El paradigma funcional facilita:
-    - la programación de sistemas concurrentes, con múltiples hilos de
-      ejecución o con múltiples computadores ejecutando procesos
-      conectados concurrentes.
-    - la definición y composición de múltiples operaciones sobre
-      *streams* de forma muy concisa y compacta, aplicable a la
-      programación de sistemas distribuidos en Internet.
-    - la programación interactiva y evolutiva.
-
 
 <p style="margin-bottom:2cm;"></p>
 
-### Evaluación de expresiones y definición de funciones
 
-- En la asignatura usaremos Scheme como primer lenguaje en el que
-  exploraremos la programación funcional.
-
-- En el seminario de Scheme que se imparte en prácticas se estudiará
-  en más profundidad los conceptos más importantes del lenguaje: tipos
-  de datos, operadores, estructuras de control, intérprete, etc.
-
-- Vamos a empezar a ver ejemplo concretos de programación funcional
-  viendo cómo se evalúan expresiones y cómo se definen funciones en Scheme.
-
-<p style="margin-bottom:2cm;"></p>
-
-### Evaluación de expresiones
-
-```racket
-2 ⇒ 2
-(+ 2 3) ⇒ 5
-(+) ⇒ 0
-(+ 2 4 5 6) ⇒ 17
-(+ (* 2 3) (- 3 1)) ⇒ 8
-```
-
-Se dice "**evaluar una expresión**" en lugar de "**ejecutar una expresión**".
-
-Partes de una expresión:
-
-- Operador
-- Operandos
-- Evaluación de dentro a fuera
-
-Por ejemplo, ¿cuál es la evaluación de la siguiente expresión?:
-
-```racket
-(+ (* 2 3) (- 3 (/ 12 3)))
-```
-
-<p style="margin-bottom:3cm;"></p>
-
-### Definición de funciones
-
-Definición
-
-```racket
-(define (cuadrado x)
-   (* x x))
-```
-
-Uso y evaluación:
-
-```racket
-(cuadrado 10) ⇒ 100
-(cuadrado (+ 10 (cuadrado (+ 2 4)))) ⇒ 2116
-```
-
-<p style="margin-bottom:2cm;"></p>
-
-### Definición de funciones auxiliares
-
-- Lo habitual en programación funcional es definir funciones muy
-pequeñas e ir construyendo funciones cada vez de mayor nivel usando
-las anteriores.
-
-- No demasiado bien:
-
-```racket
-(define (suma-cuadrados x y)
-   (+ (* x x) (* y y)))
-```
-
-- Mucho más correcto:
-
-```racket
-(define (cuadrado x)
-   (* x x))
-
-(define (suma-cuadrados x y)
-   (+ (cuadrado x) (cuadrado y)))
-```
-
-<p style="margin-bottom:2cm;"></p>
-
-### Funciones puras
-
-- No modifican los parámetros que se les pasa
-- Devuelven un único resultado
-- No tienen estado local ni el resultado depende de un estado exterior mutable
-
-<p style="margin-bottom:2cm;"></p>
-
-### Composición de funciones
-
-- Una idea fundamental de la programación funcional es la composición de
-funciones que transforman unos datos de entrada en otros de salida. 
-- Ejemplo: procesamiento de imágenes en vehículos autónomos:
-
-<img src="imagenes/composicion-funciones.png" width="700px"/>
-
-- En un lenguaje de programación funcional como Scheme (cuidado: la evaluación
-  se hace de dentro a afuera):
-
-```racket
-(define (conduce-vehiculo imagenes)
-    (obten-acciones 
-        (reconoce 
-            (filtra 
-                (obten-caracteristicas imagenes)))))
-```
-
-
-<p style="margin-bottom:2cm;"></p>
+## Programación declarativa vs. imperativa
 
 ### Programación declarativa
 
-- La PF es un estilo de **programación declarativa**, frente a la
-  programación tradicional imperativa.
-- Frente a programación imperativa, basada en pasos de ejecución y
-  cambio de estado de variables, la programación declarativa es un
-  estilo de programación matemático.
-- Se **declaran** valores y objetivos o características de los
-  elementos de programa.
-- La ejecución del programa es "instantánea", sin que haya que
-  considerar los pasos de ejecución.
-- Ejemplo: hoja de cálculo.
-- La programación funcional es un ejemplo de programación declarativa:
-  se declaran funciones y se evalúan matemáticamente expresiones.
-- La programación lógica (Prolog) es otro ejemplo de programación declarativa.
+- La PF es un estilo de **programación declarativa**, frente a la programación tradicional imperativa.
+- Se **declaran** valores y objetivos o características de los elementos de programa.  
+- No hay pasos intermedios. 
+- Modelo matemático.  
+- Ejecución "instantánea", sin pasos de ejecución
+
+Ejemplos:
+
+- Hoja de cálculo  
+- Programación lógica (Prolog)
+- Programación funcional  
 
 Otro ejemplo de programación declarativa: SwiftUI.
 
 <img src="imagenes/swiftui.png" width="700px"/>
 
-
-- Como hemos visto, en programación funcional **declaramos funciones**
-que transforman datos de entrada en datos de salida.
-
-```racket
-(define (cuadrado x)
-   (* x x))
-```
-
-- La llamada a la función con el parámetro 4 devuelve 16:
-
-```racket
-(cuadrado 4) ; devuelve 16
-```
-
-<p style="margin-bottom:2cm;"></p>
-
 ### Programación imperativa
 
-- Lenguajes tradicionales (C, C++, Java, Python, etc.)
-
-Características:
-
-- Pasos de ejecución
-- Mutación
-- Efectos laterales
-- Estado local mutable en las funciones
-
-
-<p style="margin-bottom:2cm;"></p>
+- Pasos de ejecución  
+- Asignación  
+- Mutación  
+- Estado local mutable  
 
 #### Pasos de ejecución
 
@@ -454,31 +315,14 @@ Pasos de ejecución en C:
 int a = cuadrado(8);
 int b = doble(a);
 int c = cuadrado(b);
-return c
+return c;
 ```
 
-En Swift:
-
-```swift
-filtrados = filtra(pedidos);
-procesados = procesa(filtrados);
-return procesados;
-```
-
-En programación funcional, en lugar de pasos de ejecución se utiliza
-como hemos visto la composición de funciones. Los ejemplos anteriores
-se expresan de la siguiente forma en programación funcional:
+En programación funcional, en lugar de pasos de ejecución se utiliza la **composición de funciones**. El ejemplo anterior se expresa de la siguiente forma en **programación funcional**:
 
 ```racket
 (cuadrado (doble (cuadrado 8)))
 ```
-
-```racket
-(procesa (filtra pedidos))
-```
-
-
-<p style="margin-bottom:2cm;"></p>
 
 #### Mutación 
 
@@ -486,10 +330,10 @@ Asignación destructiva o mutación:
 
 ```java
 int x = 10;
-int x = x + 1;
+x = x + 1;
 ```
 
-En programación funcional los valores definidos son inmutables:
+En **programación funcional** los valores definidos son **inmutables**:
 
 ```racket
 #lang racket
@@ -502,15 +346,6 @@ tendremos el siguiente error:
 
 ```text
 module: identifier already defined in: a
-```
-
-En lenguajes imperativos también hay sentencias declarativas:
-
-```text
-1. int x = 1;   // declarativa
-2. x = x+1;     // imperativa
-3. int y = x+1; // declarativa
-4. y = x;       // imperativa
 ```
 
 <p style="margin-bottom:2cm;"></p>
@@ -538,10 +373,7 @@ p2.setCoordX(10.0);
 p1.getCoordX(); // la coord x de p1 es 10.0, sin que ninguna sentencia haya modificado directamente p1
 ```
 
-- Los efectos laterales permiten definir estructuras de datos más
-  eficientes, pero también generan _bugs_ complicados de
-  depurar. Sobre todo cuando se están programando sistemas
-  concurrentes con múltiples hilos de ejecución.
+- Los efectos laterales permiten definir estructuras de datos más eficientes, pero también generan _bugs_ complicados de depurar. Sobre todo cuando se están programando sistemas concurrentes con múltiples hilos de ejecución.
 
 
 <p style="margin-bottom:2cm;"></p>
@@ -597,7 +429,7 @@ de *transparencia referencial*: si se sustituye una expresión por su valor el r
 
 * Variable = nombre dado a un valor (declaración)
 * No existe asignación ni cambio de estado
-* No existe mutación, se cumple la *transferencia referencial*: dentro
+* No existe mutación, se cumple la *transparencia referencial*: dentro
   de un mismo ámbito todas las ocurrencias de una variable y las
   llamadas a funciones devuelven el mismo valor
 
@@ -609,17 +441,110 @@ de *transparencia referencial*: si se sustituye una expresión por su valor el r
 * Pasos de ejecución
 
 
+
+
+
+## Evaluación de expresiones en Scheme
+
+- En la asignatura usaremos Scheme como primer lenguaje en el que exploraremos la programación funcional.
+
+- Vamos a empezar a ver un ejemplo concreto de programación funcional viendo cómo se evalúan expresiones y cómo se definen funciones en Scheme.
+
 <p style="margin-bottom:2cm;"></p>
 
-### Modelo de computación de sustitución
+### Evaluación de expresiones
 
-- El **modelo de sustitución** es un modelo muy sencillo que permite
-definir la semántica de la evaluación de expresiones en lenguajes
+```racket
+2 ⇒ 2
+(+ 2 3) ⇒ 5
+(+) ⇒ 0
+(+ 2 4 5 6) ⇒ 17
+(+ (* 2 3) (- 3 1)) ⇒ 8
+```
+
+Se dice "**evaluar una expresión**" en lugar de "**ejecutar una expresión**". La evaluación se realiza de dentro a fuera.
+
+Por ejemplo, ¿cuál es la evaluación de la siguiente expresión?:
+
+```racket
+(+ (* 2 3) (- 3 (/ 12 3)))
+```
+
+<p style="margin-bottom:3cm;"></p>
+
+## Definición de funciones en Scheme
+
+```racket
+(define (cuadrado x)
+  (* x x))
+```
+
+- No existe `return`  
+- El cuerpo es una expresión  
+
+Uso:
+
+```racket
+(cuadrado 10) ⇒ 100
+(cuadrado (+ 10 (cuadrado (+ 2 4)))) ⇒ 2116
+```
+
+<p style="margin-bottom:2cm;"></p>
+
+### Funciones auxiliares y composición
+
+- Lo habitual en programación funcional es definir funciones muy pequeñas e ir construyendo funciones cada vez de mayor nivel usando las anteriores.
+
+- No demasiado bien:
+
+```racket
+(define (suma-cuadrados x y)
+   (+ (* x x) (* y y)))
+```
+
+- Mucho más correcto:
+
+```racket
+(define (cuadrado x)
+   (* x x))
+
+(define (suma-cuadrados x y)
+   (+ (cuadrado x) (cuadrado y)))
+```
+
+<p style="margin-bottom:2cm;"></p>
+
+### Composición de funciones
+
+- Una idea fundamental de la programación funcional es la composición de
+funciones que transforman unos datos de entrada en otros de salida. 
+- Ejemplo: procesamiento de imágenes en vehículos autónomos:
+
+<img src="imagenes/composicion-funciones.png" width="700px"/>
+
+- En un lenguaje de programación funcional como Scheme (cuidado: la evaluación
+  se hace de dentro a afuera):
+
+```racket
+(define (conduce-vehiculo imagenes)
+    (obten-acciones 
+        (reconoce 
+            (filtra 
+                (obten-caracteristicas imagenes)))))
+```
+
+
+<p style="margin-bottom:2cm;"></p>
+
+
+## Modelo de computación de sustitución
+
+- El **modelo de sustitución** es un modelo muy sencillo que permite definir la semántica de la evaluación de expresiones en lenguajes
 funcionales como Scheme. 
 
 - Basado en la reescritura de unos términos por otros
 
-!!! Note "Reglas del modelo de sustitución"
+!!! note "Reglas del modelo de sustitución"
     1. Si *e* es un valor primitivo (por ejemplo, un número), devolvemos ese
        mismo valor.
     2. Si *e* es un identificador, devolvemos su valor asociado con un
@@ -632,7 +557,7 @@ funcionales como Scheme.
 La regla 4 tiene dos variantes, dependiendo del orden de
 evaluación que utilizamos.
 
-!!! Note "Orden aplicativo"
+!!! note "Orden aplicativo"
     4. Si *e* es una expresión del tipo *(f arg1 ... argn)*, donde *f*
        es el nombre de una función definida con un `define`, tenemos
        que evaluar primero los argumentos _arg1_ ... _argn_ y después
@@ -641,7 +566,7 @@ evaluación que utilizamos.
        evaluado**. Después evaluaremos la expresión resultante usando
        estas mismas reglas.
 
-!!! Note "Orden normal"
+!!! note "Orden normal"
     4. Si *e* es una expresión del tipo *(f arg1 ... argn)*, donde *f*
        es el nombre de una función definida con un `define`, tenemos
        que **sustituir _f_ por su cuerpo**, reemplazando cada
@@ -702,8 +627,10 @@ Orden normal:
 
 - Scheme utiliza orden aplicativo.
 - Repasar un ejemplo algo más complicado en los apuntes.
-- El resultado es el mismo, siempre que no se definan funciones no puras.
 
+!!! note
+    En funciones puras ambos órdenes producen el mismo resultado.
+    
 Ejemplo de resultado distinto con funciones no puras:
 
 ```racket
@@ -713,12 +640,12 @@ Ejemplo de resultado distinto con funciones no puras:
 
 <p style="margin-bottom:2cm;"></p>
 
-### Funciones y formas especiales en Scheme 
+## Funciones y formas especiales en Scheme 
 
 - Primitivas de Scheme: funciones y formas especiales
 - Las funciones se evalúan con el modelo de evaluación visto. 
 - Las *formas especiales* son expresiones primitivas de Scheme que
-tienen una forma de evaluarse propia, distinta de las funciones.
+tienen una forma de evaluarse propia.
 
 
 <p style="margin-bottom:2cm;"></p>
@@ -763,12 +690,9 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 **Ejemplo**
 
 ```racket
-(define (factorial x)
-    (if (= x 0)
-        1
-        (* x (factorial (- x 1)))))
+(define (doble x)
+    (+ x x))
 ```
-
 
 <p style="margin-bottom:2cm;"></p>
 
@@ -837,7 +761,7 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 
 <p style="margin-bottom:2cm;"></p>
 
-### Forma especial `quote` y símbolos
+## Forma especial `quote`, símbolos y listas
 
 **Sintaxis**
 
@@ -861,8 +785,7 @@ tienen una forma de evaluarse propia, distinta de las funciones.
 variables) son datos del lenguaje de tipo **symbol**. 
 
 - Los símbolos son distintos de las cadenas. Una cadena es un tipo de
-dato compuesto formado por caracteres que podemos concatenar, dividir
-en subcadenas, etc. Nada de esto lo podemos hacer con un símbolo. Un
+dato compuesto formado por caracteres. Un
 símbolo es un tipo atómico, es sólo un identificador.
 
 Ejemplos de funciones Scheme con símbolos:
@@ -871,42 +794,16 @@ Ejemplos de funciones Scheme con símbolos:
 (define x 12)
 (symbol? 'x) ; ⇒ #t
 (symbol? x) ; ⇒ #f ¿Por qué?
-(symbol? 'hola-que<>)
-(symbol->string 'hola-que<>)
-'mañana
-'lápiz ; aunque sea posible, no vamos a usar acentos en los símbolos
-; pero sí en los comentarios
-(symbol? "hola") ; #f
-(symbol?  #f) ; #f
-(symbol? (first '(hola cómo estás))) ; #t
-(equal? 'hola 'hola)
-(equal? 'hola "hola")
 ```
 
-Un símbolo es un identificador que puede asociarse o ligarse (*bind*)
-a un valor (cualquier dato *de primera clase*).
+Un símbolo es un identificador que puede asociarse o ligarse (*bind*) a un valor (cualquier dato *de primera clase*).
 
-Cuando escribimos un símbolo en el prompt de Scheme el intérprete lo
-evalúa y devuelve su valor:
+Cuando escribimos un símbolo en el prompt de Scheme el intérprete lo evalúa y devuelve su valor:
 
 ```racket
 (define e 2.71828)
 e
 ⇒2.71828
-```
-
-Los nombres de las funciones (`equal?, `sin, `+, ...) son también
-símbolos (los de las macros no) y Scheme también los evalúa (en un par
-de semanas hablaremos de las funciones como objetos primitivos en
-Scheme):
-
-```racket
-sin
-⇒ #<procedure:sin>
-+
-⇒ #<procedure:+>
-(define (cuadrado x) (* x x))
-⇒ #<procedure:cuadrado>
 ```
 
 <p style="margin-bottom:2cm;"></p>
@@ -941,17 +838,12 @@ expresión (sin evaluar sus elementos).
 **Ejemplos**
 
 ```racket
-'(1 2 3) ; ⇒ (1 2 3) Una lista
-'(+ 1 2 3 4) ; La lista formada por el símbolo + y los números 1 2 3 4
-(quote (1 2 3 4)) ; La lista formada por los números 1 2 3 4
-'(a b c) ; ⇒ La lista con los símbolos a, b, y c
-'(* (+ 1 (+ 2 3)) 5) ; Una lista con 3 elementos, el segundo de ellos otra lista
-'(1 . 2) ; ⇒ La pareja (1 . 2)
-'((1 . 2) (2 . 3)) ; ⇒ Una lista con las parejas (1 . 2) y (2 . 3)
+'(1 2 3)
+'(a b c)
+'(* (+ 1 2) 5)
 ```
 
 <p style="margin-bottom:2cm;"></p>
-
 
 ### Listas ###
 
@@ -968,19 +860,14 @@ principales es el uso de listas.
 - Función `list`
 
 ```racket
-(list 1 2 3 4 5) ⇒ (1 2 3 4)
-(list 'a 'b 'c) ⇒ (a b c)
-(list 1 'a 2 'b 3 'c #t) ⇒ (1 a 2 b 3 c #t)
-(list 1 (+ 1 1) (* 2 (+ 1 2))) ⇒ (1 2 6)
-```
-
-Otro ejemplo:
-
-```racket
 (define a 1)
 (define b 2)
 (define c 3)
+
 (list a b c) ; ⇒ (1 2 3)
+(list 'a 'b 'c) ⇒ (a b c)
+(list 1 2 3 4) ⇒ (1 2 3 4)
+(list 1 (+ 1 1) (* 2 (+ 1 2))) ⇒ (1 2 6)
 ```
 
 - La forma especial `quote` delante de una expresión entre paréntesis
@@ -988,9 +875,6 @@ Otro ejemplo:
 
 ```racket
 '(1 2 3 4) ; ⇒ (1 2 3 4)
-(define a 1)
-(define b 2)
-(define c 3)
 '(a b c) ; ⇒ (a b c)
 '(1 (+ 1 1) (* 2 (+ 1 2))) ; ⇒ (1 (+ 1 1) (* 2 (+ 1 2)))
 ```
@@ -1010,6 +894,10 @@ La última lista tiene 3 elementos:
 ```racket
 '(1 (/ 2 3) (+ 2 3)) ; ⇒ (1 (/ 2 3) (+ 2 3))
 ```
+
+!!! warning
+    `list` evalúa.  
+    `'(...)` no evalúa.
 
 <p style="margin-bottom:2cm;"></p>
 
