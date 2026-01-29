@@ -268,7 +268,7 @@ Lenguaje funcional puro más importante:
       distribuidos en Internet.
     - Favorece una programación interactiva y evolutiva.
 
-!!! info "Aplicaciones prácticas de la programación funcional"
+!!! note "Aplicaciones prácticas de la programación funcional"
     - Paradigma muy popular en la actualidad.
     - Artículos y charlas recomendadas:
     - Lupo Montero - [Introducción a la programación funcional en JavaScript](https://medium.com/laboratoria-how-to/introducción-a-la-programación-funcional-en-javascript-parte-1-e0b1d0b2142e) (Blog)
@@ -895,7 +895,7 @@ La última lista tiene 3 elementos:
 '(1 (/ 2 3) (+ 2 3)) ; ⇒ (1 (/ 2 3) (+ 2 3))
 ```
 
-!!! warning
+!!! warning "Cuidado"
     `list` evalúa.  
     `'(...)` no evalúa.
 
