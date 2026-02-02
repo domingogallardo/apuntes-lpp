@@ -742,16 +742,16 @@ estructuras de datos más complejas como árboles. Para este seminario
 de introducción es suficiente con estas funciones básicas que nos
 permiten crear, combinar y obtener elementos de listas.
 
-## 3. Estructuras de control
+## 3. Estructuras condicionales
 
-Como en cualquier lenguaje de programación, las estructuras de control
+Como en cualquier lenguaje de programación, las estructuras condicionales o de decisión
 en Scheme nos permiten seleccionar qué parte de una expresión
 evaluamos en función de la evaluación de una expresión
-condicional. Las estructuras de control las veremos con más
+condicional. Las veremos con más
 detenimiento en las clases de teoría, ahora por el momento vamos a ver
 ejemplos de funcionamiento.
 
-En Scheme tenemos dos tipos de estructuras de control: `if` y `cond`.
+En Scheme tenemos dos tipos de estructuras condicionales: `if` y `cond`.
 
 ### 3.1. if
 

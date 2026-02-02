@@ -845,7 +845,7 @@ expresión (sin evaluar sus elementos).
 
 <p style="margin-bottom:2cm;"></p>
 
-### Listas ###
+### Listas 
 
 - En el seminario de Scheme vemos que una de sus características
 principales es el uso de listas. 
