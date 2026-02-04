@@ -10,15 +10,18 @@ Notas de clase de la semana 2 de LPP.
 
 - 1. El paradigma de Programación Funcional
 - 2. Scheme como lenguaje de programación funcional
+
 	- 2.1. Funciones y formas especiales
 	- 2.2. Formas especiales en Scheme: `define`, `if`, `cond`
 	- 2.3. Forma especial `quote` y símbolos
 	- 2.4. Listas
     - **2.5. Recursión**
+    
 - **3. Tipos de datos compuestos en Scheme**
 	- **3.1 El tipo de dato pareja**
 	- **3.2 Las parejas son objetos de primera clase**
 	- **3.3  Diagramas caja-y-puntero**
+
 - **4. Listas en Scheme**
     - **4.1 Implementación de listas en Scheme**
     - **4.2 Listas con elementos compuestos**
