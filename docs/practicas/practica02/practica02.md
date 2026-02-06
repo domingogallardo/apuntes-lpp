@@ -101,6 +101,12 @@ el alfabeto.
 Define las funciones `(cifra-caracter char desplazamiento)` y `(descifra-caracter char
 desplazamiento)` que implementen el cifrado anterior.
 
+!!! note "Mayúsculas y minúsculas"
+    El cifrado debe **conservar el tipo de letra**: si el carácter de entrada es mayúscula, el resultado debe ser mayúscula.
+    Una forma sencilla es: pasar a minúscula, cifrar, y volver a mayúscula al final.
+    Racket proporciona funciones para comprobar y convertir mayúsculas y minúsculas, como  
+    `char-upper-case?`, `char-downcase` y `char-upcase`.
+
 Para la implementación de las funciones anteriores debes definir y usar las
 siguientes funciones auxiliares:
 
@@ -112,7 +118,11 @@ siguientes funciones auxiliares:
 La función `(rota-indice indice desplazamiento)` recibe el índice del carácter
 original y calcula el índice del carácter cifrado.
 
-**Consejo**: puedes usar la función `modulo` [ver documentación](https://docs.racket-lang.org/reference/generic-numbers.html#(def._((quote._~23~25kernel)._modulo))).
+!!! note "Consejo: Usa la función `modulo`"
+    El alfabeto se comporta como una **estructura circular**: después de la `z` se vuelve a la `a`, y antes de la `a` se vuelve a la `z`. 
+    Para rotar dentro de las 26 letras, conviene trabajar con índices `0..25` y usar `modulo` [ver documentación](https://docs.racket-lang.org/reference/generic-numbers.html#(def._((quote._~23~25kernel)._modulo))).
+    En Racket, `(modulo n 26)` siempre devuelve un resultado en `0..25`, incluso si `n` es negativo.
+
 
 Analiza los siguientes ejemplos para entender mejor el funcionamiento de las
 funciones auxiliares y las funciones principales:

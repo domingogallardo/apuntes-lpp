@@ -125,16 +125,6 @@ Ejemplos:
     lista))` no depende de la longitud de la lista, es O(1). Sin
     embargo, la instrucción `(length lista)` tiene que recorrer toda
     la lista por lo que tiene una complejidad de O(n).
-    
-    Muchas veces verás también una expresión equivalente para
-    comprobar si una lista tiene un único elemento: :
-    
-    ```racket
-    (null? (cdr lista))
-    ```
-    
-    Es una expresión que suelen usar los programadores de Scheme, algo
-    que se conoce como una _expresión idiomática_ del lenguaje.
 
 a.2) Vamos a investigar el funcionamiento de la recursión en la función
 `minimo`. Supongamos la siguiente llamada:
@@ -404,6 +394,6 @@ cadena vacía y un 0 (la longitud de la cadena vacía).
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2024-25  
+Lenguajes y Paradigmas de Programación, curso 2025-26  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
