@@ -716,12 +716,6 @@ recorrer toda la lista. El coste de la instrucción <code>(null? (rest
 lista))</code> no depende de la longitud de la lista, es O(1). Sin
 embargo, la instrucción <code>(length lista)</code> tiene que recorrer toda
 la lista por lo que tiene una complejidad de O(n).</p>
-<p>Muchas veces verás también una expresión equivalente para
-comprobar si una lista tiene un único elemento: :</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">null?</span><span class="w"> </span><span class="p">(</span><span class="nb">cdr</span><span class="w"> </span><span class="n">lista</span><span class="p">))</span>
-</code></pre></div>
-<p>Es una expresión que suelen usar los programadores de Scheme, algo
-que se conoce como una <em>expresión idiomática</em> del lenguaje.</p>
 </div>
 <p>a.2) Vamos a investigar el funcionamiento de la recursión en la función
 <code>minimo</code>. Supongamos la siguiente llamada:</p>
@@ -909,7 +903,7 @@ cadena vacía y un 0 (la longitud de la cadena vacía).</p>
 <span class="p">(</span><span class="n">cadena-mayor</span><span class="w"> </span><span class="o">&#39;</span><span class="p">())</span><span class="w"> </span><span class="c1">; ⇒ (&quot;&quot; . 0)</span>
 </code></pre></div>
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2024-25<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2025-26<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
 

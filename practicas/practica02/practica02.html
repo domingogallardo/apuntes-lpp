@@ -809,6 +809,13 @@ desplazamiento variable, positivo o negativo, dependiendo en que sentido rotemos
 el alfabeto.</p>
 <p>Define las funciones <code>(cifra-caracter char desplazamiento)</code> y <code>(descifra-caracter char
 desplazamiento)</code> que implementen el cifrado anterior.</p>
+<div class="admonition note">
+<p class="admonition-title">Mayúsculas y minúsculas</p>
+<p>El cifrado debe <strong>conservar el tipo de letra</strong>: si el carácter de entrada es mayúscula, el resultado debe ser mayúscula.
+Una forma sencilla es: pasar a minúscula, cifrar, y volver a mayúscula al final.
+Racket proporciona funciones para comprobar y convertir mayúsculas y minúsculas, como<br />
+<code>char-upper-case?</code>, <code>char-downcase</code> y <code>char-upcase</code>.</p>
+</div>
 <p>Para la implementación de las funciones anteriores debes definir y usar las
 siguientes funciones auxiliares:</p>
 <ul>
@@ -819,7 +826,12 @@ siguientes funciones auxiliares:</p>
 </ul>
 <p>La función <code>(rota-indice indice desplazamiento)</code> recibe el índice del carácter
 original y calcula el índice del carácter cifrado.</p>
-<p><strong>Consejo</strong>: puedes usar la función <code>modulo</code> <a href="https://docs.racket-lang.org/reference/generic-numbers.html#(def._((quote._~23~25kernel)._modulo))">ver documentación</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Consejo: Usa la función <code>modulo</code></p>
+<p>El alfabeto se comporta como una <strong>estructura circular</strong>: después de la <code>z</code> se vuelve a la <code>a</code>, y antes de la <code>a</code> se vuelve a la <code>z</code>. 
+Para rotar dentro de las 26 letras, conviene trabajar con índices <code>0..25</code> y usar <code>modulo</code> <a href="https://docs.racket-lang.org/reference/generic-numbers.html#(def._((quote._~23~25kernel)._modulo))">ver documentación</a>.
+En Racket, <code>(modulo n 26)</code> siempre devuelve un resultado en <code>0..25</code>, incluso si <code>n</code> es negativo.</p>
+</div>
 <p>Analiza los siguientes ejemplos para entender mejor el funcionamiento de las
 funciones auxiliares y las funciones principales:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">encuentra-indice</span><span class="w"> </span><span class="sc">#\a</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 0</span>
