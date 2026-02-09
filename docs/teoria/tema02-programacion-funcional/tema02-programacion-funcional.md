@@ -2826,7 +2826,7 @@ listas. Algunas ya las conocemos, pero otras no:
 (reverse '(a b c))  ; ‌⇒ (c b a)
 (list-tail '(a b c d) 2) ; ‌⇒ (c d)
 ```
-<!--
+
 En los siguientes apartados veremos cómo están implementadas.
 
 ### 4.3. Funciones recursivas que construyen listas
@@ -3702,6 +3702,7 @@ funcionamiento de esta recursión:
 <img src="imagenes/suma-parejas-apply.png" width="600px"/>
 
 
+<!--
 ### 5.4. Generalización ###
 
 La posibilidad de pasar funciones como parámetros de otras es una
