@@ -3144,8 +3144,8 @@ y:
 Ejemplos:
 
 ```racket
-(divisor 2 10) ; ⇒ #t
-(divisor 3 10) ; ⇒ #f
+(divisor? 2 10) ; ⇒ #t
+(divisor? 3 10) ; ⇒ #f
 ```
 
 Una vez que hemos definido La función `divisor?` podemos utilizarla

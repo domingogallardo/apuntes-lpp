@@ -330,6 +330,7 @@ Vamos a probarlo:
 
 
 <p style="margin-bottom:1cm;"></p>
+
 ----
 <p style="margin-bottom:1cm;"></p>
 
