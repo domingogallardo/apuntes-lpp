@@ -3121,8 +3121,8 @@ La función `(lista-desde x)` devuelve una lista de números x..1:
 
 ```racket
 (define (lista-desde x)
-   (if (= x 0)
-      '()
+   (if (= x 1)
+      '(1)
       (cons x (lista-desde (- x 1)))))
 ```
 
@@ -3702,7 +3702,6 @@ funcionamiento de esta recursión:
 <img src="imagenes/suma-parejas-apply.png" width="600px"/>
 
 
-<!--
 ### 5.4. Generalización ###
 
 La posibilidad de pasar funciones como parámetros de otras es una
@@ -4812,7 +4811,7 @@ Entonces la función `(divisores n)` se implementaría de la siguiente forma:
   (filter (lambda (x)
             (divisor? x n)) (numeros-hasta n)))
 ```
--->
+
 ## 6. Bibliografía
 
 Capítulos del libro *Structure and Intepretation of Computer Programs*:
