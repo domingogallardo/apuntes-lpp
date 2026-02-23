@@ -206,13 +206,12 @@ table {
 <ul>
 <li>
 <p>Solución:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">sum-x</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
-<span class="w">    </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
-<span class="w">        </span><span class="mi">0</span>
-<span class="w">        </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">(</span><span class="n">sum-x</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">b</span><span class="p">))))</span>
+<pre class="highlight"><code class="language-racket">(define (sum-x a b)
+    (if (&gt; a b)
+        0
+        (+ a (sum-x (+ a 1) b))))
 
-<span class="p">(</span><span class="n">sum-x</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 55</span>
-</code></pre></div>
+(sum-x 1 10) ; ⇒ 55</code></pre>
 </li>
 <li>
 <p>Supongamos ahora que queremos calcular el sumatorio de <code>a</code> hasta <code>b</code>
@@ -224,13 +223,12 @@ table {
 <ul>
 <li>
 <p>Solución:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">sum-cuadrado-x</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
-<span class="w">    </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
-<span class="w">        </span><span class="mi">0</span>
-<span class="w">        </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">sum-cuadrado-x</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">b</span><span class="p">))))</span>
+<pre class="highlight"><code class="language-racket">(define (sum-cuadrado-x a b)
+    (if (&gt; a b)
+        0
+        (+ (* a a) (sum-cuadrado-x (+ a 1) b))))
 
-<span class="p">(</span><span class="n">sum-cuadrado-x</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 385</span>
-</code></pre></div>
+(sum-cuadrado-x 1 10) ; ⇒ 385</code></pre>
 </li>
 <li>
 <p>¿Y el sumatorio de <code>a</code> hasta <code>b</code> <strong>sumando los cubos</strong>?</p>
@@ -241,13 +239,12 @@ table {
 <ul>
 <li>
 <p>Solución:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">sum-cubo-x</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
-<span class="w">    </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
-<span class="w">        </span><span class="mi">0</span>
-<span class="w">        </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">sum-cubo-x</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">b</span><span class="p">))))</span>
+<pre class="highlight"><code class="language-racket">(define (sum-cubo-x a b)
+    (if (&gt; a b)
+        0
+        (+ (* a a a) (sum-cubo-x (+ a 1) b))))
 
-<span class="p">(</span><span class="n">sum-cubo-x</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 3025</span>
-</code></pre></div>
+(sum-cubo-x 1 10) ; ⇒ 3025</code></pre>
 </li>
 <li>
 <p>El código de las tres funciones anteriores es muy similar.</p>
@@ -258,27 +255,24 @@ table {
 <p>Podemos definir una función genérica <code>sum-f-x</code> que generaliza las
   tres funciones anteriores: el sumatorio desde <code>a</code> hasta <code>b</code> de
   <code>f(x)</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">sum-f-x</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
-<span class="w">    </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
-<span class="w">        </span><span class="mi">0</span>
-<span class="w">        </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">sum-f-x</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">b</span><span class="p">))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (sum-f-x f a b)
+    (if (&gt; a b)
+        0
+        (+ (f a) (sum-f-x f (+ a 1) b))))</code></pre>
 </li>
 <li>
 <p>Las funciones anteriores son casos particulares de esta función que
   las generaliza. Por ejemplo, para calcular el sumatorio desde 1
   hasta 10 de <code>x</code> al cubo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">cubo</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
-<span class="w">    </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
+<pre class="highlight"><code class="language-racket">(define (cubo x)
+    (* x x x))
 
-<span class="p">(</span><span class="n">sum-f-x</span><span class="w"> </span><span class="n">cubo</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 3025</span>
-</code></pre></div>
+(sum-f-x cubo 1 10) ; ⇒ 3025</code></pre>
 </li>
 <li>
 <p>O podemos sumar la expresión (n/(n-1)) para todos los números del 2
   al 100. Usamos una expresión lambda:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">sum-f-x</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(sum-f-x (lambda (n) (/ n (- n 1))) 2 100)</code></pre>
 </li>
 </ul>
 <hr />
@@ -299,47 +293,41 @@ table {
 <li>
 <p>Definimos una función constructora <code>(construye-sumador k)</code> que crea
   en su ejecución una función sumadora:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">construye-sumador</span><span class="w"> </span><span class="n">k</span><span class="p">)</span>
-<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="w">       </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">k</span><span class="p">)))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (construye-sumador k)
+   (lambda (x)
+       (+ x k)))</code></pre>
 </li>
 <li>
 <p>La función constructora <code>construye-sumador</code> devuelve un procedimiento: </p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">construye-sumador</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #&lt;procedure&gt;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(construye-sumador 10) ; ⇒ #&lt;procedure&gt;</code></pre>
 </li>
 <li>
 <p>Por ejemplo, si le pasamos 10, como parámetro devolverá una función
 de un argumento que sumará 10 a ese argumento:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="n">construye-sumador</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span>
-<span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 13</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define f (construye-sumador 10))
+(f 3) ; ⇒ 13</code></pre>
 </li>
 <li>
 <p>También:</p>
-<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="n">construye-sumador</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 13</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">((construye-sumador 10) 3) ; ⇒ 13</code></pre>
 </li>
 <li>
 <p>Dependiendo del parámetro que le pasemos a la función constructora
   obtendremos una función sumadora que sume un número u otro. Por
   ejemplo para obtener una función sumadora que suma 100:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="p">(</span><span class="n">construye-sumador</span><span class="w"> </span><span class="mi">100</span><span class="p">))</span>
-<span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 103</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define g (construye-sumador 100))
+(g 3) ; ⇒ 103</code></pre>
 </li>
 <li>
 <p>¿Cómo funciona la clausura?</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">construye-sumador</span><span class="w"> </span><span class="n">k</span><span class="p">)</span>
-<span class="w">   </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="w">       </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">k</span><span class="p">)))</span>
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="p">(</span><span class="n">construye-sumador</span><span class="w"> </span><span class="mi">100</span><span class="p">))</span>
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="n">construye-sumador</span><span class="w"> </span><span class="mi">50</span><span class="p">))</span>
-<span class="p">(</span><span class="n">g</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ ???</span>
-<span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ ???</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define k 10)
+(define (construye-sumador k)
+   (lambda (x)
+       (+ x k)))
+(define g (construye-sumador 100))
+(define f (construye-sumador 50))
+(g 3) ; ⇒ ???
+(f 6) ; ⇒ ???</code></pre>
 </li>
 <li>
 <p>Cuando invocamos a <code>construye-sumador</code> con un valor concreto para
@@ -376,23 +364,21 @@ en estructuras de datos.</li>
 <li>
 <p>Para construir una lista de funciones debemos llamar a <code>list</code> con
 las funciones como parámetros</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">doble</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">cuadrado</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">suma-1</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+<pre class="highlight"><code class="language-racket">(define (doble x) (+ x x))
+(define (cuadrado x) (* x x))
+(define (suma-1 x) (+ x 1))
 
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">lista</span><span class="w"> </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="n">cuadrado</span><span class="w"> </span><span class="n">suma-1</span><span class="w"> </span><span class="n">doble</span><span class="p">))</span>
-<span class="n">lista</span>
-<span class="c1">; ⇒ (#&lt;procedure:cuadrado&gt;  #&lt;procedure:suma-1&gt;  #&lt;procedure:doble&gt;)</span>
-</code></pre></div>
+(define lista (list cuadrado suma-1 doble))
+lista
+; ⇒ (#&lt;procedure:cuadrado&gt;  #&lt;procedure:suma-1&gt;  #&lt;procedure:doble&gt;)</code></pre>
 </li>
 <li>
 <p>También podemos usar expresiones <code>lambda</code> para crear la función que
   se incluye en la lista. Por ejemplo, podemos añadir una función que
   suma 5 a un número:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">lista2</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">5</span><span class="p">))</span><span class="w"> </span><span class="n">lista</span><span class="p">))</span>
-<span class="n">lista2</span>
-<span class="c1">; ⇒ (#&lt;procedure&gt; #&lt;procedure:cuadrado&gt; #&lt;procedure:suma-1&gt; #&lt;procedure:doble&gt;)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define lista2 (cons (lambda (x) (+ x 5)) lista))
+lista2
+; ⇒ (#&lt;procedure&gt; #&lt;procedure:cuadrado&gt; #&lt;procedure:suma-1&gt; #&lt;procedure:doble&gt;)</code></pre>
 </li>
 </ul>
 <hr />
@@ -407,8 +393,7 @@ las funciones como parámetros</p>
 </li>
 <li>
 <p>Por ejemplo, para invocar a la primera función de <code>lista2</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">((</span><span class="nb">first</span><span class="w"> </span><span class="n">lista2</span><span class="p">)</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 15</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">((first lista2) 10) ; ⇒ 15</code></pre>
 </li>
 </ul>
 <hr />
@@ -423,29 +408,25 @@ las funciones como parámetros</p>
 <li>
 <p>Por ejemplo, la lista anterior con las funciones <code>cuadrado</code>, <code>cubo</code>
   y <code>suma-1</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">lista</span><span class="w"> </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="n">cuadrado</span><span class="w"> </span><span class="n">cubo</span><span class="w"> </span><span class="n">suma-1</span><span class="p">))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define lista (list cuadrado cubo suma-1))</code></pre>
 <p>la llamada a <code>(aplica-funcs lista 5)</code> devolverá :</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">cuadrado</span><span class="w"> </span><span class="p">(</span><span class="n">cubo</span><span class="w"> </span><span class="p">(</span><span class="n">suma-1</span><span class="w"> </span><span class="mi">5</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ 46656</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(cuadrado (cubo (suma-1 5)) ; ⇒ 46656</code></pre>
 </li>
 <li>
 <p>Implementación:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">aplica-funcs</span><span class="w"> </span><span class="n">lista-funcs</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
-<span class="w">    </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">null?</span><span class="w"> </span><span class="n">lista-funcs</span><span class="p">)</span>
-<span class="w">        </span><span class="n">x</span>
-<span class="w">        </span><span class="p">((</span><span class="nb">first</span><span class="w"> </span><span class="n">lista-funcs</span><span class="p">)</span>
-<span class="w">            </span><span class="p">(</span><span class="n">aplica-funcs</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista-funcs</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="p">))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (aplica-funcs lista-funcs x)
+    (if (null? lista-funcs)
+        x
+        ((first lista-funcs)
+            (aplica-funcs (rest lista-funcs) x))))</code></pre>
 </li>
 <li>
 <p>Un ejemplo de uso:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">lista-funcs</span><span class="w"> </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
-<span class="w">                          </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">x</span><span class="p">))</span>
-<span class="w">                          </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">))))</span>
-<span class="p">(</span><span class="n">aplica-funcs</span><span class="w"> </span><span class="n">lista-funcs</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
-<span class="n">⇒</span><span class="w"> </span><span class="mi">46656</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define lista-funcs (list (lambda (x) (* x x))
+                          (lambda (x) (* x x x))
+                          (lambda (x) (+ x 1))))
+(aplica-funcs lista-funcs 5)
+⇒ 46656</code></pre>
 </li>
 </ul>
 <hr />
@@ -499,67 +480,60 @@ que permite hacer código muy conciso y expresivo.</p>
 <p>La función <code>map</code> recibe otra función y una
   lista. Devuelve la lista resultante de aplicar la función
   <code>transforma</code> a todos los elementos de la lista.</p>
-<div class="highlight"><pre><span></span><code>(map transforma lista) -&gt; lista
-</code></pre></div>
+<pre class="highlight"><code class="language-text">(map transforma lista) -&gt; lista</code></pre>
 </li>
 <li>
 <p>La función <code>(transforma dato)</code> que usa <code>map</code> recibe como argumento
   elementos de la lista y devuelve el resultado de transformar ese
   elemento.</p>
-<div class="highlight"><pre><span></span><code>(transforma elemento) -&gt; elemento
-</code></pre></div>
+<pre class="highlight"><code class="language-text">(transforma elemento) -&gt; elemento</code></pre>
 </li>
 <li>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="n">cuadrado</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="p">))</span>
-<span class="c1">; ⇒ (1 4 9 16 25)</span>
+<pre class="highlight"><code class="language-racket">(map cuadrado '(1 2 3 4 5))
+; ⇒ (1 4 9 16 25)
 
-<span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">str</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">string-append</span><span class="w"> </span><span class="s2">&quot;Hola-&quot;</span><span class="w"> </span><span class="n">str</span><span class="p">))</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;me&quot;</span><span class="w"> </span><span class="s2">&quot;llamo&quot;</span><span class="w"> </span><span class="s2">&quot;Ana&quot;</span><span class="p">))</span>
-<span class="c1">; ⇒ (&quot;Hola-me&quot; &quot;Hola-llamo&quot; &quot;Hola-Ana&quot;)</span>
+(map (lambda (str) (string-append "Hola-" str)) '("me" "llamo" "Ana"))
+; ⇒ ("Hola-me" "Hola-llamo" "Hola-Ana")
 
-<span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span>
-<span class="w">        </span><span class="p">(</span><span class="nb">string-length</span><span class="w"> </span><span class="p">(</span><span class="nb">symbol-&gt;string</span><span class="w"> </span><span class="n">s</span><span class="p">)))</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">Esta</span><span class="w"> </span><span class="ss">es</span><span class="w"> </span><span class="ss">una</span><span class="w"> </span><span class="ss">lista</span><span class="w"> </span><span class="ss">de</span><span class="w"> </span><span class="ss">símbolos</span><span class="p">))</span>
-<span class="c1">; ⇒ (4 2 3 5 2 8)</span>
-</code></pre></div>
+(map (lambda (s) 
+        (string-length (symbol-&gt;string s))) '(Esta es una lista de símbolos))
+; ⇒ (4 2 3 5 2 8)</code></pre>
 </li>
 <li>
 <p>Veamos cómo se implementa <code>map</code> de forma recursiva. Llamamos a la
   función <code>mi-map</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">mi-map</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">    </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">null?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">        </span><span class="o">&#39;</span><span class="p">()</span>
-<span class="w">        </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">lista</span><span class="p">))</span>
-<span class="w">              </span><span class="p">(</span><span class="n">mi-map</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista</span><span class="p">)))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (mi-map f lista)
+    (if (null? lista)
+        '()
+        (cons (f (first lista))
+              (mi-map f (rest lista)))))</code></pre>
 </li>
 <li>
 <p>La función <code>map</code> puede recibir un número variable de listas, todas
   ellas de la misma longitud:</p>
-<div class="highlight"><pre><span></span><code>(map transforma lista_1 ... lista_n) -&gt; lista
-</code></pre></div>
+<pre class="highlight"><code class="language-text">(map transforma lista_1 ... lista_n) -&gt; lista</code></pre>
 </li>
 <li>
 <p>En este caso la función de transforma debe recibir tantos argumentos
   como listas recibe <code>map</code>:</p>
-<div class="highlight"><pre><span></span><code>(transforma dato_1 ... dato_n) -&gt; dato
-</code></pre></div>
+<pre class="highlight"><code class="language-text">(transforma dato_1 ... dato_n) -&gt; dato</code></pre>
 </li>
 <li>
 <p>La función <code>map</code> aplica <code>transforma</code> a los elementos cogidos de las
   n listas y construye así la lista resultante:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="nb">+</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">30</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (11 22 33)</span>
-<span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="nb">cons</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">30</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ ((1 . 10) (2 . 20) (3 . 30))</span>
-<span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="nb">&gt;</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">20</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (#f #t #t)</span>
+<pre class="highlight"><code class="language-racket">(map + '(1 2 3) '(10 20 30)) ; ⇒ (11 22 33)
+(map cons '(1 2 3) '(10 20 30)) ; ⇒ ((1 . 10) (2 . 20) (3 . 30))
+(map &gt; '(12 3 40) '(20 0 10)) ; ⇒ (#f #t #t)
 
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">mayor</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">))</span>
-<span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">mayor-de-tres</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">c</span><span class="p">)</span>
-<span class="w">    </span><span class="p">(</span><span class="n">mayor</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">(</span><span class="n">mayor</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">c</span><span class="p">)))</span>
+(define (mayor a b) (if (&gt; a b) a b))
+(define (mayor-de-tres a b c)
+    (mayor a (mayor b c)))
 
-<span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="n">mayor-de-tres</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="mi">34</span><span class="p">)</span><span class="w"> </span>
-<span class="w">                   </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="mi">89</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span>
-<span class="w">                   </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">100</span><span class="w"> </span><span class="mi">-10</span><span class="w"> </span><span class="mi">23</span><span class="w"> </span><span class="mi">45</span><span class="w"> </span><span class="mi">8</span><span class="p">))</span>
-<span class="c1">; ⇒ (100 3 23 89 34)</span>
-</code></pre></div>
+(map mayor-de-tres '(10 2 20 -1 34) 
+                   '(2 3 12 89 0) 
+                   '(100 -10 23 45 8))
+; ⇒ (100 3 23 89 34)</code></pre>
 </li>
 </ul>
 <div class="admonition hint">
@@ -574,41 +548,37 @@ de <em>n</em> elementos transformados.</p>
   predicado y una lista y devuelve como resultado los elementos de la
   lista que cumplen el <code>predicado</code>.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>(filter predicado lista) -&gt; lista
-</code></pre></div>
+<pre class="highlight"><code class="language-text">(filter predicado lista) -&gt; lista</code></pre>
 <ul>
 <li>
 <p>La función <code>(predicado elem)</code> que usa <code>filter</code> recibe elementos de
   la lista y devuelve <code>#t</code> o <code>#f</code>.</p>
-<div class="highlight"><pre><span></span><code>(predicado elem) -&gt; boolean
-</code></pre></div>
+<pre class="highlight"><code class="language-text">(predicado elem) -&gt; boolean</code></pre>
 </li>
 <li>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="nb">even?</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">8</span><span class="p">))</span>
-<span class="c1">; ⇒ (2 4 6 8)</span>
+<pre class="highlight"><code class="language-racket">(filter even? '(1 2 3 4 5 6 7 8))
+; ⇒ (2 4 6 8)
 
-<span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span>
-<span class="w">           </span><span class="p">(</span><span class="nb">&gt;=</span><span class="w"> </span><span class="p">(</span><span class="nb">string-length</span><span class="w"> </span><span class="p">(</span><span class="nb">symbol-&gt;string</span><span class="w"> </span><span class="n">s</span><span class="p">))</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span>
-<span class="w">           </span><span class="o">&#39;</span><span class="p">(</span><span class="ss">Esta</span><span class="w"> </span><span class="ss">es</span><span class="w"> </span><span class="ss">una</span><span class="w"> </span><span class="ss">lista</span><span class="w"> </span><span class="ss">de</span><span class="w"> </span><span class="ss">símbolos</span><span class="p">))</span>
-<span class="c1">; ⇒ (Esta lista símbolos)</span>
+(filter (lambda (s) 
+           (&gt;= (string-length (symbol-&gt;string s)) 4))
+           '(Esta es una lista de símbolos))
+; ⇒ (Esta lista símbolos)
 
-<span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">pareja</span><span class="p">)</span>
-<span class="w">            </span><span class="p">(</span><span class="nb">&gt;=</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="n">pareja</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">cdr</span><span class="w"> </span><span class="n">pareja</span><span class="p">)))</span><span class="w"> </span>
-<span class="w">            </span><span class="o">&#39;</span><span class="p">((</span><span class="mi">10</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">8</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="mi">20</span><span class="p">)))</span>
-<span class="c1">; ⇒ ((10 . 4) (8 . 8))</span>
-</code></pre></div>
+(filter (lambda (pareja)
+            (&gt;= (car pareja) (cdr pareja))) 
+            '((10 . 4) (2 . 4) (8 . 8) (10 . 20)))
+; ⇒ ((10 . 4) (8 . 8))</code></pre>
 </li>
 <li>
 <p>Podemos implementar <code>filter</code> de forma recursiva. Llamamos a la
   función <code>mi-filter</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">mi-filter</span><span class="w"> </span><span class="n">pred</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">  </span><span class="p">(</span><span class="k">cond</span>
-<span class="w">    </span><span class="p">((</span><span class="nb">null?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span><span class="w"> </span><span class="o">&#39;</span><span class="p">())</span>
-<span class="w">    </span><span class="p">((</span><span class="n">pred</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">lista</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">                              </span><span class="p">(</span><span class="n">mi-filter</span><span class="w"> </span><span class="n">pred</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista</span><span class="p">))))</span>
-<span class="w">    </span><span class="p">(</span><span class="k">else</span><span class="w"> </span><span class="p">(</span><span class="n">mi-filter</span><span class="w"> </span><span class="n">pred</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista</span><span class="p">)))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (mi-filter pred lista)
+  (cond
+    ((null? lista) '())
+    ((pred (first lista)) (cons (first lista)
+                              (mi-filter pred (rest lista))))
+    (else (mi-filter pred (rest lista)))))</code></pre>
 </li>
 </ul>
 <div class="admonition hint">
@@ -624,31 +594,27 @@ elementos originales filtrados por la condición.</p>
 <p>La función de orden superior <code>(exists? predicado lista)</code> recibe un
   predicado y una lista y comprueba si algún elemento de la lista
   cumple ese predicado.</p>
-<div class="highlight"><pre><span></span><code>(exists? predicado lista) -&gt; boolean
-</code></pre></div>
+<pre class="highlight"><code class="language-text">(exists? predicado lista) -&gt; boolean</code></pre>
 </li>
 <li>
 <p>Igual que en <code>filter</code> el <code>predicado</code> recibe elementos de la lista y
   devuelve <code>#t</code> o <code>#f</code>.</p>
-<div class="highlight"><pre><span></span><code>(predicado elem) -&gt; boolean
-</code></pre></div>
+<pre class="highlight"><code class="language-text">(predicado elem) -&gt; boolean</code></pre>
 </li>
 <li>
 <p>Implementación:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">exists?</span><span class="w"> </span><span class="n">predicado</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">null?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">      </span><span class="no">#f</span>
-<span class="w">      </span><span class="p">(</span><span class="k">or</span><span class="w"> </span><span class="p">(</span><span class="n">predicado</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">lista</span><span class="p">))</span>
-<span class="w">          </span><span class="p">(</span><span class="n">exists?</span><span class="w"> </span><span class="n">predicado</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista</span><span class="p">)))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (exists? predicado lista)
+  (if (null? lista)
+      #f
+      (or (predicado (first lista))
+          (exists? predicado (rest lista)))))</code></pre>
 </li>
 <li>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">exists?</span><span class="w"> </span><span class="nb">even?</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ #t</span>
+<pre class="highlight"><code class="language-racket">(exists? even? '(1 2 3 4 5 6)) ; ⇒ #t
 
-<span class="p">(</span><span class="n">exists?</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="w">             </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">8</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ #f</span>
-</code></pre></div>
+(exists? (lambda (x)
+             (&gt; x 10)) '(1 3 5 8)) ; ⇒ #f</code></pre>
 </li>
 </ul>
 <hr />
@@ -661,19 +627,17 @@ elementos originales filtrados por la condición.</p>
 </li>
 <li>
 <p>Implementación:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">for-all?</span><span class="w"> </span><span class="n">predicado</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">  </span><span class="p">(</span><span class="k">or</span><span class="w"> </span><span class="p">(</span><span class="nb">null?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">      </span><span class="p">(</span><span class="k">and</span><span class="w"> </span><span class="p">(</span><span class="n">predicado</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">lista</span><span class="p">))</span>
-<span class="w">           </span><span class="p">(</span><span class="n">for-all?</span><span class="w"> </span><span class="n">predicado</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista</span><span class="p">)))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (for-all? predicado lista)
+  (or (null? lista)
+      (and (predicado (first lista))
+           (for-all? predicado (rest lista)))))</code></pre>
 </li>
 <li>
 <p>Ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">for-all?</span><span class="w"> </span><span class="nb">even?</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">6</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ #t</span>
+<pre class="highlight"><code class="language-racket">(for-all? even? '(2 4 6)) ; ⇒ #t
 
-<span class="p">(</span><span class="n">for-all?</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="w">             </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">12</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="mi">80</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ #t</span>
-</code></pre></div>
+(for-all? (lambda (x)
+             (&gt; x 10)) '(12 30 50 80)) ; ⇒ #t</code></pre>
 </li>
 </ul>
 <hr />
@@ -683,16 +647,14 @@ elementos originales filtrados por la condición.</p>
 <p>El nombre <code>fold</code> significa <em>plegado</em>. La función <code>foldr</code>
   recorre una lista y la va "plegando", devolviendo un único valor
   como resultado.</p>
-<div class="highlight"><pre><span></span><code>(foldr combina base lista) -&gt; valor
-</code></pre></div>
+<pre class="highlight"><code class="language-text">(foldr combina base lista) -&gt; valor</code></pre>
 </li>
 <li>
 <p>El plegado lo realiza la <strong>función de plegado</strong> <code>(combina dato
   resultado)</code>, que recibe un dato de la lista y lo acumula con el otro
   parámetro <code>resultado</code> (al que debemos dar un valor inicial y es el
   parámetro <code>base</code> de la función <code>foldr</code>).</p>
-<div class="highlight"><pre><span></span><code>(combina dato resultado) -&gt; resultado
-</code></pre></div>
+<pre class="highlight"><code class="language-text">(combina dato resultado) -&gt; resultado</code></pre>
 </li>
 <li>
 <p>La función <code>combina</code> se aplica a los elementos de la lista <strong>de
@@ -704,9 +666,8 @@ elementos originales filtrados por la condición.</p>
 <p>Veamos un ejemplo. Supongamos que la función de plegado es una
   función que suma el dato que viene de la lista con el valor
   acumulado:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">suma</span><span class="w"> </span><span class="n">dato</span><span class="w"> </span><span class="n">resultado</span><span class="p">)</span>
-<span class="w">    </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">dato</span><span class="w"> </span><span class="n">resultado</span><span class="p">))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (suma dato resultado)
+    (+ dato resultado))</code></pre>
 </li>
 <li>
 <p>Llamamos a los parámetros <code>dato</code> y <code>resultado</code> para remarcar que el
@@ -716,8 +677,7 @@ elementos originales filtrados por la condición.</p>
 <li>
 <p>Veamos qué pasa cuando hacemos un <code>foldr</code> con esta función
   <code>suma</code> y la lista <code>(1 2 3)</code> y con el número 0 como base:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">foldr</span><span class="w"> </span><span class="n">suma</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ 6</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(foldr suma 0 '(1 2 3)) ; ⇒ 6</code></pre>
 </li>
 <li>
 <p>La función <code>suma</code> se va a ir aplicando a todos los elementos de la
@@ -729,39 +689,34 @@ elementos originales filtrados por la condición.</p>
 <li>
 <p>En concreto, la secuencia de llamadas a la función <code>suma</code> serán las
   siguientes:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 3</span>
-<span class="p">(</span><span class="n">suma</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 5</span>
-<span class="p">(</span><span class="n">suma</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 6</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(suma 3 0) ; ⇒ 3
+(suma 2 3) ; ⇒ 5
+(suma 1 5) ; ⇒ 6</code></pre>
 </li>
 <li>
 <p>Otro ejemplo de uso:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">foldr</span><span class="w"> </span><span class="nb">string-append</span><span class="w"> </span><span class="s2">&quot;****&quot;</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span><span class="w"> </span><span class="s2">&quot;que&quot;</span><span class="w"> </span><span class="s2">&quot;tal&quot;</span><span class="p">))</span><span class="w"> </span>
-<span class="c1">; ⇒ &quot;holaquetal****&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(foldr string-append "****" '("hola" "que" "tal")) 
+; ⇒ "holaquetal****"</code></pre>
 </li>
 <li>
 <p>En este caso la secuencia de llamadas a <code>string-append</code> que se van a
   producir son:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">string-append</span><span class="w"> </span><span class="s2">&quot;tal&quot;</span><span class="w"> </span><span class="s2">&quot;****&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ &quot;tal****&quot;</span>
-<span class="p">(</span><span class="nb">string-append</span><span class="w"> </span><span class="s2">&quot;que&quot;</span><span class="w"> </span><span class="s2">&quot;tal****&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ &quot;quetal****&quot;</span>
-<span class="p">(</span><span class="nb">string-append</span><span class="w"> </span><span class="s2">&quot;hola&quot;</span><span class="w"> </span><span class="s2">&quot;quetal****&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ &quot;holaquetal****&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(string-append "tal" "****") ; ⇒ "tal****"
+(string-append "que" "tal****") ; ⇒ "quetal****"
+(string-append "hola" "quetal****") ; ⇒ "holaquetal****"</code></pre>
 </li>
 <li>
 <p>Otros ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">foldr</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">8</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ 40320</span>
-<span class="p">(</span><span class="nb">foldr</span><span class="w"> </span><span class="nb">cons</span><span class="w"> </span><span class="o">&#39;</span><span class="p">()</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (1 2 3 4)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(foldr (lambda (x y) (* x y)) 1 '(1 2 3 4 5 6 7 8)) ; ⇒ 40320
+(foldr cons '() '(1 2 3 4)) ; ⇒ (1 2 3 4)</code></pre>
 </li>
 <li>
 <p>La <strong>implementación recursiva</strong> en Scheme de la función <code>foldr</code> es
   la siguiente:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">mi-foldr</span><span class="w"> </span><span class="n">combina</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">null?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">      </span><span class="n">base</span>
-<span class="w">      </span><span class="p">(</span><span class="n">combina</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">mi-foldr</span><span class="w"> </span><span class="n">combina</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista</span><span class="p">)))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (mi-foldr combina base lista)
+  (if (null? lista)
+      base
+      (combina (first lista) (mi-foldr combina base (rest lista)))))</code></pre>
 </li>
 </ul>
 <h3>Función <code>foldl</code></h3>
@@ -774,26 +729,22 @@ derecha a izquierda.</p>
 </li>
 <li>
 <p>El perfil de la función de plegado es el mismo que en <code>foldr</code>:</p>
-<div class="highlight"><pre><span></span><code>(combina dato resultado) -&gt; resultado
-</code></pre></div>
+<pre class="highlight"><code class="language-text">(combina dato resultado) -&gt; resultado</code></pre>
 </li>
 <li>
 <p>Por ejemplo, si la función de combinación es <code>string-append</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">foldl</span><span class="w"> </span><span class="nb">string-append</span><span class="w"> </span><span class="s2">&quot;****&quot;</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;hola&quot;</span><span class="w"> </span><span class="s2">&quot;que&quot;</span><span class="w"> </span><span class="s2">&quot;tal&quot;</span><span class="p">))</span><span class="w"> </span>
-<span class="c1">; ⇒ &quot;talquehola****&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(foldl string-append "****" '("hola" "que" "tal")) 
+; ⇒ "talquehola****"</code></pre>
 </li>
 <li>
 <p>La secuencia de llamadas a <code>string-append</code> es:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">string-append</span><span class="w"> </span><span class="s2">&quot;hola&quot;</span><span class="w"> </span><span class="s2">&quot;****&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ &quot;hola****&quot;</span>
-<span class="p">(</span><span class="nb">string-append</span><span class="w"> </span><span class="s2">&quot;que&quot;</span><span class="w"> </span><span class="s2">&quot;hola****&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ &quot;quehola****&quot;</span>
-<span class="p">(</span><span class="nb">string-append</span><span class="w"> </span><span class="s2">&quot;tal&quot;</span><span class="w"> </span><span class="s2">&quot;quehola****&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ &quot;talquehola****&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(string-append "hola" "****") ; ⇒ "hola****"
+(string-append "que" "hola****") ; ⇒ "quehola****"
+(string-append "tal" "quehola****") ; ⇒ "talquehola****"</code></pre>
 </li>
 <li>
 <p>Otro ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nb">foldl</span><span class="w"> </span><span class="nb">cons</span><span class="w"> </span><span class="o">&#39;</span><span class="p">()</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ (4 3 2 1)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(foldl cons '() '(1 2 3 4)) ; ⇒ (4 3 2 1)</code></pre>
 </li>
 <li>
 <p>La implementación de <code>foldl</code> la veremos cuando hablemos de
@@ -834,18 +785,16 @@ las características más potentes de la programación funcional.</p>
 </li>
 <li>
 <p>Podemos hacerlo de forma recursiva:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">suma-n</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">    </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">null?</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">        </span><span class="o">&#39;</span><span class="p">()</span>
-<span class="w">        </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
-<span class="w">              </span><span class="p">(</span><span class="n">suma-n</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">lista</span><span class="p">)))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (suma-n n lista)
+    (if (null? lista)
+        '()
+        (cons (+ (first lista) n)
+              (suma-n n (rest lista)))))</code></pre>
 </li>
 <li>
 <p>Funciona de la siguiente manera:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-n</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span>
-<span class="c1">; ⇒ (11 12 13 14)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(suma-n 10 '(1 2 3 4))
+; ⇒ (11 12 13 14)</code></pre>
 </li>
 <li>
 <p>¿Podemos implementar <code>suma-n</code> usando una llamada a <code>map</code>?</p>
@@ -857,18 +806,16 @@ las características más potentes de la programación funcional.</p>
 <li>
 <p>Sí, pasándole a map una función construida con una expresión lambda
   en la que se usa el parámetro <code>n</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">suma-n</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">    </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="n">lista</span><span class="p">))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (suma-n n lista)
+    (map (lambda (x) (+ x n)) lista))</code></pre>
 </li>
 <li>
 <p>Otro ejemplo, la función <code>suma-parejas</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">suma-parejas</span><span class="w"> </span><span class="n">lista-parejas</span><span class="p">)</span>
-<span class="w">    </span><span class="p">(</span><span class="nb">foldr</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">pareja</span><span class="w"> </span><span class="n">resultado</span><span class="p">)</span>
-<span class="w">               </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="n">pareja</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">cdr</span><span class="w"> </span><span class="n">pareja</span><span class="p">)</span><span class="w"> </span><span class="n">resultado</span><span class="p">))</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">lista-parejas</span><span class="p">))</span>
+<pre class="highlight"><code class="language-racket">(define (suma-parejas lista-parejas)
+    (foldr (lambda (pareja resultado)
+               (+ (car pareja) (cdr pareja) resultado)) 0 lista-parejas))
 
-<span class="p">(</span><span class="n">suma-parejas</span><span class="w"> </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="mi">3</span><span class="p">)))</span><span class="w"> </span><span class="c1">; ⇒ 39</span>
-</code></pre></div>
+(suma-parejas (list (cons 3 6) (cons 2 9) (cons -1 8) (cons 9 3))) ; ⇒ 39</code></pre>
 </li>
 </ul>
 <hr />
@@ -893,22 +840,19 @@ después que sume todos los elementos resultantes.</p>
 <ul>
 <li>
 <p>Solución:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">suma-n-total</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">lista</span><span class="p">)</span>
-<span class="w">   </span><span class="p">(</span><span class="nb">foldr</span><span class="w"> </span><span class="nb">+</span><span class="w"> </span><span class="mi">0</span>
-<span class="w">       </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="n">lista</span><span class="p">)))</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">suma-n-total</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ 410</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (suma-n-total n lista)
+   (foldr + 0
+       (map (lambda (x) (+ x n)) lista)))</code></pre>
+<pre class="highlight"><code class="language-racket">(suma-n-total 100 '(1 2 3 4)) ; ⇒ 410</code></pre>
 </li>
 <li>
 <p>Otro ejemplo: queremos contar aquellas parejas cuya suma de ambos números
 es mayor que un umbral (por ejemplo, 10).</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="n">lista-parejas</span><span class="w"> </span><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span>
-<span class="w">                            </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span>
-<span class="w">                            </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span>
-<span class="w">                            </span><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="mi">6</span><span class="p">)))</span>
-<span class="p">(</span><span class="n">cuenta-mayores-que</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">lista-parejas</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ 2</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define lista-parejas (list (cons 1 2) 
+                            (cons 3 8) 
+                            (cons 2 3) 
+                            (cons 9 6)))
+(cuenta-mayores-que 10 lista-parejas) ; ⇒ 2</code></pre>
 </li>
 <li>
 <p>¿Cómo se implementaría componiendo funciones de orden superior?:</p>
@@ -919,12 +863,11 @@ es mayor que un umbral (por ejemplo, 10).</p>
 <ul>
 <li>
 <p>Solución:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">cuenta-mayores-que</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="n">lista-parejas</span><span class="p">)</span>
-<span class="w">  </span><span class="p">(</span><span class="nb">length</span>
-<span class="w">   </span><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="w">             </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">pareja</span><span class="p">)</span>
-<span class="w">                             </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nb">car</span><span class="w"> </span><span class="n">pareja</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">cdr</span><span class="w"> </span><span class="n">pareja</span><span class="p">)))</span><span class="w"> </span><span class="n">lista-parejas</span><span class="p">))))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (cuenta-mayores-que n lista-parejas)
+  (length
+   (filter (lambda (x)
+             (&gt; x n)) (map (lambda (pareja)
+                             (+ (car pareja) (cdr pareja))) lista-parejas))))</code></pre>
 </li>
 </ul>
 <hr />
@@ -938,16 +881,14 @@ es mayor que un umbral (por ejemplo, 10).</p>
 </li>
 <li>
 <p>Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">contienen-letra</span><span class="w"> </span><span class="sc">#\a</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s2">&quot;En&quot;</span><span class="w"> </span><span class="s2">&quot;un&quot;</span><span class="w"> </span><span class="s2">&quot;lugar&quot;</span><span class="w"> </span><span class="s2">&quot;de&quot;</span><span class="w"> </span><span class="s2">&quot;la&quot;</span><span class="w"> </span><span class="s2">&quot;Mancha&quot;</span><span class="p">))</span>
-<span class="c1">; ⇒ (&quot;lugar&quot; &quot;la&quot; &quot;Mancha&quot;)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(contienen-letra #\a '("En" "un" "lugar" "de" "la" "Mancha"))
+; ⇒ ("lugar" "la" "Mancha")</code></pre>
 </li>
 <li>
 <p>Necesitamos el predicado auxiliar <code>(letra-en-pal? caracter pal)</code> que
   comprueba si una cadena contiene un carácter. Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">letra-en-pal?</span><span class="w"> </span><span class="sc">#\a</span><span class="w"> </span><span class="s2">&quot;Hola&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #t</span>
-<span class="p">(</span><span class="n">letra-en-pal?</span><span class="w"> </span><span class="sc">#\a</span><span class="w"> </span><span class="s2">&quot;Pepe&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">; ⇒ #f</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(letra-en-pal? #\a "Hola") ; ⇒ #t
+(letra-en-pal? #\a "Pepe") ; ⇒ #f</code></pre>
 </li>
 <li>
 <p>¿Lo podemos implementar obteniendo una lista de caracteres a partir
@@ -959,19 +900,17 @@ es mayor que un umbral (por ejemplo, 10).</p>
 <ul>
 <li>
 <p>Solución:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">letra-en-pal?</span><span class="w"> </span><span class="n">caracter</span><span class="w"> </span><span class="n">palabra</span><span class="p">)</span>
-<span class="w">    </span><span class="p">(</span><span class="n">exists?</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span>
-<span class="w">                </span><span class="p">(</span><span class="nb">equal?</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="n">caracter</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="nb">string-&gt;list</span><span class="w"> </span><span class="n">palabra</span><span class="p">)))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (letra-en-pal? caracter palabra)
+    (exists? (lambda (c) 
+                (equal? c caracter)) (string-&gt;list palabra)))</code></pre>
 </li>
 <li>
 <p>Ahora ya podemos implementar <code>contienen-letra</code> usando otra vez la
   función de orden superior <code>filter</code> y la función anterior en la
   expresión lambda que hace el filtrado:</p>
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">define</span><span class="w"> </span><span class="p">(</span><span class="n">contienen-letra</span><span class="w"> </span><span class="n">caracter</span><span class="w"> </span><span class="n">lista-pal</span><span class="p">)</span>
-<span class="w">   </span><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="p">(</span><span class="k">lambda</span><span class="w"> </span><span class="p">(</span><span class="n">pal</span><span class="p">)</span>
-<span class="w">              </span><span class="p">(</span><span class="n">letra-en-pal?</span><span class="w"> </span><span class="n">caracter</span><span class="w"> </span><span class="n">pal</span><span class="p">))</span><span class="w"> </span><span class="n">lista-pal</span><span class="p">))</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-racket">(define (contienen-letra caracter lista-pal)
+   (filter (lambda (pal)
+              (letra-en-pal? caracter pal)) lista-pal))</code></pre>
 </li>
 </ul></body>
 
