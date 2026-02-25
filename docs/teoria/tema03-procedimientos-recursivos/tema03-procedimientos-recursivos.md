@@ -465,7 +465,7 @@ Ejemplos:
 (define mi-dic (make-dic))
 (put 1 10 mi-dic) ; ⇒ 10
 (get 1 mi-dic) ; ⇒ 10
-(key-exists? 2 dic) ; ⇒ #f
+(key-exists? 2 mi-dic) ; ⇒ #f
 ```
 
 Estos métodos son imperativos porque modifican (mutan) la estructura
@@ -502,7 +502,7 @@ O(n). Frente al coste O(2^n) de la versión inicial que la hacía
 imposible de utilizar.
 
 ```racket
-(fib-memo 200 lista)
+(fib-memo 200 mi-dic)
 ⇒ 280571172992510140037611932413038677189525
 ```
 
