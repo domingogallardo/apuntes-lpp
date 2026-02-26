@@ -56,6 +56,9 @@ A diferencia de la práctica anterior, en la lista puede no haber
 ningún elemento que cumpla el predicado. En ese caso se devolverá la
 lista original.
 
+!!! Hint 
+    Consideramos que la lista más pequeña tiene un elemento.  
+
 
 Ejemplos:
 
