@@ -623,8 +623,7 @@ Solución con `map`:
 ##### 1.2.3.4. `(altura lista)` #####
 
 La *altura* de una lista estructurada viene dada por su número de
-niveles: una lista plana tiene una altura de 1, la lista `((1 2 3) 4
-5)` tiene una altura de 2.
+niveles: una lista plana tiene una altura de 1, por ejemplo la lista `((1 2 3) 4 5)` tiene una altura de 2 y la lista `(((1)) 2 (3) 4)` tiene una altura de 3.
 
 Para calcular la altura de una lista estructurada tenemos que obtener
 (de forma recursiva) la altura de su primer elemento, y la altura del
@@ -650,6 +649,7 @@ Por ejemplo:
 ```racket
 (altura '(1 (2 3) 4)) ; ⇒ 2
 (altura '(1 (2 (3)) 3)) ; ⇒ 3
+(altura '(((1)) 2 (3) 4)) ; ⇒ 3
 ```
 
 ###### 1.2.3.2.1. Versión con funciones de orden superior ######

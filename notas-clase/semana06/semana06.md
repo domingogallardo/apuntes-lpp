@@ -548,11 +548,11 @@ resultado de aplicar a cada uno de sus hojas la función `f`
 - La *altura* de una lista estructurada viene dada por su número de
   niveles
 - Una lista plana tiene una altura de 1, la lista `((1 2 3) 4 5)`
-  tiene una altura de 2.
+  tiene una altura de 2. 
 
 ```racket
     (altura '(1 (2 3) 4)) ⇒ 2
-    (altura '(((1)) (2 3) 4)) ⇒ 3
+    (altura '(((1)) 2 (3) 4)) ⇒ 3
 ```
 
 <img src="imagenes/altura-estructurada.png" width="300"/>
