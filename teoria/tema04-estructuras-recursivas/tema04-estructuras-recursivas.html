@@ -1234,8 +1234,7 @@ usando el parámetro <code>f</code>:</p>
 </code></pre></div>
 <h5 id="1234-altura-lista">1.2.3.4. <code>(altura lista)</code><a class="headerlink" href="#1234-altura-lista" title="Permanent link">&para;</a></h5>
 <p>La <em>altura</em> de una lista estructurada viene dada por su número de
-niveles: una lista plana tiene una altura de 1, la lista <code>((1 2 3) 4
-5)</code> tiene una altura de 2.</p>
+niveles: una lista plana tiene una altura de 1, por ejemplo la lista <code>((1 2 3) 4 5)</code> tiene una altura de 2 y la lista <code>(((1)) 2 (3) 4)</code> tiene una altura de 3.</p>
 <p>Para calcular la altura de una lista estructurada tenemos que obtener
 (de forma recursiva) la altura de su primer elemento, y la altura del
 resto de la lista, sumarle 1 a la altura del primer elemento y
@@ -1253,6 +1252,7 @@ devolver el máximo de los dos números.</p>
 Por ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">altura</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ 2</span>
 <span class="p">(</span><span class="n">altura</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ 3</span>
+<span class="p">(</span><span class="n">altura</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(((</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span><span class="w"> </span><span class="c1">; ⇒ 3</span>
 </code></pre></div>
 <h6 id="12321-version-con-funciones-de-orden-superior">1.2.3.2.1. Versión con funciones de orden superior<a class="headerlink" href="#12321-version-con-funciones-de-orden-superior" title="Permanent link">&para;</a></h6>
 <p>Y la segunda versión, usando las funciones de orden superior <code>map</code>
