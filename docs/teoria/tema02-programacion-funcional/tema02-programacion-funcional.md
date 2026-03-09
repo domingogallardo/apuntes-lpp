@@ -3168,7 +3168,7 @@ número `x` generando los números hasta `x` y filtrando los divisores
 de ese número. Por ejemplo, para calcular los divisores de 10:
 
 ```racket
-(filtra-divisores (1 2 3 4 5 6 7 8 9 10) 10) ; ⇒ (1 2 5 10)
+(filtra-divisores '(1 2 3 4 5 6 7 8 9 10) 10) ; ⇒ (1 2 5 10)
 ```
 
 Se puede implementar de una forma muy sencilla:

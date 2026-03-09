@@ -725,6 +725,7 @@ Con funciones de orden superior:
                            (nivel-hoja-fos dato elem)) ld)))))
 ```
 
+<!--
 
 ## 2. Árboles
 
@@ -1494,6 +1495,7 @@ constructor `construye-arbolb`.
 (cuadrado-arbolb arbolb1) ; ⇒ (100 (64 () ()) (225 () ()))
 ```
 
+-->
 
 ## 4. Bibliografía - SICP
 
@@ -1503,7 +1505,7 @@ En este tema explicamos conceptos de los siguientes capítulos del libro *Struct
 
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2024-25  
+Lenguajes y Paradigmas de Programación, curso 2025-26  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
 
