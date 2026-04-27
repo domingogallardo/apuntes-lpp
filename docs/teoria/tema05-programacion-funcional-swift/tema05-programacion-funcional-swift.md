@@ -1752,7 +1752,7 @@ otras).
 El perfil de la función `sorted(by:)` es:
 
 ```
-func sorted(by areInIncreasingOrder: (Element, Element) -> Bool)
+func sorted(by areInIncreasingOrder: (Element, Element) -> Bool) -> [Element]
 ```
 
 El parámetro es una función de dos parámetros (del tipo de los

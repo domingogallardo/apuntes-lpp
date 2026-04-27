@@ -346,7 +346,7 @@ print(suma(lista: z))
   definir la función de comparación entre dos elementos.
 
 ```
-func sorted(by areInIncreasingOrder: (Element, Element) -> Bool)
+func sorted(by areInIncreasingOrder: (Element, Element) -> Bool) -> [Element]
 ```
 
 - La función de comparación recibe dos elementos y devuelve un
