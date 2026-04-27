@@ -245,14 +245,12 @@ exception</em> y la aplicación se rompe. </li>
 <li>En Swift, para evitar estos problemas, No podemos asignar <code>nil</code> a
   una variable de un tipo dado:</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code><span class="c1">// La siguiente línea daría un error en tiempo de compilación</span>
-<span class="c1">// let cadena: String = nil</span>
-</code></pre></div>
+<p><pre class="highlight"><code class="language-swift">// La siguiente línea daría un error en tiempo de compilación
+// let cadena: String = nil</code></pre>
 - Si queremos utilizar <code>nil</code> debemos declarar la variable usando lo que
 se denomina <strong>tipo opcional</strong>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">cadena</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="s">&quot;Hola&quot;</span>
-<span class="n">cadena</span> <span class="p">=</span> <span class="kc">nil</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">var cadena: String? = "Hola"
+cadena = nil</code></pre>
 <hr />
 <h3>¿Cuándo usar opcionales?</h3>
 <ul>
@@ -265,13 +263,12 @@ obtener un valor desconocido. </p>
 que pueden no devolver ningún valor, como en un diccionario:</p>
 </li>
 </ul>
-<p><div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">edades</span> <span class="p">=</span> <span class="p">[</span>
-    <span class="s">&quot;Raquel&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-    <span class="s">&quot;Pedro&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
-<span class="p">]</span>
-<span class="kd">let</span> <span class="nv">edad1</span> <span class="p">=</span> <span class="n">edades</span><span class="p">[</span><span class="s">&quot;Raquel&quot;</span><span class="p">]</span>
-<span class="kd">let</span> <span class="nv">edad2</span> <span class="p">=</span> <span class="n">edades</span><span class="p">[</span><span class="s">&quot;Ana&quot;</span><span class="p">]</span> <span class="c1">// devuelve nil</span>
-</code></pre></div>
+<p><pre class="highlight"><code class="language-swift">var edades = [
+    "Raquel": 30,
+    "Pedro": 22,
+]
+let edad1 = edades["Raquel"]
+let edad2 = edades["Ana"] // devuelve nil</code></pre>
 - La variable <code>edad2</code> será de tipo <code>Int?</code> (<code>Int</code> opcional) y contendrá
 un <code>nil</code>.</p>
 <hr />
@@ -287,31 +284,28 @@ usarlo.</p>
 porque intentamos usar un opcional sin desenvolverlo:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="mi">10</span>
-<span class="kd">let</span> <span class="nv">y</span> <span class="p">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span> 
-<span class="c1">// error: value of optional type &#39;Int?&#39; must be unwrapped to a value of type &#39;Int&#39;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">var x: Int? = 10
+let y = x + 10 
+// error: value of optional type 'Int?' must be unwrapped to a value of type 'Int'</code></pre>
 <ul>
 <li>Swift <em>esconde</em> o <em>envuelve</em> (<em>wrap</em>) el valor real del opcional y
 obliga a llamar al operador <code>!</code> para <em>desenvolverlo</em> (<em>unwrap</em>) y
 usarlo. Este operador se denomina de <strong>desenvoltura forzosa</strong> (<em>forced
 unwrapping</em>).</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="mi">10</span>
-<span class="kd">let</span> <span class="nv">y</span> <span class="p">=</span> <span class="n">x</span><span class="p">!</span> <span class="o">+</span> <span class="mi">10</span> 
-<span class="bp">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="c1">// Imprime &quot;20&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">var x: Int? = 10
+let y = x! + 10 
+print(y)
+// Imprime "20"</code></pre>
 <hr />
 <h3>Error fatal al desenvolver un nil</h3>
 <ul>
 <li>Si se aplica el operador <code>!</code> a un valor <code>nil</code> se produce un error en
 tiempo de ejecución y la aplicación se rompe:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">respuestaEncuesta</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">respuestaEncuesta</span><span class="p">!)</span>
-<span class="c1">// Fatal error: Unexpectedly found nil while unwrapping an Optional value</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">var respuestaEncuesta: String?
+print(respuestaEncuesta!)
+// Fatal error: Unexpectedly found nil while unwrapping an Optional value</code></pre>
 <hr />
 <h3>Funciones que devuelven un opcional</h3>
 <ul>
@@ -319,31 +313,29 @@ tiempo de ejecución y la aplicación se rompe:</li>
 o valores devueltos por funciones de cualquier tipo, añadiéndoles la
 interrogación al final.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">max</span><span class="p">(</span><span class="n">array</span><span class="p">:[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">array</span><span class="p">.</span><span class="bp">isEmpty</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="kc">nil</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">array</span><span class="p">.</span><span class="bp">count</span> <span class="p">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nv">primero</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="kd">let</span> <span class="nv">resto</span> <span class="p">=</span> <span class="nb">Array</span><span class="p">(</span><span class="n">array</span><span class="p">.</span><span class="bp">dropFirst</span><span class="p">())</span>
-        <span class="k">return</span> <span class="bp">max</span><span class="p">(</span><span class="n">primero</span><span class="p">,</span> <span class="bp">max</span><span class="p">(</span><span class="n">array</span><span class="p">:</span><span class="n">resto</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func max(array:[Int]) -&gt; Int? {
+    if (array.isEmpty) {
+        return nil
+    } else if (array.count == 1) {
+        return array[0]
+    } else {
+        let primero = array[0]
+        let resto = Array(array.dropFirst())
+        return max(primero, max(array:resto)!)
+    }
+}
 
-<span class="kd">let</span> <span class="nv">maximo</span> <span class="p">=</span> <span class="bp">max</span><span class="p">(</span><span class="n">array</span><span class="p">:[</span><span class="mi">10</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">maximo</span><span class="p">!)</span>
-<span class="c1">// Imprime &quot;200&quot;</span>
-</code></pre></div>
+let maximo = max(array:[10,200,-100,2])
+print(maximo!)
+// Imprime "200"</code></pre>
 <hr />
 <h3>Inicialización de opcional</h3>
 <ul>
 <li>Una variable opcional sin asignar ningún valor se inicializa
 automáticamente a <code>nil</code>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">respuestaEncuesta</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span>
-<span class="c1">// respuestaEncuesta es inicializado automáticamente a nil</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">var respuestaEncuesta: String?
+// respuestaEncuesta es inicializado automáticamente a nil</code></pre>
 <hr />
 <h3>Ligado opcional</h3>
 <ul>
@@ -353,22 +345,20 @@ ejemplo, supongamos que la función <code>leerRespuesta()</code> lee una respues
 del usuario y devuelve un <code>String?</code>. Para usar esta función deberíamos
 comprobar si el valor devuelto es distinto de <code>nil</code>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">respuestaEncuesta</span> <span class="p">=</span> <span class="n">leerRespuesta</span><span class="p">()</span>
-<span class="k">if</span> <span class="n">respuestaEncuesta</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nv">respuesta</span> <span class="p">=</span> <span class="n">respuestaEncuesta</span><span class="p">!</span>
-    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Respuesta: &quot;</span> <span class="o">+</span> <span class="n">respuesta</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let respuestaEncuesta = leerRespuesta()
+if respuestaEncuesta != nil {
+    let respuesta = respuestaEncuesta!
+    print("Respuesta: " + respuesta)
+}</code></pre>
 <ul>
 <li>Como es muy habitual hacer lo anterior, en Swift es posible comprobar
 si un opcional tiene valor y asignar su valor a otra variable al mismo
 tiempo con una construcción llamada <em>ligado opcional</em> (<em>optional
 binding</em>):</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="kd">let</span> <span class="nv">respuesta</span> <span class="p">=</span> <span class="n">leerRespuesta</span><span class="p">()</span> <span class="p">{</span>
-    <span class="bp">print</span> <span class="p">(</span><span class="s">&quot;Respuesta: &quot;</span> <span class="o">+</span> <span class="n">respuesta</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">if let respuesta = leerRespuesta() {
+    print ("Respuesta: " + respuesta)
+}</code></pre>
 <hr />
 <h3>Ejemplo de <code>sumaValores</code> con opcional</h3>
 <ul>
@@ -378,81 +368,76 @@ en el caso en que exista. El siguiente código utiliza un ligado
 opcional para implementar otra versión de la función que suma los
 valores de un array:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">sumaValores</span><span class="p">(</span><span class="kc">_</span> <span class="n">valores</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="kd">let</span> <span class="nv">primero</span> <span class="p">=</span> <span class="n">valores</span><span class="p">.</span><span class="bp">first</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nv">resto</span> <span class="p">=</span> <span class="nb">Array</span><span class="p">(</span><span class="n">valores</span><span class="p">.</span><span class="bp">dropFirst</span><span class="p">())</span>
-        <span class="k">return</span> <span class="n">primero</span> <span class="o">+</span> <span class="n">sumaValores</span><span class="p">(</span><span class="n">resto</span><span class="p">)</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="mi">0</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func sumaValores(_ valores: [Int]) -&gt; Int {
+    if let primero = valores.first {
+        let resto = Array(valores.dropFirst())
+        return primero + sumaValores(resto)
+    } else {
+        return 0
+    }
+}
 
-<span class="bp">print</span><span class="p">(</span><span class="n">sumaValores</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]))</span> 
-<span class="c1">// Imprime &quot;36&quot;</span>
-</code></pre></div>
+print(sumaValores([1,2,3,4,5,6,7,8])) 
+// Imprime "36"</code></pre>
 <hr />
 <h3>If let con múltiples variables</h3>
 <ul>
 <li>Si tenemos varios opcionales es posible comprobar que todos ellos son
 distintos de <code>nil</code> usando varios <code>let</code> en el mismo <code>if</code>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">x1</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="n">pedirNumUsuario</span><span class="p">()</span>
-<span class="kd">var</span> <span class="nv">x2</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="n">pedirNumUsuario</span><span class="p">()</span>
-<span class="kd">var</span> <span class="nv">x3</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="n">pedirNumUsuario</span><span class="p">()</span>
-<span class="k">if</span> <span class="kd">let</span> <span class="nv">dato1</span> <span class="p">=</span> <span class="n">x1</span><span class="p">,</span> <span class="kd">let</span> <span class="nv">dato2</span> <span class="p">=</span> <span class="n">x2</span><span class="p">,</span> <span class="kd">let</span> <span class="nv">dato3</span> <span class="p">=</span> <span class="n">x3</span> <span class="p">{</span>
-   <span class="kd">let</span> <span class="nv">suma</span> <span class="p">=</span> <span class="n">dato1</span><span class="o">+</span><span class="n">dato2</span><span class="o">+</span><span class="n">dato3</span>
-   <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Ningún nil y la suma de todos los datos es: </span><span class="si">\(</span><span class="n">suma</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-   <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Algún dato del usuario es nil&quot;</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">var x1: Int? = pedirNumUsuario()
+var x2: Int? = pedirNumUsuario()
+var x3: Int? = pedirNumUsuario()
+if let dato1 = x1, let dato2 = x2, let dato3 = x3 {
+   let suma = dato1+dato2+dato3
+   print("Ningún nil y la suma de todos los datos es: \(suma)")
+} else {
+   print("Algún dato del usuario es nil")
+}</code></pre>
 <hr />
 <h3>Comparación con opcionales</h3>
 <ul>
 <li>No es necesario desenvolver un opcional para compararlo con otro valor
 usando los operadores <code>==</code> o <code>!=</code>.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="mi">10</span>
-<span class="n">x</span> <span class="p">==</span> <span class="mi">10</span> <span class="c1">// devuelve true</span>
-<span class="n">x</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="c1">// devuelve true</span>
-<span class="n">x</span> <span class="p">==</span> <span class="mi">0</span> <span class="c1">// devuelve false</span>
+<pre class="highlight"><code class="language-swift">var x: Int? = 10
+x == 10 // devuelve true
+x != nil // devuelve true
+x == 0 // devuelve false
 
-<span class="c1">// Asignamos nil a x</span>
-<span class="n">x</span> <span class="p">=</span> <span class="kc">nil</span>
-<span class="n">x</span> <span class="p">==</span> <span class="kc">nil</span> <span class="c1">// devuelve true</span>
-<span class="n">x</span> <span class="p">==</span> <span class="mi">10</span> <span class="c1">// devuelve false</span>
-</code></pre></div>
+// Asignamos nil a x
+x = nil
+x == nil // devuelve true
+x == 10 // devuelve false</code></pre>
 <hr />
 <h3>Operador <em>nil-coalescing</em></h3>
 <ul>
 <li>El operador <em>nil-coalescing</em> (<code>??</code>) permite definir un valor por
 defecto en una asignación si un opcional es nil.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">a</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span>
-<span class="kd">let</span> <span class="nv">b</span><span class="p">:</span> <span class="nb">Int</span><span class="p">?</span> <span class="p">=</span> <span class="mi">10</span>
-<span class="kd">let</span> <span class="nv">x</span> <span class="p">=</span> <span class="n">a</span> <span class="p">??</span> <span class="o">-</span><span class="mi">1</span>
-<span class="kd">let</span> <span class="nv">y</span> <span class="p">=</span> <span class="n">b</span> <span class="p">??</span> <span class="o">-</span><span class="mi">1</span>
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;Resultado: </span><span class="si">\(</span><span class="n">x</span><span class="si">)</span><span class="s">, </span><span class="si">\(</span><span class="n">y</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="c1">// Imprime Resultado: -1, 10</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let a: Int? = nil
+let b: Int? = 10
+let x = a ?? -1
+let y = b ?? -1
+print("Resultado: \(x), \(y)")
+// Imprime Resultado: -1, 10</code></pre>
 <hr />
 <h3>Encadenamiento de opcionales</h3>
 <p>El encadenamiento de opcionales (<em>optional chaining</em>) permite llamar a
 un método de una variable que contiene un opcional. Si la variable no
 es <code>nil</code>, se ejecuta el método y se devuelve su valor como un
 opcional. Si la variable es <code>nil</code> se devuelve <code>nil</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">nombre1</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="s">&quot;Pedro&quot;</span>
-<span class="kd">let</span> <span class="nv">nombre2</span><span class="p">:</span> <span class="nb">String</span><span class="p">?</span> <span class="p">=</span> <span class="kc">nil</span>
+<pre class="highlight"><code class="language-swift">let nombre1: String? = "Pedro"
+let nombre2: String? = nil
 
-<span class="c1">// Error: let str1 = nombre1.lowercased()</span>
-<span class="c1">// No podemos llamar al método lowercased() del String</span>
-<span class="c1">// porque nombre es opcional y puede tener nil</span>
+// Error: let str1 = nombre1.lowercased()
+// No podemos llamar al método lowercased() del String
+// porque nombre es opcional y puede tener nil
 
-<span class="kd">let</span> <span class="nv">str1</span> <span class="p">=</span> <span class="n">nombre1</span><span class="p">?.</span><span class="n">lowercased</span><span class="p">()</span>
-<span class="kd">let</span> <span class="nv">str2</span> <span class="p">=</span> <span class="n">nombre2</span><span class="p">?.</span><span class="n">lowercased</span><span class="p">()</span>
-<span class="c1">// str1: String? = &quot;pedro&quot;</span>
-<span class="c1">// str2: String? = nil</span>
-</code></pre></div>
+let str1 = nombre1?.lowercased()
+let str2 = nombre2?.lowercased()
+// str1: String? = "pedro"
+// str2: String? = nil</code></pre>
 <hr />
 <h3>Ejemplo de <code>Lista</code> con opcional</h3>
 <ul>
@@ -460,14 +445,13 @@ opcional. Si la variable es <code>nil</code> se devuelve <code>nil</code>.</p>
 utilizamos un único <code>case</code>, pero dando la posibilidad de que el resto
 de la lista sea <code>nil</code> haciéndolo opcional.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kr">indirect</span> <span class="kd">enum</span> <span class="nc">Lista</span><span class="p">{</span>
-    <span class="k">case</span> <span class="n">nodo</span><span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="n">Lista</span><span class="p">?)</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">indirect enum Lista{
+    case nodo(Int, Lista?)
+}</code></pre>
 <ul>
 <li>La función <code>suma(lista:)</code> quedaría así:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>func suma(lista: Lista?) -&gt; Int {
+<pre class="highlight"><code>func suma(lista: Lista?) -&gt; Int {
     switch lista {
         case nil:
             return 0
@@ -478,8 +462,7 @@ de la lista sea <code>nil</code> haciéndolo opcional.</li>
 
 let z: Lista = .nodo(20, .nodo(10, nil))
 print(suma(lista: z))
-/// Devuelve 30
-</code></pre></div>
+/// Devuelve 30</code></pre>
 <hr />
 <h3>10. Clausuras</h3>
 <hr />
@@ -504,8 +487,7 @@ print(suma(lista: z))
 <li>El método <code>sorted(by:)</code> utiliza una clausura como parámetro para
   definir la función de comparación entre dos elementos.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>func sorted(by areInIncreasingOrder: (Element, Element) -&gt; Bool)
-</code></pre></div>
+<pre class="highlight"><code>func sorted(by areInIncreasingOrder: (Element, Element) -&gt; Bool)</code></pre>
 <ul>
 <li>
 <p>La función de comparación recibe dos elementos y devuelve un
@@ -518,14 +500,13 @@ print(suma(lista: z))
   alfabético inverso.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">primeroMayor</span><span class="p">(</span><span class="n">s1</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">s2</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span>
-<span class="p">}</span>
-<span class="kd">let</span> <span class="nv">estudiantes</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Kofi&quot;</span><span class="p">,</span> <span class="s">&quot;Abena&quot;</span><span class="p">,</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="s">&quot;Kweku&quot;</span><span class="p">,</span> <span class="s">&quot;Akosua&quot;</span><span class="p">]</span>
-<span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="n">primeroMayor</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">alreves</span><span class="p">)</span>
-<span class="c1">// Imprime [&quot;Peter&quot;, &quot;Kweku&quot;, &quot;Kofi&quot;, &quot;Akosua&quot;, &quot;Abena&quot;]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func primeroMayor(s1: String, s2: String) -&gt; Bool {
+    return s1 &gt; s2
+}
+let estudiantes = ["Kofi", "Abena", "Peter", "Kweku", "Akosua"]
+let alreves = estudiantes.sorted(by: primeroMayor)
+print(alreves)
+// Imprime ["Peter", "Kweku", "Kofi", "Akosua", "Abena"]</code></pre>
 <ul>
 <li>Sería mucho más expresivo definir la función de ordenación <em>inline</em>,
   sin necesidad de crear una función auxiliar como <code>primeroMayor</code>.</li>
@@ -537,17 +518,15 @@ print(suma(lista: z))
 <li>La sintaxis de las expresiones de clausura tiene la siguiente forma
 general:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>{ ( &lt;parametros&gt;) -&gt; &lt;tipo devuelto&gt; in
+<pre class="highlight"><code class="language-text">{ ( &lt;parametros&gt;) -&gt; &lt;tipo devuelto&gt; in
    &lt;sentencias&gt;
-}
-</code></pre></div>
+}</code></pre>
 <ul>
 <li>Si aplicamos esta sintaxis al ejemplo anterior:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">s1</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">s2</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="k">in</span>
-    <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span>
-<span class="p">})</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let alreves = estudiantes.sorted(by: { (s1: String, s2: String) -&gt; Bool in
+    return s1 &gt; s2
+})</code></pre>
 <ul>
 <li>Hay que hacer notar que la declaración de los parámetros y el tipo
   devuelto por esta clausura <em>inline</em> es idéntica a la declaración de
@@ -560,8 +539,7 @@ general:</li>
 <li>Como el cuerpo de la clausura es corto, podemos incluso escribirlo
   en una única línea:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">s1</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="n">s2</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="k">in</span> <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span> <span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let alreves = estudiantes.sorted(by: { (s1: String, s2: String) -&gt; Bool in return s1 &gt; s2 } )</code></pre>
 <ul>
 <li>Veamos ahora que es posible aplicar bastantes simplificaciones y
   hacer mucho más compacta la expresión de clausura.</li>
@@ -576,16 +554,14 @@ general:</li>
   tipo devuelto y los paréntesis alrededor de los nombres de los
   parámetros también pueden omitirse:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="k">return</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span> <span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let alreves = estudiantes.sorted(by: { s1, s2 in return s1 &gt; s2 } )</code></pre>
 <hr />
 <h3>Devoluciones implícitas en clausuras con una única expresión</h3>
 <ul>
 <li>En clausuras con una única expresión podemos omitir también la
   palabra clave <code>return</code>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span> <span class="k">in</span> <span class="n">s1</span> <span class="o">&gt;</span> <span class="n">s2</span> <span class="p">}</span> <span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let alreves = estudiantes.sorted(by: { s1, s2 in s1 &gt; s2 } )</code></pre>
 <hr />
 <h3>Abreviaturas en los nombres de los argumentos</h3>
 <ul>
@@ -596,8 +572,7 @@ general:</li>
 <li>Si se usa estos argumentos abreviados, se puede omitir la definición
   de la lista de los argumentos:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">}</span> <span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let alreves = estudiantes.sorted(by: { $0 &gt; $1 } )</code></pre>
 <hr />
 <h3>Funciones operadoras</h3>
 <ul>
@@ -606,8 +581,7 @@ general:</li>
   <code>String</code> y devuelve un <code>Bool</code>. </li>
 <li>Esto es exactamente lo que necesita el método <code>sorted(by:)</code>. </li>
 </ul>
-<h2><div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span><span class="p">(</span><span class="n">by</span><span class="p">:</span> <span class="o">&gt;</span><span class="p">)</span>
-</code></pre></div></h2>
+<h2><pre class="highlight"><code class="language-swift">let alreves = estudiantes.sorted(by: &gt;)</code></pre></h2>
 <h3>Clausuras al final</h3>
 <ul>
 <li>Si la clausura se pasa como último argumento, se puede escribir como
@@ -617,15 +591,13 @@ general:</li>
   pasa como parámetro.</li>
 <li>No es necesario el nombre del parámetro.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span><span class="p">()</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let alreves = estudiantes.sorted() { $0 &gt; $1 }</code></pre>
 <ul>
 <li>Cuando se proporciona una expresión de clausura como único argumento
   de una función o método y se pasa como una clausura al final, no es
   necesario escribir los paréntesis tras el nombre de la función.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">alreves</span> <span class="p">=</span> <span class="n">estudiantes</span><span class="p">.</span><span class="bp">sorted</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="nv">$1</span> <span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let alreves = estudiantes.sorted { $0 &gt; $1 }</code></pre>
 <ul>
 <li>Las clausuras al final son útiles sobre todo cuando la clausura es
   suficientemente larga que no es posible escribirla <em>inline</em> en una
@@ -659,15 +631,14 @@ funciones con estado local mutable.</p>
 <p>Veamos un ejemplo similar al que vimos en Scheme. </p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeIncrementador</span><span class="p">(</span><span class="n">incremento</span> <span class="n">cantidad</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">totalAcumulado</span> <span class="p">=</span> <span class="mi">0</span>
-    <span class="kd">func</span> <span class="nf">incrementador</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-        <span class="n">totalAcumulado</span> <span class="o">+=</span> <span class="n">cantidad</span>
-        <span class="k">return</span> <span class="n">totalAcumulado</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">incrementador</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func construyeIncrementador(incremento cantidad: Int) -&gt; () -&gt; Int {
+    var totalAcumulado = 0
+    func incrementador() -&gt; Int {
+        totalAcumulado += cantidad
+        return totalAcumulado
+    }
+    return incrementador
+}</code></pre>
 <ul>
 <li>La función <code>construyeIncrementador</code> contiene una función anidada
   llamada <code>incrementador</code>. Esta función captura dos variables de su
@@ -679,11 +650,10 @@ funciones con estado local mutable.</p>
   significa que devuelve una función que no tiene parámetros y que
   devuelve un <code>Int</code> cada vez que es llamada.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">incrementador</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-    <span class="n">totalAcumulado</span> <span class="o">+=</span> <span class="n">cantidad</span>
-    <span class="k">return</span> <span class="n">totalAcumulado</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func incrementador() -&gt; Int {
+    totalAcumulado += cantidad
+    return totalAcumulado
+}</code></pre>
 <ul>
 <li>Si consideramos aislada la función anidada <code>incrementador()</code>, vemos
   que función no tiene ningún parámetro, y que utiliza en su cuerpo
@@ -695,31 +665,28 @@ funciones con estado local mutable.</p>
   llame la función <code>incrementador</code>.</li>
 </ul>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">incrementaDiez</span> <span class="p">=</span> <span class="n">construyeIncrementador</span><span class="p">(</span><span class="n">incremento</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">incrementaDiez</span><span class="p">()</span>
-<span class="c1">// devuelve 10</span>
-<span class="n">incrementaDiez</span><span class="p">()</span>
-<span class="c1">// devuelve 20</span>
-<span class="n">incrementaDiez</span><span class="p">()</span>
-<span class="c1">// devuelve 30</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let incrementaDiez = construyeIncrementador(incremento: 10)
+incrementaDiez()
+// devuelve 10
+incrementaDiez()
+// devuelve 20
+incrementaDiez()
+// devuelve 30</code></pre>
 <ul>
 <li>Si creamos un segundo incrementador, tendrá sus propias referencias
   a un variable <code>totalAcumulado</code> nueva, distinta de la anterior:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">incrementaSiete</span> <span class="p">=</span> <span class="n">construyeIncrementador</span><span class="p">(</span><span class="n">incremento</span><span class="p">:</span> <span class="mi">7</span><span class="p">)</span>
-<span class="n">incrementaSiete</span><span class="p">()</span>
-<span class="c1">// devuelve 7</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let incrementaSiete = construyeIncrementador(incremento: 7)
+incrementaSiete()
+// devuelve 7</code></pre>
 <ul>
 <li>Si llamamos a la función <code>incrementador</code> original (<code>incrementaDiez</code>)
   vemos que sigue incrementando su propia variable <code>totalAcumulado</code> y
   que no se ve afectada por la variable capturada por
   <code>incrementaSiete</code>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="n">incrementaDiez</span><span class="p">()</span>
-<span class="c1">// devuelve 40</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">incrementaDiez()
+// devuelve 40</code></pre>
 <hr />
 <h3>Clausuras con expresiones de clausura</h3>
 <ul>
@@ -733,71 +700,66 @@ compacto usando expresiones de clausura.</p>
 <p>Por ejemplo, la función que vimos la semana pasada <code>construyeSumador()</code> </p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeSumador10</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-  <span class="kd">func</span> <span class="nf">suma10</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span><span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="mi">10</span><span class="p">}</span>
-  <span class="k">return</span> <span class="n">suma10</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func construyeSumador10() -&gt; (Int) -&gt; Int {
+  func suma10(x: Int) -&gt; Int {return x+10}
+  return suma10
+}</code></pre>
 <ul>
 <li>Una versión de esta misma función usando una expresión de clausura es
 la siguiente:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeSumador10</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">+</span> <span class="mi">10</span><span class="p">}</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func construyeSumador10() -&gt; (Int) -&gt; Int {
+    return {$0 + 10}
+}
 
-<span class="kd">let</span> <span class="nv">f</span> <span class="p">=</span> <span class="n">construyeSumador10</span><span class="p">()</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
-<span class="c1">// Imprime &quot;30&quot;</span>
-</code></pre></div>
+let f = construyeSumador10()
+print(f(20))
+// Imprime "30"</code></pre>
 <p>Y lo mismo con la función <code>constryeIncrementador(incremento:)</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeIncrementador</span><span class="p">(</span><span class="n">incremento</span> <span class="n">cantidad</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">totalAcumulado</span> <span class="p">=</span> <span class="mi">0</span>
-    <span class="kd">func</span> <span class="nf">incrementador</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-        <span class="n">totalAcumulado</span> <span class="o">+=</span> <span class="n">cantidad</span>
-        <span class="k">return</span> <span class="n">totalAcumulado</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">incrementador</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func construyeIncrementador(incremento cantidad: Int) -&gt; () -&gt; Int {
+    var totalAcumulado = 0
+    func incrementador() -&gt; Int {
+        totalAcumulado += cantidad
+        return totalAcumulado
+    }
+    return incrementador
+}</code></pre>
 <p>La versión con una expresión de clausura:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeIncrementador</span><span class="p">(</span><span class="n">incremento</span> <span class="n">cantidad</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nv">totalAcumulado</span> <span class="p">=</span> <span class="mi">0</span>
-    <span class="k">return</span> <span class="p">{</span><span class="n">totalAcumulado</span> <span class="o">+=</span> <span class="n">cantidad</span>
-            <span class="k">return</span> <span class="n">totalAcumulado</span><span class="p">}</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func construyeIncrementador(incremento cantidad: Int) -&gt; () -&gt; Int {
+    var totalAcumulado = 0
+    return {totalAcumulado += cantidad
+            return totalAcumulado}
+}
 
-<span class="kd">let</span> <span class="nv">incrementaDiez</span> <span class="p">=</span> <span class="n">construyeIncrementador</span><span class="p">(</span><span class="n">incremento</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">incrementaDiez</span><span class="p">())</span>
-<span class="c1">// Imprime &quot;10&quot;</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">incrementaDiez</span><span class="p">())</span>
-<span class="c1">// Imprime &quot;20&quot;</span>
-</code></pre></div>
+let incrementaDiez = construyeIncrementador(incremento: 10)
+print(incrementaDiez())
+// Imprime "10"
+print(incrementaDiez())
+// Imprime "20"</code></pre>
 <hr />
 <h3>Variables capturadas por clausuras y variables del ámbito de invocación</h3>
 <ul>
 <li>Las clasuras usan los valores capturados y no los valores declarados
 en el ámbito en el que se invoca a la clausura. Vamos a explicarlo con un ejemplo.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">construyeFunc</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-   <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">0</span>
-   <span class="k">return</span> <span class="p">{</span>
-      <span class="n">x</span> <span class="p">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
-      <span class="k">return</span> <span class="n">x</span>
-   <span class="p">}</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func construyeFunc() -&gt; () -&gt; Int {
+   var x = 0
+   return {
+      x = x + 1
+      return x
+   }
+}
 
-<span class="kd">let</span> <span class="nv">f</span> <span class="p">=</span> <span class="n">construyeFunc</span><span class="p">()</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">())</span> <span class="c1">// -&gt; ?</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">f</span><span class="p">())</span> <span class="c1">// -&gt; ?</span>
+let f = construyeFunc()
+print(f()) // -&gt; ?
+print(f()) // -&gt; ?
 
-<span class="kd">func</span> <span class="nf">usaFunc</span><span class="p">(</span><span class="kc">_</span> <span class="n">f</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
-     <span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">10</span>
-     <span class="k">return</span> <span class="n">f</span><span class="p">()</span>
-<span class="p">}</span>
+func usaFunc(_ f: () -&gt; Int) -&gt; Int {
+     var x = 10
+     return f()
+}
 
-<span class="bp">print</span><span class="p">(</span><span class="n">usaFunc</span><span class="p">(</span><span class="n">f</span><span class="p">))</span> <span class="c1">// -&gt; ?</span>
-</code></pre></div>
+print(usaFunc(f)) // -&gt; ?</code></pre>
 <ul>
 <li>
 <p>La función <code>usaFunc</code> definida en la línea 13 recibe una función <code>f</code>
@@ -821,9 +783,8 @@ variable <code>x</code> definida en la línea anterior. Por eso cuando se ejecut
 la sentencia se imprime el valor <code>110</code> y no el valor <code>20</code>.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">x</span> <span class="p">=</span> <span class="mi">100</span>
-<span class="bp">print</span><span class="p">(</span><span class="n">usaFunc</span> <span class="p">{</span><span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span><span class="p">})</span> <span class="c1">// -&gt; 110</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">var x = 100
+print(usaFunc {return x + 10}) // -&gt; 110</code></pre>
 <hr />
 <h3>Las clausuras son tipos de referencia</h3>
 <ul>
@@ -833,10 +794,9 @@ la sentencia se imprime el valor <code>110</code> y no el valor <code>20</code>.
 <li>Si asignamos una clausura a dos constantes o variables distintas,
   ambas constantes o variables se referirán a la misma clausura:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">tambienIncrementaDiez</span> <span class="p">=</span> <span class="n">incrementaDiez</span>
-<span class="n">tambienIncrementaDiez</span><span class="p">()</span>
-<span class="c1">// devuelve 50</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let tambienIncrementaDiez = incrementaDiez
+tambienIncrementaDiez()
+// devuelve 50</code></pre>
 <hr />
 <h3>11. Funciones de orden superior</h3>
 <hr />
@@ -862,8 +822,7 @@ la sentencia se imprime el valor <code>110</code> y no el valor <code>20</code>.
 <p>El perfil del método <code>map</code> es el siguiente:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">map</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">transform</span><span class="p">:</span> <span class="p">(</span><span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">T</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="n">T</span><span class="p">]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func map&lt;T&gt;(_ transform: (Element) -&gt; T) -&gt; [T]</code></pre>
 <ul>
 <li>Recibe como parámetro una función unaria <code>transform</code> del tipo de los
   elementos de la colección y que devuelve otro elemento (puede ser
@@ -873,10 +832,9 @@ la sentencia se imprime el valor <code>110</code> y no el valor <code>20</code>.
   cada elemento del array original.</li>
 </ul>
 <p>Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">numeros</span> <span class="p">=</span> <span class="p">[</span><span class="nb">Int</span><span class="p">](</span><span class="mf">0.</span><span class="p">..</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">numeros</span><span class="p">.</span><span class="bp">map</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">*</span> <span class="nv">$0</span><span class="p">}</span>
-<span class="c1">// devuelve [0, 1, 4, 9, 16, 25]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let numeros = [Int](0...5)
+numeros.map {$0 * $0}
+// devuelve [0, 1, 4, 9, 16, 25]</code></pre>
 <ul>
 <li>
 <p>Estamos usando la notación de <em>clausura al final</em>.</p>
@@ -886,33 +844,30 @@ la sentencia se imprime el valor <code>110</code> y no el valor <code>20</code>.
   <code>sumaParejas(parejas: [(Int, Int)]) -&gt; [Int]</code>:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">suma</span><span class="p">(</span><span class="n">parejas</span><span class="p">:</span> <span class="p">[(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)])</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="p">{</span>
-   <span class="k">return</span> <span class="n">parejas</span><span class="p">.</span><span class="bp">map</span><span class="p">({(</span><span class="n">pareja</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">))</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span>
-                        <span class="k">return</span> <span class="n">pareja</span><span class="p">.</span><span class="mi">0</span> <span class="o">+</span> <span class="n">pareja</span><span class="p">.</span><span class="mi">1</span><span class="p">})</span>
-<span class="p">}</span>
-<span class="n">suma</span><span class="p">(</span><span class="n">parejas</span><span class="p">:[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)])</span>
-<span class="c1">// devuelve [2, 4, 6, 8]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func suma(parejas: [(Int, Int)]) -&gt; [Int] {
+   return parejas.map({(pareja: (Int, Int)) -&gt; Int in
+                        return pareja.0 + pareja.1})
+}
+suma(parejas:[(1, 1), (2, 2), (3, 3), (4, 4)])
+// devuelve [2, 4, 6, 8]</code></pre>
 <ul>
 <li>Podemos usar en el cuerpo de la expresión de clausura de <code>map</code> una
   variable capturada. Por ejemplo en la siguiente función
   <code>incrementaValores(_:con:)</code> que suma <code>con</code> a todos los números de un
   array que se le pasa por parámetro:</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">incrementa</span><span class="p">(</span><span class="n">valores</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">],</span> <span class="n">con</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="p">{</span>
-   <span class="k">return</span> <span class="n">valores</span><span class="p">.</span><span class="bp">map</span><span class="p">({(</span><span class="n">x</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span>
-                        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">con</span><span class="p">})</span>
-<span class="p">}</span>
-<span class="n">incrementa</span><span class="p">(</span><span class="n">valores</span><span class="p">:[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">con</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
-<span class="c1">// devuelve [15, 25, 35]</span>
-</code></pre></div>
+<p><pre class="highlight"><code class="language-swift">func incrementa(valores: [Int], con: Int) -&gt; [Int] {
+   return valores.map({(x: Int) -&gt; Int in
+                        return x + con})
+}
+incrementa(valores:[10, 20, 30], con: 5)
+// devuelve [15, 25, 35]</code></pre>
 - La versión abreviada de la expresión de clausura es:</p>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">incrementa</span><span class="p">(</span><span class="n">valores</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">],</span> <span class="n">con</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="p">{</span>
-   <span class="k">return</span> <span class="n">valores</span><span class="p">.</span><span class="bp">map</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">+</span> <span class="n">con</span><span class="p">}</span>
-<span class="p">}</span>
-<span class="n">incrementa</span><span class="p">(</span><span class="n">valores</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">con</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
-<span class="c1">// devuelve [15, 25, 35]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func incrementa(valores: [Int], con: Int) -&gt; [Int] {
+   return valores.map {$0 + con}
+}
+incrementa(valores: [10, 20, 30], con: 5)
+// devuelve [15, 25, 35]</code></pre>
 <hr />
 <h3>Filter</h3>
 <ul>
@@ -925,15 +880,13 @@ la sentencia se imprime el valor <code>110</code> y no el valor <code>20</code>.
 <p>Su perfil:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">filter</span><span class="p">(</span><span class="kc">_</span> <span class="n">isIncluded</span><span class="p">:</span> <span class="p">(</span><span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="n">Element</span><span class="p">]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func filter(_ isIncluded: (Element) -&gt; Bool) -&gt; [Element]</code></pre>
 <ul>
 <li>Ejemplo:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">numeros</span> <span class="p">=</span> <span class="p">[</span><span class="nb">Int</span><span class="p">](</span><span class="mf">0.</span><span class="p">..</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">numeros</span><span class="p">.</span><span class="bp">filter</span> <span class="p">{</span><span class="nv">$0</span> <span class="o">%</span> <span class="mi">2</span> <span class="p">==</span> <span class="mi">0</span><span class="p">}</span>
-<span class="c1">// devuelve [0, 2, 4, 6, 8, 10]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let numeros = [Int](0...10)
+numeros.filter {$0 % 2 == 0}
+// devuelve [0, 2, 4, 6, 8, 10]</code></pre>
 <hr />
 <h3>Reduce</h3>
 <ul>
@@ -944,9 +897,8 @@ la sentencia se imprime el valor <code>110</code> y no el valor <code>20</code>.
 <p>Su perfil:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">reduce</span><span class="p">&lt;</span><span class="n">Result</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">initialResult</span><span class="p">:</span> <span class="n">Result</span><span class="p">,</span> 
-                    <span class="kc">_</span> <span class="n">nextPartialResult</span><span class="p">:</span> <span class="p">(</span><span class="n">Result</span><span class="p">,</span> <span class="n">Element</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Result</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="n">Result</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func reduce&lt;Result&gt;(_ initialResult: Result, 
+                    _ nextPartialResult: (Result, Element) -&gt; Result) -&gt; Result</code></pre>
 <ul>
 <li>
 <p>La función que se le pasa <code>nextPartialResult</code> es la función de
@@ -958,33 +910,28 @@ la sentencia se imprime el valor <code>110</code> y no el valor <code>20</code>.
 <p>Ejemplo:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">numeros</span> <span class="p">=</span> <span class="p">[</span><span class="nb">Int</span><span class="p">](</span><span class="mf">0.</span><span class="p">..</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">numeros</span><span class="p">.</span><span class="bp">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="p">)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let numeros = [Int](0...10)
+numeros.reduce(0, +)</code></pre>
 <ul>
 <li>Otro ejemplo:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">cadenas</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Patatas&quot;</span><span class="p">,</span> <span class="s">&quot;Arroz&quot;</span><span class="p">,</span> <span class="s">&quot;Huevos&quot;</span><span class="p">]</span>
-<span class="n">cadenas</span><span class="p">.</span><span class="bp">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">{(</span><span class="n">i</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="k">in</span> <span class="n">c</span><span class="p">.</span><span class="bp">count</span> <span class="o">+</span> <span class="n">i</span> <span class="p">})</span>
-<span class="c1">// devuelve 18</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let cadenas = ["Patatas", "Arroz", "Huevos"]
+cadenas.reduce(0, {(i: Int, c: String) -&gt; Int in c.count + i })
+// devuelve 18</code></pre>
 <ul>
 <li>En versión más compacta:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="n">cadenas</span><span class="p">.</span><span class="bp">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">{</span><span class="nv">$1</span><span class="p">.</span><span class="bp">count</span> <span class="o">+</span> <span class="nv">$0</span><span class="p">})</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">cadenas.reduce(0, {$1.count + $0})</code></pre>
 <ul>
 <li>También se puede utilizar la notación de clausura al final:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="n">cadenas</span><span class="p">.</span><span class="bp">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span><span class="nv">$1</span><span class="p">.</span><span class="bp">count</span> <span class="o">+</span> <span class="nv">$0</span><span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">cadenas.reduce(0) {$1.count + $0}</code></pre>
 <ul>
 <li>La combinación se hace de izquierda a derecha:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">cadenas</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Patatas&quot;</span><span class="p">,</span> <span class="s">&quot;Arroz&quot;</span><span class="p">,</span> <span class="s">&quot;Huevos&quot;</span><span class="p">]</span>
-<span class="n">cadenas</span><span class="p">.</span><span class="bp">reduce</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="o">+</span><span class="p">)</span>
-<span class="c1">// devuelve &quot;PatatasArrozHuevos&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let cadenas = ["Patatas", "Arroz", "Huevos"]
+cadenas.reduce("", +)
+// devuelve "PatatasArrozHuevos"</code></pre>
 <hr />
 <h3>Combinación de funciones de orden superior</h3>
 <ul>
@@ -998,17 +945,15 @@ orden superior a este resultado.</p>
 del array inicial elevados al cuadrado:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">numeros</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
-<span class="n">numeros</span><span class="p">.</span><span class="bp">filter</span><span class="p">{</span><span class="nv">$0</span> <span class="o">%</span> <span class="mi">2</span> <span class="p">==</span> <span class="mi">0</span><span class="p">}.</span><span class="bp">map</span><span class="p">{</span><span class="nv">$0</span><span class="o">*</span><span class="nv">$0</span><span class="p">}</span>
-<span class="c1">// Devuelve el array [4,16,36,64,100]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let numeros = [1,2,3,4,5,6,7,8,9,10]
+numeros.filter{$0 % 2 == 0}.map{$0*$0}
+// Devuelve el array [4,16,36,64,100]</code></pre>
 <ul>
 <li>Y la siguiente devuelve la suma números mayores de 100:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">numeros</span> <span class="p">=</span> <span class="p">[</span><span class="mi">103</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">532</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">125</span><span class="p">]</span>
-<span class="n">numeros</span><span class="p">.</span><span class="bp">filter</span><span class="p">{</span><span class="nv">$0</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">}.</span><span class="bp">reduce</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">+</span><span class="p">)</span>
-<span class="c1">// Devuelve 1090</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let numeros = [103, 2, 330, 42, 532, 6, 125]
+numeros.filter{$0 &gt;= 100}.reduce(0,+)
+// Devuelve 1090</code></pre>
 <hr />
 <h3>12. Genéricos</h3>
 <hr />
@@ -1019,29 +964,27 @@ del array inicial elevados al cuadrado:</p>
   tupla <code>(Int, String)</code> y devuelve una tupla <code>(String, Int)</code> con los
   valores intercambiados.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">intercambia</span><span class="p">(</span><span class="kc">_</span> <span class="n">tupla</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">String</span><span class="p">))</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">String</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
-   <span class="kd">let</span> <span class="nv">tuplaNueva</span> <span class="p">=</span> <span class="p">(</span><span class="n">tupla</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">tupla</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
-   <span class="k">return</span> <span class="n">tuplaNueva</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func intercambia(_ tupla: (Int, String)) -&gt; (String, Int) {
+   let tuplaNueva = (tupla.1, tupla.0)
+   return tuplaNueva
+}
 
-<span class="kd">let</span> <span class="nv">tupla</span> <span class="p">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s">&quot;Hola&quot;</span><span class="p">)</span>
-<span class="n">intercambia</span><span class="p">(</span><span class="n">tupla</span><span class="p">)</span>
-<span class="c1">// devuelve (&quot;Hola&quot;, 10)</span>
-</code></pre></div>
+let tupla = (10, "Hola")
+intercambia(tupla)
+// devuelve ("Hola", 10)</code></pre>
 <ul>
 <li>Supongamos que queremos hacer la misma función para intercambiar
   elementos de una tupla <code>(Int, Int)</code>. Tendríamos que usar el mismo
   código, pero cambiando los tipos:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">intercambia</span><span class="p">(</span><span class="kc">_</span> <span class="n">tupla</span><span class="p">:</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">))</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
-   <span class="kd">let</span> <span class="nv">tuplaNueva</span> <span class="p">=</span> <span class="p">(</span><span class="n">tupla</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">tupla</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
-   <span class="k">return</span> <span class="n">tuplaNueva</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">func intercambia(_ tupla: (Int, Int)) -&gt; (Int, Int) {
+   let tuplaNueva = (tupla.1, tupla.0)
+   return tuplaNueva
+}
 
-<span class="kd">let</span> <span class="nv">tupla2</span> <span class="p">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="n">intercambia</span><span class="p">(</span><span class="n">tupla2</span><span class="p">)</span>
-<span class="c1">// devuelve (20, 10)</span>
-</code></pre></div>
+let tupla2 = (10, 20)
+intercambia(tupla2)
+// devuelve (20, 10)</code></pre>
 <ul>
 <li>El código es el mismo, lo único distinto son los tipos. </li>
 <li>¿Podríamos <strong>generalizar</strong> las funciones anteriores para hacer que
@@ -1052,11 +995,10 @@ del array inicial elevados al cuadrado:</p>
 <ul>
 <li>La respuesta es sí, usando <strong>función genérica</strong>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">intercambia</span><span class="p">&lt;</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">tupla</span><span class="p">:</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">))</span> <span class="p">-&gt;</span> <span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span> <span class="p">{</span>
-   <span class="kd">let</span> <span class="nv">tuplaNueva</span> <span class="p">=</span> <span class="p">(</span><span class="n">tupla</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="n">tupla</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>
-   <span class="k">return</span> <span class="n">tuplaNueva</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">func intercambia&lt;A,B&gt;(_ tupla: (A, B)) -&gt; (B, A) {
+   let tuplaNueva = (tupla.1, tupla.0)
+   return tuplaNueva
+}</code></pre>
 <ul>
 <li>La sintaxis es similar a Java.</li>
 <li>En la versión genérica se usan <em>placeholders</em> (los símbolos <code>A</code> y
@@ -1066,16 +1008,15 @@ del array inicial elevados al cuadrado:</p>
   cada invocación a la función, dependiendo del tipo del parámetro que
   se utiliza en la llamada:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">tupla</span> <span class="p">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s">&quot;Hola&quot;</span><span class="p">)</span>
-<span class="n">intercambia</span><span class="p">(</span><span class="n">tupla</span><span class="p">)</span>
-<span class="c1">// devuelve (&quot;Hola&quot;, 10)</span>
-<span class="kd">let</span> <span class="nv">tupla2</span> <span class="p">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="n">intercambia</span><span class="p">(</span><span class="n">tupla2</span><span class="p">)</span>
-<span class="c1">// devuelve (10, 20)</span>
-<span class="kd">let</span> <span class="nv">tupla3</span> <span class="p">=</span> <span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">)</span>
-<span class="n">intercambia</span><span class="p">(</span><span class="n">tupla3</span><span class="p">)</span>
-<span class="c1">// devuelve (10.5, true)</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-swift">let tupla = (10, "Hola")
+intercambia(tupla)
+// devuelve ("Hola", 10)
+let tupla2 = (10, 20)
+intercambia(tupla2)
+// devuelve (10, 20)
+let tupla3 = (true, 10.5)
+intercambia(tupla3)
+// devuelve (10.5, true)</code></pre>
 <ul>
 <li>
 <p>En el primer ejemplo, los tipos <code>A</code> y <code>B</code> se infieren como <code>Int</code> y
@@ -1098,43 +1039,42 @@ del array inicial elevados al cuadrado:</p>
   con un tipo genérico que permite generalizar el tipo de elementos de
   la lista.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kr">indirect</span> <span class="kd">enum</span> <span class="nc">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="p">{</span>
-     <span class="k">case</span> <span class="n">vacia</span>
-     <span class="k">case</span> <span class="n">nodo</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span>
-<span class="p">}</span>
+<pre class="highlight"><code class="language-swift">indirect enum Lista&lt;T&gt; {
+     case vacia
+     case nodo(T, Lista&lt;T&gt;)
+}
 
-<span class="kd">func</span> <span class="nf">first</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">lista</span><span class="p">:</span> <span class="n">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="n">T</span><span class="p">?</span> <span class="p">{</span>
-   <span class="k">switch</span> <span class="n">lista</span> <span class="p">{</span>
-      <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="n">primero</span><span class="p">,</span> <span class="kc">_</span><span class="p">):</span>
-         <span class="k">return</span> <span class="n">primero</span>
-      <span class="k">case</span> <span class="p">.</span><span class="n">vacia</span><span class="p">:</span>
-         <span class="k">return</span> <span class="kc">nil</span>
-   <span class="p">}</span>
-<span class="p">}</span>
+func first&lt;T&gt;(_ lista: Lista&lt;T&gt;) -&gt; T? {
+   switch lista {
+      case let .nodo(primero, _):
+         return primero
+      case .vacia:
+         return nil
+   }
+}
 
-<span class="kd">func</span> <span class="nf">rest</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">lista</span><span class="p">:</span> <span class="n">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="n">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;?</span> <span class="p">{</span>
-   <span class="k">switch</span> <span class="n">lista</span> <span class="p">{</span>
-      <span class="k">case</span> <span class="kd">let</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="kc">_</span><span class="p">,</span> <span class="n">resto</span><span class="p">):</span>
-         <span class="k">return</span> <span class="n">resto</span>
-      <span class="k">case</span> <span class="p">.</span><span class="n">vacia</span><span class="p">:</span>
-         <span class="k">return</span> <span class="kc">nil</span>
-   <span class="p">}</span>
-<span class="p">}</span>
+func rest&lt;T&gt;(_ lista: Lista&lt;T&gt;) -&gt; Lista&lt;T&gt;? {
+   switch lista {
+      case let .nodo(_, resto):
+         return resto
+      case .vacia:
+         return nil
+   }
+}
 
-<span class="kd">func</span> <span class="nf">vacia</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">lista</span><span class="p">:</span> <span class="n">Lista</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;)</span> <span class="p">-&gt;</span> <span class="nb">Bool</span> <span class="p">{</span>
-   <span class="k">switch</span> <span class="n">lista</span> <span class="p">{</span>
-      <span class="k">case</span> <span class="p">.</span><span class="n">vacia</span><span class="p">:</span>
-         <span class="k">return</span> <span class="kc">true</span>
-      <span class="k">default</span><span class="p">:</span>
-         <span class="k">return</span> <span class="kc">false</span>
-   <span class="p">}</span>
-<span class="p">}</span>
+func vacia&lt;T&gt;(_ lista: Lista&lt;T&gt;) -&gt; Bool {
+   switch lista {
+      case .vacia:
+         return true
+      default:
+         return false
+   }
+}
 
-<span class="kd">let</span> <span class="nv">lista</span> <span class="p">:</span> <span class="n">Lista</span> <span class="p">=</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="p">.</span><span class="n">vacia</span><span class="p">)))</span>
-<span class="kd">let</span> <span class="nv">lista2</span> <span class="p">:</span> <span class="n">Lista</span> <span class="p">=</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">,</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;B&quot;</span><span class="p">,</span> <span class="p">.</span><span class="n">nodo</span><span class="p">(</span><span class="s">&quot;C&quot;</span><span class="p">,</span> <span class="p">.</span><span class="n">vacia</span><span class="p">)))</span>
+let lista : Lista = .nodo(20, .nodo(30, .nodo(40, .vacia)))
+let lista2 : Lista = .nodo("A", .nodo("B", .nodo("C", .vacia)))
 
-<span class="bp">print</span><span class="p">(</span><span class="bp">first</span><span class="p">(</span><span class="n">rest</span><span class="p">(</span><span class="n">lista</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="c1">// Imprime 30</span>
-<span class="bp">print</span><span class="p">(</span><span class="bp">first</span><span class="p">(</span><span class="n">rest</span><span class="p">(</span><span class="n">lista2</span><span class="p">)</span><span class="o">!</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="c1">// Imprime &quot;B&quot;</span>
-</code></pre></div></body>
+print(first(rest(lista)!)!) // Imprime 30
+print(first(rest(lista2)!)!) // Imprime "B"</code></pre></body>
 
 </html>
