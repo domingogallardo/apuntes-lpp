@@ -474,6 +474,9 @@ _Casting de tipos_.
 ---
 ### Extensiones de protocolos
 
+!!! Note "Extensiones"
+    Más adelante veremos las extensiones con más detalle. De momento nos interesa este caso particular: usar una extensión de protocolo para proporcionar implementación por defecto a todos los tipos que cumplan ese protocolo.
+
 La combinación de *protocolos + extensiones* permite definir capacidades comunes y proporcionar implementación por defecto. De esta forma, muchas veces podemos trabajar con tipos de valor (`struct`) sin necesidad de crear una jerarquía de clases.
 
 Definimos una extensión para el protocolo `TieneNombre`:

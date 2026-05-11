@@ -2476,6 +2476,9 @@ _Casting de tipos_.
 
 ### 8.7. Extensiones de protocolos
 
+!!! Note "Extensiones"
+    Más adelante veremos las extensiones con más detalle. De momento nos interesa este caso particular: usar una extensión de protocolo para proporcionar implementación por defecto a todos los tipos que cumplan ese protocolo.
+
 La combinación de *protocolos + extensiones* permite definir capacidades comunes y proporcionar implementación por defecto. De esta forma, muchas veces podemos trabajar con tipos de valor (`struct`) sin necesidad de crear una jerarquía de clases.
 
 En una extensión de protocolo podemos definir métodos o propiedades calculadas que estarán disponibles automáticamente en cualquier tipo que cumpla ese protocolo.
@@ -2510,7 +2513,7 @@ ncc1701.imprimeNombreCompleto()
     
     Además, los protocolos permiten definir restricciones de forma muy precisa. Por ejemplo, un algoritmo genérico puede decir: “funciono con cualquier tipo que sea comparable”, sin importar si ese tipo es una estructura, una clase o una enumeración.
 
-    Las **extensiones de protocolos** permiten ir un paso más allá: podemos proporcionar implementación por defecto solo para los tipos que cumplan ciertas condiciones. Así, Swift favorece la **composición de capacidades** frente a la construcción de grandes jerarquías de clases.
+    Las **extensiones de protocolos** permiten ir un paso más allá: podemos compartir comportamiento común sin obligar a los tipos a heredar de una misma superclase. Así, Swift favorece la **composición de capacidades** frente a la construcción de grandes jerarquías de clases.
 
 
 ### 8.8. Protocolo `Equatable`
