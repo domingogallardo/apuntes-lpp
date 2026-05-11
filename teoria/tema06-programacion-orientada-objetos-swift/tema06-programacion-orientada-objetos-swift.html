@@ -894,18 +894,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#87-protocolo-equatable" class="md-nav__link">
+  <a href="#87-extensiones-de-protocolos" class="md-nav__link">
     <span class="md-ellipsis">
-      8.7. Protocolo Equatable
+      8.7. Extensiones de protocolos
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#88-herencia-en-protocolos" class="md-nav__link">
+  <a href="#88-protocolo-equatable" class="md-nav__link">
     <span class="md-ellipsis">
-      8.8 Herencia en protocolos
+      8.8. Protocolo Equatable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#89-herencia-en-protocolos" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.9 Herencia en protocolos
     </span>
   </a>
   
@@ -1941,18 +1950,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#87-protocolo-equatable" class="md-nav__link">
+  <a href="#87-extensiones-de-protocolos" class="md-nav__link">
     <span class="md-ellipsis">
-      8.7. Protocolo Equatable
+      8.7. Extensiones de protocolos
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#88-herencia-en-protocolos" class="md-nav__link">
+  <a href="#88-protocolo-equatable" class="md-nav__link">
     <span class="md-ellipsis">
-      8.8 Herencia en protocolos
+      8.8. Protocolo Equatable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#89-herencia-en-protocolos" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.9 Herencia en protocolos
     </span>
   </a>
   
@@ -4102,7 +4120,30 @@ en la sentencia con la llamada a <code>print</code>.</p>
 <code>edad</code> o <code>prefijo</code> dependiendo de si tenemos una <code>Persona</code> o una
 <code>NaveEstelar</code>. Veremos más adelante como hacerlo cuando hablemos de
 <em>Casting de tipos</em>.</p>
-<h3 id="87-protocolo-equatable">8.7. Protocolo <code>Equatable</code><a class="headerlink" href="#87-protocolo-equatable" title="Permanent link">&para;</a></h3>
+<h3 id="87-extensiones-de-protocolos">8.7. Extensiones de protocolos<a class="headerlink" href="#87-extensiones-de-protocolos" title="Permanent link">&para;</a></h3>
+<p>Las extensiones también pueden aplicarse a protocolos. Esto permite proporcionar una implementación por defecto de algunos métodos o propiedades calculadas.</p>
+<p>Definimos una extensión para el protocolo <code>TieneNombre</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">TieneNombre</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">imprimeNombreCompleto</span><span class="p">()</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="n">nombreCompleto</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Lo utilizamos:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">john</span> <span class="p">=</span> <span class="n">Persona</span><span class="p">(</span><span class="n">edad</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span> <span class="n">nombreCompleto</span><span class="p">:</span> <span class="s">&quot;John Appleseed&quot;</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">ncc1701</span> <span class="p">=</span> <span class="n">NaveEstelar</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;Enterprise&quot;</span><span class="p">,</span> <span class="n">prefijo</span><span class="p">:</span> <span class="s">&quot;USS&quot;</span><span class="p">)</span>
+
+<span class="n">john</span><span class="p">.</span><span class="n">imprimeNombreCompleto</span><span class="p">()</span>
+<span class="n">ncc1701</span><span class="p">.</span><span class="n">imprimeNombreCompleto</span><span class="p">()</span>
+</code></pre></div>
+<p><code>Persona</code> es una estructura y <code>NaveEstelar</code> es una clase. No están relacionadas por herencia, pero ambas cumplen el protocolo <code>TieneNombre</code>. Gracias a la extensión del protocolo, ambas reciben el método <code>imprimeNombreCompleto()</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Programación orientada a protocolos</p>
+<p>En Swift se usan muchísimo las estructuras. Por eso, si queremos compartir comportamiento entre distintos tipos, no siempre tiene sentido recurrir a clases y herencia.</p>
+<p>La combinación de <strong>protocolos + extensiones</strong> permite definir capacidades comunes y proporcionar implementación por defecto. De esta forma, muchas veces podemos trabajar con <code>struct</code> sin necesidad de crear una jerarquía de clases.</p>
+<p>Esta es una idea muy propia de Swift: en lugar de forzar que varios tipos pertenezcan a una misma familia mediante herencia, podemos expresar que comparten una misma capacidad mediante un protocolo.</p>
+</div>
+<h3 id="88-protocolo-equatable">8.8. Protocolo <code>Equatable</code><a class="headerlink" href="#88-protocolo-equatable" title="Permanent link">&para;</a></h3>
 <p>En la <a href="https://developer.apple.com/documentation/swift">biblioteca estándar de
 Swift</a> se definen
 distintos protocolos como <code>Collection</code> y <code>Equatable</code> que describen
@@ -4164,7 +4205,7 @@ el inicializador por defecto ni el operador <code>==</code>:</p>
 <span class="bp">print</span><span class="p">(</span><span class="n">p1</span> <span class="o">!=</span> <span class="n">p2</span><span class="p">)</span>
 <span class="c1">// Imprime false</span>
 </code></pre></div>
-<h3 id="88-herencia-en-protocolos">8.8 Herencia en protocolos<a class="headerlink" href="#88-herencia-en-protocolos" title="Permanent link">&para;</a></h3>
+<h3 id="89-herencia-en-protocolos">8.9 Herencia en protocolos<a class="headerlink" href="#89-herencia-en-protocolos" title="Permanent link">&para;</a></h3>
 <p>Un protocolo puede heredar uno o más protocolos y puede añadir
 requisitos adicionales sobre los requisitos que hereda. La sintaxis de
 herencia de protocolos es similar a la sintaxis de herencia de clases,
