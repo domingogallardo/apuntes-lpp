@@ -4121,6 +4121,10 @@ en la sentencia con la llamada a <code>print</code>.</p>
 <code>NaveEstelar</code>. Veremos más adelante como hacerlo cuando hablemos de
 <em>Casting de tipos</em>.</p>
 <h3 id="87-extensiones-de-protocolos">8.7. Extensiones de protocolos<a class="headerlink" href="#87-extensiones-de-protocolos" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Extensiones</p>
+<p>Más adelante veremos las extensiones con más detalle. De momento nos interesa este caso particular: usar una extensión de protocolo para proporcionar implementación por defecto a todos los tipos que cumplan ese protocolo.</p>
+</div>
 <p>La combinación de <em>protocolos + extensiones</em> permite definir capacidades comunes y proporcionar implementación por defecto. De esta forma, muchas veces podemos trabajar con tipos de valor (<code>struct</code>) sin necesidad de crear una jerarquía de clases.</p>
 <p>En una extensión de protocolo podemos definir métodos o propiedades calculadas que estarán disponibles automáticamente en cualquier tipo que cumpla ese protocolo.</p>
 <p>Definimos una extensión para el protocolo <code>TieneNombre</code>:</p>
@@ -4143,7 +4147,7 @@ en la sentencia con la llamada a <code>print</code>.</p>
 <p>En Swift se usan muchísimo las estructuras. Por eso, si queremos compartir comportamiento entre distintos tipos, no siempre tiene sentido recurrir a clases y herencia.</p>
 <p>Esta es una idea muy propia de Swift: en lugar de forzar que varios tipos pertenezcan a una misma familia mediante herencia, podemos expresar que comparten una misma capacidad mediante un protocolo.</p>
 <p>Además, los protocolos permiten definir restricciones de forma muy precisa. Por ejemplo, un algoritmo genérico puede decir: “funciono con cualquier tipo que sea comparable”, sin importar si ese tipo es una estructura, una clase o una enumeración.</p>
-<p>Las <strong>extensiones de protocolos</strong> permiten ir un paso más allá: podemos proporcionar implementación por defecto solo para los tipos que cumplan ciertas condiciones. Así, Swift favorece la <strong>composición de capacidades</strong> frente a la construcción de grandes jerarquías de clases.</p>
+<p>Las <strong>extensiones de protocolos</strong> permiten ir un paso más allá: podemos compartir comportamiento común sin obligar a los tipos a heredar de una misma superclase. Así, Swift favorece la <strong>composición de capacidades</strong> frente a la construcción de grandes jerarquías de clases.</p>
 </div>
 <h3 id="88-protocolo-equatable">8.8. Protocolo <code>Equatable</code><a class="headerlink" href="#88-protocolo-equatable" title="Permanent link">&para;</a></h3>
 <p>En la <a href="https://developer.apple.com/documentation/swift">biblioteca estándar de
