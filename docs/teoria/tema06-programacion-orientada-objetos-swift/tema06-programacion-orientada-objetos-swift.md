@@ -118,7 +118,7 @@ Programación Orientada a Objetos de Swift.
 
 ## 2. Clases y estructuras
 
-En el caso de Swift, las clases y las estructuras son muchas más
+En el caso de Swift, las clases y las estructuras son mucho más
 cercanas en funcionalidad que en otros lenguajes, como C o C++, y
 tienen muchas características comunes. Muchas características de las
 instancias de una clase se pueden aplicar también a las instancias de
@@ -1956,7 +1956,7 @@ También es posible marcar la clase completa como final, escribiendo el
 modificador antes de `class` (`final class`). De esta forma no se
 permite que se pueda heredar de ella.
 
-<!--
+
 
 ## 7. Funciones operadoras
 
@@ -3502,8 +3502,6 @@ extension String {
 }
 "Hola"[3] // devuelve "a"
 ```
-
--->
 
 ## 12. Bibliografía
 
