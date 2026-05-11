@@ -51,8 +51,7 @@ struct Vector2D {
   de función que empareja con el operador a sobrecargar (`+`). 
 - La función toma dos parámetros de entrada de tipo `Vector2D` y
   devuelve un único valor de salida, también de tipo `Vector2D`.
-- La función se define globalmente, más que como un método en la
-  estructura `Vector2D`, para que pueda usarse como un operador infijo
+- La función se define con `static` para que pueda usarse como un operador infijo
   entre instancias existentes de `Vector2D`:
 
 
@@ -264,7 +263,7 @@ protocol GeneradorNumerosAleatorios {
 }
 ```
 
-- Una vez definido el protocolo podremos usarlo como un tipo otras en
+- Una vez definido el protocolo podremos usarlo como un tipo en
 clases y structs (verlo más adelante en el struct `Dado`) y definir
 distintas implementaciones que lo cumplen.
 
@@ -411,7 +410,7 @@ class GeneradorLinealCongruente: GeneradorNumerosAleatorios {
         return ultimoRandom / m
     }
 }
-let generador = GeneradorLinealCongruente()
+
 var generador = GeneradorLinealCongruente()
 for _ in 1...5 {
     print("Número aleatorio: \(generador.random())")
@@ -442,7 +441,7 @@ for _ in 1...5 {
 
 ### Colecciones de tipos protocolo
 
-- Un protocolo puede usarse como el tipo que se almacena un una
+- Un protocolo puede usarse como el tipo que se almacena en una
   colección (array, diccionario, etc.)
 
 Ejemplo:
@@ -738,7 +737,7 @@ let biblioteca = [
 
 - Sucede igual en el ejemplo visto anteriormente en el que se guardan
 en un array de tipo `TieneNombre` (un protocolo) dos instancias de
-estructuras distinas (una `Persona` y una `NaveEstelar`) que cumplen
+estructuras distintas (una `Persona` y una `NaveEstelar`) que cumplen
 el protocolo.
 
 ```swift
@@ -782,7 +781,7 @@ for item in biblioteca {
 }
 
 print("La biblioteca contiene \(contadorPeliculas) películas y \(contadorCanciones) canciones")
-// Imprime "La biblioteca contiene 3 películas y 2 canciones"
+// Imprime "La biblioteca contiene 2 películas y 3 canciones"
 ```
 
 ---
@@ -874,9 +873,9 @@ for item in array {
     case let someInt as Int:
         print("un valor entero de \(someInt)")
     case let unDouble as Double where unDouble > 0:
-        print("a valor positivo de \(unDouble)")
+        print("un valor positivo de \(unDouble)")
     case is Double:
-        print("algún otro valor double que no quier imprimir")
+        print("algún otro valor double que no quiero imprimir")
     case let someString as String:
         print("una cadena con valor de \"\(someString)\"")
     case let (x, y) as (Double, Double):
@@ -893,7 +892,7 @@ for item in array {
 // cero como un Int
 // cero como un Double
 // un valor entero de 42
-// a valor positivo de 3.14159
+// un valor positivo de 3.14159
 // una cadena con valor de "hola"
 // un punto (x, y) en 3.0, 5.0
 // una película: Ghostbusters, dir. Ivan Reitman
@@ -965,8 +964,8 @@ let objetos: [Any] = [
   cada ítem si la instancia se ajusta al protocolo `TieneArea`:
 
 ```swift
-for objecto in objetos {
-    if let objetoConArea = objecto as? TieneArea {
+for objeto in objetos {
+    if let objetoConArea = objeto as? TieneArea {
         print("El área es \(objetoConArea.area)")
     } else {
         print("Algo que no tiene un área")
