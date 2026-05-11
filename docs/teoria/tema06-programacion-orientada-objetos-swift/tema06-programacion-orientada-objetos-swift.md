@@ -2507,6 +2507,10 @@ ncc1701.imprimeNombreCompleto()
     En Swift se usan muchísimo las estructuras. Por eso, si queremos compartir comportamiento entre distintos tipos, no siempre tiene sentido recurrir a clases y herencia.
 
     Esta es una idea muy propia de Swift: en lugar de forzar que varios tipos pertenezcan a una misma familia mediante herencia, podemos expresar que comparten una misma capacidad mediante un protocolo.
+    
+    Además, los protocolos permiten definir restricciones de forma muy precisa. Por ejemplo, un algoritmo genérico puede decir: “funciono con cualquier tipo que sea comparable”, sin importar si ese tipo es una estructura, una clase o una enumeración.
+
+    Las **extensiones de protocolos** permiten ir un paso más allá: podemos proporcionar implementación por defecto solo para los tipos que cumplan ciertas condiciones. Así, Swift favorece la **composición de capacidades** frente a la construcción de grandes jerarquías de clases.
 
 
 ### 8.8. Protocolo `Equatable`
