@@ -4142,6 +4142,8 @@ en la sentencia con la llamada a <code>print</code>.</p>
 <p class="admonition-title">Programación orientada a protocolos</p>
 <p>En Swift se usan muchísimo las estructuras. Por eso, si queremos compartir comportamiento entre distintos tipos, no siempre tiene sentido recurrir a clases y herencia.</p>
 <p>Esta es una idea muy propia de Swift: en lugar de forzar que varios tipos pertenezcan a una misma familia mediante herencia, podemos expresar que comparten una misma capacidad mediante un protocolo.</p>
+<p>Además, los protocolos permiten definir restricciones de forma muy precisa. Por ejemplo, un algoritmo genérico puede decir: “funciono con cualquier tipo que sea comparable”, sin importar si ese tipo es una estructura, una clase o una enumeración.</p>
+<p>Las <strong>extensiones de protocolos</strong> permiten ir un paso más allá: podemos proporcionar implementación por defecto solo para los tipos que cumplan ciertas condiciones. Así, Swift favorece la <strong>composición de capacidades</strong> frente a la construcción de grandes jerarquías de clases.</p>
 </div>
 <h3 id="88-protocolo-equatable">8.8. Protocolo <code>Equatable</code><a class="headerlink" href="#88-protocolo-equatable" title="Permanent link">&para;</a></h3>
 <p>En la <a href="https://developer.apple.com/documentation/swift">biblioteca estándar de
