@@ -13,7 +13,7 @@
 - 8. Casting de tipos
 - 9. Extensiones
 - 10. Funciones operador
-- 11. Genericos
+- 11. Genéricos
 
 
 ----
@@ -222,7 +222,7 @@ ventana1.anchura // devuelve 1000
 ```
 
 - Debido a que son tipos de referencia, `ventana1` y
-`ventan2` se refieren a la misma instancia de
+`ventana2` se refieren a la misma instancia de
 `Ventana`.
 
 - Una constante o variable en Swift que se refiere a una instancia de
@@ -381,7 +381,7 @@ func mueve(ventana: Ventana, incX: Int, incY: Int) {
 - Propiedades almacenadas y calculadas.
     - Las propiedades almacenadas (_stored properties_) almacenan
       valores constantes y variables como parte de una instancia
-    - Las popiedades calculadas (_computed properties_) calculan (en
+    - Las propiedades calculadas (_computed properties_) calculan (en
       lugar de almacenar) un valor.
 - Las enumeraciones, clases y estructuras pueden contener propiedades:
     - Enumeraciones: pueden contener sólo propiedades calculadas.
@@ -613,7 +613,7 @@ print(x)
 - Sólo habrá una copia de estas propiedades, sea cual sea el número de
   instancias de ese tipo que creemos.
 - Estos tipos de propiedades se llaman propiedades del tipo (_type
-  propierties_).
+  properties_).
 - Se pueden definir en tanto en estructuras, clases como en
   enumeraciones.
 - Se definen con la palabra clave `static`. 
@@ -875,7 +875,7 @@ struct Punto {
 }
 ```
 
-- El resutado final de llamar a esta versión alternativa será
+- El resultado final de llamar a esta versión alternativa será
   exactamente el mismo que llamar a la versión anterior (aunque con
   una pequeña penalización de eficiencia por tener que crear una
   nueva instancia.
@@ -1133,7 +1133,7 @@ class PreguntaEncuesta {
 }
 let preguntaQueso = PreguntaEncuesta(texto: "¿Te gusta el queso?")
 preguntaQueso.pregunta()
-// Imprime "¿Te gusta el queso?
+// Imprime "¿Te gusta el queso?"
 preguntaQueso.respuesta = "Sí, me gusta el queso."
 ```
 
@@ -1160,7 +1160,7 @@ let basicRectangulo = Rectangulo()
 // el origen de basicRectangulo es (0.0, 0.0) y su tamaño (0.0, 0.0)
 let origenRectangulo = Rectangulo(origen: Punto(x: 2.0, y: 2.0),
                         tamaño: Tamaño(ancho: 5.0, alto: 5.0))
-// el origne de origenRectangulo es (2.0, 2.0) y su tamaño (5.0, 5.0)
+// el origen de origenRectangulo es (2.0, 2.0) y su tamaño (5.0, 5.0)
 let centroRectangulo = Rectangulo(centro: Punto(x: 4.0, y: 4.0),
                         tamaño: Tamaño(ancho: 3.0, alto: 3.0))
 // el origen de centroRectangulo es (2.5, 2.5) y su tamaño (3.0, 3.0)

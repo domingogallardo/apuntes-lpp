@@ -344,7 +344,7 @@ Declaramos una variable llamada `ventana1` inicializada con una
 instancia nueva de la clase `Ventana`. Le asignamos a la propiedad
 `esquina` una copia de la resolución anterior `coords1`. Después
 declaramos la altura, anchura y etiqueta de la ventana. Y, por último,
-`ventana1` se asigna a una nueva constante llamada `ventan2`, y la
+`ventana1` se asigna a una nueva constante llamada `ventana2`, y la
 anchura se modifica.
 
 Debido a que son tipos de referencia, **`ventana1` y `ventana2` se
@@ -899,7 +899,7 @@ Podemos definir también propiedades que pertenecen al tipo propiamente
 dicho, no a ninguna de las instancias de ese tipo. Sólo habrá una
 copia de estas propiedades, sea cual sea el número de instancias de
 ese tipo que creemos. Estos tipos de propiedades se llaman propiedades
-del tipo (_type propierties_). Se pueden definir en tanto en
+del tipo (_type properties_). Se pueden definir en tanto en
 estructuras, clases como en enumeraciones.
 
 Las propiedades del tipo son útiles para definir valores que son
@@ -1256,7 +1256,7 @@ struct Punto {
 
 Esta versión del método mutador `incrementa(incX:incY:)` crea una
 estructura nueva cuyos valores `x` e `y` se inicializan a los valores
-deseados. El resutado final de llamar a esta versión alternativa será
+deseados. El resultado final de llamar a esta versión alternativa será
 exactamente el mismo que llamar a la versión anterior (aunque con una
 pequeña penalización de eficiencia: este método es 1,3 veces más lento
 que el anterior en la versión 2.2 del compilador de Swift).
@@ -1542,7 +1542,7 @@ class PreguntaEncuesta {
     }
 }
 let preguntaQueso = PreguntaEncuesta(texto: "¿Te gusta el queso?")
-preguntaQueso.pregunta() // -> "¿Te gusta el queso?
+preguntaQueso.pregunta() // -> "¿Te gusta el queso?"
 preguntaQueso.respuesta // -> nil
 ```
 
@@ -1571,7 +1571,7 @@ let basicRectangulo = Rectangulo()
 // el origen de basicRectangulo es (0.0, 0.0) y su tamaño (0.0, 0.0)
 let origenRectangulo = Rectangulo(origen: Punto(x: 2.0, y: 2.0),
                         tamaño: Tamaño(ancho: 5.0, alto: 5.0))
-// el origne de origenRectangulo es (2.0, 2.0) y su tamaño (5.0, 5.0)
+// el origen de origenRectangulo es (2.0, 2.0) y su tamaño (5.0, 5.0)
 let centroRectangulo = Rectangulo(centro: Punto(x: 4.0, y: 4.0),
                         tamaño: Tamaño(ancho: 3.0, alto: 3.0))
 // el origen de centroRectangulo es (2.5, 2.5) y su tamaño (3.0, 3.0)
@@ -2798,7 +2798,7 @@ for item in biblioteca {
     }
 }
 
-print("La biblioteca contiene \(contadorCanciones) películas y \(contadorPeliculas) canciones")
+print("La biblioteca contiene \(contadorPeliculas) películas y \(contadorCanciones) canciones")
 // Imprime "La biblioteca contiene 3 películas y 2 canciones"
 ```
 
