@@ -3731,7 +3731,7 @@ posición de dos dimensiones:</p>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>La función operador se define como una función estática con un un
+<p>La función operador se define como una función estática con un
 nombre de función que empareja con el operador a sobrecargar
 (<code>+</code>). Debido a que la suma aritmética se define como un operador
 binario, esta función operador toma dos parámetros de entrada de tipo
@@ -4121,7 +4121,8 @@ en la sentencia con la llamada a <code>print</code>.</p>
 <code>NaveEstelar</code>. Veremos más adelante como hacerlo cuando hablemos de
 <em>Casting de tipos</em>.</p>
 <h3 id="87-extensiones-de-protocolos">8.7. Extensiones de protocolos<a class="headerlink" href="#87-extensiones-de-protocolos" title="Permanent link">&para;</a></h3>
-<p>Las extensiones también pueden aplicarse a protocolos. Esto permite proporcionar una implementación por defecto de algunos métodos o propiedades calculadas.</p>
+<p>La combinación de <em>protocolos + extensiones</em> permite definir capacidades comunes y proporcionar implementación por defecto. De esta forma, muchas veces podemos trabajar con tipos de valor (<code>struct</code>) sin necesidad de crear una jerarquía de clases.</p>
+<p>En una extensión de protocolo podemos definir métodos o propiedades calculadas que estarán disponibles automáticamente en cualquier tipo que cumpla ese protocolo.</p>
 <p>Definimos una extensión para el protocolo <code>TieneNombre</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">TieneNombre</span> <span class="p">{</span>
     <span class="kd">func</span> <span class="nf">imprimeNombreCompleto</span><span class="p">()</span> <span class="p">{</span>
