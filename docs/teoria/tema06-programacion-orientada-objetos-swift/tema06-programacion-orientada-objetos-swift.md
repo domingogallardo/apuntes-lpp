@@ -2474,7 +2474,42 @@ En el bucle podría interesarnos también acceder a las propiedades
 `NaveEstelar`. Veremos más adelante como hacerlo cuando hablemos de
 _Casting de tipos_.
 
-### 8.7. Protocolo `Equatable`
+### 8.7. Extensiones de protocolos
+
+Las extensiones también pueden aplicarse a protocolos. Esto permite proporcionar una implementación por defecto de algunos métodos o propiedades calculadas.
+
+Definimos una extensión para el protocolo `TieneNombre`:
+
+```swift
+extension TieneNombre {
+    func imprimeNombreCompleto() {
+        print(nombreCompleto)
+    }
+}
+```
+
+Lo utilizamos:
+
+```swift
+let john = Persona(edad: 35, nombreCompleto: "John Appleseed")
+let ncc1701 = NaveEstelar(nombre: "Enterprise", prefijo: "USS")
+
+john.imprimeNombreCompleto()
+ncc1701.imprimeNombreCompleto()
+```
+
+`Persona` es una estructura y `NaveEstelar` es una clase. No están relacionadas por herencia, pero ambas cumplen el protocolo `TieneNombre`. Gracias a la extensión del protocolo, ambas reciben el método `imprimeNombreCompleto()`.
+
+!!! note "Programación orientada a protocolos"
+
+    En Swift se usan muchísimo las estructuras. Por eso, si queremos compartir comportamiento entre distintos tipos, no siempre tiene sentido recurrir a clases y herencia.
+
+    La combinación de **protocolos + extensiones** permite definir capacidades comunes y proporcionar implementación por defecto. De esta forma, muchas veces podemos trabajar con `struct` sin necesidad de crear una jerarquía de clases.
+
+    Esta es una idea muy propia de Swift: en lugar de forzar que varios tipos pertenezcan a una misma familia mediante herencia, podemos expresar que comparten una misma capacidad mediante un protocolo.
+
+
+### 8.8. Protocolo `Equatable`
 
 En la [biblioteca estándar de
 Swift](https://developer.apple.com/documentation/swift) se definen
@@ -2548,7 +2583,7 @@ print(p1 != p2)
 // Imprime false
 ```
 
-### 8.8 Herencia en protocolos ###
+### 8.9 Herencia en protocolos ###
 
 Un protocolo puede heredar uno o más protocolos y puede añadir
 requisitos adicionales sobre los requisitos que hereda. La sintaxis de

@@ -243,8 +243,7 @@ estructura <code>Vector2D</code>:</p>
   de función que empareja con el operador a sobrecargar (<code>+</code>). </li>
 <li>La función toma dos parámetros de entrada de tipo <code>Vector2D</code> y
   devuelve un único valor de salida, también de tipo <code>Vector2D</code>.</li>
-<li>La función se define globalmente, más que como un método en la
-  estructura <code>Vector2D</code>, para que pueda usarse como un operador infijo
+<li>La función se define con <code>static</code> para que pueda usarse como un operador infijo
   entre instancias existentes de <code>Vector2D</code>:</li>
 </ul>
 <pre class="highlight"><code class="language-swift">let vector = Vector2D(x: 3.0, y: 1.0)
@@ -410,7 +409,7 @@ tipo. Hablaremos más de esto más adelante, cuando hablemos de <em>downcasting<
 }</code></pre>
 <ul>
 <li>
-<p>Una vez definido el protocolo podremos usarlo como un tipo otras en
+<p>Una vez definido el protocolo podremos usarlo como un tipo en
 clases y structs (verlo más adelante en el struct <code>Dado</code>) y definir
 distintas implementaciones que lo cumplen.</p>
 </li>
@@ -551,7 +550,7 @@ correcta del protocolo:</p>
         return ultimoRandom / m
     }
 }
-let generador = GeneradorLinealCongruente()
+
 var generador = GeneradorLinealCongruente()
 for _ in 1...5 {
     print("Número aleatorio: \(generador.random())")
@@ -577,7 +576,7 @@ for _ in 1...5 {
 <hr />
 <h3>Colecciones de tipos protocolo</h3>
 <ul>
-<li>Un protocolo puede usarse como el tipo que se almacena un una
+<li>Un protocolo puede usarse como el tipo que se almacena en una
   colección (array, diccionario, etc.)</li>
 </ul>
 <p>Ejemplo:</p>
@@ -857,7 +856,7 @@ tipo del array:</p>
 <ul>
 <li>Sucede igual en el ejemplo visto anteriormente en el que se guardan
 en un array de tipo <code>TieneNombre</code> (un protocolo) dos instancias de
-estructuras distinas (una <code>Persona</code> y una <code>NaveEstelar</code>) que cumplen
+estructuras distintas (una <code>Persona</code> y una <code>NaveEstelar</code>) que cumplen
 el protocolo.</li>
 </ul>
 <pre class="highlight"><code class="language-swift">var peterParker = Persona(edad: 24, nombreCompleto: "Peter Parker")
@@ -895,7 +894,7 @@ for item in biblioteca {
 }
 
 print("La biblioteca contiene \(contadorPeliculas) películas y \(contadorCanciones) canciones")
-// Imprime "La biblioteca contiene 3 películas y 2 canciones"</code></pre>
+// Imprime "La biblioteca contiene 2 películas y 3 canciones"</code></pre>
 <hr />
 <h3>Downcasting</h3>
 <ul>
@@ -973,9 +972,9 @@ array.append({ (name: String) -&gt; String in "Hola, \(name)" })</code></pre>
     case let someInt as Int:
         print("un valor entero de \(someInt)")
     case let unDouble as Double where unDouble &gt; 0:
-        print("a valor positivo de \(unDouble)")
+        print("un valor positivo de \(unDouble)")
     case is Double:
-        print("algún otro valor double que no quier imprimir")
+        print("algún otro valor double que no quiero imprimir")
     case let someString as String:
         print("una cadena con valor de \"\(someString)\"")
     case let (x, y) as (Double, Double):
@@ -992,7 +991,7 @@ array.append({ (name: String) -&gt; String in "Hola, \(name)" })</code></pre>
 // cero como un Int
 // cero como un Double
 // un valor entero de 42
-// a valor positivo de 3.14159
+// un valor positivo de 3.14159
 // una cadena con valor de "hola"
 // un punto (x, y) en 3.0, 5.0
 // una película: Ghostbusters, dir. Ivan Reitman
@@ -1050,8 +1049,8 @@ class Pais: TieneArea {
 <li>Y ahora podemos iterar sobre el array de objetos, comprobando para
   cada ítem si la instancia se ajusta al protocolo <code>TieneArea</code>:</li>
 </ul>
-<pre class="highlight"><code class="language-swift">for objecto in objetos {
-    if let objetoConArea = objecto as? TieneArea {
+<pre class="highlight"><code class="language-swift">for objeto in objetos {
+    if let objetoConArea = objeto as? TieneArea {
         print("El área es \(objetoConArea.area)")
     } else {
         print("Algo que no tiene un área")

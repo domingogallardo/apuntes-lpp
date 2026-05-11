@@ -472,6 +472,41 @@ _Casting de tipos_.
 
 
 ---
+### Extensiones de protocolos
+
+Las extensiones también pueden aplicarse a protocolos. Esto permite proporcionar una implementación por defecto de algunos métodos o propiedades calculadas.
+
+Definimos una extensión para el protocolo `TieneNombre`:
+
+```swift
+extension TieneNombre {
+    func imprimeNombreCompleto() {
+        print(nombreCompleto)
+    }
+}
+```
+
+Lo utilizamos:
+
+```swift
+let john = Persona(edad: 35, nombreCompleto: "John Appleseed")
+let ncc1701 = NaveEstelar(nombre: "Enterprise", prefijo: "USS")
+
+john.imprimeNombreCompleto()
+ncc1701.imprimeNombreCompleto()
+```
+
+`Persona` es una estructura y `NaveEstelar` es una clase. No están relacionadas por herencia, pero ambas cumplen el protocolo `TieneNombre`. Gracias a la extensión del protocolo, ambas reciben el método `imprimeNombreCompleto()`.
+
+!!! note "Programación orientada a protocolos"
+
+    En Swift se usan muchísimo las estructuras. Por eso, si queremos compartir comportamiento entre distintos tipos, no siempre tiene sentido recurrir a clases y herencia.
+
+    La combinación de **protocolos + extensiones** permite definir capacidades comunes y proporcionar implementación por defecto. De esta forma, muchas veces podemos trabajar con `struct` sin necesidad de crear una jerarquía de clases.
+
+    Esta es una idea muy propia de Swift: en lugar de forzar que varios tipos pertenezcan a una misma familia mediante herencia, podemos expresar que comparten una misma capacidad mediante un protocolo.
+
+---
 
 ### Protocolo `Equatable`
 
@@ -646,7 +681,7 @@ c1 == c2 // true
 
 
 ---
-### 9. Casting de tipos
+### Casting de tipos
 ---
 
 - El _casting_ de tipos es una forma de comprobar el tipo de una
