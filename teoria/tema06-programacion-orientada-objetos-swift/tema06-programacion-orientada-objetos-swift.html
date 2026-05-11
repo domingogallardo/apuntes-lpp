@@ -2410,7 +2410,7 @@ instancia de la clase <code>Ventana</code>:</p>
 instancia nueva de la clase <code>Ventana</code>. Le asignamos a la propiedad
 <code>esquina</code> una copia de la resolución anterior <code>coords1</code>. Después
 declaramos la altura, anchura y etiqueta de la ventana. Y, por último,
-<code>ventana1</code> se asigna a una nueva constante llamada <code>ventan2</code>, y la
+<code>ventana1</code> se asigna a una nueva constante llamada <code>ventana2</code>, y la
 anchura se modifica.</p>
 <p>Debido a que son tipos de referencia, <strong><code>ventana1</code> y <code>ventana2</code> se
 refieren a la misma instancia de <code>Ventana</code></strong>. Son sólo dos nombres
@@ -2874,7 +2874,7 @@ propiedades, separados de los de cualquier otra instancia.</p>
 dicho, no a ninguna de las instancias de ese tipo. Sólo habrá una
 copia de estas propiedades, sea cual sea el número de instancias de
 ese tipo que creemos. Estos tipos de propiedades se llaman propiedades
-del tipo (<em>type propierties</em>). Se pueden definir en tanto en
+del tipo (<em>type properties</em>). Se pueden definir en tanto en
 estructuras, clases como en enumeraciones.</p>
 <p>Las propiedades del tipo son útiles para definir valores que son
 universales a todas las instancias de un tipo particular, como una
@@ -3159,7 +3159,7 @@ escrito de la siguiente forma:</p>
 </code></pre></div>
 <p>Esta versión del método mutador <code>incrementa(incX:incY:)</code> crea una
 estructura nueva cuyos valores <code>x</code> e <code>y</code> se inicializan a los valores
-deseados. El resutado final de llamar a esta versión alternativa será
+deseados. El resultado final de llamar a esta versión alternativa será
 exactamente el mismo que llamar a la versión anterior (aunque con una
 pequeña penalización de eficiencia: este método es 1,3 veces más lento
 que el anterior en la versión 2.2 del compilador de Swift).</p>
@@ -3386,7 +3386,7 @@ después no pueden modificarse.</p>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">let</span> <span class="nv">preguntaQueso</span> <span class="p">=</span> <span class="n">PreguntaEncuesta</span><span class="p">(</span><span class="n">texto</span><span class="p">:</span> <span class="s">&quot;¿Te gusta el queso?&quot;</span><span class="p">)</span>
-<span class="n">preguntaQueso</span><span class="p">.</span><span class="n">pregunta</span><span class="p">()</span> <span class="c1">// -&gt; &quot;¿Te gusta el queso?</span>
+<span class="n">preguntaQueso</span><span class="p">.</span><span class="n">pregunta</span><span class="p">()</span> <span class="c1">// -&gt; &quot;¿Te gusta el queso?&quot;</span>
 <span class="n">preguntaQueso</span><span class="p">.</span><span class="n">respuesta</span> <span class="c1">// -&gt; nil</span>
 </code></pre></div>
 <p>La propiedad <code>respuesta</code> se inicializa a <code>nil</code> al ser un opcional y no
@@ -3411,7 +3411,7 @@ invocar a inicializadores más básicos desde otros. </p>
 <span class="c1">// el origen de basicRectangulo es (0.0, 0.0) y su tamaño (0.0, 0.0)</span>
 <span class="kd">let</span> <span class="nv">origenRectangulo</span> <span class="p">=</span> <span class="n">Rectangulo</span><span class="p">(</span><span class="n">origen</span><span class="p">:</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">),</span>
                         <span class="n">tamaño</span><span class="p">:</span> <span class="n">Tamaño</span><span class="p">(</span><span class="n">ancho</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">alto</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">))</span>
-<span class="c1">// el origne de origenRectangulo es (2.0, 2.0) y su tamaño (5.0, 5.0)</span>
+<span class="c1">// el origen de origenRectangulo es (2.0, 2.0) y su tamaño (5.0, 5.0)</span>
 <span class="kd">let</span> <span class="nv">centroRectangulo</span> <span class="p">=</span> <span class="n">Rectangulo</span><span class="p">(</span><span class="n">centro</span><span class="p">:</span> <span class="n">Punto</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">),</span>
                         <span class="n">tamaño</span><span class="p">:</span> <span class="n">Tamaño</span><span class="p">(</span><span class="n">ancho</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">alto</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">))</span>
 <span class="c1">// el origen de centroRectangulo es (2.5, 2.5) y su tamaño (3.0, 3.0)</span>
@@ -4369,7 +4369,7 @@ instancias de películas y canciones en el array <code>biblioteca</code>:</p>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La biblioteca contiene </span><span class="si">\(</span><span class="n">contadorCanciones</span><span class="si">)</span><span class="s"> películas y </span><span class="si">\(</span><span class="n">contadorPeliculas</span><span class="si">)</span><span class="s"> canciones&quot;</span><span class="p">)</span>
+<span class="bp">print</span><span class="p">(</span><span class="s">&quot;La biblioteca contiene </span><span class="si">\(</span><span class="n">contadorPeliculas</span><span class="si">)</span><span class="s"> películas y </span><span class="si">\(</span><span class="n">contadorCanciones</span><span class="si">)</span><span class="s"> canciones&quot;</span><span class="p">)</span>
 <span class="c1">// Imprime &quot;La biblioteca contiene 3 películas y 2 canciones&quot;</span>
 </code></pre></div>
 <p>El ejemplo itera por todos los ítems del array <code>biblioteca</code>. En cada
