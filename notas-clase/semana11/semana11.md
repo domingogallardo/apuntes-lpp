@@ -502,8 +502,6 @@ ncc1701.imprimeNombreCompleto()
 
     En Swift se usan muchísimo las estructuras. Por eso, si queremos compartir comportamiento entre distintos tipos, no siempre tiene sentido recurrir a clases y herencia.
 
-    La combinación de **protocolos + extensiones** permite definir capacidades comunes y proporcionar implementación por defecto. De esta forma, muchas veces podemos trabajar con `struct` sin necesidad de crear una jerarquía de clases.
-
     Esta es una idea muy propia de Swift: en lugar de forzar que varios tipos pertenezcan a una misma familia mediante herencia, podemos expresar que comparten una misma capacidad mediante un protocolo.
 
 ---

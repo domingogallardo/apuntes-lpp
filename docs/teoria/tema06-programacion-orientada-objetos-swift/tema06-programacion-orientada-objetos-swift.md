@@ -1980,7 +1980,7 @@ struct Vector2D {
 }
 ```
 
-La función operador se define como una función estática con un
+La función operador se define como una función estática con un un
 nombre de función que empareja con el operador a sobrecargar
 (`+`). Debido a que la suma aritmética se define como un operador
 binario, esta función operador toma dos parámetros de entrada de tipo
@@ -2505,8 +2505,6 @@ ncc1701.imprimeNombreCompleto()
 !!! note "Programación orientada a protocolos"
 
     En Swift se usan muchísimo las estructuras. Por eso, si queremos compartir comportamiento entre distintos tipos, no siempre tiene sentido recurrir a clases y herencia.
-
-    La combinación de **protocolos + extensiones** permite definir capacidades comunes y proporcionar implementación por defecto. De esta forma, muchas veces podemos trabajar con `struct` sin necesidad de crear una jerarquía de clases.
 
     Esta es una idea muy propia de Swift: en lugar de forzar que varios tipos pertenezcan a una misma familia mediante herencia, podemos expresar que comparten una misma capacidad mediante un protocolo.
 
