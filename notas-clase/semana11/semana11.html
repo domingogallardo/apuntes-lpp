@@ -606,6 +606,28 @@ tipo <code>TieneNombre</code>, no es de tipo <code>Persona</code> ni de tipo <co
 </li>
 </ul>
 <hr />
+<h3>Extensiones de protocolos</h3>
+<p>Las extensiones también pueden aplicarse a protocolos. Esto permite proporcionar una implementación por defecto de algunos métodos o propiedades calculadas.</p>
+<p>Definimos una extensión para el protocolo <code>TieneNombre</code>:</p>
+<pre class="highlight"><code class="language-swift">extension TieneNombre {
+    func imprimeNombreCompleto() {
+        print(nombreCompleto)
+    }
+}</code></pre>
+<p>Lo utilizamos:</p>
+<pre class="highlight"><code class="language-swift">let john = Persona(edad: 35, nombreCompleto: "John Appleseed")
+let ncc1701 = NaveEstelar(nombre: "Enterprise", prefijo: "USS")
+
+john.imprimeNombreCompleto()
+ncc1701.imprimeNombreCompleto()</code></pre>
+<p><code>Persona</code> es una estructura y <code>NaveEstelar</code> es una clase. No están relacionadas por herencia, pero ambas cumplen el protocolo <code>TieneNombre</code>. Gracias a la extensión del protocolo, ambas reciben el método <code>imprimeNombreCompleto()</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Programación orientada a protocolos</p>
+<p>En Swift se usan muchísimo las estructuras. Por eso, si queremos compartir comportamiento entre distintos tipos, no siempre tiene sentido recurrir a clases y herencia.</p>
+<p>La combinación de <strong>protocolos + extensiones</strong> permite definir capacidades comunes y proporcionar implementación por defecto. De esta forma, muchas veces podemos trabajar con <code>struct</code> sin necesidad de crear una jerarquía de clases.</p>
+<p>Esta es una idea muy propia de Swift: en lugar de forzar que varios tipos pertenezcan a una misma familia mediante herencia, podemos expresar que comparten una misma capacidad mediante un protocolo.</p>
+</div>
+<hr />
 <h3>Protocolo <code>Equatable</code></h3>
 <ul>
 <li>En la <a href="https://developer.apple.com/documentation/swift">biblioteca estándar de Swift</a> se definen distintos protocolos
@@ -771,7 +793,7 @@ c1.x = 10
 c1.y = 10
 c1 == c2 // true</code></pre>
 <hr />
-<h3>9. Casting de tipos</h3>
+<h3>Casting de tipos</h3>
 <hr />
 <ul>
 <li>El <em>casting</em> de tipos es una forma de comprobar el tipo de una

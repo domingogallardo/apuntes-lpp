@@ -1980,7 +1980,7 @@ struct Vector2D {
 }
 ```
 
-La función operador se define como una función estática con un un
+La función operador se define como una función estática con un
 nombre de función que empareja con el operador a sobrecargar
 (`+`). Debido a que la suma aritmética se define como un operador
 binario, esta función operador toma dos parámetros de entrada de tipo
@@ -2476,7 +2476,9 @@ _Casting de tipos_.
 
 ### 8.7. Extensiones de protocolos
 
-Las extensiones también pueden aplicarse a protocolos. Esto permite proporcionar una implementación por defecto de algunos métodos o propiedades calculadas.
+La combinación de *protocolos + extensiones* permite definir capacidades comunes y proporcionar implementación por defecto. De esta forma, muchas veces podemos trabajar con tipos de valor (`struct`) sin necesidad de crear una jerarquía de clases.
+
+En una extensión de protocolo podemos definir métodos o propiedades calculadas que estarán disponibles automáticamente en cualquier tipo que cumpla ese protocolo.
 
 Definimos una extensión para el protocolo `TieneNombre`:
 
