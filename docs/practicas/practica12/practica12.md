@@ -373,9 +373,103 @@ Centro: Punto(x: 5.0, y: 0.0) y área: 314.1592653589793
 - Escribe un ejemplo de código en el que se guarden varias figuras
 en un almacén de figuras y se llame a sus métodos.
 
+
+### Ejercicio 6 ###
+
+En este ejercicio vamos a trabajar con **programación orientada a protocolos**. Consideramos que un elemento será `Avisable` si tiene:
+
+- un `nombre`, de solo lectura;
+- una `bateria`, que se puede consultar y modificar;
+- un método `aviso()` que devuelve un `String`.
+
+Además, todos los tipos que adopten el protocolo `Avisable` tendrán una implementación por defecto de `aviso()` mediante una extensión del protocolo.
+
+a) Completa el código:
+
+```swift
+protocol Avisable {
+    // Hueco 1:
+    // Declara la propiedad nombre, de tipo String, solo lectura
+
+    // Hueco 2:
+    // Declara la propiedad bateria, de tipo Int, lectura y escritura
+
+    // Hueco 3:
+    // Declara el método aviso(), que devuelve un String
+}
+```
+
+La implementación por defecto de `aviso()` debe devolver:
+
+- `"Aviso: batería baja en <nombre>"` si la batería es menor que 20.
+- `"Batería suficiente en <nombre>"` en caso contrario.
+
+```swift
+extension Avisable {
+    func aviso() -> String {
+        // Hueco 4:
+        // Escribe aquí la implementación por defecto del método aviso()
+    }
+}
+```
+
+b) Ahora se definen dos tipos que adoptan el protocolo `Avisable`.
+
+El tipo `Sensor` usará la implementación por defecto de `aviso()`.
+
+El tipo `Robot`, en cambio, tendrá su propia implementación de `aviso()`:
+
+- `"Robot <nombre> necesita recarga urgente"` si la batería es menor que 20.
+- `"Robot <nombre> operativo"` en caso contrario.
+
+Completa el código:
+
+```swift
+struct Sensor: Avisable {
+    let nombre: String
+    var bateria: Int
+    let ubicacion: String
+}
+
+struct Robot: Avisable {
+    let nombre: String
+    var bateria: Int
+    let modelo: String
+
+    // Hueco 5:
+    // Implementa aquí el método aviso() específico para Robot
+}
+```
+
+c) Completa el siguiente código para crear un array que pueda contener tanto robots como sensores y llamar al método `aviso()` de todos ellos.
+
+```swift
+let robot1 = Robot(nombre: "R2", bateria: 15, modelo: "explorador")
+let robot2 = Robot(nombre: "T7", bateria: 80, modelo: "transporte")
+let sensor1 = Sensor(nombre: "S1", bateria: 10, ubicacion: "laboratorio")
+let sensor2 = Sensor(nombre: "S2", bateria: 60, ubicacion: "almacén")
+
+// Hueco 6:
+// Declara un array llamado elementos que pueda contener valores
+// de cualquier tipo que adopte Avisable.
+// El array debe contener robot1, robot2, sensor1 y sensor2.
+
+
+// Hueco 7:
+// Recorre el array elementos e imprime el resultado de llamar
+// al método aviso() de cada elemento.
+```
+
+d) Contesta las siguientes preguntas:
+
+1. ¿Por qué `Sensor` no necesita implementar su propio método `aviso()`?
+2. ¿Por qué `Robot` sí puede definir su propia versión de `aviso()`?
+3. ¿Qué ventaja tiene declarar el array como `[Avisable]`?
+4. ¿Qué mensajes se imprimirán al ejecutar el último fragmento de código?
+
 ----
 
-Lenguajes y Paradigmas de Programación, curso 2024-25  
+Lenguajes y Paradigmas de Programación, curso 2025-26  
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante  
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez
 
