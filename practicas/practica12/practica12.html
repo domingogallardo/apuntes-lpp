@@ -9,6 +9,8 @@
       
       
       
+        <link rel="prev" href="../practica11/practica11.html">
+      
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -16,7 +18,7 @@
     
     
       
-        <title>Práctica 12: Programación Orientada a Objetos en Swift (2) - LPP</title>
+        <title>Práctica 12 - LPP</title>
       
     
     
@@ -103,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Práctica 12: Programación Orientada a Objetos en Swift (2)
+              Práctica 12
             
           </span>
         </div>
@@ -491,17 +493,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -515,7 +519,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Prácticas
@@ -774,6 +778,145 @@
 
               
             
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Práctica 12
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="practica12.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Práctica 12
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#antes-de-la-clase-de-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Antes de la clase de prácticas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ejercicios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 6
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -866,6 +1009,15 @@
   <a href="#ejercicio-5" class="md-nav__link">
     <span class="md-ellipsis">
       Ejercicio 5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 6
     </span>
   </a>
   
@@ -1212,8 +1364,86 @@ Centro: Punto(x: 5.0, y: 0.0) y área: 314.1592653589793
 <li>Escribe un ejemplo de código en el que se guarden varias figuras
 en un almacén de figuras y se llame a sus métodos.</li>
 </ul>
+<h3 id="ejercicio-6">Ejercicio 6<a class="headerlink" href="#ejercicio-6" title="Permanent link">&para;</a></h3>
+<p>En este ejercicio vamos a trabajar con <strong>programación orientada a protocolos</strong>. Consideramos que un elemento será <code>Avisable</code> si tiene:</p>
+<ul>
+<li>un <code>nombre</code>, de solo lectura;</li>
+<li>una <code>bateria</code>, que se puede consultar y modificar;</li>
+<li>un método <code>aviso()</code> que devuelve un <code>String</code>.</li>
+</ul>
+<p>Además, todos los tipos que adopten el protocolo <code>Avisable</code> tendrán una implementación por defecto de <code>aviso()</code> mediante una extensión del protocolo.</p>
+<p>a) Completa el código:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">protocol</span> <span class="nc">Avisable</span> <span class="p">{</span>
+    <span class="c1">// Hueco 1:</span>
+    <span class="c1">// Declara la propiedad nombre, de tipo String, solo lectura</span>
+
+    <span class="c1">// Hueco 2:</span>
+    <span class="c1">// Declara la propiedad bateria, de tipo Int, lectura y escritura</span>
+
+    <span class="c1">// Hueco 3:</span>
+    <span class="c1">// Declara el método aviso(), que devuelve un String</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>La implementación por defecto de <code>aviso()</code> debe devolver:</p>
+<ul>
+<li><code>"Aviso: batería baja en &lt;nombre&gt;"</code> si la batería es menor que 20.</li>
+<li><code>"Batería suficiente en &lt;nombre&gt;"</code> en caso contrario.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">extension</span> <span class="nc">Avisable</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">aviso</span><span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">String</span> <span class="p">{</span>
+        <span class="c1">// Hueco 4:</span>
+        <span class="c1">// Escribe aquí la implementación por defecto del método aviso()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>b) Ahora se definen dos tipos que adoptan el protocolo <code>Avisable</code>.</p>
+<p>El tipo <code>Sensor</code> usará la implementación por defecto de <code>aviso()</code>.</p>
+<p>El tipo <code>Robot</code>, en cambio, tendrá su propia implementación de <code>aviso()</code>:</p>
+<ul>
+<li><code>"Robot &lt;nombre&gt; necesita recarga urgente"</code> si la batería es menor que 20.</li>
+<li><code>"Robot &lt;nombre&gt; operativo"</code> en caso contrario.</li>
+</ul>
+<p>Completa el código:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Sensor</span><span class="p">:</span> <span class="n">Avisable</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">nombre</span><span class="p">:</span> <span class="nb">String</span>
+    <span class="kd">var</span> <span class="nv">bateria</span><span class="p">:</span> <span class="nb">Int</span>
+    <span class="kd">let</span> <span class="nv">ubicacion</span><span class="p">:</span> <span class="nb">String</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="nc">Robot</span><span class="p">:</span> <span class="n">Avisable</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">nombre</span><span class="p">:</span> <span class="nb">String</span>
+    <span class="kd">var</span> <span class="nv">bateria</span><span class="p">:</span> <span class="nb">Int</span>
+    <span class="kd">let</span> <span class="nv">modelo</span><span class="p">:</span> <span class="nb">String</span>
+
+    <span class="c1">// Hueco 5:</span>
+    <span class="c1">// Implementa aquí el método aviso() específico para Robot</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>c) Completa el siguiente código para crear un array que pueda contener tanto robots como sensores y llamar al método <code>aviso()</code> de todos ellos.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">robot1</span> <span class="p">=</span> <span class="n">Robot</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;R2&quot;</span><span class="p">,</span> <span class="n">bateria</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="n">modelo</span><span class="p">:</span> <span class="s">&quot;explorador&quot;</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">robot2</span> <span class="p">=</span> <span class="n">Robot</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;T7&quot;</span><span class="p">,</span> <span class="n">bateria</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="n">modelo</span><span class="p">:</span> <span class="s">&quot;transporte&quot;</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">sensor1</span> <span class="p">=</span> <span class="n">Sensor</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;S1&quot;</span><span class="p">,</span> <span class="n">bateria</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="n">ubicacion</span><span class="p">:</span> <span class="s">&quot;laboratorio&quot;</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">sensor2</span> <span class="p">=</span> <span class="n">Sensor</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;S2&quot;</span><span class="p">,</span> <span class="n">bateria</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> <span class="n">ubicacion</span><span class="p">:</span> <span class="s">&quot;almacén&quot;</span><span class="p">)</span>
+
+<span class="c1">// Hueco 6:</span>
+<span class="c1">// Declara un array llamado elementos que pueda contener valores</span>
+<span class="c1">// de cualquier tipo que adopte Avisable.</span>
+<span class="c1">// El array debe contener robot1, robot2, sensor1 y sensor2.</span>
+
+
+<span class="c1">// Hueco 7:</span>
+<span class="c1">// Recorre el array elementos e imprime el resultado de llamar</span>
+<span class="c1">// al método aviso() de cada elemento.</span>
+</code></pre></div>
+<p>d) Contesta las siguientes preguntas:</p>
+<ol>
+<li>¿Por qué <code>Sensor</code> no necesita implementar su propio método <code>aviso()</code>?</li>
+<li>¿Por qué <code>Robot</code> sí puede definir su propia versión de <code>aviso()</code>?</li>
+<li>¿Qué ventaja tiene declarar el array como <code>[Avisable]</code>?</li>
+<li>¿Qué mensajes se imprimirán al ejecutar el último fragmento de código?</li>
+</ol>
 <hr />
-<p>Lenguajes y Paradigmas de Programación, curso 2024-25<br />
+<p>Lenguajes y Paradigmas de Programación, curso 2025-26<br />
 © Departamento Ciencia de la Computación e Inteligencia Artificial, Universidad de Alicante<br />
 Domingo Gallardo, Cristina Pomares, Antonio Botía, Francisco Martínez</p>
 
